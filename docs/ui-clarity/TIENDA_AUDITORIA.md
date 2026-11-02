@@ -52,3 +52,23 @@ Agregar a la lista blanca `EVENTS` de `server/game-master.js` (propietario: paqu
 1. «¿Cuánto cuesta esta skin, en qué moneda y para quién es?» (antes/después; tiempo y respuesta).
 2. «Comprala» con saldo insuficiente: ¿entiende qué le falta y qué hacer?
 3. «Mostrame cómo se ve sin la skin» (comparación).
+
+---
+# Bloque 3 — compra, recuperación y verdad de los textos
+
+## Hallazgos (observados)
+| # | Sev. | Hallazgo |
+|---|---|---|
+| C1 | **Alta** | **Texto legal falso con la configuración vigente.** `PIECES_FOR_BRASAS = true` (js/data/pricing.js): las Brasas compran también **piezas de set (equipo con estadísticas)**. Pero la ventana obligatoria «Antes de tu primera compra» (`js/ui/legal.js`) y el beneficio de cuenta (`js/net/account.js`) decían «solo compran apariencia, nunca poder». `premiumRuleText()` ya tenía el texto correcto y dependiente del interruptor; esos dos lugares no lo usaban. |
+| C2 | Media (**abierta**) | Los paquetes se muestran con el importe del servidor (p. ej. «US$ 4,99»), mientras la nota dice que Mercado Pago cobra en pesos argentinos (AR$). Si el servidor entrega USD, el jugador no ve el importe final en pesos antes de pagar. **No se pudo verificar sin el servidor real**; depende de la configuración de `server/premium-packs.json`. Recomendación: que el servidor entregue también el importe en la moneda de cobro, o que la nota lo aclare. |
+| C3 | Info | Verificado como **correcto**: sin pasarela la UI dice «Muy pronto… no se pueden comprar Brasas» y no ofrece comprar; hay puerta legal previa (casilla obligatoria, edad, términos y reembolsos); el resumen dice cantidad, importe con moneda y que se va a la página de pago; los fallos dicen «No se cobró nada». |
+
+## Cambios
+* C1: las dos frases ahora usan `premiumRuleText()` (2 líneas en archivos ajenos: `js/ui/legal.js`, `js/net/account.js`). Con `PIECES_FOR_BRASAS = true` dicen «compran apariencia y piezas de set (equipo). Las piezas también se consiguen jugando»; con `false`, vuelve «solo apariencia. Nunca poder.». **No se cambió la decisión del dueño ni ningún precio**: solo se alinea el texto con ella. Si se prefiere cumplir «sin ventajas pagas», el cambio correcto es apagar `PIECES_FOR_BRASAS` (decisión de negocio, no tomada acá).
+
+## Evidencia (`node tools/ui-clarity/test-brasas-flow.js`, servidor simulado, 12 PASS)
+sin pasarela → «Muy pronto» y sin compra · con pasarela simulada → paquete con Brasas totales e importe con moneda y saldo visible · puerta legal obligatoria (casilla) · el texto legal coincide con la regla vigente · resumen previo con cantidad, importe y «página de pago» · cancelar no llama al servidor · checkout 501 y error → «no se cobró nada» / «todavía no hay pagos» · respuesta lenta: botón bloqueado y **un solo** pedido · sin errores de página.
+Los flujos de **skins** (doble toque, lento, error, corte de red, recarga, reabrir) están en `test-shop-clarity.js`.
+
+## Límites
+No se conectó ningún proveedor de pago, no se crearon credenciales, no se cambiaron precios ni se publicaron ofertas. La entrega real tras un pago depende del servidor (webhook de la pasarela), que no se probó acá.

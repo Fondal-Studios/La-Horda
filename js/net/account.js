@@ -569,7 +569,7 @@ function _acctStatus(text, kind){
 function _acctPerksHTML(){
   return `<ul class="acc-perks" aria-label="Qué ganás con una cuenta">
     <li><b>Respaldo en la nube:</b> tu progreso se guarda en el servidor y lo seguís en otro dispositivo.</li>
-    <li><b>Brasas ✦:</b> se guardan en tu cuenta (solo compran apariencia, nunca poder).</li>
+    <li><b>Brasas ✦:</b> se guardan en tu cuenta (${typeof premiumRuleText === "function" ? premiumRuleText() : "compran apariencia"}).</li>
     <li><b>Ranking semanal:</b> tu puntaje de la Horda Infinita entra a la tabla.</li>
   </ul>`;
 }
