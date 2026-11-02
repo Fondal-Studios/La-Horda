@@ -13,12 +13,22 @@ def sha(p):
     except Exception: return None
 DONE={'myla':'art-source/originals/myla/approval.json','ynara':'art-source/originals/ynara/approval.json','saelis':'art-source/originals/saelis/approval.json','aurelia':'art-source/originals/aurelia/approval.json','maura':'art-source/originals/maura/approval.json'}
 PARTIAL={'renko':'22/36 celdas generadas sin revisar (art-source/repaint-loop-20261102/renko)','profeta':'6/37 celdas generadas sin revisar (art-source/repaint-loop-20261102/profeta)'}
+# Correcciones de falsos positivos de la reseña visual: tanque, guerrero, libertador y myla dibujan la muerte desde un pack SUPLEMENTARIO
+# (CHAMP_PACK.tanque_death / guerrero_death / libertador_death / myla_death; ver drawChampPackDeath), que la tira de la auditoría no muestra.
+DEATH_SUPP={'tanque':'tanque_death','guerrero':'guerrero_death','libertador':'libertador_death','myla':'myla_death'}
 ORDER={'P0':0,'P1':1,'P2':2,'P3':3,'P4':4,'OK':5,'SIN_REVISAR':6}
 items=[]
 for key,a in A.items():
     t=a['type'];r=rev.get(key,{});m=met.get(a['id'],{})
     P=a.get('pack') or {};cells=len({i for v in (P.get('setsMap') or {}).values() for i in v if i>=0})
     pri=r.get('priority','SIN_REVISAR')
+    if t=='base' and a['id'] in DEATH_SUPP and r:
+        fp=[d for d in r.get('defects',[]) if d.get('code')=='muerte' and 'No existe' in d.get('note','')]
+        if fp:
+            r=dict(r);r['defects']=[d for d in r['defects'] if d not in fp]+[{'code':'correccion_auditoria','where':'muerte','note':f"Falso positivo de la reseña: la muerte existe en el pack suplementario {DEATH_SUPP[a['id']]} (no aparece en la tira). Revisar su coherencia con el arte del set principal."}]
+            codes={d['code'] for d in r['defects']}
+            pri='P1' if 'identidad' in codes else ('P2' if a['id']=='myla' else 'P3')
+            if a['id']=='myla': r['defects'].append({'code':'muerte','where':'muerte (pack myla_death)','note':'La muerte es del arte ANTERIOR de Myla y no coincide con el set repintado.'})
     for fl in m.get('flags',[]):
         if fl.startswith(('cuadro_vacio','preview_ausente','sin_pack')) and ORDER[pri]>0: pri='P0'
     it={'id':a['id'],'type':t,'champ':a['champ'],'name':a.get('name'),'priority':pri,'status':'pendiente',
