@@ -13,7 +13,7 @@
   "SIN_REVISAR": "sin reseña visual"
  },
  "method_note": "Las prioridades P* salen de reseñas visuales de agentes revisores independientes de esta sesión + métricas automáticas ruidosas; no sustituyen la revisión humana ni el visual gate de docs/ART_BIBLE.md.",
- "economy_note": "Decisión de diseño pendiente (dueño, 2026-11-02): las skins de set deberían pasar a ser skins comunes y los sets, ítems con mejoras no cosméticas. Hoy se venden por separado pero completar el set las regala; ver items[type=set].economy.",
+ "economy_note": "Modelo de economía aclarado por el dueño (2026-11-02): las Brasas SOLO compran cosméticos; las piezas de set se consiguen jugando o en eventos del pase de batalla, y una sola pieza puede salir a la venta por oro; la skin de set se puede comprar por Brasas por separado Y además se desbloquea al completar el set (es uno de los bonus del set, no se compra junto con él). Estado en el código: la skin ya se vende aparte y ya se regala al completar el set (coincide); DESAJUSTE: js/data/pricing.js tiene PIECES_FOR_BRASAS = true, por lo que hoy las Brasas también compran piezas de set (con estadísticas). Decisión pendiente: apagar ese interruptor en un PR de economía aparte.",
  "summary": {
   "P1": {
    "set": 6,
@@ -109,9 +109,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -237,9 +236,8 @@
     "method": "preview/otra familia: ver defects"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -305,9 +303,8 @@
     "method": "preview/otra familia: ver defects"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -373,9 +370,8 @@
     "method": "preview/otra familia: ver defects"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -436,9 +432,8 @@
     "method": "preview/otra familia: ver defects"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -504,9 +499,8 @@
     "method": "preview/otra familia: ver defects"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -572,9 +566,8 @@
     "method": "preview/otra familia: ver defects"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -635,9 +628,8 @@
     "method": "preview/otra familia: ver defects"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -703,9 +695,8 @@
     "method": "preview/otra familia: ver defects"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -771,9 +762,8 @@
     "method": "preview/otra familia: ver defects"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -834,9 +824,8 @@
     "method": "preview/otra familia: ver defects"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -897,9 +886,8 @@
     "method": "preview/otra familia: ver defects"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -960,9 +948,8 @@
     "method": "preview/otra familia: ver defects"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -1023,9 +1010,8 @@
     "method": "preview/otra familia: ver defects"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -1091,9 +1077,8 @@
     "method": "preview/otra familia: ver defects"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -1159,9 +1144,8 @@
     "method": "preview/otra familia: ver defects"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -1234,9 +1218,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -1419,9 +1402,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -1620,9 +1602,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -1685,9 +1666,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -1879,9 +1859,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -2082,9 +2061,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -2206,9 +2184,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -3587,9 +3564,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -3982,9 +3958,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -4045,9 +4020,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -4392,9 +4366,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -4777,9 +4750,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -4898,9 +4870,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -5104,9 +5075,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -5161,9 +5131,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -5315,9 +5284,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -5521,9 +5489,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -5623,9 +5590,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -5829,9 +5795,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -5983,9 +5948,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -6137,9 +6101,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -6239,9 +6202,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -6400,9 +6362,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -6608,9 +6569,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -6716,9 +6676,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -6929,9 +6888,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -7038,9 +6996,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -7192,9 +7149,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -7405,9 +7361,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -7462,9 +7417,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -7720,9 +7674,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -7829,9 +7782,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   },
   {
@@ -8087,9 +8039,8 @@
     "method": "tools/factory/loop (repaint-loop → arquitecto → implement)"
    },
    "economy": {
-    "current": "Se vende por separado (Brasas 800 / oro 9000, solo apariencia; js/data/pricing.js) pero completar el set todavía la regala (js/ui/shop-ui.js, js/systems/shop.js: skinAutoEquip).",
-    "proposed_category": "skin_comun",
-    "proposed": "Tratarla como skin común (catálogo de apariencias); el set queda solo como ítems con mejoras no cosméticas. Decisión de diseño del dueño: NO implementada aquí (toca economía y progreso)."
+    "current": "Skin vendible por Brasas aparte (800 / oro 9000) y regalada al completar el set: coincide con el modelo del dueño.",
+    "note": "Las piezas de set no deberían comprarse con Brasas (PIECES_FOR_BRASAS=true hoy). No es un problema de arte."
    }
   }
  ],
