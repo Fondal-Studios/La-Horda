@@ -29,6 +29,9 @@ body.lanes-on .lanes-hud .ln-note{ top:calc(88px + env(safe-area-inset-top,0px))
   body.lanes-on .lanes-hud .ln-rival canvas{ width:118px; height:88px; }
   body.lanes-on .lanes-hud .ln-rival{ left:calc(118px + env(safe-area-inset-left,0px)); }
   body.lanes-on .lanes-hud .ln-recall{ left:50%; transform:translateX(-50%); bottom:calc(58px + env(safe-area-inset-bottom,0px)); }
+  /* El panel de compras no puede tapar VOLVER: reservar su fila y desplazar
+     el contenido dentro del panel cuando la pantalla es baja. */
+  body.lanes-on .lanes-hud .ln-shop{ bottom:calc(114px + env(safe-area-inset-bottom,0px)); max-height:calc(100vh - 132px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px)); overflow-y:auto; box-sizing:border-box; }
 }
 
 /* ============================================================================================

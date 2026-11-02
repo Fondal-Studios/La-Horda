@@ -20,6 +20,8 @@ const overlaps=(a,b)=>Math.min(a.x+a.width,b.x+b.width)>Math.max(a.x,b.x)+.5&&Ma
     const read=e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};};
     return {button:read(document.getElementById('title-continue-btn')),footer:read(document.getElementById('legal-title')),cta:document.getElementById('bt-cta')?read(document.getElementById('bt-cta')):null};
    });
+   console.log('TITLE',width,JSON.stringify(geometry));
+   await p.screenshot({path:path.join(OUT,`title-${width}.png`)});
    assert(!overlaps(geometry.button,geometry.footer),`${width}: Continue/footer overlap ${JSON.stringify(geometry)}`);
    if(geometry.cta)assert(!overlaps(geometry.button,geometry.cta),`${width}: Continue/primary CTA overlap ${JSON.stringify(geometry)}`);
    assert(geometry.button.y>=0&&geometry.button.y+geometry.button.height<=height,`${width}: Continue on screen`);
@@ -43,12 +45,16 @@ const overlaps=(a,b)=>Math.min(a.x+a.width,b.x+b.width)>Math.max(a.x,b.x)+.5&&Ma
    await p.evaluate(()=>{save.tut.training=1;persistNow();setState('mainmenu');renderMainMenu();});
    await p.locator('#hub-crystal-btn').click();await p.locator('#practice').waitFor({state:'visible'});
    await p.selectOption('#champ','mago');await p.click('#practice');await p.waitForFunction(()=>state==='playing'&&lanesOn());
+   await p.click('.ln-chip');
    for(const lefty of [false,true]){
     await p.evaluate(v=>document.body.classList.toggle('lefty',v),lefty);
     const data=await p.evaluate(()=>{
      const read=e=>{const r=e.getBoundingClientRect();return {id:e.id||e.className,x:r.x,y:r.y,width:r.width,height:r.height};};
-     return {recall:read(document.querySelector('.ln-recall')),button:read(document.getElementById('btn-basic')),icon:read(document.querySelector('#btn-basic .ico-img')),controls:[...document.querySelectorAll('.ability-btn,.ln-chip,#joy-base')].filter(e=>e.getBoundingClientRect().width&&getComputedStyle(e).display!=='none').map(read)};
+     return {recall:read(document.querySelector('.ln-recall')),button:read(document.getElementById('btn-basic')),icon:read(document.querySelector('#btn-basic .ico-img')),shop:read(document.querySelector('.ln-shop')),controls:[...document.querySelectorAll('.ability-btn,.ln-chip,#joy-base')].filter(e=>e.getBoundingClientRect().width&&getComputedStyle(e).display!=='none').map(read)};
     });
+    console.log('LANES',width,lefty,JSON.stringify(data));
+    assert(!overlaps(data.recall,data.shop),`${width}: shop must not cover recall`);
+    assert(data.shop.y>=0,`${width}: shop stays on screen`);
     assert(data.recall.width>=48&&data.recall.height>=48,`${width}: recall >=48`);
     assert.equal(data.button.width,92);assert.equal(data.button.height,92);assert.equal(data.icon.width,32);assert.equal(data.icon.height,32);
     const hits=data.controls.filter(r=>overlaps(data.recall,r));assert.deepEqual(hits,[],`${width} lefty=${lefty}: recall overlaps controls`);
