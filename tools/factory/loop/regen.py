@@ -13,7 +13,7 @@ GEN_RULE=' Keep the halo/signature items of the design visible in every view. Tr
 for c,t in fixes.items():
     i=int(c.lstrip('c'));d=f'{root}/{champ}/f{i}'
     json.dump({'verdict':'CORREGIR','negative_feedback':t+GEN_RULE,'source':'arquitecto independiente'},open(d+'/architect_feedback.json','w'))
-    env=dict(os.environ,REFVIEW=str(view.get(i,0)),GEN=gen,BUDGET='12',MAXROUNDS='2')
+    env=dict(os.environ,REFVIEW=str(view.get(i,0)),GEN=gen,BUDGET=os.environ.get('BUDGET','12'),MAXROUNDS=os.environ.get('MAXROUNDS','2'))
     if view.get(i,0)==0:
         a=f'{root}/{champ}/f{idle}/result_g1r1.png'
         if os.path.exists(a): env['ANCHOR']=a
