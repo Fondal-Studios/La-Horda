@@ -4,13 +4,14 @@
   "owner": "/root/animate_madre_espora",
   "branch": "fix/madre-espora-animation-20261101",
   "pr": 260,
-  "code_head_sha": "fc2e99b6a701214ab2a29264b62a7f0071865c85",
-  "updated_utc": "2026-11-02T00:45:00Z",
+  "code_head_sha": "b1af351eeafda9a75e7ce0135cc2c706b5ad3076",
+  "updated_utc": "2026-11-02T01:00:00Z",
   "execution_policy": "Continue existing owner/slice; automation must not launch duplicate generations. No formal PR approval or unvalidated main merge.",
   "accepted_scopes": [
     "opt-in high-detail idle pilot",
     "opt-in high-detail phase1 anticipation/impact/recovery pilot",
-    "opt-in bloom transformation and matching idle pilot (architect fc2e99b6 runtime GO)"
+    "opt-in bloom transformation and matching idle pilot (architect fc2e99b6 runtime GO)",
+    "opt-in phase2 physical claw and whip attack pilot (architect796483a6 runtime GO)"
   ],
   "not_accepted": [
     "full boss release",
@@ -23,19 +24,20 @@
     "browser_pass": 60,
     "phase1_timing": "Mother damage5350ms; first impact render5382ms (+32ms)",
     "actual_evidence_dir": "/tmp/mother-ci-232b2b20/high-detail-pilot",
-    "github_run_id": 41364031668,
-    "github_artifact_id": 13106552141,
+    "github_run_id": 41369048341,
+    "github_artifact_id": 13108119116,
     "independent_reviewer": "/root/review_art_pilot_architecture",
     "camera_and_boss_hooks": "PASS",
-    "baseline_failures": [
+    "geometry_run_id": 41366010676,
+    "geometry_artifact_id": 13107069326,
+    "latest_fungal_status": "BOTH_PASS: full candidate and main34ac2852, identical harness/seed. No skipped assertions. Phase3 heart1/vuln1.35 at5472ms; legacy gold4321+640, reload no extra awards, level/XP/unlocks preserved.",
+    "bloom_sequence_run_id": 41367462917,
+    "bloom_sequence_artifact_id": 13107414710,
+    "historical_fixture_failures": [
       "MADRE.fase3_corazon_expuesto_y_vulnerable",
       "SAVE.guardado_viejo_conserva_el_hielo_y_abre_el_reino"
     ],
-    "geometry_run_id": 41366010676,
-    "geometry_artifact_id": 13107069326,
-    "latest_fungal_status": "34ba9c8e fullcandidate+baseline phase3 vulnerability1.35 PASS at5472ms, genuine legacy unlock PASS; added exact gold assertion fails both due legitimate retroactivequest rewards. Observer correction92f78e85 pending repeatCI; no production change.",
-    "bloom_sequence_run_id": 41367462917,
-    "bloom_sequence_artifact_id": 13107414710
+    "baseline_failures": []
   },
   "current_slice": {
     "id": "phase1-to-bloom-transition-and-idle",
@@ -52,8 +54,8 @@
       ],
       "verdict": "SOURCE_GEOMETRY_GO_RUNTIME_PENDING"
     },
-    "next_gate": "Actual phase2 claw and whip windup/damage callback synchronization, return to evolved idle, native mobile/desktop seam review. Spore cast, heart and death not included.",
-    "next_job_key": "madre-bloom-physical-attack-runtime-v1",
+    "next_gate": "Actual5/6 spore projectile release on first AI step, \u226432ms visual alignment, no windup, native idle/cast seam review. Additional warning packs receive routing/delay tests only, not blanket spell visual approval.",
+    "next_job_key": "madre-phase1-phase2-cast-runtime-v2",
     "provider_task_id": null,
     "previous_rejected_generation": {
       "provider": "OpenAI built-in imagegen",
@@ -96,7 +98,27 @@
         "provider": "OpenAI built-in imagegen"
       }
     ],
-    "name": "phase2 physical claw/whip attack pilot"
+    "name": "phase1 and phase2 immediate ranged/spore cast pilot",
+    "cast_sources": [
+      {
+        "phase": 1,
+        "file": "/workspace/scratch/4ef56534d38c/generated_images/exec-3cf25e0d-5da0-4c54-b1fe-b3887713d6c6.png",
+        "sha256": "0e4b1b57eafa358929477a508d8047c0d2ec8fa8a00fdf34ee76b41d6559fad5",
+        "request_id": null,
+        "verdict": "SOURCE_GO_RUNTIME_PENDING"
+      },
+      {
+        "phase": 2,
+        "file": "/workspace/scratch/4ef56534d38c/generated_images/exec-e2f6ffa3-f841-46f3-be8a-5631593ff501.png",
+        "sha256": "b09e5ad0cc900040712681b0310fa4f9047c1cd72196dc5a2b19387486678223",
+        "request_id": null,
+        "verdict": "SOURCE_GO_RUNTIME_PENDING"
+      }
+    ],
+    "rejected_cast_source": {
+      "file": "exec-0412cd6b-2de2-49ea-bc88-c8e0faa67d23.png",
+      "reason": "phase1 rootfan29%too broad; replaced by targeted lowerbody correction, not installed"
+    }
   },
   "user_deliverable": {
     "file_id": "file_0000000073e48230a5e2238281bc725b",
@@ -105,7 +127,7 @@
     "scope": "idle prototype only, not main"
   },
   "spend": "No Runway credits or purchases; built-in imagegen unit cost not exposed.",
-  "previous_remote_head": "796483a691047185c6dfc6cf937ef445d5034ff0",
+  "previous_remote_head": "b1af351eeafda9a75e7ce0135cc2c706b5ad3076",
   "user_deliverable_bloom": {
     "file_id": "file_0000000056e081fd83d80fd0da44dac6",
     "library_file_id": "libfile_0f0e771b7fb88191b085629005a9bfd6",

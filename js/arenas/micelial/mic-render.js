@@ -33,10 +33,12 @@ if(MIC_MOTHER_BLOOM_KEY_ON){
   _micImg("assets/sprites/arenas/micelial/mother/pilot_bloom_transition.png","mp_bloom_trans",MIC_MP,MIC_MP_OK);
   _micImg("assets/sprites/arenas/micelial/mother/pilot_bloom_idle.png","mp_bloom_idle",MIC_MP,MIC_MP_OK);
   _micImg("assets/sprites/arenas/micelial/mother/pilot_bloom_attack.png","mp_bloom_attack",MIC_MP,MIC_MP_OK);
+  _micImg("assets/sprites/arenas/micelial/mother/pilot_bloom_cast.png","mp_bloom_cast",MIC_MP,MIC_MP_OK);
 }
 if(MIC_MOTHER_PILOT_ON){
   _micImg("assets/sprites/arenas/micelial/mother/pilot_idle.png","mp_pilot",MIC_MP,MIC_MP_OK);
   _micImg("assets/sprites/arenas/micelial/mother/pilot_attack.png","mp_pilot_attack",MIC_MP,MIC_MP_OK);
+  _micImg("assets/sprites/arenas/micelial/mother/pilot_cast.png","mp_pilot_cast",MIC_MP,MIC_MP_OK);
 }
 const MIC_BG = {}, MIC_BG_OK = {};
 _micImg("assets/sprites/arenas/micelial/map/map_initial.png", "a", MIC_BG, MIC_BG_OK);
@@ -584,6 +586,14 @@ function _micMotherPilotPose(e,M,timeMs,pose){
   if(MIC_MOTHER_BLOOM_KEY_ON && M.st==="fight" && M.ph===2 && M.bloom && !M.heart && !(M.net && M.net.st==="open") && pose.state==="atk" && e && e.packDur>700){
     const after=(e.packDur-e.packTimer)-(e.packDur-500);
     return {key:"mp_bloom_attack",w:656,h:560,cols:3,anchor:528,frame:e.bossWind || after<0?0:after<190?1:2};
+  }
+  const ranged=pose.state==="cast" || pose.state==="bloom" || (pose.state==="atk" && e && e.packDur<=700);
+  const form=M.ph===1 && !M.bloom ? "mp_pilot_cast" : (MIC_MOTHER_BLOOM_KEY_ON && M.ph===2 && M.bloom ? "mp_bloom_cast" : null);
+  if(form && ranged && e && e.packTimer>0 && M.st==="fight" && !M.heart && !(M.net && M.net.st==="open")){
+    // Immediate spore release: NEVER invent a windup or delay projectile creation.
+    // Other cast gestures accompany their existing authoritative warnings/VFX.
+    const elapsed=Math.max(0,e.packDur-e.packTimer), release=pose.state==="atk"?260:e.packDur*0.7;
+    return {key:form,w:656,h:M.ph===1?496:560,cols:2,anchor:M.ph===1?472:528,frame:elapsed<release?0:1};
   }
   if(M.ph!==1 || M.bloom || M.heart || (M.net && M.net.st==="open")) return null;
   if(pose.state==="idle") return {key:"mp_pilot",w:432,frame:[0,1,2,1][Math.floor(Math.max(0,timeMs||0)/360)%4]};

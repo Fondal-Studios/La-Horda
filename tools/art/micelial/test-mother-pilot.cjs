@@ -9,7 +9,7 @@ const ROOT=path.resolve(__dirname,'../../..'),OUT='/tmp/mother-browser/high-deta
   const page=await browser.newPage({viewport,recordVideo:{dir:OUT,size:viewport}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.addInitScript(()=>{window.requestAnimationFrame=()=>0;});
   await page.goto('http://127.0.0.1:8849/?motherArtPilot=1&motherBloomKey=1',{waitUntil:'domcontentloaded'});
-  await page.waitForFunction(()=>typeof startRun==='function'&&_micMotherAtlasReady()&&MIC_MP_OK.mp_pilot&&MIC_MP_OK.mp_pilot_attack&&MIC_MP_OK.mp_bloom_key&&MIC_MP_OK.mp_bloom_trans&&MIC_MP_OK.mp_bloom_idle&&MIC_MP_OK.mp_bloom_attack,null,{polling:100,timeout:120000});
+  await page.waitForFunction(()=>typeof startRun==='function'&&_micMotherAtlasReady()&&MIC_MP_OK.mp_pilot&&MIC_MP_OK.mp_pilot_attack&&MIC_MP_OK.mp_bloom_key&&MIC_MP_OK.mp_bloom_trans&&MIC_MP_OK.mp_bloom_idle&&MIC_MP_OK.mp_bloom_attack&&MIC_MP_OK.mp_pilot_cast&&MIC_MP_OK.mp_bloom_cast,null,{polling:100,timeout:120000});
   await page.evaluate(()=>{
    selectedClass='tanque';currentArena='micelial';lobbyAllies=[];netMatch=null;startRun(10);setState('playing');micMotherRevealStart();
    const e=micMotherEntity();window.motherProbe=e;boss=e;bossActive=true;activeChampion=null;micS.mo.st='fight';micS.mo.ph=1;e.micDormant=0;e.dmgTakenMult=1;player.hp=player.maxHp;
@@ -128,6 +128,46 @@ const ROOT=path.resolve(__dirname,'../../..'),OUT='/tmp/mother-browser/high-deta
    assert(rows.at(-1).calls.some(c=>c.key==='mp_bloom_idle'),'returns to evolved idle');
    fs.writeFileSync(path.join(OUT,viewport.width+'-bloom-'+actionName+'-timing.json'),JSON.stringify({rows,hits,status:'PHASE2_PHYSICAL_ATTACK_PILOT_NOT_RELEASE'},null,2));
   }
+  for(const phase of [1,2]){
+   await page.evaluate(phase=>{
+    const e=window.motherProbe;Object.assign(micS.mo,{st:'fight',ph:phase,tr:null,bloom:phase===2?1:0,heart:0,net:null});bossHudPhase(phase-1,3);
+    Object.assign(e,{hp:e.maxHp*(phase===1?1:0.55),packSet:null,packTimer:0,bossWind:null,stunTimer:0,mcd:0,whipCd:1e9,clawCd:1e9,rootsCd:1e9,sporeCd:0,summonCd:1e9,cloudCd:1e9,halCd:1e9});
+    window.sporeEmissions=[];window.sporeOriginal=_enemyShot;_enemyShot=function(...a){if(a[0]===window.motherProbe)window.sporeEmissions.push(runElapsedMs);return window.sporeOriginal.apply(this,a)};
+   },phase);
+   const rows=[];let captured=false;
+   for(let i=0;i<48;i++){
+    const row=await page.evaluate(()=>{
+     for(let j=0;j<2;j++){for(const h of heroes){h.hp=h.maxHp;h.x=80;h.y=260;}update(16);}
+     const calls=[],draw=ctx.drawImage;ctx.drawImage=function(...a){for(const key of ['mp_pilot_cast','mp_bloom_cast','mp_pilot','mp_bloom_idle'])if(a[0]===MIC_MP[key])calls.push({key,sx:a[1]});return draw.apply(this,a)};
+     try{render()}finally{ctx.drawImage=draw}return {time:runElapsedMs,calls,emissions:window.sporeEmissions.slice(),wind:!!window.motherProbe.bossWind};
+    });rows.push(row);
+    if(!captured&&row.calls.some(c=>c.key.endsWith('cast')&&c.sx===0)){await page.screenshot({path:path.join(OUT,viewport.width+'-phase'+phase+'-spore-release.png')});captured=true;}
+    await page.waitForTimeout(32);
+   }
+   await page.evaluate(()=>{_enemyShot=window.sporeOriginal;});
+   const key=phase===1?'mp_pilot_cast':'mp_bloom_cast',release=rows.find(r=>r.calls.some(c=>c.key===key&&c.sx===0));
+   assert.equal(rows.at(-1).emissions.length,phase===1?5:6,'original configured projectile count');
+   assert(rows[0].emissions.length>0,'spores emit on first AI step without invented windup');
+   assert(Math.abs(release.time-rows[0].emissions[0])<=32,'release pose accompanies immediate projectiles');
+   assert(rows.every(r=>!r.wind));
+   assert.deepEqual([...new Set(rows.flatMap(r=>r.calls.filter(c=>c.key===key).map(c=>c.sx)))].sort((a,b)=>a-b),[0,656]);
+   assert(rows.at(-1).calls.some(c=>c.key===(phase===1?'mp_pilot':'mp_bloom_idle')),'returns to matching form idle');
+   fs.writeFileSync(path.join(OUT,viewport.width+'-phase'+phase+'-spore-timing.json'),JSON.stringify({rows,status:'IMMEDIATE_PROJECTILE_CAST_PILOT_NOT_RELEASE'},null,2));
+  }
+  const warningRouting=await page.evaluate(()=>{
+   const result=[];
+   for(const ph of [1,2])for(const kind of (ph===1?['roots','summon']:['roots','summon','clouds'])){
+    const e=window.motherProbe;Object.assign(micS.mo,{st:'fight',ph,tr:null,bloom:ph===2?1:0,heart:0,net:null});
+    Object.assign(e,{hp:e.maxHp*(ph===1?1:0.55),mcd:1e9,stunTimer:0,bossWind:null,packSet:null,packTimer:0});
+    const before=projectiles.length,delays=[],later=runLater;runLater=function(ms,fn){delays.push(ms);return later(ms,fn)};
+    try{if(kind==='roots')micMotherRoots(e,2);else if(kind==='summon')micMotherSummon(e,2);else micMotherClouds(e)}finally{runLater=later}
+    const pose=_micMotherPilotPose(e,micS.mo,runElapsedMs,_micMotherFrame(e,micS.mo,runElapsedMs));
+    result.push({ph,kind,key:pose.key,frame:pose.frame,pack:e.packSet,duration:e.packDur,projectileDelta:projectiles.length-before,delays});
+   }
+   return result;
+  });
+  for(const r of warningRouting){assert.equal(r.key,r.ph===1?'mp_pilot_cast':'mp_bloom_cast');assert.equal(r.frame,0);assert.equal(r.projectileDelta,0);if(r.kind==='summon')assert.deepEqual(r.delays,[700,700]);if(r.kind==='clouds')assert(r.delays.every(t=>t===900));if(r.kind==='roots')assert.deepEqual(r.delays,[1150,1220]);}
+  fs.writeFileSync(path.join(OUT,viewport.width+'-warning-pack-routing.json'),JSON.stringify({warningRouting,status:'ROUTING_AND_ORIGINAL_DELAY_CHECK_NOT_FULL_SPELL_VISUAL_APPROVAL'},null,2));
   const video=page.video();await page.close();fs.renameSync(await video.path(),path.join(OUT,viewport.width+'-phase1-pilot.webm'));
   fs.writeFileSync(path.join(OUT,viewport.width+'-result.json'),JSON.stringify({seen,errors,status:'PILOT_RENDER_PASS_NOT_VISUAL_APPROVAL'},null,2));
  }

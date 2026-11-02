@@ -117,7 +117,7 @@ check('opt-in high-detail phase1 pilot holds windup, impact, recovery and exclud
  assert.equal(p({packSet:'atk',packDur:1500,packTimer:510,bossWind:{t:990,dur:1000}}).frame,0);
  assert.equal(p({packSet:'atk',packDur:1500,packTimer:490}).frame,1);
  assert.equal(p({packSet:'atk',packDur:1500,packTimer:100}).frame,2);
- assert.equal(p({packSet:'atk',packDur:700,packTimer:600}),null);
+ assert.equal(p({packSet:'atk',packDur:700,packTimer:600}).key,'mp_pilot_cast');
  assert.equal(p({packSet:'atk',packDur:1500,packTimer:490},{st:'fight',ph:2,bloom:1}),null);
  assert.equal(p({packSet:null,packTimer:0},m,360).frame,1);
 });
@@ -136,8 +136,16 @@ check('bloom keypose requires both explicit flags and only evolved idle',()=>{
  for(const [timer,wind,index] of [[510,{t:990,dur:1000},0],[490,null,1],[100,null,2]]){
   const r=q._micMotherPilotPose({packSet:'atk',packTimer:timer,packDur:1500,bossWind:wind},M,0,{state:'atk'});assert.equal(r.key,'mp_bloom_attack');assert.equal(r.frame,index);
  }
- assert.equal(q._micMotherPilotPose({packSet:'atk',packTimer:690,packDur:700},M,0,{state:'atk'}),null,'spore action excluded');
+ assert.equal(q._micMotherPilotPose({packSet:'atk',packTimer:690,packDur:700},M,0,{state:'atk'}).key,'mp_bloom_cast');
+ assert.equal(q._micMotherPilotPose({packSet:'atk',packTimer:690,packDur:700},M,0,{state:'atk'}).frame,0,'immediate release');
+ assert.equal(q._micMotherPilotPose({packSet:'atk',packTimer:100,packDur:700},M,0,{state:'atk'}).frame,1,'ranged recovery');
  assert.equal(q._micMotherPilotPose({packSet:'atk',packTimer:490,packDur:1500},{...M,heart:1},0,{state:'atk'}),null,'heart excluded');
+ for(const ph of [1,2])for(const [state,dur] of [['cast',1100],['cast',1200],['bloom',1100]]){
+  const m={st:'fight',ph,bloom:ph===2?1:0},entity={packSet:state,packDur:dur,packTimer:dur},before=JSON.stringify([m,entity]);
+  const r=q._micMotherPilotPose(entity,m,0,{state});assert.equal(r.key,ph===1?'mp_pilot_cast':'mp_bloom_cast');assert.equal(r.frame,0);assert.equal(JSON.stringify([m,entity]),before);
+  entity.packTimer=10;assert.equal(q._micMotherPilotPose(entity,m,0,{state}).frame,1);
+ }
+
 });
 check('Mother1-based phases map to zero-based HUD without changing combatphase',()=>{
  const source=fs.readFileSync(path.join(ROOT,'js/arenas/micelial/mic-mother.js'),'utf8');
