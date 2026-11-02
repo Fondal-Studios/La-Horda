@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "package": "madre-espora",
+  "owner": "/root/animate_madre_espora",
+  "branch": "fix/madre-espora-animation-20261101",
+  "pr": 260,
+  "code_head_sha": "232b2b200c0f374ae0466c65a1e46a8e39ce8885",
+  "updated_utc": "2026-11-02T00:00:23Z",
+  "execution_policy": "Continue existing owner/slice; automation must not launch duplicate generations. No formal PR approval or unvalidated main merge.",
+  "accepted_scopes": [
+    "opt-in high-detail idle pilot",
+    "opt-in high-detail phase1 anticipation/impact/recovery pilot"
+  ],
+  "not_accepted": [
+    "full boss release",
+    "default/main integration",
+    "mobile final polish",
+    "remaining high-detail phases"
+  ],
+  "validation": {
+    "unit_pass": 29,
+    "browser_pass": 60,
+    "phase1_timing": "Mother damage5350ms; first impact render5382ms (+32ms)",
+    "actual_evidence_dir": "/tmp/mother-ci-232b2b20/high-detail-pilot",
+    "github_run_id": 41364031668,
+    "github_artifact_id": 13106552141,
+    "independent_reviewer": "/root/review_art_pilot_architecture",
+    "camera_and_boss_hooks": "PASS",
+    "baseline_failures": [
+      "MADRE.fase3_corazon_expuesto_y_vulnerable",
+      "SAVE.guardado_viejo_conserva_el_hielo_y_abre_el_reino"
+    ]
+  },
+  "current_slice": {
+    "id": "phase1-to-bloom-transition-and-idle",
+    "status": "SOURCE_REVISION_REQUIRED",
+    "active_generation": null,
+    "last_generation": {
+      "provider": "OpenAI built-in imagegen",
+      "request_id": null,
+      "request_id_note": "Tool does not expose successful request IDs; output file ID below is artifact identifier, not request ID.",
+      "output_file": "/workspace/scratch/4ef56534d38c/generated_images/exec-25365843-420d-4073-a174-5154e910b8c5.png",
+      "sha256": "29867a649bc805132f3aab413855241bd9a7ba3ee47af6c996a3c38dc5ad92d4",
+      "refs": [
+        {
+          "path": "/workspace/scratch/4ef56534d38c/generated_images/exec-37ea7b5a-35a4-4bb3-9fdd-e34962f34dce.png",
+          "sha256": "1b5822783d5ec11b2cfff20ba0c811c4dc68e3ec5c8a4d091f2dc9b1c378528b"
+        },
+        {
+          "path": "/tmp/madre-bloom-canonical-reference.png",
+          "sha256": "ccd194e580f5b0fb602fa75258422a0a49744dbfd4e892be9ed4f3879cb50c57"
+        }
+      ],
+      "verdict": "REJECTED_SOURCE_NOT_INSTALLED",
+      "reasons": [
+        "Bloom not sufficiently evolved: retained same cyan canopy rather than broad warm orange/pink gills crown",
+        "Adjacent root/glow silhouettes contact; bottom-left fingers hit outer edge",
+        "Do not crop overlap or normalize each frame independently to fake invariant scale"
+      ]
+    },
+    "next_gate": "Generate ONE isolated evolved-bloom keypose with warm broad gills, fixed root/identity; independent source review before rebuilding transition+idle. No bloom attacks/death batch yet.",
+    "next_job_key": "madre-espora-bloom-keypose-v2",
+    "provider_task_id": null
+  },
+  "user_deliverable": {
+    "file_id": "file_0000000073e48230a5e2238281bc725b",
+    "library_file_id": "libfile_8e03553a38d481919252fad2d69c67d1",
+    "name": "madre-idle-mobile-PROTOTYPE.mp4",
+    "scope": "idle prototype only, not main"
+  },
+  "spend": "No Runway credits or purchases; built-in imagegen unit cost not exposed."
+}
