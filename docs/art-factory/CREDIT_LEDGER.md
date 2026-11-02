@@ -8,3 +8,4 @@ Regla: antes de gastar, anotar saldo observado; después, el gasto real. Solo cr
 | 2026-11-01 | fábrica de sprites | 876 | (corridas paralelas; ver saldo) | Ynara completa (24 celdas, 3 rondas) — INTEGRADA en rama; saldo observado tras: 668. Nota: con corridas en paralelo el 'gasto' por celda que imprime el lazo incluye al otro proceso; el saldo de la API es la fuente de verdad. |
 | 2026-11-02 | fábrica de sprites | 460 | (ver saldo) | Saelis completa (36 celdas, 4 rondas) — INTEGRADA en rama; saldo observado tras: 320 |
 | 2026-11-02 | fábrica de sprites | 320 | (ver saldo) | Aurelia completa (36 celdas, 5 rondas) — INTEGRADA en rama; Maura generada 33/36 (sin integrar); saldo observado tras: 55 |
+| 2026-11-02 | fábrica de sprites | 55 | 40 | Maura: integración MIXTA (celdas nuevas c0-c11, c24-c31; resto actual). Saldo final observado: 15. Renko: 22/36 celdas generadas, sin revisar ni integrar. |
