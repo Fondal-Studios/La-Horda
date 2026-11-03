@@ -406,5 +406,157 @@
       "infrastructure": false
     },
     "next": "Retrieve exact Codex and runtime PNG bytes in a binary-capable checkout, visually compare, then complete B100 only after the real consumer mapping is verified."
+  },
+  "freshAudit20261103T0747ART": {
+    "mainSha": "54aa936fa254112044e29493179893dd0f8694d6",
+    "checkpointHeadBefore": "abb0fb4b0d6986b4d0348ff51819c12e08f17438",
+    "checkpointOnly": true,
+    "checkpointWorkflows": {
+      "success": 2,
+      "failure": 0,
+      "names": [
+        "Art production evidence",
+        "Emoji lint"
+      ],
+      "artApproval": false
+    },
+    "verifiedMerges": {
+      "pr244": {
+        "status": "IN_MAIN",
+        "behindBy": 0
+      },
+      "pr245": {
+        "status": "IN_MAIN",
+        "behindBy": 0
+      }
+    },
+    "axiom": {
+      "pr239": {
+        "status": "OPEN",
+        "head": "a6f8b8681069f963b387e37e0a579b1230a0c80f",
+        "sourcePoses": 12,
+        "approval": "FIX_NOT_APPROVED",
+        "installed": false,
+        "ci": {
+          "success": 7,
+          "failure": 2
+        }
+      },
+      "pr194": {
+        "status": "MERGED_SOURCE_ONLY",
+        "blocks": [
+          "B009",
+          "B430",
+          "B111",
+          "B112",
+          "B113"
+        ],
+        "approval": "EN_CORRECCION/FIX_NO_INTEGRAR"
+      }
+    },
+    "concurrent": {
+      "pr259": {
+        "status": "OPEN_DRAFT",
+        "head": "ed7f61202587b7fbdd48eaf13e1daa5791b09c9d",
+        "ci": {
+          "success": 7,
+          "failure": 9
+        },
+        "action": "PRESERVE"
+      },
+      "pr267": {
+        "status": "OPEN_DRAFT",
+        "head": "e660bef34a961555fa70cebbd9933459c45a0ce7",
+        "ci": {
+          "success": 6,
+          "failure": 2
+        },
+        "action": "PRESERVE"
+      },
+      "pr241": {
+        "status": "OPEN_STALE_BASE",
+        "action": "PRESERVE"
+      },
+      "pr232": {
+        "status": "OPEN_INCOMPLETE",
+        "modelProvider": "BLOCKED_MODEL"
+      },
+      "pr256": {
+        "status": "OPEN_DRAFT",
+        "generation": "BLOCKED_NO_PROVIDER_KEY"
+      },
+      "pr231": "PRESERVED_UNTOUCHED"
+    },
+    "queue259": {
+      "branch": "art/sylva-layered-walk-prototype",
+      "generated": "2026-11-02T09:48:31.064466+00:00",
+      "machineSummary": {
+        "P1": {
+          "set": 6,
+          "base": 4,
+          "croma": 1
+        },
+        "P2": {
+          "base": 7,
+          "croma": 3,
+          "set": 2
+        },
+        "P3": {
+          "set": 19,
+          "croma": 15,
+          "base": 19
+        },
+        "P4": {
+          "set": 2,
+          "croma": 1
+        },
+        "OK": {
+          "base": 13,
+          "croma": 28,
+          "set": 20
+        }
+      },
+      "discrepancy": "ASSET_AUDIT_SUMMARY prose labels Nocturno/Ynara P0 while its table and machine queue do not."
+    },
+    "inventory": {
+      "controlProduction": {
+        "date": "2026-10-19",
+        "entries": 1244,
+        "resolved": 27,
+        "pending": 1209
+      },
+      "assetBlocks": {
+        "blockIds": 731,
+        "entries": 1244,
+        "openRecords": 1217
+      },
+      "planBlocks": "FETCH_EMPTY",
+      "correctionBatchDate": "2026-10-29"
+    },
+    "thalen": {
+      "block": "B100",
+      "priority": "P1",
+      "pending": [
+        "mago.cuerpo.caminar_abajo",
+        "mago.cuerpo.caminar_arriba",
+        "mago.cuerpo.ataque_abajo",
+        "mago.cuerpo.ataque_perfil",
+        "mago.cuerpo.ataque_arriba"
+      ],
+      "runtimeAtlasFrames": 16,
+      "targetAtlasFrames": 36,
+      "consumerForTarget": "NOT_FOUND",
+      "codexBinary": "BLOCKED",
+      "newArtGenerated": false,
+      "installed": false
+    },
+    "scopeChanges": {
+      "balance": false,
+      "mechanics": false,
+      "accounts": false,
+      "payments": false,
+      "network": false,
+      "infrastructure": false
+    }
   }
 }
