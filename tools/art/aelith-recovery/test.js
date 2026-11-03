@@ -17,3 +17,10 @@ test('asset readiness polls timers when diagnostic game RAF is paused',async()=>
  const page={waitForFunction:async(fn,arg,options)=>{seen.push(options);assert.equal(options.polling,50);assert.equal(options.timeout,120000);},evaluate:async()=>{}};
  await waitForAssets(page);assert.equal(seen.length,2);
 });
+
+test('mip diagnostic uses a real downsample scale rather than flag-only coverage',()=>{
+ const {RENDER_SETTINGS}=require('./browser');const effectiveScale=drawScale=>26*2.7*(drawScale/2)/70;
+ assert.ok(effectiveScale(RENDER_SETTINGS.mip.drawScale)<0.7);
+ assert.ok(effectiveScale(RENDER_SETTINGS.normal.drawScale)>=0.7);
+ assert.equal(RENDER_SETTINGS.glow.drawScale,2);assert.equal(RENDER_SETTINGS.skin.drawScale,2);
+});
