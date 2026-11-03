@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "schema": 2,
   "date": "2026-11-03",
   "type": "production_checkpoint_only",
   "main": {
@@ -114,5 +114,78 @@
     "network": false,
     "infrastructure": false
   },
-  "next": "Visually compare exact Thalen Codex reference and current atlas, then correct only the back-view component with original sources preserved."
+  "next": "Visually compare exact Thalen Codex reference and current atlas, then correct only the back-view component with original sources preserved.",
+  "latestRun": {
+    "date": "2026-11-03",
+    "mainSha": "54aa936fa254112044e29493179893dd0f8694d6",
+    "nextChampion": "mago",
+    "nextChampionName": "Thalen, el Tejedor Elemental",
+    "bodyBlock": {
+      "id": "B100",
+      "priority": "P1",
+      "state": "PENDIENTE",
+      "items": [
+        "mago.cuerpo.caminar_abajo",
+        "mago.cuerpo.caminar_arriba",
+        "mago.cuerpo.ataque_abajo",
+        "mago.cuerpo.ataque_perfil",
+        "mago.cuerpo.ataque_arriba"
+      ],
+      "reusableVersion": null
+    },
+    "sources": {
+      "codex": {
+        "path": "assets/ui/codex/champions/mago.png",
+        "gitBlob": "f07788b98aa635bf1587c73f6e0e243c38b3cf64"
+      },
+      "runtimeAtlas": {
+        "path": "assets/sprites/champions/mago/atlas.png",
+        "gitBlob": "055fe843d5a9fc06ec64cf63ac6bdce7a7484e31",
+        "bytes": 1248766
+      },
+      "existingSkin": {
+        "path": "assets/sprites/champions/mago/skins/convergencia/atlas.png",
+        "gitBlob": "e1ff104e860dcda22f55a0a5b8c9a76b6ce71621",
+        "bytes": 301583
+      },
+      "brief": {
+        "branch": "claude/kit-de-magos",
+        "commit": "46084475bfbea7e311a8e3bd1d1c43ca64f8fc9b",
+        "behindMainBy": 362,
+        "mainPathPresent": false
+      }
+    },
+    "priorComponent": {
+      "pr": 222,
+      "mergeCommit": "7e4e653e83b958bb63534ea90cfc77400bf93545",
+      "component": "Mago B160 / Muro de Fuego",
+      "status": "IN_MAIN"
+    },
+    "currentPrs": {
+      "231": "PRESERVED_FIX_NO_INTEGRAR",
+      "239": "OPEN_FIX_NOT_APPROVED",
+      "241": "OPEN_STALE_BASE",
+      "259": "OPEN_DRAFT",
+      "267": "OPEN_DRAFT_6_SUCCESS_2_FAILURE",
+      "268": "OPEN_DRAFT_CHECKPOINT_ONLY"
+    },
+    "gates": {
+      "visualCodexComparison": "BLOCKED_BINARY_ASSET_ACCESS",
+      "nativeAtlas": "NOT_RUN",
+      "styleGate": "NOT_RUN",
+      "rosterScale": "NOT_RUN",
+      "runtimeConsumer": "NOT_RUN",
+      "desktopMobile": "NOT_RUN",
+      "multiplayer": "NOT_RUN",
+      "exactArtHeadCI": "NOT_RUN"
+    },
+    "output": {
+      "newArtGenerated": false,
+      "installed": false,
+      "originalsChanged": false,
+      "scopeChanged": false
+    },
+    "blocker": "GitHub connector returned no PNG bytes; local scratch paths unavailable. Do not generate replacements until exact Codex and runtime atlas can be compared.",
+    "next": "Recover exact PNG bytes in a repository-capable workspace, inspect B100's five states, then author and validate only the missing component."
+  }
 }
