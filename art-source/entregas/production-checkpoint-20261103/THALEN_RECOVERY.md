@@ -38,3 +38,12 @@ La inspección visual requerida sigue bloqueada: el conector GitHub disponible d
 ## Próximo paso seguro
 
 Obtener ambos PNG exactos en un entorno con acceso binario al repositorio; comparar Códice, atlas y skin a tamaño nativo y escala gameplay; inspeccionar las cinco celdas B100 y decidir si se reparan celdas puntuales o se rehace el atlas conservando originales. Solo entonces producir fuentes originales con receta reproducible, pasar Art Bible/Style/Native/Roster gates, validar renderer y capturas antes/después en escritorio/móvil, y crear PR limpio desde main fresco. No tocar balance, mecánicas, cuentas, pagos, red ni infraestructura.
+
+
+## Runtime consumer audit (main, exact current source)
+
+- `js/assets/champion-sprites.js` loads `MAGO_IMG.src = "assets/sprites/champions/mago/atlas.png"`.
+- `js/rendering/champion-sprites.js` defines `MAGO_ATLAS` at 1254×1254 with 16 source rectangles. The current clips are `idle=[0,1,2,3]`, `walk=[4,5,6,7]`, `cast=[8,9,10,11]`, `hurt=[12]`, `death=[12,13,14,15]`. `MAGO_ANIM_DEF` is adapted from this legacy table and `drawMagoAtlas` consumes it.
+- `js/rendering/entities.js` calls `drawMagoAtlas` for the Mago. This is the confirmed current runtime consumer.
+- The B100 36-pose/4×9 sheet has no verified consumer in main. It must not be treated as integrated or installed without a separately validated mapping/migration that preserves the current fallback and gameplay behavior.
+- The Convergencia atlas file exists, and `skin_convergencia` has a fix entry, but `js/assets/champion-sprites.js` contains no `champPackLoadAtlas("mago", ...)` or `champPackCloneAtlas("mago", ...)` call. This pass therefore does **not** count Convergencia as a verified runtime body-skin integration.
