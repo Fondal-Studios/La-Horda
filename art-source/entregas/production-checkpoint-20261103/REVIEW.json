@@ -186,6 +186,53 @@
       "scopeChanged": false
     },
     "blocker": "GitHub connector returned no PNG bytes; local scratch paths unavailable. Do not generate replacements until exact Codex and runtime atlas can be compared.",
-    "next": "Recover exact PNG bytes in a repository-capable workspace, inspect B100's five states, then author and validate only the missing component."
+    "next": "Recover exact PNG bytes in a repository-capable workspace, inspect B100's five states, then author and validate only the missing component.",
+    "runtime": {
+      "source": "js/assets/champion-sprites.js",
+      "loadedAtlas": "assets/sprites/champions/mago/atlas.png",
+      "consumer": "js/rendering/entities.js -> drawMagoAtlas -> MAGO_ANIM_ATLAS",
+      "legacyAtlas": {
+        "size": [
+          1254,
+          1254
+        ],
+        "frames": 16,
+        "clips": {
+          "idle": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "walk": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "cast": [
+            8,
+            9,
+            10,
+            11
+          ],
+          "hurt": [
+            12
+          ],
+          "death": [
+            12,
+            13,
+            14,
+            15
+          ]
+        }
+      },
+      "b100Consumer": "NOT_FOUND_IN_MAIN",
+      "convergenceSkin": {
+        "assetExists": true,
+        "champPackLoadCall": false,
+        "runtimeBodySkin": "NOT_VERIFIED"
+      }
+    }
   }
 }
