@@ -114,7 +114,7 @@
     "network": false,
     "infrastructure": false
   },
-  "next": "Recover exact Codex and runtime atlas PNG bytes in a binary-capable checkout; compare at native size, then author the 20 missing B100 poses as native pixel art, preserve the existing 16 frames until the complete 36-pose atlas and real consumer pass all gates. Defer Convergencia until the base body closes.",
+  "next": "Use a binary-capable checkout to materialize the exact Codex PNG and runtime atlas (the runtime WebP is now a secondary visual reference); produce the 20 missing B100 poses natively, preserve all 16 legacy frames until the full 36-pose atlas and consumer pass, and defer Convergencia.",
   "latestRun": {
     "date": "2026-11-03",
     "mainSha": "54aa936fa254112044e29493179893dd0f8694d6",
@@ -695,5 +695,37 @@
     },
     "blocker": "Exact Codex and runtime atlas PNG bytes remain inaccessible; small derived WebP references are partial only. Both generated 20-pose attempts fail binary alpha.",
     "next": "Recover exact PNG bytes in a repository-capable workspace; compare exact Codex and atlas, then use native pixel-art production/Painter and preserve the original 16 frames until a full 36-pose atlas and consumer pass."
+  },
+  "freshAudit20261103T0855ART": {
+    "date": "2026-11-03T08:55:00-03:00",
+    "mainSha": "54aa936fa254112044e29493179893dd0f8694d6",
+    "checkpointHeadBefore": "a0f51ffd625bfd74d7bbf928d9c91780b66aa3ad",
+    "currentAtlasWebp": {
+      "path": "assets/sprites/champions/mago/atlas.webp",
+      "blob": "fd199b7eca167b81e27f582013a1e3cde8acd620",
+      "bytes": 974926,
+      "retrieved": true,
+      "visuallyInspected": true,
+      "frames": 16,
+      "role": "secondary visual identity reference; legacy runtime atlas"
+    },
+    "convergenceWebp": {
+      "path": "assets/sprites/champions/mago/skins/convergencia/atlas.webp",
+      "blob": "cfa9ffcf0e6618ef476a6eca66e5c2ab9c8cbbfc",
+      "bytes": 229026,
+      "retrieved": true,
+      "visuallyInspected": true,
+      "runtimeRegistration": "NOT_VERIFIED",
+      "approval": "DEFER_UNTIL_BASE_BODY_CLOSED"
+    },
+    "exactCodex": {
+      "path": "assets/ui/codex/champions/mago.png",
+      "blob": "f07788b98aa635bf1587c73f6e0e243c38b3cf64",
+      "bytes": 2005268,
+      "retrieved": false,
+      "webpVariant": "NOT_FOUND"
+    },
+    "blocker": "Identity can now be inspected from the current atlas WebP, but exact Codex PNG remains unavailable and no binary file is materialized locally for the Painter pipeline or atlas construction.",
+    "next": "Use a binary-capable checkout to obtain exact Codex PNG and runtime atlas; preserve the 16 legacy frames, produce the 20 missing B100 poses natively, build the 36-frame atlas and real consumer, then gate before any skin."
   }
 }

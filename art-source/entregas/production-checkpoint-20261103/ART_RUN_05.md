@@ -59,3 +59,11 @@ SHA-256 del intento 02: `6a91618938f1b3b7fbc933b0e604ced66eec9341cc54ef9351f1615
 - No se ejecutaron gates de atlas, estilo, roster o gameplay sobre estos intentos porque ya fallan el requisito de alfa.
 
 Siguiente paso seguro: recuperar los dos PNG exactos en un checkout con acceso binario; comparar Códice y atlas nativo; después producir las 20 poses faltantes con una fuente pixel-art nativa (preferentemente el flujo del Pintor/donantes y sus gates), conservar las 16 poses actuales hasta aprobar el atlas completo, implementar el mapeo real del consumidor y capturar antes/después en escritorio/móvil. La skin Convergencia queda después del cuerpo base.
+
+
+## Follow-up 08:55 ART — atlas runtime WebP
+
+- `assets/sprites/champions/mago/atlas.webp`: blob `fd199b7eca167b81e27f582013a1e3cde8acd620`, 974,926 bytes; recuperado y visualizado. Confirma la identidad del Mago y el atlas legacy de 16 poses.
+- `assets/sprites/champions/mago/skins/convergencia/atlas.webp`: blob `cfa9ffcf0e6618ef476a6eca66e5c2ab9c8cbbfc`, 229,026 bytes; recuperado y visualizado, pero no cuenta como skin integrada ni aprobada.
+- `assets/ui/codex/champions/mago.webp` no existe; el PNG exacto de Códice (2,005,268 bytes) sigue sin bytes recuperables.
+- La referencia visual secundaria confirma sombrero violeta, hebilla dorada, capa azul noche, bastón curvado y botas marrones. No reemplaza la revisión exacta del Códice ni habilita materializar el atlas en el entorno local.

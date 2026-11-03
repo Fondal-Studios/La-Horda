@@ -62,3 +62,12 @@ La lectura base64 devuelve contenido vacío para ambos; la lectura de blob binar
 Se generaron dos hojas exploratorias de 20 poses; ambas fallan el contrato de alfa 0/255 y quedan rechazadas. Métricas, hashes disponibles, prompts y decisiones están en `ART_RUN_05.md`. No se aplicaron filtros ni umbralado para ocultar el fallo, y no se instaló ni subió ninguna de esas fuentes.
 
 La especificación técnica confirma el mapa B100 4×9 y que el runtime sigue en 16 recortes legacy. La skin Convergencia sigue sin carga corporal CHAMP_PACK verificada y se difiere hasta cerrar el cuerpo base.
+
+
+## Runtime atlas WebP — recuperación parcial (2026-11-03 08:55 ART)
+
+Se recuperó el WebP `assets/sprites/champions/mago/atlas.webp` (blob `fd199b7eca167b81e27f582013a1e3cde8acd620`, 974,926 bytes) y se inspeccionó visualmente. Confirma el Mago actual: sombrero violeta flexible con hebilla dorada, túnica/capa azul noche, bastón de madera curvado y botas marrones. El sheet sigue siendo el atlas legacy de 16 poses; no contiene las cinco filas B100 faltantes.
+
+También se pudo ver el WebP de Convergencia (blob `cfa9ffcf0e6618ef476a6eca66e5c2ab9c8cbbfc`, 229,026 bytes). La existencia del archivo no certifica el registro ni la carga en runtime; se difiere hasta cerrar el cuerpo base.
+
+Esto reduce el bloqueo de identidad visual, pero no resuelve la comparación exacta con `assets/ui/codex/champions/mago.png` ni permite ejecutar el Pintor en este entorno: el PNG del Códice sigue devolviendo contenido vacío y los WebP recuperados no están materializados como archivos locales. No se sustituye la fuente exacta por una captura reducida.

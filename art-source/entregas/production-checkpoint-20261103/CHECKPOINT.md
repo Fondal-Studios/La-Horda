@@ -128,3 +128,11 @@ Recuperar los PNG binarios exactos del Códice y atlas de Mago en un checkout co
 - Se generaron dos hojas originales exploratorias de 20 poses; ambas fallan alfa binaria (560,494 y 610,748 píxeles semitransparentes). Se conservaron sus métricas y prompts en `ART_RUN_05.md`; ambas son `GENERATED_NOT_APPROVED`, no instaladas.
 - No se cambió ningún original, renderer ni asset de producción. El CI documental anterior del checkpoint era 2/2 SUCCESS; no certifica arte y debe repetirse sobre este nuevo head.
 - Próximo paso: recuperar los PNG exactos en un checkout con acceso binario y producir las 20 poses faltantes con pixel art nativo y gates completos; no avanzar a Convergencia hasta cerrar el cuerpo base.
+
+
+### Follow-up — 2026-11-03 08:55 ART: runtime atlas WebP recovered
+
+- Se recuperó y visualizó `assets/sprites/champions/mago/atlas.webp`, blob `fd199b7eca167b81e27f582013a1e3cde8acd620`, 974,926 bytes. Es la conversión WebP del atlas runtime actual y confirma visualmente la identidad actual de Thalen y sus 16 poses legacy. No es el PNG exacto del Códice ni un atlas B100 de 36 poses.
+- También se recuperó `assets/sprites/champions/mago/skins/convergencia/atlas.webp`, blob `cfa9ffcf0e6618ef476a6eca66e5c2ab9c8cbbfc`, 229,026 bytes. El archivo existe, pero su carga corporal CHAMP_PACK y su gate completo no están verificados; se mantiene diferido hasta cerrar el cuerpo base.
+- No existe `assets/ui/codex/champions/mago.webp`; el PNG exacto del Códice sigue sin bytes recuperables. El WebP runtime sirve como referencia visual secundaria, pero no pudo materializarse en el entorno local para ejecutar el Pintor o construir un atlas sin reconstruir píxeles a mano.
+- No se hicieron más generaciones: los dos intentos 4×5 ya documentados fallan alfa binaria. No se filtró ni alteró ningún original.
