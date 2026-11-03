@@ -119,3 +119,12 @@ Se generó una hoja exploratoria de 12 poses de espalda. **RECHAZADA / GENERATED
 
 ### Próximo paso
 Recuperar los PNG binarios exactos del Códice y atlas de Mago en un checkout con acceso de archivos; comparar B100 pose por pose, decidir reparación localizada o atlas completo, y sólo después producir fuente/receta/atlas/manifiesto con hashes, consumidor real y capturas antes/después. Mantener intactos todos los talleres, PR231 y los candidatos FIX/NO_INTEGRAR.
+
+### Cuarta pasada — 2026-11-03 08:40 ART: referencias parciales recuperadas, fuentes rechazadas
+
+- Se recuperó y revisó `docs/art-brief/ejemplos/mago/00_actual_mago.webp` (hoja de contacto reducida de las 16 poses runtime) y las cinco referencias de pose de B100. Las referencias de pose muestran a Tibor y sirven únicamente para cadencia/dirección/apoyo; no sustituyen el diseño de Thalen ni el PNG exacto del Códice.
+- Se confirmó en la especificación técnica el orden fijo de las 36 poses (4×9): caminar abajo, caminar perfil, caminar arriba, ataques abajo/perfil/arriba, lanzar, definitiva y muerte. El runtime sigue usando 16 recortes legacy; no existe consumidor B100 verificado.
+- Los PNG exactos del Códice (2,005,268 bytes) y del atlas runtime (1,248,766 bytes) siguen sin bytes recuperables por el conector. El WebP de contacto no habilita una aprobación a tamaño nativo.
+- Se generaron dos hojas originales exploratorias de 20 poses; ambas fallan alfa binaria (560,494 y 610,748 píxeles semitransparentes). Se conservaron sus métricas y prompts en `ART_RUN_05.md`; ambas son `GENERATED_NOT_APPROVED`, no instaladas.
+- No se cambió ningún original, renderer ni asset de producción. El CI documental anterior del checkpoint era 2/2 SUCCESS; no certifica arte y debe repetirse sobre este nuevo head.
+- Próximo paso: recuperar los PNG exactos en un checkout con acceso binario y producir las 20 poses faltantes con pixel art nativo y gates completos; no avanzar a Convergencia hasta cerrar el cuerpo base.

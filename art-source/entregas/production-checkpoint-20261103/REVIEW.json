@@ -114,7 +114,7 @@
     "network": false,
     "infrastructure": false
   },
-  "next": "Visually compare exact Thalen Codex reference and current atlas, then correct only the back-view component with original sources preserved.",
+  "next": "Recover exact Codex and runtime atlas PNG bytes in a binary-capable checkout; compare at native size, then author the 20 missing B100 poses as native pixel art, preserve the existing 16 frames until the complete 36-pose atlas and real consumer pass all gates. Defer Convergencia until the base body closes.",
   "latestRun": {
     "date": "2026-11-03",
     "mainSha": "54aa936fa254112044e29493179893dd0f8694d6",
@@ -558,5 +558,142 @@
       "network": false,
       "infrastructure": false
     }
+  },
+  "freshAudit20261103T0840ART": {
+    "date": "2026-11-03T08:40:51-03:00",
+    "mainSha": "54aa936fa254112044e29493179893dd0f8694d6",
+    "checkpointHeadBefore": "f0d63c173a5addd2f7acac1121bb28530fbbab3f",
+    "checkpointOnly": true,
+    "references": {
+      "currentAtlasContactSheet": {
+        "path": "docs/art-brief/ejemplos/mago/00_actual_mago.webp",
+        "blob": "662644e71e611f6b19c6b8ebad0447d38fd4d93d",
+        "bytes": 392688,
+        "retrieved": true,
+        "role": "reduced contact sheet of current 16-pose atlas; not exact Codex PNG"
+      },
+      "poseReferences": [
+        {
+          "path": "docs/art-brief/ejemplos/mago/mago.cuerpo.caminar_abajo__ref.webp",
+          "blob": "df5a5ac8fdbeb8d76bb177f47a17709d8b1df05a",
+          "bytes": 37796,
+          "role": "Tibor pose/tempo/feet only"
+        },
+        {
+          "path": "docs/art-brief/ejemplos/mago/mago.cuerpo.caminar_arriba__ref.webp",
+          "blob": "9d2dde150ada0b9c9dde660d327fc03881988abb",
+          "bytes": 36880,
+          "role": "Tibor pose/tempo/feet only"
+        },
+        {
+          "path": "docs/art-brief/ejemplos/mago/mago.cuerpo.ataque_abajo__ref.webp",
+          "blob": "2809e96ef01506a094dcf69bedb84f4d7ee2bcf2",
+          "bytes": 42018,
+          "role": "Tibor pose/tempo/feet only"
+        },
+        {
+          "path": "docs/art-brief/ejemplos/mago/mago.cuerpo.ataque_perfil__ref.webp",
+          "blob": "e29448bb6bd3b4d8dddb96633baccb1b2578d68b",
+          "bytes": 40158,
+          "role": "Tibor pose/tempo/feet only"
+        },
+        {
+          "path": "docs/art-brief/ejemplos/mago/mago.cuerpo.ataque_arriba__ref.webp",
+          "blob": "7bc79ff6c78807d1c1dbf5747f911e9d39366a13",
+          "bytes": 39190,
+          "role": "Tibor pose/tempo/feet only"
+        }
+      ],
+      "exactCodexPng": {
+        "path": "assets/ui/codex/champions/mago.png",
+        "blob": "f07788b98aa635bf1587c73f6e0e243c38b3cf64",
+        "bytes": 2005268,
+        "retrieved": false,
+        "reason": "base64 fetch returned empty; binary blob fetch cannot decode PNG as UTF-8"
+      },
+      "runtimeAtlasPng": {
+        "path": "assets/sprites/champions/mago/atlas.png",
+        "blob": "055fe843d5a9fc06ec64cf63ac6bdce7a7484e31",
+        "bytes": 1248766,
+        "retrieved": false,
+        "reason": "base64 fetch returned empty; binary blob fetch cannot decode PNG as UTF-8"
+      }
+    },
+    "bodyBlock": {
+      "id": "B100",
+      "priority": "P1",
+      "pending": [
+        "mago.cuerpo.caminar_abajo",
+        "mago.cuerpo.caminar_arriba",
+        "mago.cuerpo.ataque_abajo",
+        "mago.cuerpo.ataque_perfil",
+        "mago.cuerpo.ataque_arriba"
+      ],
+      "newFrames": 20,
+      "targetFrames": 36,
+      "grid": "4x9",
+      "consumerForTarget": "NOT_FOUND_IN_MAIN",
+      "currentRuntimeFrames": 16
+    },
+    "generationAttempts": [
+      {
+        "id": "01",
+        "fileId": "file_00000000181481f59c51f4e5b0997dc4",
+        "filename": "a_clean_transparent_background_sprite_sheet_image.png",
+        "dimensions": [
+          1122,
+          1402
+        ],
+        "poses": 20,
+        "alpha": {
+          "zero": 1012103,
+          "opaque": 447,
+          "partial": 560494
+        },
+        "sha256": null,
+        "state": "GENERATED_NOT_APPROVED",
+        "installed": false,
+        "reason": "binary alpha failed; file overwritten by same-name second attempt before hash"
+      },
+      {
+        "id": "02",
+        "fileId": "file_00000000920081f59174f6aa53bb3709",
+        "filename": "a_clean_transparent_background_sprite_sheet_image.png",
+        "dimensions": [
+          1122,
+          1402
+        ],
+        "poses": 20,
+        "alpha": {
+          "zero": 961123,
+          "opaque": 1173,
+          "partial": 610748
+        },
+        "sha256": "6a91618938f1b3b7fbc933b0e604ced66eec9341cc54ef9351f16155650d193e",
+        "state": "GENERATED_NOT_APPROVED",
+        "installed": false,
+        "reason": "binary alpha failed; no thresholding or visual filters applied"
+      }
+    ],
+    "gates": {
+      "binaryAlpha": "FAIL_BOTH_ATTEMPTS",
+      "nativeAtlas": "NOT_RUN",
+      "styleGate": "NOT_RUN",
+      "rosterScale": "NOT_RUN",
+      "runtimeConsumer": "NOT_RUN",
+      "desktopMobile": "NOT_RUN",
+      "multiplayer": "NOT_RUN",
+      "exactHeadArtCI": "NOT_RUN"
+    },
+    "output": {
+      "approvedNewArt": 0,
+      "unapprovedGenerationAttempts": 2,
+      "installed": false,
+      "originalsChanged": false,
+      "runtimeChanged": false,
+      "scopeChanged": false
+    },
+    "blocker": "Exact Codex and runtime atlas PNG bytes remain inaccessible; small derived WebP references are partial only. Both generated 20-pose attempts fail binary alpha.",
+    "next": "Recover exact PNG bytes in a repository-capable workspace; compare exact Codex and atlas, then use native pixel-art production/Painter and preserve the original 16 frames until a full 36-pose atlas and consumer pass."
   }
 }

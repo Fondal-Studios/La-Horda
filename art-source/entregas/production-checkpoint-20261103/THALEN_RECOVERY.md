@@ -47,3 +47,18 @@ Obtener ambos PNG exactos en un entorno con acceso binario al repositorio; compa
 - `js/rendering/entities.js` calls `drawMagoAtlas` for the Mago. This is the confirmed current runtime consumer.
 - The B100 36-pose/4×9 sheet has no verified consumer in main. It must not be treated as integrated or installed without a separately validated mapping/migration that preserves the current fallback and gameplay behavior.
 - The Convergencia atlas file exists, and `skin_convergencia` has a fix entry, but `js/assets/champion-sprites.js` contains no `champPackLoadAtlas("mago", ...)` or `champPackCloneAtlas("mago", ...)` call. This pass therefore does **not** count Convergencia as a verified runtime body-skin integration.
+
+
+## Visual source recovery — 2026-11-03 08:40 ART
+
+La limitación binaria anterior era demasiado amplia: sí se pudieron recuperar WebP pequeños del brief. Se inspeccionó `00_actual_mago.webp`, una hoja de contacto derivada del atlas actual de 16 poses, y las cinco hojas de pose de B100. Las cinco hojas de pose son de Tibor y se usan solo para ritmo, dirección y línea de pies. No son diseños de Thalen ni la plantilla exacta del Códice.
+
+Los blobs grandes exactos siguen bloqueados:
+- Códice `assets/ui/codex/champions/mago.png` — `f07788b98aa635bf1587c73f6e0e243c38b3cf64`, 2,005,268 bytes.
+- Atlas runtime `assets/sprites/champions/mago/atlas.png` — `055fe843d5a9fc06ec64cf63ac6bdce7a7484e31`, 1,248,766 bytes.
+
+La lectura base64 devuelve contenido vacío para ambos; la lectura de blob binario falla al decodificar PNG como UTF-8. No se considera que el contacto WebP sea equivalente a esos originales.
+
+Se generaron dos hojas exploratorias de 20 poses; ambas fallan el contrato de alfa 0/255 y quedan rechazadas. Métricas, hashes disponibles, prompts y decisiones están en `ART_RUN_05.md`. No se aplicaron filtros ni umbralado para ocultar el fallo, y no se instaló ni subió ninguna de esas fuentes.
+
+La especificación técnica confirma el mapa B100 4×9 y que el runtime sigue en 16 recortes legacy. La skin Convergencia sigue sin carga corporal CHAMP_PACK verificada y se difiere hasta cerrar el cuerpo base.
