@@ -92,3 +92,30 @@ Se generó una hoja exploratoria de 12 poses de espalda. **RECHAZADA / GENERATED
 ### Cierre de esta pasada
 - No se modificaron assets runtime, consumidores, mecánicas, balance, cuentas, cobros, red ni infraestructura. No se subió Ismara. No se fusionó ningún PR.
 - Próximo paso seguro: obtener en un entorno con acceso binario los PNG exactos del Códice de Thalen y su atlas; comparar a tamaño nativo y escala gameplay, completar el diagnóstico B100 y solo entonces producir fuente/receta/atlas/manifiesto/capturas y pruebas del consumidor real.
+
+
+## Cuarta pasada — 2026-11-03 07:47 ART
+
+### Estado remoto y precedencia
+- Main sigue en `54aa936fa254112044e29493179893dd0f8694d6`; el PR #268 sigue basado exactamente en ese head. La comparación remota confirma #244 (arenas) y #245 (Axiom base + Sistema + Código Ámbar) como ancestros de main: main está 15 y 13 commits adelante respectivamente, con `behind_by=0`.
+- PR #268 antes de esta actualización: head `abb0fb4b0d6986b4d0348ff51819c12e08f17438`; sus dos workflows documentales (`Art production evidence` y `Emoji lint`) terminaron SUCCESS. No son gates de arte ni autorizan integración. Este PR continúa DRAFT/checkpoint-only.
+- PR #239 fue re-leído desde GitHub: su alcance principal es roster propio/instalador y revisión del Códice. Incluye `walk-source.png` con 12 poses Axiom marcadas `FIX_NOT_APPROVED`, sin instalación ni cambio de renderer. Head `a6f8b8681069f963b387e37e0a579b1230a0c80f`: 7 SUCCESS / 2 FAILURE (`Quality five runtime and authored sources`, `Champion entry balance`). No fusionar ni extraer las poses como arte aprobado.
+- PR #194 está MERGED como fuentes: 5 habilidades candidatas de Axiom (B009/B430/B111/B112/B113; 64 celdas nuevas en esta pasada), todas `EN_CORRECCION / FIX_NO_INTEGRAR`; no constituyen kit de habilidades integrado.
+- PR #259 conserva la cola de 140 activos en `art/sylva-layered-walk-prototype`, generada el 02/11. El head exacto `ed7f61202587b7fbdd48eaf13e1daa5791b09c9d` tiene 7 SUCCESS / 9 FAILURE; sigue DRAFT y no se extraen ni integran candidatos. La auditoría escrita y la cola legible por máquina discrepan: el resumen tabular declara P0=0, mientras el cuerpo lista Nocturno y Ynara como P0; la cola clasifica Nocturno P1 y Ynara P2. No convertir esa inconsistencia en prioridad aprobada.
+- PR #267 Aelith sigue DRAFT: 6 SUCCESS / 2 FAILURE (Integracion pruebas, Champion entry balance). PR #241 conserva base antigua y 2 fallos conocidos; no rebasear ni fusionar en este pase.
+- PR #232 (Art Engine) sigue incompleto: las recetas nativas funcionan, pero el trabajador deja solicitudes dependientes de modelo en `BLOCKED_MODEL`; no es una fábrica autónoma validada. PR #256 S0F declara generación real bloqueada por falta de `BFL_API_KEY`/`ART_GEN_API_KEY`; no hay proveedor listo para producir desde CI. PR #231 permanece intacto.
+
+### Inventario documental
+- `art-source/entregas/control_produccion.json` sigue siendo la instantánea del 19/10: 1244 entradas, 27 resueltas y 1209 pendientes; no refleja todos los cierres posteriores.
+- `art-source/entregas/bloques/plan_bloques.json` existe y su blob es `cfc9b9f56b938493e9666666d20386b5c6f95ca2`, pero el conector devuelve contenido vacío. No se reconstruyó ni se infirió su contenido.
+- `docs/production/ASSET_BLOCKS.md` conserva 731 IDs/1244 entradas y 1217 registros abiertos; es una cola histórica, no se duplicó como inventario nuevo.
+- `docs/production/CORRECTION_BATCH.json` sigue fechado 29/10 y conserva los candidatos Axiom en corrección. No se cambió ningún estado de aprobación.
+
+### Thalen / B100 — continuidad
+- B100 sigue siendo el siguiente bloque de cuerpo P1: caminar abajo (0–3), caminar arriba (8–11), ataque abajo (12–15), ataque perfil (16–19), ataque arriba (20–23). No hay versión reutilizable registrada.
+- El runtime confirmado sigue consumiendo el atlas legacy de 16 recortes mediante `drawMagoAtlas`; no se encontró consumidor para la hoja 4×9 de 36 poses. La skin Convergencia existe como archivo, pero su carga corporal en runtime no está verificada.
+- La Art Bible y PAINTER exigen la referencia exacta del Códice, 4 direcciones, contorno de 1 px, 2–3 tonos, alfa 0/255 y revisión a escala de juego. El conector no entrega bytes PNG (fetch_blob devuelve UnicodeDecodeError; fetch_file/base64 no devuelve contenido) y el runtime no tiene red ni los scratch paths de recuperación. Las capturas de arte disponibles son de otros campeones, no reemplazan la referencia exacta de Thalen.
+- No se generó arte nuevo en esta pasada: la hoja de 12 poses anterior sigue RECHAZADA. No se tocaron fuentes runtime ni originales.
+
+### Próximo paso
+Recuperar los PNG binarios exactos del Códice y atlas de Mago en un checkout con acceso de archivos; comparar B100 pose por pose, decidir reparación localizada o atlas completo, y sólo después producir fuente/receta/atlas/manifiesto con hashes, consumidor real y capturas antes/después. Mantener intactos todos los talleres, PR231 y los candidatos FIX/NO_INTEGRAR.
