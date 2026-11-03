@@ -1,0 +1,118 @@
+{
+  "schema": 1,
+  "date": "2026-11-03",
+  "type": "production_checkpoint_only",
+  "main": {
+    "ref": "main",
+    "sha": "54aa936fa254112044e29493179893dd0f8694d6"
+  },
+  "verifiedMerges": [
+    {
+      "pr": 244,
+      "mergeCommit": "9d6ad0a63029a29a0af3655e42793f692f22cf9a",
+      "status": "IN_MAIN",
+      "scope": "Ruinas/Bosque + Gelida/Hielo, 32 frames"
+    },
+    {
+      "pr": 245,
+      "mergeCommit": "e194910bddf5d976778e1e8e949e3d440d71fc2d",
+      "status": "IN_MAIN",
+      "scope": "Axiom base + Sistema + Codigo Ambar, 36 frames per appearance"
+    }
+  ],
+  "unapprovedOrSeparate": [
+    {
+      "pr": 239,
+      "status": "OPEN",
+      "scope": "12 Axiom poses FIX_NOT_APPROVED; no installation"
+    },
+    {
+      "pr": 194,
+      "status": "MERGED_SOURCE_ONLY",
+      "scope": "Five Axiom ability source candidates; EN_CORRECCION/FIX_NO_INTEGRAR"
+    },
+    {
+      "pr": 231,
+      "status": "PRESERVED",
+      "scope": "NanoGM workshop untouched"
+    }
+  ],
+  "nextChampion": "mago",
+  "nextChampionName": "Thalen, el Tejedor Elemental",
+  "isMara": {
+    "remoteBranchFound": false,
+    "uploadDecision": "DO_NOT_UPLOAD",
+    "reason": "Prior explicit owner instruction: continue with next hero"
+  },
+  "localRecovery": {
+    "scratchPathsAvailable": false,
+    "status": "NOT_RECOVERED"
+  },
+  "generatedAttempt": {
+    "filename": "a_clean_transparent_background_sprite_sheet_in_a_p.png",
+    "sha256": "4bbf2ecff85d20ca8217fad237348ff9cb6f96f5597ed077282581709dfb7990",
+    "dimensions": [
+      1448,
+      1086
+    ],
+    "mode": "RGBA",
+    "poses": 12,
+    "alpha": {
+      "zero": 870878,
+      "opaque": 585,
+      "semitransparent": 701065
+    },
+    "state": "GENERATED_NOT_APPROVED",
+    "installed": false,
+    "reasons": [
+      "Alpha is not binary 0/255",
+      "Not a 36-pose 112x112 atlas",
+      "No runtime consumer or gameplay-scale review"
+    ]
+  },
+  "gates": {
+    "binaryAlpha": "FAIL",
+    "nativeAtlas": "NOT_RUN",
+    "styleGate": "NOT_RUN",
+    "rosterScale": "NOT_RUN",
+    "runtimeConsumer": "NOT_RUN",
+    "desktopMobile": "NOT_RUN",
+    "multiplayer": "NOT_RUN",
+    "exactHeadCI": "NOT_RUN"
+  },
+  "docs": {
+    "controlProductionDate": "2026-10-19",
+    "controlProductionEntries": 1244,
+    "controlProductionResolved": 27,
+    "controlProductionPending": 1209,
+    "assetBlocksOpen": 1217,
+    "correctionBatchDate": "2026-10-29",
+    "planBlocks": "FETCH_RETURNED_EMPTY"
+  },
+  "concurrent": [
+    {
+      "pr": 241,
+      "state": "OPEN",
+      "note": "Stale base 6edcd9b; four champions; do not merge without current-main reconciliation"
+    },
+    {
+      "pr": 267,
+      "state": "DRAFT",
+      "note": "Aelith back-cast correction; 8 workflows pass, 2 fail per PR report"
+    },
+    {
+      "pr": 266,
+      "state": "DRAFT",
+      "note": "Separate UI evaluation"
+    }
+  ],
+  "scopeChanges": {
+    "balance": false,
+    "mechanics": false,
+    "accounts": false,
+    "payments": false,
+    "network": false,
+    "infrastructure": false
+  },
+  "next": "Visually compare exact Thalen Codex reference and current atlas, then correct only the back-view component with original sources preserved."
+}
