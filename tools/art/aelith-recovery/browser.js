@@ -3,12 +3,16 @@
 // Actual index/asset loading and renderer in Chromium; RAF paused, not a played match.
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const H=require('../../lib/serve'),R=require('./runtime');
+// The diagnostic pauses game RAF: asset waits must poll independently of RAF.
+async function waitForAssets(page){
+ await page.waitForFunction(()=>typeof drawChampPack==='function'&&CHAMP_PACK.aelith?.ready&&typeof skinDefOf==='function',null,{timeout:120000,polling:50});
+ await page.evaluate(()=>skinDefOf('aelith_alt1'));await page.waitForFunction(()=>{const d=skinDefOf('aelith_alt1');return d?.packs?.aelith&&CHAMP_PACK[d.packs.aelith]?.ready;},null,{timeout:120000,polling:50});
+}
 async function run(out=process.env.OUT||'/tmp/aelith-recovered-browser'){
  await R.verify();const site=await H.startSite();let browser;const errors=[];fs.mkdirSync(out,{recursive:true});
  try{browser=await H.launch();const page=await browser.newPage({viewport:{width:960,height:640},deviceScaleFactor:1});page.on('pageerror',e=>errors.push(e.message));
  await page.addInitScript(()=>{window.requestAnimationFrame=()=>0;});await H.goto(page,site.url+'/index.html');
- await page.waitForFunction(()=>typeof drawChampPack==='function'&&CHAMP_PACK.aelith?.ready&&typeof skinDefOf==='function',null,{timeout:120000});
- await page.evaluate(()=>skinDefOf('aelith_alt1'));await page.waitForFunction(()=>{const d=skinDefOf('aelith_alt1');return d?.packs?.aelith&&CHAMP_PACK[d.packs.aelith]?.ready;},null,{timeout:120000});
+ await waitForAssets(page);
  const result=await page.evaluate(()=>{
   const base=CHAMP_PACK.aelith,skin=skinDefOf('aelith_alt1'),records=[],images=[],original=champPackDrawFrame,rec=save.champions.aelith,oldCroma=rec.croma,oldCosmetic=rec.cosmeticSkin,oldMip=Q6_ART.mip,oldGlow={...FX_GLOW};let traced;
   champPackDrawFrame=function(P,v,...args){traced={cell:v,pack:P===base?'base':P===CHAMP_PACK[skin.packs.aelith]?'skin':'unexpected'};return original(P,v,...args);};rec.cosmeticSkin='';
@@ -25,4 +29,4 @@ async function run(out=process.env.OUT||'/tmp/aelith-recovered-browser'){
  const report={...result,pageErrors:errors,status:errors.length?'FAIL_PAGE_ERRORS':'SCOPED_BROWSER_RENDERER_PASS_NOT_VISUAL_APPROVAL',approved:false,limitations:['Actual index loaded, RAF paused; direct finite-cast draw calls, not a played match','Skin selection is an isolated local test save; no purchase or account change','Known head/cape styling seam remains; no complete-hero quality approval']};fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2));assert.deepEqual(errors,[],'page errors');console.log(JSON.stringify(report));return report;
  }finally{if(browser)await browser.close();await site.close();}
 }
-module.exports={run};if(require.main===module)run().catch(e=>{console.error(e);process.exitCode=1;});
+module.exports={run,waitForAssets};if(require.main===module)run().catch(e=>{console.error(e);process.exitCode=1;});
