@@ -43,3 +43,14 @@ Se generó una hoja exploratoria de 12 poses de espalda. **RECHAZADA / GENERATED
 3. Exigir celdas 112×112, línea de pies 106, contorno oscuro de 1 px, 2–3 tonos por material, alfa exclusivamente 0/255 y silueta conectada.
 4. Guardar fuente, prompt, receta reproducible, atlas, manifiesto SHA-256, consumidor real y capturas antes/después; luego ejecutar gates nativos/estilo/escala, matriz de apariencias, escritorio+móvil, pruebas de renderer y cooperativo según alcance, y CI del head exacto.
 5. No declarar Thalen terminado por este checkpoint. No avanzar a skins hasta cerrar su kit base de sprites/animaciones.
+
+
+## Segunda pasada — 2026-11-03: Thalen B100 y fuentes recuperadas
+
+- Se amplió la auditoría del siguiente héroe. El faltante no es solamente una pose de espalda: el bloque B100 P1 conserva **cinco tareas corporales pendientes** (caminar abajo/arriba y ataque abajo/perfil/arriba), sin versión reutilizable registrada en el plan/control.
+- El brief de Thalen se recuperó como texto desde la rama histórica `claude/kit-de-magos` en `46084475bfbea7e311a8e3bd1d1c43ca64f8fc9b`, 362 commits detrás de main. No se usa esa rama como base ni se fusiona; su ruta de brief no existe en el árbol actual de main.
+- Main confirma el Códice `assets/ui/codex/champions/mago.png` (blob `f07788b98aa635bf1587c73f6e0e243c38b3cf64`), atlas actual `assets/sprites/champions/mago/atlas.png` (blob `055fe843d5a9fc06ec64cf63ac6bdce7a7484e31`) y skin Convergencia existente. La revisión visual comparativa no pudo ejecutarse porque el conector no entrega bytes PNG y los scratch paths no están disponibles.
+- B160/Muro de Fuego ya está integrado por PR #222 (merge `7e4e653e83b958bb63534ea90cfc77400bf93545`); no repetir ese componente. B100 sigue pendiente.
+- PR #267 sigue borrador: 6 workflows SUCCESS y 2 FAILURE en el head exacto `e660bef34a961555fa70cebbd9933459c45a0ce7`. PR #268 tiene 2 workflows documentales SUCCESS; eso no valida arte. PR #241 conserva base antigua; #259 sigue borrador. PR #231 se preserva sin cambios.
+- No se generó, instaló ni aprobó arte nuevo en esta pasada. El candidato exploratorio de 12 poses sigue rechazado. No se alteraron archivos runtime ni mecánicas.
+- Detalle, hashes y próximo paso seguro: `THALEN_RECOVERY.md`.
