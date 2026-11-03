@@ -61,3 +61,34 @@ Se generó una hoja exploratoria de 12 poses de espalda. **RECHAZADA / GENERATED
 - El runtime actual sigue usando el atlas legacy de 16 recortes: idle 0–3, walk 4–7, cast 8–11, hurt 12 y death 12–15. `drawMagoAtlas` se consume desde `js/rendering/entities.js` y carga `assets/sprites/champions/mago/atlas.png`.
 - B100 es una hoja objetivo 36 poses que no tiene consumidor verificado en main. No se instala ni se declara integrada hasta resolver el mapeo real y validar el fallback.
 - Convergencia tiene un PNG, pero no encontré carga CHAMP_PACK del Mago en `js/assets/champion-sprites.js`; su integración visual en runtime queda sin confirmar. Se difiere toda skin hasta cerrar y conectar el cuerpo base.
+
+
+## Tercera pasada — auditoría fresca de prioridades y concurrencia (2026-11-03, 06:29 ART)
+
+### Estado remoto y precedencias
+- `main` sigue en `54aa936fa254112044e29493179893dd0f8694d6`.
+- La comparación fresca confirma que #244 (`9d6ad0a63029a29a0af3655e42793f692f22cf9a`) y #245 (`e194910bddf5d976778e1e8e949e3d440d71fc2d`) son ancestros de `main` (`behind_by=0` en ambos). Arenas Ruinas/Bosque + Gélida/Hielo y Axiom base + Sistema + Código Ámbar siguen cerrados en `main`.
+- #239 sigue abierto: las 12 poses de Axiom continúan `FIX_NOT_APPROVED`; no están instaladas. #194 está mergeado como fuentes candidatas solamente: B430, B111, B112, B113 y B009 permanecen `EN_CORRECCION`; no existe un kit de habilidades de Axiom aprobado/integrado por esos candidatos.
+- #231 permanece intacto, `FIX / NO_INTEGRAR`.
+
+### Concurrencia — no pisar ni fusionar
+- #268 es este checkpoint documental, sobre la base actual; head anterior a esta actualización: `2d21046fc48e4398a31d6aac964d4078d549bf5e`. Su CI documental previo: 2/2 SUCCESS.
+- #267 Aelith: head `e660bef34a961555fa70cebbd9933459c45a0ce7`, 6 workflows SUCCESS y 2 FAILURE (`Integracion pruebas`, `Champion entry balance`). Sigue DRAFT; no se fusiona.
+- #241 recuperación Aldric/Kael/Aelith/Morveth: base antigua `6edcd9bce3d2d3cc77578e6d13a394d05b9c5eb6`, head `5069d02243f40b8e16c673e72101189351d1af5c`, 18 SUCCESS / 2 FAILURE (`Integracion pruebas`, `VFX readability and combat parity`). Se preserva sin rebase ni merge.
+- #259 fábrica/arte Myla-Ynara: base antigua `58faa0f0099692e642d62c4c4c9e68e8afd4e5ce`, head `ed7f61202587b7fbdd48eaf13e1daa5791b09c9d`, 8 SUCCESS / 8 FAILURE. Sigue DRAFT; no se extraen ni se integran sus candidatos sin reconciliar base y gates.
+- #237 es una corrección de ciclo de vida de guardianes, no una entrega de arte: su auditoría histórica registra tres CRITICO (Guardián Ancestral, Mago de Hielo y Morador). El candidato corrige Ancestral y Morador, pero no acredita relay nuevo; Mago de Hielo queda en #236 con CI `lanes` fallido. No mezclar estos cambios de lógica con producción visual.
+
+### Cola de arte y calidad documental
+- La cola `docs/art-factory/ASSET_PRIORITY_QUEUE.json` de la rama #259 fue generada el 2026-11-02 (`fdb9f39751d688dda615a40043bd03084b668b9e`): resumen P1 = 6 skins de set, 4 cuerpos base y 1 croma; P2 = 7 bases, 3 cromas y 2 sets. Sirve para priorizar, no sustituye Visual Gate.
+- Hay una inconsistencia que debe quedar abierta: `ASSET_AUDIT_SUMMARY.md` describe P0 para Nocturno y Ynara, pero el resumen de la cola máquina no incluye P0; la ficha de Ynara figura P2 y candidata en #259. Su muerte 24–26 fue construida determinísticamente desde reposo y requiere re-revisión independiente; la acción sigue descrita como saludo sin lanzamiento de cura. El `approval.json` con 84/100 es de un agente revisor, no aprobación humana del dueño ni ArtPASS.
+- P1 del inventario incluye problemas reales de identidad/lectura en Kael, Libertador y Aldric; también Nocturno, Manada, Marea, Custodio, Veyra croma, Santa Paciencia y Saelis. No se generan reemplazos a ciegas: primero cotejo del Códice exacto y de cada consumidor.
+- `docs/production/ASSET_BLOCKS.md` conserva 731 IDs, 1244 entradas y 1217 registros abiertos; 86 son seguimientos agregados, no 86 dibujos faltantes. `art-source/entregas/control_produccion.json` sigue fechado 2026-10-19 (1244 entradas, 27 resueltas, 1209 pendientes), con conteo distinto. `art-source/entregas/bloques/plan_bloques.json` devuelve contenido vacío por el conector. `CORRECTION_BATCH.json` sigue fechado 2026-10-29; sus cinco candidatos FX de Axiom permanecen en corrección. No se reescribieron estos historiales ni se cerraron tareas por mera existencia de PNG.
+
+### Thalen B100 — bloqueo confirmado
+- B100 sigue P1 con cinco tareas: caminar abajo (0–3), caminar arriba (8–11), ataque abajo (12–15), ataque perfil (16–19) y ataque arriba (20–23). El atlas actual que usa el runtime es el legacy de 16 recortes; B100 4×9 no tiene consumidor verificado. Convergencia existe como archivo, pero no se confirmó su carga runtime.
+- Reintenté recuperar los bytes exactos de Códice y atlas: la lectura GitHub de blobs PNG falla por decodificación UTF-8, `fetch_file` no entrega contenido binario, y los tres directorios scratch indicados siguen ausentes. El entorno no puede clonar GitHub por falta de resolución de red.
+- Por el gate obligatorio de `docs/ART_BIBLE.md`, no se generó otra hoja ni se instaló un sustituto sin comparar la plantilla exacta. La hoja exploratoria de 12 poses sigue `RECHAZADA / GENERATED_NOT_APPROVED`; originales intactos.
+
+### Cierre de esta pasada
+- No se modificaron assets runtime, consumidores, mecánicas, balance, cuentas, cobros, red ni infraestructura. No se subió Ismara. No se fusionó ningún PR.
+- Próximo paso seguro: obtener en un entorno con acceso binario los PNG exactos del Códice de Thalen y su atlas; comparar a tamaño nativo y escala gameplay, completar el diagnóstico B100 y solo entonces producir fuente/receta/atlas/manifiesto/capturas y pruebas del consumidor real.

@@ -234,5 +234,177 @@
         "runtimeBodySkin": "NOT_VERIFIED"
       }
     }
+  },
+  "freshAudit20261103": {
+    "date": "2026-11-03T06:29:00-03:00",
+    "mainSha": "54aa936fa254112044e29493179893dd0f8694d6",
+    "verifiedMerges": [
+      {
+        "pr": 244,
+        "mergeCommit": "9d6ad0a63029a29a0af3655e42793f692f22cf9a",
+        "behindBy": 0,
+        "status": "IN_MAIN"
+      },
+      {
+        "pr": 245,
+        "mergeCommit": "e194910bddf5d976778e1e8e949e3d440d71fc2d",
+        "behindBy": 0,
+        "status": "IN_MAIN"
+      }
+    ],
+    "axiom": {
+      "pr239": {
+        "status": "OPEN",
+        "poses": 12,
+        "approval": "FIX_NOT_APPROVED",
+        "installed": false
+      },
+      "pr194": {
+        "status": "MERGED_SOURCE_ONLY",
+        "blocks": [
+          "B430",
+          "B111",
+          "B112",
+          "B113",
+          "B009"
+        ],
+        "state": "EN_CORRECCION"
+      }
+    },
+    "concurrent": [
+      {
+        "pr": 268,
+        "headBefore": "2d21046fc48e4398a31d6aac964d4078d549bf5e",
+        "kind": "DOCUMENTATION_CHECKPOINT",
+        "checks": "2/2 SUCCESS"
+      },
+      {
+        "pr": 267,
+        "head": "e660bef34a961555fa70cebbd9933459c45a0ce7",
+        "draft": true,
+        "checks": {
+          "success": 6,
+          "failure": 2
+        },
+        "failed": [
+          "Integracion pruebas",
+          "Champion entry balance"
+        ]
+      },
+      {
+        "pr": 241,
+        "base": "6edcd9bce3d2d3cc77578e6d13a394d05b9c5eb6",
+        "head": "5069d02243f40b8e16c673e72101189351d1af5c",
+        "checks": {
+          "success": 18,
+          "failure": 2
+        },
+        "failed": [
+          "Integracion pruebas",
+          "VFX readability and combat parity"
+        ],
+        "action": "PRESERVE_STALE_BASE"
+      },
+      {
+        "pr": 259,
+        "base": "58faa0f0099692e642d62c4c4c9e68e8afd4e5ce",
+        "head": "ed7f61202587b7fbdd48eaf13e1daa5791b09c9d",
+        "draft": true,
+        "checks": {
+          "success": 8,
+          "failure": 8
+        },
+        "action": "PRESERVE_NO_EXTRACTION"
+      },
+      {
+        "pr": 237,
+        "head": "639b62add302b6b5599c09cac7716427801b6d04",
+        "kind": "GUARDIAN_LIFECYCLE_NOT_ART",
+        "critical": 3,
+        "artIntegration": false
+      }
+    ],
+    "artQueue": {
+      "branch": "art/sylva-layered-walk-prototype",
+      "generated": "2026-11-02T09:48:31.064466+00:00",
+      "commit": "fdb9f39751d688dda615a40043bd03084b668b9e",
+      "counts": {
+        "P1": {
+          "set": 6,
+          "base": 4,
+          "croma": 1
+        },
+        "P2": {
+          "base": 7,
+          "croma": 3,
+          "set": 2
+        },
+        "P3": {
+          "set": 19,
+          "croma": 15,
+          "base": 19
+        },
+        "P4": {
+          "set": 2,
+          "croma": 1
+        },
+        "OK": {
+          "base": 13,
+          "croma": 28,
+          "set": 20
+        }
+      },
+      "discrepancy": "ASSET_AUDIT_SUMMARY describes P0 Nocturno and Ynara; machine queue summary omits P0. Ynara record is P2 and requires independent re-review."
+    },
+    "inventory": {
+      "assetBlocks": {
+        "blockIds": 731,
+        "entries": 1244,
+        "openRecords": 1217,
+        "aggregateFollowups": 86
+      },
+      "controlProduction": {
+        "date": "2026-10-19",
+        "entries": 1244,
+        "resolved": 27,
+        "pending": 1209
+      },
+      "planBlocks": "FETCH_RETURNED_EMPTY",
+      "correctionBatchDate": "2026-10-29",
+      "axiomAbilityBlocksPending": [
+        "B430",
+        "B111",
+        "B112",
+        "B113",
+        "B009"
+      ]
+    },
+    "thalen": {
+      "block": "B100",
+      "priority": "P1",
+      "pendingItems": [
+        "mago.cuerpo.caminar_abajo",
+        "mago.cuerpo.caminar_arriba",
+        "mago.cuerpo.ataque_abajo",
+        "mago.cuerpo.ataque_perfil",
+        "mago.cuerpo.ataque_arriba"
+      ],
+      "runtimeAtlas": "assets/sprites/champions/mago/atlas.png",
+      "codex": "assets/ui/codex/champions/mago.png",
+      "binaryAccess": "BLOCKED",
+      "localScratch": "MISSING",
+      "generation": "NOT_RUN_THIS_PASS",
+      "installed": false
+    },
+    "scopeChanges": {
+      "assets": false,
+      "balance": false,
+      "mechanics": false,
+      "accounts": false,
+      "payments": false,
+      "network": false,
+      "infrastructure": false
+    },
+    "next": "Retrieve exact Codex and runtime PNG bytes in a binary-capable checkout, visually compare, then complete B100 only after the real consumer mapping is verified."
   }
 }
