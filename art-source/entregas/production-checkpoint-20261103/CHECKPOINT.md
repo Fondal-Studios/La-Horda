@@ -54,3 +54,10 @@ Se generó una hoja exploratoria de 12 poses de espalda. **RECHAZADA / GENERATED
 - PR #267 sigue borrador: 6 workflows SUCCESS y 2 FAILURE en el head exacto `e660bef34a961555fa70cebbd9933459c45a0ce7`. PR #268 tiene 2 workflows documentales SUCCESS; eso no valida arte. PR #241 conserva base antigua; #259 sigue borrador. PR #231 se preserva sin cambios.
 - No se generó, instaló ni aprobó arte nuevo en esta pasada. El candidato exploratorio de 12 poses sigue rechazado. No se alteraron archivos runtime ni mecánicas.
 - Detalle, hashes y próximo paso seguro: `THALEN_RECOVERY.md`.
+
+
+### Segunda pasada — auditoría del consumidor real de Thalen
+
+- El runtime actual sigue usando el atlas legacy de 16 recortes: idle 0–3, walk 4–7, cast 8–11, hurt 12 y death 12–15. `drawMagoAtlas` se consume desde `js/rendering/entities.js` y carga `assets/sprites/champions/mago/atlas.png`.
+- B100 es una hoja objetivo 36 poses que no tiene consumidor verificado en main. No se instala ni se declara integrada hasta resolver el mapeo real y validar el fallback.
+- Convergencia tiene un PNG, pero no encontré carga CHAMP_PACK del Mago en `js/assets/champion-sprites.js`; su integración visual en runtime queda sin confirmar. Se difiere toda skin hasta cerrar y conectar el cuerpo base.
