@@ -67,3 +67,20 @@ Siguiente paso seguro: recuperar los dos PNG exactos en un checkout con acceso b
 - `assets/sprites/champions/mago/skins/convergencia/atlas.webp`: blob `cfa9ffcf0e6618ef476a6eca66e5c2ab9c8cbbfc`, 229,026 bytes; recuperado y visualizado, pero no cuenta como skin integrada ni aprobada.
 - `assets/ui/codex/champions/mago.webp` no existe; el PNG exacto de Códice (2,005,268 bytes) sigue sin bytes recuperables.
 - La referencia visual secundaria confirma sombrero violeta, hebilla dorada, capa azul noche, bastón curvado y botas marrones. No reemplaza la revisión exacta del Códice ni habilita materializar el atlas en el entorno local.
+
+
+## Exact prompts preserved
+
+Both calls requested transparency in the prompt text; the `transparent_background` tool parameter was not explicitly supplied. Neither call used a reference-image ID or an image-processing post-step.
+
+### Attempt 01
+
+```text
+A clean, transparent sprite sheet presents 20 crisp pixel-art frames of a purple-robed wizard arranged in a precise 4-by-5 grid, with generous checkerboard spacing and no text or extra elements. The five rows depict forward walking, rear-view walking, forward attacks, right-facing attacks, and overhead strikes from behind, all using consistent 8-/16-bit styling, a shadowed wide-brimmed hat with gold buckle, dark violet cloak, boots, and a curled wooden staff.
+```
+
+### Attempt 02
+
+```text
+A crisp, transparent PNG sprite sheet presents 20 evenly spaced 16-bit/chibi pixel-art frames of the same small purple-clad wizard in a 4×5 grid, with dark outlines, limited purples, indigo, brown, black, and gold palette, and no text, UI, watermark, or extra elements. Rows show front and rear walking cycles, followed by front, right-facing, and rear attack sequences; the hooded, floppy-hatted mage carries a curled wooden staff, wears a gold-buckled hat and belt, and shifts through distinct steps, swings, cloth motion, and poses while retaining consistent scale and style.
+```
