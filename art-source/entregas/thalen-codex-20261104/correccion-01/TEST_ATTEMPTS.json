@@ -1,0 +1,28 @@
+{
+  "new": [
+    {
+      "name": "strict-profile-image-edit",
+      "result": "PARTIAL",
+      "pass": "row 2 reads as strict right-facing profile",
+      "fail": "rows 1 and 3 were not preserved pixel-for-pixel; whole sheet regenerated"
+    },
+    {
+      "name": "row-pixel-diff",
+      "result": "FAIL_PRESERVATION",
+      "changedRatios": [0.9985958914563048, 0.9989831659595251, 0.9987714050242666]
+    },
+    {
+      "name": "pack-thalen-codex-correction",
+      "result": "PASS_TECHNICAL",
+      "frames": 36,
+      "nonEmpty": 36,
+      "alphaValues": [0, 255],
+      "edgeAlphaPixels": 0
+    }
+  ],
+  "historical": [
+    "produccion-01 technical gate: PASS",
+    "produccion-01 attack_side direction: FIX"
+  ],
+  "notRun": ["real consumer", "gameplay", "skins", "desktop/mobile", "relay", "performance", "Art Gate"]
+}

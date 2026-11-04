@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "component": "B100-thalen-body-codex",
+  "state": "EN_CORRECCION",
+  "approval": "FIX_NOT_APPROVED",
+  "integration": "NO_INTEGRAR",
+  "supersedesVisualFinding": "produccion-01 attack_side direction only",
+  "doesNotSupersede": "produccion-01 original sources",
+  "files": [
+    {
+      "path": "art-source/entregas/thalen-codex-20261104/correccion-01/CHECKPOINT.md",
+      "bytes": 1603,
+      "sha256": "78733de4a2a67e64c2efc99329de83b159ee374b96b544a378dd5b5d6d667bcf"
+    },
+    {
+      "path": "art-source/entregas/thalen-codex-20261104/correccion-01/PROMPT_PROFILE.txt",
+      "bytes": 1024,
+      "sha256": "0142c9daff30cae80a7e88bf6ab8df2d593bb47a978a119efaf539ba4a8e6622"
+    },
+    {
+      "path": "art-source/entregas/thalen-codex-20261104/correccion-01/REVIEW.json",
+      "bytes": 635,
+      "sha256": "4ccdb986b354714ad2a211aa3bd3da802505bab75ba1510b3fe044d9b93a80b7"
+    },
+    {
+      "path": "art-source/entregas/thalen-codex-20261104/correccion-01/TEST_ATTEMPTS.json",
+      "bytes": 827,
+      "sha256": "f7259305ebe6cef226e535b3ec07df379f00a9bab117fcb42db514d5f07a0373"
+    },
+    {
+      "path": "art-source/entregas/thalen-codex-20261104/correccion-01/recipe.json",
+      "bytes": 492,
+      "sha256": "bf39a4862dc685997715dc72d199530f0b803587bb7fe9d452cb01ddbc185960"
+    },
+    {
+      "path": "art-source/entregas/thalen-codex-20261104/correccion-01/sources/attacks-12.png",
+      "bytes": 1933342,
+      "sha256": "0da22f9eabe83ad57fccad4b46042b549a63d50e33ba0cf25d07f4813ca6f124"
+    },
+    {
+      "path": "assets/sprites/champions/mago/codex-v1/atlas.png",
+      "bytes": 493466,
+      "sha256": "8b771d2a68b03d00eb55e704072a03963dabaca9c3d6a117b761217689e0667a"
+    },
+    {
+      "path": "assets/sprites/champions/mago/codex-v1/preview.png",
+      "bytes": 497573,
+      "sha256": "7f748f544b8b18b76efb8cdd110419978d5dabdd932bc8031273ee324158ba38"
+    },
+    {
+      "path": "assets/sprites/champions/mago/codex-v1/technical.json",
+      "bytes": 7663,
+      "sha256": "bdd85a828036c6d486a32685d8c4f3a7a6b408b56fb9ffb9c41dfd60a91123e2"
+    },
+    {
+      "path": "tools/art/pack-thalen-codex-correction.py",
+      "bytes": 5059,
+      "sha256": "05edfafd64e6801e99cf87ccf9e25990cb13ff7090c9bfae17c83c512b2884fd"
+    }
+  ]
+}

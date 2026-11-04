@@ -16,11 +16,20 @@
   ],
   "binaryAlpha": true,
   "edgeAlphaPixels": 0,
-  "sha256": "a6643189ea8ba0c5e3117b43c272f86da897cd30cb4a40f5bf45ae7ca5d795b6",
+  "sha256": "8b771d2a68b03d00eb55e704072a03963dabaca9c3d6a117b761217689e0667a",
   "sources": {
-    "attacks-12.png": "3ff2e700bb5c41d23c034650f3a84274a14a88e52d6d862b36721145bc1a1324",
-    "rest-16.png": "2a2bd0a3af1e4ed2da805da62aec5fb58b814a63707b4cac86e962a57c1af4cc",
-    "walk-8.png": "d70be81ceda3f6a05c895081302dd90f71529d3b55c4bb140c59da2870133d01"
+    "attacks-12.png": {
+      "path": "art-source/entregas/thalen-codex-20261104/correccion-01/sources/attacks-12.png",
+      "sha256": "0da22f9eabe83ad57fccad4b46042b549a63d50e33ba0cf25d07f4813ca6f124"
+    },
+    "walk-8.png": {
+      "path": "art-source/entregas/thalen-codex-20261104/produccion-01/sources/walk-8.png",
+      "sha256": "d70be81ceda3f6a05c895081302dd90f71529d3b55c4bb140c59da2870133d01"
+    },
+    "rest-16.png": {
+      "path": "art-source/entregas/thalen-codex-20261104/produccion-01/sources/rest-16.png",
+      "sha256": "2a2bd0a3af1e4ed2da805da62aec5fb58b814a63707b4cac86e962a57c1af4cc"
+    }
   },
   "index": [
     {
@@ -185,10 +194,10 @@
       "phase": 1,
       "source": "attacks-12.png#0:1",
       "bbox": [
-        18,
+        11,
         6,
-        93,
-        90
+        101,
+        106
       ]
     },
     {
@@ -209,7 +218,7 @@
       "phase": 3,
       "source": "attacks-12.png#0:3",
       "bbox": [
-        17,
+        18,
         6,
         94,
         106
@@ -233,9 +242,9 @@
       "phase": 1,
       "source": "attacks-12.png#1:1",
       "bbox": [
-        22,
-        6,
-        90,
+        4,
+        7,
+        108,
         106
       ]
     },
@@ -245,9 +254,9 @@
       "phase": 2,
       "source": "attacks-12.png#1:2",
       "bbox": [
-        7,
-        6,
-        104,
+        4,
+        8,
+        108,
         106
       ]
     },
@@ -257,9 +266,9 @@
       "phase": 3,
       "source": "attacks-12.png#1:3",
       "bbox": [
-        14,
-        6,
-        98,
+        4,
+        11,
+        108,
         106
       ]
     },
@@ -283,7 +292,7 @@
       "bbox": [
         18,
         6,
-        94,
+        93,
         106
       ]
     },
@@ -305,7 +314,7 @@
       "phase": 3,
       "source": "attacks-12.png#2:3",
       "bbox": [
-        18,
+        19,
         6,
         93,
         106
