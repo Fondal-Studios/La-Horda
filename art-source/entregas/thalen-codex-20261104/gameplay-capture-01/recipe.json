@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "component": "A-BODY-thalen-codex/gameplay-capture-01",
+  "parent": "0863712ee0b0da752ac37ebcd16774ac5812aae0",
+  "reference": {
+    "path": "assets/ui/codex/champions/mago.png",
+    "gitBlob": "f07788b98aa635bf1587c73f6e0e243c38b3cf64"
+  },
+  "command": "node tools/art/roster-loading-test.js",
+  "outputs": "docs/art-gate/thalen-codex/gameplay-01",
+  "matrix": {
+    "arenas": [
+      "bosque",
+      "hielo",
+      "infernal",
+      "laberinto",
+      "acuatica",
+      "minas"
+    ],
+    "looks": [
+      "base",
+      "convergencia"
+    ],
+    "viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "modes": [
+      "legacy",
+      "candidate"
+    ],
+    "state": "attack_side"
+  },
+  "notes": [
+    "Uses production render() and actual hero state fields",
+    "Temporarily toggles only CHAMP_PACK.mago_codex.ready to exercise existing legacy fallback",
+    "No game runtime or asset changes"
+  ]
+}

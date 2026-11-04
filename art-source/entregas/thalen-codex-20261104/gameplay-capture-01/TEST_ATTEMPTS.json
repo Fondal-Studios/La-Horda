@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "attempts": [
+    {
+      "id": "local-syntax",
+      "status": "PASS",
+      "command": "node --check tools/art/thalen-gameplay-capture.js",
+      "details": "No local Chromium executable remained after workspace maintenance."
+    },
+    {
+      "id": "exact-head-gameplay",
+      "status": "PENDING_CI",
+      "command": "node tools/art/roster-loading-test.js",
+      "details": "The existing Champion entry balance job already supplies Playwright; outputs must be downloaded and visually reviewed before approval."
+    }
+  ],
+  "historicalNotRepeated": [
+    "36-cell isolated renderer",
+    "4-cell Convergencia isolated renderer",
+    "legacy fallback isolated renderer"
+  ]
+}

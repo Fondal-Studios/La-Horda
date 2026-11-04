@@ -1,0 +1,40 @@
+{
+  "component": "A-BODY-thalen-codex/gameplay-capture-01",
+  "status": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "reference": {
+    "path": "assets/ui/codex/champions/mago.png",
+    "gitBlob": "f07788b98aa635bf1587c73f6e0e243c38b3cf64"
+  },
+  "candidate": {
+    "path": "assets/sprites/champions/mago/codex-v1/atlas.png",
+    "sha256": "1be3454246d9526b93bf9e218318915086311789ca204b0ffda3f7eaf8af01aa"
+  },
+  "newScope": {
+    "realRenderer": true,
+    "actualStateFields": true,
+    "arenas": 6,
+    "looks": [
+      "base",
+      "convergencia"
+    ],
+    "viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "modes": [
+      "legacy",
+      "candidate"
+    ],
+    "samplesExpected": 48,
+    "sheetsExpected": 6
+  },
+  "approved": false,
+  "installedInMain": false,
+  "limits": [
+    "CI outputs not yet reviewed",
+    "browser mobile viewport is not physical hardware",
+    "dense local scene is not a two-client multiplayer relay",
+    "full Art Gate and exact-head workflows remain pending"
+  ]
+}
