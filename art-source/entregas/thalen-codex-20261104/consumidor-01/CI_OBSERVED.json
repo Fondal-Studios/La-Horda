@@ -1,0 +1,42 @@
+{
+  "head": "2171ca820e69ab91f5820230330675c8dac3837e",
+  "observedAt": "2026-11-04T00:00:00Z",
+  "completed": {
+    "Emoji lint (arte pixel)": "SUCCESS",
+    "Art presentation verification": "FAIL_ENVIRONMENT",
+    "Pixel density gate (informativo)": "FAIL_ENVIRONMENT",
+    "VFX readability and combat parity": "FAIL_ENVIRONMENT"
+  },
+  "environmentFailures": [
+    {
+      "run": 41798866825,
+      "job": 126469437225,
+      "step": "playwright install --with-deps chromium"
+    },
+    {
+      "run": 41798866030,
+      "job": 126469434739,
+      "step": "playwright install --with-deps chromium"
+    },
+    {
+      "run": 41798865922,
+      "job": 126469433928,
+      "step": "playwright install --with-deps chromium"
+    }
+  ],
+  "inProgressAtObservation": [
+    "Expedition champions",
+    "Myla death component gate",
+    "Libertador motion component gate",
+    "Soporte v3 renderer and art gate",
+    "Item economy safety",
+    "Campaign reward recovery",
+    "Guerrero death component gate",
+    "Caballero death component gate",
+    "Art production evidence",
+    "Champion entry balance",
+    "Libertador death component gate",
+    "Integracion pruebas"
+  ],
+  "conclusion": "NO_APPROVAL; the three failed workflows stopped at browser installation before their art/VFX checks"
+}
