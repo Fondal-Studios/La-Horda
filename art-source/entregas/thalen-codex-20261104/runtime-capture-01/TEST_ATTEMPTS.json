@@ -9,6 +9,11 @@
       "name": "static syntax and consumer contract",
       "status": "PASS",
       "detail": "Harness syntax, 21 mappings, fallback contract and unchanged atlas passed locally."
+    },
+    {
+      "name": "CI runtime capture attempt 01",
+      "status": "FALSE_NEGATIVE_HARNESS",
+      "detail": "Run 41857272541, job 126669170632, artifact 13337413379: 36/36 atlas cells and 4/4 Convergencia cells had opaque pixels; candidate and legacy fallback both rendered. drawHeroBody returns undefined on success, but the first assertion required a truthy return. The Convergencia death pose also exceeded the 120 px evidence cell. No art or runtime failure was demonstrated."
     }
   ]
 }

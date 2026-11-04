@@ -20,7 +20,7 @@
     "syntax": "PASS",
     "consumer_contract": "PASS",
     "diff_check": "PASS",
-    "browser": "BLOCKED_EMPTY_OR_TRUNCATED_CHROMIUM_DOWNLOAD"
+    "browser": "BLOCKED_EMPTY_OR_TRUNCATED_CHROMIUM_DOWNLOAD; CI_BROWSER_EXECUTED_ATTEMPT_01"
   },
   "claims_excluded": [
     "gameplay capture",
@@ -29,5 +29,18 @@
     "performance",
     "Art Gate PASS",
     "integration"
-  ]
+  ],
+  "ci_attempt_01": {
+    "run": 41857272541,
+    "job": 126669170632,
+    "artifact": 13337413379,
+    "status": "FALSE_NEGATIVE_HARNESS",
+    "observed": {
+      "atlas_cells": "36/36 opaque",
+      "skin_cells": "4/4 opaque",
+      "candidate": true,
+      "legacy_fallback": true
+    },
+    "correction": "Treat any drawHeroBody result except explicit false as successful and widen evidence-only Convergencia cells to 180x140 so the death pose is not cropped."
+  }
 }

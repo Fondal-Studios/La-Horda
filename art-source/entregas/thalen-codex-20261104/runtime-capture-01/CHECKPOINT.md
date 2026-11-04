@@ -24,6 +24,10 @@ No se modificaron atlas, consumidor, escalas, skins, balance, mecánicas, red ni
 - Atlas: 448×1008; hash y bytes sin cambios.
 - `git diff --check`: PASS.
 
+## Intento CI 01 preservado
+
+El run `41857272541`, job `126669170632`, produjo el artifact `13337413379`. Las 36/36 celdas del atlas y las 4/4 celdas de Convergencia tuvieron píxeles opacos; candidato y fallback legado se dibujaron. El FAIL fue un falso negativo del arnés: `drawHeroBody` devuelve `undefined` al dibujar correctamente y la primera aserción exigía un valor truthy. Además, la celda probatoria de 120 px recortaba el extremo derecho de la muerte de Convergencia. Se conserva el intento y se corrige únicamente el arnés: éxito salvo `false` explícito y celdas de evidencia de 180×140.
+
 ## Pendiente
 
 El navegador local no pudo instalar Chromium: la descarga devolvió un archivo vacío/truncado, el mismo fallo de entorno observado en tres workflows. La prueba visual debe ejecutarse en el job `Champion entry balance`, que sí instaló Chromium correctamente en el head anterior. Hasta obtener sus PNG y `runtime.json`, este componente no tiene Art Gate ni aprobación de integración.
