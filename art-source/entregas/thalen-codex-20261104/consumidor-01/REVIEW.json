@@ -1,0 +1,32 @@
+{
+  "component": "A-BODY-thalen-codex/consumer-candidate",
+  "status": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "visualReference": {
+    "path": "assets/ui/codex/champions/mago.png",
+    "gitBlob": "f07788b98aa635bf1587c73f6e0e243c38b3cf64"
+  },
+  "candidate": {
+    "path": "assets/sprites/champions/mago/codex-v1/atlas.png",
+    "sha256": "1be3454246d9526b93bf9e218318915086311789ca204b0ffda3f7eaf8af01aa",
+    "frames": 36,
+    "runtimeFiles": [
+      "js/assets/champion-sprites.js",
+      "js/rendering/champion-sprites.js"
+    ]
+  },
+  "approved": false,
+  "installedInMain": false,
+  "strengths": [
+    "All authored states have an explicit consumer mapping",
+    "Separate pack key preserves the 16-frame legacy fallback",
+    "Existing set-skin priority remains outside and before the base body path"
+  ],
+  "blockers": [
+    "No full playable checkout or real-game captures in this recovery",
+    "No mobile/desktop skin matrix",
+    "No multiplayer validation",
+    "No visual Art Gate approval",
+    "Exact-head CI not complete; Pixel density environment failed before detector"
+  ]
+}

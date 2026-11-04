@@ -1,0 +1,18 @@
+{
+  "head": "3935b631265f0cf3b444e828f45ed9d994fd76c9",
+  "observedAt": "2026-11-04T00:00:00Z",
+  "checks": {
+    "Emoji lint": "SUCCESS",
+    "Art production evidence": "SUCCESS",
+    "Pixel density": "FAIL_ENVIRONMENT",
+    "Expedition champions": "IN_PROGRESS_AT_AUDIT",
+    "Integracion pruebas": "IN_PROGRESS_AT_AUDIT"
+  },
+  "pixelDensityFailure": {
+    "workflowRun": 41797243496,
+    "job": 126464110190,
+    "failedStep": "Install Playwright Chromium",
+    "detectorExecuted": false,
+    "artConclusion": "NONE"
+  }
+}

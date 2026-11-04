@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "component": "A-BODY-thalen-codex/consumer-candidate",
+  "baseCommit": "54aa936fa254112044e29493179893dd0f8694d6",
+  "reference": {
+    "path": "assets/ui/codex/champions/mago.png",
+    "gitBlob": "f07788b98aa635bf1587c73f6e0e243c38b3cf64"
+  },
+  "atlas": {
+    "path": "assets/sprites/champions/mago/codex-v1/atlas.png",
+    "cell": [112, 112],
+    "columns": 4,
+    "rows": 9,
+    "refH": 100,
+    "anchor": 0.9464285714285714,
+    "leftFacing": "mirror"
+  },
+  "consumer": {
+    "key": "mago_codex",
+    "bodyEntry": "drawMagoAtlas",
+    "deathEntry": "drawMagoFallen",
+    "fallback": "MAGO_ANIM_ATLAS"
+  },
+  "verify": [
+    "node --check js/assets/champion-sprites.js",
+    "node --check js/rendering/champion-sprites.js",
+    "node tools/art/check-thalen-codex-consumer.js"
+  ]
+}

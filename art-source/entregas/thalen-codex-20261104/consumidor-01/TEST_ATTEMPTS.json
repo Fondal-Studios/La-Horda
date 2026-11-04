@@ -1,0 +1,44 @@
+{
+  "new": [
+    {
+      "name": "javascript-syntax",
+      "command": "node --check js/assets/champion-sprites.js && node --check js/rendering/champion-sprites.js",
+      "status": "PASS"
+    },
+    {
+      "name": "consumer-contract",
+      "command": "node tools/art/check-thalen-codex-consumer.js",
+      "status": "PASS",
+      "assertions": 21,
+      "scope": "static runtime contract only"
+    },
+    {
+      "name": "atlas-recheck",
+      "status": "PASS",
+      "result": "448x1008; 36/36 non-empty; alpha 0/255; edge alpha 0",
+      "scope": "technical raster gate only"
+    }
+  ],
+  "historical": [
+    {
+      "head": "3935b631265f0cf3b444e828f45ed9d994fd76c9",
+      "name": "Pixel density",
+      "status": "FAIL_ENVIRONMENT",
+      "detail": "Chromium installation failed before detector/density steps; no art conclusion"
+    },
+    {
+      "head": "3935b631265f0cf3b444e828f45ed9d994fd76c9",
+      "name": "Emoji lint / Art production evidence",
+      "status": "PASS"
+    }
+  ],
+  "notRun": [
+    "real gameplay renderer",
+    "before/after gameplay captures",
+    "mobile/desktop matrix",
+    "skins/equipment matrix",
+    "multiplayer relay",
+    "performance",
+    "integral Art Gate"
+  ]
+}
