@@ -1,0 +1,34 @@
+{
+  "component": "thalen-codex-runtime-capture-01",
+  "status": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "production_head": "1ccee0285792984dfa38da1eaa3c9c718b5a8790",
+  "evidence_commit": "36e56d883ff88f55c3ee207099f4c4acde3543bf",
+  "evidence_tree": "bc326afc69cff446246898bbf43e68059417948b",
+  "branch": "art/production-checkpoint-20261103",
+  "pr": 268,
+  "base_main": "54aa936fa254112044e29493179893dd0f8694d6",
+  "ci": {
+    "run": 41858565807,
+    "job": 126673766662,
+    "artifact": 13340885821,
+    "harness_step": "PASS",
+    "artifact_digest": "sha256:c04d37d35ba82942448f3b94c78e4e00957fab6debdca3228f0d2c6ee8e868d7"
+  },
+  "verified": [
+    "PR remained open and draft",
+    "base main unchanged",
+    "evidence commit is a child of production head",
+    "nine evidence/checkpoint files uploaded",
+    "artifact outputs copied with exact sha256 hashes"
+  ],
+  "pending": [
+    "gameplay before/after desktop and mobile",
+    "temporal gameplay sequence",
+    "component multiplayer",
+    "full renderer performance",
+    "Art Gate workflows blocked by Playwright ubuntu26.04 support",
+    "unrelated exact-head gate failures"
+  ],
+  "next_action": "Resume Thalen closure from this remote evidence; do not merge PR268 or regenerate the 36-cell source."
+}
