@@ -1,0 +1,24 @@
+{
+  "attempts": [
+    {
+      "artifact": 13337413379,
+      "status": "FALSE_NEGATIVE_HARNESS",
+      "detail": "36/36 atlas and 4/4 skin cells rendered; undefined drawHeroBody return was treated as failure and the 120 px death evidence cell clipped the pose."
+    },
+    {
+      "artifact": 13340885821,
+      "status": "PASS",
+      "detail": "Corrected verdict and 180x140 evidence cells. 36/36 atlas cells, 4/4 Convergencia cells, authored candidate and forced legacy fallback all passed."
+    },
+    {
+      "name": "Pixel density / Art presentation / VFX readability",
+      "status": "BLOCKED_ENVIRONMENT",
+      "detail": "Playwright reported Chromium unsupported on ubuntu26.04-x64 before detectors ran."
+    },
+    {
+      "name": "Unrelated exact-head gates",
+      "status": "FAIL_OUT_OF_SCOPE",
+      "detail": "lanes: return-to-base button below 48 px; icon self-test: 86 failures; admin HTTP start failed after Thalen artifact upload. No related files changed."
+    }
+  ]
+}

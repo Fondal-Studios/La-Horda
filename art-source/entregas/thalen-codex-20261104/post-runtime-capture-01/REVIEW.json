@@ -1,0 +1,46 @@
+{
+  "component": "thalen-codex-runtime-capture-01",
+  "status": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "production_head": "1ccee0285792984dfa38da1eaa3c9c718b5a8790",
+  "base_main": "54aa936fa254112044e29493179893dd0f8694d6",
+  "reference": {
+    "path": "assets/ui/codex/champions/mago.png",
+    "blob": "f07788b98aa635bf1587c73f6e0e243c38b3cf64"
+  },
+  "atlas": {
+    "path": "assets/sprites/champions/mago/codex-v1/atlas.png",
+    "sha256": "1be3454246d9526b93bf9e218318915086311789ca204b0ffda3f7eaf8af01aa",
+    "changed": false
+  },
+  "ci": {
+    "run": 41858565807,
+    "job": 126673766662,
+    "artifact": 13340885821,
+    "artifact_digest": "sha256:c04d37d35ba82942448f3b94c78e4e00957fab6debdca3228f0d2c6ee8e868d7",
+    "harness_step": "PASS"
+  },
+  "result": {
+    "status": "PASS",
+    "atlas_cells": "36/36",
+    "skin_cells": "4/4",
+    "candidate": true,
+    "fallback": true,
+    "atlas_ready": true,
+    "legacy_ready": true
+  },
+  "visual_review": [
+    "36 states present and complete in renderer sheet",
+    "candidate and legacy fallback both visible and distinct",
+    "Convergencia has priority in four sampled states",
+    "Convergencia death pose is fully inside the widened evidence cell"
+  ],
+  "not_claimed": [
+    "gameplay Art Gate",
+    "physical mobile",
+    "component multiplayer",
+    "performance",
+    "integration",
+    "publication"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "component": "thalen-codex-runtime-capture-01",
+  "command": "node tools/art/roster-loading-test.js",
+  "outputs": [
+    "docs/art-gate/thalen-codex/runtime-base-36.png",
+    "docs/art-gate/thalen-codex/candidate-vs-legacy-fallback.png",
+    "docs/art-gate/thalen-codex/convergencia-priority.png",
+    "docs/art-gate/thalen-codex/runtime.json"
+  ],
+  "source_head": "1ccee0285792984dfa38da1eaa3c9c718b5a8790",
+  "notes": "CI requires Chromium; repository copies are exact outputs from artifact 13340885821."
+}
