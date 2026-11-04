@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "component": "B100-thalen-body-codex",
+  "state": "EN_CORRECCION",
+  "approval": "FIX_NOT_APPROVED",
+  "integration": "NO_INTEGRAR",
+  "baseMain": "54aa936fa254112044e29493179893dd0f8694d6",
+  "productionCommit": "e6af04560aa445880f31ccbf17b8cfa92b6709af",
+  "productionTree": "163bf85de55ef4b55bcef6d93f79d5b1fa91ad68",
+  "branch": "art/production-checkpoint-20261103",
+  "pullRequest": 268,
+  "newEvidence": [
+    "strict profile row visually resolved",
+    "whole attack sheet preservation failed because image edit regenerated all rows",
+    "36/36 non-empty, binary alpha, zero external edge alpha"
+  ],
+  "atlasSha256": "8b771d2a68b03d00eb55e704072a03963dabaca9c3d6a117b761217689e0667a",
+  "manifestSha256": "04106da6d4ffc91987445c9a2ee38294f626e831ab104e3bcfd03a8f5d3a794b",
+  "nextAction": "Review all 12 regenerated attacks against exact Codex; compose deterministic hybrid with original front/rear and corrected side if needed; then implement local consumer/fallback and gameplay gates.",
+  "publication": "NOT_APPLICABLE_SOURCE_ONLY"
+}
