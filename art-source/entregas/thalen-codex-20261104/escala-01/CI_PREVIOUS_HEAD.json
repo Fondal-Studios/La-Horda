@@ -1,0 +1,50 @@
+{
+  "head": "d8bf8afc3a09dc09b3893383e5410b39d0ef42d6",
+  "completed": {
+    "Emoji lint (arte pixel)": "SUCCESS",
+    "Item economy safety": "SUCCESS",
+    "Expedition champions": "SUCCESS",
+    "Campaign reward recovery": "SUCCESS",
+    "Art production evidence": "SUCCESS",
+    "Pixel density gate (informativo)": "FAIL_ENVIRONMENT_CHROMIUM_INSTALL",
+    "VFX readability and combat parity": "FAIL_ENVIRONMENT_CHROMIUM_INSTALL",
+    "Art presentation verification": "FAIL_ENVIRONMENT_CHROMIUM_INSTALL",
+    "Myla death component gate": "FAIL_THALEN_SCALE",
+    "Libertador motion component gate": "FAIL_THALEN_SCALE",
+    "Guerrero death component gate": "FAIL_THALEN_SCALE",
+    "Libertador death component gate": "FAIL_THALEN_SCALE",
+    "Soporte v3 renderer and art gate": "FAIL_DEPENDENT_REAL_CHECKS",
+    "Caballero death component gate": "FAIL_MASTER_REFERENCE_OR_APPEARANCES",
+    "Integracion pruebas": "FAIL_SKILL_ICON_CONTRACT",
+    "Champion entry balance": "FAIL_UNRELATED_ENTRY_AND_LANES"
+  },
+  "directFailure": {
+    "gate": "tools/art/roster_gate.js",
+    "appearances": 141,
+    "scaleFailures": 3,
+    "presentationFailures": 0,
+    "errors": 0,
+    "reference": {
+      "body": 59,
+      "foot": -2
+    },
+    "mago": [
+      {
+        "view": "front",
+        "body": 56,
+        "dh": -0.051
+      },
+      {
+        "view": "side",
+        "body": 56,
+        "dh": -0.051
+      },
+      {
+        "view": "up",
+        "body": 55,
+        "dh": -0.068
+      }
+    ]
+  },
+  "interpretation": "The three mago scale failures are caused by the candidate consumer metadata. Other listed failures are environment, dependent, or pre-existing/global and are not claimed fixed."
+}

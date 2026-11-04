@@ -27,7 +27,7 @@ const meta = JSON.parse(match[2]);
 
 assert(src === technical.atlas, "runtime atlas path differs from technical record");
 assert(meta.w === 112 && meta.h === 112 && meta.cols === 4, "unexpected grid metadata");
-assert(meta.refH === 100, "refH must preserve authored 100 px body height");
+assert(meta.refH === 94, "refH must match the roster-gate scale correction");
 assert(meta.fix && meta.fix.left === "mirror", "left-facing profile mirror missing");
 
 const expected = {

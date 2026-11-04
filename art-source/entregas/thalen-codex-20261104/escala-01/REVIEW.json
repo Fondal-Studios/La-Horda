@@ -1,0 +1,46 @@
+{
+  "component": "A-BODY-thalen-codex/scale-correction",
+  "status": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "change": {
+    "file": "js/assets/champion-sprites.js",
+    "field": "mago_codex.refH",
+    "before": 100,
+    "after": 94
+  },
+  "unchanged": [
+    "atlas bytes",
+    "36 frame indices",
+    "anchor",
+    "fallback",
+    "skins",
+    "hitbox",
+    "balance",
+    "mechanics",
+    "network"
+  ],
+  "evidence": {
+    "observedBodyPx": {
+      "front": 56,
+      "side": 56,
+      "up": 55
+    },
+    "targetBodyPx": 59,
+    "predictedAfterRounding": {
+      "front": 60,
+      "side": 60,
+      "up": 59
+    },
+    "predictedDelta": {
+      "front": 0.0169,
+      "side": 0.0169,
+      "up": 0.0
+    }
+  },
+  "approval": false,
+  "blockers": [
+    "Exact-head remote roster gate must confirm the correction",
+    "Gameplay captures and visual Art Gate remain missing",
+    "Mobile/desktop skins and multiplayer remain missing"
+  ]
+}

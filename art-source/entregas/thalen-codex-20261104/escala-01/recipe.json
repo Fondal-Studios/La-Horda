@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "component": "A-BODY-thalen-codex/scale-correction",
+  "baseHead": "d8bf8afc3a09dc09b3893383e5410b39d0ef42d6",
+  "input": {
+    "observedBodyPx": {
+      "front": 56,
+      "side": 56,
+      "up": 55
+    },
+    "targetBodyPx": 59,
+    "oldRefH": 100
+  },
+  "operation": "Set mago_codex refH to 94; do not modify atlas, anchor, mappings, fallback, skins, or gameplay state.",
+  "verify": [
+    "node --check js/assets/champion-sprites.js",
+    "node --check js/rendering/champion-sprites.js",
+    "node tools/art/check-thalen-codex-consumer.js",
+    "remote: node tools/lib/with-site.js tools/art/roster_gate.js"
+  ]
+}

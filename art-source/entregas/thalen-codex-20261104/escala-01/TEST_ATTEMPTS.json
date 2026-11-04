@@ -1,0 +1,39 @@
+{
+  "new": [
+    {
+      "name": "javascript-syntax",
+      "status": "PASS"
+    },
+    {
+      "name": "consumer-contract",
+      "status": "PASS",
+      "mappings": 21
+    },
+    {
+      "name": "scale-projection",
+      "status": "PASS",
+      "calculation": "observed_body * 100 / 94; rounded front=60 side=60 up=59; target=59"
+    },
+    {
+      "name": "atlas-byte-identity",
+      "status": "PASS",
+      "sha256": "1be3454246d9526b93bf9e218318915086311789ca204b0ffda3f7eaf8af01aa"
+    }
+  ],
+  "historical": [
+    {
+      "head": "d8bf8afc3a09dc09b3893383e5410b39d0ef42d6",
+      "name": "roster_gate",
+      "status": "FAIL",
+      "directFailures": 3
+    }
+  ],
+  "notRun": [
+    "exact-head remote roster gate after correction",
+    "gameplay captures",
+    "skin matrix",
+    "multiplayer",
+    "performance",
+    "visual Art Gate"
+  ]
+}
