@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "component": "B100-thalen-body-codex",
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "baseMain": "54aa936fa254112044e29493179893dd0f8694d6",
+  "productionCommit": "4fc88c7c9fc8d07533c4364b6ef40bfc0b27fbc7",
+  "productionTree": "9178a216682a5b0a7b0a8a7b96a5e484be64739a",
+  "branch": "art/production-checkpoint-20261103",
+  "pullRequest": 268,
+  "result": "Deterministic hybrid keeps original front/rear rows byte-exact and corrected strict-profile side row. Source-only candidate; not installed.",
+  "atlasSha256": "1be3454246d9526b93bf9e218318915086311789ca204b0ffda3f7eaf8af01aa",
+  "manifestSha256": "d0f5dfac5ea83b6ed65948ce969a599c78a3a22b4dd33a36922911b5216e5908",
+  "newTests": [
+    "selected row pixel equality 0/0/0 changed",
+    "36/36 non-empty",
+    "binary alpha 0/255",
+    "0 external edge alpha"
+  ],
+  "pending": [
+    "36-frame consumer with legacy fallback",
+    "real gameplay captures",
+    "skins",
+    "desktop/mobile",
+    "multiplayer",
+    "performance",
+    "Art Gate",
+    "exact-head CI connected component"
+  ],
+  "nextAction": "Audit and implement local 36-state consumer/fallback on a separable branch, then run gameplay gates before any integration.",
+  "publication": "NOT_APPLICABLE_SOURCE_ONLY"
+}
