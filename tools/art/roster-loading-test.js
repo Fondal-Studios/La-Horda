@@ -12,4 +12,26 @@ const server=http.createServer((req,res)=>{const file=path.resolve(root,'.'+deco
  for(const look of looks)for(const dir of ['down','side','left','up'])for(const st of ['idle','walk','attack','cast','hit','death']){const h=makeHero(id,true,130,220);Object.assign(h,{fx:dir==='left'?-1:dir==='side'?1:0,fy:dir==='up'?-1:dir==='down'?1:0,moving:st==='walk',attackAnim:st==='attack'||st==='cast'?150:0,hurtTimer:st==='hit'?100:0,_packCastUntil:st==='cast'?Infinity:0,_codexSkin:look.asc?null:look.id,ascSkin:look.asc||0});g.clearRect(0,0,260,260);ctx=g;try{if(st==='death')drawFallenHero(h);else drawHeroBody(h,h.scale,false,false);if(!g.getImageData(0,0,260,260).data.some((v,i)=>i%4===3&&v>0))issues.push((look.id||'base')+'/'+dir+'/'+st+': invisible');}catch(e){issues.push((look.id||'base')+'/'+dir+'/'+st+': '+e.message);}finally{ctx=saved;}}
  const P=CHAMP_PACK[id];if(P&&(!P.ready||P.failed))issues.push('atlas pending or failed');check(id+' all appearances and states visible',!issues.length);roster.push({id,appearances:looks.length,renders:looks.length*24,issues});}return {checks,roster,packs:Object.keys(CHAMP_PACK).length};});
  result.errors=errors;result.status=result.checks.every(c=>c.ok)&&!errors.length?'PASS':'FAIL';fs.mkdirSync(path.join(root,'docs/production/roster-repair'),{recursive:true});fs.writeFileSync(path.join(root,'docs/production/roster-repair/loading-results.json'),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({status:result.status,champions:result.roster.length,packs:result.packs,renders:result.roster.reduce((n,r)=>n+r.renders,0),failed:result.checks.filter(c=>!c.ok),errors}));assert.equal(result.status,'PASS');
+ const thalen=await page.evaluate(()=>{
+  const savedCtx=ctx,savedSkin=save.champions.mago.cosmeticSkin,savedCroma=save.champions.mago.croma;
+  const makeCanvas=(w,h)=>{const c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d');x.imageSmoothingEnabled=false;return[c,x];};
+  const draw=(g,h,fn)=>{ctx=g;try{return fn();}finally{ctx=savedCtx;}};
+  const base=makeCanvas(4*120,9*120),sets=['walk_down','walk_side','walk_up','attack_down','attack_side','attack_up','cast_down','ultimate_down','death_down'];
+  const cells=[];save.champions.mago.cosmeticSkin='';save.champions.mago.croma=null;
+  for(let row=0;row<sets.length;row++)for(let frame=0;frame<4;frame++){
+   const h=makeHero('mago',true,frame*120+60,row*120+108);Object.assign(h,{fx:sets[row].includes('side')?1:0,fy:sets[row].includes('up')?-1:1,moving:false,attackAnim:0,hurtTimer:0,_codexSet:sets[row],_codexT:frame*140,_codexFps:140});
+   const ok=draw(base[1],h,()=>drawMagoAtlas(h,h.scale,1));const px=base[1].getImageData(frame*120,row*120,120,120).data;let opaque=0;for(let i=3;i<px.length;i+=4)if(px[i])opaque++;
+   cells.push({set:sets[row],frame,ok,opaque});
+  }
+  const comparison=makeCanvas(360,180),h1=makeHero('mago',true,90,158),h2=makeHero('mago',true,270,158);Object.assign(h1,{fx:0,fy:1,moving:false,attackAnim:0,hurtTimer:0,_codexSet:'walk_down',_codexT:140,_codexFps:140});Object.assign(h2,h1,{x:270});
+  const candidate=draw(comparison[1],h1,()=>drawMagoAtlas(h1,h1.scale,1)),P=CHAMP_PACK.mago_codex,ready=P.ready;P.ready=false;const fallback=draw(comparison[1],h2,()=>drawMagoAtlas(h2,h2.scale,1));P.ready=ready;
+  const skin=makeCanvas(4*120,120);save.champions.mago.cosmeticSkin='convergencia';
+  const skinStates=[['idle_down',0],['walk_side',140],['attack_up',280],['death_down',420]];
+  const skinCells=[];for(let i=0;i<skinStates.length;i++){const h=makeHero('mago',true,i*120+60,108),[set,t]=skinStates[i];Object.assign(h,{fx:set.includes('side')?1:0,fy:set.includes('up')?-1:1,moving:false,attackAnim:0,hurtTimer:0,_codexSet:set,_codexT:t,_codexFps:140});const ok=draw(skin[1],h,()=>drawHeroBody(h,h.scale,false,false));const px=skin[1].getImageData(i*120,0,120,120).data;let opaque=0;for(let z=3;z<px.length;z+=4)if(px[z])opaque++;skinCells.push({set,t,ok,opaque});}
+  save.champions.mago.cosmeticSkin=savedSkin;save.champions.mago.croma=savedCroma;
+  return{base:base[0].toDataURL(),comparison:comparison[0].toDataURL(),skin:skin[0].toDataURL(),cells,skinCells,candidate,fallback,atlasReady:CHAMP_PACK.mago_codex.ready,legacyReady:MAGO_IMG_READY};
+ });
+ const td=path.join(root,'docs/art-gate/thalen-codex');fs.mkdirSync(td,{recursive:true});const png=(name,data)=>fs.writeFileSync(path.join(td,name),Buffer.from(data.split(',')[1],'base64'));
+ png('runtime-base-36.png',thalen.base);png('candidate-vs-legacy-fallback.png',thalen.comparison);png('convergencia-priority.png',thalen.skin);delete thalen.base;delete thalen.comparison;delete thalen.skin;
+ thalen.status=thalen.cells.length===36&&thalen.cells.every(c=>c.ok&&c.opaque>0)&&thalen.skinCells.every(c=>c.ok&&c.opaque>0)&&thalen.candidate&&thalen.fallback&&thalen.atlasReady&&thalen.legacyReady?'PASS':'FAIL';fs.writeFileSync(path.join(td,'runtime.json'),JSON.stringify(thalen,null,2)+'\n');console.log(JSON.stringify({thalen:thalen.status,cells:thalen.cells.length,candidate:thalen.candidate,fallback:thalen.fallback,skinCells:thalen.skinCells.length}));assert.equal(thalen.status,'PASS');
  }finally{if(browser)await browser.close();await new Promise(r=>server.close(r));}})().catch(e=>{console.error(e);process.exitCode=1;});

@@ -1,0 +1,33 @@
+{
+  "component": "thalen-codex-runtime-capture-01",
+  "status": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "reference": {
+    "path": "assets/ui/codex/champions/mago.png",
+    "blob": "f07788b98aa635bf1587c73f6e0e243c38b3cf64"
+  },
+  "atlas": {
+    "path": "assets/sprites/champions/mago/codex-v1/atlas.png",
+    "sha256": "1be3454246d9526b93bf9e218318915086311789ca204b0ffda3f7eaf8af01aa",
+    "changed": false
+  },
+  "new_scope": [
+    "36 authored cells through drawMagoAtlas",
+    "forced legacy fallback through drawMagoAtlas",
+    "Convergencia priority through drawHeroBody"
+  ],
+  "local": {
+    "syntax": "PASS",
+    "consumer_contract": "PASS",
+    "diff_check": "PASS",
+    "browser": "BLOCKED_EMPTY_OR_TRUNCATED_CHROMIUM_DOWNLOAD"
+  },
+  "claims_excluded": [
+    "gameplay capture",
+    "mobile physical device",
+    "multiplayer",
+    "performance",
+    "Art Gate PASS",
+    "integration"
+  ]
+}

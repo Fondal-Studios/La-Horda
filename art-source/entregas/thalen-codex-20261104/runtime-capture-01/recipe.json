@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "component": "thalen-codex-runtime-capture-01",
+  "parent": "a51c0bfb1a5c3126cc004df58d47ecfe3d1886e5",
+  "commands": [
+    "node --check tools/art/roster-loading-test.js",
+    "node tools/art/check-thalen-codex-consumer.js",
+    "NODE_PATH=/tmp/horda-balance/node_modules node tools/art/roster-loading-test.js"
+  ],
+  "ci_job": "Champion entry balance / entry-reference",
+  "outputs": [
+    "docs/art-gate/thalen-codex/runtime-base-36.png",
+    "docs/art-gate/thalen-codex/candidate-vs-legacy-fallback.png",
+    "docs/art-gate/thalen-codex/convergencia-priority.png",
+    "docs/art-gate/thalen-codex/runtime.json"
+  ]
+}
