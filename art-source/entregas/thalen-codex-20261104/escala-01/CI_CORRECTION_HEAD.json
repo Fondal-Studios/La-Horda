@@ -1,0 +1,51 @@
+{
+  "head": "9e1857912b858ca0855f823d7236b7e5d34459df",
+  "directComponentResult": {
+    "gate": "tools/art/roster_gate.js",
+    "appearances": 141,
+    "scaleFailures": 0,
+    "presentationFailures": 0,
+    "errors": 0,
+    "sourceRun": 41847879915,
+    "sourceJob": 126636077388,
+    "artifactId": 13332271458
+  },
+  "successAtObservation": [
+    "Emoji lint (arte pixel)",
+    "Item economy safety",
+    "Art production evidence",
+    "Soporte v3 renderer and art gate",
+    "Guerrero death component gate",
+    "Campaign reward recovery",
+    "Myla death component gate",
+    "Libertador death component gate",
+    "Caballero death component gate",
+    "Libertador motion component gate",
+    "Expedition champions"
+  ],
+  "environmentFailures": [
+    {
+      "workflow": "Pixel density gate (informativo)",
+      "run": 41847879947,
+      "job": 126636078047,
+      "failedStep": "playwright install --with-deps chromium"
+    },
+    {
+      "workflow": "Art presentation verification",
+      "run": 41847879773,
+      "job": 126636076615,
+      "failedStep": "playwright install --with-deps chromium"
+    },
+    {
+      "workflow": "VFX readability and combat parity",
+      "run": 41847880424,
+      "job": 126636081292,
+      "failedStep": "playwright install --with-deps chromium"
+    }
+  ],
+  "otherAtObservation": {
+    "Integracion pruebas": "IN_PROGRESS",
+    "Champion entry balance": "IN_PROGRESS_WITH_LANES_FAILURE"
+  },
+  "scope": "The exact-head roster scale correction is confirmed. This is not full gameplay, skin, multiplayer, performance, visual Art Gate, or merge approval."
+}

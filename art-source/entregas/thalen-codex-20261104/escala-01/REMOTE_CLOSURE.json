@@ -1,0 +1,28 @@
+{
+  "repository": "Fondal-Studios/La-Horda",
+  "pullRequest": 268,
+  "branch": "art/production-checkpoint-20261103",
+  "baseMain": "54aa936fa254112044e29493179893dd0f8694d6",
+  "previousHead": "d8bf8afc3a09dc09b3893383e5410b39d0ef42d6",
+  "productionCommit": "9e1857912b858ca0855f823d7236b7e5d34459df",
+  "productionTree": "73631ab84f84ded81035743a3adcc55cd3798f0a",
+  "component": "A-BODY-thalen-codex/scale-correction",
+  "status": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "change": "mago_codex.refH 100 -> 94",
+  "atlasSha256": "1be3454246d9526b93bf9e218318915086311789ca204b0ffda3f7eaf8af01aa",
+  "exactHeadEvidence": {
+    "rosterGate": "PASS: 141 appearances, 0 scale failures, 0 presentation failures, 0 errors",
+    "componentGates": "PASS for Soporte, Guerrero death, Myla death, Libertador death, Caballero death and Libertador motion",
+    "environmentFailures": "Pixel density, Art presentation and VFX readability stopped at Chromium installation"
+  },
+  "notValidated": [
+    "gameplay before/after captures",
+    "mobile and desktop skin matrix",
+    "multiplayer",
+    "performance",
+    "integral visual Art Gate",
+    "all exact-head workflows"
+  ],
+  "next": "Recover a complete playable checkout or a usable CI gameplay artifact, capture the 36-state consumer and forced legacy fallback with base and Convergencia on desktop/mobile, then complete visual and multiplayer gates before integration."
+}

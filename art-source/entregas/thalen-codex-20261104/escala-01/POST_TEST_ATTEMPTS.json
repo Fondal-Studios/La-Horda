@@ -1,0 +1,25 @@
+{
+  "new": [
+    {
+      "name": "remote-roster-gate",
+      "head": "9e1857912b858ca0855f823d7236b7e5d34459df",
+      "status": "PASS",
+      "result": "141 appearances, 0 scale failures, 0 presentation failures, 0 errors"
+    },
+    {
+      "name": "artifact-download",
+      "artifactId": 13332271458,
+      "status": "TRANSIENT_FAILURE",
+      "attempts": 5,
+      "result": "HTTP 503 from the temporary artifact URL; CI log and artifact ID preserved"
+    }
+  ],
+  "historical": [
+    {
+      "head": "d8bf8afc3a09dc09b3893383e5410b39d0ef42d6",
+      "name": "remote-roster-gate",
+      "status": "FAIL",
+      "result": "mago front 56, side 56, up 55 vs target 59"
+    }
+  ]
+}
