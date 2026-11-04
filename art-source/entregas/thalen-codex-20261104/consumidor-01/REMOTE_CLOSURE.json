@@ -1,0 +1,32 @@
+{
+  "closedAt": "2026-11-04T00:00:00Z",
+  "repository": "Fondal-Studios/La-Horda",
+  "pullRequest": 268,
+  "branch": "art/production-checkpoint-20261103",
+  "baseMain": "54aa936fa254112044e29493179893dd0f8694d6",
+  "previousHead": "3935b631265f0cf3b444e828f45ed9d994fd76c9",
+  "productionCommit": "275286aeaff235801697915e15a72fc310c17621",
+  "productionTree": "270731f54c4f4b86867a64af1387dfa62a2c2f8a",
+  "status": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "remoteFiles": {
+    "js/assets/champion-sprites.js": "75b509105727edcb744421c24dcb8f1d58e92132",
+    "js/rendering/champion-sprites.js": "74e77273aba136886003d820db0181ccc34374af",
+    "tools/art/check-thalen-codex-consumer.js": "e5c7cd44195c138f48dee71a7f64aedfa375f070"
+  },
+  "newTests": {
+    "syntax": "PASS",
+    "consumerContract": "PASS",
+    "atlasRecheck": "PASS"
+  },
+  "notValidated": [
+    "real gameplay renderer",
+    "mobile and desktop captures",
+    "skins and equipment",
+    "multiplayer",
+    "performance",
+    "visual Art Gate",
+    "all exact-head CI workflows"
+  ],
+  "next": "Recover a complete playable checkout, run the real consumer with successful and forced-fallback atlas loading, capture all states and skins on mobile and desktop, validate multiplayer where applicable, then assess a separable integration PR."
+}
