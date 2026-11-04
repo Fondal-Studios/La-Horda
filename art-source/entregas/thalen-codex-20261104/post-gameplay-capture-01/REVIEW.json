@@ -1,0 +1,61 @@
+{
+  "component": "A-BODY-thalen-codex/gameplay-capture-01",
+  "status": "EN_CORRECCION",
+  "artGate": "FIX",
+  "integration": "NO_INTEGRAR",
+  "productionHead": "1a5b1c34b71f429d3511de1f5a882b538f12aa47",
+  "reference": {
+    "path": "assets/ui/codex/champions/mago.png",
+    "gitBlob": "f07788b98aa635bf1587c73f6e0e243c38b3cf64"
+  },
+  "ci": {
+    "run": 41901036789,
+    "job": 126823195700,
+    "artifact": 13360032549,
+    "digest": "sha256:c3abda0d82afea624ca4aec2c0d88dcf55ffd8fe457a59caf448e2417e197231",
+    "harness": "PASS"
+  },
+  "technical": {
+    "rows": 48,
+    "sheets": 6,
+    "pageErrors": 0,
+    "arenas": 6,
+    "looks": [
+      "base",
+      "convergencia"
+    ],
+    "viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "modes": [
+      "legacy",
+      "candidate"
+    ]
+  },
+  "visualReview": {
+    "reviewed": [
+      "desktop-sequence",
+      "mobile-sequence",
+      "desktop-six-arenas",
+      "mobile-six-arenas",
+      "desktop-legacy-vs-candidate",
+      "mobile-legacy-vs-candidate"
+    ],
+    "verdict": "FIX",
+    "findings": [
+      "Bosque lighting and dense effects obscure the body",
+      "Mobile subject is too small for silhouette and continuity approval",
+      "Allies and enemies overlap the subject in sequence sheets",
+      "Six-arena sheets prove runtime hookup and broad contrast, not full animation quality",
+      "Convergencia resolves consistently and remains ahead of the base body path"
+    ]
+  },
+  "externalFailures": [
+    "public-onboarding legal footer intercepts Continue",
+    "lanes failed outside component",
+    "Safari cancelled during WebKit installation"
+  ],
+  "approved": false,
+  "installedInMain": false
+}

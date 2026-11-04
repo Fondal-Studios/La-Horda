@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "new": [
+    {
+      "id": "gameplay-ci-01",
+      "status": "PASS_TECHNICAL_FIX_VISUAL",
+      "run": 41901036789,
+      "job": 126823195700,
+      "artifact": 13360032549,
+      "details": "48 matrix rows and six sheets generated through production render(). Visual review rejected the sheets as final Art Gate evidence because dense effects and actors obscure Thalen, especially in mobile."
+    }
+  ],
+  "external": [
+    {
+      "id": "entry-reference-tail",
+      "status": "FAIL",
+      "details": "public-onboarding Continue click intercepted by legal footer after Thalen outputs were generated"
+    },
+    {
+      "id": "lanes",
+      "status": "FAIL",
+      "details": "outside Thalen scope"
+    },
+    {
+      "id": "safari-engine",
+      "status": "CANCELLED",
+      "details": "during WebKit installation"
+    }
+  ],
+  "historicalNotRepeated": [
+    "36-cell isolated renderer",
+    "four Convergencia isolated states",
+    "legacy fallback isolated renderer"
+  ]
+}

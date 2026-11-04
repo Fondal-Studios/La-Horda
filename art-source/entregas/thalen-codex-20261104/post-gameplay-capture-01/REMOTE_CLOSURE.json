@@ -1,0 +1,31 @@
+{
+  "component": "thalen-codex-gameplay-capture-01",
+  "status": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "productionHead": "1a5b1c34b71f429d3511de1f5a882b538f12aa47",
+  "branch": "art/production-checkpoint-20261103",
+  "pr": 268,
+  "baseMain": "54aa936fa254112044e29493179893dd0f8694d6",
+  "ci": {
+    "run": 41901036789,
+    "job": 126823195700,
+    "artifact": 13360032549,
+    "digest": "sha256:c3abda0d82afea624ca4aec2c0d88dcf55ffd8fe457a59caf448e2417e197231",
+    "harnessStep": "PASS"
+  },
+  "newTests": {
+    "roster": "PASS 43 champions / 3384 renders",
+    "isolatedThalen": "PASS 36 cells / 4 Convergencia / candidate / fallback",
+    "gameplay": "PASS 48 rows / 6 sheets / 0 page errors"
+  },
+  "visualGate": "FIX",
+  "pending": [
+    "sparse and dense subject-readable sequences",
+    "physical-device claim",
+    "two-client multiplayer relay",
+    "full renderer performance",
+    "Art Gate approval",
+    "all exact-head workflows"
+  ],
+  "next": "Revise only capture composition and scale using the same authored atlas; do not regenerate 36 poses or merge PR268."
+}
