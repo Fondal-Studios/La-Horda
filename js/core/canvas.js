@@ -62,11 +62,16 @@ function resAdapt(dt, playing){
   if(RES.slowMs > 2500 && RES.i < RES_LEVELS.length-1){ RES.i++; RES.slowMs = 0; RES.flips++; if(RES.flips >= 4) RES.lock = true; resize(true); }
   else if(RES.fastMs > 9000 && RES.i > 0 && !RES.lock){ RES.i--; RES.fastMs = 0; resize(true); }
 }
+// JUGAR EN LA TELE (js/net/fondal-tv.js): mientras el juego se manda a la tele, el buffer se dibuja a la medida del
+// video (teleMedidaLienzo(): la forma de la pantalla del celular, 720 de alto) en vez de caja × DPR. El tamaño CSS
+// (VW×VH), la cámara y los controles no cambian: en la pantalla del celular todo queda igual.
+function _teleBuffer(){ try{ return typeof teleMedidaLienzo==="function" ? teleMedidaLienzo() : null; }catch(e){ return null; } }
+function _dprWanted(h, tv){ return tv ? tv.alto/h : _dprNow(); }
 function resize(force){
-  const b = _viewportBox(), dpr = _dprNow();
-  if(!force && b.w===VW && b.h===VH && dpr===DPR) return false;
+  const b = _viewportBox(), tv = _teleBuffer(), dpr = _dprWanted(b.h, tv);
+  if(!force && b.w===VW && b.h===VH && dpr===DPR && (!tv || (canvas.width===tv.ancho && canvas.height===tv.alto))) return false;
   VW = b.w; VH = b.h; DPR = dpr;
-  canvas.width = Math.round(VW*DPR); canvas.height = Math.round(VH*DPR);
+  canvas.width = tv ? tv.ancho : Math.round(VW*DPR); canvas.height = tv ? tv.alto : Math.round(VH*DPR);
   // relación exacta buffer/CSS en cada eje (sin redondeos que estiren un eje más que el otro)
   ctx.setTransform(canvas.width/VW, 0, 0, canvas.height/VH, 0, 0);
   // cambiar el tamaño del canvas reinicia el contexto: el suavizado vuelve a "true" y los
@@ -79,7 +84,8 @@ function resize(force){
 }
 // Chequeo por cuadro: si la caja real cambió y el navegador no avisó, se corrige.
 function ensureCanvasSize(){
-  if(canvas.clientWidth !== VW || canvas.clientHeight !== VH || _dprNow() !== DPR) resize();
+  const tv = _teleBuffer();
+  if(canvas.clientWidth !== VW || canvas.clientHeight !== VH || _dprWanted(VH, tv) !== DPR || (tv && canvas.width !== tv.ancho)) resize();
 }
 window.addEventListener("resize", ()=>resize());
 window.addEventListener("orientationchange", ()=>{ resize(); setTimeout(()=>resize(), 250); });

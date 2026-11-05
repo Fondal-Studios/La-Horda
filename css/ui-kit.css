@@ -65,6 +65,9 @@ body[data-mode="cristales"]{ --mode-accent:#6fd3ff; --mode-accent-2:#bfe8ff; }
   border:2px solid var(--ui-line-hi); box-shadow:var(--ui-hi), var(--ui-shadow-sm); }
 .ui-back{ padding:4px 14px; min-width:92px; flex:none; }
 .ui-icon-btn{ width:44px; padding:0; font-size:1.3rem; line-height:1; flex:none; display:inline-flex; align-items:center; justify-content:center; }
+/* Jugar en la tele (js/net/fondal-tv.js): ícono pixel de la tele; dorado mientras se transmite */
+#hub-tele-btn svg{ display:block; width:28px; height:28px; }
+#hub-tele-btn.tele-on{ border-color:var(--ui-gold); box-shadow:var(--ui-hi), 0 0 0 2px #000, 0 0 10px rgba(255,215,106,.55); }
 .ui-chip{ display:inline-flex; align-items:center; gap:4px; min-height:30px; padding:2px 10px; font-family:var(--ui-font); font-size:1.1rem; color:var(--ui-ink);
   background:var(--ui-inset); border:2px solid var(--ui-line); white-space:nowrap; }
 .ui-chip.gold, .ui-chip.gold b{ color:var(--ui-gold); }
