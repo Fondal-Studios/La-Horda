@@ -427,7 +427,7 @@ function renderPrepSummary(){
     else netHostBroadcastCos(false);
     return;
   }
-  const sb = document.getElementById("prep-start-btn"); if(sb){ sb.disabled = false; sb.textContent = "Comenzar partida"; }
+  const sb = document.getElementById("prep-start-btn"); if(sb){ sb.disabled = false; sb.textContent = "Comenzar"; }
   document.getElementById("lobby-sub").textContent = "4 lugares · los lugares libres los completa el juego (o tus amigos, con una sala online)";
   const slots = document.getElementById("lobby-slots");
   if(typeof netLobby!=="undefined") netLobby.slotsHTML = ""; // la vista solo reemplaza la de la sala online
@@ -652,4 +652,3 @@ function cwGateClose(){ const m=document.getElementById("cw-gate"); if(m) m.clas
   });
   document.addEventListener("keydown", e=>{ if(e.key==="Escape"&&!m.classList.contains("hidden")) cwGateClose(); });
 })();
-

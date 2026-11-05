@@ -5,9 +5,18 @@ module.exports = () => {
     log: [], stats: null, god: false, auto: true,
     start(champ, allies, lvl, opts) {
       opts = opts || {};
+      // A campaign-mode test needs a legitimate frontier, not just currentArena.
+      // UI refreshes call ensurePlayableArena() and redirect locked arenas.
+      if (opts.campaignFixture) {
+        save.arenasCleared = Object.assign({}, save.arenasCleared);
+        const before = ARENA_ORDER.indexOf('micelial');
+        if (before < 0) throw new Error('micelial missing from campaign order');
+        for (const k of ARENA_ORDER.slice(0, before)) save.arenasCleared[k] = true;
+      }
       for (const k of Object.keys(save.champions)) save.champions[k].unlocked = true;
       selectedClass = champ; currentArena = 'micelial'; lobbyAllies = allies.slice();
       startRun(lvl || 1);
+      if (opts.campaignFixture && (currentArena !== 'micelial' || !micS)) throw new Error('startRun did not enter micelial: ' + currentArena);
       this.log = []; this.god = !!opts.god;
       if (this.god) this.godify();
       this.resetStats();
