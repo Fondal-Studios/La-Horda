@@ -1,0 +1,111 @@
+{
+  "results": [
+    {
+      "kind": "walls",
+      "mode": "active",
+      "before": 0,
+      "after": 7,
+      "pass": true
+    },
+    {
+      "kind": "walls",
+      "mode": "dead",
+      "before": 0,
+      "after": 7,
+      "pass": false
+    },
+    {
+      "kind": "walls",
+      "mode": "killed",
+      "before": 0,
+      "after": 7,
+      "pass": false
+    },
+    {
+      "kind": "walls",
+      "mode": "removed",
+      "before": 0,
+      "after": 9,
+      "pass": false
+    },
+    {
+      "kind": "walls",
+      "mode": "ended",
+      "before": 0,
+      "after": 7,
+      "pass": false
+    },
+    {
+      "kind": "zones",
+      "mode": "active",
+      "before": 0,
+      "after": 3,
+      "pass": true
+    },
+    {
+      "kind": "zones",
+      "mode": "dead",
+      "before": 0,
+      "after": 3,
+      "pass": false
+    },
+    {
+      "kind": "zones",
+      "mode": "killed",
+      "before": 0,
+      "after": 3,
+      "pass": false
+    },
+    {
+      "kind": "zones",
+      "mode": "removed",
+      "before": 0,
+      "after": 3,
+      "pass": false
+    },
+    {
+      "kind": "zones",
+      "mode": "ended",
+      "before": 0,
+      "after": 3,
+      "pass": false
+    },
+    {
+      "kind": "shards",
+      "mode": "active",
+      "before": 3200,
+      "after": 3126.08,
+      "pass": true
+    },
+    {
+      "kind": "shards",
+      "mode": "dead",
+      "before": 3200,
+      "after": 3126.08,
+      "pass": false
+    },
+    {
+      "kind": "shards",
+      "mode": "killed",
+      "before": 3200,
+      "after": 3126.08,
+      "pass": false
+    },
+    {
+      "kind": "shards",
+      "mode": "removed",
+      "before": 3200,
+      "after": 3126.08,
+      "pass": false
+    },
+    {
+      "kind": "shards",
+      "mode": "ended",
+      "before": 3200,
+      "after": 3126.08,
+      "pass": false
+    }
+  ],
+  "errors": [],
+  "scope": "Real browser timers and consumers; controlled death/removal/end fixtures, not full encounter or relay."
+}

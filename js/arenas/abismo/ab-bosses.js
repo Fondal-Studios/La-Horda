@@ -343,7 +343,7 @@ function abAIMorador(e, dt, tgt, dist){
       const h = abPick(heroes.filter(o=>o.alive && !o.abHang)) || tgt;
       const x = h.x + (Math.random()-0.5)*260, y = h.y + (Math.random()-0.5)*190;
       bossStrike(x, y, C.shardR, C.shardDelay + i*120, e.dmg*C.shardMult, "rock", null);
-      runLater(C.shardDelay + i*120, ()=>{ if(typeof ABISMO_FX!=="undefined") bossSheetFx("abMorShards", x, y, 80, 520, {anchorY:0.8}); const h0 = _abPlatHp(); abDamageArea(x, y, C.shardR*0.8, 4); _abPlatEv("ab_morador.plataformas", e, h0); });
+      runLater(C.shardDelay + i*120, ()=>{ if(!e.alive || runEnding || !enemies.includes(e) || !abS || abS.mo!==M || M.st!=="fight") return; if(typeof ABISMO_FX!=="undefined") bossSheetFx("abMorShards", x, y, 80, 520, {anchorY:0.8}); const h0 = _abPlatHp(); abDamageArea(x, y, C.shardR*0.8, 4); _abPlatEv("ab_morador.plataformas", e, h0); });
     }
     bossSkillLabel(e, "LLUVIA DE FRAGMENTOS");
     return true;
