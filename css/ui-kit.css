@@ -74,6 +74,46 @@ body[data-mode="cristales"]{ --mode-accent:#6fd3ff; --mode-accent-2:#bfe8ff; }
 .fondal-tele-mando.lh-mando{ background:radial-gradient(ellipse at 50% 120%, #4a1410 0%, #1d0a12 50%, #0a0508 100%); }
 .fondal-tele-mando.lh-mando::before{ content:'LA HORDA · EN LA TELE'; position:absolute; top:calc(12px + env(safe-area-inset-top,0px)); left:50%; transform:translateX(-50%);
   font-family:var(--ui-font); font-size:1.3rem; letter-spacing:.12em; color:var(--ui-gold); text-shadow:2px 2px 0 #000; white-space:nowrap; }
+/* fondos del mando (js/net/fondal-tv.js FONDOS): uno al azar; el título queda encima del fondo */
+.fondal-tele-mando.lh-mando::before{z-index:1}
+.lhf-mazmorra{position:absolute;inset:0;background-color:#1d1013;background-image:linear-gradient(#0b0507 3px,transparent 3px),linear-gradient(90deg,#0b0507 3px,transparent 3px),linear-gradient(90deg,#0b0507 3px,transparent 3px);background-size:48px 24px,48px 48px,48px 48px;background-position:0 0,0 0,24px 24px}
+.lhf-piso{position:absolute;left:0;right:0;bottom:0;height:16%;background:repeating-linear-gradient(90deg,#160b0d 0 62px,#0b0507 62px 64px);border-top:4px solid #0b0507}
+.lhf-antorcha{position:absolute;top:16%;width:12px;height:12%}
+.lhf-antorcha b{position:absolute;left:0;top:30%;width:12px;height:70%;background:#5a3418;box-shadow:inset -4px 0 0 #3a2010}
+.lhf-antorcha s{position:absolute;left:-4px;top:26%;width:20px;height:8px;background:#7a7a86}
+.lhf-luz{position:absolute;left:-74px;top:-90%;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(255,150,40,.38),rgba(255,90,20,.08) 55%,transparent 70%);animation:lhfLuz 1.6s steps(4) infinite}
+.lhf-llama{position:absolute;left:-4px;top:-14px;width:20px;height:32px;transform-origin:50% 100%;animation:lhfLlama .45s steps(3) infinite}
+.lhf-llama i{position:absolute;background:#ff7a1a}
+.lhf-llama i:nth-child(1){left:4px;bottom:0;width:12px;height:24px}
+.lhf-llama i:nth-child(2){left:0;bottom:4px;width:20px;height:12px}
+.lhf-llama i:nth-child(3){left:6px;bottom:2px;width:8px;height:16px;background:#ffd23a}
+.lhf-llama i:nth-child(4){left:8px;top:0;width:4px;height:8px}
+.lhf-brasa{position:absolute;bottom:4%;width:4px;height:4px;animation:lhfBrasa 4.5s steps(30) infinite}
+.lhf-sombra{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,transparent 30%,rgba(0,0,0,.65) 100%)}
+@keyframes lhfLlama{0%{transform:scaleY(1)}33%{transform:scaleY(1.18) translateX(1px)}66%{transform:scaleY(.9) translateX(-1px)}100%{transform:scaleY(1)}}
+@keyframes lhfLuz{0%,100%{opacity:1}50%{opacity:.75}}
+@keyframes lhfBrasa{from{transform:translateY(0);opacity:1}to{transform:translateY(-60vh);opacity:0}}
+
+.lhf-cielo{position:absolute;inset:0;background:linear-gradient(#1a0618 0 22%,#2e0a22 22% 40%,#4e0f22 40% 56%,#7c1a1c 56% 68%,#b8361a 68% 78%,#e8742a 78% 84%,#2a0a0e 84%)}
+.lhf-luna{position:absolute;left:45%;top:15%;width:84px;height:84px;background:#c8341c;clip-path:polygon(30% 0,70% 0,70% 6%,85% 6%,85% 15%,94% 15%,94% 30%,100% 30%,100% 70%,94% 70%,94% 85%,85% 85%,85% 94%,70% 94%,70% 100%,30% 100%,30% 94%,15% 94%,15% 85%,6% 85%,6% 70%,0 70%,0 30%,6% 30%,6% 15%,15% 15%,15% 6%,30% 6%)}
+.lhf-luna i{position:absolute;background:#a82814}
+.lhf-halo{position:absolute;left:calc(45% - 58px);top:calc(15% - 58px);width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,80,40,.45),transparent 65%);animation:lhfHalo 3s ease-in-out infinite alternate}
+.lhf-nube{position:absolute;height:10px;background:#1a0614;box-shadow:16px -8px 0 #1a0614,40px -8px 0 #1a0614;animation:lhfNube 38s linear infinite}
+.lhf-murcielago{position:absolute;width:18px;height:8px;animation:lhfVuelo 11s linear infinite}
+.lhf-murcielago i{position:absolute;inset:0;background:#0a0306;clip-path:polygon(0 0,30% 50%,45% 30%,50% 60%,55% 30%,70% 50%,100% 0,85% 100%,50% 80%,15% 100%);animation:lhfAleteo .3s steps(2) infinite}
+.lhf-horda{position:absolute;left:0;bottom:0;width:200%;height:31%;display:flex;animation:lhfMarcha 26s linear infinite}
+.lhf-horda>div{position:relative;flex:1;height:100%}
+.lhf-horda>div>b{position:absolute;inset:0;background:#0a0306;clip-path:polygon(0 100%,0 40%,4% 40%,4% 30%,6% 30%,6% 40%,10% 40%,10% 22%,12% 22%,12% 14%,14% 14%,14% 40%,18% 40%,18% 28%,22% 28%,22% 40%,26% 40%,26% 34%,28% 34%,28% 26%,30% 26%,30% 40%,34% 40%,34% 18%,36% 18%,36% 8%,38% 8%,38% 40%,42% 40%,42% 30%,46% 30%,46% 24%,48% 24%,48% 40%,52% 40%,52% 32%,56% 32%,56% 40%,60% 40%,60% 20%,62% 20%,62% 12%,64% 12%,64% 40%,68% 40%,68% 28%,72% 28%,72% 40%,76% 40%,76% 22%,78% 22%,78% 34%,82% 34%,82% 40%,86% 40%,86% 16%,88% 16%,88% 40%,92% 40%,92% 30%,96% 30%,96% 40%,100% 40%,100% 100%)}
+.lhf-ojo{position:absolute;width:10px;height:3px;background:linear-gradient(90deg,#ff2a1a 0 3px,transparent 3px 7px,#ff2a1a 7px);animation:lhfOjos 3.2s steps(1) infinite}
+.lhf-brasa{position:absolute;bottom:4%;width:4px;height:4px;animation:lhfBrasa 4.5s steps(30) infinite}
+.lhf-sombra2{position:absolute;inset:0;background:linear-gradient(transparent 60%,rgba(0,0,0,.35))}
+@keyframes lhfHalo{from{opacity:.55}to{opacity:1}}
+@keyframes lhfNube{from{transform:translateX(0)}to{transform:translateX(-130vw)}}
+@keyframes lhfVuelo{0%{transform:translate(0,0)}25%{transform:translate(-30vw,-3vh)}50%{transform:translate(-60vw,2vh)}75%{transform:translate(-90vw,-2vh)}100%{transform:translate(-125vw,1vh)}}
+@keyframes lhfAleteo{0%{transform:scaleY(1)}50%{transform:scaleY(-.6)}}
+@keyframes lhfMarcha{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes lhfOjos{0%,92%{opacity:1}94%,98%{opacity:0}100%{opacity:1}}
+@keyframes lhfBrasa{from{transform:translateY(0);opacity:1}to{transform:translateY(-60vh);opacity:0}}
 .fondal-tele-mando.lh-mando .ftm-detener{ position:absolute; top:calc(44px + env(safe-area-inset-top,0px)); left:50%; transform:translateX(-50%);
   font-family:var(--ui-font); font-size:1rem; color:var(--ui-ink); border:2px solid var(--ui-line-hi); border-radius:0; background:rgba(0,0,0,.35); }
 body.fondal-tele.fondal-tele-partido #joy-base{ background:radial-gradient(circle, rgba(90,30,16,.55), rgba(20,8,10,.85)); border:3px solid #e0a040;
