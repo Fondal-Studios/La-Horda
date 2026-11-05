@@ -2,7 +2,7 @@
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 
 module.exports=async function captureThalenGameplay({page,root}){
-  const out=path.join(root,'docs/art-gate/thalen-codex/gameplay-02');
+  const out=path.join(root,'docs/art-gate/thalen-codex/gameplay-03');
   fs.mkdirSync(out,{recursive:true});
   const errors=[];
   const listener=e=>errors.push(e.message);
@@ -31,7 +31,7 @@ module.exports=async function captureThalenGameplay({page,root}){
         const rec=save.champions.mago;rec.unlocked=true;rec.level=20;rec.equipment={};rec.croma=null;rec.cosmeticSkin=look==='convergencia'?'convergencia':'';
         selectedClass='mago';currentArena=arena;lobbyAllies=density==='dense'?['tanque','soporte']:[];startRun(1);
         document.querySelectorAll('.screen').forEach(s=>s.classList.add('hidden'));
-        state='playing';spawnTimer=arenaHazardTimer=1e9;enemies=[];CAM_SUBJECT=player;CAM_LEAD_X=CAM_LEAD_Y=CAM_LIFT=0;_arenaTitleUntil=0;
+        state='playing';spawnTimer=arenaHazardTimer=1e9;enemies=[];const offset=arena==='bosque'?[260,160]:[0,0];player.x+=offset[0];player.y+=offset[1];CAM_SUBJECT={x:player.x,y:player.y};CAM_LEAD_X=CAM_LEAD_Y=CAM_LIFT=0;_arenaTitleUntil=0;
         for(let i=0;i<allies.length;i++){const a=allies[i],pos=[[-125,88],[125,88]][i]||[0,118];a.x=player.x+pos[0];a.y=player.y+pos[1];a.stunTimer=1e9;}
         if(density==='dense')for(const [dx,dy] of [[-132,-92],[132,-92],[-148,18],[148,18]]){const e=spawnEnemy('esqueleto');Object.assign(e,{x:player.x+dx,y:player.y+dy,hp:1e8,maxHp:1e8,speed:0,baseSpeed:0,dmg:0});}
         player.invulnTimer=1e9;
@@ -42,9 +42,9 @@ module.exports=async function captureThalenGameplay({page,root}){
         if(s.death){player.alive=false;player.hp=0;player._deadAt=performance.now()-420;}
       };
       const cv=document.getElementById('game');
-      const sceneHash=()=>{const d=ctx.getImageData(Math.max(0,(cv.width>>1)-120),Math.max(0,(cv.height>>1)-90),Math.min(240,cv.width),Math.min(180,cv.height)).data;let h=2166136261;for(let i=0;i<d.length;i+=17){h^=d[i];h=Math.imul(h,16777619);}return (h>>>0).toString(16).padStart(8,'0');};
-      const makeSheet=(cols,rows)=>{const c=document.createElement('canvas');c.width=cols*200;c.height=rows*168;const g=c.getContext('2d');g.imageSmoothingEnabled=false;g.fillStyle='#091018';g.fillRect(0,0,c.width,c.height);return[c,g];};
-      const stamp=(sheet,index,label)=>{const [c,g]=sheet,col=index%(c.width/200|0),row=Math.floor(index/(c.width/200));const sw=Math.min(320,cv.width),sh=Math.min(232,cv.height),sx=Math.max(0,(cv.width-sw)/2),sy=Math.max(0,(cv.height-sh)/2);g.drawImage(cv,sx,sy,sw,sh,col*200,row*168,200,145);g.fillStyle='#091018';g.fillRect(col*200,row*168+145,200,23);g.fillStyle='#f3ead2';g.font='12px sans-serif';g.fillText(label,col*200+6,row*168+161);};
+      const sceneHash=()=>{const d=ctx.getImageData(Math.max(0,(cv.width>>1)-128),Math.max(0,(cv.height>>1)-96),Math.min(256,cv.width),Math.min(192,cv.height)).data;let h=2166136261;for(let i=0;i<d.length;i+=17){h^=d[i];h=Math.imul(h,16777619);}return (h>>>0).toString(16).padStart(8,'0');};
+      const makeSheet=(cols,rows)=>{const c=document.createElement('canvas');c.width=cols*256;c.height=rows*216;const g=c.getContext('2d');g.imageSmoothingEnabled=false;g.fillStyle='#091018';g.fillRect(0,0,c.width,c.height);return[c,g];};
+      const stamp=(sheet,index,label)=>{const [c,g]=sheet,col=index%(c.width/256|0),row=Math.floor(index/(c.width/256));const sw=Math.min(256,cv.width),sh=Math.min(192,cv.height),sx=Math.max(0,(cv.width-sw)/2),sy=Math.max(0,(cv.height-sh)/2);g.drawImage(cv,sx,sy,sw,sh,col*256,row*216,sw,sh);g.fillStyle='#091018';g.fillRect(col*256,row*216+192,256,24);g.fillStyle='#f3ead2';g.font='12px sans-serif';g.fillText(label,col*256+6,row*216+208);};
       const sparseSequence=makeSheet(5,4),denseSequence=makeSheet(5,4);let n=0;
       for(const look of ['base','convergencia']){setup('hielo',look,'sparse');P.ready=realReady;for(const s of states){pose(s);render();stamp(sparseSequence,n++,look+' · sparse · '+s.id);}}
       n=0;for(const look of ['base','convergencia']){setup('bosque',look,'dense');P.ready=realReady;for(const s of states){pose(s);render();stamp(denseSequence,n++,look+' · dense · '+s.id);}}
@@ -67,7 +67,7 @@ module.exports=async function captureThalenGameplay({page,root}){
   }
   page.off('pageerror',listener);
   const files=fs.readdirSync(out).filter(f=>f.endsWith('.png')).sort().map(name=>{const b=fs.readFileSync(path.join(out,name));return{name,bytes:b.length,sha256:crypto.createHash('sha256').update(b).digest('hex')};});
-  const summary={status:errors.length?'FAIL':'PASS',scope:'actual render() fixture; separated sparse and dense compositions; six arenas; base and Convergencia; authored candidate and forced legacy fallback; browser mobile viewport is not a physical device; no two-client relay claim',reference:{path:'assets/ui/codex/champions/mago.png',gitBlob:'f07788b98aa635bf1587c73f6e0e243c38b3cf64'},rows,files,errors};
+  const summary={status:errors.length?'FAIL':'PASS',scope:'actual render() fixture; 1:1 gameplay crop; Bosque subject offset from fixed central rune; separated sparse and dense compositions; six arenas; base and Convergencia; authored candidate and forced legacy fallback; browser mobile viewport is not a physical device; no two-client relay claim',reference:{path:'assets/ui/codex/champions/mago.png',gitBlob:'f07788b98aa635bf1587c73f6e0e243c38b3cf64'},rows,files,errors};
   fs.writeFileSync(path.join(out,'runtime.json'),JSON.stringify(summary,null,2)+'\n');
   return summary;
 };
