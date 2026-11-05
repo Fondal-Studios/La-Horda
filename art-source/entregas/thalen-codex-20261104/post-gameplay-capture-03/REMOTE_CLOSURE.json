@@ -1,0 +1,29 @@
+{
+  "component": "A-BODY-thalen-codex/gameplay-capture-03",
+  "status": "EN_VALIDACION",
+  "integration": "NO_INTEGRAR",
+  "productionHead": "68674464b5dfa86c130ed03bccda72fca93d87b0",
+  "baseMain": "c66d6037c9eba34ec127a274a4eba37e6eaca764",
+  "artifact": {
+    "head": "68674464b5dfa86c130ed03bccda72fca93d87b0",
+    "run": 41980261256,
+    "artifact": 13394491282,
+    "artifactDigest": "sha256:e5c541bd31419bb60a6bcce3e2e04e348a4041167221abaeb078692a1a4f6ba5",
+    "entryJob": 127088491037,
+    "lanesJob": 127088490756,
+    "entry": "FAIL_AFTER_EVIDENCE_UPLOAD",
+    "lanes": "FAIL_INHERITED_UI",
+    "safari": "SUCCESS",
+    "postgres": "SUCCESS"
+  },
+  "remoteFiles": [
+    "CHECKPOINT.md",
+    "CI_OBSERVED.json",
+    "REVIEW.json",
+    "TEST_ATTEMPTS.json",
+    "manifest.json",
+    "review-contact.jpg",
+    "runtime.json"
+  ],
+  "next": "minimal close branch from fresh main; relay + full-render performance + exact-head CI; merge only if all gates pass"
+}

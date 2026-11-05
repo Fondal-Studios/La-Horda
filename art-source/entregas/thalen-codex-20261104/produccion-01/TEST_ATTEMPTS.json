@@ -1,0 +1,31 @@
+{
+  "new": [
+    {
+      "name": "pack-thalen-codex",
+      "result": "PASS_TECHNICAL",
+      "evidence": "assets/sprites/champions/mago/codex-v1/technical.json",
+      "scope": "36 source cells, packing, binary alpha, external edge alpha",
+      "limits": "No runtime, gameplay, skins, multiplayer, performance or CI validation"
+    },
+    {
+      "name": "visual-source-review",
+      "result": "FIX_NOT_APPROVED",
+      "evidence": "assets/sprites/champions/mago/codex-v1/preview.png",
+      "findings": [
+        "attack_side is not strict profile",
+        "final chroma edge and animation continuity review remains pending"
+      ]
+    }
+  ],
+  "historical": [],
+  "not_run": [
+    "real renderer consumer",
+    "before/after gameplay capture",
+    "desktop/mobile matrix",
+    "skins and equipment",
+    "multiplayer relay",
+    "performance",
+    "Art Gate",
+    "CI exact head"
+  ]
+}

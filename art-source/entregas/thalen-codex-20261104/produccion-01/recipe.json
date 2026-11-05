@@ -1,0 +1,28 @@
+{
+  "component": "B100-thalen-body-codex",
+  "state": "EN_CORRECCION",
+  "source_generation": {
+    "tool": "image_gen",
+    "references": [
+      "assets/ui/codex/champions/mago.png",
+      "assets/sprites/champions/mago/atlas.webp"
+    ],
+    "prompts": [
+      "PROMPT_WALK.txt",
+      "PROMPT_ATTACKS.txt",
+      "PROMPT_REST.txt"
+    ]
+  },
+  "packing": {
+    "command": "python3 tools/art/pack-thalen-codex.py",
+    "script": "tools/art/pack-thalen-codex.py",
+    "source_dir": "art-source/entregas/thalen-codex-20261104/produccion-01/sources",
+    "output": "assets/sprites/champions/mago/codex-v1/atlas.png",
+    "cell": [112, 112],
+    "grid": [4, 9],
+    "resampling": "nearest-neighbor",
+    "alpha": "binary chroma extraction"
+  },
+  "install": null,
+  "consumer": null
+}

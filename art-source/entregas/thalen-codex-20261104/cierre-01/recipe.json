@@ -1,0 +1,14 @@
+{
+  "component": "A-BODY-thalen-codex",
+  "reference": "assets/ui/codex/champions/mago.png",
+  "sourceRecipe": "art-source/entregas/thalen-codex-20261104/correccion-02/recipe.json",
+  "packCommand": "python3 tools/art/pack-thalen-codex-correction-02.py",
+  "verifyCommand": "node tools/art/check-thalen-codex-consumer.js",
+  "exactHeadGate": "node tools/art/roster-loading-test.js",
+  "atlas": "assets/sprites/champions/mago/codex-v1/atlas.png",
+  "consumer": [
+    "js/assets/champion-sprites.js",
+    "js/rendering/champion-sprites.js"
+  ],
+  "fallback": "assets/sprites/champions/mago/atlas.webp"
+}
