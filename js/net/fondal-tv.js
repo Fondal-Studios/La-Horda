@@ -101,7 +101,8 @@ const FondalTV = (() => {
             // EL HUD DE LA TELE (armarHud) y el mando: en el celular quedan solo los controles
             hud: armarHud,
             hudCadaMs: 50,
-            mando: { enCelular: EN_CELULAR }
+            // (la estética del mando: .lh-mando en css/ui-kit.css; los controles, los mismos y en su lugar)
+            mando: { enCelular: EN_CELULAR, clase: "lh-mando", sinTexto: true }
           });
           if(tele) sincronizar();
           return tele;
