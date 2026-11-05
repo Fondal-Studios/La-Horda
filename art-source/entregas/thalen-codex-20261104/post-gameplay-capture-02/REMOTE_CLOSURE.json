@@ -1,0 +1,35 @@
+{
+  "component": "thalen-codex-gameplay-capture-02",
+  "status": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "productionHead": "5ee56724a4ca6d0e9f272416eebaafa9b61b7fa7",
+  "branch": "art/production-checkpoint-20261103",
+  "pr": 268,
+  "baseMain": "54aa936fa254112044e29493179893dd0f8694d6",
+  "ci": {
+    "workflow": "Champion entry balance",
+    "run": 41906244085,
+    "job": 126841546205,
+    "artifact": 13360839398,
+    "artifactDigest": "sha256:a30bab25b9db564c28fa2547614dbdb41f4d01854bcf7471663844ba574eea64",
+    "head": "5ee56724a4ca6d0e9f272416eebaafa9b61b7fa7",
+    "harness": "PASS: 96 gameplay rows / 8 sheets / 0 page errors",
+    "jobConclusion": "FAIL after evidence upload: inherited HTTP admin server step failed",
+    "artifactUploaded": true
+  },
+  "newTests": {
+    "gameplay": "PASS 96 rows / 8 sheets / 0 page errors",
+    "composition": "separate sparse/dense; six arenas; base+Convergencia; desktop+mobile viewport; candidate+legacy"
+  },
+  "visualGate": "FIX",
+  "pending": [
+    "Dense Bosque silhouette readability",
+    "Mobile animation-continuity readability",
+    "Physical-device validation",
+    "Two-client multiplayer relay",
+    "Full renderer performance",
+    "Art Gate approval",
+    "All exact-head workflows"
+  ],
+  "next": "Keep the same Codex atlas and consumer. Resolve gameplay layering/readability without changing mechanics, then run the remaining gates; do not merge PR268."
+}

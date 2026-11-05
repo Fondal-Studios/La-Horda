@@ -1,0 +1,75 @@
+{
+  "component": "A-BODY-thalen-codex/gameplay-capture-02",
+  "status": "EN_CORRECCION",
+  "artGate": "FIX",
+  "integration": "NO_INTEGRAR",
+  "productionHead": "5ee56724a4ca6d0e9f272416eebaafa9b61b7fa7",
+  "reference": {
+    "path": "assets/ui/codex/champions/mago.png",
+    "gitBlob": "f07788b98aa635bf1587c73f6e0e243c38b3cf64"
+  },
+  "atlas": {
+    "path": "assets/sprites/champions/mago/codex-v1/atlas.png",
+    "sha256": "1be3454246d9526b93bf9e218318915086311789ca204b0ffda3f7eaf8af01aa"
+  },
+  "ci": {
+    "workflow": "Champion entry balance",
+    "run": 41906244085,
+    "job": 126841546205,
+    "artifact": 13360839398,
+    "artifactDigest": "sha256:a30bab25b9db564c28fa2547614dbdb41f4d01854bcf7471663844ba574eea64",
+    "head": "5ee56724a4ca6d0e9f272416eebaafa9b61b7fa7",
+    "harness": "PASS: 96 gameplay rows / 8 sheets / 0 page errors",
+    "jobConclusion": "FAIL after evidence upload: inherited HTTP admin server step failed",
+    "artifactUploaded": true
+  },
+  "technical": {
+    "rows": 96,
+    "sheets": 8,
+    "pageErrors": 0,
+    "arenas": 6,
+    "densities": [
+      "sparse",
+      "dense"
+    ],
+    "looks": [
+      "base",
+      "convergencia"
+    ],
+    "viewports": [
+      "desktop",
+      "mobile browser viewport"
+    ],
+    "modes": [
+      "legacy",
+      "candidate"
+    ]
+  },
+  "visualReview": {
+    "reviewed": [
+      "desktop-dense-sequence.png",
+      "desktop-legacy-vs-candidate.png",
+      "desktop-six-arenas-sparse-dense.png",
+      "desktop-sparse-sequence.png",
+      "mobile-dense-sequence.png",
+      "mobile-legacy-vs-candidate.png",
+      "mobile-six-arenas-sparse-dense.png",
+      "mobile-sparse-sequence.png"
+    ],
+    "verdict": "FIX",
+    "improvements": [
+      "Tighter crop makes the authored body and death frames readable on desktop",
+      "Sparse and dense sequences are separated",
+      "Six-arena sheets now retain both densities and both looks",
+      "Legacy/candidate distinction and Convergencia priority remain visible"
+    ],
+    "findings": [
+      "Bosque dense VFX still overwhelms the body silhouette",
+      "Mobile body remains too small for animation-continuity approval",
+      "Sparse fixtures still include surrounding live scene actors; they are not an isolated sprite proof",
+      "Other arenas prove hookup and broad contrast, not a complete Art Gate"
+    ]
+  },
+  "approved": false,
+  "installedInMain": false
+}

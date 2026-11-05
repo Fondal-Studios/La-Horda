@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "new": [
+    {
+      "id": "gameplay-ci-02",
+      "status": "PASS_TECHNICAL_FIX_VISUAL",
+      "run": 41906244085,
+      "job": 126841546205,
+      "artifact": 13360839398,
+      "details": "96 actual render() matrix rows and eight sheets generated with separate sparse/dense compositions. Visual review still rejects dense Bosque and mobile scale."
+    }
+  ],
+  "external": [
+    {
+      "id": "entry-reference-http-admin",
+      "status": "FAIL",
+      "details": "Inherited python HTTP admin server step failed after Thalen evidence and artifact upload; no Thalen assertion failed."
+    }
+  ],
+  "historicalNotRepeated": [
+    "36-cell isolated renderer",
+    "four Convergencia isolated states",
+    "legacy fallback isolated renderer",
+    "atlas source generation",
+    "consumer runtime changes"
+  ]
+}
