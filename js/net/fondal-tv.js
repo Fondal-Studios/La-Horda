@@ -100,6 +100,8 @@ const FondalTV = (() => {
             },
             // EL HUD DE LA TELE (armarHud) y el mando: en el celular quedan solo los controles
             hud: armarHud,
+            // la imagen de La Horda para la tele mientras se eligen cosas en los menús (sincronizar)
+            portada: { imagen: "https://fondalstudios.com/img/la-horda-compartir.jpg" },
             hudCadaMs: 50,
             mando: { enCelular: EN_CELULAR }
           });
@@ -112,10 +114,16 @@ const FondalTV = (() => {
   }
 
   /** Jugando (state "playing") el celular hace de mando; en los menús, la Sala, los refuerzos y la pausa, false. */
+  let portadaAntes = null;
   function sincronizar(){
-    if(!tele || !tele.activa){ enPartidoAntes = null; return; }
-    const enPartido = typeof state !== "undefined" && state === "playing";
+    if(!tele || !tele.activa){ enPartidoAntes = null; portadaAntes = null; return; }
+    const estado = typeof state !== "undefined" ? state : "";
+    const enPartido = estado === "playing";
     if(enPartido !== enPartidoAntes){ enPartidoAntes = enPartido; tele.enPartido(enPartido); }
+    // en los menús el canvas no dibuja nada y la tele quedaba negra: ahí la tele muestra la portada de La Horda
+    // (en la pausa no: se ve la partida quieta)
+    const portada = !enPartido && estado !== "paused";
+    if(portada !== portadaAntes && typeof tele.portada === "function"){ portadaAntes = portada; tele.portada(portada); }
   }
 
   /** Abre el panel "Jugar en la tele" (elegir la tele, o dejar de transmitir). */
