@@ -1,0 +1,107 @@
+name: Madre Espora authored animation
+on:
+  pull_request:
+    paths:
+      - 'js/arenas/micelial/**'
+      - 'tools/art/micelial/**'
+      - 'tools/micelial/**'
+      - 'assets/sprites/arenas/micelial/**'
+      - '.github/workflows/madre-espora-animation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  mother-animation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25 # Expanded ROI oracle, spell matrix and continuous encounter evidence.
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: node tools/art/micelial/test-mother-animation.cjs
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - run: node tools/art/micelial/test-mother-browser.cjs
+      - run: node tools/art/micelial/test-mother-pilot.cjs
+      - run: node tools/art/micelial/test-mother-core-equivalence.cjs
+      - run: node tools/art/micelial/test-mother-core-layer.cjs
+      - run: node tools/art/micelial/test-mother-death.cjs
+      - run: node tools/art/micelial/test-mother-reveal.cjs
+      - run: node tools/art/micelial/test-mother-warning-routes.cjs
+      - run: node tools/art/micelial/test-mother-default-loading.cjs
+      - run: node tools/art/micelial/test-mother-full-encounter.cjs
+      - run: node tools/bosses/t_boss_arena_hooks.js
+      - name: Existing non-boss camera and viewport regressions
+        run: |
+          python3 -m http.server 8772 --bind 127.0.0.1 >/tmp/mother-camera-http.log 2>&1 &
+          SERVER=$!
+          trap "kill $SERVER" EXIT
+          sleep 1
+          REGRESSION_BASE_URL=http://127.0.0.1:8772 node tools/regression/t_camera.js . /tmp/mother-browser/camera-regression
+      - name: Fungal arena and Mother lifecycle regressions
+        run: |
+          python3 -m http.server 8771 --bind 127.0.0.1 >/tmp/mother-http.log 2>&1 &
+          SERVER=$!
+          trap "kill $SERVER" EXIT
+          sleep 1
+          mkdir -p /tmp/mother-browser
+          git rev-parse HEAD | tee /tmp/mother-browser/candidate-revision.txt
+          sha256sum tools/micelial/{t_micelial,sim-helpers}.js | tee /tmp/mother-browser/candidate-harness.sha256
+          set -o pipefail
+          MIC_TEST_SEED=137260 node tools/micelial/t_micelial.js 2>&1 | tee /tmp/mother-browser/candidate-regression.log
+      - name: Compare fungal regressions against full baseline
+        if: ${{ !cancelled() }}
+        continue-on-error: true
+        run: |
+          # Compare the COMPLETE pinned baseline, not a hybrid with two old files.
+          BASELINE=34ac2852154035b97e53c4807a0a20ee289a40b2
+          ROOT="$PWD"
+          mkdir -p /tmp/mother-browser
+          git fetch --depth=1 origin "$BASELINE"
+          git worktree add --detach /tmp/mother-baseline "$BASELINE"
+          cp tools/micelial/{t_micelial,sim-helpers}.js /tmp/mother-baseline/tools/micelial/
+          cd /tmp/mother-baseline
+          git rev-parse HEAD | tee /tmp/mother-browser/baseline-revision.txt
+          sha256sum tools/micelial/{t_micelial,sim-helpers}.js | tee /tmp/mother-browser/baseline-harness.sha256
+          cmp /tmp/mother-browser/{candidate,baseline}-harness.sha256
+          python3 -m http.server 8773 --bind 127.0.0.1 >/tmp/mother-baseline-http.log 2>&1 &
+          SERVER=$!
+          trap 'kill $SERVER 2>/dev/null || true' EXIT
+          sleep 1
+          set -o pipefail
+          set +e
+          NODE_PATH="$ROOT/node_modules" SE_BASE_URL=http://127.0.0.1:8773 MIC_TEST_SEED=137260 node tools/micelial/t_micelial.js 2>&1 | tee /tmp/mother-browser/baseline-regression.log
+          BASELINE_STATUS=${PIPESTATUS[0]}
+          set -e
+          # Crashes / fixture errors are INCONCLUSIVE, never known-baseline passes.
+          python3 - <<'PYCOMPARE'
+          import json, pathlib, re
+          root = pathlib.Path('/tmp/mother-browser')
+          results = {}
+          for label in ('candidate', 'baseline'):
+              path = root / (label + '-regression.log')
+              log = path.read_text() if path.exists() else ''
+              results[label] = {
+                  'complete': bool(re.search(r'^(OK|[0-9]+ FALLAS)$', log, re.M)),
+                  'failures': re.findall(r'^FAIL (\S+)', log, re.M),
+              }
+          results['classification'] = 'INCONCLUSIVE'
+          if all(r['complete'] for r in results.values() if isinstance(r, dict)):
+              results['candidate_only'] = sorted(set(results['candidate']['failures']) - set(results['baseline']['failures']))
+              results['classification'] = ('BOTH_PASS' if not results['candidate']['failures'] and not results['baseline']['failures']
+                  else 'CANDIDATE_REGRESSIONS' if results['candidate_only'] else 'SAME_OR_FEWER_FAILURES_NOT_A_PASS')
+          text = json.dumps(results, indent=2)
+          (root / 'fungal-comparison.json').write_text(text)
+          print(text)
+          PYCOMPARE
+          exit "$BASELINE_STATUS"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: madre-espora-runtime-evidence
+          path: /tmp/mother-browser/
+          retention-days: 14

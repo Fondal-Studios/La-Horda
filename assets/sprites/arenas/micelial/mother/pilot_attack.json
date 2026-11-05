@@ -1,0 +1,59 @@
+{
+  "source_sha256": "d767d389df45b3103d52165398b43a990c31b9cf91187f85c5fac537505a9655",
+  "source_file": "exec-4a59a1d1-ffd3-4315-980a-b47675fdf5b2.png",
+  "cells": {
+    "w": 480,
+    "h": 496,
+    "cols": 3,
+    "anchor": 0.9516129032258065,
+    "scale": 1
+  },
+  "poses": [
+    "anticipation",
+    "impact",
+    "recovery"
+  ],
+  "frames": [
+    {
+      "source_component": 1,
+      "source_bbox": [
+        8,
+        59,
+        645,
+        782
+      ],
+      "output_wh": [
+        382,
+        434
+      ]
+    },
+    {
+      "source_component": 2,
+      "source_bbox": [
+        617,
+        59,
+        1331,
+        781
+      ],
+      "output_wh": [
+        428,
+        433
+      ]
+    },
+    {
+      "source_component": 3,
+      "source_bbox": [
+        1302,
+        62,
+        1944,
+        782
+      ],
+      "output_wh": [
+        385,
+        432
+      ]
+    }
+  ],
+  "status": "UNAPPROVED_PHASE1_PILOT",
+  "extraction": "three largest disjoint alpha>32 components,2pxoriginalalphaedge,uniform0.6scale,fixedbaseline472"
+}
