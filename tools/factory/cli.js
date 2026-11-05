@@ -12,7 +12,8 @@ try {
     console.log('Draft created; not registered or approved. Complete manifest before validation.');
   } else if (command === 'duplicity') {
     const r = spawnSync('node', ['tools/factory/duplicity.js', ...(arg ? [arg] : [])], {cwd:ROOT, stdio:'inherit', timeout:600000});
-    process.exitCode = r.status || 0;
+    process.exitCode = r.error || r.status === null ? 1 : r.status;
+    if (r.error || r.signal) console.error(`duplicity: FAIL (${r.error?.message || r.signal})`);
   } else if (command === 'validate') {
     const errors = validate(JSON.parse(fs.readFileSync(arg, 'utf8')));
     console.log(JSON.stringify({status:errors.length ? 'INCOMPLETE' : 'STRUCTURAL_PASS', errors, note:'STRUCTURAL_PASS is not visual, gameplay or release approval.'}, null, 2));
@@ -32,7 +33,8 @@ try {
     // FORJA DE ELEMENTOS del Pintor (tools/art/painter/forge.py): piezas nuevas por datos (coronas, capas, alas...).
     // element list | element new <nombre> --kind <plantilla> | element preview <nombre> [--on <donante|ficha>] | element check [nombres]
     const r = spawnSync('python3', ['tools/art/painter/forge.py', ...process.argv.slice(3)], {cwd:ROOT, stdio:'inherit', timeout:600000});
-    process.exitCode = r.error ? 1 : (r.status || 0);
+    process.exitCode = r.error || r.status === null ? 1 : r.status;
+    if (r.error || r.signal) console.error(`element: FAIL (${r.error?.message || r.signal})`);
   } else if (command === 'gate') {
     const names = arg === 'all' ? Object.keys(GATES) : [arg];
     if (names.some(n => !GATES[n])) throw Error('Unknown gate. Use: ' + Object.keys(GATES).join(', ') + ', all');
