@@ -36,8 +36,6 @@
    (el contenido se desvanece bajo ella, no queda "cortado" por un botón flotante) y la Pausa se reorganiza en dos columnas
    para que Continuar / Abandonar entren sin desplazar. Solo presentación: mismos botones, ids y handlers. */
 @media (max-height:520px){
-  #prep-screen:not(.hidden){ padding-bottom:12px; bottom:56px; height:auto; }   /* el área con scroll termina SOBRE la barra de Comenzar: nada queda debajo de ella */
-  #prep-screen:not(.hidden)::after{ content:""; position:fixed; left:0; right:0; bottom:0; height:56px; z-index:39; pointer-events:none; background:rgba(10,6,4,.96); border-top:1px solid #3a2415; }
   #pause-screen.screen:not(.hidden){ display:grid; grid-template-columns:1fr 1fr; align-content:center; justify-items:stretch; gap:6px 12px; padding:8px 24px; }
   #pause-screen .arena-title, #pause-screen .pause-audio, #pause-screen #stats-panel{ grid-column:1 / -1; justify-self:center; }
   #pause-screen .pause-note{ grid-column:1 / -1; justify-self:center; max-width:640px; margin:0; font-size:.62rem; line-height:1.15; text-align:center; }
@@ -58,3 +56,31 @@
   #pause-screen:has(#tactical-panel) #quit-btn{ grid-column:3; grid-row:5; }
   #pause-screen:has(#tactical-panel) #stats-panel{ grid-column:2 / 4; grid-row:6; max-width:none; margin:6px 0 0; }
 }
+
+
+/* La acción queda en una fila propia: nunca dentro del área que se desplaza.
+   No usar fixed dentro del scroll (recorte en móviles), ni reservar un alto
+   fijo para textos online que pueden ocupar más de un renglón. */
+#prep-screen.screen:not(.hidden){
+  display:flex; flex-direction:column; align-items:stretch;
+  inset:0; height:auto; padding:0; overflow:hidden;
+}
+#prep-screen .prep-content{
+  flex:1 1 auto; min-height:0; overflow-y:auto; overflow-x:hidden;
+  display:flex; flex-direction:column; align-items:center;
+  padding:calc(10px + env(safe-area-inset-top,0px)) calc(18px + env(safe-area-inset-right,0px)) 12px calc(18px + env(safe-area-inset-left,0px));
+  -webkit-overflow-scrolling:touch; overscroll-behavior:contain;
+}
+#prep-screen .prep-content > *{ flex-shrink:0; }
+#prep-screen .prep-actions{
+  flex:0 0 auto; display:flex; justify-content:center;
+  padding:8px max(18px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-left,0px));
+  background:#100a06; border-top:2px solid #815323;
+}
+#prep-screen #prep-start-btn{
+  position:relative; inset:auto; transform:none; margin:0;
+  width:100%; max-width:740px; min-height:52px; padding:10px 16px;
+  font-size:20px; line-height:1.2; white-space:normal; overflow-wrap:anywhere;
+}
+#prep-screen #prep-start-btn:not(:disabled):active{ transform:translateY(2px); }
+#prep-screen #prep-start-btn:focus-visible{ outline:3px solid #fff; outline-offset:3px; }
