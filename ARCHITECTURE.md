@@ -221,7 +221,9 @@ va en `ITEM_ICON_ART`) y ficha del objeto `js/ui/item-preview.js`. Assets pendie
 - `js/net/fondal-tv.js` — **Jugar en la tele (Fondal TV)**, igual que en Padelazo y FreeBird: el ícono de la tele
   en la esquina del menú principal (`#hub-tele-btn`, solo si el navegador puede) abre el panel de la pieza común
   `fondalstudios.com/tv/fondal-tv.js` (repositorio FreeBird), que manda el canvas como video y el sonido a la tele
-  por el WiFi, y copia a la tele el HTML de encima (HUD, carteles, menús) menos los controles táctiles. Jugando
+  por el WiFi. Encima, la tele dibuja con sus propias piezas el **HUD de la tele** (`armarHud`): tus barras, los
+  aliados, el jefe, nivel/vencidos/tiempo, la Definitiva y los carteles, leídos de lo que el juego ya puso en pantalla
+  (unos pocos datos, 20 veces por segundo como mucho). Jugando
   (`state === "playing"`, avisado por `setState` con `fondalTvOnState`) el celular hace de mando: solo se ven el
   joystick, los botones y la pausa. Mientras transmite, el buffer del canvas se dibuja a la medida del video
   (`teleMedidaLienzo()` en `js/core/canvas.js`; caja, cámara y controles no cambian) y el sonido sale por la tele
