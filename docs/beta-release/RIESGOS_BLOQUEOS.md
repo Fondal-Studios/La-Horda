@@ -16,3 +16,7 @@
 - Protección de rama `main`: no consultada (MCP no la expone); merges requieren permisos y CI verde.
 ## Dependencias
 Subsistema Fondal TV/mando de celular: asignado a otro desarrollador; no se toca.
+
+## Hallazgos de QA de red (2026-11-06)
+- **K7 (crítico, a diagnosticar):** `e2e.js 1` (solitario con bots) y `campaign-gate.js` fallan idéntico en `main`: o los tests están desactualizados respecto del hub/flujo actual o hay una regresión previa en el arranque en solitario. Hasta diagnosticarlo no se puede afirmar que la Campaña en solitario esté verificada.
+- **K8 (medio):** `e2e.js 4` intermitente (`xp.client1_gained`): posible carrera en la sincronización de XP del 4º jugador.

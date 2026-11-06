@@ -8,3 +8,17 @@ Nota: la rama `integration/beta-20261101` ya documenta que #241 fue **rechazado 
 
 ## 2026-11-06 · #236 Gélida (en rama de trabajo)
 t_hielo_enemy_lifecycle: sin fix FAIL interrupted/dead/replaced; con fix PASS 5/5. t_hielo_roster_smoke: 13 tipos, 0 no finitos, 0 errores.
+
+## 2026-11-06 · Batería de red/cooperativo (`bash tools/release/net-battery.sh <salida>`) · rama de trabajo @ 83aa547a · sitio estático + relay REAL locales
+| Prueba | Resultado | Clasificación |
+|---|---|---|
+| `e2e.js 2` (2 humanos) | SUMMARY fails=0 | **PASS real** |
+| `e2e.js 3` (3 humanos) | SUMMARY fails=0 | **PASS real** |
+| `e2e.js 4` (4 humanos) | 1ª corrida: 1 FAIL (`xp.client1_gained`: before=after=3403); reintento: fails=0 | **FLAKY** (1 fallo, 1 pasada) — investigar la sincronización del XP del cliente 1 |
+| `e2e.js 1` (1 humano + bots) | FAIL ×3 (excepción `heroes` indefinido tras «Comenzar»: la partida no llega a `playing` en 6 s) | **FAIL real, PREEXISTENTE**: falla idéntico en `main` ef415626. Puede ser el test (espera 4 héroes/arena fija) o el arranque en solitario; sin diagnosticar |
+| `endless_coop.js` (Horda Infinita cooperativa) | OK | **PASS real** |
+| `ciudad_coop.js` (Campaña, arena 01, cooperativo) | OK | **PASS real** |
+| `disconnect.js` (desconexión de anfitrión/invitados) | SUMMARY fails=0 | **PASS real** |
+| `boons_coop.js` | SUMMARY OK fails=0 | **PASS real** |
+| `campaign-gate.js` | FAIL: `page.click('#mainmenu-jugar-btn')` — el botón «no es visible» | **FAIL real, PREEXISTENTE**: idéntico en `main`; el test apunta a un tile del hub que ya no se ve (test desactualizado respecto del hub actual o regresión previa); sin diagnosticar |
+No cubierto: reconexión tras caída de red del jugador, redes inestables/latencia, 5º jugador, soak, dispositivos reales. Estos resultados NO prueban «Campaña completa y terminable» ni estabilidad prolongada.
