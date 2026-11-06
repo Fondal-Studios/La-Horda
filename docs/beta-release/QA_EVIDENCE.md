@@ -26,3 +26,5 @@ No cubierto: reconexión tras caída de red del jugador, redes inestables/latenc
 ### Seguimiento (10:23 UTC)
 - `campaign-gate.js`: **causa del FAIL = test desactualizado** (tras elegir el campeón de regalo el juego entra directo a la partida por el «primer minuto limpio»; el hub no aparece y `#mainmenu-jugar-btn` queda oculto; sonda: `state=playing`, ninguna pantalla visible). Se adaptó el test (volver al menú por estado antes del selector, igual que otros tests) y ahora **PASS real**: solo la Ciudad abierta en una partida nueva; orden de desbloqueo Ciudad→Fábrica→…→Abismo→Minas→Infernal; el Abismo abre Minas y no la Infernal; **no se puede crear una sala online en una arena bloqueada** (anti-exploit).
 - `e2e.js 1`: sigue FAIL (mismo síntoma probable: espera el flujo viejo del hub/sala); sin adaptar todavía.
+
+- `tools/lanes/test-sides.js`: **FLAKY** (2026-11-06): con Tanque 1 falla de 3; en el HEAD limpio 1 de 2 (y 0 de 2 en otra tanda). Falla de píxel del color de aliado en Cristales, sensible a la carga. No bloquea bloques de arte; queda como deuda de estabilidad del test.

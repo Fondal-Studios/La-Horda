@@ -72,3 +72,7 @@ Si lo que viste «pésimamente producido» de Ilkan fue **el Coloso**, una **ski
 ## Bloques aceptados
 1. **Guerrero (Kael)** — cuerpo fiel al Códice (36 cuadros, 14 estados). Evidencia: `guerrero_antes_despues.png`.
 2. **Mago (Thalen)** — cuerpo Códice de 36 estados rescatado de #270. Evidencia: `mago_antes_despues.png`.
+3. **Tanque (Aldric)** — cuerpo Códice de 36 estados rescatado de #241. Evidencia: `tanque_antes_despues.png`.
+
+## Devueltos al reparador
+- **Aelith** y **Morveth** (de #241): sus cromas de paleta deben recolorear el cuerpo NUEVO; ver instrucción en RESULTADOS_PR.md. Reparar `cromas.js` una vez los desbloquea a ambos.

@@ -40,3 +40,5 @@ Orden: Guerrero ✅ → Tanque → Aelith → Morveth (los tres siguen solo en #
 Herramienta del pintor: `node tools/art-world/runway-guardian.js <guardián> <intento> "<prompt con @codex y @pose>" <codex.png> [pose.png]` (8 cr por imagen; el pintor genera estático de alta fidelidad: sirve para conceptos y cuadros sueltos, no para animar un atlas completo).
 
 **Bloques de guardianes aceptados:** Guerrero (#241), Mago (#270). Siguiente: Tanque, Aelith, Morveth (de #241, uno por uno; vigilar cromas), Aelith también tiene #267 (lanzamiento de espalda), luego Coloso de Ilkan.
+
+**Bloques de guardianes aceptados:** Guerrero, Mago, Tanque. **Devueltos:** Aelith y Morveth (arreglar `js/systems/cromas.js` para recolorear el atlas del cuerpo nuevo; instrucción exacta en RESULTADOS_PR.md). Luego: Aelith #267 (lanzamiento de espalda), Coloso de Ilkan, skins/cromas, jefes y enemigos, arenas. `tools/art-world/try-codex-body.sh <champ> <puerto> <salida>` evalúa un cuerpo; correr de a uno (en paralelo dan falsos fallos).
