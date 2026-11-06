@@ -144,5 +144,36 @@ class ArchitectTests(unittest.TestCase):
         self.assertEqual(pipeline.check(Path(__file__).parent / 'specs' / 'vesper.json'), [])
 
 
+class OverlayTests(unittest.TestCase):
+    def test_compose_puts_overlay_on_top_only_where_opaque(self):
+        base = np.zeros((4, 4, 4), np.uint8); base[..., 3] = 255; base[..., 0] = 10
+        over = np.zeros((4, 4, 4), np.uint8); over[1, 1] = (200, 100, 50, 255)
+        out = pipeline.compose(base, over)
+        self.assertEqual(tuple(out[1, 1]), (200, 100, 50, 255))
+        self.assertEqual(tuple(out[0, 0]), (10, 0, 0, 255))
+
+    def test_overlay_mode_only_touches_edge_knobs(self):
+        ab = dict(RING, mode='overlay', params={'fill': 0, 'rim': 2})
+        painter.apply_ops(ab, [{'knob': 'fill', 'add': 0.06, 'why': ''}, {'knob': 'motif_on', 'set': 1, 'why': ''}, {'knob': 'rim', 'add': 1, 'why': ''}])
+        self.assertEqual(ab['params']['fill'], 0)
+        self.assertEqual(ab['params']['motif_on'], 1 if False else painter.KNOBS['motif_on'][0])
+        self.assertEqual(ab['params']['rim'], 3)
+
+    def test_overlay_radius_is_fixed_in_anticipation(self):
+        S = 64
+        p = {k: v[0] for k, v in painter.KNOBS.items()}
+        p.update(fill=0, ticks=0, sparks=0, flash=0, glyph_on=0, motif_on=0)
+        f_ov = painter.paint_ring(S, 0.0, p, None, overlay=True)
+        f_no = painter.paint_ring(S, 0.0, p, None, overlay=False)
+        far = lambda f: np.hypot(*(np.argwhere(f > 0).T + .5 - S / 2)).max()
+        self.assertGreater(far(f_ov), far(f_no) + 5)
+
+    def test_sfa_module_shares_identical_layers_across_themes(self):
+        fr = painter.frames_for('t', dict(RING, size=32))
+        src = architect.sfa_module_source([('fire', 32, 32, 32, fr, 'nova'), ('frost', 32, 32, 32, fr, 'nova')])
+        self.assertEqual(src.count('abaSfaOverlay('), 1)
+        self.assertIn('["fire", "frost"]', src)
+
+
 if __name__ == '__main__':
     unittest.main()

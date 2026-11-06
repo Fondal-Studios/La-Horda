@@ -39,6 +39,14 @@ def load_baseline(dirp, ab, ramp):
     return frames
 
 
+def compose(base, over):
+    """Superpone los píxeles opacos de `over` sobre `base` (ambos RGBA, alfa 0/255)."""
+    out = base.copy()
+    m = over[..., 3] > 0
+    out[m] = over[m]
+    return out
+
+
 def sheet_png(frames_rgba, path, scale=3):
     h, w = frames_rgba[0].shape[:2]
     bg = Image.new('RGBA', (w * len(frames_rgba), h), (58, 72, 52, 255))
@@ -76,12 +84,18 @@ def run(spec_path, baseline_dir=None, integrate=True, rounds=canon.MAX_ROUNDS, o
         rdir.mkdir(parents=True, exist_ok=True)
         painted = {i: painter.frames_for(g, abil[i]) for i in abil}
         rgba = {i: [canon.index_to_rgba(f, canon.ramp_for(work, abil[i])) for f in fr] for i, fr in painted.items()}
+        overlay_only = {}
+        for i, a in abil.items():   # modo overlay: el arte candidato es el arte ACTUAL con el borde unificado encima
+            if a.get('mode') == 'overlay':
+                bf = load_baseline(bdir, a, None)
+                overlay_only[i] = rgba[i]
+                rgba[i] = [compose(bf[k], rgba[i][k]) for k in range(len(rgba[i]))]
         sigs = {i: np.array(evaluator._signature(rgba[i][int(np.stack([f[..., 3] > 0 for f in rgba[i]]).sum((1, 2)).argmax())])) for i in abil}
         instr = []
         for i in pending:
             a = abil[i]
             others = {k: v for k, v in sigs.items() if k != i and abil[k]['kind'] == a['kind']}
-            rep = evaluator.evaluate(rgba[i], a, canon.ramp_for(work, a), others or None, base.get(i), base_crit.get(i), base_met.get(i))
+            rep = evaluator.evaluate(rgba[i], a, canon.ramp_for(work, a), others or None, base.get(i), base_crit.get(i), base_met.get(i), overlay_only.get(i))
             rep = evaluator.verdict(rep, i in base)
             sheet_png(rgba[i], rdir / f'{i}.png')
             st = state[i]
@@ -150,20 +164,35 @@ def check(spec_path):
         others = {k: sig(k) for k in abil if k != i and k in approved and abil[k]['kind'] == a['kind']}
         rep = evaluator.evaluate(rgba[i], a, canon.ramp_for(final, a), others or None)
         rep = evaluator.verdict(rep, False)
+        if a.get('mode') == 'overlay':   # una capa superpuesta se mide en técnica y borde; riqueza/cobertura/centro vienen del arte del motor
+            tech = ('alpha', 'palette', 'hygiene', 'edge', 'contrast', 'motion')
+            bad = [k for k in tech if rep['points'][k] < canon.MIN_CRITERION * evaluator.WEIGHTS[k]]
+            rep['status'] = 'PASS' if not bad and not [h for h in rep['hard_fails'] if 'alfa' in h or 'paleta' in h or 'radio' in h] else 'FAIL'
+            rep['reasons'] = [f'criterio bajo: {evaluator.LABEL[k]}' for k in bad] + rep['hard_fails']
         if rep['status'] != 'PASS':
             errors.append(f'{g}/{i}: ya no pasa el canon: ' + '; '.join(rep['reasons']))
         results[i] = {'status': 'PASS' if rep['status'] == 'PASS' else 'FAIL', 'score': rep['score'], 'frames': painted[i]}
+    if final.get('engine') == 'sfa':   # una sola capa compartida: se verifica contra el módulo combinado
+        mod = canon.ROOT / 'js' / 'champions' / 'vfx-unified' / 'sfa_overlay.js'
+        want = architect.sfa_module_source(architect.sfa_collect(sorted((canon.HERE / 'specs').glob('sfa_*.json'))))
+        if not mod.exists() or mod.read_text(encoding='utf-8') != want:
+            errors.append('sfa_overlay.js no coincide con lo que pintan las fichas sfa_* finales: repintar con pipeline.py run-sfa (no editar a mano)')
+        idx = (canon.ROOT / 'index.html').read_text(encoding='utf-8')
+        for f in ('sfa-runtime.js', 'sfa_overlay.js'):
+            if f'js/champions/vfx-unified/{f}' not in idx:
+                errors.append(f'index.html no carga vfx-unified/{f}')
+        return errors
     mod = canon.ROOT / 'js' / 'champions' / 'vfx-unified' / f'{g}.js'
     if not mod.exists():
         errors.append(f'falta {mod}')
     else:
-        strip = lambda s: [l for l in s.splitlines() if l.strip().startswith(("abaReplace(", "'"))]
+        strip = lambda s: [l for l in s.splitlines() if l.strip().startswith(("abaReplace(", "abaSfaOverlay(", "'"))]
         want = strip(architect.module_source(g, final, results))
         got = strip(mod.read_text(encoding='utf-8'))
         if want != got:
             errors.append(f'{mod.name} no coincide con lo que pinta la ficha final: repintar con pipeline.py run (no editar a mano)')
     idx = (canon.ROOT / 'index.html').read_text(encoding='utf-8')
-    for f in ('runtime.js', f'{g}.js'):
+    for f in (('sfa-runtime.js' if final.get('engine') == 'sfa' else 'runtime.js'), f'{g}.js'):
         if f'js/champions/vfx-unified/{f}' not in idx:
             errors.append(f'index.html no carga vfx-unified/{f}')
     return errors
@@ -179,9 +208,26 @@ def main():
     r.add_argument('--no-smoke', action='store_true')
     r.add_argument('--rounds', type=int, default=canon.MAX_ROUNDS)
     r.add_argument('--base-url', default='http://127.0.0.1:8750/')
+    rs = sub.add_parser('run-sfa')
+    rs.add_argument('--no-integrate', action='store_true')
+    rs.add_argument('--no-smoke', action='store_true')
+    rs.add_argument('--base-url', default='http://127.0.0.1:8750/')
     c = sub.add_parser('check')
     c.add_argument('spec')
     a = ap.parse_args()
+    if a.cmd == 'run-sfa':
+        specs = sorted((canon.HERE / 'specs').glob('sfa_*.json'))
+        tot = {'pass': 0, 'esc': 0, 'keep': 0}
+        for sp in specs:
+            s = run(sp, None, False, canon.MAX_ROUNDS)
+            tot['pass'] += len(s['passed']); tot['esc'] += len(s['escalated']); tot['keep'] += len(s['keep_current'])
+            print(f"{sp.stem}: PASS {s['passed']} · ESCALADAS {s['escalated']} · CONSERVAR {s['keep_current']}")
+        print('TOTAL', tot)
+        if not a.no_integrate:
+            ok, detail = architect.integrate_sfa(specs, smoke=not a.no_smoke, base_url=a.base_url)
+            print('arquitecto:', detail.splitlines()[0] if detail else '')
+            sys.exit(0 if ok else 1)
+        sys.exit(0)
     if a.cmd == 'check':
         errs = check(Path(a.spec))
         print('\n'.join(errs) or 'CHECK OK: ' + a.spec)

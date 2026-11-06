@@ -49,3 +49,19 @@ excesiva, paleta ajena, borde que no llega al radio, animación estática.
 **Límites (honestos):** el puntaje mide contrato técnico y legibilidad, no belleza. No sustituye la revisión visual humana
 (`docs/ART_BIBLE.md` §8) ni los gates de rendimiento y multijugador. Solo cubre decales y rayos de suelo; los motivos pequeños
 (partículas), auras, íconos y sprites de personaje quedan fuera de este circuito. No toca daño, alcance, duración ni hitboxes.
+
+## Familia skill-fx-a (modo híbrido)
+
+`js/champions/skill-fx-a/` hornea su arte por `tipo|tema|tamaño` y cada tema ya tiene siluetas y motivos con carácter (hexágono de escarcha,
+triángulo del hilo…). Ahí el Pintor **no gana** pintando todo de nuevo (sus retículas se parecen entre sí), así que trabaja en **modo
+overlay**: conserva el arte del motor y superpone, en el radio real, el borde unificado (aro con luz arriba-izquierda, contorno 1 px,
+marcas). El Evaluador mide la composición contra el arte actual, con la técnica medida sobre la capa propia, comparando en el mismo
+cuadro de impacto y sin poder cargar el centro. Cubre solo `nova` de los 13 temas genéricos (prism, glitch, crystal, hunt, blood, sand,
+thread, scarab, fire, frost, storm, alchemy, ink) en tamaños 64/80/96; conos (dependen del arco), zonas, rayos, ráfagas, auras y los
+guardianes con receta propia (aelith, baltra, brakk, brasa, dariel, eslabon, facu_gm, farolero, libertador, maura, morveth) quedan como están.
+
+```sh
+python3 tools/art/ability-art/gen-sfa-specs.py                 # fichas sfa_<tema>.json
+node tools/art/ability-art/capture-baseline.js tools/art/ability-art/specs/sfa_fire.json docs/art-gate/ability-art/sfa_fire/baseline
+python3 tools/art/ability-art/pipeline.py run-sfa              # lazo de todos los temas + un solo módulo compartido (sfa_overlay.js)
+```

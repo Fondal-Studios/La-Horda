@@ -16,6 +16,18 @@ const kvbS = R => Math.max(24, Math.min(128, Math.round(2 * R / 4.4 / 4) * 4));
   await page.waitForFunction(() => typeof KVB !== 'undefined' && typeof kvbDecalFrames === 'function', null, {timeout: 120000});
   await page.waitForTimeout(1500);
   const report = {};
+  if (spec.engine === 'sfa') {   // motor skill-fx-a: sfaBake(tipo, tema, tamaño) → tira de cuadros
+    await page.waitForFunction(() => typeof sfaBake === 'function', null, {timeout: 60000});
+    for (const ab of spec.abilities) {
+      const {art, theme, size} = ab.sfa;
+      const data = await page.evaluate(([art, theme, size]) => { const b = sfaBake(art, theme, size); return b ? {w: b.w, h: b.h, n: b.n, png: b.cv.toDataURL('image/png')} : null; }, [art, theme, size]);
+      if (!data) { report[ab.id] = 'sin arte base'; continue; }
+      fs.writeFileSync(path.join(out, ab.id + '.png'), Buffer.from(data.png.split(',')[1], 'base64'));
+      report[ab.id] = {name: ab.baseline, frames: data.n, w: data.w, h: data.h};
+    }
+    fs.writeFileSync(path.join(out, 'baseline.json'), JSON.stringify(report, null, 1));
+    console.log(JSON.stringify(report)); await browser.close(); return;
+  }
   for (const ab of spec.abilities) {
     const name = ab.baseline || ab.baseline_beam; if (!name) continue;
     const S = ab.size || kvbS(ab.radius || 100);

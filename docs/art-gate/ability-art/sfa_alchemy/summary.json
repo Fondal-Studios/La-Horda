@@ -1,0 +1,62 @@
+{
+ "guardian": "sfa_alchemy",
+ "passed": [
+  "nova64",
+  "nova80",
+  "nova96"
+ ],
+ "escalated": [],
+ "keep_current": [],
+ "state": {
+  "nova64": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 98.6,
+     "status": "PASS",
+     "improvement": 11.8,
+     "reasons": []
+    }
+   ]
+  },
+  "nova80": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 96.6,
+     "status": "PASS",
+     "improvement": 10.8,
+     "reasons": []
+    }
+   ]
+  },
+  "nova96": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 98.1,
+     "status": "PASS",
+     "improvement": 11.3,
+     "reasons": []
+    }
+   ]
+  }
+ },
+ "baseline": {
+  "nova64": 86.8,
+  "nova80": 85.8,
+  "nova96": 86.8
+ },
+ "log": [
+  "ronda 1: nova64 PASS 98.6 (arte actual 86.8, +11.8)",
+  "ronda 1: nova80 PASS 96.6 (arte actual 85.8, +10.8)",
+  "ronda 1: nova96 PASS 98.1 (arte actual 86.8, +11.3)"
+ ],
+ "integration": null
+}

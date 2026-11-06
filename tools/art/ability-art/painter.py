@@ -96,8 +96,11 @@ def apply_ops(ability, ops):
             hard = [o for o in group if o.get('hard')]
             group = hard or group[:1]
         keep += group
+    OVERLAY_KNOBS = {'rim', 'ticks', 'tick_len', 'highlight_arc', 'impact_at', 'fade_to', 'deco'}   # un borde superpuesto no toca el centro
     for op in keep:
         k = op.get('knob')
+        if ability.get('mode') == 'overlay' and k not in OVERLAY_KNOBS:
+            continue
         if k == 'glyph':
             new = op.get('set')
             if new in GLYPHS and ability.get('glyph') != new:
@@ -383,7 +386,7 @@ def motif_mask(name, S, rad, n, q, sector=False, half=0.85):
     return base, hi
 
 # ---------------------------------------------------------------- formas
-def paint_ring(S, q, p, glyph, idle=False, motif=None):
+def paint_ring(S, q, p, glyph, idle=False, motif=None, overlay=False):
     cv = Canvas(S)
     dx, dy, d, ang = cv.polar()
     R = S / 2 - 1.5
@@ -394,7 +397,7 @@ def paint_ring(S, q, p, glyph, idle=False, motif=None):
         fill = min(canon.FILL_CAP, p['fill'] * 0.6 + 0.04 * pulse)
         rim_lv, det_lv = 1.0, 1.0
     else:
-        rad = R * (0.5 + 0.5 * ease(ant)) if q < 0.22 else R
+        rad = R * (0.5 + 0.5 * ease(ant)) if (q < 0.22 and not overlay) else R
         in_hit = 0.22 <= q < hit_end
         th = 1 if q < 0.22 else (p['rim'] if in_hit else max(1, round(p['rim'] - 1 - post * 1.2)))
         fill = 0.1 * ant if q < 0.22 else (p['fill'] if in_hit else p['fill'] * (1 - post))
@@ -606,7 +609,8 @@ def frames_for(guardian, ab):
         return [paint_beam(W, H, f / (N - 1), f, p) for f in range(N)]
     S = int(ab.get('size') or canon.kvb_s(ab['radius']))
     if kind == 'ring':
-        return [paint_ring(S, f / (N - 1), p, glyph, motif=ab.get('motif')) for f in range(N)]
+        ov = ab.get('mode') == 'overlay'
+        return [paint_ring(S, f / (N - 1), p, glyph, motif=ab.get('motif'), overlay=ov) for f in range(N)]
     if kind == 'idle':
         return [paint_ring(S, f / N, p, glyph, idle=True, motif=ab.get('motif')) for f in range(N)]
     if kind == 'sector':

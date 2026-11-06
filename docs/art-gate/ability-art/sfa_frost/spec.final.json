@@ -1,0 +1,95 @@
+{
+ "guardian": "sfa_frost",
+ "engine": "sfa",
+ "title": "Tema frost (skill-fx-a) · mago",
+ "palette": [
+  "#0c1c2c",
+  "#3a78a8",
+  "#7ad0ff",
+  "#cff3ff",
+  "#ffffff"
+ ],
+ "abilities": [
+  {
+   "id": "nova64",
+   "kind": "ring",
+   "size": 64,
+   "frames": 12,
+   "glyph": null,
+   "sfa": {
+    "art": "nova",
+    "theme": "frost",
+    "size": 64
+   },
+   "baseline": "nova|frost|64",
+   "replaces": "nova|frost|64",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   },
+   "mode": "overlay"
+  },
+  {
+   "id": "nova80",
+   "kind": "ring",
+   "size": 80,
+   "frames": 12,
+   "glyph": null,
+   "sfa": {
+    "art": "nova",
+    "theme": "frost",
+    "size": 80
+   },
+   "baseline": "nova|frost|80",
+   "replaces": "nova|frost|80",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   },
+   "mode": "overlay"
+  },
+  {
+   "id": "nova96",
+   "kind": "ring",
+   "size": 96,
+   "frames": 12,
+   "glyph": null,
+   "sfa": {
+    "art": "nova",
+    "theme": "frost",
+    "size": 96
+   },
+   "baseline": "nova|frost|96",
+   "replaces": "nova|frost|96",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   },
+   "mode": "overlay"
+  }
+ ]
+}

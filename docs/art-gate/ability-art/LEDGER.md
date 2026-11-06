@@ -62,6 +62,136 @@ Integración: integradas ['burial', 'mound', 'mound_zone', 'soil_zone', 'faults'
 
 Integración: integradas ['updraft', 'feather_sky', 'lane']; humo OK: SMOKE OK saelis: updraft,feather_sky,lane
 
+## sfa_alchemy
+
+| habilidad | arte actual | arte nuevo | mejora | rondas | estado |
+|---|---|---|---|---|---|
+| nova64 | 86.8 | 98.6 | +11.8 | 1 | PASS |
+| nova80 | 85.8 | 96.6 | +10.8 | 1 | PASS |
+| nova96 | 86.8 | 98.1 | +11.3 | 1 | PASS |
+
+Integración: no corrida
+
+## sfa_blood
+
+| habilidad | arte actual | arte nuevo | mejora | rondas | estado |
+|---|---|---|---|---|---|
+| nova64 | 77.6 | 95.9 | +18.3 | 1 | PASS |
+| nova80 | 74.3 | 90.7 | +16.4 | 1 | PASS |
+| nova96 | 77.8 | 94.1 | +16.3 | 1 | PASS |
+
+Integración: no corrida
+
+## sfa_crystal
+
+| habilidad | arte actual | arte nuevo | mejora | rondas | estado |
+|---|---|---|---|---|---|
+| nova64 | 86.8 | 98.3 | +11.5 | 1 | PASS |
+| nova80 | 81.1 | 91.5 | +10.4 | 1 | PASS |
+| nova96 | 86.8 | 97.7 | +10.9 | 1 | PASS |
+
+Integración: no corrida
+
+## sfa_fire
+
+| habilidad | arte actual | arte nuevo | mejora | rondas | estado |
+|---|---|---|---|---|---|
+| nova64 | 78.2 | 96.8 | +18.6 | 1 | PASS |
+| nova80 | 76.0 | 92.9 | +16.9 | 1 | PASS |
+| nova96 | 78.6 | 94.8 | +16.2 | 1 | PASS |
+
+Integración: no corrida
+
+## sfa_frost
+
+| habilidad | arte actual | arte nuevo | mejora | rondas | estado |
+|---|---|---|---|---|---|
+| nova64 | 86.0 | 98.6 | +12.6 | 1 | PASS |
+| nova80 | 85.5 | 97.3 | +11.8 | 1 | PASS |
+| nova96 | 86.0 | 98.0 | +12.0 | 1 | PASS |
+
+Integración: no corrida
+
+## sfa_glitch
+
+| habilidad | arte actual | arte nuevo | mejora | rondas | estado |
+|---|---|---|---|---|---|
+| nova64 | 86.9 | 98.2 | +11.3 | 1 | PASS |
+| nova80 | 85.8 | 95.8 | +10.0 | 1 | PASS |
+| nova96 | 87.0 | 97.4 | +10.4 | 1 | PASS |
+
+Integración: no corrida
+
+## sfa_hunt
+
+| habilidad | arte actual | arte nuevo | mejora | rondas | estado |
+|---|---|---|---|---|---|
+| nova64 | 86.9 | 98.1 | +11.2 | 1 | PASS |
+| nova80 | 85.1 | 95.2 | +10.1 | 1 | PASS |
+| nova96 | 87.0 | 97.4 | +10.4 | 1 | PASS |
+
+Integración: no corrida
+
+## sfa_ink
+
+| habilidad | arte actual | arte nuevo | mejora | rondas | estado |
+|---|---|---|---|---|---|
+| nova64 | 77.6 | 96.0 | +18.4 | 1 | PASS |
+| nova80 | 74.1 | 91.2 | +17.1 | 1 | PASS |
+| nova96 | 77.8 | 94.2 | +16.4 | 1 | PASS |
+
+Integración: no corrida
+
+## sfa_prism
+
+| habilidad | arte actual | arte nuevo | mejora | rondas | estado |
+|---|---|---|---|---|---|
+| nova64 | 87.9 | 98.7 | +10.8 | 1 | PASS |
+| nova80 | 89.0 | 98.2 | +9.2 | 1 | PASS |
+| nova96 | 88.9 | 98.7 | +9.8 | 1 | PASS |
+
+Integración: no corrida
+
+## sfa_sand
+
+| habilidad | arte actual | arte nuevo | mejora | rondas | estado |
+|---|---|---|---|---|---|
+| nova64 | 86.9 | 99.3 | +12.4 | 1 | PASS |
+| nova80 | 85.0 | 96.2 | +11.2 | 1 | PASS |
+| nova96 | 87.0 | 98.5 | +11.5 | 1 | PASS |
+
+Integración: no corrida
+
+## sfa_scarab
+
+| habilidad | arte actual | arte nuevo | mejora | rondas | estado |
+|---|---|---|---|---|---|
+| nova64 | 87.1 | 98.2 | +11.1 | 1 | PASS |
+| nova80 | 85.4 | 95.1 | +9.7 | 1 | PASS |
+| nova96 | 87.4 | 97.6 | +10.2 | 1 | PASS |
+
+Integración: no corrida
+
+## sfa_storm
+
+| habilidad | arte actual | arte nuevo | mejora | rondas | estado |
+|---|---|---|---|---|---|
+| nova64 | 85.0 | 98.5 | +13.5 | 1 | PASS |
+| nova80 | 84.8 | 96.5 | +11.7 | 1 | PASS |
+| nova96 | 84.1 | 97.3 | +13.2 | 1 | PASS |
+
+Integración: no corrida
+
+## sfa_thread
+
+| habilidad | arte actual | arte nuevo | mejora | rondas | estado |
+|---|---|---|---|---|---|
+| nova64 | 86.2 | 95.7 | +9.5 | 1 | PASS |
+| nova80 | 86.5 | 96.3 | +9.8 | 1 | PASS |
+| nova96 | 86.3 | 96.3 | +10.0 | 1 | PASS |
+
+Integración: no corrida
+
 ## sira
 
 | habilidad | arte actual | arte nuevo | mejora | rondas | estado |
@@ -121,7 +251,7 @@ Integración: integradas ['nova', 'well', 'collapse']; humo OK: SMOKE OK vhal: n
 
 Integración: integradas ['quench', 'ash_step', 'vent']; humo OK: SMOKE OK zahra: quench,ash_step,vent
 
-**Total: 41/49 piezas aprobadas por el Evaluador.**
+**Total: 80/88 piezas aprobadas por el Evaluador.**
 
 Capturas antes/después en el motor real: `docs/art-gate/ability-art/<guardián>/ingame/` (arena bosque). Hoja de comparación: `<guardián>/compare.png`.
 

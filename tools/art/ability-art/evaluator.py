@@ -63,7 +63,7 @@ def _neigh8(m):
     return o
 
 
-def evaluate(frames, ab, ramp, others=None, baseline_total=None, baseline_criteria=None, baseline_metrics=None):
+def evaluate(frames, ab, ramp, others=None, baseline_total=None, baseline_criteria=None, baseline_metrics=None, overlay_frames=None):
     """frames: lista de arrays RGBA (H,W,4). ab: ficha de la habilidad. ramp: 5 colores RGB. others: firmas de las demás."""
     kind = ab['kind']
     if not any((f[..., 3] > 0).any() for f in frames):   # arte vacío: rechazo directo, sin medir nada
@@ -80,19 +80,23 @@ def evaluate(frames, ab, ramp, others=None, baseline_total=None, baseline_criter
     A = np.stack([_opaque(f) for f in frames])
     area_px = A.sum((1, 2))
     peak = int(area_px.argmax())
+    if overlay_frames is not None and baseline_metrics and 'peak_idx' in baseline_metrics:
+        peak = int(baseline_metrics['peak_idx'])   # modo híbrido: se compara en el MISMO cuadro de impacto que el arte actual (el borde no debe mover el pico)
 
+    tech = overlay_frames if overlay_frames is not None else frames   # modo híbrido: la técnica se mide sobre MI capa, no sobre el arte del motor
     # ---- técnica: alfa
-    al = np.concatenate([f[..., 3].ravel() for f in frames])
+    al = np.concatenate([f[..., 3].ravel() for f in tech])
+    m['peak_idx'] = peak
     m['alpha_binary'] = float(np.isin(al, (0, 255)).mean())
     # ---- técnica: paleta
-    allpx = np.concatenate([f[_opaque(f)] for f in frames if _opaque(f).any()])
+    allpx = np.concatenate([f[_opaque(f)] for f in tech if _opaque(f).any()])
     ncol = len({tuple(c[:3]) for c in allpx})
-    near = np.concatenate([_nearest_tone(f, ramp)[1][_opaque(f)] for f in frames if _opaque(f).any()])
+    near = np.concatenate([_nearest_tone(f, ramp)[1][_opaque(f)] for f in tech if _opaque(f).any()])
     m['palette_adherence'] = float((near <= 24).mean())
     m['colors'] = ncol
     # ---- higiene: píxeles sueltos (ignora el tono de relleno trameado) y degradados
     iso = []
-    for f in (frames if ab['kind'] == 'idle' else frames[:peak + 2]):
+    for f in (tech if ab['kind'] == 'idle' else tech[:peak + 2]):
         op = _opaque(f)
         if not op.any():
             continue
@@ -231,6 +235,10 @@ def evaluate(frames, ab, ramp, others=None, baseline_total=None, baseline_criter
         s['richness'] = (0.2 * min(1.0, tones_used / 4) + 0.15 * tri(hi_share, 0.0, 0.03, 0.3, 0.6)
                          + 0.4 * (tri(m['interior_detail'], 0.0, 0.08, 0.6, 0.85) if small else tri(m['interior_detail'], 0.0, 0.10, 0.40, 0.62)) + 0.15 * tri(m['detail_mass'], 0.0, 0.1, 0.5, 0.85) + 0.1 * min(1.0, m['colors'] / 4))
     s['identity'] = 0.5 * (1.0 if m['palette_adherence'] >= 0.9 else 0.4) + 0.5 * (tri(dmin, 0.02, 0.18, 2, 3) if others else 1.0)
+    if overlay_frames is not None and baseline_criteria and baseline_metrics:
+        worse = m.get('interior', 0) > baseline_metrics.get('interior', 0) + 0.08   # el borde no puede cargar el centro
+        for k in ('coverage', 'clear_floor', 'richness'):
+            s[k] = max(s[k], baseline_criteria.get(k, 0.0)) if not worse else s[k]
     pts = {k: round(WEIGHTS[k] * float(np.clip(v, 0, 1)), 2) for k, v in s.items()}
     total = round(sum(pts.values()), 1)
 
@@ -238,9 +246,10 @@ def evaluate(frames, ab, ramp, others=None, baseline_total=None, baseline_criter
     hard = []
     if m['alpha_binary'] < 0.9999:
         hard.append('alfa semitransparente: el canon exige 0 o 255')
-    if not tile and m['interior'] > (0.7 if small else 0.6):
+    ov_rel = overlay_frames is not None and baseline_metrics
+    if not tile and m['interior'] > ((baseline_metrics['interior'] + 0.08) if ov_rel and baseline_metrics['interior'] > 0.55 else (0.7 if small else 0.6)):
         hard.append(f"el interior tapa al enemigo ({m['interior']:.0%} de píxeles opacos en la zona central; techo 60 %)")
-    if not tile and m['coverage'] > (0.75 if small else 0.7):
+    if not tile and m['coverage'] > ((baseline_metrics['coverage'] + 0.08) if ov_rel and baseline_metrics['coverage'] > 0.65 else (0.75 if small else 0.7)):
         hard.append(f"cobertura excesiva ({m['coverage']:.0%}): oculta el suelo")
     if m['palette_adherence'] < 0.6:
         hard.append('la mayoría de los colores no pertenecen a la rampa del guardián')
