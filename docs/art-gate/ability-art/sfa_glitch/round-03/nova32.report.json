@@ -1,0 +1,152 @@
+{
+ "kind": "ring",
+ "score": 89.5,
+ "points": {
+  "alpha": 5.0,
+  "palette": 8.0,
+  "hygiene": 7.0,
+  "edge": 15.0,
+  "coverage": 5.45,
+  "contrast": 8.0,
+  "clear_floor": 5.0,
+  "motion": 15.0,
+  "richness": 15.0,
+  "identity": 6.03
+ },
+ "metrics": {
+  "peak_idx": 6,
+  "alpha_binary": 1.0,
+  "palette_adherence": 1.0,
+  "colors": 5,
+  "isolated": 0.0,
+  "edge_outline": 0.9166666666666666,
+  "edge_reach": 0.9620150656937995,
+  "edge_over": 0.0,
+  "coverage": 0.6932432432432433,
+  "interior": 0.531578947368421,
+  "interior_detail": 0.30526315789473685,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 18.46277855448299,
+  "peak_pos": 0.5454545454545454,
+  "tail": 0.02877697841726619,
+  "motion_mean": 0.1590909090909091,
+  "unique_frames": 1.0,
+  "tones": 5,
+  "highlight_share": 0.057803468208092484,
+  "core_fill": 0.05,
+  "detail_mass": 0.31805555555555554,
+  "min_sig_dist": 0.05292082676475742
+ },
+ "hard_fails": [],
+ "ops": [
+  {
+   "knob": "fill",
+   "why": "cobertura alta (69%): bajar el relleno para no tapar al enemigo",
+   "hard": true,
+   "add": -0.06
+  },
+  {
+   "knob": "ticks",
+   "why": "menos marcas",
+   "hard": true,
+   "add": -4
+  },
+  {
+   "knob": "tick_len",
+   "why": "marcas más cortas",
+   "hard": true,
+   "add": -0.04
+  },
+  {
+   "knob": "inner_ring",
+   "why": "quitar el anillo interior",
+   "hard": true,
+   "set": 0
+  },
+  {
+   "knob": "rim",
+   "why": "borde más fino: la cobertura es excesiva",
+   "hard": true,
+   "add": -1
+  },
+  {
+   "knob": "sparks",
+   "why": "menos chispas",
+   "hard": true,
+   "add": -2
+  },
+  {
+   "knob": "glyph_on",
+   "why": "quitar el glifo: la cobertura es excesiva",
+   "hard": true,
+   "set": 0
+  },
+  {
+   "knob": "deco",
+   "why": "se parece demasiado a otra habilidad del guardián (distancia 0.05): cambiar el tipo de marca",
+   "add": 1
+  },
+  {
+   "knob": "inner_ring",
+   "why": "segundo anillo para distinguirla",
+   "set": 1
+  }
+ ],
+ "criteria": {
+  "alpha": 1.0,
+  "palette": 1.0,
+  "hygiene": 1.0,
+  "edge": 1.0,
+  "coverage": 0.454,
+  "contrast": 1.0,
+  "clear_floor": 1.0,
+  "motion": 1.0,
+  "richness": 1.0,
+  "identity": 0.603
+ },
+ "baseline_total": 79.7,
+ "baseline_criteria": {
+  "alpha": 1.0,
+  "palette": 0.0,
+  "hygiene": 1.0,
+  "edge": 0.944,
+  "coverage": 0.454,
+  "contrast": 1.0,
+  "clear_floor": 1.0,
+  "motion": 1.0,
+  "richness": 0.871,
+  "identity": 0.7
+ },
+ "baseline_metrics": {
+  "peak_idx": 6,
+  "alpha_binary": 1.0,
+  "palette_adherence": 0.4315173899661434,
+  "colors": 5,
+  "isolated": 0.0005707762557077625,
+  "edge_outline": 0.7708333333333334,
+  "edge_reach": 0.9351683992884917,
+  "edge_over": 0.0,
+  "coverage": 0.6364864864864865,
+  "interior": 0.5105263157894737,
+  "interior_detail": 0.24210526315789474,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 18.46277855448299,
+  "peak_pos": 0.5454545454545454,
+  "tail": 0.033542976939203356,
+  "motion_mean": 0.19140625,
+  "unique_frames": 1.0,
+  "tones": 4,
+  "highlight_share": 0.0041928721174004195,
+  "core_fill": 0.05,
+  "detail_mass": 0.31805555555555554,
+  "min_sig_dist": 1.0
+ },
+ "improvement": 9.8,
+ "reasons": [
+  "criterio bajo: cobertura legible 5.45/12"
+ ],
+ "status": "FAIL",
+ "keep_current": false
+}

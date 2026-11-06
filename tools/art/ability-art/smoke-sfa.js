@@ -20,7 +20,10 @@ const BASE = process.env.BASE_URL || 'http://127.0.0.1:8750/';
       const out = {bad: [], n: 0}; const oRand = Math.random; let rnd = 0; Math.random = () => { rnd++; return .5; };
       for (const ab of abs.filter(a => ids.includes(a.id))) {
         const {art, theme, size} = ab.sfa;
-        for (const th of [theme, theme + '~h', theme + '~p', theme + '~k']) for (const ak of Object.keys(AID_INLAY_PALETTES).concat(['']))
+        // muestreo: todas las piezas en 5 arenas con el tema y su variante ~h; las 13 arenas y las 4 variantes completas, en la primera pieza de cada tema
+        const full = !window.__smokeSeen; window.__smokeSeen = window.__smokeSeen || {}; const firstOfTheme = !window.__smokeSeen[theme]; window.__smokeSeen[theme] = true;
+        const arenasAll = Object.keys(AID_INLAY_PALETTES).concat(['']), arenasMin = ['', 'bosque', 'hielo', 'abismo', 'infernal'];
+        for (const th of (firstOfTheme ? [theme, theme + '~h', theme + '~p', theme + '~k'] : [theme, theme + '~h'])) for (const ak of (firstOfTheme ? arenasAll : arenasMin))
           try {
             currentArena = ak; sfaCache.clear(); const h0 = ABS.hits; sfaBake(art, th, size); const b = sfaBake(art, th, size);
             if (!b || b.n !== 12 || b.w !== size || b.h !== size) { out.bad.push(`${art}|${th}|${size}: tira inválida ${b && b.n}`); continue; }

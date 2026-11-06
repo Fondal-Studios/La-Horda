@@ -243,9 +243,9 @@
    "history": [
     {
      "round": 1,
-     "score": 97.4,
+     "score": 97.7,
      "status": "PASS",
-     "improvement": 25.2,
+     "improvement": 25.5,
      "reasons": []
     }
    ]
@@ -282,9 +282,9 @@
    "history": [
     {
      "round": 1,
-     "score": 88.4,
+     "score": 88.2,
      "status": "PASS",
-     "improvement": 38.2,
+     "improvement": 38.0,
      "reasons": []
     }
    ]
@@ -295,9 +295,9 @@
    "history": [
     {
      "round": 1,
-     "score": 88.0,
+     "score": 88.3,
      "status": "PASS",
-     "improvement": 39.7,
+     "improvement": 40.0,
      "reasons": []
     }
    ]
@@ -317,13 +317,13 @@
   },
   "zone160": {
    "status": "PASS",
-   "rounds": 3,
+   "rounds": 2,
    "history": [
     {
      "round": 1,
-     "score": 87.2,
+     "score": 87.4,
      "status": "FAIL",
-     "improvement": 41.2,
+     "improvement": 41.4,
      "reasons": [
       "criterio bajo: suelo despejado 2.42/5"
      ]
@@ -331,17 +331,8 @@
     {
      "round": 2,
      "score": 87.3,
-     "status": "FAIL",
-     "improvement": 41.3,
-     "reasons": [
-      "criterio bajo: suelo despejado 2.49/5"
-     ]
-    },
-    {
-     "round": 3,
-     "score": 93.1,
      "status": "PASS",
-     "improvement": 47.1,
+     "improvement": 41.3,
      "reasons": []
     }
    ]
@@ -352,27 +343,27 @@
    "history": [
     {
      "round": 1,
-     "score": 86.2,
+     "score": 86.6,
      "status": "FAIL",
-     "improvement": 41.1,
+     "improvement": 41.5,
      "reasons": [
       "criterio bajo: suelo despejado 2.3/5"
      ]
     },
     {
      "round": 2,
-     "score": 85.9,
+     "score": 86.0,
      "status": "FAIL",
-     "improvement": 40.8,
+     "improvement": 40.9,
      "reasons": [
-      "criterio bajo: suelo despejado 2.33/5"
+      "criterio bajo: suelo despejado 2.31/5"
      ]
     },
     {
      "round": 3,
-     "score": 91.9,
+     "score": 93.4,
      "status": "PASS",
-     "improvement": 46.8,
+     "improvement": 48.3,
      "reasons": []
     }
    ]
@@ -405,29 +396,28 @@
   "ronda 1: nova128 FAIL 86.3 — criterio bajo: suelo despejado 0.0/5",
   "ronda 1: nova160 FAIL 82.5 — criterio bajo: suelo despejado 0.0/5; puntaje 82.5 < 85",
   "ronda 1: nova192 FAIL 80.1 — criterio bajo: cobertura legible 4.68/12; criterio bajo: suelo despejado 0.0/5",
-  "ronda 1: zone32 PASS 97.4 (arte actual 72.2, +25.2)",
+  "ronda 1: zone32 PASS 97.7 (arte actual 72.2, +25.5)",
   "ronda 1: zone48 PASS 94.5 (arte actual 63.4, +31.1)",
   "ronda 1: zone64 PASS 89.2 (arte actual 54.3, +34.9)",
-  "ronda 1: zone80 PASS 88.4 (arte actual 50.2, +38.2)",
-  "ronda 1: zone96 PASS 88.0 (arte actual 48.3, +39.7)",
+  "ronda 1: zone80 PASS 88.2 (arte actual 50.2, +38.0)",
+  "ronda 1: zone96 PASS 88.3 (arte actual 48.3, +40.0)",
   "ronda 1: zone128 PASS 87.7 (arte actual 46.8, +40.9)",
-  "ronda 1: zone160 FAIL 87.2 — criterio bajo: suelo despejado 2.42/5",
-  "ronda 1: zone192 FAIL 86.2 — criterio bajo: suelo despejado 2.3/5",
+  "ronda 1: zone160 FAIL 87.4 — criterio bajo: suelo despejado 2.42/5",
+  "ronda 1: zone192 FAIL 86.6 — criterio bajo: suelo despejado 2.3/5",
   "ronda 2: nova64 PASS 92.2 (arte actual 60.6, +31.6)",
   "ronda 2: nova80 FAIL 90.8 — criterio bajo: suelo despejado 1.57/5",
   "ronda 2: nova96 FAIL 88.9 — criterio bajo: suelo despejado 0.57/5",
   "ronda 2: nova128 FAIL 88.4 — criterio bajo: suelo despejado 0.0/5",
   "ronda 2: nova160 FAIL 85.3 — criterio bajo: suelo despejado 0.0/5",
   "ronda 2: nova192 FAIL 82.2 — criterio bajo: suelo despejado 0.0/5; puntaje 82.2 < 85",
-  "ronda 2: zone160 FAIL 87.3 — criterio bajo: suelo despejado 2.49/5",
-  "ronda 2: zone192 FAIL 85.9 — criterio bajo: suelo despejado 2.33/5",
+  "ronda 2: zone160 PASS 87.3 (arte actual 46.0, +41.3)",
+  "ronda 2: zone192 FAIL 86.0 — criterio bajo: suelo despejado 2.31/5",
   "ronda 3: nova80 PASS 96.8 (arte actual 55.1, +41.7)",
   "ronda 3: nova96 PASS 95.9 (arte actual 52.0, +43.9)",
   "ronda 3: nova128 PASS 94.2 (arte actual 50.0, +44.2)",
   "ronda 3: nova160 PASS 92.7 (arte actual 49.5, +43.2)",
   "ronda 3: nova192 FAIL 90.8 — criterio bajo: suelo despejado 1.56/5",
-  "ronda 3: zone160 PASS 93.1 (arte actual 46.0, +47.1)",
-  "ronda 3: zone192 PASS 91.9 (arte actual 45.1, +46.8)",
+  "ronda 3: zone192 PASS 93.4 (arte actual 45.1, +48.3)",
   "ronda 4: nova192 PASS 93.0 (arte actual 48.9, +44.1)"
  ],
  "integration": null

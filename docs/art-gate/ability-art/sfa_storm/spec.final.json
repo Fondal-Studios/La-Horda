@@ -1,7 +1,7 @@
 {
  "guardian": "sfa_storm",
  "engine": "sfa",
- "title": "Tema storm (skill-fx-a) · mago",
+ "title": "Tema storm (skill-fx-a)",
  "palette": [
   "#20184a",
   "#6a58d8",
@@ -11,11 +11,82 @@
  ],
  "abilities": [
   {
+   "id": "nova32",
+   "kind": "ring",
+   "size": 32,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "storm",
+    "size": 32
+   },
+   "baseline": "nova|storm|32",
+   "replaces": "nova|storm|32",
+   "params": {
+    "rim": 1,
+    "fill": 0.0,
+    "ticks": 0,
+    "tick_len": 0.08,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.0,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.32,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 0,
+    "motif_n": 5,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 2,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "ticks": -1,
+    "rim": -1,
+    "deco": 1
+   }
+  },
+  {
+   "id": "nova48",
+   "kind": "ring",
+   "size": 48,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "storm",
+    "size": 48
+   },
+   "baseline": "nova|storm|48",
+   "replaces": "nova|storm|48",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
    "id": "nova64",
    "kind": "ring",
    "size": 64,
    "frames": 12,
    "glyph": null,
+   "mode": "overlay",
    "sfa": {
     "art": "nova",
     "theme": "storm",
@@ -34,8 +105,7 @@
     "inner_ring": 0,
     "rim": 2,
     "deco": 0
-   },
-   "mode": "overlay"
+   }
   },
   {
    "id": "nova80",
@@ -43,6 +113,7 @@
    "size": 80,
    "frames": 12,
    "glyph": null,
+   "mode": "overlay",
    "sfa": {
     "art": "nova",
     "theme": "storm",
@@ -61,8 +132,7 @@
     "inner_ring": 0,
     "rim": 2,
     "deco": 0
-   },
-   "mode": "overlay"
+   }
   },
   {
    "id": "nova96",
@@ -70,6 +140,7 @@
    "size": 96,
    "frames": 12,
    "glyph": null,
+   "mode": "overlay",
    "sfa": {
     "art": "nova",
     "theme": "storm",
@@ -88,8 +159,320 @@
     "inner_ring": 0,
     "rim": 2,
     "deco": 0
+   }
+  },
+  {
+   "id": "nova128",
+   "kind": "ring",
+   "size": 128,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "storm",
+    "size": 128
    },
-   "mode": "overlay"
+   "baseline": "nova|storm|128",
+   "replaces": "nova|storm|128",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "nova160",
+   "kind": "ring",
+   "size": 160,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "storm",
+    "size": 160
+   },
+   "baseline": "nova|storm|160",
+   "replaces": "nova|storm|160",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "nova192",
+   "kind": "ring",
+   "size": 192,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "storm",
+    "size": 192
+   },
+   "baseline": "nova|storm|192",
+   "replaces": "nova|storm|192",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone32",
+   "kind": "idle",
+   "size": 32,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "storm",
+    "size": 32
+   },
+   "baseline": "zone|storm|32",
+   "replaces": "zone|storm|32",
+   "params": {
+    "rim": 1,
+    "fill": 0.0,
+    "ticks": 0,
+    "tick_len": 0.08,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.0,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.32,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 0,
+    "motif_n": 5,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 2,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "ticks": -1,
+    "rim": -1,
+    "deco": 1
+   }
+  },
+  {
+   "id": "zone48",
+   "kind": "idle",
+   "size": 48,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "storm",
+    "size": 48
+   },
+   "baseline": "zone|storm|48",
+   "replaces": "zone|storm|48",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone64",
+   "kind": "idle",
+   "size": 64,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "storm",
+    "size": 64
+   },
+   "baseline": "zone|storm|64",
+   "replaces": "zone|storm|64",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone80",
+   "kind": "idle",
+   "size": 80,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "storm",
+    "size": 80
+   },
+   "baseline": "zone|storm|80",
+   "replaces": "zone|storm|80",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone96",
+   "kind": "idle",
+   "size": 96,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "storm",
+    "size": 96
+   },
+   "baseline": "zone|storm|96",
+   "replaces": "zone|storm|96",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone128",
+   "kind": "idle",
+   "size": 128,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "storm",
+    "size": 128
+   },
+   "baseline": "zone|storm|128",
+   "replaces": "zone|storm|128",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone160",
+   "kind": "idle",
+   "size": 160,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "storm",
+    "size": 160
+   },
+   "baseline": "zone|storm|160",
+   "replaces": "zone|storm|160",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone192",
+   "kind": "idle",
+   "size": 192,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "storm",
+    "size": 192
+   },
+   "baseline": "zone|storm|192",
+   "replaces": "zone|storm|192",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
   }
  ]
 }

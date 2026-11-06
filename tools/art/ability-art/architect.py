@@ -165,8 +165,11 @@ def integrate(guardian, spec, results, smoke=True, base_url='http://127.0.0.1:87
     INDEX.write_text(place_unified(index_before, tags), encoding='utf-8')
     if not smoke:
         return True, f'integradas {passed} (sin prueba de humo)'
-    p = subprocess.run(['node', str(canon.HERE / ('smoke-sfa.js' if sfa else 'smoke-integration.js')), guardian, ','.join(passed)], capture_output=True, text=True,
-                       env={**__import__('os').environ, 'BASE_URL': base_url}, timeout=400)
+    try:
+        p = subprocess.run(['node', str(canon.HERE / ('smoke-sfa.js' if sfa else 'smoke-integration.js')), guardian, ','.join(passed)], capture_output=True, text=True,
+                           env={**__import__('os').environ, 'BASE_URL': base_url}, timeout=400)
+    except subprocess.TimeoutExpired:
+        p = subprocess.CompletedProcess([], 1, '', 'la prueba de humo excedió el tiempo límite')
     if p.returncode != 0:
         INDEX.write_text(index_before, encoding='utf-8')
         for path in (rt, gm):
@@ -228,8 +231,11 @@ def integrate_sfa(spec_paths, smoke=True, base_url='http://127.0.0.1:8750/'):
     abil = [{'id': f'{t}_{art}{s}', 'sfa': {'art': art, 'theme': t, 'size': s}} for t, s, w, h, fr, art in items]
     canon.save_json(combo / 'combined.json', {'guardian': 'sfa_overlay', 'abilities': abil})
     if smoke:
-        p = subprocess.run(['node', str(canon.HERE / 'smoke-sfa.js'), str(combo / 'combined.json'), ','.join(x['id'] for x in abil)], capture_output=True, text=True,
-                           env={**__import__('os').environ, 'BASE_URL': base_url}, timeout=900)
+        try:
+            p = subprocess.run(['node', str(canon.HERE / 'smoke-sfa.js'), str(combo / 'combined.json'), ','.join(x['id'] for x in abil)], capture_output=True, text=True,
+                               env={**__import__('os').environ, 'BASE_URL': base_url}, timeout=1200)
+        except subprocess.TimeoutExpired:   # una prueba que no termina no prueba nada: se revierte igual que un fallo
+            p = subprocess.CompletedProcess([], 1, '', 'la prueba de humo excedió el tiempo límite')
         if p.returncode != 0:
             INDEX.write_text(index_before, encoding='utf-8')
             for path in (rt, gm):
