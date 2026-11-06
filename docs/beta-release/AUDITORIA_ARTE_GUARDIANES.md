@@ -1,55 +1,70 @@
-# Auditoría de arte de guardianes — runtime vs Códice (2026-11-06)
+# Auditoría de arte de guardianes — runtime vs Códice (2026-11-06, CORREGIDA)
 
-Método (reproducible: `tools/art-world/audit-guardians.py`): se compara el sprite «FRENTE» del Códice (`assets/ui/codex/champions/<id>.png`, plantilla 1774×887 igual para los 43) con el primer sprite del atlas que usa el juego. **`dist` = distancia entre paletas dominantes (chamfer simétrico en RGB, 12 colores)**: mide solo deriva de color/identidad; NO mide detalle, proporciones ni animación (por eso Ilkan, que tiene la paleta cercana pero un dibujo muy pobre, sale a media tabla). Láminas de cotejo visual en `evidence/guardianes/`. Los PR son los **abiertos** cuyo diff toca archivos del guardián.
+> **Corrección de mi propio error.** La primera versión de esta auditoría comparó el Códice con un atlas `v2` de Ilkan que el juego ya NO carga y concluyó que Ilkan estaba «muy por debajo del Códice». Era falso: el juego carga `ilkan/codex-v1/atlas.png`, que es fiel al Códice. Esta versión lee el mapeo real de atlases y cuadros desde `js/**/*.js` (`champPackLoadAtlas`), y además se verificó **en combate** (capturas en `evidence/guardianes/`).
 
-| # | Guardián | dist paleta | alto del sprite (px de atlas) | atlas que usa | PR abiertos con su arte |
-|---|---|---|---|---|---|
-| 1 | facu_gm | 33.0 | 272 | atlas.png | — |
-| 2 | musashi | 28.9 | 303 | v2/atlas.png | — |
-| 3 | khepri | 27.9 | 278 | atlas.png | — |
-| 4 | guerrero | 25.8 | 283 | atlas.png | #259 (3 arch.), #241 (8 arch.), #232 (6 arch.) |
-| 5 | vhal | 24.8 | 267 | atlas.png | — |
-| 6 | axiom | 24.7 | 290 | v2/atlas.png | #239 (3 arch.) |
-| 7 | saelis | 24.4 | 284 | atlas.png | #259 (17 arch.) |
-| 8 | nahir | 24.0 | 272 | atlas.png | #259 (1 arch.) |
-| 9 | mago | 23.9 | 272 | atlas.png | #270 (3 arch.), #268 (3 arch.), #259 (3 arch.) |
-| 10 | profeta | 23.4 | 230 | v2/atlas.png | #259 (30 arch.) |
-| 11 | libertador | 21.9 | 276 | v2/atlas.png | — |
-| 12 | cazadora | 21.5 | 300 | v2/atlas.png | — |
-| 13 | soporte | 20.5 | 280 | v2/atlas.png | — |
-| 14 | tanque | 19.4 | 264 | atlas.png | #259 (3 arch.), #241 (8 arch.), #232 (7 arch.) |
-| 15 | ilkan | 18.9 | 292 | v2/atlas.png | — |
-| 16 | oriel | 18.9 | 268 | atlas.png | — |
-| 17 | orsa | 18.7 | 272 | atlas.png | #259 (1 arch.) |
-| 18 | ynara | 18.5 | 276 | atlas.png | #259 (22 arch.) |
-| 19 | bront | 18.4 | 266 | atlas.png | — |
-| 20 | velmira | 17.7 | 274 | atlas.png | — |
-| 21 | aelith | 17.3 | 271 | atlas.png | #267 (22 arch.), #241 (8 arch.), #232 (6 arch.) |
-| 22 | segador | 17.2 | 295 | v2/atlas.png | — |
-| 23 | nano_gm | 16.3 | 220 | codex-v2/atlas.png | #231 (1 arch.) |
-| 24 | zahra | 15.2 | 268 | atlas.png | #259 (1 arch.) |
-| 25 | aurelia | 15.0 | 267 | atlas.png | #259 (17 arch.) |
-| 26 | sira | 15.0 | 268 | atlas.png | #259 (1 arch.) |
-| 27 | solciju | 14.9 | 273 | atlas.png | — |
-| 28 | nigromante | 14.6 | 283 | v2/atlas.png | — |
-| 29 | myla | 13.7 | 282 | atlas.png | #259 (14 arch.) |
-| 30 | veyra | 13.0 | 268 | atlas.png | — |
-| 31 | renko | 11.9 | 255 | atlas.png | #259 (61 arch.) |
-| 32 | brasa | 11.8 | 272 | atlas.png | — |
-| 33 | vesper | 11.8 | 264 | atlas.png | #259 (1 arch.) |
-| 34 | brakk | 11.2 | 270 | atlas.png | #232 (2 arch.) |
-| 35 | morwen | 11.2 | 290 | atlas.png | — |
-| 36 | tibor | 11.1 | 273 | atlas.png | #259 (1 arch.) |
-| 37 | maura | 11.0 | 274 | atlas.png | #259 (17 arch.) |
-| 38 | iria | 10.9 | 272 | atlas.png | — |
-| 39 | baltra | 10.4 | 266 | atlas.png | #259 (1 arch.) |
-| 40 | morveth | 10.1 | 268 | atlas.png | #241 (8 arch.), #232 (3 arch.) |
-| 41 | farolero | 9.6 | 272 | atlas.png | — |
-| 42 | dariel | 8.4 | 265 | atlas.png | #259 (1 arch.) |
-| 43 | eslabon | 8.0 | 272 | atlas.png | — |
+Método (`tools/art-world/audit-guardians.py`): sprite «FRENTE» del Códice vs el cuadro `idle_down[0]` del atlas real. `dist` = deriva de paleta (chamfer simétrico, 12 colores): mide color/identidad, **no** detalle ni animación; la lectura visual manda.
 
-## Lectura honesta
-- **Ilkan** (primer caso pedido): la paleta es parecida pero el sprite del juego es un muñeco plano de brazos en T, **sin las hoces, sin hombrera de placas, sin antebrazos vendados, con pantalón turquesa en vez de marrón y sin el dobladillo con flecos** del Códice. Ningún PR abierto toca su arte. Es una brecha de DIBUJO, no de color.
-- **Guerrero**: el juego muestra una figura gris/verde encapuchada; el Códice, un asesino de capucha y bufanda **roja** con hojas curvas: deriva de identidad real. Tocado por #259, #241 y #232.
-- Los PR con más arte de campeones pendiente: **#259** (Renko 61 archivos, Profeta 30, Ynara 22, Saelis/Aurelia/Maura 17, Myla 14…), **#241** (Guerrero, Tanque, Aelith, Morveth: rechazado por 4 regresiones, ver RESULTADOS_PR.md), **#267** (Aelith 22), **#232** (Art Engine: Guerrero, Tanque, Aelith, Morveth…), **#270/#268** (Thalen/Mago; #268 NO_INTEGRAR).
-- Los datos están en `evidence/guardianes/champ_metric.json`.
+## Hallazgos confirmados a ojo y en combate
+| Guardián | Veredicto | Evidencia |
+|---|---|---|
+| **Guerrero** | **BRECHA REAL DE IDENTIDAD**: en el juego es una figura gris/verde con dagas; el Códice es un asesino de capucha y bufanda **roja** con hojas curvas | `combate_guerrero_mago_tanque_myla.png`, `champs_2.png` (usa un loader distinto, sin `champPackLoadAtlas`). El cuerpo fiel al Códice existe en el PR **#241** (`art-source/fondal/guerrero-codex`), rechazado por 4 regresiones de cromas/colección |
+| **Mago** | Más simple que el Códice (el Códice: sombrero y capa púrpura, bastón con llama azul); misma familia, menos detalle | ídem |
+| **Ilkan (humano)** | **FIEL al Códice** (hoces, hombrera de placas, vendas, rostro, fajín); 62 cuadros consistentes | `ilkan_en_combate.png`, `ilkan_atlas_humano_codex-v1.png` |
+| **Ilkan — Coloso de Arena** | **DÉBIL**: arte procedural (`tools/art/ilkan/build.py`), rígido, cuatro brazos de bloques repetidos; no hay Códice del Coloso (solo el texto de diseño) | `ilkan_coloso_procedural.png`. Es lo que más se aparta de la calidad del resto |
+| Tanque, Myla | Bien | `combate_guerrero_mago_tanque_myla.png` |
+| Resto (≈35) | Fieles al Códice a simple vista (sprite más pequeño, mismo diseño y paleta) | `champs_1..4.png` |
+
+## Tabla de deriva de paleta (orden descendente; sólo los que el juego carga con `champPackLoadAtlas`)
+| # | Guardián | dist | atlas real | PR abiertos con su arte |
+|---|---|---|---|---|
+| 1 | musashi | 33.8 | musashi/codex-v1/atlas.png | — |
+| 2 | nigromante | 32.1 | nigromante/codex-v1/atlas.png | — |
+| 3 | libertador | 31.3 | libertador/v2/atlas.png | — |
+| 4 | facu_gm | 28.1 | facu_gm/atlas.png | — |
+| 5 | saelis | 25.4 | saelis/atlas.png | #259 (17) |
+| 6 | vhal | 22.6 | vhal/atlas.png | — |
+| 7 | cazadora | 22.0 | cazadora/codex-v1/atlas.png | — |
+| 8 | profeta | 21.8 | profeta/v2/atlas.png | #259 (30) |
+| 9 | khepri | 21.1 | khepri/atlas.png | — |
+| 10 | segador | 21.0 | segador/v2/atlas.png | — |
+| 11 | bront | 20.1 | bront/atlas.png | — |
+| 12 | oriel | 18.8 | oriel/atlas.png | — |
+| 13 | soporte | 17.9 | soporte/v3/atlas.png | — |
+| 14 | ynara | 17.2 | ynara/atlas.png | #259 (22) |
+| 15 | velmira | 16.8 | velmira/atlas.png | — |
+| 16 | nahir | 16.5 | nahir/atlas.png | — |
+| 17 | nano_gm | 16.4 | nano_gm/codex-v2/atlas.png | #231 (1) |
+| 18 | veyra | 15.6 | veyra/codex-v1/atlas.png | — |
+| 19 | ilkan | 15.4 | ilkan/codex-v1/atlas.png | — |
+| 20 | axiom | 14.9 | axiom/codex-v1/atlas.png | #239 (3) |
+| 21 | tibor | 14.9 | tibor/atlas.png | — |
+| 22 | aelith | 14.0 | aelith/atlas.png | #267 (22), #241 (8), #232 (6) |
+| 23 | solciju | 14.0 | solciju/atlas.png | — |
+| 24 | zahra | 14.0 | zahra/atlas.png | — |
+| 25 | brakk | 13.9 | brakk/atlas.png | #232 (2) |
+| 26 | sira | 13.6 | sira/atlas.png | — |
+| 27 | orsa | 13.4 | orsa/atlas.png | — |
+| 28 | brasa | 13.3 | brasa/atlas.png | — |
+| 29 | aurelia | 13.2 | aurelia/atlas.png | #259 (17) |
+| 30 | vesper | 12.5 | vesper/atlas.png | — |
+| 31 | renko | 12.3 | renko/atlas.png | #259 (61) |
+| 32 | dariel | 11.5 | dariel/atlas.png | — |
+| 33 | iria | 11.5 | iria/atlas.png | — |
+| 34 | farolero | 11.1 | farolero/atlas.png | — |
+| 35 | morveth | 11.0 | morveth/atlas.png | #241 (8), #232 (3) |
+| 36 | maura | 10.8 | maura/atlas.png | #259 (17) |
+| 37 | morwen | 10.2 | morwen/atlas.png | — |
+| 38 | baltra | 10.1 | baltra/atlas.png | — |
+| 39 | eslabon | 9.4 | eslabon/atlas.png | — |
+| 40 | guerrero | — | otro loader | #259 (3), #241 (8), #232 (6) |
+| 41 | mago | — | otro loader | #270 (3), #268 (3), #259 (3) |
+| 42 | myla | — | otro loader | #259 (14) |
+| 43 | tanque | — | otro loader | #259 (3), #241 (8), #232 (7) |
+
+## Qué NO se hizo y por qué
+- **No se reemplazó el arte de los 43 guardianes**: casi todos ya son fieles al Códice; sustituirlos habría empeorado lo existente.
+- Costo de rehacer un guardián completo con Runway (`gen4_image`, **8 créditos por cuadro**): un atlas de ~60 cuadros ≈ 480 créditos, sin garantía de consistencia entre cuadros. Se probó 1 cuadro de Ilkan (`art-source/runway-guardians/ilkan/intento1_idle_frente`, 8 cr): la calidad estática es muy buena y fiel al Códice, pero un atlas animado exige un pipeline de consistencia que todavía no existe.
+- **Prioridades reales:** (1) Guerrero fiel al Códice (rescatar de #241 solo el cuerpo, sin tocar cromas, o reparar las cromas), (2) Mago, (3) Coloso de Ilkan, (4) revisar a ojo Libertador, Musashi y Nigromante (dist alta pero visualmente próximos), (5) skins y cromas de cada uno (aún sin auditar).
+
+## Pendiente de tu confirmación
+Si lo que viste «pésimamente producido» de Ilkan fue **el Coloso**, una **skin**, o **una versión publicada anterior** del juego, decime cuál: en el código de esta rama el Ilkan humano está bien.
