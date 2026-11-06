@@ -4,18 +4,18 @@
 import os,colorsys,numpy as np
 from PIL import Image
 R=os.path.abspath(os.path.join(os.path.dirname(__file__),'../..'))+'/'
-exec(open(os.path.join(os.path.dirname(__file__),'_key.py')).read()); DUST=False
+exec(open(os.path.join(os.path.dirname(__file__),'_key.py')).read()); DUST=False; OUTLINE=True
 def spr(n,th):
     return native(key(Image.open(R+f'art-source/runway-guardians/myla/{n}/master.png')),th)
 def place(s,W,H,foot,dx=0):
     c=Image.new('RGBA',(W,H),(0,0,0,0)); c.alpha_composite(s,((W-s.width)//2+dx,foot-s.height)); return c
 M=Image.open(R+'assets/sprites/champions/myla/atlas.png').convert('RGBA'); idle=M.crop((0,0,96,96)); idle=idle.crop(idle.getbbox())
-f0=idle.rotate(8,expand=True,resample=Image.NEAREST,fillcolor=(0,0,0,0)); f0=f0.crop(f0.getbbox())
+f0=idle.rotate(8,expand=True,resample=Image.NEAREST,fillcolor=(0,0,0,0)); f0=outline1(f0.crop(f0.getbbox()))
 sit=spr('d2',62); lie=spr('d1',46)
 fr=[place(f0,112,112,106),place(sit,112,112,106),place(lie,112,112,106),place(lie,112,112,106)]
 D=Image.new('RGBA',(448,112),(0,0,0,0))
 for i,c in enumerate(fr): D.alpha_composite(c,(i*112,0))
-D.save(R+'assets/sprites/champions/myla/v2/death.png',optimize=True)
+os.makedirs(R+'art-source/runway-guardians/myla/death-candidato/',exist_ok=True); qsave(D,R+'art-source/runway-guardians/myla/death-candidato/death.png',32)
 # croma: rosa -> lila (el tono castaño de pelo/piel/botas no se toca)
 a=np.asarray(M).astype(float)/255; out=a.copy()
 for y in range(a.shape[0]):

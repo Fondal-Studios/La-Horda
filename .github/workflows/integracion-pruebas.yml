@@ -19,7 +19,7 @@ concurrency:
 jobs:
   node-sin-navegador:
     name: "Arnés y lógica pura (sin navegador)"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
@@ -40,7 +40,7 @@ jobs:
         run: node tools/items/t_codex_book_logic.js
   vfx-iconos:
     name: "VFX de definitivas, decales e íconos de habilidad"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
@@ -67,7 +67,7 @@ jobs:
         run: node tools/ux/test-skill-glyphs.js
   regresion-ux-carriles:
     name: "Regresión, UX y carriles"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
@@ -128,7 +128,7 @@ jobs:
         run: node tools/lib/with-site.js tools/regression/t_hit_react.js
   identidad:
     name: "Identidad de arenas, objetivos y regalo inicial"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
@@ -153,7 +153,7 @@ jobs:
         run: node tools/identity/t_identity.js
   items-economia-a:
     name: "Objetos, economía y tienda (parte A)"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
@@ -234,7 +234,7 @@ jobs:
         run: node tools/lib/with-site.js tools/items/t_breakables.js
   items-economia-b:
     name: "Objetos, economía y tienda (pruebas que hoy fallan en la base)"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4

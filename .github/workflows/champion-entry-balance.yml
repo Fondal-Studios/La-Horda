@@ -10,7 +10,7 @@ permissions:
   contents: read
 jobs:
   entry-reference:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
@@ -224,7 +224,7 @@ jobs:
             docs/art-gate/
 
   postgres:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 8
     services:
       postgres:
@@ -244,7 +244,7 @@ jobs:
         env:
           HORDA_TEST_PG_URL: postgres://postgres:isolated-test-only@127.0.0.1:5432/horda_test_operations
   safari-engine:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
@@ -263,7 +263,7 @@ jobs:
           BROWSER: webkit
 
   lanes:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4

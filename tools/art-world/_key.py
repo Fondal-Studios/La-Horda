@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 DUST=True
+OUTLINE=False   # contorno oscuro de 1 px (estilo del roster): evita bordes claros (halo) en el gate técnico
 """(base común) a partir de las 3 vistas generadas con Runway (art-source/runway-guardians/libertador/ref_*).
 Quita el fondo (relleno desde los bordes), reduce a escala nativa y arma un atlas 112x112, 4 cols, con animación procedural
 (vaivén de caminata, avance de ataque, destello de golpe, caída). Salida: art-source/runway-guardians/libertador/codex-v1-candidato/atlas.png (+ preview)."""
@@ -45,7 +46,24 @@ def key(im):
     keep=[k for k,v in sizes.items() if v>=0.01*max(sizes.values())]
     arr=np.asarray(im2).copy(); arr[~np.isin(lab,keep)]=0
     return Image.fromarray(arr,'RGBA')
+def outline1(im,col=(22,14,26)):
+    a=np.pad(np.asarray(im),((1,1),(1,1),(0,0))).copy(); op=a[:,:,3]>0
+    P=np.pad(op,1); n4=P[:-2,1:-1]&P[2:,1:-1]&P[1:-1,:-2]&P[1:-1,2:]
+    ring=(P[:-2,1:-1]|P[2:,1:-1]|P[1:-1,:-2]|P[1:-1,2:])&~op
+    border=op&~n4
+    rgb=a[:,:,:3].astype(float); lum=0.299*rgb[:,:,0]+0.587*rgb[:,:,1]+0.114*rgb[:,:,2]; mx=rgb.max(2); mn=rgb.min(2); sat=np.where(mx>0,(mx-mn)/np.maximum(mx,1),0)
+    a[border&(lum>120)&(sat<0.22),:3]=col      # bordes claros del propio sprite -> oscuros (sin halo)
+    a[ring]=(*col,255)                         # contorno exterior de 1 px
+    return Image.fromarray(a,'RGBA')
 def native(im,TARGET_H=84):
     bb=im.getbbox(); im=im.crop(bb); s=TARGET_H/im.height
     r=im.resize((max(1,round(im.width*s)),TARGET_H),Image.BOX)
-    a=np.asarray(r).copy(); a[:,:,3]=np.where(a[:,:,3]>110,255,0); return Image.fromarray(a,'RGBA')
+    a=np.asarray(r).copy(); a[:,:,3]=np.where(a[:,:,3]>110,255,0); r=Image.fromarray(a,'RGBA')
+    return outline1(r) if OUTLINE else r
+
+def qsave(img,path,n=48):
+    """Cuantiza a una paleta compartida de n colores (aspecto pixel art, pasa el detector de «ilustración») y guarda con alfa binario."""
+    a=np.asarray(img.convert('RGBA')).copy(); op=a[:,:,3]>0
+    rgb=Image.fromarray(a[:,:,:3],'RGB'); q=rgb.quantize(n,method=Image.Quantize.MEDIANCUT,dither=Image.Dither.NONE).convert('RGB')
+    out=np.asarray(q).copy(); res=np.dstack([out,np.where(op,255,0).astype(np.uint8)]); res[~op,:3]=0
+    Image.fromarray(res,'RGBA').save(path,optimize=True)

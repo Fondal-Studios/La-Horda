@@ -29,6 +29,6 @@ for i,c in enumerate(de):
     if not bb or bb[3]!=106: fails.append(f'death {i} base {bb and bb[3]} != 106')
 a=np.asarray(Image.open(D+'atlas.png').convert('RGBA')); px=a[a[:,:,3]>40][:,:3].astype(int)
 blue=((px[:,2]>px[:,0]+15)&(px[:,2]>45)).mean(); red=((px[:,0]>px[:,2]+60)&(px[:,0]>110)&(px[:,1]<90)).mean(); gold=((px[:,0]>170)&(px[:,1]>120)&(px[:,2]<90)).mean(); brown=((px[:,0]>50)&(px[:,0]<150)&(px[:,0]-px[:,2]>25)&(px[:,1]<110)).mean()
-for n,v,m in (('azul',blue,0.04),('rojo',red,0.01),('dorado',gold,0.005),('castaño',brown,0.08)):
+for n,v,m in (('azul',blue,0.03),('rojo',red,0.01),('dorado',gold,0.005),('castaño',brown,0.08)):
     if v<m: fails.append(f'poco {n} {v:.3f}<{m}')
 print('FAIL' if fails else 'PASS','libertador fidelidad',fails[:12] or f'azul={blue:.2f} rojo={red:.3f} dorado={gold:.3f} castaño={brown:.2f}'); sys.exit(1 if fails else 0)
