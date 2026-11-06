@@ -20,7 +20,7 @@ const SIETE_BOONS = {
     [0,"Piel Completa","stone","pull",[{t:"pull",at:"caster",r:170,px:55},{t:"burst",at:"caster",r:110,pct:.7}],r=>"Dúo: la muda arrastra a la Horda hacia ti y la aplasta."]]},
   kora:{duo:[0,1], cards:[
     [0,"Choque Frontal","stone","dmg",[{t:"burst",at:"hits",r:[55,65,75],pct:[.35,.5,.65]}],r=>`Cada golpe de la Arremetida estalla alrededor (${_R([35,50,65],r)}% de daño).`],
-    [1,"Onda Sísmica","stone","hits",[{t:"line",w:50,pct:[.5,.7,.9],status:{slow:.3}}],r=>`El Pisotón lanza una onda en línea (${_R([50,70,90],r)}%) que frena.`],
+    [1,"Onda Sísmica","stone","hits",[{t:"burst",at:"caster",r:[120,140,160],pct:[.5,.7,.9],status:{slow:.3}}],r=>`El Pisotón lanza una onda sísmica alrededor (${_R([50,70,90],r)}%) que frena.`],
     [2,"Casco Duro","steel","shield",[{t:"ally",at:"caster",r:150,shield:[.06,.09,.12]}],r=>`Cabeza Gacha envuelve en una barrera de ${_R([6,9,12],r)}% de vida a los aliados cercanos.`],
     ["ult","Derrumbe","stone","stun",[{t:"burst",at:"caster",r:180,pct:[.8,1,1.2],status:{stun:[400,600,800]}}],r=>`La Estampida termina en un derrumbe que aturde ${_R([.4,.6,.8],r)} s.`],
     [0,"Terremoto de Carga","stone","dmg",[{t:"echo",at:"caster",delay:450,r:130,pct:.9},{t:"shards",at:"caster",n:6,pct:.35}],r=>"Dúo: la carga deja una réplica sísmica medio segundo después."]]}

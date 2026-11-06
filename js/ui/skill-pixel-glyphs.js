@@ -158,7 +158,7 @@ const SKILL_PIXEL_MAP = {
   "ilkan:0":"banner","ilkan:1":"dunes","ilkan:2":"compass","ilkan:u":"colossus",
   "ilsa:0":"swap","ilsa:1":"bolt","ilsa:2":"slashes","ilsa:u":"repeat",
   "vorn:0":"rift","vorn:1":"claws","vorn:2":"star","vorn:u":"storm",
-  "kora:0":"fist","kora:1":"footprints","kora:2":"armor","kora:u":"swarm",
+  "kora:0":"fist","kora:1":"footprints","kora:2":"armor","kora:u":"hammer",
   "ilkan_colossus:0":"avalanche","ilkan_colossus:1":"sinkhole","ilkan_colossus:2":"footprint","ilkan_colossus:u":"threesteps",
   "ynara:0":"glare","ynara:1":"bowl","ynara:2":"stophand","ynara:u":"pray",
   "myla:0":"yogurtower","myla:1":"splat","myla:2":"bubble","myla:u":"tantrum",
