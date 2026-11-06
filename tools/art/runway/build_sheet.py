@@ -49,6 +49,19 @@ def row_figures(rgba, y0, y1, gap=10, minpx=400):
         figs.append(sub[ys.min():ys.max() + 1, xs.min():xs.max() + 1])
     return figs
 
+def row_bands(rgba, gap=14, minh=60):
+    """Bandas de filas por huecos reales de alfa (Runway no respeta tercios exactos)."""
+    occ = (rgba[..., 3] > 0).sum(1) > 2
+    runs, st = [], None
+    for y, v in enumerate(list(occ) + [False]):
+        if v and st is None: st = y
+        if not v and st is not None: runs.append([st, y]); st = None
+    m = []
+    for r in runs:
+        if m and r[0] - m[-1][1] < gap: m[-1][1] = r[1]
+        else: m.append(r)
+    return [b for b in m if b[1] - b[0] >= minh]
+
 def main():
     spec = json.load(open(sys.argv[1])); base = os.path.dirname(os.path.abspath(sys.argv[1]))
     sheet = Image.open(os.path.join(base, spec['sheet']))
@@ -57,9 +70,18 @@ def main():
     F, K = spec.get('F', 2), spec.get('K', 32)
     order = [tuple(p) for p in spec['frames']]           # lista de [fila, col] en el orden del atlas
     rowf = {}
+    bands = spec['bandsY'] if 'bandsY' in spec else row_bands(rgba, spec.get('rowGap', 14)) if spec.get('autoRows', True) else [(int(r * ch), int((r + 1) * ch)) for r in range(R)]
+    R = len(bands)
     for r in range(R):
-        rowf[r] = row_figures(rgba, int(r * ch), int((r + 1) * ch), spec.get('gap', 10))
-        print('fila', r, 'figuras', len(rowf[r]), file=sys.stderr)
+        rowf[r] = row_figures(rgba, bands[r][0], bands[r][1], spec.get('gap', 10))
+        print('fila', r, 'figuras', len(rowf[r]), [f'{i}:{f.shape[1]}x{f.shape[0]}' for i, f in enumerate(rowf[r])], file=sys.stderr)
+    if '--list' in sys.argv:
+        from PIL import ImageDraw
+        cell = 150; sh = Image.new('RGBA', (max(len(v) for v in rowf.values()) * cell, R * (cell + 14)), (58, 66, 88, 255)); d = ImageDraw.Draw(sh)
+        for r, fl in rowf.items():
+            for i, f in enumerate(fl):
+                im = Image.fromarray(f, 'RGBA'); im.thumbnail((cell - 6, cell - 6), Image.NEAREST); sh.alpha_composite(im, (i * cell + 3, r * (cell + 14) + 14)); d.text((i * cell + 4, r * (cell + 14)), f'{r},{i}', fill=(255, 255, 0, 255))
+        sh.save(os.path.join(base, 'figs.png')); return
     bodies = []
     for r, c in order:
         if c >= len(rowf[r]): raise SystemExit(f'falta figura {r},{c} (fila {r} tiene {len(rowf[r])})')
