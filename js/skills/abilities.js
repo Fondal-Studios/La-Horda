@@ -657,11 +657,7 @@ function castAbility(caster, sk, isUlt, idx){
       caster.nigroCastKind = caster.nigroDemonForm ? "demonSoulFire" : "plague";
       caster.attackAnim = Math.max(caster.attackAnim, 320);
       particles.push({x:tx,y:ty, life:460, ring:true, maxLife:460, maxR:radius, color:"#50e68c"});
-      // arte real de la plaga (3 frames embebidos que antes no se usaban), solo visual: ground1
-      // (mucho más ancho que ground2/ground3) se muestra una sola vez como estallido inicial,
-      // y ground2/ground3 quedan como la niebla que persiste en el suelo.
-      if(NIGRO_PLAGUE_FX_READY.ground1) vfxSprite("nigroPlagueBurst", 0, tx, ty+radius*0.4, radius*1.05, 260, null, 0.05, caster.fx<-0.12, 0.85, 0);
-      vfxSprite("nigroPlague", 0, tx, ty+radius*0.4, radius*0.95, 1500, null, 0.18, caster.fx<-0.12, 0.85, 5);
+      // La zona de la plaga la dibuja SFA (js/champions/skill-fx-a/c/nigromante.js, pixel art nativo): las tres imágenes pintadas que se usaban acá (plague-ground1/2/3) ya no se dibujan en el cast.
       // destello decorativo (arte real, no es un proyectil de verdad -no aplica daño ni viaja
       // con lógica propia-) sobre la mano del Nigromante transformado al momento del cast.
       if(caster.nigroDemonForm && NIGRO_DEMON_READY.soulFireProj) vfxSprite("nigroSoulFireFlare", 0, caster.x+caster.fx*22, caster.y-30, 34, 320, caster, 0.15, caster.fx<-0.12, 0.5, 0);
