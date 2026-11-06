@@ -35,6 +35,7 @@ const ENEMY_RUNWAY_SHEETS = {
   cm_perro: {src:"assets/sprites/enemies/ciudad/cm_perro/v2/atlas.png", hMul:2.25, meta:{"w":121,"h":70,"cols":8,"refH":50,"anchor":0.9286,"sets":{"walk":[0,1,2,3],"atk":[4,5,6,7],"hit":[7],"death":[8,9,10],"idle":[0,1,0,2],"walk_down":[0,1,2,3],"walk_up":[0,1,2,3],"run":[0,1,2,3],"leap":[4,5,6,7],"emerge":[8,9,10]}}},
   cm_campanero: {src:"assets/sprites/enemies/ciudad/cm_campanero/v2/atlas.png", hMul:2.6, meta:{"w":89,"h":98,"cols":8,"refH":80,"anchor":0.949,"sets":{"walk":[0,1,2,3,4,5],"atk":[6,7,8,9,10],"hit":[10],"death":[11,12],"idle":[0,1,0,2],"walk_down":[0,1,2,3,4,5],"walk_up":[0,1,2,3,4,5],"channel":[6,7,8,9,10],"bell":[6,7,8,9,10]}}},
   mn_devoraluz: {src:"assets/sprites/enemies/minas/mn_devoraluz/v2/atlas.png", hMul:3.25, meta:{"w":93,"h":102,"cols":8,"refH":80,"anchor":0.951,"sets":{"walk":[0,1,2,3,4,5],"atk":[6,7,8,9,10],"hit":[10],"death":[11,12,13],"idle":[0,1,0,2],"walk_down":[0,1,2,3,4,5],"walk_up":[0,1,2,3,4,5],"run":[0,1,2,3,4,5],"drain":[6,7,8,9,10]}}},
+  minotauro: {src:"assets/sprites/bosses/laberinto/minotauro/v2/atlas.png", hMul:2.5, meta:{"w":140,"h":131,"cols":8,"refH":100,"anchor":0.9618,"sets":{"walk":[0,1,2,3,4,5],"atk":[6,7,8],"hit":[9],"death":[8,10,11],"idle":[12,13,12,5],"walk_down":[0,1,2,3,4,5],"walk_up":[0,1,2,3,4,5],"run":[0,1,2,3,4,5],"charge":[0,1,2,3,4,5],"heavy":[6,7,8],"seismic":[6,7,8]}}},
 };
 for(const k in ENEMY_RUNWAY_SHEETS){
   const A = ENEMY_RUNWAY_SHEETS[k];
