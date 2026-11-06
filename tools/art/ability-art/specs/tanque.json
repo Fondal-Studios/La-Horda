@@ -1,0 +1,92 @@
+{
+ "guardian": "tanque",
+ "codex": "tanque",
+ "title": "tanque",
+ "palette": [
+  "#14213a",
+  "#2f5a96",
+  "#5f8fc4",
+  "#a9cdf0",
+  "#f2fbff"
+ ],
+ "abilities": [
+  {
+   "id": "spin",
+   "kind": "ring",
+   "radius": 140,
+   "frames": 10,
+   "glyph": "diamond",
+   "baseline": "al_spin",
+   "replaces": "al_spin",
+   "params": {},
+   "motif": "hex"
+  },
+  {
+   "id": "spin_idle",
+   "kind": "idle",
+   "radius": 120,
+   "frames": 12,
+   "glyph": "diamond",
+   "baseline": "al_spin_idle",
+   "replaces": "al_spin_idle",
+   "params": {},
+   "motif": "hex"
+  },
+  {
+   "id": "shout",
+   "kind": "ring",
+   "radius": 140,
+   "frames": 9,
+   "glyph": "diamond",
+   "baseline": "al_shout",
+   "replaces": "al_shout",
+   "params": {},
+   "motif": "hex"
+  },
+  {
+   "id": "banner_idle",
+   "kind": "idle",
+   "radius": 120,
+   "frames": 12,
+   "glyph": "diamond",
+   "baseline": "al_banner_idle",
+   "replaces": "al_banner_idle",
+   "params": {},
+   "motif": "hex"
+  },
+  {
+   "id": "taunt",
+   "kind": "ring",
+   "radius": 140,
+   "frames": 10,
+   "glyph": "diamond",
+   "baseline": "al_taunt",
+   "replaces": "al_taunt",
+   "params": {},
+   "motif": "hex"
+  },
+  {
+   "id": "taunt_idle",
+   "kind": "idle",
+   "radius": 120,
+   "frames": 12,
+   "glyph": "diamond",
+   "baseline": "al_taunt_idle",
+   "replaces": "al_taunt_idle",
+   "params": {},
+   "motif": "hex"
+  },
+  {
+   "id": "charge",
+   "kind": "beam",
+   "tile": [
+    20,
+    18
+   ],
+   "frames": 8,
+   "baseline_beam": "al_charge",
+   "replaces": "al_charge",
+   "params": {}
+  }
+ ]
+}

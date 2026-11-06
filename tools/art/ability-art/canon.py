@@ -69,8 +69,24 @@ def ramp_rgb(spec_or_pal):
     return [hex_rgb(c) for c in pal]
 
 
+def codex_palette(codex_id):
+    """Paleta de referencia (8 muestras + rampa derivada) de la lámina del Códice de un guardián."""
+    return load_json(OUT_DOCS / 'codex-palettes.json')[codex_id]
+
+
+def ramp_hex_for(spec, ab):
+    """Rampa del ARTE NUEVO: la del Códice si la ficha declara `codex`; si no, la propia de la habilidad o del guardián."""
+    if spec.get('codex'):
+        return codex_palette(spec['codex'])['ramp']
+    return ab.get('palette') or spec['palette']
+
+
 def ramp_for(spec, ab):
-    """Rampa de una habilidad: la suya (`palette`, p. ej. el vapor de Zahra) o la del guardián."""
+    return ramp_rgb(ramp_hex_for(spec, ab))
+
+
+def engine_ramp_for(spec, ab):
+    """Rampa con la que está pintado el arte ACTUAL del motor (para puntuar la línea base sin penalizarla por no ser del Códice)."""
     return ramp_rgb(ab.get('palette') or spec['palette'])
 
 

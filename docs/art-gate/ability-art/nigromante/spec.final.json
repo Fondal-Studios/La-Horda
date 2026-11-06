@@ -1,0 +1,36 @@
+{
+ "guardian": "nigromante",
+ "codex": "nigromante",
+ "title": "nigromante",
+ "palette": [
+  "#0a241b",
+  "#2a7a5a",
+  "#4ab88a",
+  "#8ef0c8",
+  "#ffffff"
+ ],
+ "abilities": [
+  {
+   "id": "abyss",
+   "kind": "ring",
+   "radius": 140,
+   "frames": 10,
+   "glyph": "eye",
+   "baseline": "ni_abyss",
+   "replaces": "ni_abyss",
+   "params": {},
+   "motif": "rune"
+  },
+  {
+   "id": "demon_idle",
+   "kind": "idle",
+   "radius": 120,
+   "frames": 12,
+   "glyph": "eye",
+   "baseline": "ni_demon_idle",
+   "replaces": "ni_demon_idle",
+   "params": {},
+   "motif": "rune"
+  }
+ ]
+}

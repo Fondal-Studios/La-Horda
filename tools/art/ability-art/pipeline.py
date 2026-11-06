@@ -71,9 +71,23 @@ def run(spec_path, baseline_dir=None, integrate=True, rounds=canon.MAX_ROUNDS, o
     for a in work['abilities']:
         fr = load_baseline(bdir, a, ramp) if bdir.exists() else None
         if fr:
-            br = evaluator.evaluate(fr, a, canon.ramp_for(work, a))
+            br = evaluator.evaluate(fr, a, canon.engine_ramp_for(work, a))
             base[a['id']], base_crit[a['id']], base_met[a['id']] = br['score'], br['criteria'], br['metrics']
     state = {a['id']: {'status': 'PENDING', 'rounds': 0, 'history': []} for a in work['abilities']}
+    # íconos y sellos con forma propia (un corazón roto, un cartel…): su arte actual no llega al radio, no es un decal de área → se conservan
+    for a in work['abilities']:
+        if a['kind'] == 'beam' or a.get('mode') == 'overlay':
+            continue
+        fr = load_baseline(bdir, a, None) if bdir.exists() else None
+        why = 'ficha: keep' if a.get('keep') else None
+        if fr and not why:
+            reach = evaluator.evaluate(fr, a, canon.engine_ramp_for(work, a))['metrics'].get('edge_reach', 1.0)
+            if reach < 0.7:
+                why = f'el arte actual no llega al radio ({reach:.2f}): es un ícono/sello con forma propia, no un decal de área'
+        if why:
+            state[a['id']]['status'] = 'KEEP_CURRENT'
+            state[a['id']]['history'].append({'round': 0, 'score': None, 'status': 'KEEP_CURRENT', 'improvement': None, 'reasons': [why]})
+
     frozen = {}
     log = []
     for rnd in range(1, rounds + 1):

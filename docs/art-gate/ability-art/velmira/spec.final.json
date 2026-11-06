@@ -1,0 +1,106 @@
+{
+ "guardian": "velmira",
+ "codex": "velmira",
+ "title": "velmira",
+ "palette": [
+  "#2a1038",
+  "#8a3aa6",
+  "#c06bd8",
+  "#f3d1ff",
+  "#ffffff"
+ ],
+ "abilities": [
+  {
+   "id": "ring0",
+   "kind": "ring",
+   "radius": 140,
+   "frames": 10,
+   "glyph": "eye",
+   "baseline": "vl_ring0",
+   "replaces": "vl_ring0",
+   "params": {},
+   "motif": "rune"
+  },
+  {
+   "id": "ring1",
+   "kind": "ring",
+   "radius": 120,
+   "frames": 10,
+   "glyph": "eye",
+   "baseline": "vl_ring1",
+   "replaces": "vl_ring1",
+   "params": {},
+   "motif": "rune"
+  },
+  {
+   "id": "ring2",
+   "kind": "ring",
+   "radius": 120,
+   "frames": 10,
+   "glyph": "eye",
+   "baseline": "vl_ring2",
+   "replaces": "vl_ring2",
+   "params": {},
+   "motif": "rune"
+  },
+  {
+   "id": "ring3",
+   "kind": "ring",
+   "radius": 120,
+   "frames": 10,
+   "glyph": "eye",
+   "baseline": "vl_ring3",
+   "replaces": "vl_ring3",
+   "params": {},
+   "motif": "rune"
+  },
+  {
+   "id": "beam0",
+   "kind": "beam",
+   "tile": [
+    16,
+    14
+   ],
+   "frames": 8,
+   "baseline_beam": "vl_beam0",
+   "replaces": "vl_beam0",
+   "params": {}
+  },
+  {
+   "id": "beam1",
+   "kind": "beam",
+   "tile": [
+    16,
+    14
+   ],
+   "frames": 8,
+   "baseline_beam": "vl_beam1",
+   "replaces": "vl_beam1",
+   "params": {}
+  },
+  {
+   "id": "beam2",
+   "kind": "beam",
+   "tile": [
+    16,
+    14
+   ],
+   "frames": 8,
+   "baseline_beam": "vl_beam2",
+   "replaces": "vl_beam2",
+   "params": {}
+  },
+  {
+   "id": "beam3",
+   "kind": "beam",
+   "tile": [
+    16,
+    14
+   ],
+   "frames": 8,
+   "baseline_beam": "vl_beam3",
+   "replaces": "vl_beam3",
+   "params": {}
+  }
+ ]
+}

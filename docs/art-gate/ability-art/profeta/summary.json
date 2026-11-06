@@ -1,0 +1,106 @@
+{
+ "guardian": "profeta",
+ "passed": [
+  "rewind",
+  "bubble_idle",
+  "spin",
+  "stun",
+  "fuse_idle"
+ ],
+ "escalated": [],
+ "keep_current": [],
+ "state": {
+  "rewind": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.0,
+     "status": "PASS",
+     "improvement": 19.7,
+     "reasons": []
+    }
+   ]
+  },
+  "bubble_idle": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 89.8,
+     "status": "PASS",
+     "improvement": 16.3,
+     "reasons": []
+    }
+   ]
+  },
+  "spin": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.0,
+     "status": "PASS",
+     "improvement": 19.7,
+     "reasons": []
+    }
+   ]
+  },
+  "stun": {
+   "status": "PASS",
+   "rounds": 2,
+   "history": [
+    {
+     "round": 1,
+     "score": 84.8,
+     "status": "FAIL",
+     "improvement": 15.4,
+     "reasons": [
+      "criterio bajo: cobertura legible 0.0/12",
+      "puntaje 84.8 < 85",
+      "regresión de cobertura legible frente al arte actual (0.00 < 0.23)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 95.7,
+     "status": "PASS",
+     "improvement": 26.3,
+     "reasons": []
+    }
+   ]
+  },
+  "fuse_idle": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 89.8,
+     "status": "PASS",
+     "improvement": 19.8,
+     "reasons": []
+    }
+   ]
+  }
+ },
+ "baseline": {
+  "rewind": 75.3,
+  "bubble_idle": 73.5,
+  "spin": 75.3,
+  "stun": 69.4,
+  "fuse_idle": 70.0
+ },
+ "log": [
+  "ronda 1: rewind PASS 95.0 (arte actual 75.3, +19.7)",
+  "ronda 1: bubble_idle PASS 89.8 (arte actual 73.5, +16.3)",
+  "ronda 1: spin PASS 95.0 (arte actual 75.3, +19.7)",
+  "ronda 1: stun FAIL 84.8 — criterio bajo: cobertura legible 0.0/12; puntaje 84.8 < 85",
+  "ronda 1: fuse_idle PASS 89.8 (arte actual 70.0, +19.8)",
+  "ronda 2: stun PASS 95.7 (arte actual 69.4, +26.3)"
+ ],
+ "integration": null
+}

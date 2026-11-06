@@ -116,7 +116,7 @@ def module_source(guardian, spec, results):
         r = results.get(ab['id'])
         if not r or r['status'] != 'PASS':
             continue
-        pal = ab.get('palette') or spec['palette']
+        pal = canon.ramp_hex_for(spec, ab)
         fr = r['frames']
         h, w = fr[0].shape
         kind = 'beam' if ab['kind'] == 'beam' else 'decal'

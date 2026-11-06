@@ -1,0 +1,95 @@
+{
+ "guardian": "veyra",
+ "codex": "veyra",
+ "title": "veyra",
+ "palette": [
+  "#2a0612",
+  "#7a1d38",
+  "#ab3459",
+  "#ff7d8e",
+  "#ffd6dc"
+ ],
+ "abilities": [
+  {
+   "id": "slash",
+   "kind": "sector",
+   "radius": 140,
+   "frames": 10,
+   "glyph": "cross",
+   "baseline": "vy_slash",
+   "replaces": "vy_slash",
+   "params": {},
+   "motif": "bolt",
+   "half": 0.85
+  },
+  {
+   "id": "wound",
+   "kind": "ring",
+   "radius": 140,
+   "frames": 10,
+   "glyph": "cross",
+   "baseline": "vy_wound",
+   "replaces": "vy_wound",
+   "params": {},
+   "motif": "bolt",
+   "keep": true
+  },
+  {
+   "id": "pact",
+   "kind": "ring",
+   "radius": 24,
+   "frames": 10,
+   "glyph": "cross",
+   "baseline": "vy_pact",
+   "replaces": "vy_pact",
+   "params": {},
+   "motif": "bolt"
+  },
+  {
+   "id": "pact_idle",
+   "kind": "idle",
+   "radius": 120,
+   "frames": 12,
+   "glyph": "cross",
+   "baseline": "vy_pact_idle",
+   "replaces": "vy_pact_idle",
+   "params": {},
+   "motif": "bolt"
+  },
+  {
+   "id": "dash_end",
+   "kind": "ring",
+   "radius": 210,
+   "frames": 8,
+   "glyph": "cross",
+   "baseline": "vy_dash_end",
+   "replaces": "vy_dash_end",
+   "params": {},
+   "motif": "bolt"
+  },
+  {
+   "id": "dash",
+   "kind": "beam",
+   "tile": [
+    24,
+    16
+   ],
+   "frames": 8,
+   "baseline_beam": "vy_dash",
+   "replaces": "vy_dash",
+   "params": {}
+  },
+  {
+   "id": "lance",
+   "kind": "beam",
+   "tile": [
+    24,
+    16
+   ],
+   "frames": 8,
+   "baseline_beam": "vy_lance",
+   "replaces": "vy_lance",
+   "params": {}
+  }
+ ]
+}

@@ -1,0 +1,92 @@
+{
+ "guardian": "myla",
+ "passed": [
+  "bubble_idle",
+  "pop",
+  "puddle_idle",
+  "cry_idle"
+ ],
+ "escalated": [],
+ "keep_current": [],
+ "state": {
+  "bubble_idle": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 94.0,
+     "status": "PASS",
+     "improvement": 23.2,
+     "reasons": []
+    }
+   ]
+  },
+  "pop": {
+   "status": "PASS",
+   "rounds": 2,
+   "history": [
+    {
+     "round": 1,
+     "score": 80.0,
+     "status": "FAIL",
+     "improvement": 16.5,
+     "reasons": [
+      "el interior tapa al enemigo (72% de píxeles opacos en la zona central; techo 60 %)",
+      "cobertura excesiva (83%): oculta el suelo",
+      "criterio bajo: cobertura legible 0.0/12",
+      "criterio bajo: suelo despejado 2.07/5",
+      "puntaje 80.0 < 85"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 96.7,
+     "status": "PASS",
+     "improvement": 33.2,
+     "reasons": []
+    }
+   ]
+  },
+  "puddle_idle": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 94.0,
+     "status": "PASS",
+     "improvement": 11.8,
+     "reasons": []
+    }
+   ]
+  },
+  "cry_idle": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 94.0,
+     "status": "PASS",
+     "improvement": 11.2,
+     "reasons": []
+    }
+   ]
+  }
+ },
+ "baseline": {
+  "bubble_idle": 70.8,
+  "pop": 63.5,
+  "puddle_idle": 82.2,
+  "cry_idle": 82.8
+ },
+ "log": [
+  "ronda 1: bubble_idle PASS 94.0 (arte actual 70.8, +23.2)",
+  "ronda 1: pop FAIL 80.0 — el interior tapa al enemigo (72% de píxeles opacos en la zona central; techo 60 %); cobertura excesiva (83%): oculta el suelo",
+  "ronda 1: puddle_idle PASS 94.0 (arte actual 82.2, +11.8)",
+  "ronda 1: cry_idle PASS 94.0 (arte actual 82.8, +11.2)",
+  "ronda 2: pop PASS 96.7 (arte actual 63.5, +33.2)"
+ ],
+ "integration": null
+}

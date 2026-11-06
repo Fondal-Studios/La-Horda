@@ -99,7 +99,7 @@
      "round": 1,
      "score": 96.3,
      "status": "PASS",
-     "improvement": 28.0,
+     "improvement": 29.7,
      "reasons": []
     }
    ]
@@ -205,14 +205,14 @@
  },
  "baseline": {
   "furnace": 69.9,
-  "quench": 68.3,
+  "quench": 66.6,
   "ash_step": 76.7,
   "vent": 76.8,
   "vent_zone": 85.5
  },
  "log": [
   "ronda 1: furnace FAIL 80.0 — el interior tapa al enemigo (67% de píxeles opacos en la zona central; techo 60 %); criterio bajo: cobertura legible 1.71/12",
-  "ronda 1: quench PASS 96.3 (arte actual 68.3, +28.0)",
+  "ronda 1: quench PASS 96.3 (arte actual 66.6, +29.7)",
   "ronda 1: ash_step PASS 98.3 (arte actual 76.7, +21.6)",
   "ronda 1: vent FAIL 90.1 — criterio bajo: cobertura legible 5.98/12; regresión de cobertura legible frente al arte actual (0.50 < 1.00)",
   "ronda 1: vent_zone FAIL 99.0 — regresión de riqueza visual frente al arte actual (0.93 < 1.00)",

@@ -1,0 +1,130 @@
+{
+ "guardian": "segador",
+ "passed": [
+  "slash",
+  "roar",
+  "flare",
+  "berserk",
+  "armor_idle",
+  "berserk_idle"
+ ],
+ "escalated": [],
+ "keep_current": [],
+ "state": {
+  "slash": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.3,
+     "status": "PASS",
+     "improvement": 29.3,
+     "reasons": []
+    }
+   ]
+  },
+  "roar": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.0,
+     "status": "PASS",
+     "improvement": 15.1,
+     "reasons": []
+    }
+   ]
+  },
+  "flare": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.0,
+     "status": "PASS",
+     "improvement": 12.4,
+     "reasons": []
+    }
+   ]
+  },
+  "berserk": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.0,
+     "status": "PASS",
+     "improvement": 23.2,
+     "reasons": []
+    }
+   ]
+  },
+  "armor_idle": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 94.1,
+     "status": "PASS",
+     "improvement": 16.1,
+     "reasons": []
+    }
+   ]
+  },
+  "berserk_idle": {
+   "status": "PASS",
+   "rounds": 3,
+   "history": [
+    {
+     "round": 1,
+     "score": 94.1,
+     "status": "FAIL",
+     "improvement": 9.3,
+     "reasons": [
+      "regresión de riqueza visual frente al arte actual (0.94 < 1.00)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 93.1,
+     "status": "FAIL",
+     "improvement": 8.3,
+     "reasons": [
+      "regresión de cobertura legible frente al arte actual (0.72 < 1.00)"
+     ]
+    },
+    {
+     "round": 3,
+     "score": 95.9,
+     "status": "PASS",
+     "improvement": 11.1,
+     "reasons": []
+    }
+   ]
+  }
+ },
+ "baseline": {
+  "slash": 66.0,
+  "roar": 79.9,
+  "flare": 82.6,
+  "berserk": 71.8,
+  "armor_idle": 78.0,
+  "berserk_idle": 84.8
+ },
+ "log": [
+  "ronda 1: slash PASS 95.3 (arte actual 66.0, +29.3)",
+  "ronda 1: roar PASS 95.0 (arte actual 79.9, +15.1)",
+  "ronda 1: flare PASS 95.0 (arte actual 82.6, +12.4)",
+  "ronda 1: berserk PASS 95.0 (arte actual 71.8, +23.2)",
+  "ronda 1: armor_idle PASS 94.1 (arte actual 78.0, +16.1)",
+  "ronda 1: berserk_idle FAIL 94.1 — regresión de riqueza visual frente al arte actual (0.94 < 1.00)",
+  "ronda 2: berserk_idle FAIL 93.1 — regresión de cobertura legible frente al arte actual (0.72 < 1.00)",
+  "ronda 3: berserk_idle PASS 95.9 (arte actual 84.8, +11.1)"
+ ],
+ "integration": null
+}

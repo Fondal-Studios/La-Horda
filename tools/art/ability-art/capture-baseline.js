@@ -26,7 +26,11 @@ const kvbS = R => Math.max(24, Math.min(128, Math.round(2 * R / 4.4 / 4) * 4));
       report[ab.id] = {name: ab.baseline, frames: data.n, w: data.w, h: data.h};
     }
     fs.writeFileSync(path.join(out, 'baseline.json'), JSON.stringify(report, null, 1));
-    console.log(JSON.stringify(report)); await browser.close(); return;
+    // poda: solo las combinaciones que el tema hornea de verdad (cuadrado del tamaño pedido); el resto no tiene arte que superponer
+    const keep = spec.abilities.filter(ab => report[ab.id] && typeof report[ab.id] === 'object' && report[ab.id].w === ab.size && report[ab.id].h === ab.size);
+    for (const ab of spec.abilities) if (!keep.includes(ab)) try { fs.unlinkSync(path.join(out, ab.id + '.png')); } catch (e) {}
+    spec.abilities = keep; fs.writeFileSync(process.argv[2], JSON.stringify(spec, null, 1) + '\n');
+    console.log(path.basename(process.argv[2]), keep.length, 'piezas con arte base'); await browser.close(); return;
   }
   for (const ab of spec.abilities) {
     const name = ab.baseline || ab.baseline_beam; if (!name) continue;

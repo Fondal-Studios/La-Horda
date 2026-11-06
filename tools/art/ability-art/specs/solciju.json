@@ -1,0 +1,58 @@
+{
+ "guardian": "solciju",
+ "codex": "solciju",
+ "title": "solciju",
+ "palette": [
+  "#2a0814",
+  "#6b1f38",
+  "#923951",
+  "#d46a86",
+  "#ffd2dc"
+ ],
+ "abilities": [
+  {
+   "id": "splash",
+   "kind": "ring",
+   "radius": 140,
+   "frames": 10,
+   "glyph": "drop",
+   "baseline": "so_splash",
+   "replaces": "so_splash",
+   "params": {},
+   "motif": "pollen"
+  },
+  {
+   "id": "pool_idle",
+   "kind": "idle",
+   "radius": 120,
+   "frames": 14,
+   "glyph": "drop",
+   "baseline": "so_pool_idle",
+   "replaces": "so_pool_idle",
+   "params": {},
+   "motif": "pollen"
+  },
+  {
+   "id": "fuse",
+   "kind": "ring",
+   "radius": 120,
+   "frames": 10,
+   "glyph": "drop",
+   "baseline": "so_fuse",
+   "replaces": "so_fuse",
+   "params": {},
+   "motif": "pollen"
+  },
+  {
+   "id": "toast",
+   "kind": "ring",
+   "radius": 28,
+   "frames": 10,
+   "glyph": "drop",
+   "baseline": "so_toast",
+   "replaces": "so_toast",
+   "params": {},
+   "motif": "pollen"
+  }
+ ]
+}
