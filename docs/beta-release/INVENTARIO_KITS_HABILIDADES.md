@@ -48,3 +48,10 @@ Revisados además: **Aelith, Aurelia, Axiom, Baltra, Brakk, Brasa, Bront, Sylva 
 
 ## Galería de los 43 guardianes (13:0x)
 Corrida completa de `ability-gallery.js` (hojas por guardián). Revisados a escala reducida, además de los ya listados: Iria, Khepri, Libertador, Maura, Morveth, Morwen, Musashi, Myla (sin roturas). Observaciones: Libertador hab. 1 y 3 tienen efecto discreto (lanzada corta y montura); la definitiva del Libertador, como la de Axiom, aclara el fondo a gris/blanco durante el cast. Pendientes de revisar a ojo: Nahir, Nano GM, Oriel, Orsa, Profeta, Renko, Saelis, Segador, Sira, Solciju, Soporte, Tibor, Velmira, Vesper, Veyra, Vhal, Ynara, Zahra (hojas ya generadas, regenerables con `ability-sheets.py`).
+
+### Cierre de la revisión visual de la galería (43 guardianes)
+Revisadas a escala reducida las 43 hojas: **todas las habilidades y definitivas muestran efecto con paleta e identidad propias; ninguna rota ni ausente**. Hallazgos: (1) **Plaga del Nigromante** — peor caso, ya corregido (pixel art nativo). (2) Definitivas que aclaran el fondo durante el cast: **Axiom, Libertador** (y, más suave, Tanque): decisión de dirección de arte. (3) Efectos discretos: Libertador hab. 1, Profeta hab. 1, Segador hab. 1-3 (aro/estela pequeños): no son defectos, pero se pueden potenciar. (4) Los bloques blancos junto a los enemigos a 160 ms son el destello de golpe de los muñecos.
+Limitación: escala reducida y una sola arena.
+
+### Ilkan — Coloso de Arena en combate (revisado 13:xx)
+Secuencia real de la definitiva: pilar de luz turquesa con base dorada → cuadro de «invocación» del atlas del Coloso (columna de arena en espiral, muy ampliada: se ve como una losa trapezoidal de dos tonos) → el Coloso con núcleo turquesa, tres cuernos y nubes de arena. El pilar de luz es correcto; la columna ampliada es discutible (estética, no rotura). Sin cambios.
