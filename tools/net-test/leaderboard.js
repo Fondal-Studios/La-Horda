@@ -64,6 +64,8 @@ async function board(q, token){ const r = await fetch(API + '/api/leaderboard' +
       window.endlessOpen(); document.getElementById('start-btn').click(); document.getElementById('prep-start-btn').click();
       for (let i = 0; i < 30; i++) update(16);
       EN.score = score; EN.round = round; runElapsedMs = ms; runEnding = true;
+      // contrato beta: al ranking va la ronda que ESTE jugador sobrevivió; se modela como tal (los valores pedidos = lo sobrevivido)
+      Object.assign(EN.local, { survived: round, survivedScore: score, survivedMs: ms, seen: round });
       endlessEndRun('quit');
       return { st: state, active: endlessActive, cls: EN.local && EN.local.cls };
     }, [score, round, ms, cls]);
@@ -136,7 +138,7 @@ async function board(q, token){ const r = await fetch(API + '/api/leaderboard' +
   await sleep(8500);
   const cut = r => r.abort('internetdisconnected');
   await A.ctx.route(API + '/**', cut);
-  await A.play(21000, 4, 90000, 'mago'); // corta: el servidor pide que la partida entre en el tiempo desde el envío anterior
+  await A.play(21000, 9, 90000, 'mago'); /* ranking beta: manda la ronda; para pasar primera hay que superar la ronda 8 de la otra cuenta */ // corta: el servidor pide que la partida entre en el tiempo desde el envío anterior
   await A.waitFor(() => EN.local.lb && EN.local.lb.st !== 'sending', 15000);
   const lO = await A.line(), pend = await A.E(() => endlessSave().lbPending || null);
   check('LB.sin_conexion_queda_pendiente', lO.st === 'offline' && /cuando vuelva la red/.test(lO.txt) && pend && pend.score === 21000, { lO, pend });
