@@ -35,6 +35,7 @@ async function boot(browser) {
   await ctx.addInitScript(() => { try { localStorage.setItem('lahorda_ui_crawl', '1'); } catch (e) {} });
   const page = await ctx.newPage();
   await page.goto(BASE + (UI ? '?ui=' + UI : ''), {waitUntil: 'domcontentloaded', timeout: 120000});
+  if (process.env.PLAYER) { const wd = await page.evaluate(() => navigator.webdriver); if (wd) throw new Error('navigator.webdriver sigue en true: no es el camino del jugador'); const on = await page.evaluate(() => !!(window.UI_REWORK && window.UI_REWORK.on)); if (!on) throw new Error('el rework no está activo por defecto'); }
   await page.waitForFunction(() => typeof save !== 'undefined' && typeof setState === 'function' && document.getElementById('title-continue-btn') && !/cargando/i.test(document.getElementById('title-continue-btn').innerText), null, {timeout: 120000});
   // perfil recurrente: ya eligió guardián y completó la primera partida
   await page.evaluate(() => {   // solo en la página de prueba: se anulan las puertas de onboarding para medir el menú de un jugador recurrente
@@ -59,7 +60,8 @@ async function replay(page, pathKeys) {
   return true;
 }
 (async () => {
-  const browser = await chromium.launch({executablePath: process.env.CHROMIUM_PATH || '/opt/pw-browsers/chromium', args: ['--no-sandbox']});
+  const args = ['--no-sandbox']; if (process.env.PLAYER) args.push('--disable-blink-features=AutomationControlled');   // PLAYER=1: navigator.webdriver = false, como un jugador real
+  const browser = await chromium.launch({executablePath: process.env.CHROMIUM_PATH || '/opt/pw-browsers/chromium', args});
   const out = {ui: UI || 'default', viewport: [W, H], goals: {}, screens: {}, edges: 0};
   const dest = process.argv[2] || path.join(__dirname, 'crawl-' + (UI || 'default') + '.json');
   const visited = new Set(), queue = [[]]; let n = 0;
