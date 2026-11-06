@@ -1,0 +1,70 @@
+/* css/ui-rework.css — GENERADO por tools/ui-rework/architect.py desde spec/ui-spec.json (La Horda UI retro v2). No editar a mano. */
+body.ui-rework{ --ur-g:8px; --ur-line:#6a3e1e; --ur-accent:#ff8a2a; --ur-gold:#ffd76a; --ur-panel:#1a0f0a; --ur-deep:#0f0805; --ur-ink:#f3e6cf; --ur-dim:#bfa88a; --ur-shadow:4px 4px 0 #000; }
+
+/* ---------- componente base: botón de píxel (esquinas rectas, sombra escalonada, ≥ 44 px) ---------- */
+body.ui-rework .ur-btn, body.ui-rework #ur-modes-btn, body.ui-rework #ur-more-btn, body.ui-rework #ur-info-btn{
+  min-height:44px; min-width:44px; border:2px solid var(--ur-line); border-radius:0px; background:linear-gradient(180deg,#3a1b0d,#1d0e07);
+  color:var(--ur-ink); box-shadow:var(--ur-shadow), inset 2px 2px 0 rgba(255,180,120,.25); font-family:var(--font-pixel,'Press Start 2P',monospace); cursor:pointer; }
+body.ui-rework .ur-btn:active, body.ui-rework #ur-modes-btn:active, body.ui-rework #ur-more-btn:active, body.ui-rework #ur-info-btn:active{ transform:translate(2px,2px); box-shadow:2px 2px 0 #000; }
+
+/* ---------- TÍTULO: una acción dominante + MENÚ + «i» ---------- */
+body.ui-rework #title-screen .legal-foot, body.ui-rework #title-screen .build-tag, body.ui-rework #title-screen a[href='instalar.html']{ display:none !important; }
+body.ui-rework #title-screen #title-continue-btn{ position:absolute; right:42px; bottom:22px; width:220px; height:48px; font-size:0; padding:0; }
+body.ui-rework #title-screen #title-continue-btn::after{ content:'MENÚ'; font:12px/1 var(--font-pixel,'Press Start 2P',monospace); letter-spacing:.12em; color:var(--ur-gold); }
+body.ui-rework #title-screen #title-continue-btn:disabled::after{ content:'CARGANDO…'; opacity:.7; }
+body.ui-rework #title-screen #bt-play{ min-height:64px; font-size:1.25em; }
+body.ui-rework #ur-info-btn{ position:absolute; left:14px; bottom:18px; z-index:6; width:44px; height:44px; padding:0; font-size:16px; }
+body.ui-rework #title-screen #title-join-name, body.ui-rework #title-screen #title-join-btn{ position:relative; z-index:6; }
+
+/* ---------- HUB: JUGAR grande + 4 mosaicos + MODOS; el resto, dentro de paneles ---------- */
+body.ui-rework #mainmenu-screen:not(.hidden){ display:flex; flex-direction:column; height:100%; gap:var(--ur-g); padding:var(--ur-g) calc(var(--ur-g)*1.5); box-sizing:border-box; }
+body.ui-rework #mainmenu-screen .hub-top{ display:flex; align-items:center; gap:var(--ur-g); flex:none; position:static; }
+body.ui-rework #mainmenu-screen .hub-top .hub-brand{ flex:1; text-align:center; font-size:clamp(12px,2.4vw,20px); }
+body.ui-rework #mainmenu-screen .hub-profile{ order:0; min-height:52px; }
+body.ui-rework #mainmenu-screen .hub-brand{ order:1; }
+body.ui-rework #mainmenu-screen #hub-options-btn{ order:2; width:44px; height:44px; }
+body.ui-rework #ur-more-btn{ order:3; width:44px; height:44px; padding:0; font-size:18px; }
+body.ui-rework #mainmenu-screen .hub-main{ flex:1; min-height:0; display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:calc(var(--ur-g)*1.5); grid-template-rows:minmax(0,1fr); }
+body.ui-rework #mainmenu-screen .hub-modes{ display:flex; flex-direction:column; min-height:0; height:100%; }
+body.ui-rework #mainmenu-screen #hub-play-btn{ flex:1 1 auto; min-height:0; height:100%; }
+body.ui-rework #mainmenu-screen .hub-endless-row{ display:none; }
+body.ui-rework #mainmenu-screen .hub-sections{ display:grid; grid-template-columns:1fr 1fr; grid-auto-rows:minmax(64px,1fr); gap:var(--ur-g); min-height:0; align-content:stretch; overflow:visible; }
+body.ui-rework #mainmenu-screen .hub-sections > .hub-row{ display:contents; }
+body.ui-rework #mainmenu-screen .hub-section-title{ display:none; }
+body.ui-rework #mainmenu-screen .hub-tile, body.ui-rework #mainmenu-screen #ur-modes-btn{ position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; min-height:64px; padding:6px; text-align:center; border-radius:0px; }
+body.ui-rework #mainmenu-screen .hub-tile-ico{ margin:0; width:auto; height:auto; font-size:26px; }
+body.ui-rework #mainmenu-screen .hub-tile-title{ font-size:13px; letter-spacing:.06em; white-space:normal; }
+body.ui-rework #mainmenu-screen .hub-tile-sub{ display:none; }
+body.ui-rework #mainmenu-screen #ur-modes-btn{ grid-column:1 / -1; flex-direction:row; justify-content:flex-start; gap:12px; padding:6px 14px; }
+body.ui-rework #ur-modes-btn .ur-modes-ico{ font-size:24px; color:var(--ur-gold); }
+body.ui-rework #ur-modes-btn .ur-modes-txt{ display:flex; flex-direction:column; gap:4px; text-align:left; }
+body.ui-rework #ur-modes-btn b{ font:13px/1.1 var(--font-pixel,'Press Start 2P',monospace); color:var(--ur-gold); }
+body.ui-rework #ur-modes-btn small{ font:15px/1.1 var(--font-body,VT323,monospace); color:var(--ur-dim); }
+body.ui-rework #mainmenu-screen .hub-tile.ur-span2{ grid-column:1 / -1; }
+body.ui-rework #mainmenu-screen .hub-tile-badge, body.ui-rework #mainmenu-screen .hub-tile-offer{ position:absolute; top:4px; right:4px; }
+
+/* ---------- PANELES (sheets): lo secundario, dentro ---------- */
+body.ui-rework .ur-sheet{ position:fixed; inset:0; z-index:60; display:flex; align-items:center; justify-content:center; background:rgba(8,4,2,.82); }
+body.ui-rework .ur-sheet.hidden{ display:none; }
+body.ui-rework .ur-sheet-box{ width:min(92vw,720px); max-height:92vh; display:flex; flex-direction:column; gap:var(--ur-g); padding:calc(var(--ur-g)*1.5); background:var(--ur-panel); border:2px solid var(--ur-line); box-shadow:var(--ur-shadow); }
+body.ui-rework .ur-sheet-head{ display:flex; align-items:center; gap:12px; }
+body.ui-rework .ur-sheet-head h2{ margin:0; font:14px/1.2 var(--font-pixel,'Press Start 2P',monospace); color:var(--ur-gold); letter-spacing:.08em; }
+body.ui-rework .ur-sheet-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:var(--ur-g); overflow:auto; min-height:0; }
+body.ui-rework .ur-sheet-grid > *{ min-height:52px; }
+body.ui-rework .ur-sheet-grid .hub-tile, body.ui-rework .ur-sheet-grid .hub-endless, body.ui-rework .ur-sheet-grid .hub-endless-rank{ display:flex; flex-direction:row; align-items:center; gap:12px; text-align:left; padding:8px 12px; }
+body.ui-rework .ur-sheet-grid .hub-tile-sub{ display:block; }
+body.ui-rework .ur-sheet-grid .hub-tile-title{ white-space:normal; overflow:visible; text-overflow:clip; font-size:13px; }
+body.ui-rework .ur-sheet-grid [data-ur-label]{ display:flex; align-items:center; justify-content:flex-start; gap:12px; width:auto; height:auto; min-height:52px; padding:6px 14px; text-align:left; }
+body.ui-rework .ur-sheet-grid [data-ur-label]::after{ content:attr(data-ur-label); font:12px/1.2 var(--font-pixel,'Press Start 2P',monospace); letter-spacing:.06em; color:var(--ur-ink); }
+body.ui-rework .ur-sheet-grid [data-ur-label] .hub-premium-plus{ display:none; }
+body.ui-rework .ur-sheet-grid .hidden{ display:none !important; }
+body.ui-rework .ur-sheet-info{ display:flex; flex-direction:column; gap:12px; }
+body.ui-rework .ur-sheet-info .legal-foot{ display:flex !important; flex-wrap:wrap; gap:12px; position:static; }
+body.ui-rework .ur-sheet-info a{ color:var(--ur-gold); font-size:16px; min-height:44px; display:inline-flex; align-items:center; }
+body.ui-rework .ur-sheet-info .build-tag{ display:block !important; position:static; color:var(--ur-dim); }
+
+/* ---------- SALA: pestañas compactas + «Comenzar» siempre a la vista ---------- */
+body.ui-rework #prep-screen .prep-secs{ display:flex; gap:var(--ur-g); }
+body.ui-rework #prep-screen .prep-sec{ flex:1; min-height:44px; border-radius:0px; font-size:13px; }
+body.ui-rework #prep-screen .prep-sec .prep-sec-ico{ display:none; }
+body.ui-rework #prep-screen #prep-start-btn{ min-height:52px; font-family:var(--font-pixel,'Press Start 2P',monospace); letter-spacing:.1em; box-shadow:var(--ur-shadow); border-radius:0px; }

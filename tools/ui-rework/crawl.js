@@ -60,6 +60,7 @@ async function replay(page, pathKeys) {
 (async () => {
   const browser = await chromium.launch({executablePath: process.env.CHROMIUM_PATH || '/opt/pw-browsers/chromium', args: ['--no-sandbox']});
   const out = {ui: UI || 'default', viewport: [W, H], goals: {}, screens: {}, edges: 0};
+  const dest = process.argv[2] || path.join(__dirname, 'crawl-' + (UI || 'default') + '.json');
   const visited = new Set(), queue = [[]]; let n = 0;
   while (queue.length) {
     const pth = queue.shift(); const {ctx, page} = await boot(browser);
@@ -74,10 +75,10 @@ async function replay(page, pathKeys) {
       if (pth.length < DEPTH && p.state !== 'playing') for (const e of p.els) { if (SKIP.test(e.label + ' ' + e.id)) continue; queue.push([...pth, key(e)]); out.edges++; }
     } catch (e) { console.error('error en', pth.join(' > '), e.message); }
     await ctx.close();
+    out.pagesVisited = n; fs.writeFileSync(dest, JSON.stringify(out, null, 1));   // progreso: nunca se pierde lo medido
     if (n > +(process.env.MAX_PAGES || 140)) break;
   }
-  out.pagesVisited = n;
-  const dest = process.argv[2] || path.join(__dirname, 'crawl-' + (UI || 'default') + '.json');
+  out.pagesVisited = n; out.done = true;
   fs.writeFileSync(dest, JSON.stringify(out, null, 1));
   console.log('goals', JSON.stringify(Object.fromEntries(Object.entries(out.goals).map(([k, v]) => [k, v.clicks]))), 'screens', Object.keys(out.screens).join(','), 'pages', n);
   await browser.close();
