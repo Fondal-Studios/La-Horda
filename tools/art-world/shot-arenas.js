@@ -2,6 +2,7 @@ const { chromium } = require('playwright'); const sleep=ms=>new Promise(r=>setTi
 const [base,out]=process.argv.slice(2);
 (async()=>{const b=await chromium.launch({args:['--no-sandbox']});
  const names=await (async()=>{const p=await (await b.newContext()).newPage(); await p.goto(base+'/index.html'); await p.waitForFunction(()=>typeof ARENA_ORDER!=='undefined'); const n=await p.evaluate(()=>ARENA_ORDER.slice()); await p.close(); return n;})();
+ if(process.env.ARENAS) names.splice(0,names.length,...process.env.ARENAS.split(','));
  console.log(names.join(','));
  for(const a of names){
   const p=await (await b.newContext({viewport:{width:960,height:540}})).newPage(); const errs=[]; p.on('pageerror',e=>errs.push(e.message));

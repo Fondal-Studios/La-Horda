@@ -20,3 +20,5 @@ Orden por necesidad visual (a ojo, sin evaluación independiente todavía):
 5. **Reino Fúngico, Infernal, Acuática**: revisar detalle de suelo/bordes.
 6. **Ruinas Célticas y Gélida**: ya tienen arte del Códice (PR #244/#245); solo revisar densidad.
 Después: campeones (backlog `docs/production/asset-blocks.json`: B002–B006 cuerpos pendientes, B007–B049 definitivas, B056–B092 jefes/élites/enemigos) siguiendo el contrato de `tools/factory/cli.js` y los gates de AGENTS.md. Nada de esto está aprobado por evaluador independiente.
+
+**Hecho en ejecución 06:23 UTC:** arena 02 Fábrica Sin Fin (suelos pintados). Siguiente en la lista: 2. Laberinto, 3. Minas, 4. Abismo, 5. Fúngico/Infernal/Acuática. Saldo 959. Pendiente además: pila PR (#263→#265→#236), token de partida, pase de batalla.

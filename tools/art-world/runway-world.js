@@ -21,13 +21,19 @@ Object.assign(JOBS, {
   tex_techo_roja: 'In the style of @ref: ' + TEX + 'rows of overlapping dark-red clay roof tiles, a few chipped tiles, soot stains.',
   tex_pared_madera_piedra: 'In the style of @ref: ' + TEX + 'a village house wall made of grey-purple stone blocks framed by dark brown timber beams in a half-timbered pattern, plaster patches, no windows, no door.',
 });
+Object.assign(JOBS, {
+  fort_planchas_hierro: 'In the style of @ref: ' + TEX + 'top-down floor of riveted dark iron plates with seams, soot, scorch marks and faint orange forge glow in the cracks, industrial dungeon factory floor, low contrast so characters stay readable.',
+  fort_adoquin_patio: 'In the style of @ref: ' + TEX + 'top-down floor of large irregular worn grey-brown cobblestones with dark mortar and patches of packed dirt, castle courtyard ground, low contrast so characters stay readable.',
+});
 const cmd = process.argv[2], ids = process.argv.slice(3).filter(a => !a.startsWith('--')), force = process.argv.includes('--force');
 if (cmd === 'status') console.log(JSON.stringify({creditBalance: api('GET', '/organization').creditBalance}));
 else if (cmd === 'list') for (const k of Object.keys(JOBS)) console.log(k, fs.existsSync(path.join(OUT, 'ciudad', k, 'master.png')) ? 'OK' : 'pendiente');
 else if (cmd === 'gen') {
-  const ref = 'data:image/png;base64,' + fs.readFileSync(path.join(OUT, 'ciudad/ref_house_crop.png')).toString('base64'); let spent = 0;
+  let spent = 0;
   for (const id of ids) {
-    const dir = path.join(OUT, 'ciudad', id), f = path.join(dir, 'master.png'); if (!JOBS[id]) throw Error('id desconocido ' + id);
+    if (!JOBS[id]) throw Error('id desconocido ' + id);
+    const arena = id.startsWith('fort_') ? 'fortaleza' : 'ciudad', dir = path.join(OUT, arena, id), f = path.join(dir, 'master.png');
+    const ref = 'data:image/png;base64,' + fs.readFileSync(path.join(OUT, arena, arena === 'ciudad' ? 'ref_house_crop.png' : 'ref_crop.png')).toString('base64');
     if (fs.existsSync(f) && !force) { console.log(id, 'ya existe'); continue; }
     if (spent >= BUDGET) { console.log('tope de presupuesto alcanzado'); break; }
     const t0 = api('POST', '/text_to_image', {model: 'gen4_image', promptText: JOBS[id], ratio: '1024:1024', referenceImages: [{uri: ref, tag: 'ref'}]});
@@ -35,7 +41,7 @@ else if (cmd === 'gen') {
     if (t.status !== 'SUCCEEDED') throw Error('timeout ' + t0.id);
     const buf = curl([t.output[0]]); fs.mkdirSync(dir, {recursive: true}); fs.writeFileSync(f, buf);
     const credits = t.cost?.credits ?? t0.estimatedCost?.credits ?? null; spent += credits || 0;
-    fs.writeFileSync(path.join(dir, 'receipt.json'), JSON.stringify({status: 'GENERATED_NOT_APPROVED', id, model: 'gen4_image', ratio: '1024:1024', prompt: JOBS[id], taskId: t0.id, credits, createdAt: t.createdAt, sha256: crypto.createHash('sha256').update(buf).digest('hex'), reference: 'assets/ui/codex/arenas/ciudad.jpg (recorte)'}, null, 2) + '\n');
+    fs.writeFileSync(path.join(dir, 'receipt.json'), JSON.stringify({status: 'GENERATED_NOT_APPROVED', id, model: 'gen4_image', ratio: '1024:1024', prompt: JOBS[id], taskId: t0.id, credits, createdAt: t.createdAt, sha256: crypto.createHash('sha256').update(buf).digest('hex'), reference: 'assets/ui/codex/arenas/' + arena + '.jpg (recorte)'}, null, 2) + '\n');
     console.log(id, 'OK', 'credits=' + credits, 'task=' + t0.id);
   }
 } else console.log('uso: status | list | gen <id…> [--force]');

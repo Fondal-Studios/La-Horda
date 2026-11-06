@@ -18,6 +18,25 @@ const FORT_PAL = {
   banner:"#8a1a1a", bannerLit:"#c02a2a", wood:"#5a3e26", woodLit:"#7a5634"
 };
 const FORT_ART = {};
+// Texturas pintadas del piso (Runway + Códice, 1 px nativo = 1 px de canvas = 2 u de mundo). Se precargan al abrir el juego; si al armar
+// el piso todavía no cargaron (o fallan), se usa el dibujo procedural de siempre (nada se rompe, solo se ve el arte anterior).
+const FORT_TEX = {};
+function fortTex(name){
+  let t = FORT_TEX[name];
+  if(!t){
+    t = FORT_TEX[name] = { img: new Image(), ok: false };
+    t.img.onload = ()=>{ t.ok = true; };
+    t.img.src = "assets/vfx/fortaleza/" + name + ".png";
+  }
+  return t.ok ? t.img : null;
+}
+fortTex("tex_planchas_hierro"); fortTex("tex_adoquin_patio");
+function _fortTexFill(g, w, h, name, shade){
+  const im = fortTex(name); if(!im) return false;
+  g.imageSmoothingEnabled = false; g.fillStyle = g.createPattern(im, "repeat"); g.fillRect(0, 0, w, h);
+  if(shade){ g.fillStyle = "rgba(8,5,3," + shade + ")"; g.fillRect(0, 0, w, h); }
+  return true;
+}
 function _fortCanvas(w, h){ const c = document.createElement("canvas"); c.width = Math.max(1, w|0); c.height = Math.max(1, h|0); const g = c.getContext("2d"); g.imageSmoothingEnabled = false; return [c, g]; }
 function _rgb(a, f){ return `rgb(${Math.min(255,a[0]*f)|0},${Math.min(255,a[1]*f)|0},${Math.min(255,a[2]*f)|0})`; }
 
@@ -28,6 +47,7 @@ function _rgb(a, f){ return `rgb(${Math.min(255,a[0]*f)|0},${Math.min(255,a[1]*f
 // piedras más grandes e irregulares, mortero cercano al tono de la piedra (poco contraste) y
 // manchas amplias de tierra: una superficie para caminar, no un paramento.
 function _fortCobble(g, w, h, rnd, tint, big){
+  if(_fortTexFill(g, w, h, "tex_adoquin_patio", 0.18 + (1 - (tint||1))*0.5)){ return; }
   g.fillStyle = "#3a322b"; g.fillRect(0, 0, w, h);
   const sw = big ? 15 : 11, sh = big ? 11 : 8;
   for(let y=0, row=0; y<h; y+=sh, row++){
@@ -55,6 +75,7 @@ function _fortFlags(g, w, h, rnd, cols, s){
 }
 // Planchas de hierro remachadas (forja / interior)
 function _fortPlates(g, w, h, rnd, base, s){
+  if(_fortTexFill(g, w, h, "tex_planchas_hierro", 0.12)){ return; }
   g.fillStyle = FORT_PAL.ironDark; g.fillRect(0, 0, w, h);
   for(let y=0; y<h; y+=s) for(let x=0; x<w; x+=s*1.5){
     const f = 0.85 + rnd()*0.25, pw = s*1.5-2, ph = s-2;
