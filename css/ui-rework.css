@@ -51,6 +51,7 @@ body.ui-rework .ur-sheet-head{ display:flex; align-items:center; gap:12px; }
 body.ui-rework .ur-sheet-head h2{ margin:0; font:14px/1.2 var(--font-pixel,'Press Start 2P',monospace); color:var(--ur-gold); letter-spacing:.08em; }
 body.ui-rework .ur-sheet-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:var(--ur-g); overflow:auto; min-height:0; }
 body.ui-rework .ur-sheet-grid > *{ min-height:52px; }
+body.ui-rework .ur-sheet-grid button{ min-height:44px; }
 body.ui-rework .ur-sheet-grid .hub-tile, body.ui-rework .ur-sheet-grid .hub-endless, body.ui-rework .ur-sheet-grid .hub-endless-rank{ display:flex; flex-direction:row; align-items:center; gap:12px; text-align:left; padding:8px 12px; }
 body.ui-rework .ur-sheet-grid .hub-tile-sub{ display:block; }
 body.ui-rework .ur-sheet-grid .hub-tile-title{ white-space:normal; overflow:visible; text-overflow:clip; font-size:13px; }
@@ -62,6 +63,9 @@ body.ui-rework .ur-sheet-info{ display:flex; flex-direction:column; gap:12px; }
 body.ui-rework .ur-sheet-info .legal-foot{ display:flex !important; flex-wrap:wrap; gap:12px; position:static; }
 body.ui-rework .ur-sheet-info a{ color:var(--ur-gold); font-size:16px; min-height:44px; display:inline-flex; align-items:center; }
 body.ui-rework .ur-sheet-info .build-tag{ display:block !important; position:static; color:var(--ur-dim); }
+
+/* ---------- MODOS / CRISTALES: los botones nunca desbordan su marco ---------- */
+body.ui-rework #crystalwars-screen button, body.ui-rework #modeselect-screen button{ white-space:normal; overflow-wrap:anywhere; min-height:44px; padding:6px 10px; }
 
 /* ---------- SALA: pestañas compactas + «Comenzar» siempre a la vista ---------- */
 body.ui-rework #prep-screen .prep-secs{ display:flex; gap:var(--ur-g); }

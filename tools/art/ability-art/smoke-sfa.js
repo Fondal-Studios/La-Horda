@@ -26,7 +26,8 @@ const BASE = process.env.BASE_URL || 'http://127.0.0.1:8750/';
         for (const th of (firstOfTheme ? [theme, theme + '~h', theme + '~p', theme + '~k'] : [theme, theme + '~h'])) for (const ak of (firstOfTheme ? arenasAll : arenasMin))
           try {
             currentArena = ak; sfaCache.clear(); const h0 = ABS.hits; sfaBake(art, th, size); const b = sfaBake(art, th, size);
-            if (!b || b.n !== (art === 'zone' ? 8 : 12) || b.w !== size || b.h !== size) { out.bad.push(`${art}|${th}|${size}: tira inválida ${b && b.n}`); continue; }
+            const lay = ABS.map[art + '|' + theme + '|' + size], nExp = lay ? lay.fr.length : null;   // con la capa activa, los cuadros deben ser los del arte que cubre
+            if (!b || (nExp !== null && b.n !== nExp) || b.n < 1 || b.w !== size || b.h !== size) { out.bad.push(`${art}|${th}|${size}: tira inválida ${b && b.n}`); continue; }
             if (off && ABS.hits !== h0) out.bad.push(`${art}|${th}|${size}: ?ua=0 no debe usar el arte nuevo`);
             if (!off && ABS.hits === h0) out.bad.push(`${art}|${th}|${size}: no usó el arte nuevo`);
             const d = b.cv.getContext('2d').getImageData(0, 0, b.cv.width, b.cv.height).data; for (let i = 3; i < d.length; i += 4) if (d[i] !== 0 && d[i] !== 255) { out.bad.push(`${art}|${th}|${size}: alfa ${d[i]}`); break; }

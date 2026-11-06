@@ -79,6 +79,17 @@ async function replay(page, pathKeys) {
     out.pagesVisited = n; fs.writeFileSync(dest, JSON.stringify(out, null, 1));   // progreso: nunca se pierde lo medido
     if (n > +(process.env.MAX_PAGES || 140)) break;
   }
+  // semillas: pantallas profundas (sala, modos, arenas) que el BFS de pocos clics no alcanza; se fuerzan con setState y se sondean igual
+  for (const seed of (process.env.SEEDS || 'prep,modeselect,arenaselect').split(',').filter(Boolean)) {
+    const {ctx, page} = await boot(browser);
+    try {
+      await page.evaluate(seed => { setState(seed); for (const fn of ['renderPrepSummary', 'renderArenaSelect', 'renderModeSelect']) if (seed === ({renderPrepSummary: 'prep', renderArenaSelect: 'arenaselect', renderModeSelect: 'modeselect'})[fn] && typeof window[fn] === 'function') { try { window[fn](); } catch (e) {} } }, seed);
+      await page.waitForTimeout(1200);
+      const p = await page.evaluate(probe);
+      if (!out.screens[seed] || p.els.length > out.screens[seed].els.length) { out.screens[seed] = {...p, path: ['(semilla)']}; if (SHOTS) { fs.mkdirSync(SHOTS, {recursive: true}); await page.screenshot({path: path.join(SHOTS, `${UI || 'default'}_${seed}.png`)}); } }
+    } catch (e) { console.error('semilla', seed, e.message); }
+    await ctx.close();
+  }
   out.pagesVisited = n; out.done = true;
   fs.writeFileSync(dest, JSON.stringify(out, null, 1));
   console.log('goals', JSON.stringify(Object.fromEntries(Object.entries(out.goals).map(([k, v]) => [k, v.clicks]))), 'screens', Object.keys(out.screens).join(','), 'pages', n);
