@@ -52,6 +52,7 @@ function acct(r, uid, now){
   return a;
 }
 const tierOf = xp => Math.min(TIERS, Math.floor(xp / XP_PER_TIER));
+const MIN_RUN_MS = 60000;
 function addXp(a, amount, now, capped){
   amount = Math.max(0, Math.floor(amount));
   if(capped){
@@ -67,20 +68,26 @@ function checkChallenges(a, now){
 }
 // Hook de item-economy al cerrar una partida verificada por el servidor. Idempotente por id de partida.
 function afterRun(r, uid, run, args, now){
-  if(!run || !run.id || !run.done) return null;
+  // `args` se ignora a propósito: el XP sale SOLO de lo que el servidor validó y guardó en la partida (run.xpInfo).
+  if(!run || !run.id || !run.done || !run.xpInfo) return null;
   const a = acct(r, String(uid), now);
   if(own(a.runs, run.id)) return a.runs[run.id];
-  let xp = 0;
-  if(run.mode === "endless"){
-    const surv = Math.max(0, Math.min(400, Math.floor(args && args.survived !== undefined ? args.survived : Math.max(0, (run.round || 1) - 1))));
-    xp = Math.min(MAX_RUN_XP, 25 + 15 * surv);
-    metric(a, "endless_runs", 1); metric(a, "endless_best", surv, "max");
-  } else {
-    const won = !!(args && args.victory);
-    xp = won ? 200 : 40; metric(a, "campaign_runs", 1); if(won) metric(a, "campaign_wins", 1);
+  const I = run.xpInfo, capped = Number.isFinite(I.capped) ? I.capped : 0, pulses = Number.isFinite(I.pulses) ? I.pulses : 0;
+  let gained = 0;
+  // Partida real: al menos 60 s y un pulso de progreso (corta la granja con partidas de duración cero).
+  if(capped >= MIN_RUN_MS && pulses >= 1){
+    let xp = 0;
+    if(run.mode === "endless"){
+      const surv = Number.isSafeInteger(I.survived) ? Math.max(0, Math.min(400, I.survived, Math.max(0, run.round || 0))) : 0;
+      xp = Math.min(MAX_RUN_XP, 25 + 15 * surv);
+      metric(a, "endless_runs", 1); metric(a, "endless_best", surv, "max");
+    } else {
+      const won = I.victory === true;
+      xp = won ? 200 : 40; metric(a, "campaign_runs", 1); if(won) metric(a, "campaign_wins", 1);
+    }
+    gained = addXp(a, xp, now, true);
+    checkChallenges(a, now);
   }
-  const gained = addXp(a, xp, now, true);
-  checkChallenges(a, now);
   if(Object.keys(a.runs).length > 500){ for(const k of Object.keys(a.runs).slice(0, 100)) delete a.runs[k]; }
   return (a.runs[run.id] = { xp: gained });
 }

@@ -181,8 +181,9 @@ function routes(ctx){
       const value=await store.gmUpdate(async raw=>{
         const root=raw||require('./game-master').stateOf(null);const s=root.itemEconomy||initial();root.itemEconomy=s;
         const stamp=now();const live=require('./item-economy-live');live.seasons(s,stamp);sweep(s,stamp);await live.migrate(s,a.user,store,stamp);
+        const finishing=method==='POST'&&body&&body.op==='run.finish'&&body.args?s.runs[body.args.run]:null,wasDone=!!(finishing&&finishing.done);
         const value=await fn(s,a.user,body,stamp);invariant(s);
-        if(method==='POST'&&body&&body.op==='run.finish'&&body.args&&s.runs[body.args.run])require('./battlepass').afterRun(root,a.user.id,s.runs[body.args.run],body.args,stamp);   // XP del pase: solo con partidas cerradas y verificadas por el servidor
+        if(finishing&&!wasDone&&finishing.done)require('./battlepass').afterRun(root,a.user.id,finishing,null,stamp);   // solo en la transición abierta→cerrada y con datos validados por el servidor   // XP del pase: solo con partidas cerradas y verificadas por el servidor
         return {state:root,value:{...value,snapshot:view(s,String(a.user.id),stamp)}};
       });send(req,res,200,value);
     }catch(e){if(e.status)return err(req,res,e.status,e.message,e.message);throw e;}

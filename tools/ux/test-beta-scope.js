@@ -11,12 +11,13 @@ const IDS=['hub-crystal-btn','hub-coliseum-btn','mode-crystal-wars-btn','mode-co
    const r=await page.evaluate(ids=>{
     const disp=ids.map(i=>{const e=document.getElementById(i);return e?getComputedStyle(e).display:'MISSING';});
     const before=state; try{competitiveOpen('crystal');competitiveOpen('coliseum');cwGo({mode:'crystal'});}catch(e){return {err:String(e)};}
-    return {disp,pub:BETA_SCOPE.public,stateSame:state===before,campaignBtn:getComputedStyle(document.getElementById('mode-arena-btn')).display};
+    save.divineArenaUnlocked=true;const divina=isDivinaUnlocked();return {disp,divina,pub:BETA_SCOPE.public,stateSame:state===before,campaignBtn:getComputedStyle(document.getElementById('mode-arena-btn')).display};
    },IDS);
    assert(!r.err,r.err);
    assert.equal(r.pub,beta);
-   if(beta){assert(r.disp.every(d=>d==='none'),'ocultos: '+r.disp);assert(r.stateSame,'el competitivo no debe abrirse en la beta');}
-   else assert(r.disp.every(d=>d!=='none'&&d!=='MISSING'),'sin bandera siguen visibles: '+r.disp);
+   if(beta){assert(r.disp.every(d=>d==='none'),'ocultos: '+r.disp);assert(r.stateSame,'el competitivo no debe abrirse en la beta');assert.equal(r.divina,false,'la Arena Divina queda bloqueada en la beta aunque esté desbloqueada');}
+   else assert.equal(r.divina,true,'sin bandera la Arena Divina sigue disponible');
+   if(!beta)assert(r.disp.every(d=>d!=='none'&&d!=='MISSING'),'sin bandera siguen visibles: '+r.disp);
    assert.notEqual(r.campaignBtn,'none','Campaña sigue visible');
    await page.close();
   }

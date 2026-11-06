@@ -55,7 +55,10 @@ function ensurePlayableArena(){
   if(!isArenaUnlocked(currentArena)) currentArena = campaignFrontier() || ARENA_ORDER[ARENA_ORDER.length-1];
 }
 // Arena Divina (postgame, fuera de las diez): se abre al completar la Arena Infernal.
-function isDivinaUnlocked(){ return !!(save.divineArenaUnlocked || (save.arenasCleared && save.arenasCleared.infernal)); }
+function isDivinaUnlocked(){
+  if(typeof window !== "undefined" && window.BETA_SCOPE && window.BETA_SCOPE.public) return false; // beta pública: la Arena Divina (posjuego) queda oculta y bloqueada
+  return !!(save.divineArenaUnlocked || (save.arenasCleared && save.arenasCleared.infernal));
+}
 // Reglas del MODO de juego (no de cada arena). Hoy todo es PvE: arenas de oleadas y Arena
 // Divina (contra un equipo manejado por la IA). Un modo PvP futuro puede declarar
 // friendlyFire:true sin tocar el resto del código.

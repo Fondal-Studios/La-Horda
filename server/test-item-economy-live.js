@@ -58,14 +58,14 @@ const action=(t,op,args={},status=200,id='live_'+(++seq),gm=false)=>api('POST',g
  // Ranking personal (beta): manda la ronda que ESE jugador sobrevivió; el puntaje solo desempata; el botín final sigue usando la ronda del grupo.
  {
   const r1=(await action(user.token,'run.start',{arena:'ciudad',champion:'tanque',mode:'endless'})).run;now+=100000;await action(user.token,'run.pulse',{run:r1.id,round:3});
-  await action(user.token,'run.finish',{run:r1.id,durationMs:100000,round:9,score:5000,survived:3,survivedScore:5000});
+  await action(user.token,'run.finish',{run:r1.id,durationMs:100000,round:6,score:5000,survived:3,survivedScore:5000});
   let t=await api('GET','/api/leaderboard',undefined,user.token);assert.equal(t.entries[0].round,3,'el ranking guarda la ronda personal (3), no la del grupo (9)');assert.equal(t.entries[0].score,5000);
   const r2=(await action(user.token,'run.start',{arena:'ciudad',champion:'tanque',mode:'endless'})).run;now+=100000;await action(user.token,'run.pulse',{run:r2.id,round:3});
-  await action(user.token,'run.finish',{run:r2.id,durationMs:100000,round:9,score:400000,survived:2,survivedScore:400000},422);   // 400000 pts no es posible con 2 rondas en 100 s
-  await action(user.token,'run.finish',{run:r2.id,durationMs:100000,round:9,score:9000,survived:2,survivedScore:9000});
+  await action(user.token,'run.finish',{run:r2.id,durationMs:100000,round:6,score:400000,survived:2,survivedScore:400000},422);   // 400000 pts no es posible con 2 rondas en 100 s
+  await action(user.token,'run.finish',{run:r2.id,durationMs:100000,round:6,score:9000,survived:2,survivedScore:9000});
   t=await api('GET','/api/leaderboard',undefined,user.token);assert.equal(t.entries[0].round,3,'menos rondas personales no mejoran aunque haya más puntaje');
   const r3=(await action(user.token,'run.start',{arena:'ciudad',champion:'tanque',mode:'endless'})).run;now+=100000;await action(user.token,'run.pulse',{run:r3.id,round:3});
-  await action(user.token,'run.finish',{run:r3.id,durationMs:100000,round:9,score:1,survived:0,survivedScore:0});
+  await action(user.token,'run.finish',{run:r3.id,durationMs:100000,round:6,score:1,survived:0,survivedScore:0});
   t=await api('GET','/api/leaderboard',undefined,user.token);assert.equal(t.entries[0].round,3,'0 rondas sobrevividas no entra al ranking');
   checks+=4;
  }

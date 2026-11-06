@@ -10,7 +10,7 @@
 (function(){
   let q = ""; try{ q = location.search || ""; }catch(e){}
   const on = window.__BETA_PUBLIC__ === true || /[?&]beta=1(&|$)/.test(q);
-  window.BETA_SCOPE = { public: on, hiddenModes: ["crystalWars", "coliseum"],
+  window.BETA_SCOPE = { public: on, hiddenModes: ["crystalWars", "coliseum", "divina"],
     modeAllowed: id => !on || window.BETA_SCOPE.hiddenModes.indexOf(id) < 0 };
   if(on){ try{ document.body.classList.add("beta-public"); }catch(e){} }
 })();

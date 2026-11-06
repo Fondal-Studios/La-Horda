@@ -31,11 +31,11 @@ const rid=()=>'bp_req_'+(++seq)+'_abcd';
  await api('GET','/api/economy',undefined,T);
  const run=(await action(T,'run.start',{arena:'ciudad',champion:'tanque',mode:'endless'})).run;now+=100000;
  await action(T,'run.pulse',{run:run.id,round:3});
- await action(T,'run.finish',{run:run.id,durationMs:100000,round:9,score:5000,survived:3,survivedScore:5000});
+ await action(T,'run.finish',{run:run.id,durationMs:100000,round:6,score:5000,survived:3,survivedScore:5000});
  v=await api('GET','/api/battlepass',undefined,T);
  assert.equal(v.xp,25+15*3,'XP = 25 + 15 por ronda sobrevivida personalmente');
  const prog=v.challenges.find(c=>c.id==='horda_5_partidas');assert.equal(prog.progress,1);
- const rep=await api('POST','/api/economy/action',{op:'run.finish',args:{run:run.id,durationMs:100000,round:9,score:5000,survived:3,survivedScore:5000},requestId:'bp_act_replay_'+seq},T,200).catch(e=>null);
+ const rep=await api('POST','/api/economy/action',{op:'run.finish',args:{run:run.id,durationMs:100000,round:6,score:5000,survived:3,survivedScore:5000},requestId:'bp_act_replay_'+seq},T,200).catch(e=>null);
  v=await api('GET','/api/battlepass',undefined,T);assert.equal(v.xp,70,'el mismo cierre no suma XP otra vez');
  // 4) se simula progreso (solo test) para probar los niveles
  await app.store.gmUpdate(async raw=>{const r=BP.root(raw);BP.acct(r,String(uid),now).xp=6500;return {state:r,value:null};});
@@ -73,6 +73,36 @@ const rid=()=>'bp_req_'+(++seq)+'_abcd';
  await api('POST','/api/battlepass/claim',{requestId:rid(),tier:1,track:'gold'},T,400);
  await api('POST','/api/battlepass/claim',{tier:1,track:'free'},T,400);
  await api('GET','/api/battlepass',undefined,undefined,401);
+ // 12) hallazgos de la revisión independiente: el XP sale solo de lo que el servidor validó
+ {
+  const q=await api('POST','/api/register',{user:'bpcheat',pass:'test-long-password'},null,201),QT=q.token,qid=(await app.store.getUserByKey('bpcheat')).id;
+  await api('GET','/api/economy',undefined,QT);
+  const xpOf=async()=>(await api('GET','/api/battlepass',undefined,QT)).xp;
+  const x0=await xpOf();
+  // a) partida de duración cero: no da XP
+  const z=(await action(QT,'run.start',{arena:'ciudad',champion:'tanque',mode:'endless'})).run;
+  await action(QT,'run.finish',{run:z.id,durationMs:0,round:1,score:0});
+  assert.equal(await xpOf(),x0,'una partida de duración cero no da XP');checks++;
+  // b) victoria no estricta (victory:1) cuenta como derrota: 40 XP, no 200
+  const c=(await action(QT,'run.start',{arena:'ciudad',champion:'tanque',mode:'campaign'})).run;now+=60000;
+  await action(QT,'run.pulse',{run:c.id,round:1});
+  await action(QT,'run.finish',{run:c.id,durationMs:60000,victory:1});
+  assert.equal(await xpOf(),x0+40,'victory:1 no es una victoria verificada');checks++;
+  // c) repetir el cierre con argumentos inflados no suma, ni siquiera si la partida no figuraba en el pase
+  const e=(await action(QT,'run.start',{arena:'ciudad',champion:'tanque',mode:'endless'})).run;now+=100000;
+  await action(QT,'run.pulse',{run:e.id,round:3});
+  await action(QT,'run.finish',{run:e.id,durationMs:100000,round:6,score:1000,survived:3,survivedScore:1000});
+  const x1=await xpOf();assert.equal(x1,x0+40+25+15*3);checks++;
+  await app.store.gmUpdate(async raw=>{const r=BP.root(raw);delete BP.acct(r,String(qid),now).runs[e.id];delete raw.itemEconomy.runs[e.id].xpInfo;return {state:r,value:null};});
+  await api('POST','/api/economy/action',{op:'run.finish',args:{run:e.id,durationMs:100000,round:6,score:1000,survived:6,survivedScore:1000},requestId:'bp_replay_'+(++seq)+'_zz'},QT,200);
+  assert.equal(await xpOf(),x1,'el replay de un cierre no entrega XP con argumentos del cliente');checks++;
+  // d) beta pública: el servidor rechaza las arenas de los modos fuera de alcance
+  process.env.BETA_PUBLIC='1';
+  await action(QT,'run.start',{arena:'coliseum',champion:'tanque',mode:'campaign'},403);
+  await action(QT,'run.start',{arena:'crystal_wars',champion:'tanque',mode:'campaign'},403);
+  await action(QT,'run.start',{arena:'divina',champion:'tanque',mode:'campaign'},403);
+  delete process.env.BETA_PUBLIC;checks+=3;
+ }
  await new Promise(r=>server.close(r));await app.close();fs.rmSync(dir,{recursive:true,force:true});
  console.log(`PASS battlepass: ${checks} HTTP assertions; XP verificado, reclamo idempotente, Brasas solo por compra/pase, cambio de temporada`);
-})().catch(e=>{console.error(e);process.exitCode=1;});
+})().catch(e=>{console.error(e);process.exit(1);});
