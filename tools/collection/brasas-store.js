@@ -50,12 +50,16 @@ const SECRET='secreto-de-prueba-brasas-0123';
    await chip.click();ok(await page.evaluate(()=>state==='shop'&&shopTab==='brasas'),'chip abre Brasas');
    await page.locator('.brasas-status').getByText('Iniciá sesión para comprar Brasas.').waitFor();checks++;
    ok(await page.locator('[data-brasas-buy]').count()===0,'sin sesión no hay compra');
-   await page.getByText('Las Brasas compran apariencia y piezas de set (equipo). Las piezas también se consiguen jugando.').waitFor();checks++;
+   ok(await page.evaluate(()=>PIECES_FOR_BRASAS===false),'contrato predeterminado: Brasas solo cosméticas');
+   await page.getByText('Las Brasas solo compran apariencia. Nunca poder.',{exact:true}).waitFor();checks++;
    assert.deepEqual(errors,[]);await ctx.close();}
 
   // ---- con sesión ----
   const {page,ctx,errors}=await open(true);
   await page.waitForFunction(()=>PREMIUM.at>0,null,{timeout:15000});
+  // La billetera puede responder antes de terminar la transición visual del hub.
+  // Esperar visibilidad real (igual que sin sesión), sin force-click ni ocultar overlays.
+  await page.locator('#hub-premium-btn').waitFor({state:'visible',timeout:15000});
   ok(await page.locator('#hub-premium-btn').isVisible(),'chip visible con sesión');
   ok(/✦\s*0/.test(await page.locator('#hub-premium-btn').innerText()),'saldo 0 en el chip');
   ok(await page.locator('#hub-badge-offer').isVisible(),'OFERTA en la ficha Tienda');
