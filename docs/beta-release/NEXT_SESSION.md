@@ -59,3 +59,8 @@ Herramienta del pintor: `node tools/art-world/runway-guardian.js <guardián> <in
 1. Extraer cuerpos de campeones de #232 (Art Engine) y #90 (Ilsa/Vorn/Kora) de a uno con `tools/art-world/try-codex-body.sh` + `check-codex-body.js` (secuencial).
 2. Libertador: decidir con el propietario (hoja de referencia con Runway para artista, ≤60 créditos). Myla: decisión independiente sobre el hash del gate.
 3. Revisión independiente y CI remoto de #261/#263/#236/#241-parcial; #265 necesita decisión de diseño.
+
+## Actualización (noche 2026-11-06)
+- Barrido de PR con cuerpos de campeones COMPLETO (ver RESULTADOS_PR): integrados Guerrero, Tanque, Mago, Aelith, Morveth, Saelis, Aurelia, Maura, Ynara y Myla (con revisión independiente y prueba de fidelidad nueva). #90 (Ilsa/Vorn/Kora) = campeones nuevos, fuera de la beta.
+- Libertador: hoja de referencia + atlas candidato en `art-source/runway-guardians/libertador/` (24 créditos gastados de 60 autorizados; quedan 36 para las poses de bayoneta/ultimate/montado). Saldo Runway ≈ 710.
+- Pendiente de arte de guardianes: poses propias de Libertador, croma `myla_arandanos` y caída de Myla contra el nuevo master, Coloso de Ilkan.
