@@ -77,6 +77,26 @@ async function premiumRefresh(force){
   return PREMIUM.premium;
 }
 function premiumNewRef(){ return (crypto.randomUUID && crypto.randomUUID()) || (Date.now().toString(36) + Math.random().toString(36).slice(2, 12)); }
+/* UC-SHOP B3: intento pendiente. Si la página se recarga, se corta la red o la respuesta llega tarde, el reintento del MISMO artículo reutiliza la
+   referencia: el servidor la trata como idempotente (server/wallet.js, `prev` del libro) y nunca cobra dos veces. Solo guarda {sku, ref, at}: sin datos de pago.
+   Se borra en cuanto el servidor contesta (cualquier respuesta HTTP); si no hubo respuesta se conserva 10 min. */
+const PREMIUM_PENDING_KEY = "horda_buy_pending";
+function premiumPendingRef(sku){
+  try{
+    const o = JSON.parse(localStorage.getItem(PREMIUM_PENDING_KEY) || "null");
+    if(o && o.sku === sku && o.ref && Date.now() - o.at < 600000) return o.ref;
+    const ref = premiumNewRef(); localStorage.setItem(PREMIUM_PENDING_KEY, JSON.stringify({ sku, ref, at: Date.now() })); return ref;
+  }catch(e){ return premiumNewRef(); }
+}
+function premiumPendingFor(sku){ try{ const o = JSON.parse(localStorage.getItem(PREMIUM_PENDING_KEY) || "null"); return !!(o && o.sku === sku && o.ref && Date.now() - o.at < 600000); }catch(e){ return false; } }
+function premiumPendingClear(){ try{ localStorage.removeItem(PREMIUM_PENDING_KEY); }catch(e){} }
+// Telemetría local mínima (js/systems/telemetry.js: nada sale del dispositivo; sin importes de pago ni datos personales).
+function premiumTrack(name, data){ try{ if(typeof telemetryEvent === "function") telemetryEvent(name, data); }catch(e){} }
+// «Tenés ✦ X · te quedan ✦ Y» / «te faltan ✦ Z»: el saldo y el faltante a la vista, en texto.
+function premiumBalanceLine(price){
+  if(PREMIUM.premium == null) return "";
+  return PREMIUM.premium >= price ? `Tenés ✦ ${premiumFmt(PREMIUM.premium)} · te quedarían ✦ ${premiumFmt(PREMIUM.premium - price)}` : `Tenés ✦ ${premiumFmt(PREMIUM.premium)} · te faltan ✦ ${premiumFmt(price - PREMIUM.premium)}`;
+}
 const PREMIUM_ERR = {
   OWNED: "Ya es tuyo.", NO_CLOUD_SAVE: "Primero guardá tu partida en la nube (Opciones → Cuenta). No se cobró nada.",
   CONFLICT: "Tu guardado cambió mientras comprabas. No se cobró nada: probá de nuevo.", PRICE_CHANGED: "El precio cambió. Revisá y volvé a confirmar.",
@@ -94,6 +114,7 @@ async function premiumPost(path, body){
       let r;
       try{ r = await accountFetch("POST", path, body); }
       catch(e){ if(attempt === 0) continue; return { fail: "Sin conexión con el servidor. No se cobró nada que no se haya entregado." }; }
+      premiumPendingClear();   // el servidor contestó: el intento ya no está pendiente
       if(r.status === 200) return { r };
       const code = r.j && (r.j.error || r.j.code);
       let msg = PREMIUM_ERR[code];
@@ -106,6 +127,8 @@ async function premiumPost(path, body){
 }
 function premiumApply(j){
   PREMIUM.premium = j.premium; PREMIUM.at = Date.now();
+  // Reintento de una compra cuya respuesta se perdió: el servidor ya la cobró y entregó («repeated») pero no repite el detalle; lo marcamos acá, confirmado por él.
+  if(j.repeated && j.sku && !(j.cosmetics && j.cosmetics.length)) j = Object.assign({}, j, { cosmetics: [{ id: j.sku, type: premiumTier(j.sku) === "croma" ? "croma" : "skin" }] });
   if(!(typeof accountApplyEventReward === "function" && accountApplyEventReward(j))){
     // si la versión local cambió en el medio, la próxima sincronización trae lo entregado desde la nube
     for(const c of (j.cosmetics || [])){
@@ -122,8 +145,8 @@ async function premiumBuySkin(id){
   if(!premiumAvailable()) return { ok: false, reason: "Para usar Brasas tenés que entrar con tu cuenta." };
   if(premiumSkinOwned(id)) return { ok: false, reason: "Ya es tuya" };
   const price = premiumPrice(id); if(!(price > 0)) return { ok: false, reason: PREMIUM_ERR.BAD_SKU };
-  const o = await premiumPost("/api/wallet/buy", { sku: id, ref: premiumNewRef(), expectedPrice: price });
-  if(!o.r) return { ok: false, reason: o.code === "INSUFFICIENT" ? `No te alcanzan las Brasas (cuesta ${premiumFmt(price)}).` : o.fail };
+  const o = await premiumPost("/api/wallet/buy", { sku: id, ref: premiumPendingRef("skin:" + id), expectedPrice: price });
+  if(!o.r) return { ok: false, code: o.code, reason: o.code === "INSUFFICIENT" ? `No te alcanzan las Brasas (cuesta ${premiumFmt(price)}).` : o.fail };
   premiumApply(o.r.j);
   if(typeof AlphaServices !== "undefined") AlphaServices.emit("skin", { skin: id, currency: "premium", price });
   return { ok: true, premium: o.r.j.premium };
@@ -161,7 +184,7 @@ async function premiumBuyPiece(designId){
   if(premiumPieceOwned(designId)) return { ok: false, reason: "Ya la tenés" };
   if(!premiumPieceOnSale(designId)) return { ok: false, reason: PREMIUM_ERR.NOT_ON_SALE };
   if(typeof stashFull === "function" && stashFull()) return { ok: false, reason: PREMIUM_ERR.INVENTORY_FULL };
-  const o = await premiumPost("/api/wallet/buy-piece", { piece: designId, ref: premiumNewRef(), expectedPrice: price });
+  const o = await premiumPost("/api/wallet/buy-piece", { piece: designId, ref: premiumPendingRef("piece:" + designId), expectedPrice: price });
   if(!o.r) return { ok: false, reason: o.code === "INSUFFICIENT" ? `No te alcanzan las Brasas (cuesta ${premiumFmt(price)}).` : o.fail };
   premiumApplyPiece(o.r.j);
   if(typeof AlphaServices !== "undefined") AlphaServices.emit("piece", { piece: designId, currency: "premium", price });
@@ -203,8 +226,8 @@ async function premiumBuyCollection(k, expectedPrice){
   const q = premiumCollection(k);
   if(q.n < PRICING.collection.minPieces) return { ok: false, reason: PREMIUM_ERR.NOT_A_COLLECTION };
   if(expectedPrice != null && expectedPrice !== q.price) return { ok: false, reason: PREMIUM_ERR.PRICE_CHANGED };
-  const o = await premiumPost("/api/wallet/buy-collection", { champion: k, ref: premiumNewRef(), expectedPrice: q.price });
-  if(!o.r) return { ok: false, reason: o.code === "INSUFFICIENT" ? `No te alcanzan las Brasas (cuesta ${premiumFmt(q.price)}).` : o.fail };
+  const o = await premiumPost("/api/wallet/buy-collection", { champion: k, ref: premiumPendingRef("col:" + k + ":" + q.price), expectedPrice: q.price });
+  if(!o.r) return { ok: false, code: o.code, reason: o.code === "INSUFFICIENT" ? `No te alcanzan las Brasas (cuesta ${premiumFmt(q.price)}).` : o.fail };
   premiumApply(o.r.j);
   if(typeof AlphaServices !== "undefined") AlphaServices.emit("collection", { champion: k, currency: "premium", price: q.price, n: q.n });
   return { ok: true, n: o.r.j.n, saved: o.r.j.saved, premium: o.r.j.premium };
@@ -277,6 +300,8 @@ if(typeof window !== "undefined"){
 function premiumSkinButton(id, cls){
   const price = premiumPrice(id);
   if(premiumSkinOwned(id) || !(price > 0)) return "";
+  // compra enviada sin respuesta (corte de red, recarga): se puede CONFIRMAR sin volver a pagar (mismo ref; el servidor no cobra dos veces)
+  if(premiumPendingFor("skin:" + id)) return `<button type="button" class="${cls || "shop-btn"} premium-btn" data-skin-premium="${id}" title="Confirmar la entrega: no se vuelve a cobrar">↻ Confirmar entrega</button>`;
   const can = PREMIUM.premium != null && PREMIUM.premium >= price;
   const title = PREMIUM.premium == null ? "Entrá con tu cuenta para usar Brasas" : can ? "Pagar con Brasas" : "No te alcanzan las Brasas";
   return `<button type="button" class="${cls || "shop-btn"} premium-btn" data-skin-premium="${id}" title="${title}" ${PREMIUM.premium != null && !can ? "disabled" : ""}>✦ ${premiumFmt(price)}</button>`;
@@ -290,11 +315,19 @@ if(typeof document !== "undefined") document.addEventListener("click", e => {
   e.preventDefault(); e.stopPropagation();
   const id = b.getAttribute("data-skin-premium");
   if(!premiumAvailable()){ gameAlert("Para pagar con Brasas tenés que entrar con tu cuenta (Opciones → Cuenta)."); return; }
-  gameConfirm(`¿Comprar ${premiumTier(id) === "croma" ? "el croma" : "la skin"} ${premiumSkinName(id)} por ${premiumFmt(premiumPrice(id))} Brasas? Es solo apariencia: no cambia estadísticas.`, { okText: "Comprar con Brasas" }).then(async ok => {
-    if(!ok) return;
-    b.disabled = true;
-    const r = await premiumBuySkin(id);
-    if(!r.ok){ b.disabled = false; gameAlert(r.reason); return; }
+  if(PREMIUM.confirming || PREMIUM.busy) return;   // doble clic / toques repetidos: un solo diálogo y una sola compra
+  PREMIUM.confirming = true;
+  const price = premiumPrice(id), label = b.textContent;
+  premiumTrack("purchase_started", { sku: id, kind: premiumTier(id) === "croma" ? "croma" : "skin", price });
+  const pend = premiumPendingFor("skin:" + id);
+  gameConfirm(pend ? `Tu compra de «${premiumSkinName(id)}» (✦ ${premiumFmt(price)}) se envió pero no recibimos la confirmación.\nVamos a pedirle al servidor que la confirme: si ya se cobró, NO se vuelve a cobrar.` : `Vas a comprar ${premiumTier(id) === "croma" ? "el croma" : "la skin"} «${premiumSkinName(id)}» por ✦ ${premiumFmt(price)} Brasas.\n${premiumBalanceLine(price)}\nEs solo apariencia: no cambia estadísticas. Brasas ya compradas: este paso no cobra dinero.`, { okText: pend ? "Confirmar entrega" : "Comprar con Brasas", cancelText: "Volver" }).then(async ok => {
+    if(!ok){ PREMIUM.confirming = false; premiumTrack("purchase_cancelled", { sku: id }); return; }
+    b.disabled = true; b.textContent = "Procesando…";
+    premiumTrack("purchase_submitted", { sku: id });
+    let r;
+    try{ r = await premiumBuySkin(id); } finally { PREMIUM.confirming = false; }
+    if(!r.ok){ b.disabled = false; b.textContent = label; premiumTrack("purchase_failed", { sku: id, code: r.code || "error" }); gameAlert(r.reason); return; }
+    premiumTrack("purchase_completed", { sku: id });   // solo con la respuesta 200 del servidor (cobro y entrega)
     if(typeof SET_SKINS !== "undefined" && SET_SKINS[id] && typeof _shopAfterSkinBuy === "function") _shopAfterSkinBuy(id, 0);
     else {
       const d = typeof CROMA_SKINS !== "undefined" && CROMA_SKINS[id];
@@ -315,11 +348,18 @@ if(typeof document !== "undefined") document.addEventListener("click", e => {
   if(!premiumAvailable()){ gameAlert("Para pagar con Brasas tenés que entrar con tu cuenta (Opciones → Cuenta)."); return; }
   if(q.n < PRICING.collection.minPieces){ gameAlert(PREMIUM_ERR.NOT_A_COLLECTION); return; }
   const nm = premiumChampName(k);
-  gameConfirm(`¿Comprar la colección de ${nm} (${q.n} apariencias) por ${premiumFmt(q.price)} Brasas? Sueltas suman ${premiumFmt(q.sum)}: ahorrás ${premiumFmt(q.save)} Brasas (${q.offPct}%). Es solo apariencia: no cambia estadísticas.`, { okText: "Comprar colección" }).then(async ok => {
-    if(!ok) return;
-    b.disabled = true;
-    const r = await premiumBuyCollection(k, q.price);
-    if(!r.ok){ b.disabled = false; gameAlert(r.reason); return; }
+  if(PREMIUM.confirming || PREMIUM.busy) return;   // doble clic: un solo diálogo y una sola compra
+  PREMIUM.confirming = true;
+  const label = b.textContent;
+  premiumTrack("purchase_started", { sku: "col:" + k, kind: "collection", price: q.price });
+  gameConfirm(`Vas a comprar la colección de ${nm}: ${q.n} apariencias por ✦ ${premiumFmt(q.price)} Brasas.\nSueltas suman ✦ ${premiumFmt(q.sum)}: ahorrás ✦ ${premiumFmt(q.save)} (${q.offPct} %).\n${premiumBalanceLine(q.price)}\nEs solo apariencia: no cambia estadísticas. Brasas ya compradas: este paso no cobra dinero.`, { okText: "Comprar colección", cancelText: "Volver" }).then(async ok => {
+    if(!ok){ PREMIUM.confirming = false; premiumTrack("purchase_cancelled", { sku: "col:" + k }); return; }
+    b.disabled = true; b.textContent = "Procesando…";
+    premiumTrack("purchase_submitted", { sku: "col:" + k });
+    let r;
+    try{ r = await premiumBuyCollection(k, q.price); } finally { PREMIUM.confirming = false; }
+    if(!r.ok){ b.disabled = false; b.textContent = label; premiumTrack("purchase_failed", { sku: "col:" + k, code: r.code || "error" }); gameAlert(r.reason); return; }
+    premiumTrack("purchase_completed", { sku: "col:" + k });
     if(typeof playSfx === "function") playSfx("lootLegend");
     if(typeof showNetToast === "function") showNetToast(`🎨 COLECCIÓN DE ${nm.toUpperCase()} · ${r.n} apariencias`);
     if(typeof state !== "undefined" && state === "shop" && typeof renderShop === "function") renderShop();
