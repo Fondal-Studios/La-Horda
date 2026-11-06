@@ -62,15 +62,53 @@ def row_bands(rgba, gap=14, minh=60):
         else: m.append(r)
     return [b for b in m if b[1] - b[0] >= minh]
 
+def auto_layout(rowf):
+    """Elige cuadros sin intervencion: descarta texto/restos/figuras fusionadas y reparte caminar, ataque, golpe y muerte por filas."""
+    allf = [(r, i, f) for r, fl in rowf.items() for i, f in enumerate(fl)]
+    hs = sorted(f.shape[0] for _, _, f in allf); med = hs[len(hs) // 2]
+    ws = sorted(f.shape[1] for _, _, f in allf); medw = ws[len(ws) // 2]
+    def ink(f): return float((f[..., 3] > 0).mean())
+    good = {}
+    for r, fl in rowf.items():
+        keep = []
+        for i, f in enumerate(fl):
+            h, w = f.shape[:2]
+            if w > medw * 1.7 or (h < med * 0.3) or ink(f) < 0.22: continue          # fusionadas, restos, texto
+            keep.append(i)
+        good[r] = keep
+    rs = [r for r in sorted(good) if len(good[r]) >= 2]
+    two = len(rs) == 2
+    if not rs: raise SystemExit('auto: sin cuadros utiles')
+    pick = lambda r, a, b: [(r, i) for i in good[r][a:b]]
+    walk = pick(rs[0], 0, 6)
+    atk = pick(rs[1], 0, 5) if len(rs) > 1 else walk[-3:]
+    if two: atk = pick(rs[1], 0, len(good[rs[1]]) - 1)[:4]            # 2 filas: la ultima figura es el montoncito de la muerte
+    tail = pick(rs[-1], 0, 99) if len(rs) > 2 else atk
+    death = tail[-3:] if len(tail) >= 3 else tail
+    if two: death = [atk[-1], pick(rs[1], 0, 99)[-1]]
+    hit = [atk[-1]] if atk else [walk[-1]]
+    idle = [walk[0], walk[min(1, len(walk) - 1)], walk[0], walk[min(2, len(walk) - 1)]]
+    order = []
+    for g in (walk, atk, hit, death, idle):
+        for p in g:
+            if p not in order: order.append(p)
+    ix = lambda L: [list(p) for p in L]
+    print('auto', {k: len(v) for k, v in dict(walk=walk, atk=atk, hit=hit, death=death).items()}, file=sys.stderr)
+    return order, dict(walk=ix(walk), atk=ix(atk), hit=ix(hit), death=ix(death), idle=ix(idle))
+
 def main():
     spec = json.load(open(sys.argv[1])); base = os.path.dirname(os.path.abspath(sys.argv[1]))
     sheet = Image.open(os.path.join(base, spec['sheet']))
     rgba = key_green(sheet); H, W = rgba.shape[:2]
     R, C = spec['rows'], spec['cols']; cw, ch = W / C, H / R
     F, K = spec.get('F', 2), spec.get('K', 32)
-    order = [tuple(p) for p in spec['frames']]           # lista de [fila, col] en el orden del atlas
+    order = [tuple(p) for p in spec.get('frames', [])]           # lista de [fila, col] en el orden del atlas
     rowf = {}
-    bands = spec['bandsY'] if 'bandsY' in spec else row_bands(rgba, spec.get('rowGap', 14)) if spec.get('autoRows', True) else [(int(r * ch), int((r + 1) * ch)) for r in range(R)]
+    even = [(int(r * ch), int((r + 1) * ch)) for r in range(R)]
+    if 'bandsY' in spec: bands = spec['bandsY']
+    else:
+        bands = row_bands(rgba, spec.get('rowGap', 6)) if spec.get('autoRows', True) else even
+        if len(bands) != R: bands = even          # filas pegadas: tercios parejos (Runway las reparte parejas)
     R = len(bands)
     for r in range(R):
         rowf[r] = row_figures(rgba, bands[r][0], bands[r][1], spec.get('gap', 10))
@@ -82,6 +120,8 @@ def main():
             for i, f in enumerate(fl):
                 im = Image.fromarray(f, 'RGBA'); im.thumbnail((cell - 6, cell - 6), Image.NEAREST); sh.alpha_composite(im, (i * cell + 3, r * (cell + 14) + 14)); d.text((i * cell + 4, r * (cell + 14)), f'{r},{i}', fill=(255, 255, 0, 255))
         sh.save(os.path.join(base, 'figs.png')); return
+    if spec.get('auto'):
+        order, spec['sets'] = auto_layout(rowf)
     bodies = []
     for r, c in order:
         if c >= len(rowf[r]): raise SystemExit(f'falta figura {r},{c} (fila {r} tiene {len(rowf[r])})')

@@ -30,7 +30,7 @@ def main():
          "Grid of 3 rows and 6 columns of equal cells on a flat chroma green #00FF00 background, character centered, same size, feet on the same line. "
          f"Row 1: {move}. Row 2: attack animation, 6 frames, wind-up then strike then recovery. "
          "Row 3: idle breathing 2 frames, then being hit and recoiling 1 frame, then collapsing animation 3 frames ending in a small heap. "
-         "No shadow, no text, no grid lines.")
+         "Absolutely no text, no letters, no numbers, no captions, no labels, no shadow, no grid lines, no effects outside the character.")
     refs = [{"uri": green_uri(os.path.join(ROOT, style), '/tmp/_s.png'), "tag": "style"}, {"uri": green_uri(os.path.join(ROOT, design), '/tmp/_d.png'), "tag": "design"}]
     for attempt in range(3):
         body = {"model": "gen4_image", "ratio": "1280:720", "promptText": P, "referenceImages": refs if attempt < 2 else refs[:1]}
