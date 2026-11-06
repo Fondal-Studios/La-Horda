@@ -23,7 +23,8 @@ atk=get('pg_attack2',83); atk0=get('pf_attack',83); wd2=get('pg_wd2',86); cast2=
 mir=lambda s:s.transpose(Image.FLIP_LEFT_RIGHT)
 F={}
 def put(i,sp,**k): F[i]=cell(sp,**k)
-for i,dy in enumerate([0,-1,0,-1]): put(17+i,idle,dy=dy)
+idle2=get('pg_idle2',86)
+for i,(sp,dy) in enumerate([(idle,0),(idle,-1),(idle2,0),(idle2,-1)]): put(17+i,sp,dy=dy)
 for i,sp in enumerate([walk,idle,wd2,idle]): put(21+i,sp)
 for i,sp in enumerate([mir(swalk),mir(side),mir(swalk),mir(side)]): put(25+i,sp)
 for i,sp in enumerate([swalk,side,swalk,side]): put(29+i,sp)

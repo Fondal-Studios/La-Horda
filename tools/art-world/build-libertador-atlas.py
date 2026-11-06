@@ -22,7 +22,7 @@ def cell(sp,W,H,foot,dx=0,dy=0,rot=0,flash=0,sy=1.0,alpha=1.0):
 W,H,FOOT=103,98,92
 CW=W-2
 front=get('ref_frente',76,CW); side=get('ref_lado',76,CW); back=get('ref_espalda',76,CW)
-WK={k:get('w_'+k,76,CW) for k in ('wd1','wd3','ws1','ws3','wu1','wu3')}
+WK={k:get('w_'+k,76,CW) for k in ('wd1','wd3','ws1','ws3','wu1','wu3')}; WK['wu3']=get('w_wu2',76,CW)
 P={'aim':get('p_aim',74,CW),'reload':get('p_reload',76,CW),'pre':get('p_bayo_pre',76,CW),'emb':get('p_bayo_emb',72,CW),'imp':get('p_bayo_imp',66,CW),
    'rem':get('p_bayo_rem',72,CW),'emb2':get('q_emb2',72,CW),'imp2':get('q_imp2',66,CW),'cmd2':get('q_cmd2',80,CW),'cmd':get('p_command',80,CW),'ult':get('p_ult_cast',82,CW)}
 F={}
