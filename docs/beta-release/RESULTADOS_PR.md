@@ -1,4 +1,4 @@
 # RESULTADOS PR (se actualiza por cada veredicto)
 | PR | Veredicto | SHA evaluado | Evidencia | Reparación | Merge | Rollback | Motivo/Cierre |
 |---|---|---|---|---|---|---|---|
-| (ninguno aún al cierre de H0) | | | | | | | |
+| 271 | **REPARABLE → reparado, pendiente de revisión independiente** | PR head 93e98d9e (+ main ef415626, merge limpio) | Test propio del PR: **FAIL real** en 320x568 y 390x844 (`#rotate-overlay`, aviso de girar, tapa el botón; el juego es horizontal) · 4 viewports horizontales PASS · `test-three-ui-contracts.js` PASS con y sin el PR | Parche `patches/pr271-repair-landscape-test-and-label.patch`: test solo horizontal + `menus.js:430` vuelve a «Comenzar partida» (el PR dejaba «Comenzar» tras la carga de assets) | NO mergeado | `git revert` del merge | Falta: revisión independiente (el reparador no puede aprobar), CI remoto, rebase en rama del PR. No pude empujar a la rama del PR: restricción de rama de esta sesión. |

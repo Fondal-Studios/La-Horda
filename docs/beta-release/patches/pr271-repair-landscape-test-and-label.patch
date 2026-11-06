@@ -1,0 +1,842 @@
+diff --git a/ARCHITECTURE.md b/ARCHITECTURE.md
+index 451f0f40..3ad104c5 100644
+--- a/ARCHITECTURE.md
++++ b/ARCHITECTURE.md
+@@ -221,7 +221,9 @@ va en `ITEM_ICON_ART`) y ficha del objeto `js/ui/item-preview.js`. Assets pendie
+ - `js/net/fondal-tv.js` — **Jugar en la tele (Fondal TV)**, igual que en Padelazo y FreeBird: el ícono de la tele
+   en la esquina del menú principal (`#hub-tele-btn`, solo si el navegador puede) abre el panel de la pieza común
+   `fondalstudios.com/tv/fondal-tv.js` (repositorio FreeBird), que manda el canvas como video y el sonido a la tele
+-  por el WiFi, y copia a la tele el HTML de encima (HUD, carteles, menús) menos los controles táctiles. Jugando
++  por el WiFi. Encima, la tele dibuja con sus propias piezas el **HUD de la tele** (`armarHud`): tus barras, los
++  aliados, el jefe, nivel/vencidos/tiempo, la Definitiva y los carteles, leídos de lo que el juego ya puso en pantalla
++  (unos pocos datos, 20 veces por segundo como mucho). Jugando
+   (`state === "playing"`, avisado por `setState` con `fondalTvOnState`) el celular hace de mando: solo se ven el
+   joystick, los botones y la pausa. Mientras transmite, el buffer del canvas se dibuja a la medida del video
+   (`teleMedidaLienzo()` en `js/core/canvas.js`; caja, cámara y controles no cambian) y el sonido sale por la tele
+diff --git a/css/ui-kit.css b/css/ui-kit.css
+index 39a0ee5c..0e3b6750 100644
+--- a/css/ui-kit.css
++++ b/css/ui-kit.css
+@@ -68,6 +68,59 @@ body[data-mode="cristales"]{ --mode-accent:#6fd3ff; --mode-accent-2:#bfe8ff; }
+ /* Jugar en la tele (js/net/fondal-tv.js): ícono pixel de la tele; dorado mientras se transmite */
+ #hub-tele-btn svg{ display:block; width:28px; height:28px; }
+ #hub-tele-btn.tele-on{ border-color:var(--ui-gold); box-shadow:var(--ui-hi), 0 0 0 2px #000, 0 0 10px rgba(255,215,106,.55); }
++/* Jugar en la tele: el celular como MANDO. Los controles son LOS MISMOS y en el MISMO lugar que jugando en el celular
++   (pedido de Facundo: si en la tele cambian de lugar, confunde); acá solo cambia la estética: fondo de La Horda, el
++   joystick de brasa y un brillo del color de cada habilidad. Nada que mueva o agrande (left, top, width...). */
++.fondal-tele-mando.lh-mando{ background:radial-gradient(ellipse at 50% 120%, #4a1410 0%, #1d0a12 50%, #0a0508 100%); }
++.fondal-tele-mando.lh-mando::before{ content:'LA HORDA · EN LA TELE'; position:absolute; top:calc(12px + env(safe-area-inset-top,0px)); left:50%; transform:translateX(-50%);
++  font-family:var(--ui-font); font-size:1.3rem; letter-spacing:.12em; color:var(--ui-gold); text-shadow:2px 2px 0 #000; white-space:nowrap; }
++/* fondos del mando (js/net/fondal-tv.js FONDOS): uno al azar; el título queda encima del fondo */
++.fondal-tele-mando.lh-mando::before{z-index:1}
++.lhf-mazmorra{position:absolute;inset:0;background-color:#1d1013;background-image:linear-gradient(#0b0507 3px,transparent 3px),linear-gradient(90deg,#0b0507 3px,transparent 3px),linear-gradient(90deg,#0b0507 3px,transparent 3px);background-size:48px 24px,48px 48px,48px 48px;background-position:0 0,0 0,24px 24px}
++.lhf-piso{position:absolute;left:0;right:0;bottom:0;height:16%;background:repeating-linear-gradient(90deg,#160b0d 0 62px,#0b0507 62px 64px);border-top:4px solid #0b0507}
++.lhf-antorcha{position:absolute;top:16%;width:12px;height:12%}
++.lhf-antorcha b{position:absolute;left:0;top:30%;width:12px;height:70%;background:#5a3418;box-shadow:inset -4px 0 0 #3a2010}
++.lhf-antorcha s{position:absolute;left:-4px;top:26%;width:20px;height:8px;background:#7a7a86}
++.lhf-luz{position:absolute;left:-74px;top:-90%;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(255,150,40,.38),rgba(255,90,20,.08) 55%,transparent 70%);animation:lhfLuz 1.6s steps(4) infinite}
++.lhf-llama{position:absolute;left:-4px;top:-14px;width:20px;height:32px;transform-origin:50% 100%;animation:lhfLlama .45s steps(3) infinite}
++.lhf-llama i{position:absolute;background:#ff7a1a}
++.lhf-llama i:nth-child(1){left:4px;bottom:0;width:12px;height:24px}
++.lhf-llama i:nth-child(2){left:0;bottom:4px;width:20px;height:12px}
++.lhf-llama i:nth-child(3){left:6px;bottom:2px;width:8px;height:16px;background:#ffd23a}
++.lhf-llama i:nth-child(4){left:8px;top:0;width:4px;height:8px}
++.lhf-brasa{position:absolute;bottom:4%;width:4px;height:4px;animation:lhfBrasa 4.5s steps(30) infinite}
++.lhf-sombra{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,transparent 30%,rgba(0,0,0,.65) 100%)}
++@keyframes lhfLlama{0%{transform:scaleY(1)}33%{transform:scaleY(1.18) translateX(1px)}66%{transform:scaleY(.9) translateX(-1px)}100%{transform:scaleY(1)}}
++@keyframes lhfLuz{0%,100%{opacity:1}50%{opacity:.75}}
++@keyframes lhfBrasa{from{transform:translateY(0);opacity:1}to{transform:translateY(-60vh);opacity:0}}
++
++.lhf-cielo{position:absolute;inset:0;background:linear-gradient(#1a0618 0 22%,#2e0a22 22% 40%,#4e0f22 40% 56%,#7c1a1c 56% 68%,#b8361a 68% 78%,#e8742a 78% 84%,#2a0a0e 84%)}
++.lhf-luna{position:absolute;left:45%;top:15%;width:84px;height:84px;background:#c8341c;clip-path:polygon(30% 0,70% 0,70% 6%,85% 6%,85% 15%,94% 15%,94% 30%,100% 30%,100% 70%,94% 70%,94% 85%,85% 85%,85% 94%,70% 94%,70% 100%,30% 100%,30% 94%,15% 94%,15% 85%,6% 85%,6% 70%,0 70%,0 30%,6% 30%,6% 15%,15% 15%,15% 6%,30% 6%)}
++.lhf-luna i{position:absolute;background:#a82814}
++.lhf-halo{position:absolute;left:calc(45% - 58px);top:calc(15% - 58px);width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,80,40,.45),transparent 65%);animation:lhfHalo 3s ease-in-out infinite alternate}
++.lhf-nube{position:absolute;height:10px;background:#1a0614;box-shadow:16px -8px 0 #1a0614,40px -8px 0 #1a0614;animation:lhfNube 38s linear infinite}
++.lhf-murcielago{position:absolute;width:18px;height:8px;animation:lhfVuelo 11s linear infinite}
++.lhf-murcielago i{position:absolute;inset:0;background:#0a0306;clip-path:polygon(0 0,30% 50%,45% 30%,50% 60%,55% 30%,70% 50%,100% 0,85% 100%,50% 80%,15% 100%);animation:lhfAleteo .3s steps(2) infinite}
++.lhf-horda{position:absolute;left:0;bottom:0;width:200%;height:31%;display:flex;animation:lhfMarcha 26s linear infinite}
++.lhf-horda>div{position:relative;flex:1;height:100%}
++.lhf-horda>div>b{position:absolute;inset:0;background:#0a0306;clip-path:polygon(0 100%,0 40%,4% 40%,4% 30%,6% 30%,6% 40%,10% 40%,10% 22%,12% 22%,12% 14%,14% 14%,14% 40%,18% 40%,18% 28%,22% 28%,22% 40%,26% 40%,26% 34%,28% 34%,28% 26%,30% 26%,30% 40%,34% 40%,34% 18%,36% 18%,36% 8%,38% 8%,38% 40%,42% 40%,42% 30%,46% 30%,46% 24%,48% 24%,48% 40%,52% 40%,52% 32%,56% 32%,56% 40%,60% 40%,60% 20%,62% 20%,62% 12%,64% 12%,64% 40%,68% 40%,68% 28%,72% 28%,72% 40%,76% 40%,76% 22%,78% 22%,78% 34%,82% 34%,82% 40%,86% 40%,86% 16%,88% 16%,88% 40%,92% 40%,92% 30%,96% 30%,96% 40%,100% 40%,100% 100%)}
++.lhf-ojo{position:absolute;width:10px;height:3px;background:linear-gradient(90deg,#ff2a1a 0 3px,transparent 3px 7px,#ff2a1a 7px);animation:lhfOjos 3.2s steps(1) infinite}
++.lhf-brasa{position:absolute;bottom:4%;width:4px;height:4px;animation:lhfBrasa 4.5s steps(30) infinite}
++.lhf-sombra2{position:absolute;inset:0;background:linear-gradient(transparent 60%,rgba(0,0,0,.35))}
++@keyframes lhfHalo{from{opacity:.55}to{opacity:1}}
++@keyframes lhfNube{from{transform:translateX(0)}to{transform:translateX(-130vw)}}
++@keyframes lhfVuelo{0%{transform:translate(0,0)}25%{transform:translate(-30vw,-3vh)}50%{transform:translate(-60vw,2vh)}75%{transform:translate(-90vw,-2vh)}100%{transform:translate(-125vw,1vh)}}
++@keyframes lhfAleteo{0%{transform:scaleY(1)}50%{transform:scaleY(-.6)}}
++@keyframes lhfMarcha{from{transform:translateX(0)}to{transform:translateX(-50%)}}
++@keyframes lhfOjos{0%,92%{opacity:1}94%,98%{opacity:0}100%{opacity:1}}
++@keyframes lhfBrasa{from{transform:translateY(0);opacity:1}to{transform:translateY(-60vh);opacity:0}}
++.fondal-tele-mando.lh-mando .ftm-detener{ position:absolute; top:calc(44px + env(safe-area-inset-top,0px)); left:50%; transform:translateX(-50%);
++  font-family:var(--ui-font); font-size:1rem; color:var(--ui-ink); border:2px solid var(--ui-line-hi); border-radius:0; background:rgba(0,0,0,.35); }
++body.fondal-tele.fondal-tele-partido #joy-base{ background:radial-gradient(circle, rgba(90,30,16,.55), rgba(20,8,10,.85)); border:3px solid #e0a040;
++  box-shadow:0 0 0 2px #000, 0 0 18px rgba(255,140,40,.35); }
++body.fondal-tele.fondal-tele-partido #joy-knob{ background:radial-gradient(circle at 35% 30%, #ffe2a0, #f0a030 55%, #a8501a); border:2px solid #fff3d0;
++  box-shadow:0 3px 0 #2a0e05, 0 0 14px rgba(255,170,60,.6); }
++body.fondal-tele.fondal-tele-partido #controls .ability-btn.ready:not(.revive){ box-shadow:0 4px 0 #03070e, 0 0 0 2px #03070e, 0 0 14px color-mix(in srgb, var(--action) 55%, transparent); }
+ .ui-chip{ display:inline-flex; align-items:center; gap:4px; min-height:30px; padding:2px 10px; font-family:var(--ui-font); font-size:1.1rem; color:var(--ui-ink);
+   background:var(--ui-inset); border:2px solid var(--ui-line); white-space:nowrap; }
+ .ui-chip.gold, .ui-chip.gold b{ color:var(--ui-gold); }
+diff --git a/docs/ux/three-ui-contracts/geometry.json b/docs/ux/three-ui-contracts/geometry.json
+new file mode 100644
+index 00000000..2c27d77d
+--- /dev/null
++++ b/docs/ux/three-ui-contracts/geometry.json
+@@ -0,0 +1,542 @@
++[
++  {
++    "viewport": [
++      568,
++      320
++    ],
++    "title": {
++      "button": {
++        "x": 312.421875,
++        "y": 216,
++        "width": 227.1875,
++        "height": 44
++      },
++      "footer": {
++        "x": 0,
++        "y": 268,
++        "width": 568,
++        "height": 44
++      },
++      "cta": {
++        "x": 301.0625,
++        "y": 106.14250183105469,
++        "width": 238.546875,
++        "height": 99.625
++      }
++    },
++    "legalLinks": "PASS",
++    "continuePointer": "PASS"
++  },
++  {
++    "viewport": [
++      667,
++      375
++    ],
++    "title": {
++      "button": {
++        "x": 366.859375,
++        "y": 271,
++        "width": 266.796875,
++        "height": 44
++      },
++      "footer": {
++        "x": 0,
++        "y": 323,
++        "width": 667,
++        "height": 44
++      },
++      "cta": {
++        "x": 373.65625,
++        "y": 149.6425018310547,
++        "width": 260,
++        "height": 99.625
++      }
++    },
++    "legalLinks": "PASS",
++    "continuePointer": "PASS"
++  },
++  {
++    "viewport": [
++      740,
++      360
++    ],
++    "title": {
++      "button": {
++        "x": 407,
++        "y": 256,
++        "width": 296,
++        "height": 44
++      },
++      "footer": {
++        "x": 0,
++        "y": 308,
++        "width": 740,
++        "height": 44
++      },
++      "cta": {
++        "x": 443,
++        "y": 126.14250183105469,
++        "width": 260,
++        "height": 99.625
++      }
++    },
++    "legalLinks": "PASS",
++    "continuePointer": "PASS"
++  },
++  {
++    "viewport": [
++      844,
++      390
++    ],
++    "title": {
++      "button": {
++        "x": 501.8125,
++        "y": 286,
++        "width": 300,
++        "height": 44
++      },
++      "footer": {
++        "x": 0,
++        "y": 338,
++        "width": 844,
++        "height": 44
++      },
++      "cta": {
++        "x": 541.8125,
++        "y": 157.1425018310547,
++        "width": 260,
++        "height": 99.62501525878906
++      }
++    },
++    "legalLinks": "PASS",
++    "continuePointer": "PASS"
++  },
++  {
++    "viewport": [
++      1366,
++      768
++    ],
++    "title": {
++      "button": {
++        "x": 997.703125,
++        "y": 496,
++        "width": 300,
++        "height": 36
++      },
++      "footer": {
++        "x": 0,
++        "y": 716,
++        "width": 1366,
++        "height": 44
++      },
++      "cta": {
++        "x": 997.703125,
++        "y": 339.302490234375,
++        "width": 300,
++        "height": 117.625
++      }
++    },
++    "legalLinks": "PASS",
++    "continuePointer": "PASS"
++  },
++  {
++    "viewport": [
++      667,
++      375
++    ],
++    "lefty": false,
++    "recall": {
++      "id": "ln-recall",
++      "x": 304.6953125,
++      "y": 269,
++      "width": 57.609375,
++      "height": 48
++    },
++    "button": {
++      "id": "btn-basic",
++      "x": 563,
++      "y": 273,
++      "width": 92,
++      "height": 92
++    },
++    "icon": {
++      "id": "ico-img ico-pix",
++      "x": 593,
++      "y": 299,
++      "width": 32,
++      "height": 32
++    },
++    "shop": {
++      "id": "ln-shop",
++      "x": 136,
++      "y": 49.96875,
++      "width": 319,
++      "height": 211.03125
++    },
++    "controls": [
++      {
++        "id": "joy-base",
++        "x": 24,
++        "y": 273,
++        "width": 92,
++        "height": 92
++      },
++      {
++        "id": "btn-ult",
++        "x": 591,
++        "y": 183,
++        "width": 60,
++        "height": 60
++      },
++      {
++        "id": "btn-revive",
++        "x": 301.5,
++        "y": 84,
++        "width": 64,
++        "height": 64
++      },
++      {
++        "id": "btn-s3",
++        "x": 497,
++        "y": 197,
++        "width": 54,
++        "height": 54
++      },
++      {
++        "id": "btn-s2",
++        "x": 455,
++        "y": 251,
++        "width": 54,
++        "height": 54
++      },
++      {
++        "id": "btn-s1",
++        "x": 497,
++        "y": 305,
++        "width": 54,
++        "height": 54
++      },
++      {
++        "id": "btn-basic",
++        "x": 563,
++        "y": 273,
++        "width": 92,
++        "height": 92
++      },
++      {
++        "id": "btn-emerg",
++        "x": 443,
++        "y": 317,
++        "width": 46,
++        "height": 46
++      },
++      {
++        "id": "ln-chip",
++        "x": 259.8984375,
++        "y": 325,
++        "width": 147.203125,
++        "height": 44
++      }
++    ]
++  },
++  {
++    "viewport": [
++      667,
++      375
++    ],
++    "lefty": true,
++    "recall": {
++      "id": "ln-recall",
++      "x": 304.6953125,
++      "y": 269,
++      "width": 57.609375,
++      "height": 48
++    },
++    "button": {
++      "id": "btn-basic",
++      "x": 12,
++      "y": 273,
++      "width": 92,
++      "height": 92
++    },
++    "icon": {
++      "id": "ico-img ico-pix",
++      "x": 42,
++      "y": 299,
++      "width": 32,
++      "height": 32
++    },
++    "shop": {
++      "id": "ln-shop",
++      "x": 136,
++      "y": 49.96875,
++      "width": 319,
++      "height": 211.03125
++    },
++    "controls": [
++      {
++        "id": "joy-base",
++        "x": 551,
++        "y": 273,
++        "width": 92,
++        "height": 92
++      },
++      {
++        "id": "btn-ult",
++        "x": 16,
++        "y": 183,
++        "width": 60,
++        "height": 60
++      },
++      {
++        "id": "btn-revive",
++        "x": 301.5,
++        "y": 84,
++        "width": 64,
++        "height": 64
++      },
++      {
++        "id": "btn-s3",
++        "x": 116,
++        "y": 197,
++        "width": 54,
++        "height": 54
++      },
++      {
++        "id": "btn-s2",
++        "x": 158,
++        "y": 251,
++        "width": 54,
++        "height": 54
++      },
++      {
++        "id": "btn-s1",
++        "x": 116,
++        "y": 305,
++        "width": 54,
++        "height": 54
++      },
++      {
++        "id": "btn-basic",
++        "x": 12,
++        "y": 273,
++        "width": 92,
++        "height": 92
++      },
++      {
++        "id": "btn-emerg",
++        "x": 178,
++        "y": 317,
++        "width": 46,
++        "height": 46
++      },
++      {
++        "id": "ln-chip",
++        "x": 259.8984375,
++        "y": 325,
++        "width": 147.203125,
++        "height": 44
++      }
++    ]
++  },
++  {
++    "viewport": [
++      844,
++      390
++    ],
++    "lefty": false,
++    "recall": {
++      "id": "ln-recall",
++      "x": 393.1953125,
++      "y": 284,
++      "width": 57.609375,
++      "height": 48
++    },
++    "button": {
++      "id": "btn-basic",
++      "x": 740,
++      "y": 288,
++      "width": 92,
++      "height": 92
++    },
++    "icon": {
++      "id": "ico-img ico-pix",
++      "x": 770,
++      "y": 314,
++      "width": 32,
++      "height": 32
++    },
++    "shop": {
++      "id": "ln-shop",
++      "x": 136,
++      "y": 93.65625,
++      "width": 496,
++      "height": 182.34375
++    },
++    "controls": [
++      {
++        "id": "joy-base",
++        "x": 24,
++        "y": 288,
++        "width": 92,
++        "height": 92
++      },
++      {
++        "id": "btn-ult",
++        "x": 768,
++        "y": 198,
++        "width": 60,
++        "height": 60
++      },
++      {
++        "id": "btn-revive",
++        "x": 390,
++        "y": 84,
++        "width": 64,
++        "height": 64
++      },
++      {
++        "id": "btn-s3",
++        "x": 674,
++        "y": 212,
++        "width": 54,
++        "height": 54
++      },
++      {
++        "id": "btn-s2",
++        "x": 632,
++        "y": 266,
++        "width": 54,
++        "height": 54
++      },
++      {
++        "id": "btn-s1",
++        "x": 674,
++        "y": 320,
++        "width": 54,
++        "height": 54
++      },
++      {
++        "id": "btn-basic",
++        "x": 740,
++        "y": 288,
++        "width": 92,
++        "height": 92
++      },
++      {
++        "id": "btn-emerg",
++        "x": 620,
++        "y": 332,
++        "width": 46,
++        "height": 46
++      },
++      {
++        "id": "ln-chip",
++        "x": 348.3984375,
++        "y": 340,
++        "width": 147.203125,
++        "height": 44
++      }
++    ]
++  },
++  {
++    "viewport": [
++      844,
++      390
++    ],
++    "lefty": true,
++    "recall": {
++      "id": "ln-recall",
++      "x": 393.1953125,
++      "y": 284,
++      "width": 57.609375,
++      "height": 48
++    },
++    "button": {
++      "id": "btn-basic",
++      "x": 12,
++      "y": 288,
++      "width": 92,
++      "height": 92
++    },
++    "icon": {
++      "id": "ico-img ico-pix",
++      "x": 42,
++      "y": 314,
++      "width": 32,
++      "height": 32
++    },
++    "shop": {
++      "id": "ln-shop",
++      "x": 136,
++      "y": 93.65625,
++      "width": 496,
++      "height": 182.34375
++    },
++    "controls": [
++      {
++        "id": "joy-base",
++        "x": 728,
++        "y": 288,
++        "width": 92,
++        "height": 92
++      },
++      {
++        "id": "btn-ult",
++        "x": 16,
++        "y": 198,
++        "width": 60,
++        "height": 60
++      },
++      {
++        "id": "btn-revive",
++        "x": 390,
++        "y": 84,
++        "width": 64,
++        "height": 64
++      },
++      {
++        "id": "btn-s3",
++        "x": 116,
++        "y": 212,
++        "width": 54,
++        "height": 54
++      },
++      {
++        "id": "btn-s2",
++        "x": 158,
++        "y": 266,
++        "width": 54,
++        "height": 54
++      },
++      {
++        "id": "btn-s1",
++        "x": 116,
++        "y": 320,
++        "width": 54,
++        "height": 54
++      },
++      {
++        "id": "btn-basic",
++        "x": 12,
++        "y": 288,
++        "width": 92,
++        "height": 92
++      },
++      {
++        "id": "btn-emerg",
++        "x": 178,
++        "y": 332,
++        "width": 46,
++        "height": 46
++      },
++      {
++        "id": "ln-chip",
++        "x": 348.3984375,
++        "y": 340,
++        "width": 147.203125,
++        "height": 44
++      }
++    ]
++  }
++]
+\ No newline at end of file
+diff --git a/docs/ux/three-ui-contracts/lanes-667-left.png b/docs/ux/three-ui-contracts/lanes-667-left.png
+new file mode 100644
+index 00000000..24a0ecb7
+Binary files /dev/null and b/docs/ux/three-ui-contracts/lanes-667-left.png differ
+diff --git a/docs/ux/three-ui-contracts/lanes-667-right.png b/docs/ux/three-ui-contracts/lanes-667-right.png
+new file mode 100644
+index 00000000..9ae01c2e
+Binary files /dev/null and b/docs/ux/three-ui-contracts/lanes-667-right.png differ
+diff --git a/docs/ux/three-ui-contracts/lanes-844-left.png b/docs/ux/three-ui-contracts/lanes-844-left.png
+new file mode 100644
+index 00000000..db08a67a
+Binary files /dev/null and b/docs/ux/three-ui-contracts/lanes-844-left.png differ
+diff --git a/docs/ux/three-ui-contracts/lanes-844-right.png b/docs/ux/three-ui-contracts/lanes-844-right.png
+new file mode 100644
+index 00000000..c5aa895f
+Binary files /dev/null and b/docs/ux/three-ui-contracts/lanes-844-right.png differ
+diff --git a/docs/ux/three-ui-contracts/title-1366.png b/docs/ux/three-ui-contracts/title-1366.png
+new file mode 100644
+index 00000000..7c652b7a
+Binary files /dev/null and b/docs/ux/three-ui-contracts/title-1366.png differ
+diff --git a/docs/ux/three-ui-contracts/title-568.png b/docs/ux/three-ui-contracts/title-568.png
+new file mode 100644
+index 00000000..892530a5
+Binary files /dev/null and b/docs/ux/three-ui-contracts/title-568.png differ
+diff --git a/docs/ux/three-ui-contracts/title-667.png b/docs/ux/three-ui-contracts/title-667.png
+new file mode 100644
+index 00000000..915165c0
+Binary files /dev/null and b/docs/ux/three-ui-contracts/title-667.png differ
+diff --git a/docs/ux/three-ui-contracts/title-740.png b/docs/ux/three-ui-contracts/title-740.png
+new file mode 100644
+index 00000000..eb078c6b
+Binary files /dev/null and b/docs/ux/three-ui-contracts/title-740.png differ
+diff --git a/docs/ux/three-ui-contracts/title-844.png b/docs/ux/three-ui-contracts/title-844.png
+new file mode 100644
+index 00000000..a1ea0daf
+Binary files /dev/null and b/docs/ux/three-ui-contracts/title-844.png differ
+diff --git a/js/net/fondal-tv.js b/js/net/fondal-tv.js
+index fc3ade26..f71370b8 100644
+--- a/js/net/fondal-tv.js
++++ b/js/net/fondal-tv.js
+@@ -5,9 +5,12 @@
+ 
+    La partida se sigue dibujando en el celular y, además, va como VIDEO (con el sonido) a la tele,
+    directo por el WiFi de la casa (WebRTC). La tele (la app Fondal TV en Android TV, que abre
+-   fondalstudios.com/tv/) la muestra tal cual se ve en el celular: lo que el juego pone en HTML
+-   encima del canvas (barras de vida, aliados, jefe, carteles, avisos, los menús) se copia a la tele
+-   en el mismo lugar —el ESPEJO de la pieza común—, menos los controles táctiles. Mientras se juega
++   fondalstudios.com/tv/) la muestra y encima dibuja EL HUD DE LA TELE con sus propias piezas,
++   livianas: tus barras (vida, escudo, energía), los aliados, el jefe, el nivel, los vencidos y el
++   tiempo, la Definitiva y los carteles. Son unos pocos datos, 20 veces por segundo como mucho, que
++   se leen de lo que el juego ya puso en pantalla (armarHud). (Antes iba el ESPEJO, la copia de toda
++   la pantalla 10 veces por segundo: le agregaba retraso a la partida —medido en Padelazo y en
++   FreeBird el 4/11/2026— y se sacó en los tres juegos.) Mientras se juega
+    (state "playing") el celular hace de MANDO: tapa el dibujo (que sigue andando atrás, para la tele)
+    y deja a la vista solo el joystick, los botones de habilidad, la pausa y el sonido. En los menús,
+    la Sala, los refuerzos y la pausa se ve el juego, igual que siempre.
+@@ -35,10 +38,14 @@ const FondalTV = (() => {
+     en: { boton: "Play on TV" },
+     "pt-BR": { boton: "Jogar na TV" }
+   };
+-  // Lo que NO va a la tele: los controles táctiles (quedan en el celular), el ícono de la tele y lo de depuración.
+-  const EXCLUIR = ["#controls", "#pause-btn", "#mute-btn", "#hub-tele-btn", "#net-debug-btn", "#net-debug-panel"];
+-  // Lo que el celular sigue mostrando mientras hace de mando.
++  // Lo que el celular sigue mostrando mientras hace de mando (lo demás se esconde: va a la tele por el HUD).
+   const EN_CELULAR = ["#controls", "#pause-btn", "#mute-btn"];
++  // FONDOS DEL MANDO: sale uno al azar cada vez (su CSS en css/ui-kit.css). Del tablero «Mandos Fondal TV»:
++  // «Mazmorra» y «La horda en el horizonte», elegidos por Facundo. Lo que se mueve va con transform u opacity.
++  const FONDOS = [
++    "<div class=\"lhf-mazmorra\"></div><div class=\"lhf-antorcha\" style=\"left:35%\"><div class=\"lhf-luz\"></div><b></b><s></s><div class=\"lhf-llama\"><i></i><i></i><i></i><i></i></div></div><div class=\"lhf-antorcha\" style=\"left:63%\"><div class=\"lhf-luz\"></div><b></b><s></s><div class=\"lhf-llama\"><i></i><i></i><i></i><i></i></div></div><div class=\"lhf-piso\"></div><i class=\"lhf-brasa\" style=\"left:17%;animation-delay:0s;background:#ff7a1a\"></i><i class=\"lhf-brasa\" style=\"left:27%;animation-delay:1.3s;background:#ffd23a\"></i><i class=\"lhf-brasa\" style=\"left:48%;animation-delay:2.1s;background:#ff7a1a\"></i><i class=\"lhf-brasa\" style=\"left:57%;animation-delay:0.7s;background:#ffd23a\"></i><i class=\"lhf-brasa\" style=\"left:71%;animation-delay:3s;background:#ff7a1a\"></i><i class=\"lhf-brasa\" style=\"left:42%;animation-delay:1.8s;background:#ffb03a\"></i><div class=\"lhf-sombra\"></div>",
++    "<div class=\"lhf-cielo\"></div><div class=\"lhf-halo\"></div><div class=\"lhf-luna\"><i style=\"left:24%;top:22%;width:16%;height:12%\"></i><i style=\"left:62%;top:55%;width:12%;height:12%\"></i></div><div class=\"lhf-nube\" style=\"left:105vw;top:30%;width:90px;animation-delay:0s\"></div><div class=\"lhf-nube\" style=\"left:105vw;top:44%;width:60px;animation-delay:-14s\"></div><div class=\"lhf-nube\" style=\"left:105vw;top:22%;width:70px;animation-delay:-27s\"></div><div class=\"lhf-murcielago\" style=\"left:105vw;top:38%;animation-delay:0s\"><i></i></div><div class=\"lhf-murcielago\" style=\"left:110vw;top:46%;animation-delay:-3.5s\"><i></i></div><div class=\"lhf-murcielago\" style=\"left:108vw;top:33%;animation-delay:-7s\"><i></i></div><div class=\"lhf-horda\"><div><b></b><i class=\"lhf-ojo\" style=\"left:11%;top:26%;animation-delay:0s\"></i><i class=\"lhf-ojo\" style=\"left:22%;top:36%;animation-delay:0.9s\"></i><i class=\"lhf-ojo\" style=\"left:35%;top:20%;animation-delay:1.7s\"></i><i class=\"lhf-ojo\" style=\"left:50%;top:30%;animation-delay:0.4s\"></i><i class=\"lhf-ojo\" style=\"left:60%;top:24%;animation-delay:2.3s\"></i><i class=\"lhf-ojo\" style=\"left:66%;top:38%;animation-delay:1.2s\"></i><i class=\"lhf-ojo\" style=\"left:18%;top:56%;animation-delay:2.8s\"></i><i class=\"lhf-ojo\" style=\"left:43%;top:52%;animation-delay:0.6s\"></i><i class=\"lhf-ojo\" style=\"left:80%;top:30%;animation-delay:1.5s\"></i><i class=\"lhf-ojo\" style=\"left:90%;top:44%;animation-delay:2.6s\"></i></div><div><b></b><i class=\"lhf-ojo\" style=\"left:11%;top:26%;animation-delay:0s\"></i><i class=\"lhf-ojo\" style=\"left:22%;top:36%;animation-delay:0.9s\"></i><i class=\"lhf-ojo\" style=\"left:35%;top:20%;animation-delay:1.7s\"></i><i class=\"lhf-ojo\" style=\"left:50%;top:30%;animation-delay:0.4s\"></i><i class=\"lhf-ojo\" style=\"left:60%;top:24%;animation-delay:2.3s\"></i><i class=\"lhf-ojo\" style=\"left:66%;top:38%;animation-delay:1.2s\"></i><i class=\"lhf-ojo\" style=\"left:18%;top:56%;animation-delay:2.8s\"></i><i class=\"lhf-ojo\" style=\"left:43%;top:52%;animation-delay:0.6s\"></i><i class=\"lhf-ojo\" style=\"left:80%;top:30%;animation-delay:1.5s\"></i><i class=\"lhf-ojo\" style=\"left:90%;top:44%;animation-delay:2.6s\"></i></div></div><i class=\"lhf-brasa\" style=\"left:14%;animation-delay:0s;background:#ff7a1a\"></i><i class=\"lhf-brasa\" style=\"left:33%;animation-delay:1.6s;background:#ffd23a\"></i><i class=\"lhf-brasa\" style=\"left:58%;animation-delay:2.4s;background:#ff7a1a\"></i><i class=\"lhf-brasa\" style=\"left:76%;animation-delay:0.8s;background:#ffb03a\"></i><div class=\"lhf-sombra2\"></div>"
++  ];
+   // Cuánto se espera al arrancar antes de bajar la pieza común (sin apuro: después de que cargue todo lo demás).
+   const PRECARGA_MS = 8000;
+ 
+@@ -97,8 +104,13 @@ const FondalTV = (() => {
+               pista: () => typeof audioPistaParaTele === "function" ? audioPistaParaTele() : null,
+               soltar: () => { if(typeof audioSonidoAlCelular === "function") audioSonidoAlCelular(); }
+             },
+-            // EL ESPEJO: la tele ve lo mismo que el celular, en el mismo lugar, menos los controles táctiles
+-            espejo: { excluir: EXCLUIR, enCelular: EN_CELULAR }
++            // EL HUD DE LA TELE (armarHud) y el mando: en el celular quedan solo los controles
++            hud: armarHud,
++            // la imagen de La Horda para la tele mientras se eligen cosas en los menús (sincronizar)
++            portada: { imagen: "https://fondalstudios.com/img/la-horda-compartir.jpg" },
++            hudCadaMs: 50,
++            // (la estética del mando: .lh-mando en css/ui-kit.css; los controles, los mismos y en su lugar)
++            mando: { enCelular: EN_CELULAR, clase: "lh-mando", sinTexto: true, fondos: FONDOS }
+           });
+           if(tele) sincronizar();
+           return tele;
+@@ -109,10 +121,16 @@ const FondalTV = (() => {
+   }
+ 
+   /** Jugando (state "playing") el celular hace de mando; en los menús, la Sala, los refuerzos y la pausa, false. */
++  let portadaAntes = null;
+   function sincronizar(){
+-    if(!tele || !tele.activa){ enPartidoAntes = null; return; }
+-    const enPartido = typeof state !== "undefined" && state === "playing";
++    if(!tele || !tele.activa){ enPartidoAntes = null; portadaAntes = null; return; }
++    const estado = typeof state !== "undefined" ? state : "";
++    const enPartido = estado === "playing";
+     if(enPartido !== enPartidoAntes){ enPartidoAntes = enPartido; tele.enPartido(enPartido); }
++    // en los menús el canvas no dibuja nada y la tele quedaba negra: ahí la tele muestra la portada de La Horda
++    // (en la pausa no: se ve la partida quieta)
++    const portada = !enPartido && estado !== "paused";
++    if(portada !== portadaAntes && typeof tele.portada === "function"){ portadaAntes = portada; tele.portada(portada); }
+   }
+ 
+   /** Abre el panel "Jugar en la tele" (elegir la tele, o dejar de transmitir). */
+@@ -171,9 +189,65 @@ const FondalTV = (() => {
+     b.addEventListener("click", ev => { ev.preventDefault(); abrir(); });
+   }
+ 
++  /* ---------- EL HUD DE LA TELE ----------
++     Se lee lo que el juego ya puso en pantalla (textos, clases y anchos escritos por js/ui/hud.js,
++     js/ui/boss-hud.js, js/ui/hud-text.js): leer eso no le cuesta nada al celular. El formato lo
++     define la pieza común (FORMATO DEL HUD en fondalstudios.com/tv/fondal-tv.js). */
++  const $id = id => document.getElementById(id);
++  const visible = el => !!el && !el.classList.contains("hidden") && el.style.display !== "none";
++  const texto = el => el ? String(el.textContent || "").replace(/\s+/g, " ").trim() : "";
++  const ancho = el => { const v = el ? parseFloat(el.style.width) : NaN; return Number.isFinite(v) ? Math.round(v * 10) / 1000 : 0; };
++  /** El rótulo que el juego escribe justo antes de un número ("Nivel", "Oleada", "Ronda", "Vencidos"). */
++  function rotuloAntes(el){
++    const n = el && el.previousSibling;
++    return n ? String(n.textContent || "").replace(/[·\s]+/g, " ").trim() : "";
++  }
++  let bannerAntes = "", bannerDesde = 0, cartelAntes = "", cartelN = 0;
++  function armarHud(){
++    if(typeof state === "undefined" || state !== "playing" || !visible($id("hud"))) return {};
++    const hud = {};
++    // tus barras: vida, escudo (si hay) y energía, con la clase y el nivel arriba
++    const lista = [{ icono: "♥", valor: ancho($id("hp-fill")), color: "#e0463a" }];
++    if(visible($id("hp-shield-row"))) lista.push({ icono: "🛡", valor: ancho($id("hp-shield-fill")), color: "#7fd0ff" });
++    lista.push({ icono: "✦", valor: ancho($id("en-fill")), color: "#ffcf3f" });
++    hud.barras = { titulo: texto($id("plevel")), lista };
++    // nivel (u oleada, o ronda), vencidos y tiempo
++    const lv = $id("hud-level"), ki = $id("hud-kills"), ti = $id("hud-timer");
++    hud.fichas = [
++      { valor: texto(lv), rotulo: rotuloAntes(lv) },
++      { valor: texto(ki), rotulo: rotuloAntes(ki) },
++      { valor: texto(ti), rotulo: rotuloAntes(ti) }
++    ].filter(x => x.valor);
++    // los aliados (en la Guerra de Cristales, solo los de tu equipo: el juego esconde las filas de los otros)
++    const filas = [...document.querySelectorAll("#party .ally-row")].filter(r => r.style.display !== "none");
++    hud.equipo = filas.map(r => {
++      const b = r.querySelector(".ally-badge");
++      return { icono: texto(b), nombre: texto(r.querySelector(".ally-name")), valor: ancho(r.querySelector(".ally-hp-fill:not(.shield-seg)")),
++        color: b ? b.style.color : "", caido: r.classList.contains("down") };
++    });
++    // el jefe
++    if(visible($id("boss-hud"))) hud.jefe = { nombre: texto($id("boss-name")), sub: texto($id("boss-epithet")), valor: ancho($id("boss-fill")), estado: texto($id("boss-status")) };
++    // la Definitiva (el aro: conic-gradient(... Ndeg ...))
++    const aro = $id("ult-ring"), g = aro ? /([\d.]+)deg/.exec(aro.style.background || "") : null;
++    if(aro) hud.acciones = [{ tecla: "★", nombre: texto($id("ult-label")) || "Definitiva", listo: g ? Math.round(parseFloat(g[1]) / 3.6) / 100 : 0 }];
++    // el cartel grande: «CAÍSTE» si caíste; si no, el de la arena; si no, el central (dura lo que su animación, 2,1 s)
++    const banner = $id("center-banner"), bt = banner && banner.classList.contains("show") ? texto(banner) : "";
++    if(bt !== bannerAntes){ bannerAntes = bt; bannerDesde = performance.now(); }
++    let c = null;
++    if(visible($id("downed-overlay"))) c = { titulo: texto(document.querySelector("#downed-overlay .dw-title")), sub: texto($id("downed-sub")), color: "#ff5a4a" };
++    else if(visible($id("arena-title-card"))) c = { titulo: texto(document.querySelector("#arena-title-card .atc-title")), sub: texto(document.querySelector("#arena-title-card .atc-sub")), color: "#ffd23f" };
++    else if(bt && performance.now() - bannerDesde < 2100) c = { titulo: bt, sub: "", color: "#ffffff" };
++    const clave = c ? c.titulo + "|" + c.sub : "";
++    if(clave !== cartelAntes){ cartelAntes = clave; cartelN++; }
++    if(c && c.titulo){ c.n = cartelN; hud.cartel = c; }
++    return hud;
++  }
++
+   function arrancar(){
+     prepararBoton();
+     if(disponible()) setTimeout(cargar, PRECARGA_MS);
++    // el HUD sale a la tele mientras se manda (la pieza común no manda lo que no cambió)
++    setInterval(() => { if(tele && tele.activa) tele.publicarHud(armarHud()); }, 50);
+   }
+   if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", arrancar);
+   else arrancar();
+diff --git a/js/ui/menus.js b/js/ui/menus.js
+index eb9612dc..e622378c 100644
+--- a/js/ui/menus.js
++++ b/js/ui/menus.js
+@@ -427,7 +427,7 @@ function renderPrepSummary(){
+     else netHostBroadcastCos(false);
+     return;
+   }
+-  const sb = document.getElementById("prep-start-btn"); if(sb){ sb.disabled = false; sb.textContent = "Comenzar"; }
++  const sb = document.getElementById("prep-start-btn"); if(sb){ sb.disabled = false; sb.textContent = "Comenzar partida"; }
+   document.getElementById("lobby-sub").textContent = "4 lugares · los lugares libres los completa el juego (o tus amigos, con una sala online)";
+   const slots = document.getElementById("lobby-slots");
+   if(typeof netLobby!=="undefined") netLobby.slotsHTML = ""; // la vista solo reemplaza la de la sala online
+diff --git a/tools/ux/test-campaign-start-layout.js b/tools/ux/test-campaign-start-layout.js
+index 26d55981..d199fc7f 100644
+--- a/tools/ux/test-campaign-start-layout.js
++++ b/tools/ux/test-campaign-start-layout.js
+@@ -8,11 +8,12 @@ const H=require('../lib/serve');
+   browser=await H.launch();
+   let html=fs.readFileSync(path.join(root,'index.html'),'utf8').replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'');
+   html=html.replace('<head>','<head><base href="'+site.url+'/">');
+-  for(const [width,height] of [[320,568],[390,844],[568,320],[667,375],[844,390],[1366,768]]){
++  for(const [width,height] of [[568,320],[667,375],[844,390],[1366,768]]){
+    const page=await browser.newPage({viewport:{width,height},hasTouch:true});
+    await page.setContent(html,{waitUntil:'load'});
+    await page.evaluate(()=>{
+     document.querySelectorAll('.screen').forEach(e=>e.classList.add('hidden'));
++    const ro=document.getElementById('rotate-overlay');if(ro)ro.style.display='none'; /* el juego es horizontal: el aviso de girar no es parte de este contrato de layout */
+     document.getElementById('prep-screen').classList.remove('hidden');
+     for(const id of ['duo-picker','lobby-arena','net-bar']){
+      const e=document.getElementById(id);e.classList.remove('hidden');
+@@ -44,6 +45,6 @@ const H=require('../lib/serve');
+    assert.equal(await page.locator('#prep-start-btn').isVisible(),false);
+    await page.close();
+   }
+-  console.log('PASS campaign action: 6 viewports, 3 tabs, solo/host/guest labels, top/bottom scroll, closed screen.');
++  console.log('PASS campaign action: 4 landscape viewports (el juego es horizontal; el vertical muestra el aviso de girar), 3 tabs, solo/host/guest labels, top/bottom scroll, closed screen.');
+  }finally{if(browser)await browser.close();await site.close();}
+ })().catch(e=>{console.error(e);process.exitCode=1;});
