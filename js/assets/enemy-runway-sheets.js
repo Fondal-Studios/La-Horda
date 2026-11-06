@@ -21,8 +21,11 @@ const ENEMY_RUNWAY_SHEETS = {
   bestia_bosque: {src:"assets/sprites/enemies/bosque/bestia_bosque/v2/atlas.png", hMul:3.0, meta:{"w":87,"h":73,"cols":8,"refH":64,"anchor":0.9315,"sets":{"walk":[0,1,2,3,4],"atk":[5,6],"hit":[6],"death":[6,7],"idle":[0,1,0,2]}}},
   ent: {src:"assets/sprites/enemies/bosque/ent/v2/atlas.png", hMul:2.6, meta:{"w":79,"h":92,"cols":8,"refH":84,"anchor":0.9457,"sets":{"walk":[0,1,2,3,4,5],"atk":[6,7,8,9,10],"hit":[10],"death":[11,12,13],"idle":[0,1,0,2]}}},
   druida_arena: {src:"assets/sprites/enemies/laberinto/druida_arena/v2/atlas.png", hMul:2.6, meta:{"w":99,"h":98,"cols":8,"refH":84,"anchor":0.949,"sets":{"walk":[0,1,2,3,4,5],"atk":[6,7,8,9,10],"hit":[10],"death":[11,12,13],"idle":[0,1,0,2]}}},
-  escorpion_gigante: {src:"assets/sprites/enemies/laberinto/escorpion_gigante/v2/atlas.png", hMul:2.2, meta:{"w":164,"h":89,"cols":8,"refH":56,"anchor":0.9438,"sets":{"walk":[0,1,2,3,4],"atk":[5,6],"hit":[6],"death":[6,7],"idle":[0,1,0,2]}}},
-  medusa: {src:"assets/sprites/enemies/laberinto/medusa/v2/atlas.png", hMul:2.6, meta:{"w":103,"h":96,"cols":8,"refH":84,"anchor":0.9479,"sets":{"walk":[0,1,2,3,4,5],"atk":[6,7,8,9,10],"hit":[10],"death":[11,12,13],"idle":[0,1,0,2]}}},
+  escorpion_gigante: {src:"assets/sprites/enemies/laberinto/escorpion_gigante/v2/atlas.png", hMul:2.2, meta:{"w":79,"h":69,"cols":8,"refH":56,"anchor":0.9275,"sets":{"walk":[0,1,2,3,4,5],"atk":[6,7,8,9,10],"hit":[10],"death":[11,12,13],"idle":[0,1,0,2]}}},
+  tiburon_blanco: {src:"assets/sprites/enemies/acuatica/tiburon_blanco/v2/atlas.png", hMul:2.4, meta:{"w":184,"h":103,"cols":8,"refH":64,"anchor":0.9515,"sets":{"walk":[0,1,2],"atk":[3,4,5],"hit":[5],"death":[6,7,8],"idle":[0,1,0,2]}}},
+  tiburon_joven: {src:"assets/sprites/enemies/acuatica/tiburon_joven/v2/atlas.png", hMul:2.4, meta:{"w":127,"h":69,"cols":8,"refH":56,"anchor":0.9275,"sets":{"walk":[0,1,2],"atk":[3,4,5],"hit":[5],"death":[6,7,8],"idle":[0,1,0,2]}}},
+  cangrejo_acorazado: {src:"assets/sprites/enemies/acuatica/cangrejo_acorazado/v2/atlas.png", hMul:2.4, meta:{"w":130,"h":78,"cols":8,"refH":64,"anchor":0.9359,"sets":{"walk":[0,1,2],"atk":[3,4,5],"hit":[5],"death":[6,7,8],"idle":[0,1,0,2]}}},
+  medusa_electrica: {src:"assets/sprites/enemies/acuatica/medusa_electrica/v2/atlas.png", hMul:2.6, meta:{"w":132,"h":93,"cols":8,"refH":84,"anchor":0.9462,"sets":{"walk":[0,1,2,3,4],"atk":[5,6],"hit":[7],"death":[7,8],"idle":[9,10,9,10]}}},
 };
 for(const k in ENEMY_RUNWAY_SHEETS){
   const A = ENEMY_RUNWAY_SHEETS[k];
