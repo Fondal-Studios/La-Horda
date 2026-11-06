@@ -2,7 +2,7 @@
 
 > `node tools/art/pixel-density.js --write`. Canon y umbrales: `docs/ART_BIBLE.md` §14. Excepciones: `docs/art-gate/pixel-density-exceptions.json`. Informativo: mide, no decide estilo; la revisión de arte sigue siendo humana.
 
-Entidades: 199 · con desvíos: 13 · sin excepción documentada: 0
+Entidades: 196 · con desvíos: 13 · sin excepción documentada: 0
 
 | Grupo | Entidad | bloque | u/px efectivo | tonos | suave | ruido | Hallazgos | Excepción |
 |---|---|---|---|---|---|---|---|---|
@@ -15,7 +15,7 @@ Entidades: 199 · con desvíos: 13 · sin excepción documentada: 0
 | enemigos | `assets/sprites/enemies/infernal/demonio_mago` | 1 | 0.86 | 291 | 0.214 | 35.5 | ILUSTRACION | Degradé suave con pocos píxeles nítidos (ilustración reducida). Plan: rehacer o repintar a píxel nativo con revisión humana de arte. |
 | enemigos | `assets/sprites/enemies/infernal/demonio_menor` | 1 | 0.79 | 145 | 0.198 | 25.1 | ILUSTRACION | Degradé suave con pocos píxeles nítidos (ilustración reducida). Plan: rehacer o repintar a píxel nativo con revisión humana de arte. |
 | enemigos | `assets/sprites/enemies/infernal/golem` | 1 | - | 53 | 0.357 | 8.3 | ILUSTRACION | Degradé suave con pocos píxeles nítidos (ilustración reducida). Plan: rehacer o repintar a píxel nativo con revisión humana de arte. |
-| jefes | `assets/sprites/bosses/acuatica/leviatan` | 1 | 3.54 | 1197 | 0.071 | 190.1 | PIXEL_GRUESO | Arte chico ampliado (> 2,4 u/px). Plan: rehacer a resolución nativa con tools/art/pixrig (como el Verdugo); ver docs/ART_REPLACEMENT_QUEUE.md y docs/bible/generated/ENEMY_ART_AUDIT.md. |
+| jefes | `assets/sprites/bosses/acuatica/leviatan` | 1 | 3.54 | 46 | 0 | 35.3 | PIXEL_GRUESO | Arte chico ampliado (> 2,4 u/px). Plan: rehacer a resolución nativa con tools/art/pixrig (como el Verdugo); ver docs/ART_REPLACEMENT_QUEUE.md y docs/bible/generated/ENEMY_ART_AUDIT.md. |
 | jefes | `assets/sprites/bosses/bosque/jinete_sin_cabeza/v2` | 1 | - | 217 | 0.231 | 37.6 | ILUSTRACION | Degradé suave con pocos píxeles nítidos (ilustración reducida). Plan: rehacer o repintar a píxel nativo con revisión humana de arte. |
 | jefes | `assets/sprites/bosses/infernal/demonio_mayor` | 1 | 2.14 | 141 | 0.184 | 51.6 | ILUSTRACION | Degradé suave con pocos píxeles nítidos (ilustración reducida). Plan: rehacer o repintar a píxel nativo con revisión humana de arte. |
 | jefes | `assets/sprites/bosses/laberinto/minotauro/v3` | 1 | 2.7 | 693 | 0.178 | 183 | PIXEL_GRUESO | Arte chico ampliado (> 2,4 u/px). Plan: rehacer a resolución nativa con tools/art/pixrig (como el Verdugo); ver docs/ART_REPLACEMENT_QUEUE.md y docs/bible/generated/ENEMY_ART_AUDIT.md. |
