@@ -43,11 +43,14 @@
 | Bront, la Fortaleza Viviente (`bront`) | tanque | **PASS*** | 0 | 1 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
 | Oriel, la Portera de las Cicatrices (`oriel`) | soporte | **PASS*** | 0 | 1 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
 | Saelis, la Heraldo del Plumaje (`saelis`) | soporte | **PASS*** | 0 | 1 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
-| Solciju, la Enóloga (`solciju`) | mago | **PASS*** | 0 | 1 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
-| Veyra, la Última Herida (`veyra`) | asesino | **PASS*** | 0 | 1 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
-| Brakk, el Arquitecto del Fin (`brakk`) | tanque | **PASS*** | 0 | 1 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
-| Morveth, el Jardinero de la Peste (`morveth`) | mago | **PASS*** | 0 | 1 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
-| Aelith, la Ladrona de Segundos (`aelith`) | mago | **PASS*** | 0 | 1 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
+| Ilsa, la Esgrimista de Réplica (`ilsa`) | asesino | **PASS*** | 0 | 2 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
+| Vorn, el Cambiapiel (`vorn`) | tanque | **PASS*** | 0 | 2 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
+| Kora, la Ariete (`kora`) | tanque | **PASS*** | 0 | 2 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
+| Solciju, la Enóloga (`solciju`) | mago | **PASS** | 0 | 0 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
+| Veyra, la Última Herida (`veyra`) | asesino | **PASS** | 0 | 0 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
+| Brakk, el Arquitecto del Fin (`brakk`) | tanque | **PASS** | 0 | 0 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
+| Morveth, el Jardinero de la Peste (`morveth`) | mago | **PASS** | 0 | 0 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
+| Aelith, la Ladrona de Segundos (`aelith`) | mago | **PASS** | 0 | 0 | ✔ | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red | ✔efecto ✔VFX ✔SFX ✔red |
 
 ## Detalle de FAIL / WARNING
 
@@ -83,18 +86,15 @@
 ### Saelis, la Heraldo del Plumaje — PASS*
 - **WARNING** [art] skins — 0 skins, 0 cromas
 
-### Solciju, la Enóloga — PASS*
+### Ilsa, la Esgrimista de Réplica — PASS*
 - **WARNING** [loot] set propio
+- **WARNING** [art] skins — 0 skins, 0 cromas
 
-### Veyra, la Última Herida — PASS*
+### Vorn, el Cambiapiel — PASS*
 - **WARNING** [loot] set propio
+- **WARNING** [art] skins — 0 skins, 0 cromas
 
-### Brakk, el Arquitecto del Fin — PASS*
+### Kora, la Ariete — PASS*
 - **WARNING** [loot] set propio
-
-### Morveth, el Jardinero de la Peste — PASS*
-- **WARNING** [loot] set propio
-
-### Aelith, la Ladrona de Segundos — PASS*
-- **WARNING** [loot] set propio
+- **WARNING** [art] skins — 0 skins, 0 cromas
 

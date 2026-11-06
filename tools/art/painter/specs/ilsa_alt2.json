@@ -1,0 +1,70 @@
+{
+ "id": "ilsa_alt2",
+ "name": "Ilsa, Esgrimista de Carnaval",
+ "prompt": "Casaca negra y oro con capa de seda y corona de mascara.",
+ "body": "vesper",
+ "head": "maura",
+ "paint": [
+  {
+   "part": "body",
+   "hue": [
+    0,
+    60
+   ],
+   "minChroma": 25,
+   "noSkin": true,
+   "to": "#c8a038",
+   "keepLight": 0.75,
+   "chroma": 1.0
+  }
+ ],
+ "accessories": [
+  {
+   "element": "capa_larga",
+   "scale": 0.8,
+   "materials": {
+    "cloth": {
+     "ramp": [
+      "#0a0810",
+      "#1c1830",
+      "#3a2a58",
+      "#6a4a98"
+     ]
+    }
+   }
+  },
+  {
+   "element": "corona_de_picos",
+   "scale": 0.7,
+   "materials": {
+    "metal": {
+     "ramp": [
+      "#5a3a0c",
+      "#a87820",
+      "#e0b848",
+      "#fff0b0"
+     ]
+    }
+   }
+  },
+  {
+   "element": "hombreras_redondas",
+   "scale": 0.6,
+   "materials": {
+    "shell": {
+     "ramp": [
+      "#5a3a0c",
+      "#a87820",
+      "#e0b848",
+      "#fff0b0"
+     ]
+    }
+   }
+  }
+ ],
+ "install": {
+  "champion": "ilsa",
+  "pack": "ilsa_alt2"
+ },
+ "headLongHair": true
+}

@@ -365,6 +365,39 @@
       "needsGameplaySimulation": true
     },
     {
+      "key": "ilsa",
+      "role": "asesino",
+      "referenceVersion": 3,
+      "profile": null,
+      "ceiling": 1.15,
+      "changes": {},
+      "budgetBefore": 1.0008619779293102,
+      "budgetAfter": 1.0008619779293102,
+      "needsGameplaySimulation": true
+    },
+    {
+      "key": "vorn",
+      "role": "tanque",
+      "referenceVersion": 3,
+      "profile": null,
+      "ceiling": 1.15,
+      "changes": {},
+      "budgetBefore": 0.9479610362575035,
+      "budgetAfter": 0.9479610362575035,
+      "needsGameplaySimulation": true
+    },
+    {
+      "key": "kora",
+      "role": "tanque",
+      "referenceVersion": 3,
+      "profile": null,
+      "ceiling": 1.15,
+      "changes": {},
+      "budgetBefore": 0.9475321685567031,
+      "budgetAfter": 0.9475321685567031,
+      "needsGameplaySimulation": true
+    },
+    {
       "key": "solciju",
       "role": "mago",
       "referenceVersion": 3,
@@ -959,6 +992,87 @@
       "alive": true,
       "hp": 268,
       "casts": 84,
+      "error": null
+    },
+    {
+      "key": "ilsa",
+      "seed": 117,
+      "damage": 5452.084720140767,
+      "alive": true,
+      "hp": 183.75785,
+      "casts": 68,
+      "error": null
+    },
+    {
+      "key": "ilsa",
+      "seed": 431,
+      "damage": 4455.7368695065115,
+      "alive": true,
+      "hp": 223.50013696,
+      "casts": 73,
+      "error": null
+    },
+    {
+      "key": "ilsa",
+      "seed": 991,
+      "damage": 4468.752681353986,
+      "alive": true,
+      "hp": 229,
+      "casts": 70,
+      "error": null
+    },
+    {
+      "key": "vorn",
+      "seed": 117,
+      "damage": 4400.325274652919,
+      "alive": true,
+      "hp": 368,
+      "casts": 77,
+      "error": null
+    },
+    {
+      "key": "vorn",
+      "seed": 431,
+      "damage": 5204.521755418339,
+      "alive": true,
+      "hp": 434,
+      "casts": 75,
+      "error": null
+    },
+    {
+      "key": "vorn",
+      "seed": 991,
+      "damage": 4976.616707414767,
+      "alive": true,
+      "hp": 339.21552639999993,
+      "casts": 72,
+      "error": null
+    },
+    {
+      "key": "kora",
+      "seed": 117,
+      "damage": 5543.228071899503,
+      "alive": true,
+      "hp": 326,
+      "casts": 58,
+      "error": null
+    },
+    {
+      "key": "kora",
+      "seed": 431,
+      "damage": 4646.702351219187,
+      "alive": true,
+      "hp": 370,
+      "casts": 58,
+      "error": null
+    },
+    {
+      "key": "kora",
+      "seed": 991,
+      "damage": 6994.932057298399,
+      "alive": true,
+      "hp": 370,
+      "casts": 58,
       "error": null
     },
     {

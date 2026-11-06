@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "id": "ilsa",
+  "name": "Ilsa",
+  "title": "La Esgrimista de Réplica",
+  "role": "asesino",
+  "fantasy": "Duelista de contraataque: desvía los golpes enemigos, responde a cada atacante y gasta Réplicas en estocadas.",
+  "lore": "Ilsa Corvo enseñaba esgrima en los salones de la Ciudad con una sola regla: jamás atacar primero. Perdió a su mejor alumno por un golpe que nadie desvió y decidió que a nadie más le tocaría pagar por no responder. Ahora espera el golpe con el florete bajo y la cinta carmesí en la muñeca, y devuelve cada uno con intereses. No se jacta: cuenta las respuestas, porque la tercera siempre es la que cierra el duelo.",
+  "personality": "Golpeá. Es lo único que te voy a pedir. / Respondí a todos. Ninguno quedó sin respuesta. / Mi guardia… bajó…",
+  "silhouette": "Esgrimista de casaca corta con vuelo, guante de duelo largo y un florete de hoja fina; una cinta carmesí en la muñeca.",
+  "stats": {
+    "hp": 108,
+    "damage": 12,
+    "speed": 178
+  },
+  "kit": {
+    "basic": {
+      "id": "basic",
+      "description": "Básico cuerpo a cuerpo",
+      "cooldownMs": 420,
+      "maxTargets": 1,
+      "hordeMechanism": "",
+      "anticipation": "Pose de ataque",
+      "execution": "Golpe básico",
+      "impact": "Daño único",
+      "feedback": "Número de daño",
+      "vfx": "existing basic VFX",
+      "sfx": "hit"
+    },
+    "skills": [
+      {
+        "id": "ils_parry",
+        "description": "Durante 0,9 s desvía todos los golpes que recibas y contraataca a cada atacante. Cada golpe desviado suma una Réplica (máx. 3) y acorta 2 s esta recarga.",
+        "cooldownMs": 6500,
+        "maxTargets": 24,
+        "hordeMechanism": "Área/línea con límite de objetivos (24) y techo por lanzamiento contra jefes",
+        "anticipation": "Florete bajo y anillo de guardia",
+        "execution": "Ventana de 0,9 s que desvía golpes",
+        "impact": "Daño recibido 0 y respuesta al atacante",
+        "feedback": "¡RÉPLICA! y chispa de acero",
+        "vfx": "js/champions/siete/render.js",
+        "sfx": "si_ilsa_cast"
+      },
+      {
+        "id": "ils_lunge",
+        "description": "Se lanza en línea y atraviesa a cuantos haya en el camino; cada Réplica gastada suma +35% de daño.",
+        "cooldownMs": 7200,
+        "maxTargets": 24,
+        "hordeMechanism": "Área/línea con límite de objetivos (24) y techo por lanzamiento contra jefes",
+        "anticipation": "Pose de cast y telegraph",
+        "execution": "Ejecución de Estocada de Réplica",
+        "impact": "Se lanza en línea y atraviesa a cuantos haya en el camino; cada Réplica gastada suma +35% de daño.",
+        "feedback": "Impacto propio y número de daño",
+        "vfx": "js/champions/siete/render.js",
+        "sfx": "si_ilsa_cast"
+      },
+      {
+        "id": "ils_whirl",
+        "description": "Gira con el acero: daña, frena y aparta a los comunes que la rodean. Cada Réplica gastada suma +25% de daño y empuja más lejos.",
+        "cooldownMs": 8800,
+        "maxTargets": 24,
+        "hordeMechanism": "Área/línea con límite de objetivos (24) y techo por lanzamiento contra jefes",
+        "anticipation": "Pose de cast y telegraph",
+        "execution": "Ejecución de Giro de Acero",
+        "impact": "Gira con el acero: daña, frena y aparta a los comunes que la rodean. Cada Réplica gastada suma +25% de daño y empuja más lejos.",
+        "feedback": "Impacto propio y número de daño",
+        "vfx": "js/champions/siete/render.js",
+        "sfx": "si_ilsa_cast"
+      }
+    ],
+    "ultimate": {
+      "id": "ils_duel",
+      "description": "Estallido que frena alrededor y, durante 4 s, desvía hasta seis golpes con una onda de respuesta. Recibe 40% menos de daño mientras dura.",
+      "cooldownMs": 40000,
+      "maxTargets": 60,
+      "hordeMechanism": "Área/línea con límite de objetivos (24) y techo por lanzamiento contra jefes",
+      "anticipation": "Pose de cast y telegraph",
+      "execution": "Ejecución de Duelo de Mil Réplicas",
+      "impact": "Estallido que frena alrededor y, durante 4 s, desvía hasta seis golpes con una onda de respuesta. Recibe 40% menos de daño mientras dura.",
+      "feedback": "Impacto propio y número de daño",
+      "vfx": "js/champions/siete/render.js",
+      "sfx": "si_ilsa_ult"
+    }
+  },
+  "art": {
+    "atlas": "assets/sprites/champions/ilsa/atlas.png",
+    "preview": "assets/sprites/champions/ilsa/preview.png",
+    "directions": 4,
+    "frameWidth": 112,
+    "frameHeight": 112,
+    "sha256": "d1bf5956d9161817cbd8977ca38ed18b7a92273d7fb2f6840015f8c7ac161f34",
+    "animations": {
+      "idle": 1,
+      "walk": 4,
+      "attack": 4,
+      "cast": 4,
+      "hit": 1,
+      "death": 4,
+      "ultimate": 4
+    },
+    "review": {
+      "status": "PENDING",
+      "reviewer": "",
+      "evidence": "",
+      "note": "Hoja del Pintor (donantes + forja) con gate de estilo y Roster Art Gate en PASS; requiere revisión humana del Visual Gate (docs/ART_BIBLE.md §8). Filas de muerte con rasgos del donante."
+    }
+  },
+  "integration": {
+    "runtime": "js/champions/siete/ilsa.js",
+    "codex": "js/champions/siete/catalog.js",
+    "talents": "js/champions/siete/register.js",
+    "mastery": "js/champions/ascension/register.js",
+    "set": "js/champions/ascension/register.js",
+    "kitTest": "tools/siete/functional.js"
+  },
+  "cosmetics": [
+    {
+      "id": "ilsa_alt1",
+      "type": "skin",
+      "champion": "ilsa",
+      "name": "Esgrimista de Gala",
+      "rarity": "Épica",
+      "tagline": "Casaca de gala blanca con encaje en el puño, guante alto y florete de empuñadura de plata.",
+      "lore": "El día de la última función de los salones, Ilsa se vistió de gala para despedir a los que aún bailaban. Nadie la vio bajar la guardia.",
+      "visualTheme": "Casaca de gala blanca con encaje en el puño, guante alto y florete de empuñadura de plata.",
+      "unlockSource": "alpha-test",
+      "collection": "Siete (TESTING)",
+      "vfxProfile": "js/champions/siete/render.js",
+      "visualChanges": [
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/ilsa/skins/ilsa_alt1/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    },
+    {
+      "id": "ilsa_alt2",
+      "type": "skin",
+      "champion": "ilsa",
+      "name": "Esgrimista de Carnaval",
+      "rarity": "Épica",
+      "tagline": "Casaca negra y oro con capa de seda, corona de máscara y hombreras de latón.",
+      "lore": "La noche del carnaval nadie desvió una sola estocada. Ilsa bailó con todas y no recibió ninguna.",
+      "visualTheme": "Casaca negra y oro con capa de seda, corona de máscara y hombreras de latón.",
+      "unlockSource": "alpha-test",
+      "collection": "Siete (TESTING)",
+      "vfxProfile": "js/champions/siete/render.js",
+      "visualChanges": [
+        "accessory",
+        "secondarySilhouette"
+      ],
+      "preview": "assets/sprites/champions/ilsa/skins/ilsa_alt2/preview.png",
+      "availability": "alpha-test",
+      "premiumPrice": null
+    }
+  ],
+  "set": {
+    "sourceArena": "ciudad",
+    "pieces": [
+      "arma",
+      "casco",
+      "pechera",
+      "botas"
+    ],
+    "rewardCosmetic": "",
+    "rewardGrantsPower": false
+  },
+  "budgets": {
+    "particles": 64,
+    "summons": 0,
+    "audioVoices": 3
+  },
+  "evidence": {
+    "reference": "docs/balance/champion-entry-reference.json",
+    "balance": "docs/balance/entry-gate-results.json",
+    "visuals": "docs/art-gate/roster-gate.json",
+    "audio": "",
+    "multiplayer": "docs/production/siete/functional-results.json",
+    "performance": "",
+    "style": "docs/art-gate/style-gate.json"
+  },
+  "category": "STANDARD"
+}
