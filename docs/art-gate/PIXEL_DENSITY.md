@@ -2,7 +2,7 @@
 
 > `node tools/art/pixel-density.js --write`. Canon y umbrales: `docs/ART_BIBLE.md` §14. Excepciones: `docs/art-gate/pixel-density-exceptions.json`. Informativo: mide, no decide estilo; la revisión de arte sigue siendo humana.
 
-Entidades: 197 · con desvíos: 13 · sin excepción documentada: 0
+Entidades: 199 · con desvíos: 13 · sin excepción documentada: 0
 
 | Grupo | Entidad | bloque | u/px efectivo | tonos | suave | ruido | Hallazgos | Excepción |
 |---|---|---|---|---|---|---|---|---|

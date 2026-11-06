@@ -17,4 +17,8 @@ de hielo, Cù-Sìth, Dama del Bosque, enjambre de hadas, gólem infernal, gólem
 - Portadas de arena del Códice (11) y texturas del Abismo (2): `tools/art/native_pixelize.py` a PNG de paleta corta; originales en `art-source/codex-covers/` y `art-source/abismo/`.
   Referencias JPG→PNG actualizadas en `js/`. Props `world-v1` (bosque/hielo) también por `native_pixelize.py`.
 - Enemigos de Ciudad (acechante, perro, campanero) y Minas (devoraluz) con hoja Runway; los sets extra de la IA (`leap`, `bell`, `drain`…) se mapean a cuadros de ataque/caminata con `install.py --alias`.
-- Pendiente de arte humano: las 11 tarjetas del Códice de Minas (llevan el título dibujado dentro de la imagen; un filtro lo deforma), Leviatán (3,5 u/px), Minotauro v3 (2,7), Dragón de la Forja.
+- Jefes de píxel grueso: **Minotauro** (hoja nueva a 100 px de alto, sets `run/charge/heavy/seismic` mapeados a caminata/ataque) y **Dragón de la Forja**
+  (`breath/bomb/fly` mapeados; las hojas con texto se recortan con `bandsY`). El **Leviatán** se probó y se rechazó: la hoja salió plana y casi sin variación,
+  peor que el arte actual (cabeza + anillos + fases p2/p3 por separado); queda como `rejected_v1.png` y se conserva el arte vigente.
+- Tarjetas del Códice de Minas (11): `tools/art/codex_card_clean.py` borra el título por inpainting (OpenCV) y pasa por `native_pixelize.py`; PNG sin texto, nombre y rol los pone la interfaz.
+- Pendiente de arte humano: Leviatán a píxel nativo (hay que rehacer cabeza, anillos y fases por separado), restos de títulos en alguna tarjeta (`devoraluz_full`), revisión visual de todo el lote.
