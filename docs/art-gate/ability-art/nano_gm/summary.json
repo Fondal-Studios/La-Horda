@@ -82,7 +82,11 @@
   "ronda 1: verdict PASS 94.3 (arte actual 69.4, +24.9)",
   "ronda 1: burst_d PASS 93.1 (arte actual 82.0, +11.1)",
   "ronda 1: decree PASS 100.0 (arte actual 75.1, +24.9)",
-  "ronda 2: law PASS 95.0 (arte actual 74.1, +20.9)"
+  "ronda 2: law PASS 95.0 (arte actual 74.1, +20.9)",
+  "arquitecto: integradas ['law', 'verdict', 'burst_d', 'decree']; humo OK: SMOKE OK nano_gm: law,verdict,burst_d,decree"
  ],
- "integration": null
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['law', 'verdict', 'burst_d', 'decree']; humo OK: SMOKE OK nano_gm: law,verdict,burst_d,decree"
+ }
 }

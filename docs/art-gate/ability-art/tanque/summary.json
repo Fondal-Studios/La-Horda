@@ -247,7 +247,11 @@
   "ronda 3: spin_idle FAIL 82.3 — el interior tapa al enemigo (60% de píxeles opacos en la zona central; techo 60 %); criterio bajo: suelo despejado 0.57/5",
   "ronda 4: spin_idle FAIL 88.0 — mejora +2.7 < +6.0 sobre el arte actual (85.3); regresión de riqueza visual frente al arte actual (0.77 < 1.00)",
   "ronda 5: spin_idle FAIL 88.0 — mejora +2.7 < +6.0 sobre el arte actual (85.3); regresión de riqueza visual frente al arte actual (0.77 < 1.00)",
-  "ronda 6: spin_idle FAIL 87.9 — mejora +2.6 < +6.0 sobre el arte actual (85.3); regresión de riqueza visual frente al arte actual (0.82 < 1.00)"
+  "ronda 6: spin_idle FAIL 87.9 — mejora +2.6 < +6.0 sobre el arte actual (85.3); regresión de riqueza visual frente al arte actual (0.82 < 1.00)",
+  "arquitecto: integradas ['spin', 'shout', 'banner_idle', 'taunt', 'taunt_idle', 'charge']; humo OK: SMOKE OK tanque: spin,shout,banner_idle,taunt,taunt_idle,charge"
  ],
- "integration": null
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['spin', 'shout', 'banner_idle', 'taunt', 'taunt_idle', 'charge']; humo OK: SMOKE OK tanque: spin,shout,banner_idle,taunt,taunt_idle,charge"
+ }
 }

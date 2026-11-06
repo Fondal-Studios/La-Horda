@@ -124,7 +124,11 @@
   "ronda 1: armor_idle PASS 94.1 (arte actual 78.0, +16.1)",
   "ronda 1: berserk_idle FAIL 94.1 — regresión de riqueza visual frente al arte actual (0.94 < 1.00)",
   "ronda 2: berserk_idle FAIL 93.1 — regresión de cobertura legible frente al arte actual (0.72 < 1.00)",
-  "ronda 3: berserk_idle PASS 95.9 (arte actual 84.8, +11.1)"
+  "ronda 3: berserk_idle PASS 95.9 (arte actual 84.8, +11.1)",
+  "arquitecto: integradas ['slash', 'roar', 'flare', 'berserk', 'armor_idle', 'berserk_idle']; humo OK: SMOKE OK segador: slash,roar,flare,berserk,armor_idle,berserk_idle"
  ],
- "integration": null
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['slash', 'roar', 'flare', 'berserk', 'armor_idle', 'berserk_idle']; humo OK: SMOKE OK segador: slash,roar,flare,berserk,armor_idle,berserk_idle"
+ }
 }

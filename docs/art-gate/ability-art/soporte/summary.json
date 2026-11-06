@@ -164,7 +164,11 @@
   "ronda 1: aegis_ring FAIL 76.0 — el interior tapa al enemigo (71% de píxeles opacos en la zona central; techo 60 %); cobertura excesiva (82%): oculta el suelo",
   "ronda 2: sun PASS 92.3 (arte actual 53.7, +38.6)",
   "ronda 2: war_ring PASS 90.3 (arte actual 55.1, +35.2)",
-  "ronda 2: aegis_ring PASS 90.3 (arte actual 57.9, +32.4)"
+  "ronda 2: aegis_ring PASS 90.3 (arte actual 57.9, +32.4)",
+  "arquitecto: integradas ['dawn', 'sun', 'war', 'aegis', 'grand', 'war_ring', 'aegis_ring']; humo OK: SMOKE OK soporte: dawn,sun,war,aegis,grand,war_ring,aegis_ring"
  ],
- "integration": null
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['dawn', 'sun', 'war', 'aegis', 'grand', 'war_ring', 'aegis_ring']; humo OK: SMOKE OK soporte: dawn,sun,war,aegis,grand,war_ring,aegis_ring"
+ }
 }

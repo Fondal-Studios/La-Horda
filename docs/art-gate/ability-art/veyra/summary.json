@@ -2,15 +2,16 @@
  "guardian": "veyra",
  "passed": [
   "slash",
-  "wound",
-  "pact",
-  "pact_idle",
-  "dash_end",
   "dash",
   "lance"
  ],
  "escalated": [],
- "keep_current": [],
+ "keep_current": [
+  "wound",
+  "pact",
+  "pact_idle",
+  "dash_end"
+ ],
  "state": {
   "slash": {
    "status": "PASS",
@@ -35,77 +36,62 @@
    ]
   },
   "wound": {
-   "status": "PASS",
-   "rounds": 1,
+   "status": "KEEP_CURRENT",
+   "rounds": 0,
    "history": [
     {
-     "round": 1,
-     "score": 95.3,
-     "status": "PASS",
-     "improvement": 20.6,
-     "reasons": []
+     "round": 0,
+     "score": null,
+     "status": "KEEP_CURRENT",
+     "improvement": null,
+     "reasons": [
+      "ficha: keep"
+     ]
     }
    ]
   },
   "pact": {
-   "status": "PASS",
-   "rounds": 2,
+   "status": "KEEP_CURRENT",
+   "rounds": 0,
    "history": [
     {
-     "round": 1,
-     "score": 80.0,
-     "status": "FAIL",
-     "improvement": -1.8,
+     "round": 0,
+     "score": null,
+     "status": "KEEP_CURRENT",
+     "improvement": null,
      "reasons": [
-      "cobertura excesiva (82%): oculta el suelo",
-      "criterio bajo: cobertura legible 0.0/12",
-      "puntaje 80.0 < 85",
-      "mejora -1.8 < +6.0 sobre el arte actual (81.8)",
-      "regresión de riqueza visual frente al arte actual (0.85 < 1.00)",
-      "regresión de cobertura legible frente al arte actual (0.00 < 1.00)"
+      "el arte actual no llega al radio (0.65): es un ícono/sello con forma propia, no un decal de área"
      ]
-    },
-    {
-     "round": 2,
-     "score": 94.5,
-     "status": "PASS",
-     "improvement": 12.7,
-     "reasons": []
     }
    ]
   },
   "pact_idle": {
-   "status": "PASS",
-   "rounds": 2,
+   "status": "KEEP_CURRENT",
+   "rounds": 0,
    "history": [
     {
-     "round": 1,
-     "score": 99.1,
-     "status": "FAIL",
-     "improvement": 18.5,
+     "round": 0,
+     "score": null,
+     "status": "KEEP_CURRENT",
+     "improvement": null,
      "reasons": [
-      "regresión de riqueza visual frente al arte actual (0.94 < 1.00)"
+      "el arte actual no llega al radio (0.57): es un ícono/sello con forma propia, no un decal de área"
      ]
-    },
-    {
-     "round": 2,
-     "score": 100.0,
-     "status": "PASS",
-     "improvement": 19.4,
-     "reasons": []
     }
    ]
   },
   "dash_end": {
-   "status": "PASS",
-   "rounds": 1,
+   "status": "KEEP_CURRENT",
+   "rounds": 0,
    "history": [
     {
-     "round": 1,
-     "score": 94.2,
-     "status": "PASS",
-     "improvement": 30.8,
-     "reasons": []
+     "round": 0,
+     "score": null,
+     "status": "KEEP_CURRENT",
+     "improvement": null,
+     "reasons": [
+      "el arte actual no llega al radio (0.24): es un ícono/sello con forma propia, no un decal de área"
+     ]
     }
    ]
   },
@@ -157,16 +143,14 @@
  },
  "log": [
   "ronda 1: slash FAIL 94.7 — regresión de cobertura legible frente al arte actual (0.59 < 1.00)",
-  "ronda 1: wound PASS 95.3 (arte actual 74.7, +20.6)",
-  "ronda 1: pact FAIL 80.0 — cobertura excesiva (82%): oculta el suelo; criterio bajo: cobertura legible 0.0/12",
-  "ronda 1: pact_idle FAIL 99.1 — regresión de riqueza visual frente al arte actual (0.94 < 1.00)",
-  "ronda 1: dash_end PASS 94.2 (arte actual 63.4, +30.8)",
   "ronda 1: dash FAIL 95.0 — mejora +0.9 < +3.0 sobre el arte actual (94.1); silueta más plana que el arte actual: irregularidad 0.00 < 70 % de 0.06",
   "ronda 1: lance PASS 95.0 (arte actual 83.6, +11.4)",
   "ronda 2: slash PASS 99.7 (arte actual 79.7, +20.0)",
-  "ronda 2: pact PASS 94.5 (arte actual 81.8, +12.7)",
-  "ronda 2: pact_idle PASS 100.0 (arte actual 80.6, +19.4)",
-  "ronda 2: dash PASS 98.0 (arte actual 94.1, +3.9)"
+  "ronda 2: dash PASS 98.0 (arte actual 94.1, +3.9)",
+  "arquitecto: integradas ['slash', 'dash', 'lance']; humo OK: SMOKE OK veyra: slash,dash,lance"
  ],
- "integration": null
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['slash', 'dash', 'lance']; humo OK: SMOKE OK veyra: slash,dash,lance"
+ }
 }

@@ -136,7 +136,11 @@
   "ronda 1: beam0 PASS 93.3 (arte actual 81.9, +11.4)",
   "ronda 1: beam1 PASS 93.3 (arte actual 83.8, +9.5)",
   "ronda 1: beam2 PASS 93.3 (arte actual 83.8, +9.5)",
-  "ronda 1: beam3 PASS 93.3 (arte actual 83.8, +9.5)"
+  "ronda 1: beam3 PASS 93.3 (arte actual 83.8, +9.5)",
+  "arquitecto: integradas ['ring0', 'ring1', 'ring2', 'ring3', 'beam0', 'beam1', 'beam2', 'beam3']; humo OK: SMOKE OK velmira: ring0,ring1,ring2,ring3,beam0,beam1,beam2,beam3"
  ],
- "integration": null
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['ring0', 'ring1', 'ring2', 'ring3', 'beam0', 'beam1', 'beam2', 'beam3']; humo OK: SMOKE OK velmira: ring0,ring1,ring2,ring3,beam0,beam1,beam2,beam3"
+ }
 }
