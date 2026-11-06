@@ -281,7 +281,7 @@ const CHRONICLE_PAGES = [
 ];
 
 /* ---------------- EPÍLOGO (al completar la Arena Infernal por primera vez; se repite desde el Códice) ----------------
-   Pantallas de texto sobre el arte de las arenas (assets/ui/codex/arenas/*.jpg). art:"crystals" = los
+   Pantallas de texto sobre el arte de las arenas (assets/ui/codex/arenas/*.png). art:"crystals" = los
    cuatro cristales dibujados en vivo (crystalDrawGem). who = una línea dicha por alguien. */
 const STORY_EPILOGUE = [
   {art:"infernal", kicker:"EPÍLOGO",

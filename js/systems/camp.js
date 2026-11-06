@@ -201,7 +201,7 @@ function campImg(src){
   return im.complete && im.naturalWidth ? im : null;
 }
 function campLoadArt(arena){
-  campImg("assets/ui/codex/arenas/" + arena + ".jpg"); campImg(CAMP_ART.fire); campImg(CAMP_ART.hech);
+  campImg("assets/ui/codex/arenas/" + arena + ".png"); campImg(CAMP_ART.fire); campImg(CAMP_ART.hech);
   campImg(CAMP_ART.smith.src); campImg(CAMP_ART.seer.src);
 }
 // Recolorea los cuadros de un personaje una sola vez (canvas propio por cuadro).
@@ -295,7 +295,7 @@ function campDraw(cv){
   const flick = 0.82 + 0.1*Math.sin(t*7.3) + 0.06*Math.sin(t*13.1 + 1.3);
   // fondo: el arte de la arena recién ganada, lejos y a oscuras
   c.fillStyle = "#070403"; c.fillRect(0, 0, W, H);
-  const bg = campImg("assets/ui/codex/arenas/" + C.arena + ".jpg");
+  const bg = campImg("assets/ui/codex/arenas/" + C.arena + ".png");
   if(bg){
     const k = Math.max(W/bg.naturalWidth, H/bg.naturalHeight)*1.3, bw = bg.naturalWidth*k, bh = bg.naturalHeight*k;
     c.globalAlpha = 0.36; c.imageSmoothingEnabled = true;

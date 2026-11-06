@@ -237,7 +237,8 @@ function packDeriveDirSets(P){
 }
 // Atlas del redraw (Dama del Bosque / Doppelgängers): mismas reglas de estado que el pack de abajo.
 function drawEnemyAtlasPack(e){
-  const bsk = typeof bodySwapKey==="function" ? (bodySwapKey(e.atlasKey) || bodySwapKey(e.type)) : null; // cuerpo prestado (js/data/body-swaps.js)
+  const ownSheet = typeof ENEMY_RUNWAY_SHEETS!=="undefined" && ENEMY_RUNWAY_SHEETS[e.type] && ENEMY_ATLAS_PACK[e.type] && ENEMY_ATLAS_PACK[e.type].ready; // hoja propia de Runway: no se presta el cuerpo de otro
+  const bsk = (!ownSheet && typeof bodySwapKey==="function") ? (bodySwapKey(e.atlasKey) || bodySwapKey(e.type)) : null; // cuerpo prestado (js/data/body-swaps.js)
   const P = bsk ? ENEMY_ATLAS_PACK[bsk] : ((e.atlasKey && ENEMY_ATLAS_PACK[e.atlasKey] && ENEMY_ATLAS_PACK[e.atlasKey].ready) ? ENEMY_ATLAS_PACK[e.atlasKey] : ENEMY_ATLAS_PACK[e.type]); // atlasKey: otra paleta del mismo cuerpo (Guardián en furia)
   if(!P || !P.ready) return false;
   if(!_PACK_DIR_DONE.has(P.sets)) packDeriveDirSets(P); // por si el atlas cargó antes que este script
@@ -422,7 +423,7 @@ const ACUA_IDLE2 = { tiburon_joven:"tiburonJovenIdle2", cangrejo_acorazado:"cang
 function drawAcuaticaReal(e){
   // Tiburones: arte propio por atlas (tools/art/pixrig/tiburones.py; se registra en js/arenas/acuatica.js). Los PNG sueltos de abajo
   // quedan solo de respaldo si el atlas no cargó.
-  if((e.type==="tiburon_joven" || e.type==="tiburon_blanco") && ENEMY_ATLAS_PACK[e.type] && ENEMY_ATLAS_PACK[e.type].ready && drawEnemyAtlasPack(e)) return true;
+  if((e.type==="tiburon_joven" || e.type==="tiburon_blanco" || (typeof ENEMY_RUNWAY_SHEETS!=="undefined" && ENEMY_RUNWAY_SHEETS[e.type])) && ENEMY_ATLAS_PACK[e.type] && ENEMY_ATLAS_PACK[e.type].ready && drawEnemyAtlasPack(e)) return true; // hojas completas de Runway (js/assets/enemy-runway-sheets.js)
   let idleKey, atkKey;
   if(e.type==="tiburon_joven"){ idleKey="tiburonJovenIdle"; atkKey="tiburonJovenAtk"; }
   else if(e.type==="tiburon_blanco"){ idleKey="tiburonBlancoIdle"; atkKey="tiburonBlancoAtk"; }
@@ -459,6 +460,7 @@ function drawEnemyAtlas(e){
 function acua2Ready(k){ const a = ACUA2_IMG[k]; return !!a && ACUA2_READY[k] >= a.length; }
 function acua2Pick(k, i){ const a = ACUA2_IMG[k]; const n = a.length; return a[((i%n)+n)%n]; }
 function drawAcua2(e){
+  if(typeof ENEMY_RUNWAY_SHEETS!=="undefined" && ENEMY_RUNWAY_SHEETS[e.type] && ENEMY_ATLAS_PACK[e.type] && ENEMY_ATLAS_PACK[e.type].ready && drawEnemyAtlasPack(e)) return true;
   const t = e.animT||0;
   const dyingP = e._dyingP;
   const dying = e.alive===false && dyingP!==undefined;
