@@ -71,3 +71,4 @@ Si lo que viste «pésimamente producido» de Ilkan fue **el Coloso**, una **ski
 
 ## Bloques aceptados
 1. **Guerrero (Kael)** — cuerpo fiel al Códice (36 cuadros, 14 estados). Evidencia: `guerrero_antes_despues.png`.
+2. **Mago (Thalen)** — cuerpo Códice de 36 estados rescatado de #270. Evidencia: `mago_antes_despues.png`.
