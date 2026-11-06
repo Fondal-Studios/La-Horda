@@ -22,3 +22,5 @@ Orden por necesidad visual (a ojo, sin evaluación independiente todavía):
 Después: campeones (backlog `docs/production/asset-blocks.json`: B002–B006 cuerpos pendientes, B007–B049 definitivas, B056–B092 jefes/élites/enemigos) siguiendo el contrato de `tools/factory/cli.js` y los gates de AGENTS.md. Nada de esto está aprobado por evaluador independiente.
 
 **Hecho en ejecución 06:23 UTC:** arena 02 Fábrica Sin Fin (suelos pintados). Siguiente en la lista: 2. Laberinto, 3. Minas, 4. Abismo, 5. Fúngico/Infernal/Acuática. Saldo 959. Pendiente además: pila PR (#263→#265→#236), token de partida, pase de batalla.
+
+**Hecho también (06:23 UTC):** pisos de Laberinto, Infernal y Acuática (mecanismo `FLOOR_PAINTED` en arena.js: para otra arena basta agregar su entrada y `assets/vfx/<arena>/tex_piso.png`). Siguiente: Minas, Abismo, Fúngico (revisar si usan `buildFloorTile` o render propio), Ruinas/Gélida (densidad), luego muros/props y campeones. Antes de integrar a main: correr `tools/regression` (NOT RUN) y revisión independiente.

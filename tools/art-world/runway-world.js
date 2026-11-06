@@ -25,6 +25,11 @@ Object.assign(JOBS, {
   fort_planchas_hierro: 'In the style of @ref: ' + TEX + 'top-down floor of riveted dark iron plates with seams, soot, scorch marks and faint orange forge glow in the cracks, industrial dungeon factory floor, low contrast so characters stay readable.',
   fort_adoquin_patio: 'In the style of @ref: ' + TEX + 'top-down floor of large irregular worn grey-brown cobblestones with dark mortar and patches of packed dirt, castle courtyard ground, low contrast so characters stay readable.',
 });
+Object.assign(JOBS, {
+  laberinto_piso: 'In the style of @ref: ' + TEX + 'top-down floor of ancient sandy-gold stone slabs with faint worn hieroglyph carvings and fine cracks, desert labyrinth temple ground, low contrast so characters stay readable.',
+  infernal_piso: 'In the style of @ref: ' + TEX + 'top-down floor of cracked black obsidian-like rock with thin glowing orange lava veins in the cracks and scattered embers, hellish ground, low contrast so characters stay readable.',
+  acuatica_piso: 'In the style of @ref: ' + TEX + 'top-down underwater seabed of teal-grey sand with soft ripples, small shells and pebbles and faint caustic light patches, low contrast so characters stay readable.',
+});
 const cmd = process.argv[2], ids = process.argv.slice(3).filter(a => !a.startsWith('--')), force = process.argv.includes('--force');
 if (cmd === 'status') console.log(JSON.stringify({creditBalance: api('GET', '/organization').creditBalance}));
 else if (cmd === 'list') for (const k of Object.keys(JOBS)) console.log(k, fs.existsSync(path.join(OUT, 'ciudad', k, 'master.png')) ? 'OK' : 'pendiente');
@@ -32,7 +37,7 @@ else if (cmd === 'gen') {
   let spent = 0;
   for (const id of ids) {
     if (!JOBS[id]) throw Error('id desconocido ' + id);
-    const arena = id.startsWith('fort_') ? 'fortaleza' : 'ciudad', dir = path.join(OUT, arena, id), f = path.join(dir, 'master.png');
+    const arena = id.startsWith('fort_') ? 'fortaleza' : (['laberinto','infernal','acuatica'].find(a => id.startsWith(a + '_')) || 'ciudad'), dir = path.join(OUT, arena, id), f = path.join(dir, 'master.png');
     const ref = 'data:image/png;base64,' + fs.readFileSync(path.join(OUT, arena, arena === 'ciudad' ? 'ref_house_crop.png' : 'ref_crop.png')).toString('base64');
     if (fs.existsSync(f) && !force) { console.log(id, 'ya existe'); continue; }
     if (spent >= BUDGET) { console.log('tope de presupuesto alcanzado'); break; }
