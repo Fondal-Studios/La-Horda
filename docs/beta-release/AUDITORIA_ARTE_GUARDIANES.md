@@ -76,3 +76,12 @@ Si lo que viste «pésimamente producido» de Ilkan fue **el Coloso**, una **ski
 
 ## Devueltos al reparador
 - **Aelith** y **Morveth** (de #241): sus cromas de paleta deben recolorear el cuerpo NUEVO; ver instrucción en RESULTADOS_PR.md. Reparar `cromas.js` una vez los desbloquea a ambos.
+
+
+## Estado de cuerpos tras la integración de PR (rama de trabajo, 2026-11-06)
+| Estado | Guardianes |
+|---|---|
+| Cuerpo del Códice integrado desde PR (candidato, falta revisión independiente) | Guerrero, Tanque, Mago (#241/#270), **Aelith, Morveth** (#241; cromas recoloreando el cuerpo nuevo) |
+| Atlas más fiel integrado desde #259 | **Saelis, Aurelia, Maura, Ynara** |
+| Ya fiel antes (verificado a ojo y en combate) | Ilkan (humano), Axiom, Veyra, Cazadora, Musashi, Nigromante, Nano, y la mayoría del resto |
+| **BRECHA que sigue abierta** | **Libertador** (el juego muestra un hombre de azul oscuro con bigote y sables; el Códice, un joven castaño con lanza/fusil): ningún PR trae un cuerpo fiel; requiere pintar un atlas nuevo (62 cuadros, arte humano; Runway da imágenes sueltas, no secuencias coherentes). **Myla**: #259 trae un atlas más fiel pero su gate fija el hash aprobado → decisión independiente. **Coloso de Ilkan**: procedural, sin Códice. Renko/Profeta: #259 solo trae archivos de trabajo, no atlas |
