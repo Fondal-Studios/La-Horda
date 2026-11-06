@@ -218,6 +218,17 @@ va en `ITEM_ICON_ART`) y ficha del objeto `js/ui/item-preview.js`. Assets pendie
   nada. Sin datos personales; respeta "Compartir métricas anónimas". Es el **primer** script de
   `index.html`, y `setState` (`js/ui/screens.js`) le pasa cada cambio de pantalla con
   `fondalOnState`. Los modos están en `FondalTelemetry.MODOS`. Prueba: `tools/net-test/fondal_telemetry.js`.
+- `js/net/fondal-tv.js` — **Jugar en la tele (Fondal TV)**, igual que en Padelazo y FreeBird: el ícono de la tele
+  en la esquina del menú principal (`#hub-tele-btn`, solo si el navegador puede) abre el panel de la pieza común
+  `fondalstudios.com/tv/fondal-tv.js` (repositorio FreeBird), que manda el canvas como video y el sonido a la tele
+  por el WiFi. Encima, la tele dibuja con sus propias piezas el **HUD de la tele** (`armarHud`): tus barras, los
+  aliados, el jefe, nivel/vencidos/tiempo, la Definitiva y los carteles, leídos de lo que el juego ya puso en pantalla
+  (unos pocos datos, 20 veces por segundo como mucho). Jugando
+  (`state === "playing"`, avisado por `setState` con `fondalTvOnState`) el celular hace de mando: solo se ven el
+  joystick, los botones y la pausa. Mientras transmite, el buffer del canvas se dibuja a la medida del video
+  (`teleMedidaLienzo()` en `js/core/canvas.js`; caja, cámara y controles no cambian) y el sonido sale por la tele
+  (`audioPistaParaTele` / `audioSonidoAlCelular` en `js/audio/audio.js`). `?teleSdk=URL` para probar contra un
+  servidor local.
 - `js/arenas/infernal/inf-hechicero.js` — el Hechicero Supremo: subjefe del nivel 9 de la Infernal (huye al caer)
   y jefe final en 3 formas (Ángel Corrompido con los poderes de los 4 Guardianes → Golem de Cuerpos → Demonio Mayor —
   Forma Final, diseño `demonio_final`). Arte recortado con `tools/art/hechicero/`.

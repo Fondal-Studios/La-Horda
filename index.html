@@ -181,6 +181,8 @@
       <!-- Brasas ✦ (moneda premium, solo apariencia): siempre visible; "+" abre la Tienda en la pestaña ✦ Brasas -->
       <button class="hub-premium-btn" id="hub-premium-btn" data-premium-chip type="button" aria-label="Brasas: ver paquetes en la Tienda" title="Brasas: solo compran apariencia">✦ <b data-premium-balance>—</b><span class="hub-premium-plus" aria-hidden="true">+</span></button>
       <div class="hub-brand">LA HORDA</div>
+      <!-- JUGAR EN LA TELE (Fondal TV, js/net/fondal-tv.js): solo aparece si el navegador puede mandar el juego a la tele -->
+      <button class="ui-icon-btn hidden" id="hub-tele-btn" type="button" aria-label="Jugar en la tele" title="Jugar en la tele"></button>
       <button class="ui-icon-btn" id="hub-howto-btn" aria-label="Cómo se juega" title="Cómo se juega">?</button>
       <button class="ui-icon-btn" id="hub-options-btn" aria-label="Opciones" title="Opciones">⚙</button>
       <button class="ui-icon-btn" id="mainmenu-back-btn" aria-label="Volver al título" title="Volver al título">⏏</button>
@@ -590,6 +592,7 @@
       </div>
     </div>
 <script src="js/net/fondal-telemetry.js"></script>
+<script src="js/net/fondal-tv.js"></script>
 <script src="js/assets/asset-webp.js"></script>
 <script src="js/assets/lazy-images.js"></script>
 <script src="js/assets/asset-manifest.js"></script>
@@ -1051,6 +1054,7 @@
 <script src="js/beta/beta-loot.js"></script>
 <script src="js/beta/beta-ui.js"></script>
 <script src="js/ui-factory/hud-feedback.js"></script>
+<script src="js/ui-factory/hero-buttons.js"></script>
 <script src="js/ui-clarity/hud-reasons.js"></script>
 <script src="js/ui-clarity/shop-clarity.js"></script><!-- debe cargar DESPUÉS de js/ui/game-dialog.js y js/systems/premium.js: envuelve gameConfirm y premiumBuySkin -->
 <script src="js/main.js"></script>

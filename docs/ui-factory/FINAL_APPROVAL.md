@@ -24,3 +24,11 @@ Evaluador = mismo modelo que el productor con contexto separado; sin hardware t�
 
 ## Seguimiento abierto (no bloquea)
 D1 summary del hub/Cristales < 44 px con mouse (regla D5 fuera de su @media: pierde marcador ▸ y la selección crece 8 %); D2 el aviso OBJETIVO de 7 s no se re-arma en escritorio («¡derrotá al jefe!» queda oculto); D3 barra de la Sala; D4 minimapa rival sobre una habilidad en zurdo; pausa de escritorio 1280×800 con botones bajo el borde (heredado); decisión de diseño de perder «TU HORDA» y el botón SON.
+
+## Addendum 2026-11-02 — iteraciones 7 a 9 (arte, Runway y botones por héroe)
+- Contenido: marcos pixel-art (UF-ART v1), reparaciones D1–D4 de la evaluación anterior, marcos por héroe generados con Runway (UF-ART v2) y botones por héroe (UF-HERO v1: cara, borde e ícono de Ataque propios de los 43 héroes). Ver `INTEGRATION_CONTRACTS.md` §9–§10 y `ITERATION_LOG.md` (iteraciones 7–9).
+- **Sin puntaje independiente de estas iteraciones.** El evaluador se cortó dos veces por límite de uso de la API antes de entregar veredicto; su evidencia parcial está en la rama `feature/ui-factory-art` (`docs/ui-factory/evidence/eval6/`) y no se usa como aprobación. El último puntaje independiente sigue siendo **85/100** (estado ya integrado en `main`, PR #258). La meta de 90 **no se verificó**.
+- Lo que sí se midió (productor, no independiente): `tools/ux` 8/8 rc=0, prueba del productor OK, `emoji-lint --strict` y `check-pixel-icons` OK, barrido de los 43 héroes 43/43 sin errores de página.
+- **Integración por instrucción expresa del dueño del repositorio** («Continúa y mergea»). La confirmación del arquitecto general externo no consta en la sesión.
+- Arte: IMPORTED_NOT_APPROVED (primer pase generado por código y por Runway: 6 imágenes, 30 créditos; saldo compartido con la fábrica de arte). La personalización es de color: las formas del marco son iguales; los 8 motivos por tipo de héroe están definidos y sin generar (~75 créditos). Requiere revisión de arte humana.
+- Seguimiento: re-evaluación independiente de este estado; el cliente Runway de `factory/runway-architects-20261101` falla en POST con Node 22 (avisar a su dueño); registrar el paquete UI en `ownership.json` (PR #247).

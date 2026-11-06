@@ -33,6 +33,7 @@ function setState(s){
   if(typeof AlphaServices!=="undefined") AlphaServices.onState(s, prev);
   if(typeof fondalOnState==="function"){ try{ fondalOnState(s, prev); }catch(e){} } // avisos al panel del estudio (fondal-telemetry.js); fuera de fondalstudios.com no hace nada
   if(typeof musicOnState==="function") musicOnState(s); // clima musical de cada pantalla
+  if(typeof fondalTvOnState==="function"){ try{ fondalTvOnState(s); }catch(e){} } // Jugar en la tele (fondal-tv.js): jugando, el celular es el mando
   if(s==="title" && typeof startTitleScene==="function") requestAnimationFrame(startTitleScene);
   if(s!=="playing" && typeof _persistTimer!=="undefined" && _persistTimer) persistNow();
   if(s!=="playing" && typeof inputResetAll==="function") inputResetAll(); // se esconden los controles: nada queda apretado (input.js)

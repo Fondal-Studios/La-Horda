@@ -186,6 +186,7 @@ function initAudio(){
     lim.threshold.value = -3; lim.knee.value = 0; lim.ratio.value = 20; lim.attack.value = 0.0015; lim.release.value = 0.09;
     const clip = _mkClipper();
     glue.connect(lim); lim.connect(clip.input); clip.output.connect(audioCtx.destination);
+    AU.out = clip.output; // la salida final (Jugar en la tele la cambia de lugar: audioPistaParaTele)
     masterGain = audioCtx.createGain(); masterGain.gain.value = audioEnabled?AUDIO_MASTER:0; masterGain.connect(glue);
     // música: dos buses (A/B) para cruzar modos; cada uno con su envío a la reverb larga
     musicGain = audioCtx.createGain(); musicGain.gain.value = AUDIO_BASE.music*audioVol.music; musicGain.connect(masterGain);
@@ -227,6 +228,32 @@ function initAudio(){
 function _audioWake(){ if(audioCtx && audioCtx.state!=="running" && audioCtx.state!=="closed") audioCtx.resume().catch(()=>{}); }
 document.addEventListener("visibilitychange", ()=>{ if(!document.hidden) _audioWake(); });
 ["touchend", "pointerup", "keydown"].forEach(ev=>document.addEventListener(ev, _audioWake, {passive:true, capture:true}));
+/* ---------------- JUGAR EN LA TELE (js/net/fondal-tv.js) ----------------
+   El sonido deja el parlante del celular y sale como una pista de audio que viaja a la tele junto con el
+   video. Todo pasa por el recorte suave final (AU.out), así que alcanza con cambiarle la salida. El parlante
+   queda CONECTADO con volumen 0: en el iPhone, si no le llega nada al parlante, el sistema deja de fabricar
+   el sonido y a la tele no le llega nada (pasó en FreeBird). El volumen y el silencio del juego siguen
+   valiendo (están antes, en masterGain). */
+function audioPistaParaTele(){
+  initAudio();
+  if(!audioCtx || !AU.out || typeof audioCtx.createMediaStreamDestination!=="function") return null;
+  if(!AU.tele){
+    AU.tele = audioCtx.createMediaStreamDestination();
+    AU.teleMudo = audioCtx.createGain(); AU.teleMudo.gain.value = 0; AU.teleMudo.connect(audioCtx.destination);
+  }
+  try{ AU.out.disconnect(audioCtx.destination); }catch(e){ /* no estaba conectado */ }
+  AU.out.connect(AU.tele); AU.out.connect(AU.teleMudo);
+  _audioWake();
+  return AU.tele.stream.getAudioTracks()[0] || null;
+}
+/** …y el sonido vuelve al parlante del celular. */
+function audioSonidoAlCelular(){
+  if(!audioCtx || !AU.out) return;
+  try{ if(AU.tele) AU.out.disconnect(AU.tele); }catch(e){ /* no estaba conectado */ }
+  try{ if(AU.teleMudo) AU.out.disconnect(AU.teleMudo); }catch(e){ /* no estaba conectado */ }
+  try{ AU.out.disconnect(audioCtx.destination); }catch(e){ /* (para no conectarlo dos veces) */ }
+  AU.out.connect(audioCtx.destination);
+}
 function setAudioEnabled(on){
   audioEnabled = on;
   try{ localStorage.setItem("horda_mute", on ? "0" : "1"); }catch(e){}
