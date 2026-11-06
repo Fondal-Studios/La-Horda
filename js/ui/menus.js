@@ -555,6 +555,7 @@ function openCrystalWars(){ competitiveOpen("crystal"); }
 function openColiseum(){ competitiveOpen("coliseum"); }
 let competitivePendingMode = "crystal";
 function competitiveOpen(mode){
+  if(window.BETA_SCOPE && BETA_SCOPE.public){ if(typeof showNetToast==="function") showNetToast("Este modo no está disponible en la beta."); return; }   // alcance de la beta: solo Campaña y Horda Infinita
   if(typeof netInRoom==="function" && netInRoom()){ showNetToast("Salí de tu sala actual antes de entrar al competitivo."); return; }
   competitivePendingMode = mode === "coliseum" ? "coliseum" : "crystal";
   if(!HordaOnboarding.ready(save)){ cwGateOpen(); return; }
@@ -587,6 +588,7 @@ document.getElementById("mode-coliseum-btn").addEventListener("click", openColis
 // a la que navegar. Si el servidor donde está publicado el juego es una versión vieja sin esos archivos, se avisa claro.
 function cwExit(){ setState("mainmenu"); if(typeof renderMainMenu==="function") renderMainMenu(); }
 function cwGo(opts){
+  if(window.BETA_SCOPE && BETA_SCOPE.public){ if(typeof showNetToast==="function") showNetToast("Este modo no está disponible en la beta."); return; }
   if(typeof CrystalWarsUI==="undefined" || typeof CrystalWars==="undefined"){
     if(typeof showNetToast==="function") showNetToast("El competitivo todavía no está publicado en este servidor. Avisale a quien administra el juego.");
     return;

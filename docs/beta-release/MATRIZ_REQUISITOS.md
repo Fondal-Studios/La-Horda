@@ -3,7 +3,7 @@ Estados: OK-código (implementado, sin prueba E2E de esta sesión) · PARCIAL ·
 
 | ID | Requisito | Implementación actual | Prueba | Estado | Responsable |
 |---|---|---|---|---|---|
-| R01 | Solo 2 modos en la beta | Selector muestra Cristales y Coliseo (ALPHA) | tools/ux nuevo | FALTA ocultar | UI/UX |
+| R01 | Solo 2 modos en la beta | `beta-scope.js` + `BETA_PUBLIC=1` (oculta y bloquea Cristales/Coliseo) | tools/ux/test-beta-scope.js PASS | IMPLEMENTADO en rama, falta revisión independiente | UI/UX |
 | R02 | Campaña completa 1–4j | 10 arenas, relay | tools/net-test/campaign-gate.js | NOT RUN | QA/Multijugador |
 | R03 | Horda Infinita 1–4j | endless.js + net | net-test/endless_coop.js | NOT RUN | Gameplay |
 | R04 | Ranking por oleada personal sobrevivida | Envía EN.round de grupo | — | **FALTA** (brecha 1) | Backend+Gameplay |

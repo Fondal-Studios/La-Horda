@@ -98,3 +98,6 @@ body.reduce-motion.beta-visual #controls .ability-btn.bt-press, body.reduce-moti
 /* transición de arranque: fundido limpio a negro (ronda 2: el fundido anterior quedaba a medio hacer) */
 #title-screen.bt-title::after{ content:""; position:absolute; inset:0; background:#020503; opacity:0; pointer-events:none; z-index:9; transition:opacity .5s ease-in; }
 #title-screen.bt-title.bt-launch::after{ opacity:1; }
+
+/* Alcance de la beta pública (js/beta/beta-scope.js): modos fuera de alcance ocultos, sin borrar nada. */
+body.beta-public #hub-crystal-btn, body.beta-public #hub-coliseum-btn, body.beta-public #mode-crystal-wars-btn, body.beta-public #mode-coliseum-btn{ display:none !important; }
