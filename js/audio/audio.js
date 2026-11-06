@@ -953,7 +953,8 @@ function _schedTick(){
     }
     // durante el cruce no se programan notas del modo viejo (sus colas se apagan en el otro bus);
     // en silencio (🔇) no se crean nodos
-    if(!M.pending && audioEnabled && S){ try{ _playStep(M.step, M.next); }catch(e){ if(!M.err) M.err = String(e && e.stack || e); } }
+    // (si suena un tema lo-fi de archivo, el secuenciador sintético calla; el director y las transiciones siguen)
+    if(!M.pending && audioEnabled && S && !(typeof SampleBank!=="undefined" && SampleBank.holds())){ try{ _playStep(M.step, M.next); }catch(e){ if(!M.err) M.err = String(e && e.stack || e); } }
     M.next += _stepDur();
     if(++M.step >= (M.sec ? M.sec.steps : 16)){
       M.step = 0; M.bar++;
@@ -999,6 +1000,7 @@ function _musicSwitch(p, t){
   _setSpace(p.arena);
   _pieceInit(_pieceFor(p.mode, p.arena));
   M.lvBar = M.int;
+  if(typeof SampleBank!=="undefined") try{ SampleBank.onMode(p.mode, p.arena, p.level); }catch(e){} // música lo-fi de archivo (sample-bank.js)
   if(p.sting && audioEnabled) try{ _sting(p.sting, t); }catch(e){}
 }
 // Pedido de modo (del juego o del director). El título sigue hasta cerrar su frase y pasa al menú
@@ -1038,6 +1040,7 @@ function startMusic(){
   if(!audioCtx){ showBanner("🔇 El navegador bloqueó el audio"); return; }
   if(musicStarted) return;
   musicStarted = true;
+  if(typeof SampleBank!=="undefined") SampleBank.warm();
   M.timer = setInterval(_schedTick, 25);
   setTimeout(()=>{ try{ for(const k of Object.keys(MUSIC_SCORE)) _msPiece(k); for(const k of Object.keys(MUSIC_STINGERS)){ const G = MUSIC_STINGERS[k]; if(G.m) G._m = _msMel(G.m); if(G.arp) G._a = _msPat(G.arp); } }catch(e){} }, 1500);
   setMusicMode(M.wanted || "menu", M.wantedLevel);
@@ -1067,6 +1070,7 @@ const SFX_CFG = {
   // Combate: estados y gore
   freeze:{p:2,gap:120}, shatter:{p:3,gap:110}, splat:{p:1,gap:45}, gib:{p:2,gap:90}, burnDeath:{p:1,gap:80}, zap:{p:2,gap:90},
   threat:{p:4,gap:900}, emergencyHeal:{p:4,gap:500}, skillHit:{p:2,gap:70},
+  pickup:{p:2,gap:60}, // comprar / recoger en carriles y objetivos de arena (se llamaba y no estaba definido: sonaba mudo)
   crystal:{p:5,gap:800} // cristal de un Guardián
 };
 // Afinados (melodías, avisos de interfaz, botín): sin variación de tono, así no desafinan.
@@ -1184,6 +1188,7 @@ function playSfx(type, src, wx){
   const pv = SFX_TUNED[type] ? 0 : (SFX_CFG[type] ? 0.05 : 0.03);
   _sv.on = true; _sv.p = 1 + (audioRandom()*2-1)*pv; _sv.v = 1 - audioRandom()*0.18; _sv.n = 0;
   let len = 0.15;
+  if(typeof SampleBank!=="undefined") try{ SampleBank.layer(type, src, D); }catch(e){} // muestras CC0 encima del golpe sintético
   try{
   switch(type){
     case "hit": { const m = _sfxMat(src) || "flesh", w = (typeof player!=="undefined" && player && SFX_WEAPON[player.classKey]) || null;
@@ -1228,6 +1233,7 @@ function playSfx(type, src, wx){
     case "clear": [523.25,659.25,783.99,1046.5].forEach((f,i)=>_wet(_tone(t0+i*0.07,"triangle",f,f,0.35,0.18,D),1)); _noise(t0+0.25,0.4,0.05,"highpass",6000,0,D); len=0.7; break;
     case "heal": _tone(t0,"sine",660,990,0.25,0.14,D,0.02); _wet(_tone(t0,"sine",990,1485,0.25,0.07,D,0.02),1); len=0.27; break;
     case "shield": _tone(t0,"triangle",440,440,0.3,0.12,D,0.02); _wet(_tone(t0,"triangle",660,660,0.3,0.08,D,0.02),0); len=0.32; break;
+    case "pickup": _tone(t0,"triangle",660,660,0.06,0.1,D); _tone(t0+0.05,"triangle",990,990,0.1,0.11,D); _wet(_tone(t0+0.05,"sine",1980,1980,0.12,0.03,D),1); len=0.18; break;
     case "potion": _tone(t0,"sine",520,880,0.2,0.3,D,0.03); _tone(t0+0.02,"sine",1400,2100,0.06,0.04,D); len=0.22; break;
     // subida de nivel, victoria, cristal y cofre legendario: GOLPES MUSICALES (MUSIC_STINGERS) que se
     // tocan en la tonalidad y el acorde de la música que suena, a tempo
