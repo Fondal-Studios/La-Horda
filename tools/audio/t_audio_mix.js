@@ -133,7 +133,7 @@ function pageHarness() {
     const ctx = await browser.newContext({ viewport: { width: 844, height: 390 } });
     await ctx.addInitScript(() => {
       window.__campaignMode = true;
-      try { localStorage.removeItem('horda_vol'); localStorage.removeItem('horda_mute'); } catch (e) {}
+      try { localStorage.removeItem('horda_vol'); localStorage.removeItem('horda_mute'); localStorage.setItem('horda_music_style', 'synth'); /* este arnés mide la partitura SINTETIZADA; el lo-fi de archivo lo mide t_sample_bank.js */ } catch (e) {}
       // analizador en vivo: todo lo que llega al destino del contexto real
       const oConnect = AudioNode.prototype.connect;
       AudioNode.prototype.connect = function (dst) {

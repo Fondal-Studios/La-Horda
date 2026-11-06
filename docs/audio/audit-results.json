@@ -1,0 +1,133 @@
+{
+ "fecha": "2026-11-06",
+ "critico": [],
+ "importante": [],
+ "opcional": [],
+ "info": {
+  "music": {
+   "title": {
+    "seconds": 96.03,
+    "lufs": -18.4,
+    "truePeak": -2.1,
+    "bpmEst": 87,
+    "attacksPerSec": 3.9,
+    "seamJump": 0.0084,
+    "typicalStep": 0.0172,
+    "kB": 938
+   },
+   "hub": {
+    "seconds": 92.03,
+    "lufs": -18.4,
+    "truePeak": -2.5,
+    "bpmEst": 98,
+    "attacksPerSec": 5,
+    "seamJump": 0.0042,
+    "typicalStep": 0.0313,
+    "kB": 899
+   },
+   "wave-a": {
+    "seconds": 73.04,
+    "lufs": -18.4,
+    "truePeak": -7.4,
+    "bpmEst": 133,
+    "attacksPerSec": 8.7,
+    "seamJump": 0.0193,
+    "typicalStep": 0.0766,
+    "kB": 714
+   },
+   "wave-b": {
+    "seconds": 87.85,
+    "lufs": -18.4,
+    "truePeak": -2.7,
+    "bpmEst": 124,
+    "attacksPerSec": 12.3,
+    "seamJump": 0.0094,
+    "typicalStep": 0.003,
+    "kB": 858
+   },
+   "wave-c": {
+    "seconds": 90.04,
+    "lufs": -18.5,
+    "truePeak": -2.7,
+    "bpmEst": 61,
+    "attacksPerSec": 7.7,
+    "seamJump": 0,
+    "typicalStep": 0.0008,
+    "kB": 880
+   },
+   "boss": {
+    "seconds": 90.04,
+    "lufs": -18.5,
+    "truePeak": -4.6,
+    "bpmEst": 90,
+    "attacksPerSec": 6.6,
+    "seamJump": 0.0048,
+    "typicalStep": 0.0514,
+    "kB": 880
+   }
+  },
+  "disk_MB": {
+   "music": 5.29,
+   "sfx": 0.33,
+   "voice": 0.31
+  },
+  "sfx": {
+   "definidos": 53,
+   "arena": 241,
+   "literales": 221,
+   "prefijos": [
+    "asc_",
+    "ex_",
+    "quality_aelith",
+    "quality_brakk",
+    "quality_morveth",
+    "quality_solciju",
+    "quality_veyra"
+   ]
+  },
+  "habilidades": {
+   "total": 172,
+   "counts": {
+    "magic": 54,
+    "move": 14,
+    "slam": 20,
+    "blade": 22,
+    "fire": 6,
+    "ice": 1,
+    "zap": 5,
+    "support": 18,
+    "shot": 2,
+    "dark": 16,
+    "build": 14
+   }
+  },
+  "mezcla": {
+   "holds": true,
+   "musica": {
+    "peak": -6.3,
+    "rms": -20
+   },
+   "combate": {
+    "peak": -1.3,
+    "rms": -12.6
+   },
+   "voz": {
+    "peak": -4.7,
+    "rms": -18.6
+   },
+   "mem": {
+    "style": "lofi",
+    "manifest": true,
+    "music": "wave-b",
+    "want": "wave-b",
+    "loaded": 101,
+    "failed": [],
+    "holds": true,
+    "decodedMB": 68.8,
+    "banks": [
+     "m"
+    ]
+   }
+  }
+ }
+}

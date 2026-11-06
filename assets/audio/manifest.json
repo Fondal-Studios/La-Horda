@@ -1,0 +1,958 @@
+{
+ "music": {
+  "title": {
+   "file": "music/title.mp3",
+   "seconds": 96.03,
+   "loopStart": 1.0,
+   "loopEnd": 95.0,
+   "source": "https://opengameart.org/content/8-bit-lofi",
+   "license": "CC0"
+  },
+  "hub": {
+   "file": "music/hub.mp3",
+   "seconds": 92.03,
+   "loopStart": 1.0,
+   "loopEnd": 91.0,
+   "source": "https://opengameart.org/content/happy-lofi-day",
+   "license": "CC0"
+  },
+  "wave-a": {
+   "file": "music/wave-a.mp3",
+   "seconds": 73.04,
+   "loopStart": 1.0,
+   "loopEnd": 72.0,
+   "source": "https://opengameart.org/content/fast-cheerful-punk-rock-lo-fi",
+   "license": "CC0"
+  },
+  "wave-b": {
+   "file": "music/wave-b.mp3",
+   "seconds": 87.85,
+   "loopStart": 1.0,
+   "loopEnd": 86.809,
+   "source": "https://opengameart.org/content/lofi-again",
+   "license": "CC0"
+  },
+  "wave-c": {
+   "file": "music/wave-c.mp3",
+   "seconds": 90.04,
+   "loopStart": 1.0,
+   "loopEnd": 89.0,
+   "source": "https://opengameart.org/content/lofi-hip-hop",
+   "license": "CC0"
+  },
+  "boss": {
+   "file": "music/boss.mp3",
+   "seconds": 90.04,
+   "loopStart": 1.0,
+   "loopEnd": 89.0,
+   "source": "https://opengameart.org/content/lo-fi-chiptune-glitch-dnb",
+   "license": "CC0"
+  }
+ },
+ "sfx": {
+  "hitFlesh": {
+   "files": [
+    {
+     "file": "sfx/hitFlesh_0.mp3",
+     "seconds": 0.366,
+     "source": "https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx"
+    },
+    {
+     "file": "sfx/hitFlesh_1.mp3",
+     "seconds": 0.522,
+     "source": "https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx"
+    },
+    {
+     "file": "sfx/hitFlesh_2.mp3",
+     "seconds": 0.209,
+     "source": "https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx"
+    },
+    {
+     "file": "sfx/hitFlesh_3.mp3",
+     "seconds": 0.104,
+     "source": "https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx"
+    },
+    {
+     "file": "sfx/hitFlesh_4.mp3",
+     "seconds": 0.104,
+     "source": "https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx"
+    },
+    {
+     "file": "sfx/hitFlesh_5.mp3",
+     "seconds": 0.287,
+     "source": "https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx"
+    }
+   ],
+   "license": "CC0"
+  },
+  "hitHeavy": {
+   "files": [
+    {
+     "file": "sfx/hitHeavy_0.mp3",
+     "seconds": 0.261,
+     "source": "https://opengameart.org/content/10-impactshield-blocks"
+    },
+    {
+     "file": "sfx/hitHeavy_1.mp3",
+     "seconds": 0.34,
+     "source": "https://opengameart.org/content/10-impactshield-blocks"
+    },
+    {
+     "file": "sfx/hitHeavy_2.mp3",
+     "seconds": 0.287,
+     "source": "https://opengameart.org/content/10-impactshield-blocks"
+    },
+    {
+     "file": "sfx/hitHeavy_3.mp3",
+     "seconds": 0.34,
+     "source": "https://opengameart.org/content/10-impactshield-blocks"
+    },
+    {
+     "file": "sfx/hitHeavy_4.mp3",
+     "seconds": 0.235,
+     "source": "https://opengameart.org/content/10-impactshield-blocks"
+    },
+    {
+     "file": "sfx/hitHeavy_5.mp3",
+     "seconds": 0.209,
+     "source": "https://opengameart.org/content/10-impactshield-blocks"
+    }
+   ],
+   "license": "CC0"
+  },
+  "blade": {
+   "files": [
+    {
+     "file": "sfx/blade_0.mp3",
+     "seconds": 0.862,
+     "source": "https://opengameart.org/content/20-sword-sound-effects-attacks-and-clashes"
+    },
+    {
+     "file": "sfx/blade_1.mp3",
+     "seconds": 0.758,
+     "source": "https://opengameart.org/content/20-sword-sound-effects-attacks-and-clashes"
+    },
+    {
+     "file": "sfx/blade_2.mp3",
+     "seconds": 0.418,
+     "source": "https://opengameart.org/content/20-sword-sound-effects-attacks-and-clashes"
+    },
+    {
+     "file": "sfx/blade_3.mp3",
+     "seconds": 0.575,
+     "source": "https://opengameart.org/content/20-sword-sound-effects-attacks-and-clashes"
+    },
+    {
+     "file": "sfx/blade_4.mp3",
+     "seconds": 0.366,
+     "source": "https://opengameart.org/content/20-sword-sound-effects-attacks-and-clashes"
+    },
+    {
+     "file": "sfx/blade_5.mp3",
+     "seconds": 0.47,
+     "source": "https://opengameart.org/content/20-sword-sound-effects-attacks-and-clashes"
+    }
+   ],
+   "license": "CC0"
+  },
+  "swing": {
+   "files": [
+    {
+     "file": "sfx/swing_0.mp3",
+     "seconds": 0.209,
+     "source": "https://opengameart.org/content/80-cc0-rpg-sfx"
+    },
+    {
+     "file": "sfx/swing_1.mp3",
+     "seconds": 0.235,
+     "source": "https://opengameart.org/content/80-cc0-rpg-sfx"
+    },
+    {
+     "file": "sfx/swing_2.mp3",
+     "seconds": 0.235,
+     "source": "https://opengameart.org/content/80-cc0-rpg-sfx"
+    }
+   ],
+   "license": "CC0"
+  },
+  "rock": {
+   "files": [
+    {
+     "file": "sfx/rock_0.mp3",
+     "seconds": 0.444,
+     "source": "https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx"
+    },
+    {
+     "file": "sfx/rock_1.mp3",
+     "seconds": 0.784,
+     "source": "https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx"
+    },
+    {
+     "file": "sfx/rock_2.mp3",
+     "seconds": 0.549,
+     "source": "https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx"
+    }
+   ],
+   "license": "CC0"
+  },
+  "metal": {
+   "files": [
+    {
+     "file": "sfx/metal_0.mp3",
+     "seconds": 0.157,
+     "source": "https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx"
+    },
+    {
+     "file": "sfx/metal_1.mp3",
+     "seconds": 0.261,
+     "source": "https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx"
+    },
+    {
+     "file": "sfx/metal_2.mp3",
+     "seconds": 0.209,
+     "source": "https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx"
+    },
+    {
+     "file": "sfx/metal_3.mp3",
+     "seconds": 0.261,
+     "source": "https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx"
+    }
+   ],
+   "license": "CC0"
+  },
+  "wood": {
+   "files": [
+    {
+     "file": "sfx/wood_0.mp3",
+     "seconds": 0.104,
+     "source": "https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx"
+    },
+    {
+     "file": "sfx/wood_1.mp3",
+     "seconds": 0.235,
+     "source": "https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx"
+    },
+    {
+     "file": "sfx/wood_2.mp3",
+     "seconds": 0.235,
+     "source": "https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx"
+    }
+   ],
+   "license": "CC0"
+  },
+  "glass": {
+   "files": [
+    {
+     "file": "sfx/glass_0.mp3",
+     "seconds": 0.418,
+     "source": "https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx"
+    },
+    {
+     "file": "sfx/glass_1.mp3",
+     "seconds": 0.34,
+     "source": "https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx"
+    },
+    {
+     "file": "sfx/glass_2.mp3",
+     "seconds": 0.601,
+     "source": "https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx"
+    },
+    {
+     "file": "sfx/glass_3.mp3",
+     "seconds": 0.601,
+     "source": "https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx"
+    }
+   ],
+   "license": "CC0"
+  },
+  "fire": {
+   "files": [
+    {
+     "file": "sfx/fire_0.mp3",
+     "seconds": 0.705,
+     "source": "https://opengameart.org/content/80-cc0-rpg-sfx"
+    },
+    {
+     "file": "sfx/fire_1.mp3",
+     "seconds": 0.731,
+     "source": "https://opengameart.org/content/80-cc0-rpg-sfx"
+    },
+    {
+     "file": "sfx/fire_2.mp3",
+     "seconds": 1.437,
+     "source": "https://opengameart.org/content/80-cc0-rpg-sfx"
+    },
+    {
+     "file": "sfx/fire_3.mp3",
+     "seconds": 1.045,
+     "source": "https://opengameart.org/content/80-cc0-rpg-sfx"
+    },
+    {
+     "file": "sfx/fire_4.mp3",
+     "seconds": 1.071,
+     "source": "https://opengameart.org/content/80-cc0-rpg-sfx"
+    },
+    {
+     "file": "sfx/fire_5.mp3",
+     "seconds": 0.81,
+     "source": "https://opengameart.org/content/80-cc0-rpg-sfx"
+    },
+    {
+     "file": "sfx/fire_6.mp3",
+     "seconds": 0.47,
+     "source": "https://opengameart.org/content/80-cc0-rpg-sfx"
+    }
+   ],
+   "license": "CC0"
+  },
+  "arcane": {
+   "files": [
+    {
+     "file": "sfx/arcane_0.mp3",
+     "seconds": 0.47,
+     "source": "https://opengameart.org/content/80-cc0-rpg-sfx"
+    },
+    {
+     "file": "sfx/arcane_1.mp3",
+     "seconds": 0.418,
+     "source": "https://opengameart.org/content/80-cc0-rpg-sfx"
+    },
+    {
+     "file": "sfx/arcane_2.mp3",
+     "seconds": 1.62,
+     "source": "https://opengameart.org/content/magic-spell-sfx"
+    },
+    {
+     "file": "sfx/arcane_3.mp3",
+     "seconds": 1.411,
+     "source": "https://opengameart.org/content/magic-spell-sfx"
+    },
+    {
+     "file": "sfx/arcane_4.mp3",
+     "seconds": 1.829,
+     "source": "https://opengameart.org/content/magic-spell-sfx"
+    },
+    {
+     "file": "sfx/arcane_5.mp3",
+     "seconds": 1.698,
+     "source": "https://opengameart.org/content/magic-spell-sfx"
+    }
+   ],
+   "license": "CC0"
+  },
+  "slime": {
+   "files": [
+    {
+     "file": "sfx/slime_0.mp3",
+     "seconds": 0.496,
+     "source": "https://opengameart.org/content/80-cc0-rpg-sfx"
+    },
+    {
+     "file": "sfx/slime_1.mp3",
+     "seconds": 0.418,
+     "source": "https://opengameart.org/content/80-cc0-rpg-sfx"
+    },
+    {
+     "file": "sfx/slime_2.mp3",
+     "seconds": 0.313,
+     "source": "https://opengameart.org/content/80-cc0-rpg-sfx"
+    },
+    {
+     "file": "sfx/slime_3.mp3",
+     "seconds": 0.47,
+     "source": "https://opengameart.org/content/80-cc0-rpg-sfx"
+    }
+   ],
+   "license": "CC0"
+  },
+  "roar": {
+   "files": [
+    {
+     "file": "sfx/roar_0.mp3",
+     "seconds": 0.496,
+     "source": "https://opengameart.org/content/80-cc0-rpg-sfx"
+    },
+    {
+     "file": "sfx/roar_1.mp3",
+     "seconds": 0.81,
+     "source": "https://opengameart.org/content/80-cc0-rpg-sfx"
+    },
+    {
+     "file": "sfx/roar_2.mp3",
+     "seconds": 0.836,
+     "source": "https://opengameart.org/content/80-cc0-rpg-sfx"
+    },
+    {
+     "file": "sfx/roar_3.mp3",
+     "seconds": 0.34,
+     "source": "https://opengameart.org/content/80-cc0-creature-sfx"
+    },
+    {
+     "file": "sfx/roar_4.mp3",
+     "seconds": 0.679,
+     "source": "https://opengameart.org/content/80-cc0-creature-sfx"
+    },
+    {
+     "file": "sfx/roar_5.mp3",
+     "seconds": 0.366,
+     "source": "https://opengameart.org/content/80-cc0-creature-sfx"
+    }
+   ],
+   "license": "CC0"
+  },
+  "monster": {
+   "files": [
+    {
+     "file": "sfx/monster_0.mp3",
+     "seconds": 0.601,
+     "source": "https://opengameart.org/content/80-cc0-creature-sfx"
+    },
+    {
+     "file": "sfx/monster_1.mp3",
+     "seconds": 0.366,
+     "source": "https://opengameart.org/content/80-cc0-creature-sfx"
+    },
+    {
+     "file": "sfx/monster_2.mp3",
+     "seconds": 0.366,
+     "source": "https://opengameart.org/content/80-cc0-creature-sfx"
+    },
+    {
+     "file": "sfx/monster_3.mp3",
+     "seconds": 0.94,
+     "source": "https://opengameart.org/content/80-cc0-creature-sfx"
+    },
+    {
+     "file": "sfx/monster_4.mp3",
+     "seconds": 0.261,
+     "source": "https://opengameart.org/content/80-cc0-creature-sfx"
+    },
+    {
+     "file": "sfx/monster_5.mp3",
+     "seconds": 0.601,
+     "source": "https://opengameart.org/content/80-cc0-creature-sfx"
+    },
+    {
+     "file": "sfx/monster_6.mp3",
+     "seconds": 0.627,
+     "source": "https://opengameart.org/content/80-cc0-creature-sfx"
+    }
+   ],
+   "license": "CC0"
+  },
+  "creatureHurt": {
+   "files": [
+    {
+     "file": "sfx/creatureHurt_0.mp3",
+     "seconds": 0.366,
+     "source": "https://opengameart.org/content/80-cc0-creature-sfx"
+    },
+    {
+     "file": "sfx/creatureHurt_1.mp3",
+     "seconds": 0.366,
+     "source": "https://opengameart.org/content/80-cc0-creature-sfx"
+    },
+    {
+     "file": "sfx/creatureHurt_2.mp3",
+     "seconds": 0.313,
+     "source": "https://opengameart.org/content/80-cc0-creature-sfx"
+    },
+    {
+     "file": "sfx/creatureHurt_3.mp3",
+     "seconds": 0.287,
+     "source": "https://opengameart.org/content/80-cc0-creature-sfx"
+    },
+    {
+     "file": "sfx/creatureHurt_4.mp3",
+     "seconds": 0.34,
+     "source": "https://opengameart.org/content/80-cc0-creature-sfx"
+    }
+   ],
+   "license": "CC0"
+  },
+  "creatureDie": {
+   "files": [
+    {
+     "file": "sfx/creatureDie_0.mp3",
+     "seconds": 0.705,
+     "source": "https://opengameart.org/content/80-cc0-rpg-sfx"
+    },
+    {
+     "file": "sfx/creatureDie_1.mp3",
+     "seconds": 0.47,
+     "source": "https://opengameart.org/content/80-cc0-rpg-sfx"
+    },
+    {
+     "file": "sfx/creatureDie_2.mp3",
+     "seconds": 0.418,
+     "source": "https://opengameart.org/content/80-cc0-rpg-sfx"
+    }
+   ],
+   "license": "CC0"
+  }
+ },
+ "voice": {
+  "m_attack0": {
+   "file": "voice/m_attack0.mp3",
+   "seconds": 0.209,
+   "source": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+   "license": "CC0"
+  },
+  "m_attack1": {
+   "file": "voice/m_attack1.mp3",
+   "seconds": 0.235,
+   "source": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+   "license": "CC0"
+  },
+  "m_attack2": {
+   "file": "voice/m_attack2.mp3",
+   "seconds": 0.235,
+   "source": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+   "license": "CC0"
+  },
+  "m_attack3": {
+   "file": "voice/m_attack3.mp3",
+   "seconds": 0.366,
+   "source": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+   "license": "CC0"
+  },
+  "m_attack4": {
+   "file": "voice/m_attack4.mp3",
+   "seconds": 0.209,
+   "source": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+   "license": "CC0"
+  },
+  "m_attack5": {
+   "file": "voice/m_attack5.mp3",
+   "seconds": 0.366,
+   "source": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+   "license": "CC0"
+  },
+  "m_attack6": {
+   "file": "voice/m_attack6.mp3",
+   "seconds": 0.575,
+   "source": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+   "license": "CC0"
+  },
+  "m_attack7": {
+   "file": "voice/m_attack7.mp3",
+   "seconds": 0.209,
+   "source": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+   "license": "CC0"
+  },
+  "m_attack8": {
+   "file": "voice/m_attack8.mp3",
+   "seconds": 0.235,
+   "source": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+   "license": "CC0"
+  },
+  "m_big0": {
+   "file": "voice/m_big0.mp3",
+   "seconds": 0.601,
+   "source": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+   "license": "CC0"
+  },
+  "m_big1": {
+   "file": "voice/m_big1.mp3",
+   "seconds": 0.731,
+   "source": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+   "license": "CC0"
+  },
+  "m_big2": {
+   "file": "voice/m_big2.mp3",
+   "seconds": 0.444,
+   "source": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+   "license": "CC0"
+  },
+  "m_big3": {
+   "file": "voice/m_big3.mp3",
+   "seconds": 0.313,
+   "source": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+   "license": "CC0"
+  },
+  "m_big4": {
+   "file": "voice/m_big4.mp3",
+   "seconds": 0.392,
+   "source": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+   "license": "CC0"
+  },
+  "m_big5": {
+   "file": "voice/m_big5.mp3",
+   "seconds": 0.549,
+   "source": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+   "license": "CC0"
+  },
+  "m_hurt0": {
+   "file": "voice/m_hurt0.mp3",
+   "seconds": 0.34,
+   "source": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+   "license": "CC0"
+  },
+  "m_hurt1": {
+   "file": "voice/m_hurt1.mp3",
+   "seconds": 0.392,
+   "source": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+   "license": "CC0"
+  },
+  "m_hurt2": {
+   "file": "voice/m_hurt2.mp3",
+   "seconds": 0.418,
+   "source": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+   "license": "CC0"
+  },
+  "m_hurt3": {
+   "file": "voice/m_hurt3.mp3",
+   "seconds": 0.287,
+   "source": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+   "license": "CC0"
+  },
+  "m_hurt4": {
+   "file": "voice/m_hurt4.mp3",
+   "seconds": 0.418,
+   "source": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+   "license": "CC0"
+  },
+  "m_hurt5": {
+   "file": "voice/m_hurt5.mp3",
+   "seconds": 1.123,
+   "source": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+   "license": "CC0"
+  },
+  "m_death0": {
+   "file": "voice/m_death0.mp3",
+   "seconds": 2.168,
+   "source": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+   "license": "CC0"
+  },
+  "m_death1": {
+   "file": "voice/m_death1.mp3",
+   "seconds": 1.097,
+   "source": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+   "license": "CC0"
+  },
+  "m_victory0": {
+   "file": "voice/m_victory0.mp3",
+   "seconds": 1.071,
+   "source": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+   "license": "CC0"
+  },
+  "m_victory1": {
+   "file": "voice/m_victory1.mp3",
+   "seconds": 0.967,
+   "source": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+   "license": "CC0"
+  },
+  "m_gameover0": {
+   "file": "voice/m_gameover0.mp3",
+   "seconds": 0.836,
+   "source": "https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg",
+   "license": "CC0"
+  },
+  "f1_attack1": {
+   "file": "voice/f1_attack1.mp3",
+   "seconds": 0.235,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f1_attack2": {
+   "file": "voice/f1_attack2.mp3",
+   "seconds": 0.287,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f1_attack3": {
+   "file": "voice/f1_attack3.mp3",
+   "seconds": 0.287,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f1_damaged1": {
+   "file": "voice/f1_damaged1.mp3",
+   "seconds": 0.235,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f1_damaged2": {
+   "file": "voice/f1_damaged2.mp3",
+   "seconds": 0.418,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f1_damaged3": {
+   "file": "voice/f1_damaged3.mp3",
+   "seconds": 0.287,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f1_fire": {
+   "file": "voice/f1_fire.mp3",
+   "seconds": 0.522,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f1_ice": {
+   "file": "voice/f1_ice.mp3",
+   "seconds": 0.47,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f1_blizzard": {
+   "file": "voice/f1_blizzard.mp3",
+   "seconds": 0.758,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f1_heal": {
+   "file": "voice/f1_heal.mp3",
+   "seconds": 0.549,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f1_cure": {
+   "file": "voice/f1_cure.mp3",
+   "seconds": 0.496,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f1_curse": {
+   "file": "voice/f1_curse.mp3",
+   "seconds": 0.496,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f1_hex": {
+   "file": "voice/f1_hex.mp3",
+   "seconds": 0.496,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f1_hellstorm": {
+   "file": "voice/f1_hellstorm.mp3",
+   "seconds": 1.019,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f1_tornado": {
+   "file": "voice/f1_tornado.mp3",
+   "seconds": 1.411,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f1_burn": {
+   "file": "voice/f1_burn.mp3",
+   "seconds": 0.522,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f1_healed1": {
+   "file": "voice/f1_healed1.mp3",
+   "seconds": 0.601,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f2_attack1": {
+   "file": "voice/f2_attack1.mp3",
+   "seconds": 0.313,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f2_attack2": {
+   "file": "voice/f2_attack2.mp3",
+   "seconds": 0.366,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f2_attack3": {
+   "file": "voice/f2_attack3.mp3",
+   "seconds": 0.287,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f2_damaged1": {
+   "file": "voice/f2_damaged1.mp3",
+   "seconds": 0.444,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f2_damaged2": {
+   "file": "voice/f2_damaged2.mp3",
+   "seconds": 0.313,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f2_damaged3": {
+   "file": "voice/f2_damaged3.mp3",
+   "seconds": 0.34,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f2_fire": {
+   "file": "voice/f2_fire.mp3",
+   "seconds": 0.575,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f2_ice": {
+   "file": "voice/f2_ice.mp3",
+   "seconds": 0.496,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f2_blizzard": {
+   "file": "voice/f2_blizzard.mp3",
+   "seconds": 0.601,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f2_heal": {
+   "file": "voice/f2_heal.mp3",
+   "seconds": 0.444,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f2_cure": {
+   "file": "voice/f2_cure.mp3",
+   "seconds": 0.47,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f2_curse": {
+   "file": "voice/f2_curse.mp3",
+   "seconds": 0.549,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f2_hex": {
+   "file": "voice/f2_hex.mp3",
+   "seconds": 0.522,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f2_hellstorm": {
+   "file": "voice/f2_hellstorm.mp3",
+   "seconds": 0.914,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f2_tornado": {
+   "file": "voice/f2_tornado.mp3",
+   "seconds": 0.81,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f2_burn": {
+   "file": "voice/f2_burn.mp3",
+   "seconds": 0.496,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f2_healed1": {
+   "file": "voice/f2_healed1.mp3",
+   "seconds": 0.47,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f3_attack1": {
+   "file": "voice/f3_attack1.mp3",
+   "seconds": 0.209,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f3_attack2": {
+   "file": "voice/f3_attack2.mp3",
+   "seconds": 0.287,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f3_attack3": {
+   "file": "voice/f3_attack3.mp3",
+   "seconds": 0.366,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f3_damaged1": {
+   "file": "voice/f3_damaged1.mp3",
+   "seconds": 0.392,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f3_damaged2": {
+   "file": "voice/f3_damaged2.mp3",
+   "seconds": 0.313,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f3_damaged3": {
+   "file": "voice/f3_damaged3.mp3",
+   "seconds": 0.34,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f3_fire": {
+   "file": "voice/f3_fire.mp3",
+   "seconds": 0.549,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f3_ice": {
+   "file": "voice/f3_ice.mp3",
+   "seconds": 0.549,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f3_blizzard": {
+   "file": "voice/f3_blizzard.mp3",
+   "seconds": 0.627,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f3_heal": {
+   "file": "voice/f3_heal.mp3",
+   "seconds": 0.522,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f3_cure": {
+   "file": "voice/f3_cure.mp3",
+   "seconds": 0.522,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f3_curse": {
+   "file": "voice/f3_curse.mp3",
+   "seconds": 0.653,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f3_hex": {
+   "file": "voice/f3_hex.mp3",
+   "seconds": 0.575,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f3_hellstorm": {
+   "file": "voice/f3_hellstorm.mp3",
+   "seconds": 1.045,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f3_tornado": {
+   "file": "voice/f3_tornado.mp3",
+   "seconds": 0.888,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f3_burn": {
+   "file": "voice/f3_burn.mp3",
+   "seconds": 0.47,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  },
+  "f3_healed1": {
+   "file": "voice/f3_healed1.mp3",
+   "seconds": 0.627,
+   "source": "https://opengameart.org/content/female-rpg-voice-starter-pack",
+   "license": "CC0"
+  }
+ }
+}

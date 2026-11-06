@@ -260,6 +260,12 @@ function closeHubOptions(){
 (function(){
   const box = document.getElementById("hub-options"); if(!box) return;
   box.querySelectorAll("[data-opt-close]").forEach(b=> b.addEventListener("click", closeHubOptions));
+  // Estilo de música: lo-fi retro (archivos CC0, js/audio/sample-bank.js) u Original (la sintetizada); se recuerda en este navegador
+  const styleSel = document.getElementById("opt-music-style");
+  if(styleSel){
+    if(typeof SampleBank!=="undefined") styleSel.value = SampleBank.getStyle();
+    styleSel.addEventListener("change", ()=>{ if(typeof SampleBank!=="undefined") SampleBank.setStyle(styleSel.value); });
+  }
   for(const [id, kind, pauseId] of [["opt-vol-music","music","vol-music"],["opt-vol-sfx","sfx","vol-sfx"]]){
     const el = document.getElementById(id); if(!el) continue;
     el.addEventListener("input", ()=>{

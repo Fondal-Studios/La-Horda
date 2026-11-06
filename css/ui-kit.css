@@ -223,6 +223,7 @@ body.fondal-tele.fondal-tele-partido #controls .ability-btn.ready:not(.revive){ 
 .opt-row{ display:flex; align-items:center; justify-content:space-between; gap:10px; min-height:44px; font-family:var(--ui-font); font-size:1.2rem; color:var(--ui-ink); }
 .opt-row input[type=range]{ flex:1; max-width:220px; height:40px; accent-color:var(--ui-accent); }
 .opt-row input:not([type]){ width:180px; min-height:40px; padding:4px 8px; background:var(--ui-inset); color:var(--ui-ink); border:2px solid #000; font:inherit; }
+.opt-row select{ width:180px; min-height:40px; padding:4px 8px; background:var(--ui-inset); color:var(--ui-ink); border:2px solid #000; font:inherit; }
 .opt-note{ font-size:0.8rem; color:var(--ui-dim); margin:6px 0 8px; line-height:1.35; }
 .opt-btns{ display:flex; gap:8px; margin-bottom:10px; }
 #opt-close-btn{ max-width:none; }
