@@ -73,6 +73,11 @@ def run(spec_path, baseline_dir=None, integrate=True, rounds=canon.MAX_ROUNDS, o
         if fr:
             br = evaluator.evaluate(fr, a, canon.engine_ramp_for(work, a))
             base[a['id']], base_crit[a['id']], base_met[a['id']] = br['score'], br['criteria'], br['metrics']
+    for a in work['abilities']:   # una capa superpuesta tiene tantos cuadros como el arte del motor que cubre
+        if a.get('mode') == 'overlay' and (bdir / 'baseline.json').exists():
+            meta = json.loads((bdir / 'baseline.json').read_text()).get(a['id'])
+            if isinstance(meta, dict) and meta.get('frames'):
+                a['frames'] = meta['frames']
     state = {a['id']: {'status': 'PENDING', 'rounds': 0, 'history': []} for a in work['abilities']}
     # íconos y sellos con forma propia (un corazón roto, un cartel…): su arte actual no llega al radio, no es un decal de área → se conservan
     for a in work['abilities']:

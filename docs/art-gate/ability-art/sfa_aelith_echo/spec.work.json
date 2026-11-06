@@ -1,0 +1,577 @@
+{
+ "guardian": "sfa_aelith_echo",
+ "engine": "sfa",
+ "title": "Tema aelith_echo (skill-fx-a)",
+ "palette": [
+  "#1e1633",
+  "#5a4a8c",
+  "#a58fd6",
+  "#d9c9f5",
+  "#fff8e0"
+ ],
+ "abilities": [
+  {
+   "id": "nova32",
+   "kind": "ring",
+   "size": 32,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_echo",
+    "size": 32
+   },
+   "baseline": "nova|aelith_echo|32",
+   "replaces": "nova|aelith_echo|32",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "nova48",
+   "kind": "ring",
+   "size": 48,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_echo",
+    "size": 48
+   },
+   "baseline": "nova|aelith_echo|48",
+   "replaces": "nova|aelith_echo|48",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "nova64",
+   "kind": "ring",
+   "size": 64,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_echo",
+    "size": 64
+   },
+   "baseline": "nova|aelith_echo|64",
+   "replaces": "nova|aelith_echo|64",
+   "params": {
+    "rim": 2,
+    "fill": 0.0,
+    "ticks": 16,
+    "tick_len": 0.12,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.0,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.3,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 0,
+    "motif_n": 5,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 1,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "ticks": 1,
+    "tick_len": 1,
+    "deco": 1
+   }
+  },
+  {
+   "id": "nova80",
+   "kind": "ring",
+   "size": 80,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_echo",
+    "size": 80
+   },
+   "baseline": "nova|aelith_echo|80",
+   "replaces": "nova|aelith_echo|80",
+   "params": {
+    "rim": 2,
+    "fill": 0.0,
+    "ticks": 16,
+    "tick_len": 0.16,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.0,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.32,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 0,
+    "motif_n": 5,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 2,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "ticks": 1,
+    "tick_len": 1,
+    "deco": 1
+   }
+  },
+  {
+   "id": "nova96",
+   "kind": "ring",
+   "size": 96,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_echo",
+    "size": 96
+   },
+   "baseline": "nova|aelith_echo|96",
+   "replaces": "nova|aelith_echo|96",
+   "params": {
+    "rim": 2,
+    "fill": 0.0,
+    "ticks": 16,
+    "tick_len": 0.16,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.0,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.32,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 0,
+    "motif_n": 5,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 2,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "ticks": 1,
+    "tick_len": 1,
+    "deco": 1
+   }
+  },
+  {
+   "id": "nova128",
+   "kind": "ring",
+   "size": 128,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_echo",
+    "size": 128
+   },
+   "baseline": "nova|aelith_echo|128",
+   "replaces": "nova|aelith_echo|128",
+   "params": {
+    "rim": 3,
+    "fill": 0.0,
+    "ticks": 16,
+    "tick_len": 0.16,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.0,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.32,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 0,
+    "motif_n": 5,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 2,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "ticks": 1,
+    "rim": 1,
+    "tick_len": 1,
+    "deco": 1
+   }
+  },
+  {
+   "id": "nova160",
+   "kind": "ring",
+   "size": 160,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_echo",
+    "size": 160
+   },
+   "baseline": "nova|aelith_echo|160",
+   "replaces": "nova|aelith_echo|160",
+   "params": {
+    "rim": 4,
+    "fill": 0.0,
+    "ticks": 16,
+    "tick_len": 0.16,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.0,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.32,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 0,
+    "motif_n": 5,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 2,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "ticks": 1,
+    "rim": 1,
+    "tick_len": 1,
+    "deco": 1
+   }
+  },
+  {
+   "id": "nova192",
+   "kind": "ring",
+   "size": 192,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_echo",
+    "size": 192
+   },
+   "baseline": "nova|aelith_echo|192",
+   "replaces": "nova|aelith_echo|192",
+   "params": {
+    "rim": 4,
+    "fill": 0.0,
+    "ticks": 16,
+    "tick_len": 0.2,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.0,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.32,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 0,
+    "motif_n": 5,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 2,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "ticks": 1,
+    "rim": 1,
+    "tick_len": 1,
+    "deco": 1
+   }
+  },
+  {
+   "id": "zone32",
+   "kind": "idle",
+   "size": 32,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_echo",
+    "size": 32
+   },
+   "baseline": "zone|aelith_echo|32",
+   "replaces": "zone|aelith_echo|32",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone48",
+   "kind": "idle",
+   "size": 48,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_echo",
+    "size": 48
+   },
+   "baseline": "zone|aelith_echo|48",
+   "replaces": "zone|aelith_echo|48",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone64",
+   "kind": "idle",
+   "size": 64,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_echo",
+    "size": 64
+   },
+   "baseline": "zone|aelith_echo|64",
+   "replaces": "zone|aelith_echo|64",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone80",
+   "kind": "idle",
+   "size": 80,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_echo",
+    "size": 80
+   },
+   "baseline": "zone|aelith_echo|80",
+   "replaces": "zone|aelith_echo|80",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone96",
+   "kind": "idle",
+   "size": 96,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_echo",
+    "size": 96
+   },
+   "baseline": "zone|aelith_echo|96",
+   "replaces": "zone|aelith_echo|96",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone128",
+   "kind": "idle",
+   "size": 128,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_echo",
+    "size": 128
+   },
+   "baseline": "zone|aelith_echo|128",
+   "replaces": "zone|aelith_echo|128",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone160",
+   "kind": "idle",
+   "size": 160,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_echo",
+    "size": 160
+   },
+   "baseline": "zone|aelith_echo|160",
+   "replaces": "zone|aelith_echo|160",
+   "params": {
+    "rim": 2,
+    "fill": 0.0,
+    "ticks": 16,
+    "tick_len": 0.16,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.0,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.32,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 0,
+    "motif_n": 5,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 2,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "ticks": 1,
+    "tick_len": 1,
+    "deco": 1
+   }
+  },
+  {
+   "id": "zone192",
+   "kind": "idle",
+   "size": 192,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_echo",
+    "size": 192
+   },
+   "baseline": "zone|aelith_echo|192",
+   "replaces": "zone|aelith_echo|192",
+   "params": {
+    "rim": 2,
+    "fill": 0.0,
+    "ticks": 16,
+    "tick_len": 0.16,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.0,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.32,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 0,
+    "motif_n": 5,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 2,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "ticks": 1,
+    "tick_len": 1,
+    "deco": 1
+   }
+  }
+ ]
+}

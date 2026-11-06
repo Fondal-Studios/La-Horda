@@ -1,0 +1,120 @@
+{
+ "kind": "ring",
+ "score": 93.0,
+ "points": {
+  "alpha": 5.0,
+  "palette": 8.0,
+  "hygiene": 7.0,
+  "edge": 15.0,
+  "coverage": 12.0,
+  "contrast": 8.0,
+  "clear_floor": 2.31,
+  "motion": 15.0,
+  "richness": 12.82,
+  "identity": 7.83
+ },
+ "metrics": {
+  "peak_idx": 6,
+  "alpha_binary": 1.0,
+  "palette_adherence": 1.0,
+  "colors": 5,
+  "isolated": 0.0,
+  "edge_outline": 1.0,
+  "edge_reach": 0.9951677561868494,
+  "edge_over": 0.0,
+  "coverage": 0.15896868079721607,
+  "interior": 0.07151129125651419,
+  "interior_detail": 0.07151129125651419,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 16.295334302412595,
+  "peak_pos": 0.5454545454545454,
+  "tail": 0.0,
+  "motion_mean": 0.0706787109375,
+  "unique_frames": 1.0,
+  "tones": 4,
+  "highlight_share": 0.06318407960199005,
+  "core_fill": 0.06093189964157706,
+  "detail_mass": 0.07892771804062126,
+  "min_sig_dist": 0.11066225108112446
+ },
+ "hard_fails": [],
+ "ops": [
+  {
+   "knob": "fill",
+   "why": "el cuerpo de la zona casi no se ve (7% del interior): subir el relleno trameado",
+   "add": 0.06
+  },
+  {
+   "knob": "ticks",
+   "why": "más marcas internas para dar cuerpo",
+   "add": 4
+  },
+  {
+   "knob": "deco",
+   "why": "se parece demasiado a otra habilidad del guardián (distancia 0.11): cambiar el tipo de marca",
+   "add": 1
+  },
+  {
+   "knob": "inner_ring",
+   "why": "segundo anillo para distinguirla",
+   "set": 1
+  }
+ ],
+ "criteria": {
+  "alpha": 1.0,
+  "palette": 1.0,
+  "hygiene": 1.0,
+  "edge": 1.0,
+  "coverage": 1.0,
+  "contrast": 1.0,
+  "clear_floor": 0.461,
+  "motion": 1.0,
+  "richness": 0.854,
+  "identity": 0.783
+ },
+ "baseline_total": 64.9,
+ "baseline_criteria": {
+  "alpha": 1.0,
+  "palette": 0.0,
+  "hygiene": 0.813,
+  "edge": 0.4,
+  "coverage": 0.551,
+  "contrast": 1.0,
+  "clear_floor": 0.436,
+  "motion": 1.0,
+  "richness": 0.627,
+  "identity": 0.7
+ },
+ "baseline_metrics": {
+  "peak_idx": 6,
+  "alpha_binary": 1.0,
+  "palette_adherence": 0.3153034300791557,
+  "colors": 5,
+  "isolated": 0.05060628535171391,
+  "edge_outline": 0.0,
+  "edge_reach": 0.9479639858050676,
+  "edge_over": 0.0,
+  "coverage": 0.0951439417905726,
+  "interior": 0.06919513607411697,
+  "interior_detail": 0.06919513607411697,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 16.295334302412595,
+  "peak_pos": 0.5454545454545454,
+  "tail": 0.0,
+  "motion_mean": 0.05382191051136364,
+  "unique_frames": 1.0,
+  "tones": 3,
+  "highlight_share": 0.0,
+  "core_fill": 0.06093189964157706,
+  "detail_mass": 0.06683094384707289,
+  "min_sig_dist": 1.0
+ },
+ "improvement": 28.1,
+ "reasons": [
+  "criterio bajo: suelo despejado 2.31/5"
+ ],
+ "status": "FAIL",
+ "keep_current": false
+}
