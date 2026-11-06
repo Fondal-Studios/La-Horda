@@ -26,14 +26,16 @@ def main():
     n = 1
     while os.path.exists(os.path.join(out, f'sheet_v{n}.png')): n += 1
     move = ('flying cycle, 6 frames, wings or body hovering with clearly different positions' if mode == 'fly' else 'walking cycle, 6 frames, legs alternating clearly')
-    P = (f"Pixel art animation sprite sheet for a video game, same pixel art style as @style. Character: {desc}, identical design to @design in every cell. "
-         "Grid of 3 rows and 6 columns of equal cells on a flat chroma green #00FF00 background, character centered, same size, feet on the same line. "
-         f"Row 1: {move}. Row 2: attack animation, 6 frames, wind-up then strike then recovery. "
-         "Row 3: idle breathing 2 frames, then being hit and recoiling 1 frame, then collapsing animation 3 frames ending in a small heap. "
-         "Absolutely no text, no letters, no numbers, no captions, no labels, no shadow, no grid lines, no effects outside the character.")
-    refs = [{"uri": green_uri(os.path.join(ROOT, style), '/tmp/_s.png'), "tag": "style"}, {"uri": green_uri(os.path.join(ROOT, design), '/tmp/_d.png'), "tag": "design"}]
+    nostyle = '--nostyle' in sys.argv
+    ref = '@design' if nostyle else '@style'
+    P = (f"Pixel art animation sprite sheet for a video game in the exact pixel art style, palette and colors of @design. Character: {desc}, identical design and colors to @design in every cell. "
+         "Grid of 3 rows and 6 columns of equal cells on a flat chroma green #00FF00 background, character centered, same size, same baseline. "
+         f"Top row: {move}. Middle row: attack, wind-up then strike then recovery. Bottom row: standing, then hit recoil, then collapsing into a small heap. "
+         "Only the character in every cell. Absolutely no text, no letters, no numbers, no captions, no labels, no shadow, no grid lines, no effects outside the character.")
+    refs = [{"uri": green_uri(os.path.join(ROOT, design), '/tmp/_d.png'), "tag": "design"}]
+    if not nostyle: refs.append({"uri": green_uri(os.path.join(ROOT, style), '/tmp/_s.png'), "tag": "style"})
     for attempt in range(3):
-        body = {"model": "gen4_image", "ratio": "1280:720", "promptText": P, "referenceImages": refs if attempt < 2 else refs[:1]}
+        body = {"model": "gen4_image", "ratio": "1280:720", "promptText": P, "referenceImages": refs}
         t = api('POST', '/text_to_image', body)
         if 'id' not in t: print('POST', t); continue
         for _ in range(60):
