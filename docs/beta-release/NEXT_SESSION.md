@@ -44,3 +44,5 @@ Herramienta del pintor: `node tools/art-world/runway-guardian.js <guardián> <in
 **Bloques de guardianes aceptados:** Guerrero, Mago, Tanque. **Devueltos:** Aelith y Morveth (arreglar `js/systems/cromas.js` para recolorear el atlas del cuerpo nuevo; instrucción exacta en RESULTADOS_PR.md). Luego: Aelith #267 (lanzamiento de espalda), Coloso de Ilkan, skins/cromas, jefes y enemigos, arenas. `tools/art-world/try-codex-body.sh <champ> <puerto> <salida>` evalúa un cuerpo; correr de a uno (en paralelo dan falsos fallos).
 
 **Intento 1 de reparación de cromas (Aelith/Morveth): fallido** — ver RESULTADOS_PR.md. Requiere decisión de revisión independiente sobre el contrato `REGISTRO.grilla_segun_contrato_propio_o_croma`. Mientras tanto seguir con: Coloso de Ilkan, #267 (Aelith lanzamiento), jefes y enemigos, arenas.
+
+**Enemigos/jefes (11:42):** auditoría objetiva hecha (ver INVENTARIO_ARTE.md): 36 de 104 con caminata ≤2 cuadros; jefes con 8/11 estados clonados. Siguiente en arte: elegir 1 jefe (Minotauro o Leviatán) y producir cuadros de caminata/estados con el pipeline de fábrica (no `gen4_image` para secuencias); Titán de Piedra: evaluar recolor de paleta al Códice.
