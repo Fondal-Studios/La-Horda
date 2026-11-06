@@ -66,7 +66,11 @@
   "ronda 1: great_rift PASS 94.8 (arte actual 75.7, +19.1)",
   "ronda 1: rift_echo PASS 95.7 (arte actual 78.0, +17.7)",
   "ronda 1: portal FAIL 86.3 — criterio bajo: cobertura legible 2.0/12",
-  "ronda 2: portal PASS 93.2 (arte actual 66.0, +27.2)"
+  "ronda 2: portal PASS 93.2 (arte actual 66.0, +27.2)",
+  "arquitecto: integradas ['great_rift', 'rift_echo', 'portal']; humo OK: SMOKE OK oriel: great_rift,rift_echo,portal"
  ],
- "integration": null
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['great_rift', 'rift_echo', 'portal']; humo OK: SMOKE OK oriel: great_rift,rift_echo,portal"
+ }
 }

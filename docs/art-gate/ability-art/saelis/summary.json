@@ -56,7 +56,11 @@
  "log": [
   "ronda 1: updraft PASS 94.4 (arte actual 75.8, +18.6)",
   "ronda 1: feather_sky PASS 93.7 (arte actual 79.8, +13.9)",
-  "ronda 1: lane PASS 98.3 (arte actual 82.7, +15.6)"
+  "ronda 1: lane PASS 98.3 (arte actual 82.7, +15.6)",
+  "arquitecto: integradas ['updraft', 'feather_sky', 'lane']; humo OK: SMOKE OK saelis: updraft,feather_sky,lane"
  ],
- "integration": null
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['updraft', 'feather_sky', 'lane']; humo OK: SMOKE OK saelis: updraft,feather_sky,lane"
+ }
 }

@@ -135,7 +135,11 @@
   "ronda 2: erase PASS 96.3 (arte actual 69.0, +27.3)",
   "ronda 2: atlas PASS 93.0 (arte actual 64.7, +28.3)",
   "ronda 2: atlas_zone FAIL 97.5 — regresión de cobertura legible frente al arte actual (0.88 < 0.94)",
-  "ronda 3: atlas_zone PASS 98.2 (arte actual 75.8, +22.4)"
+  "ronda 3: atlas_zone PASS 98.2 (arte actual 75.8, +22.4)",
+  "arquitecto: integradas ['ink_line', 'retrace', 'erase', 'atlas', 'atlas_zone']; humo OK: SMOKE OK sira: ink_line,retrace,erase,atlas,atlas_zone"
  ],
- "integration": null
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['ink_line', 'retrace', 'erase', 'atlas', 'atlas_zone']; humo OK: SMOKE OK sira: ink_line,retrace,erase,atlas,atlas_zone"
+ }
 }

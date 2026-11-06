@@ -120,7 +120,11 @@
   "ronda 1: soil_zone PASS 95.0 (arte actual 66.9, +28.1)",
   "ronda 1: faults PASS 95.9 (arte actual 77.7, +18.2)",
   "ronda 1: faults_zone PASS 95.8 (arte actual 68.2, +27.6)",
-  "ronda 1: trench PASS 98.3 (arte actual 85.6, +12.7)"
+  "ronda 1: trench PASS 98.3 (arte actual 85.6, +12.7)",
+  "arquitecto: integradas ['burial', 'mound', 'mound_zone', 'soil_zone', 'faults', 'faults_zone', 'trench']; humo OK: SMOKE OK renko: burial,mound,mound_zone,soil_zone,faults,faults_zone,trench"
  ],
- "integration": null
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['burial', 'mound', 'mound_zone', 'soil_zone', 'faults', 'faults_zone', 'trench']; humo OK: SMOKE OK renko: burial,mound,mound_zone,soil_zone,faults,faults_zone,trench"
+ }
 }

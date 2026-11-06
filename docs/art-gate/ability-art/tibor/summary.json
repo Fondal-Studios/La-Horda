@@ -200,7 +200,11 @@
   "ronda 5: swarm FAIL 93.6 — regresión de riqueza visual frente al arte actual (0.85 < 0.98)",
   "ronda 5: hive_zone FAIL 91.8 — regresión de riqueza visual frente al arte actual (0.78 < 1.00); regresión de cobertura legible frente al arte actual (0.75 < 1.00)",
   "ronda 6: swarm FAIL 93.6 — regresión de riqueza visual frente al arte actual (0.85 < 0.98)",
-  "ronda 6: hive_zone FAIL 91.8 — regresión de riqueza visual frente al arte actual (0.78 < 1.00); regresión de cobertura legible frente al arte actual (0.75 < 1.00)"
+  "ronda 6: hive_zone FAIL 91.8 — regresión de riqueza visual frente al arte actual (0.78 < 1.00); regresión de cobertura legible frente al arte actual (0.75 < 1.00)",
+  "arquitecto: integradas ['pollen', 'recall']; humo OK: SMOKE OK tibor: pollen,recall"
  ],
- "integration": null
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['pollen', 'recall']; humo OK: SMOKE OK tibor: pollen,recall"
+ }
 }
