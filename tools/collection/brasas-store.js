@@ -36,7 +36,11 @@ const SECRET='secreto-de-prueba-brasas-0123';
   await page.waitForFunction(()=>typeof assetsAllReady==='function'&&assetsAllReady()&&typeof shopOpen==='function'&&typeof renderMainMenu==='function');
   if(logged)await page.waitForFunction(()=>acct.lastPull&&!acct.pulling&&!acct.applying,null,{timeout:30000});
   // perfil fuera de la primera partida, con guardianes propios (para la tira "¿Qué compro con Brasas?")
-  await page.evaluate(c=>{for(const k of Object.keys(c)){save.champions[k]=Object.assign(save.champions[k]||{},c[k]);}save.firstRun=null;selectedClass='tanque';setState('mainmenu');renderMainMenu();},champs);
+  const fixture=c=>{for(const k of Object.keys(c)){save.champions[k]=Object.assign(save.champions[k]||{},c[k]);}save.firstRun=null;selectedClass='tanque';setState('mainmenu');renderMainMenu();};
+  await page.evaluate(fixture,champs);
+  // El perfil de la prueba manda: una sincronización tardía de la cuenta/economía (más probable con la página pesada) puede volver a aplicar la nube sin
+  // guardianes y mandar al juego a la pantalla del guardián de regalo; se vuelve a fijar el perfil hasta que quede estable ~1 s.
+  if(logged){let stable=0;for(let i=0;i<40&&stable<5;i++){await page.waitForTimeout(250);const bad=await page.evaluate(()=>state!=='mainmenu'||!save.champions.tanque||!save.champions.tanque.unlocked);if(bad){stable=0;await page.evaluate(fixture,champs);}else stable++;}}
   return {page,ctx,errors};
  }
  const noOverflow=async(page,label)=>{const r=await page.evaluate(()=>{const bad=[];const de=document.documentElement;if(de.scrollWidth>de.clientWidth+1)bad.push('document '+de.scrollWidth+'>'+de.clientWidth);
