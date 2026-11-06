@@ -1,0 +1,24 @@
+# -*- coding: utf-8 -*-
+# (regex ES, plantilla EN, plantilla PT). $1.. = grupo traducido con el diccionario si existe.
+P=[
+(r"^· Skin de ([^,]+), (.+) · cosmético, no da poder$","· Skin of $1, $2 · cosmetic, grants no power","· Skin de $1, $2 · cosmético, não dá poder"),
+(r"^· Croma de ([^,]+), (.+) · cosmético, no da poder$","· Chroma of $1, $2 · cosmetic, grants no power","· Croma de $1, $2 · cosmético, não dá poder"),
+(r"^con ([^,]+), (.+) · Nv\. (.+)$","with $1, $2 · Lv. $3","com $1, $2 · Nv. $3"),
+(r"^◆ (.+)$","◆ $1","◆ $1"),
+(r"^‹ (.+)$","‹ $1","‹ $1"),
+(r"^· Croma de (.+)$","· Chroma of $1","· Croma de $1"),
+
+(r"^(.+)\.{1,2} Coordiná tu control de grupos con tus aliados; administrá energía y enfriamientos\.$",
+ "$1. Coordinate your crowd control with your allies; manage energy and cooldowns.",
+ "$1. Coordene seu controle de grupos com seus aliados; administre energia e recargas."),
+(r"^El polvo del viaje cubre la ropa antes de que llegue la primera luz\. (.+) conserva sus herramientas: cambian los colores, no las promesas\.$",
+ "Travel dust covers the clothes before the first light arrives. $1 keeps their tools: the colors change, the promises don't.",
+ "O pó da viagem cobre a roupa antes que chegue a primeira luz. $1 conserva suas ferramentas: mudam as cores, não as promessas."),
+(r"^Los colores de (.+) acompañan un nuevo viaje\. Conserva su vestuario y sus decisiones: esta apariencia cambia únicamente la paleta\.$",
+ "The colors of $1 accompany a new journey. It keeps its outfit and its choices: this look changes only the palette.",
+ "As cores de $1 acompanham uma nova viagem. Conserva seu figurino e suas decisões: esta aparência muda apenas a paleta."),
+(r"^(.+) · colección$","$1 · collection","$1 · coleção"),
+(r"^Colección de (.+)$","$1 collection","Coleção de $1"),
+(r"^(.+) · Definitiva$","$1 · Ultimate","$1 · Definitiva"),
+(r"^(.+) · Manifestación$","$1 · Manifestation","$1 · Manifestação"),
+]

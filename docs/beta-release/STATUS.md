@@ -18,3 +18,7 @@
 
 ### Ejecución programada 15:18 UTC
 - Saldo Runway 238 (<250): no se gastó. Regla de economía reverificada sobre la rama (`PIECES_FOR_BRASAS=false`): `server/test-wallet.js` 65/65, `test-wallet-pieces.js` 35/35, `tools/items/t_piezas_brasas.js` y `t_skins_brasas.js` PASS.
+
+### Idiomas ES · EN · PT (nuevo)
+- Selector en pantalla de título, botón en el hub y lista en Opciones; persistencia + `?lang=`. Traductor en caliente (`js/i18n/i18n.js`), diccionarios generados (`tools/i18n/build.py`), CI `i18n.yml` (prueba funcional + cobertura ≥97 % en EN y PT sobre un recorrido de 1.205 textos de interfaz: EN 100 %, PT ≈99 %).
+- **Pendiente (Fase 2)**: talentos, Códice/lore de jefes y enemigos, historia, misiones, bendiciones, textos de servidor y páginas legales siguen en español (fallback). Detalle en `docs/i18n/README.md`.
