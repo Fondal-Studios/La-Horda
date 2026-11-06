@@ -11,3 +11,7 @@
 ## Actualización 2026-11-06 (tarde)
 - Cuerpos del Códice integrados (candidatos, sin revisión independiente): Guerrero, Tanque, Mago, **Aelith, Morveth** (cromas recoloreando el cuerpo nuevo, sin tocar gates) y atlas más fieles de **Saelis, Aurelia, Maura, Ynara** (#259). Myla excluida (hash aprobado en `check-myla-death`). Capturas en `evidence/guardianes/`.
 - Brecha abierta: Libertador (sin PR con cuerpo fiel), Coloso de Ilkan (procedural).
+
+## Actualización 2026-11-06 (noche)
+- Integrados además: **Coloso de Ilkan** (espíritu de arena pintado), **Libertador** completo (a pie, combate, caballo, caída; revisión independiente con condiciones atendidas), **Myla** (maestro #259, croma y caída), **Profeta** (repintada), y **#90** (Ilsa/Vorn/Kora, TESTING). Auditoría visual de los 43: el resto está a ≈80 % o más del Códice.
+- Saldo Runway: **238 créditos** (por debajo del umbral de 250 de la tarea programada: las ejecuciones programadas NO deben gastar hasta que el propietario cargue más). Gasto de la jornada ≈ 500 créditos, todos registrados en `ART_CREDITS.md` (incluye ≈ 100 en intentos fallidos `BAD_OUTPUT`, que se cobran).

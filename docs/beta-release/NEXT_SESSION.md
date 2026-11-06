@@ -64,3 +64,8 @@ Herramienta del pintor: `node tools/art-world/runway-guardian.js <guardián> <in
 - Barrido de PR con cuerpos de campeones COMPLETO (ver RESULTADOS_PR): integrados Guerrero, Tanque, Mago, Aelith, Morveth, Saelis, Aurelia, Maura, Ynara y Myla (con revisión independiente y prueba de fidelidad nueva). #90 (Ilsa/Vorn/Kora) = campeones nuevos, fuera de la beta.
 - Libertador: hoja de referencia + atlas candidato en `art-source/runway-guardians/libertador/` (24 créditos gastados de 60 autorizados; quedan 36 para las poses de bayoneta/ultimate/montado). Saldo Runway ≈ 710.
 - Pendiente de arte de guardianes: poses propias de Libertador, croma `myla_arandanos` y caída de Myla contra el nuevo master, Coloso de Ilkan.
+
+## Actualización (final de jornada 2026-11-06)
+- Pendiente de arte de guardianes: animación cuadro a cuadro real (hoy es procedural sobre una pose pintada por estado) en Libertador, Profeta, Coloso; Berrinche de Myla (hash fijado, diseño viejo); skins/sets de Libertador/Profeta autorales (revisar coherencia con la base); revisión humana de arte/audio de Ilsa/Vorn/Kora (cuerpos derivados de donantes).
+- Antes de gastar más en Runway hace falta saldo (>250 para ejecuciones programadas) y autorización del propietario.
+- Todo el arte aceptado es CANDIDATO: falta revisión independiente humana y CI remoto; ningún PR se fusionó a main.
