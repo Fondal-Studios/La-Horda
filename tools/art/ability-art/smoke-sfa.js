@@ -26,14 +26,14 @@ const BASE = process.env.BASE_URL || 'http://127.0.0.1:8750/';
         for (const th of (firstOfTheme ? [theme, theme + '~h', theme + '~p', theme + '~k'] : [theme, theme + '~h'])) for (const ak of (firstOfTheme ? arenasAll : arenasMin))
           try {
             currentArena = ak; sfaCache.clear(); const h0 = ABS.hits; sfaBake(art, th, size); const b = sfaBake(art, th, size);
-            if (!b || b.n !== 12 || b.w !== size || b.h !== size) { out.bad.push(`${art}|${th}|${size}: tira inválida ${b && b.n}`); continue; }
+            if (!b || b.n !== (art === 'zone' ? 8 : 12) || b.w !== size || b.h !== size) { out.bad.push(`${art}|${th}|${size}: tira inválida ${b && b.n}`); continue; }
             if (off && ABS.hits !== h0) out.bad.push(`${art}|${th}|${size}: ?ua=0 no debe usar el arte nuevo`);
             if (!off && ABS.hits === h0) out.bad.push(`${art}|${th}|${size}: no usó el arte nuevo`);
             const d = b.cv.getContext('2d').getImageData(0, 0, b.cv.width, b.cv.height).data; for (let i = 3; i < d.length; i += 4) if (d[i] !== 0 && d[i] !== 255) { out.bad.push(`${art}|${th}|${size}: alfa ${d[i]}`); break; }
             out.n++;
           } catch (e) { out.bad.push(`${art}|${th}|${size} ${ak}: ${e.message}`); }
         // otro tamaño no pintado debe seguir con el arte del motor
-        sfaCache.clear(); const h1 = ABS.hits; sfaBake(art, theme, 128); if (ABS.hits !== h1) out.bad.push('el tamaño 128 no debe reemplazarse');
+        sfaCache.clear(); const h1 = ABS.hits; sfaBake(art, theme, 100); if (ABS.hits !== h1) out.bad.push('un tamaño sin capa (100) no debe reemplazarse');
       }
       Math.random = oRand; out.rnd = rnd; return out;
     }, [spec.abilities, ids, flag === '?ua=0']);

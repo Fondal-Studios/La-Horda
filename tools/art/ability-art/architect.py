@@ -66,15 +66,16 @@ RUNTIME_SFA = r"""'use strict';
    (variantes ~h ~p ~k y tinte por arena). Solo (tipo|tema base|tamaño) con capa aprobada; el resto no cambia. No toca daño, alcance,
    duración ni azar. ?ua=0 vuelve al arte anterior. */
 const ABS = {off: (function(){ try{ return /[?&](ua|sfa)=0\b/.test(location.search); }catch(e){ return false; } })(), map: {}, hits: 0, hooked: false, cache: new Map(), arena: null};
-function abaSfaDecode(s, n){
-  const out = new Uint8Array(n); let p = 0, i = 0;
-  while(i < s.length){ const d = s.charCodeAt(i++) - 48; let j = i; while(j < s.length && s[j] !== ';') j++; const run = parseInt(s.slice(i, j), 10); i = j + 1; out.fill(d, p, p + run); p += run; }
+function abaSfaDecode(s, n, done){   // capa dispersa: píxeles opacos como saltos·8+tono en base 36; '=k' repite el cuadro k
+  if(s.charCodeAt(0) === 61) return done[+s.slice(1)];
+  const out = new Uint8Array(n); if(!s) return out; let p = 0;
+  for(const tok of s.split(',')){ const v = parseInt(tok, 36); p += v >> 3; out[p] = v & 7; }
   return out;
 }
 function abaSfaRgb(h){ const n = parseInt(h.slice(1), 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; }
 function abaSfaOverlay(art, themes, size, w, h, frames){   // themes: nombre o lista de temas base que comparten esta capa
   if(ABS.off || typeof sfaBake !== 'function') return;
-  const fr = frames.map(s => abaSfaDecode(s, w * h));
+  const fr = []; for(const s of frames) fr.push(abaSfaDecode(s, w * h, fr));
   for(const th of [].concat(themes)) ABS.map[art + '|' + th + '|' + size] = {w, h, fr};
   if(ABS.hooked) return; ABS.hooked = true;
   const orig = sfaBake;
@@ -108,6 +109,16 @@ def place_unified(idx, new_tags=()):
     tags.sort(key=lambda t: 0 if t.endswith('/runtime.js"></script>') or t.endswith('/sfa-runtime.js"></script>') else 1)
     last = list(re.finditer(r'<script src="js/champions/vfx-b/[^"]+"></script>', idx))[-1]
     return idx[:last.end()] + '\n' + '\n'.join(tags) + idx[last.end():]
+
+
+def revert_index(index_before):
+    """Quita del index.html ACTUAL solo las etiquetas vfx-unified que este Arquitecto agregó (nunca pisa con una copia vieja: otros procesos o personas pueden
+    haber editado el archivo mientras corría la prueba de humo)."""
+    pat = re.compile(r'<script src="js/champions/vfx-unified/[^"]+"></script>\n?')
+    before = {m.group(0).strip() for m in pat.finditer(index_before)}
+    cur = INDEX.read_text(encoding='utf-8')
+    cur = pat.sub(lambda m: m.group(0) if m.group(0).strip() in before else '', cur)
+    INDEX.write_text(cur, encoding='utf-8')
 
 
 def rle(a):
@@ -171,7 +182,7 @@ def integrate(guardian, spec, results, smoke=True, base_url='http://127.0.0.1:87
     except subprocess.TimeoutExpired:
         p = subprocess.CompletedProcess([], 1, '', 'la prueba de humo excedió el tiempo límite')
     if p.returncode != 0:
-        INDEX.write_text(index_before, encoding='utf-8')
+        revert_index(index_before)
         for path in (rt, gm):
             if path in prev:
                 path.write_text(prev[path], encoding='utf-8')
@@ -182,6 +193,32 @@ def integrate(guardian, spec, results, smoke=True, base_url='http://127.0.0.1:87
 
 
 # ---------------------------------------------------------------- skill-fx-a: una sola capa compartida por todos los temas aprobados
+def sfa_encode(frames):
+    """Cuadros → cadenas dispersas (saltos*8+tono en base 36); un cuadro idéntico a uno anterior se guarda como '=k'."""
+    out, seen = [], {}
+    for k, f in enumerate(frames):
+        flat = f.ravel()
+        idx = np.nonzero(flat)[0]
+        toks, prev = [], 0
+        for i in idx:
+            v = ((int(i) - prev) << 3) | int(flat[i])
+            prev = int(i)
+            d, s = v, ''
+            while True:
+                d, r = divmod(d, 36)
+                s = '0123456789abcdefghijklmnopqrstuvwxyz'[r] + s
+                if d == 0:
+                    break
+            toks.append(s)
+        enc = ','.join(toks)
+        if enc and enc in seen:
+            out.append(f'={seen[enc]}')
+        else:
+            seen.setdefault(enc, k)
+            out.append(enc)
+    return out
+
+
 def sfa_collect(spec_paths):
     """[(tema, tamaño, w, h, frames)] de lo APROBADO en cada ficha sfa_*, repintado desde la ficha final (determinista)."""
     import painter
@@ -201,7 +238,7 @@ def sfa_collect(spec_paths):
 def sfa_module_source(items):
     groups = {}
     for theme, size, w, h, fr, art in items:
-        key = (art, size, w, h, tuple(rle(f) for f in fr))
+        key = (art, size, w, h, tuple(sfa_encode(fr)))
         groups.setdefault(key, []).append(theme)
     lines = ["'use strict';",
              "/* js/champions/vfx-unified/sfa_overlay.js — GENERADO por tools/art/ability-art/architect.py (integrate_sfa) desde specs/sfa_*.json.",
@@ -237,7 +274,7 @@ def integrate_sfa(spec_paths, smoke=True, base_url='http://127.0.0.1:8750/'):
         except subprocess.TimeoutExpired:   # una prueba que no termina no prueba nada: se revierte igual que un fallo
             p = subprocess.CompletedProcess([], 1, '', 'la prueba de humo excedió el tiempo límite')
         if p.returncode != 0:
-            INDEX.write_text(index_before, encoding='utf-8')
+            revert_index(index_before)
             for path in (rt, gm):
                 path.write_text(prev[path], encoding='utf-8') if path in prev else (path.unlink() if path.exists() else None)
             return False, 'REVERTIDO — la prueba de humo falló:\n' + (p.stdout + p.stderr)[-1500:]
