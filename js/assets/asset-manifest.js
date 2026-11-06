@@ -4,6 +4,8 @@
    nueva al juego, sumala también acá. */
 const ASSET_MANIFEST = [
   "assets/sprites/champions/guerrero/codex-v1/atlas.png",
+  "assets/sprites/champions/morveth/codex-v1/atlas.png",
+  "assets/sprites/champions/aelith/codex-v1/atlas.png",
   "assets/sprites/champions/tanque/codex-v1/atlas.png",
 
   "assets/sprites/champions/nano_gm/codex-v2/atlas.png",
