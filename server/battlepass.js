@@ -44,6 +44,7 @@ function seasonOf(now){
 const reward = (track, tier, S) => { const r = REWARDS[track][tier]; if(!r) return null; const o = {}; for(const k in r) o[k] = typeof r[k] === "string" ? r[k].replace("{S}", S) : r[k]; return o; };
 function root(raw){ const r = raw || require("./game-master").stateOf(null); if(!r.battlePass) r.battlePass = { accounts: {} }; return r; }
 function acct(r, uid, now){
+  root(r);   // garantiza root.battlePass (los hooks externos pueden llegar antes que cualquier ruta del pase)
   const S = seasonOf(now), a = r.battlePass.accounts[uid] || (r.battlePass.accounts[uid] = { season: S.id, xp: 0, premium: false, claimed: {}, cosmetics: [], runs: {}, prog: {}, doneCh: {}, day: 0, dayXp: 0 });
   if(a.season !== S.id){   // temporada nueva: se reinicia el progreso; los cosméticos ya ganados se conservan
     a.season = S.id; a.xp = 0; a.premium = false; a.claimed = {}; a.runs = {}; a.prog = {}; a.doneCh = {}; a.day = 0; a.dayXp = 0;

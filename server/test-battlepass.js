@@ -13,6 +13,15 @@ const rid=()=>'bp_req_'+(++seq)+'_abcd';
  await api('POST','/api/register',{user:'bpowner',pass:'test-long-password'},null,201);
  const u=await api('POST','/api/register',{user:'bpplayer',pass:'test-long-password'},null,201),T=u.token,uid=(await app.store.getUserByKey('bpplayer')).id;
  const brasas=async()=>(await app.store.walletGet(uid)).premium;
+ // 0) orden de inicialización: un jugador que cierra una partida ANTES de abrir el pase igual recibe su XP (el hook no puede romper el cierre)
+ {
+  const f=await api('POST','/api/register',{user:'bpfresh',pass:'test-long-password'},null,201),FT=f.token;
+  await api('GET','/api/economy',undefined,FT);
+  const fr=(await action(FT,'run.start',{arena:'ciudad',champion:'tanque',mode:'endless'})).run;now+=100000;
+  await action(FT,'run.pulse',{run:fr.id,round:3});
+  await action(FT,'run.finish',{run:fr.id,durationMs:100000,round:5,score:1000,survived:2,survivedScore:1000});
+  const fv=await api('GET','/api/battlepass',undefined,FT);assert.equal(fv.xp,25+15*2);
+ }
  // 1) estado inicial: temporada 1 de 30 días, 30 niveles, ruta gratis y premium
  let v=await api('GET','/api/battlepass',undefined,T);
  assert.equal(v.season.id,1);assert.equal(v.season.days,30);assert.equal(v.tier,0);assert.equal(v.track.length,30);assert.equal(v.premium,false);assert.equal(v.claimed.length,0);
