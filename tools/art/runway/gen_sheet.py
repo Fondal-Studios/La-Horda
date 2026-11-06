@@ -28,7 +28,9 @@ def main():
     move = ('flying cycle, 6 frames, wings or body hovering with clearly different positions' if mode == 'fly' else 'walking cycle, 6 frames, legs alternating clearly')
     nostyle = '--nostyle' in sys.argv
     ref = '@design' if nostyle else '@style'
-    P = (f"Pixel art animation sprite sheet for a video game in the exact pixel art style, palette and colors of @design. Character: {desc}, identical design and colors to @design in every cell. "
+    lead = ("Pixel art animation sprite sheet for a video game in the exact pixel art style, palette and colors of @design." if nostyle else
+            "Pixel art animation sprite sheet for a video game. Render it with the rich dark painterly shading, detailed texture and crisp 1px dark outline of @style, but keep the exact character design and colors of @design.")
+    P = (f"{lead} Character: {desc}, identical design and colors to @design in every cell. "
          "Grid of 3 rows and 6 columns of equal cells on a flat chroma green #00FF00 background, character centered, same size, same baseline. "
          f"Top row: {move}. Middle row: attack, wind-up then strike then recovery. Bottom row: standing, then hit recoil, then collapsing into a small heap. "
          "Only the character in every cell. Absolutely no text, no letters, no numbers, no captions, no labels, no shadow, no grid lines, no effects outside the character.")

@@ -26,7 +26,7 @@ def key_green(im):
     out[..., 1][sp] = np.maximum(out[..., 0], out[..., 2])[sp]
     return out
 
-def row_figures(rgba, y0, y1, gap=10, minpx=400):
+def row_figures(rgba, y0, y1, gap=10, minpx=400, splitW=0):
     """Figuras de una banda de filas: columnas de alfa unidas si el hueco entre ellas es menor que `gap` px (la grilla de Runway no es pareja)."""
     band = rgba[y0:y1]; occ = (band[..., 3] > 0).sum(0) > 0
     runs, st = [], None
@@ -37,6 +37,15 @@ def row_figures(rgba, y0, y1, gap=10, minpx=400):
     for r in runs:
         if merged and r[0] - merged[-1][1] < gap: merged[-1][1] = r[1]
         else: merged.append(r)
+    if splitW:   # figuras pegadas (alas que se tocan): se parten en el valle de ocupacion mas cercano al corte esperado
+        col = (band[..., 3] > 0).sum(0); cut = []
+        for x0, x1 in merged:
+            k = max(1, round((x1 - x0) / splitW)); pts = [x0]
+            for i in range(1, k):
+                ex = x0 + (x1 - x0) * i / k; lo, hi = int(ex - splitW * .25), int(ex + splitW * .25)
+                pts.append(lo + int(np.argmin(col[lo:hi])))
+            pts.append(x1); cut += [[pts[i], pts[i + 1]] for i in range(k)]
+        merged = cut
     figs = []
     for x0, x1 in merged:
         sub = band[:, x0:x1].copy()
@@ -111,7 +120,7 @@ def main():
         if len(bands) != R: bands = even          # filas pegadas: tercios parejos (Runway las reparte parejas)
     R = len(bands)
     for r in range(R):
-        rowf[r] = row_figures(rgba, bands[r][0], bands[r][1], spec.get('gap', 10))
+        rowf[r] = row_figures(rgba, bands[r][0], bands[r][1], spec.get('gap', 10), splitW=spec.get('splitW', 0))
         print('fila', r, 'figuras', len(rowf[r]), [f'{i}:{f.shape[1]}x{f.shape[0]}' for i, f in enumerate(rowf[r])], file=sys.stderr)
     if '--list' in sys.argv:
         from PIL import ImageDraw
