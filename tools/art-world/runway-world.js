@@ -15,6 +15,12 @@ const JOBS = {
   casa_a: 'In the style of @ref: a small two-storey timber-and-stone village house with a steep slate-blue tiled gable roof, a chimney, a wooden door and two shuttered windows, one window glowing orange. ' + STYLE,
   casa_b: 'In the style of @ref: a wider one-storey cottage with a dark-red tiled roof, a stone chimney, a wooden door with a lantern, and a small attic dormer, slightly crooked and abandoned. ' + STYLE,
 };
+const TEX = 'flat orthographic front-on texture filling the entire square edge to edge, seamless tileable pattern, dark fantasy pixel art, crisp chunky pixel blocks, limited palette, no perspective, no border, no frame, no objects, no text, no characters, even lighting, ';
+Object.assign(JOBS, {
+  tex_techo_pizarra: 'In the style of @ref: ' + TEX + 'rows of overlapping slate-blue roof shingles, a few darker cracked shingles, subtle purple moss.',
+  tex_techo_roja: 'In the style of @ref: ' + TEX + 'rows of overlapping dark-red clay roof tiles, a few chipped tiles, soot stains.',
+  tex_pared_madera_piedra: 'In the style of @ref: ' + TEX + 'a village house wall made of grey-purple stone blocks framed by dark brown timber beams in a half-timbered pattern, plaster patches, no windows, no door.',
+});
 const cmd = process.argv[2], ids = process.argv.slice(3).filter(a => !a.startsWith('--')), force = process.argv.includes('--force');
 if (cmd === 'status') console.log(JSON.stringify({creditBalance: api('GET', '/organization').creditBalance}));
 else if (cmd === 'list') for (const k of Object.keys(JOBS)) console.log(k, fs.existsSync(path.join(OUT, 'ciudad', k, 'master.png')) ? 'OK' : 'pendiente');

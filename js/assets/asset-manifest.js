@@ -392,6 +392,7 @@ const ASSET_MANIFEST = [
   "assets/vfx/ciudad/tex_puente.png",
   "assets/vfx/ciudad/tex_muralla.png",
   "assets/vfx/ciudad/tex_techo.png",
+  "assets/vfx/ciudad/tex_techo_roja.png",
   "assets/vfx/ciudad/tex_pared_ext.png",
   "assets/vfx/ciudad/tex_pared_int.png",
   "assets/vfx/ciudad/tex_puerta.png",
