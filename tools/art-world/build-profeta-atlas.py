@@ -19,7 +19,7 @@ def cell(sp,dx=0,dy=0,rot=0,alpha=1.0,flash=0):
         a=np.asarray(s).astype(int); m=a[:,:,3]>0; a[m,:3]=np.clip(a[m,:3]+flash,0,255); s=Image.fromarray(a.astype(np.uint8),'RGBA')
     c=Image.new('RGBA',(W,H),(0,0,0,0)); c.alpha_composite(s,((W-s.width)//2+dx,FOOT-s.height+dy)); return c
 idle=get('pf_idle',86); walk=get('pf_walk',86); side=get('pf_side',83); swalk=get('pf_sidewalk',83); up=get('pf_up2',86)
-atk=get('pg_attack2',83); atk0=get('pf_attack',83); wd2=get('pg_wd2',86); cast2=get('pg_cast2',86); cast=get('pf_cast',86); hit=get('pf_hit',85); death=get('pf_death',48,89)
+atk=get('pg_attack2',83); atk0=get('pf_attack',83); wd2=get('pg_wd2',86); cast2=get('pg_cast2',94); cast=get('pf_cast',86); hit=get('pf_hit',85); death=get('pf_death',48,89); kneel=get('pg_death1',66)
 mir=lambda s:s.transpose(Image.FLIP_LEFT_RIGHT)
 F={}
 def put(i,sp,**k): F[i]=cell(sp,**k)
@@ -31,7 +31,7 @@ for i,dy in enumerate([0,-1,0,-1]): put(33+i,up,dy=dy)
 for i,(sp,dx) in enumerate([(atk0,0),(atk,2),(atk,4),(atk0,2)]): put(0+i,sp,dx=dx)
 for i,(sp,dy) in enumerate([(cast,0),(cast2,-2),(cast,-3)]): put(4+i,sp,dy=dy)
 for i,(dx,fl) in enumerate([(-2,45),(-3,25),(-2,10),(0,0)]): put(13+i,hit,dx=dx,flash=fl)
-for i,(sp,rot,dy) in enumerate([(hit,0,0),(hit,25,0),(hit,55,0),(death,0,0),(death,0,0),(death,0,0)]): put(7+i,sp,rot=rot,dy=dy)
+for i,(sp,rot,dy) in enumerate([(hit,0,0),(kneel,0,0),(kneel,0,0),(kneel,28,0),(death,0,0),(death,0,0)]): put(7+i,sp,rot=rot,dy=dy)
 atlas=Image.new('RGBA',(W*8,H*5),(0,0,0,0))
 for k,c in F.items(): atlas.alpha_composite(c,((k%8)*W,(k//8)*H))
 out=R+'art-source/runway-guardians/profeta/atlas-candidato/'; os.makedirs(out,exist_ok=True); atlas.save(out+'atlas.png',optimize=True); print(atlas.size,len(F))

@@ -8,8 +8,8 @@ from PIL import Image
 R=os.path.abspath(os.path.join(os.path.dirname(__file__),'../..'))+'/'
 exec(open(os.path.join(os.path.dirname(__file__),'_key.py')).read()); DUST=False
 W,H=148,136; TH=120; FOOT=130
-def get(n,flip=False):
-    im=native(key(Image.open(R+f'art-source/runway-guardians/ilkan_coloso/{n}/master.png')),TH)
+def get(n,flip=False,th=None):
+    im=native(key(Image.open(R+f'art-source/runway-guardians/ilkan_coloso/{n}/master.png')),th or TH)
     return im.transpose(Image.FLIP_LEFT_RIGHT) if flip else im
 def cell(sp,dx=0,dy=0,sy=1.0,sx=1.0,rot=0,crop=None,alpha=1.0):
     s=sp
@@ -30,7 +30,8 @@ for i,(sp,dy) in enumerate([(side,0),(side5,-3),(side,-5),(side5,-3),(side,0)]):
 F[5]=cell(roar)
 for i,(sp,dy,sy) in enumerate([(golpe,0,1.0),(golpe5,-2,1.0),(golpe,2,0.96),(golpe5,4,0.93)]): F[6+i]=cell(sp,dy=dy,sy=sy)
 for i,(sp,dx,dy) in enumerate([(golpe5,-2,3),(golpe,2,3),(golpe5,-3,4),(golpe,3,4)]): F[10+i]=cell(sp,dx=dx,dy=dy,sy=0.94)
-for i,c in enumerate([0.18,0.36,0.55,0.75,0.9,1.0]): F[14+i]=cell(front,crop=c,dy=0) if c<1 else cell(front)
+em,em2=get('s_emerge',th=84),get('s_emerge2',th=108)
+for i,sp in enumerate([em,em,em2,em2,front,front]): F[14+i]=cell(sp,dy=(0,-1,0,-2,0,0)[i])
 F[31]=cell(front)
 atlas=Image.new('RGBA',(W*8,H*4),(0,0,0,0))
 for k,c in F.items(): atlas.alpha_composite(c,((k%8)*W,(k//8)*H))
