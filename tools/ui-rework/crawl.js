@@ -26,7 +26,8 @@ const probe = () => {
       overflow: e.scrollWidth > e.clientWidth + 2 || e.scrollHeight > e.clientHeight + 3}); }
   const emoji = (document.body.innerText.match(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu) || []).length;
   const scr = ['title', 'mainmenu', 'starter', 'codex', 'inventory', 'champdetail', 'shop', 'modeselect', 'divina', 'crystalwars', 'arenaselect', 'menu', 'prep'].map(k => document.getElementById(k === 'menu' ? 'menu-screen' : k + '-screen')).filter(Boolean).find(el => !el.classList.contains('hidden'));
-  return {state: typeof state !== 'undefined' ? state : null, els, emoji, screenId: scr ? scr.id : '', vw: innerWidth, vh: innerHeight};
+  const sh = [...document.querySelectorAll('.ur-sheet')].find(e => !e.classList.contains('hidden'));
+  return {state: typeof state !== 'undefined' ? state : null, sheet: sh ? sh.id.replace('ur-sheet-', '') : '', els, emoji, screenId: scr ? scr.id : '', vw: innerWidth, vh: innerHeight};
 };
 
 async function boot(browser) {
@@ -67,11 +68,11 @@ async function replay(page, pathKeys) {
     try {
       if (!(await replay(page, pth))) { await ctx.close(); continue; }
       const p = await page.evaluate(probe); n++;
-      const sig = p.state + '#' + p.els.map(key).sort().join(',');
+      const sig = p.state + (p.sheet ? ':' + p.sheet : '') + '#' + p.els.map(key).sort().join(',');
       if (visited.has(sig)) { await ctx.close(); continue; } visited.add(sig);
-      const sk = p.state + (p.screenId ? '' : '');
+      const sk = p.state + (p.sheet ? ':' + p.sheet : '');   // un panel abierto es un estado propio
       if (!out.screens[sk] || p.els.length > out.screens[sk].els.length) { out.screens[sk] = {...p, path: pth}; if (SHOTS) { fs.mkdirSync(SHOTS, {recursive: true}); await page.screenshot({path: path.join(SHOTS, `${UI || 'default'}_${sk}.png`)}); } }
-      for (const [st, g] of Object.entries(GOALS)) if (p.state === st && !out.goals[g]) out.goals[g] = {clicks: pth.length, path: pth};
+      for (const [st, g] of Object.entries(GOALS)) if (p.state === st && !p.sheet && !out.goals[g]) out.goals[g] = {clicks: pth.length, path: pth};
       if (pth.length < DEPTH && p.state !== 'playing') for (const e of p.els) { if (SKIP.test(e.label + ' ' + e.id)) continue; queue.push([...pth, key(e)]); out.edges++; }
     } catch (e) { console.error('error en', pth.join(' > '), e.message); }
     await ctx.close();

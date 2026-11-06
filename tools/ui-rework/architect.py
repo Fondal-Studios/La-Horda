@@ -34,10 +34,10 @@ body.ui-rework .ur-btn:active, body.ui-rework #ur-modes-btn:active, body.ui-rewo
 
 /* ---------- TÍTULO: una acción dominante + MENÚ + «i» ---------- */
 body.ui-rework #title-screen .legal-foot, body.ui-rework #title-screen .build-tag, body.ui-rework #title-screen a[href='instalar.html']{{ display:none !important; }}
-body.ui-rework #title-screen #title-continue-btn{{ position:absolute; right:42px; bottom:22px; width:220px; height:{mv + 4}px; font-size:0; padding:0; }}
+body.ui-rework #title-screen #title-continue-btn{{ position:absolute; right:42px; bottom:22px; width:128px; height:{mv}px; font-size:0; padding:0; }}
 body.ui-rework #title-screen #title-continue-btn::after{{ content:'{t['secondary']['label']}'; font:12px/1 var(--font-pixel,'Press Start 2P',monospace); letter-spacing:.12em; color:var(--ur-gold); }}
 body.ui-rework #title-screen #title-continue-btn:disabled::after{{ content:'{t['secondary']['loadingLabel']}'; opacity:.7; }}
-body.ui-rework #title-screen #bt-play{{ min-height:64px; font-size:1.25em; }}
+body.ui-rework #title-screen #bt-play{{ min-height:72px; font-size:1.25em; }}
 body.ui-rework #ur-info-btn{{ position:absolute; left:14px; bottom:18px; z-index:6; width:{mv}px; height:{mv}px; padding:0; font-size:16px; }}
 body.ui-rework #title-screen #title-join-name, body.ui-rework #title-screen #title-join-btn{{ position:relative; z-index:6; }}
 

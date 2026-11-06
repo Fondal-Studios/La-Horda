@@ -46,14 +46,14 @@ def evaluate(crawl):
             issues.append(f'{label}: {c} clics (máximo 2)')
             ops.append({'act': 'shortcut', 'goal': g, 'why': f'{label} tarda {c} clics: exponerlo como botón directo'})
     # ---- por pantalla
-    screens = {k: v for k, v in crawl.get('screens', {}).items() if k in SCOPE}
+    screens = {k: v for k, v in crawl.get('screens', {}).items() if k.split(':')[0] in SCOPE}
     foco, blancos_ok, blancos_n, over = [], 0, 0, 0
     fam, bgs, radii, emoji = set(), set(), [], 0
     for sk, s in screens.items():
         if sk == 'playing':
             continue
         els = s['els']
-        lim = LIMIT.get(sk, DEFAULT_LIMIT)
+        lim = LIMIT.get(sk, 12 if ':' in sk else DEFAULT_LIMIT)
         n = len(els)
         foco.append(1.0 if n <= lim else max(0.0, 1 - (n - lim) / (lim * 1.2)))
         if n > lim:
@@ -68,7 +68,7 @@ def evaluate(crawl):
             if e.get('overflow'):
                 over += 1
                 issues.append(f"{sk}: «{(e['label'] or e['id'])[:22]}» desborda su marco")
-            fam.add(e['font'].lower())
+            fam.add('vt323' if 'vt323' in e['font'].lower() else e['font'].lower())
             bgs.add(e['bg'])
             radii.append(e['br'])
         emoji += s.get('emoji', 0)
