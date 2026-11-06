@@ -26,6 +26,10 @@ const ENEMY_RUNWAY_SHEETS = {
   tiburon_joven: {src:"assets/sprites/enemies/acuatica/tiburon_joven/v2/atlas.png", hMul:2.4, meta:{"w":127,"h":69,"cols":8,"refH":56,"anchor":0.9275,"sets":{"walk":[0,1,2],"atk":[3,4,5],"hit":[5],"death":[6,7,8],"idle":[0,1,0,2]}}},
   cangrejo_acorazado: {src:"assets/sprites/enemies/acuatica/cangrejo_acorazado/v2/atlas.png", hMul:2.4, meta:{"w":130,"h":78,"cols":8,"refH":64,"anchor":0.9359,"sets":{"walk":[0,1,2],"atk":[3,4,5],"hit":[5],"death":[6,7,8],"idle":[0,1,0,2]}}},
   medusa_electrica: {src:"assets/sprites/enemies/acuatica/medusa_electrica/v2/atlas.png", hMul:2.6, meta:{"w":132,"h":93,"cols":8,"refH":84,"anchor":0.9462,"sets":{"walk":[0,1,2,3,4],"atk":[5,6],"hit":[7],"death":[7,8],"idle":[9,10,9,10]}}},
+  esfinge: {src:"assets/sprites/enemies/laberinto/esfinge/v2/atlas.png", hMul:2.8, meta:{"w":145,"h":64,"cols":8,"refH":56,"anchor":0.9219,"sets":{"walk":[0,1,2],"atk":[3,4],"hit":[4],"death":[4,5],"idle":[0,1,0,2]}}},
+  duende_bosque: {src:"assets/sprites/enemies/bosque/duende_bosque/v2/atlas.png", hMul:2.6, meta:{"w":114,"h":94,"cols":8,"refH":84,"anchor":0.9468,"sets":{"walk":[0,1,2],"atk":[3,4,5],"hit":[5],"death":[6,7,8],"idle":[0,1,0,2]}}},
+  sirena_abisal: {src:"assets/sprites/enemies/acuatica/sirena_abisal/v2/atlas.png", hMul:2.6, meta:{"w":101,"h":103,"cols":8,"refH":84,"anchor":0.9515,"sets":{"walk":[0,1,2,3,4],"atk":[5,6,7],"hit":[7],"death":[8,9,10],"idle":[0,1,0,2]}}},
+  medusa: {src:"assets/sprites/enemies/laberinto/medusa/v2/atlas.png", hMul:2.6, meta:{"w":94,"h":92,"cols":8,"refH":84,"anchor":0.9457,"sets":{"walk":[0,1,2,3,4],"atk":[5,6,7,8,9],"hit":[9],"death":[10,11,12],"idle":[0,1,0,2]}}},
 };
 for(const k in ENEMY_RUNWAY_SHEETS){
   const A = ENEMY_RUNWAY_SHEETS[k];
