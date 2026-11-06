@@ -83,7 +83,7 @@ def recolor(img,hue,sat=1.0,val=1.0):
                 r2,g2,b2=colorsys.hsv_to_rgb(hue/360,min(1,s*sat),min(1,v*val)); o[y,x,:3]=(r2,g2,b2)
     return Image.fromarray((o*255).astype(np.uint8),'RGBA')
 for name,hue,sat,val in (('escarcha',195,0.6,1.35),('ancestral',135,0.9,0.95)):
-    d=R+f'assets/sprites/champions/libertador/cromas/{name}/'
+    d=out+f'cromas_{name}_'
     recolor(atlas,hue,sat,val).save(d+'atlas.png',optimize=True)
     recolor(HA,hue,sat,val).save(d+'horse.png',optimize=True)
     recolor(Image.open(out+'../../../../../assets/sprites/champions/libertador/cromas/'+name+'/preview.png') if False else Image.new('RGBA',(1,1)),hue).size

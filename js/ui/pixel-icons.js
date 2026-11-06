@@ -1642,7 +1642,7 @@ const PXI_EMOJI = {"🪙":"moneda", "📖":"libro", "🏰":"torre", "🌵":"cact
   "♨":"vapor", "💥":"explosion", "👁":"ojo", "🌪":"torbellino", "🌀":"torbellino", "🌊":"ola", "🎯":"diana",
   "🏹":"arco", "🎟":"ticket", "🔑":"llave", "🗝":"llave", "📋":"portapapeles", "📱":"movil", "☀":"sol",
   "❤":"corazon", "💗":"corazon", "👑":"corona", "🧪":"pocion", "⚗":"pocion", "🍄":"hongo", "⛓":"cadena",
-  "⛏":"pico", "🔔":"campana", "🎵":"nota", "🔇":"silencio", "🔗":"enlace", "📨":"sobre", "💬":"chat",
+  "⛏":"pico", "🔔":"campana", "🎵":"nota", "🎼":"nota", "🔇":"silencio", "🔗":"enlace", "📨":"sobre", "💬":"chat",
   "👥":"grupo", "📦":"caja", "📡":"antena", "📴":"sinsenal", "🌑":"luna", "🔮":"orbe", "📜":"pergamino", "🦇":"murcielago", "🎖":"medalla", "💠":"gema", "👻":"fantasma",
   "📯":"cuerno", "🚩":"bandera", "⛰":"montana", "🚫":"prohibido", "✂":"tijera", "🌲":"arbol", "🌿":"arbol",
   "🧭":"brujula", "👣":"huellas", "🐎":"caballo", "🐂":"toro", "☣":"veneno", "🌧":"nube", "💨":"torbellino",
