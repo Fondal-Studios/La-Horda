@@ -55,5 +55,19 @@ const action=(t,op,args={},status=200,id='live_'+(++seq),gm=false)=>api('POST',g
  // Exact identity and protection in the server's automatic collector.
  const s=E.initial();E.admin(s,{id:1},'grant',{userId:1,materials:1},now);s.accounts['1'].equipment={};s.accounts['1'].autoLoot={enabled:true,fuse:true,recycle:true};
  const baseItem=L.generated('arma','comun','1');for(let i=0;i<3;i++)s.items['same'+i]={...baseItem,uid:'same'+i};s.items.favorite={...baseItem,uid:'favorite',favorite:true};s.items.different={...baseItem,uid:'different',roll:1.01};const result=L.autoLoot(s,'1');assert.equal(result.fused,1);assert.ok(s.items.favorite);assert.ok(s.items.different);assert.equal(Object.values(s.items).filter(i=>i.rarity==='raro').length,1);E.invariant(s);
+ // Ranking personal (beta): manda la ronda que ESE jugador sobrevivió; el puntaje solo desempata; el botín final sigue usando la ronda del grupo.
+ {
+  const r1=(await action(user.token,'run.start',{arena:'ciudad',champion:'tanque',mode:'endless'})).run;now+=100000;await action(user.token,'run.pulse',{run:r1.id,round:3});
+  await action(user.token,'run.finish',{run:r1.id,durationMs:100000,round:9,score:5000,survived:3,survivedScore:5000});
+  let t=await api('GET','/api/leaderboard',undefined,user.token);assert.equal(t.entries[0].round,3,'el ranking guarda la ronda personal (3), no la del grupo (9)');assert.equal(t.entries[0].score,5000);
+  const r2=(await action(user.token,'run.start',{arena:'ciudad',champion:'tanque',mode:'endless'})).run;now+=100000;await action(user.token,'run.pulse',{run:r2.id,round:3});
+  await action(user.token,'run.finish',{run:r2.id,durationMs:100000,round:9,score:400000,survived:2,survivedScore:400000},422);   // 400000 pts no es posible con 2 rondas en 100 s
+  await action(user.token,'run.finish',{run:r2.id,durationMs:100000,round:9,score:9000,survived:2,survivedScore:9000});
+  t=await api('GET','/api/leaderboard',undefined,user.token);assert.equal(t.entries[0].round,3,'menos rondas personales no mejoran aunque haya más puntaje');
+  const r3=(await action(user.token,'run.start',{arena:'ciudad',champion:'tanque',mode:'endless'})).run;now+=100000;await action(user.token,'run.pulse',{run:r3.id,round:3});
+  await action(user.token,'run.finish',{run:r3.id,durationMs:100000,round:9,score:1,survived:0,survivedScore:0});
+  t=await api('GET','/api/leaderboard',undefined,user.token);assert.equal(t.entries[0].round,3,'0 rondas sobrevividas no entra al ranking');
+  checks+=4;
+ }
  await stop();fs.rmSync(dir,{recursive:true,force:true});console.log(`PASS integrated economy: ${checks} HTTP assertions; migration, receipts, market, monthly award, restart, automatic protection`);
 })().catch(async e=>{console.error(e);if(server?.listening)await stop();process.exitCode=1;});

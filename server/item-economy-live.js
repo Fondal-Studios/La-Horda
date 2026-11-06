@@ -113,9 +113,9 @@ function liveCommand(s,u,op,b,now){
   let ranking=null;
   if(r.mode==='endless'){
    const meta=require('./entitlements').taxonomy().meta(r.champion);if(meta.competitiveAllowed&&meta.releaseState==='RELEASED'){
-    const score=int(b.score||0,0,2e9),max=Math.ceil((1+.1*(round-1))*1.5*(28000*capped/60000+4000*round)+225*round*(round+1)/2);
+    const sRound=int(b.survived!==undefined?b.survived:Math.max(0,round-1),0,round),score=int((b.survived!==undefined&&b.survivedScore!==undefined?b.survivedScore:b.score)||0,0,2e9),max=Math.ceil((1+.1*(sRound-1))*1.5*(28000*capped/60000+4000*sRound)+225*sRound*(sRound+1)/2);
     if(score>max)fail('IMPLAUSIBLE_SCORE',422);
-    const season=s.seasons[r.month];if(season&&!season.closed&&now<season.end){const row={userId:id,name:u.name||u.user,guardian:r.champion,score,round,durationMs:capped,at:now};const old=season.results.find(x=>x.userId===id);if(!old||compare(row,old)<0){season.results=season.results.filter(x=>x.userId!==id);season.results.push(row);}season.results.sort(compare);ranking={rank:season.results.findIndex(x=>x.userId===id)+1,total:season.results.length};}
+    const season=s.seasons[r.month];if(season&&!season.closed&&now<season.end){if(sRound<1)return (r.result={ok:true,gold,materials,items:loot,automatic,ranking:null});const row={userId:id,name:u.name||u.user,guardian:r.champion,score,round:sRound,durationMs:capped,at:now};const old=season.results.find(x=>x.userId===id);if(!old||compare(row,old)<0){season.results=season.results.filter(x=>x.userId!==id);season.results.push(row);}season.results.sort(compare);ranking={rank:season.results.findIndex(x=>x.userId===id)+1,total:season.results.length};}
    }
   }
   r.result={ok:true,gold,materials,items:loot,automatic,ranking};return r.result;
@@ -172,7 +172,7 @@ function liveCommand(s,u,op,b,now){
  }
  return undefined;
 }
-function compare(a,b){return b.score-a.score||b.round-a.round||a.durationMs-b.durationMs||a.at-b.at||String(a.userId).localeCompare(String(b.userId));}
+function compare(a,b){return b.round-a.round||b.score-a.score||a.durationMs-b.durationMs||a.at-b.at||String(a.userId).localeCompare(String(b.userId));}
 function seasons(s,now){
  prepare(s);
  for(const season of Object.values(s.seasons))if(!season.closed&&now>=season.end){
