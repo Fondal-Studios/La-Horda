@@ -147,7 +147,11 @@
   "ronda 1: water PASS 100.0 (arte actual 76.8, +23.2)",
   "ronda 2: gaze FAIL 84.5 — criterio bajo: suelo despejado 0.0/5; criterio bajo: riqueza visual 5.63/15",
   "ronda 3: gaze FAIL 75.6 — el interior tapa al enemigo (63% de píxeles opacos en la zona central; techo 60 %); cobertura excesiva (71%): oculta el suelo",
-  "ronda 4: gaze PASS 96.5 (arte actual 65.4, +31.1)"
+  "ronda 4: gaze PASS 96.5 (arte actual 65.4, +31.1)",
+  "arquitecto: integradas ['gaze', 'stew_idle', 'stew', 'halo_idle', 'pulse', 'water']; humo OK: SMOKE OK ynara: gaze,stew_idle,stew,halo_idle,pulse,water"
  ],
- "integration": null
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['gaze', 'stew_idle', 'stew', 'halo_idle', 'pulse', 'water']; humo OK: SMOKE OK ynara: gaze,stew_idle,stew,halo_idle,pulse,water"
+ }
 }

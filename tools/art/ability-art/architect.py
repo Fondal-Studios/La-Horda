@@ -95,6 +95,21 @@ function abaSfaOverlay(art, themes, size, w, h, frames){   // themes: nombre o l
 """
 
 
+def place_unified(idx, new_tags=()):
+    """Coloca TODAS las etiquetas de vfx-unified juntas, después del último script de vfx-b (los decales deben existir cuando se reemplazan):
+    runtimes primero, luego los módulos en su orden. Idempotente."""
+    pat = re.compile(r'<script src="js/champions/vfx-unified/[^"]+"></script>\n?')
+    existing = [m.group(0).strip() for m in pat.finditer(idx)]
+    idx = pat.sub('', idx)
+    tags = []
+    for t in existing + list(new_tags):
+        if t not in tags:
+            tags.append(t)
+    tags.sort(key=lambda t: 0 if t.endswith('/runtime.js"></script>') or t.endswith('/sfa-runtime.js"></script>') else 1)
+    last = list(re.finditer(r'<script src="js/champions/vfx-b/[^"]+"></script>', idx))[-1]
+    return idx[:last.end()] + '\n' + '\n'.join(tags) + idx[last.end():]
+
+
 def rle(a):
     flat = a.ravel().astype(int)
     out, i = [], 0
@@ -146,23 +161,8 @@ def integrate(guardian, spec, results, smoke=True, base_url='http://127.0.0.1:87
     prev = {p: p.read_text(encoding='utf-8') for p in (rt, gm) if p.exists()}
     rt.write_text(RUNTIME_SFA if sfa else RUNTIME, encoding='utf-8')
     gm.write_text(module_source(guardian, spec, results), encoding='utf-8')
-    tags = []
-    for f in (rtname, f'{guardian}.js'):
-        t = f'<script src="js/champions/vfx-unified/{f}"></script>'
-        if t not in index_before:
-            tags.append(t)
-    idx = index_before
-    if tags:
-        if ANCHOR not in idx:
-            return False, 'no encuentro el ancla de vfx-b/profeta.js en index.html'
-        # runtime primero, luego los guardianes; cada nuevo va al final del bloque unificado
-        last = max([idx.rfind(f'<script src="js/champions/vfx-unified/{x}"></script>') for x in ['runtime.js', 'sfa-runtime.js']] + [-1])
-        if last >= 0:
-            m = list(re.finditer(r'<script src="js/champions/vfx-unified/[^"]+"></script>', idx))[-1]
-            idx = idx[:m.end()] + '\n' + '\n'.join(tags) + idx[m.end():]
-        else:
-            idx = idx.replace(ANCHOR, ANCHOR + '\n' + '\n'.join(tags))
-        INDEX.write_text(idx, encoding='utf-8')
+    tags = [f'<script src="js/champions/vfx-unified/{f}"></script>' for f in (rtname, f'{guardian}.js')]
+    INDEX.write_text(place_unified(index_before, tags), encoding='utf-8')
     if not smoke:
         return True, f'integradas {passed} (sin prueba de humo)'
     p = subprocess.run(['node', str(canon.HERE / ('smoke-sfa.js' if sfa else 'smoke-integration.js')), guardian, ','.join(passed)], capture_output=True, text=True,
@@ -222,13 +222,7 @@ def integrate_sfa(spec_paths, smoke=True, base_url='http://127.0.0.1:8750/'):
     prev = {p: p.read_text(encoding='utf-8') for p in (rt, gm) if p.exists()}
     rt.write_text(RUNTIME_SFA, encoding='utf-8')
     gm.write_text(sfa_module_source(items), encoding='utf-8')
-    idx = index_before
-    for f in ('sfa-runtime.js', 'sfa_overlay.js'):
-        t = f'<script src="js/champions/vfx-unified/{f}"></script>'
-        if t not in idx:
-            m = list(re.finditer(r'<script src="js/champions/vfx-unified/[^"]+"></script>', idx))[-1]
-            idx = idx[:m.end()] + '\n' + t + idx[m.end():]
-    INDEX.write_text(idx, encoding='utf-8')
+    INDEX.write_text(place_unified(index_before, [f'<script src="js/champions/vfx-unified/{f}"></script>' for f in ('sfa-runtime.js', 'sfa_overlay.js')]), encoding='utf-8')
     combo = canon.OUT_DOCS / 'sfa_overlay'
     combo.mkdir(parents=True, exist_ok=True)
     abil = [{'id': f'{t}_{art}{s}', 'sfa': {'art': art, 'theme': t, 'size': s}} for t, s, w, h, fr, art in items]

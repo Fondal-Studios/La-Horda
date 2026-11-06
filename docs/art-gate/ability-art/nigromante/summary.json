@@ -40,7 +40,11 @@
  },
  "log": [
   "ronda 1: abyss PASS 99.8 (arte actual 72.5, +27.3)",
-  "ronda 1: demon_idle PASS 99.0 (arte actual 81.8, +17.2)"
+  "ronda 1: demon_idle PASS 99.0 (arte actual 81.8, +17.2)",
+  "arquitecto: integradas ['abyss', 'demon_idle']; humo OK: SMOKE OK nigromante: abyss,demon_idle"
  ],
- "integration": null
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['abyss', 'demon_idle']; humo OK: SMOKE OK nigromante: abyss,demon_idle"
+ }
 }
