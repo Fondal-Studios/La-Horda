@@ -4,7 +4,7 @@ Estados: OK-código (implementado, sin prueba E2E de esta sesión) · PARCIAL ·
 | ID | Requisito | Implementación actual | Prueba | Estado | Responsable |
 |---|---|---|---|---|---|
 | R01 | Solo 2 modos en la beta | `beta-scope.js` + `BETA_PUBLIC=1` (oculta y bloquea Cristales/Coliseo) | tools/ux/test-beta-scope.js PASS | IMPLEMENTADO en rama, falta revisión independiente | UI/UX |
-| R02 | Campaña completa 1–4j | 10 arenas, relay | e2e 2/3 humanos PASS, ciudad_coop PASS; e2e 4 FLAKY; e2e 1 humano y campaign-gate FAIL (preexistentes en main) | PARCIAL: cooperativo base OK; **Campaña completa (10 arenas) y solitario SIN verificar** | QA/Multijugador |
+| R02 | Campaña completa 1–4j | 10 arenas, relay | e2e 2/3 humanos PASS, ciudad_coop PASS; e2e 4 FLAKY; campaign-gate PASS (tras adaptar el test al primer minuto limpio); e2e 1 humano FAIL (preexistente en main) | PARCIAL: cooperativo base OK; **Campaña completa (10 arenas) y solitario SIN verificar** | QA/Multijugador |
 | R03 | Horda Infinita 1–4j | endless.js + net | endless_coop PASS; t_endless 30 PASS; t_endless_personal PASS | PARCIAL: cooperativo OK; 1 y 4 jugadores y estabilidad prolongada sin verificar | Gameplay |
 | R04 | Ranking por oleada personal sobrevivida | `endlessTrackSurvival` + envío de `survived` (ambos caminos del servidor) | t_endless_personal, test-leaderboard-order, test-item-economy-live PASS | IMPLEMENTADO en rama; falta revisión independiente | Backend+Gameplay |
 | R05 | Anti-trampas de resultados | Persistente: recibos de partida con duración/progreso del servidor; archivo: plausibilidad | test-item-economy-live, test-accounts | PARCIAL (el cliente aún informa `survived`) | Seguridad |

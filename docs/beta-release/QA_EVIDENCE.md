@@ -22,3 +22,7 @@ t_hielo_enemy_lifecycle: sin fix FAIL interrupted/dead/replaced; con fix PASS 5/
 | `boons_coop.js` | SUMMARY OK fails=0 | **PASS real** |
 | `campaign-gate.js` | FAIL: `page.click('#mainmenu-jugar-btn')` — el botón «no es visible» | **FAIL real, PREEXISTENTE**: idéntico en `main`; el test apunta a un tile del hub que ya no se ve (test desactualizado respecto del hub actual o regresión previa); sin diagnosticar |
 No cubierto: reconexión tras caída de red del jugador, redes inestables/latencia, 5º jugador, soak, dispositivos reales. Estos resultados NO prueban «Campaña completa y terminable» ni estabilidad prolongada.
+
+### Seguimiento (10:23 UTC)
+- `campaign-gate.js`: **causa del FAIL = test desactualizado** (tras elegir el campeón de regalo el juego entra directo a la partida por el «primer minuto limpio»; el hub no aparece y `#mainmenu-jugar-btn` queda oculto; sonda: `state=playing`, ninguna pantalla visible). Se adaptó el test (volver al menú por estado antes del selector, igual que otros tests) y ahora **PASS real**: solo la Ciudad abierta en una partida nueva; orden de desbloqueo Ciudad→Fábrica→…→Abismo→Minas→Infernal; el Abismo abre Minas y no la Infernal; **no se puede crear una sala online en una arena bloqueada** (anti-exploit).
+- `e2e.js 1`: sigue FAIL (mismo síntoma probable: espera el flujo viejo del hub/sala); sin adaptar todavía.

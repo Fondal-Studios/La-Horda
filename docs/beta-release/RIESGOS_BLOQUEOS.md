@@ -18,5 +18,5 @@
 Subsistema Fondal TV/mando de celular: asignado a otro desarrollador; no se toca.
 
 ## Hallazgos de QA de red (2026-11-06)
-- **K7 (crítico, a diagnosticar):** `e2e.js 1` (solitario con bots) y `campaign-gate.js` fallan idéntico en `main`: o los tests están desactualizados respecto del hub/flujo actual o hay una regresión previa en el arranque en solitario. Hasta diagnosticarlo no se puede afirmar que la Campaña en solitario esté verificada.
+- **K7 (reducido):** `campaign-gate.js` estaba desactualizado (flujo de primer minuto) y ahora PASA. `e2e.js 1` (solitario con bots) sigue fallando idéntico en `main`: probable mismo motivo; falta adaptarlo. Hasta entonces la Campaña en solitario completa no está verificada de punta a punta.
 - **K8 (medio):** `e2e.js 4` intermitente (`xp.client1_gained`): posible carrera en la sincronización de XP del 4º jugador.
