@@ -122,6 +122,34 @@ const up = () => new Promise(res => { const rq = http.get(BASE + '/index.html', 
   });
   check('tope: 8 campeones gritando a la vez → hablan como máximo 2 (' + JSON.stringify(vcap) + ')', vcap.spoke >= 1 && vcap.spoke <= 2);
 
+  // ---- 5b) música adaptativa, timbre por campeón, voces de evento y de héroe ajeno ----
+  await mode('menu'); await sleep(200); await ev(() => { enemies = []; });
+  await mode('wave', 'ciudad', 1); await wait(() => SampleBank.holds() && /^wave-/.test(SampleBank.status().music || ''), 7000); await sleep(2500);
+  const calm = await ev(() => SampleBank.status());
+  await ev(() => { enemies = Array.from({ length: 30 }, () => ({ alive: true })); }); await sleep(3500);
+  const busy = await ev(() => SampleBank.status());
+  check('adaptativa: en calma el paso-bajo está cerrado (< 6 kHz)', calm.cutoff > 0 && calm.cutoff < 6000, calm);
+  check('adaptativa: con 30 enemigos se abre (> 3× y > 10 kHz)', busy.cutoff > 10000 && busy.cutoff > calm.cutoff * 3, busy);
+  await ev(() => { enemies = []; }); await sleep(4500);
+  const calm2 = await ev(() => SampleBank.status());
+  check('adaptativa: al terminar el combate vuelve a cerrarse (< 9 kHz)', calm2.cutoff < 9000, calm2);
+  await mode('menu'); await wait(() => SampleBank.status().music === 'hub'); await sleep(2200);
+  check('menús y título quedan abiertos (>= 19 kHz)', (await ev(() => SampleBank.status().cutoff)) >= 19000);
+  await mode('boss'); await wait(() => SampleBank.status().music === 'boss'); await sleep(2500);
+  check('jefe: piso de intensidad (> 5 kHz aun sin enemigos)', (await ev(() => SampleBank.status().cutoff)) > 5000);
+  const tim = await ev(() => { const sig = new Set(); let bad = []; for (const k of Object.keys(CLASSES)) { const t = SampleBank.timbre(k); sig.add(t.pk[0] + '/' + t.lp + '/' + t.hp); if (!(t.lp >= 2500 && t.lp <= 10000 && t.hp >= 50 && t.hp <= 420 && t.wet >= 0 && t.wet <= 0.4 && Math.abs(t.pk[1]) <= 6)) bad.push(k); } return { n: Object.keys(CLASSES).length, distintos: sig.size, bad }; });
+  check('timbre propio: cada campeón válido y todos distintos (' + tim.n + ')', tim.bad.length === 0 && tim.distintos === tim.n, tim);
+  await sleep(3000);
+  const evs = await ev(async () => {
+    window.inView = () => true; const o = AudioBufferSourceNode.prototype.start; let n = 0; AudioBufferSourceNode.prototype.start = function () { n++; return o.apply(this, arguments); };
+    const base = performance.now; let off = 0; performance.now = () => base.call(performance) + off; const res = {};
+    for (const e of ['allyDeath', 'levelup', 'lowhp', 'death']) { off += 20000; await new Promise(r => setTimeout(r, 2600)); const b = n; SampleBank.voice({ classKey: e === 'levelup' ? 'mago' : 'cazadora', x: 0, y: 0 }, e); res[e] = n - b; }
+    performance.now = base; AudioBufferSourceNode.prototype.start = o; return res;
+  });
+  check('voces de evento suenan: muerte de aliado, subida de nivel, poca vida, muerte', Object.values(evs).every(n => n >= 1), evs);
+  const hook = fs.readFileSync(path.join(ROOT, 'js/systems/combat.js'), 'utf8');
+  check('combat.js llama a la voz del aliado caído', /SampleBank\.voice\(h, "allyDeath"\)/.test(hook));
+
   // ---- 6) sin errores de consola ----
   check('sin errores de consola/página', errs.filter(e => !/favicon|net::ERR|Failed to load resource/.test(e)).length === 0, errs.slice(0, 5));
   await browser.close(); if (server) server.kill();

@@ -35,9 +35,27 @@ const SampleBank = (()=>{
     libertador:{v:"m",p:0.9}, ilkan:{v:"m",p:0.76}, asesino:{v:"m",p:1.12}, myla:{v:"f3",p:1.12}, ynara:{v:"f1",p:0.94}, brasa:{v:"f2",p:1.0},
     eslabon:{v:"m",p:0.88}, morwen:{v:"f2",p:0.88}, farolero:{v:"m",p:0.98}, iria:{v:"f1",p:1.1}
   };
+  // TIMBRE propio de cada campeón (sobre su voz base y su tono): realce de formante (pk: Hz, dB), paso-bajo (lp), paso-alto
+  // (hp) y cola de sala (wet). Los de abajo son a mano; el resto se deriva de la clave (estable entre sesiones y distinto de
+  // los demás). No reemplaza una actuación de voz: le da a cada uno una firma que se oye distinta.
+  const TIMBRE = {
+    tanque:{pk:[420,4],lp:5200,hp:70,wet:0.1},  segador:{pk:[300,5],lp:3400,hp:60,wet:0.3}, axiom:{pk:[1800,6],lp:3200,hp:380,wet:0.04},
+    ilkan:{pk:[520,4],lp:6000,hp:80,wet:0.16}, nigromante:{pk:[350,5],lp:4200,hp:90,wet:0.32}, libertador:{pk:[900,3],lp:7000,hp:100,wet:0.12},
+    musashi:{pk:[1100,3],lp:7500,hp:110,wet:0.05}, cazadora:{pk:[2200,3],lp:9000,hp:160,wet:0.08}, myla:{pk:[2600,4],lp:9500,hp:260,wet:0.1},
+    profeta:{pk:[1400,2],lp:8000,hp:140,wet:0.3}, soporte:{pk:[1900,3],lp:9000,hp:150,wet:0.22}
+  };
+  const _tim = {};
+  function timbre(key){
+    if(TIMBRE[key]) return TIMBRE[key];
+    if(_tim[key]) return _tim[key];
+    let h = 11; for(const c of String(key||"")) h = (h*37 + c.charCodeAt(0)) >>> 0;
+    const u = n => ((h >>> n) & 255) / 255; // 0..1 estable
+    return (_tim[key] = { pk:[Math.round(400 + u(2)*2200), Math.round((u(10)-0.5)*10)], lp:Math.round(4000 + u(18)*5500), hp:Math.round(70 + u(5)*260), wet:Math.round((0.04 + u(13)*0.28)*100)/100 });
+  }
   const VOICE_COUNT = { m:{attack:9, big:6, hurt:6}, f:{attack:3, hurt:3} };
   // gap: ms mínimos entre voces del MISMO campeón; chance: probabilidad (el combate no habla todo el tiempo)
-  const VOICE_RULES = { skill:{gap:2600, chance:0.55}, ult:{gap:900, chance:1}, hurt:{gap:3800, chance:0.7}, death:{gap:0, chance:1}, victory:{gap:0, chance:1} };
+  const VOICE_RULES = { skill:{gap:2600, chance:0.55}, ult:{gap:900, chance:1}, hurt:{gap:3800, chance:0.7}, death:{gap:0, chance:1}, victory:{gap:0, chance:1},
+    levelup:{gap:4000, chance:0.8}, lowhp:{gap:14000, chance:1}, allyDeath:{gap:0, chance:1} };
   const MAX_VOICES = 2;
 
   // RNG privado (mismo Mulberry32 que audio.js pero con otra semilla): no toca el azar del juego.
@@ -92,11 +110,20 @@ const SampleBank = (()=>{
   }
 
   /* ---------------- efectos ---------------- */
-  function _play(buf, D, vol, rate, delay){
+  function _play(buf, D, vol, rate, delay, tim){
     const t = audioCtx.currentTime + (delay||0);
     const s = audioCtx.createBufferSource(); s.buffer = buf; s.playbackRate.value = rate;
-    const g = audioCtx.createGain(); g.gain.value = vol; s.connect(g); g.connect(D);
-    s.onended = ()=>{ try{ g.disconnect(); }catch(e){} };
+    const g = audioCtx.createGain(); g.gain.value = vol; s.connect(g);
+    let nodes = [g];
+    if(tim){ // voz con timbre propio: formante + paso-alto + paso-bajo (+ cola de sala), 3 nodos más
+      const pk = audioCtx.createBiquadFilter(); pk.type = "peaking"; pk.frequency.value = tim.pk[0]; pk.gain.value = tim.pk[1]; pk.Q.value = 1.1;
+      const hp = audioCtx.createBiquadFilter(); hp.type = "highpass"; hp.frequency.value = tim.hp; hp.Q.value = 0.5;
+      const lp = audioCtx.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = tim.lp; lp.Q.value = 0.6;
+      g.connect(pk); pk.connect(hp); hp.connect(lp); lp.connect(D); nodes.push(pk, hp, lp);
+      if(tim.wet > 0.01 && AU.wetLo){ const w = audioCtx.createGain(); w.gain.value = tim.wet; lp.connect(w); w.connect(AU.wetLo); nodes.push(w); }
+      try{ AU.frN += 3; }catch(e){}
+    } else g.connect(D);
+    s.onended = ()=>{ for(const n of nodes) try{ n.disconnect(); }catch(e){} };
     s.start(t); try{ AU.frN += 2; }catch(e){}
     return buf.duration / rate;
   }
@@ -127,7 +154,8 @@ const SampleBank = (()=>{
       case "cast": sfx("arcane", D, 0.3); break;
       case "ult": sfx("arcane", D, 0.5, 0.85); sfx("hitHeavy", D, 0.3, 0.8, 0.04); break;
       case "skillHit": sfx("hitHeavy", D, 0.3); sfx("arcane", D, 0.22, 1.25); break;
-      case "hurt": sfx("hitFlesh", D, 0.36, 0.9); voice(hero, "hurt"); break;
+      case "hurt": sfx("hitFlesh", D, 0.36, 0.9); voice(hero, hero && hero.maxHp && hero.hp/hero.maxHp < 0.25 ? "lowhp" : "hurt"); break;
+      case "levelup": voice(hero, "levelup"); break;
       case "hurtHeavy": sfx("hitHeavy", D, 0.5, 0.85); voice(hero, "hurt"); break;
       case "playerDeath": voice(hero, "death"); break;
       case "victory": voice(hero, "victory"); break;
@@ -220,31 +248,39 @@ const SampleBank = (()=>{
   function voice(h, ev, sk){
     if(!manifest || !ctxOk() || !h || !h.classKey || (typeof audioEnabled!=="undefined" && !audioEnabled)) return;
     const R = VOICE_RULES[ev]; if(!R) return;
+    const mine = h===(typeof player!=="undefined" ? player : null);
+    // héroe ajeno (cooperativo / bots): solo se oye si está a la vista
+    if(!mine && ev!=="allyDeath" && ev!=="skill" && ev!=="ult" && typeof inView==="function" && !inView(h.x, h.y, 60)) return;
+    if(ev==="allyDeath" && typeof inView==="function" && !inView(h.x, h.y, 220)) return;
     const now = performance.now(), key = h.classKey+":"+ev;
     if(R.gap && voiceLast[key] && now - voiceLast[key] < R.gap) return;
     if(R.chance < 1 && rnd() > R.chance) return;
     const t0 = audioCtx.currentTime; voiceEnds = voiceEnds.filter(e=>e > t0);
-    if(voiceEnds.length >= MAX_VOICES && ev!=="death" && ev!=="victory") return;
+    if(voiceEnds.length >= MAX_VOICES && ev!=="death" && ev!=="victory" && ev!=="allyDeath") return;
     const P = profile(h.classKey), male = P.v==="m", pick = n=>(rnd()*n)|0;
     if(!banks.has(P.v)){ ensureBank(P.v); return; } // primera vez: se baja el banco y esta voz se omite
     let id;
     if(male){
-      id = ev==="ult" ? "m_big"+pick(6) : ev==="skill" ? "m_attack"+pick(9) : ev==="hurt" ? "m_hurt"+pick(6) : ev==="death" ? "m_death"+pick(2) : "m_victory"+pick(2);
+      id = ev==="ult" ? "m_big"+pick(6) : ev==="skill" ? "m_attack"+pick(9) : (ev==="hurt" || ev==="lowhp") ? "m_hurt"+pick(6)
+        : (ev==="death" || ev==="allyDeath") ? "m_death"+pick(2) : ev==="levelup" ? "m_big"+pick(6) : "m_victory"+pick(2);
     } else {
       const f = P.v+"_", fam = sk ? skillFamily(sk) : "";
       if(ev==="ult") id = f + (fam==="fire" ? "hellstorm" : fam==="ice" ? "blizzard" : "attack3");
       else if(ev==="skill") id = f + (FEM_CALL[fam] && rnd() < 0.6 ? FEM_CALL[fam] : "attack"+(1+pick(3)));
-      else if(ev==="hurt") id = f + "damaged"+(1+pick(3));
+      else if(ev==="hurt" || ev==="lowhp") id = f + "damaged"+(1+pick(3));
+      else if(ev==="levelup") id = f + "attack3";
       else id = f + "damaged3"; // sin muerte/victoria propias en el pack: gemido grave y largo
     }
     const rec = manifest.voice[id]; const buf = rec && bufs.get(rec.file); if(!buf) return;
     let rate = P.p * (1 + (rnd()*2-1)*0.04);
-    if(!male && (ev==="death")) rate *= 0.82;
+    if(!male && (ev==="death" || ev==="allyDeath")) rate *= 0.82;
+    if(ev==="lowhp") rate *= 0.9;              // jadeo: más grave y lento
+    if(ev==="levelup") rate *= 1.05;
     if(!male && ev==="victory") rate *= 1.08;
     voiceLast[key] = now;
     let D = AU.sfxIn;
     if(typeof _sfxPan==="function" && typeof h.x==="number"){ const pan = _sfxPan(h.x); if(pan && Math.abs(pan) > 0.04){ const sp = audioCtx.createStereoPanner(); sp.pan.value = pan; sp.connect(AU.sfxIn); D = sp; } }
-    const len = _play(buf, D, h===(typeof player!=="undefined"?player:null) ? 0.7 : 0.42, rate);
+    const len = _play(buf, D, mine ? 0.7 : (ev==="allyDeath" ? 0.6 : 0.42), rate, 0, timbre(h.classKey));
     voiceEnds.push(t0 + len);
   }
 
@@ -279,8 +315,10 @@ const SampleBank = (()=>{
     // el archivo trae 1 s de relleno a cada lado (extremos del MP3 con artefactos): el bucle cubre solo el interior
     const ls = rec && rec.loopStart || 0; if(rec && rec.loopEnd){ s.loopStart = ls; s.loopEnd = rec.loopEnd; }
     const g = audioCtx.createGain(); g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(1, t+fade);
-    s.connect(g); g.connect(out); s.start(t, ls);
-    L.cur = { s, g }; L.curId = id; _evictMusic(id);
+    // paso-bajo ADAPTATIVO: en calma la mezcla se oye "apagada" (cálida, lo-fi) y se abre con la intensidad (ver _adapt)
+    const lp = audioCtx.createBiquadFilter(); lp.type = "lowpass"; lp.Q.value = 0.5; lp.frequency.value = _cutoff();
+    s.connect(g); g.connect(lp); lp.connect(out); s.start(t, ls);
+    L.cur = { s, g, lp }; L.curId = id; _evictMusic(id); _adaptOn();
   }
   // Un tema decodificado pesa ~30 MB (44-48 kHz estéreo en float): solo quedan el que suena y el anterior (para volver sin esperar).
   const musicOrder = [];
@@ -288,8 +326,24 @@ const SampleBank = (()=>{
     const i = musicOrder.indexOf(id); if(i >= 0) musicOrder.splice(i, 1); musicOrder.unshift(id);
     while(musicOrder.length > 2){ const old = musicOrder.pop(); if(manifest && manifest.music[old]) bufs.delete(manifest.music[old].file); }
   }
+  // INTENSIDAD (0..1) la calcula el director de audio.js (M.int: horda viva, nivel, vida del jefe). Solo oleadas y jefe se adaptan;
+  // menús y título quedan abiertos. Calma → 2,6 kHz; todo abierto → 18 kHz (curva exponencial); el jefe en fase 2/3 sube el piso.
+  const CUT_LO = 2600, CUT_HI = 18000;
+  function _intensity(){
+    try{ if(typeof M==="undefined" || !M) return 0; let i = Math.max(0, Math.min(1, +M.int || 0));
+      if(L.mode==="boss") i = Math.max(i, 0.35 + 0.2*((M.phase||1)-1)); return i; }catch(e){ return 0; }
+  }
+  function _cutoff(){ if(L.mode!=="wave" && L.mode!=="boss") return 20000; return CUT_LO*Math.pow(CUT_HI/CUT_LO, _intensity()); }
+  let adaptT = null;
+  function _adaptTick(){
+    if(!L.cur || !ctxOk() || L.ctx!==audioCtx){ clearInterval(adaptT); adaptT = null; return; }
+    const t = audioCtx.currentTime, i = (L.mode==="wave" || L.mode==="boss") ? _intensity() : 1;
+    try{ L.cur.lp.frequency.setTargetAtTime(_cutoff(), t, 0.5); L.out.gain.setTargetAtTime(LOFI_LEVEL*(0.9 + 0.1*i), t, 0.5); }catch(e){}
+  }
+  function _adaptOn(){ if(!adaptT) adaptT = setInterval(_adaptTick, 250); _adaptTick(); }
   function onMode(mode, arena, level){
     if(!ctxOk()) return;
+    L.mode = mode;
     const id = style==="lofi" ? trackFor(mode, arena, level) : null;
     L.want = id; if(mode==="wave" || mode==="boss") prepareParty();
     if(!id){ _fadeOutCur(1.2); return; }
@@ -311,9 +365,10 @@ const SampleBank = (()=>{
   }
   // Estado para pruebas y auditoría
   function status(){
+    const cutoff = L.cur && L.cur.lp ? Math.round(L.cur.lp.frequency.value) : null;
     let bytes = 0; for(const b of bufs.values()) bytes += b.length*b.numberOfChannels*4;
-    return { style, manifest:!!manifest, music:L.curId, want:L.want, loaded:bufs.size, failed:[...failed], holds:holds(), decodedMB:+(bytes/1048576).toFixed(1), banks:[...banks] };
+    return { style, manifest:!!manifest, music:L.curId, want:L.want, loaded:bufs.size, failed:[...failed], holds:holds(), decodedMB:+(bytes/1048576).toFixed(1), banks:[...banks], cutoff, intensity:+_intensity().toFixed(2) };
   }
 
-  return { onMode, holds, layer, abilityAudio, voice, sfx, warm, ensureBank, prepareParty, load, loadManifest, getStyle, setStyle, status, skillFamily, trackFor, profile, VOICES };
+  return { timbre, TIMBRE, onMode, holds, layer, abilityAudio, voice, sfx, warm, ensureBank, prepareParty, load, loadManifest, getStyle, setStyle, status, skillFamily, trackFor, profile, VOICES };
 })();
