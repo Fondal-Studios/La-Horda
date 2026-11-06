@@ -95,7 +95,7 @@ const sha=file=>crypto.createHash('sha256').update(fs.readFileSync(path.join(ROO
   report.checks.push(...guest);
   for(let i=0;i<result.shots.length;i++)fs.writeFileSync(path.join(OUT,'runtime-'+i+'.png'),Buffer.from(result.shots[i].split(',')[1],'base64'));
   for(let i=0;i<result.referenceShots.length;i++)fs.writeFileSync(path.join(OUT,'reference-'+i+'.png'),Buffer.from(result.referenceShots[i].split(',')[1],'base64'));
-  for(const [file,expected] of [['assets/sprites/champions/libertador/v2/atlas.png','4e814ca273b1b1291fd1e8308ed278afebfc40ab7fca66322d040263ccab1e9f'],['assets/sprites/champions/libertador/v2/horse.png','8d27514f8a7af8332063378828cfd423d1ee0512f1daf0c2a30463792711756a']])report.checks.push({name:'atlas aprobado Códice (ver RESULTADOS_PR) '+file,ok:sha(file)===expected});
+  for(const [file,expected] of [['assets/sprites/champions/libertador/v2/atlas.png','2ff466e3c04d3d1ec9ba3eec5e1d94e21d3fc8263ba5253996975eaa0a4a9dba'],['assets/sprites/champions/libertador/v2/horse.png','8d27514f8a7af8332063378828cfd423d1ee0512f1daf0c2a30463792711756a']])report.checks.push({name:'atlas aprobado Códice (ver RESULTADOS_PR) '+file,ok:sha(file)===expected});
   report.provenance={atlasSha256:sha('assets/sprites/champions/libertador/v2/death.png'),rendererSha256:sha('js/rendering/champion-sprites.js')};
   report.status=report.errors.length||report.checks.some(c=>!c.ok)?'FAIL':'PASS';
   console.log(JSON.stringify({status:report.status,checks:report.checks.length,failed:report.checks.filter(c=>!c.ok),errors:report.errors}));assert.equal(report.status,'PASS');

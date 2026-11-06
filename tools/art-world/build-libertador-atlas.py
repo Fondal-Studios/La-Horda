@@ -24,16 +24,16 @@ CW=W-2
 front=get('ref_frente',76,CW); side=get('ref_lado',76,CW); back=get('ref_espalda',76,CW)
 WK={k:get('w_'+k,76,CW) for k in ('wd1','wd3','ws1','ws3','wu1','wu3')}
 P={'aim':get('p_aim',74,CW),'reload':get('p_reload',76,CW),'pre':get('p_bayo_pre',76,CW),'emb':get('p_bayo_emb',72,CW),'imp':get('p_bayo_imp',66,CW),
-   'rem':get('p_bayo_rem',72,CW),'cmd':get('p_command',80,CW),'ult':get('p_ult_cast',82,CW)}
+   'rem':get('p_bayo_rem',72,CW),'emb2':get('q_emb2',72,CW),'imp2':get('q_imp2',66,CW),'cmd2':get('q_cmd2',80,CW),'cmd':get('p_command',80,CW),'ult':get('p_ult_cast',82,CW)}
 F={}
 def put(i,sp,**k): F[i]=cell(sp,W,H,FOOT,**k)
 for i,dy in enumerate([0,-1,0,-1]): put(i,P['aim'],dy=dy)
-for i,dx in enumerate([0,2,4,2]): put(4+i,P['emb'],dx=dx)
-for i,dx in enumerate([0,3,6,3]): put(8+i,P['imp'],dx=dx)
+for i,(sp,dx) in enumerate([(P['emb'],0),(P['emb2'],2),(P['emb'],4),(P['emb2'],2)]): put(4+i,sp,dx=dx)
+for i,(sp,dx) in enumerate([(P['imp'],0),(P['imp2'],3),(P['imp'],6),(P['imp2'],3)]): put(8+i,sp,dx=dx)
 for i,dy in enumerate([0,-1,0,-1]): put(12+i,P['pre'],dy=dy)
 for i,dx in enumerate([0,-1,-2,-1]): put(16+i,P['rem'],dx=dx)
-for i,dy in enumerate([0,-2,-4,-2,0]): put(20+i,P['cmd'],dy=dy)
-for i,dy in enumerate([0,-1,-2,-1,0]): put(25+i,P['cmd'],dy=dy)
+for i,(sp,dy) in enumerate([(P['cmd'],0),(P['cmd2'],-2),(P['cmd'],-4),(P['cmd2'],-2),(P['cmd'],0)]): put(20+i,sp,dy=dy)
+for i,(sp,dy) in enumerate([(P['cmd'],0),(P['cmd2'],-1),(P['cmd'],-2),(P['cmd2'],-1),(P['cmd'],0)]): put(25+i,sp,dy=dy)
 for i,dx in enumerate([0,-4,-2,0]): put(30+i,P['aim'],dx=dx)
 for i,dy in enumerate([0,-1,0,-1]): put(34+i,front,dy=dy)
 for i,(dx,dy) in enumerate([(0,0),(1,-1),(0,-2),(-1,-1),(0,0),(1,-1)]): put(38+i,P['reload'],dx=dx,dy=dy)
