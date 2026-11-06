@@ -45,3 +45,6 @@ Revisados además: **Aelith, Aurelia, Axiom, Baltra, Brakk, Brasa, Bront, Sylva 
 - **A revisar (legibilidad, no rotura):** la definitiva de **Axiom (Force Quit)** aclara casi todo el fondo a casi blanco con barras rojas (`axiom_habilidades.png`): puede restar lectura de los enemigos en pantalla; decidir con el director de arte si es intencional (estética de error de sistema) o si debe atenuarse.
 - Límite: montajes a escala reducida; defectos finos (recortes, píxeles sueltos) requieren la hoja completa.
 - Pendiente: Iria, Khepri, Libertador y los 24 restantes (la galería sigue corriendo en lotes; ver `NEXT_SESSION.md`).
+
+## Galería de los 43 guardianes (13:0x)
+Corrida completa de `ability-gallery.js` (hojas por guardián). Revisados a escala reducida, además de los ya listados: Iria, Khepri, Libertador, Maura, Morveth, Morwen, Musashi, Myla (sin roturas). Observaciones: Libertador hab. 1 y 3 tienen efecto discreto (lanzada corta y montura); la definitiva del Libertador, como la de Axiom, aclara el fondo a gris/blanco durante el cast. Pendientes de revisar a ojo: Nahir, Nano GM, Oriel, Orsa, Profeta, Renko, Saelis, Segador, Sira, Solciju, Soporte, Tibor, Velmira, Vesper, Veyra, Vhal, Ynara, Zahra (hojas ya generadas, regenerables con `ability-sheets.py`).

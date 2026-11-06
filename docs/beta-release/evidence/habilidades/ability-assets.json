@@ -1,0 +1,627 @@
+{
+ "errors": [],
+ "res": {
+  "tanque": {
+   "0": [
+    "assets/sprites/champions/tanque/codex-v1/atlas.png",
+    "assets/sprites/arenas/fortaleza/arana/atlas.webp"
+   ],
+   "1": [
+    "assets/sprites/champions/tanque/codex-v1/atlas.png"
+   ],
+   "2": [
+    "assets/sprites/champions/tanque/codex-v1/atlas.png"
+   ],
+   "ult": [
+    "assets/sprites/champions/tanque/codex-v1/atlas.png"
+   ]
+  },
+  "guerrero": {
+   "0": [
+    "assets/sprites/champions/guerrero/codex-v1/atlas.png",
+    "assets/vfx/guerrero/corte_sangrante.webp",
+    "assets/sprites/arenas/abismo/ab_errante/atlas.webp",
+    "assets/sprites/arenas/abismo/ab_acechador/atlas.webp",
+    "assets/sprites/arenas/abismo/ab_heraldo/atlas.webp",
+    "assets/sprites/arenas/abismo/ab_devorador/atlas.webp",
+    "assets/sprites/arenas/abismo/ab_tejedor/atlas.webp"
+   ],
+   "1": [
+    "assets/sprites/champions/guerrero/codex-v1/atlas.png",
+    "assets/vfx/guerrero/triple_golpe.webp",
+    "assets/sprites/enemies/laberinto/medusa/walk-strip.webp",
+    "assets/sprites/enemies/infernal/esqueleto/atlas.webp",
+    "assets/sprites/arenas/micelial/acechador/atlas.webp"
+   ],
+   "2": [
+    "assets/sprites/champions/guerrero/codex-v1/atlas.png",
+    "assets/vfx/guerrero/trampa.webp",
+    "assets/sprites/enemies/infernal/esqueleto/atlas.webp"
+   ],
+   "ult": [
+    "assets/sprites/champions/guerrero/codex-v1/atlas.png",
+    "assets/vfx/guerrero/pestilencia.webp"
+   ]
+  },
+  "mago": {
+   "0": [
+    "assets/vfx/vendor/muro-fuego.webp",
+    "assets/sprites/champions/mago/codex-v1/atlas.png"
+   ],
+   "1": [],
+   "2": [
+    "assets/vfx/vendor/cadena-relampagos.webp"
+   ],
+   "ult": [
+    "assets/sprites/enemies/infernal/esqueleto/atlas.webp",
+    "assets/vfx/vendor/cadena-relampagos.webp"
+   ]
+  },
+  "soporte": {
+   "0": [
+    "assets/sprites/champions/soporte/v3/atlas.png",
+    "assets/vfx/abilities/holyHealBurst_01.webp"
+   ],
+   "1": [
+    "assets/sprites/champions/soporte/v3/atlas.png"
+   ],
+   "2": [
+    "assets/sprites/champions/soporte/v3/atlas.png",
+    "assets/vfx/abilities/holyShieldBubble_03.webp",
+    "assets/vfx/abilities/holyShieldBubble_04.webp",
+    "assets/vfx/abilities/holyShieldBubble_01.webp",
+    "assets/vfx/abilities/holyShieldBubble_02.webp"
+   ],
+   "ult": [
+    "assets/sprites/champions/soporte/v3/atlas.png"
+   ]
+  },
+  "segador": {
+   "0": [
+    "assets/sprites/champions/segador/v2/atlas.webp",
+    "assets/vfx/abilities/scytheSlash_01.webp",
+    "assets/vfx/abilities/scytheSlash_02.webp"
+   ],
+   "1": [
+    "assets/sprites/champions/segador/v2/atlas.webp"
+   ],
+   "2": [
+    "assets/sprites/champions/segador/v2/atlas.webp"
+   ],
+   "ult": [
+    "assets/sprites/champions/segador/v2/atlas.webp"
+   ]
+  },
+  "axiom": {
+   "0": [
+    "assets/vfx/axiom/err404.webp",
+    "assets/sprites/champions/axiom/codex-v1/atlas.png"
+   ],
+   "1": [
+    "assets/vfx/axiom/overwrite.webp",
+    "assets/vfx/vendor/cadena-relampagos.webp"
+   ],
+   "2": [
+    "assets/vfx/axiom/teleport_out.webp",
+    "assets/vfx/axiom/teleport_in.webp"
+   ],
+   "ult": [
+    "assets/vfx/axiom/forcequit.webp"
+   ]
+  },
+  "profeta": {
+   "0": [
+    "assets/sprites/champions/profeta/v2/atlas.webp"
+   ],
+   "1": [
+    "assets/sprites/champions/profeta/v2/atlas.webp"
+   ],
+   "2": [
+    "assets/sprites/champions/profeta/v2/atlas.webp"
+   ],
+   "ult": [
+    "assets/sprites/champions/profeta/v2/atlas.webp"
+   ]
+  },
+  "musashi": {
+   "0": [
+    "assets/sprites/enemies/infernal/esqueleto/atlas.webp",
+    "assets/sprites/champions/musashi/codex-v1/atlas.png",
+    "assets/vfx/vendor/cadena-relampagos.webp"
+   ],
+   "1": [
+    "assets/sprites/champions/musashi/codex-v1/atlas.png"
+   ],
+   "2": [
+    "assets/vfx/vendor/cadena-relampagos.webp"
+   ],
+   "ult": []
+  },
+  "cazadora": {
+   "0": [
+    "assets/sprites/champions/cazadora/codex-v1/atlas.png"
+   ],
+   "1": [
+    "assets/vfx/cazadora/trap-f1.webp",
+    "assets/vfx/cazadora/trap-f2.webp",
+    "assets/vfx/cazadora/trap-f3.webp",
+    "assets/vfx/cazadora/trap-f4.webp"
+   ],
+   "2": [
+    "assets/vfx/cazadora/rain-f1.webp",
+    "assets/vfx/cazadora/rain-f2.webp"
+   ],
+   "ult": [
+    "assets/sprites/champions/cazadora/wolf/idle.webp",
+    "assets/sprites/champions/cazadora/wolf/bite.webp",
+    "assets/vfx/vendor/cadena-relampagos.webp"
+   ]
+  },
+  "nigromante": {
+   "0": [
+    "assets/sprites/champions/nigromante/codex-v1/atlas.png",
+    "assets/vfx/vendor/cadena-relampagos.webp"
+   ],
+   "1": [
+    "assets/sprites/champions/nigromante/golems/stone/atlas.webp"
+   ],
+   "2": [],
+   "ult": [
+    "assets/sprites/champions/nigromante/coloso/atlas.webp"
+   ]
+  },
+  "libertador": {
+   "0": [
+    "assets/sprites/champions/libertador/v2/atlas.webp",
+    "assets/sprites/champions/libertador/v3/motion.png"
+   ],
+   "1": [
+    "assets/sprites/champions/libertador/v2/fx/spectral_01.webp",
+    "assets/sprites/champions/libertador/v2/fx/spectral_02.webp",
+    "assets/sprites/champions/libertador/v2/fx/spectral_03.webp",
+    "assets/sprites/champions/libertador/v2/fx/spectral_04.webp",
+    "assets/sprites/champions/libertador/v2/fx/spectral_05.webp",
+    "assets/sprites/champions/libertador/v2/fx/buff_icon_03.webp",
+    "assets/sprites/champions/libertador/v2/fx/buff_icon_04.webp",
+    "assets/sprites/champions/libertador/v2/fx/buff_icon_01.webp",
+    "assets/sprites/champions/libertador/v2/fx/buff_icon_02.webp"
+   ],
+   "2": [
+    "assets/sprites/champions/libertador/v2/horse.webp",
+    "assets/sprites/enemies/infernal/esqueleto/atlas.webp"
+   ],
+   "ult": []
+  },
+  "ilkan": {
+   "0": [
+    "assets/sprites/champions/ilkan/codex-v1/atlas.png",
+    "assets/sprites/champions/ilkan/v2/fx/fx_lance_01.webp",
+    "assets/sprites/enemies/infernal/esqueleto/atlas.webp"
+   ],
+   "1": [],
+   "2": [],
+   "ult": [
+    "assets/sprites/champions/ilkan/codex-v1/atlas.png",
+    "assets/sprites/champions/ilkan/v2/colossus.webp",
+    "assets/sprites/champions/ilkan/v2/fx/fx_pillar_01.webp",
+    "assets/sprites/champions/ilkan/v2/fx/fx_pillar_02.webp"
+   ]
+  },
+  "ynara": {
+   "0": [
+    "assets/sprites/champions/ynara/atlas.png"
+   ],
+   "1": [
+    "assets/sprites/champions/ynara/atlas.png"
+   ],
+   "2": [
+    "assets/sprites/enemies/infernal/esqueleto/atlas.webp",
+    "assets/sprites/champions/ynara/atlas.png"
+   ],
+   "ult": [
+    "assets/sprites/champions/ynara/atlas.png"
+   ]
+  },
+  "myla": {
+   "0": [
+    "assets/sprites/champions/myla/atlas.png"
+   ],
+   "1": [
+    "assets/sprites/champions/myla/atlas.png"
+   ],
+   "2": [
+    "assets/sprites/champions/myla/atlas.png"
+   ],
+   "ult": [
+    "assets/sprites/champions/myla/berrinche.png"
+   ]
+  },
+  "brasa": {
+   "0": [
+    "assets/sprites/champions/brasa/atlas.webp"
+   ],
+   "1": [
+    "assets/sprites/champions/brasa/atlas.webp"
+   ],
+   "2": [
+    "assets/sprites/champions/brasa/atlas.webp"
+   ],
+   "ult": [
+    "assets/sprites/champions/brasa/atlas.webp"
+   ]
+  },
+  "eslabon": {
+   "0": [
+    "assets/sprites/champions/eslabon/atlas.webp"
+   ],
+   "1": [
+    "assets/sprites/champions/eslabon/atlas.webp"
+   ],
+   "2": [
+    "assets/sprites/champions/eslabon/atlas.webp"
+   ],
+   "ult": [
+    "assets/sprites/champions/eslabon/atlas.webp"
+   ]
+  },
+  "morwen": {
+   "0": [
+    "assets/sprites/champions/morwen/atlas.webp"
+   ],
+   "1": [],
+   "2": [],
+   "ult": [
+    "assets/sprites/champions/morwen/atlas.webp"
+   ]
+  },
+  "farolero": {
+   "0": [
+    "assets/sprites/champions/farolero/atlas.webp"
+   ],
+   "1": [
+    "assets/sprites/champions/farolero/atlas.webp"
+   ],
+   "2": [
+    "assets/sprites/champions/farolero/atlas.webp"
+   ],
+   "ult": [
+    "assets/sprites/champions/farolero/atlas.webp"
+   ]
+  },
+  "iria": {
+   "0": [
+    "assets/sprites/champions/iria/atlas.webp"
+   ],
+   "1": [
+    "assets/sprites/champions/iria/atlas.webp"
+   ],
+   "2": [
+    "assets/sprites/champions/iria/atlas.webp"
+   ],
+   "ult": [
+    "assets/sprites/champions/iria/atlas.webp"
+   ]
+  },
+  "vesper": {
+   "0": [
+    "assets/sprites/champions/vesper/atlas.png"
+   ],
+   "1": [
+    "assets/sprites/champions/vesper/atlas.png"
+   ],
+   "2": [
+    "assets/sprites/champions/vesper/atlas.png"
+   ],
+   "ult": [
+    "assets/sprites/champions/vesper/atlas.png"
+   ]
+  },
+  "nahir": {
+   "0": [
+    "assets/sprites/champions/nahir/atlas.png"
+   ],
+   "1": [
+    "assets/sprites/champions/nahir/atlas.png"
+   ],
+   "2": [
+    "assets/sprites/champions/nahir/atlas.png"
+   ],
+   "ult": [
+    "assets/sprites/champions/nahir/atlas.png"
+   ]
+  },
+  "baltra": {
+   "0": [
+    "assets/sprites/champions/baltra/atlas.png"
+   ],
+   "1": [
+    "assets/sprites/champions/baltra/atlas.png"
+   ],
+   "2": [
+    "assets/sprites/champions/baltra/atlas.png"
+   ],
+   "ult": [
+    "assets/sprites/champions/baltra/atlas.png"
+   ]
+  },
+  "maura": {
+   "0": [
+    "assets/sprites/champions/maura/atlas.png"
+   ],
+   "1": [
+    "assets/sprites/champions/maura/atlas.png"
+   ],
+   "2": [
+    "assets/sprites/champions/maura/atlas.png"
+   ],
+   "ult": [
+    "assets/sprites/champions/maura/atlas.png"
+   ]
+  },
+  "dariel": {
+   "0": [
+    "assets/sprites/champions/dariel/atlas.png"
+   ],
+   "1": [
+    "assets/sprites/champions/dariel/atlas.png"
+   ],
+   "2": [
+    "assets/sprites/champions/dariel/atlas.png"
+   ],
+   "ult": [
+    "assets/sprites/champions/dariel/atlas.png"
+   ]
+  },
+  "orsa": {
+   "0": [
+    "assets/sprites/champions/orsa/atlas.png"
+   ],
+   "1": [
+    "assets/sprites/champions/orsa/atlas.png"
+   ],
+   "2": [
+    "assets/sprites/champions/orsa/atlas.png"
+   ],
+   "ult": [
+    "assets/sprites/champions/orsa/atlas.png"
+   ]
+  },
+  "tibor": {
+   "0": [
+    "assets/sprites/champions/tibor/atlas.png"
+   ],
+   "1": [
+    "assets/sprites/champions/tibor/atlas.png"
+   ],
+   "2": [
+    "assets/sprites/champions/tibor/atlas.png"
+   ],
+   "ult": [
+    "assets/sprites/champions/tibor/atlas.png"
+   ]
+  },
+  "zahra": {
+   "0": [
+    "assets/sprites/champions/zahra/atlas.png"
+   ],
+   "1": [
+    "assets/sprites/champions/zahra/atlas.png"
+   ],
+   "2": [
+    "assets/sprites/champions/zahra/atlas.png",
+    "assets/sprites/enemies/infernal/esqueleto/atlas.webp"
+   ],
+   "ult": [
+    "assets/sprites/champions/zahra/atlas.png"
+   ]
+  },
+  "renko": {
+   "0": [
+    "assets/sprites/champions/renko/atlas.png"
+   ],
+   "1": [
+    "assets/sprites/champions/renko/atlas.png"
+   ],
+   "2": [
+    "assets/sprites/champions/renko/atlas.png"
+   ],
+   "ult": [
+    "assets/sprites/champions/renko/atlas.png"
+   ]
+  },
+  "sira": {
+   "0": [
+    "assets/sprites/champions/sira/atlas.png"
+   ],
+   "1": [
+    "assets/sprites/champions/sira/atlas.png"
+   ],
+   "2": [
+    "assets/sprites/champions/sira/atlas.png"
+   ],
+   "ult": [
+    "assets/sprites/champions/sira/atlas.png"
+   ]
+  },
+  "nano_gm": {
+   "0": [
+    "assets/sprites/champions/nano_gm/codex-v2/atlas.webp"
+   ],
+   "1": [],
+   "2": [
+    "assets/sprites/enemies/infernal/esqueleto/atlas.webp"
+   ],
+   "ult": [
+    "assets/sprites/champions/nano_gm/codex-v2/atlas.webp"
+   ]
+  },
+  "facu_gm": {
+   "0": [
+    "assets/sprites/champions/facu_gm/atlas.png"
+   ],
+   "1": [
+    "assets/sprites/champions/facu_gm/atlas.png"
+   ],
+   "2": [
+    "assets/sprites/champions/facu_gm/atlas.png"
+   ],
+   "ult": [
+    "assets/sprites/champions/facu_gm/atlas.png"
+   ]
+  },
+  "aurelia": {
+   "0": [
+    "assets/sprites/champions/aurelia/atlas.png"
+   ],
+   "1": [
+    "assets/sprites/champions/aurelia/atlas.png"
+   ],
+   "2": [
+    "assets/sprites/champions/aurelia/atlas.png"
+   ],
+   "ult": [
+    "assets/sprites/champions/aurelia/atlas.png"
+   ]
+  },
+  "khepri": {
+   "0": [
+    "assets/sprites/champions/khepri/atlas.png"
+   ],
+   "1": [],
+   "2": [],
+   "ult": [
+    "assets/sprites/champions/khepri/atlas.png"
+   ]
+  },
+  "velmira": {
+   "0": [
+    "assets/sprites/champions/velmira/atlas.png"
+   ],
+   "1": [
+    "assets/sprites/champions/velmira/atlas.png"
+   ],
+   "2": [
+    "assets/sprites/champions/velmira/atlas.png"
+   ],
+   "ult": [
+    "assets/sprites/champions/velmira/atlas.png"
+   ]
+  },
+  "vhal": {
+   "0": [
+    "assets/sprites/champions/vhal/atlas.png"
+   ],
+   "1": [
+    "assets/sprites/champions/vhal/atlas.png"
+   ],
+   "2": [
+    "assets/sprites/champions/vhal/atlas.png"
+   ],
+   "ult": [
+    "assets/sprites/champions/vhal/atlas.png"
+   ]
+  },
+  "bront": {
+   "0": [
+    "assets/sprites/champions/bront/atlas.png"
+   ],
+   "1": [
+    "assets/sprites/champions/bront/atlas.png"
+   ],
+   "2": [
+    "assets/sprites/champions/bront/atlas.png"
+   ],
+   "ult": [
+    "assets/sprites/champions/bront/atlas.png"
+   ]
+  },
+  "oriel": {
+   "0": [
+    "assets/sprites/champions/oriel/atlas.png"
+   ],
+   "1": [
+    "assets/sprites/champions/oriel/atlas.png"
+   ],
+   "2": [
+    "assets/sprites/champions/oriel/atlas.png"
+   ],
+   "ult": [
+    "assets/sprites/champions/oriel/atlas.png"
+   ]
+  },
+  "saelis": {
+   "0": [
+    "assets/sprites/champions/saelis/atlas.png"
+   ],
+   "1": [],
+   "2": [],
+   "ult": [
+    "assets/sprites/champions/saelis/atlas.png"
+   ]
+  },
+  "solciju": {
+   "0": [
+    "assets/sprites/champions/solciju/atlas.png"
+   ],
+   "1": [
+    "assets/sprites/champions/solciju/atlas.png"
+   ],
+   "2": [
+    "assets/sprites/champions/solciju/atlas.png"
+   ],
+   "ult": [
+    "assets/sprites/champions/solciju/atlas.png"
+   ]
+  },
+  "veyra": {
+   "0": [
+    "assets/sprites/champions/veyra/codex-v1/atlas.png"
+   ],
+   "1": [],
+   "2": [],
+   "ult": []
+  },
+  "brakk": {
+   "0": [
+    "assets/sprites/champions/brakk/atlas.png"
+   ],
+   "1": [
+    "assets/sprites/champions/brakk/atlas.png"
+   ],
+   "2": [
+    "assets/sprites/champions/brakk/atlas.png"
+   ],
+   "ult": [
+    "assets/sprites/champions/brakk/atlas.png"
+   ]
+  },
+  "morveth": {
+   "0": [
+    "assets/sprites/champions/morveth/atlas.png"
+   ],
+   "1": [
+    "assets/sprites/champions/morveth/atlas.png"
+   ],
+   "2": [
+    "assets/sprites/champions/morveth/atlas.png"
+   ],
+   "ult": [
+    "assets/sprites/champions/morveth/atlas.png"
+   ]
+  },
+  "aelith": {
+   "0": [
+    "assets/sprites/champions/aelith/atlas.png"
+   ],
+   "1": [
+    "assets/sprites/champions/aelith/atlas.png"
+   ],
+   "2": [
+    "assets/sprites/champions/aelith/atlas.png"
+   ],
+   "ult": [
+    "assets/sprites/champions/aelith/atlas.png"
+   ]
+  }
+ }
+}

@@ -52,3 +52,5 @@ Herramienta del pintor: `node tools/art-world/runway-guardian.js <guardián> <in
 **Galería de habilidades (12:26):** 12 guardianes más revisados, sin roturas; flag de legibilidad en Axiom (definitiva). La corrida en segundo plano sigue con el resto (si la sesión se reinició: `ABILITY_ARENA=fortaleza node tools/art-world/ability-gallery.js <salida> a,b,c` y `python3 tools/art-world/ability-sheets.py <salida>`).
 
 **Aplicado (12:5x):** Plaga del Nigromante rehecha en pixel art nativo. Pendiente: la vista previa del Códice del Nigromante aún usa `nigroPlagueBurst` (imagen pintada); revisar la definitiva «Encarnación del Abismo» si el propietario también la quiere cambiar; seguir la galería con el resto de guardianes.
+
+**Habilidades (13:0x):** inventario de efectos pintados hecho (`INVENTARIO_FX_PINTADOS.md`): 27 usos en 8 guardianes; sin otro caso tan malo como la Plaga. Siguiente: revisar a ojo las 18 hojas pendientes (Nahir…Zahra), luego decidir con el director de arte: definitivas que aclaran el fondo (Axiom, Libertador), sustituir `cadena-relampagos` por un haz SFA (5 guardianes), Coloso de Ilkan.

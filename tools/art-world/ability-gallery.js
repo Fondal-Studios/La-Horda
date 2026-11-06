@@ -16,9 +16,9 @@ fs.mkdirSync(out, {recursive: true});
      assetsStartGroup('ch:' + k); return CLASSES[k] ? {name: CLASSES[k].name, skills: CLASSES[k].skills.map(s => s.name), ult: CLASSES[k].ultimate.name} : null; }, k);
    if(!info){ console.log(k, 'sin clase'); await page.close(); continue; }
    await page.waitForTimeout(2500);
-   const cells = [];
+   const cells = [], used = {};
    // El motor de efectos envejece con el reloj REAL (render() reasigna animNow), así que se deja correr el juego de verdad: cuadros de 16 ms con espera real.
-   await page.evaluate(() => { window.__run = ms => new Promise(res => { const t0 = performance.now(); (function tick(){ update(16); render(); if(performance.now() - t0 < ms) setTimeout(tick, 16); else res(); })(); }); });
+   await page.evaluate(() => { window.__drawn = new Set(); const dI = CanvasRenderingContext2D.prototype.drawImage; CanvasRenderingContext2D.prototype.drawImage = function(im){ try{ if(im && im.tagName === 'IMG' && im.src && !im.src.startsWith('data:')) window.__drawn.add(im.src.replace(/^https?:\/\/[^/]+\//, '')); }catch(e){} return dI.apply(this, arguments); }; window.__run = ms => new Promise(res => { const t0 = performance.now(); (function tick(){ update(16); render(); if(performance.now() - t0 < ms) setTimeout(tick, 16); else res(); })(); }); });
    for(const slot of [0, 1, 2, 'ult']){
     await page.evaluate(([k, slot, arena]) => {
       netMatch = null; selectedClass = k; currentArena = arena; lobbyAllies = []; startRun(3); allies.length = 0; if(Array.isArray(heroes)) heroes.splice(1);
@@ -30,13 +30,16 @@ fs.mkdirSync(out, {recursive: true});
       const sk = slot === 'ult' ? player.cls.ultimate : player.cls.skills[slot]; player.aim = {x: player.x + 115, y: player.y, dx: 1, dy: 0};
       castAbility(player, sk, slot === 'ult', slot === 'ult' ? undefined : slot);
     }, [k, slot, ARENA]);
+    await page.evaluate(() => window.__drawn.clear());
     let elapsed = 0;
     for(const t of [160, 560]){
      await page.evaluate(ms => window.__run(ms), t - elapsed); elapsed = t;
      const file = path.join(out, `${k}_${slot}_${t === 160 ? 10 : 35}.png`);
      await page.screenshot({path: file, clip: {x: 190, y: 120, width: 580, height: 300}}); cells.push(file);
     }
+    used[k + ':' + slot] = await page.evaluate(() => [...window.__drawn]);
    }
+   fs.writeFileSync(path.join(out, k + '_usados.json'), JSON.stringify(used, null, 1));
    console.log(k, JSON.stringify(info), 'errores:', JSON.stringify(errors.slice(0, 2)));
    await page.close();
   }
