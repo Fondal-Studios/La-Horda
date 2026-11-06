@@ -1,0 +1,85 @@
+{
+ "guardian": "nahir",
+ "title": "Nahir, la Espejera",
+ "palette": [
+  "#0d2e33",
+  "#2f8f8c",
+  "#68c6c2",
+  "#c9fffb",
+  "#ffffff"
+ ],
+ "abilities": [
+  {
+   "id": "shards",
+   "kind": "sector",
+   "radius": 240,
+   "frames": 10,
+   "glyph": "diamond",
+   "baseline": "nh_fan",
+   "replaces": "nh_fan",
+   "params": {
+    "deco": 1,
+    "ticks": 10
+   },
+   "half": 0.85
+  },
+  {
+   "id": "cross_burst",
+   "kind": "ring",
+   "radius": 80,
+   "frames": 10,
+   "glyph": "diamond",
+   "baseline": "nh_burst",
+   "replaces": "nh_burst",
+   "params": {},
+   "motif": "bolt"
+  },
+  {
+   "id": "shatter",
+   "kind": "ring",
+   "radius": 36,
+   "frames": 10,
+   "glyph": "star",
+   "baseline": "nh_shatter",
+   "replaces": "nh_shatter",
+   "params": {}
+  },
+  {
+   "id": "mirror_zone",
+   "kind": "idle",
+   "radius": 70,
+   "frames": 12,
+   "glyph": "diamond",
+   "baseline": "nh_mirror_idle",
+   "replaces": "nh_mirror_idle",
+   "params": {},
+   "motif": "rune"
+  },
+  {
+   "id": "cut",
+   "kind": "beam",
+   "tile": [
+    16,
+    16
+   ],
+   "frames": 8,
+   "baseline_beam": "nh_cut",
+   "replaces": "nh_cut",
+   "params": {}
+  },
+  {
+   "id": "streak",
+   "kind": "beam",
+   "tile": [
+    16,
+    16
+   ],
+   "frames": 8,
+   "baseline_beam": "nh_streak",
+   "replaces": "nh_streak",
+   "params": {
+    "wave": 1
+   }
+  }
+ ]
+}

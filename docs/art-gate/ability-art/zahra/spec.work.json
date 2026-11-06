@@ -18,13 +18,13 @@
    "baseline": "zh_cone",
    "replaces": "zh_cone",
    "params": {
-    "rim": 2,
+    "rim": 1,
     "fill": 0.0,
-    "ticks": 8,
+    "ticks": 0,
     "tick_len": 0.08,
     "glyph_scale": 1,
     "sparks": 0,
-    "flash": 0.5,
+    "flash": 0.30000000000000004,
     "spin": 1,
     "inner_ring": 0,
     "highlight_arc": 1,
@@ -33,21 +33,22 @@
     "core": 2,
     "glyph_on": 0,
     "wave": 0,
+    "motif_on": 1,
+    "motif_n": 10,
     "wave_amp": 2,
-    "thick": 2,
-    "deco": 1,
+    "thick": 1,
+    "deco": 2,
     "core_density": 0.5
    },
    "half": 0.85,
+   "motif": "flame",
    "_dir": {
     "fill": -1,
     "ticks": -1,
     "tick_len": -1,
-    "rim": 1,
+    "rim": -1,
     "sparks": -1,
-    "thick": 1,
-    "flash": 1,
-    "glyph_scale": 1
+    "motif_n": 1
    }
   },
   {
@@ -67,7 +68,8 @@
     "#cfe0ee",
     "#eef6fc",
     "#ffffff"
-   ]
+   ],
+   "motif": "rune"
   },
   {
    "id": "ash_step",
@@ -79,7 +81,9 @@
    "frames": 8,
    "baseline_beam": "zh_ash",
    "replaces": "zh_ash",
-   "params": {}
+   "params": {
+    "wave": 2
+   }
   },
   {
    "id": "vent",
@@ -103,19 +107,23 @@
     "impact_at": 0.3,
     "fade_to": 0.0,
     "core": 2,
-    "glyph_on": 1,
+    "glyph_on": 0,
     "wave": 0,
+    "motif_on": 1,
+    "motif_n": 6,
     "wave_amp": 2,
     "thick": 1,
     "deco": 2,
     "core_density": 0.5
    },
+   "motif": "flame",
    "_dir": {
     "fill": -1,
     "ticks": -1,
     "tick_len": -1,
     "rim": -1,
-    "sparks": -1
+    "sparks": -1,
+    "motif_n": 1
    }
   },
   {
@@ -127,30 +135,37 @@
    "baseline": "zh_vent_idle",
    "replaces": "zh_vent_idle",
    "params": {
-    "rim": 2,
-    "fill": 0.14,
+    "rim": 1,
+    "fill": 0.0,
     "ticks": 16,
-    "tick_len": 0.2,
-    "glyph_scale": 2,
-    "sparks": 4,
-    "flash": 0.3,
+    "tick_len": 0.08,
+    "glyph_scale": 3,
+    "sparks": 0,
+    "flash": 0.30000000000000004,
     "spin": 1,
     "inner_ring": 0,
     "highlight_arc": 1,
-    "impact_at": 0.3,
+    "impact_at": 0.32,
     "fade_to": 0.0,
     "core": 2,
     "glyph_on": 1,
     "wave": 0,
+    "motif_on": 1,
+    "motif_n": 10,
     "wave_amp": 2,
     "thick": 1,
-    "deco": 2,
+    "deco": 1,
     "core_density": 0.5
    },
+   "motif": "flame",
    "_dir": {
+    "motif_n": 1,
     "ticks": 1,
-    "tick_len": 1,
-    "glyph_scale": 1
+    "glyph_scale": 1,
+    "fill": -1,
+    "tick_len": -1,
+    "rim": -1,
+    "sparks": -1
    }
   }
  ]

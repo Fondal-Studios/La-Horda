@@ -1,47 +1,47 @@
 {
  "kind": "ring",
- "score": 94.0,
+ "score": 90.1,
  "points": {
   "alpha": 5.0,
   "palette": 8.0,
-  "hygiene": 6.96,
+  "hygiene": 7.0,
   "edge": 15.0,
-  "coverage": 10.13,
+  "coverage": 5.98,
   "contrast": 8.0,
-  "clear_floor": 5.0,
+  "clear_floor": 4.6,
   "motion": 15.0,
   "richness": 15.0,
-  "identity": 5.88
+  "identity": 6.55
  },
  "metrics": {
   "alpha_binary": 1.0,
   "palette_adherence": 1.0,
   "colors": 5,
-  "isolated": 0.03057883292008645,
+  "isolated": 0.01628725657248472,
   "edge_outline": 1.0,
   "edge_reach": 0.9864254028753598,
   "edge_over": 0.0,
-  "coverage": 0.5312182741116751,
-  "interior": 0.38049713193116635,
-  "interior_detail": 0.2978011472275335,
+  "coverage": 0.600253807106599,
+  "interior": 0.46367112810707456,
+  "interior_detail": 0.3824091778202677,
   "arena_ok": 1.0,
   "has_outline_and_light": true,
   "lum_gap": 16.006500466816075,
   "peak_pos": 0.2222222222222222,
   "tail": 0.0,
-  "motion_mean": 0.11316872427983538,
+  "motion_mean": 0.12375685871056241,
   "unique_frames": 1.0,
   "tones": 5,
-  "highlight_share": 0.1930243669374104,
-  "core_fill": 0.4186746987951807,
-  "detail_mass": 0.19186746987951805,
-  "min_sig_dist": 0.04805088783178479
+  "highlight_share": 0.16363636363636364,
+  "core_fill": 0.7439759036144579,
+  "detail_mass": 0.3834337349397591,
+  "min_sig_dist": 0.06947196109109229
  },
  "hard_fails": [],
  "ops": [
   {
    "knob": "fill",
-   "why": "cobertura alta (53%): bajar el relleno para no tapar al enemigo",
+   "why": "cobertura alta (60%): bajar el relleno para no tapar al enemigo",
    "hard": true,
    "add": -0.06
   },
@@ -76,8 +76,14 @@
    "add": -2
   },
   {
+   "knob": "glyph_on",
+   "why": "quitar el glifo: la cobertura es excesiva",
+   "hard": true,
+   "set": 0
+  },
+  {
    "knob": "deco",
-   "why": "se parece demasiado a otra habilidad del guardián (distancia 0.05): cambiar el tipo de marca",
+   "why": "se parece demasiado a otra habilidad del guardián (distancia 0.07): cambiar el tipo de marca",
    "add": 1
   },
   {
@@ -94,19 +100,29 @@
    "knob": "sparks",
    "why": "el arte actual cubre mejor la zona: menos chispas",
    "add": -2
+  },
+  {
+   "knob": "motif_on",
+   "why": "activar el motivo temático del guardián (el arte actual lo tiene)",
+   "set": 1
+  },
+  {
+   "knob": "motif_n",
+   "why": "el arte actual tiene más trama temática: motivo más denso",
+   "add": 1
   }
  ],
  "criteria": {
   "alpha": 1.0,
   "palette": 1.0,
-  "hygiene": 0.995,
+  "hygiene": 1.0,
   "edge": 1.0,
-  "coverage": 0.844,
+  "coverage": 0.499,
   "contrast": 1.0,
-  "clear_floor": 1.0,
+  "clear_floor": 0.92,
   "motion": 1.0,
   "richness": 1.0,
-  "identity": 0.588
+  "identity": 0.655
  },
  "baseline_total": 76.8,
  "baseline_criteria": {
@@ -145,9 +161,11 @@
   "detail_mass": 0.1614457831325301,
   "min_sig_dist": 1.0
  },
- "improvement": 17.2,
+ "improvement": 13.3,
  "reasons": [
-  "regresión de cobertura legible frente al arte actual (0.84 < 1.00)"
+  "criterio bajo: cobertura legible 5.98/12",
+  "regresión de cobertura legible frente al arte actual (0.50 < 1.00)"
  ],
- "status": "FAIL"
+ "status": "FAIL",
+ "keep_current": false
 }

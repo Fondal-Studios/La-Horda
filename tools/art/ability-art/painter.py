@@ -40,7 +40,9 @@ KNOBS = {
     'fade_to': (0.0, 0.0, 0.3, 0.1),         # cuánto queda del efecto en el último cuadro (0 = limpio)
     'core': (2, 2, 3, 1),           # tono del relleno (2 = sombra, como el motor)
     'glyph_on': (1, 0, 1, 1),       # glifo central (se quita solo si no cabe)
-    'wave': (0, 0, 2, 1),           # forma del rayo: 0 recto · 1 zigzag (relámpago) · 2 onda suave (hilo, tinta)
+    'wave': (0, 0, 3, 1),           # forma del rayo: 0 recto · 1 zigzag · 2 onda suave (hilo, tinta) · 3 relámpago orgánico
+    'motif_on': (1, 0, 1, 1),       # motivo temático del guardián (panal, circuito, llama…)
+    'motif_n': (5, 2, 10, 1),       # densidad del motivo
     'wave_amp': (2, 1, 5, 1),       # amplitud de la forma (px)
     'thick': (1, 1, 3, 1),          # grosor de las estelas de un sector (px)
     'deco': (0, 0, 2, 1),           # 0 marcas radiales · 1 puntos · 2 rayos largos
@@ -113,7 +115,12 @@ def apply_ops(ability, ops):
             sg = (add > 0) - (add < 0)
             if 'add' in op and sg and dirs.get(k) == -sg:   # amortiguación: si la perilla invierte su sentido, medio paso
                 add = add / 2.0
-            new = clamp_knob(k, op['set'] if 'set' in op else old + add)
+            if 'set' in op:
+                new = clamp_knob(k, op['set'])
+            elif KNOBS[k][3] == 1 and add:   # perilla entera de paso 1: nunca menos de un paso en el sentido pedido
+                new = clamp_knob(k, old + sg * max(1, int(round(abs(add)))))
+            else:
+                new = clamp_knob(k, old + add)
         if new != old:
             p[k] = new
             if 'add' in op and not op.get('cycle'):
@@ -226,8 +233,157 @@ def lit_band(cv, dx, dy, d, band, th, p):
     return cv_tone
 
 
+
+# ---------------------------------------------------------------- motivos temáticos (la identidad de cada guardián)
+def _h(i, k):
+    """Hash determinista 0..1 (sin azar): mismo resultado siempre."""
+    v = ((i * 73856093) ^ (k * 19349663) ^ 0x9E3779B1) & 0xFFFFFF
+    return v / float(0xFFFFFF)
+
+
+def _line(mask, x0, y0, x1, y1):
+    x0, y0, x1, y1 = int(round(x0)), int(round(y0)), int(round(x1)), int(round(y1))
+    dx, dy = abs(x1 - x0), -abs(y1 - y0)
+    sx, sy = (1 if x0 < x1 else -1), (1 if y0 < y1 else -1)
+    err = dx + dy
+    h, w = mask.shape
+    while True:
+        if 0 <= x0 < w and 0 <= y0 < h:
+            mask[y0, x0] = True
+        if x0 == x1 and y0 == y1:
+            break
+        e2 = 2 * err
+        if e2 >= dy:
+            err += dy; x0 += sx
+        if e2 <= dx:
+            err += dx; y0 += sy
+
+
+def _hex(mask, cx, cy, r):
+    pts = [(cx + r * math.cos(math.pi / 6 + i * math.pi / 3), cy + r * math.sin(math.pi / 6 + i * math.pi / 3)) for i in range(6)]
+    for i in range(6):
+        _line(mask, pts[i][0], pts[i][1], pts[(i + 1) % 6][0], pts[(i + 1) % 6][1])
+
+
+def motif_mask(name, S, rad, n, q, sector=False, half=0.85):
+    """Máscaras (base, brillo) de un motivo. rad = radio útil; n = densidad (2..10). Todo entero, determinista."""
+    base = np.zeros((S, S), bool)
+    hi = np.zeros((S, S), bool)
+    c = S / 2.0
+    if name == 'hex':            # panal (Tibor): celdas hexagonales en una malla
+        r = max(2.2, rad / (n * 0.9 + 1.5))
+        dxs, dys = r * math.sqrt(3), r * 1.5
+        for j in range(-int(rad / dys) - 1, int(rad / dys) + 2):
+            for i in range(-int(rad / dxs) - 1, int(rad / dxs) + 2):
+                x = c + i * dxs + (dxs / 2 if j % 2 else 0) + dxs * (q % 1.0)   # la malla se desplaza una celda por ciclo
+                y = c + j * dys
+                if math.hypot(x - c, y - c) < rad * 0.78 and math.hypot(x - c, y - c) > rad * 0.14:
+                    _hex(base, x, y, r * 0.85)
+        _hex(hi, c, c, max(2.2, rad * 0.12))
+    elif name == 'pollen':       # polen (Tibor): motas que derivan
+        for k in range(n * 3):
+            a = _h(k, 1) * math.tau + q * 0.8 * (1 if k % 2 else -1)
+            rr = rad * (0.2 + 0.62 * _h(k, 2))
+            x, y = c + math.cos(a) * rr, c + math.sin(a) * rr
+            xi, yi = int(x), int(y)
+            for ox, oy in ((0, 0), (1, 0), (0, 1), (1, 1)):
+                if 0 <= xi + ox < S and 0 <= yi + oy < S:
+                    (hi if k % 3 == 0 else base)[yi + oy, xi + ox] = True
+    elif name == 'circuit':      # circuito (Orsa): placa con simetría especular de 4 cuadrantes (nunca un molinete: sin sentido de giro)
+        step = max(3.0, rad * 0.16)
+        for k in range(n):
+            y0 = (k + 1) * step * 0.85
+            a = rad * (0.30 + 0.4 * _h(k, 3))
+            b = step * (1 + 1.5 * _h(k, 4))
+            for sx in (1, -1):
+                for sy in (1, -1):
+                    X = lambda v: c + sx * v
+                    Y = lambda v: c + sy * v
+                    _line(base, X(3), Y(y0), X(a), Y(y0))
+                    _line(base, X(a), Y(y0), X(a), Y(max(2.0, y0 - b)))
+                    ex, ey = int(X(a)), int(Y(max(2.0, y0 - b)))
+                    for ax in (0, 1):
+                        for ay in (0, 1):
+                            if 0 <= ex + ax < S and 0 <= ey + ay < S and k % 2 == 0:
+                                hi[ey + ay, ex + ax] = True
+    elif name == 'spiral':       # espiral (Vhal: pozo y órbita): dos brazos que giran con el tiempo
+        for arm in range(2):
+            pts = []
+            for t in range(0, 90):
+                u = t / 89.0
+                a = arm * math.pi + u * 3.2 * math.tau * 0.5 + q * math.tau * 0.5
+                r = 2 + u * rad * 0.85
+                pts.append((c + math.cos(a) * r, c + math.sin(a) * r))
+            for i in range(len(pts) - 1):
+                _line(hi if i % 9 == 0 else base, pts[i][0], pts[i][1], pts[i + 1][0], pts[i + 1][1])
+                if n >= 6:   # trazo de 2 px con densidad alta
+                    _line(base, pts[i][0] + 1, pts[i][1], pts[i + 1][0] + 1, pts[i + 1][1])
+    elif name == 'serpent':      # serpiente (Oriel: la Gran Cicatriz): una onda que atraviesa la zona
+        for lane in range(max(1, n // 4)):
+            y0 = c + (lane - (max(1, n // 4) - 1) / 2.0) * rad * 0.5
+            prev = None
+            for xx in range(int(c - rad * 0.85), int(c + rad * 0.85)):
+                yy = y0 + math.sin((xx - c) / rad * 5.0 + q * math.tau) * rad * 0.16
+                if prev:
+                    _line(base, prev[0], prev[1], xx, yy)
+                    _line(hi if xx % 7 == 0 else base, prev[0], prev[1] + 1, xx, yy + 1)
+                prev = (xx, yy)
+    elif name == 'bolt':         # relámpago (Orsa, Vhal): ramas quebradas desde el centro
+        for k in range(n):
+            a = k * math.tau / n + _h(k, 5) * 0.4
+            x, y = c, c
+            steps = max(4, int(rad * 0.85 / 3))
+            for s in range(steps):
+                a2 = a + (_h(k * 31 + s + 97 * int(q * 5), 6) - 0.5) * 1.3   # las ramas titilan (5 formas por ciclo)
+                nx, ny = x + math.cos(a2) * 3, y + math.sin(a2) * 3
+                _line(hi if s % 3 == 0 else base, x, y, nx, ny)
+                x, y = nx, ny
+    elif name == 'flame':        # llama (Zahra): lenguas que se afinan hacia la punta
+        ys, xs = np.mgrid[0:S, 0:S]
+        dxm, dym = xs + 0.5 - c, ys + 0.5 - c
+        d, ang = np.hypot(dxm, dym), np.arctan2(dym, dxm)
+        for k in range(n + 1):
+            a0 = (-half * 0.8 + k * (1.6 * half) / max(1, n)) if sector else k * math.tau / (n + 1)
+            L = max(2.0, rad * (0.55 + 0.35 * _h(k, 7)))
+            da = np.abs(((ang - a0 + math.pi) % math.tau) - math.pi)
+            w = np.clip(0.2 * (1 - d / L), 0, None) + 0.012
+            m = (d < L) & (d > 3) & (da * np.maximum(d, 1) < np.maximum(w * d, 0.6) * 2.2)
+            base |= m
+            hi |= m & (d > L * 0.55) & (da * np.maximum(d, 1) < 0.9)
+    elif name == 'map':          # mapa (Sira): retícula, brújula y ruta punteada
+        _line(base, c, c - rad * 0.8, c, c + rad * 0.8)
+        _line(base, c - rad * 0.8, c, c + rad * 0.8, c)
+        ys, xs = np.mgrid[0:S, 0:S]
+        d = np.hypot(xs + 0.5 - c, ys + 0.5 - c)
+        base |= np.abs(d - rad * 0.55) < 0.55
+        for k in range(4):
+            a = k * math.pi / 2 + math.pi / 4
+            _line(hi, c + math.cos(a) * rad * 0.3, c + math.sin(a) * rad * 0.3, c + math.cos(a) * rad * 0.5, c + math.sin(a) * rad * 0.5)
+        for k in range(n):
+            a = _h(k, 8) * math.tau
+            x, y = int(c + math.cos(a) * rad * 0.7), int(c + math.sin(a) * rad * 0.7)
+            if 0 <= x < S and 0 <= y < S:
+                hi[y, x] = True
+    elif name == 'thread':       # hilo (Vesper): costuras en X sobre el área
+        for k in range(n):
+            a = k * math.tau / n + q * 0.4
+            x, y = c + math.cos(a) * rad * 0.62, c + math.sin(a) * rad * 0.62
+            _line(base, x - 2, y - 2, x + 2, y + 2)
+            _line(base, x - 2, y + 2, x + 2, y - 2)
+            if 0 <= int(x) < S and 0 <= int(y) < S:
+                hi[int(y), int(x)] = True
+    elif name == 'rune':         # runa (Oriel, Saelis…): sellos de un trazo y puntos
+        for k in range(n):
+            a = k * math.tau / n
+            x, y = c + math.cos(a) * rad * 0.66, c + math.sin(a) * rad * 0.66
+            _line(base, x, y - 2, x, y + 2)
+            _line(base, x - 2, y, x + 2, y)
+            if k % 2 == 0:
+                hi[int(y), int(x)] = True
+    return base, hi
+
 # ---------------------------------------------------------------- formas
-def paint_ring(S, q, p, glyph, idle=False):
+def paint_ring(S, q, p, glyph, idle=False, motif=None):
     cv = Canvas(S)
     dx, dy, d, ang = cv.polar()
     R = S / 2 - 1.5
@@ -279,6 +435,13 @@ def paint_ring(S, q, p, glyph, idle=False):
                         solid[yi, xi] = True
         solid &= dither_keep(cv.a.shape, det_lv) if det_lv < 1 else solid
         put_solid(cv, solid, 4)
+    if motif and p['motif_on'] and det_lv > 0.05:
+        bm, hm = motif_mask(motif, S, rad - th - 1.5, int(p['motif_n']), q)
+        inside_m = d < rad - th - 1.2
+        keep = dither_keep(cv.a.shape, det_lv) if det_lv < 1 else np.ones(cv.a.shape, bool)
+        bm, hm = bm & inside_m & keep, hm & inside_m & keep
+        put_solid(cv, bm & ~hm, 3, outline=False)
+        put_solid(cv, hm, 5, outline=S >= 64)
     if p['inner_ring'] and det_lv > 0.3 and S >= 48:
         band = (np.abs(d - rad * 0.62) < 0.55)
         band &= dither_keep(cv.a.shape, det_lv) if det_lv < 1 else band
@@ -317,7 +480,7 @@ def paint_ring(S, q, p, glyph, idle=False):
     return cv.a
 
 
-def paint_sector(S, q, p, glyph, half=0.85):
+def paint_sector(S, q, p, glyph, half=0.85, motif=None):
     cv = Canvas(S)
     dx, dy, d, ang = cv.polar()
     R = S / 2 - 1.5
@@ -328,7 +491,14 @@ def paint_sector(S, q, p, glyph, half=0.85):
     wedge = (d <= max(2.0, front)) & (np.abs(ang) <= half)
     cv.a[wedge & dither_keep(cv.a.shape, fill)] = p['core']
     det = 1.0 if q < 0.12 else max(p['fade_to'], 1 - post * 1.2) if not in_hit else min(1.0, q / 0.12)
-    if p['ticks'] > 0 and det > 0.05:   # estelas desde el vértice (hilos, agujas, rayos)
+    if motif in ('flame', 'bolt') and p['motif_on'] and det > 0.05:
+        bm, hm = motif_mask(motif, S, front * 0.97, int(p['motif_n']), q, True, half)
+        wedge_in = (d <= max(2.0, front - 1.5)) & (np.abs(ang) <= half * 0.96)
+        keep = dither_keep(cv.a.shape, det) if det < 1 else np.ones(cv.a.shape, bool)
+        bm, hm = bm & wedge_in & keep, hm & wedge_in & keep
+        put_solid(cv, bm & ~hm, 4, outline=False)
+        put_solid(cv, hm, 5, outline=S >= 96)
+    elif p['ticks'] > 0 and det > 0.05:   # estelas desde el vértice (hilos, agujas, rayos)
         n = max(2, int(p['ticks']) // 2)
         solid = np.zeros(cv.a.shape, bool)
         thick = p['thick']
@@ -390,7 +560,11 @@ def paint_beam(W, H, q, f, p):
     k = 2
     for x in range(W):
         u = ((x + f * W / 8.0 * 0.5) / W * k) % 1.0           # la forma avanza con los cuadros (periódica)
-        tri = 1 - abs(4 * u - 2) if p['wave'] == 1 else math.sin(u * math.tau)
+        if p['wave'] == 3:   # relámpago orgánico: dos ondas + sacudida por columna (periódico en W)
+            tri = 0.6 * math.sin(math.tau * (x / W * 2 + f * 0.37)) + 0.4 * math.sin(math.tau * (x / W * 5 + f * 0.13)) + (_h(x, f) - 0.5) * 0.8
+            tri = max(-1.0, min(1.0, tri))
+        else:
+            tri = 1 - abs(4 * u - 2) if p['wave'] == 1 else math.sin(u * math.tau)
         c = m + amp * (tri if p['wave'] else 0)
         top, bot = int(round(c - half)), int(round(c + half))
         top, bot = max(1, top), min(H - 2, bot)
@@ -398,7 +572,7 @@ def paint_beam(W, H, q, f, p):
             cv.a[y, x] = p['core']
         cv.a[top, x] = 4 if p['highlight_arc'] else 3        # filo superior iluminado
         cv.a[bot, x] = 2                                      # filo inferior en sombra
-        ch = max(1, int(round((bot - top) * p['core_density'] * 0.5)))
+        ch = max(1, int(round((bot - top) * p['core_density'] * (0.8 if p['wave'] == 3 else 0.5))))
         cy = int(round((top + bot) / 2.0))
         for y in range(cy - ch // 2, cy - ch // 2 + ch):
             if top < y < bot:
@@ -432,11 +606,11 @@ def frames_for(guardian, ab):
         return [paint_beam(W, H, f / (N - 1), f, p) for f in range(N)]
     S = int(ab.get('size') or canon.kvb_s(ab['radius']))
     if kind == 'ring':
-        return [paint_ring(S, f / (N - 1), p, glyph) for f in range(N)]
+        return [paint_ring(S, f / (N - 1), p, glyph, motif=ab.get('motif')) for f in range(N)]
     if kind == 'idle':
-        return [paint_ring(S, f / N, p, glyph, idle=True) for f in range(N)]
+        return [paint_ring(S, f / N, p, glyph, idle=True, motif=ab.get('motif')) for f in range(N)]
     if kind == 'sector':
-        return [paint_sector(S, f / (N - 1), p, glyph, ab.get('half', 0.85)) for f in range(N)]
+        return [paint_sector(S, f / (N - 1), p, glyph, ab.get('half', 0.85), ab.get('motif')) for f in range(N)]
     raise ValueError(f'tipo desconocido: {kind}')
 
 

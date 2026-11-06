@@ -1,6 +1,6 @@
 {
  "kind": "ring",
- "score": 81.7,
+ "score": 81.6,
  "points": {
   "alpha": 5.0,
   "palette": 8.0,
@@ -11,7 +11,7 @@
   "clear_floor": 3.42,
   "motion": 15.0,
   "richness": 13.8,
-  "identity": 8.88
+  "identity": 8.79
  },
  "metrics": {
   "alpha_binary": 1.0,
@@ -35,7 +35,7 @@
   "highlight_share": 0.1484848484848485,
   "core_fill": 1.0,
   "detail_mass": 0.634375,
-  "min_sig_dist": 0.14403409090909092
+  "min_sig_dist": 0.14133890038945998
  },
  "hard_fails": [
   "cobertura excesiva (81%): oculta el suelo"
@@ -135,6 +135,16 @@
    "set": 1
   },
   {
+   "knob": "motif_on",
+   "why": "activar el motivo temático del guardián (el arte actual lo tiene)",
+   "set": 1
+  },
+  {
+   "knob": "motif_n",
+   "why": "el arte actual tiene más trama temática: motivo más denso",
+   "add": 1
+  },
+  {
    "knob": "ticks",
    "why": "el arte actual tiene más trama interior: sumar marcas propias",
    "add": 4
@@ -160,7 +170,7 @@
   "clear_floor": 0.685,
   "motion": 1.0,
   "richness": 0.92,
-  "identity": 0.888
+  "identity": 0.879
  },
  "baseline_total": 67.1,
  "baseline_criteria": {
@@ -199,12 +209,13 @@
   "detail_mass": 0.328125,
   "min_sig_dist": 1.0
  },
- "improvement": 14.6,
+ "improvement": 14.5,
  "reasons": [
   "cobertura excesiva (81%): oculta el suelo",
   "criterio bajo: cobertura legible 0.0/12",
-  "puntaje 81.7 < 85",
+  "puntaje 81.6 < 85",
   "regresión de riqueza visual frente al arte actual (0.92 < 0.95)"
  ],
- "status": "FAIL"
+ "status": "FAIL",
+ "keep_current": false
 }

@@ -94,6 +94,10 @@ def run(spec_path, baseline_dir=None, integrate=True, rounds=canon.MAX_ROUNDS, o
                              'frames': painted[i], 'criteria': rep['criteria']}
                 log.append(f"ronda {rnd}: {i} PASS {rep['score']}" + (f" (arte actual {base[i]}, {rep['improvement']:+})" if i in base else ''))
                 continue
+            if rep.get('keep_current'):
+                st['status'] = 'KEEP_CURRENT'
+                log.append(f"ronda {rnd}: {i} CONSERVAR ACTUAL — el arte actual ya puntúa {base[i]} y el nuevo lo iguala ({rep['score']}): no se reemplaza")
+                continue
             before = json.dumps(a.get('params'), sort_keys=True) + str(a.get('glyph'))
             changes = painter.apply_ops(a, rep['ops'])
             instr.append(painter.render_instructions(i, rep['ops'], changes))
@@ -108,7 +112,8 @@ def run(spec_path, baseline_dir=None, integrate=True, rounds=canon.MAX_ROUNDS, o
         if s['status'] == 'PENDING':
             s['status'] = 'ESCALATED'
     summary = {'guardian': g, 'passed': [i for i, s in state.items() if s['status'] == 'PASS'],
-               'escalated': [i for i, s in state.items() if s['status'] == 'ESCALATED'], 'state': state, 'baseline': base, 'log': log}
+               'escalated': [i for i, s in state.items() if s['status'] == 'ESCALATED'],
+               'keep_current': [i for i, s in state.items() if s['status'] == 'KEEP_CURRENT'], 'state': state, 'baseline': base, 'log': log}
     # Arquitecto
     summary['integration'] = None
     if integrate and summary['passed']:
@@ -133,12 +138,16 @@ def check(spec_path):
     final = canon.load_json(canon.OUT_DOCS / g / 'spec.final.json')
     ramp = canon.ramp_rgb(final)
     errors, results = [], {}
+    sm = canon.load_json(canon.OUT_DOCS / g / 'summary.json')
+    approved = {i for i, s in sm['state'].items() if s['status'] == 'PASS'}   # solo lo aprobado se integra y se verifica
     abil = {a['id']: a for a in final['abilities']}
-    painted = {i: painter.frames_for(g, a) for i, a in abil.items()}
+    painted = {i: painter.frames_for(g, a) for i, a in abil.items() if i in approved}
     rgba = {i: [canon.index_to_rgba(f, canon.ramp_for(final, abil[i])) for f in fr] for i, fr in painted.items()}
     for i, a in abil.items():
+        if i not in approved:
+            continue
         sig = lambda k: np.array(evaluator._signature(rgba[k][int(np.stack([f[..., 3] > 0 for f in rgba[k]]).sum((1, 2)).argmax())]))
-        others = {k: sig(k) for k in abil if k != i and abil[k]['kind'] == a['kind']}
+        others = {k: sig(k) for k in abil if k != i and k in approved and abil[k]['kind'] == a['kind']}
         rep = evaluator.evaluate(rgba[i], a, canon.ramp_for(final, a), others or None)
         rep = evaluator.verdict(rep, False)
         if rep['status'] != 'PASS':
@@ -179,7 +188,7 @@ def main():
         sys.exit(1 if errs else 0)
     s = run(Path(a.spec), a.baseline_dir, not a.no_integrate, a.rounds, smoke=not a.no_smoke, base_url=a.base_url)
     print('\n'.join(s['log']))
-    print('PASS:', s['passed'], '· ESCALADAS:', s['escalated'])
+    print('PASS:', s['passed'], '· ESCALADAS:', s['escalated'], '· CONSERVAR ACTUAL:', s['keep_current'])
     sys.exit(0 if not s['escalated'] else 2)
 
 

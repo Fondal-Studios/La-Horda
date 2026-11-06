@@ -1,0 +1,113 @@
+{
+ "kind": "sector",
+ "score": 98.2,
+ "points": {
+  "alpha": 5.0,
+  "palette": 8.0,
+  "hygiene": 7.0,
+  "edge": 15.0,
+  "coverage": 12.0,
+  "contrast": 8.0,
+  "clear_floor": 5.0,
+  "motion": 14.02,
+  "richness": 14.16,
+  "identity": 10.0
+ },
+ "metrics": {
+  "alpha_binary": 1.0,
+  "palette_adherence": 1.0,
+  "colors": 5,
+  "isolated": 0.0,
+  "edge_outline": 1.0,
+  "edge_reach": 0.9867964822890279,
+  "edge_over": 0.0,
+  "coverage": 0.3793103448275862,
+  "interior": 0.2659732540861813,
+  "interior_detail": 0.10029717682020803,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 14.442288747930025,
+  "peak_pos": 0.3333333333333333,
+  "tail": 0.008441558441558441,
+  "motion_mean": 0.029588487413194444,
+  "unique_frames": 1.0,
+  "tones": 5,
+  "highlight_share": 0.01883116883116883,
+  "core_fill": 0.18906810035842295,
+  "detail_mass": 0.1224014336917563,
+  "min_sig_dist": 1.0
+ },
+ "hard_fails": [],
+ "ops": [
+  {
+   "knob": "fill",
+   "why": "el arte actual tiene más cuerpo: subir el relleno trameado (techo del motor 24 %)",
+   "add": 0.06
+  },
+  {
+   "knob": "ticks",
+   "why": "el arte actual tiene más trama: sumar marcas",
+   "add": 2
+  },
+  {
+   "knob": "rim",
+   "why": "el arte actual tiene más presencia: borde más grueso",
+   "add": 1
+  }
+ ],
+ "criteria": {
+  "alpha": 1.0,
+  "palette": 1.0,
+  "hygiene": 1.0,
+  "edge": 1.0,
+  "coverage": 1.0,
+  "contrast": 1.0,
+  "clear_floor": 1.0,
+  "motion": 0.935,
+  "richness": 0.944,
+  "identity": 1.0
+ },
+ "baseline_total": 83.1,
+ "baseline_criteria": {
+  "alpha": 1.0,
+  "palette": 0.0,
+  "hygiene": 1.0,
+  "edge": 1.0,
+  "coverage": 1.0,
+  "contrast": 0.7,
+  "clear_floor": 1.0,
+  "motion": 0.967,
+  "richness": 0.8,
+  "identity": 0.7
+ },
+ "baseline_metrics": {
+  "alpha_binary": 1.0,
+  "palette_adherence": 0.18278132071590208,
+  "colors": 379,
+  "isolated": 0.0,
+  "edge_outline": 0.9791666666666666,
+  "edge_reach": 0.9877110123401899,
+  "edge_over": 0.0,
+  "coverage": 0.4798363530099357,
+  "interior": 0.3684992570579495,
+  "interior_detail": 0.15824665676077265,
+  "arena_ok": 1.0,
+  "has_outline_and_light": false,
+  "lum_gap": 14.442288747930025,
+  "peak_pos": 0.3333333333333333,
+  "tail": 0.0,
+  "motion_mean": 0.034722222222222224,
+  "unique_frames": 1.0,
+  "tones": 3,
+  "highlight_share": 0.0,
+  "core_fill": 0.22939068100358423,
+  "detail_mass": 0.13906810035842293,
+  "min_sig_dist": 1.0
+ },
+ "improvement": 15.1,
+ "reasons": [
+  "presencia menor que el arte actual: cobertura 38% < 38% (arte actual 48%)"
+ ],
+ "status": "FAIL",
+ "keep_current": false
+}

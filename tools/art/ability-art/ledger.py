@@ -25,7 +25,8 @@ for sp in sorted(canon.OUT_DOCS.glob('*/summary.json')):
 L += [f'**Total: {ok}/{tot} piezas aprobadas por el Evaluador.**', '',
       'Capturas antes/después en el motor real: `docs/art-gate/ability-art/<guardián>/ingame/` (arena bosque). Hoja de comparación: `<guardián>/compare.png`.', '',
       'Estos puntajes los produce el Evaluador (contrato técnico, legibilidad, presencia y silueta frente al arte actual); **no son una aprobación de arte**. '
-      'Limitación conocida: el Pintor usa familias de marcas genéricas, así que el arte nuevo es más nítido y unificado pero pierde parte del detalle temático '
-      'del anterior (panal y polen de Tibor, circuitos de Orsa). La revisión humana de `docs/ART_BIBLE.md` §8 sigue pendiente.']
+      'Estados: PASS (integrada) · KEEP_CURRENT (el arte actual ya es casi tope y el nuevo no lo supera: no se reemplaza) · ESCALATED (el Pintor no llegó: REDRAW REQUIRED, no se integra). '
+      'Limitación conocida: el Pintor tiene motivos temáticos (panal, polen, circuito, llama, relámpago, mapa, hilo, espiral, serpiente, runa) pero con línea más fina que el arte actual; '
+      'conviene revisión humana de `docs/ART_BIBLE.md` §8 antes de llevarlo a `main`.']
 (canon.OUT_DOCS / 'LEDGER.md').write_text('\n'.join(L) + '\n', encoding='utf-8')
 print('\n'.join(L[-8:]))

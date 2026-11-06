@@ -1,6 +1,6 @@
 {
  "kind": "beam",
- "score": 100.0,
+ "score": 98.3,
  "points": {
   "alpha": 5.0,
   "palette": 8.0,
@@ -9,7 +9,7 @@
   "coverage": 12.0,
   "contrast": 8.0,
   "clear_floor": 5.0,
-  "motion": 15.0,
+  "motion": 13.29,
   "richness": 15.0,
   "identity": 10.0
  },
@@ -20,20 +20,20 @@
   "isolated": 0.0,
   "edge_outline": 1.0,
   "edge_reach": 1.0,
-  "coverage": 0.6,
+  "coverage": 0.5708333333333333,
   "interior": 0.0,
-  "jag": 0.08897565210026093,
+  "jag": 0.08926760501737165,
   "interior_detail": 0.3,
   "arena_ok": 1.0,
   "has_outline_and_light": true,
   "lum_gap": 14.442288747930025,
-  "peak_pos": 0.2857142857142857,
-  "tail": 0.16666666666666666,
-  "motion_mean": 0.20297619047619048,
+  "peak_pos": 0.14285714285714285,
+  "tail": 0.17518248175182483,
+  "motion_mean": 0.256547619047619,
   "unique_frames": 1.0,
   "tones": 4,
-  "highlight_share": 0.11458333333333333,
-  "core_fill": 0.6,
+  "highlight_share": 0.24452554744525548,
+  "core_fill": 0.5708333333333333,
   "detail_mass": 0.5,
   "min_sig_dist": 1.0
  },
@@ -58,7 +58,7 @@
   "coverage": 1.0,
   "contrast": 1.0,
   "clear_floor": 1.0,
-  "motion": 1.0,
+  "motion": 0.886,
   "richness": 1.0,
   "identity": 1.0
  },
@@ -99,9 +99,10 @@
   "detail_mass": 0.5,
   "min_sig_dist": 1.0
  },
- "improvement": 17.3,
+ "improvement": 15.6,
  "reasons": [
   "silueta más plana que el arte actual: irregularidad 0.09 < 70 % de 0.17"
  ],
- "status": "FAIL"
+ "status": "FAIL",
+ "keep_current": false
 }

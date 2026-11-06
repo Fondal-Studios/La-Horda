@@ -1,0 +1,45 @@
+{
+ "guardian": "oriel",
+ "title": "Oriel, la Tejedora de Cicatrices",
+ "palette": [
+  "#2a0a16",
+  "#8e2a48",
+  "#e05a7a",
+  "#ffd0dc",
+  "#ffffff"
+ ],
+ "abilities": [
+  {
+   "id": "great_rift",
+   "kind": "ring",
+   "radius": 200,
+   "frames": 10,
+   "glyph": "eye",
+   "baseline": "oe_rift",
+   "replaces": "oe_rift",
+   "params": {},
+   "motif": "serpent"
+  },
+  {
+   "id": "rift_echo",
+   "kind": "ring",
+   "radius": 120,
+   "frames": 10,
+   "glyph": "eye",
+   "baseline": "oe_pulse",
+   "replaces": "oe_pulse",
+   "params": {},
+   "motif": "rune"
+  },
+  {
+   "id": "portal",
+   "kind": "ring",
+   "radius": 38,
+   "frames": 10,
+   "glyph": "eye",
+   "baseline": "oe_portal",
+   "replaces": "oe_portal",
+   "params": {}
+  }
+ ]
+}

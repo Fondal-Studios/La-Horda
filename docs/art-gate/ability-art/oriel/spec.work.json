@@ -1,0 +1,75 @@
+{
+ "guardian": "oriel",
+ "title": "Oriel, la Tejedora de Cicatrices",
+ "palette": [
+  "#2a0a16",
+  "#8e2a48",
+  "#e05a7a",
+  "#ffd0dc",
+  "#ffffff"
+ ],
+ "abilities": [
+  {
+   "id": "great_rift",
+   "kind": "ring",
+   "radius": 200,
+   "frames": 10,
+   "glyph": "eye",
+   "baseline": "oe_rift",
+   "replaces": "oe_rift",
+   "params": {},
+   "motif": "serpent"
+  },
+  {
+   "id": "rift_echo",
+   "kind": "ring",
+   "radius": 120,
+   "frames": 10,
+   "glyph": "eye",
+   "baseline": "oe_pulse",
+   "replaces": "oe_pulse",
+   "params": {},
+   "motif": "rune"
+  },
+  {
+   "id": "portal",
+   "kind": "ring",
+   "radius": 38,
+   "frames": 10,
+   "glyph": "eye",
+   "baseline": "oe_portal",
+   "replaces": "oe_portal",
+   "params": {
+    "rim": 1,
+    "fill": 0.09,
+    "ticks": 4,
+    "tick_len": 0.12,
+    "glyph_scale": 1,
+    "sparks": 2,
+    "flash": 0.3,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.3,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 1,
+    "motif_n": 5,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 1,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "rim": -1,
+    "fill": -1,
+    "ticks": -1,
+    "tick_len": -1,
+    "sparks": -1,
+    "deco": 1
+   }
+  }
+ ]
+}

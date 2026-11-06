@@ -1,0 +1,71 @@
+{
+ "guardian": "vhal",
+ "title": "Vhal, el Astrónomo",
+ "palette": [
+  "#0e1033",
+  "#3a44b0",
+  "#6f7cf2",
+  "#d9e1ff",
+  "#ffffff"
+ ],
+ "abilities": [
+  {
+   "id": "nova",
+   "kind": "ring",
+   "radius": 70,
+   "frames": 10,
+   "glyph": "star",
+   "baseline": "vh_nova",
+   "replaces": "vh_nova",
+   "params": {},
+   "motif": "bolt"
+  },
+  {
+   "id": "well",
+   "kind": "ring",
+   "radius": 130,
+   "frames": 10,
+   "glyph": "star",
+   "baseline": "vh_well",
+   "replaces": "vh_well",
+   "params": {},
+   "motif": "spiral"
+  },
+  {
+   "id": "orbit",
+   "kind": "ring",
+   "radius": 60,
+   "frames": 10,
+   "glyph": "star",
+   "baseline": "vh_ring",
+   "replaces": "vh_ring",
+   "params": {},
+   "motif": "spiral"
+  },
+  {
+   "id": "collapse",
+   "kind": "ring",
+   "radius": 190,
+   "frames": 10,
+   "glyph": "star",
+   "baseline": "vh_collapse",
+   "replaces": "vh_collapse",
+   "params": {},
+   "motif": "bolt"
+  },
+  {
+   "id": "star_bolt",
+   "kind": "beam",
+   "tile": [
+    20,
+    18
+   ],
+   "frames": 8,
+   "baseline_beam": "vh_bolt",
+   "replaces": "vh_bolt",
+   "params": {
+    "wave": 3
+   }
+  }
+ ]
+}

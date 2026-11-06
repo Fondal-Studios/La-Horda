@@ -1,6 +1,6 @@
 {
  "kind": "idle",
- "score": 95.8,
+ "score": 99.0,
  "points": {
   "alpha": 5.0,
   "palette": 8.0,
@@ -10,7 +10,7 @@
   "contrast": 8.0,
   "clear_floor": 5.0,
   "motion": 15.0,
-  "richness": 10.84,
+  "richness": 13.96,
   "identity": 10.0
  },
  "metrics": {
@@ -21,34 +21,34 @@
   "edge_outline": 1.0,
   "edge_reach": 0.9864254028753598,
   "edge_over": 0.0,
-  "coverage": 0.30228426395939084,
-  "interior": 0.1534416826003824,
-  "interior_detail": 0.030592734225621414,
+  "coverage": 0.4119289340101523,
+  "interior": 0.3068833652007648,
+  "interior_detail": 0.20650095602294455,
   "arena_ok": 1.0,
   "has_outline_and_light": true,
   "lum_gap": 16.006500466816075,
   "peak_pos": 0.5,
   "tail": 0.0,
-  "loop_gap": 0.040123456790123455,
-  "motion_mean": 0.0371422558922559,
+  "loop_gap": 0.03761574074074074,
+  "motion_mean": 0.03480990460157127,
   "unique_frames": 1.0,
   "tones": 5,
-  "highlight_share": 0.05877413937867338,
-  "core_fill": 0.2620481927710843,
-  "detail_mass": 0.2404618473895583,
+  "highlight_share": 0.11090573012939002,
+  "core_fill": 0.6746987951807228,
+  "detail_mass": 0.6623995983935744,
   "min_sig_dist": 1.0
  },
  "hard_fails": [],
  "ops": [
   {
-   "knob": "ticks",
-   "why": "poco detalle interior (3%): más marcas propias (estelas, hilos, runas)",
-   "add": 4
+   "knob": "motif_on",
+   "why": "activar el motivo temático del guardián (el arte actual lo tiene)",
+   "set": 1
   },
   {
-   "knob": "tick_len",
-   "why": "marcas más largas",
-   "add": 0.04
+   "knob": "motif_n",
+   "why": "el arte actual tiene más trama temática: motivo más denso",
+   "add": 1
   },
   {
    "knob": "ticks",
@@ -75,7 +75,7 @@
   "contrast": 1.0,
   "clear_floor": 1.0,
   "motion": 1.0,
-  "richness": 0.722,
+  "richness": 0.93,
   "identity": 1.0
  },
  "baseline_total": 85.5,
@@ -116,9 +116,10 @@
   "detail_mass": 0.18674698795180725,
   "min_sig_dist": 1.0
  },
- "improvement": 10.3,
+ "improvement": 13.5,
  "reasons": [
-  "regresión de riqueza visual frente al arte actual (0.72 < 1.00)"
+  "regresión de riqueza visual frente al arte actual (0.93 < 1.00)"
  ],
- "status": "FAIL"
+ "status": "FAIL",
+ "keep_current": false
 }

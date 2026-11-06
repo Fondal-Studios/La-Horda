@@ -1,6 +1,6 @@
 {
  "kind": "ring",
- "score": 82.3,
+ "score": 78.6,
  "points": {
   "alpha": 5.0,
   "palette": 8.0,
@@ -8,37 +8,38 @@
   "edge": 12.57,
   "coverage": 0.0,
   "contrast": 8.0,
-  "clear_floor": 4.1,
+  "clear_floor": 2.2,
   "motion": 15.0,
-  "richness": 14.68,
-  "identity": 8.0
+  "richness": 12.89,
+  "identity": 7.96
  },
  "metrics": {
   "alpha_binary": 1.0,
   "palette_adherence": 1.0,
   "colors": 5,
-  "isolated": 0.0008090614886731392,
+  "isolated": 0.01020408163265306,
   "edge_outline": 0.6666666666666666,
   "edge_reach": 0.9031269073103934,
   "edge_over": 0.0,
-  "coverage": 0.7892156862745098,
-  "interior": 0.6358695652173914,
-  "interior_detail": 0.5815217391304348,
+  "coverage": 0.8259803921568627,
+  "interior": 0.7119565217391305,
+  "interior_detail": 0.657608695652174,
   "arena_ok": 1.0,
   "has_outline_and_light": true,
   "lum_gap": 17.24714420989284,
   "peak_pos": 0.2222222222222222,
   "tail": 0.0,
-  "motion_mean": 0.15393518518518517,
+  "motion_mean": 0.16280864197530864,
   "unique_frames": 1.0,
   "tones": 5,
-  "highlight_share": 0.14596273291925466,
-  "core_fill": 0.90625,
-  "detail_mass": 0.55,
-  "min_sig_dist": 0.11586072660181795
+  "highlight_share": 0.13056379821958458,
+  "core_fill": 0.9375,
+  "detail_mass": 0.6125,
+  "min_sig_dist": 0.1147886991286872
  },
  "hard_fails": [
-  "cobertura excesiva (79%): oculta el suelo"
+  "el interior tapa al enemigo (71% de píxeles opacos en la zona central; techo 60 %)",
+  "cobertura excesiva (83%): oculta el suelo"
  ],
  "ops": [
   {
@@ -48,7 +49,7 @@
   },
   {
    "knob": "fill",
-   "why": "cobertura alta (79%): bajar el relleno para no tapar al enemigo",
+   "why": "cobertura alta (83%): bajar el relleno para no tapar al enemigo",
    "hard": true,
    "add": -0.06
   },
@@ -90,7 +91,7 @@
   },
   {
    "knob": "fill",
-   "why": "el centro está cargado (64%): despejar el relleno",
+   "why": "el centro está cargado (71%): despejar el relleno",
    "hard": true,
    "add": -0.09
   },
@@ -126,7 +127,7 @@
   },
   {
    "knob": "deco",
-   "why": "se parece demasiado a otra habilidad del guardián (distancia 0.12): cambiar el tipo de marca",
+   "why": "se parece demasiado a otra habilidad del guardián (distancia 0.11): cambiar el tipo de marca",
    "add": 1
   },
   {
@@ -142,10 +143,10 @@
   "edge": 0.838,
   "coverage": 0.0,
   "contrast": 1.0,
-  "clear_floor": 0.821,
+  "clear_floor": 0.44,
   "motion": 1.0,
-  "richness": 0.979,
-  "identity": 0.8
+  "richness": 0.86,
+  "identity": 0.796
  },
  "baseline_total": 64.7,
  "baseline_criteria": {
@@ -184,11 +185,14 @@
   "detail_mass": 0.359375,
   "min_sig_dist": 1.0
  },
- "improvement": 17.6,
+ "improvement": 13.9,
  "reasons": [
-  "cobertura excesiva (79%): oculta el suelo",
+  "el interior tapa al enemigo (71% de píxeles opacos en la zona central; techo 60 %)",
+  "cobertura excesiva (83%): oculta el suelo",
   "criterio bajo: cobertura legible 0.0/12",
-  "puntaje 82.3 < 85"
+  "criterio bajo: suelo despejado 2.2/5",
+  "puntaje 78.6 < 85"
  ],
- "status": "FAIL"
+ "status": "FAIL",
+ "keep_current": false
 }

@@ -34,14 +34,15 @@
     "fade_to": 0.0,
     "core": 2,
     "glyph_on": 1,
-    "wave": 2,
+    "wave": 3,
+    "motif_on": 1,
+    "motif_n": 5,
     "wave_amp": 4,
     "thick": 1,
     "deco": 0,
     "core_density": 0.5
    },
    "_dir": {
-    "wave": 1,
     "wave_amp": 1
    }
   },
@@ -54,8 +55,36 @@
    "baseline": "or_circuit",
    "replaces": "or_circuit",
    "params": {
+    "rim": 1,
+    "fill": 0.06,
+    "ticks": 8,
+    "tick_len": 0.12,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.3,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.3,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 1,
+    "wave": 0,
+    "motif_on": 1,
+    "motif_n": 6,
+    "wave_amp": 2,
+    "thick": 1,
     "deco": 2,
-    "ticks": 12
+    "core_density": 0.5
+   },
+   "motif": "circuit",
+   "_dir": {
+    "fill": -1,
+    "ticks": -1,
+    "tick_len": -1,
+    "rim": -1,
+    "sparks": -1,
+    "motif_n": 1
    }
   },
   {
@@ -82,6 +111,8 @@
     "core": 2,
     "glyph_on": 0,
     "wave": 0,
+    "motif_on": 1,
+    "motif_n": 6,
     "wave_amp": 2,
     "thick": 1,
     "deco": 2,
@@ -93,7 +124,8 @@
     "ticks": -1,
     "tick_len": -1,
     "sparks": -1,
-    "deco": 1
+    "deco": 1,
+    "motif_n": 1
    }
   },
   {
@@ -120,6 +152,8 @@
     "core": 2,
     "glyph_on": 0,
     "wave": 0,
+    "motif_on": 1,
+    "motif_n": 7,
     "wave_amp": 2,
     "thick": 1,
     "deco": 0,
@@ -132,6 +166,7 @@
     "tick_len": -1,
     "sparks": -1,
     "deco": 1,
+    "motif_n": 1,
     "glyph_scale": 1
    }
   },
@@ -146,7 +181,8 @@
    "params": {
     "deco": 0,
     "ticks": 8
-   }
+   },
+   "motif": "bolt"
   },
   {
    "id": "sweep",
@@ -157,10 +193,35 @@
    "baseline": "or_sweep",
    "replaces": "or_sweep",
    "params": {
+    "rim": 3,
+    "fill": 0.21,
+    "ticks": 12,
+    "tick_len": 0.16,
+    "glyph_scale": 1,
+    "sparks": 4,
+    "flash": 0.3,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.3,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 1,
+    "wave": 0,
+    "motif_on": 1,
+    "motif_n": 5,
+    "wave_amp": 2,
+    "thick": 1,
     "deco": 1,
-    "ticks": 10
+    "core_density": 0.5
    },
-   "half": 0.85
+   "half": 0.85,
+   "motif": "bolt",
+   "_dir": {
+    "fill": 1,
+    "ticks": 1,
+    "rim": 1
+   }
   }
  ]
 }

@@ -35,9 +35,9 @@ node tools/art/ability-art/capture-ingame.js vesper docs/art-gate/ability-art/ve
 
 1. Copiar `specs/vesper.json`: `palette` (rampa de 5 tonos del guardián, la misma de su `vfx-b/*.js` o `skill-fx-a/c/*.js`),
    y una entrada por decal/rayo que hoy dibuja (`replaces` = nombre en `KVB_DEC`/`KVB_BEAM`, `baseline`/`baseline_beam` = el mismo,
-   `radius` = radio real del kit, `glyph` = su sello: `star diamond cross ring bolt drop eye rune stitch scissors needle flame`).
+   `radius` = radio real del kit, `motif` = su identidad temática (`hex pollen circuit bolt flame map thread spiral serpent rune`), `glyph` = su sello: `star diamond cross ring bolt drop eye rune stitch scissors needle flame`).
 2. Capturar la línea base y correr el lazo. Revisar las hojas de `round-NN/` y `INSTRUCCIONES_PINTOR.md`.
-3. Una habilidad ESCALADA no se integra: queda documentada para repintado humano (`docs/ART_REPLACEMENT_QUEUE.md`).
+3. Estados: PASS (se integra) · KEEP_CURRENT (el arte actual ya puntúa ≥ 94 y el nuevo solo lo iguala: se conserva el actual) · ESCALATED. Una habilidad ESCALADA no se integra: queda documentada para repintado humano (`docs/ART_REPLACEMENT_QUEUE.md`).
 
 ## Qué mide el Evaluador (100 puntos)
 

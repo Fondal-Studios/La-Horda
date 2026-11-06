@@ -229,7 +229,7 @@ def evaluate(frames, ab, ramp, others=None, baseline_total=None, baseline_criter
         s['richness'] = 0.5 * min(1.0, tones_used / 4) + 0.3 * tri(hi_share, 0.0, 0.03, 0.35, 0.7) + 0.2 * min(1.0, m['unique_frames'])
     else:
         s['richness'] = (0.2 * min(1.0, tones_used / 4) + 0.15 * tri(hi_share, 0.0, 0.03, 0.3, 0.6)
-                         + 0.4 * (tri(m['interior_detail'], 0.0, 0.08, 0.6, 0.85) if small else tri(m['interior_detail'], 0.0, 0.10, 0.3, 0.5)) + 0.15 * tri(m['detail_mass'], 0.0, 0.1, 0.5, 0.85) + 0.1 * min(1.0, m['colors'] / 4))
+                         + 0.4 * (tri(m['interior_detail'], 0.0, 0.08, 0.6, 0.85) if small else tri(m['interior_detail'], 0.0, 0.10, 0.40, 0.62)) + 0.15 * tri(m['detail_mass'], 0.0, 0.1, 0.5, 0.85) + 0.1 * min(1.0, m['colors'] / 4))
     s['identity'] = 0.5 * (1.0 if m['palette_adherence'] >= 0.9 else 0.4) + 0.5 * (tri(dmin, 0.02, 0.18, 2, 3) if others else 1.0)
     pts = {k: round(WEIGHTS[k] * float(np.clip(v, 0, 1)), 2) for k, v in s.items()}
     total = round(sum(pts.values()), 1)
@@ -381,6 +381,9 @@ def verdict(rep, has_baseline):
                     else:
                         rep['ops'] += [dict(knob='fill', why='el arte actual cubre mejor la zona: ajustar el relleno', add=-0.03),
                                        dict(knob='sparks', why='el arte actual cubre mejor la zona: menos chispas', add=-2)]
+                if k in ('richness', 'coverage'):
+                    rep['ops'] += [dict(knob='motif_on', why='activar el motivo temático del guardián (el arte actual lo tiene)', set=1),
+                                   dict(knob='motif_n', why='el arte actual tiene más trama temática: motivo más denso', add=1)]
                 if k == 'richness':
                     rep['ops'] += [dict(knob='ticks', why='el arte actual tiene más trama interior: sumar marcas propias', add=4),
                                    dict(knob='glyph_scale', why='el arte actual tiene más presencia central: glifo más grande', add=1),
@@ -401,4 +404,6 @@ def verdict(rep, has_baseline):
                            dict(knob='wave_amp', why='mayor amplitud de la ondulación', add=1)]
     rep['reasons'] = reasons
     rep['status'] = 'PASS' if not reasons else 'FAIL'
+    # el arte actual ya es casi tope y el nuevo lo iguala: lo único que falta es el margen de mejora → no se reemplaza
+    rep['keep_current'] = bool(reasons) and len(reasons) == 1 and reasons[0].startswith('mejora') and has_baseline and rep['baseline_total'] >= 94 and rep.get('improvement', -99) >= -0.5
     return rep

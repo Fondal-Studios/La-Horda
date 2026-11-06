@@ -20,20 +20,20 @@
   "isolated": 0.0,
   "edge_outline": 1.0,
   "edge_reach": 1.0,
-  "coverage": 1.0,
+  "coverage": 0.5770833333333333,
   "interior": 0.0,
-  "jag": 0.0,
+  "jag": 0.0688125174187472,
   "interior_detail": 0.3,
   "arena_ok": 1.0,
   "has_outline_and_light": true,
   "lum_gap": 14.442288747930025,
-  "peak_pos": 0.2857142857142857,
-  "tail": 0.1,
-  "motion_mean": 0.2535714285714286,
+  "peak_pos": 0.42857142857142855,
+  "tail": 0.17328519855595667,
+  "motion_mean": 0.21071428571428572,
   "unique_frames": 1.0,
   "tones": 4,
-  "highlight_share": 0.16875,
-  "core_fill": 1.0,
+  "highlight_share": 0.2527075812274368,
+  "core_fill": 0.5770833333333333,
   "detail_mass": 0.5,
   "min_sig_dist": 1.0
  },
@@ -101,7 +101,8 @@
  },
  "improvement": 17.3,
  "reasons": [
-  "silueta más plana que el arte actual: irregularidad 0.00 < 70 % de 0.17"
+  "silueta más plana que el arte actual: irregularidad 0.07 < 70 % de 0.17"
  ],
- "status": "FAIL"
+ "status": "FAIL",
+ "keep_current": false
 }

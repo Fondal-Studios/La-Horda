@@ -1,16 +1,16 @@
 {
  "kind": "idle",
- "score": 99.1,
+ "score": 91.3,
  "points": {
   "alpha": 5.0,
   "palette": 8.0,
   "hygiene": 7.0,
   "edge": 15.0,
-  "coverage": 12.0,
+  "coverage": 6.93,
   "contrast": 8.0,
-  "clear_floor": 5.0,
+  "clear_floor": 3.07,
   "motion": 15.0,
-  "richness": 14.13,
+  "richness": 13.33,
   "identity": 10.0
  },
  "metrics": {
@@ -21,25 +21,117 @@
   "edge_outline": 1.0,
   "edge_reach": 0.9752540620867715,
   "edge_over": 0.0,
-  "coverage": 0.4131701631701632,
-  "interior": 0.20333333333333334,
-  "interior_detail": 0.08555555555555555,
+  "coverage": 0.5844988344988346,
+  "interior": 0.5155555555555555,
+  "interior_detail": 0.43666666666666665,
   "arena_ok": 1.0,
   "has_outline_and_light": true,
   "lum_gap": 12.721728732148314,
   "peak_pos": 0.5,
   "tail": 0.0,
-  "loop_gap": 0.06901041666666667,
-  "motion_mean": 0.06285511363636365,
+  "loop_gap": 0.1371527777777778,
+  "motion_mean": 0.13802083333333331,
   "unique_frames": 1.0,
   "tones": 5,
-  "highlight_share": 0.07052186177715092,
-  "core_fill": 0.33783783783783783,
-  "detail_mass": 0.3029279279279279,
+  "highlight_share": 0.058823529411764705,
+  "core_fill": 0.5202702702702703,
+  "detail_mass": 0.6041666666666666,
   "min_sig_dist": 1.0
  },
  "hard_fails": [],
  "ops": [
+  {
+   "knob": "fill",
+   "why": "cobertura alta (58%): bajar el relleno para no tapar al enemigo",
+   "hard": true,
+   "add": -0.06
+  },
+  {
+   "knob": "ticks",
+   "why": "menos marcas",
+   "hard": true,
+   "add": -4
+  },
+  {
+   "knob": "tick_len",
+   "why": "marcas más cortas",
+   "hard": true,
+   "add": -0.04
+  },
+  {
+   "knob": "inner_ring",
+   "why": "quitar el anillo interior",
+   "hard": true,
+   "set": 0
+  },
+  {
+   "knob": "rim",
+   "why": "borde más fino: la cobertura es excesiva",
+   "hard": true,
+   "add": -1
+  },
+  {
+   "knob": "sparks",
+   "why": "menos chispas",
+   "hard": true,
+   "add": -2
+  },
+  {
+   "knob": "fill",
+   "why": "el centro está cargado (52%): despejar el relleno",
+   "hard": true,
+   "add": -0.09
+  },
+  {
+   "knob": "inner_ring",
+   "why": "quitar el anillo interior",
+   "hard": true,
+   "set": 0
+  },
+  {
+   "knob": "glyph_scale",
+   "why": "glifo más chico",
+   "hard": true,
+   "set": 1
+  },
+  {
+   "knob": "sparks",
+   "why": "menos chispas: tapan el centro",
+   "hard": true,
+   "add": -2
+  },
+  {
+   "knob": "ticks",
+   "why": "menos marcas: tapan el centro",
+   "hard": true,
+   "add": -2
+  },
+  {
+   "knob": "glyph_on",
+   "why": "quitar el glifo: no cabe en una zona tan chica",
+   "hard": true,
+   "set": 0
+  },
+  {
+   "knob": "rim",
+   "why": "no supera al arte actual: ganar presencia en el borde",
+   "add": 1
+  },
+  {
+   "knob": "sparks",
+   "why": "no supera al arte actual: más destellos de luz",
+   "add": 2
+  },
+  {
+   "knob": "motif_on",
+   "why": "activar el motivo temático del guardián (el arte actual lo tiene)",
+   "set": 1
+  },
+  {
+   "knob": "motif_n",
+   "why": "el arte actual tiene más trama temática: motivo más denso",
+   "add": 1
+  },
   {
    "knob": "ticks",
    "why": "el arte actual tiene más trama interior: sumar marcas propias",
@@ -54,6 +146,26 @@
    "knob": "deco",
    "why": "probar otra familia de marcas",
    "cycle": true
+  },
+  {
+   "knob": "fill",
+   "why": "el arte actual cubre mejor la zona: ajustar el relleno",
+   "add": -0.03
+  },
+  {
+   "knob": "sparks",
+   "why": "el arte actual cubre mejor la zona: menos chispas",
+   "add": -2
+  },
+  {
+   "knob": "motif_on",
+   "why": "activar el motivo temático del guardián (el arte actual lo tiene)",
+   "set": 1
+  },
+  {
+   "knob": "motif_n",
+   "why": "el arte actual tiene más trama temática: motivo más denso",
+   "add": 1
   }
  ],
  "criteria": {
@@ -61,11 +173,11 @@
   "palette": 1.0,
   "hygiene": 1.0,
   "edge": 1.0,
-  "coverage": 1.0,
+  "coverage": 0.578,
   "contrast": 1.0,
-  "clear_floor": 1.0,
+  "clear_floor": 0.614,
   "motion": 1.0,
-  "richness": 0.942,
+  "richness": 0.889,
   "identity": 1.0
  },
  "baseline_total": 85.5,
@@ -106,9 +218,12 @@
   "detail_mass": 0.20439189189189189,
   "min_sig_dist": 1.0
  },
- "improvement": 13.6,
+ "improvement": 5.8,
  "reasons": [
-  "regresión de riqueza visual frente al arte actual (0.94 < 1.00)"
+  "mejora +5.8 < +6.0 sobre el arte actual (85.5)",
+  "regresión de riqueza visual frente al arte actual (0.89 < 1.00)",
+  "regresión de cobertura legible frente al arte actual (0.58 < 1.00)"
  ],
- "status": "FAIL"
+ "status": "FAIL",
+ "keep_current": false
 }

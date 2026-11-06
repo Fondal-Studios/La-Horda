@@ -1,0 +1,49 @@
+{
+ "guardian": "saelis",
+ "title": "Saelis, la Plumífera",
+ "palette": [
+  "#1d3250",
+  "#5a8cc0",
+  "#9cd0f0",
+  "#fff4cc",
+  "#ffffff"
+ ],
+ "abilities": [
+  {
+   "id": "updraft",
+   "kind": "ring",
+   "radius": 150,
+   "frames": 10,
+   "glyph": "drop",
+   "baseline": "sa_gust",
+   "replaces": "sa_gust",
+   "params": {},
+   "motif": "rune"
+  },
+  {
+   "id": "feather_sky",
+   "kind": "ring",
+   "radius": 220,
+   "frames": 10,
+   "glyph": "star",
+   "baseline": "sa_cloud",
+   "replaces": "sa_cloud",
+   "params": {},
+   "motif": "pollen"
+  },
+  {
+   "id": "lane",
+   "kind": "beam",
+   "tile": [
+    18,
+    14
+   ],
+   "frames": 8,
+   "baseline_beam": "sa_lane",
+   "replaces": "sa_lane",
+   "params": {
+    "wave": 2
+   }
+  }
+ ]
+}

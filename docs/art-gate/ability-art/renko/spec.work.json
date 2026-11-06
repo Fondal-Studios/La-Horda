@@ -1,0 +1,93 @@
+{
+ "guardian": "renko",
+ "title": "Renko, el Sepulturero",
+ "palette": [
+  "#2a1d12",
+  "#5a4128",
+  "#7a5a3a",
+  "#b08a5a",
+  "#e0cfa8"
+ ],
+ "abilities": [
+  {
+   "id": "burial",
+   "kind": "ring",
+   "radius": 120,
+   "frames": 10,
+   "glyph": "diamond",
+   "baseline": "rk_burst",
+   "replaces": "rk_burst",
+   "params": {},
+   "motif": "bolt"
+  },
+  {
+   "id": "mound",
+   "kind": "ring",
+   "radius": 100,
+   "frames": 10,
+   "glyph": "diamond",
+   "baseline": "rk_mound",
+   "replaces": "rk_mound",
+   "params": {},
+   "motif": "pollen"
+  },
+  {
+   "id": "mound_zone",
+   "kind": "idle",
+   "radius": 100,
+   "frames": 12,
+   "glyph": "diamond",
+   "baseline": "rk_mound_idle",
+   "replaces": "rk_mound_idle",
+   "params": {},
+   "motif": "pollen"
+  },
+  {
+   "id": "soil_zone",
+   "kind": "idle",
+   "radius": 100,
+   "frames": 12,
+   "glyph": "diamond",
+   "baseline": "rk_soil_idle",
+   "replaces": "rk_soil_idle",
+   "params": {},
+   "motif": "pollen"
+  },
+  {
+   "id": "faults",
+   "kind": "ring",
+   "radius": 180,
+   "frames": 10,
+   "glyph": "diamond",
+   "baseline": "rk_faults",
+   "replaces": "rk_faults",
+   "params": {},
+   "motif": "bolt"
+  },
+  {
+   "id": "faults_zone",
+   "kind": "idle",
+   "radius": 180,
+   "frames": 12,
+   "glyph": "diamond",
+   "baseline": "rk_faults_idle",
+   "replaces": "rk_faults_idle",
+   "params": {},
+   "motif": "bolt"
+  },
+  {
+   "id": "trench",
+   "kind": "beam",
+   "tile": [
+    20,
+    20
+   ],
+   "frames": 8,
+   "baseline_beam": "rk_furrow",
+   "replaces": "rk_furrow",
+   "params": {
+    "wave": 2
+   }
+  }
+ ]
+}

@@ -19,7 +19,9 @@
    "frames": 8,
    "baseline_beam": "or_bolt",
    "replaces": "or_bolt",
-   "params": {}
+   "params": {
+    "wave": 3
+   }
   },
   {
    "id": "discharge",
@@ -32,7 +34,8 @@
    "params": {
     "deco": 2,
     "ticks": 12
-   }
+   },
+   "motif": "circuit"
   },
   {
    "id": "brace",
@@ -69,7 +72,8 @@
    "params": {
     "deco": 0,
     "ticks": 8
-   }
+   },
+   "motif": "bolt"
   },
   {
    "id": "sweep",
@@ -83,7 +87,8 @@
     "deco": 1,
     "ticks": 10
    },
-   "half": 0.85
+   "half": 0.85,
+   "motif": "bolt"
   }
  ]
 }

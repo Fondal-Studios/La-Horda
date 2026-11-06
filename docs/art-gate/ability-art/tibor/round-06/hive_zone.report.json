@@ -1,0 +1,218 @@
+{
+ "kind": "idle",
+ "score": 91.8,
+ "points": {
+  "alpha": 5.0,
+  "palette": 8.0,
+  "hygiene": 7.0,
+  "edge": 15.0,
+  "coverage": 9.03,
+  "contrast": 8.0,
+  "clear_floor": 3.04,
+  "motion": 15.0,
+  "richness": 11.72,
+  "identity": 10.0
+ },
+ "metrics": {
+  "alpha_binary": 1.0,
+  "palette_adherence": 1.0,
+  "colors": 5,
+  "isolated": 0.0,
+  "edge_outline": 1.0,
+  "edge_reach": 0.9752540620867715,
+  "edge_over": 0.0,
+  "coverage": 0.5495337995337995,
+  "interior": 0.5166666666666667,
+  "interior_detail": 0.4911111111111111,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 12.721728732148314,
+  "peak_pos": 0.5,
+  "tail": 0.0,
+  "loop_gap": 0.058159722222222224,
+  "motion_mean": 0.06392045454545454,
+  "unique_frames": 1.0,
+  "tones": 5,
+  "highlight_share": 0.05832449628844114,
+  "core_fill": 0.6081081081081081,
+  "detail_mass": 0.6238738738738739,
+  "min_sig_dist": 1.0
+ },
+ "hard_fails": [],
+ "ops": [
+  {
+   "knob": "fill",
+   "why": "cobertura alta (55%): bajar el relleno para no tapar al enemigo",
+   "hard": true,
+   "add": -0.06
+  },
+  {
+   "knob": "ticks",
+   "why": "menos marcas",
+   "hard": true,
+   "add": -4
+  },
+  {
+   "knob": "tick_len",
+   "why": "marcas más cortas",
+   "hard": true,
+   "add": -0.04
+  },
+  {
+   "knob": "inner_ring",
+   "why": "quitar el anillo interior",
+   "hard": true,
+   "set": 0
+  },
+  {
+   "knob": "rim",
+   "why": "borde más fino: la cobertura es excesiva",
+   "hard": true,
+   "add": -1
+  },
+  {
+   "knob": "sparks",
+   "why": "menos chispas",
+   "hard": true,
+   "add": -2
+  },
+  {
+   "knob": "fill",
+   "why": "el centro está cargado (52%): despejar el relleno",
+   "hard": true,
+   "add": -0.09
+  },
+  {
+   "knob": "inner_ring",
+   "why": "quitar el anillo interior",
+   "hard": true,
+   "set": 0
+  },
+  {
+   "knob": "glyph_scale",
+   "why": "glifo más chico",
+   "hard": true,
+   "set": 1
+  },
+  {
+   "knob": "sparks",
+   "why": "menos chispas: tapan el centro",
+   "hard": true,
+   "add": -2
+  },
+  {
+   "knob": "ticks",
+   "why": "menos marcas: tapan el centro",
+   "hard": true,
+   "add": -2
+  },
+  {
+   "knob": "glyph_on",
+   "why": "quitar el glifo: no cabe en una zona tan chica",
+   "hard": true,
+   "set": 0
+  },
+  {
+   "knob": "motif_on",
+   "why": "activar el motivo temático del guardián (el arte actual lo tiene)",
+   "set": 1
+  },
+  {
+   "knob": "motif_n",
+   "why": "el arte actual tiene más trama temática: motivo más denso",
+   "add": 1
+  },
+  {
+   "knob": "ticks",
+   "why": "el arte actual tiene más trama interior: sumar marcas propias",
+   "add": 4
+  },
+  {
+   "knob": "glyph_scale",
+   "why": "el arte actual tiene más presencia central: glifo más grande",
+   "add": 1
+  },
+  {
+   "knob": "deco",
+   "why": "probar otra familia de marcas",
+   "cycle": true
+  },
+  {
+   "knob": "fill",
+   "why": "el arte actual cubre mejor la zona: ajustar el relleno",
+   "add": -0.03
+  },
+  {
+   "knob": "sparks",
+   "why": "el arte actual cubre mejor la zona: menos chispas",
+   "add": -2
+  },
+  {
+   "knob": "motif_on",
+   "why": "activar el motivo temático del guardián (el arte actual lo tiene)",
+   "set": 1
+  },
+  {
+   "knob": "motif_n",
+   "why": "el arte actual tiene más trama temática: motivo más denso",
+   "add": 1
+  }
+ ],
+ "criteria": {
+  "alpha": 1.0,
+  "palette": 1.0,
+  "hygiene": 1.0,
+  "edge": 1.0,
+  "coverage": 0.752,
+  "contrast": 1.0,
+  "clear_floor": 0.608,
+  "motion": 1.0,
+  "richness": 0.781,
+  "identity": 1.0
+ },
+ "baseline_total": 85.5,
+ "baseline_criteria": {
+  "alpha": 1.0,
+  "palette": 0.0,
+  "hygiene": 1.0,
+  "edge": 0.768,
+  "coverage": 1.0,
+  "contrast": 1.0,
+  "clear_floor": 1.0,
+  "motion": 1.0,
+  "richness": 1.0,
+  "identity": 0.7
+ },
+ "baseline_metrics": {
+  "alpha_binary": 1.0,
+  "palette_adherence": 0.09883894016076213,
+  "colors": 262,
+  "isolated": 0.0,
+  "edge_outline": 0.5208333333333334,
+  "edge_reach": 0.9906258940357301,
+  "edge_over": 0.020833333333333332,
+  "coverage": 0.47202797202797203,
+  "interior": 0.3688888888888889,
+  "interior_detail": 0.15888888888888889,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 12.721728732148314,
+  "peak_pos": 0.5,
+  "tail": 0.0,
+  "loop_gap": 0.13671875,
+  "motion_mean": 0.07966382575757576,
+  "unique_frames": 1.0,
+  "tones": 5,
+  "highlight_share": 0.03732162458836443,
+  "core_fill": 0.25,
+  "detail_mass": 0.20439189189189189,
+  "min_sig_dist": 1.0
+ },
+ "improvement": 6.3,
+ "reasons": [
+  "regresión de riqueza visual frente al arte actual (0.78 < 1.00)",
+  "regresión de cobertura legible frente al arte actual (0.75 < 1.00)"
+ ],
+ "status": "FAIL",
+ "keep_current": false
+}

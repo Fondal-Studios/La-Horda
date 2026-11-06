@@ -21,7 +21,8 @@
     "deco": 2,
     "ticks": 10
    },
-   "half": 0.85
+   "half": 0.85,
+   "motif": "flame"
   },
   {
    "id": "quench",
@@ -40,7 +41,8 @@
     "#cfe0ee",
     "#eef6fc",
     "#ffffff"
-   ]
+   ],
+   "motif": "rune"
   },
   {
    "id": "ash_step",
@@ -52,7 +54,9 @@
    "frames": 8,
    "baseline_beam": "zh_ash",
    "replaces": "zh_ash",
-   "params": {}
+   "params": {
+    "wave": 2
+   }
   },
   {
    "id": "vent",
@@ -66,7 +70,8 @@
     "deco": 2,
     "ticks": 12,
     "rim": 3
-   }
+   },
+   "motif": "flame"
   },
   {
    "id": "vent_zone",
@@ -78,7 +83,8 @@
    "replaces": "zh_vent_idle",
    "params": {
     "deco": 1
-   }
+   },
+   "motif": "flame"
   }
  ]
 }

@@ -9,6 +9,7 @@
   "sweep"
  ],
  "escalated": [],
+ "keep_current": [],
  "state": {
   "pierce": {
    "status": "PASS",
@@ -20,36 +21,45 @@
      "status": "FAIL",
      "improvement": 17.3,
      "reasons": [
-      "silueta más plana que el arte actual: irregularidad 0.00 < 70 % de 0.17"
+      "silueta más plana que el arte actual: irregularidad 0.07 < 70 % de 0.17"
      ]
     },
     {
      "round": 2,
-     "score": 100.0,
+     "score": 98.3,
      "status": "FAIL",
-     "improvement": 17.3,
+     "improvement": 15.6,
      "reasons": [
       "silueta más plana que el arte actual: irregularidad 0.09 < 70 % de 0.17"
      ]
     },
     {
      "round": 3,
-     "score": 98.3,
+     "score": 100.0,
      "status": "PASS",
-     "improvement": 15.6,
+     "improvement": 17.3,
      "reasons": []
     }
    ]
   },
   "discharge": {
    "status": "PASS",
-   "rounds": 1,
+   "rounds": 2,
    "history": [
     {
      "round": 1,
-     "score": 98.2,
+     "score": 96.7,
+     "status": "FAIL",
+     "improvement": 16.2,
+     "reasons": [
+      "regresión de cobertura legible frente al arte actual (0.84 < 1.00)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 98.7,
      "status": "PASS",
-     "improvement": 17.7,
+     "improvement": 18.2,
      "reasons": []
     }
    ]
@@ -60,21 +70,21 @@
    "history": [
     {
      "round": 1,
-     "score": 81.7,
+     "score": 81.6,
      "status": "FAIL",
-     "improvement": 14.6,
+     "improvement": 14.5,
      "reasons": [
       "cobertura excesiva (81%): oculta el suelo",
       "criterio bajo: cobertura legible 0.0/12",
-      "puntaje 81.7 < 85",
+      "puntaje 81.6 < 85",
       "regresión de riqueza visual frente al arte actual (0.92 < 0.95)"
      ]
     },
     {
      "round": 2,
-     "score": 94.2,
+     "score": 93.9,
      "status": "PASS",
-     "improvement": 27.1,
+     "improvement": 26.8,
      "reasons": []
     }
    ]
@@ -85,9 +95,9 @@
    "history": [
     {
      "round": 1,
-     "score": 88.8,
+     "score": 88.1,
      "status": "FAIL",
-     "improvement": 17.0,
+     "improvement": 16.3,
      "reasons": [
       "criterio bajo: cobertura legible 5.88/12",
       "regresión de riqueza visual frente al arte actual (0.85 < 1.00)",
@@ -96,9 +106,9 @@
     },
     {
      "round": 2,
-     "score": 94.5,
+     "score": 94.9,
      "status": "PASS",
-     "improvement": 22.7,
+     "improvement": 23.1,
      "reasons": []
     }
    ]
@@ -109,22 +119,31 @@
    "history": [
     {
      "round": 1,
-     "score": 94.7,
+     "score": 96.8,
      "status": "PASS",
-     "improvement": 14.2,
+     "improvement": 16.3,
      "reasons": []
     }
    ]
   },
   "sweep": {
    "status": "PASS",
-   "rounds": 1,
+   "rounds": 2,
    "history": [
     {
      "round": 1,
-     "score": 97.5,
+     "score": 98.2,
+     "status": "FAIL",
+     "improvement": 15.1,
+     "reasons": [
+      "presencia menor que el arte actual: cobertura 38% < 38% (arte actual 48%)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 98.5,
      "status": "PASS",
-     "improvement": 14.4,
+     "improvement": 15.4,
      "reasons": []
     }
    ]
@@ -139,16 +158,18 @@
   "sweep": 83.1
  },
  "log": [
-  "ronda 1: pierce FAIL 100.0 — silueta más plana que el arte actual: irregularidad 0.00 < 70 % de 0.17",
-  "ronda 1: discharge PASS 98.2 (arte actual 80.5, +17.7)",
-  "ronda 1: brace FAIL 81.7 — cobertura excesiva (81%): oculta el suelo; criterio bajo: cobertura legible 0.0/12",
-  "ronda 1: anchor_zone FAIL 88.8 — criterio bajo: cobertura legible 5.88/12; regresión de riqueza visual frente al arte actual (0.85 < 1.00)",
-  "ronda 1: storm_zone PASS 94.7 (arte actual 80.5, +14.2)",
-  "ronda 1: sweep PASS 97.5 (arte actual 83.1, +14.4)",
-  "ronda 2: pierce FAIL 100.0 — silueta más plana que el arte actual: irregularidad 0.09 < 70 % de 0.17",
-  "ronda 2: brace PASS 94.2 (arte actual 67.1, +27.1)",
-  "ronda 2: anchor_zone PASS 94.5 (arte actual 71.8, +22.7)",
-  "ronda 3: pierce PASS 98.3 (arte actual 82.7, +15.6)",
+  "ronda 1: pierce FAIL 100.0 — silueta más plana que el arte actual: irregularidad 0.07 < 70 % de 0.17",
+  "ronda 1: discharge FAIL 96.7 — regresión de cobertura legible frente al arte actual (0.84 < 1.00)",
+  "ronda 1: brace FAIL 81.6 — cobertura excesiva (81%): oculta el suelo; criterio bajo: cobertura legible 0.0/12",
+  "ronda 1: anchor_zone FAIL 88.1 — criterio bajo: cobertura legible 5.88/12; regresión de riqueza visual frente al arte actual (0.85 < 1.00)",
+  "ronda 1: storm_zone PASS 96.8 (arte actual 80.5, +16.3)",
+  "ronda 1: sweep FAIL 98.2 — presencia menor que el arte actual: cobertura 38% < 38% (arte actual 48%)",
+  "ronda 2: pierce FAIL 98.3 — silueta más plana que el arte actual: irregularidad 0.09 < 70 % de 0.17",
+  "ronda 2: discharge PASS 98.7 (arte actual 80.5, +18.2)",
+  "ronda 2: brace PASS 93.9 (arte actual 67.1, +26.8)",
+  "ronda 2: anchor_zone PASS 94.9 (arte actual 71.8, +23.1)",
+  "ronda 2: sweep PASS 98.5 (arte actual 83.1, +15.4)",
+  "ronda 3: pierce PASS 100.0 (arte actual 82.7, +17.3)",
   "arquitecto: integradas ['pierce', 'discharge', 'brace', 'anchor_zone', 'storm_zone', 'sweep']; humo OK: SMOKE OK orsa: pierce,discharge,brace,anchor_zone,storm_zone,sweep"
  ],
  "integration": {

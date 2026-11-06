@@ -1,83 +1,145 @@
 {
  "kind": "sector",
- "score": 86.4,
+ "score": 84.9,
  "points": {
   "alpha": 5.0,
   "palette": 8.0,
   "hygiene": 7.0,
   "edge": 15.0,
-  "coverage": 12.0,
+  "coverage": 8.07,
   "contrast": 8.0,
-  "clear_floor": 0.04,
-  "motion": 13.88,
-  "richness": 7.46,
+  "clear_floor": 0.0,
+  "motion": 14.85,
+  "richness": 9.0,
   "identity": 10.0
  },
  "metrics": {
   "alpha_binary": 1.0,
   "palette_adherence": 1.0,
-  "colors": 3,
+  "colors": 4,
   "isolated": 0.0,
   "edge_outline": 1.0,
   "edge_reach": 1.0083464556669066,
   "edge_over": 0.0,
-  "coverage": 0.293640897755611,
-  "interior": 0.03064516129032258,
-  "interior_detail": 0.03064516129032258,
+  "coverage": 0.5654613466334164,
+  "interior": 0.6338709677419355,
+  "interior_detail": 0.6338709677419355,
   "arena_ok": 1.0,
   "has_outline_and_light": true,
   "lum_gap": 16.006500466816075,
   "peak_pos": 0.4444444444444444,
   "tail": 0.0,
-  "motion_mean": 0.028093434343434347,
+  "motion_mean": 0.03842401285583104,
   "unique_frames": 1.0,
-  "tones": 3,
-  "highlight_share": 0.0,
-  "core_fill": 0.19083969465648856,
-  "detail_mass": 0.14580152671755728,
+  "tones": 4,
+  "highlight_share": 0.1745152354570637,
+  "core_fill": 0.33969465648854963,
+  "detail_mass": 0.22748091603053439,
   "min_sig_dist": 1.0
  },
- "hard_fails": [],
+ "hard_fails": [
+  "el interior tapa al enemigo (63% de píxeles opacos en la zona central; techo 60 %)"
+ ],
  "ops": [
   {
    "knob": "fill",
-   "why": "el cuerpo de la zona casi no se ve (3% del interior): subir el relleno trameado",
-   "add": 0.06
+   "why": "cobertura alta (57%): bajar el relleno para no tapar al enemigo",
+   "hard": true,
+   "add": -0.06
   },
   {
    "knob": "ticks",
-   "why": "más marcas internas para dar cuerpo",
-   "add": 4
-  },
-  {
-   "knob": "ticks",
-   "why": "poco detalle interior (3%): más marcas propias (estelas, hilos, runas)",
-   "add": 4
-  },
-  {
-   "knob": "thick",
-   "why": "estelas más gruesas para que se lean de lejos",
-   "add": 1
+   "why": "menos marcas",
+   "hard": true,
+   "add": -4
   },
   {
    "knob": "tick_len",
-   "why": "marcas más largas",
-   "add": 0.04
+   "why": "marcas más cortas",
+   "hard": true,
+   "add": -0.04
   },
   {
-   "knob": "highlight_arc",
-   "why": "usar los 5 tonos de la rampa (falta luz o brillo)",
-   "set": 1
+   "knob": "inner_ring",
+   "why": "quitar el anillo interior",
+   "hard": true,
+   "set": 0
   },
   {
-   "knob": "flash",
-   "why": "agregar destello de impacto",
-   "add": 0.2
+   "knob": "rim",
+   "why": "borde más fino: la cobertura es excesiva",
+   "hard": true,
+   "add": -1
   },
   {
    "knob": "sparks",
-   "why": "agregar destellos brillantes (tono 5)",
-   "add": 2
+   "why": "menos chispas",
+   "hard": true,
+   "add": -2
+  },
+  {
+   "knob": "thick",
+   "why": "estelas más finas",
+   "hard": true,
+   "add": -1
+  },
+  {
+   "knob": "fill",
+   "why": "el centro está cargado (63%): despejar el relleno",
+   "hard": true,
+   "add": -0.09
+  },
+  {
+   "knob": "inner_ring",
+   "why": "quitar el anillo interior",
+   "hard": true,
+   "set": 0
+  },
+  {
+   "knob": "glyph_scale",
+   "why": "glifo más chico",
+   "hard": true,
+   "set": 1
+  },
+  {
+   "knob": "sparks",
+   "why": "menos chispas: tapan el centro",
+   "hard": true,
+   "add": -2
+  },
+  {
+   "knob": "ticks",
+   "why": "menos marcas: tapan el centro",
+   "hard": true,
+   "add": -2
+  },
+  {
+   "knob": "glyph_on",
+   "why": "quitar el glifo: no cabe en una zona tan chica",
+   "hard": true,
+   "set": 0
+  },
+  {
+   "knob": "thick",
+   "why": "estelas más finas: tapan el centro",
+   "hard": true,
+   "add": -1
+  },
+  {
+   "knob": "ticks",
+   "why": "menos estelas",
+   "hard": true,
+   "add": -2
+  },
+  {
+   "knob": "motif_on",
+   "why": "activar el motivo temático del guardián (el arte actual lo tiene)",
+   "set": 1
+  },
+  {
+   "knob": "motif_n",
+   "why": "el arte actual tiene más trama temática: motivo más denso",
+   "add": 1
   },
   {
    "knob": "ticks",
@@ -93,21 +155,6 @@
    "knob": "deco",
    "why": "probar otra familia de marcas",
    "cycle": true
-  },
-  {
-   "knob": "fill",
-   "why": "el arte actual tiene más cuerpo: subir el relleno trameado (techo del motor 24 %)",
-   "add": 0.06
-  },
-  {
-   "knob": "ticks",
-   "why": "el arte actual tiene más trama: sumar marcas",
-   "add": 2
-  },
-  {
-   "knob": "rim",
-   "why": "el arte actual tiene más presencia: borde más grueso",
-   "add": 1
   }
  ],
  "criteria": {
@@ -115,14 +162,14 @@
   "palette": 1.0,
   "hygiene": 1.0,
   "edge": 1.0,
-  "coverage": 1.0,
+  "coverage": 0.673,
   "contrast": 1.0,
-  "clear_floor": 0.007,
-  "motion": 0.926,
-  "richness": 0.498,
+  "clear_floor": 0.0,
+  "motion": 0.99,
+  "richness": 0.6,
   "identity": 1.0
  },
- "baseline_total": 68.2,
+ "baseline_total": 69.9,
  "baseline_criteria": {
   "alpha": 1.0,
   "palette": 0.0,
@@ -132,7 +179,7 @@
   "contrast": 1.0,
   "clear_floor": 0.0,
   "motion": 1.0,
-  "richness": 0.6,
+  "richness": 0.713,
   "identity": 0.7
  },
  "baseline_metrics": {
@@ -159,12 +206,13 @@
   "detail_mass": 0.20248091603053436,
   "min_sig_dist": 1.0
  },
- "improvement": 18.2,
+ "improvement": 15.0,
  "reasons": [
-  "criterio bajo: suelo despejado 0.04/5",
-  "criterio bajo: riqueza visual 7.46/15",
-  "regresión de riqueza visual frente al arte actual (0.50 < 0.60)",
-  "presencia menor que el arte actual: cobertura 29% < 40% (arte actual 66%)"
+  "el interior tapa al enemigo (63% de píxeles opacos en la zona central; techo 60 %)",
+  "criterio bajo: suelo despejado 0.0/5",
+  "puntaje 84.9 < 85",
+  "regresión de riqueza visual frente al arte actual (0.60 < 0.71)"
  ],
- "status": "FAIL"
+ "status": "FAIL",
+ "keep_current": false
 }

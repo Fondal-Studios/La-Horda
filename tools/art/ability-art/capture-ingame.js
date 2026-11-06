@@ -11,6 +11,11 @@ const FX = {
   zahra: [['zahra.furnace', 190, .85], ['zahra.quench', 140, 0], ['zahra.ash_step', 28, 120], ['zahra.vent', 155, 0]],
   orsa: [['orsa.pierce', 22, 300], ['orsa.discharge', 175, 0], ['orsa.brace', 42, 0], ['orsa.storm', 210, 0]],
   sira: [['sira.ink_line', 24, 260], ['sira.erase', 80, 0], ['sira.atlas', 48, 0]],
+  renko: [['renko.burial', 120, 0], ['renko.mound', 100, 0], ['renko.faults', 180, 0], ['renko.trench', 30, 260]],
+  nahir: [['nahir.shards', 240, .85], ['nahir.cross', 24, 200], ['nahir.gallery', 70, 0]],
+  oriel: [['oriel.great_rift', 200, 0], ['oriel.rift_echo', 120, 0], ['oriel.portal', 38, 0]],
+  saelis: [['saelis.updraft', 150, 0], ['saelis.feather_sky', 220, 0]],
+  vhal: [['vhal.well', 130, 0], ['vhal.collapse', 190, 0], ['vhal.orbit', 60, 0], ['vhal.star_bolt', 26, 300]],
   tibor: [['tibor.swarm', 110, 0], ['tibor.pollen', 90, 0], ['tibor.recall', 30, 0]],
 };
 (async () => {

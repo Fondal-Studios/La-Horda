@@ -1,6 +1,6 @@
 {
  "kind": "idle",
- "score": 95.8,
+ "score": 97.8,
  "points": {
   "alpha": 5.0,
   "palette": 8.0,
@@ -10,7 +10,7 @@
   "contrast": 8.0,
   "clear_floor": 5.0,
   "motion": 15.0,
-  "richness": 10.84,
+  "richness": 12.75,
   "identity": 10.0
  },
  "metrics": {
@@ -21,34 +21,34 @@
   "edge_outline": 1.0,
   "edge_reach": 0.9864254028753598,
   "edge_over": 0.0,
-  "coverage": 0.3,
-  "interior": 0.1534416826003824,
-  "interior_detail": 0.030592734225621414,
+  "coverage": 0.4921319796954315,
+  "interior": 0.39579349904397704,
+  "interior_detail": 0.30927342256214146,
   "arena_ok": 1.0,
   "has_outline_and_light": true,
-  "lum_gap": 18.45785610073101,
+  "lum_gap": 16.006500466816075,
   "peak_pos": 0.5,
   "tail": 0.0,
-  "loop_gap": 0.03838734567901234,
-  "motion_mean": 0.036107603815937146,
+  "loop_gap": 0.028935185185185185,
+  "motion_mean": 0.026480078563411894,
   "unique_frames": 1.0,
   "tones": 5,
-  "highlight_share": 0.06006768189509306,
-  "core_fill": 0.23493975903614459,
-  "detail_mass": 0.21636546184738956,
+  "highlight_share": 0.1299638989169675,
+  "core_fill": 0.9548192771084337,
+  "detail_mass": 0.9342369477911645,
   "min_sig_dist": 1.0
  },
  "hard_fails": [],
  "ops": [
   {
-   "knob": "ticks",
-   "why": "poco detalle interior (3%): más marcas propias (estelas, hilos, runas)",
-   "add": 4
+   "knob": "motif_on",
+   "why": "activar el motivo temático del guardián (el arte actual lo tiene)",
+   "set": 1
   },
   {
-   "knob": "tick_len",
-   "why": "marcas más largas",
-   "add": 0.04
+   "knob": "motif_n",
+   "why": "el arte actual tiene más trama temática: motivo más denso",
+   "add": 1
   },
   {
    "knob": "ticks",
@@ -75,50 +75,51 @@
   "contrast": 1.0,
   "clear_floor": 1.0,
   "motion": 1.0,
-  "richness": 0.722,
+  "richness": 0.85,
   "identity": 1.0
  },
- "baseline_total": 83.0,
+ "baseline_total": 85.5,
  "baseline_criteria": {
   "alpha": 1.0,
   "palette": 0.0,
   "hygiene": 1.0,
-  "edge": 0.753,
+  "edge": 0.768,
   "coverage": 1.0,
   "contrast": 1.0,
   "clear_floor": 1.0,
   "motion": 1.0,
-  "richness": 0.85,
+  "richness": 1.0,
   "identity": 0.7
  },
  "baseline_metrics": {
   "alpha_binary": 1.0,
-  "palette_adherence": 0.07661188369152971,
-  "colors": 366,
+  "palette_adherence": 0.07047662073639033,
+  "colors": 371,
   "isolated": 0.0,
-  "edge_outline": 0.5,
-  "edge_reach": 1.000350321100627,
+  "edge_outline": 0.5208333333333334,
+  "edge_reach": 1.0032319375344152,
   "edge_over": 0.0,
-  "coverage": 0.32131979695431473,
-  "interior": 0.27055449330783937,
-  "interior_detail": 0.10325047801147227,
+  "coverage": 0.3411167512690355,
+  "interior": 0.2939770554493308,
+  "interior_detail": 0.13049713193116635,
   "arena_ok": 1.0,
   "has_outline_and_light": true,
-  "lum_gap": 18.45785610073101,
+  "lum_gap": 16.006500466816075,
   "peak_pos": 0.5,
   "tail": 0.0,
   "loop_gap": 0.0,
-  "motion_mean": 0.04068462401795735,
-  "unique_frames": 0.9166666666666666,
-  "tones": 4,
-  "highlight_share": 0.0,
+  "motion_mean": 0.06267536475869807,
+  "unique_frames": 1.0,
+  "tones": 5,
+  "highlight_share": 0.05842847548690396,
   "core_fill": 0.18674698795180722,
-  "detail_mass": 0.17093373493975905,
+  "detail_mass": 0.18674698795180725,
   "min_sig_dist": 1.0
  },
- "improvement": 12.8,
+ "improvement": 12.3,
  "reasons": [
-  "regresión de riqueza visual frente al arte actual (0.72 < 0.85)"
+  "regresión de riqueza visual frente al arte actual (0.85 < 1.00)"
  ],
- "status": "FAIL"
+ "status": "FAIL",
+ "keep_current": false
 }

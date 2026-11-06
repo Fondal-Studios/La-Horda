@@ -1,50 +1,49 @@
 {
  "kind": "sector",
- "score": 74.9,
+ "score": 84.8,
  "points": {
   "alpha": 5.0,
   "palette": 8.0,
   "hygiene": 7.0,
   "edge": 15.0,
-  "coverage": 0.0,
+  "coverage": 8.0,
   "contrast": 8.0,
   "clear_floor": 0.0,
-  "motion": 15.0,
-  "richness": 6.86,
+  "motion": 14.85,
+  "richness": 9.0,
   "identity": 10.0
  },
  "metrics": {
   "alpha_binary": 1.0,
   "palette_adherence": 1.0,
-  "colors": 5,
+  "colors": 4,
   "isolated": 0.0,
   "edge_outline": 1.0,
-  "edge_reach": 0.9919173275875505,
+  "edge_reach": 1.0083464556669066,
   "edge_over": 0.0,
-  "coverage": 0.7699501246882793,
-  "interior": 0.7193548387096774,
-  "interior_detail": 0.6806451612903226,
+  "coverage": 0.566708229426434,
+  "interior": 0.7064516129032258,
+  "interior_detail": 0.7064516129032258,
   "arena_ok": 1.0,
   "has_outline_and_light": true,
   "lum_gap": 16.006500466816075,
-  "peak_pos": 0.3333333333333333,
-  "tail": 0.009252669039145907,
-  "motion_mean": 0.044722796143250684,
+  "peak_pos": 0.4444444444444444,
+  "tail": 0.0,
+  "motion_mean": 0.03836662075298439,
   "unique_frames": 1.0,
-  "tones": 5,
-  "highlight_share": 0.0014234875444839859,
-  "core_fill": 0.3683206106870229,
-  "detail_mass": 0.2591603053435114,
+  "tones": 4,
+  "highlight_share": 0.18986175115207374,
+  "core_fill": 0.33969465648854963,
+  "detail_mass": 0.22786259541984735,
   "min_sig_dist": 1.0
  },
  "hard_fails": [
-  "el interior tapa al enemigo (72% de píxeles opacos en la zona central; techo 60 %)",
-  "cobertura excesiva (77%): oculta el suelo"
+  "el interior tapa al enemigo (71% de píxeles opacos en la zona central; techo 60 %)"
  ],
  "ops": [
   {
    "knob": "fill",
-   "why": "cobertura alta (77%): bajar el relleno para no tapar al enemigo",
+   "why": "cobertura alta (57%): bajar el relleno para no tapar al enemigo",
    "hard": true,
    "add": -0.06
   },
@@ -79,12 +78,6 @@
    "add": -2
   },
   {
-   "knob": "glyph_on",
-   "why": "quitar el glifo: la cobertura es excesiva",
-   "hard": true,
-   "set": 0
-  },
-  {
    "knob": "thick",
    "why": "estelas más finas",
    "hard": true,
@@ -92,7 +85,7 @@
   },
   {
    "knob": "fill",
-   "why": "el centro está cargado (72%): despejar el relleno",
+   "why": "el centro está cargado (71%): despejar el relleno",
    "hard": true,
    "add": -0.09
   },
@@ -139,9 +132,14 @@
    "add": -2
   },
   {
-   "knob": "sparks",
-   "why": "agregar destellos brillantes (tono 5)",
-   "add": 2
+   "knob": "motif_on",
+   "why": "activar el motivo temático del guardián (el arte actual lo tiene)",
+   "set": 1
+  },
+  {
+   "knob": "motif_n",
+   "why": "el arte actual tiene más trama temática: motivo más denso",
+   "add": 1
   },
   {
    "knob": "ticks",
@@ -157,16 +155,6 @@
    "knob": "deco",
    "why": "probar otra familia de marcas",
    "cycle": true
-  },
-  {
-   "knob": "fill",
-   "why": "el arte actual cubre mejor la zona: ajustar el relleno",
-   "add": -0.03
-  },
-  {
-   "knob": "sparks",
-   "why": "el arte actual cubre mejor la zona: menos chispas",
-   "add": -2
   }
  ],
  "criteria": {
@@ -174,14 +162,14 @@
   "palette": 1.0,
   "hygiene": 1.0,
   "edge": 1.0,
-  "coverage": 0.0,
+  "coverage": 0.666,
   "contrast": 1.0,
   "clear_floor": 0.0,
-  "motion": 1.0,
-  "richness": 0.457,
+  "motion": 0.99,
+  "richness": 0.6,
   "identity": 1.0
  },
- "baseline_total": 68.2,
+ "baseline_total": 69.9,
  "baseline_criteria": {
   "alpha": 1.0,
   "palette": 0.0,
@@ -191,7 +179,7 @@
   "contrast": 1.0,
   "clear_floor": 0.0,
   "motion": 1.0,
-  "richness": 0.6,
+  "richness": 0.713,
   "identity": 0.7
  },
  "baseline_metrics": {
@@ -218,16 +206,13 @@
   "detail_mass": 0.20248091603053436,
   "min_sig_dist": 1.0
  },
- "improvement": 6.7,
+ "improvement": 14.9,
  "reasons": [
-  "el interior tapa al enemigo (72% de píxeles opacos en la zona central; techo 60 %)",
-  "cobertura excesiva (77%): oculta el suelo",
-  "criterio bajo: cobertura legible 0.0/12",
+  "el interior tapa al enemigo (71% de píxeles opacos en la zona central; techo 60 %)",
   "criterio bajo: suelo despejado 0.0/5",
-  "criterio bajo: riqueza visual 6.86/15",
-  "puntaje 74.9 < 85",
-  "regresión de riqueza visual frente al arte actual (0.46 < 0.60)",
-  "regresión de cobertura legible frente al arte actual (0.00 < 0.20)"
+  "puntaje 84.8 < 85",
+  "regresión de riqueza visual frente al arte actual (0.60 < 0.71)"
  ],
- "status": "FAIL"
+ "status": "FAIL",
+ "keep_current": false
 }

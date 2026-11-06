@@ -1,16 +1,16 @@
 {
  "kind": "idle",
- "score": 95.8,
+ "score": 97.5,
  "points": {
   "alpha": 5.0,
   "palette": 8.0,
   "hygiene": 7.0,
   "edge": 13.94,
-  "coverage": 10.2,
+  "coverage": 10.54,
   "contrast": 8.0,
   "clear_floor": 5.0,
   "motion": 15.0,
-  "richness": 13.66,
+  "richness": 15.0,
   "identity": 10.0
  },
  "metrics": {
@@ -21,21 +21,21 @@
   "edge_outline": 0.75,
   "edge_reach": 0.9401350871808573,
   "edge_over": 0.0,
-  "coverage": 0.5375,
-  "interior": 0.31338028169014087,
-  "interior_detail": 0.20422535211267606,
+  "coverage": 0.5303571428571429,
+  "interior": 0.39436619718309857,
+  "interior_detail": 0.3345070422535211,
   "arena_ok": 1.0,
   "has_outline_and_light": true,
   "lum_gap": 17.24714420989284,
   "peak_pos": 0.5,
   "tail": 0.0,
-  "loop_gap": 0.10076530612244898,
-  "motion_mean": 0.07409554730983302,
+  "loop_gap": 0.02806122448979592,
+  "motion_mean": 0.039888682745825604,
   "unique_frames": 1.0,
   "tones": 5,
-  "highlight_share": 0.08970099667774087,
-  "core_fill": 0.8181818181818182,
-  "detail_mass": 0.7083333333333334,
+  "highlight_share": 0.13468013468013468,
+  "core_fill": 0.45454545454545453,
+  "detail_mass": 0.4545454545454544,
   "min_sig_dist": 1.0
  },
  "hard_fails": [],
@@ -49,6 +49,16 @@
    "knob": "sparks",
    "why": "el arte actual cubre mejor la zona: menos chispas",
    "add": -2
+  },
+  {
+   "knob": "motif_on",
+   "why": "activar el motivo temático del guardián (el arte actual lo tiene)",
+   "set": 1
+  },
+  {
+   "knob": "motif_n",
+   "why": "el arte actual tiene más trama temática: motivo más denso",
+   "add": 1
   }
  ],
  "criteria": {
@@ -56,11 +66,11 @@
   "palette": 1.0,
   "hygiene": 1.0,
   "edge": 0.929,
-  "coverage": 0.85,
+  "coverage": 0.879,
   "contrast": 1.0,
   "clear_floor": 1.0,
   "motion": 1.0,
-  "richness": 0.911,
+  "richness": 1.0,
   "identity": 1.0
  },
  "baseline_total": 75.8,
@@ -101,9 +111,10 @@
   "detail_mass": 0.6287878787878788,
   "min_sig_dist": 1.0
  },
- "improvement": 20.0,
+ "improvement": 21.7,
  "reasons": [
-  "regresión de cobertura legible frente al arte actual (0.85 < 0.94)"
+  "regresión de cobertura legible frente al arte actual (0.88 < 0.94)"
  ],
- "status": "FAIL"
+ "status": "FAIL",
+ "keep_current": false
 }

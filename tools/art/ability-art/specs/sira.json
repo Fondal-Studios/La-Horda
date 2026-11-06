@@ -19,7 +19,9 @@
    "frames": 8,
    "baseline_beam": "si_ink",
    "replaces": "si_ink",
-   "params": {}
+   "params": {
+    "wave": 2
+   }
   },
   {
    "id": "retrace",
@@ -31,7 +33,9 @@
    "frames": 8,
    "baseline_beam": "si_rewind",
    "replaces": "si_rewind",
-   "params": {}
+   "params": {
+    "wave": 2
+   }
   },
   {
    "id": "erase",
@@ -44,7 +48,8 @@
    "params": {
     "deco": 2,
     "ticks": 10
-   }
+   },
+   "motif": "map"
   },
   {
    "id": "atlas",
@@ -56,7 +61,8 @@
    "replaces": "si_atlas",
    "params": {
     "deco": 0
-   }
+   },
+   "motif": "map"
   },
   {
    "id": "atlas_zone",
@@ -68,7 +74,8 @@
    "replaces": "si_atlas_idle",
    "params": {
     "deco": 1
-   }
+   },
+   "motif": "map"
   }
  ]
 }

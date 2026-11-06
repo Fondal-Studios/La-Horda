@@ -1,44 +1,80 @@
 {
  "kind": "ring",
- "score": 94.3,
+ "score": 93.7,
  "points": {
   "alpha": 5.0,
   "palette": 8.0,
-  "hygiene": 6.96,
+  "hygiene": 7.0,
   "edge": 15.0,
-  "coverage": 10.23,
+  "coverage": 9.81,
   "contrast": 8.0,
   "clear_floor": 5.0,
   "motion": 15.0,
   "richness": 15.0,
-  "identity": 6.08
+  "identity": 5.93
  },
  "metrics": {
   "alpha_binary": 1.0,
   "palette_adherence": 1.0,
   "colors": 5,
-  "isolated": 0.030641337008837165,
+  "isolated": 0.027724095668190514,
   "edge_outline": 1.0,
   "edge_reach": 0.9864254028753598,
   "edge_over": 0.0,
-  "coverage": 0.5294416243654823,
-  "interior": 0.38049713193116635,
-  "interior_detail": 0.2978011472275335,
+  "coverage": 0.5365482233502538,
+  "interior": 0.3938814531548757,
+  "interior_detail": 0.31309751434034416,
   "arena_ok": 1.0,
   "has_outline_and_light": true,
   "lum_gap": 18.45785610073101,
   "peak_pos": 0.2222222222222222,
   "tail": 0.0,
-  "motion_mean": 0.11209705075445815,
+  "motion_mean": 0.11668381344307271,
   "unique_frames": 1.0,
   "tones": 5,
-  "highlight_share": 0.19319271332694152,
+  "highlight_share": 0.18401135288552506,
   "core_fill": 0.39759036144578314,
   "detail_mass": 0.18132530120481927,
-  "min_sig_dist": 0.054442850272374416
+  "min_sig_dist": 0.04977168881633334
  },
  "hard_fails": [],
  "ops": [
+  {
+   "knob": "fill",
+   "why": "cobertura alta (54%): bajar el relleno para no tapar al enemigo",
+   "hard": true,
+   "add": -0.06
+  },
+  {
+   "knob": "ticks",
+   "why": "menos marcas",
+   "hard": true,
+   "add": -4
+  },
+  {
+   "knob": "tick_len",
+   "why": "marcas más cortas",
+   "hard": true,
+   "add": -0.04
+  },
+  {
+   "knob": "inner_ring",
+   "why": "quitar el anillo interior",
+   "hard": true,
+   "set": 0
+  },
+  {
+   "knob": "rim",
+   "why": "borde más fino: la cobertura es excesiva",
+   "hard": true,
+   "add": -1
+  },
+  {
+   "knob": "sparks",
+   "why": "menos chispas",
+   "hard": true,
+   "add": -2
+  },
   {
    "knob": "deco",
    "why": "se parece demasiado a otra habilidad del guardián (distancia 0.05): cambiar el tipo de marca",
@@ -58,19 +94,29 @@
    "knob": "sparks",
    "why": "el arte actual cubre mejor la zona: menos chispas",
    "add": -2
+  },
+  {
+   "knob": "motif_on",
+   "why": "activar el motivo temático del guardián (el arte actual lo tiene)",
+   "set": 1
+  },
+  {
+   "knob": "motif_n",
+   "why": "el arte actual tiene más trama temática: motivo más denso",
+   "add": 1
   }
  ],
  "criteria": {
   "alpha": 1.0,
   "palette": 1.0,
-  "hygiene": 0.994,
+  "hygiene": 1.0,
   "edge": 1.0,
-  "coverage": 0.853,
+  "coverage": 0.817,
   "contrast": 1.0,
   "clear_floor": 1.0,
   "motion": 1.0,
   "richness": 1.0,
-  "identity": 0.608
+  "identity": 0.593
  },
  "baseline_total": 77.4,
  "baseline_criteria": {
@@ -109,9 +155,10 @@
   "detail_mass": 0.14186746987951807,
   "min_sig_dist": 1.0
  },
- "improvement": 16.9,
+ "improvement": 16.3,
  "reasons": [
-  "regresión de cobertura legible frente al arte actual (0.85 < 1.00)"
+  "regresión de cobertura legible frente al arte actual (0.82 < 1.00)"
  ],
- "status": "FAIL"
+ "status": "FAIL",
+ "keep_current": false
 }

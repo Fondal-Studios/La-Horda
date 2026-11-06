@@ -1,16 +1,16 @@
 {
  "kind": "idle",
- "score": 98.5,
+ "score": 93.5,
  "points": {
   "alpha": 5.0,
   "palette": 8.0,
   "hygiene": 7.0,
   "edge": 15.0,
-  "coverage": 12.0,
+  "coverage": 9.13,
   "contrast": 8.0,
-  "clear_floor": 5.0,
+  "clear_floor": 3.43,
   "motion": 15.0,
-  "richness": 13.47,
+  "richness": 12.97,
   "identity": 10.0
  },
  "metrics": {
@@ -21,25 +21,107 @@
   "edge_outline": 1.0,
   "edge_reach": 0.9752540620867715,
   "edge_over": 0.0,
-  "coverage": 0.4522144522144522,
-  "interior": 0.24444444444444444,
-  "interior_detail": 0.07444444444444444,
+  "coverage": 0.5477855477855478,
+  "interior": 0.5033333333333333,
+  "interior_detail": 0.4533333333333333,
   "arena_ok": 1.0,
   "has_outline_and_light": true,
   "lum_gap": 12.721728732148314,
   "peak_pos": 0.5,
   "tail": 0.0,
-  "loop_gap": 0.0646701388888889,
-  "motion_mean": 0.06301294191919192,
+  "loop_gap": 0.07118055555555555,
+  "motion_mean": 0.0876736111111111,
   "unique_frames": 1.0,
   "tones": 5,
-  "highlight_share": 0.06443298969072164,
-  "core_fill": 0.3783783783783784,
-  "detail_mass": 0.31306306306306303,
+  "highlight_share": 0.05851063829787234,
+  "core_fill": 0.5675675675675675,
+  "detail_mass": 0.588963963963964,
   "min_sig_dist": 1.0
  },
  "hard_fails": [],
  "ops": [
+  {
+   "knob": "fill",
+   "why": "cobertura alta (55%): bajar el relleno para no tapar al enemigo",
+   "hard": true,
+   "add": -0.06
+  },
+  {
+   "knob": "ticks",
+   "why": "menos marcas",
+   "hard": true,
+   "add": -4
+  },
+  {
+   "knob": "tick_len",
+   "why": "marcas más cortas",
+   "hard": true,
+   "add": -0.04
+  },
+  {
+   "knob": "inner_ring",
+   "why": "quitar el anillo interior",
+   "hard": true,
+   "set": 0
+  },
+  {
+   "knob": "rim",
+   "why": "borde más fino: la cobertura es excesiva",
+   "hard": true,
+   "add": -1
+  },
+  {
+   "knob": "sparks",
+   "why": "menos chispas",
+   "hard": true,
+   "add": -2
+  },
+  {
+   "knob": "fill",
+   "why": "el centro está cargado (50%): despejar el relleno",
+   "hard": true,
+   "add": -0.09
+  },
+  {
+   "knob": "inner_ring",
+   "why": "quitar el anillo interior",
+   "hard": true,
+   "set": 0
+  },
+  {
+   "knob": "glyph_scale",
+   "why": "glifo más chico",
+   "hard": true,
+   "set": 1
+  },
+  {
+   "knob": "sparks",
+   "why": "menos chispas: tapan el centro",
+   "hard": true,
+   "add": -2
+  },
+  {
+   "knob": "ticks",
+   "why": "menos marcas: tapan el centro",
+   "hard": true,
+   "add": -2
+  },
+  {
+   "knob": "glyph_on",
+   "why": "quitar el glifo: no cabe en una zona tan chica",
+   "hard": true,
+   "set": 0
+  },
+  {
+   "knob": "motif_on",
+   "why": "activar el motivo temático del guardián (el arte actual lo tiene)",
+   "set": 1
+  },
+  {
+   "knob": "motif_n",
+   "why": "el arte actual tiene más trama temática: motivo más denso",
+   "add": 1
+  },
   {
    "knob": "ticks",
    "why": "el arte actual tiene más trama interior: sumar marcas propias",
@@ -54,6 +136,26 @@
    "knob": "deco",
    "why": "probar otra familia de marcas",
    "cycle": true
+  },
+  {
+   "knob": "fill",
+   "why": "el arte actual cubre mejor la zona: ajustar el relleno",
+   "add": -0.03
+  },
+  {
+   "knob": "sparks",
+   "why": "el arte actual cubre mejor la zona: menos chispas",
+   "add": -2
+  },
+  {
+   "knob": "motif_on",
+   "why": "activar el motivo temático del guardián (el arte actual lo tiene)",
+   "set": 1
+  },
+  {
+   "knob": "motif_n",
+   "why": "el arte actual tiene más trama temática: motivo más denso",
+   "add": 1
   }
  ],
  "criteria": {
@@ -61,11 +163,11 @@
   "palette": 1.0,
   "hygiene": 1.0,
   "edge": 1.0,
-  "coverage": 1.0,
+  "coverage": 0.761,
   "contrast": 1.0,
-  "clear_floor": 1.0,
+  "clear_floor": 0.686,
   "motion": 1.0,
-  "richness": 0.898,
+  "richness": 0.865,
   "identity": 1.0
  },
  "baseline_total": 85.5,
@@ -106,9 +208,11 @@
   "detail_mass": 0.20439189189189189,
   "min_sig_dist": 1.0
  },
- "improvement": 13.0,
+ "improvement": 8.0,
  "reasons": [
-  "regresión de riqueza visual frente al arte actual (0.90 < 1.00)"
+  "regresión de riqueza visual frente al arte actual (0.86 < 1.00)",
+  "regresión de cobertura legible frente al arte actual (0.76 < 1.00)"
  ],
- "status": "FAIL"
+ "status": "FAIL",
+ "keep_current": false
 }
