@@ -1,0 +1,98 @@
+{
+ "score": 95.8,
+ "points": {
+  "alpha": 5.0,
+  "palette": 8.0,
+  "hygiene": 7.0,
+  "edge": 15.0,
+  "coverage": 12.0,
+  "contrast": 8.0,
+  "clear_floor": 5.0,
+  "motion": 15.0,
+  "richness": 10.84,
+  "identity": 10.0
+ },
+ "metrics": {
+  "alpha_binary": 1.0,
+  "palette_adherence": 1.0,
+  "colors": 5,
+  "isolated": 0.0,
+  "edge_outline": 1.0,
+  "edge_reach": 0.9864254028753598,
+  "edge_over": 0.0,
+  "coverage": 0.3,
+  "interior": 0.1534416826003824,
+  "interior_detail": 0.030592734225621414,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 18.45785610073101,
+  "peak_pos": 0.5,
+  "tail": 0.0,
+  "loop_gap": 0.03838734567901234,
+  "motion_mean": 0.036107603815937146,
+  "unique_frames": 1.0,
+  "tones": 5,
+  "highlight_share": 0.06006768189509306,
+  "core_fill": 0.23493975903614459,
+  "detail_mass": 0.21636546184738956,
+  "min_sig_dist": 1.0
+ },
+ "hard_fails": [],
+ "ops": [
+  {
+   "knob": "ticks",
+   "why": "poco detalle interior (3%): más marcas propias (estelas, hilos, runas)",
+   "add": 4
+  },
+  {
+   "knob": "tick_len",
+   "why": "marcas más largas",
+   "add": 0.04
+  },
+  {
+   "knob": "ticks",
+   "why": "el arte actual tiene más trama interior: sumar marcas propias",
+   "add": 4
+  },
+  {
+   "knob": "glyph_scale",
+   "why": "el arte actual tiene más presencia central: glifo más grande",
+   "add": 1
+  },
+  {
+   "knob": "deco",
+   "why": "probar otra familia de marcas (rayos largos)",
+   "set": 2
+  }
+ ],
+ "criteria": {
+  "alpha": 1.0,
+  "palette": 1.0,
+  "hygiene": 1.0,
+  "edge": 1.0,
+  "coverage": 1.0,
+  "contrast": 1.0,
+  "clear_floor": 1.0,
+  "motion": 1.0,
+  "richness": 0.722,
+  "identity": 1.0
+ },
+ "baseline_total": 82.8,
+ "baseline_criteria": {
+  "alpha": 1.0,
+  "palette": 0.0,
+  "hygiene": 1.0,
+  "edge": 0.753,
+  "coverage": 1.0,
+  "contrast": 1.0,
+  "clear_floor": 0.956,
+  "motion": 1.0,
+  "richness": 0.85,
+  "identity": 0.7
+ },
+ "improvement": 13.0,
+ "reasons": [
+  "regresión de riqueza visual frente al arte actual (0.72 < 0.85)"
+ ],
+ "status": "FAIL"
+}

@@ -226,3 +226,14 @@ Un emoji de color se dibuja con la fuente del sistema: cambia entre Android, iOS
   en `tools/art/emoji-lint-exceptions.json` con motivo. Capturas antes/después en `docs/ux/emojis-pixel/`.
 - Pendiente de arte humano: las 10 portadas de arena del Códice (`assets/ui/codex/arenas/*.jpg`) son ilustraciones suaves
   (§14: sin JPG ni degradé); necesitan repintado a mano en píxel nativo, no un filtro.
+
+## 16. Arte unificado de habilidades (Pintor → Evaluador → Arquitecto)
+
+Los efectos de suelo de las habilidades (anillos, conos, zonas vivas, rayos) comparten una gramática: rampa de 5 tonos por guardián
+`[contorno, sombra, base, luz, brillo]`, contorno de 1 px, alfa 0/255, translucidez por tramado Bayer 4×4 (relleno ≤ 24 %), **luz
+arriba-izquierda**, tres fases (anticipación → impacto → disipación) y borde exterior = radio real. Se pintan con
+`tools/art/ability-art/` y solo entran al juego si el Evaluador los aprueba (≥ 85 puntos, sin fallos duros, mejora ≥ +6 sobre el arte
+actual y sin perder riqueza visual). Lo que no pasa vuelve al Pintor con instrucciones; si se agotan las rondas queda como REDRAW
+REQUIRED (§8). Es cosmético: no altera daño, alcance ni hitboxes (`?ua=0` vuelve al arte anterior). Guía y límites en
+`tools/art/ability-art/README.md`; resultados en `docs/art-gate/ability-art/LEDGER.md`. Aprueba el contrato técnico, no la belleza:
+la revisión humana del §8 sigue siendo obligatoria.

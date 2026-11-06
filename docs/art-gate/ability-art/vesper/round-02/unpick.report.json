@@ -1,0 +1,123 @@
+{
+ "score": 85.6,
+ "points": {
+  "alpha": 5.0,
+  "palette": 8.0,
+  "hygiene": 6.95,
+  "edge": 15.0,
+  "coverage": 6.59,
+  "contrast": 8.0,
+  "clear_floor": 2.0,
+  "motion": 15.0,
+  "richness": 13.25,
+  "identity": 5.79
+ },
+ "metrics": {
+  "alpha_binary": 1.0,
+  "palette_adherence": 1.0,
+  "colors": 5,
+  "isolated": 0.030786880140687686,
+  "edge_outline": 1.0,
+  "edge_reach": 0.984925673231495,
+  "edge_over": 0.0,
+  "coverage": 0.4456150341685649,
+  "interior": 0.40384615384615385,
+  "interior_detail": 0.35844017094017094,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 18.45785610073101,
+  "peak_pos": 0.2222222222222222,
+  "tail": 0.0,
+  "motion_mean": 0.11490772779700115,
+  "unique_frames": 1.0,
+  "tones": 5,
+  "highlight_share": 0.2440894568690096,
+  "core_fill": 0.4533333333333333,
+  "detail_mass": 0.17966666666666667,
+  "min_sig_dist": 0.04543109936786481
+ },
+ "hard_fails": [],
+ "ops": [
+  {
+   "knob": "fill",
+   "why": "cobertura alta (45%): bajar el relleno para no tapar al enemigo",
+   "add": -0.06
+  },
+  {
+   "knob": "ticks",
+   "why": "menos marcas",
+   "add": -4
+  },
+  {
+   "knob": "tick_len",
+   "why": "marcas más cortas",
+   "add": -0.04
+  },
+  {
+   "knob": "inner_ring",
+   "why": "quitar el anillo interior",
+   "set": 0
+  },
+  {
+   "knob": "rim",
+   "why": "borde más fino: la cobertura es excesiva",
+   "add": -1
+  },
+  {
+   "knob": "fill",
+   "why": "el centro está cargado (40%): despejar el relleno",
+   "add": -0.09
+  },
+  {
+   "knob": "inner_ring",
+   "why": "quitar el anillo interior",
+   "set": 0
+  },
+  {
+   "knob": "glyph_scale",
+   "why": "glifo más chico",
+   "set": 1
+  },
+  {
+   "knob": "deco",
+   "why": "se parece demasiado a otra habilidad del guardián (distancia 0.05): cambiar el tipo de marca",
+   "add": 1
+  },
+  {
+   "knob": "inner_ring",
+   "why": "segundo anillo para distinguirla",
+   "set": 1
+  }
+ ],
+ "criteria": {
+  "alpha": 1.0,
+  "palette": 1.0,
+  "hygiene": 0.993,
+  "edge": 1.0,
+  "coverage": 0.549,
+  "contrast": 1.0,
+  "clear_floor": 0.401,
+  "motion": 1.0,
+  "richness": 0.883,
+  "identity": 0.579
+ },
+ "baseline_total": 70.6,
+ "baseline_criteria": {
+  "alpha": 1.0,
+  "palette": 0.0,
+  "hygiene": 0.226,
+  "edge": 0.724,
+  "coverage": 0.644,
+  "contrast": 1.0,
+  "clear_floor": 0.53,
+  "motion": 1.0,
+  "richness": 0.85,
+  "identity": 0.7
+ },
+ "improvement": 15.0,
+ "reasons": [
+  "criterio bajo: suelo despejado 2.0/5",
+  "regresión de cobertura legible frente al arte actual (0.55 < 0.64)"
+ ],
+ "status": "FAIL"
+}
