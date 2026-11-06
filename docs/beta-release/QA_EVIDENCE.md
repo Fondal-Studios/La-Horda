@@ -5,3 +5,6 @@ No ejecutadas: `test-postgres.js` (requiere Postgres), `test-admin.js`, `test-ga
 ## 2026-11-06 · merge de #261 (a835aef8) sobre main ef415626 (local, no publicado)
 server: test-item-economy-compat, test-wallet-pieces, test-wallet → exit 0. tools/ui-clarity/{test-hud-clarity,test-shop-clarity,test-brasas-flow} → RESULT OK. tools/items/t_piezas_brasas.js → TODO OK (requiere `python3 -m http.server 8771` en la raíz). tools/ux/test-three-ui-contracts.js → PASS.
 Nota: la rama `integration/beta-20261101` ya documenta que #241 fue **rechazado tras QA --fast (4 regresiones: cromas, colección, coliseo, lanes)** → #241 pasa a REPARABLE con defectos concretos; verificar ese informe antes de evaluarlo.
+
+## 2026-11-06 · #236 Gélida (en rama de trabajo)
+t_hielo_enemy_lifecycle: sin fix FAIL interrupted/dead/replaced; con fix PASS 5/5. t_hielo_roster_smoke: 13 tipos, 0 no finitos, 0 errores.
