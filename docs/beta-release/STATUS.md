@@ -1,7 +1,7 @@
-# STATUS (2026-11-06, fin de sesión 1)
-- H0 Fase Cero: **hecha**. main = ef415626.
-- H1 saneamiento PR: ciclo #271 en curso (reparado, sin merge; ver RESULTADOS_PR.md). 0 PR con disposición final de 24 abiertos.
-- Pruebas reales: 16 suites de servidor PASS; test de #271 y baseline UI ejecutados (ver RESULTADOS_PR.md). Resto NOT RUN.
-- Brechas críticas: ranking confía en el cliente y usa ronda de grupo; sin pase de batalla; sin builds nativas; modos extra visibles.
-- Costos: 0 créditos gastados. Runway saldo observado 15.
-- NO hecho en esta sesión (declarado): H2–H10, merges, evaluación del resto de PR, inventario de cerrados < #153, auditoría completa de arte/roster.
+# STATUS (2026-11-06, sesión 1, continúa por tarea programada horaria)
+- H0 Fase Cero: hecha. main = ef415626.
+- Entregado en la rama de trabajo (sin PR, sin evaluación independiente): casas de Ciudad Maldita; alcance de la beta (`BETA_PUBLIC=1`); ranking por ronda personal + orden ronda→puntaje→tiempo (archivo y Postgres real); Brasas solo cosméticos (`PIECES_FOR_BRASAS=false`, doc `docs/economy/BRASAS_SOLO_COSMETICOS.md`).
+- PR: #271 parche empujado a su rama; #261 merge con main empujado a su rama; #263 evaluado. Ninguno fusionado a main (falta revisión independiente + CI remoto).
+- Créditos Runway: saldo 975 al último control; gastados 40 en esta sesión (5 imágenes).
+- Pendiente: token de partida del servidor (R05), pase de batalla (R10), arte de 9 arenas y campeones, builds nativas, QA E2E, roster verificado.
+- Automatización real: tarea programada trig_01GuPc2QF4Wuu5XdX7NFKJjb (cada hora, minuto 23, en esta sesión).
