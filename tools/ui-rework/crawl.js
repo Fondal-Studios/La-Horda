@@ -43,6 +43,8 @@ async function boot(browser) {
     window.needsStarterChampion = () => false; window.needsStarterSkin = () => false;
     if (typeof HordaOnboarding !== 'undefined') HordaOnboarding.ready = () => true;
     if (typeof accountGate === 'function') window.accountGate = () => false;
+    save.codexBook = Object.assign({}, save.codexBook, {introSeen: true, introRead: true});   // jugador que vuelve: ya vio el Libro del Hechicero
+    if (typeof bookClose === 'function') { try { bookClose('skip'); } catch (e) {} }
     try { persist(); } catch (e) {} setState('title'); });
   await page.waitForTimeout(900);
   return {ctx, page};
