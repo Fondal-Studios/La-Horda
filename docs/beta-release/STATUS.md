@@ -7,3 +7,7 @@
 - Automatización real: tarea programada trig_01GuPc2QF4Wuu5XdX7NFKJjb (cada hora, minuto 23, en esta sesión).
 
 - Ejecución 09:23 UTC: #265 evaluado (extracción) y compra segura incorporada; #236 evaluado e incorporado (fix verificado: falla sin él, pasa con él); #241 devuelto con defectos. Disposiciones finales (MERGEADO_Y_VERIFICADO etc.): **0 de 24** — ningún PR se cierra sin revisión independiente y CI remoto.
+
+## Actualización 2026-11-06 (tarde)
+- Cuerpos del Códice integrados (candidatos, sin revisión independiente): Guerrero, Tanque, Mago, **Aelith, Morveth** (cromas recoloreando el cuerpo nuevo, sin tocar gates) y atlas más fieles de **Saelis, Aurelia, Maura, Ynara** (#259). Myla excluida (hash aprobado en `check-myla-death`). Capturas en `evidence/guardianes/`.
+- Brecha abierta: Libertador (sin PR con cuerpo fiel), Coloso de Ilkan (procedural).

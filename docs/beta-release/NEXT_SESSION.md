@@ -54,3 +54,8 @@ Herramienta del pintor: `node tools/art-world/runway-guardian.js <guardián> <in
 **Aplicado (12:5x):** Plaga del Nigromante rehecha en pixel art nativo. Pendiente: la vista previa del Códice del Nigromante aún usa `nigroPlagueBurst` (imagen pintada); revisar la definitiva «Encarnación del Abismo» si el propietario también la quiere cambiar; seguir la galería con el resto de guardianes.
 
 **Habilidades (13:0x):** inventario de efectos pintados hecho (`INVENTARIO_FX_PINTADOS.md`): 27 usos en 8 guardianes; sin otro caso tan malo como la Plaga. Siguiente: revisar a ojo las 18 hojas pendientes (Nahir…Zahra), luego decidir con el director de arte: definitivas que aclaran el fondo (Axiom, Libertador), sustituir `cadena-relampagos` por un haz SFA (5 guardianes), Coloso de Ilkan.
+
+## Siguiente (2026-11-06 tarde)
+1. Extraer cuerpos de campeones de #232 (Art Engine) y #90 (Ilsa/Vorn/Kora) de a uno con `tools/art-world/try-codex-body.sh` + `check-codex-body.js` (secuencial).
+2. Libertador: decidir con el propietario (hoja de referencia con Runway para artista, ≤60 créditos). Myla: decisión independiente sobre el hash del gate.
+3. Revisión independiente y CI remoto de #261/#263/#236/#241-parcial; #265 necesita decisión de diseño.
