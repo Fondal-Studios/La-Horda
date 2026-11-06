@@ -7,7 +7,7 @@ Método (`tools/art-world/audit-guardians.py`): sprite «FRENTE» del Códice vs
 ## Hallazgos confirmados a ojo y en combate
 | Guardián | Veredicto | Evidencia |
 |---|---|---|
-| **Guerrero** | **BRECHA REAL DE IDENTIDAD**: en el juego es una figura gris/verde con dagas; el Códice es un asesino de capucha y bufanda **roja** con hojas curvas | `combate_guerrero_mago_tanque_myla.png`, `champs_2.png` (usa un loader distinto, sin `champPackLoadAtlas`). El cuerpo fiel al Códice existe en el PR **#241** (`art-source/fondal/guerrero-codex`), rechazado por 4 regresiones de cromas/colección |
+| **Guerrero** | ~~BRECHA REAL DE IDENTIDAD~~ **CORREGIDO en la rama de trabajo** (cuerpo del Códice rescatado de #241, ver RESULTADOS_PR.md): **BRECHA REAL DE IDENTIDAD**: en el juego es una figura gris/verde con dagas; el Códice es un asesino de capucha y bufanda **roja** con hojas curvas | `combate_guerrero_mago_tanque_myla.png`, `champs_2.png` (usa un loader distinto, sin `champPackLoadAtlas`). El cuerpo fiel al Códice existe en el PR **#241** (`art-source/fondal/guerrero-codex`), rechazado por 4 regresiones de cromas/colección |
 | **Mago** | Más simple que el Códice (el Códice: sombrero y capa púrpura, bastón con llama azul); misma familia, menos detalle | ídem |
 | **Ilkan (humano)** | **FIEL al Códice** (hoces, hombrera de placas, vendas, rostro, fajín); 62 cuadros consistentes | `ilkan_en_combate.png`, `ilkan_atlas_humano_codex-v1.png` |
 | **Ilkan — Coloso de Arena** | **DÉBIL**: arte procedural (`tools/art/ilkan/build.py`), rígido, cuatro brazos de bloques repetidos; no hay Códice del Coloso (solo el texto de diseño) | `ilkan_coloso_procedural.png`. Es lo que más se aparta de la calidad del resto |
@@ -68,3 +68,6 @@ Método (`tools/art-world/audit-guardians.py`): sprite «FRENTE» del Códice vs
 
 ## Pendiente de tu confirmación
 Si lo que viste «pésimamente producido» de Ilkan fue **el Coloso**, una **skin**, o **una versión publicada anterior** del juego, decime cuál: en el código de esta rama el Ilkan humano está bien.
+
+## Bloques aceptados
+1. **Guerrero (Kael)** — cuerpo fiel al Códice (36 cuadros, 14 estados). Evidencia: `guerrero_antes_despues.png`.
