@@ -1,0 +1,166 @@
+{
+ "guardian": "orsa",
+ "title": "Orsa, la Cordera de Rayos",
+ "palette": [
+  "#3a1e08",
+  "#a05a1e",
+  "#dfa352",
+  "#ffe08a",
+  "#fff9d6"
+ ],
+ "abilities": [
+  {
+   "id": "pierce",
+   "kind": "beam",
+   "tile": [
+    24,
+    20
+   ],
+   "frames": 8,
+   "baseline_beam": "or_bolt",
+   "replaces": "or_bolt",
+   "params": {
+    "rim": 2,
+    "fill": 0.15,
+    "ticks": 8,
+    "tick_len": 0.16,
+    "glyph_scale": 1,
+    "sparks": 4,
+    "flash": 0.30000000000000004,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.32,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 1,
+    "wave": 2,
+    "wave_amp": 4,
+    "thick": 1,
+    "deco": 0,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "wave": 1,
+    "wave_amp": 1
+   }
+  },
+  {
+   "id": "discharge",
+   "kind": "ring",
+   "radius": 175,
+   "frames": 10,
+   "glyph": "bolt",
+   "baseline": "or_circuit",
+   "replaces": "or_circuit",
+   "params": {
+    "deco": 2,
+    "ticks": 12
+   }
+  },
+  {
+   "id": "brace",
+   "kind": "ring",
+   "radius": 42,
+   "frames": 10,
+   "glyph": "cross",
+   "baseline": "or_anchor",
+   "replaces": "or_anchor",
+   "params": {
+    "rim": 1,
+    "fill": 0.0,
+    "ticks": 2,
+    "tick_len": 0.12,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.3,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.3,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 2,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "rim": -1,
+    "fill": -1,
+    "ticks": -1,
+    "tick_len": -1,
+    "sparks": -1,
+    "deco": 1
+   }
+  },
+  {
+   "id": "anchor_zone",
+   "kind": "idle",
+   "radius": 42,
+   "frames": 12,
+   "glyph": "cross",
+   "baseline": "or_anchor_idle",
+   "replaces": "or_anchor_idle",
+   "params": {
+    "rim": 1,
+    "fill": 0.06,
+    "ticks": 4,
+    "tick_len": 0.12,
+    "glyph_scale": 2,
+    "sparks": 0,
+    "flash": 0.3,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.3,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 0,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "rim": -1,
+    "fill": -1,
+    "ticks": -1,
+    "tick_len": -1,
+    "sparks": -1,
+    "deco": 1,
+    "glyph_scale": 1
+   }
+  },
+  {
+   "id": "storm_zone",
+   "kind": "idle",
+   "radius": 210,
+   "frames": 12,
+   "glyph": "bolt",
+   "baseline": "or_storm_idle",
+   "replaces": "or_storm_idle",
+   "params": {
+    "deco": 0,
+    "ticks": 8
+   }
+  },
+  {
+   "id": "sweep",
+   "kind": "sector",
+   "radius": 280,
+   "frames": 10,
+   "glyph": "bolt",
+   "baseline": "or_sweep",
+   "replaces": "or_sweep",
+   "params": {
+    "deco": 1,
+    "ticks": 10
+   },
+   "half": 0.85
+  }
+ ]
+}

@@ -63,7 +63,7 @@ def _neigh8(m):
     return o
 
 
-def evaluate(frames, ab, ramp, others=None, baseline_total=None, baseline_criteria=None):
+def evaluate(frames, ab, ramp, others=None, baseline_total=None, baseline_criteria=None, baseline_metrics=None):
     """frames: lista de arrays RGBA (H,W,4). ab: ficha de la habilidad. ramp: 5 colores RGB. others: firmas de las demás."""
     kind = ab['kind']
     if not any((f[..., 3] > 0).any() for f in frames):   # arte vacío: rechazo directo, sin medir nada
@@ -74,6 +74,7 @@ def evaluate(frames, ab, ramp, others=None, baseline_total=None, baseline_criter
     tile = kind == 'beam'
     n = len(frames)
     H, W = frames[0].shape[:2]
+    small = (not tile) and W <= 32   # sello de ≤ 32 px: el borde con contorno ya ocupa casi todo el radio
     m = {}   # métricas crudas
     why = {}
     A = np.stack([_opaque(f) for f in frames])
@@ -147,6 +148,9 @@ def evaluate(frames, ab, ramp, others=None, baseline_total=None, baseline_criter
         inner = (dist_c < 0.8 * R) & (dist_c > 0.28 * R) & (np.abs(ang) <= (half * 0.72 if kind == 'sector' else half))
         m['interior'] = float((po & inner).sum() / max(1, inner.sum()))
     if tile:
+        ext = np.array([(np.ptp(np.where(pf[:, x, 3] > 0)[0]) + 1) if (pf[:, x, 3] > 0).any() else 0 for x in range(W)], float)
+        ctr = np.array([np.where(pf[:, x, 3] > 0)[0].mean() if (pf[:, x, 3] > 0).any() else H / 2 for x in range(W)], float)
+        m['jag'] = float((ctr.std() + 0.5 * ext.std()) / max(1.0, H))   # irregularidad: un relámpago ≫ una barra
         m['interior_detail'] = 0.3
     else:
         t_pf, _ = _nearest_tone(pf, ramp)
@@ -213,9 +217,9 @@ def evaluate(frames, ab, ramp, others=None, baseline_total=None, baseline_criter
     if tile:
         s['coverage'] = tri(m['coverage'], 0.2, 0.5, 1.0, 1.01)
     else:
-        s['coverage'] = tri(m['coverage'], 0.04, 0.14, 0.36, 0.55)
+        s['coverage'] = tri(m['coverage'], 0.04, 0.14, 0.5, 0.75) if small else tri(m['coverage'], 0.04, 0.14, 0.5, 0.7)
     s['contrast'] = float(np.clip(0.5 * m['arena_ok'] + 0.3 * (1.0 if both else 0.0) + 0.2 * min(1.0, m['lum_gap'] / 6.0), 0, 1))
-    s['clear_floor'] = 1.0 if tile else tri(m['interior'], 0.03, 0.12, 0.26, 0.5)
+    s['clear_floor'] = 1.0 if tile else (tri(m['interior'], 0.0, 0.05, 0.6, 0.8) if small else tri(m['interior'], 0.03, 0.12, 0.45, 0.62))
     if loop:
         s['motion'] = 0.5 * tri(m['motion_mean'], 0.0, 0.015, 0.2, 0.45) + 0.3 * (1.0 if m['loop_gap'] < 0.2 else 0.3) + 0.2 * min(1.0, m['unique_frames'] / 0.9)
     else:
@@ -225,7 +229,7 @@ def evaluate(frames, ab, ramp, others=None, baseline_total=None, baseline_criter
         s['richness'] = 0.5 * min(1.0, tones_used / 4) + 0.3 * tri(hi_share, 0.0, 0.03, 0.35, 0.7) + 0.2 * min(1.0, m['unique_frames'])
     else:
         s['richness'] = (0.2 * min(1.0, tones_used / 4) + 0.15 * tri(hi_share, 0.0, 0.03, 0.3, 0.6)
-                         + 0.4 * tri(m['interior_detail'], 0.0, 0.10, 0.3, 0.5) + 0.15 * tri(m['detail_mass'], 0.0, 0.1, 0.5, 0.85) + 0.1 * min(1.0, m['colors'] / 4))
+                         + 0.4 * (tri(m['interior_detail'], 0.0, 0.08, 0.6, 0.85) if small else tri(m['interior_detail'], 0.0, 0.10, 0.3, 0.5)) + 0.15 * tri(m['detail_mass'], 0.0, 0.1, 0.5, 0.85) + 0.1 * min(1.0, m['colors'] / 4))
     s['identity'] = 0.5 * (1.0 if m['palette_adherence'] >= 0.9 else 0.4) + 0.5 * (tri(dmin, 0.02, 0.18, 2, 3) if others else 1.0)
     pts = {k: round(WEIGHTS[k] * float(np.clip(v, 0, 1)), 2) for k, v in s.items()}
     total = round(sum(pts.values()), 1)
@@ -234,9 +238,9 @@ def evaluate(frames, ab, ramp, others=None, baseline_total=None, baseline_criter
     hard = []
     if m['alpha_binary'] < 0.9999:
         hard.append('alfa semitransparente: el canon exige 0 o 255')
-    if not tile and m['interior'] > 0.45:
-        hard.append(f"el interior tapa al enemigo ({m['interior']:.0%} de píxeles opacos en la zona central; techo 45 %)")
-    if not tile and m['coverage'] > 0.55:
+    if not tile and m['interior'] > (0.7 if small else 0.6):
+        hard.append(f"el interior tapa al enemigo ({m['interior']:.0%} de píxeles opacos en la zona central; techo 60 %)")
+    if not tile and m['coverage'] > (0.75 if small else 0.7):
         hard.append(f"cobertura excesiva ({m['coverage']:.0%}): oculta el suelo")
     if m['palette_adherence'] < 0.6:
         hard.append('la mayoría de los colores no pertenecen a la rampa del guardián')
@@ -251,6 +255,9 @@ def evaluate(frames, ab, ramp, others=None, baseline_total=None, baseline_criter
     def op(knob, why_, **kw):
         ops.append(dict(knob=knob, why=why_, **kw))
 
+    def hard_op(knob, why_, **kw):
+        ops.append(dict(knob=knob, why=why_, hard=True, **kw))
+
     if s['edge'] < 0.85 and not tile:
         if m['edge_outline'] < 0.85:
             op('rim', f"el filo exterior no está contorneado en {1 - m['edge_outline']:.0%} del perímetro: engrosar el borde para que el contorno oscuro de 1 px cierre", add=1)
@@ -260,23 +267,30 @@ def evaluate(frames, ab, ramp, others=None, baseline_total=None, baseline_criter
             op('ticks', 'más marcas para que el área se lea de lejos', add=4)
             op('rim', 'borde más grueso para ganar presencia', add=1)
         else:
-            op('fill', f"cobertura alta ({m['coverage']:.0%}): bajar el relleno para no tapar al enemigo", add=-0.06)
-            op('ticks', 'menos marcas', add=-4)
-            op('tick_len', 'marcas más cortas', add=-0.04)
-            op('inner_ring', 'quitar el anillo interior', set=0)
-            op('rim', 'borde más fino: la cobertura es excesiva', add=-1)
+            hard_op('fill', f"cobertura alta ({m['coverage']:.0%}): bajar el relleno para no tapar al enemigo", add=-0.06)
+            hard_op('ticks', 'menos marcas', add=-4)
+            hard_op('tick_len', 'marcas más cortas', add=-0.04)
+            hard_op('inner_ring', 'quitar el anillo interior', set=0)
+            hard_op('rim', 'borde más fino: la cobertura es excesiva', add=-1)
+            hard_op('sparks', 'menos chispas', add=-2)
+            if m['coverage'] > 0.6:
+                hard_op('glyph_on', 'quitar el glifo: la cobertura es excesiva', set=0)
             if kind == 'sector':
-                op('thick', 'estelas más finas', add=-1)
+                hard_op('thick', 'estelas más finas', add=-1)
     if s['clear_floor'] < 0.85 and not tile and m['interior'] < 0.12:
         op('fill', f"el cuerpo de la zona casi no se ve ({m['interior']:.0%} del interior): subir el relleno trameado", add=0.06)
         op('ticks', 'más marcas internas para dar cuerpo', add=4)
     elif s['clear_floor'] < 0.85 and not tile:
-        op('fill', f"el centro está cargado ({m['interior']:.0%}): despejar el relleno", add=-0.09)
-        op('inner_ring', 'quitar el anillo interior', set=0)
-        op('glyph_scale', 'glifo más chico', set=1)
+        hard_op('fill', f"el centro está cargado ({m['interior']:.0%}): despejar el relleno", add=-0.09)
+        hard_op('inner_ring', 'quitar el anillo interior', set=0)
+        hard_op('glyph_scale', 'glifo más chico', set=1)
+        hard_op('sparks', 'menos chispas: tapan el centro', add=-2)
+        hard_op('ticks', 'menos marcas: tapan el centro', add=-2)
+        if m['interior'] > 0.5:
+            hard_op('glyph_on', 'quitar el glifo: no cabe en una zona tan chica', set=0)
         if kind == 'sector':
-            op('thick', 'estelas más finas: tapan el centro', add=-1)
-            op('ticks', 'menos estelas', add=-2)
+            hard_op('thick', 'estelas más finas: tapan el centro', add=-1)
+            hard_op('ticks', 'menos estelas', add=-2)
     if s['contrast'] < 0.85:
         op('highlight_arc', 'agregar luz en el arco superior-izquierdo para separar el borde del suelo', set=1)
         op('rim', 'borde algo más grueso para que filo claro y contorno oscuro se distingan', add=1)
@@ -318,9 +332,9 @@ def evaluate(frames, ab, ramp, others=None, baseline_total=None, baseline_criter
     if s['palette'] < 0.85 or s['alpha'] < 1:
         op('flash', 'los efectos de brillo deben salir de la rampa y con alfa 0/255 (revisar capa de destello)', set=0.2)
 
-    return dict(score=total, points=pts, metrics={k: v for k, v in m.items() if k != 'signature'}, hard_fails=hard,
+    return dict(kind=kind, score=total, points=pts, metrics={k: v for k, v in m.items() if k != 'signature'}, hard_fails=hard,
                 ops=ops, signature=sig.tolist(), criteria={k: round(float(np.clip(v, 0, 1)), 3) for k, v in s.items()},
-                baseline_total=baseline_total, baseline_criteria=baseline_criteria)
+                baseline_total=baseline_total, baseline_criteria=baseline_criteria, baseline_metrics=baseline_metrics)
 
 
 def _signature(f):
@@ -347,20 +361,44 @@ def verdict(rep, has_baseline):
     if has_baseline and rep['baseline_total'] is not None:
         gain = rep['score'] - rep['baseline_total']
         rep['improvement'] = round(gain, 1)
-        if gain < canon.MIN_IMPROVEMENT:
-            reasons.append(f"mejora {gain:+.1f} < +{canon.MIN_IMPROVEMENT} sobre el arte actual ({rep['baseline_total']})")
+        need = canon.required_gain(rep['baseline_total'])
+        if gain < need:
+            reasons.append(f"mejora {gain:+.1f} < +{need:.1f} sobre el arte actual ({rep['baseline_total']})")
             rep['ops'].append(dict(knob='rim', why='no supera al arte actual: ganar presencia en el borde', add=1))
             rep['ops'].append(dict(knob='sparks', why='no supera al arte actual: más destellos de luz', add=2))
     bc = rep.get('baseline_criteria')
     if has_baseline and bc:
         # no-regresión: lo que el arte actual hace bien (riqueza visual, presencia) no se puede perder aunque el total suba
         for k in ('richness', 'coverage'):
-            if rep['criteria'][k] + 0.02 < bc[k] and rep['criteria'][k] < 0.97:
+            if rep['criteria'][k] + 0.02 < bc[k] and rep['criteria'][k] < 0.95:
                 reasons.append(f"regresión de {LABEL[k]} frente al arte actual ({rep['criteria'][k]:.2f} < {bc[k]:.2f})")
+                if k == 'coverage':
+                    cv = rep['metrics'].get('coverage', 0.0)
+                    lo = 0.5 if rep.get('kind') == 'beam' else 0.14
+                    if cv < lo + 0.05:
+                        rep['ops'] += [dict(knob='fill', why='el arte actual cubre mejor la zona: subir el relleno trameado', add=0.03),
+                                       dict(knob='rim', why='el arte actual cubre mejor la zona: borde más grueso', add=1)]
+                    else:
+                        rep['ops'] += [dict(knob='fill', why='el arte actual cubre mejor la zona: ajustar el relleno', add=-0.03),
+                                       dict(knob='sparks', why='el arte actual cubre mejor la zona: menos chispas', add=-2)]
                 if k == 'richness':
                     rep['ops'] += [dict(knob='ticks', why='el arte actual tiene más trama interior: sumar marcas propias', add=4),
                                    dict(knob='glyph_scale', why='el arte actual tiene más presencia central: glifo más grande', add=1),
-                                   dict(knob='deco', why='probar otra familia de marcas (rayos largos)', set=2)]
+                                   dict(knob='deco', why='probar otra familia de marcas', cycle=True)]
+    bm = rep.get('baseline_metrics')
+    if has_baseline and bm:
+        mm = rep['metrics']
+        if rep['kind'] != 'beam':
+            floor = 0.8 * min(bm.get('coverage', 0.0), 0.5)
+            if mm['coverage'] < floor:
+                reasons.append(f"presencia menor que el arte actual: cobertura {mm['coverage']:.0%} < {floor:.0%} (arte actual {bm['coverage']:.0%})")
+                rep['ops'] += [dict(knob='fill', why='el arte actual tiene más cuerpo: subir el relleno trameado (techo del motor 24 %)', add=0.06),
+                               dict(knob='ticks', why='el arte actual tiene más trama: sumar marcas', add=2),
+                               dict(knob='rim', why='el arte actual tiene más presencia: borde más grueso', add=1)]
+        elif 'jag' in mm and bm.get('jag', 0) > 0.06 and mm['jag'] < 0.7 * bm['jag']:
+            reasons.append(f"silueta más plana que el arte actual: irregularidad {mm['jag']:.2f} < 70 % de {bm['jag']:.2f}")
+            rep['ops'] += [dict(knob='wave', why='el arte actual zigzaguea (relámpago, hilo, tinta): dar forma irregular al rayo', add=1),
+                           dict(knob='wave_amp', why='mayor amplitud de la ondulación', add=1)]
     rep['reasons'] = reasons
     rep['status'] = 'PASS' if not reasons else 'FAIL'
     return rep

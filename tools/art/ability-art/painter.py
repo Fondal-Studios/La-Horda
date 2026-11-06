@@ -28,10 +28,10 @@ KNOBS = {
     # name: (default, min, max, step)
     'rim': (2, 1, 4, 1),            # grosor del borde en el radio real
     'fill': (0.14, 0.0, canon.FILL_CAP, 0.03),   # relleno trameado (techo del motor: 24 %)
-    'ticks': (8, 4, 16, 2),         # marcas radiales / puntos / rayos de decoración
+    'ticks': (8, 0, 16, 2),         # marcas radiales / puntos / rayos de decoración
     'tick_len': (0.16, 0.08, 0.34, 0.04),
     'glyph_scale': (1, 1, 3, 1),
-    'sparks': (4, 2, 12, 2),
+    'sparks': (4, 0, 12, 2),
     'flash': (0.30, 0.0, 0.5, 0.1),
     'spin': (1, 0, 3, 1),           # vueltas del glifo durante la animación (pasos de 90°)
     'inner_ring': (0, 0, 1, 1),     # segundo anillo fino a 62 % del radio
@@ -39,6 +39,9 @@ KNOBS = {
     'impact_at': (0.30, 0.22, 0.42, 0.04),  # cuándo llega el pico (fracción de la tira)
     'fade_to': (0.0, 0.0, 0.3, 0.1),         # cuánto queda del efecto en el último cuadro (0 = limpio)
     'core': (2, 2, 3, 1),           # tono del relleno (2 = sombra, como el motor)
+    'glyph_on': (1, 0, 1, 1),       # glifo central (se quita solo si no cabe)
+    'wave': (0, 0, 2, 1),           # forma del rayo: 0 recto · 1 zigzag (relámpago) · 2 onda suave (hilo, tinta)
+    'wave_amp': (2, 1, 5, 1),       # amplitud de la forma (px)
     'thick': (1, 1, 3, 1),          # grosor de las estelas de un sector (px)
     'deco': (0, 0, 2, 1),           # 0 marcas radiales · 1 puntos · 2 rayos largos
     'core_density': (0.5, 0.2, 0.9, 0.1),   # densidad del núcleo de un rayo
@@ -64,7 +67,7 @@ GLYPHS = {  # 1 contorno (lo pone el Pintor) · 2 sombra · 3 base · 4 luz · 5
 def clamp_knob(name, v):
     d, lo, hi, step = KNOBS[name]
     v = max(lo, min(hi, v))
-    return round(v / step) * step if isinstance(step, float) else int(round(v))
+    return round(v / step) * step if isinstance(step, float) else int(math.floor(v + 0.5) if v >= 0 else math.ceil(v - 0.5))
 
 
 def resolve_params(ability):
@@ -79,7 +82,19 @@ def apply_ops(ability, ops):
     """Aplica las instrucciones del Evaluador a las perillas. Devuelve la lista de cambios reales."""
     p = resolve_params(ability)
     changes = []
+    # conflictos: si dos instrucciones empujan una perilla en sentidos opuestos, mandan las duras (cobertura, centro despejado)
+    by = {}
     for op in ops:
+        by.setdefault(op.get('knob'), []).append(op)
+    keep = []
+    for k, group in by.items():
+        sign = lambda o: (1 if o.get('add', 0) > 0 else -1 if o.get('add', 0) < 0 else 0)
+        if (len({sign(o) for o in group if 'add' in o} - {0}) > 1 or (any('set' in o for o in group) and any('add' in o for o in group))
+                or len({o['set'] for o in group if 'set' in o}) > 1):
+            hard = [o for o in group if o.get('hard')]
+            group = hard or group[:1]
+        keep += group
+    for op in keep:
         k = op.get('knob')
         if k == 'glyph':
             new = op.get('set')
@@ -90,9 +105,19 @@ def apply_ops(ability, ops):
         if k not in KNOBS:
             continue
         old = p[k]
-        new = clamp_knob(k, op['set'] if 'set' in op else old + op.get('add', 0))
+        dirs = ability.setdefault('_dir', {})
+        if op.get('cycle'):
+            new = (old + 1) % (KNOBS[k][2] + 1)
+        else:
+            add = op.get('add', 0)
+            sg = (add > 0) - (add < 0)
+            if 'add' in op and sg and dirs.get(k) == -sg:   # amortiguación: si la perilla invierte su sentido, medio paso
+                add = add / 2.0
+            new = clamp_knob(k, op['set'] if 'set' in op else old + add)
         if new != old:
             p[k] = new
+            if 'add' in op and not op.get('cycle'):
+                dirs[k] = (new > old) - (new < old)
             changes.append(f"{k}: {old} → {new}")
     ability['params'] = p
     return changes
@@ -231,7 +256,7 @@ def paint_ring(S, q, p, glyph, idle=False):
         cv.a[fm] = 5
     # marcas de decoración
     if det_lv > 0.05 and p['ticks'] > 0:
-        n, L = int(p['ticks']), max(2, int(round(R * p['tick_len'])))
+        n, L = min(int(p['ticks']), max(2, int(S // 6))), max(2, int(round(R * p['tick_len'])))
         solid = np.zeros(cv.a.shape, bool)
         for i in range(n):
             a = i * math.tau / n + (0 if idle else 0) + (q * math.tau / n if idle else 0)
@@ -254,12 +279,12 @@ def paint_ring(S, q, p, glyph, idle=False):
                         solid[yi, xi] = True
         solid &= dither_keep(cv.a.shape, det_lv) if det_lv < 1 else solid
         put_solid(cv, solid, 4)
-    if p['inner_ring'] and det_lv > 0.3:
+    if p['inner_ring'] and det_lv > 0.3 and S >= 48:
         band = (np.abs(d - rad * 0.62) < 0.55)
         band &= dither_keep(cv.a.shape, det_lv) if det_lv < 1 else band
         put_solid(cv, band, 3)
     # glifo central (gira de a 90°) y chispas orbitando
-    if glyph and det_lv > 0.05 and q >= 0.12:
+    if glyph and p['glyph_on'] and det_lv > 0.05 and q >= 0.12 and max(len(GLYPHS[glyph][0]), len(GLYPHS[glyph])) + 2 <= 0.42 * S:
         rows = GLYPHS[glyph]
         gw = max(len(rows[0]), len(rows))
         sc = max(1, min(p['glyph_scale'], int((rad * 0.5) // max(1, gw))))
@@ -267,7 +292,7 @@ def paint_ring(S, q, p, glyph, idle=False):
         lvl = 1.0 if (idle or q < hit_end) else max(p['fade_to'], 1 - post * 1.1)
         blit(cv, rows, cv.W / 2, cv.H / 2, sc, rot, lvl)
     if p['sparks'] > 0 and (idle or q >= 0.22) and rim_lv > 0.3:
-        n = int(p['sparks'])
+        n = min(int(p['sparks']), max(0, int(S // 10)))
         lv = 1.0 if (idle or q < hit_end) else max(p['fade_to'], 1 - post * 1.2)
         for i in range(n):
             if lv < 1 and not dither_keep((1, 1), 1)[0, 0]:
@@ -285,6 +310,8 @@ def paint_ring(S, q, p, glyph, idle=False):
         if p['highlight_arc'] or True:
             tone = lit_band(cv, dx, dy, d, band, th, p)
         ol = dilate4(band) & ~band
+        if S <= 32 and th == 1:   # sello chico: el contorno va solo por fuera (si no, el borde se come el radio)
+            ol &= d > rad
         cv.a[ol] = 1
         cv.a[band] = tone[band]
     return cv.a
@@ -335,10 +362,10 @@ def paint_sector(S, q, p, glyph, half=0.85):
     tone = lit_band(cv, dx, dy, d, band, th, p)
     cv.a[dilate4(band) & ~band] = 1
     cv.a[band] = tone[band]
-    if glyph and in_hit and q > 0.2:
+    if glyph and p['glyph_on'] and in_hit and q > 0.2 and max(len(GLYPHS[glyph][0]), len(GLYPHS[glyph])) + 2 <= 0.2 * S:
         blit(cv, GLYPHS[glyph], cv.W / 2 + front * 0.55, cv.H / 2, max(1, p['glyph_scale']), 0, 1.0)
     if p['sparks'] > 0 and q >= 0.22:
-        n = int(p['sparks'])
+        n = min(int(p['sparks']), max(0, int(S // 10)))
         lv = 1.0 if in_hit else max(p['fade_to'], 1 - post * 1.2)
         for i in range(n):
             if i / n > lv:
@@ -350,37 +377,44 @@ def paint_sector(S, q, p, glyph, half=0.85):
 
 
 def paint_beam(W, H, q, f, p):
-    """Baldosa horizontal repetible (W×H): contorno, casco, cuerpo, núcleo brillante y puntadas que se desplazan."""
+    """Baldosa horizontal repetible (W×H): contorno, casco, cuerpo, núcleo brillante y marcas que se desplazan. El eje puede
+    zigzaguear (wave 1) u ondular (wave 2) con período W, así la baldosa sigue empalmando al repetirse."""
     cv = Canvas(W, H)
-    m = H / 2.0
+    m = (H - 1) / 2.0
     ant, post, hit_end = phase(q, p['impact_at'])
     grow = 0.3 + 3 * q if q < 0.2 else 0.85 - 0.5 * post
-    half = max(1, int(round(m * grow)))
-    top, bot = int(round(m - half)), int(round(m + half))
-    ys = np.arange(H)[:, None]
-    body = (ys >= top) & (ys < bot) & np.ones((H, W), bool)
-    cv.a[body] = 2
-    inner = (ys >= top + 1) & (ys < bot - 1) & np.ones((H, W), bool)
-    cv.a[inner] = p['core']
-    core_h = max(1, int(round(half * p['core_density'])))
-    cr = (ys >= int(m - core_h / 2)) & (ys < int(m - core_h / 2) + core_h) & np.ones((H, W), bool)
-    cv.a[cr] = 5
-    off = (f * 2) % W
-    xs = (np.arange(W)[None, :] - off) % W
-    if p['deco'] == 1:       # puntos
-        pat = ((xs % 4) < 2) & ((ys.astype(int) == int(m)) | (ys.astype(int) == int(m) - 1))
-    elif p['deco'] == 2:     # chevrones
-        pat = (xs % 6 == (np.abs(ys - m).astype(int) % 6)) & inner
-    else:                    # puntadas
-        pat = ((xs % 7) < 4) & (ys.astype(int) == int(m) - 1)
-    cv.a[pat & body] = 4
-    ul = np.zeros((H, W), bool)
-    ul[top, :] = True
-    cv.a[ul] = 4 if p['highlight_arc'] else 3     # filo superior iluminado
-    cv.a[bot - 1, :] = 2                          # filo inferior en sombra
-    cv.a[top - 1 if top > 0 else 0, :] = np.where(top > 0, 1, cv.a[0, :])
-    if bot < H:
-        cv.a[bot, :] = 1
+    half = max(1.0, (H / 2.0) * grow)
+    if p['wave']:   # con forma, el cuerpo se afina para dejar lugar a la oscilación del eje
+        half = max(1.0, min(half, H / 2.0 * 0.42))
+    amp = min(p['wave_amp'], max(0.0, H / 2.0 - half - 1.5)) if p['wave'] else 0.0
+    k = 2
+    for x in range(W):
+        u = ((x + f * W / 8.0 * 0.5) / W * k) % 1.0           # la forma avanza con los cuadros (periódica)
+        tri = 1 - abs(4 * u - 2) if p['wave'] == 1 else math.sin(u * math.tau)
+        c = m + amp * (tri if p['wave'] else 0)
+        top, bot = int(round(c - half)), int(round(c + half))
+        top, bot = max(1, top), min(H - 2, bot)
+        for y in range(top, bot + 1):
+            cv.a[y, x] = p['core']
+        cv.a[top, x] = 4 if p['highlight_arc'] else 3        # filo superior iluminado
+        cv.a[bot, x] = 2                                      # filo inferior en sombra
+        ch = max(1, int(round((bot - top) * p['core_density'] * 0.5)))
+        cy = int(round((top + bot) / 2.0))
+        for y in range(cy - ch // 2, cy - ch // 2 + ch):
+            if top < y < bot:
+                cv.a[y, x] = 5
+        if top - 1 >= 0:
+            cv.a[top - 1, x] = 1
+        if bot + 1 < H:
+            cv.a[bot + 1, x] = 1
+        off = (f * 2) % W
+        xs = (x - off) % W
+        if p['deco'] == 1 and (xs % 4) < 2 and top < cy < bot:       # puntos
+            cv.a[cy - 1 if cy - 1 > top else cy, x] = 4
+        elif p['deco'] == 2 and xs % 6 == (abs(cy - m) % 6) and bot - top > 3:   # chevrones
+            cv.a[min(bot - 1, cy + 1), x] = 4
+        elif p['deco'] == 0 and (xs % 7) < 4 and cy - 1 > top:       # puntadas
+            cv.a[cy - 1, x] = 4
     if q > hit_end and p['fade_to'] < 1:
         keep = dither_keep((H, W), max(p['fade_to'], 1 - post * 1.1))
         cv.a[(cv.a > 0) & ~keep & (cv.a != 1)] = 0
@@ -434,7 +468,7 @@ def render_instructions(ability_id, ops, changes):
     """Instrucciones en prosa para un pintor humano (o un agente) a partir de las operaciones del Evaluador."""
     lines = [f'### {ability_id}']
     for op in ops:
-        lines.append(f"- {op['why']}  → perilla `{op['knob']}`: " + (f"fijar {op['set']}" if 'set' in op else f"{op['add']:+}"))
+        lines.append(f"- {op['why']}  → perilla `{op['knob']}`: " + ('pasar a la siguiente familia' if op.get('cycle') else f"fijar {op['set']}" if 'set' in op else f"{op['add']:+}"))
     if changes:
         lines.append('  aplicado: ' + '; '.join(changes))
     return '\n'.join(lines)

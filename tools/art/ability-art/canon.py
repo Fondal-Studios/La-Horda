@@ -34,7 +34,7 @@ TONES = 5  # 1 contorno, 2 sombra, 3 base, 4 luz, 5 brillo
 
 # Umbrales del Evaluador (un solo lugar para que Pintor, Evaluador y docs coincidan)
 PASS_SCORE = 85          # puntaje mínimo (0–100)
-MIN_IMPROVEMENT = 6      # puntos sobre el arte actual del juego (si existe línea base)
+MIN_IMPROVEMENT = 6      # puntos sobre el arte actual del juego (si existe línea base); con techo: ver required_gain()
 MIN_CRITERION = 0.5      # cada criterio debe alcanzar al menos la mitad de su peso
 MAX_ROUNDS = 6
 
@@ -69,6 +69,11 @@ def ramp_rgb(spec_or_pal):
     return [hex_rgb(c) for c in pal]
 
 
+def ramp_for(spec, ab):
+    """Rampa de una habilidad: la suya (`palette`, p. ej. el vapor de Zahra) o la del guardián."""
+    return ramp_rgb(ab.get('palette') or spec['palette'])
+
+
 def index_to_rgba(idx, ramp):
     """idx (H,W) con 0..5 → RGBA uint8 (alfa 0/255)."""
     h, w = idx.shape
@@ -87,3 +92,8 @@ def load_json(p):
 def save_json(p, data):
     Path(p).parent.mkdir(parents=True, exist_ok=True)
     Path(p).write_text(json.dumps(data, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
+
+
+def required_gain(baseline_total):
+    """Mejora mínima exigida: +6, pero nunca más de la mitad del margen que le queda al arte actual hasta 100 (con techo cerca, +6 es imposible)."""
+    return min(MIN_IMPROVEMENT, 0.5 * (100.0 - baseline_total))

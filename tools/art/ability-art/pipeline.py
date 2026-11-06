@@ -59,12 +59,12 @@ def run(spec_path, baseline_dir=None, integrate=True, rounds=canon.MAX_ROUNDS, o
     work = copy.deepcopy(spec)
     abil = {a['id']: a for a in work['abilities']}
     # línea base: puntaje del arte actual (mismo evaluador, sin penalizar identidad contra hermanas)
-    base, base_crit = {}, {}
+    base, base_crit, base_met = {}, {}, {}
     for a in work['abilities']:
         fr = load_baseline(bdir, a, ramp) if bdir.exists() else None
         if fr:
-            br = evaluator.evaluate(fr, a, ramp)
-            base[a['id']], base_crit[a['id']] = br['score'], br['criteria']
+            br = evaluator.evaluate(fr, a, canon.ramp_for(work, a))
+            base[a['id']], base_crit[a['id']], base_met[a['id']] = br['score'], br['criteria'], br['metrics']
     state = {a['id']: {'status': 'PENDING', 'rounds': 0, 'history': []} for a in work['abilities']}
     frozen = {}
     log = []
@@ -75,13 +75,13 @@ def run(spec_path, baseline_dir=None, integrate=True, rounds=canon.MAX_ROUNDS, o
         rdir = out / f'round-{rnd:02d}'
         rdir.mkdir(parents=True, exist_ok=True)
         painted = {i: painter.frames_for(g, abil[i]) for i in abil}
-        rgba = {i: [canon.index_to_rgba(f, ramp) for f in fr] for i, fr in painted.items()}
+        rgba = {i: [canon.index_to_rgba(f, canon.ramp_for(work, abil[i])) for f in fr] for i, fr in painted.items()}
         sigs = {i: np.array(evaluator._signature(rgba[i][int(np.stack([f[..., 3] > 0 for f in rgba[i]]).sum((1, 2)).argmax())])) for i in abil}
         instr = []
         for i in pending:
             a = abil[i]
             others = {k: v for k, v in sigs.items() if k != i and abil[k]['kind'] == a['kind']}
-            rep = evaluator.evaluate(rgba[i], a, ramp, others or None, base.get(i), base_crit.get(i))
+            rep = evaluator.evaluate(rgba[i], a, canon.ramp_for(work, a), others or None, base.get(i), base_crit.get(i), base_met.get(i))
             rep = evaluator.verdict(rep, i in base)
             sheet_png(rgba[i], rdir / f'{i}.png')
             st = state[i]
@@ -135,11 +135,11 @@ def check(spec_path):
     errors, results = [], {}
     abil = {a['id']: a for a in final['abilities']}
     painted = {i: painter.frames_for(g, a) for i, a in abil.items()}
-    rgba = {i: [canon.index_to_rgba(f, ramp) for f in fr] for i, fr in painted.items()}
+    rgba = {i: [canon.index_to_rgba(f, canon.ramp_for(final, abil[i])) for f in fr] for i, fr in painted.items()}
     for i, a in abil.items():
         sig = lambda k: np.array(evaluator._signature(rgba[k][int(np.stack([f[..., 3] > 0 for f in rgba[k]]).sum((1, 2)).argmax())]))
         others = {k: sig(k) for k in abil if k != i and abil[k]['kind'] == a['kind']}
-        rep = evaluator.evaluate(rgba[i], a, ramp, others or None)
+        rep = evaluator.evaluate(rgba[i], a, canon.ramp_for(final, a), others or None)
         rep = evaluator.verdict(rep, False)
         if rep['status'] != 'PASS':
             errors.append(f'{g}/{i}: ya no pasa el canon: ' + '; '.join(rep['reasons']))

@@ -1,0 +1,160 @@
+{
+ "guardian": "zahra",
+ "passed": [
+  "furnace",
+  "quench",
+  "ash_step",
+  "vent",
+  "vent_zone"
+ ],
+ "escalated": [],
+ "state": {
+  "furnace": {
+   "status": "PASS",
+   "rounds": 4,
+   "history": [
+    {
+     "round": 1,
+     "score": 80.3,
+     "status": "FAIL",
+     "improvement": 12.1,
+     "reasons": [
+      "criterio bajo: cobertura legible 1.64/12",
+      "criterio bajo: suelo despejado 1.87/5",
+      "puntaje 80.3 < 85",
+      "regresión de cobertura legible frente al arte actual (0.14 < 0.20)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 86.4,
+     "status": "FAIL",
+     "improvement": 18.2,
+     "reasons": [
+      "criterio bajo: suelo despejado 0.04/5",
+      "criterio bajo: riqueza visual 7.46/15",
+      "regresión de riqueza visual frente al arte actual (0.50 < 0.60)",
+      "presencia menor que el arte actual: cobertura 29% < 40% (arte actual 66%)"
+     ]
+    },
+    {
+     "round": 3,
+     "score": 74.9,
+     "status": "FAIL",
+     "improvement": 6.7,
+     "reasons": [
+      "el interior tapa al enemigo (72% de píxeles opacos en la zona central; techo 60 %)",
+      "cobertura excesiva (77%): oculta el suelo",
+      "criterio bajo: cobertura legible 0.0/12",
+      "criterio bajo: suelo despejado 0.0/5",
+      "criterio bajo: riqueza visual 6.86/15",
+      "puntaje 74.9 < 85",
+      "regresión de riqueza visual frente al arte actual (0.46 < 0.60)",
+      "regresión de cobertura legible frente al arte actual (0.00 < 0.20)"
+     ]
+    },
+    {
+     "round": 4,
+     "score": 97.5,
+     "status": "PASS",
+     "improvement": 29.3,
+     "reasons": []
+    }
+   ]
+  },
+  "quench": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.3,
+     "status": "PASS",
+     "improvement": 27.0,
+     "reasons": []
+    }
+   ]
+  },
+  "ash_step": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 100.0,
+     "status": "PASS",
+     "improvement": 23.3,
+     "reasons": []
+    }
+   ]
+  },
+  "vent": {
+   "status": "PASS",
+   "rounds": 2,
+   "history": [
+    {
+     "round": 1,
+     "score": 94.0,
+     "status": "FAIL",
+     "improvement": 17.2,
+     "reasons": [
+      "regresión de cobertura legible frente al arte actual (0.84 < 1.00)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 96.2,
+     "status": "PASS",
+     "improvement": 19.4,
+     "reasons": []
+    }
+   ]
+  },
+  "vent_zone": {
+   "status": "PASS",
+   "rounds": 2,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.8,
+     "status": "FAIL",
+     "improvement": 10.3,
+     "reasons": [
+      "regresión de riqueza visual frente al arte actual (0.72 < 1.00)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 99.8,
+     "status": "PASS",
+     "improvement": 14.3,
+     "reasons": []
+    }
+   ]
+  }
+ },
+ "baseline": {
+  "furnace": 68.2,
+  "quench": 68.3,
+  "ash_step": 76.7,
+  "vent": 76.8,
+  "vent_zone": 85.5
+ },
+ "log": [
+  "ronda 1: furnace FAIL 80.3 — criterio bajo: cobertura legible 1.64/12; criterio bajo: suelo despejado 1.87/5",
+  "ronda 1: quench PASS 95.3 (arte actual 68.3, +27.0)",
+  "ronda 1: ash_step PASS 100.0 (arte actual 76.7, +23.3)",
+  "ronda 1: vent FAIL 94.0 — regresión de cobertura legible frente al arte actual (0.84 < 1.00)",
+  "ronda 1: vent_zone FAIL 95.8 — regresión de riqueza visual frente al arte actual (0.72 < 1.00)",
+  "ronda 2: furnace FAIL 86.4 — criterio bajo: suelo despejado 0.04/5; criterio bajo: riqueza visual 7.46/15",
+  "ronda 2: vent PASS 96.2 (arte actual 76.8, +19.4)",
+  "ronda 2: vent_zone PASS 99.8 (arte actual 85.5, +14.3)",
+  "ronda 3: furnace FAIL 74.9 — el interior tapa al enemigo (72% de píxeles opacos en la zona central; techo 60 %); cobertura excesiva (77%): oculta el suelo",
+  "ronda 4: furnace PASS 97.5 (arte actual 68.2, +29.3)",
+  "arquitecto: integradas ['furnace', 'quench', 'ash_step', 'vent', 'vent_zone']; humo OK: SMOKE OK zahra: furnace,quench,ash_step,vent,vent_zone"
+ ],
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['furnace', 'quench', 'ash_step', 'vent', 'vent_zone']; humo OK: SMOKE OK zahra: furnace,quench,ash_step,vent,vent_zone"
+ }
+}

@@ -1,4 +1,5 @@
 {
+ "kind": "idle",
  "score": 95.8,
  "points": {
   "alpha": 5.0,
@@ -61,8 +62,8 @@
   },
   {
    "knob": "deco",
-   "why": "probar otra familia de marcas (rayos largos)",
-   "set": 2
+   "why": "probar otra familia de marcas",
+   "cycle": true
   }
  ],
  "criteria": {
@@ -77,7 +78,7 @@
   "richness": 0.722,
   "identity": 1.0
  },
- "baseline_total": 82.8,
+ "baseline_total": 83.0,
  "baseline_criteria": {
   "alpha": 1.0,
   "palette": 0.0,
@@ -85,12 +86,37 @@
   "edge": 0.753,
   "coverage": 1.0,
   "contrast": 1.0,
-  "clear_floor": 0.956,
+  "clear_floor": 1.0,
   "motion": 1.0,
   "richness": 0.85,
   "identity": 0.7
  },
- "improvement": 13.0,
+ "baseline_metrics": {
+  "alpha_binary": 1.0,
+  "palette_adherence": 0.07661188369152971,
+  "colors": 366,
+  "isolated": 0.0,
+  "edge_outline": 0.5,
+  "edge_reach": 1.000350321100627,
+  "edge_over": 0.0,
+  "coverage": 0.32131979695431473,
+  "interior": 0.27055449330783937,
+  "interior_detail": 0.10325047801147227,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 18.45785610073101,
+  "peak_pos": 0.5,
+  "tail": 0.0,
+  "loop_gap": 0.0,
+  "motion_mean": 0.04068462401795735,
+  "unique_frames": 0.9166666666666666,
+  "tones": 4,
+  "highlight_share": 0.0,
+  "core_fill": 0.18674698795180722,
+  "detail_mass": 0.17093373493975905,
+  "min_sig_dist": 1.0
+ },
+ "improvement": 12.8,
  "reasons": [
   "regresión de riqueza visual frente al arte actual (0.72 < 0.85)"
  ],

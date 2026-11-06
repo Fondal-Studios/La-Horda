@@ -5,7 +5,14 @@ const fs = require('fs'), path = require('path');
 let chromium; try { ({chromium} = require('playwright')); } catch (e) { ({chromium} = require(process.env.PLAYWRIGHT_MODULE || '/opt/node22/lib/node_modules/playwright')); }
 const [guardian, out, arena = 'bosque'] = [process.argv[2], process.argv[3], process.argv[4]];
 const BASE = process.env.BASE_URL || 'http://127.0.0.1:8750/';
-const FX = {vesper: [['vesper.needles', 235, .85], ['vesper.unpick', 150, 0], ['vesper.seam', 24, 0], ['vesper.last_stitch', 155, 0]]};
+// [id de receta, radio, a, b]  (a = semiángulo o largo, según la receta)
+const FX = {
+  vesper: [['vesper.needles', 235, .85], ['vesper.unpick', 150, 0], ['vesper.seam', 24, 0], ['vesper.last_stitch', 155, 0]],
+  zahra: [['zahra.furnace', 190, .85], ['zahra.quench', 140, 0], ['zahra.ash_step', 28, 120], ['zahra.vent', 155, 0]],
+  orsa: [['orsa.pierce', 22, 300], ['orsa.discharge', 175, 0], ['orsa.brace', 42, 0], ['orsa.storm', 210, 0]],
+  sira: [['sira.ink_line', 24, 260], ['sira.erase', 80, 0], ['sira.atlas', 48, 0]],
+  tibor: [['tibor.swarm', 110, 0], ['tibor.pollen', 90, 0], ['tibor.recall', 30, 0]],
+};
 (async () => {
   fs.mkdirSync(out, {recursive: true});
   const browser = await chromium.launch({executablePath: process.env.CHROMIUM_PATH || '/opt/pw-browsers/chromium', args: ['--no-sandbox']});

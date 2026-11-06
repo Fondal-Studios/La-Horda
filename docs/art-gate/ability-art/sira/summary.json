@@ -1,0 +1,140 @@
+{
+ "guardian": "sira",
+ "passed": [
+  "ink_line",
+  "retrace",
+  "erase",
+  "atlas",
+  "atlas_zone"
+ ],
+ "escalated": [],
+ "state": {
+  "ink_line": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 98.9,
+     "status": "PASS",
+     "improvement": 22.4,
+     "reasons": []
+    }
+   ]
+  },
+  "retrace": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 97.2,
+     "status": "PASS",
+     "improvement": 18.1,
+     "reasons": []
+    }
+   ]
+  },
+  "erase": {
+   "status": "PASS",
+   "rounds": 2,
+   "history": [
+    {
+     "round": 1,
+     "score": 85.6,
+     "status": "FAIL",
+     "improvement": 16.8,
+     "reasons": [
+      "criterio bajo: cobertura legible 1.47/12",
+      "regresión de cobertura legible frente al arte actual (0.12 < 0.32)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 96.0,
+     "status": "PASS",
+     "improvement": 27.2,
+     "reasons": []
+    }
+   ]
+  },
+  "atlas": {
+   "status": "PASS",
+   "rounds": 2,
+   "history": [
+    {
+     "round": 1,
+     "score": 82.3,
+     "status": "FAIL",
+     "improvement": 17.6,
+     "reasons": [
+      "cobertura excesiva (79%): oculta el suelo",
+      "criterio bajo: cobertura legible 0.0/12",
+      "puntaje 82.3 < 85"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 91.0,
+     "status": "PASS",
+     "improvement": 26.3,
+     "reasons": []
+    }
+   ]
+  },
+  "atlas_zone": {
+   "status": "PASS",
+   "rounds": 3,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.8,
+     "status": "FAIL",
+     "improvement": 20.0,
+     "reasons": [
+      "regresión de cobertura legible frente al arte actual (0.85 < 0.94)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 95.8,
+     "status": "FAIL",
+     "improvement": 20.0,
+     "reasons": [
+      "regresión de cobertura legible frente al arte actual (0.85 < 0.94)"
+     ]
+    },
+    {
+     "round": 3,
+     "score": 97.5,
+     "status": "PASS",
+     "improvement": 21.7,
+     "reasons": []
+    }
+   ]
+  }
+ },
+ "baseline": {
+  "ink_line": 76.5,
+  "retrace": 79.1,
+  "erase": 68.8,
+  "atlas": 64.7,
+  "atlas_zone": 75.8
+ },
+ "log": [
+  "ronda 1: ink_line PASS 98.9 (arte actual 76.5, +22.4)",
+  "ronda 1: retrace PASS 97.2 (arte actual 79.1, +18.1)",
+  "ronda 1: erase FAIL 85.6 — criterio bajo: cobertura legible 1.47/12; regresión de cobertura legible frente al arte actual (0.12 < 0.32)",
+  "ronda 1: atlas FAIL 82.3 — cobertura excesiva (79%): oculta el suelo; criterio bajo: cobertura legible 0.0/12",
+  "ronda 1: atlas_zone FAIL 95.8 — regresión de cobertura legible frente al arte actual (0.85 < 0.94)",
+  "ronda 2: erase PASS 96.0 (arte actual 68.8, +27.2)",
+  "ronda 2: atlas PASS 91.0 (arte actual 64.7, +26.3)",
+  "ronda 2: atlas_zone FAIL 95.8 — regresión de cobertura legible frente al arte actual (0.85 < 0.94)",
+  "ronda 3: atlas_zone PASS 97.5 (arte actual 75.8, +21.7)",
+  "arquitecto: integradas ['ink_line', 'retrace', 'erase', 'atlas', 'atlas_zone']; humo OK: SMOKE OK sira: ink_line,retrace,erase,atlas,atlas_zone"
+ ],
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['ink_line', 'retrace', 'erase', 'atlas', 'atlas_zone']; humo OK: SMOKE OK sira: ink_line,retrace,erase,atlas,atlas_zone"
+ }
+}

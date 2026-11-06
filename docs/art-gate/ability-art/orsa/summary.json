@@ -1,0 +1,158 @@
+{
+ "guardian": "orsa",
+ "passed": [
+  "pierce",
+  "discharge",
+  "brace",
+  "anchor_zone",
+  "storm_zone",
+  "sweep"
+ ],
+ "escalated": [],
+ "state": {
+  "pierce": {
+   "status": "PASS",
+   "rounds": 3,
+   "history": [
+    {
+     "round": 1,
+     "score": 100.0,
+     "status": "FAIL",
+     "improvement": 17.3,
+     "reasons": [
+      "silueta más plana que el arte actual: irregularidad 0.00 < 70 % de 0.17"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 100.0,
+     "status": "FAIL",
+     "improvement": 17.3,
+     "reasons": [
+      "silueta más plana que el arte actual: irregularidad 0.09 < 70 % de 0.17"
+     ]
+    },
+    {
+     "round": 3,
+     "score": 98.3,
+     "status": "PASS",
+     "improvement": 15.6,
+     "reasons": []
+    }
+   ]
+  },
+  "discharge": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 98.2,
+     "status": "PASS",
+     "improvement": 17.7,
+     "reasons": []
+    }
+   ]
+  },
+  "brace": {
+   "status": "PASS",
+   "rounds": 2,
+   "history": [
+    {
+     "round": 1,
+     "score": 81.7,
+     "status": "FAIL",
+     "improvement": 14.6,
+     "reasons": [
+      "cobertura excesiva (81%): oculta el suelo",
+      "criterio bajo: cobertura legible 0.0/12",
+      "puntaje 81.7 < 85",
+      "regresión de riqueza visual frente al arte actual (0.92 < 0.95)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 94.2,
+     "status": "PASS",
+     "improvement": 27.1,
+     "reasons": []
+    }
+   ]
+  },
+  "anchor_zone": {
+   "status": "PASS",
+   "rounds": 2,
+   "history": [
+    {
+     "round": 1,
+     "score": 88.8,
+     "status": "FAIL",
+     "improvement": 17.0,
+     "reasons": [
+      "criterio bajo: cobertura legible 5.88/12",
+      "regresión de riqueza visual frente al arte actual (0.85 < 1.00)",
+      "regresión de cobertura legible frente al arte actual (0.49 < 0.76)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 94.5,
+     "status": "PASS",
+     "improvement": 22.7,
+     "reasons": []
+    }
+   ]
+  },
+  "storm_zone": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 94.7,
+     "status": "PASS",
+     "improvement": 14.2,
+     "reasons": []
+    }
+   ]
+  },
+  "sweep": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 97.5,
+     "status": "PASS",
+     "improvement": 14.4,
+     "reasons": []
+    }
+   ]
+  }
+ },
+ "baseline": {
+  "pierce": 82.7,
+  "discharge": 80.5,
+  "brace": 67.1,
+  "anchor_zone": 71.8,
+  "storm_zone": 80.5,
+  "sweep": 83.1
+ },
+ "log": [
+  "ronda 1: pierce FAIL 100.0 — silueta más plana que el arte actual: irregularidad 0.00 < 70 % de 0.17",
+  "ronda 1: discharge PASS 98.2 (arte actual 80.5, +17.7)",
+  "ronda 1: brace FAIL 81.7 — cobertura excesiva (81%): oculta el suelo; criterio bajo: cobertura legible 0.0/12",
+  "ronda 1: anchor_zone FAIL 88.8 — criterio bajo: cobertura legible 5.88/12; regresión de riqueza visual frente al arte actual (0.85 < 1.00)",
+  "ronda 1: storm_zone PASS 94.7 (arte actual 80.5, +14.2)",
+  "ronda 1: sweep PASS 97.5 (arte actual 83.1, +14.4)",
+  "ronda 2: pierce FAIL 100.0 — silueta más plana que el arte actual: irregularidad 0.09 < 70 % de 0.17",
+  "ronda 2: brace PASS 94.2 (arte actual 67.1, +27.1)",
+  "ronda 2: anchor_zone PASS 94.5 (arte actual 71.8, +22.7)",
+  "ronda 3: pierce PASS 98.3 (arte actual 82.7, +15.6)",
+  "arquitecto: integradas ['pierce', 'discharge', 'brace', 'anchor_zone', 'storm_zone', 'sweep']; humo OK: SMOKE OK orsa: pierce,discharge,brace,anchor_zone,storm_zone,sweep"
+ ],
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['pierce', 'discharge', 'brace', 'anchor_zone', 'storm_zone', 'sweep']; humo OK: SMOKE OK orsa: pierce,discharge,brace,anchor_zone,storm_zone,sweep"
+ }
+}

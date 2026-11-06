@@ -1,0 +1,101 @@
+{
+ "guardian": "tibor",
+ "passed": [
+  "swarm",
+  "pollen",
+  "recall",
+  "hive_zone"
+ ],
+ "escalated": [],
+ "state": {
+  "swarm": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 91.6,
+     "status": "PASS",
+     "improvement": 21.8,
+     "reasons": []
+    }
+   ]
+  },
+  "pollen": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 90.7,
+     "status": "PASS",
+     "improvement": 23.5,
+     "reasons": []
+    }
+   ]
+  },
+  "recall": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 98.3,
+     "status": "PASS",
+     "improvement": 21.9,
+     "reasons": []
+    }
+   ]
+  },
+  "hive_zone": {
+   "status": "PASS",
+   "rounds": 3,
+   "history": [
+    {
+     "round": 1,
+     "score": 99.1,
+     "status": "FAIL",
+     "improvement": 13.6,
+     "reasons": [
+      "regresión de riqueza visual frente al arte actual (0.94 < 1.00)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 98.5,
+     "status": "FAIL",
+     "improvement": 13.0,
+     "reasons": [
+      "regresión de riqueza visual frente al arte actual (0.90 < 1.00)"
+     ]
+    },
+    {
+     "round": 3,
+     "score": 100.0,
+     "status": "PASS",
+     "improvement": 14.5,
+     "reasons": []
+    }
+   ]
+  }
+ },
+ "baseline": {
+  "swarm": 69.8,
+  "pollen": 67.2,
+  "recall": 76.4,
+  "hive_zone": 85.5
+ },
+ "log": [
+  "ronda 1: swarm PASS 91.6 (arte actual 69.8, +21.8)",
+  "ronda 1: pollen PASS 90.7 (arte actual 67.2, +23.5)",
+  "ronda 1: recall PASS 98.3 (arte actual 76.4, +21.9)",
+  "ronda 1: hive_zone FAIL 99.1 — regresión de riqueza visual frente al arte actual (0.94 < 1.00)",
+  "ronda 2: hive_zone FAIL 98.5 — regresión de riqueza visual frente al arte actual (0.90 < 1.00)",
+  "ronda 3: hive_zone PASS 100.0 (arte actual 85.5, +14.5)",
+  "arquitecto: integradas ['swarm', 'pollen', 'recall', 'hive_zone']; humo OK: SMOKE OK tibor: swarm,pollen,recall,hive_zone"
+ ],
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['swarm', 'pollen', 'recall', 'hive_zone']; humo OK: SMOKE OK tibor: swarm,pollen,recall,hive_zone"
+ }
+}

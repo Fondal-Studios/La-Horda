@@ -1,0 +1,74 @@
+{
+ "guardian": "sira",
+ "title": "Sira, la Cartógrafa de Ausentes",
+ "palette": [
+  "#101a33",
+  "#3b5a9a",
+  "#8aa7da",
+  "#cfe0ff",
+  "#ffffff"
+ ],
+ "abilities": [
+  {
+   "id": "ink_line",
+   "kind": "beam",
+   "tile": [
+    22,
+    18
+   ],
+   "frames": 8,
+   "baseline_beam": "si_ink",
+   "replaces": "si_ink",
+   "params": {}
+  },
+  {
+   "id": "retrace",
+   "kind": "beam",
+   "tile": [
+    20,
+    12
+   ],
+   "frames": 8,
+   "baseline_beam": "si_rewind",
+   "replaces": "si_rewind",
+   "params": {}
+  },
+  {
+   "id": "erase",
+   "kind": "ring",
+   "radius": 80,
+   "frames": 10,
+   "glyph": "diamond",
+   "baseline": "si_erase",
+   "replaces": "si_erase",
+   "params": {
+    "deco": 2,
+    "ticks": 10
+   }
+  },
+  {
+   "id": "atlas",
+   "kind": "ring",
+   "radius": 48,
+   "frames": 10,
+   "glyph": "rune",
+   "baseline": "si_atlas",
+   "replaces": "si_atlas",
+   "params": {
+    "deco": 0
+   }
+  },
+  {
+   "id": "atlas_zone",
+   "kind": "idle",
+   "radius": 62,
+   "frames": 12,
+   "glyph": "rune",
+   "baseline": "si_atlas_idle",
+   "replaces": "si_atlas_idle",
+   "params": {
+    "deco": 1
+   }
+  }
+ ]
+}

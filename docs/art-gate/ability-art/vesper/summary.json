@@ -15,23 +15,19 @@
    "history": [
     {
      "round": 1,
-     "score": 82.0,
+     "score": 94.0,
      "status": "FAIL",
-     "improvement": 7.5,
+     "improvement": 8.5,
      "reasons": [
-      "cobertura excesiva (55%): oculta el suelo",
-      "criterio bajo: cobertura legible 0.0/12",
-      "criterio bajo: suelo despejado 1.78/5",
-      "puntaje 82.0 < 85",
       "regresión de riqueza visual frente al arte actual (0.82 < 0.85)",
-      "regresión de cobertura legible frente al arte actual (0.00 < 0.17)"
+      "regresión de cobertura legible frente al arte actual (0.73 < 0.91)"
      ]
     },
     {
      "round": 2,
-     "score": 91.0,
+     "score": 97.8,
      "status": "PASS",
-     "improvement": 16.5,
+     "improvement": 12.3,
      "reasons": []
     }
    ]
@@ -42,41 +38,22 @@
    "history": [
     {
      "round": 1,
-     "score": 100.0,
+     "score": 98.3,
      "status": "PASS",
-     "improvement": 7.5,
+     "improvement": 5.8,
      "reasons": []
     }
    ]
   },
   "unpick": {
    "status": "PASS",
-   "rounds": 3,
+   "rounds": 1,
    "history": [
     {
      "round": 1,
-     "score": 90.4,
-     "status": "FAIL",
-     "improvement": 19.8,
-     "reasons": [
-      "regresión de cobertura legible frente al arte actual (0.57 < 0.64)"
-     ]
-    },
-    {
-     "round": 2,
-     "score": 85.6,
-     "status": "FAIL",
-     "improvement": 15.0,
-     "reasons": [
-      "criterio bajo: suelo despejado 2.0/5",
-      "regresión de cobertura legible frente al arte actual (0.55 < 0.64)"
-     ]
-    },
-    {
-     "round": 3,
-     "score": 88.7,
+     "score": 95.6,
      "status": "PASS",
-     "improvement": 18.1,
+     "improvement": 18.4,
      "reasons": []
     }
    ]
@@ -87,30 +64,26 @@
    "history": [
     {
      "round": 1,
-     "score": 81.2,
+     "score": 94.3,
      "status": "FAIL",
-     "improvement": 10.5,
+     "improvement": 16.9,
      "reasons": [
-      "criterio bajo: cobertura legible 0.4/12",
-      "criterio bajo: suelo despejado 2.09/5",
-      "puntaje 81.2 < 85",
-      "regresión de cobertura legible frente al arte actual (0.03 < 0.53)"
+      "regresión de cobertura legible frente al arte actual (0.85 < 1.00)"
      ]
     },
     {
      "round": 2,
-     "score": 84.4,
+     "score": 88.5,
      "status": "FAIL",
-     "improvement": 13.7,
+     "improvement": 11.1,
      "reasons": [
-      "criterio bajo: cobertura legible 5.55/12",
-      "puntaje 84.4 < 85",
-      "regresión de cobertura legible frente al arte actual (0.46 < 0.53)"
+      "regresión de riqueza visual frente al arte actual (0.75 < 0.85)",
+      "regresión de cobertura legible frente al arte actual (0.66 < 1.00)"
      ]
     },
     {
      "round": 3,
-     "score": 90.2,
+     "score": 96.9,
      "status": "PASS",
      "improvement": 19.5,
      "reasons": []
@@ -119,57 +92,44 @@
   },
   "stitch_zone": {
    "status": "PASS",
-   "rounds": 3,
+   "rounds": 2,
    "history": [
     {
      "round": 1,
      "score": 95.8,
      "status": "FAIL",
-     "improvement": 13.0,
+     "improvement": 12.8,
      "reasons": [
       "regresión de riqueza visual frente al arte actual (0.72 < 0.85)"
      ]
     },
     {
      "round": 2,
-     "score": 89.8,
-     "status": "FAIL",
-     "improvement": 7.0,
-     "reasons": [
-      "criterio bajo: cobertura legible 4.26/12",
-      "regresión de cobertura legible frente al arte actual (0.35 < 1.00)"
-     ]
-    },
-    {
-     "round": 3,
      "score": 100.0,
      "status": "PASS",
-     "improvement": 17.2,
+     "improvement": 17.0,
      "reasons": []
     }
    ]
   }
  },
  "baseline": {
-  "needles": 74.5,
+  "needles": 85.5,
   "seam": 92.5,
-  "unpick": 70.6,
-  "last_stitch": 70.7,
-  "stitch_zone": 82.8
+  "unpick": 77.2,
+  "last_stitch": 77.4,
+  "stitch_zone": 83.0
  },
  "log": [
-  "ronda 1: needles FAIL 82.0 — cobertura excesiva (55%): oculta el suelo; criterio bajo: cobertura legible 0.0/12",
-  "ronda 1: seam PASS 100.0 (arte actual 92.5, +7.5)",
-  "ronda 1: unpick FAIL 90.4 — regresión de cobertura legible frente al arte actual (0.57 < 0.64)",
-  "ronda 1: last_stitch FAIL 81.2 — criterio bajo: cobertura legible 0.4/12; criterio bajo: suelo despejado 2.09/5",
+  "ronda 1: needles FAIL 94.0 — regresión de riqueza visual frente al arte actual (0.82 < 0.85); regresión de cobertura legible frente al arte actual (0.73 < 0.91)",
+  "ronda 1: seam PASS 98.3 (arte actual 92.5, +5.8)",
+  "ronda 1: unpick PASS 95.6 (arte actual 77.2, +18.4)",
+  "ronda 1: last_stitch FAIL 94.3 — regresión de cobertura legible frente al arte actual (0.85 < 1.00)",
   "ronda 1: stitch_zone FAIL 95.8 — regresión de riqueza visual frente al arte actual (0.72 < 0.85)",
-  "ronda 2: needles PASS 91.0 (arte actual 74.5, +16.5)",
-  "ronda 2: unpick FAIL 85.6 — criterio bajo: suelo despejado 2.0/5; regresión de cobertura legible frente al arte actual (0.55 < 0.64)",
-  "ronda 2: last_stitch FAIL 84.4 — criterio bajo: cobertura legible 5.55/12; puntaje 84.4 < 85",
-  "ronda 2: stitch_zone FAIL 89.8 — criterio bajo: cobertura legible 4.26/12; regresión de cobertura legible frente al arte actual (0.35 < 1.00)",
-  "ronda 3: unpick PASS 88.7 (arte actual 70.6, +18.1)",
-  "ronda 3: last_stitch PASS 90.2 (arte actual 70.7, +19.5)",
-  "ronda 3: stitch_zone PASS 100.0 (arte actual 82.8, +17.2)",
+  "ronda 2: needles PASS 97.8 (arte actual 85.5, +12.3)",
+  "ronda 2: last_stitch FAIL 88.5 — regresión de riqueza visual frente al arte actual (0.75 < 0.85); regresión de cobertura legible frente al arte actual (0.66 < 1.00)",
+  "ronda 2: stitch_zone PASS 100.0 (arte actual 83.0, +17.0)",
+  "ronda 3: last_stitch PASS 96.9 (arte actual 77.4, +19.5)",
   "arquitecto: integradas ['needles', 'seam', 'unpick', 'last_stitch', 'stitch_zone']; humo OK: SMOKE OK vesper: needles,seam,unpick,last_stitch,stitch_zone"
  ],
  "integration": {

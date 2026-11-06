@@ -1,0 +1,84 @@
+{
+ "guardian": "tibor",
+ "title": "Tibor, el Colmenero",
+ "palette": [
+  "#3a2a08",
+  "#8a6d1c",
+  "#c9b365",
+  "#f5df8a",
+  "#fff6c8"
+ ],
+ "abilities": [
+  {
+   "id": "swarm",
+   "kind": "ring",
+   "radius": 110,
+   "frames": 10,
+   "glyph": "star",
+   "baseline": "tb_hive",
+   "replaces": "tb_hive",
+   "params": {
+    "deco": 2,
+    "ticks": 12
+   }
+  },
+  {
+   "id": "pollen",
+   "kind": "ring",
+   "radius": 90,
+   "frames": 10,
+   "glyph": "drop",
+   "baseline": "tb_pollen",
+   "replaces": "tb_pollen",
+   "params": {
+    "deco": 1
+   }
+  },
+  {
+   "id": "recall",
+   "kind": "beam",
+   "tile": [
+    18,
+    14
+   ],
+   "frames": 8,
+   "baseline_beam": "tb_stream",
+   "replaces": "tb_stream",
+   "params": {}
+  },
+  {
+   "id": "hive_zone",
+   "kind": "idle",
+   "radius": 110,
+   "frames": 12,
+   "glyph": "star",
+   "baseline": "tb_hive_idle",
+   "replaces": "tb_hive_idle",
+   "params": {
+    "rim": 2,
+    "fill": 0.15,
+    "ticks": 16,
+    "tick_len": 0.16,
+    "glyph_scale": 3,
+    "sparks": 4,
+    "flash": 0.30000000000000004,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.32,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 1,
+    "wave": 0,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 2,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "ticks": 1,
+    "glyph_scale": 1
+   }
+  }
+ ]
+}

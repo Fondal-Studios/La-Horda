@@ -1,13 +1,14 @@
 {
- "score": 82.0,
+ "kind": "sector",
+ "score": 94.0,
  "points": {
   "alpha": 5.0,
   "palette": 8.0,
   "hygiene": 7.0,
   "edge": 15.0,
-  "coverage": 0.0,
+  "coverage": 8.81,
   "contrast": 8.0,
-  "clear_floor": 1.78,
+  "clear_floor": 5.0,
   "motion": 14.85,
   "richness": 12.37,
   "identity": 10.0
@@ -36,64 +37,49 @@
   "detail_mass": 0.20583756345177667,
   "min_sig_dist": 1.0
  },
- "hard_fails": [
-  "cobertura excesiva (55%): oculta el suelo"
- ],
+ "hard_fails": [],
  "ops": [
   {
    "knob": "fill",
    "why": "cobertura alta (55%): bajar el relleno para no tapar al enemigo",
+   "hard": true,
    "add": -0.06
   },
   {
    "knob": "ticks",
    "why": "menos marcas",
+   "hard": true,
    "add": -4
   },
   {
    "knob": "tick_len",
    "why": "marcas más cortas",
+   "hard": true,
    "add": -0.04
   },
   {
    "knob": "inner_ring",
    "why": "quitar el anillo interior",
+   "hard": true,
    "set": 0
   },
   {
    "knob": "rim",
    "why": "borde más fino: la cobertura es excesiva",
+   "hard": true,
    "add": -1
+  },
+  {
+   "knob": "sparks",
+   "why": "menos chispas",
+   "hard": true,
+   "add": -2
   },
   {
    "knob": "thick",
    "why": "estelas más finas",
+   "hard": true,
    "add": -1
-  },
-  {
-   "knob": "fill",
-   "why": "el centro está cargado (41%): despejar el relleno",
-   "add": -0.09
-  },
-  {
-   "knob": "inner_ring",
-   "why": "quitar el anillo interior",
-   "set": 0
-  },
-  {
-   "knob": "glyph_scale",
-   "why": "glifo más chico",
-   "set": 1
-  },
-  {
-   "knob": "thick",
-   "why": "estelas más finas: tapan el centro",
-   "add": -1
-  },
-  {
-   "knob": "ticks",
-   "why": "menos estelas",
-   "add": -2
   },
   {
    "knob": "sparks",
@@ -112,8 +98,18 @@
   },
   {
    "knob": "deco",
-   "why": "probar otra familia de marcas (rayos largos)",
-   "set": 2
+   "why": "probar otra familia de marcas",
+   "cycle": true
+  },
+  {
+   "knob": "fill",
+   "why": "el arte actual cubre mejor la zona: ajustar el relleno",
+   "add": -0.03
+  },
+  {
+   "knob": "sparks",
+   "why": "el arte actual cubre mejor la zona: menos chispas",
+   "add": -2
   }
  ],
  "criteria": {
@@ -121,34 +117,54 @@
   "palette": 1.0,
   "hygiene": 1.0,
   "edge": 1.0,
-  "coverage": 0.0,
+  "coverage": 0.734,
   "contrast": 1.0,
-  "clear_floor": 0.357,
+  "clear_floor": 1.0,
   "motion": 0.99,
   "richness": 0.825,
   "identity": 1.0
  },
- "baseline_total": 74.5,
+ "baseline_total": 85.5,
  "baseline_criteria": {
   "alpha": 1.0,
   "palette": 0.0,
   "hygiene": 1.0,
   "edge": 1.0,
-  "coverage": 0.17,
+  "coverage": 0.911,
   "contrast": 1.0,
-  "clear_floor": 0.59,
+  "clear_floor": 1.0,
   "motion": 0.987,
   "richness": 0.85,
   "identity": 0.7
  },
- "improvement": 7.5,
+ "baseline_metrics": {
+  "alpha_binary": 1.0,
+  "palette_adherence": 0.19389232591812558,
+  "colors": 436,
+  "isolated": 0.0,
+  "edge_outline": 0.9583333333333334,
+  "edge_reach": 0.9876806466530762,
+  "edge_over": 0.0,
+  "coverage": 0.5177100494233937,
+  "interior": 0.3583509513742072,
+  "interior_detail": 0.13847780126849896,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 18.45785610073101,
+  "peak_pos": 0.3333333333333333,
+  "tail": 0.0,
+  "motion_mean": 0.037894375857338826,
+  "unique_frames": 1.0,
+  "tones": 4,
+  "highlight_share": 0.0,
+  "core_fill": 0.25,
+  "detail_mass": 0.15596446700507616,
+  "min_sig_dist": 1.0
+ },
+ "improvement": 8.5,
  "reasons": [
-  "cobertura excesiva (55%): oculta el suelo",
-  "criterio bajo: cobertura legible 0.0/12",
-  "criterio bajo: suelo despejado 1.78/5",
-  "puntaje 82.0 < 85",
   "regresión de riqueza visual frente al arte actual (0.82 < 0.85)",
-  "regresión de cobertura legible frente al arte actual (0.00 < 0.17)"
+  "regresión de cobertura legible frente al arte actual (0.73 < 0.91)"
  ],
  "status": "FAIL"
 }

@@ -1,125 +1,117 @@
 {
- "score": 81.2,
+ "kind": "ring",
+ "score": 94.3,
  "points": {
   "alpha": 5.0,
   "palette": 8.0,
-  "hygiene": 7.0,
+  "hygiene": 6.96,
   "edge": 15.0,
-  "coverage": 0.4,
+  "coverage": 10.23,
   "contrast": 8.0,
-  "clear_floor": 2.09,
+  "clear_floor": 5.0,
   "motion": 15.0,
-  "richness": 14.38,
-  "identity": 6.28
+  "richness": 15.0,
+  "identity": 6.08
  },
  "metrics": {
   "alpha_binary": 1.0,
   "palette_adherence": 1.0,
   "colors": 5,
-  "isolated": 0.026934946829623843,
+  "isolated": 0.030641337008837165,
   "edge_outline": 1.0,
   "edge_reach": 0.9864254028753598,
   "edge_over": 0.0,
-  "coverage": 0.5436548223350254,
-  "interior": 0.39961759082217974,
-  "interior_detail": 0.3207456978967495,
+  "coverage": 0.5294416243654823,
+  "interior": 0.38049713193116635,
+  "interior_detail": 0.2978011472275335,
   "arena_ok": 1.0,
   "has_outline_and_light": true,
   "lum_gap": 18.45785610073101,
   "peak_pos": 0.2222222222222222,
   "tail": 0.0,
-  "motion_mean": 0.11428326474622771,
+  "motion_mean": 0.11209705075445815,
   "unique_frames": 1.0,
   "tones": 5,
-  "highlight_share": 0.18720821661998133,
+  "highlight_share": 0.19319271332694152,
   "core_fill": 0.39759036144578314,
   "detail_mass": 0.18132530120481927,
-  "min_sig_dist": 0.06080667687776637
+  "min_sig_dist": 0.054442850272374416
  },
  "hard_fails": [],
  "ops": [
   {
-   "knob": "fill",
-   "why": "cobertura alta (54%): bajar el relleno para no tapar al enemigo",
-   "add": -0.06
-  },
-  {
-   "knob": "ticks",
-   "why": "menos marcas",
-   "add": -4
-  },
-  {
-   "knob": "tick_len",
-   "why": "marcas más cortas",
-   "add": -0.04
-  },
-  {
-   "knob": "inner_ring",
-   "why": "quitar el anillo interior",
-   "set": 0
-  },
-  {
-   "knob": "rim",
-   "why": "borde más fino: la cobertura es excesiva",
-   "add": -1
-  },
-  {
-   "knob": "fill",
-   "why": "el centro está cargado (40%): despejar el relleno",
-   "add": -0.09
-  },
-  {
-   "knob": "inner_ring",
-   "why": "quitar el anillo interior",
-   "set": 0
-  },
-  {
-   "knob": "glyph_scale",
-   "why": "glifo más chico",
-   "set": 1
-  },
-  {
    "knob": "deco",
-   "why": "se parece demasiado a otra habilidad del guardián (distancia 0.06): cambiar el tipo de marca",
+   "why": "se parece demasiado a otra habilidad del guardián (distancia 0.05): cambiar el tipo de marca",
    "add": 1
   },
   {
    "knob": "inner_ring",
    "why": "segundo anillo para distinguirla",
    "set": 1
+  },
+  {
+   "knob": "fill",
+   "why": "el arte actual cubre mejor la zona: ajustar el relleno",
+   "add": -0.03
+  },
+  {
+   "knob": "sparks",
+   "why": "el arte actual cubre mejor la zona: menos chispas",
+   "add": -2
   }
  ],
  "criteria": {
   "alpha": 1.0,
   "palette": 1.0,
-  "hygiene": 1.0,
+  "hygiene": 0.994,
   "edge": 1.0,
-  "coverage": 0.033,
+  "coverage": 0.853,
   "contrast": 1.0,
-  "clear_floor": 0.418,
+  "clear_floor": 1.0,
   "motion": 1.0,
-  "richness": 0.959,
-  "identity": 0.628
+  "richness": 1.0,
+  "identity": 0.608
  },
- "baseline_total": 70.7,
+ "baseline_total": 77.4,
  "baseline_criteria": {
   "alpha": 1.0,
   "palette": 0.0,
   "hygiene": 0.351,
   "edge": 0.68,
-  "coverage": 0.526,
+  "coverage": 1.0,
   "contrast": 1.0,
-  "clear_floor": 0.795,
+  "clear_floor": 1.0,
   "motion": 1.0,
   "richness": 0.85,
   "identity": 0.7
  },
- "improvement": 10.5,
+ "baseline_metrics": {
+  "alpha_binary": 1.0,
+  "palette_adherence": 0.09576291942199364,
+  "colors": 1029,
+  "isolated": 0.10138725755943856,
+  "edge_outline": 0.7083333333333334,
+  "edge_reach": 1.038628368868432,
+  "edge_over": 0.6666666666666666,
+  "coverage": 0.45,
+  "interior": 0.30927342256214146,
+  "interior_detail": 0.19168260038240917,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 18.45785610073101,
+  "peak_pos": 0.3333333333333333,
+  "tail": 0.0,
+  "motion_mean": 0.10686728395061727,
+  "unique_frames": 1.0,
+  "tones": 4,
+  "highlight_share": 0.0,
+  "core_fill": 0.2620481927710843,
+  "detail_mass": 0.14186746987951807,
+  "min_sig_dist": 1.0
+ },
+ "improvement": 16.9,
  "reasons": [
-  "criterio bajo: cobertura legible 0.4/12",
-  "criterio bajo: suelo despejado 2.09/5",
-  "puntaje 81.2 < 85",
-  "regresión de cobertura legible frente al arte actual (0.03 < 0.53)"
+  "regresión de cobertura legible frente al arte actual (0.85 < 1.00)"
  ],
  "status": "FAIL"
 }

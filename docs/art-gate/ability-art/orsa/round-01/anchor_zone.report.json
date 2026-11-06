@@ -1,0 +1,183 @@
+{
+ "kind": "idle",
+ "score": 88.8,
+ "points": {
+  "alpha": 5.0,
+  "palette": 8.0,
+  "hygiene": 7.0,
+  "edge": 12.3,
+  "coverage": 5.88,
+  "contrast": 8.0,
+  "clear_floor": 5.0,
+  "motion": 15.0,
+  "richness": 12.75,
+  "identity": 9.87
+ },
+ "metrics": {
+  "alpha_binary": 1.0,
+  "palette_adherence": 1.0,
+  "colors": 5,
+  "isolated": 0.0,
+  "edge_outline": 0.7083333333333334,
+  "edge_reach": 0.8638260342084317,
+  "edge_over": 0.0,
+  "coverage": 0.6274509803921569,
+  "interior": 0.45652173913043476,
+  "interior_detail": 0.3532608695652174,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 14.442288747930025,
+  "peak_pos": 0.5,
+  "tail": 0.0,
+  "loop_gap": 0.1388888888888889,
+  "motion_mean": 0.07133838383838384,
+  "unique_frames": 1.0,
+  "tones": 5,
+  "highlight_share": 0.09375,
+  "core_fill": 1.0,
+  "detail_mass": 0.8541666666666666,
+  "min_sig_dist": 0.17596157188542827
+ },
+ "hard_fails": [],
+ "ops": [
+  {
+   "knob": "rim",
+   "why": "el filo exterior no está contorneado en 29% del perímetro: engrosar el borde para que el contorno oscuro de 1 px cierre",
+   "add": 1
+  },
+  {
+   "knob": "fill",
+   "why": "cobertura alta (63%): bajar el relleno para no tapar al enemigo",
+   "hard": true,
+   "add": -0.06
+  },
+  {
+   "knob": "ticks",
+   "why": "menos marcas",
+   "hard": true,
+   "add": -4
+  },
+  {
+   "knob": "tick_len",
+   "why": "marcas más cortas",
+   "hard": true,
+   "add": -0.04
+  },
+  {
+   "knob": "inner_ring",
+   "why": "quitar el anillo interior",
+   "hard": true,
+   "set": 0
+  },
+  {
+   "knob": "rim",
+   "why": "borde más fino: la cobertura es excesiva",
+   "hard": true,
+   "add": -1
+  },
+  {
+   "knob": "sparks",
+   "why": "menos chispas",
+   "hard": true,
+   "add": -2
+  },
+  {
+   "knob": "glyph_on",
+   "why": "quitar el glifo: la cobertura es excesiva",
+   "hard": true,
+   "set": 0
+  },
+  {
+   "knob": "deco",
+   "why": "se parece demasiado a otra habilidad del guardián (distancia 0.18): cambiar el tipo de marca",
+   "add": 1
+  },
+  {
+   "knob": "inner_ring",
+   "why": "segundo anillo para distinguirla",
+   "set": 1
+  },
+  {
+   "knob": "ticks",
+   "why": "el arte actual tiene más trama interior: sumar marcas propias",
+   "add": 4
+  },
+  {
+   "knob": "glyph_scale",
+   "why": "el arte actual tiene más presencia central: glifo más grande",
+   "add": 1
+  },
+  {
+   "knob": "deco",
+   "why": "probar otra familia de marcas",
+   "cycle": true
+  },
+  {
+   "knob": "fill",
+   "why": "el arte actual cubre mejor la zona: ajustar el relleno",
+   "add": -0.03
+  },
+  {
+   "knob": "sparks",
+   "why": "el arte actual cubre mejor la zona: menos chispas",
+   "add": -2
+  }
+ ],
+ "criteria": {
+  "alpha": 1.0,
+  "palette": 1.0,
+  "hygiene": 1.0,
+  "edge": 0.82,
+  "coverage": 0.49,
+  "contrast": 1.0,
+  "clear_floor": 1.0,
+  "motion": 1.0,
+  "richness": 0.85,
+  "identity": 0.987
+ },
+ "baseline_total": 71.8,
+ "baseline_criteria": {
+  "alpha": 1.0,
+  "palette": 0.0,
+  "hygiene": 1.0,
+  "edge": 0.284,
+  "coverage": 0.755,
+  "contrast": 1.0,
+  "clear_floor": 1.0,
+  "motion": 0.767,
+  "richness": 1.0,
+  "identity": 0.7
+ },
+ "baseline_metrics": {
+  "alpha_binary": 1.0,
+  "palette_adherence": 0.1361963190184049,
+  "colors": 148,
+  "isolated": 0.0,
+  "edge_outline": 0.2916666666666667,
+  "edge_reach": 0.8293010101100302,
+  "edge_over": 0.2708333333333333,
+  "coverage": 0.5612745098039216,
+  "interior": 0.42934782608695654,
+  "interior_detail": 0.29891304347826086,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 14.442288747930025,
+  "peak_pos": 0.5,
+  "tail": 0.0,
+  "loop_gap": 0.008680555555555556,
+  "motion_mean": 0.00899621212121212,
+  "unique_frames": 0.75,
+  "tones": 5,
+  "highlight_share": 0.07971014492753623,
+  "core_fill": 0.1875,
+  "detail_mass": 0.17708333333333334,
+  "min_sig_dist": 1.0
+ },
+ "improvement": 17.0,
+ "reasons": [
+  "criterio bajo: cobertura legible 5.88/12",
+  "regresión de riqueza visual frente al arte actual (0.85 < 1.00)",
+  "regresión de cobertura legible frente al arte actual (0.49 < 0.76)"
+ ],
+ "status": "FAIL"
+}

@@ -72,7 +72,6 @@ def rle(a):
 
 
 def module_source(guardian, spec, results):
-    pal = spec['palette']
     lines = ["'use strict';",
              f"/* js/champions/vfx-unified/{guardian}.js — GENERADO por tools/art/ability-art/architect.py desde specs/{guardian}.json. No editar a mano:",
              "   se vuelve a pintar con `python3 tools/art/ability-art/pipeline.py run specs/" + guardian + ".json`. */",
@@ -81,6 +80,7 @@ def module_source(guardian, spec, results):
         r = results.get(ab['id'])
         if not r or r['status'] != 'PASS':
             continue
+        pal = ab.get('palette') or spec['palette']
         fr = r['frames']
         h, w = fr[0].shape
         kind = 'beam' if ab['kind'] == 'beam' else 'decal'
