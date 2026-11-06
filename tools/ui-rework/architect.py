@@ -92,6 +92,10 @@ body.ui-rework .ur-sheet-info .build-tag{{ display:block !important; position:st
 /* ---------- MODOS / CRISTALES: los botones nunca desbordan su marco ---------- */
 body.ui-rework #crystalwars-screen button, body.ui-rework #modeselect-screen button{{ white-space:normal; overflow-wrap:anywhere; min-height:{mv}px; padding:6px 10px; }}
 
+body.ui-rework #modeselect-screen .mode-card{{ flex:0 0 auto; height:auto; }}
+body.ui-rework #alpha-onboarding button, body.ui-rework #alpha-onboarding summary{{ min-height:{mv}px !important; display:inline-flex; align-items:center; }}
+body.ui-rework #alpha-onboarding .alpha-onboarding-actions{{ display:flex; gap:var(--ur-g); flex-wrap:wrap; }}
+
 /* ---------- SALA: pestañas compactas + «Comenzar» siempre a la vista ---------- */
 body.ui-rework #prep-screen .prep-secs{{ display:flex; gap:var(--ur-g); }}
 body.ui-rework #prep-screen .prep-sec{{ flex:1; min-height:{mv}px; border-radius:{T['radius']}px; font-size:13px; }}
