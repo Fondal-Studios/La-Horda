@@ -53,10 +53,9 @@ Reproducir: `node tools/audio/audit-sound.js --json docs/audio/audit-results.jso
 ### Opcionales (no se hicieron; quedan priorizados)
 | # | Ítem | Por qué no ahora |
 |---|---|---|
-| O1 | **Voces propias por campeón** (actuación de voz encargada) | Hay 4 voces base reutilizadas con tono distinto: sirve como identidad sonora, **no** equivale a un doblaje único. Ya están los puntos de enganche (`VOICES`, eventos `skill/ult/hurt/death/victory`). |
+| O1 | **Actuación de voz grabada por campeón** | Se hizo la versión sin grabación (ver sección 5). Una voz única por personaje requiere un encargo; los puntos de enganche ya están (`VOICES`, `TIMBRE`, eventos de voz). |
 | O2 | Deslizador de **Voces** aparte (hoy van por Efectos) | Requiere un nodo de ganancia y su fila en Opciones y en Pausa. |
-| O3 | **Música adaptativa** en el lo-fi (las capas por intensidad y las fases del jefe existen solo en el sintético) | Los temas son estéreo ya mezclado; se podría filtrar/subir volumen por intensidad con un paso-bajo. Conviene probarlo de oído. |
-| O4 | Voz de héroes **ajenos** en muerte (cooperativo/bots) y voz del **jefe** | Hoy hablan al lanzar habilidades; la muerte ajena no. |
+| O4 | Voz del **jefe** (rugidos ya existen como efecto) | La muerte de héroes ajenos ya suena (sección 5). |
 | O5 | Estandarizar la sonoridad **entre los 241 sonidos de arena sintéticos** (cada arena los mezcla a su criterio) | Fuera del alcance: medir y normalizar toca balance por arena. |
 | O6 | Pausar el contexto con la pestaña oculta (ahorro de batería) | Hoy sigue sonando en segundo plano, como antes. |
 
@@ -65,6 +64,18 @@ Reproducir: `node tools/audio/audit-sound.js --json docs/audio/audit-results.jso
 - Que las voces femeninas dichas en inglés (*fire!*, *ice!*) convivan con un juego en español (se pueden quitar: `FEM_CALL` en `sample-bank.js`).
 - Balance subjetivo música/efectos en parlante de celular y auriculares; deslizadores de Opciones siguen disponibles.
 - Tono de las voces graves (`axiom`, `segador`, `ilkan` a 0,66-0,76× pueden sonar a "cámara lenta").
+
+## 5. Segunda entrega: voces propias, música adaptativa, muerte de aliados
+
+| Pieza | Detalle | Medido |
+|---|---|---|
+| Timbre propio por campeón | Cada campeón suma a su voz base y su tono un **timbre** (realce de formante, paso-alto, paso-bajo y cola de sala). 11 a mano (p. ej. Axiom "robótico" y seco, Segador y Nigromante graves con cola, Sylva y Myla brillantes); el resto se deriva de su clave. | 43/43 campeones con timbre válido y **todos distintos** |
+| Frases del jugador local | Además de ataque/ultimate/daño/muerte/victoria: **subida de nivel** y **poca vida** (jadeo grave, una vez cada 14 s, con < 25 % de vida). | suenan en la prueba |
+| Música adaptativa (lo-fi) | Paso-bajo en cada tema de **oleada y jefe** que sigue la intensidad del director (`M.int`: horda viva, nivel, vida del jefe): en calma 2,6 kHz (mezcla cálida y apagada), con 30 enemigos 17 kHz, y vuelve al terminar. El jefe tiene un piso que sube en fase 2 y 3. Menús y título quedan abiertos. | calma 2.600 Hz → combate 17.401 Hz → 4.757 Hz a los 4,5 s de calma; menús ≥ 19 kHz |
+| Muerte de héroe ajeno | Al caer un aliado (cooperativo o bot) se oye su voz de muerte si está a la vista (220 u), con su timbre y panorama. | suena; `combat.js` lo llama |
+
+Alcance honesto: sigue siendo reuso de 4 voces CC0 con timbre y tono distintos; el timbre ayuda a distinguirlos, pero no reemplaza una grabación. La adaptación del lo-fi es por filtro (no hay capas separadas como en el sintético).
+Pendiente de oído: que 2,6 kHz en calma se sienta "cálido" y no "sin vida" (se ajusta con `CUT_LO` en `sample-bank.js`), y que los timbres derivados no queden estridentes en alguna voz.
 
 ## 4. Licencias
 
