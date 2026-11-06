@@ -3,7 +3,15 @@ function codexChampionPack(h){
  if(!h || typeof CODEX_GAMEPLAY_ART === 'undefined' || !CODEX_GAMEPLAY_ART[h.classKey]) return null;
  // An equipped skin retains its own authored design, including while loading.
  if(typeof ascCandidate==='function' && ascCandidate(h) && typeof ascSkinIndex==='function' && ascSkinIndex(h)>0) return null;
- if(typeof activeSetSkin === 'function' && activeSetSkin(h)) return null;
+ if(typeof activeSetSkin === 'function'){
+  const d=activeSetSkin(h);
+  if(d){
+   // Una croma de paleta (no autoral) conserva el diseño: se recolorea el cuerpo del Códice (ver expedition/cosmetics.js).
+   const ck=d.croma && !d.authoredPacks && d.packs && d.packs['codex_'+h.classKey];
+   const C=ck && CHAMP_PACK[ck];
+   return C && C.ready ? C : null;
+  }
+ }
  const P=CHAMP_PACK['codex_'+h.classKey];
  return P && P.ready ? P : null;
 }
