@@ -37,3 +37,11 @@ El estado real de cada habilidad se juzga en el juego (galería `tools/art-world
 
 ## Limitaciones
 Galería: 1 arena (Fábrica, fondo oscuro), 8 enemigos fijos, sin aliados, 2 instantes por habilidad; no sustituye una revisión con movimiento ni en las otras arenas, ni mide legibilidad con 100+ enemigos. Pendiente: correrla para los 43 guardianes y revisar cada hoja.
+
+## Lotes revisados (galería real, Fábrica, 160 ms | 560 ms) — 2026-11-06 12:26
+Revisados además: **Aelith, Aurelia, Axiom, Baltra, Brakk, Brasa, Bront, Sylva (cazadora), Dáriel, Garren (eslabón), Facu GM, Tobías (farolero)** — capturas `evidence/habilidades/lote1..3_*.png` (montajes reducidos; la hoja completa de cada uno se regenera con `ability-sheets.py`).
+- **Resultado: los 12 muestran sus 3 habilidades y su definitiva con efecto visible y paleta propia; ninguno roto ni ausente.**
+- Los bloques blancos de píxeles que aparecen a los 160 ms junto a los enemigos son el **destello de golpe de los muñecos** (retroalimentación de daño), no un defecto del efecto.
+- **A revisar (legibilidad, no rotura):** la definitiva de **Axiom (Force Quit)** aclara casi todo el fondo a casi blanco con barras rojas (`axiom_habilidades.png`): puede restar lectura de los enemigos en pantalla; decidir con el director de arte si es intencional (estética de error de sistema) o si debe atenuarse.
+- Límite: montajes a escala reducida; defectos finos (recortes, píxeles sueltos) requieren la hoja completa.
+- Pendiente: Iria, Khepri, Libertador y los 24 restantes (la galería sigue corriendo en lotes; ver `NEXT_SESSION.md`).
