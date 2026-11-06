@@ -4,7 +4,7 @@ js/assets/enemy-runway-sheets.js. Uso: python3 tools/art/runway/install.py <aren
 targetH = alto nativo (px) del cuadro de referencia; por defecto 64. Si existe spec.json con 'frames' manual, se respeta (no se pisa)."""
 import json, os, re, shutil, subprocess, sys
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
-a = [x for x in sys.argv[1:] if not x.startswith('--')]
+a = [x for i, x in enumerate(sys.argv[1:], 1) if not x.startswith('--') and sys.argv[i - 1] not in ('--alias', '--kind', '--sheet')]
 arena, tipo, hmul = a[0], a[1], float(a[2]); target = int(a[3]) if len(a) > 3 else 64
 kind = sys.argv[sys.argv.index('--kind') + 1] if '--kind' in sys.argv else 'enemies'
 src = os.path.join(ROOT, 'art-source/runway-enemies', arena, tipo)
@@ -18,6 +18,10 @@ r = subprocess.run([sys.executable, os.path.join(ROOT, 'tools/art/runway/build_s
 sys.stderr.write(r.stderr[-600:])
 if r.returncode: raise SystemExit('build fallo')
 meta = json.load(open(os.path.join(src, spec.get('out', 'out'), 'meta.json')))
+if '--alias' in sys.argv:   # sets extra que pide la IA de la arena: nombre=set_existente (p.ej. leap=atk,run=walk,walk_down=walk)
+    for kv in sys.argv[sys.argv.index('--alias') + 1].split(','):
+        k, v = kv.split('=')
+        if k not in meta['sets']: meta['sets'][k] = list(meta['sets'][v])
 dst_rel = f'assets/sprites/{kind}/{arena}/{tipo}/v2/atlas.png'
 os.makedirs(os.path.dirname(os.path.join(ROOT, dst_rel)), exist_ok=True)
 shutil.copy(os.path.join(src, spec.get('out', 'out'), 'atlas.png'), os.path.join(ROOT, dst_rel))
