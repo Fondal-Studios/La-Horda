@@ -937,6 +937,7 @@ function create(opts){
 
   Object.assign(routes, gameMaster.routes({getStore:()=>store,auth,send,err,readBody,summarize,now:now0,isOwner,ownerAccess,founderOf,founders:()=>founderBindings,seenAt}));
   Object.assign(routes, require("./item-economy").routes({getStore:()=>store,auth,send,err,readBody,now:now0,isOwner,fallback:{"GET /api/leaderboard":routes["GET /api/leaderboard"],"POST /api/leaderboard/submit":routes["POST /api/leaderboard/submit"]}}));
+  Object.assign(routes, require("./battlepass").routes({getStore:()=>store,auth,send,err,readBody,now:now0}));
   Object.assign(routes, walletMod.routes({getStore:()=>store,auth,send,err,readBody,summarize,now:now0,isOwner,log}));
 
   // Devuelve true si atendió el pedido (todo lo que empieza con /api/).

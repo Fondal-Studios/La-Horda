@@ -12,8 +12,8 @@ Estados: OK-código (implementado, sin prueba E2E de esta sesión) · PARCIAL ·
 | R07 | Coop 1–4, desconexión/reconexión | relay | test-relay PASS; net-test disconnect.js | PARCIAL / NOT RUN E2E | Multijugador |
 | R08 | Oro progresión | existente | test-item-economy PASS | OK-código | Economía |
 | R09 | Brasas solo compra/pase; sin pay-to-win | wallet.js, premium.js | test-wallet PASS | PARCIAL (auditar PIECES_FOR_BRASAS) | Economía |
-| R10 | Pase de batalla 30 días free/premium | no existe | — | **FALTA** | Economía/Backend |
-| R11 | Reclamación idempotente / sin doble cargo | wallet/payments | test-wallet, test-payments-mp PASS | PARCIAL (aplicar a pase) | Backend |
+| R10 | Pase de batalla 30 días free/premium | `server/battlepass.js` (30 niveles, rutas free/premium, desafíos de Campaña y Horda, XP solo por partidas verificadas) | `server/test-battlepass.js` PASS en archivo y PostgreSQL | BACKEND IMPLEMENTADO en rama; **falta UI de cliente, precios finales y arte de las recompensas (`bp:*` son ids provisorios)** | Economía/Backend |
+| R11 | Reclamación idempotente / sin doble cargo | wallet/payments + pase (ref único por nivel y por compra) | test-wallet, test-payments-mp, test-battlepass (5 reclamos simultáneos = 1 entrega; recompra = 1 cargo) PASS | OK en backend | Backend |
 | R12 | Compras nativas (Steam/GP/iOS) | no existe | — | FALTA / BLOCKED credenciales | Builds |
 | R13 | Builds Steam/Android/iOS | no existe | — | FALTA; iOS BLOCKED (sin macOS) | Builds |
 | R14 | Roster de lanzamiento verificado | gates en tools/ | entry-gate, ability-gate, roster_gate | NOT RUN | Balance |
