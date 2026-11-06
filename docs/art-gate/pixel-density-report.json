@@ -9,7 +9,7 @@
   "floorTonosMax": 250
  },
  "resumen": {
-  "entidades": 204,
+  "entidades": 208,
   "desvios": 24,
   "sinExcepcion": 0
  },
@@ -2113,6 +2113,84 @@
    "abiertos": []
   },
   {
+   "id": "assets/sprites/enemies/ciudad/cm_acechante/v2",
+   "group": "enemigos",
+   "archivos": 1,
+   "block": 1,
+   "tonos": 27,
+   "suave": 0.055,
+   "aa": 0,
+   "ruido": 2,
+   "w": 768,
+   "h": 138,
+   "pk": {
+    "2": 1.09,
+    "3": 1.09,
+    "4": 1.05,
+    "5": 1.03,
+    "6": 1.1,
+    "7": 1.02,
+    "8": 1.07
+   },
+   "upxMundo": null,
+   "upxEfectivo": null,
+   "hallazgos": [],
+   "excepcion": null,
+   "abiertos": []
+  },
+  {
+   "id": "assets/sprites/enemies/ciudad/cm_campanero/v2",
+   "group": "enemigos",
+   "archivos": 1,
+   "block": 1,
+   "tonos": 28,
+   "suave": 0.009,
+   "aa": 0,
+   "ruido": 19.4,
+   "w": 712,
+   "h": 196,
+   "pk": {
+    "2": 1,
+    "3": 1.01,
+    "4": 1,
+    "5": 1.02,
+    "6": 1.07,
+    "7": 1.07,
+    "8": 1.04
+   },
+   "upxMundo": null,
+   "upxEfectivo": null,
+   "hallazgos": [],
+   "excepcion": null,
+   "abiertos": []
+  },
+  {
+   "id": "assets/sprites/enemies/ciudad/cm_perro/v2",
+   "group": "enemigos",
+   "archivos": 1,
+   "block": 1,
+   "tonos": 28,
+   "suave": 0.099,
+   "aa": 0,
+   "ruido": 37.2,
+   "w": 968,
+   "h": 140,
+   "pk": {
+    "2": 1,
+    "3": 1.02,
+    "4": 1,
+    "5": 1.03,
+    "6": 1.04,
+    "7": 1,
+    "8": 1.03
+   },
+   "upxMundo": null,
+   "upxEfectivo": null,
+   "hallazgos": [],
+   "excepcion": null,
+   "abiertos": []
+  },
+  {
    "id": "assets/sprites/enemies/hielo/angel_hielo",
    "group": "enemigos",
    "archivos": 1,
@@ -3067,6 +3145,32 @@
     "6": 1,
     "7": 1.02,
     "8": 1.01
+   },
+   "upxMundo": null,
+   "upxEfectivo": null,
+   "hallazgos": [],
+   "excepcion": null,
+   "abiertos": []
+  },
+  {
+   "id": "assets/sprites/enemies/minas/mn_devoraluz/v2",
+   "group": "enemigos",
+   "archivos": 1,
+   "block": 1,
+   "tonos": 32,
+   "suave": 0.007,
+   "aa": 0,
+   "ruido": 115.9,
+   "w": 744,
+   "h": 204,
+   "pk": {
+    "2": 1,
+    "3": 1.02,
+    "4": 1,
+    "5": 1.01,
+    "6": 1,
+    "7": 1.03,
+    "8": 1.02
    },
    "upxMundo": null,
    "upxEfectivo": null,

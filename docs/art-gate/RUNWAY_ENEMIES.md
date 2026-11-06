@@ -11,3 +11,10 @@ o filas faltantes se rechazan (`rejected_*`), no se esconden. Una hoja nunca se 
 
 Instalados: ver las claves de `ENEMY_RUNWAY_SHEETS`. Fuera de este lote (ya tienen atlas v2/v3 con varios estados): lobo ártico, golem de cristal, dragón, dragoncito y ángel
 de hielo, Cù-Sìth, Dama del Bosque, enjambre de hadas, gólem infernal, gólem de piedra, y todos los jefes (tienen sets propios de habilidades que la IA pide).
+
+## Fondos y retratos (pasada de unificación)
+- Retratos de campo de batalla (14 jefes): `tools/art/battlefield_pixelize.py` (factor 2, paleta de 40-48 colores); originales en `art-source/battlefield/`.
+- Portadas de arena del Códice (11) y texturas del Abismo (2): `tools/art/native_pixelize.py` a PNG de paleta corta; originales en `art-source/codex-covers/` y `art-source/abismo/`.
+  Referencias JPG→PNG actualizadas en `js/`. Props `world-v1` (bosque/hielo) también por `native_pixelize.py`.
+- Enemigos de Ciudad (acechante, perro, campanero) y Minas (devoraluz) con hoja Runway; los sets extra de la IA (`leap`, `bell`, `drain`…) se mapean a cuadros de ataque/caminata con `install.py --alias`.
+- Pendiente de arte humano: las 11 tarjetas del Códice de Minas (llevan el título dibujado dentro de la imagen; un filtro lo deforma), Leviatán (3,5 u/px), Minotauro v3 (2,7), Dragón de la Forja.
