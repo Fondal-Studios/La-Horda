@@ -8,11 +8,12 @@ const H=require('../lib/serve');
   browser=await H.launch();
   let html=fs.readFileSync(path.join(root,'index.html'),'utf8').replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'');
   html=html.replace('<head>','<head><base href="'+site.url+'/">');
-  for(const [width,height] of [[320,568],[390,844],[568,320],[667,375],[844,390],[1366,768]]){
+  for(const [width,height] of [[568,320],[667,375],[844,390],[1366,768]]){
    const page=await browser.newPage({viewport:{width,height},hasTouch:true});
    await page.setContent(html,{waitUntil:'load'});
    await page.evaluate(()=>{
     document.querySelectorAll('.screen').forEach(e=>e.classList.add('hidden'));
+    const ro=document.getElementById('rotate-overlay');if(ro)ro.style.display='none'; /* el juego es horizontal: el aviso de girar no es parte de este contrato de layout */
     document.getElementById('prep-screen').classList.remove('hidden');
     for(const id of ['duo-picker','lobby-arena','net-bar']){
      const e=document.getElementById(id);e.classList.remove('hidden');
@@ -44,6 +45,6 @@ const H=require('../lib/serve');
    assert.equal(await page.locator('#prep-start-btn').isVisible(),false);
    await page.close();
   }
-  console.log('PASS campaign action: 6 viewports, 3 tabs, solo/host/guest labels, top/bottom scroll, closed screen.');
+  console.log('PASS campaign action: 4 landscape viewports (el juego es horizontal; el vertical muestra el aviso de girar), 3 tabs, solo/host/guest labels, top/bottom scroll, closed screen.');
  }finally{if(browser)await browser.close();await site.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});
