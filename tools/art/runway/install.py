@@ -18,6 +18,10 @@ r = subprocess.run([sys.executable, os.path.join(ROOT, 'tools/art/runway/build_s
 sys.stderr.write(r.stderr[-600:])
 if r.returncode: raise SystemExit('build fallo')
 meta = json.load(open(os.path.join(src, spec.get('out', 'out'), 'meta.json')))
+_js = os.path.join(ROOT, 'js/assets/enemy-runway-sheets.js'); _old = re.search(rf'^  {tipo}: .*"sets":(\{{.*?\}})\}}\}},?$', open(_js).read(), re.M)
+if _old:   # conserva los sets extra que ya tenia la entrada (aliases de la IA): caminar/correr/volar -> caminata nueva, el resto -> ataque
+    for k in json.loads(_old.group(1)):
+        if k not in meta['sets']: meta['sets'][k] = list(meta['sets']['walk'] if re.search('walk|run|fly|charge|flap|swim', k) else meta['sets']['atk'])
 if '--alias' in sys.argv:   # sets extra que pide la IA de la arena: nombre=set_existente (p.ej. leap=atk,run=walk,walk_down=walk)
     for kv in sys.argv[sys.argv.index('--alias') + 1].split(','):
         k, v = kv.split('=')

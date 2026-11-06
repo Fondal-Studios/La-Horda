@@ -105,6 +105,39 @@ def auto_layout(rowf):
     print('auto', {k: len(v) for k, v in dict(walk=walk, atk=atk, hit=hit, death=death).items()}, file=sys.stderr)
     return order, dict(walk=ix(walk), atk=ix(atk), hit=ix(hit), death=ix(death), idle=ix(idle))
 
+def proc_walk(b, mode='legs', n=6):
+    """Ciclo de caminata procedural a partir de UN cuadro (Runway no logra variar las piernas entre cuadros).
+    legs: de frente, rebote + sway + pies que se alzan en contrafase; side: de perfil, mitades de las piernas con zancada; swim: onda vertical a lo largo del cuerpo.
+    Siempre sobre el mismo suelo: el pie plantado queda en la ultima fila. Alfa 0/255."""
+    h, w = b.shape[:2]; pad = max(3, int(h * 0.12)); out = []
+    for k in range(n):
+        ph = 2 * np.pi * k / n; cv = np.zeros((h + pad, w + 2 * pad, 4), np.uint8)
+        def put(src, x, y):
+            hh, ww = src.shape[:2]; y0, x0 = max(0, y), max(0, x); y1, x1 = min(cv.shape[0], y + hh), min(cv.shape[1], x + ww)
+            if y1 <= y0 or x1 <= x0: return
+            sl = src[y0 - y:y1 - y, x0 - x:x1 - x]; m = sl[..., 3] > 0; tgt = cv[y0:y1, x0:x1]; tgt[m] = sl[m]
+        if mode == 'swim':
+            bob = int(round(h * 0.03 * np.sin(ph)))
+            for x in range(w):
+                dy = int(round(h * 0.07 * np.sin(ph + x / w * 2 * np.pi * 1.2)))
+                col = b[:, x:x + 1]; put(col, pad + x, pad + dy + bob)
+        else:
+            y0 = int(h * 0.66); up, lg = b[:y0], b[y0:]
+            bob = int(round(h * 0.035 * (1 - np.cos(2 * ph)) / 2)); sway = int(round(w * 0.02 * np.sin(ph)))
+            half = w // 2
+            if mode == 'legs':
+                ll = int(round(h * 0.05 * max(0, np.sin(ph)))); lr = int(round(h * 0.05 * max(0, -np.sin(ph))))
+                put(lg[:, :half], pad, pad + y0 - ll); put(lg[:, half:], pad + half, pad + y0 - lr)
+            else:
+                dx = int(round(w * 0.05 * np.sin(ph))); lf = int(round(h * 0.05 * max(0, np.cos(ph)))); lb = int(round(h * 0.05 * max(0, -np.cos(ph))))
+                put(lg[:, :half], pad + dx, pad + y0 - lb); put(lg[:, half:], pad - dx + half, pad + y0 - lf)
+            put(up, pad + sway, pad - bob)
+        ys, xs = np.where(cv[..., 3] > 0); out.append(cv[ys.min():ys.max() + 1, xs.min():xs.max() + 1] if False else cv)
+    # recorta todos al mismo marco: del tope mas alto a la ultima fila ocupada (el suelo), conservando el centro horizontal
+    top = min(np.where(c[..., 3] > 0)[0].min() for c in out); bot = max(np.where(c[..., 3] > 0)[0].max() for c in out)
+    lft = min(np.where(c[..., 3] > 0)[1].min() for c in out); rgt = max(np.where(c[..., 3] > 0)[1].max() for c in out)
+    return [c[top:bot + 1, lft:rgt + 1] for c in out]
+
 def main():
     spec = json.load(open(sys.argv[1])); base = os.path.dirname(os.path.abspath(sys.argv[1]))
     sheet = Image.open(os.path.join(base, spec['sheet']))
@@ -135,6 +168,33 @@ def main():
     for r, c in order:
         if c >= len(rowf[r]): raise SystemExit(f'falta figura {r},{c} (fila {r} tiene {len(rowf[r])})')
         bodies.append(rowf[r][c])
+    # hojas extra (p.ej. caminata completa): sus figuras se llevan a la escala de la hoja principal por la altura mediana del set que reemplazan
+    for j, ex in enumerate(spec.get('extra', [])):
+        ex_rgba = key_green(Image.open(os.path.join(base, ex['sheet']))); eH, eW = ex_rgba.shape[:2]
+        ebands = ex['bandsY'] if 'bandsY' in ex else row_bands(ex_rgba, ex.get('rowGap', 6))
+        if len(ebands) != ex['rows']: ebands = [(int(r * eH / ex['rows']), int((r + 1) * eH / ex['rows'])) for r in range(ex['rows'])]
+        figs = []
+        for (y0, y1) in ebands:
+            figs += row_figures(ex_rgba, y0, y1, ex.get('gap', 6), splitW=ex.get('splitW', 0))
+        hs = sorted(f.shape[0] for f in figs); med = hs[len(hs) // 2]; ws = sorted(f.shape[1] for f in figs); medw = ws[len(ws) // 2]
+        good = [f for f in figs if f.shape[1] <= medw * 1.6 and f.shape[0] >= med * 0.6 and float((f[..., 3] > 0).mean()) >= 0.2]
+        if ex.get('pick'): good = [good[i] for i in ex['pick']]
+        good = good[:ex.get('count', 6)]
+        tgt = [bodies[order.index(tuple(q))].shape[0] for q in spec['sets'][ex['set']]]; tgt = sorted(tgt)[len(tgt) // 2]
+        k = tgt / (sorted(f.shape[0] for f in good)[len(good) // 2])
+        new_idx = []
+        for i, f in enumerate(good):
+            im = Image.fromarray(f, 'RGBA'); im = im.resize((max(1, round(im.width * k)), max(1, round(im.height * k))), Image.BOX)
+            order.append((f'x{j}', i)); bodies.append(np.asarray(im)); new_idx.append([f'x{j}', i])
+        spec['sets'][ex['set']] = new_idx
+        print('extra', ex['sheet'], 'figuras buenas', len(good), 'escala', round(k, 2), file=sys.stderr)
+    pw = spec.get('procWalk')
+    if pw:
+        base_key = tuple(pw['from']) if 'from' in pw else tuple(spec['sets']['walk'][0])
+        frames = proc_walk(bodies[order.index(base_key)], pw.get('mode', 'legs'), pw.get('n', 6))
+        spec['sets']['walk'] = []
+        for i, f in enumerate(frames): order.append(('p', i)); bodies.append(f); spec['sets']['walk'].append(['p', i])
+        print('procWalk', pw.get('mode', 'legs'), len(frames), file=sys.stderr)
     refH = max(b.shape[0] for b in bodies[:spec.get('refFrames', len(bodies))]) if spec.get('refFromIdle') is None else bodies[spec['refFromIdle']].shape[0]
     target = spec.get('targetH', 84)                    # alto nativo (px) del cuadro de referencia
     s = target / refH / 1.0

@@ -23,17 +23,23 @@ def main():
     mode = sys.argv[sys.argv.index('--mode') + 1] if '--mode' in sys.argv else 'walk'
     style = sys.argv[sys.argv.index('--style') + 1] if '--style' in sys.argv else 'assets/sprites/enemies/hielo/golem_cristal/atlas.png'
     out = os.path.join(ROOT, 'art-source/runway-enemies', arena, tipo); os.makedirs(out, exist_ok=True)
+    walk = '--walk' in sys.argv
+    pre = 'walk' if walk else 'sheet'
     n = 1
-    while os.path.exists(os.path.join(out, f'sheet_v{n}.png')): n += 1
+    while os.path.exists(os.path.join(out, f'{pre}_v{n}.png')): n += 1
     move = ('flying cycle, 6 frames, wings or body hovering with clearly different positions' if mode == 'fly' else 'walking cycle, 6 frames, legs alternating clearly')
+    view = sys.argv[sys.argv.index('--view') + 1] if '--view' in sys.argv else 'side'
     nostyle = '--nostyle' in sys.argv
     ref = '@design' if nostyle else '@style'
     lead = ("Pixel art animation sprite sheet for a video game in the exact pixel art style, palette and colors of @design." if nostyle else
             "Pixel art animation sprite sheet for a video game. Render it with the rich dark painterly shading, detailed texture and crisp 1px dark outline of @style, but keep the exact character design and colors of @design.")
     P = (f"{lead} Character: {desc}, identical design and colors to @design in every cell. "
-         "Grid of 3 rows and 6 columns of equal cells on a flat chroma green #00FF00 background, character centered, same size, same baseline. "
-         f"Top row: {move}. Middle row: attack, wind-up then strike then recovery. Bottom row: standing, then hit recoil, then collapsing into a small heap. "
-         "Only the character in every cell. Absolutely no text, no letters, no numbers, no captions, no labels, no shadow, no grid lines, no effects outside the character.")
+         + ("Grid of 2 rows and 6 columns" if walk else "Grid of 3 rows and 6 columns") + " of equal cells on a flat chroma green #00FF00 background, character centered, same size, same baseline. "
+         + ("Both rows: a complete smooth walking cycle in 6 clearly different frames: " + ("walking toward the viewer, legs and arms alternating, body bobbing up and down" if view == 'front' else "walking to the right in side view, legs and arms alternating, body bobbing up and down")
+            + ("" if mode != 'fly' else ", moving or swimming with the body, fins or wings clearly changing position") + ". Row two repeats the same cycle starting from a different phase. "
+            if walk else
+            f"Top row: {move}. Middle row: attack, wind-up then strike then recovery. Bottom row: standing, then hit recoil, then collapsing into a small heap. ")
+         + "Only the character in every cell. Absolutely no text, no letters, no numbers, no captions, no labels, no shadow, no grid lines, no effects outside the character.")
     refs = [{"uri": green_uri(os.path.join(ROOT, design), '/tmp/_d.png'), "tag": "design"}]
     if not nostyle: refs.append({"uri": green_uri(os.path.join(ROOT, style), '/tmp/_s.png'), "tag": "style"})
     for attempt in range(3):
@@ -48,10 +54,10 @@ def main():
         if r['status'] == 'SUCCEEDED': break
     else: raise SystemExit('sin resultado')
     png = subprocess.run(['curl', '-sS', r['output'][0]], capture_output=True).stdout
-    open(os.path.join(out, f'sheet_v{n}.png'), 'wb').write(png)
+    open(os.path.join(out, f'{pre}_v{n}.png'), 'wb').write(png)
     json.dump({"status": "GENERATED_NOT_APPROVED", "kind": "concept", "id": tipo, "model": "gen4_image", "ratio": "1280:720", "taskId": t['id'],
                "credits": (r.get('cost') or {}).get('credits', 5), "style": style, "design": design, "prompt": P,
                "sha256": hashlib.sha256(png).hexdigest(), "note": "Requiere recorte, paleta, gates y revision de arte humana."},
-              open(os.path.join(out, f'receipt_v{n}.json'), 'w'), indent=1)
-    print('OK', out, f'sheet_v{n}.png')
+              open(os.path.join(out, f'receipt_{pre}_v{n}.json'), 'w'), indent=1)
+    print('OK', out, f'{pre}_v{n}.png')
 main()
