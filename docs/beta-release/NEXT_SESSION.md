@@ -69,3 +69,8 @@ Herramienta del pintor: `node tools/art-world/runway-guardian.js <guardián> <in
 - Pendiente de arte de guardianes: animación cuadro a cuadro real (hoy es procedural sobre una pose pintada por estado) en Libertador, Profeta, Coloso; Berrinche de Myla (hash fijado, diseño viejo); skins/sets de Libertador/Profeta autorales (revisar coherencia con la base); revisión humana de arte/audio de Ilsa/Vorn/Kora (cuerpos derivados de donantes).
 - Antes de gastar más en Runway hace falta saldo (>250 para ejecuciones programadas) y autorización del propietario.
 - Todo el arte aceptado es CANDIDATO: falta revisión independiente humana y CI remoto; ningún PR se fusionó a main.
+
+## Tras el CI del PR #277
+1. Fijar `runs-on: ubuntu-24.04` (o actualizar Playwright) en los flujos que instalan Chromium: hoy fallan en el runner Ubuntu 26.04 antes de probar nada (también les pasaría a `main`).
+2. Volver a mirar el CI del PR cuando eso se arregle; Guerrero/Tanque death, Soporte v3, quality-five, brasa-abyssal, oficios, skill-icon-exports, art-presentation, vfx-readability y art-production-evidence están sin determinar.
+3. PR aparte para el Libertador nuevo, con las guardas de bytes actualizadas por su responsable.
