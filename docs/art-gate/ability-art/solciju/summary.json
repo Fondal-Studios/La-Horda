@@ -1,0 +1,94 @@
+{
+ "guardian": "solciju",
+ "passed": [
+  "splash",
+  "pool_idle",
+  "fuse"
+ ],
+ "escalated": [],
+ "keep_current": [
+  "toast"
+ ],
+ "state": {
+  "splash": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.1,
+     "status": "PASS",
+     "improvement": 18.0,
+     "reasons": []
+    }
+   ]
+  },
+  "pool_idle": {
+   "status": "PASS",
+   "rounds": 2,
+   "history": [
+    {
+     "round": 1,
+     "score": 99.0,
+     "status": "FAIL",
+     "improvement": 21.8,
+     "reasons": [
+      "regresión de riqueza visual frente al arte actual (0.94 < 1.00)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 100.0,
+     "status": "PASS",
+     "improvement": 22.8,
+     "reasons": []
+    }
+   ]
+  },
+  "fuse": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.1,
+     "status": "PASS",
+     "improvement": 23.4,
+     "reasons": []
+    }
+   ]
+  },
+  "toast": {
+   "status": "KEEP_CURRENT",
+   "rounds": 0,
+   "history": [
+    {
+     "round": 0,
+     "score": null,
+     "status": "KEEP_CURRENT",
+     "improvement": null,
+     "reasons": [
+      "el arte actual no llega al radio (0.34): es un ícono/sello con forma propia, no un decal de área"
+     ]
+    }
+   ]
+  }
+ },
+ "baseline": {
+  "splash": 77.1,
+  "pool_idle": 77.2,
+  "fuse": 71.7,
+  "toast": 74.2
+ },
+ "log": [
+  "ronda 1: splash PASS 95.1 (arte actual 77.1, +18.0)",
+  "ronda 1: pool_idle FAIL 99.0 — regresión de riqueza visual frente al arte actual (0.94 < 1.00)",
+  "ronda 1: fuse PASS 95.1 (arte actual 71.7, +23.4)",
+  "ronda 2: pool_idle PASS 100.0 (arte actual 77.2, +22.8)",
+  "arquitecto: integradas ['splash', 'pool_idle', 'fuse']; humo OK: SMOKE OK solciju: splash,pool_idle,fuse"
+ ],
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['splash', 'pool_idle', 'fuse']; humo OK: SMOKE OK solciju: splash,pool_idle,fuse"
+ }
+}

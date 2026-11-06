@@ -1,0 +1,239 @@
+{
+ "kind": "ring",
+ "score": 81.1,
+ "points": {
+  "alpha": 5.0,
+  "palette": 8.0,
+  "hygiene": 7.0,
+  "edge": 13.94,
+  "coverage": 0.0,
+  "contrast": 8.0,
+  "clear_floor": 3.27,
+  "motion": 15.0,
+  "richness": 14.21,
+  "identity": 6.7
+ },
+ "metrics": {
+  "peak_idx": 2,
+  "alpha_binary": 1.0,
+  "palette_adherence": 1.0,
+  "colors": 5,
+  "isolated": 0.011363636363636364,
+  "edge_outline": 0.75,
+  "edge_reach": 0.9401350871808573,
+  "edge_over": 0.0,
+  "coverage": 0.8232142857142857,
+  "interior": 0.6690140845070423,
+  "interior_detail": 0.6267605633802817,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 15.39126062179404,
+  "peak_pos": 0.2222222222222222,
+  "tail": 0.0,
+  "motion_mean": 0.16638321995464853,
+  "unique_frames": 1.0,
+  "tones": 5,
+  "highlight_share": 0.1822125813449024,
+  "core_fill": 0.9545454545454546,
+  "detail_mass": 0.5227272727272727,
+  "min_sig_dist": 0.07449057688811087
+ },
+ "hard_fails": [
+  "cobertura excesiva (82%): oculta el suelo"
+ ],
+ "ops": [
+  {
+   "knob": "fill",
+   "why": "cobertura alta (82%): bajar el relleno para no tapar al enemigo",
+   "hard": true,
+   "add": -0.06
+  },
+  {
+   "knob": "ticks",
+   "why": "menos marcas",
+   "hard": true,
+   "add": -4
+  },
+  {
+   "knob": "tick_len",
+   "why": "marcas más cortas",
+   "hard": true,
+   "add": -0.04
+  },
+  {
+   "knob": "inner_ring",
+   "why": "quitar el anillo interior",
+   "hard": true,
+   "set": 0
+  },
+  {
+   "knob": "rim",
+   "why": "borde más fino: la cobertura es excesiva",
+   "hard": true,
+   "add": -1
+  },
+  {
+   "knob": "sparks",
+   "why": "menos chispas",
+   "hard": true,
+   "add": -2
+  },
+  {
+   "knob": "glyph_on",
+   "why": "quitar el glifo: la cobertura es excesiva",
+   "hard": true,
+   "set": 0
+  },
+  {
+   "knob": "fill",
+   "why": "el centro está cargado (67%): despejar el relleno",
+   "hard": true,
+   "add": -0.09
+  },
+  {
+   "knob": "inner_ring",
+   "why": "quitar el anillo interior",
+   "hard": true,
+   "set": 0
+  },
+  {
+   "knob": "glyph_scale",
+   "why": "glifo más chico",
+   "hard": true,
+   "set": 1
+  },
+  {
+   "knob": "sparks",
+   "why": "menos chispas: tapan el centro",
+   "hard": true,
+   "add": -2
+  },
+  {
+   "knob": "ticks",
+   "why": "menos marcas: tapan el centro",
+   "hard": true,
+   "add": -2
+  },
+  {
+   "knob": "glyph_on",
+   "why": "quitar el glifo: no cabe en una zona tan chica",
+   "hard": true,
+   "set": 0
+  },
+  {
+   "knob": "deco",
+   "why": "se parece demasiado a otra habilidad del guardián (distancia 0.07): cambiar el tipo de marca",
+   "add": 1
+  },
+  {
+   "knob": "inner_ring",
+   "why": "segundo anillo para distinguirla",
+   "set": 1
+  },
+  {
+   "knob": "motif_on",
+   "why": "activar el motivo temático del guardián (el arte actual lo tiene)",
+   "set": 1
+  },
+  {
+   "knob": "motif_n",
+   "why": "el arte actual tiene más trama temática: motivo más denso",
+   "add": 1
+  },
+  {
+   "knob": "ticks",
+   "why": "el arte actual tiene más trama interior: sumar marcas propias",
+   "add": 4
+  },
+  {
+   "knob": "glyph_scale",
+   "why": "el arte actual tiene más presencia central: glifo más grande",
+   "add": 1
+  },
+  {
+   "knob": "deco",
+   "why": "probar otra familia de marcas",
+   "cycle": true
+  },
+  {
+   "knob": "fill",
+   "why": "el arte actual cubre mejor la zona: ajustar el relleno",
+   "add": -0.03
+  },
+  {
+   "knob": "sparks",
+   "why": "el arte actual cubre mejor la zona: menos chispas",
+   "add": -2
+  },
+  {
+   "knob": "motif_on",
+   "why": "activar el motivo temático del guardián (el arte actual lo tiene)",
+   "set": 1
+  },
+  {
+   "knob": "motif_n",
+   "why": "el arte actual tiene más trama temática: motivo más denso",
+   "add": 1
+  }
+ ],
+ "criteria": {
+  "alpha": 1.0,
+  "palette": 1.0,
+  "hygiene": 1.0,
+  "edge": 0.929,
+  "coverage": 0.0,
+  "contrast": 1.0,
+  "clear_floor": 0.655,
+  "motion": 1.0,
+  "richness": 0.947,
+  "identity": 0.67
+ },
+ "baseline_total": 73.2,
+ "baseline_criteria": {
+  "alpha": 1.0,
+  "palette": 0.0,
+  "hygiene": 0.536,
+  "edge": 0.479,
+  "coverage": 0.614,
+  "contrast": 1.0,
+  "clear_floor": 1.0,
+  "motion": 1.0,
+  "richness": 0.992,
+  "identity": 0.7
+ },
+ "baseline_metrics": {
+  "peak_idx": 2,
+  "alpha_binary": 1.0,
+  "palette_adherence": 0.24324324324324326,
+  "colors": 307,
+  "isolated": 0.08101443464314353,
+  "edge_outline": 0.3958333333333333,
+  "edge_reach": 1.0218887747521297,
+  "edge_over": 0.3333333333333333,
+  "coverage": 0.5964285714285714,
+  "interior": 0.3204225352112676,
+  "interior_detail": 0.29225352112676056,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 18.411489810660086,
+  "peak_pos": 0.2222222222222222,
+  "tail": 0.0,
+  "motion_mean": 0.13477891156462585,
+  "unique_frames": 1.0,
+  "tones": 5,
+  "highlight_share": 0.028368794326241134,
+  "core_fill": 0.25,
+  "detail_mass": 0.15,
+  "min_sig_dist": 1.0
+ },
+ "improvement": 7.9,
+ "reasons": [
+  "cobertura excesiva (82%): oculta el suelo",
+  "criterio bajo: cobertura legible 0.0/12",
+  "puntaje 81.1 < 85",
+  "regresión de riqueza visual frente al arte actual (0.95 < 0.99)",
+  "regresión de cobertura legible frente al arte actual (0.00 < 0.61)"
+ ],
+ "status": "FAIL",
+ "keep_current": false
+}

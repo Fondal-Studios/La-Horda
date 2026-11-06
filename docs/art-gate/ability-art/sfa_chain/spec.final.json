@@ -1,0 +1,478 @@
+{
+ "guardian": "sfa_chain",
+ "engine": "sfa",
+ "title": "Tema chain (skill-fx-a)",
+ "palette": [
+  "#14161c",
+  "#5b606e",
+  "#9195a1",
+  "#e4dfc8",
+  "#ffffff"
+ ],
+ "abilities": [
+  {
+   "id": "nova32",
+   "kind": "ring",
+   "size": 32,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "chain",
+    "size": 32
+   },
+   "baseline": "nova|chain|32",
+   "replaces": "nova|chain|32",
+   "params": {
+    "rim": 1,
+    "fill": 0.0,
+    "ticks": 0,
+    "tick_len": 0.08,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.0,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.32,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 0,
+    "motif_n": 5,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 2,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "ticks": -1,
+    "rim": -1,
+    "deco": 1
+   }
+  },
+  {
+   "id": "nova48",
+   "kind": "ring",
+   "size": 48,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "chain",
+    "size": 48
+   },
+   "baseline": "nova|chain|48",
+   "replaces": "nova|chain|48",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "nova64",
+   "kind": "ring",
+   "size": 64,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "chain",
+    "size": 64
+   },
+   "baseline": "nova|chain|64",
+   "replaces": "nova|chain|64",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "nova80",
+   "kind": "ring",
+   "size": 80,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "chain",
+    "size": 80
+   },
+   "baseline": "nova|chain|80",
+   "replaces": "nova|chain|80",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "nova96",
+   "kind": "ring",
+   "size": 96,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "chain",
+    "size": 96
+   },
+   "baseline": "nova|chain|96",
+   "replaces": "nova|chain|96",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "nova128",
+   "kind": "ring",
+   "size": 128,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "chain",
+    "size": 128
+   },
+   "baseline": "nova|chain|128",
+   "replaces": "nova|chain|128",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "nova160",
+   "kind": "ring",
+   "size": 160,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "chain",
+    "size": 160
+   },
+   "baseline": "nova|chain|160",
+   "replaces": "nova|chain|160",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "nova192",
+   "kind": "ring",
+   "size": 192,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "chain",
+    "size": 192
+   },
+   "baseline": "nova|chain|192",
+   "replaces": "nova|chain|192",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone32",
+   "kind": "idle",
+   "size": 32,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "chain",
+    "size": 32
+   },
+   "baseline": "zone|chain|32",
+   "replaces": "zone|chain|32",
+   "params": {
+    "rim": 1,
+    "fill": 0.0,
+    "ticks": 0,
+    "tick_len": 0.08,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.0,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.32,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 0,
+    "motif_n": 5,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 2,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "ticks": -1,
+    "rim": -1,
+    "deco": 1
+   }
+  },
+  {
+   "id": "zone48",
+   "kind": "idle",
+   "size": 48,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "chain",
+    "size": 48
+   },
+   "baseline": "zone|chain|48",
+   "replaces": "zone|chain|48",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone64",
+   "kind": "idle",
+   "size": 64,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "chain",
+    "size": 64
+   },
+   "baseline": "zone|chain|64",
+   "replaces": "zone|chain|64",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone80",
+   "kind": "idle",
+   "size": 80,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "chain",
+    "size": 80
+   },
+   "baseline": "zone|chain|80",
+   "replaces": "zone|chain|80",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone96",
+   "kind": "idle",
+   "size": 96,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "chain",
+    "size": 96
+   },
+   "baseline": "zone|chain|96",
+   "replaces": "zone|chain|96",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone128",
+   "kind": "idle",
+   "size": 128,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "chain",
+    "size": 128
+   },
+   "baseline": "zone|chain|128",
+   "replaces": "zone|chain|128",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone160",
+   "kind": "idle",
+   "size": 160,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "chain",
+    "size": 160
+   },
+   "baseline": "zone|chain|160",
+   "replaces": "zone|chain|160",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone192",
+   "kind": "idle",
+   "size": 192,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "chain",
+    "size": 192
+   },
+   "baseline": "zone|chain|192",
+   "replaces": "zone|chain|192",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  }
+ ]
+}

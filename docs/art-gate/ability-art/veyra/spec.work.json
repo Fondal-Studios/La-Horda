@@ -1,0 +1,154 @@
+{
+ "guardian": "veyra",
+ "codex": "veyra",
+ "title": "veyra",
+ "palette": [
+  "#2a0612",
+  "#7a1d38",
+  "#ab3459",
+  "#ff7d8e",
+  "#ffd6dc"
+ ],
+ "abilities": [
+  {
+   "id": "slash",
+   "kind": "sector",
+   "radius": 140,
+   "frames": 10,
+   "glyph": "cross",
+   "baseline": "vy_slash",
+   "replaces": "vy_slash",
+   "params": {
+    "rim": 1,
+    "fill": 0.06,
+    "ticks": 4,
+    "tick_len": 0.12,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.3,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.3,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 1,
+    "wave": 0,
+    "motif_on": 1,
+    "motif_n": 6,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 0,
+    "core_density": 0.5
+   },
+   "motif": "bolt",
+   "half": 0.85,
+   "_dir": {
+    "fill": -1,
+    "ticks": -1,
+    "tick_len": -1,
+    "rim": -1,
+    "sparks": -1,
+    "motif_n": 1
+   }
+  },
+  {
+   "id": "wound",
+   "kind": "ring",
+   "radius": 140,
+   "frames": 10,
+   "glyph": "cross",
+   "baseline": "vy_wound",
+   "replaces": "vy_wound",
+   "params": {},
+   "motif": "bolt",
+   "keep": true
+  },
+  {
+   "id": "pact",
+   "kind": "ring",
+   "radius": 24,
+   "frames": 10,
+   "glyph": "cross",
+   "baseline": "vy_pact",
+   "replaces": "vy_pact",
+   "params": {},
+   "motif": "bolt"
+  },
+  {
+   "id": "pact_idle",
+   "kind": "idle",
+   "radius": 120,
+   "frames": 12,
+   "glyph": "cross",
+   "baseline": "vy_pact_idle",
+   "replaces": "vy_pact_idle",
+   "params": {},
+   "motif": "bolt"
+  },
+  {
+   "id": "dash_end",
+   "kind": "ring",
+   "radius": 210,
+   "frames": 8,
+   "glyph": "cross",
+   "baseline": "vy_dash_end",
+   "replaces": "vy_dash_end",
+   "params": {},
+   "motif": "bolt"
+  },
+  {
+   "id": "dash",
+   "kind": "beam",
+   "tile": [
+    24,
+    16
+   ],
+   "frames": 8,
+   "baseline_beam": "vy_dash",
+   "replaces": "vy_dash",
+   "params": {
+    "rim": 3,
+    "fill": 0.14,
+    "ticks": 8,
+    "tick_len": 0.16,
+    "glyph_scale": 1,
+    "sparks": 6,
+    "flash": 0.3,
+    "spin": 1,
+    "inner_ring": 1,
+    "highlight_arc": 1,
+    "impact_at": 0.3,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 1,
+    "wave": 1,
+    "motif_on": 1,
+    "motif_n": 5,
+    "wave_amp": 3,
+    "thick": 1,
+    "deco": 1,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "deco": 1,
+    "rim": 1,
+    "sparks": 1,
+    "wave": 1,
+    "wave_amp": 1
+   }
+  },
+  {
+   "id": "lance",
+   "kind": "beam",
+   "tile": [
+    24,
+    16
+   ],
+   "frames": 8,
+   "baseline_beam": "vy_lance",
+   "replaces": "vy_lance",
+   "params": {}
+  }
+ ]
+}

@@ -1,0 +1,66 @@
+{
+ "guardian": "saelis",
+ "passed": [
+  "updraft",
+  "feather_sky",
+  "lane"
+ ],
+ "escalated": [],
+ "keep_current": [],
+ "state": {
+  "updraft": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 94.4,
+     "status": "PASS",
+     "improvement": 18.6,
+     "reasons": []
+    }
+   ]
+  },
+  "feather_sky": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 93.7,
+     "status": "PASS",
+     "improvement": 13.9,
+     "reasons": []
+    }
+   ]
+  },
+  "lane": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 98.3,
+     "status": "PASS",
+     "improvement": 15.6,
+     "reasons": []
+    }
+   ]
+  }
+ },
+ "baseline": {
+  "updraft": 75.8,
+  "feather_sky": 79.8,
+  "lane": 82.7
+ },
+ "log": [
+  "ronda 1: updraft PASS 94.4 (arte actual 75.8, +18.6)",
+  "ronda 1: feather_sky PASS 93.7 (arte actual 79.8, +13.9)",
+  "ronda 1: lane PASS 98.3 (arte actual 82.7, +15.6)",
+  "arquitecto: integradas ['updraft', 'feather_sky', 'lane']; humo OK: SMOKE OK saelis: updraft,feather_sky,lane"
+ ],
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['updraft', 'feather_sky', 'lane']; humo OK: SMOKE OK saelis: updraft,feather_sky,lane"
+ }
+}

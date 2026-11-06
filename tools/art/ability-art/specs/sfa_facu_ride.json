@@ -1,0 +1,446 @@
+{
+ "guardian": "sfa_facu_ride",
+ "engine": "sfa",
+ "title": "Tema facu_ride (skill-fx-a)",
+ "palette": [
+  "#0a1a34",
+  "#2a6ab0",
+  "#5aa8e4",
+  "#b8e0ff",
+  "#ffffff"
+ ],
+ "abilities": [
+  {
+   "id": "nova32",
+   "kind": "ring",
+   "size": 32,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_ride",
+    "size": 32
+   },
+   "baseline": "nova|facu_ride|32",
+   "replaces": "nova|facu_ride|32",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "nova48",
+   "kind": "ring",
+   "size": 48,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_ride",
+    "size": 48
+   },
+   "baseline": "nova|facu_ride|48",
+   "replaces": "nova|facu_ride|48",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "nova64",
+   "kind": "ring",
+   "size": 64,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_ride",
+    "size": 64
+   },
+   "baseline": "nova|facu_ride|64",
+   "replaces": "nova|facu_ride|64",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "nova80",
+   "kind": "ring",
+   "size": 80,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_ride",
+    "size": 80
+   },
+   "baseline": "nova|facu_ride|80",
+   "replaces": "nova|facu_ride|80",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "nova96",
+   "kind": "ring",
+   "size": 96,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_ride",
+    "size": 96
+   },
+   "baseline": "nova|facu_ride|96",
+   "replaces": "nova|facu_ride|96",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "nova128",
+   "kind": "ring",
+   "size": 128,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_ride",
+    "size": 128
+   },
+   "baseline": "nova|facu_ride|128",
+   "replaces": "nova|facu_ride|128",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "nova160",
+   "kind": "ring",
+   "size": 160,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_ride",
+    "size": 160
+   },
+   "baseline": "nova|facu_ride|160",
+   "replaces": "nova|facu_ride|160",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "nova192",
+   "kind": "ring",
+   "size": 192,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_ride",
+    "size": 192
+   },
+   "baseline": "nova|facu_ride|192",
+   "replaces": "nova|facu_ride|192",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone32",
+   "kind": "idle",
+   "size": 32,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_ride",
+    "size": 32
+   },
+   "baseline": "zone|facu_ride|32",
+   "replaces": "zone|facu_ride|32",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone48",
+   "kind": "idle",
+   "size": 48,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_ride",
+    "size": 48
+   },
+   "baseline": "zone|facu_ride|48",
+   "replaces": "zone|facu_ride|48",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone64",
+   "kind": "idle",
+   "size": 64,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_ride",
+    "size": 64
+   },
+   "baseline": "zone|facu_ride|64",
+   "replaces": "zone|facu_ride|64",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone80",
+   "kind": "idle",
+   "size": 80,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_ride",
+    "size": 80
+   },
+   "baseline": "zone|facu_ride|80",
+   "replaces": "zone|facu_ride|80",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone96",
+   "kind": "idle",
+   "size": 96,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_ride",
+    "size": 96
+   },
+   "baseline": "zone|facu_ride|96",
+   "replaces": "zone|facu_ride|96",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone128",
+   "kind": "idle",
+   "size": 128,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_ride",
+    "size": 128
+   },
+   "baseline": "zone|facu_ride|128",
+   "replaces": "zone|facu_ride|128",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone160",
+   "kind": "idle",
+   "size": 160,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_ride",
+    "size": 160
+   },
+   "baseline": "zone|facu_ride|160",
+   "replaces": "zone|facu_ride|160",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone192",
+   "kind": "idle",
+   "size": 192,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_ride",
+    "size": 192
+   },
+   "baseline": "zone|facu_ride|192",
+   "replaces": "zone|facu_ride|192",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  }
+ ]
+}

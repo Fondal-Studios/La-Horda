@@ -1,0 +1,59 @@
+{
+ "guardian": "nano_gm",
+ "codex": "nano_gm",
+ "title": "nano_gm",
+ "palette": [
+  "#15120a",
+  "#7a6420",
+  "#e8c56a",
+  "#fff4d6",
+  "#ffffff"
+ ],
+ "abilities": [
+  {
+   "id": "law",
+   "kind": "ring",
+   "radius": 140,
+   "frames": 10,
+   "glyph": "cross",
+   "baseline": "ng_law",
+   "replaces": "ng_law",
+   "params": {},
+   "motif": "circuit"
+  },
+  {
+   "id": "verdict",
+   "kind": "ring",
+   "radius": 182,
+   "frames": 10,
+   "glyph": "cross",
+   "baseline": "ng_verdict",
+   "replaces": "ng_verdict",
+   "params": {},
+   "motif": "circuit"
+  },
+  {
+   "id": "burst_d",
+   "kind": "ring",
+   "radius": 300,
+   "frames": 10,
+   "glyph": "cross",
+   "baseline": "ng_burst_d",
+   "replaces": "ng_burst_d",
+   "params": {},
+   "motif": "circuit"
+  },
+  {
+   "id": "decree",
+   "kind": "beam",
+   "tile": [
+    20,
+    18
+   ],
+   "frames": 8,
+   "baseline_beam": "ng_decree",
+   "replaces": "ng_decree",
+   "params": {}
+  }
+ ]
+}

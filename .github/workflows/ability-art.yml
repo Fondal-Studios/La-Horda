@@ -1,0 +1,20 @@
+name: Ability art circuit
+on:
+  pull_request:
+    paths: ['tools/art/ability-art/**', 'js/champions/vfx-unified/**', 'docs/art-gate/ability-art/**', 'js/champions/vfx-b/pixfx.js', 'index.html', '.github/workflows/ability-art.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  circuit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install pillow numpy
+      - name: Painter / evaluator / architect unit tests (includes rejection canaries)
+        run: python3 -m unittest tools/art/ability-art/test_ability_art.py
+      - name: Integrated modules match the approved painting and still pass the canon
+        run: for s in tools/art/ability-art/specs/*.json; do python3 tools/art/ability-art/pipeline.py check "$s"; done

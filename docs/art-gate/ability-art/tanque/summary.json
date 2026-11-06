@@ -1,0 +1,257 @@
+{
+ "guardian": "tanque",
+ "passed": [
+  "spin",
+  "shout",
+  "banner_idle",
+  "taunt",
+  "taunt_idle",
+  "charge"
+ ],
+ "escalated": [
+  "spin_idle"
+ ],
+ "keep_current": [],
+ "state": {
+  "spin": {
+   "status": "PASS",
+   "rounds": 2,
+   "history": [
+    {
+     "round": 1,
+     "score": 89.0,
+     "status": "FAIL",
+     "improvement": 12.5,
+     "reasons": [
+      "regresión de cobertura legible frente al arte actual (0.58 < 1.00)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 94.9,
+     "status": "PASS",
+     "improvement": 18.4,
+     "reasons": []
+    }
+   ]
+  },
+  "spin_idle": {
+   "status": "ESCALATED",
+   "rounds": 6,
+   "history": [
+    {
+     "round": 1,
+     "score": 88.5,
+     "status": "FAIL",
+     "improvement": 3.2,
+     "reasons": [
+      "mejora +3.2 < +6.0 sobre el arte actual (85.3)",
+      "regresión de riqueza visual frente al arte actual (0.91 < 1.00)",
+      "regresión de cobertura legible frente al arte actual (0.72 < 1.00)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 94.1,
+     "status": "FAIL",
+     "improvement": 8.8,
+     "reasons": [
+      "regresión de riqueza visual frente al arte actual (0.95 < 1.00)"
+     ]
+    },
+    {
+     "round": 3,
+     "score": 82.3,
+     "status": "FAIL",
+     "improvement": -3.0,
+     "reasons": [
+      "el interior tapa al enemigo (60% de píxeles opacos en la zona central; techo 60 %)",
+      "criterio bajo: suelo despejado 0.57/5",
+      "puntaje 82.3 < 85",
+      "mejora -3.0 < +6.0 sobre el arte actual (85.3)",
+      "regresión de riqueza visual frente al arte actual (0.68 < 1.00)",
+      "regresión de cobertura legible frente al arte actual (0.64 < 1.00)"
+     ]
+    },
+    {
+     "round": 4,
+     "score": 88.0,
+     "status": "FAIL",
+     "improvement": 2.7,
+     "reasons": [
+      "mejora +2.7 < +6.0 sobre el arte actual (85.3)",
+      "regresión de riqueza visual frente al arte actual (0.77 < 1.00)",
+      "regresión de cobertura legible frente al arte actual (0.87 < 1.00)"
+     ]
+    },
+    {
+     "round": 5,
+     "score": 88.0,
+     "status": "FAIL",
+     "improvement": 2.7,
+     "reasons": [
+      "mejora +2.7 < +6.0 sobre el arte actual (85.3)",
+      "regresión de riqueza visual frente al arte actual (0.77 < 1.00)",
+      "regresión de cobertura legible frente al arte actual (0.87 < 1.00)"
+     ]
+    },
+    {
+     "round": 6,
+     "score": 87.9,
+     "status": "FAIL",
+     "improvement": 2.6,
+     "reasons": [
+      "mejora +2.6 < +6.0 sobre el arte actual (85.3)",
+      "regresión de riqueza visual frente al arte actual (0.82 < 1.00)",
+      "regresión de cobertura legible frente al arte actual (0.67 < 1.00)"
+     ]
+    }
+   ]
+  },
+  "shout": {
+   "status": "PASS",
+   "rounds": 2,
+   "history": [
+    {
+     "round": 1,
+     "score": 90.3,
+     "status": "FAIL",
+     "improvement": 5.1,
+     "reasons": [
+      "mejora +5.1 < +6.0 sobre el arte actual (85.2)",
+      "regresión de cobertura legible frente al arte actual (0.63 < 1.00)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 95.2,
+     "status": "PASS",
+     "improvement": 10.0,
+     "reasons": []
+    }
+   ]
+  },
+  "banner_idle": {
+   "status": "PASS",
+   "rounds": 2,
+   "history": [
+    {
+     "round": 1,
+     "score": 88.5,
+     "status": "FAIL",
+     "improvement": 6.7,
+     "reasons": [
+      "regresión de cobertura legible frente al arte actual (0.72 < 1.00)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 95.0,
+     "status": "PASS",
+     "improvement": 13.2,
+     "reasons": []
+    }
+   ]
+  },
+  "taunt": {
+   "status": "PASS",
+   "rounds": 2,
+   "history": [
+    {
+     "round": 1,
+     "score": 89.0,
+     "status": "FAIL",
+     "improvement": 18.9,
+     "reasons": [
+      "regresión de cobertura legible frente al arte actual (0.58 < 0.98)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 94.9,
+     "status": "PASS",
+     "improvement": 24.8,
+     "reasons": []
+    }
+   ]
+  },
+  "taunt_idle": {
+   "status": "PASS",
+   "rounds": 2,
+   "history": [
+    {
+     "round": 1,
+     "score": 88.5,
+     "status": "FAIL",
+     "improvement": 10.7,
+     "reasons": [
+      "regresión de cobertura legible frente al arte actual (0.72 < 1.00)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 95.0,
+     "status": "PASS",
+     "improvement": 17.2,
+     "reasons": []
+    }
+   ]
+  },
+  "charge": {
+   "status": "PASS",
+   "rounds": 2,
+   "history": [
+    {
+     "round": 1,
+     "score": 100.0,
+     "status": "FAIL",
+     "improvement": 24.7,
+     "reasons": [
+      "silueta más plana que el arte actual: irregularidad 0.00 < 70 % de 0.13"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 98.3,
+     "status": "PASS",
+     "improvement": 23.0,
+     "reasons": []
+    }
+   ]
+  }
+ },
+ "baseline": {
+  "spin": 76.5,
+  "spin_idle": 85.3,
+  "shout": 85.2,
+  "banner_idle": 81.8,
+  "taunt": 70.1,
+  "taunt_idle": 77.8,
+  "charge": 75.3
+ },
+ "log": [
+  "ronda 1: spin FAIL 89.0 — regresión de cobertura legible frente al arte actual (0.58 < 1.00)",
+  "ronda 1: spin_idle FAIL 88.5 — mejora +3.2 < +6.0 sobre el arte actual (85.3); regresión de riqueza visual frente al arte actual (0.91 < 1.00)",
+  "ronda 1: shout FAIL 90.3 — mejora +5.1 < +6.0 sobre el arte actual (85.2); regresión de cobertura legible frente al arte actual (0.63 < 1.00)",
+  "ronda 1: banner_idle FAIL 88.5 — regresión de cobertura legible frente al arte actual (0.72 < 1.00)",
+  "ronda 1: taunt FAIL 89.0 — regresión de cobertura legible frente al arte actual (0.58 < 0.98)",
+  "ronda 1: taunt_idle FAIL 88.5 — regresión de cobertura legible frente al arte actual (0.72 < 1.00)",
+  "ronda 1: charge FAIL 100.0 — silueta más plana que el arte actual: irregularidad 0.00 < 70 % de 0.13",
+  "ronda 2: spin PASS 94.9 (arte actual 76.5, +18.4)",
+  "ronda 2: spin_idle FAIL 94.1 — regresión de riqueza visual frente al arte actual (0.95 < 1.00)",
+  "ronda 2: shout PASS 95.2 (arte actual 85.2, +10.0)",
+  "ronda 2: banner_idle PASS 95.0 (arte actual 81.8, +13.2)",
+  "ronda 2: taunt PASS 94.9 (arte actual 70.1, +24.8)",
+  "ronda 2: taunt_idle PASS 95.0 (arte actual 77.8, +17.2)",
+  "ronda 2: charge PASS 98.3 (arte actual 75.3, +23.0)",
+  "ronda 3: spin_idle FAIL 82.3 — el interior tapa al enemigo (60% de píxeles opacos en la zona central; techo 60 %); criterio bajo: suelo despejado 0.57/5",
+  "ronda 4: spin_idle FAIL 88.0 — mejora +2.7 < +6.0 sobre el arte actual (85.3); regresión de riqueza visual frente al arte actual (0.77 < 1.00)",
+  "ronda 5: spin_idle FAIL 88.0 — mejora +2.7 < +6.0 sobre el arte actual (85.3); regresión de riqueza visual frente al arte actual (0.77 < 1.00)",
+  "ronda 6: spin_idle FAIL 87.9 — mejora +2.6 < +6.0 sobre el arte actual (85.3); regresión de riqueza visual frente al arte actual (0.82 < 1.00)",
+  "arquitecto: integradas ['spin', 'shout', 'banner_idle', 'taunt', 'taunt_idle', 'charge']; humo OK: SMOKE OK tanque: spin,shout,banner_idle,taunt,taunt_idle,charge"
+ ],
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['spin', 'shout', 'banner_idle', 'taunt', 'taunt_idle', 'charge']; humo OK: SMOKE OK tanque: spin,shout,banner_idle,taunt,taunt_idle,charge"
+ }
+}

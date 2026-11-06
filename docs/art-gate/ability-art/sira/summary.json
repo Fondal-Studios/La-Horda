@@ -1,0 +1,145 @@
+{
+ "guardian": "sira",
+ "passed": [
+  "ink_line",
+  "retrace",
+  "erase",
+  "atlas",
+  "atlas_zone"
+ ],
+ "escalated": [],
+ "keep_current": [],
+ "state": {
+  "ink_line": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 99.0,
+     "status": "PASS",
+     "improvement": 22.5,
+     "reasons": []
+    }
+   ]
+  },
+  "retrace": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 97.3,
+     "status": "PASS",
+     "improvement": 18.2,
+     "reasons": []
+    }
+   ]
+  },
+  "erase": {
+   "status": "PASS",
+   "rounds": 2,
+   "history": [
+    {
+     "round": 1,
+     "score": 82.0,
+     "status": "FAIL",
+     "improvement": 13.0,
+     "reasons": [
+      "cobertura excesiva (73%): oculta el suelo",
+      "criterio bajo: cobertura legible 0.0/12",
+      "puntaje 82.0 < 85",
+      "regresión de cobertura legible frente al arte actual (0.00 < 0.32)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 96.3,
+     "status": "PASS",
+     "improvement": 27.3,
+     "reasons": []
+    }
+   ]
+  },
+  "atlas": {
+   "status": "PASS",
+   "rounds": 2,
+   "history": [
+    {
+     "round": 1,
+     "score": 78.6,
+     "status": "FAIL",
+     "improvement": 13.9,
+     "reasons": [
+      "el interior tapa al enemigo (71% de píxeles opacos en la zona central; techo 60 %)",
+      "cobertura excesiva (83%): oculta el suelo",
+      "criterio bajo: cobertura legible 0.0/12",
+      "criterio bajo: suelo despejado 2.2/5",
+      "puntaje 78.6 < 85"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 93.0,
+     "status": "PASS",
+     "improvement": 28.3,
+     "reasons": []
+    }
+   ]
+  },
+  "atlas_zone": {
+   "status": "PASS",
+   "rounds": 3,
+   "history": [
+    {
+     "round": 1,
+     "score": 91.1,
+     "status": "FAIL",
+     "improvement": 15.3,
+     "reasons": [
+      "regresión de cobertura legible frente al arte actual (0.51 < 0.94)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 97.5,
+     "status": "FAIL",
+     "improvement": 21.7,
+     "reasons": [
+      "regresión de cobertura legible frente al arte actual (0.88 < 0.94)"
+     ]
+    },
+    {
+     "round": 3,
+     "score": 98.2,
+     "status": "PASS",
+     "improvement": 22.4,
+     "reasons": []
+    }
+   ]
+  }
+ },
+ "baseline": {
+  "ink_line": 76.5,
+  "retrace": 79.1,
+  "erase": 69.0,
+  "atlas": 64.7,
+  "atlas_zone": 75.8
+ },
+ "log": [
+  "ronda 1: ink_line PASS 99.0 (arte actual 76.5, +22.5)",
+  "ronda 1: retrace PASS 97.3 (arte actual 79.1, +18.2)",
+  "ronda 1: erase FAIL 82.0 — cobertura excesiva (73%): oculta el suelo; criterio bajo: cobertura legible 0.0/12",
+  "ronda 1: atlas FAIL 78.6 — el interior tapa al enemigo (71% de píxeles opacos en la zona central; techo 60 %); cobertura excesiva (83%): oculta el suelo",
+  "ronda 1: atlas_zone FAIL 91.1 — regresión de cobertura legible frente al arte actual (0.51 < 0.94)",
+  "ronda 2: erase PASS 96.3 (arte actual 69.0, +27.3)",
+  "ronda 2: atlas PASS 93.0 (arte actual 64.7, +28.3)",
+  "ronda 2: atlas_zone FAIL 97.5 — regresión de cobertura legible frente al arte actual (0.88 < 0.94)",
+  "ronda 3: atlas_zone PASS 98.2 (arte actual 75.8, +22.4)",
+  "arquitecto: integradas ['ink_line', 'retrace', 'erase', 'atlas', 'atlas_zone']; humo OK: SMOKE OK sira: ink_line,retrace,erase,atlas,atlas_zone"
+ ],
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['ink_line', 'retrace', 'erase', 'atlas', 'atlas_zone']; humo OK: SMOKE OK sira: ink_line,retrace,erase,atlas,atlas_zone"
+ }
+}

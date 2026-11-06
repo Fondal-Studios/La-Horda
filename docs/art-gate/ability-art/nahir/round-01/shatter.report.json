@@ -1,0 +1,161 @@
+{
+ "kind": "ring",
+ "score": 83.5,
+ "points": {
+  "alpha": 5.0,
+  "palette": 8.0,
+  "hygiene": 7.0,
+  "edge": 12.57,
+  "coverage": 0.0,
+  "contrast": 8.0,
+  "clear_floor": 5.0,
+  "motion": 15.0,
+  "richness": 14.94,
+  "identity": 8.03
+ },
+ "metrics": {
+  "peak_idx": 2,
+  "alpha_binary": 1.0,
+  "palette_adherence": 1.0,
+  "colors": 5,
+  "isolated": 0.005980888654643782,
+  "edge_outline": 0.6666666666666666,
+  "edge_reach": 0.9031269073103934,
+  "edge_over": 0.0,
+  "coverage": 0.7696078431372549,
+  "interior": 0.5869565217391305,
+  "interior_detail": 0.5380434782608695,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 15.120861391474117,
+  "peak_pos": 0.2222222222222222,
+  "tail": 0.0,
+  "motion_mean": 0.14699074074074073,
+  "unique_frames": 1.0,
+  "tones": 5,
+  "highlight_share": 0.17834394904458598,
+  "core_fill": 0.9375,
+  "detail_mass": 0.509375,
+  "min_sig_dist": 0.11681020304416737
+ },
+ "hard_fails": [
+  "cobertura excesiva (77%): oculta el suelo"
+ ],
+ "ops": [
+  {
+   "knob": "rim",
+   "why": "el filo exterior no está contorneado en 33% del perímetro: engrosar el borde para que el contorno oscuro de 1 px cierre",
+   "add": 1
+  },
+  {
+   "knob": "fill",
+   "why": "cobertura alta (77%): bajar el relleno para no tapar al enemigo",
+   "hard": true,
+   "add": -0.06
+  },
+  {
+   "knob": "ticks",
+   "why": "menos marcas",
+   "hard": true,
+   "add": -4
+  },
+  {
+   "knob": "tick_len",
+   "why": "marcas más cortas",
+   "hard": true,
+   "add": -0.04
+  },
+  {
+   "knob": "inner_ring",
+   "why": "quitar el anillo interior",
+   "hard": true,
+   "set": 0
+  },
+  {
+   "knob": "rim",
+   "why": "borde más fino: la cobertura es excesiva",
+   "hard": true,
+   "add": -1
+  },
+  {
+   "knob": "sparks",
+   "why": "menos chispas",
+   "hard": true,
+   "add": -2
+  },
+  {
+   "knob": "glyph_on",
+   "why": "quitar el glifo: la cobertura es excesiva",
+   "hard": true,
+   "set": 0
+  },
+  {
+   "knob": "deco",
+   "why": "se parece demasiado a otra habilidad del guardián (distancia 0.12): cambiar el tipo de marca",
+   "add": 1
+  },
+  {
+   "knob": "inner_ring",
+   "why": "segundo anillo para distinguirla",
+   "set": 1
+  }
+ ],
+ "criteria": {
+  "alpha": 1.0,
+  "palette": 1.0,
+  "hygiene": 1.0,
+  "edge": 0.838,
+  "coverage": 0.0,
+  "contrast": 1.0,
+  "clear_floor": 1.0,
+  "motion": 1.0,
+  "richness": 0.996,
+  "identity": 0.803
+ },
+ "baseline_total": 66.6,
+ "baseline_criteria": {
+  "alpha": 1.0,
+  "palette": 0.0,
+  "hygiene": 1.0,
+  "edge": 0.494,
+  "coverage": 0.0,
+  "contrast": 1.0,
+  "clear_floor": 0.902,
+  "motion": 0.998,
+  "richness": 0.85,
+  "identity": 0.7
+ },
+ "baseline_metrics": {
+  "peak_idx": 2,
+  "alpha_binary": 1.0,
+  "palette_adherence": 0.23674059787849566,
+  "colors": 270,
+  "isolated": 0.011904761904761904,
+  "edge_outline": 0.4166666666666667,
+  "edge_reach": 1.0088137889180409,
+  "edge_over": 0.4166666666666667,
+  "coverage": 0.7965686274509803,
+  "interior": 0.6195652173913043,
+  "interior_detail": 0.2554347826086957,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 14.425906484416172,
+  "peak_pos": 0.25,
+  "tail": 0.0,
+  "motion_mean": 0.1820746527777778,
+  "unique_frames": 0.8888888888888888,
+  "tones": 4,
+  "highlight_share": 0.0,
+  "core_fill": 0.59375,
+  "detail_mass": 0.2708333333333333,
+  "min_sig_dist": 1.0
+ },
+ "improvement": 16.9,
+ "reasons": [
+  "cobertura excesiva (77%): oculta el suelo",
+  "criterio bajo: cobertura legible 0.0/12",
+  "puntaje 83.5 < 85"
+ ],
+ "status": "FAIL",
+ "keep_current": false
+}

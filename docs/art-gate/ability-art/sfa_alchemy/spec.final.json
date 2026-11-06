@@ -1,0 +1,478 @@
+{
+ "guardian": "sfa_alchemy",
+ "engine": "sfa",
+ "title": "Tema alchemy (skill-fx-a)",
+ "palette": [
+  "#24101e",
+  "#6e3a60",
+  "#a46191",
+  "#edd0a5",
+  "#fff6e8"
+ ],
+ "abilities": [
+  {
+   "id": "nova32",
+   "kind": "ring",
+   "size": 32,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "alchemy",
+    "size": 32
+   },
+   "baseline": "nova|alchemy|32",
+   "replaces": "nova|alchemy|32",
+   "params": {
+    "rim": 1,
+    "fill": 0.0,
+    "ticks": 0,
+    "tick_len": 0.08,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.0,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.32,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 0,
+    "motif_n": 5,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 2,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "ticks": -1,
+    "rim": -1,
+    "deco": 1
+   }
+  },
+  {
+   "id": "nova48",
+   "kind": "ring",
+   "size": 48,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "alchemy",
+    "size": 48
+   },
+   "baseline": "nova|alchemy|48",
+   "replaces": "nova|alchemy|48",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "nova64",
+   "kind": "ring",
+   "size": 64,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "alchemy",
+    "size": 64
+   },
+   "baseline": "nova|alchemy|64",
+   "replaces": "nova|alchemy|64",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "nova80",
+   "kind": "ring",
+   "size": 80,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "alchemy",
+    "size": 80
+   },
+   "baseline": "nova|alchemy|80",
+   "replaces": "nova|alchemy|80",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "nova96",
+   "kind": "ring",
+   "size": 96,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "alchemy",
+    "size": 96
+   },
+   "baseline": "nova|alchemy|96",
+   "replaces": "nova|alchemy|96",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "nova128",
+   "kind": "ring",
+   "size": 128,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "alchemy",
+    "size": 128
+   },
+   "baseline": "nova|alchemy|128",
+   "replaces": "nova|alchemy|128",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "nova160",
+   "kind": "ring",
+   "size": 160,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "alchemy",
+    "size": 160
+   },
+   "baseline": "nova|alchemy|160",
+   "replaces": "nova|alchemy|160",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "nova192",
+   "kind": "ring",
+   "size": 192,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "alchemy",
+    "size": 192
+   },
+   "baseline": "nova|alchemy|192",
+   "replaces": "nova|alchemy|192",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone32",
+   "kind": "idle",
+   "size": 32,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "alchemy",
+    "size": 32
+   },
+   "baseline": "zone|alchemy|32",
+   "replaces": "zone|alchemy|32",
+   "params": {
+    "rim": 1,
+    "fill": 0.0,
+    "ticks": 0,
+    "tick_len": 0.08,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.0,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.32,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 0,
+    "motif_n": 5,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 2,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "ticks": -1,
+    "rim": -1,
+    "deco": 1
+   }
+  },
+  {
+   "id": "zone48",
+   "kind": "idle",
+   "size": 48,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "alchemy",
+    "size": 48
+   },
+   "baseline": "zone|alchemy|48",
+   "replaces": "zone|alchemy|48",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone64",
+   "kind": "idle",
+   "size": 64,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "alchemy",
+    "size": 64
+   },
+   "baseline": "zone|alchemy|64",
+   "replaces": "zone|alchemy|64",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone80",
+   "kind": "idle",
+   "size": 80,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "alchemy",
+    "size": 80
+   },
+   "baseline": "zone|alchemy|80",
+   "replaces": "zone|alchemy|80",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone96",
+   "kind": "idle",
+   "size": 96,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "alchemy",
+    "size": 96
+   },
+   "baseline": "zone|alchemy|96",
+   "replaces": "zone|alchemy|96",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone128",
+   "kind": "idle",
+   "size": 128,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "alchemy",
+    "size": 128
+   },
+   "baseline": "zone|alchemy|128",
+   "replaces": "zone|alchemy|128",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone160",
+   "kind": "idle",
+   "size": 160,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "alchemy",
+    "size": 160
+   },
+   "baseline": "zone|alchemy|160",
+   "replaces": "zone|alchemy|160",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone192",
+   "kind": "idle",
+   "size": 192,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "alchemy",
+    "size": 192
+   },
+   "baseline": "zone|alchemy|192",
+   "replaces": "zone|alchemy|192",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  }
+ ]
+}

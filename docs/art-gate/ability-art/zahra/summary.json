@@ -1,0 +1,236 @@
+{
+ "guardian": "zahra",
+ "passed": [
+  "quench",
+  "ash_step",
+  "vent"
+ ],
+ "escalated": [
+  "furnace",
+  "vent_zone"
+ ],
+ "keep_current": [],
+ "state": {
+  "furnace": {
+   "status": "ESCALATED",
+   "rounds": 6,
+   "history": [
+    {
+     "round": 1,
+     "score": 80.0,
+     "status": "FAIL",
+     "improvement": 10.1,
+     "reasons": [
+      "el interior tapa al enemigo (67% de píxeles opacos en la zona central; techo 60 %)",
+      "criterio bajo: cobertura legible 1.71/12",
+      "criterio bajo: suelo despejado 0.0/5",
+      "puntaje 80.0 < 85",
+      "regresión de riqueza visual frente al arte actual (0.69 < 0.71)",
+      "regresión de cobertura legible frente al arte actual (0.14 < 0.20)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 84.9,
+     "status": "FAIL",
+     "improvement": 15.0,
+     "reasons": [
+      "el interior tapa al enemigo (63% de píxeles opacos en la zona central; techo 60 %)",
+      "criterio bajo: suelo despejado 0.0/5",
+      "puntaje 84.9 < 85",
+      "regresión de riqueza visual frente al arte actual (0.60 < 0.71)"
+     ]
+    },
+    {
+     "round": 3,
+     "score": 84.8,
+     "status": "FAIL",
+     "improvement": 14.9,
+     "reasons": [
+      "el interior tapa al enemigo (71% de píxeles opacos en la zona central; techo 60 %)",
+      "criterio bajo: suelo despejado 0.0/5",
+      "puntaje 84.8 < 85",
+      "regresión de riqueza visual frente al arte actual (0.60 < 0.71)"
+     ]
+    },
+    {
+     "round": 4,
+     "score": 83.4,
+     "status": "FAIL",
+     "improvement": 13.5,
+     "reasons": [
+      "el interior tapa al enemigo (72% de píxeles opacos en la zona central; techo 60 %)",
+      "criterio bajo: suelo despejado 0.0/5",
+      "puntaje 83.4 < 85",
+      "regresión de riqueza visual frente al arte actual (0.60 < 0.71)"
+     ]
+    },
+    {
+     "round": 5,
+     "score": 83.4,
+     "status": "FAIL",
+     "improvement": 13.5,
+     "reasons": [
+      "el interior tapa al enemigo (77% de píxeles opacos en la zona central; techo 60 %)",
+      "criterio bajo: suelo despejado 0.0/5",
+      "puntaje 83.4 < 85",
+      "regresión de riqueza visual frente al arte actual (0.60 < 0.71)"
+     ]
+    },
+    {
+     "round": 6,
+     "score": 83.4,
+     "status": "FAIL",
+     "improvement": 13.5,
+     "reasons": [
+      "el interior tapa al enemigo (77% de píxeles opacos en la zona central; techo 60 %)",
+      "criterio bajo: suelo despejado 0.0/5",
+      "puntaje 83.4 < 85",
+      "regresión de riqueza visual frente al arte actual (0.60 < 0.71)"
+     ]
+    }
+   ]
+  },
+  "quench": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 96.3,
+     "status": "PASS",
+     "improvement": 29.7,
+     "reasons": []
+    }
+   ]
+  },
+  "ash_step": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 98.3,
+     "status": "PASS",
+     "improvement": 21.6,
+     "reasons": []
+    }
+   ]
+  },
+  "vent": {
+   "status": "PASS",
+   "rounds": 2,
+   "history": [
+    {
+     "round": 1,
+     "score": 90.1,
+     "status": "FAIL",
+     "improvement": 13.3,
+     "reasons": [
+      "criterio bajo: cobertura legible 5.98/12",
+      "regresión de cobertura legible frente al arte actual (0.50 < 1.00)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 97.6,
+     "status": "PASS",
+     "improvement": 20.8,
+     "reasons": []
+    }
+   ]
+  },
+  "vent_zone": {
+   "status": "ESCALATED",
+   "rounds": 6,
+   "history": [
+    {
+     "round": 1,
+     "score": 99.0,
+     "status": "FAIL",
+     "improvement": 13.5,
+     "reasons": [
+      "regresión de riqueza visual frente al arte actual (0.93 < 1.00)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 95.3,
+     "status": "FAIL",
+     "improvement": 9.8,
+     "reasons": [
+      "regresión de riqueza visual frente al arte actual (0.86 < 1.00)",
+      "regresión de cobertura legible frente al arte actual (0.80 < 1.00)"
+     ]
+    },
+    {
+     "round": 3,
+     "score": 97.8,
+     "status": "FAIL",
+     "improvement": 12.3,
+     "reasons": [
+      "regresión de riqueza visual frente al arte actual (0.85 < 1.00)"
+     ]
+    },
+    {
+     "round": 4,
+     "score": 97.8,
+     "status": "FAIL",
+     "improvement": 12.3,
+     "reasons": [
+      "regresión de riqueza visual frente al arte actual (0.85 < 1.00)"
+     ]
+    },
+    {
+     "round": 5,
+     "score": 95.9,
+     "status": "FAIL",
+     "improvement": 10.4,
+     "reasons": [
+      "regresión de riqueza visual frente al arte actual (0.85 < 1.00)",
+      "regresión de cobertura legible frente al arte actual (0.85 < 1.00)"
+     ]
+    },
+    {
+     "round": 6,
+     "score": 97.8,
+     "status": "FAIL",
+     "improvement": 12.3,
+     "reasons": [
+      "regresión de riqueza visual frente al arte actual (0.85 < 1.00)"
+     ]
+    }
+   ]
+  }
+ },
+ "baseline": {
+  "furnace": 69.9,
+  "quench": 66.6,
+  "ash_step": 76.7,
+  "vent": 76.8,
+  "vent_zone": 85.5
+ },
+ "log": [
+  "ronda 1: furnace FAIL 80.0 — el interior tapa al enemigo (67% de píxeles opacos en la zona central; techo 60 %); criterio bajo: cobertura legible 1.71/12",
+  "ronda 1: quench PASS 96.3 (arte actual 66.6, +29.7)",
+  "ronda 1: ash_step PASS 98.3 (arte actual 76.7, +21.6)",
+  "ronda 1: vent FAIL 90.1 — criterio bajo: cobertura legible 5.98/12; regresión de cobertura legible frente al arte actual (0.50 < 1.00)",
+  "ronda 1: vent_zone FAIL 99.0 — regresión de riqueza visual frente al arte actual (0.93 < 1.00)",
+  "ronda 2: furnace FAIL 84.9 — el interior tapa al enemigo (63% de píxeles opacos en la zona central; techo 60 %); criterio bajo: suelo despejado 0.0/5",
+  "ronda 2: vent PASS 97.6 (arte actual 76.8, +20.8)",
+  "ronda 2: vent_zone FAIL 95.3 — regresión de riqueza visual frente al arte actual (0.86 < 1.00); regresión de cobertura legible frente al arte actual (0.80 < 1.00)",
+  "ronda 3: furnace FAIL 84.8 — el interior tapa al enemigo (71% de píxeles opacos en la zona central; techo 60 %); criterio bajo: suelo despejado 0.0/5",
+  "ronda 3: vent_zone FAIL 97.8 — regresión de riqueza visual frente al arte actual (0.85 < 1.00)",
+  "ronda 4: furnace FAIL 83.4 — el interior tapa al enemigo (72% de píxeles opacos en la zona central; techo 60 %); criterio bajo: suelo despejado 0.0/5",
+  "ronda 4: vent_zone FAIL 97.8 — regresión de riqueza visual frente al arte actual (0.85 < 1.00)",
+  "ronda 5: furnace FAIL 83.4 — el interior tapa al enemigo (77% de píxeles opacos en la zona central; techo 60 %); criterio bajo: suelo despejado 0.0/5",
+  "ronda 5: vent_zone FAIL 95.9 — regresión de riqueza visual frente al arte actual (0.85 < 1.00); regresión de cobertura legible frente al arte actual (0.85 < 1.00)",
+  "ronda 6: furnace FAIL 83.4 — el interior tapa al enemigo (77% de píxeles opacos en la zona central; techo 60 %); criterio bajo: suelo despejado 0.0/5",
+  "ronda 6: vent_zone FAIL 97.8 — regresión de riqueza visual frente al arte actual (0.85 < 1.00)",
+  "arquitecto: integradas ['quench', 'ash_step', 'vent']; humo OK: SMOKE OK zahra: quench,ash_step,vent"
+ ],
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['quench', 'ash_step', 'vent']; humo OK: SMOKE OK zahra: quench,ash_step,vent"
+ }
+}
