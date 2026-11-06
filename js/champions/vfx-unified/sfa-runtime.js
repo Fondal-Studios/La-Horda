@@ -5,15 +5,16 @@
    (variantes ~h ~p ~k y tinte por arena). Solo (tipo|tema base|tamaño) con capa aprobada; el resto no cambia. No toca daño, alcance,
    duración ni azar. ?ua=0 vuelve al arte anterior. */
 const ABS = {off: (function(){ try{ return /[?&](ua|sfa)=0\b/.test(location.search); }catch(e){ return false; } })(), map: {}, hits: 0, hooked: false, cache: new Map(), arena: null};
-function abaSfaDecode(s, n){
-  const out = new Uint8Array(n); let p = 0, i = 0;
-  while(i < s.length){ const d = s.charCodeAt(i++) - 48; let j = i; while(j < s.length && s[j] !== ';') j++; const run = parseInt(s.slice(i, j), 10); i = j + 1; out.fill(d, p, p + run); p += run; }
+function abaSfaDecode(s, n, done){   // capa dispersa: píxeles opacos como saltos·8+tono en base 36; '=k' repite el cuadro k
+  if(s.charCodeAt(0) === 61) return done[+s.slice(1)];
+  const out = new Uint8Array(n); if(!s) return out; let p = 0;
+  for(const tok of s.split(',')){ const v = parseInt(tok, 36); p += v >> 3; out[p] = v & 7; }
   return out;
 }
 function abaSfaRgb(h){ const n = parseInt(h.slice(1), 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; }
 function abaSfaOverlay(art, themes, size, w, h, frames){   // themes: nombre o lista de temas base que comparten esta capa
   if(ABS.off || typeof sfaBake !== 'function') return;
-  const fr = frames.map(s => abaSfaDecode(s, w * h));
+  const fr = []; for(const s of frames) fr.push(abaSfaDecode(s, w * h, fr));
   for(const th of [].concat(themes)) ABS.map[art + '|' + th + '|' + size] = {w, h, fr};
   if(ABS.hooked) return; ABS.hooked = true;
   const orig = sfaBake;
