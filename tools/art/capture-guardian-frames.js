@@ -22,7 +22,7 @@ const [key, out, skin = '', pack = ''] = process.argv.slice(2);
       const ex = pack ? { _codexPack: pack } : {};
       const o = Object.assign({ _codexSkin: skin ? skin : '' }, ex);
       let fx = 1, animT = 0, moving = false;
-      if (st === 'idle') { animNow = i * 260 + 10; }
+      if (st === 'idle') { animNow = [10, 760, 1100][i]; }
       if (st === 'walk') { moving = true; animT = i * 130 + 5; }
       if (st === 'attack') { o.attackAnim = 400 * (1 - [0.05, 0.4, 0.75][i]); o._aDur = 400; o._aPrev = o.attackAnim; }
       drawChampFigure(tc, key, t.width / 2, t.height * 0.86, 2.0, fx, animT, moving, o);

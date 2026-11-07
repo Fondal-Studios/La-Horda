@@ -90,7 +90,8 @@ def main():
         m = None
         try:
             with Image.open(p) as image:
-                supported = image.size == (448, 1008)
+                # 9 filas de animación; los atlas con cuadros extra de respiración (idle) suman filas de 112 px debajo: se miden solo las 9 primeras
+                supported = image.size[0] == 448 and image.size[1] in (1008, 1120, 1232)
             if not supported:
                 if not explicit:
                     out['skipped'].append(str(p))

@@ -4,7 +4,7 @@
 /* ---------- Selección de arenas: miniatura (panorámica del Códice); bloqueada = silueta + candado ---------- */
 .arena-thumb{ position:relative; width:100%; height:96px; margin:0 0 8px; overflow:hidden; border:2px solid #000;
   background:linear-gradient(180deg,#3a2a1c,#1a110a); box-shadow:inset 0 0 0 1px rgba(255,170,90,.28); }
-.arena-thumb i{ position:absolute; inset:0; background-size:cover; background-position:center; image-rendering:pixelated; }
+.arena-thumb i{ position:absolute; inset:0; background-size:cover; background-position:center; }
 .arena-thumb::after{ content:""; position:absolute; inset:0; pointer-events:none;
   background:repeating-linear-gradient(0deg, rgba(0,0,0,.14) 0 1px, transparent 1px 3px), linear-gradient(180deg, transparent 55%, rgba(8,4,2,.55)); }
 .arena-thumb.no-art{ background:repeating-linear-gradient(45deg,#2a1c12 0 6px,#221710 6px 12px); }
@@ -28,7 +28,7 @@
 /* ---------- Pantallas finales: banner con la arena y el guardián ---------- */
 .end-hero{ position:relative; width:min(440px,92vw); height:150px; margin:0 auto 10px; overflow:hidden; border:3px solid #000;
   background:linear-gradient(180deg,#2a1810,#120a06); box-shadow:inset 0 0 0 2px rgba(255,170,90,.35), 4px 4px 0 #000; }
-.end-hero-bg{ position:absolute; inset:0; background-size:cover; background-position:center; image-rendering:pixelated; }
+.end-hero-bg{ position:absolute; inset:0; background-size:cover; background-position:center; }
 .end-hero::before{ content:""; position:absolute; inset:0; z-index:1; pointer-events:none; }
 .end-hero.lose .end-hero-bg{ filter:grayscale(.75) brightness(.55) contrast(1.1); }
 .end-hero.lose::before{ background:linear-gradient(180deg, rgba(120,12,12,.45), rgba(20,0,0,.7)); }

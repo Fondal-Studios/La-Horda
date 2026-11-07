@@ -2,11 +2,11 @@
   "scope": "Actual renderer, six levels, all36 frames, host/guest snapshot replay; existing gates cover balance and live transport",
   "checks": [
     {
-      "name": "L1 v3 loaded",
+      "name": "L1 codex-v1 loaded",
       "ok": true
     },
     {
-      "name": "L1 36 canonical cells",
+      "name": "L1 52 canonical cells (36 v3 contract + idle/hit)",
       "ok": true
     },
     {
@@ -25,7 +25,7 @@
       "name": "L1 body/foot down 0",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 58,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -42,7 +42,7 @@
       "ok": true,
       "details": {
         "body": 59,
-        "foot": -2,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -57,7 +57,7 @@
       "name": "L1 body/foot down 2",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 57,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -74,7 +74,7 @@
       "ok": true,
       "details": {
         "body": 59,
-        "foot": -2,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -113,7 +113,7 @@
       "name": "L1 body/foot right 0",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 57,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -130,7 +130,7 @@
       "ok": true,
       "details": {
         "body": 59,
-        "foot": -2,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -145,7 +145,7 @@
       "name": "L1 body/foot right 2",
       "ok": true,
       "details": {
-        "body": 58,
+        "body": 59,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -161,8 +161,8 @@
       "name": "L1 body/foot right 3",
       "ok": true,
       "details": {
-        "body": 60,
-        "foot": -2,
+        "body": 59,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -201,7 +201,7 @@
       "name": "L1 body/foot left 0",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 57,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -218,7 +218,7 @@
       "ok": true,
       "details": {
         "body": 59,
-        "foot": -2,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -233,7 +233,7 @@
       "name": "L1 body/foot left 2",
       "ok": true,
       "details": {
-        "body": 58,
+        "body": 59,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -249,8 +249,8 @@
       "name": "L1 body/foot left 3",
       "ok": true,
       "details": {
-        "body": 60,
-        "foot": -2,
+        "body": 59,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -289,7 +289,7 @@
       "name": "L1 body/foot up 0",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 58,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -305,8 +305,8 @@
       "name": "L1 body/foot up 1",
       "ok": true,
       "details": {
-        "body": 60,
-        "foot": -2,
+        "body": 59,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -321,7 +321,7 @@
       "name": "L1 body/foot up 2",
       "ok": true,
       "details": {
-        "body": 61,
+        "body": 57,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -337,8 +337,8 @@
       "name": "L1 body/foot up 3",
       "ok": true,
       "details": {
-        "body": 60,
-        "foot": -2,
+        "body": 59,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -561,7 +561,11 @@
           32,
           33,
           34,
-          35
+          35,
+          38,
+          42,
+          46,
+          48
         ]
       }
     },
@@ -595,11 +599,11 @@
       }
     },
     {
-      "name": "L39 v3 loaded",
+      "name": "L39 codex-v1 loaded",
       "ok": true
     },
     {
-      "name": "L39 36 canonical cells",
+      "name": "L39 52 canonical cells (36 v3 contract + idle/hit)",
       "ok": true
     },
     {
@@ -618,7 +622,7 @@
       "name": "L39 body/foot down 0",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 58,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -635,7 +639,7 @@
       "ok": true,
       "details": {
         "body": 59,
-        "foot": -2,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -650,7 +654,7 @@
       "name": "L39 body/foot down 2",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 57,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -667,7 +671,7 @@
       "ok": true,
       "details": {
         "body": 59,
-        "foot": -2,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -706,7 +710,7 @@
       "name": "L39 body/foot right 0",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 57,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -723,7 +727,7 @@
       "ok": true,
       "details": {
         "body": 59,
-        "foot": -2,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -738,7 +742,7 @@
       "name": "L39 body/foot right 2",
       "ok": true,
       "details": {
-        "body": 58,
+        "body": 59,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -754,8 +758,8 @@
       "name": "L39 body/foot right 3",
       "ok": true,
       "details": {
-        "body": 60,
-        "foot": -2,
+        "body": 59,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -794,7 +798,7 @@
       "name": "L39 body/foot left 0",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 57,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -811,7 +815,7 @@
       "ok": true,
       "details": {
         "body": 59,
-        "foot": -2,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -826,7 +830,7 @@
       "name": "L39 body/foot left 2",
       "ok": true,
       "details": {
-        "body": 58,
+        "body": 59,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -842,8 +846,8 @@
       "name": "L39 body/foot left 3",
       "ok": true,
       "details": {
-        "body": 60,
-        "foot": -2,
+        "body": 59,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -882,7 +886,7 @@
       "name": "L39 body/foot up 0",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 58,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -898,8 +902,8 @@
       "name": "L39 body/foot up 1",
       "ok": true,
       "details": {
-        "body": 60,
-        "foot": -2,
+        "body": 59,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -914,7 +918,7 @@
       "name": "L39 body/foot up 2",
       "ok": true,
       "details": {
-        "body": 61,
+        "body": 57,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -930,8 +934,8 @@
       "name": "L39 body/foot up 3",
       "ok": true,
       "details": {
-        "body": 60,
-        "foot": -2,
+        "body": 59,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -1154,7 +1158,11 @@
           32,
           33,
           34,
-          35
+          35,
+          38,
+          42,
+          46,
+          48
         ]
       }
     },
@@ -1188,11 +1196,11 @@
       }
     },
     {
-      "name": "L40 v3 loaded",
+      "name": "L40 codex-v1 loaded",
       "ok": true
     },
     {
-      "name": "L40 36 canonical cells",
+      "name": "L40 52 canonical cells (36 v3 contract + idle/hit)",
       "ok": true
     },
     {
@@ -1211,7 +1219,7 @@
       "name": "L40 body/foot down 0",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 58,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -1228,7 +1236,7 @@
       "ok": true,
       "details": {
         "body": 59,
-        "foot": -2,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -1243,7 +1251,7 @@
       "name": "L40 body/foot down 2",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 57,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -1260,7 +1268,7 @@
       "ok": true,
       "details": {
         "body": 59,
-        "foot": -2,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -1299,7 +1307,7 @@
       "name": "L40 body/foot right 0",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 57,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -1316,7 +1324,7 @@
       "ok": true,
       "details": {
         "body": 59,
-        "foot": -2,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -1331,7 +1339,7 @@
       "name": "L40 body/foot right 2",
       "ok": true,
       "details": {
-        "body": 58,
+        "body": 59,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -1347,8 +1355,8 @@
       "name": "L40 body/foot right 3",
       "ok": true,
       "details": {
-        "body": 60,
-        "foot": -2,
+        "body": 59,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -1387,7 +1395,7 @@
       "name": "L40 body/foot left 0",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 57,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -1404,7 +1412,7 @@
       "ok": true,
       "details": {
         "body": 59,
-        "foot": -2,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -1419,7 +1427,7 @@
       "name": "L40 body/foot left 2",
       "ok": true,
       "details": {
-        "body": 58,
+        "body": 59,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -1435,8 +1443,8 @@
       "name": "L40 body/foot left 3",
       "ok": true,
       "details": {
-        "body": 60,
-        "foot": -2,
+        "body": 59,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -1475,7 +1483,7 @@
       "name": "L40 body/foot up 0",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 58,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -1491,8 +1499,8 @@
       "name": "L40 body/foot up 1",
       "ok": true,
       "details": {
-        "body": 60,
-        "foot": -2,
+        "body": 59,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -1507,7 +1515,7 @@
       "name": "L40 body/foot up 2",
       "ok": true,
       "details": {
-        "body": 61,
+        "body": 57,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -1523,8 +1531,8 @@
       "name": "L40 body/foot up 3",
       "ok": true,
       "details": {
-        "body": 60,
-        "foot": -2,
+        "body": 59,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -1747,7 +1755,11 @@
           32,
           33,
           34,
-          35
+          35,
+          38,
+          42,
+          46,
+          48
         ]
       }
     },
@@ -1781,11 +1793,11 @@
       }
     },
     {
-      "name": "L60 v3 loaded",
+      "name": "L60 codex-v1 loaded",
       "ok": true
     },
     {
-      "name": "L60 36 canonical cells",
+      "name": "L60 52 canonical cells (36 v3 contract + idle/hit)",
       "ok": true
     },
     {
@@ -1804,7 +1816,7 @@
       "name": "L60 body/foot down 0",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 58,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -1821,7 +1833,7 @@
       "ok": true,
       "details": {
         "body": 59,
-        "foot": -2,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -1836,7 +1848,7 @@
       "name": "L60 body/foot down 2",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 57,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -1853,7 +1865,7 @@
       "ok": true,
       "details": {
         "body": 59,
-        "foot": -2,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -1892,7 +1904,7 @@
       "name": "L60 body/foot right 0",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 57,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -1909,7 +1921,7 @@
       "ok": true,
       "details": {
         "body": 59,
-        "foot": -2,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -1924,7 +1936,7 @@
       "name": "L60 body/foot right 2",
       "ok": true,
       "details": {
-        "body": 58,
+        "body": 59,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -1940,8 +1952,8 @@
       "name": "L60 body/foot right 3",
       "ok": true,
       "details": {
-        "body": 60,
-        "foot": -2,
+        "body": 59,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -1980,7 +1992,7 @@
       "name": "L60 body/foot left 0",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 57,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -1997,7 +2009,7 @@
       "ok": true,
       "details": {
         "body": 59,
-        "foot": -2,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -2012,7 +2024,7 @@
       "name": "L60 body/foot left 2",
       "ok": true,
       "details": {
-        "body": 58,
+        "body": 59,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -2028,8 +2040,8 @@
       "name": "L60 body/foot left 3",
       "ok": true,
       "details": {
-        "body": 60,
-        "foot": -2,
+        "body": 59,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -2068,7 +2080,7 @@
       "name": "L60 body/foot up 0",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 58,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -2084,8 +2096,8 @@
       "name": "L60 body/foot up 1",
       "ok": true,
       "details": {
-        "body": 60,
-        "foot": -2,
+        "body": 59,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -2100,7 +2112,7 @@
       "name": "L60 body/foot up 2",
       "ok": true,
       "details": {
-        "body": 61,
+        "body": 57,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -2116,8 +2128,8 @@
       "name": "L60 body/foot up 3",
       "ok": true,
       "details": {
-        "body": 60,
-        "foot": -2,
+        "body": 59,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -2340,7 +2352,11 @@
           32,
           33,
           34,
-          35
+          35,
+          38,
+          42,
+          46,
+          48
         ]
       }
     },
@@ -2374,11 +2390,11 @@
       }
     },
     {
-      "name": "L90 v3 loaded",
+      "name": "L90 codex-v1 loaded",
       "ok": true
     },
     {
-      "name": "L90 36 canonical cells",
+      "name": "L90 52 canonical cells (36 v3 contract + idle/hit)",
       "ok": true
     },
     {
@@ -2397,7 +2413,7 @@
       "name": "L90 body/foot down 0",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 58,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -2414,7 +2430,7 @@
       "ok": true,
       "details": {
         "body": 59,
-        "foot": -2,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -2429,7 +2445,7 @@
       "name": "L90 body/foot down 2",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 57,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -2446,7 +2462,7 @@
       "ok": true,
       "details": {
         "body": 59,
-        "foot": -2,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -2485,7 +2501,7 @@
       "name": "L90 body/foot right 0",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 57,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -2502,7 +2518,7 @@
       "ok": true,
       "details": {
         "body": 59,
-        "foot": -2,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -2517,7 +2533,7 @@
       "name": "L90 body/foot right 2",
       "ok": true,
       "details": {
-        "body": 58,
+        "body": 59,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -2533,8 +2549,8 @@
       "name": "L90 body/foot right 3",
       "ok": true,
       "details": {
-        "body": 60,
-        "foot": -2,
+        "body": 59,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -2573,7 +2589,7 @@
       "name": "L90 body/foot left 0",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 57,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -2590,7 +2606,7 @@
       "ok": true,
       "details": {
         "body": 59,
-        "foot": -2,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -2605,7 +2621,7 @@
       "name": "L90 body/foot left 2",
       "ok": true,
       "details": {
-        "body": 58,
+        "body": 59,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -2621,8 +2637,8 @@
       "name": "L90 body/foot left 3",
       "ok": true,
       "details": {
-        "body": 60,
-        "foot": -2,
+        "body": 59,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -2661,7 +2677,7 @@
       "name": "L90 body/foot up 0",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 58,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -2677,8 +2693,8 @@
       "name": "L90 body/foot up 1",
       "ok": true,
       "details": {
-        "body": 60,
-        "foot": -2,
+        "body": 59,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -2693,7 +2709,7 @@
       "name": "L90 body/foot up 2",
       "ok": true,
       "details": {
-        "body": 61,
+        "body": 57,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -2709,8 +2725,8 @@
       "name": "L90 body/foot up 3",
       "ok": true,
       "details": {
-        "body": 60,
-        "foot": -2,
+        "body": 59,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -2933,7 +2949,11 @@
           32,
           33,
           34,
-          35
+          35,
+          38,
+          42,
+          46,
+          48
         ]
       }
     },
@@ -2967,11 +2987,11 @@
       }
     },
     {
-      "name": "L99 v3 loaded",
+      "name": "L99 codex-v1 loaded",
       "ok": true
     },
     {
-      "name": "L99 36 canonical cells",
+      "name": "L99 52 canonical cells (36 v3 contract + idle/hit)",
       "ok": true
     },
     {
@@ -2990,7 +3010,7 @@
       "name": "L99 body/foot down 0",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 58,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -3007,7 +3027,7 @@
       "ok": true,
       "details": {
         "body": 59,
-        "foot": -2,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -3022,7 +3042,7 @@
       "name": "L99 body/foot down 2",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 57,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -3039,7 +3059,7 @@
       "ok": true,
       "details": {
         "body": 59,
-        "foot": -2,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -3078,7 +3098,7 @@
       "name": "L99 body/foot right 0",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 57,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -3095,7 +3115,7 @@
       "ok": true,
       "details": {
         "body": 59,
-        "foot": -2,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -3110,7 +3130,7 @@
       "name": "L99 body/foot right 2",
       "ok": true,
       "details": {
-        "body": 58,
+        "body": 59,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -3126,8 +3146,8 @@
       "name": "L99 body/foot right 3",
       "ok": true,
       "details": {
-        "body": 60,
-        "foot": -2,
+        "body": 59,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -3166,7 +3186,7 @@
       "name": "L99 body/foot left 0",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 57,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -3183,7 +3203,7 @@
       "ok": true,
       "details": {
         "body": 59,
-        "foot": -2,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -3198,7 +3218,7 @@
       "name": "L99 body/foot left 2",
       "ok": true,
       "details": {
-        "body": 58,
+        "body": 59,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -3214,8 +3234,8 @@
       "name": "L99 body/foot left 3",
       "ok": true,
       "details": {
-        "body": 60,
-        "foot": -2,
+        "body": 59,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -3254,7 +3274,7 @@
       "name": "L99 body/foot up 0",
       "ok": true,
       "details": {
-        "body": 59,
+        "body": 58,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -3270,8 +3290,8 @@
       "name": "L99 body/foot up 1",
       "ok": true,
       "details": {
-        "body": 60,
-        "foot": -2,
+        "body": 59,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -3286,7 +3306,7 @@
       "name": "L99 body/foot up 2",
       "ok": true,
       "details": {
-        "body": 61,
+        "body": 57,
         "foot": -2,
         "reference": {
           "body": 59,
@@ -3302,8 +3322,8 @@
       "name": "L99 body/foot up 3",
       "ok": true,
       "details": {
-        "body": 60,
-        "foot": -2,
+        "body": 59,
+        "foot": -3,
         "reference": {
           "body": 59,
           "foot": -2
@@ -3526,7 +3546,11 @@
           32,
           33,
           34,
-          35
+          35,
+          38,
+          42,
+          46,
+          48
         ]
       }
     },
@@ -3606,98 +3630,98 @@
         {
           "dir": "down",
           "phase": 0,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "down",
-          "phase": 1,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "down",
-          "phase": 2,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "down",
-          "phase": 3,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "right",
-          "phase": 0,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "right",
-          "phase": 1,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "right",
-          "phase": 2,
           "body": 58,
           "foot": -2
         },
         {
+          "dir": "down",
+          "phase": 1,
+          "body": 59,
+          "foot": -3
+        },
+        {
+          "dir": "down",
+          "phase": 2,
+          "body": 57,
+          "foot": -2
+        },
+        {
+          "dir": "down",
+          "phase": 3,
+          "body": 59,
+          "foot": -3
+        },
+        {
+          "dir": "right",
+          "phase": 0,
+          "body": 57,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 1,
+          "body": 59,
+          "foot": -3
+        },
+        {
+          "dir": "right",
+          "phase": 2,
+          "body": 59,
+          "foot": -2
+        },
+        {
           "dir": "right",
           "phase": 3,
-          "body": 60,
-          "foot": -2
+          "body": 59,
+          "foot": -3
         },
         {
           "dir": "left",
           "phase": 0,
-          "body": 59,
+          "body": 57,
           "foot": -2
         },
         {
           "dir": "left",
           "phase": 1,
           "body": 59,
-          "foot": -2
+          "foot": -3
         },
         {
           "dir": "left",
           "phase": 2,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 3,
+          "body": 59,
+          "foot": -3
+        },
+        {
+          "dir": "up",
+          "phase": 0,
           "body": 58,
           "foot": -2
         },
         {
-          "dir": "left",
-          "phase": 3,
-          "body": 60,
-          "foot": -2
-        },
-        {
-          "dir": "up",
-          "phase": 0,
-          "body": 59,
-          "foot": -2
-        },
-        {
           "dir": "up",
           "phase": 1,
-          "body": 60,
-          "foot": -2
+          "body": 59,
+          "foot": -3
         },
         {
           "dir": "up",
           "phase": 2,
-          "body": 61,
+          "body": 57,
           "foot": -2
         },
         {
           "dir": "up",
           "phase": 3,
-          "body": 60,
-          "foot": -2
+          "body": 59,
+          "foot": -3
         }
       ],
       "reference": {
@@ -3762,98 +3786,98 @@
         {
           "dir": "down",
           "phase": 0,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "down",
-          "phase": 1,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "down",
-          "phase": 2,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "down",
-          "phase": 3,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "right",
-          "phase": 0,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "right",
-          "phase": 1,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "right",
-          "phase": 2,
           "body": 58,
           "foot": -2
         },
         {
+          "dir": "down",
+          "phase": 1,
+          "body": 59,
+          "foot": -3
+        },
+        {
+          "dir": "down",
+          "phase": 2,
+          "body": 57,
+          "foot": -2
+        },
+        {
+          "dir": "down",
+          "phase": 3,
+          "body": 59,
+          "foot": -3
+        },
+        {
+          "dir": "right",
+          "phase": 0,
+          "body": 57,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 1,
+          "body": 59,
+          "foot": -3
+        },
+        {
+          "dir": "right",
+          "phase": 2,
+          "body": 59,
+          "foot": -2
+        },
+        {
           "dir": "right",
           "phase": 3,
-          "body": 60,
-          "foot": -2
+          "body": 59,
+          "foot": -3
         },
         {
           "dir": "left",
           "phase": 0,
-          "body": 59,
+          "body": 57,
           "foot": -2
         },
         {
           "dir": "left",
           "phase": 1,
           "body": 59,
-          "foot": -2
+          "foot": -3
         },
         {
           "dir": "left",
           "phase": 2,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 3,
+          "body": 59,
+          "foot": -3
+        },
+        {
+          "dir": "up",
+          "phase": 0,
           "body": 58,
           "foot": -2
         },
         {
-          "dir": "left",
-          "phase": 3,
-          "body": 60,
-          "foot": -2
-        },
-        {
-          "dir": "up",
-          "phase": 0,
-          "body": 59,
-          "foot": -2
-        },
-        {
           "dir": "up",
           "phase": 1,
-          "body": 60,
-          "foot": -2
+          "body": 59,
+          "foot": -3
         },
         {
           "dir": "up",
           "phase": 2,
-          "body": 61,
+          "body": 57,
           "foot": -2
         },
         {
           "dir": "up",
           "phase": 3,
-          "body": 60,
-          "foot": -2
+          "body": 59,
+          "foot": -3
         }
       ],
       "reference": {
@@ -3918,98 +3942,98 @@
         {
           "dir": "down",
           "phase": 0,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "down",
-          "phase": 1,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "down",
-          "phase": 2,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "down",
-          "phase": 3,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "right",
-          "phase": 0,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "right",
-          "phase": 1,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "right",
-          "phase": 2,
           "body": 58,
           "foot": -2
         },
         {
+          "dir": "down",
+          "phase": 1,
+          "body": 59,
+          "foot": -3
+        },
+        {
+          "dir": "down",
+          "phase": 2,
+          "body": 57,
+          "foot": -2
+        },
+        {
+          "dir": "down",
+          "phase": 3,
+          "body": 59,
+          "foot": -3
+        },
+        {
+          "dir": "right",
+          "phase": 0,
+          "body": 57,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 1,
+          "body": 59,
+          "foot": -3
+        },
+        {
+          "dir": "right",
+          "phase": 2,
+          "body": 59,
+          "foot": -2
+        },
+        {
           "dir": "right",
           "phase": 3,
-          "body": 60,
-          "foot": -2
+          "body": 59,
+          "foot": -3
         },
         {
           "dir": "left",
           "phase": 0,
-          "body": 59,
+          "body": 57,
           "foot": -2
         },
         {
           "dir": "left",
           "phase": 1,
           "body": 59,
-          "foot": -2
+          "foot": -3
         },
         {
           "dir": "left",
           "phase": 2,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 3,
+          "body": 59,
+          "foot": -3
+        },
+        {
+          "dir": "up",
+          "phase": 0,
           "body": 58,
           "foot": -2
         },
         {
-          "dir": "left",
-          "phase": 3,
-          "body": 60,
-          "foot": -2
-        },
-        {
-          "dir": "up",
-          "phase": 0,
-          "body": 59,
-          "foot": -2
-        },
-        {
           "dir": "up",
           "phase": 1,
-          "body": 60,
-          "foot": -2
+          "body": 59,
+          "foot": -3
         },
         {
           "dir": "up",
           "phase": 2,
-          "body": 61,
+          "body": 57,
           "foot": -2
         },
         {
           "dir": "up",
           "phase": 3,
-          "body": 60,
-          "foot": -2
+          "body": 59,
+          "foot": -3
         }
       ],
       "reference": {
@@ -4074,98 +4098,98 @@
         {
           "dir": "down",
           "phase": 0,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "down",
-          "phase": 1,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "down",
-          "phase": 2,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "down",
-          "phase": 3,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "right",
-          "phase": 0,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "right",
-          "phase": 1,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "right",
-          "phase": 2,
           "body": 58,
           "foot": -2
         },
         {
+          "dir": "down",
+          "phase": 1,
+          "body": 59,
+          "foot": -3
+        },
+        {
+          "dir": "down",
+          "phase": 2,
+          "body": 57,
+          "foot": -2
+        },
+        {
+          "dir": "down",
+          "phase": 3,
+          "body": 59,
+          "foot": -3
+        },
+        {
+          "dir": "right",
+          "phase": 0,
+          "body": 57,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 1,
+          "body": 59,
+          "foot": -3
+        },
+        {
+          "dir": "right",
+          "phase": 2,
+          "body": 59,
+          "foot": -2
+        },
+        {
           "dir": "right",
           "phase": 3,
-          "body": 60,
-          "foot": -2
+          "body": 59,
+          "foot": -3
         },
         {
           "dir": "left",
           "phase": 0,
-          "body": 59,
+          "body": 57,
           "foot": -2
         },
         {
           "dir": "left",
           "phase": 1,
           "body": 59,
-          "foot": -2
+          "foot": -3
         },
         {
           "dir": "left",
           "phase": 2,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 3,
+          "body": 59,
+          "foot": -3
+        },
+        {
+          "dir": "up",
+          "phase": 0,
           "body": 58,
           "foot": -2
         },
         {
-          "dir": "left",
-          "phase": 3,
-          "body": 60,
-          "foot": -2
-        },
-        {
-          "dir": "up",
-          "phase": 0,
-          "body": 59,
-          "foot": -2
-        },
-        {
           "dir": "up",
           "phase": 1,
-          "body": 60,
-          "foot": -2
+          "body": 59,
+          "foot": -3
         },
         {
           "dir": "up",
           "phase": 2,
-          "body": 61,
+          "body": 57,
           "foot": -2
         },
         {
           "dir": "up",
           "phase": 3,
-          "body": 60,
-          "foot": -2
+          "body": 59,
+          "foot": -3
         }
       ],
       "reference": {
@@ -4230,98 +4254,98 @@
         {
           "dir": "down",
           "phase": 0,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "down",
-          "phase": 1,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "down",
-          "phase": 2,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "down",
-          "phase": 3,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "right",
-          "phase": 0,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "right",
-          "phase": 1,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "right",
-          "phase": 2,
           "body": 58,
           "foot": -2
         },
         {
+          "dir": "down",
+          "phase": 1,
+          "body": 59,
+          "foot": -3
+        },
+        {
+          "dir": "down",
+          "phase": 2,
+          "body": 57,
+          "foot": -2
+        },
+        {
+          "dir": "down",
+          "phase": 3,
+          "body": 59,
+          "foot": -3
+        },
+        {
+          "dir": "right",
+          "phase": 0,
+          "body": 57,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 1,
+          "body": 59,
+          "foot": -3
+        },
+        {
+          "dir": "right",
+          "phase": 2,
+          "body": 59,
+          "foot": -2
+        },
+        {
           "dir": "right",
           "phase": 3,
-          "body": 60,
-          "foot": -2
+          "body": 59,
+          "foot": -3
         },
         {
           "dir": "left",
           "phase": 0,
-          "body": 59,
+          "body": 57,
           "foot": -2
         },
         {
           "dir": "left",
           "phase": 1,
           "body": 59,
-          "foot": -2
+          "foot": -3
         },
         {
           "dir": "left",
           "phase": 2,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 3,
+          "body": 59,
+          "foot": -3
+        },
+        {
+          "dir": "up",
+          "phase": 0,
           "body": 58,
           "foot": -2
         },
         {
-          "dir": "left",
-          "phase": 3,
-          "body": 60,
-          "foot": -2
-        },
-        {
-          "dir": "up",
-          "phase": 0,
-          "body": 59,
-          "foot": -2
-        },
-        {
           "dir": "up",
           "phase": 1,
-          "body": 60,
-          "foot": -2
+          "body": 59,
+          "foot": -3
         },
         {
           "dir": "up",
           "phase": 2,
-          "body": 61,
+          "body": 57,
           "foot": -2
         },
         {
           "dir": "up",
           "phase": 3,
-          "body": 60,
-          "foot": -2
+          "body": 59,
+          "foot": -3
         }
       ],
       "reference": {
@@ -4386,98 +4410,98 @@
         {
           "dir": "down",
           "phase": 0,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "down",
-          "phase": 1,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "down",
-          "phase": 2,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "down",
-          "phase": 3,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "right",
-          "phase": 0,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "right",
-          "phase": 1,
-          "body": 59,
-          "foot": -2
-        },
-        {
-          "dir": "right",
-          "phase": 2,
           "body": 58,
           "foot": -2
         },
         {
+          "dir": "down",
+          "phase": 1,
+          "body": 59,
+          "foot": -3
+        },
+        {
+          "dir": "down",
+          "phase": 2,
+          "body": 57,
+          "foot": -2
+        },
+        {
+          "dir": "down",
+          "phase": 3,
+          "body": 59,
+          "foot": -3
+        },
+        {
+          "dir": "right",
+          "phase": 0,
+          "body": 57,
+          "foot": -2
+        },
+        {
+          "dir": "right",
+          "phase": 1,
+          "body": 59,
+          "foot": -3
+        },
+        {
+          "dir": "right",
+          "phase": 2,
+          "body": 59,
+          "foot": -2
+        },
+        {
           "dir": "right",
           "phase": 3,
-          "body": 60,
-          "foot": -2
+          "body": 59,
+          "foot": -3
         },
         {
           "dir": "left",
           "phase": 0,
-          "body": 59,
+          "body": 57,
           "foot": -2
         },
         {
           "dir": "left",
           "phase": 1,
           "body": 59,
-          "foot": -2
+          "foot": -3
         },
         {
           "dir": "left",
           "phase": 2,
+          "body": 59,
+          "foot": -2
+        },
+        {
+          "dir": "left",
+          "phase": 3,
+          "body": 59,
+          "foot": -3
+        },
+        {
+          "dir": "up",
+          "phase": 0,
           "body": 58,
           "foot": -2
         },
         {
-          "dir": "left",
-          "phase": 3,
-          "body": 60,
-          "foot": -2
-        },
-        {
-          "dir": "up",
-          "phase": 0,
-          "body": 59,
-          "foot": -2
-        },
-        {
           "dir": "up",
           "phase": 1,
-          "body": 60,
-          "foot": -2
+          "body": 59,
+          "foot": -3
         },
         {
           "dir": "up",
           "phase": 2,
-          "body": 61,
+          "body": 57,
           "foot": -2
         },
         {
           "dir": "up",
           "phase": 3,
-          "body": 60,
-          "foot": -2
+          "body": 59,
+          "foot": -3
         }
       ],
       "reference": {
@@ -4500,10 +4524,11 @@
     }
   ],
   "provenance": {
-    "atlas": "assets/sprites/champions/soporte/v3/atlas.png",
-    "atlasSha256": "6a4159258e35d515e405023dcb322526af6a437a3102ae097fa9c87e128fcc34",
-    "metadataSha256": "7b4536ce66620efc85a7037fa8622cf18d14a0f48733aea4bb408c7946c9c755",
-    "rendererSha256": "86b542e56cb6efb4b6d6b9b7854bbc9d7d17a385a134543ea123c0909c970b4c"
+    "atlas": "assets/sprites/champions/soporte/codex-v1/atlas.png",
+    "atlasSha256": "d3d5b41b58805f00f074a80ab648253f813fd056609dc3052d1e69252450243b",
+    "v3SourceSha256": "6a4159258e35d515e405023dcb322526af6a437a3102ae097fa9c87e128fcc34",
+    "metadataSha256": "41d764368bfcc424be771485846f8711b70474b07bf2e9c7f68ff87a00b162db",
+    "rendererSha256": "3f88e66aedc6a865246a017484009311fd6f58d199d251a1d256a43ccf69c327"
   },
   "status": "PASS"
 }

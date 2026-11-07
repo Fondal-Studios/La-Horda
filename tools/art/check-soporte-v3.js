@@ -40,9 +40,9 @@ const sha=file=>crypto.createHash('sha256').update(fs.readFileSync(path.join(ROO
     enemies=[];particles=[];spawnTimer=1e9;arenaHazardTimer=1e9;runElapsedMs=10000;animNow=20000;
     state='paused';const hero=player;hero._codexSkin=null;hero.x=hero.y=0;
     const P=CHAMP_PACK.soporte;
-    check('v3 loaded',new URL(P.atlas.currentSrc||P.atlas.src,location.href).pathname.endsWith('/soporte/v3/atlas.png'));
-    check('36 canonical cells',P.fw===112&&P.fh===112&&P.cols===4&&P.atlas.naturalWidth===448&&P.atlas.naturalHeight===1008);
-    check('ref/foot metadata',P.refH===71&&Math.abs(P.anchor*112-106)<1e-6);
+    check('codex-v1 loaded',new URL(P.atlas.currentSrc||P.atlas.src,location.href).pathname.endsWith('/soporte/codex-v1/atlas.png'));
+    check('52 canonical cells (36 v3 contract + idle/hit)',P.fw===112&&P.fh===112&&P.cols===4&&P.atlas.naturalWidth===448&&P.atlas.naturalHeight===1456);
+    check('ref/foot metadata',P.refH===78&&Math.abs(P.anchor*112-106)<1e-6);
     const cv=document.createElement('canvas');cv.width=cv.height=260;const g=cv.getContext('2d',{willReadFrequently:true});
     function direction(h,dir){h.fx=dir==='left'?-1:dir==='right'?1:0;h.fy=dir==='up'?-1:dir==='down'?1:0;}
     function drawFrame(h,death=false){
@@ -85,7 +85,7 @@ const sha=file=>crypto.createHash('sha256').update(fs.readFileSync(path.join(ROO
       check('attack '+dir+' '+phase,attack.opaque&&attack.calls.some(c=>c.frame===expected));
      }
      hero.attackAnim=0;hero.hurtTimer=160;
-     const hit=drawFrame(hero);check('hit '+dir,hit.opaque&&hit.calls.some(c=>c.frame===(dir==='up'?20:dir==='down'?12:16)));
+     const hit=drawFrame(hero);check('hit '+dir,hit.opaque&&hit.calls.some(c=>c.frame===48));
     }
     hero.hurtTimer=0;hero.moving=false;direction(hero,'down');
     function castFrames(ultimate,index){
@@ -133,7 +133,7 @@ const sha=file=>crypto.createHash('sha256').update(fs.readFileSync(path.join(ROO
    report.checks.push({name:'L'+level+' guest snapshot replay with clock offset',ok:replay.opaque&&replay.kind===2&&replay.restoredClass&&JSON.stringify(replay.frames)==='[28,29,30,31]',details:replay});
    report.levels.push({level,trace:result.trace,body:result.body,reference:result.reference,guest:replay});
   }
-  report.provenance={atlas:'assets/sprites/champions/soporte/v3/atlas.png',atlasSha256:sha('assets/sprites/champions/soporte/v3/atlas.png'),metadataSha256:sha('js/assets/champion-sprites.js'),rendererSha256:sha('js/rendering/champion-sprites.js')};
+  report.provenance={atlas:'assets/sprites/champions/soporte/codex-v1/atlas.png',atlasSha256:sha('assets/sprites/champions/soporte/codex-v1/atlas.png'),v3SourceSha256:sha('assets/sprites/champions/soporte/v3/atlas.png'),metadataSha256:sha('js/assets/champion-sprites.js'),rendererSha256:sha('js/rendering/champion-sprites.js')};
   report.status=report.errors.length||report.checks.some(c=>!c.ok)?'FAIL':'PASS';
   console.log(JSON.stringify({status:report.status,checks:report.checks.length,levels:report.levels.length,failed:report.checks.filter(c=>!c.ok),errors:report.errors}));
   assert.equal(report.status,'PASS');
