@@ -517,6 +517,7 @@
   <!-- SALA / LOBBY (previa a entrar a la arena): 4 lugares -pensados para multijugador; por ahora
        los otros 3 los ocupan bots- y el equipamiento del guardián elegido. -->
   <div id="prep-screen" class="screen hidden">
+    <div class="prep-content" id="prep-content">
     <div class="ui-topbar">
       <button class="ui-back" id="prep-back-btn">‹ Menú</button>
       <div class="ui-topbar-title" id="lobby-title">Sala</div>
@@ -546,7 +547,11 @@
     <div id="prep-talents-panel" class="hidden" data-part="equipo"></div>
     <div id="prep-skills-panel" class="hidden" data-part="equipo"></div>
     </details>
-    <details class="prep-advanced"><summary>Equipo aliado</summary><div class="lobby-sub" id="lobby-sub"></div><div id="lobby-slots"></div></details><button class="btn wide" id="prep-start-btn">Comenzar</button>
+    <details class="prep-advanced"><summary>Equipo aliado</summary><div class="lobby-sub" id="lobby-sub"></div><div id="lobby-slots"></div></details>
+    </div>
+    <div class="prep-actions">
+      <button class="btn wide" id="prep-start-btn">Comenzar partida</button>
+    </div>
   </div>
 
   <!-- MENU -->

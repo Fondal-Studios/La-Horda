@@ -320,7 +320,7 @@ document.getElementById("prep-start-btn").addEventListener("click", ()=>{
         if(typeof assetsAllReady==="function" && !assetsAllReady()){
           const sb = document.getElementById("prep-start-btn");
           if(sb){ sb.disabled = true; sb.textContent = "Preparando la arena… " + assetsRestPct() + "%"; }
-          whenAssetsReady(()=>{ if(sb){ sb.disabled = false; sb.textContent = "Comenzar"; } hostStart(); },
+          whenAssetsReady(()=>{ if(sb){ sb.disabled = false; sb.textContent = "Comenzar partida"; } hostStart(); },
             pct=>{ if(sb) sb.textContent = "Preparando la arena… " + pct + "%"; });
           return;
         }
@@ -436,7 +436,7 @@ function renderPrepSummary(){
     else netHostBroadcastCos(false);
     return;
   }
-  const sb = document.getElementById("prep-start-btn"); if(sb){ sb.disabled = false; sb.textContent = "Comenzar"; }
+  const sb = document.getElementById("prep-start-btn"); if(sb){ sb.disabled = false; sb.textContent = "Comenzar partida"; }
   document.getElementById("lobby-sub").textContent = "4 lugares · los lugares libres los completa el juego (o tus amigos, con una sala online)";
   const slots = document.getElementById("lobby-slots");
   if(typeof netLobby!=="undefined") netLobby.slotsHTML = ""; // la vista solo reemplaza la de la sala online
