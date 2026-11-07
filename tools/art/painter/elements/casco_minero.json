@@ -1,0 +1,19 @@
+{
+ "name": "casco_minero",
+ "description": "Casco de minero: cúpula de acero con ala corta y farol de latón al frente.",
+ "layer": "front",
+ "anchor": "headTop",
+ "materials": {
+  "steel": {"ramp": ["#14181c", "#3a4048", "#6a727c", "#a8b0ba"], "jitter": 0.05},
+  "lamp": {"ramp": ["#5a3a08", "#b07a18", "#f0c040", "#fff3b0"], "round": 0.9}
+ },
+ "shapes": [
+  {"type": "ellipse", "center": [0, 5], "radius": [9.5, 6.5], "material": "steel", "group": "dome", "views": ["down", "up"]},
+  {"type": "rect", "box": [-10, 8, 10, 10], "material": "steel", "group": "brim", "views": ["down", "up"]},
+  {"type": "rect", "box": [-1, 2, 1, 9], "material": "steel", "group": "ridge", "views": ["down", "up"]},
+  {"type": "ellipse", "center": [0, 6], "radius": [2.6, 2.6], "material": "lamp", "group": "lamp", "views": ["down"]},
+  {"type": "ellipse", "center": [0, 5], "radius": [9, 6.5], "material": "steel", "group": "dome", "views": ["side"]},
+  {"type": "rect", "box": [-9, 8, 11, 10], "material": "steel", "group": "brim", "views": ["side"]},
+  {"type": "ellipse", "center": [8, 6], "radius": [2.4, 2.4], "material": "lamp", "group": "lamp", "views": ["side"]}
+ ]
+}

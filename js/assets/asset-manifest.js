@@ -7,6 +7,9 @@ const ASSET_MANIFEST = [
   "assets/sprites/champions/morveth/codex-v1/atlas.png",
   "assets/sprites/champions/aelith/codex-v1/atlas.png",
   "assets/sprites/champions/tanque/codex-v1/atlas.png",
+  "assets/sprites/champions/soporte/codex-v1/atlas.png",
+  "assets/sprites/champions/segador/codex-v1/atlas.png",
+  "assets/sprites/champions/profeta/codex-v1/atlas.png",
 
   "assets/sprites/champions/nano_gm/codex-v2/atlas.png",
   // Complete set outfits: eight champions and mounted Granadero.

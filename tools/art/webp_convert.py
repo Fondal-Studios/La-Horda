@@ -9,6 +9,7 @@ import io, json, os, re, sys
 from multiprocessing import Pool
 from PIL import Image
 
+CHECK = '--check' in sys.argv   # solo verifica (CI): falla si algún .webp no coincide con su PNG
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.chdir(ROOT)
 src = open('js/assets/asset-manifest.js', encoding='utf-8').read()
@@ -18,7 +19,18 @@ def conv(p):
     try:
         out = p[:-4] + '.webp'
         png = os.path.getsize(p)
-        if os.path.exists(out) and os.path.getmtime(out) >= os.path.getmtime(p):
+        stale = False
+        if os.path.exists(out):
+            # NO se confía en la fecha: tras un checkout/pull el .webp puede tener fecha más nueva y ser de un diseño ANTERIOR
+            # (pasó con San Martín: los navegadores reales cargaban el .webp viejo). Se comparan los PÍXELES.
+            try:
+                a = Image.open(p).convert('RGBA'); b2 = Image.open(out).convert('RGBA')
+                stale = (a.size != b2.size) or a.tobytes() != b2.tobytes()
+            except Exception:
+                stale = True
+        if CHECK and stale:
+            return (p, png, 0, 'STALE')
+        if os.path.exists(out) and not stale:
             data = None; size = os.path.getsize(out)
         else:
             im = Image.open(p); im.load()
@@ -29,7 +41,7 @@ def conv(p):
             if back.tobytes() != rgba.tobytes():
                 return (p, png, size, 'MISMATCH')
         if size > png * 0.95:
-            if os.path.exists(out) and data is None: os.remove(out)
+            if os.path.exists(out): os.remove(out)   # un .webp que no conviene (o quedó viejo) no puede quedar junto al PNG
             return (p, png, size, 'skip')
         if data is not None:
             open(out, 'wb').write(data)
@@ -40,6 +52,11 @@ def conv(p):
 if __name__ == '__main__':
     with Pool(4) as pool:
         res = pool.map(conv, paths, chunksize=4)
+    if CHECK:
+        stale = [r[0] for r in res if r[3] == 'STALE']
+        print(f'webp desactualizados: {len(stale)}')
+        for x in stale[:40]: print('  ', x)
+        sys.exit(1 if stale else 0)
     ok = sorted(r[0] for r in res if r[3] == 'ok')
     bad = [r for r in res if r[3] not in ('ok', 'skip')]
     tot_png = sum(r[1] for r in res); tot_new = sum(r[2] if r[3] == 'ok' else r[1] for r in res)

@@ -531,6 +531,14 @@ def main():
         return
     spec = json.loads(Path(a.arg).read_text())
     atlas, report = assemble(spec)
+    if spec.get('retouch'):  # retoque determinista posterior (tools/art/painter/retouch/<nombre>.py: retouch(atlas) -> atlas)
+        import importlib.util
+        rp = HERE / 'retouch' / (spec['retouch'] + '.py')
+        ms = importlib.util.spec_from_file_location('retouch_' + spec['retouch'], rp)
+        mod = importlib.util.module_from_spec(ms)
+        sys.path.insert(0, str(HERE / 'retouch'))
+        ms.loader.exec_module(mod)
+        atlas = mod.retouch(atlas)
     out = Path(a.out or (HERE / 'out' / spec['id']))
     out.mkdir(parents=True, exist_ok=True)
     Image.fromarray(atlas).save(out / 'atlas.png')

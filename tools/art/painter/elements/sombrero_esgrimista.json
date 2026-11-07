@@ -1,0 +1,21 @@
+{
+ "name": "sombrero_esgrimista",
+ "description": "Sombrero de esgrimista de salón: copa baja, ala ancha, cinta carmesí y pluma.",
+ "layer": "front",
+ "anchor": "headTop",
+ "materials": {
+  "felt": {"ramp": ["#14080c", "#2e1018", "#52202c", "#7a3444"], "jitter": 0.05},
+  "ribbon": {"ramp": ["#4a0a14", "#8a1626", "#c92c40", "#f07a88"]},
+  "plume": {"ramp": ["#6a4a50", "#b89aa0", "#f0e0e2", "#ffffff"], "jitter": 0.04}
+ },
+ "shapes": [
+  {"type": "ellipse", "center": [0, 4], "radius": [8, 5.5], "material": "felt", "group": "crown", "views": ["down", "up"]},
+  {"type": "ellipse", "center": [0, 8], "radius": [13, 3.2], "material": "felt", "group": "brim", "views": ["down", "up"]},
+  {"type": "rect", "box": [-7, 6, 7, 8], "material": "ribbon", "group": "band", "views": ["down", "up"]},
+  {"type": "poly", "points": [[5, 4], [11, -4], [15, -3], [12, 3], [8, 8]], "material": "plume", "group": "plume", "views": ["down", "up"]},
+  {"type": "ellipse", "center": [0, 4], "radius": [7.5, 5.5], "material": "felt", "group": "crown", "views": ["side"]},
+  {"type": "ellipse", "center": [1, 8], "radius": [13, 3], "material": "felt", "group": "brim", "views": ["side"]},
+  {"type": "rect", "box": [-7, 6, 8, 8], "material": "ribbon", "group": "band", "views": ["side"]},
+  {"type": "poly", "points": [[-5, 4], [-11, -3], [-17, -2], [-14, 4], [-8, 8]], "material": "plume", "group": "plume", "views": ["side"]}
+ ]
+}
