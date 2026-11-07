@@ -39,6 +39,12 @@ function _cmPiece(key, x, y, h, alpha, flip, anchorY){
   ctx.drawImage(im, -w/2, -h*(anchorY===undefined ? 1 : anchorY), w, h); ctx.restore();
   return true;
 }
+// Escombros pintados a escala nativa (x1, sin ampliar): 3 tamaños; respaldo = escombros_0 ampliado.
+function _cmRubble(x, y, size, alpha){
+  const k = size <= 52 ? "escombros_s_0" : size <= 68 ? "escombros_m_0" : "escombros_l_0";
+  if(CM_OK[k]) return _cmPiece(k, x, y, CM_IMG[k].height, alpha);
+  return _cmPiece("escombros_0", x, y, size, alpha);
+}
 function _cmGlow(x, y, r, rgb, a){ if(a <= 0.01) return; ctx.save(); ctx.globalCompositeOperation = "lighter"; ctx.globalAlpha = Math.min(1, a); ctx.drawImage(glowSprite(rgb), x - r, y - r, r*2, r*2); ctx.restore(); }
 function _cmAtlasFrame(type, set, n, x, y, h, flip, alpha, loop){
   const P = ENEMY_ATLAS_PACK[(typeof bodySwapKey==="function" && bodySwapKey(type)) || type]; if(!P || !P.ready) return false; // cuerpo prestado (body-swaps.js)
@@ -280,6 +286,14 @@ function cmDrawTall(it, now){
     case "b": _cmDrawBuilding(it.b, t); break;
     case "statue": {
       const S = CM_MAP.statue;
+      // Estatua del Códice (Runway, estatua_cx_0): monumento completo (estatua + pedestal + estanque turquesa) x2 píxel entero.
+      // Respaldo: el dibujo anterior (elipses + estatua_0) si el arte nuevo no cargó.
+      if(CM_OK.estatua_cx_0){
+        ctx.fillStyle = "rgba(0,0,0,0.35)"; ctx.beginPath(); ctx.ellipse(S.x, S.y + 28, 92, 30, 0, 0, Math.PI*2); ctx.fill();
+        _cmGlow(S.x, S.y + 10, 150, "80,230,210", 0.16 + 0.04*Math.sin(t*2));
+        _cmPiece("estatua_cx_0", S.x, S.y + 34, CM_IMG.estatua_cx_0.height*2);
+        break;
+      }
       ctx.fillStyle = "rgba(0,0,0,0.4)"; ctx.beginPath(); ctx.ellipse(S.x, S.y + 30, 110, 40, 0, 0, Math.PI*2); ctx.fill();
       ctx.fillStyle = "#1a3a3a"; ctx.beginPath(); ctx.ellipse(S.x, S.y + 20, 100, 38, 0, 0, Math.PI*2); ctx.fill();
       ctx.fillStyle = `rgba(80,230,210,${0.35 + 0.1*Math.sin(t*2)})`; ctx.beginPath(); ctx.ellipse(S.x, S.y + 18, 86, 30, 0, 0, Math.PI*2); ctx.fill();
@@ -288,7 +302,7 @@ function cmDrawTall(it, now){
       break;
     }
     case "gate": _cmDrawGate(t); break;
-    case "prop": _cmPiece(it.s.r > 24 ? "barril_0" : "escombros_0", it.s.x, it.s.y + 10, it.s.r > 24 ? 64 : 44); break;
+    case "prop": { if(it.s.r > 24) _cmPiece("barril_0", it.s.x, it.s.y + 10, 64); else _cmRubble(it.s.x, it.s.y + 10, 44); } break;
     case "civ": _cmDrawCiv(it.c, t); break;
     case "bar": { const B = it.B, a = Math.min(1, (B.d - B.t)/500, B.t/200);
       ctx.save(); ctx.globalAlpha = a; _cmFillPat("tex_puente", 2, "#5a3a22", B.x0, B.y0 - 40, B.x1 - B.x0, 40 + (B.y1 - B.y0)); ctx.strokeStyle = "#1a0c06"; ctx.lineWidth = 3; ctx.strokeRect(B.x0, B.y0 - 40, B.x1 - B.x0, 40 + (B.y1 - B.y0)); ctx.restore(); break; }
@@ -303,7 +317,7 @@ function cmDrawTall(it, now){
     case "pdeath": { const P = cmS.pr, T = P.t||0, P3 = ENEMY_ATLAS_PACK.cm_presentador3;
       if(P3 && P3.ready){ const arr = P3.sets.death || P3.sets.idle, n = Math.min(arr.length - 1, Math.floor(T/(CM_CFG.presentador.deathMs*0.7/arr.length))); _cmAtlasFrame("cm_presentador3", "death", n, P.x, P.y, 60*3.2, P.fx < 0, Math.max(0, 1 - Math.max(0, T - 7000)/2500), false); }
       break; }
-    case "lamp": { const L = it.L; _cmGlow(L.x, L.y - 80, 110, "255,160,70", 0.28 + 0.05*Math.sin(t*5 + L.x)); if(!_cmPiece("farol_0", L.x, L.y + 4, 84)){ ctx.fillStyle = "#1a1418"; ctx.fillRect(L.x - 3, L.y - 90, 6, 94); } break; }
+    case "lamp": { const L = it.L; _cmGlow(L.x - (CM_OK.farol_cx_0 ? 14 : 0), L.y - (CM_OK.farol_cx_0 ? 62 : 80), 110, "255,160,70", (CM_OK.farol_cx_0 ? 0.42 : 0.28) + 0.05*Math.sin(t*5 + L.x)); if(!(CM_OK.farol_cx_0 ? _cmPiece("farol_cx_0", L.x, L.y + 4, CM_IMG.farol_cx_0.height*2) : _cmPiece("farol_0", L.x, L.y + 4, 84))){ ctx.fillStyle = "#1a1418"; ctx.fillRect(L.x - 3, L.y - 90, 6, 94); } break; }
   }
 }
 function _cmStructOf(b){ const i = b.struct ? cmStructIdx(b.struct) : -1; return i >= 0 ? {i, s:CM_STRUCTS[i], S:cmS.st[i]} : null; }
@@ -374,7 +388,7 @@ function _cmDrawRuin(b, t){
   const W = b.x1 - b.x0;
   _cmFillPat("tex_escombros", 2, "#3a3036", b.x0, b.y0 - 30, W, b.y1 - b.y0 + 30);
   ctx.fillStyle = "rgba(10,4,6,0.45)"; ctx.fillRect(b.x0, b.y0 - 30, W, b.y1 - b.y0 + 30);
-  for(let k=0;k<6;k++) _cmPiece("escombros_0", b.x0 + (k + 0.5)*W/6, b.y1 - 10 - _cmHash(k, 9)*80, 50 + _cmHash(k, 4)*30);
+  for(let k=0;k<6;k++) _cmRubble(b.x0 + (k + 0.5)*W/6, b.y1 - 10 - _cmHash(k, 9)*80, 50 + _cmHash(k, 4)*30);
   if(Math.random() < 0.05) vfxBurst(b.cx + cmRand(-W/2, W/2), b.cy, 1, "shadow", 20, 1800, 6, 0, -50, 0);
   _cmGlow(b.cx, b.cy, 120, "255,90,40", 0.12 + 0.05*Math.sin(t*4));
 }
