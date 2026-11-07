@@ -21,7 +21,7 @@ const TUT = { key:null, until:0, goal:null, basicsStep:0, moved:0, lx:null, ly:n
 const TUT_DUCK_MS = 2200, TUT_DUCK_MAX_MS = 6000;
 const TUT_NO_DUCK = {hurt:1, revive:1}; // indicaciones que hablan justo de eso: se ven aunque te estén pegando
 // Lo único que se muestra sin `who`: controles y acciones (neutras, sin voz del Hechicero) y el jefe final de la Infernal.
-const TUT_NEUTRAL = {b_move:1, b_attack:1, b_skill:1, b_end:1, skillup:1, revive:1};
+const TUT_NEUTRAL = {b_move:1, b_attack:1, b_skill:1, b_end:1, skillup:1, revive:1, u_ult:1, u_loot:1};
 const TUT_VILLAIN = {hech_betrayal:1, hech_final:1};
 function tutFlags(){ if(!save.tut) save.tut = {}; return save.tut; }
 // Las claves que empiezan con "~" son líneas de una sola vez en ESTA partida (voces de la historia,
@@ -134,6 +134,11 @@ function tutTick(){
     if(!tutSeen("skillup") && document.querySelector(".skill-plus:not(.hidden)")) tutSay("skillup", "¡Subiste de nivel y tenés un punto! Tocá el + junto a una habilidad para hacerla más fuerte.", "Tocá el + junto a una habilidad", 12000);
   }
   if(TUT.key==="skillup" && !document.querySelector(".skill-plus:not(.hidden)")) tutDone("skillup");
+  // ---- definitiva y botín: la primera vez que se puede usar la ULT y la primera vez que hay botín en el piso (se repiten desde ¿Cómo se juega? › Controles / Botín) ----
+  if(tutSeen("basics") && !TUT.key && !tutSeen("u_ult") && player.alive && player.ultMax && player.ultCharge >= player.ultMax && (player.ultCd||0) <= 0 && runLevel >= ULT_MIN_ARENA_LEVEL)
+    tutSay("u_ult", "¡Tu definitiva está lista! Es tu golpe más fuerte: usala cuando haya muchos enemigos juntos.", _ctl("ult", "Tocá ULT (R en teclado, RB en mando)"), 9000);
+  if(tutSeen("basics") && !TUT.key && !tutSeen("u_loot") && player.alive && typeof groundLoot!=="undefined" && groundLoot.length && typeof inView==="function" && groundLoot.some(g=>inView(g.x, g.y, 40)))
+    tutSay("u_loot", "¡Cayó botín! Pasá por encima para levantarlo. Después lo equipás en Guardianes › Equipo.", _ctl("loot", "Pasá por encima del botín o tocá Levantar"), 9000);
   // ---- revivir: la primera vez que cae un compañero ----
   if(!duoEnabled() && !tutSeen("revive") && TUT.key!=="revive" && player.alive && heroes.some(h=>h!==player && !h.alive))
     tutSay("revive", "¡Cayó un compañero! Parate al lado y mantené el botón REVIVIR ✚ para levantarlo.", "Mantené ✚ junto al caído para revivirlo", 12000, true);

@@ -1,0 +1,33 @@
+/* Consejos de pantalla (js/ui/screen-tips.js): cartel chico abajo, NO modal. Solo sus botones reciben toques; el resto de la pantalla sigue usable. */
+#screen-tip{
+  position:fixed; left:50%; transform:translateX(-50%); bottom:max(8px, env(safe-area-inset-bottom)); z-index:8500;
+  width:min(720px, calc(100vw - 24px)); box-sizing:border-box; display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+  padding:8px 10px; border:2px solid #ffcf5c; border-radius:10px; background:rgba(28,18,8,.97); color:#f3e6c8;
+  box-shadow:0 4px 18px rgba(0,0,0,.6); font-size:14px; line-height:1.3; max-height:46vh; overflow:auto;
+  animation:st-in .22s ease-out both; pointer-events:none; /* el texto deja pasar los toques a lo que tapa; solo los botones los reciben */
+}
+@keyframes st-in{ from{ opacity:0; transform:translateX(-50%) translateY(10px); } to{ opacity:1; transform:translateX(-50%) translateY(0); } }
+@media (prefers-reduced-motion:reduce){ #screen-tip{ animation:none; } }
+#screen-tip .st-ic{ font-size:1.6rem; line-height:1; flex:0 0 auto; }
+#screen-tip .st-body{ flex:1 1 220px; min-width:0; display:flex; flex-direction:column; gap:2px; }
+#screen-tip .st-t{ color:#ffe9a8; font-size:14px; }
+#screen-tip .st-x{ font-size:14px; overflow-wrap:anywhere; }
+#screen-tip .st-btns{ display:flex; gap:6px; flex-wrap:wrap; flex:0 0 auto; pointer-events:auto; }
+#screen-tip .st-btns .btn{ min-height:44px; min-width:44px; margin:0; font-size:14px; padding:4px 12px; width:auto; }
+/* celular apaisado: texto a la izquierda, botones en una columna a la derecha para ocupar poco alto */
+@media (max-height:520px) and (min-width:560px){
+  #screen-tip{ max-height:none; flex-wrap:nowrap; padding:6px 8px; gap:8px; }
+  #screen-tip .st-body{ flex:1 1 auto; }
+  #screen-tip .st-btns{ flex-wrap:nowrap; }
+  #screen-tip .st-btns .btn{ padding:4px 8px; }
+}
+/* el cartel de consejos no tapa la barra de controles de la partida (no se usa en partida), pero sí puede cruzarse con Opciones: queda por encima */
+#howto .howto-tabs{ display:flex; gap:6px; overflow-x:auto; padding:2px 0 8px; margin:0 -2px; -webkit-overflow-scrolling:touch; }
+#howto .howto-tab{ flex:0 0 auto; min-height:44px; padding:4px 12px; border:2px solid #5a4020; border-radius:8px; background:#2a1a0c; color:#f3e6c8; font:inherit; font-size:14px; cursor:pointer; white-space:nowrap; }
+#howto .howto-tab.on{ border-color:#ffcf5c; background:#5a3212; color:#ffe9a8; }
+#howto .howto-extra{ display:flex; justify-content:center; margin-top:6px; }
+#howto .howto-extra .btn{ min-height:44px; }
+#howto .howto-step b{ font-size:14px; }
+#howto .howto-step p{ font-size:14px; }
+.title-howto{ display:block; margin:0 auto; min-height:44px; padding:2px 6px; border:0; background:transparent; color:#f9c971; font:inherit; font-size:14px; text-decoration:underline; text-align:left; text-shadow:1px 1px 0 #000, 0 0 6px #000; cursor:pointer; }
+#title-screen.bt-title > .title-howto{ position:absolute !important; margin:0; left:max(10px, env(safe-area-inset-left)); top:calc(max(8px, env(safe-area-inset-top)) + 46px); z-index:6; }

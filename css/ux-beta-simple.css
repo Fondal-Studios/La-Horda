@@ -1,0 +1,43 @@
+/* UX beta: piso de legibilidad de 14 px en las pantallas de la beta (auditoría: docs/beta-release/ui-beta/, tools/ux/capture-ui-beta.js).
+   Solo tamaños de texto y alto táctil: no mueve controles, no toca el joystick ni la cámara. Va al final de la hoja de estilos:
+   las capas anteriores (menu-polish-*, ui-factory) traen tamaños de 11-13 px con selectores específicos, por eso el !important. */
+
+/* ---- en todos los tamaños (hoy están por debajo de 14 px también en escritorio) ---- */
+#starter-screen .starter-lore, #starter-screen .mychamp-meta,
+#arenaselect-screen .arena-card-badge, #arenaselect-screen .arena-grid-sep, #arenaselect-screen .arena-card-desc, #arenaselect-screen .arena-card-desc *,
+#shop-screen .founder-badge, #shop-screen .sf-tags span, #shop-screen .brasas-status, #shop-screen .brasas-status *, #shop-screen .legal-foot, #shop-screen .legal-foot *,
+#shop-screen .shop-item-sub, #shop-screen .shop-was, #shop-screen .shop-st, #shop-screen .shop-fair, #shop-screen .sf-price, #shop-screen .shop-hero-title, #shop-screen .shop-hero-desc,
+#shop-screen .brasas-what-name, #shop-screen .mpc-preview-cap, #shop-screen .legal-draft,
+#codex-screen .cx-stage-name, #codex-screen .cx-title, #codex-screen .cx-dim, #codex-screen .cx-dim *, #codex-screen .cx-origin, #codex-screen .cx-origin *,
+#codex-screen figcaption, #codex-screen .cx-skill-txt b, #codex-screen .cx-skill-desc, #codex-screen .cx-stat span, #codex-screen .cx-skin-name, #codex-screen .cx-skin-rar,
+#codex-screen .cx-link-card b, #codex-screen .cx-link-card span, #codex-screen .cx-home-blurb, #codex-screen .cx-home-title, #codex-screen .btn.small, #codex-screen .cxb-new,
+#inventory-screen .btn.small, #inventory-screen .inv-chip, #inventory-screen .item-name, #inventory-screen .set-badge, #inventory-screen .item-stat, #inventory-screen .inv-owner,
+#inventory-screen .vic-item-actions button, #inventory-screen .inv-empty,
+#hub-options .oas-k, #hub-options .opt-sub, #hub-options .opt-sub *, #hub-options #opt-keys-btn, #hub-options #opt-export-btn, #hub-options #opt-import-btn, #hub-options .opt-economy-btn,
+#hub-options #opt-howto-btn, #hub-options #opt-tips-reset-btn, #hub-options #alpha-chat-open, #hub-options .cp-cap, #hub-options .legal-draft, #hub-options .alpha-privacy, #hub-options .legal-foot *,
+#hub-options .opt-note, #ctl-map .ctl-scheme-sub, #ctl-map .ctl-act, #ctl-map .ctl-alias, #ctl-map kbd, #ctl-map #ctl-reset-btn,
+#pause-screen .pause-note, #pause-screen .pause-acc-t, #pause-screen .pause-acc-sub,
+#gameover-screen .go-progress, #gameover-screen .go-progress *, #gameover-screen small, #gameover-screen .go-diff, #gameover-screen .menu-btn,
+#victory-screen .go-progress, #victory-screen .go-progress *, #victory-screen small, #victory-screen .menu-btn,
+#howto .howto-step p, #howto .howto-step b, #howto .btn,
+#title-screen .legal-foot, #title-screen .legal-foot *, #title-screen .build-tag, #title-screen > a[href="instalar.html"], #title-screen .bt-cta-menu-sub, #title-screen .lang-btn,
+.ui-tag, .cxb-new, #gameover-screen #menu-btn-1, #gameover-screen .go-progress *, #ctl-map .ctl-head span, #ctl-map .ctl-pad-line span, #ctl-map .ctl-scheme-sub,
+#menu-screen .champ-role, #menu-screen .champ-lvl, #menu-screen small, #menu-screen .category-badge, #menu-screen .founder-badge, #menu-screen #export-save-btn, #menu-screen #import-save-btn,
+#menu-screen .save-line, #menu-screen .save-line *{ font-size:14px !important; }
+
+/* ---- solo en pantallas chicas (celular): en escritorio ya son mayores ---- */
+@media (max-width:1000px), (max-height:520px){
+  .ui-topbar-title, .arena-title, .pxi-candado,
+  #menu-screen .champ-name, #menu-screen .champ-lvl, #menu-screen .champ-role, #menu-screen .save-line, #menu-screen .save-line *, #menu-screen small,
+  #menu-screen .category-badge, #menu-screen .founder-badge, #menu-screen #export-save-btn, #menu-screen #import-save-btn,
+  #title-screen .brand-sub, #title-screen .bt-cta-menu-sub, #title-screen .bt-play-main,
+  body #title-screen.bt-title #bt-col #title-continue-btn, body #title-screen.bt-title #bt-col #title-continue-btn:not(:disabled),
+  body #title-screen.bt-title > .lang-host .lang-btn, body #title-screen.bt-title > a[href="instalar.html"]{ font-size:14px !important; }
+  body #title-screen.bt-title > a[href="instalar.html"]{ max-width:150px; }
+  #menu-screen #champ-grid{ padding-bottom:84px; } /* el botón fijo "Entrar a la Arena" no tapa la última fila */
+  #hub-options .btn.small, #hub-options .opt-seg button, #hub-options .opt-switch, #hub-options #alpha-chat-open, #hub-options .opt-economy-btn,
+  #ctl-map .btn.small, #ctl-map #ctl-map-close, #gameover-screen .menu-btn, #victory-screen .menu-btn{ min-height:44px; }
+}
+/* Códice: con 4 tarjetas en una fila, el icono pasa arriba del rótulo cuando no entran juntos (14 px no cabe al lado del icono a 667 px) */
+@media (max-width:800px){ #codex-screen .cx-home-title{ flex-wrap:wrap; row-gap:2px; letter-spacing:0; } #codex-screen .cx-home-txt{ padding-left:3px; padding-right:3px; } }
+#ctl-scheme-sub, #go-progress, #go-progress *, body #title-screen.bt-title > a[href="instalar.html"]{ font-size:14px !important; }

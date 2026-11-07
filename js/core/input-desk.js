@@ -502,16 +502,16 @@ function deskGamepadTick(){
    Hechicero, adaptado a teclado/mando con ctlHint(). */
 function ctlHint(kind){
   const d = DESK.device;
-  if(d==="pad") return {move:"Movete con el stick izquierdo", attack:"Mantené A para pelear", skill:"Apretá X, Y o B (el stick derecho apunta)"}[kind];
+  if(d==="pad") return {move:"Movete con el stick izquierdo", attack:"Mantené A para pelear", skill:"Apretá X, Y o B (el stick derecho apunta)", ult:"Apretá RB", loot:"Pasá por encima del botín o apretá LT"}[kind];
   if(d==="kb"){
     const moba = deskScheme()==="moba", dflt = !(PREFS.keyBinds && PREFS.keyBinds[deskScheme()] && Object.keys(PREFS.keyBinds[deskScheme()]).length);
     if(moba) return {move:"Movete con clic derecho (o las flechas)", attack:"Mantené Espacio (o clic) para pelear",
-      skill: dflt ? "Apretá Q, W o E (apuntan al mouse)" : "Apretá las teclas de habilidad (apuntan al mouse)"}[kind];
+      skill: dflt ? "Apretá Q, W o E (apuntan al mouse)" : "Apretá las teclas de habilidad (apuntan al mouse)", ult:"Apretá R", loot:"Pasá por encima del botín o apretá F"}[kind];
     return {move:"Movete con WASD o las flechas", attack:"Mantené Espacio (o clic) para pelear",
-      skill: dflt ? "Apretá 1, 2 o 3 (apuntan al mouse)" : "Apretá las teclas de habilidad (apuntan al mouse)"}[kind];
+      skill: dflt ? "Apretá 1, 2 o 3 (apuntan al mouse)" : "Apretá las teclas de habilidad (apuntan al mouse)", ult:"Apretá R", loot:"Pasá por encima del botín o apretá E"}[kind];
   }
   const thumb = typeof PREFS!=="undefined" && PREFS.lefty ? "pulgar derecho" : "pulgar izquierdo"; // modo zurdo
-  return {move:"Movete con el joystick ("+thumb+")", attack:"Mantené Ataque para pelear", skill:"Tocá una habilidad (mantené y arrastrá para apuntar)"}[kind];
+  return {move:"Movete con el joystick ("+thumb+")", attack:"Mantené Ataque para pelear", skill:"Tocá una habilidad (mantené y arrastrá para apuntar)", ult:"Tocá el botón ULT", loot:"Pasá por encima del botín o tocá Levantar"}[kind];
 }
 let _onbCls = "";
 function deskOnboardTick(){

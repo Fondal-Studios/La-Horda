@@ -75,6 +75,8 @@
 <link rel="stylesheet" href="css/ui-factory/hud-layout.css">
 <link rel="stylesheet" href="css/ui-factory/menus-touch.css">
 <link rel="stylesheet" href="css/beta-visual.css">
+<link rel="stylesheet" href="css/screen-tips.css">
+<link rel="stylesheet" href="css/ux-beta-simple.css">
 <!-- rework de interfaz (css/ui-rework.css, js/ui/ui-rework.js, tools/ui-rework): fuera de este PR hasta su revisión; ver docs/beta-release/RESULTADOS_PR.md -->
 </head>
 <body>
@@ -171,6 +173,7 @@
     <button class="btn wide" id="title-continue-btn" disabled>Cargando…</button>
     <div class="lang-host" data-lang-host></div><!-- idioma: ES · EN · PT (js/i18n/i18n.js) -->
     <a href="instalar.html" style="display:block;margin:10px auto;color:#f9c971;font-size:14px">Instalar en mi dispositivo</a>
+    <button type="button" class="title-howto" id="title-howto-btn">¿Cómo se juega?</button><!-- ayuda siempre a mano: js/ui/how-to-play.js -->
     <!-- B1: invitación a una sala online (?room=CÓDIGO en la URL) -->
     <label class="hidden" id="title-join-name">Tu nombre <input maxlength="16" placeholder="Jugador"></label>
     <button class="btn wide hidden" id="title-join-btn">Unirse a la sala</button>
@@ -269,6 +272,9 @@
       <div class="ui-panel-title">⚙ Opciones</div>
       <nav class="opt-jump" id="opt-jump" aria-label="Ir a una sección"><button type="button" class="opt-jump-a11y" data-jump="opt-sec-a11y">Accesibilidad</button><button type="button" data-jump="opt-sec-controls">Controles</button><button type="button" data-jump="opt-sec-legal">Legal y datos</button></nav>
       <label class="opt-row">Tu nombre <input id="opt-name" maxlength="16" placeholder="Jugador"></label>
+      <div class="opt-row" id="opt-help-row"><span class="opt-lbl">Ayuda y tutoriales<span class="opt-sub">Cómo se juega y consejos de cada pantalla</span></span><button class="btn small" id="opt-howto-btn" type="button">Cómo se juega</button></div>
+      <div class="opt-row"><span class="opt-lbl">Consejos en cada pantalla<span class="opt-sub">Un cartel corto la primera vez que entrás</span></span><button class="opt-switch" id="opt-tips-switch" role="switch" aria-checked="true" type="button">Sí</button></div>
+      <div class="opt-row"><span class="opt-lbl">Repetir los consejos<span class="opt-sub">Los vuelve a mostrar desde cero</span></span><button class="btn small secondary" id="opt-tips-reset-btn" type="button">Repetir</button></div>
       <label class="opt-row">Idioma <select id="opt-lang" aria-label="Idioma"><option value="es">Español</option><option value="en">English</option><option value="pt">Português</option></select></label>
       <label class="opt-row">🎵 Música <input type="range" id="opt-vol-music" min="0" max="100" step="5"></label>
       <label class="opt-row">🎼 Estilo
@@ -932,6 +938,7 @@
 <script src="js/ui/tactical-panel.js"></script>
 <script src="js/ui/ux-simplify-a.js"></script>
 <script src="js/ui/ux-simplify-b.js"></script>
+<script src="js/ui/screen-tips.js"></script>
 <script src="js/ui/boss-hud.js"></script>
 <script src="js/ui/pixel-font-fix.js"></script>
 <script src="js/ui/pixel-icons.js"></script>
