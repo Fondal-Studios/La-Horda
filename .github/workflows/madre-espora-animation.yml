@@ -70,7 +70,7 @@ jobs:
           cmp /tmp/mother-browser/{candidate,baseline}-harness.sha256
           python3 -m http.server 8773 --bind 127.0.0.1 >/tmp/mother-baseline-http.log 2>&1 &
           SERVER=$!
-          trap 'kill $SERVER 2>/dev/null || true' EXIT
+          trap 'kill $SERVER 2>/dev/null' EXIT
           sleep 1
           set -o pipefail
           set +e

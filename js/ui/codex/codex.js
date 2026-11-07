@@ -634,7 +634,7 @@ function codexApplyAppearanceFilter(body){
   let count = 0;
   body.querySelectorAll("[data-appearance-kind]").forEach(card=>{
     const kind = card.dataset.appearanceKind;
-    card.hidden = !(codexAppearanceFilter === "all" || kind === codexAppearanceFilter || (codexAppearanceFilter === "skin" && kind === "set") || (kind === "set-croma" && ["set","croma"].includes(codexAppearanceFilter)));
+    card.hidden = !(codexAppearanceFilter === "all" || kind === codexAppearanceFilter || (kind === "set-croma" && ["set","croma"].includes(codexAppearanceFilter)));
     card.style.display = card.hidden ? "none" : "";
     if(!card.hidden) count++;
   });

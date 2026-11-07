@@ -938,6 +938,9 @@
   "integracion-pruebas.yml::Rompibles (t_breakables)": {
    "reason": "Intermitente en GitHub Actions: BRK.bot_patea_cuando_la_horda_se_amontona (azar del bot). Pasó localmente 2/2 y en la regresión completa; falló 1 de 1 vez en CI. Sin semilla fija; a investigar.",
    "issue": "S0C-seguimiento"
+  },
+  "madre-espora-animation.yml::Compare fungal regressions against full baseline": {
+   "reason": "Compara el candidato con una línea base fija (34ac2852) que, por diseño, puede fallar: el paso sale con el estado de ESA corrida y el resultado exigible es el paso anterior «Fungal arena and Mother lifecycle regressions». Se deja seguir para subir la evidencia (fungal-comparison.json) aunque la base falle."
   }
  }
 }
