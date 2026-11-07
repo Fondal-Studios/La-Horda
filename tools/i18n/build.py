@@ -7,7 +7,7 @@ ES=json.load(open(ROOT+'/docs/i18n/es-strings.json'))['strings']
 ES=ES if isinstance(ES,list) else list(ES)
 ES=[s if isinstance(s,str) else s.get('t','') for s in ES]
 def resolve(k):
-    if k in ES: return k
+    if k in ES or len(k)<40: return k   # los prefijos solo valen para claves largas (lotes viejos)
     w=lambda x:re.sub(r'\s+',' ',x).strip()
     c=[w(s) for s in ES]; kk=w(k)
     m=[ES[i] for i,s in enumerate(c) if s.startswith(kk)]
