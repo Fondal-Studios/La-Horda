@@ -99,6 +99,8 @@ function hieGranHelada(e){
     let tb = lit[0]; for(const b of lit) if(Math.hypot(b.x - e.x, b.y - e.y) < Math.hypot(tb.x - e.x, tb.y - e.y)) tb = b;
     vfxTelegraph({shape:0, r:HIE_CFG.warmR, x:tb.x, y:tb.y, dur:C.snuffWarn, rgb:"160,220,255"});
     runLater(C.snuffWarn, ()=>{
+      // Interrumpir la Gran Helada o terminar el encuentro cancela su congelación pendiente.
+      if(!e.alive || hieBossMago()!==e || HIE.gh!==G || G.st!=="cast") return;
       if(state!=="playing" || !tb.lit || HIE.br.filter(b=>b.lit).length < 2) return;
       tb.lit = false; tb.done = false; tb.prog = 0; tb.fuel = 0;
       if(typeof bossArenaEvent==="function") bossArenaEvent("mago_hielo_cristal.brasero", e);

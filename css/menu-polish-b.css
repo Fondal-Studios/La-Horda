@@ -1,0 +1,74 @@
+/* menu-polish-b: miniaturas de arena, identidad de las pantallas finales y estado de compra de Guardianes.
+   Solo presentación: no toca balance, recompensas ni economía. */
+
+/* ---------- Selección de arenas: miniatura (panorámica del Códice); bloqueada = silueta + candado ---------- */
+.arena-thumb{ position:relative; width:100%; height:96px; margin:0 0 8px; overflow:hidden; border:2px solid #000;
+  background:linear-gradient(180deg,#3a2a1c,#1a110a); box-shadow:inset 0 0 0 1px rgba(255,170,90,.28); }
+.arena-thumb i{ position:absolute; inset:0; background-size:cover; background-position:center; image-rendering:pixelated; }
+.arena-thumb::after{ content:""; position:absolute; inset:0; pointer-events:none;
+  background:repeating-linear-gradient(0deg, rgba(0,0,0,.14) 0 1px, transparent 1px 3px), linear-gradient(180deg, transparent 55%, rgba(8,4,2,.55)); }
+.arena-thumb.no-art{ background:repeating-linear-gradient(45deg,#2a1c12 0 6px,#221710 6px 12px); }
+.arena-thumb.is-locked i{ filter:grayscale(1) sepia(.45) brightness(.62) contrast(1.15); opacity:.9; }
+.arena-thumb.is-locked{ background:linear-gradient(180deg,#5a4630,#2c2015); }
+.arena-thumb-lock{ position:absolute; z-index:2; left:50%; top:50%; transform:translate(-50%,-50%); font-size:2.2rem; line-height:1;
+  filter:drop-shadow(0 2px 0 #000) drop-shadow(0 0 6px rgba(0,0,0,.9)); }
+.arena-card:not(.locked) .arena-thumb{ border-color:#000; }
+.arena-card.selected .arena-thumb{ box-shadow:inset 0 0 0 2px var(--ember1); }
+.arena-card .arena-card-icon{ display:none; }
+.arena-card.locked{ opacity:.82; }
+.arena-card.locked .arena-card-title{ color:#cbb48a; }
+.arena-card.locked .arena-card-desc{ color:#c9bba0; }
+.arena-card .arena-card-badge{ z-index:3; top:18px; right:20px; }
+@media (max-height:500px) and (orientation:landscape){
+  #arena-grid .arena-thumb{ height:54px; margin-bottom:5px; }
+  #arena-grid .arena-thumb-lock{ font-size:1.4rem; }
+  #arena-grid .arena-card-badge{ top:14px; right:16px; }
+}
+
+/* ---------- Pantallas finales: banner con la arena y el guardián ---------- */
+.end-hero{ position:relative; width:min(440px,92vw); height:150px; margin:0 auto 10px; overflow:hidden; border:3px solid #000;
+  background:linear-gradient(180deg,#2a1810,#120a06); box-shadow:inset 0 0 0 2px rgba(255,170,90,.35), 4px 4px 0 #000; }
+.end-hero-bg{ position:absolute; inset:0; background-size:cover; background-position:center; image-rendering:pixelated; }
+.end-hero::before{ content:""; position:absolute; inset:0; z-index:1; pointer-events:none; }
+.end-hero.lose .end-hero-bg{ filter:grayscale(.75) brightness(.55) contrast(1.1); }
+.end-hero.lose::before{ background:linear-gradient(180deg, rgba(120,12,12,.45), rgba(20,0,0,.7)); }
+.end-hero.win .end-hero-bg{ filter:saturate(1.15) brightness(.95); }
+.end-hero.win::before{ background:radial-gradient(ellipse at 50% 85%, rgba(255,214,120,.5), transparent 65%), linear-gradient(180deg, transparent 50%, rgba(40,20,0,.45)); }
+.end-hero::after{ content:""; position:absolute; inset:0; z-index:3; pointer-events:none;
+  background:repeating-linear-gradient(0deg, rgba(0,0,0,.12) 0 1px, transparent 1px 3px); }
+.end-hero-fig{ background:transparent; position:absolute; z-index:2; left:50%; bottom:2px; width:112px; height:112px; margin-left:-56px; image-rendering:pixelated;
+  filter:drop-shadow(0 0 8px var(--end-c)); }
+.end-hero.lose .end-hero-fig{ filter:grayscale(.85) brightness(.7); transform:rotate(-18deg) translateY(8px); transform-origin:50% 90%; }
+.end-hero.win .end-hero-fig{ animation:endHop 1.1s steps(6) infinite; }
+@keyframes endHop{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-8px); } }
+.end-hero-cap{ position:absolute; z-index:4; left:8px; bottom:6px; padding:2px 8px; font-family:var(--font-retro); font-size:1.05rem; color:#ffe2a8;
+  background:rgba(10,6,3,.8); border:2px solid #000; }
+body.reduce-motion .end-hero.win .end-hero-fig{ animation:none; }
+@media (prefers-reduced-motion:reduce){ .end-hero.win .end-hero-fig{ animation:none; } }
+#victory-step-body .end-hero{ width:100%; order:-5; }
+
+/* ---------- Filas de resultados (datos reales del run) ---------- */
+.end-rows{ width:min(440px,92vw); margin:6px auto 8px; padding:6px 10px; border:3px solid #000; background:linear-gradient(160deg,var(--panel),#0f0805);
+  box-shadow:inset 0 0 0 1px rgba(255,170,90,.25), 4px 4px 0 #000; font-family:var(--font-retro); }
+.end-rows:empty{ display:none; }
+.end-row{ display:flex; justify-content:space-between; align-items:baseline; gap:10px; padding:3px 0; font-size:1.1rem; color:#d9c7a6; border-bottom:1px dashed rgba(255,190,110,.2); }
+.end-row:last-child{ border-bottom:0; }
+.end-row b{ color:#ffd76a; font-weight:400; font-size:1.3rem; font-variant-numeric:tabular-nums; }
+.has-end-rows #go-stats{ height:0; margin:0; padding:0; overflow:hidden; }
+#victory-step-body .res-row, #victory-step-body .vic-xp-row{ font-family:var(--font-retro); font-size:1.1rem; }
+#victory-step-body .res-row b, #victory-step-body .vic-xp-row b{ font-variant-numeric:tabular-nums; }
+@media (max-height:500px){
+  .end-hero{ height:84px; margin-bottom:4px; } .end-hero-cap{ left:auto; right:6px; font-size:.9rem; } .end-hero-fig{ width:76px; height:76px; margin-left:-38px; }
+  .end-rows{ padding:3px 8px; } .end-row{ font-size:1rem; padding:1px 0; }
+}
+
+/* ---------- Guardianes: estado de compra visible, subtítulo completo ---------- */
+.champ-buy{ font-family:var(--font-retro); font-size:1.05rem; line-height:1; padding:3px 8px; border:2px solid #000; letter-spacing:.03em; }
+.champ-buy.buy{ color:#1a0e06; background:#ffd76a; box-shadow:0 0 0 1px #8a5a10 inset; }
+.champ-buy.own{ color:#0c2a14; background:#7dffa8; }
+.champ-buy.gift{ color:#f1e4ff; background:#7a4fae; }
+.champ-buy.concept{ color:#d9c7a6; background:#3a2a38; }
+#champ-grid .champ-title{ white-space:normal; overflow:visible; text-overflow:clip; overflow-wrap:break-word; line-height:1.1; font-size:15px; }
+.champ-card.locked{ opacity:1; filter:none; }
+.champ-card.locked canvas.champ-preview{ filter:grayscale(.7) brightness(.8); }
+.champ-card.locked .champ-name{ color:#cbb48a; }

@@ -1,0 +1,593 @@
+{
+ "guardian": "sfa_farolero_kindling",
+ "engine": "sfa",
+ "title": "Tema farolero_kindling (skill-fx-a)",
+ "palette": [
+  "#2a1c08",
+  "#8a6c30",
+  "#e8c060",
+  "#ffe7a5",
+  "#fff9e0"
+ ],
+ "abilities": [
+  {
+   "id": "nova32",
+   "kind": "ring",
+   "size": 32,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_kindling",
+    "size": 32
+   },
+   "baseline": "nova|farolero_kindling|32",
+   "replaces": "nova|farolero_kindling|32",
+   "params": {
+    "rim": 1,
+    "fill": 0.0,
+    "ticks": 8,
+    "tick_len": 0.08,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.0,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.3,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 0,
+    "motif_n": 5,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 1,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "ticks": -1,
+    "rim": -1,
+    "deco": 1
+   }
+  },
+  {
+   "id": "nova48",
+   "kind": "ring",
+   "size": 48,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_kindling",
+    "size": 48
+   },
+   "baseline": "nova|farolero_kindling|48",
+   "replaces": "nova|farolero_kindling|48",
+   "params": {
+    "rim": 2,
+    "fill": 0.0,
+    "ticks": 16,
+    "tick_len": 0.12,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.0,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.3,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 0,
+    "motif_n": 5,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 1,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "ticks": 1,
+    "tick_len": 1,
+    "deco": 1
+   }
+  },
+  {
+   "id": "nova64",
+   "kind": "ring",
+   "size": 64,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_kindling",
+    "size": 64
+   },
+   "baseline": "nova|farolero_kindling|64",
+   "replaces": "nova|farolero_kindling|64",
+   "params": {
+    "rim": 2,
+    "fill": 0.0,
+    "ticks": 16,
+    "tick_len": 0.16,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.0,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.32,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 0,
+    "motif_n": 5,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 2,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "ticks": 1,
+    "tick_len": 1,
+    "deco": 1
+   }
+  },
+  {
+   "id": "nova80",
+   "kind": "ring",
+   "size": 80,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_kindling",
+    "size": 80
+   },
+   "baseline": "nova|farolero_kindling|80",
+   "replaces": "nova|farolero_kindling|80",
+   "params": {
+    "rim": 2,
+    "fill": 0.0,
+    "ticks": 16,
+    "tick_len": 0.16,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.0,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.32,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 0,
+    "motif_n": 5,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 2,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "ticks": 1,
+    "tick_len": 1,
+    "deco": 1
+   }
+  },
+  {
+   "id": "nova96",
+   "kind": "ring",
+   "size": 96,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_kindling",
+    "size": 96
+   },
+   "baseline": "nova|farolero_kindling|96",
+   "replaces": "nova|farolero_kindling|96",
+   "params": {
+    "rim": 2,
+    "fill": 0.0,
+    "ticks": 16,
+    "tick_len": 0.16,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.0,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.32,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 0,
+    "motif_n": 5,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 2,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "ticks": 1,
+    "tick_len": 1,
+    "deco": 1
+   }
+  },
+  {
+   "id": "nova128",
+   "kind": "ring",
+   "size": 128,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_kindling",
+    "size": 128
+   },
+   "baseline": "nova|farolero_kindling|128",
+   "replaces": "nova|farolero_kindling|128",
+   "params": {
+    "rim": 3,
+    "fill": 0.0,
+    "ticks": 16,
+    "tick_len": 0.32,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.0,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.32,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 0,
+    "motif_n": 5,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 1,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "ticks": 1,
+    "rim": 1,
+    "tick_len": 1,
+    "deco": 1
+   }
+  },
+  {
+   "id": "nova160",
+   "kind": "ring",
+   "size": 160,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_kindling",
+    "size": 160
+   },
+   "baseline": "nova|farolero_kindling|160",
+   "replaces": "nova|farolero_kindling|160",
+   "params": {
+    "rim": 4,
+    "fill": 0.0,
+    "ticks": 16,
+    "tick_len": 0.32,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.0,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.32,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 0,
+    "motif_n": 5,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 1,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "ticks": 1,
+    "rim": 1,
+    "tick_len": 1,
+    "deco": 1
+   }
+  },
+  {
+   "id": "nova192",
+   "kind": "ring",
+   "size": 192,
+   "frames": 12,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_kindling",
+    "size": 192
+   },
+   "baseline": "nova|farolero_kindling|192",
+   "replaces": "nova|farolero_kindling|192",
+   "params": {
+    "rim": 4,
+    "fill": 0.0,
+    "ticks": 16,
+    "tick_len": 0.32,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.0,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.32,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 0,
+    "motif_n": 5,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 1,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "ticks": 1,
+    "rim": 1,
+    "tick_len": 1,
+    "deco": 1
+   }
+  },
+  {
+   "id": "zone32",
+   "kind": "idle",
+   "size": 32,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_kindling",
+    "size": 32
+   },
+   "baseline": "zone|farolero_kindling|32",
+   "replaces": "zone|farolero_kindling|32",
+   "params": {
+    "rim": 1,
+    "fill": 0.0,
+    "ticks": 0,
+    "tick_len": 0.08,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.0,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.32,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 0,
+    "motif_n": 5,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 2,
+    "core_density": 0.5
+   },
+   "_dir": {
+    "ticks": -1,
+    "rim": -1,
+    "deco": 1
+   }
+  },
+  {
+   "id": "zone48",
+   "kind": "idle",
+   "size": 48,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_kindling",
+    "size": 48
+   },
+   "baseline": "zone|farolero_kindling|48",
+   "replaces": "zone|farolero_kindling|48",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone64",
+   "kind": "idle",
+   "size": 64,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_kindling",
+    "size": 64
+   },
+   "baseline": "zone|farolero_kindling|64",
+   "replaces": "zone|farolero_kindling|64",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone80",
+   "kind": "idle",
+   "size": 80,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_kindling",
+    "size": 80
+   },
+   "baseline": "zone|farolero_kindling|80",
+   "replaces": "zone|farolero_kindling|80",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone96",
+   "kind": "idle",
+   "size": 96,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_kindling",
+    "size": 96
+   },
+   "baseline": "zone|farolero_kindling|96",
+   "replaces": "zone|farolero_kindling|96",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone128",
+   "kind": "idle",
+   "size": 128,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_kindling",
+    "size": 128
+   },
+   "baseline": "zone|farolero_kindling|128",
+   "replaces": "zone|farolero_kindling|128",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone160",
+   "kind": "idle",
+   "size": 160,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_kindling",
+    "size": 160
+   },
+   "baseline": "zone|farolero_kindling|160",
+   "replaces": "zone|farolero_kindling|160",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  },
+  {
+   "id": "zone192",
+   "kind": "idle",
+   "size": 192,
+   "frames": 8,
+   "glyph": null,
+   "mode": "overlay",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_kindling",
+    "size": 192
+   },
+   "baseline": "zone|farolero_kindling|192",
+   "replaces": "zone|farolero_kindling|192",
+   "params": {
+    "fill": 0,
+    "ticks": 12,
+    "tick_len": 0.1,
+    "sparks": 0,
+    "flash": 0,
+    "glyph_on": 0,
+    "motif_on": 0,
+    "inner_ring": 0,
+    "rim": 2,
+    "deco": 0
+   }
+  }
+ ]
+}

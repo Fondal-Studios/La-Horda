@@ -1,0 +1,84 @@
+{
+ "guardian": "zahra",
+ "title": "Zahra, la Herrera de Brasas",
+ "palette": [
+  "#2a1008",
+  "#a8431a",
+  "#ed8858",
+  "#ffc27a",
+  "#fff2cc"
+ ],
+ "abilities": [
+  {
+   "id": "furnace",
+   "kind": "sector",
+   "radius": 190,
+   "frames": 10,
+   "glyph": "flame",
+   "baseline": "zh_cone",
+   "replaces": "zh_cone",
+   "params": {
+    "deco": 2,
+    "ticks": 10
+   },
+   "half": 0.85,
+   "motif": "flame"
+  },
+  {
+   "id": "quench",
+   "kind": "ring",
+   "radius": 140,
+   "frames": 10,
+   "glyph": "drop",
+   "baseline": "zh_quench",
+   "replaces": "zh_quench",
+   "params": {
+    "deco": 1
+   },
+   "motif": "rune"
+  },
+  {
+   "id": "ash_step",
+   "kind": "beam",
+   "tile": [
+    16,
+    16
+   ],
+   "frames": 8,
+   "baseline_beam": "zh_ash",
+   "replaces": "zh_ash",
+   "params": {
+    "wave": 2
+   }
+  },
+  {
+   "id": "vent",
+   "kind": "ring",
+   "radius": 155,
+   "frames": 10,
+   "glyph": "flame",
+   "baseline": "zh_vent",
+   "replaces": "zh_vent",
+   "params": {
+    "deco": 2,
+    "ticks": 12,
+    "rim": 3
+   },
+   "motif": "flame"
+  },
+  {
+   "id": "vent_zone",
+   "kind": "idle",
+   "radius": 155,
+   "frames": 12,
+   "glyph": "flame",
+   "baseline": "zh_vent_idle",
+   "replaces": "zh_vent_idle",
+   "params": {
+    "deco": 1
+   },
+   "motif": "flame"
+  }
+ ],
+ "codex": "zahra"
+}

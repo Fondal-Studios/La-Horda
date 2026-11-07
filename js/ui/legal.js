@@ -137,7 +137,7 @@
       const back = el("div", { class: "ui-modal-back" });
       const panel = el("div", { class: "ui-panel ui-modal-panel" });
       panel.append(el("div", { class: "ui-panel-title", id: "legal-buy-title", text: "Antes de tu primera compra" }));
-      panel.append(el("p", { class: "legal-buy-p", text: "Las Brasas se pagan con dinero real por Mercado Pago y solo compran apariencia, nunca poder. Tenés derechos como consumidor; leé cómo pedir una devolución." }));
+      panel.append(el("p", { class: "legal-buy-p", text: "Las Brasas se pagan con dinero real por Mercado Pago. " + (typeof premiumRuleText === "function" ? premiumRuleText() : "Compran apariencia.") + " Tenés derechos como consumidor; leé cómo pedir una devolución." }));
       const lr = el("p", { class: "legal-buy-links" }); lr.append(linksLine()); panel.append(lr);
       const box = el("div", { class: "legal-consent" });
       const cb = el("input", { type: "checkbox", id: "legal-buy-cb", "aria-required": "true" });

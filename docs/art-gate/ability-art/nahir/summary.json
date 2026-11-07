@@ -1,0 +1,141 @@
+{
+ "guardian": "nahir",
+ "passed": [
+  "shards",
+  "cross_burst",
+  "shatter",
+  "mirror_zone"
+ ],
+ "escalated": [],
+ "keep_current": [
+  "cut",
+  "streak"
+ ],
+ "state": {
+  "shards": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 96.5,
+     "status": "PASS",
+     "improvement": 12.3,
+     "reasons": []
+    }
+   ]
+  },
+  "cross_burst": {
+   "status": "PASS",
+   "rounds": 2,
+   "history": [
+    {
+     "round": 1,
+     "score": 87.8,
+     "status": "FAIL",
+     "improvement": 21.6,
+     "reasons": [
+      "criterio bajo: cobertura legible 1.73/12"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 95.3,
+     "status": "PASS",
+     "improvement": 29.1,
+     "reasons": []
+    }
+   ]
+  },
+  "shatter": {
+   "status": "PASS",
+   "rounds": 2,
+   "history": [
+    {
+     "round": 1,
+     "score": 83.5,
+     "status": "FAIL",
+     "improvement": 16.9,
+     "reasons": [
+      "cobertura excesiva (77%): oculta el suelo",
+      "criterio bajo: cobertura legible 0.0/12",
+      "puntaje 83.5 < 85"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 92.7,
+     "status": "PASS",
+     "improvement": 26.1,
+     "reasons": []
+    }
+   ]
+  },
+  "mirror_zone": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 99.2,
+     "status": "PASS",
+     "improvement": 20.8,
+     "reasons": []
+    }
+   ]
+  },
+  "cut": {
+   "status": "KEEP_CURRENT",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 98.8,
+     "status": "FAIL",
+     "improvement": 0.6,
+     "reasons": [
+      "mejora +0.6 < +0.9 sobre el arte actual (98.2)"
+     ]
+    }
+   ]
+  },
+  "streak": {
+   "status": "KEEP_CURRENT",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 97.0,
+     "status": "FAIL",
+     "improvement": 2.2,
+     "reasons": [
+      "mejora +2.2 < +2.6 sobre el arte actual (94.8)"
+     ]
+    }
+   ]
+  }
+ },
+ "baseline": {
+  "shards": 84.2,
+  "cross_burst": 66.2,
+  "shatter": 66.6,
+  "mirror_zone": 78.4,
+  "cut": 98.2,
+  "streak": 94.8
+ },
+ "log": [
+  "ronda 1: shards PASS 96.5 (arte actual 84.2, +12.3)",
+  "ronda 1: cross_burst FAIL 87.8 — criterio bajo: cobertura legible 1.73/12",
+  "ronda 1: shatter FAIL 83.5 — cobertura excesiva (77%): oculta el suelo; criterio bajo: cobertura legible 0.0/12",
+  "ronda 1: mirror_zone PASS 99.2 (arte actual 78.4, +20.8)",
+  "ronda 1: cut CONSERVAR ACTUAL — el arte actual ya puntúa 98.2 y el nuevo lo iguala (98.8): no se reemplaza",
+  "ronda 1: streak CONSERVAR ACTUAL — el arte actual ya puntúa 94.8 y el nuevo lo iguala (97.0): no se reemplaza",
+  "ronda 2: cross_burst PASS 95.3 (arte actual 66.2, +29.1)",
+  "ronda 2: shatter PASS 92.7 (arte actual 66.6, +26.1)",
+  "arquitecto: integradas ['shards', 'cross_burst', 'shatter', 'mirror_zone']; humo OK: SMOKE OK nahir: shards,cross_burst,shatter,mirror_zone"
+ ],
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['shards', 'cross_burst', 'shatter', 'mirror_zone']; humo OK: SMOKE OK nahir: shards,cross_burst,shatter,mirror_zone"
+ }
+}

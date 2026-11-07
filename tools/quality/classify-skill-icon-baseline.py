@@ -7,6 +7,17 @@ import re
 
 BASELINE = '34ac2852154035b97e53c4807a0a20ee289a40b2'
 HUD = 'HUD 844x390: 43 campeones, 301 íconos auditados; 946 pares de definitivas (incl. Coloso)'
+# El roster crece: la cobertura del HUD NO es un número fijo. Se exige el formato exacto con cantidades positivas y coherentes
+# (íconos = 7 por campeón; pares de definitivas = n·(n-1)/2 + n por el Coloso), no un recuento histórico.
+HUD_RE = re.compile(r'HUD 844x390: ([1-9][0-9]*) campeones, ([1-9][0-9]*) íconos auditados; ([1-9][0-9]*) pares de definitivas \(incl\. Coloso\)')
+
+
+def hud_ok(line):
+    m = HUD_RE.fullmatch(line)
+    n = int(m.group(1)) if m else 0
+    return bool(m) and int(m.group(2)) == 7 * n and int(m.group(3)) == n * (n - 1) // 2 + n
+
+
 PASS = 'PASS contrato de íconos: 16x16 nativos, <= 6 colores, alfa 0/255, contorno de 1 px, marco por categoría, definitivas distinguibles (<= 85 % iguales)'
 SELF = {'good': 'PASS', 'wrongSize': 'tamaño nativo 32x32 (debe ser 16x16)', 'gradient': '256 colores (máximo 6)', 'semiAlpha': '20 píxeles con alfa distinto de 0/255', 'noFrame': 'marco skill incompleto en (3,0)', 'noOutline': 'sin contorno oscuro de 1 px'}
 CHAMPIONS = set('tanque guerrero mago soporte segador axiom profeta musashi cazadora nigromante libertador ilkan ynara myla brasa eslabon morwen farolero iria vesper nahir baltra maura dariel orsa tibor zahra renko sira nano_gm facu_gm aurelia khepri velmira vhal bront oriel saelis solciju veyra brakk morveth aelith'.split())
@@ -32,7 +43,7 @@ def parse(log, node_status, tee_status):
             return invalid('checker self-test incomplete or failed')
     except (ValueError, TypeError):
         return invalid('malformed self-test')
-    if lines[2] != HUD or not lines[3].startswith('definitivas más parecidas: ') or not lines[4].startswith('íconos de kit más parecidos: '):
+    if not hud_ok(lines[2]) or not lines[3].startswith('definitivas más parecidas: ') or not lines[4].startswith('íconos de kit más parecidos: '):
         return invalid('missing, changed or incomplete coverage summary')
     result['hud_summary'] = lines[2]
     if lines[5] == PASS:

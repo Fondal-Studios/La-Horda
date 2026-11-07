@@ -1,0 +1,68 @@
+{
+ "guardian": "tibor",
+ "title": "Tibor, el Colmenero",
+ "palette": [
+  "#3a2a08",
+  "#8a6d1c",
+  "#c9b365",
+  "#f5df8a",
+  "#fff6c8"
+ ],
+ "abilities": [
+  {
+   "id": "swarm",
+   "kind": "ring",
+   "radius": 110,
+   "frames": 10,
+   "glyph": "star",
+   "baseline": "tb_hive",
+   "replaces": "tb_hive",
+   "params": {
+    "deco": 2,
+    "ticks": 12
+   },
+   "motif": "hex"
+  },
+  {
+   "id": "pollen",
+   "kind": "ring",
+   "radius": 90,
+   "frames": 10,
+   "glyph": "drop",
+   "baseline": "tb_pollen",
+   "replaces": "tb_pollen",
+   "params": {
+    "deco": 1
+   },
+   "motif": "pollen"
+  },
+  {
+   "id": "recall",
+   "kind": "beam",
+   "tile": [
+    18,
+    14
+   ],
+   "frames": 8,
+   "baseline_beam": "tb_stream",
+   "replaces": "tb_stream",
+   "params": {
+    "wave": 2
+   }
+  },
+  {
+   "id": "hive_zone",
+   "kind": "idle",
+   "radius": 110,
+   "frames": 12,
+   "glyph": "star",
+   "baseline": "tb_hive_idle",
+   "replaces": "tb_hive_idle",
+   "params": {
+    "deco": 0
+   },
+   "motif": "hex"
+  }
+ ],
+ "codex": "tibor"
+}

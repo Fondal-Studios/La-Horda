@@ -23,6 +23,12 @@ if(process.env.GAME_SITE_URL){
   const html=await readFile(path.join(out,'index.html'),'utf8');
   await writeFile(path.join(out,'index.html'),html.replaceAll('https://fondalstudios.com/la-horda/jugar/',site.href.endsWith('/')?site.href:site.href+'/'));
 }
+// BETA_PUBLIC=1: paquete de la beta pública (solo Campaña y Horda Infinita; Convergencia y Coliseo ocultos y bloqueados). Ver js/beta/beta-scope.js.
+if(process.env.BETA_PUBLIC==='1'){
+  const f=path.join(out,'index.html'), h=await readFile(f,'utf8');
+  if(!h.includes('<head>'))throw new Error('index.html sin <head>');
+  await writeFile(f,h.replace('<head>','<head><script>window.__BETA_PUBLIC__=true;</script>'));
+}
 // OPCIONAL (GAME_PERF=1): paquetes de scripts (~360 pedidos -> ~25) + service worker con caché por hash.
 // Va después de las reescrituras de arriba porque los hashes se calculan sobre lo que realmente se publica.
 if(process.env.GAME_PERF==='1'){

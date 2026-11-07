@@ -1,0 +1,413 @@
+{
+ "guardian": "sfa_brakk_build",
+ "passed": [
+  "nova64",
+  "nova96",
+  "nova128",
+  "nova160",
+  "nova192",
+  "zone48",
+  "zone64",
+  "zone80",
+  "zone96",
+  "zone128",
+  "zone160",
+  "zone192"
+ ],
+ "escalated": [
+  "nova32",
+  "nova48",
+  "nova80",
+  "zone32"
+ ],
+ "keep_current": [],
+ "state": {
+  "nova32": {
+   "status": "ESCALATED",
+   "rounds": 3,
+   "history": [
+    {
+     "round": 1,
+     "score": 84.2,
+     "status": "FAIL",
+     "improvement": 9.5,
+     "reasons": [
+      "criterio bajo: cobertura legible 2.92/12",
+      "criterio bajo: suelo despejado 2.23/5",
+      "puntaje 84.2 < 85"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 83.7,
+     "status": "FAIL",
+     "improvement": 9.0,
+     "reasons": [
+      "criterio bajo: cobertura legible 2.92/12",
+      "criterio bajo: suelo despejado 2.23/5",
+      "puntaje 83.7 < 85"
+     ]
+    },
+    {
+     "round": 3,
+     "score": 83.7,
+     "status": "FAIL",
+     "improvement": 9.0,
+     "reasons": [
+      "criterio bajo: cobertura legible 2.92/12",
+      "criterio bajo: suelo despejado 2.24/5",
+      "puntaje 83.7 < 85"
+     ]
+    }
+   ]
+  },
+  "nova48": {
+   "status": "ESCALATED",
+   "rounds": 3,
+   "history": [
+    {
+     "round": 1,
+     "score": 86.0,
+     "status": "FAIL",
+     "improvement": 9.9,
+     "reasons": [
+      "criterio bajo: suelo despejado 0.26/5"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 84.9,
+     "status": "FAIL",
+     "improvement": 8.8,
+     "reasons": [
+      "criterio bajo: suelo despejado 0.26/5",
+      "puntaje 84.9 < 85"
+     ]
+    },
+    {
+     "round": 3,
+     "score": 85.1,
+     "status": "FAIL",
+     "improvement": 9.0,
+     "reasons": [
+      "criterio bajo: suelo despejado 0.26/5"
+     ]
+    }
+   ]
+  },
+  "nova64": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 92.7,
+     "status": "PASS",
+     "improvement": 8.3,
+     "reasons": []
+    }
+   ]
+  },
+  "nova80": {
+   "status": "ESCALATED",
+   "rounds": 6,
+   "history": [
+    {
+     "round": 1,
+     "score": 87.3,
+     "status": "FAIL",
+     "improvement": 8.4,
+     "reasons": [
+      "criterio bajo: suelo despejado 1.04/5"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 87.2,
+     "status": "FAIL",
+     "improvement": 8.3,
+     "reasons": [
+      "criterio bajo: suelo despejado 1.04/5"
+     ]
+    },
+    {
+     "round": 3,
+     "score": 87.1,
+     "status": "FAIL",
+     "improvement": 8.2,
+     "reasons": [
+      "criterio bajo: suelo despejado 1.04/5"
+     ]
+    },
+    {
+     "round": 4,
+     "score": 87.2,
+     "status": "FAIL",
+     "improvement": 8.3,
+     "reasons": [
+      "criterio bajo: suelo despejado 1.04/5"
+     ]
+    },
+    {
+     "round": 5,
+     "score": 87.1,
+     "status": "FAIL",
+     "improvement": 8.2,
+     "reasons": [
+      "criterio bajo: suelo despejado 1.04/5"
+     ]
+    },
+    {
+     "round": 6,
+     "score": 87.2,
+     "status": "FAIL",
+     "improvement": 8.3,
+     "reasons": [
+      "criterio bajo: suelo despejado 1.04/5"
+     ]
+    }
+   ]
+  },
+  "nova96": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 94.2,
+     "status": "PASS",
+     "improvement": 8.2,
+     "reasons": []
+    }
+   ]
+  },
+  "nova128": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 94.7,
+     "status": "PASS",
+     "improvement": 8.3,
+     "reasons": []
+    }
+   ]
+  },
+  "nova160": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 94.6,
+     "status": "PASS",
+     "improvement": 9.1,
+     "reasons": []
+    }
+   ]
+  },
+  "nova192": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 94.5,
+     "status": "PASS",
+     "improvement": 10.0,
+     "reasons": []
+    }
+   ]
+  },
+  "zone32": {
+   "status": "ESCALATED",
+   "rounds": 4,
+   "history": [
+    {
+     "round": 1,
+     "score": 87.2,
+     "status": "FAIL",
+     "improvement": 13.4,
+     "reasons": [
+      "cobertura excesiva (74%): oculta el suelo",
+      "criterio bajo: cobertura legible 4.74/12"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 87.2,
+     "status": "FAIL",
+     "improvement": 13.4,
+     "reasons": [
+      "cobertura excesiva (74%): oculta el suelo",
+      "criterio bajo: cobertura legible 4.74/12"
+     ]
+    },
+    {
+     "round": 3,
+     "score": 87.3,
+     "status": "FAIL",
+     "improvement": 13.5,
+     "reasons": [
+      "cobertura excesiva (75%): oculta el suelo",
+      "criterio bajo: cobertura legible 4.74/12"
+     ]
+    },
+    {
+     "round": 4,
+     "score": 87.3,
+     "status": "FAIL",
+     "improvement": 13.5,
+     "reasons": [
+      "cobertura excesiva (73%): oculta el suelo",
+      "criterio bajo: cobertura legible 4.74/12"
+     ]
+    }
+   ]
+  },
+  "zone48": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.9,
+     "status": "PASS",
+     "improvement": 12.4,
+     "reasons": []
+    }
+   ]
+  },
+  "zone64": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.7,
+     "status": "PASS",
+     "improvement": 9.9,
+     "reasons": []
+    }
+   ]
+  },
+  "zone80": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.0,
+     "status": "PASS",
+     "improvement": 10.8,
+     "reasons": []
+    }
+   ]
+  },
+  "zone96": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.0,
+     "status": "PASS",
+     "improvement": 9.2,
+     "reasons": []
+    }
+   ]
+  },
+  "zone128": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.0,
+     "status": "PASS",
+     "improvement": 9.3,
+     "reasons": []
+    }
+   ]
+  },
+  "zone160": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 94.8,
+     "status": "PASS",
+     "improvement": 11.0,
+     "reasons": []
+    }
+   ]
+  },
+  "zone192": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.7,
+     "status": "PASS",
+     "improvement": 13.0,
+     "reasons": []
+    }
+   ]
+  }
+ },
+ "baseline": {
+  "nova32": 74.7,
+  "nova48": 76.1,
+  "nova64": 84.4,
+  "nova80": 78.9,
+  "nova96": 86.0,
+  "nova128": 86.4,
+  "nova160": 85.5,
+  "nova192": 84.5,
+  "zone32": 73.8,
+  "zone48": 83.5,
+  "zone64": 85.8,
+  "zone80": 84.2,
+  "zone96": 85.8,
+  "zone128": 85.7,
+  "zone160": 83.8,
+  "zone192": 82.7
+ },
+ "log": [
+  "ronda 1: nova32 FAIL 84.2 — criterio bajo: cobertura legible 2.92/12; criterio bajo: suelo despejado 2.23/5",
+  "ronda 1: nova48 FAIL 86.0 — criterio bajo: suelo despejado 0.26/5",
+  "ronda 1: nova64 PASS 92.7 (arte actual 84.4, +8.3)",
+  "ronda 1: nova80 FAIL 87.3 — criterio bajo: suelo despejado 1.04/5",
+  "ronda 1: nova96 PASS 94.2 (arte actual 86.0, +8.2)",
+  "ronda 1: nova128 PASS 94.7 (arte actual 86.4, +8.3)",
+  "ronda 1: nova160 PASS 94.6 (arte actual 85.5, +9.1)",
+  "ronda 1: nova192 PASS 94.5 (arte actual 84.5, +10.0)",
+  "ronda 1: zone32 FAIL 87.2 — cobertura excesiva (74%): oculta el suelo; criterio bajo: cobertura legible 4.74/12",
+  "ronda 1: zone48 PASS 95.9 (arte actual 83.5, +12.4)",
+  "ronda 1: zone64 PASS 95.7 (arte actual 85.8, +9.9)",
+  "ronda 1: zone80 PASS 95.0 (arte actual 84.2, +10.8)",
+  "ronda 1: zone96 PASS 95.0 (arte actual 85.8, +9.2)",
+  "ronda 1: zone128 PASS 95.0 (arte actual 85.7, +9.3)",
+  "ronda 1: zone160 PASS 94.8 (arte actual 83.8, +11.0)",
+  "ronda 1: zone192 PASS 95.7 (arte actual 82.7, +13.0)",
+  "ronda 2: nova32 FAIL 83.7 — criterio bajo: cobertura legible 2.92/12; criterio bajo: suelo despejado 2.23/5",
+  "ronda 2: nova48 FAIL 84.9 — criterio bajo: suelo despejado 0.26/5; puntaje 84.9 < 85",
+  "ronda 2: nova80 FAIL 87.2 — criterio bajo: suelo despejado 1.04/5",
+  "ronda 2: zone32 FAIL 87.2 — cobertura excesiva (74%): oculta el suelo; criterio bajo: cobertura legible 4.74/12",
+  "ronda 3: nova32 FAIL 83.7 — criterio bajo: cobertura legible 2.92/12; criterio bajo: suelo despejado 2.24/5",
+  "  nova32: sin perillas que mover → ESCALADA (REDRAW REQUIRED)",
+  "ronda 3: nova48 FAIL 85.1 — criterio bajo: suelo despejado 0.26/5",
+  "  nova48: sin perillas que mover → ESCALADA (REDRAW REQUIRED)",
+  "ronda 3: nova80 FAIL 87.1 — criterio bajo: suelo despejado 1.04/5",
+  "ronda 3: zone32 FAIL 87.3 — cobertura excesiva (75%): oculta el suelo; criterio bajo: cobertura legible 4.74/12",
+  "ronda 4: nova80 FAIL 87.2 — criterio bajo: suelo despejado 1.04/5",
+  "ronda 4: zone32 FAIL 87.3 — cobertura excesiva (73%): oculta el suelo; criterio bajo: cobertura legible 4.74/12",
+  "  zone32: sin perillas que mover → ESCALADA (REDRAW REQUIRED)",
+  "ronda 5: nova80 FAIL 87.1 — criterio bajo: suelo despejado 1.04/5",
+  "ronda 6: nova80 FAIL 87.2 — criterio bajo: suelo despejado 1.04/5"
+ ],
+ "integration": null
+}

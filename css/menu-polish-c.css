@@ -1,0 +1,52 @@
+/* css/menu-polish-c.css — pulido de menús (evaluación de diseño #4, #10, #11): fondo pixel compartido, vista previa de
+   recompensas sin sesión y feedback de transición / pressed. Tile: assets/ui/menu-stone-64.png (tools/art/menu/make_menu_tile.py). */
+
+/* ---- #4 Fondo pixel compartido: sillería oscura + viñeta + brasas sutiles ---- */
+#modeselect-screen, #prep-screen, #arenaselect-screen, #pause-screen, #gameover-screen, #victory-screen{
+  background-color:#0a0604;
+  background-image:
+    url("../assets/ui/menu-embers-128.png"),
+    radial-gradient(ellipse at 50% 112%, rgba(255,110,30,0.16), transparent 55%),
+    radial-gradient(ellipse at 50% 45%, transparent 38%, rgba(0,0,0,0.72) 100%),
+    url("../assets/ui/menu-stone-64.png");
+  background-size:128px 128px, 100% 100%, 100% 100%, 64px 64px;
+  background-position:0 0, 0 0, 0 0, 0 0;
+  background-repeat:repeat, no-repeat, no-repeat, repeat;
+  image-rendering:pixelated;
+  animation:mpcEmbers 24s linear infinite;
+}
+@keyframes mpcEmbers{
+  from{ background-position:0 0, 0 0, 0 0, 0 0; }
+  to{ background-position:-24px -128px, 0 0, 0 0, 0 0; }
+}
+#pause-screen.tactical-live{ background-image:none; animation:none; }
+@media (prefers-reduced-motion:reduce){
+  #modeselect-screen, #prep-screen, #arenaselect-screen, #pause-screen, #gameover-screen, #victory-screen{ animation:none; }
+}
+body.reduce-motion #modeselect-screen, body.reduce-motion #prep-screen, body.reduce-motion #arenaselect-screen,
+body.reduce-motion #pause-screen, body.reduce-motion #gameover-screen, body.reduce-motion #victory-screen{ animation:none; }
+
+/* ---- #10 Vista previa de recompensas bloqueadas (Pase y Brasas sin sesión) ---- */
+.mpc-locked-row{ display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:10px 0 6px; }
+.mpc-locked{ position:relative; width:44px; height:44px; display:flex; align-items:center; justify-content:center;
+  background:rgba(10,6,4,.7); border:2px solid #000; box-shadow:inset 0 0 0 1px rgba(255,160,90,.18); }
+.mpc-locked .pxi{ width:28px; height:28px; opacity:.55; filter:saturate(.7); }
+.mpc-locked .mpc-lk{ position:absolute; right:-5px; bottom:-5px; line-height:0; } .mpc-locked .mpc-lk .pxi{ width:18px; height:18px; opacity:1; filter:none; }
+.mpc-cta-row{ display:flex; justify-content:center; margin:8px 0 4px; }
+.mpc-preview-cap{ font-size:.85rem; color:var(--text-dim); text-align:center; }
+
+/* ---- #11 Feedback: transición corta, pressed de 2 px y brillo del CTA JUGAR ---- */
+@keyframes mpcIn{ from{ opacity:0; } to{ opacity:1; } }
+.screen:not(.hidden):not(#title-screen){ animation:mpcIn 140ms steps(4,end); }
+#modeselect-screen:not(.hidden), #prep-screen:not(.hidden), #arenaselect-screen:not(.hidden), #pause-screen:not(.hidden), #gameover-screen:not(.hidden), #victory-screen:not(.hidden){
+  animation:mpcIn 140ms steps(4,end), mpcEmbers 24s linear infinite; }
+#pause-screen.tactical-live:not(.hidden){ animation:mpcIn 140ms steps(4,end); }
+.btn:active:not(:disabled), .shop-btn:active:not(:disabled), .hub-tile:active:not(:disabled), .ui-back:active, .mode-card:active{ transform:translate(0,2px); }
+@keyframes mpcShine{ 0%,70%,100%{ filter:brightness(1); } 85%{ filter:brightness(1.22); } }
+#hub-play-btn{ animation:mpcShine 3.2s ease-in-out infinite; }
+@media (prefers-reduced-motion:reduce){
+  .screen:not(.hidden){ animation:none !important; }
+  #hub-play-btn{ animation:none; }
+}
+body.reduce-motion .screen:not(.hidden){ animation:none !important; }
+body.reduce-motion #hub-play-btn{ animation:none; }

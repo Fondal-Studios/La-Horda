@@ -1,0 +1,76 @@
+{
+ "guardian": "oriel",
+ "passed": [
+  "great_rift",
+  "rift_echo",
+  "portal"
+ ],
+ "escalated": [],
+ "keep_current": [],
+ "state": {
+  "great_rift": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 94.8,
+     "status": "PASS",
+     "improvement": 19.1,
+     "reasons": []
+    }
+   ]
+  },
+  "rift_echo": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.7,
+     "status": "PASS",
+     "improvement": 17.7,
+     "reasons": []
+    }
+   ]
+  },
+  "portal": {
+   "status": "PASS",
+   "rounds": 2,
+   "history": [
+    {
+     "round": 1,
+     "score": 86.3,
+     "status": "FAIL",
+     "improvement": 20.3,
+     "reasons": [
+      "criterio bajo: cobertura legible 2.0/12"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 93.2,
+     "status": "PASS",
+     "improvement": 27.2,
+     "reasons": []
+    }
+   ]
+  }
+ },
+ "baseline": {
+  "great_rift": 75.7,
+  "rift_echo": 78.0,
+  "portal": 66.0
+ },
+ "log": [
+  "ronda 1: great_rift PASS 94.8 (arte actual 75.7, +19.1)",
+  "ronda 1: rift_echo PASS 95.7 (arte actual 78.0, +17.7)",
+  "ronda 1: portal FAIL 86.3 — criterio bajo: cobertura legible 2.0/12",
+  "ronda 2: portal PASS 93.2 (arte actual 66.0, +27.2)",
+  "arquitecto: integradas ['great_rift', 'rift_echo', 'portal']; humo OK: SMOKE OK oriel: great_rift,rift_echo,portal"
+ ],
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['great_rift', 'rift_echo', 'portal']; humo OK: SMOKE OK oriel: great_rift,rift_echo,portal"
+ }
+}

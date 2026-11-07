@@ -1,0 +1,43 @@
+{
+ "id": "ilsa",
+ "name": "Ilsa, La Esgrimista de Replica",
+ "prompt": "Casaca oscura con cinta carmesi y hombreras.",
+ "body": "vesper",
+ "head": "maura",
+ "paint": [],
+ "accessories": [
+  {
+   "element": "banda_cruzada",
+   "materials": {
+    "cloth": {
+     "ramp": [
+      "#2e060c",
+      "#6a1020",
+      "#a52032",
+      "#d8505c"
+     ]
+    }
+   }
+  },
+  {
+   "element": "hombreras_redondas",
+   "scale": 0.6,
+   "materials": {
+    "shell": {
+     "ramp": [
+      "#2e060c",
+      "#6a1020",
+      "#a52032",
+      "#e87080",
+      "#ffd0da"
+     ]
+    }
+   }
+  }
+ ],
+ "install": {
+  "champion": "ilsa",
+  "pack": "ilsa"
+ },
+ "headLongHair": true
+}

@@ -352,9 +352,9 @@ def h07_props():
 
 def h08_portadas():
     arenas = ["abismo", "acuatica", "bosque", "ciudad", "divina", "fortaleza", "hielo", "infernal", "laberinto", "micelial", "minas"]
-    items = [("assets/ui/codex/arenas/%s.jpg" % a, "portada " + a, "960x420 JPG ILUSTRACION") for a in arenas]
+    items = [("assets/ui/codex/arenas/%s.png" % a, "portada " + a, "960x420 PNG pixel nativo") for a in arenas]
     for n in ["titan", "titan_full", "cerbero", "devoraluz", "devoraluz_full", "esclavo", "insecto", "acechador", "minero", "escupidor", "consumidor"]:
-        items.append(("assets/ui/codex/minas/%s.jpg" % n, "minas/" + n, "retrato JPG ILUSTRACION"))
+        items.append(("assets/ui/codex/minas/%s.png" % n, "minas/" + n, "retrato PNG pixel nativo sin título"))
     return hoja("08 · Portadas de arena (11) y retratos del Códice de Minas (11): todos JPG ilustración -> repintar en píxel nativo",
                 "Portadas: se ven en el Códice, la ficha de arena, el campamento, las pantallas de historia y el Libro. Retratos de Minas: se precargan (js/arenas/minas/mn-render.js:20)",
                 celdas_de_rutas(items), 4, 300, 150)

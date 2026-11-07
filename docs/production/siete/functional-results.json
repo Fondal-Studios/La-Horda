@@ -1,0 +1,462 @@
+{
+  "checks": [
+    {
+      "name": "ilsa registered STANDARD/TESTING, hidden from public store",
+      "ok": true
+    },
+    {
+      "name": "ilsa NOT in knownChampions (still a candidate)",
+      "ok": true
+    },
+    {
+      "name": "ilsa kit 3 skills + ultimate with descriptions and premarcado where aimed",
+      "ok": true
+    },
+    {
+      "name": "ilsa talents: 3 branches + a special per branch + masteries",
+      "ok": true
+    },
+    {
+      "name": "ilsa boons: 4 cards + duo",
+      "ok": true
+    },
+    {
+      "name": "ilsa Codex lore, two author skins and pending Set",
+      "ok": true
+    },
+    {
+      "name": "ilsa horde damage",
+      "ok": true,
+      "details": [
+        98,
+        128,
+        128,
+        128,
+        98
+      ]
+    },
+    {
+      "name": "ilsa bounded entities (<=10 own, <=48 global)",
+      "ok": true,
+      "details": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "ilsa finite state",
+      "ok": true
+    },
+    {
+      "name": "ilsa boss never displaced or stunned",
+      "ok": true,
+      "details": [
+        0,
+        0,
+        0.12
+      ]
+    },
+    {
+      "name": "ilsa boss alive, damage bounded by caps (<60% of max HP for a full kit)",
+      "ok": true,
+      "details": 82.34517499999947
+    },
+    {
+      "name": "ilsa elites never executed",
+      "ok": true
+    },
+    {
+      "name": "ilsa timed objects expire",
+      "ok": true,
+      "details": []
+    },
+    {
+      "name": "ilsa cleanup on death",
+      "ok": true
+    },
+    {
+      "name": "ilsa arena ciudad bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "ilsa arena fortaleza bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "ilsa arena bosque bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "ilsa arena micelial bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "ilsa arena hielo bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "ilsa arena acuatica bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "ilsa arena laberinto bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "ilsa arena abismo bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "ilsa arena minas bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "ilsa arena infernal bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "vorn registered STANDARD/TESTING, hidden from public store",
+      "ok": true
+    },
+    {
+      "name": "vorn NOT in knownChampions (still a candidate)",
+      "ok": true
+    },
+    {
+      "name": "vorn kit 3 skills + ultimate with descriptions and premarcado where aimed",
+      "ok": true
+    },
+    {
+      "name": "vorn talents: 3 branches + a special per branch + masteries",
+      "ok": true
+    },
+    {
+      "name": "vorn boons: 4 cards + duo",
+      "ok": true
+    },
+    {
+      "name": "vorn Codex lore, two author skins and pending Set",
+      "ok": true
+    },
+    {
+      "name": "vorn horde damage",
+      "ok": true,
+      "details": [
+        169,
+        169,
+        169,
+        183,
+        169
+      ]
+    },
+    {
+      "name": "vorn bounded entities (<=10 own, <=48 global)",
+      "ok": true,
+      "details": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "vorn finite state",
+      "ok": true
+    },
+    {
+      "name": "vorn boss never displaced or stunned",
+      "ok": true,
+      "details": [
+        0,
+        0,
+        0.12
+      ]
+    },
+    {
+      "name": "vorn boss alive, damage bounded by caps (<60% of max HP for a full kit)",
+      "ok": true,
+      "details": 225.51459919999797
+    },
+    {
+      "name": "vorn elites never executed",
+      "ok": true
+    },
+    {
+      "name": "vorn timed objects expire",
+      "ok": true,
+      "details": []
+    },
+    {
+      "name": "vorn cleanup on death",
+      "ok": true
+    },
+    {
+      "name": "vorn arena ciudad bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "vorn arena fortaleza bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "vorn arena bosque bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "vorn arena micelial bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "vorn arena hielo bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "vorn arena acuatica bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "vorn arena laberinto bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "vorn arena abismo bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "vorn arena minas bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "vorn arena infernal bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "kora registered STANDARD/TESTING, hidden from public store",
+      "ok": true
+    },
+    {
+      "name": "kora NOT in knownChampions (still a candidate)",
+      "ok": true
+    },
+    {
+      "name": "kora kit 3 skills + ultimate with descriptions and premarcado where aimed",
+      "ok": true
+    },
+    {
+      "name": "kora talents: 3 branches + a special per branch + masteries",
+      "ok": true
+    },
+    {
+      "name": "kora boons: 4 cards + duo",
+      "ok": true
+    },
+    {
+      "name": "kora Codex lore, two author skins and pending Set",
+      "ok": true
+    },
+    {
+      "name": "kora horde damage",
+      "ok": true,
+      "details": [
+        86,
+        86,
+        86,
+        86,
+        86
+      ]
+    },
+    {
+      "name": "kora bounded entities (<=10 own, <=48 global)",
+      "ok": true,
+      "details": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "kora finite state",
+      "ok": true
+    },
+    {
+      "name": "kora boss never displaced or stunned",
+      "ok": true,
+      "details": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "kora boss alive, damage bounded by caps (<60% of max HP for a full kit)",
+      "ok": true,
+      "details": 33.51919999999973
+    },
+    {
+      "name": "kora elites never executed",
+      "ok": true
+    },
+    {
+      "name": "kora timed objects expire",
+      "ok": true,
+      "details": []
+    },
+    {
+      "name": "kora cleanup on death",
+      "ok": true
+    },
+    {
+      "name": "kora arena ciudad bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "kora arena fortaleza bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "kora arena bosque bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "kora arena micelial bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "kora arena hielo bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "kora arena acuatica bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "kora arena laberinto bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "kora arena abismo bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "kora arena minas bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "kora arena infernal bounds + finite",
+      "ok": true
+    },
+    {
+      "name": "Ilsa takes damage outside the stance",
+      "ok": true
+    },
+    {
+      "name": "Ilsa stance blocks the hit completely",
+      "ok": true
+    },
+    {
+      "name": "Ilsa riposte damages the attacker and adds a Réplica",
+      "ok": true
+    },
+    {
+      "name": "Ilsa does not parry environment damage",
+      "ok": true
+    },
+    {
+      "name": "Ilsa stance expires",
+      "ok": true
+    },
+    {
+      "name": "Ilsa duel parries at most 6 hits",
+      "ok": true,
+      "details": 6
+    },
+    {
+      "name": "Ilsa third Réplica powers the next basic (+60%) and is consumed",
+      "ok": true,
+      "details": 160
+    },
+    {
+      "name": "Ilsa lunge dashes and spends Réplicas",
+      "ok": true
+    },
+    {
+      "name": "Vorn starts in Piedra (-14% taken, slower)",
+      "ok": true
+    },
+    {
+      "name": "Mudar switches to Tormenta (faster)",
+      "ok": true
+    },
+    {
+      "name": "Mudar toggles back to Piedra",
+      "ok": true
+    },
+    {
+      "name": "Zarpa in Piedra slows",
+      "ok": true
+    },
+    {
+      "name": "Zarpa in Tormenta dashes and bleeds",
+      "ok": true
+    },
+    {
+      "name": "Instinto in Piedra shields",
+      "ok": true
+    },
+    {
+      "name": "Instinto in Tormenta buffs damage",
+      "ok": true
+    },
+    {
+      "name": "Bestia Primordial cuts damage taken",
+      "ok": true
+    },
+    {
+      "name": "Bestia ends",
+      "ok": true
+    },
+    {
+      "name": "Kora gains Impulso by moving",
+      "ok": true,
+      "details": 34.8
+    },
+    {
+      "name": "Kora loses Impulso when still",
+      "ok": true
+    },
+    {
+      "name": "Arremetida carries commons forward and hits all",
+      "ok": true
+    },
+    {
+      "name": "Arremetida never drags a boss",
+      "ok": true
+    },
+    {
+      "name": "Cabeza Gacha clears slows and buffs",
+      "ok": true
+    },
+    {
+      "name": "Estampida moves Kora forward fast",
+      "ok": true
+    },
+    {
+      "name": "Estampida ends and resets Impulso",
+      "ok": true
+    },
+    {
+      "name": "Talent special flag is read by the runtime",
+      "ok": true
+    },
+    {
+      "name": "ilsa network snapshot is serializable, bounded and keeps owner",
+      "ok": true
+    },
+    {
+      "name": "vorn network snapshot is serializable, bounded and keeps owner",
+      "ok": true
+    },
+    {
+      "name": "kora network snapshot is serializable, bounded and keeps owner",
+      "ok": true
+    }
+  ],
+  "errors": []
+}

@@ -293,3 +293,31 @@ Antes / después, 10 semillas (117, 431, 991, 577, 2027, 31, 64, 1234, 4242, 888
 Queda dentro de ±35 % a nivel 20 y algo por encima a nivel 4 (1,43): se prefirió no seguir recortando para no quitarle identidad (cadencia creciente, movilidad, Presa). Pendiente: reconsiderar con telemetría real.
 
 Candidatos fuera de banda (solo informe, no se tocan; en pruebas): Oriel, Velmira, Saelis (soporte, 1,7-1,9 sobre la mediana de 3 aprobados), Brakk (tanque, 0,43), Facu GM y Orsa (asesino, alto). La mediana de soporte y tanque se apoya en solo 3 aprobados.
+Ability Gate estricto PASS. Duplicidad: Solciju/Morwen y Veyra/Eren DUPLICATE (sin resolver). Detalle: `docs/production/quality-five/README.md`.
+## Tres campeones nuevos (STANDARD, TESTING) — Ilsa, Vorn y Kora — 14 octubre 2026
+
+Ilsa (asesina, contraataque), Vorn (tanque, dos formas) y Kora (tanque, impulso). Diseño en `js/champions/siete/catalog.js`, registrados antes de
+`champion-entry-balance.js`; **`knownChampions` y las medias por rol no se tocaron** (segundo paso en `claude/siete-campeones-known`). Taxonomía
+STANDARD/TESTING (jugables para quien los tenga concedido; fuera de tienda pública, bots y modos competitivos). Detalle: `docs/production/siete/README.md`.
+Los otros cuatro diseños originales (Ostrel, Grelk, Nerith, Quillon) quedaron respaldados en `claude/siete-pendientes` hasta tener arte propio:
+su arte se leía como repintado de un campeón existente.
+
+Entry gate (`node tools/balance/entry-gate.js`, 3 partidas de 150 s por candidato, semillas 117/431/991, Bosque, nivel 20, sin equipo):
+**PASS** (46 clases, 28 candidatas, 84 simulaciones). Daño medio del jugador frente al techo de su rol (media del rol × 1,35):
+
+| Campeón | Rol | Daño medio | Techo | Con vida |
+|---|---|---:|---:|---|
+| Ilsa | Asesino | 4.792 | 17.385 | 3/3 |
+| Vorn | Tanque | 4.860 | 14.180 | 3/3 |
+| Kora | Tanque | 5.728 | 14.180 | 3/3 |
+
+El autopiloto no cronometra la Postura de Réplica de Ilsa ni usa el Impulso (Kora, Vorn), así que los tres quedan muy por debajo de la media de su
+rol; el gate solo exige el techo. Con tres muestras no se prueba equilibrio competitivo: hace falta jugar con personas.
+
+Otros gates con salida real: `check-entry-reference`, `ability-gate --strict`, `tools/siete/functional.js` (100 comprobaciones: habilidades, mecánica
+propia, tope de entidades, expiración, limpieza, jefes, élites, diez arenas, talentos, refuerzos, snapshot de cooperativo), gate de talentos,
+pricing-sync, `unique_skins/check.js`, champion-validator --strict, recursos, pasivas, estilo, forja y Roster Art Gate (145 apariencias, 0 fallos): PASS.
+Duplicidad: los tres **DISTINCT** (máx. 0,24) frente al roster completo y a los cinco del PR #87. Skins de autor (dos por campeón, Pintor + forja):
+Esgrimista de Gala / Esgrimista de Carnaval, Piel de Aurora / Piel de Ceniza, Capataz de Hierro / Capataz de Cobre.
+
+No verificado / pendiente: revisión humana de arte (ensamblados de donantes del Pintor, no arte original) y de audio; croma y Set con arte propio.

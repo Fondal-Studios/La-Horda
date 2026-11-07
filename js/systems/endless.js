@@ -102,7 +102,18 @@ function endlessBeginRun(){
 }
 function endlessLocalReset(){
   EN.local = {id:EN.id, cls:selectedClass, gold0:save.gold||0, xp0:_enTotalXp(selectedClass), lvl0:(save.champions[selectedClass]||{}).level||1,
-    gems0:save.gems||0, loot:[], full:false, done:false};
+    gems0:save.gems||0, loot:[], full:false, done:false,
+    // RANKING PERSONAL: última ronda que ESTE jugador terminó en pie (con su puntaje y tiempo en ese momento). No viaja por la red.
+    survived:0, survivedScore:0, survivedMs:0, seen:EN.round};
+}
+// Cuenta una ronda como sobrevivida solo si este jugador estaba vivo cuando la ronda avanzó (+1). Saltos de más de una ronda
+// (reconexión o instantánea tardía) no suman: nadie hereda rondas que no vio. Una ronda posterior a tu caída nunca se te atribuye.
+function endlessTrackSurvival(){
+  const L = EN.local; if(!L || L.done || typeof player==='undefined' || !player) return;
+  if(L.seen === undefined) L.seen = EN.round;
+  if(EN.round === L.seen) return;
+  if(EN.round === L.seen + 1 && player.alive){ L.survived = Math.max(L.survived||0, L.seen); L.survivedScore = Math.max(0, EN.score|0); L.survivedMs = runElapsedMs||0; }
+  L.seen = EN.round;
 }
 // startRun(): justo después de armar runStats. Fija el nivel del tramo (la curva la pone la ronda).
 function endlessOnRunStart(){
@@ -452,7 +463,9 @@ function endlessCtxTargets(){ return (endlessActive && endlessRescues.length) ? 
 
 /* ---------------- cada cuadro (anfitrión / partida local) ---------------- */
 function endlessUpdate(dt){
-  if(!endlessActive || runEnding) return;
+  if(!endlessActive) return;
+  endlessTrackSurvival();
+  if(runEnding) return;
   if(EN.rescueAt >= 0 && levelTimer >= EN.rescueAt && !bossActive && !levelClearing){ EN.rescueAt = -1; endlessSpawnRescue(); }
   for(let i=endlessRescues.length-1;i>=0;i--){
     const t = endlessRescues[i];
@@ -575,6 +588,7 @@ function endlessEndRun(reason){
     L.lvl1 = (save.champions[cls]||{}).level || L.lvl0;
     L.gemsGained = (save.gems||0) - L.gems0;
     L.timeMs = runElapsedMs||0;
+    endlessTrackSurvival();   // la última transición antes del fin también cuenta si seguías en pie
     persist(); if(typeof persistNow==="function") persistNow();
     // logros / desafíos / XP de cuenta (T6): la partida cuenta como jugada (siempre termina en derrota o abandono)
     if(typeof questsOnRunEnd==="function"){ try{ L.questSum = questsOnRunEnd(false, {abandon:EN.endReason==="quit", endless:true}) || L.questSum; }catch(e){ console.error(e); } }

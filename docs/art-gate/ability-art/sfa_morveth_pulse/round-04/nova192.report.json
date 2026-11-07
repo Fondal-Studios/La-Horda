@@ -1,0 +1,158 @@
+{
+ "kind": "ring",
+ "score": 73.4,
+ "points": {
+  "alpha": 5.0,
+  "palette": 8.0,
+  "hygiene": 7.0,
+  "edge": 15.0,
+  "coverage": 2.89,
+  "contrast": 8.0,
+  "clear_floor": 0.0,
+  "motion": 10.32,
+  "richness": 7.23,
+  "identity": 10.0
+ },
+ "metrics": {
+  "peak_idx": 0,
+  "alpha_binary": 1.0,
+  "palette_adherence": 1.0,
+  "colors": 5,
+  "isolated": 0.0,
+  "edge_outline": 1.0,
+  "edge_reach": 0.996726070068196,
+  "edge_over": 0.0,
+  "coverage": 0.06409090909090909,
+  "interior": 0.0,
+  "interior_detail": 0.0,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 17.042739139840734,
+  "peak_pos": 0.0,
+  "tail": 0.0,
+  "motion_mean": 0.03803439670138888,
+  "unique_frames": 1.0,
+  "tones": 4,
+  "highlight_share": 0.10692853246044735,
+  "core_fill": 0.044984076433121016,
+  "detail_mass": 0.021460625361899247,
+  "min_sig_dist": 0.21180284315522738
+ },
+ "hard_fails": [],
+ "ops": [
+  {
+   "knob": "fill",
+   "why": "cobertura baja (6%): subir el relleno trameado (techo 24 %)",
+   "add": 0.06
+  },
+  {
+   "knob": "ticks",
+   "why": "más marcas para que el área se lea de lejos",
+   "add": 4
+  },
+  {
+   "knob": "rim",
+   "why": "borde más grueso para ganar presencia",
+   "add": 1
+  },
+  {
+   "knob": "fill",
+   "why": "el cuerpo de la zona casi no se ve (0% del interior): subir el relleno trameado",
+   "add": 0.06
+  },
+  {
+   "knob": "ticks",
+   "why": "más marcas internas para dar cuerpo",
+   "add": 4
+  },
+  {
+   "knob": "impact_at",
+   "why": "el pico cae en 0% de la tira: llevarlo a ~30 %",
+   "set": 0.3
+  },
+  {
+   "knob": "spin",
+   "why": "poco movimiento: el glifo debe girar en pasos de 90°",
+   "add": 1
+  },
+  {
+   "knob": "sparks",
+   "why": "más chispas orbitando",
+   "add": 2
+  },
+  {
+   "knob": "ticks",
+   "why": "poco detalle interior (0%): más marcas propias (estelas, hilos, runas)",
+   "add": 4
+  },
+  {
+   "knob": "tick_len",
+   "why": "marcas más largas",
+   "add": 0.04
+  },
+  {
+   "knob": "glyph_scale",
+   "why": "el centro está vacío: glifo propio más grande",
+   "add": 1
+  }
+ ],
+ "criteria": {
+  "alpha": 1.0,
+  "palette": 1.0,
+  "hygiene": 1.0,
+  "edge": 1.0,
+  "coverage": 0.241,
+  "contrast": 1.0,
+  "clear_floor": 0.0,
+  "motion": 0.688,
+  "richness": 0.482,
+  "identity": 1.0
+ },
+ "baseline_total": 47.8,
+ "baseline_criteria": {
+  "alpha": 1.0,
+  "palette": 0.0,
+  "hygiene": 1.0,
+  "edge": 0.5,
+  "coverage": 0.0,
+  "contrast": 1.0,
+  "clear_floor": 0.0,
+  "motion": 0.479,
+  "richness": 0.407,
+  "identity": 0.7
+ },
+ "baseline_metrics": {
+  "peak_idx": 0,
+  "alpha_binary": 1.0,
+  "palette_adherence": 0.5274427020506635,
+  "colors": 4,
+  "isolated": 0.0,
+  "edge_outline": 0.7083333333333334,
+  "edge_reach": 0.5320576256129005,
+  "edge_over": 0.0,
+  "coverage": 0.014020979020979022,
+  "interior": 0.0,
+  "interior_detail": 0.0,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 17.042739139840734,
+  "peak_pos": 0.0,
+  "tail": 0.0,
+  "motion_mean": 0.004684787326388889,
+  "unique_frames": 1.0,
+  "tones": 3,
+  "highlight_share": 0.032418952618453865,
+  "core_fill": 0.044984076433121016,
+  "detail_mass": 0.0045237405906195715,
+  "min_sig_dist": 1.0
+ },
+ "improvement": 25.6,
+ "reasons": [
+  "criterio bajo: cobertura legible 2.89/12",
+  "criterio bajo: suelo despejado 0.0/5",
+  "criterio bajo: riqueza visual 7.23/15",
+  "puntaje 73.4 < 85"
+ ],
+ "status": "FAIL",
+ "keep_current": false
+}

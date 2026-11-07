@@ -31,6 +31,7 @@ Object.assign(ANIM_PROFILES, {
 const CM_HMUL = {cm_saqueador:3.1, cm_perro:2.25, cm_raptor:3.1, cm_verdugo:2.6, cm_planidera:3.2, cm_acechante:2.65, cm_campanero:2.6, cm_sectario:3.1, cm_espectro:3.2,
   cm_maestro:3.8, cm_tramoyista:2.7, cm_dama:3.7, cm_presentador:3.5, cm_presentador2:3.3, cm_presentador3:3.4, cm_aldeano:2.6, cm_mujer:2.6, cm_nino:2.2};
 if(typeof CIUDAD_ATLAS!=="undefined") for(const k in CIUDAD_ATLAS){
+  if(typeof ENEMY_RUNWAY_SHEETS!=="undefined" && ENEMY_RUNWAY_SHEETS[k]) continue; // hoja completa de Runway (js/assets/enemy-runway-sheets.js)
   enemyAtlasPackLoad(k, CIUDAD_ATLAS[k].src, CIUDAD_ATLAS[k].meta);
   ENEMY_ATLAS_PACK[k].hMul = CM_HMUL[k] || 3;
 }

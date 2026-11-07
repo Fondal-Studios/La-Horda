@@ -1166,6 +1166,7 @@ const ASSET_WEBP = new Set([
 "assets/vfx/ciudad/tex_puente.png",
 "assets/vfx/ciudad/tex_puerta.png",
 "assets/vfx/ciudad/tex_techo.png",
+"assets/vfx/ciudad/tex_techo_roja.png",
 "assets/vfx/ciudad/tex_tierra.png",
 "assets/vfx/ciudad/tex_ventana.png",
 "assets/vfx/ciudad/trampa_0.png",

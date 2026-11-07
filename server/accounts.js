@@ -175,8 +175,8 @@ function lbCheck(e, now){
   if(e.score > lbMaxScore(e.round, e.durationMs)) return { error: "IMPLAUSIBLE", msg: "Ese puntaje no es posible para esa ronda y ese tiempo." };
   return null;
 }
-// Orden de la tabla: puntaje, después ronda, después el más rápido, después el primero en llegar.
-function lbCmp(a, b){ return (b.score - a.score) || (b.round - a.round) || (a.durationMs - b.durationMs) || (a.at - b.at); }
+// Orden de la tabla (beta): primero la RONDA que ese jugador sobrevivió personalmente, después el puntaje, después el más rápido, después el primero en llegar.
+function lbCmp(a, b){ return (b.round - a.round) || (b.score - a.score) || (a.durationMs - b.durationMs) || (a.at - b.at); }
 // El mejor de cada cuenta (filas de todas sus combinaciones cuenta+guardián), ordenado.
 function lbBestPerUser(rows){
   const best = new Map();
@@ -509,23 +509,23 @@ function pgStore(url){
       if(!r.rows.length) return { conflict: true, current: await this.getSaveMeta(id) };
       return { ok: true, version: r.rows[0].version | 0, updatedAt: Number(r.rows[0].updated_at) };
     },
-    // ranking: UPSERT condicional (mismo orden que lbCmp: puntaje, ronda, el más rápido)
+    // ranking: UPSERT condicional (mismo orden que lbCmp: ronda personal, puntaje, el más rápido)
     async lbPut(week, userId, guardian, e){
       guardian = legacyIds.legacyChampionId(guardian);
       const r = await q(`INSERT INTO horda_leaderboard (week, user_id, guardian, score, round, duration_ms, created_at)
         VALUES ($1,$2,$3,$4,$5,$6,$7)
         ON CONFLICT (week, user_id, guardian) DO UPDATE SET score=EXCLUDED.score, round=EXCLUDED.round,
           duration_ms=EXCLUDED.duration_ms, created_at=EXCLUDED.created_at
-        WHERE EXCLUDED.score > horda_leaderboard.score
-           OR (EXCLUDED.score = horda_leaderboard.score AND EXCLUDED.round > horda_leaderboard.round)
-           OR (EXCLUDED.score = horda_leaderboard.score AND EXCLUDED.round = horda_leaderboard.round AND EXCLUDED.duration_ms < horda_leaderboard.duration_ms)
+        WHERE EXCLUDED.round > horda_leaderboard.round
+           OR (EXCLUDED.round = horda_leaderboard.round AND EXCLUDED.score > horda_leaderboard.score)
+           OR (EXCLUDED.round = horda_leaderboard.round AND EXCLUDED.score = horda_leaderboard.score AND EXCLUDED.duration_ms < horda_leaderboard.duration_ms)
         RETURNING week`, [week, userId, guardian, e.score, e.round, e.durationMs, e.at]);
       return { improved: r.rows.length > 0 };
     },
     // el mejor de cada cuenta (DISTINCT ON) de esa semana, opcionalmente con un guardián
     _lbBest(guardian){
       return `SELECT DISTINCT ON (user_id) user_id, guardian, score, round, duration_ms, created_at FROM horda_leaderboard
-        WHERE week=$1 ${guardian ? "AND guardian=$2" : ""} ORDER BY user_id, score DESC, round DESC, duration_ms ASC, created_at ASC`;
+        WHERE week=$1 ${guardian ? "AND guardian=$2" : ""} ORDER BY user_id, round DESC, score DESC, duration_ms ASC, created_at ASC`;
     },
     _lbRow(r){ return r && { userId: Number(r.user_id), guardian: r.guardian, score: Number(r.score), round: r.round | 0,
       durationMs: Number(r.duration_ms), at: Number(r.created_at), name: r.display_name || r.username || "?" }; },
@@ -533,7 +533,7 @@ function pgStore(url){
       const p = guardian ? [week, guardian, limit] : [week, limit];
       const r = await q(`WITH best AS (${this._lbBest(guardian)})
         SELECT b.*, u.display_name, u.username FROM best b JOIN horda_users u ON u.id=b.user_id
-        ORDER BY b.score DESC, b.round DESC, b.duration_ms ASC, b.created_at ASC LIMIT $${p.length}`, p);
+        ORDER BY b.round DESC, b.score DESC, b.duration_ms ASC, b.created_at ASC LIMIT $${p.length}`, p);
       return r.rows.map(x => this._lbRow(x));
     },
     async lbRank(week, guardian, userId){
@@ -544,9 +544,9 @@ function pgStore(url){
       const row = this._lbRow(me.rows[0]), total = tot.rows[0].n | 0;
       if(!row) return { total, rank: 0, row: null };
       const ahead = await q(`WITH best AS (${this._lbBest(guardian)}) SELECT count(*)::int AS n FROM best b
-        WHERE b.score > $${p.length + 1} OR (b.score = $${p.length + 1} AND (b.round > $${p.length + 2}
-          OR (b.round = $${p.length + 2} AND (b.duration_ms < $${p.length + 3} OR (b.duration_ms = $${p.length + 3} AND b.created_at < $${p.length + 4})))))`,
-        p.concat([row.score, row.round, row.durationMs, row.at]));
+        WHERE b.round > $${p.length + 1} OR (b.round = $${p.length + 1} AND (b.score > $${p.length + 2}
+          OR (b.score = $${p.length + 2} AND (b.duration_ms < $${p.length + 3} OR (b.duration_ms = $${p.length + 3} AND b.created_at < $${p.length + 4})))))`,
+        p.concat([row.round, row.score, row.durationMs, row.at]));
       return { total, rank: (ahead.rows[0].n | 0) + 1, row };
     },
     async lastSubmitAt(userId){
@@ -937,6 +937,7 @@ function create(opts){
 
   Object.assign(routes, gameMaster.routes({getStore:()=>store,auth,send,err,readBody,summarize,now:now0,isOwner,ownerAccess,founderOf,founders:()=>founderBindings,seenAt}));
   Object.assign(routes, require("./item-economy").routes({getStore:()=>store,auth,send,err,readBody,now:now0,isOwner,fallback:{"GET /api/leaderboard":routes["GET /api/leaderboard"],"POST /api/leaderboard/submit":routes["POST /api/leaderboard/submit"]}}));
+  Object.assign(routes, require("./battlepass").routes({getStore:()=>store,auth,send,err,readBody,now:now0}));
   Object.assign(routes, walletMod.routes({getStore:()=>store,auth,send,err,readBody,summarize,now:now0,isOwner,log}));
 
   // Devuelve true si atendió el pedido (todo lo que empieza con /api/).

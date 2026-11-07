@@ -1,0 +1,210 @@
+{
+ "guardian": "tibor",
+ "passed": [
+  "pollen",
+  "recall"
+ ],
+ "escalated": [
+  "swarm",
+  "hive_zone"
+ ],
+ "keep_current": [],
+ "state": {
+  "swarm": {
+   "status": "ESCALATED",
+   "rounds": 6,
+   "history": [
+    {
+     "round": 1,
+     "score": 76.4,
+     "status": "FAIL",
+     "improvement": 4.2,
+     "reasons": [
+      "criterio bajo: cobertura legible 0.08/12",
+      "criterio bajo: suelo despejado 0.62/5",
+      "puntaje 76.4 < 85",
+      "mejora +4.2 < +6.0 sobre el arte actual (72.2)",
+      "regresión de riqueza visual frente al arte actual (0.73 < 0.98)",
+      "regresión de cobertura legible frente al arte actual (0.01 < 0.50)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 92.1,
+     "status": "FAIL",
+     "improvement": 19.9,
+     "reasons": [
+      "regresión de riqueza visual frente al arte actual (0.86 < 0.98)"
+     ]
+    },
+    {
+     "round": 3,
+     "score": 91.7,
+     "status": "FAIL",
+     "improvement": 19.5,
+     "reasons": [
+      "regresión de riqueza visual frente al arte actual (0.81 < 0.98)"
+     ]
+    },
+    {
+     "round": 4,
+     "score": 93.6,
+     "status": "FAIL",
+     "improvement": 21.4,
+     "reasons": [
+      "regresión de riqueza visual frente al arte actual (0.85 < 0.98)"
+     ]
+    },
+    {
+     "round": 5,
+     "score": 93.6,
+     "status": "FAIL",
+     "improvement": 21.4,
+     "reasons": [
+      "regresión de riqueza visual frente al arte actual (0.85 < 0.98)"
+     ]
+    },
+    {
+     "round": 6,
+     "score": 93.6,
+     "status": "FAIL",
+     "improvement": 21.4,
+     "reasons": [
+      "regresión de riqueza visual frente al arte actual (0.85 < 0.98)"
+     ]
+    }
+   ]
+  },
+  "pollen": {
+   "status": "PASS",
+   "rounds": 2,
+   "history": [
+    {
+     "round": 1,
+     "score": 89.9,
+     "status": "FAIL",
+     "improvement": 19.7,
+     "reasons": [
+      "criterio bajo: cobertura legible 5.16/12",
+      "regresión de cobertura legible frente al arte actual (0.43 < 0.56)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 97.7,
+     "status": "PASS",
+     "improvement": 27.5,
+     "reasons": []
+    }
+   ]
+  },
+  "recall": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 98.3,
+     "status": "PASS",
+     "improvement": 21.9,
+     "reasons": []
+    }
+   ]
+  },
+  "hive_zone": {
+   "status": "ESCALATED",
+   "rounds": 6,
+   "history": [
+    {
+     "round": 1,
+     "score": 91.3,
+     "status": "FAIL",
+     "improvement": 5.8,
+     "reasons": [
+      "mejora +5.8 < +6.0 sobre el arte actual (85.5)",
+      "regresión de riqueza visual frente al arte actual (0.89 < 1.00)",
+      "regresión de cobertura legible frente al arte actual (0.58 < 1.00)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 93.5,
+     "status": "FAIL",
+     "improvement": 8.0,
+     "reasons": [
+      "regresión de riqueza visual frente al arte actual (0.86 < 1.00)",
+      "regresión de cobertura legible frente al arte actual (0.76 < 1.00)"
+     ]
+    },
+    {
+     "round": 3,
+     "score": 91.8,
+     "status": "FAIL",
+     "improvement": 6.3,
+     "reasons": [
+      "regresión de riqueza visual frente al arte actual (0.78 < 1.00)",
+      "regresión de cobertura legible frente al arte actual (0.75 < 1.00)"
+     ]
+    },
+    {
+     "round": 4,
+     "score": 91.8,
+     "status": "FAIL",
+     "improvement": 6.3,
+     "reasons": [
+      "regresión de riqueza visual frente al arte actual (0.78 < 1.00)",
+      "regresión de cobertura legible frente al arte actual (0.75 < 1.00)"
+     ]
+    },
+    {
+     "round": 5,
+     "score": 91.8,
+     "status": "FAIL",
+     "improvement": 6.3,
+     "reasons": [
+      "regresión de riqueza visual frente al arte actual (0.78 < 1.00)",
+      "regresión de cobertura legible frente al arte actual (0.75 < 1.00)"
+     ]
+    },
+    {
+     "round": 6,
+     "score": 91.8,
+     "status": "FAIL",
+     "improvement": 6.3,
+     "reasons": [
+      "regresión de riqueza visual frente al arte actual (0.78 < 1.00)",
+      "regresión de cobertura legible frente al arte actual (0.75 < 1.00)"
+     ]
+    }
+   ]
+  }
+ },
+ "baseline": {
+  "swarm": 72.2,
+  "pollen": 70.2,
+  "recall": 76.4,
+  "hive_zone": 85.5
+ },
+ "log": [
+  "ronda 1: swarm FAIL 76.4 — criterio bajo: cobertura legible 0.08/12; criterio bajo: suelo despejado 0.62/5",
+  "ronda 1: pollen FAIL 89.9 — criterio bajo: cobertura legible 5.16/12; regresión de cobertura legible frente al arte actual (0.43 < 0.56)",
+  "ronda 1: recall PASS 98.3 (arte actual 76.4, +21.9)",
+  "ronda 1: hive_zone FAIL 91.3 — mejora +5.8 < +6.0 sobre el arte actual (85.5); regresión de riqueza visual frente al arte actual (0.89 < 1.00)",
+  "ronda 2: swarm FAIL 92.1 — regresión de riqueza visual frente al arte actual (0.86 < 0.98)",
+  "ronda 2: pollen PASS 97.7 (arte actual 70.2, +27.5)",
+  "ronda 2: hive_zone FAIL 93.5 — regresión de riqueza visual frente al arte actual (0.86 < 1.00); regresión de cobertura legible frente al arte actual (0.76 < 1.00)",
+  "ronda 3: swarm FAIL 91.7 — regresión de riqueza visual frente al arte actual (0.81 < 0.98)",
+  "ronda 3: hive_zone FAIL 91.8 — regresión de riqueza visual frente al arte actual (0.78 < 1.00); regresión de cobertura legible frente al arte actual (0.75 < 1.00)",
+  "ronda 4: swarm FAIL 93.6 — regresión de riqueza visual frente al arte actual (0.85 < 0.98)",
+  "ronda 4: hive_zone FAIL 91.8 — regresión de riqueza visual frente al arte actual (0.78 < 1.00); regresión de cobertura legible frente al arte actual (0.75 < 1.00)",
+  "ronda 5: swarm FAIL 93.6 — regresión de riqueza visual frente al arte actual (0.85 < 0.98)",
+  "ronda 5: hive_zone FAIL 91.8 — regresión de riqueza visual frente al arte actual (0.78 < 1.00); regresión de cobertura legible frente al arte actual (0.75 < 1.00)",
+  "ronda 6: swarm FAIL 93.6 — regresión de riqueza visual frente al arte actual (0.85 < 0.98)",
+  "ronda 6: hive_zone FAIL 91.8 — regresión de riqueza visual frente al arte actual (0.78 < 1.00); regresión de cobertura legible frente al arte actual (0.75 < 1.00)",
+  "arquitecto: integradas ['pollen', 'recall']; humo OK: SMOKE OK tibor: pollen,recall"
+ ],
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['pollen', 'recall']; humo OK: SMOKE OK tibor: pollen,recall"
+ }
+}

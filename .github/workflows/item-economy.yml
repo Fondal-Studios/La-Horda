@@ -9,7 +9,7 @@ permissions:
   contents: read
 jobs:
   transactions:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -19,7 +19,7 @@ jobs:
       - run: node tools/items/test-auto-inventory-unit.js
       - run: npm run test:item-economy --prefix server
   mobile-inventory:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4

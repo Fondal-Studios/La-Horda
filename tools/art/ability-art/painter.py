@@ -1,0 +1,670 @@
+#!/usr/bin/env python3
+"""LA HORDA — EL PINTOR DE HABILIDADES (tools/art/ability-art)
+
+Pinta los efectos de suelo de las habilidades de los guardianes (anillos, sectores, zonas vivas y rayos) como PIXEL ART
+con la gramática unificada de canon.py: rampa de 5 tonos, contorno de 1 px, alfa 0/255, tramado Bayer, luz arriba-izquierda
+y tres fases (anticipación → impacto → disipación). No usa azar ni filtros: la misma ficha da los mismos píxeles.
+
+La ficha (specs/<guardian>.json) dice QUÉ pintar; las PERILLAS (`params`) dicen CÓMO. El Evaluador devuelve instrucciones
+(`ops`) que modifican esas perillas dentro de rangos seguros (apply_ops); así el lazo Pintor → Evaluador → Pintor converge
+sin que nadie toque píxeles a mano. Un artista humano puede seguir las mismas instrucciones en prosa (`render_instructions`).
+
+Uso:
+  python3 tools/art/ability-art/painter.py paint specs/vesper.json [--out DIR]   # pinta las habilidades de la ficha
+"""
+import argparse
+import math
+import sys
+from pathlib import Path
+
+import numpy as np
+from PIL import Image
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import canon  # noqa: E402
+
+# ---------------------------------------------------------------- perillas y rangos seguros
+KNOBS = {
+    # name: (default, min, max, step)
+    'rim': (2, 1, 4, 1),            # grosor del borde en el radio real
+    'fill': (0.14, 0.0, canon.FILL_CAP, 0.03),   # relleno trameado (techo del motor: 24 %)
+    'ticks': (8, 0, 16, 2),         # marcas radiales / puntos / rayos de decoración
+    'tick_len': (0.16, 0.08, 0.34, 0.04),
+    'glyph_scale': (1, 1, 3, 1),
+    'sparks': (4, 0, 12, 2),
+    'flash': (0.30, 0.0, 0.5, 0.1),
+    'spin': (1, 0, 3, 1),           # vueltas del glifo durante la animación (pasos de 90°)
+    'inner_ring': (0, 0, 1, 1),     # segundo anillo fino a 62 % del radio
+    'highlight_arc': (1, 0, 1, 1),  # brillo en el arco superior-izquierdo del borde
+    'impact_at': (0.30, 0.22, 0.42, 0.04),  # cuándo llega el pico (fracción de la tira)
+    'fade_to': (0.0, 0.0, 0.3, 0.1),         # cuánto queda del efecto en el último cuadro (0 = limpio)
+    'core': (2, 2, 3, 1),           # tono del relleno (2 = sombra, como el motor)
+    'glyph_on': (1, 0, 1, 1),       # glifo central (se quita solo si no cabe)
+    'wave': (0, 0, 3, 1),           # forma del rayo: 0 recto · 1 zigzag · 2 onda suave (hilo, tinta) · 3 relámpago orgánico
+    'motif_on': (1, 0, 1, 1),       # motivo temático del guardián (panal, circuito, llama…)
+    'motif_n': (5, 2, 10, 1),       # densidad del motivo
+    'wave_amp': (2, 1, 5, 1),       # amplitud de la forma (px)
+    'thick': (1, 1, 3, 1),          # grosor de las estelas de un sector (px)
+    'deco': (0, 0, 2, 1),           # 0 marcas radiales · 1 puntos · 2 rayos largos
+    'core_density': (0.5, 0.2, 0.9, 0.1),   # densidad del núcleo de un rayo
+}
+DECO_NAMES = ['ticks', 'dots', 'spokes']
+
+GLYPHS = {  # 1 contorno (lo pone el Pintor) · 2 sombra · 3 base · 4 luz · 5 brillo · '.' vacío. Luz arriba-izquierda.
+    'star': ['...5...', '...4...', '..343..', '5443445', '..323..', '...2...', '...2...'],
+    'diamond': ['...5...', '..454..', '.43334.', '4333332', '.43332.', '..232..', '...2...'],
+    'cross': ['..545..', '..434..', '5434345', '4333332', '3232322', '..232..', '..222..'],
+    'ring': ['..5445.', '.43..32', '43....2', '4......', '3.....2', '.3...22', '..222..'],
+    'bolt': ['....54.', '...543.', '..543..', '.54333.', '...543.', '..43...', '.32....'],
+    'drop': ['..5..', '.44..', '.433.', '43332', '43332', '.322.', '..2..'],
+    'eye': ['..45554..', '.4333332.', '43..5..32', '.2333322.', '..22222..'],
+    'rune': ['5.....4', '.4...3.', '..4.3..', '5434342', '..3.2..', '.3...2.', '3.....2'],
+    'stitch': ['4.....3', '.4...3.', '..4.3..', '...5...', '..4.3..', '.3...2.', '2.....2'],
+    'scissors': ['.4.....4.', '..4...3..', '...4.3...', '....5....', '...3.2...', '..3...2..', '.43...23.', '4.3...2.3', '.33...22.'],
+    'needle': ['.......54', '......54.', '.....54..', '....43...', '...43....', '..43.....', '.33......', '32.......', '2........'],
+    'flame': ['...4...', '..44...', '..434..', '.43334.', '4333332', '4333332', '.32222.', '..222..'],
+}
+
+
+def clamp_knob(name, v):
+    d, lo, hi, step = KNOBS[name]
+    v = max(lo, min(hi, v))
+    return round(v / step) * step if isinstance(step, float) else int(math.floor(v + 0.5) if v >= 0 else math.ceil(v - 0.5))
+
+
+def resolve_params(ability):
+    p = {k: v[0] for k, v in KNOBS.items()}
+    for k, v in (ability.get('params') or {}).items():
+        if k in KNOBS:
+            p[k] = clamp_knob(k, v)
+    return p
+
+
+def apply_ops(ability, ops):
+    """Aplica las instrucciones del Evaluador a las perillas. Devuelve la lista de cambios reales."""
+    p = resolve_params(ability)
+    changes = []
+    # conflictos: si dos instrucciones empujan una perilla en sentidos opuestos, mandan las duras (cobertura, centro despejado)
+    by = {}
+    for op in ops:
+        by.setdefault(op.get('knob'), []).append(op)
+    keep = []
+    for k, group in by.items():
+        sign = lambda o: (1 if o.get('add', 0) > 0 else -1 if o.get('add', 0) < 0 else 0)
+        if (len({sign(o) for o in group if 'add' in o} - {0}) > 1 or (any('set' in o for o in group) and any('add' in o for o in group))
+                or len({o['set'] for o in group if 'set' in o}) > 1):
+            hard = [o for o in group if o.get('hard')]
+            group = hard or group[:1]
+        keep += group
+    OVERLAY_KNOBS = {'rim', 'ticks', 'tick_len', 'highlight_arc', 'impact_at', 'fade_to', 'deco'}   # un borde superpuesto no toca el centro
+    for op in keep:
+        k = op.get('knob')
+        if ability.get('mode') == 'overlay' and k not in OVERLAY_KNOBS:
+            continue
+        if k == 'glyph':
+            new = op.get('set')
+            if new in GLYPHS and ability.get('glyph') != new:
+                changes.append(f"glyph: {ability.get('glyph')} → {new}")
+                ability['glyph'] = new
+            continue
+        if k not in KNOBS:
+            continue
+        old = p[k]
+        dirs = ability.setdefault('_dir', {})
+        if op.get('cycle'):
+            new = (old + 1) % (KNOBS[k][2] + 1)
+        else:
+            add = op.get('add', 0)
+            sg = (add > 0) - (add < 0)
+            if 'add' in op and sg and dirs.get(k) == -sg:   # amortiguación: si la perilla invierte su sentido, medio paso
+                add = add / 2.0
+            if 'set' in op:
+                new = clamp_knob(k, op['set'])
+            elif KNOBS[k][3] == 1 and add:   # perilla entera de paso 1: nunca menos de un paso en el sentido pedido
+                new = clamp_knob(k, old + sg * max(1, int(round(abs(add)))))
+            else:
+                new = clamp_knob(k, old + add)
+        if new != old:
+            p[k] = new
+            if 'add' in op and not op.get('cycle'):
+                dirs[k] = (new > old) - (new < old)
+            changes.append(f"{k}: {old} → {new}")
+    ability['params'] = p
+    return changes
+
+
+# ---------------------------------------------------------------- primitivas (todo entero, sin suavizado)
+class Canvas:
+    def __init__(self, W, H=None):
+        self.W, self.H = W, H or W
+        self.a = np.zeros((self.H, self.W), np.int8)
+        yy, xx = np.mgrid[0:self.H, 0:self.W]
+        self.xx, self.yy = xx, yy
+
+    def polar(self):
+        c = self.W / 2.0
+        dx, dy = self.xx + 0.5 - c, self.yy + 0.5 - c
+        return dx, dy, np.hypot(dx, dy), np.arctan2(dy, dx)
+
+
+def dither_keep(shape, level):
+    """Máscara de píxeles que sobreviven a un nivel de translucidez 0..1 (Bayer 4x4, como pixfx.js)."""
+    h, w = shape
+    yy, xx = np.mgrid[0:h, 0:w]
+    return canon.BAYER[yy & 3, xx & 3] < max(0.0, min(1.0, level)) * 16
+
+
+def dilate4(m):
+    o = m.copy()
+    o[1:, :] |= m[:-1, :]
+    o[:-1, :] |= m[1:, :]
+    o[:, 1:] |= m[:, :-1]
+    o[:, :-1] |= m[:, 1:]
+    return o
+
+
+def put_solid(cv, mask, tone, outline=True):
+    """Pone una capa sólida con contorno de 1 px (tono 1) por fuera; no toca lo que ya es sólido de otra capa."""
+    if outline:
+        ol = dilate4(mask) & ~mask
+        cv.a[ol] = 1
+    cv.a[mask] = tone
+
+
+def blit(cv, rows, cx, cy, scale=1, rot=0, level=1.0):
+    """Dibuja un glifo de filas con dígitos (tonos) centrado en (cx,cy); rot en cuartos de vuelta; level = tramado."""
+    g = np.array([[int(ch) if ch != '.' else 0 for ch in r] for r in rows], np.int8)
+    g = np.rot90(g, -rot)
+    if rot % 4:  # al girar, la luz seguiría al glifo: se repone arriba-izquierda cambiando 4/5 ↔ 2/3 según el cuadrante
+        pass
+    if scale > 1:
+        g = np.kron(g, np.ones((scale, scale), np.int8))
+    h, w = g.shape
+    x0, y0 = int(round(cx - w / 2)), int(round(cy - h / 2))
+    mask = np.zeros(cv.a.shape, bool)
+    tone = np.zeros(cv.a.shape, np.int8)
+    for j in range(h):
+        for i in range(w):
+            if g[j, i] and 0 <= y0 + j < cv.H and 0 <= x0 + i < cv.W:
+                mask[y0 + j, x0 + i] = True
+                tone[y0 + j, x0 + i] = g[j, i]
+    if level < 1:
+        mask &= dither_keep(cv.a.shape, level)
+    if mask.any():
+        ol = dilate4(mask) & ~mask
+        cv.a[ol & (cv.a <= 2)] = 1
+        cv.a[mask] = tone[mask]
+    return mask
+
+
+def spark(cv, x, y, tone_hi=5, tone_lo=4):
+    """Destello de 3 px en cruz (centro brillante)."""
+    m = np.zeros(cv.a.shape, bool)
+    x, y = int(round(x)), int(round(y))
+    for dx, dy in ((0, 0), (1, 0), (-1, 0), (0, 1), (0, -1)):
+        if 0 <= x + dx < cv.W and 0 <= y + dy < cv.H:
+            m[y + dy, x + dx] = True
+    ol = dilate4(m) & ~m
+    cv.a[ol & (cv.a <= 2)] = 1
+    cv.a[m] = tone_lo
+    if 0 <= x < cv.W and 0 <= y < cv.H:
+        cv.a[y, x] = tone_hi
+
+
+def ease(q):
+    return 1 - (1 - q) * (1 - q)
+
+
+def phase(q, impact_at):
+    ant_end = 0.22
+    hit_end = max(impact_at + 0.12, 0.42)
+    ant = min(1.0, q / ant_end)
+    post = 0.0 if q < hit_end else (q - hit_end) / (1 - hit_end)
+    return ant, post, hit_end
+
+
+def lit_band(cv, dx, dy, d, band, th, p):
+    """Borde con luz arriba-izquierda: base en todo el aro, luz en el hemisferio UL, brillo en su borde interior, sombra abajo-derecha."""
+    ul = (dx + dy) / (np.maximum(d, 1e-6) * math.sqrt(2))
+    cv_tone = np.full(cv.a.shape, 3, np.int8)
+    if p['highlight_arc']:
+        cv_tone[ul < -0.2] = 4
+        inner = band & (d <= d[band].min() + 1.01) if band.any() else band
+        cv_tone[inner & (ul < -0.55)] = 5
+    if th >= 3:
+        cv_tone[band & (ul > 0.35)] = 2
+    return cv_tone
+
+
+
+# ---------------------------------------------------------------- motivos temáticos (la identidad de cada guardián)
+def _h(i, k):
+    """Hash determinista 0..1 (sin azar): mismo resultado siempre."""
+    v = ((i * 73856093) ^ (k * 19349663) ^ 0x9E3779B1) & 0xFFFFFF
+    return v / float(0xFFFFFF)
+
+
+def _line(mask, x0, y0, x1, y1):
+    x0, y0, x1, y1 = int(round(x0)), int(round(y0)), int(round(x1)), int(round(y1))
+    dx, dy = abs(x1 - x0), -abs(y1 - y0)
+    sx, sy = (1 if x0 < x1 else -1), (1 if y0 < y1 else -1)
+    err = dx + dy
+    h, w = mask.shape
+    while True:
+        if 0 <= x0 < w and 0 <= y0 < h:
+            mask[y0, x0] = True
+        if x0 == x1 and y0 == y1:
+            break
+        e2 = 2 * err
+        if e2 >= dy:
+            err += dy; x0 += sx
+        if e2 <= dx:
+            err += dx; y0 += sy
+
+
+def _hex(mask, cx, cy, r):
+    pts = [(cx + r * math.cos(math.pi / 6 + i * math.pi / 3), cy + r * math.sin(math.pi / 6 + i * math.pi / 3)) for i in range(6)]
+    for i in range(6):
+        _line(mask, pts[i][0], pts[i][1], pts[(i + 1) % 6][0], pts[(i + 1) % 6][1])
+
+
+def motif_mask(name, S, rad, n, q, sector=False, half=0.85):
+    """Máscaras (base, brillo) de un motivo. rad = radio útil; n = densidad (2..10). Todo entero, determinista."""
+    base = np.zeros((S, S), bool)
+    hi = np.zeros((S, S), bool)
+    c = S / 2.0
+    if name == 'hex':            # panal (Tibor): celdas hexagonales en una malla
+        r = max(2.2, rad / (n * 0.9 + 1.5))
+        dxs, dys = r * math.sqrt(3), r * 1.5
+        for j in range(-int(rad / dys) - 1, int(rad / dys) + 2):
+            for i in range(-int(rad / dxs) - 1, int(rad / dxs) + 2):
+                x = c + i * dxs + (dxs / 2 if j % 2 else 0) + dxs * (q % 1.0)   # la malla se desplaza una celda por ciclo
+                y = c + j * dys
+                if math.hypot(x - c, y - c) < rad * 0.78 and math.hypot(x - c, y - c) > rad * 0.14:
+                    _hex(base, x, y, r * 0.85)
+        _hex(hi, c, c, max(2.2, rad * 0.12))
+    elif name == 'pollen':       # polen (Tibor): motas que derivan
+        for k in range(n * 3):
+            a = _h(k, 1) * math.tau + q * 0.8 * (1 if k % 2 else -1)
+            rr = rad * (0.2 + 0.62 * _h(k, 2))
+            x, y = c + math.cos(a) * rr, c + math.sin(a) * rr
+            xi, yi = int(x), int(y)
+            for ox, oy in ((0, 0), (1, 0), (0, 1), (1, 1)):
+                if 0 <= xi + ox < S and 0 <= yi + oy < S:
+                    (hi if k % 3 == 0 else base)[yi + oy, xi + ox] = True
+    elif name == 'circuit':      # circuito (Orsa): placa con simetría especular de 4 cuadrantes (nunca un molinete: sin sentido de giro)
+        step = max(3.0, rad * 0.16)
+        for k in range(n):
+            y0 = (k + 1) * step * 0.85
+            a = rad * (0.30 + 0.4 * _h(k, 3))
+            b = step * (1 + 1.5 * _h(k, 4))
+            for sx in (1, -1):
+                for sy in (1, -1):
+                    X = lambda v: c + sx * v
+                    Y = lambda v: c + sy * v
+                    _line(base, X(3), Y(y0), X(a), Y(y0))
+                    _line(base, X(a), Y(y0), X(a), Y(max(2.0, y0 - b)))
+                    ex, ey = int(X(a)), int(Y(max(2.0, y0 - b)))
+                    for ax in (0, 1):
+                        for ay in (0, 1):
+                            if 0 <= ex + ax < S and 0 <= ey + ay < S and k % 2 == 0:
+                                hi[ey + ay, ex + ax] = True
+    elif name == 'spiral':       # espiral (Vhal: pozo y órbita): dos brazos que giran con el tiempo
+        for arm in range(2):
+            pts = []
+            for t in range(0, 90):
+                u = t / 89.0
+                a = arm * math.pi + u * 3.2 * math.tau * 0.5 + q * math.tau * 0.5
+                r = 2 + u * rad * 0.85
+                pts.append((c + math.cos(a) * r, c + math.sin(a) * r))
+            for i in range(len(pts) - 1):
+                _line(hi if i % 9 == 0 else base, pts[i][0], pts[i][1], pts[i + 1][0], pts[i + 1][1])
+                if n >= 6:   # trazo de 2 px con densidad alta
+                    _line(base, pts[i][0] + 1, pts[i][1], pts[i + 1][0] + 1, pts[i + 1][1])
+    elif name == 'serpent':      # serpiente (Oriel: la Gran Cicatriz): una onda que atraviesa la zona
+        for lane in range(max(1, n // 4)):
+            y0 = c + (lane - (max(1, n // 4) - 1) / 2.0) * rad * 0.5
+            prev = None
+            for xx in range(int(c - rad * 0.85), int(c + rad * 0.85)):
+                yy = y0 + math.sin((xx - c) / rad * 5.0 + q * math.tau) * rad * 0.16
+                if prev:
+                    _line(base, prev[0], prev[1], xx, yy)
+                    _line(hi if xx % 7 == 0 else base, prev[0], prev[1] + 1, xx, yy + 1)
+                prev = (xx, yy)
+    elif name == 'bolt':         # relámpago (Orsa, Vhal): ramas quebradas desde el centro
+        for k in range(n):
+            a = k * math.tau / n + _h(k, 5) * 0.4
+            x, y = c, c
+            steps = max(4, int(rad * 0.85 / 3))
+            for s in range(steps):
+                a2 = a + (_h(k * 31 + s + 97 * int(q * 5), 6) - 0.5) * 1.3   # las ramas titilan (5 formas por ciclo)
+                nx, ny = x + math.cos(a2) * 3, y + math.sin(a2) * 3
+                _line(hi if s % 3 == 0 else base, x, y, nx, ny)
+                x, y = nx, ny
+    elif name == 'flame':        # llama (Zahra): lenguas que se afinan hacia la punta
+        ys, xs = np.mgrid[0:S, 0:S]
+        dxm, dym = xs + 0.5 - c, ys + 0.5 - c
+        d, ang = np.hypot(dxm, dym), np.arctan2(dym, dxm)
+        for k in range(n + 1):
+            a0 = (-half * 0.8 + k * (1.6 * half) / max(1, n)) if sector else k * math.tau / (n + 1)
+            L = max(2.0, rad * (0.55 + 0.35 * _h(k, 7)))
+            da = np.abs(((ang - a0 + math.pi) % math.tau) - math.pi)
+            w = np.clip(0.2 * (1 - d / L), 0, None) + 0.012
+            m = (d < L) & (d > 3) & (da * np.maximum(d, 1) < np.maximum(w * d, 0.6) * 2.2)
+            base |= m
+            hi |= m & (d > L * 0.55) & (da * np.maximum(d, 1) < 0.9)
+    elif name == 'map':          # mapa (Sira): retícula, brújula y ruta punteada
+        _line(base, c, c - rad * 0.8, c, c + rad * 0.8)
+        _line(base, c - rad * 0.8, c, c + rad * 0.8, c)
+        ys, xs = np.mgrid[0:S, 0:S]
+        d = np.hypot(xs + 0.5 - c, ys + 0.5 - c)
+        base |= np.abs(d - rad * 0.55) < 0.55
+        for k in range(4):
+            a = k * math.pi / 2 + math.pi / 4
+            _line(hi, c + math.cos(a) * rad * 0.3, c + math.sin(a) * rad * 0.3, c + math.cos(a) * rad * 0.5, c + math.sin(a) * rad * 0.5)
+        for k in range(n):
+            a = _h(k, 8) * math.tau
+            x, y = int(c + math.cos(a) * rad * 0.7), int(c + math.sin(a) * rad * 0.7)
+            if 0 <= x < S and 0 <= y < S:
+                hi[y, x] = True
+    elif name == 'thread':       # hilo (Vesper): costuras en X sobre el área
+        for k in range(n):
+            a = k * math.tau / n + q * 0.4
+            x, y = c + math.cos(a) * rad * 0.62, c + math.sin(a) * rad * 0.62
+            _line(base, x - 2, y - 2, x + 2, y + 2)
+            _line(base, x - 2, y + 2, x + 2, y - 2)
+            if 0 <= int(x) < S and 0 <= int(y) < S:
+                hi[int(y), int(x)] = True
+    elif name == 'rune':         # runa (Oriel, Saelis…): sellos de un trazo y puntos
+        for k in range(n):
+            a = k * math.tau / n
+            x, y = c + math.cos(a) * rad * 0.66, c + math.sin(a) * rad * 0.66
+            _line(base, x, y - 2, x, y + 2)
+            _line(base, x - 2, y, x + 2, y)
+            if k % 2 == 0:
+                hi[int(y), int(x)] = True
+    return base, hi
+
+# ---------------------------------------------------------------- formas
+def paint_ring(S, q, p, glyph, idle=False, motif=None, overlay=False):
+    cv = Canvas(S)
+    dx, dy, d, ang = cv.polar()
+    R = S / 2 - 1.5
+    ant, post, hit_end = phase(q, p['impact_at'])
+    if idle:
+        pulse = 0.5 + 0.5 * math.sin(q * math.tau)
+        rad, th = R, max(1, p['rim'] - 1)
+        fill = min(canon.FILL_CAP, p['fill'] * 0.6 + 0.04 * pulse)
+        rim_lv, det_lv = 1.0, 1.0
+    else:
+        rad = R * (0.5 + 0.5 * ease(ant)) if (q < 0.22 and not overlay) else R
+        in_hit = 0.22 <= q < hit_end
+        th = 1 if q < 0.22 else (p['rim'] if in_hit else max(1, round(p['rim'] - 1 - post * 1.2)))
+        fill = 0.1 * ant if q < 0.22 else (p['fill'] if in_hit else p['fill'] * (1 - post))
+        keep = p['fade_to']
+        rim_lv = 1.0 if post < 0.55 else max(keep, 1 - (post - 0.55) / 0.45)
+        det_lv = (ant * 0.55 if q < 0.22 else max(keep, 1 - post * 1.15))
+    # relleno trameado (tono 'core')
+    inside = d < rad - th - 0.5
+    f = inside & dither_keep(cv.a.shape, fill)
+    cv.a[f] = p['core']
+    # núcleo/flash de impacto
+    if not idle and 0.22 <= q < hit_end and p['flash'] > 0:
+        k = 1 - (q - 0.22) / max(1e-6, hit_end - 0.22)
+        fm = (d < rad * 0.55) & dither_keep(cv.a.shape, p['flash'] * k)
+        cv.a[fm] = 5
+    # marcas de decoración
+    if det_lv > 0.05 and p['ticks'] > 0:
+        n, L = min(int(p['ticks']), max(2, int(S // 6))), max(2, int(round(R * p['tick_len'])))
+        solid = np.zeros(cv.a.shape, bool)
+        for i in range(n):
+            a = i * math.tau / n + (0 if idle else 0) + (q * math.tau / n if idle else 0)
+            ca, sa = math.cos(a), math.sin(a)
+            if p['deco'] == 1:   # puntos sobre un anillo interior
+                r0 = rad * 0.82
+                x, y = cv.W / 2 + ca * r0, cv.H / 2 + sa * r0
+                for ox, oy in ((0, 0), (1, 0), (0, 1), (1, 1)):
+                    xi, yi = int(x) + ox, int(y) + oy
+                    if 0 <= xi < cv.W and 0 <= yi < cv.H:
+                        solid[yi, xi] = True
+            else:                 # marcas radiales hacia adentro (deco 0) o rayos largos (deco 2)
+                ln = L * (2.2 if p['deco'] == 2 else 1.0)
+                for s in range(int(ln)):
+                    r0 = rad - th - 1 - s
+                    if r0 < 2:
+                        break
+                    xi, yi = int(cv.W / 2 + ca * r0), int(cv.H / 2 + sa * r0)
+                    if 0 <= xi < cv.W and 0 <= yi < cv.H:
+                        solid[yi, xi] = True
+        solid &= dither_keep(cv.a.shape, det_lv) if det_lv < 1 else solid
+        put_solid(cv, solid, 4)
+    if motif and p['motif_on'] and det_lv > 0.05:
+        bm, hm = motif_mask(motif, S, rad - th - 1.5, int(p['motif_n']), q)
+        inside_m = d < rad - th - 1.2
+        keep = dither_keep(cv.a.shape, det_lv) if det_lv < 1 else np.ones(cv.a.shape, bool)
+        bm, hm = bm & inside_m & keep, hm & inside_m & keep
+        put_solid(cv, bm & ~hm, 3, outline=False)
+        put_solid(cv, hm, 5, outline=S >= 64)
+    if p['inner_ring'] and det_lv > 0.3 and S >= 48:
+        band = (np.abs(d - rad * 0.62) < 0.55)
+        band &= dither_keep(cv.a.shape, det_lv) if det_lv < 1 else band
+        put_solid(cv, band, 3)
+    # glifo central (gira de a 90°) y chispas orbitando
+    if glyph and p['glyph_on'] and det_lv > 0.05 and q >= 0.12 and max(len(GLYPHS[glyph][0]), len(GLYPHS[glyph])) + 2 <= 0.42 * S:
+        rows = GLYPHS[glyph]
+        gw = max(len(rows[0]), len(rows))
+        sc = max(1, min(p['glyph_scale'], int((rad * 0.5) // max(1, gw))))
+        rot = int(math.floor(q * p['spin'] * 4)) % 4 if p['spin'] else 0
+        lvl = 1.0 if (idle or q < hit_end) else max(p['fade_to'], 1 - post * 1.1)
+        blit(cv, rows, cv.W / 2, cv.H / 2, sc, rot, lvl)
+    if p['sparks'] > 0 and (idle or q >= 0.22) and rim_lv > 0.3:
+        n = min(int(p['sparks']), max(0, int(S // 10)))
+        lv = 1.0 if (idle or q < hit_end) else max(p['fade_to'], 1 - post * 1.2)
+        for i in range(n):
+            if lv < 1 and not dither_keep((1, 1), 1)[0, 0]:
+                break
+            if lv < 1 and (i / n) > lv:
+                continue
+            a = i * math.tau / n + q * math.tau * 0.5
+            r0 = rad * 0.74
+            spark(cv, cv.W / 2 + math.cos(a) * r0, cv.H / 2 + math.sin(a) * r0)
+    # borde en el radio real (siempre arriba)
+    if rim_lv > 0.05:
+        band = (d <= rad) & (d > rad - th)
+        if rim_lv < 1:
+            band &= dither_keep(cv.a.shape, rim_lv)
+        if p['highlight_arc'] or True:
+            tone = lit_band(cv, dx, dy, d, band, th, p)
+        ol = dilate4(band) & ~band
+        if S <= 32 and th == 1:   # sello chico: el contorno va solo por fuera (si no, el borde se come el radio)
+            ol &= d > rad
+        cv.a[ol] = 1
+        cv.a[band] = tone[band]
+    return cv.a
+
+
+def paint_sector(S, q, p, glyph, half=0.85, motif=None):
+    cv = Canvas(S)
+    dx, dy, d, ang = cv.polar()
+    R = S / 2 - 1.5
+    ant, post, hit_end = phase(q, p['impact_at'])
+    front = R * ease(min(1.0, q / 0.4))
+    in_hit = q < hit_end
+    fill = p['fill'] if in_hit else p['fill'] * (1 - post)
+    wedge = (d <= max(2.0, front)) & (np.abs(ang) <= half)
+    cv.a[wedge & dither_keep(cv.a.shape, fill)] = p['core']
+    det = 1.0 if q < 0.12 else max(p['fade_to'], 1 - post * 1.2) if not in_hit else min(1.0, q / 0.12)
+    if motif in ('flame', 'bolt') and p['motif_on'] and det > 0.05:
+        bm, hm = motif_mask(motif, S, front * 0.97, int(p['motif_n']), q, True, half)
+        wedge_in = (d <= max(2.0, front - 1.5)) & (np.abs(ang) <= half * 0.96)
+        keep = dither_keep(cv.a.shape, det) if det < 1 else np.ones(cv.a.shape, bool)
+        bm, hm = bm & wedge_in & keep, hm & wedge_in & keep
+        put_solid(cv, bm & ~hm, 4, outline=False)
+        put_solid(cv, hm, 5, outline=S >= 96)
+    elif p['ticks'] > 0 and det > 0.05:   # estelas desde el vértice (hilos, agujas, rayos)
+        n = max(2, int(p['ticks']) // 2)
+        solid = np.zeros(cv.a.shape, bool)
+        thick = p['thick']
+        for k in range(n):
+            a = (k - (n - 1) / 2) * (2 * half * 0.78 / max(1, n - 1))
+            ln = front * (0.95 if p['deco'] != 1 else 0.8)
+            for s in range(5, int(ln)):
+                if p['deco'] == 1 and s % 6 > 3:      # estela discontinua (agujas)
+                    continue
+                wob = math.sin(s * 0.28 + k) * 2.2 * (s / max(1, ln)) if p['deco'] == 2 else 0   # hilo ondulado
+                xi = int(cv.W / 2 + math.cos(a) * s - math.sin(a) * wob)
+                yi = int(cv.H / 2 + math.sin(a) * s + math.cos(a) * wob)
+                for t in range(thick):
+                    if 0 <= xi < cv.W and 0 <= yi + t < cv.H:
+                        solid[yi + t, xi] = True
+        solid &= dither_keep(cv.a.shape, det) if det < 1 else solid
+        put_solid(cv, solid, 4)
+    th = max(1, p['rim'] - (0 if in_hit else 1))
+    f = max(3.0, front)
+    arc = (np.abs(d - f) <= th / 2.0 + 0.2) & (np.abs(ang) <= half)
+    sides = np.zeros(cv.a.shape, bool)
+    for sgn in (-1, 1):
+        ux, uy = math.cos(sgn * half), math.sin(sgn * half)
+        proj = dx * ux + dy * uy
+        perp = np.abs(-dx * uy + dy * ux)
+        sides |= (proj > 0) & (proj <= f) & (perp <= th / 2.0 + 0.2)
+    band = arc | sides
+    rim_lv = 1.0 if post < 0.5 else max(p['fade_to'], 1 - (post - 0.5) / 0.5)
+    if rim_lv < 1:
+        band &= dither_keep(cv.a.shape, rim_lv)
+    tone = lit_band(cv, dx, dy, d, band, th, p)
+    cv.a[dilate4(band) & ~band] = 1
+    cv.a[band] = tone[band]
+    if glyph and p['glyph_on'] and in_hit and q > 0.2 and max(len(GLYPHS[glyph][0]), len(GLYPHS[glyph])) + 2 <= 0.2 * S:
+        blit(cv, GLYPHS[glyph], cv.W / 2 + front * 0.55, cv.H / 2, max(1, p['glyph_scale']), 0, 1.0)
+    if p['sparks'] > 0 and q >= 0.22:
+        n = min(int(p['sparks']), max(0, int(S // 10)))
+        lv = 1.0 if in_hit else max(p['fade_to'], 1 - post * 1.2)
+        for i in range(n):
+            if i / n > lv:
+                continue
+            a = -half * 0.75 + (i + 0.5) * (1.5 * half / n)
+            r0 = f * (0.55 + 0.35 * ((i * 7) % 5) / 4)
+            spark(cv, cv.W / 2 + math.cos(a) * r0, cv.H / 2 + math.sin(a) * r0)
+    return cv.a
+
+
+def paint_beam(W, H, q, f, p):
+    """Baldosa horizontal repetible (W×H): contorno, casco, cuerpo, núcleo brillante y marcas que se desplazan. El eje puede
+    zigzaguear (wave 1) u ondular (wave 2) con período W, así la baldosa sigue empalmando al repetirse."""
+    cv = Canvas(W, H)
+    m = (H - 1) / 2.0
+    ant, post, hit_end = phase(q, p['impact_at'])
+    grow = 0.3 + 3 * q if q < 0.2 else 0.85 - 0.5 * post
+    half = max(1.0, (H / 2.0) * grow)
+    if p['wave']:   # con forma, el cuerpo se afina para dejar lugar a la oscilación del eje
+        half = max(1.0, min(half, H / 2.0 * 0.42))
+    amp = min(p['wave_amp'], max(0.0, H / 2.0 - half - 1.5)) if p['wave'] else 0.0
+    k = 2
+    for x in range(W):
+        u = ((x + f * W / 8.0 * 0.5) / W * k) % 1.0           # la forma avanza con los cuadros (periódica)
+        if p['wave'] == 3:   # relámpago orgánico: dos ondas + sacudida por columna (periódico en W)
+            tri = 0.6 * math.sin(math.tau * (x / W * 2 + f * 0.37)) + 0.4 * math.sin(math.tau * (x / W * 5 + f * 0.13)) + (_h(x, f) - 0.5) * 0.8
+            tri = max(-1.0, min(1.0, tri))
+        else:
+            tri = 1 - abs(4 * u - 2) if p['wave'] == 1 else math.sin(u * math.tau)
+        c = m + amp * (tri if p['wave'] else 0)
+        top, bot = int(round(c - half)), int(round(c + half))
+        top, bot = max(1, top), min(H - 2, bot)
+        for y in range(top, bot + 1):
+            cv.a[y, x] = p['core']
+        cv.a[top, x] = 4 if p['highlight_arc'] else 3        # filo superior iluminado
+        cv.a[bot, x] = 2                                      # filo inferior en sombra
+        ch = max(1, int(round((bot - top) * p['core_density'] * (0.8 if p['wave'] == 3 else 0.5))))
+        cy = int(round((top + bot) / 2.0))
+        for y in range(cy - ch // 2, cy - ch // 2 + ch):
+            if top < y < bot:
+                cv.a[y, x] = 5
+        if top - 1 >= 0:
+            cv.a[top - 1, x] = 1
+        if bot + 1 < H:
+            cv.a[bot + 1, x] = 1
+        off = (f * 2) % W
+        xs = (x - off) % W
+        if p['deco'] == 1 and (xs % 4) < 2 and top < cy < bot:       # puntos
+            cv.a[cy - 1 if cy - 1 > top else cy, x] = 4
+        elif p['deco'] == 2 and xs % 6 == (abs(cy - m) % 6) and bot - top > 3:   # chevrones
+            cv.a[min(bot - 1, cy + 1), x] = 4
+        elif p['deco'] == 0 and (xs % 7) < 4 and cy - 1 > top:       # puntadas
+            cv.a[cy - 1, x] = 4
+    if q > hit_end and p['fade_to'] < 1:
+        keep = dither_keep((H, W), max(p['fade_to'], 1 - post * 1.1))
+        cv.a[(cv.a > 0) & ~keep & (cv.a != 1)] = 0
+    return cv.a
+
+
+# ---------------------------------------------------------------- orquestación
+def frames_for(guardian, ab):
+    p = resolve_params(ab)
+    kind = ab['kind']
+    N = int(ab.get('frames', 10))
+    glyph = ab.get('glyph')
+    if kind == 'beam':
+        W, H = ab.get('tile', [14, 14])
+        return [paint_beam(W, H, f / (N - 1), f, p) for f in range(N)]
+    S = int(ab.get('size') or canon.kvb_s(ab['radius']))
+    if kind == 'ring':
+        ov = ab.get('mode') == 'overlay'
+        return [paint_ring(S, f / (N - 1), p, glyph, motif=ab.get('motif'), overlay=ov) for f in range(N)]
+    if kind == 'idle':
+        return [paint_ring(S, f / N, p, glyph, idle=True, motif=ab.get('motif')) for f in range(N)]
+    if kind == 'sector':
+        return [paint_sector(S, f / (N - 1), p, glyph, ab.get('half', 0.85), ab.get('motif')) for f in range(N)]
+    raise ValueError(f'tipo desconocido: {kind}')
+
+
+def sheet(frames, ramp, scale=1, bg=None):
+    h, w = frames[0].shape
+    out = Image.new('RGBA', (w * len(frames), h), (0, 0, 0, 0))
+    for i, fr in enumerate(frames):
+        out.paste(Image.fromarray(canon.index_to_rgba(fr, ramp), 'RGBA'), (i * w, 0))
+    if scale > 1:
+        out = out.resize((out.width * scale, out.height * scale), Image.NEAREST)
+    return out
+
+
+def paint_guardian(spec, outdir):
+    """Pinta todas las habilidades de una ficha y escribe una hoja PNG (RGBA) + índices (.npy) por habilidad."""
+    outdir = Path(outdir)
+    outdir.mkdir(parents=True, exist_ok=True)
+    ramp = canon.ramp_rgb(spec)
+    result = {}
+    for ab in spec['abilities']:
+        frames = frames_for(spec['guardian'], ab)
+        sheet(frames, ramp).save(outdir / f"{ab['id']}.png")
+        np.save(outdir / f"{ab['id']}.npy", np.stack(frames))
+        result[ab['id']] = frames
+    return result
+
+
+def render_instructions(ability_id, ops, changes):
+    """Instrucciones en prosa para un pintor humano (o un agente) a partir de las operaciones del Evaluador."""
+    lines = [f'### {ability_id}']
+    for op in ops:
+        lines.append(f"- {op['why']}  → perilla `{op['knob']}`: " + ('pasar a la siguiente familia' if op.get('cycle') else f"fijar {op['set']}" if 'set' in op else f"{op['add']:+}"))
+    if changes:
+        lines.append('  aplicado: ' + '; '.join(changes))
+    return '\n'.join(lines)
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    sub = ap.add_subparsers(dest='cmd', required=True)
+    pp = sub.add_parser('paint')
+    pp.add_argument('spec')
+    pp.add_argument('--out', default=None)
+    a = ap.parse_args()
+    if a.cmd == 'paint':
+        spec = canon.load_json(a.spec)
+        out = Path(a.out) if a.out else canon.OUT_DOCS / spec['guardian'] / 'painted'
+        paint_guardian(spec, out)
+        print('pintado en', out)
+
+
+if __name__ == '__main__':
+    main()

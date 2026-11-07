@@ -144,7 +144,7 @@ function openGuardians(tab){
   if(typeof codexReturnTo!=="undefined") codexReturnTo = null;
   ensureOwnedSelection();
   codexStack = [{view:"list", id:"campeones", label:"GUARDIANES"}];
-  codexChampTab = tab || "equipo";
+  codexChampTab = tab || "ficha";   // UX: el jugador nuevo ve primero la Ficha (el Equipo vacío no explica nada)
   const k = selectedClass;
   if(save.champions[k] && save.champions[k].unlocked) codexStack.push({view:"champ", id:k, label:(CLASSES[k]||{}).name || k});
   setState("codex"); codexRender(true);

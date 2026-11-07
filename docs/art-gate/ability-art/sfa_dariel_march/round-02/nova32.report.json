@@ -1,0 +1,112 @@
+{
+ "kind": "ring",
+ "score": 98.2,
+ "points": {
+  "alpha": 5.0,
+  "palette": 8.0,
+  "hygiene": 7.0,
+  "edge": 15.0,
+  "coverage": 12.0,
+  "contrast": 8.0,
+  "clear_floor": 5.0,
+  "motion": 15.0,
+  "richness": 14.37,
+  "identity": 8.8
+ },
+ "metrics": {
+  "peak_idx": 3,
+  "alpha_binary": 1.0,
+  "palette_adherence": 1.0,
+  "colors": 5,
+  "isolated": 0.0,
+  "edge_outline": 0.8958333333333334,
+  "edge_reach": 0.9538760493598989,
+  "edge_over": 0.0,
+  "coverage": 0.7513513513513513,
+  "interior": 0.6368421052631579,
+  "interior_detail": 0.6263157894736842,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 16.151315665349447,
+  "peak_pos": 0.2727272727272727,
+  "tail": 0.0,
+  "motion_mean": 0.19406960227272727,
+  "unique_frames": 1.0,
+  "tones": 5,
+  "highlight_share": 0.05565529622980251,
+  "core_fill": 0.31666666666666665,
+  "detail_mass": 0.2111111111111111,
+  "min_sig_dist": 0.1414508190943731
+ },
+ "hard_fails": [
+  "cobertura excesiva (75%): oculta el suelo"
+ ],
+ "ops": [
+  {
+   "knob": "deco",
+   "why": "se parece demasiado a otra habilidad del guardián (distancia 0.14): cambiar el tipo de marca",
+   "add": 1
+  },
+  {
+   "knob": "inner_ring",
+   "why": "segundo anillo para distinguirla",
+   "set": 1
+  }
+ ],
+ "criteria": {
+  "alpha": 1.0,
+  "palette": 1.0,
+  "hygiene": 1.0,
+  "edge": 1.0,
+  "coverage": 1.0,
+  "contrast": 1.0,
+  "clear_floor": 1.0,
+  "motion": 1.0,
+  "richness": 0.958,
+  "identity": 0.88
+ },
+ "baseline_total": 76.6,
+ "baseline_criteria": {
+  "alpha": 1.0,
+  "palette": 0.0,
+  "hygiene": 1.0,
+  "edge": 0.561,
+  "coverage": 1.0,
+  "contrast": 0.7,
+  "clear_floor": 1.0,
+  "motion": 1.0,
+  "richness": 0.775,
+  "identity": 0.7
+ },
+ "baseline_metrics": {
+  "peak_idx": 3,
+  "alpha_binary": 1.0,
+  "palette_adherence": 0.4392792792792793,
+  "colors": 3,
+  "isolated": 0.0,
+  "edge_outline": 0.5,
+  "edge_reach": 0.7715759749660162,
+  "edge_over": 0.0,
+  "coverage": 0.42567567567567566,
+  "interior": 0.5947368421052631,
+  "interior_detail": 0.5842105263157895,
+  "arena_ok": 1.0,
+  "has_outline_and_light": false,
+  "lum_gap": 16.151315665349447,
+  "peak_pos": 0.2727272727272727,
+  "tail": 0.0,
+  "motion_mean": 0.2168856534090909,
+  "unique_frames": 1.0,
+  "tones": 3,
+  "highlight_share": 0.0,
+  "core_fill": 0.31666666666666665,
+  "detail_mass": 0.20833333333333334,
+  "min_sig_dist": 1.0
+ },
+ "improvement": 21.6,
+ "reasons": [
+  "cobertura excesiva (75%): oculta el suelo"
+ ],
+ "status": "FAIL",
+ "keep_current": false
+}

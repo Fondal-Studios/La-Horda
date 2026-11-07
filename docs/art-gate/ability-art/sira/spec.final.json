@@ -1,0 +1,165 @@
+{
+ "guardian": "sira",
+ "title": "Sira, la Cartógrafa de Ausentes",
+ "palette": [
+  "#101a33",
+  "#3b5a9a",
+  "#8aa7da",
+  "#cfe0ff",
+  "#ffffff"
+ ],
+ "abilities": [
+  {
+   "id": "ink_line",
+   "kind": "beam",
+   "tile": [
+    22,
+    18
+   ],
+   "frames": 8,
+   "baseline_beam": "si_ink",
+   "replaces": "si_ink",
+   "params": {
+    "wave": 2
+   }
+  },
+  {
+   "id": "retrace",
+   "kind": "beam",
+   "tile": [
+    20,
+    12
+   ],
+   "frames": 8,
+   "baseline_beam": "si_rewind",
+   "replaces": "si_rewind",
+   "params": {
+    "wave": 2
+   }
+  },
+  {
+   "id": "erase",
+   "kind": "ring",
+   "radius": 80,
+   "frames": 10,
+   "glyph": "diamond",
+   "baseline": "si_erase",
+   "replaces": "si_erase",
+   "params": {
+    "rim": 1,
+    "fill": 0.0,
+    "ticks": 4,
+    "tick_len": 0.12,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.3,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.3,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 1,
+    "motif_n": 6,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 2,
+    "core_density": 0.5
+   },
+   "motif": "map",
+   "_dir": {
+    "fill": -1,
+    "ticks": -1,
+    "tick_len": -1,
+    "rim": -1,
+    "sparks": -1,
+    "motif_n": 1
+   }
+  },
+  {
+   "id": "atlas",
+   "kind": "ring",
+   "radius": 48,
+   "frames": 10,
+   "glyph": "rune",
+   "baseline": "si_atlas",
+   "replaces": "si_atlas",
+   "params": {
+    "rim": 1,
+    "fill": 0.0,
+    "ticks": 2,
+    "tick_len": 0.12,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.3,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.3,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 1,
+    "motif_n": 5,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 1,
+    "core_density": 0.5
+   },
+   "motif": "map",
+   "_dir": {
+    "rim": -1,
+    "fill": -1,
+    "ticks": -1,
+    "tick_len": -1,
+    "sparks": -1,
+    "deco": 1
+   }
+  },
+  {
+   "id": "atlas_zone",
+   "kind": "idle",
+   "radius": 62,
+   "frames": 12,
+   "glyph": "rune",
+   "baseline": "si_atlas_idle",
+   "replaces": "si_atlas_idle",
+   "params": {
+    "rim": 1,
+    "fill": 0.03,
+    "ticks": 4,
+    "tick_len": 0.12,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.30000000000000004,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.32,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 1,
+    "motif_n": 7,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 1,
+    "core_density": 0.5
+   },
+   "motif": "map",
+   "_dir": {
+    "fill": -1,
+    "ticks": -1,
+    "tick_len": -1,
+    "rim": -1,
+    "sparks": -1,
+    "motif_n": 1
+   }
+  }
+ ],
+ "codex": "sira"
+}

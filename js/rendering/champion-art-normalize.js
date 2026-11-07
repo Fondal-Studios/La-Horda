@@ -23,6 +23,10 @@ function champArtView(h){
 }
 function champArtNorm(h){
   if(typeof CHAMP_ART_NORMALIZE === "undefined" || !h || !h.classKey) return null;
+  if(typeof codexChampionPack === "function" && codexChampionPack(h)){
+    const row = CODEX_GAMEPLAY_ART[h.classKey].normalization;
+    if(row) return row[champArtView(h)] || row.front;
+  }
   const skin = champArtSkinId(h), row = (skin && CHAMP_ART_NORMALIZE[h.classKey + "@" + skin]) || CHAMP_ART_NORMALIZE[h.classKey];
   return row ? (row[champArtView(h)] || row.front) : null;
 }

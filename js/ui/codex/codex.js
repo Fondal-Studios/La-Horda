@@ -266,7 +266,7 @@ function codexHomeHtml(){
       <span class="cxc-txt"><span class="cxc-title"><span class="cx-home-ico">${CODEX_CHRON_SECTION.icon}</span>${CODEX_CHRON_SECTION.label}</span><span class="cx-home-blurb">${CODEX_CHRON_SECTION.blurb}</span></span>
       <span class="cx-home-count">${chronicleCount()} / ${CHRONICLE_PAGES.length} páginas</span></button>` : ""}</div>`;
 }
-function codexArenaImage(a){ return `assets/ui/codex/arenas/${a}.jpg`; }
+function codexArenaImage(a){ return `assets/ui/codex/arenas/${a}.png`; }
 
 /* ---------------- LISTAS ---------------- */
 function codexListHtml(sec){

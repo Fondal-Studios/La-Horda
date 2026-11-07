@@ -122,6 +122,9 @@ const SKILL_SHORT_LABEL = {
   "brakk:0":"MURO","brakk:1":"TORRE","brakk:2":"POSTE",
   "morveth:0":"BROTE","morveth:1":"PESTE","morveth:2":"UNION",
   "aelith:0":"ROTO","aelith:1":"RAJA","aelith:2":"RELOJ",
+  "ilsa:0":"REPLI","ilsa:1":"ESTOC","ilsa:2":"GIRO",
+  "vorn:0":"MUDAR","vorn:1":"ZARPA","vorn:2":"FIERA",
+  "kora:0":"ARIE","kora:1":"PISA","kora:2":"TESTA",
   "ilkan_colossus:0":"ALUD","ilkan_colossus:1":"SIMA","ilkan_colossus:2":"DUNAS"
 };
 function skillShortLabel(champId, slot, name){

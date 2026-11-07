@@ -1,0 +1,95 @@
+{
+ "guardian": "orsa",
+ "title": "Orsa, la Cordera de Rayos",
+ "palette": [
+  "#3a1e08",
+  "#a05a1e",
+  "#dfa352",
+  "#ffe08a",
+  "#fff9d6"
+ ],
+ "abilities": [
+  {
+   "id": "pierce",
+   "kind": "beam",
+   "tile": [
+    24,
+    20
+   ],
+   "frames": 8,
+   "baseline_beam": "or_bolt",
+   "replaces": "or_bolt",
+   "params": {
+    "wave": 3
+   }
+  },
+  {
+   "id": "discharge",
+   "kind": "ring",
+   "radius": 175,
+   "frames": 10,
+   "glyph": "bolt",
+   "baseline": "or_circuit",
+   "replaces": "or_circuit",
+   "params": {
+    "deco": 2,
+    "ticks": 12
+   },
+   "motif": "circuit"
+  },
+  {
+   "id": "brace",
+   "kind": "ring",
+   "radius": 42,
+   "frames": 10,
+   "glyph": "cross",
+   "baseline": "or_anchor",
+   "replaces": "or_anchor",
+   "params": {
+    "deco": 0
+   }
+  },
+  {
+   "id": "anchor_zone",
+   "kind": "idle",
+   "radius": 42,
+   "frames": 12,
+   "glyph": "cross",
+   "baseline": "or_anchor_idle",
+   "replaces": "or_anchor_idle",
+   "params": {
+    "deco": 1
+   }
+  },
+  {
+   "id": "storm_zone",
+   "kind": "idle",
+   "radius": 210,
+   "frames": 12,
+   "glyph": "bolt",
+   "baseline": "or_storm_idle",
+   "replaces": "or_storm_idle",
+   "params": {
+    "deco": 0,
+    "ticks": 8
+   },
+   "motif": "bolt"
+  },
+  {
+   "id": "sweep",
+   "kind": "sector",
+   "radius": 280,
+   "frames": 10,
+   "glyph": "bolt",
+   "baseline": "or_sweep",
+   "replaces": "or_sweep",
+   "params": {
+    "deco": 1,
+    "ticks": 10
+   },
+   "half": 0.85,
+   "motif": "bolt"
+  }
+ ],
+ "codex": "orsa"
+}

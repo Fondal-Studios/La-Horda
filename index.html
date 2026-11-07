@@ -42,6 +42,15 @@
 <link rel="stylesheet" href="css/quests.css">
 <link rel="stylesheet" href="css/account.css">
 <link rel="stylesheet" href="css/endless.css">
+<link rel="stylesheet" href="css/battlepass.css">
+<link rel="stylesheet" href="css/i18n.css">
+<link rel="stylesheet" href="css/menu-polish-b.css">
+<link rel="stylesheet" href="css/menu-polish-a.css">
+<link rel="stylesheet" href="css/menu-polish-c.css">
+<link rel="stylesheet" href="css/menu-polish-d.css">
+<link rel="stylesheet" href="css/title-polish.css">
+<link rel="stylesheet" href="css/ux-simplify-a.css">
+<link rel="stylesheet" href="css/ux-simplify-b.css">
 <link rel="stylesheet" href="css/loot.css">
 <link rel="stylesheet" href="css/onboarding.css">
 <link rel="stylesheet" href="css/combat-readability.css">
@@ -65,6 +74,7 @@
 <link rel="stylesheet" href="css/ui-factory/hud-layout.css">
 <link rel="stylesheet" href="css/ui-factory/menus-touch.css">
 <link rel="stylesheet" href="css/beta-visual.css">
+<!-- rework de interfaz (css/ui-rework.css, js/ui/ui-rework.js, tools/ui-rework): fuera de este PR hasta su revisión; ver docs/beta-release/RESULTADOS_PR.md -->
 </head>
 <body>
 
@@ -158,6 +168,7 @@
     <div class="brand title-brand">LA HORDA</div>
     <div class="brand-sub">SOBREVIVÍ A LA HORDA CON TU EQUIPO · MEJORÁ EN CADA NIVEL</div>
     <button class="btn wide" id="title-continue-btn" disabled>Cargando…</button>
+    <div class="lang-host" data-lang-host></div><!-- idioma: ES · EN · PT (js/i18n/i18n.js) -->
     <a href="instalar.html" style="display:block;margin:10px auto;color:#f9c971;font-size:14px">Instalar en mi dispositivo</a>
     <!-- B1: invitación a una sala online (?room=CÓDIGO en la URL) -->
     <label class="hidden" id="title-join-name">Tu nombre <input maxlength="16" placeholder="Jugador"></label>
@@ -182,6 +193,8 @@
       <!-- JUGAR EN LA TELE (Fondal TV, js/net/fondal-tv.js): solo aparece si el navegador puede mandar el juego a la tele -->
       <button class="ui-icon-btn hidden" id="hub-tele-btn" type="button" aria-label="Jugar en la tele" title="Jugar en la tele"></button>
       <button class="ui-icon-btn" id="hub-howto-btn" aria-label="Cómo se juega" title="Cómo se juega">?</button>
+      <button class="ui-icon-btn" id="hub-pass-btn" type="button" aria-label="Pase de batalla" title="Pase de batalla">🎖</button><!-- js/ui/battlepass-ui.js -->
+      <button class="ui-icon-btn" id="hub-lang-btn" type="button" aria-label="Idioma" title="Idioma">ES</button><!-- cambia ES → EN → PT -->
       <button class="ui-icon-btn" id="hub-options-btn" aria-label="Opciones" title="Opciones">⚙</button>
       <button class="ui-icon-btn" id="mainmenu-back-btn" aria-label="Volver al título" title="Volver al título">⏏</button>
     </div>
@@ -206,9 +219,9 @@
         </div>
       </div>
       <div class="hub-sections" id="hub-grid">
-        <h2 class="hub-section-title" id="hub-postgame-title">MODOS DE POSTGAME</h2>
+        <h2 class="hub-section-title" id="hub-postgame-title">OTROS MODOS</h2>
         <div class="hub-row hub-row-modes">
-          <button class="hub-tile hub-tile-crystal hub-tile-wide" id="hub-crystal-btn"><span class="hub-tile-ico">◆</span><span class="hub-tile-body"><span class="hub-tile-title">GUERRA DE CRISTALES</span><span class="hub-tile-sub" id="hub-crystal-sub">5 contra 5 con bots · 3 carriles y selva</span></span></button>
+          <button class="hub-tile hub-tile-crystal hub-tile-wide" id="hub-crystal-btn"><span class="hub-tile-ico">💠</span><span class="hub-tile-body"><span class="hub-tile-title">GUERRA DE CRISTALES</span><span class="hub-tile-sub" id="hub-crystal-sub">5 contra 5 con bots · 3 carriles y selva</span></span></button>
           <button class="hub-tile hub-tile-crystal hub-tile-wide" id="hub-coliseum-btn"><span class="hub-tile-ico">⚔</span><span class="hub-tile-body"><span class="hub-tile-title">COLISEO</span><span class="hub-tile-sub" id="hub-coliseum-sub">Torneo de 8: 4 equipos de 2 · duelos 2v2 · primero a 3</span></span></button>
         </div>
         <h2 class="hub-section-title">EXPLORAR</h2>
@@ -217,7 +230,7 @@
           <button class="hub-tile" id="mainmenu-guardianes-btn"><span class="hub-tile-ico">🛡</span><span class="hub-tile-title">GUARDIANES</span><span class="hub-tile-sub">Equipo · talentos · skins</span><span class="ui-tag hub-tile-badge hidden" id="hub-badge-guard"></span></button>
           <button class="hub-tile" id="mainmenu-tienda-btn"><span class="hub-tile-ico">🪙</span><span class="hub-tile-title">TIENDA</span><span class="hub-tile-sub">Ofertas del día · skins</span><span class="ui-tag new hub-tile-badge hidden" id="hub-badge-shop">NUEVO</span><span class="ui-tag sale hub-tile-offer hidden" id="hub-badge-offer">OFERTA</span></button>
           <button class="hub-tile" id="mainmenu-jugar-btn"><span class="hub-tile-ico">🌐</span><span class="hub-tile-title">MULTIJUGADOR</span><span class="hub-tile-sub">Sala con código · modos</span></button>
-          <button class="hub-tile hidden" id="mainmenu-quests-btn" data-quests-open><span class="hub-tile-ico">🏆</span><span class="hub-tile-title">DESAFÍOS</span><span class="hub-tile-sub">Logros · pase</span><span class="ui-tag new hub-tile-badge qs-badge hidden" id="hub-badge-quests"></span></button>
+          <button class="hub-tile hidden" id="mainmenu-quests-btn" data-quests-open><span class="hub-tile-ico">🏆</span><span class="hub-tile-title">DESAFÍOS</span><span class="hub-tile-sub">Logros · pase de temporada</span><span class="ui-tag new hub-tile-badge qs-badge hidden" id="hub-badge-quests"></span></button>
         </div>
       </div>
     </div>
@@ -253,19 +266,15 @@
     <div class="ui-modal-back" data-opt-close></div>
     <div class="ui-panel ui-modal-panel">
       <div class="ui-panel-title">⚙ Opciones</div>
+      <nav class="opt-jump" id="opt-jump" aria-label="Ir a una sección"><button type="button" class="opt-jump-a11y" data-jump="opt-sec-a11y">Accesibilidad</button><button type="button" data-jump="opt-sec-controls">Controles</button><button type="button" data-jump="opt-sec-legal">Legal y datos</button></nav>
       <label class="opt-row">Tu nombre <input id="opt-name" maxlength="16" placeholder="Jugador"></label>
+      <label class="opt-row">Idioma <select id="opt-lang" aria-label="Idioma"><option value="es">Español</option><option value="en">English</option><option value="pt">Português</option></select></label>
       <label class="opt-row">🎵 Música <input type="range" id="opt-vol-music" min="0" max="100" step="5"></label>
-      <label class="opt-row">🎼 Estilo <select id="opt-music-style" aria-label="Estilo de música"><option value="lofi">Lo-fi retro</option><option value="synth">Original</option></select></label>
+      <label class="opt-row">🎼 Estilo
+        <select id="opt-music-style" aria-label="Estilo de música"><option value="lofi">Lo-fi retro</option><option value="synth">Original</option></select></label>
       <label class="opt-row">💥 Efectos <input type="range" id="opt-vol-sfx" min="0" max="100" step="5"></label>
-      <!-- controles y accesibilidad (js/core/prefs.js): se guardan en este aparato, como el volumen -->
-      <div class="opt-sec">Controles</div>
-      <div class="opt-row"><span class="opt-lbl">Modo zurdo<span class="opt-sub">Joystick a la derecha y botones a la izquierda</span></span><button class="opt-switch" data-pref="lefty" role="switch" aria-checked="false">No</button></div>
-      <div class="opt-row"><span class="opt-lbl">Vibración<span class="opt-sub">Al recibir un golpe fuerte y con la Definitiva</span></span><button class="opt-switch" data-pref="vibrate" role="switch" aria-checked="true">Sí</button></div>
-      <div class="opt-row"><span class="opt-lbl">Ataque<span class="opt-sub">Mantener: apretás el botón. Alternar: un toque prende y otro apaga. Auto: ataca solo si hay un enemigo cerca</span></span><div class="opt-seg" data-pref="atkMode" role="group" aria-label="Modo de ataque"><button data-v="hold">Mantener</button><button data-v="toggle">Alternar</button><button data-v="auto">Auto</button></div></div>
-      <div class="opt-row"><span class="opt-lbl">Tamaño de los controles<span class="opt-sub">Joystick y botones: <b data-pref-out="ctlSize">100%</b></span></span><input type="range" id="opt-ctl-size" data-pref-range="ctlSize" min="90" max="150" step="10" aria-label="Tamaño de los controles táctiles"></div>
-      <div class="opt-row"><span class="opt-lbl">Opacidad de los controles<span class="opt-sub">Más baja: se ve más el juego detrás. <b data-pref-out="ctlOp">100%</b></span></span><input type="range" id="opt-ctl-op" data-pref-range="ctlOp" min="40" max="100" step="10" aria-label="Opacidad de los controles táctiles"></div>
-      <div class="ctl-preview" id="ctl-preview" aria-hidden="true"><span class="cp-cap">Vista previa</span><div class="cp-joy"><i></i></div><div class="cp-btns"><b class="cp-b3"></b><b class="cp-b2"></b><b class="cp-b1"></b><b class="cp-atk">⚔</b></div></div>
-      <div class="opt-sec">Pantalla</div>
+      <div class="opt-sec" id="opt-sec-a11y">Accesibilidad y pantalla</div>
+      <div class="opt-a11y-sum" id="opt-a11y-sum"></div>
       <div class="opt-row"><span class="opt-lbl">Sacudida de pantalla</span><div class="opt-seg" data-pref="shake" role="group" aria-label="Sacudida de pantalla"><button data-v="normal">Normal</button><button data-v="reducida">Poca</button><button data-v="off">No</button></div></div>
       <div class="opt-row"><span class="opt-lbl">Reducir movimiento<span class="opt-sub">Sin sacudidas, cámara lenta ni pulsos</span></span><button class="opt-switch" data-pref="motion" role="switch" aria-checked="false">No</button></div>
       <div class="opt-row"><span class="opt-lbl">Tamaño del texto</span><div class="opt-seg" data-pref="textLg" role="group" aria-label="Tamaño del texto"><button data-v="0">Normal</button><button data-v="1">Grande</button></div></div>
@@ -274,10 +283,18 @@
       <div class="cvd-demo" id="cvd-demo" aria-hidden="true"><span class="cd-ally">Aliado</span><span class="cd-foe">Enemigo</span><span class="cd-danger">Peligro</span><span class="cd-safe">Seguro</span><span class="cd-hp"><i></i></span></div>
       <div class="opt-row"><span class="opt-lbl">Ayuda con el jefe<span class="opt-sub">Solo campaña en solitario, en Normal: tras cada derrota contra el jefe de una arena, ese jefe tiene hasta 25 % menos de vida y daño, y la horda del nivel 10 hasta 25 % menos de daño, en tus próximos intentos. Se avisa siempre. Apagado: el jefe de siempre</span></span><button class="opt-switch" data-pref="bossAssist" role="switch" aria-checked="true">Sí</button></div>
       <div class="opt-row"><span class="opt-lbl">Carteles de los bots<span class="opt-sub">Textos flotantes de aliados controlados por la IA (IMPULSO, PACTO, AFILADA…). Apagado: partida más limpia</span></span><button class="opt-switch" data-pref="botCallouts" role="switch" aria-checked="false">No</button></div>
+      <!-- controles y accesibilidad (js/core/prefs.js): se guardan en este aparato, como el volumen -->
+      <div class="opt-sec" id="opt-sec-controls">Controles</div>
+      <div class="opt-row"><span class="opt-lbl">Modo zurdo<span class="opt-sub">Joystick a la derecha y botones a la izquierda</span></span><button class="opt-switch" data-pref="lefty" role="switch" aria-checked="false">No</button></div>
+      <div class="opt-row"><span class="opt-lbl">Vibración<span class="opt-sub">Al recibir un golpe fuerte y con la Definitiva</span></span><button class="opt-switch" data-pref="vibrate" role="switch" aria-checked="true">Sí</button></div>
+      <div class="opt-row"><span class="opt-lbl">Ataque<span class="opt-sub">Mantener: apretás el botón. Alternar: un toque prende y otro apaga. Auto: ataca solo si hay un enemigo cerca</span></span><div class="opt-seg" data-pref="atkMode" role="group" aria-label="Modo de ataque"><button data-v="hold">Mantener</button><button data-v="toggle">Alternar</button><button data-v="auto">Auto</button></div></div>
+      <div class="opt-row"><span class="opt-lbl">Tamaño de los controles<span class="opt-sub">Joystick y botones: <b data-pref-out="ctlSize">100%</b></span></span><input type="range" id="opt-ctl-size" data-pref-range="ctlSize" min="90" max="150" step="10" aria-label="Tamaño de los controles táctiles"></div>
+      <div class="opt-row"><span class="opt-lbl">Opacidad de los controles<span class="opt-sub">Más baja: se ve más el juego detrás. <b data-pref-out="ctlOp">100%</b></span></span><input type="range" id="opt-ctl-op" data-pref-range="ctlOp" min="40" max="100" step="10" aria-label="Opacidad de los controles táctiles"></div>
+      <div class="ctl-preview" id="ctl-preview" aria-hidden="true"><span class="cp-cap">Vista previa</span><div class="cp-joy"><i></i></div><div class="cp-btns"><b class="cp-b3"></b><b class="cp-b2"></b><b class="cp-b1"></b><b class="cp-atk">⚔</b></div></div>
       <div class="opt-note">Teclado: WASD o flechas para moverte, Espacio para atacar, 1 2 3 habilidades, R Definitiva, Q curación, E acción, Esc pausa. También funciona con mando.</div>
       <div class="opt-note">Compañeros: si en tu equipo faltan jugadores, el juego completa los lugares con compañeros que controla él mismo. Siempre tienen prioridad los jugadores reales.</div>
       <div class="opt-note">El progreso se guarda en este navegador. Para llevarlo a otro lado, usá el código de guardado.</div>
-      <div class="opt-sec">Legal y soporte</div>
+      <div class="opt-sec" id="opt-sec-legal">Legal y soporte</div>
       <div class="legal-foot legal-opts" id="legal-opts"></div>
       <div class="opt-btns">
         <button class="btn small" id="opt-export-btn">Copiar código de guardado</button>
@@ -405,7 +422,7 @@
         <div class="mode-card-note" id="campaign-first-notice">🏆 El primer jugador en completar el juego puede pedir un campeón con diseño propio.</div>
       </button>
       <button class="mode-card" id="mode-crystal-wars-btn">
-        <div class="mode-card-title">◆ CONVERGENCIA <span class="ui-tag">ALPHA</span></div>
+        <div class="mode-card-title">💠 GUERRA DE CRISTALES <span class="ui-tag">ALPHA</span></div>
         <div class="mode-card-desc">Guerra de Cristales: 5 contra 5 con bots (2 contra 2 en línea), tres carriles, selva, torres, PvP y tu propia horda. Postgame: se abre al terminar la campaña.</div>
       </button>
       <button class="mode-card" id="mode-coliseum-btn">
@@ -424,12 +441,12 @@
        Lógica en js/modes/crystal-wars/*, estilos acotados a esta pantalla en css/crystal-wars.css. -->
   <div id="crystalwars-screen" class="screen hidden">
 <div id="cw-root">
-<header><button id="back" type="button">‹ LA HORDA</button><span id="competitive-title">CONVERGENCIA · ALPHA</span><button id="sound" aria-pressed="false">Sonido: apagado</button></header>
+<header><button id="back" type="button">‹ LA HORDA</button><span id="competitive-title">GUERRA DE CRISTALES · ALPHA</span><button id="sound" aria-pressed="false">Sonido: apagado</button></header>
 <main id="lobby">
- <div class="eyebrow">5 CONTRA 5 CON BOTS · EN LÍNEA 2 CONTRA 2 · 3 CARRILES</div><h1>CONVERGENCIA<br><em>GUERRA DE CRISTALES</em></h1>
+ <div class="eyebrow">5 CONTRA 5 CON BOTS · EN LÍNEA 2 CONTRA 2 · 3 CARRILES</div><h1>GUERRA DE CRISTALES</h1>
  <p class="intro">Mapa de tres carriles con selva, río y objetivos épicos. Tu horda sale sola por cada carril; con cada nivel elegís una carta para hacerla más fuerte. Derribá las torres y el cristal rival. El PvP está permitido y jugás con tus habilidades de siempre.</p>
  <div class="rules"><div><b>01 / EMPUJÁ</b><p>Tu horda sale sola por tres carriles. Derribá torres; con una inhibidora caída, el cristal queda expuesto.</p></div><div><b>02 / CRECÉ</b><p>Nivel 3 a 15 con súbditos, selva y héroes. Cada nivel da una carta para tu horda. B vuelve a la base.</p></div><div><b>03 / REMATÁ</b><p>Vencé héroes rivales para ganar oro. Eclipse a los 13 min; a los 18 gana quien tenga más torres y vida.</p></div></div>
- <section class="setup"><div><label for="competitive-mode">Modo competitivo</label><select id="competitive-mode"><option value="crystal">Convergencia — Guerra de Cristales</option><option value="coliseum">Coliseo — Torneo 2 contra 2</option></select><label for="name">Tu nombre</label><input id="name" maxlength="24" placeholder="Guardián"><label for="champ">Tu campeón</label><select id="champ"></select><p id="kit"></p><p id="pg-lobby" class="pg-lobby" role="status"></p><label class="pg-train" id="pg-train-row"><input type="checkbox" id="pg-training"> Entrenamiento normalizado (sin progreso ni recompensas)</label><small>En línea el plantel es normalizado: sin ventajas por nivel, equipo de campaña o compras. Los personajes exclusivos conservan sus restricciones.</small></div>
+ <section class="setup"><div><label for="competitive-mode">Modo competitivo</label><select id="competitive-mode"><option value="crystal">Guerra de Cristales</option><option value="coliseum">Coliseo — Torneo 2 contra 2</option></select><label for="name">Tu nombre</label><input id="name" maxlength="24" placeholder="Guardián"><label for="champ">Tu campeón</label><select id="champ"></select><p id="kit"></p><p id="pg-lobby" class="pg-lobby" role="status"></p><label class="pg-train" id="pg-train-row"><input type="checkbox" id="pg-training"> Entrenamiento normalizado (sin progreso ni recompensas)</label><small>En línea el plantel es normalizado: sin ventajas por nivel, equipo de campaña o compras. Los personajes exclusivos conservan sus restricciones.</small></div>
  <div class="connect"><button class="primary" id="practice">ENTRENAR CON BOTS</button><button id="create">CREAR SALA PRIVADA</button><label for="code">Código o enlace de tu amigo</label><div class="join"><input id="code" maxlength="240" placeholder="ABC123"><button id="join">UNIRSE</button></div></div></section>
  <section id="room" hidden><div class="room-head"><h2>SALA <span id="room-code"></span></h2><button id="copy">Copiar invitación</button></div><p>J1 + J2: equipo Zafiro. J3 + J4: equipo Ámbar. Los lugares libres se completan con bots.</p><div id="slots"></div><div class="actions"><button id="ready">ESTOY LISTO</button><button id="start" class="primary">COMENZAR PARTIDA</button><button id="leave">Salir de la sala</button></div></section>
  <p id="status" role="status" aria-live="polite">Entrenamiento disponible sin conexión. Online usa el servidor configurado de La Horda.</p>
@@ -491,7 +508,7 @@
          siempre; lo online queda plegado salvo en una sala online (o si entraste por código o enlace). -->
     <div class="prep-secs" id="prep-secs" role="tablist" aria-label="Sala">
       <button class="prep-sec active" data-prep-sec="equipo" role="tab" aria-selected="true"><span class="prep-sec-ico">⚔</span> Equipo</button>
-      <button class="prep-sec" data-prep-sec="arena" role="tab" aria-selected="false"><span class="prep-sec-ico">⚑</span> <span class="prep-sec-lbl" id="prep-sec-arena">Arena</span></button>
+      <button class="prep-sec" data-prep-sec="arena" role="tab" aria-selected="false"><span class="prep-sec-ico">🚩</span> <span class="prep-sec-lbl" id="prep-sec-arena">Arena</span></button>
       <button class="prep-sec" data-prep-sec="online" role="tab" aria-selected="false"><span class="prep-sec-ico">🌐</span> <span class="prep-sec-lbl" id="prep-sec-online">Sala online</span></button>
     </div>
     <div id="lobby-arena" class="hidden" data-part="arena"></div>
@@ -560,19 +577,39 @@
 
   <!-- PAUSE -->
   <div id="pause-screen" class="screen hidden">
+   <div class="pause-panel">
     <div class="arena-title">Pausa</div>
+    <div class="pause-body" id="pause-body">
     <div class="pause-note">En las partidas online no hay pausa. Objetos y talentos se cambian en la Sala antes de entrar; las habilidades se suben en partida con el <b>+</b> que aparece sobre cada botón.</div>
+    <!-- Panel táctico (#tactical-panel, js/ui/tactical-panel.js) se inserta aquí: Estados, Kit, Talentos y Equipo plegados -->
+    <section class="pause-acc" data-acc="stats" id="pause-stats-acc">
+      <button type="button" class="pause-acc-h" aria-expanded="false" aria-controls="pause-stats-body"><span class="pause-acc-t">Resumen</span><span class="pause-acc-sub">daño, defensa y resumen</span></button>
+      <div class="pause-acc-b" id="pause-stats-body" inert aria-hidden="true"><div id="stats-panel"></div></div>
+    </section>
+    <!-- AYUDA Y OPCIONES: un solo bloque (antes: nota, "Guía de juego", "Cómo se juega" y dos lugares de opciones) -->
+    <section class="pause-acc" data-acc="help" id="pause-help-acc">
+      <button type="button" class="pause-acc-h" aria-expanded="false" aria-controls="pause-help-body"><span class="pause-acc-t">Ayuda y opciones</span><span class="pause-acc-sub">sonido, accesibilidad, cómo se juega</span></button>
+      <div class="pause-acc-b" id="pause-help-body" inert aria-hidden="true">
     <div class="pause-audio">
       <label>🎵 Música <input type="range" id="vol-music" min="0" max="100" step="5"></label>
       <label>💥 Efectos <input type="range" id="vol-sfx" min="0" max="100" step="5"></label>
-      <label class="pause-motion" title="Apaga sacudidas de cámara, congelados de golpe, cámara lenta y pulsos de pantalla">🌀 Reducir movimiento <input type="checkbox" id="opt-reduce-motion"></label>
-      <label class="pause-motion" title="Menos partículas y sin destellos en definitivas, banners y efectos especiales. No cambia el daño ni los avisos de peligro">✨ Reducir efectos intensos <input type="checkbox" id="opt-reduce-fx"></label>
+      <label class="pause-motion" title="Apaga sacudidas de cámara, congelados de golpe, cámara lenta y pulsos de pantalla">🌀 Reducir movimiento <input type="checkbox" class="ui-toggle" id="opt-reduce-motion"></label>
+      <label class="pause-motion" title="Menos partículas y sin destellos en definitivas, banners y efectos especiales. No cambia el daño ni los avisos de peligro">✨ Reducir efectos intensos <input type="checkbox" class="ui-toggle" id="opt-reduce-fx"></label>
     </div>
-    <button class="btn small secondary pause-opts-btn" id="pause-opts-btn">⚙ Opciones: zurdo, texto, vibración…</button>
-    <button class="btn small secondary" id="pause-howto-btn">? Cómo se juega</button>
-    <div id="stats-panel"></div>
+    <div class="pause-btnrow">
+    <button class="btn small secondary" id="pause-a11y-btn" type="button">Accesibilidad: texto, contraste, colores</button>
+    <button class="btn small secondary pause-opts-btn" id="pause-opts-btn" type="button">Todas las opciones</button>
+    <button class="btn small secondary" id="pause-howto-btn" type="button">Cómo se juega</button>
+    </div>
+    <div id="pause-help-arena"></div>
+      </div>
+    </section>
+    </div>
+    <div class="pause-actions">
     <button class="btn wide" id="resume-btn">Continuar</button>
     <button class="btn secondary" id="quit-btn">Abandonar arena</button>
+    </div>
+   </div>
   </div>
 </div>
 
@@ -590,6 +627,7 @@
         <div class="ri-tap">tocá en cualquier lado para empezar</div>
       </div>
     </div>
+<script src="js/i18n/i18n.js"></script>
 <script src="js/net/fondal-telemetry.js"></script>
 <script src="js/net/fondal-tv.js"></script>
 <script src="js/assets/asset-webp.js"></script>
@@ -623,6 +661,7 @@
 <script src="js/data/buffs.js"></script>
 <script src="js/data/boons.js"></script>
 <script src="js/data/boons-heroes.js"></script>
+<script src="js/data/boons-siete.js"></script>
 <script src="js/data/quests.js"></script>
 <script src="js/data/postgame.js"></script>
 <script src="js/core/constants.js"></script>
@@ -644,7 +683,9 @@
 <script src="js/assets/arena-sprites.js"></script>
 <script src="js/rendering/pixel-sprites.js"></script>
 <script src="js/rendering/anim-atlas.js"></script>
+<script src="js/assets/codex-champion-meta.js"></script>
 <script src="js/rendering/champion-sprites.js"></script>
+<script src="js/rendering/codex-champions.js"></script>
 <script src="js/rendering/enemy-sprites.js"></script>
 <script src="js/rendering/effect-atlases.js"></script>
 <script src="js/rendering/arena.js"></script>
@@ -666,6 +707,7 @@
 <script src="js/assets/bestias-meta.js"></script>
 <script src="js/assets/guardian-sheet-meta.js"></script>
 <script src="js/assets/boss-sheets.js"></script>
+<script src="js/assets/enemy-runway-sheets.js"></script>
 <script src="js/rendering/fx-contrast.js"></script>
 <script src="js/rendering/gore.js"></script>
 <script src="js/rendering/entities.js"></script>
@@ -866,6 +908,8 @@
 <script src="js/ui/hud.js"></script>
 <script src="js/ui/ability-inspector.js"></script>
 <script src="js/ui/tactical-panel.js"></script>
+<script src="js/ui/ux-simplify-a.js"></script>
+<script src="js/ui/ux-simplify-b.js"></script>
 <script src="js/ui/boss-hud.js"></script>
 <script src="js/ui/pixel-font-fix.js"></script>
 <script src="js/ui/pixel-icons.js"></script>
@@ -874,6 +918,7 @@
 <script src="js/ui/how-to-play.js"></script>
 <script src="js/ui/run-intro.js"></script>
 <script src="js/ui/arena-briefing.js"></script>
+<script src="js/beta/beta-scope.js"></script>
 <script src="js/ui/menus.js"></script>
 <script src="js/ui/hub.js"></script>
 <script src="js/ui/prep-sections.js"></script>
@@ -929,6 +974,7 @@
 <script src="js/data/endless.js"></script>
 <script src="js/systems/endless.js"></script>
 <script src="js/net/leaderboard.js"></script>
+<script src="js/ui/battlepass-ui.js"></script>
 <!-- Botín de verdad: afijos al azar + Mística, botín en el piso con haz de luz, élites con nombre -->
 <script src="js/data/affixes.js"></script>
 <script src="js/systems/affixes.js"></script>
@@ -945,11 +991,19 @@
 <script src="js/champions/expedition/cosmetics.js"></script>
 <script src="js/champions/kit-shared.js"></script>
 <script src="js/champions/ascension/catalog.js"></script>
+<script src="js/champions/siete/catalog.js"></script>
 <script src="js/champions/ascension/register.js"></script>
+<script src="js/champions/siete/register.js"></script>
 <script src="js/champions/ascension/art.js"></script>
 <script src="js/champions/ascension/audio.js"></script>
+<script src="js/champions/siete/audio.js"></script>
 <script src="js/champions/ascension/runtime.js"></script>
+<script src="js/champions/siete/common.js"></script>
+<script src="js/champions/siete/ilsa.js"></script>
+<script src="js/champions/siete/vorn.js"></script>
+<script src="js/champions/siete/kora.js"></script>
 <script src="js/champions/ascension/render.js"></script>
+<script src="js/champions/siete/render.js"></script>
 <script src="js/champions/quality-five/fx.js"></script>
 <script src="js/champions/quality-five/audio.js"></script>
 <script src="js/champions/quality-five/solciju.js"></script>
@@ -989,6 +1043,7 @@
 <script src="js/champions/skill-fx-a/c/morveth.js"></script>
 <script src="js/champions/skill-fx-a/c/morwen.js"></script>
 <script src="js/champions/skill-fx-a/c/musashi.js"></script>
+<script src="js/champions/skill-fx-a/c/nigromante.js"></script>
 <script src="js/champions/vfx-b/pixfx.js"></script>
 <script src="js/champions/vfx-b/templates.js"></script>
 <script src="js/champions/vfx-b/hooks.js"></script>
@@ -1013,6 +1068,30 @@
 <script src="js/champions/vfx-b/ynara.js"></script>
 <script src="js/champions/vfx-b/myla.js"></script>
 <script src="js/champions/vfx-b/nigromante.js"></script>
+<script src="js/champions/vfx-unified/runtime.js"></script>
+<script src="js/champions/vfx-unified/sfa-runtime.js"></script>
+<script src="js/champions/vfx-unified/vesper.js"></script>
+<script src="js/champions/vfx-unified/zahra.js"></script>
+<script src="js/champions/vfx-unified/orsa.js"></script>
+<script src="js/champions/vfx-unified/sira.js"></script>
+<script src="js/champions/vfx-unified/tibor.js"></script>
+<script src="js/champions/vfx-unified/renko.js"></script>
+<script src="js/champions/vfx-unified/nahir.js"></script>
+<script src="js/champions/vfx-unified/oriel.js"></script>
+<script src="js/champions/vfx-unified/saelis.js"></script>
+<script src="js/champions/vfx-unified/vhal.js"></script>
+<script src="js/champions/vfx-unified/sfa_overlay.js"></script>
+<script src="js/champions/vfx-unified/solciju.js"></script>
+<script src="js/champions/vfx-unified/veyra.js"></script>
+<script src="js/champions/vfx-unified/nano_gm.js"></script>
+<script src="js/champions/vfx-unified/velmira.js"></script>
+<script src="js/champions/vfx-unified/tanque.js"></script>
+<script src="js/champions/vfx-unified/soporte.js"></script>
+<script src="js/champions/vfx-unified/segador.js"></script>
+<script src="js/champions/vfx-unified/profeta.js"></script>
+<script src="js/champions/vfx-unified/ynara.js"></script>
+<script src="js/champions/vfx-unified/myla.js"></script>
+<script src="js/champions/vfx-unified/nigromante.js"></script>
 <script src="js/champions/ult-forms/kit.js"></script>
 <script src="js/champions/ult-forms/forms-1.js"></script>
 <script src="js/champions/ult-forms/forms-2.js"></script>

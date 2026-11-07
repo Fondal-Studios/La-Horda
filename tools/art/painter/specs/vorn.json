@@ -1,0 +1,68 @@
+{
+ "id": "vorn",
+ "name": "Vorn, El Cambiapiel",
+ "prompt": "Guardian de basalto y pelaje palido con yelmo y cuernos de piedra.",
+ "body": "renko_skin",
+ "head": "baltra_skin",
+ "paint": [
+  {
+   "part": "head",
+   "hue": [
+    0,
+    120
+   ],
+   "minChroma": 3,
+   "noSkin": true,
+   "to": "#566a66",
+   "keepLight": 0.7,
+   "chroma": 1.0
+  },
+  {
+   "part": "body",
+   "hue": [
+    0,
+    120
+   ],
+   "minChroma": 3,
+   "noSkin": true,
+   "to": "#566a66",
+   "keepLight": 0.7,
+   "chroma": 1.0,
+   "maxL": 70
+  }
+ ],
+ "accessories": [
+  {
+   "element": "corona_de_picos",
+   "scale": 0.9,
+   "materials": {
+    "metal": {
+     "ramp": [
+      "#14181a",
+      "#2e3a3a",
+      "#566a66",
+      "#8aa09a"
+     ]
+    }
+   }
+  },
+  {
+   "element": "hombreras_redondas",
+   "scale": 0.95,
+   "materials": {
+    "shell": {
+     "ramp": [
+      "#14181a",
+      "#2e3a3a",
+      "#566a66",
+      "#8aa09a"
+     ]
+    }
+   }
+  }
+ ],
+ "install": {
+  "champion": "vorn",
+  "pack": "vorn"
+ }
+}

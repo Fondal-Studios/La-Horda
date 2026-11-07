@@ -13,8 +13,8 @@ async function api(method, p, body, t, status = 200) { const r = await fetch(url
 const action = (t, op, args = {}, status = 200, id = 'cmp_' + (++seq)) => api('POST', '/api/economy/action', { op, args, requestId: id }, t, status);
 const premium = async (id) => (await app.store.walletGet(id)).premium;
 (async () => {
-  assert.equal(wallet.pricing().__flags().PIECES_FOR_BRASAS, true, 'PIECES_FOR_BRASAS sigue en true (decisión del dueño)');
-  wallet.setTestFlags({ SHOP_MODE: 'demo' });
+  assert.equal(wallet.pricing().__flags().PIECES_FOR_BRASAS, false, 'PIECES_FOR_BRASAS en false: las Brasas compran solo cosméticos (decisión del dueño, 2026-11-02)');
+  wallet.setTestFlags({ SHOP_MODE: 'demo', PIECES_FOR_BRASAS: true }); // el modo con piezas sigue soportado (interruptor), pero ya no es el valor por defecto
   await start();
   const owner = await api('POST', '/api/register', { user: 'compatowner', pass: 'test-long-password' }, null, 201), user = await api('POST', '/api/register', { user: 'compatplayer', pass: 'test-long-password' }, null, 201);
   const uid = (await app.store.getUserByKey('compatplayer')).id, id = String(uid);

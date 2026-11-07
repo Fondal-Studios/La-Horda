@@ -1,0 +1,69 @@
+{
+ "guardian": "profeta",
+ "codex": "profeta",
+ "title": "profeta",
+ "palette": [
+  "#0d2f33",
+  "#2a8f86",
+  "#4fd8c4",
+  "#bffff0",
+  "#ffffff"
+ ],
+ "abilities": [
+  {
+   "id": "rewind",
+   "kind": "ring",
+   "radius": 140,
+   "frames": 10,
+   "glyph": "eye",
+   "baseline": "pf_rewind",
+   "replaces": "pf_rewind",
+   "params": {},
+   "motif": "serpent"
+  },
+  {
+   "id": "bubble_idle",
+   "kind": "idle",
+   "radius": 38,
+   "frames": 12,
+   "glyph": "eye",
+   "baseline": "pf_bubble_idle",
+   "replaces": "pf_bubble_idle",
+   "params": {},
+   "motif": "serpent"
+  },
+  {
+   "id": "spin",
+   "kind": "ring",
+   "radius": 140,
+   "frames": 10,
+   "glyph": "eye",
+   "baseline": "pf_spin",
+   "replaces": "pf_spin",
+   "params": {},
+   "motif": "serpent"
+  },
+  {
+   "id": "stun",
+   "kind": "ring",
+   "radius": 24,
+   "frames": 9,
+   "glyph": "eye",
+   "baseline": "pf_stun",
+   "replaces": "pf_stun",
+   "params": {},
+   "motif": "serpent"
+  },
+  {
+   "id": "fuse_idle",
+   "kind": "idle",
+   "radius": 40,
+   "frames": 12,
+   "glyph": "eye",
+   "baseline": "pf_fuse_idle",
+   "replaces": "pf_fuse_idle",
+   "params": {},
+   "motif": "serpent"
+  }
+ ]
+}

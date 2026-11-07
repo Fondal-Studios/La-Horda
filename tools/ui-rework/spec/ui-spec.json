@@ -1,0 +1,93 @@
+{
+ "version": 1,
+ "name": "La Horda UI retro v2",
+ "principles": [
+  "una acción dominante por pantalla",
+  "jugar, Códice y Tienda a ≤ 2 clics desde el título (contando secciones)",
+  "lo secundario va dentro de paneles, nunca suelto",
+  "blancos táctiles ≥ 44 px",
+  "lenguaje de píxel: esquinas rectas, sombra escalonada, Press Start 2P + VT323, sin emojis de color"
+ ],
+ "tokens": {
+  "grid": 8,
+  "radius": 0,
+  "shadow": "4px 4px 0 #000",
+  "line": "#6a3e1e",
+  "accent": "#ff8a2a",
+  "gold": "#ffd76a",
+  "panel": "#1a0f0a",
+  "panelDeep": "#0f0805",
+  "ink": "#f3e6cf",
+  "dim": "#bfa88a",
+  "minTarget": 44
+ },
+ "title": {
+  "primary": "#bt-play",
+  "secondary": {
+   "id": "title-continue-btn",
+   "label": "MENÚ",
+   "loadingLabel": "CARGANDO…"
+  },
+  "infoSheet": {
+   "button": "ur-info-btn",
+   "icon": "i",
+   "title": "INFORMACIÓN",
+   "move": [
+    "a[href='instalar.html']",
+    "#legal-title",
+    ".build-tag"
+   ]
+  }
+ },
+ "home": {
+  "keepVisible": [
+   "hub-profile-btn",
+   "hub-options-btn",
+   "hub-play-btn",
+   "mainmenu-codex-btn",
+   "mainmenu-tienda-btn",
+   "mainmenu-guardianes-btn",
+   "mainmenu-quests-btn"
+  ],
+  "modesSheet": {
+   "button": "ur-modes-btn",
+   "label": "MODOS",
+   "sub": "Cristales · Coliseo · Online",
+   "title": "MODOS DE JUEGO",
+   "move": [
+    "hub-crystal-btn",
+    "hub-coliseum-btn",
+    "mainmenu-jugar-btn",
+    "hub-endless-btn",
+    "hub-endless-rank-btn"
+   ],
+   "sweepUnknownButtons": true
+  },
+  "moreSheet": {
+   "button": "ur-more-btn",
+   "label": "⋯",
+   "aria": "Más opciones",
+   "title": "MÁS",
+   "move": [
+    "hub-premium-btn",
+    "hub-tele-btn",
+    "hub-howto-btn",
+    "mainmenu-back-btn"
+   ]
+  },
+  "anchorFns": [
+   "campaignMailboxButton"
+  ]
+ },
+ "lobby": {
+  "compactTabs": true,
+  "hideHelpUnderTabs": false,
+  "startBar": "#prep-start-btn"
+ },
+ "labels": {
+  "hub-premium-btn": "BRASAS",
+  "hub-tele-btn": "JUGAR EN LA TELE",
+  "hub-howto-btn": "CÓMO SE JUEGA",
+  "mainmenu-back-btn": "VOLVER AL TÍTULO"
+ }
+}

@@ -1,7 +1,7 @@
 // Arte panorámico de las ARENAS del Códice: capturas del juego REAL (el escenario de cada arena con su
 // horda), sin HUD. No se dibuja nada a mano: si una arena cambia, se vuelve a correr esto.
 //   (python3 -m http.server 8771 &) ; node tools/codex/capture_arenas.js
-//   → assets/ui/codex/arenas/<arena>.jpg (960×420, JPEG)
+//   → assets/ui/codex/arenas/<arena>.jpg (960×420, JPEG; después pasa por tools/art/native_pixelize.py a .png)
 let chromium;
 try { ({ chromium } = require('playwright')); } catch (e) { ({ chromium } = require(process.env.PLAYWRIGHT_MODULE || '/opt/node22/lib/node_modules/playwright')); }
 const path = require('path');

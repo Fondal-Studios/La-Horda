@@ -71,14 +71,22 @@
   const bg = document.createElement("div"); bg.id = "bt-bg"; bg.setAttribute("aria-hidden", "true");
   bg.innerHTML = '<div class="bt-bg-shade"></div>';
   const cv = document.createElement("canvas"); cv.id = "bt-hero-cv"; cv.setAttribute("aria-hidden", "true");
+  // #bt-col posiciona la columna; #bt-cta (kicker + JUGAR AHORA) y #bt-menu (acceso al menú/campaña + chips) son hermanos: no se superponen
+  const col = document.createElement("div"); col.id = "bt-col";
   const cta = document.createElement("div"); cta.id = "bt-cta";
   cta.innerHTML = '<div class="bt-cta-kick">PRÓXIMA PARTIDA</div>' +
-    '<button type="button" id="bt-play" class="btn bt-play" disabled><span class="bt-play-main">Cargando…</span><span class="bt-play-sub"></span></button>' +
+    '<button type="button" id="bt-play" class="btn bt-play" disabled><span class="bt-play-main">Cargando…</span><span class="bt-play-sub"></span></button>';
+  const menuWrap = document.createElement("div"); menuWrap.id = "bt-menu";
+  menuWrap.innerHTML = '<div class="bt-cta-menu"><div class="bt-cta-menu-sub">Campaña, guardianes y tienda</div></div>' +
     '<div class="bt-cta-meta"><span class="ui-tag">Sylva · Cazadora</span><span class="ui-tag new">Ruinas Élficas</span></div>';
+  col.appendChild(cta); col.appendChild(menuWrap);
   scr.insertBefore(bg, scr.firstChild);
   const canvas0 = $("title-canvas");
   if(canvas0) canvas0.insertAdjacentElement("afterend", cv); else scr.appendChild(cv);
-  scr.appendChild(cta);
+  scr.appendChild(col);
+  // el acceso al menú/campaña (mismo nodo, mismo id y eventos) va justo bajo JUGAR AHORA, en #bt-menu
+  const contBtn0 = $("title-continue-btn"), menuBox = menuWrap.querySelector(".bt-cta-menu");
+  if(contBtn0 && menuBox) menuBox.insertBefore(contBtn0, menuBox.firstChild);
   scr.classList.add("bt-title");
 
   const heroName = (typeof championShortName==="function" && championShortName(B.HERO)) || "Sylva";
@@ -118,113 +126,210 @@
   playBtn.addEventListener("click", quickPlay);
   B.quickPlay = quickPlay;
 
-  /* ---- telón de fondo: el atlas REAL de Ruinas (menhires rúnicos, árboles) en capas, con luz y niebla ---- */
-  const atlas = new Image(); let atlasOK = false; atlas.onload = ()=>{ atlasOK = true; }; atlas.src = "assets/sprites/arenas/world-v1/bosque.png";
-  const CELL = 128, tintCache = {};
-  // celda del atlas (columna, fila) → canvas; tint = silueta oscura teñida para las capas lejanas
-  function cell(c, r, tint){
-    const key = c + "," + r + "," + (tint||"");
-    if(tintCache[key]) return tintCache[key];
-    const cv2 = document.createElement("canvas"); cv2.width = cv2.height = CELL;
-    const g = cv2.getContext("2d"); g.imageSmoothingEnabled = false;
-    g.drawImage(atlas, c*CELL, r*CELL, CELL, CELL, 0, 0, CELL, CELL);
-    if(tint){ g.globalCompositeOperation = "source-atop"; g.fillStyle = tint; g.fillRect(0, 0, CELL, CELL); }
-    return (tintCache[key] = cv2);
-  }
+  /* ---- telón de fondo: key-art pixel de TODA La Horda (11 arenas en franjas + siluetas de enemigos/guardianes).
+         Generado por tools/art/menu/make_title_key_art.py; la variante apaisada (1280x592) cubre móviles. ---- */
+  const kaWide = new Image(), kaMob = new Image(); let kaOK = false;
+  kaWide.onload = ()=>{ kaOK = true; }; kaWide.src = "assets/ui/title-horda-1280x720.png"; kaMob.src = "assets/ui/title-horda-1280x592.png";
   function backdrop(g, W, H, unit, t){
-    const sky = g.createLinearGradient(0, 0, 0, H);
-    sky.addColorStop(0, "#03100c"); sky.addColorStop(0.5, "#0a2118"); sky.addColorStop(1, "#040b08");
-    g.fillStyle = sky; g.fillRect(0, 0, W, H);
-    if(!atlasOK) return;
+    g.fillStyle = "#06070b"; g.fillRect(0, 0, W, H);
+    const img = (W/H > 2.0 && kaMob.complete && kaMob.naturalWidth) ? kaMob : kaWide;
+    if(!kaOK && !(img.complete && img.naturalWidth)) return;
     g.imageSmoothingEnabled = false;
-    const drift = Math.sin(t/9000)*W*0.008;
-    // capa lejana: copas en silueta verde-azulada
-    for(let i=0;i<7;i++){
-      const sz = CELL*unit*(2.3 + (i%3)*0.35), x = W*(i/6.2) - sz*0.2 + drift*(1 + i%2), y = H*0.66;
-      g.globalAlpha = 0.9; g.drawImage(cell(i%3, 0, "rgba(6,30,22,0.82)"), x, y - sz*0.92, sz, sz);
-    }
-    g.globalAlpha = 1;
-    // niebla entre capas
-    const mist = g.createLinearGradient(0, H*0.4, 0, H*0.8); mist.addColorStop(0, "rgba(120,200,170,0)"); mist.addColorStop(0.55, "rgba(120,200,170,0.13)"); mist.addColorStop(1, "rgba(120,200,170,0)");
-    g.fillStyle = mist; g.fillRect(0, H*0.4, W, H*0.4);
-    // suelo: claro circular de piedra con anillo rúnico
-    const gg = g.createLinearGradient(0, H*0.62, 0, H); gg.addColorStop(0, "#0b1d14"); gg.addColorStop(1, "#050d09");
-    g.fillStyle = gg; g.fillRect(0, H*0.64, W, H*0.36);
-    const cx = W*0.30, cy = H*0.835, pul = 0.6 + 0.4*Math.sin(t/650);
-    g.strokeStyle = "rgba(0,0,0,0.6)"; g.lineWidth = 7*unit; g.beginPath(); g.ellipse(cx, cy, 120*unit, 22*unit, 0, 0, 6.2832); g.stroke();
+    const k = Math.max(W/img.naturalWidth, H/img.naturalHeight), dw = img.naturalWidth*k, dh = img.naturalHeight*k;
+    g.drawImage(img, (W - dw)/2, H - dh, dw, dh);          // cubre el lienzo; el recorte sobrante queda arriba
+    // luz tenue que respira sobre la horda
     g.globalCompositeOperation = "lighter";
-    g.strokeStyle = `rgba(110,255,205,${0.35 + 0.35*pul})`; g.lineWidth = 2.5*unit; g.beginPath(); g.ellipse(cx, cy, 120*unit, 22*unit, 0, 0, 6.2832); g.stroke();
-    g.strokeStyle = `rgba(255,225,140,${0.2 + 0.3*pul})`; g.lineWidth = 1.6*unit; g.beginPath(); g.ellipse(cx, cy, 88*unit, 16*unit, 0, 0, 6.2832); g.stroke();
-    for(let i=0;i<12;i++){ const a = i*0.5236 + t/9000, rx = cx + Math.cos(a)*120*unit, ry = cy + Math.sin(a)*22*unit; g.fillStyle = `rgba(150,255,215,${0.5 + 0.4*Math.sin(t/400 + i)})`; g.fillRect(rx - unit, ry - unit, 3*unit, 3*unit); }
+    const pul = 0.5 + 0.5*Math.sin(t/900), gl = g.createRadialGradient(W*0.30, H*0.78, 4, W*0.30, H*0.78, H*0.6);
+    gl.addColorStop(0, `rgba(255,190,90,${0.10 + 0.06*pul})`); gl.addColorStop(1, "rgba(255,190,90,0)");
+    g.fillStyle = gl; g.fillRect(0, 0, W, H);
     g.globalCompositeOperation = "source-over";
-    // menhires rúnicos que enmarcan al héroe (cian a la izquierda, ámbar a la derecha), con su luz
-    const menh = [[0, 2, W*0.075, "110,255,235", 1.0], [1, 1, W*0.505, "255,190,70", 0.92]];
-    for(const [c, r, mx, rgb, k] of menh){
-      const sz = CELL*unit*2.1*k*0.82, my = H*0.86;
-      g.globalCompositeOperation = "lighter";
-      const hl = 0.55 + 0.45*Math.sin(t/800 + mx);
-      const gl = g.createRadialGradient(mx, my - sz*0.45, 4, mx, my - sz*0.45, sz*0.9); gl.addColorStop(0, `rgba(${rgb},${0.35*hl})`); gl.addColorStop(1, `rgba(${rgb},0)`);
-      g.fillStyle = gl; g.fillRect(mx - sz, my - sz*1.4, sz*2, sz*1.6);
-      g.globalCompositeOperation = "source-over";
-      g.drawImage(cell(c, r), mx - sz/2, my - sz*0.93, sz, sz);
-    }
-    // arbustos de primer plano en silueta
-    for(let i=0;i<6;i++){ const sz = CELL*unit*1.5, x = W*(i/5.2) - sz*0.2; g.globalAlpha = 0.95; g.drawImage(cell(i%2, 3, "rgba(2,14,8,0.78)"), x, H - sz*0.62, sz, sz); }
-    g.globalAlpha = 1;
-    // haces de luz entre las copas
-    g.globalCompositeOperation = "lighter";
-    for(let i=0;i<4;i++){
-      const bx = W*(0.08 + i*0.26) + Math.sin(t/3000 + i*1.7)*W*0.02, a = 0.05 + 0.035*Math.sin(t/1700 + i*2.1);
-      g.fillStyle = `rgba(235,245,170,${a})`;
-      g.beginPath(); g.moveTo(bx, 0); g.lineTo(bx + W*0.09, 0); g.lineTo(bx + W*0.30, H); g.lineTo(bx + W*0.17, H); g.closePath(); g.fill();
-    }
-    g.globalCompositeOperation = "source-over";
-    // viñeta
-    const v = g.createRadialGradient(W*0.38, H*0.6, H*0.25, W*0.5, H*0.55, Math.hypot(W, H)*0.62); v.addColorStop(0, "rgba(0,0,0,0)"); v.addColorStop(1, "rgba(0,4,2,0.8)");
+    const v = g.createRadialGradient(W*0.38, H*0.6, H*0.3, W*0.5, H*0.55, Math.hypot(W, H)*0.62); v.addColorStop(0, "rgba(0,0,0,0)"); v.addColorStop(1, "rgba(0,4,2,0.55)");
     g.fillStyle = v; g.fillRect(0, 0, W, H);
   }
 
-  /* ---- campeón animado: Sylva grande + polvo/luciérnagas; solo corre con el título a la vista ---- */
-  let raf = 0, last = 0, t = 0, parts = [];
+  /* ---- escena de combate en bucle: cinco guardianes de roles distintos (Aldric tanque, San Martín, Sylva a distancia,
+         Thalen mago, Elyra apoyo) contra un jefe de la arena de hielo (Ángel Caído de Hielo; NO el Rey de la Horda) y
+         tres bichos comunes. Mismo arte real que la partida (drawChampFigure / _cxDrawEnemy del Códice). El tiempo
+         lo manda t (sin estado): cada actor tiene su ciclo de ataque, con proyectiles y destellos simples.
+         Compone a la izquierda del CTA (se mide en pantalla) para no tapar botones, logo, idioma ni pie. ---- */
+  const BOSS = "angel_caido_hielo", MOBS = ["golem_hielo", "lobo_artico", "hada_escarcha"];
+  const HEROES = [ // fx = posición en el campo (0..1 del ancho libre); row 1 = segunda fila (más atrás)
+    {k:"tanque",     fx:0.43, row:0, per:3200, off:0,    kind:"melee"},
+    {k:"libertador", fx:0.26, row:0, per:3800, off:900,  kind:"melee"},
+    {k:"soporte",    fx:0.09, row:0, per:4800, off:2000, kind:"heal"},
+    {k:"cazadora",   fx:0.18, row:1, per:2600, off:300,  kind:"arrow"},
+    {k:"mago",       fx:0.34, row:1, per:3400, off:1500, kind:"bolt"}
+  ];
+  const BATTLE_GROUPS = HEROES.map(h => "ch:" + h.k).concat(["ar:hielo"]);
+  const STATIC_T = 3460;   // cuadro fijo (Reducir movimiento): flecha y hechizo en vuelo, golpe del tanque
+  let raf = 0, last = 0, t = 0, parts = [], groupsAsked = false, lastStatic = -1e9, ents = {}, normAt = 0;
+  const mkEnemy = type => (typeof _cxFakeEnemy==="function") ? _cxFakeEnemy(type) : null;
+  function groupReady(gk){ try{ return typeof _alGroupReady!=="function" || _alGroupReady(gk); }catch(_){ return true; } }
+  const cyc = (tt, per, off) => ((tt - off) % per + per) % per;
+  const sm = x => Math.max(0, Math.min(1, x));
+  function spark(g, x, y, u, age, col){ // destello de impacto: anillo + 6 chispas
+    if(age < 0 || age > 300) return;
+    const q = age/300, r = (5 + 20*q)*u;
+    g.save(); g.globalCompositeOperation = "lighter"; g.globalAlpha = 1 - q;
+    g.fillStyle = col; g.fillRect(x - r*0.5, y - r*0.12, r, Math.max(2, 2.4*u)); g.fillRect(x - r*0.12, y - r*0.5, Math.max(2, 2.4*u), r);
+    for(let i=0;i<6;i++){ const a = i*1.047 + 0.4; g.fillRect(x + Math.cos(a)*r, y + Math.sin(a)*r, 3*u, 3*u); }
+    g.restore();
+  }
+  function bolt(g, x0, y0, x1, y1, q, u, kind){ // proyectil simple con estela
+    if(q <= 0 || q >= 1) return;
+    const x = x0 + (x1 - x0)*q, y = y0 + (y1 - y0)*q - Math.sin(q*Math.PI)*(kind==="arrow" ? 10 : 4)*u;
+    g.save();
+    if(kind === "arrow"){
+      g.fillStyle = "#e8d9a8"; g.fillRect(x - 7*u, y - 1*u, 12*u, 2*u);
+      g.fillStyle = "#fff6d0"; g.fillRect(x + 5*u, y - 2*u, 3*u, 4*u);
+      g.fillStyle = "#9fd77a"; g.fillRect(x - 8*u, y - 2*u, 3*u, 4*u);
+    } else {
+      g.globalCompositeOperation = "lighter";
+      for(let i=5;i>=1;i--){ g.globalAlpha = 0.14*(6-i); g.fillStyle = kind==="ice" ? "#8fd8ff" : "#c79bff"; const s = (7 - i)*u; g.fillRect(x - (x1>x0?1:-1)*i*5*u - s/2, y - s/2, s, s); }
+      g.globalAlpha = 1; g.fillStyle = kind==="ice" ? "#eaffff" : "#fff0ff"; g.fillRect(x - 4*u, y - 4*u, 8*u, 8*u);
+    }
+    g.restore();
+  }
+  // las animaciones de ataque reales disparan partículas/temblor del MUNDO (vfx.js, cámara): en el título no hay mundo,
+  // así que se silencian solo mientras se dibuja la escena (y se restauran siempre).
+  const WORLD_FX = ["vfxBurst", "vfxConverge", "vfxShock", "vfxShake", "vfxRing", "vfxSpark", "vfxText", "playSfx"];
+  function quiet(fn){
+    const saved = {};
+    for(const n of WORLD_FX){ if(typeof window[n]==="function"){ saved[n] = window[n]; window[n] = function(){}; } }
+    try{ fn(); }catch(e){ if(!quiet.warned){ quiet.warned = 1; console.error("title battle", e); } }
+    finally{ for(const n in saved) window[n] = saved[n]; }
+  }
   function heroFrame(now){
     if(scr.classList.contains("hidden")){ raf = 0; return; }
     raf = requestAnimationFrame(heroFrame);
-    if(now - last < 33) return;
-    const dt = Math.min(100, now - (last || now)); last = now; t += dt;
+    const still = !!(typeof JUICE!=="undefined" && JUICE.reduceMotion);   // incluye prefers-reduced-motion (juice.js)
+    if(still ? (now - lastStatic < 500) : (now - last < 33)) return;
+    const dt = Math.min(100, now - (last || now)); last = now; lastStatic = now;
+    if(!still) t += dt;
+    const T = still ? STATIC_T : t;
     const dpr = Math.min(2, window.devicePixelRatio || 1), w = cv.clientWidth, h = cv.clientHeight;
     if(!w || !h) return;
     if(cv.width !== Math.round(w*dpr) || cv.height !== Math.round(h*dpr)){ cv.width = Math.round(w*dpr); cv.height = Math.round(h*dpr); parts = []; }
     const g = cv.getContext("2d"), W = cv.width, H = cv.height, unit = Math.min(W/844, H/390);
     g.clearRect(0, 0, W, H); g.imageSmoothingEnabled = false;
-    backdrop(g, W, H, unit, t);
+    backdrop(g, W, H, unit, T);
     if(!parts.length){ for(let i=0;i<42;i++) parts.push({x:brand()*W, y:H*(0.25 + brand()*0.7), v:(8 + brand()*22)*unit, s:(1 + brand()*2)*unit, ph:brand()*6.28, c:brand()<0.55}); }
     const loading = playBtn.disabled;
-    // el campeón: de pie, respira; cada ~5 s da un paso al frente y ataca (animación real del juego)
-    if(!loading && typeof drawChampFigure==="function"){
-      if(typeof _titleMeasure==="function" && !_titleNorm[B.HERO]) try{ _titleMeasure(); }catch(_){}
-      const norm = Math.max(0.5, Math.min(2.4, (typeof _titleNorm!=="undefined" && _titleNorm[B.HERO]) || 1));
-      const sc = 5.7*unit*norm, cx = W*0.30, base = H*0.83;
-      const cyc = (t % 6200), atk = cyc > 4300 && cyc < 4800, walk = cyc > 5200 || cyc < 700;
-      const bob = Math.sin(t/(walk ? 140 : 560))*(walk ? 1.6 : 1.2)*unit, lunge = atk ? Math.sin((cyc-4300)/500*Math.PI)*10*unit : 0;
-      // sombra + halo de luz detrás (contraluz)
-      g.globalCompositeOperation = "lighter";
-      const hg = g.createRadialGradient(cx, base - 110*unit, 10*unit, cx, base - 110*unit, 190*unit);
-      hg.addColorStop(0, "rgba(255,225,150,0.30)"); hg.addColorStop(0.5, "rgba(120,220,170,0.12)"); hg.addColorStop(1, "rgba(0,0,0,0)");
-      g.fillStyle = hg; g.fillRect(cx - 220*unit, base - 330*unit, 440*unit, 380*unit);
-      g.globalCompositeOperation = "source-over";
-      g.fillStyle = "rgba(0,0,0,0.5)"; g.beginPath(); g.ellipse(cx, base + 3*unit, 46*unit, 9*unit, 0, 0, 6.2832); g.fill();
-      try{ drawChampFigure(g, B.HERO, cx + lunge, base + bob, sc, 1, t, walk || atk, atk ? {attackAnim:Math.max(1, 520 - (cyc-4300))} : null); }catch(_){}
-    }
-    // polvo dorado y luciérnagas (aditivo)
+    if(!loading && !groupsAsked){ groupsAsked = true; try{ if(typeof assetsStartGroup==="function") BATTLE_GROUPS.forEach(assetsStartGroup); }catch(_){} } // carga liviana: solo lo del cuadro, ya con "Tocá para continuar"
+    if(!loading && typeof drawChampFigure==="function" && typeof _cxDrawEnemy==="function") quiet(()=>battle(g, W, H, unit, T, still, now));
+    // polvo dorado y luciérnagas (aditivo; quietos con Reducir movimiento)
     g.globalCompositeOperation = "lighter";
     for(const p of parts){
-      p.y -= p.v*dt/1000; p.x += Math.sin(t/900 + p.ph)*0.35*unit;
-      if(p.y < H*0.12){ p.y = H*(0.9 + brand()*0.1); p.x = brand()*W; }
-      const a = Math.min(1, (p.y - H*0.12)/(H*0.25))*(0.55 + 0.45*Math.sin(t/300 + p.ph));
+      if(!still){ p.y -= p.v*dt/1000; p.x += Math.sin(t/900 + p.ph)*0.35*unit; if(p.y < H*0.12){ p.y = H*(0.9 + brand()*0.1); p.x = brand()*W; } }
+      const a = Math.min(1, (p.y - H*0.12)/(H*0.25))*(still ? 0.8 : 0.55 + 0.45*Math.sin(t/300 + p.ph));
       g.fillStyle = p.c ? `rgba(255,226,140,${0.8*a})` : `rgba(170,255,205,${0.8*a})`;
       g.fillRect(p.x, p.y, p.s, p.s);
     }
     g.globalCompositeOperation = "source-over";
+  }
+  function battle(g, W, H, unit, T, still, now){
+    // zona libre = a la izquierda del CTA (en pantalla); en vertical, sobre el CTA
+    const sr = scr.getBoundingClientRect(), cr = cta.getBoundingClientRect(), k = W/Math.max(1, cv.clientWidth);
+    const portrait = H > W;
+    const left = W*0.03, right = portrait ? W*0.97 : Math.max(W*0.4, (cr.left - sr.left)*k - W*0.015);
+    const Sw = right - left;
+    const floor = portrait ? Math.min(H*0.5, (cr.top - sr.top)*k - H*0.03) : H*0.8;
+    const Hh = Math.min(portrait ? H*0.16 : H*0.25, Sw*(portrait ? 0.3 : 0.225));
+    if(now - normAt > 700){ normAt = now; if(HEROES.some(o => !_titleNorm[o.k] && groupReady("ch:" + o.k)) && typeof _titleMeasure==="function") try{ _titleMeasure(); }catch(_){} }
+    const bossOK = groupReady("ar:hielo") && ENEMY_BASE[BOSS];
+    const mB = bossOK && _cxMeasure(BOSS), mM = bossOK ? MOBS.map(_cxMeasure) : [];
+    const rowY = r => floor - r*H*0.07;
+    // ---- posiciones ----
+    const Hb = Math.min(Hh*(Hh < 100 ? 1.9 : 2.1), floor - H*0.38), kB = mB ? Hb/mB.h : 1, bw = mB ? mB.w*kB : Hh*1.6;
+    const bossX = Math.min(left + Sw*0.80, right - bw*0.5), bossY = floor - H*0.01;
+    const mobDef = [{x:0.60, r:0, th:0.62}, {x:0.66, r:1, th:0.5}, {x:0.55, r:1, th:0.5}];
+    const hx = o => left + Sw*o.fx*(portrait ? 1.7 : 1);
+    const tank = HEROES[0], tx = hx(tank);
+    const items = [];
+    // golpes recibidos (para chispas / retroceso)
+    const hits = {boss:[], mob:[[], [], []], tank:[]};
+    for(const o of HEROES){
+      const c = cyc(T, o.per, o.off), atk = c < 520, hitAt = o.kind==="melee" ? 260 : o.kind==="arrow" ? 250 + 430 : o.kind==="bolt" ? 300 + 500 : -1;
+      o._c = c; o._atk = atk;
+      if(o.kind==="melee") (o.k==="tanque" ? hits.mob[0] : hits.mob[1]).push(c - hitAt);
+      else if(o.kind==="arrow" || o.kind==="bolt") hits.boss.push(c - hitAt);
+    }
+    // el jefe: carga el ataque y lanza una esquirla de hielo al tanque
+    const cB = cyc(T, 4400, 600), bAtk = cB < 620, bossHitTank = cB - (520 + 600);
+    hits.tank.push(bossHitTank);
+    const mobC = [cyc(T, 2800, 400), cyc(T, 2600, 1300), cyc(T, 3000, 2200)];
+    // ---- héroes ----
+    for(const o of HEROES){
+      const ok = groupReady("ch:" + o.k) && _titleNorm[o.k];
+      if(!ok) continue;
+      const c = o._c, atk = c < 520, row = o.row;
+      let x = hx(o), y = rowY(row);
+      const lunge = o.kind==="melee" && atk ? Math.sin(c/520*Math.PI)*Sw*0.045 : 0;
+      let sh = 0; if(o.k==="tanque"){ const a = bossHitTank; if(a > 0 && a < 260) sh = Math.sin(a/260*Math.PI*3)*3*unit; }
+      const sc = (Hh/34)*Math.max(0.5, Math.min(2.4, _titleNorm[o.k]));
+      const ex = atk ? {attackAnim:Math.max(1, 520 - c), _aPrev:1e9, _aDur:520} : null;
+      if(ex && (o.kind==="bolt" || o.kind==="heal")) ex._packCastUntil = Infinity;
+      items.push({y, draw(){
+        g.fillStyle = "rgba(0,0,0,0.5)"; g.beginPath(); g.ellipse(x + lunge, y + 2*unit, Hh*0.32, Hh*0.07, 0, 0, 6.2832); g.fill();
+        drawChampFigure(g, o.k, x + lunge + sh, y + Math.sin(T/(still ? 1e9 : 560) + x)*1*unit, sc, 1, T + o.off, false, ex);
+      }});
+    }
+    // ---- jefe y comunes ----
+    if(bossOK && mB){
+      const e = ents[BOSS] || (ents[BOSS] = mkEnemy(BOSS));
+      e.fx = -1; e.animT = T; e.attackAnim = 0; e.stunTimer = 1; // el ataque del jefe se insinúa con retroceso + aura (su hoja de ataque cambia de caja y rompe la composición)
+      let hb = 0; for(const a of hits.boss) if(a > 0 && a < 260) hb = Math.max(hb, 1 - a/260);
+      items.push({y:bossY, draw(){
+        g.save(); g.globalCompositeOperation = "lighter";   // aura de jefe (hielo)
+        const ag = g.createRadialGradient(bossX, bossY - Hb*0.5, Hb*0.1, bossX, bossY - Hb*0.5, Hb*0.8);
+        ag.addColorStop(0, `rgba(130,200,255,${0.16 + 0.12*hb + (bAtk ? 0.28*Math.sin(cB/620*Math.PI) : 0)})`); ag.addColorStop(1, "rgba(130,200,255,0)");
+        g.fillStyle = ag; g.fillRect(bossX - Hb, bossY - Hb*1.4, Hb*2, Hb*1.6); g.restore();
+        g.fillStyle = "rgba(0,0,0,0.5)"; g.beginPath(); g.ellipse(bossX, bossY + 2*unit, bw*0.4, Hh*0.1, 0, 0, 6.2832); g.fill();
+        _cxDrawEnemy(g, e, bossX - mB.cx*kB + hb*4*unit - (bAtk ? Math.sin(cB/620*Math.PI)*5*unit : 0), bossY - mB.bottom*kB, kB);
+        if(hb > 0){ g.save(); g.globalCompositeOperation = "lighter"; g.globalAlpha = 0.35*hb; _cxDrawEnemy(g, e, bossX - mB.cx*kB + hb*4*unit, bossY - mB.bottom*kB, kB); g.restore(); }
+        // barra de vida del jefe: baja de a poco y se recompone (decorativa)
+        const bwid = Math.max(60*unit, bw*0.75), bx = bossX - bwid/2, by = bossY - Hb - 10*unit, hp = 1 - 0.38*((T % 12000)/12000);
+        g.fillStyle = "rgba(0,0,0,0.7)"; g.fillRect(bx - 2*unit, by - 2*unit, bwid + 4*unit, 7*unit);
+        g.fillStyle = "#b3261e"; g.fillRect(bx, by, bwid*hp, 3*unit); g.fillStyle = "#e65a4f"; g.fillRect(bx, by, bwid*hp, 1.2*unit);
+      }});
+      MOBS.forEach((type, i) => {
+        const m = mM[i]; if(!m) return;
+        const d = mobDef[i], me = ents[type] || (ents[type] = mkEnemy(type)), c = mobC[i];
+        const kk = (Hh*d.th)/m.h, mAtk = c < 420;
+        me.fx = -1; me.animT = T + i*250; me.attackAnim = mAtk ? Math.max(1, 420 - c) : 0; me.stunTimer = mAtk ? 0 : 1;
+        let rec = 0; for(const a of hits.mob[i]) if(a > 0 && a < 260) rec = Math.max(rec, 1 - a/260);
+        const x = left + Sw*d.x + (mAtk ? -Math.sin(c/420*Math.PI)*Sw*0.03 : 0) + rec*7*unit, y = rowY(d.r);
+        items.push({y, draw(){
+          g.fillStyle = "rgba(0,0,0,0.5)"; g.beginPath(); g.ellipse(x, y + 2*unit, m.w*kk*0.4, Hh*0.05, 0, 0, 6.2832); g.fill();
+          _cxDrawEnemy(g, me, x - m.cx*kk, y - m.bottom*kk, kk);
+        }});
+      });
+    }
+    items.sort((a, b) => a.y - b.y).forEach(it => it.draw());
+    // ---- proyectiles, curación y chispas (encima) ----
+    const bossC = {x:bossX - bw*0.18, y:bossY - Hb*0.5};
+    for(const o of HEROES){
+      const c = o._c, y0 = rowY(o.row) - Hh*0.55, x0 = hx(o) + Hh*0.25;
+      if(o.kind==="arrow") bolt(g, x0, y0, bossC.x, bossC.y, sm((c - 250)/430) , unit*1.2, "arrow");
+      if(o.kind==="bolt")  bolt(g, x0, y0 - Hh*0.1, bossC.x, bossC.y, sm((c - 300)/500), unit*1.3, "magic");
+      if(o.kind==="heal" && c > 250 && c < 1500){
+        const q = (c - 250)/1250;
+        for(const tg of [tank, HEROES[1]]){
+          const px = hx(tg), py = rowY(0);
+          g.save(); g.globalCompositeOperation = "lighter"; g.globalAlpha = 0.8*(1 - q);
+          g.strokeStyle = "#8dffb0"; g.lineWidth = 2*unit; g.beginPath(); g.ellipse(px, py, Hh*(0.15 + 0.3*q), Hh*(0.05 + 0.1*q), 0, 0, 6.2832); g.stroke();
+          g.fillStyle = "#c9ffd8"; for(let i=0;i<4;i++){ const sy = py - q*Hh*0.9 - i*Hh*0.12; g.fillRect(px + (i-1.5)*Hh*0.1, sy, 3*unit, 3*unit); g.fillRect(px + (i-1.5)*Hh*0.1 - 1*unit, sy + 1*unit, 5*unit, 1*unit); }
+          g.restore();
+        }
+      }
+    }
+    if(mB && bossOK){
+      const tgx = tx + Hh*0.2, tgy = rowY(0) - Hh*0.5;
+      bolt(g, bossX - bw*0.35, bossY - Hb*0.55, tgx, tgy, sm((cB - 520)/600), unit*1.3, "ice");
+      spark(g, tgx, tgy, unit*1.2, bossHitTank, "#bfe8ff");
+      for(const a of hits.boss) spark(g, bossC.x + Hb*0.05, bossC.y, unit*1.2, a, "#fff2c0");
+      mM.forEach((m, i) => { for(const a of hits.mob[i]) spark(g, left + Sw*mobDef[i].x - 12*unit, rowY(mobDef[i].r) - Hh*mobDef[i].th*0.5, unit*1.1, a, "#ffe9a0"); });
+    }
   }
   function startHero(){ if(!raf){ last = 0; raf = requestAnimationFrame(heroFrame); } }
   // el título vuelve a mostrarse cada vez que se sale al menú: reanimar

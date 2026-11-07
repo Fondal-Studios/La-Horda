@@ -52,11 +52,13 @@ async function _lbSubmit(entry){
 // Lo llama endlessEndRun (una vez por partida). L = EN.local (lo de ESTE jugador).
 function lbAfterRun(L){
   if(!L || L.lb) return;
-  const entry = { score: Math.max(0, Math.round(EN.score||0)), round: EN.round|0, guardian: L.cls || selectedClass,
-    week: EN.week || lbWeekNow(), durationMs: Math.max(0, Math.round(L.timeMs||0)) };
+  // RANKING PERSONAL: la ronda es la que ESTE jugador sobrevivió (L.survived), con el puntaje y el tiempo que tenía en ese momento;
+  // nunca la ronda del grupo ni las posteriores a su caída (ver endlessTrackSurvival).
+  const entry = { score: Math.max(0, Math.round(L.survivedScore||0)), round: L.survived|0, guardian: L.cls || selectedClass,
+    week: EN.week || lbWeekNow(), durationMs: Math.max(0, Math.round(L.survivedMs||0)) };
   L.lb = { st: "guest", entry };
   if(!_lbLogged()){ _lbRenderRunLine(); return; }
-  if(!_lbCan() || entry.score <= 0){ L.lb.st = entry.score <= 0 ? "zero" : "offline"; _lbRenderRunLine(); return; }
+  if(!_lbCan() || entry.round < 1){ L.lb.st = entry.round < 1 ? "zero" : "offline"; _lbRenderRunLine(); return; }
   L.lb.st = "sending"; _lbRenderRunLine();
   _lbSubmit(entry).then(r => {
     if(r.status === 200 && r.j.ok){ L.lb = Object.assign(L.lb, { st:"ok", rank:r.j.rank, total:r.j.total, improved:r.j.improved, gRank:r.j.guardianRank, gTotal:r.j.guardianTotal }); _lbClearPending(entry); }
@@ -104,7 +106,7 @@ function _lbRenderRunLine(){
   else if(s.st === "offline") html = `<span class="lb-rank-sub">Sin conexión: tu puntaje se manda al ranking cuando vuelva la red.</span>`;
   else if(s.st === "rejected") html = `<span class="lb-rank-sub lb-warn">${_lbEsc(s.msg)}</span>`;
   else if(s.st === "unsupported") html = `<span class="lb-rank-sub">${LB_NOT_ON_SERVER} Tu récord queda en este dispositivo.</span>`;
-  else if(s.st === "zero") html = `<span class="lb-rank-sub">Sin puntaje esta vez: no entra al ranking.</span>`;
+  else if(s.st === "zero") html = `<span class="lb-rank-sub">No terminaste ninguna ronda en pie: no entra al ranking.</span>`;
   else html = `<span class="lb-rank-sub">Tu récord queda en este dispositivo.</span><button class="btn small lb-acc-btn" id="en-lb-acc" type="button">Creá una cuenta para entrar al ranking</button>`;
   box.innerHTML = html + btn;
   box.classList.remove("hidden");

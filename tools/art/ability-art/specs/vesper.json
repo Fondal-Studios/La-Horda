@@ -1,0 +1,86 @@
+{
+ "guardian": "vesper",
+ "title": "Vesper, la Costurera de Sombras",
+ "palette": [
+  "#1a0f24",
+  "#5b3770",
+  "#aa75bd",
+  "#e0b6f0",
+  "#ffffff"
+ ],
+ "abilities": [
+  {
+   "id": "needles",
+   "kind": "sector",
+   "radius": 235,
+   "half": 0.85,
+   "frames": 10,
+   "glyph": "needle",
+   "baseline": "vs_fan",
+   "replaces": "vs_fan",
+   "params": {
+    "deco": 2,
+    "ticks": 10,
+    "fill": 0.12
+   }
+  },
+  {
+   "id": "seam",
+   "kind": "beam",
+   "tile": [
+    14,
+    14
+   ],
+   "frames": 8,
+   "baseline_beam": "vs_seam",
+   "replaces": "vs_seam",
+   "params": {
+    "deco": 0,
+    "wave": 2
+   }
+  },
+  {
+   "id": "unpick",
+   "kind": "ring",
+   "radius": 150,
+   "frames": 10,
+   "glyph": "scissors",
+   "baseline": "vs_unpick",
+   "replaces": "vs_unpick",
+   "params": {
+    "deco": 0
+   },
+   "motif": "thread"
+  },
+  {
+   "id": "last_stitch",
+   "kind": "ring",
+   "radius": 155,
+   "frames": 10,
+   "glyph": "stitch",
+   "baseline": "vs_cut",
+   "replaces": "vs_cut",
+   "params": {
+    "deco": 2,
+    "ticks": 14,
+    "rim": 3
+   },
+   "motif": "thread"
+  },
+  {
+   "id": "stitch_zone",
+   "kind": "idle",
+   "radius": 155,
+   "frames": 12,
+   "glyph": "stitch",
+   "baseline": "vs_stitch_idle",
+   "replaces": "vs_stitch_idle",
+   "params": {
+    "deco": 1,
+    "ticks": 8
+   },
+   "motif": "thread"
+  }
+ ],
+ "codex": "vesper"
+}

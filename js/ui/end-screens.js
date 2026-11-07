@@ -7,6 +7,54 @@
 /* ============================================================
    END SCREENS
    ============================================================ */
+/* ============================================================
+   IDENTIDAD DE LAS PANTALLAS FINALES (menu-polish-b): banner con la panorámica de la arena (la del Códice) tintada
+   según el resultado, el guardián dibujado con su sprite real, y filas de datos reales con conteo animado.
+   Solo presenta datos que ya existen: no calcula ni cambia recompensas.
+   ============================================================ */
+const END_ART_ARENAS = ["ciudad","fortaleza","bosque","micelial","hielo","acuatica","laberinto","abismo","minas","infernal","divina"];
+let _endFigTimer = 0;
+function endHeroHTML(arenaKey, classKey, win){
+  const has = END_ART_ARENAS.indexOf(arenaKey) >= 0, A = (typeof ARENA_MODS!=="undefined" && ARENA_MODS[arenaKey]) || {};
+  const cls = (typeof CLASSES!=="undefined" && CLASSES[classKey]) || {};
+  return `<div class="end-hero ${win?"win":"lose"}${has?"":" no-art"}" style="--end-c:${cls.color||"#ffb04a"}">
+    ${has?`<i class="end-hero-bg" style="background-image:url('assets/ui/codex/arenas/${arenaKey}.png')"></i>`:""}
+    <canvas class="end-hero-fig" width="112" height="112" data-end-fig="${classKey}" data-win="${win?1:0}"></canvas>
+    ${A.label?`<span class="end-hero-cap">${A.label}</span>`:""}</div>`;
+}
+function endRowsHTML(rows){
+  return rows.map(r=>`<div class="end-row"><span>${r[0]}</span><b${typeof r[1]==="number"?` data-count="${r[1]}"`:""}${r[2]?` style="color:${r[2]}"`:""}>${r[1]}</b></div>`).join("");
+}
+function endReduceMotion(){ return document.body.classList.contains("reduce-motion") || (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches); }
+// conteo animado de los números reales (data-count); con "Reducir movimiento" quedan en su valor final
+function endAnimateCounts(root){
+  const els = root ? root.querySelectorAll("[data-count]") : [];
+  if(!els.length || endReduceMotion()) return;
+  const t0 = performance.now(), D = 900;
+  els.forEach(el=>{ el._endFinal = el.textContent; });
+  (function tick(now){
+    const k = Math.min(1, (now - t0)/D), e = 1 - Math.pow(1 - k, 3);
+    els.forEach(el=>{ if(!el.isConnected) return; const v = Number(el.getAttribute("data-count")); const pre = /^\+/.test(el._endFinal) ? "+" : ""; el.textContent = k>=1 ? el._endFinal : pre + Math.round(v*e); });
+    if(k < 1 && els[0].isConnected) requestAnimationFrame(tick);
+  })(t0);
+}
+// dibuja al guardián de cada banner (misma ruta que la vista previa de la selección); derrota = quieto, victoria = en marcha
+function endPaintFigures(root){
+  clearInterval(_endFigTimer);
+  const cvs = [...(root||document).querySelectorAll("canvas[data-end-fig]")];
+  if(!cvs.length || typeof drawChampFigure!=="function") return;
+  const paint = ()=>{
+    if((state!=="victory" && state!=="gameover") || !cvs[0].isConnected){ clearInterval(_endFigTimer); return; }
+    cvs.forEach(c=>{ try{ const g = c.getContext("2d"); g.clearRect(0,0,c.width,c.height); g.imageSmoothingEnabled = false;
+      const win = c.dataset.win==="1"; drawChampFigure(g, c.dataset.endFig, c.width/2, c.height*0.9, 2.3, 1, win ? performance.now()%100000 : 0, win); }catch(e){} });
+  };
+  paint(); if(cvs.length && !endReduceMotion()) _endFigTimer = setInterval(paint, 110);
+}
+function endSetHero(hostId, beforeId, html){
+  let h = document.getElementById(hostId);
+  if(!h){ h = document.createElement("div"); h.id = hostId; const ref = document.getElementById(beforeId); ref.parentNode.insertBefore(h, ref); }
+  h.innerHTML = html; endPaintFigures(h);
+}
 function showGameOverScreen(divinaOutcome){
   if(netIsHost()) netHostAnnounceEnd(false); // B1: la derrota es de todo el equipo
   if(typeof endlessOn==="function" && endlessOn()){ endlessEndRun("defeat"); return; } // Horda Infinita: resultados, récords y botín
@@ -16,6 +64,7 @@ function showGameOverScreen(divinaOutcome){
   const retryBtn = document.getElementById("retry-btn");
   retryBtn.classList.remove("hidden");
   retryBtn.dataset.cp = ""; { const b1 = document.getElementById("retry-from1-btn"); if(b1) b1.classList.add("hidden"); } // punto de control: solo la derrota normal en solitario (checkpoint.js)
+  document.getElementById("gameover-screen").classList.remove("has-end-rows"); { const r = document.getElementById("go-rows"); if(r) r.innerHTML = ""; const hh = document.getElementById("go-hero"); if(hh) hh.innerHTML = ""; }
   if(divinaMode || divinaOutcome){
     divinaMode = false;
     if(divinaOutcome==="victory"){
@@ -55,6 +104,10 @@ function showGameOverScreen(divinaOutcome){
   const lootLine = loot.pending ? "Guardando recompensa en el servidor…" : loot.items.length ? loot.items.map(it=>{ const tm = LOOT_TIER_META[itemTier(it)]; return `<b style="color:${tm.color};">${it.name}</b>`; }).join(", ") : (runLevel>=DEFEAT_LOOT.minLevel ? "inventario lleno" : `sin botín (desde el nivel ${DEFEAT_LOOT.minLevel} te llevás un objeto aunque pierdas)`);
   document.getElementById("go-stats").innerHTML = `Nivel ${runLevel} · ${kills} enemigos vencidos · Calificación <b style="color:${perf.color};">${perf.grade}</b>`;
   const arenaRows = arenaHas("resultsHTML") ? (arenaHook("resultsHTML", false)||"") : "";   // p.ej. civiles rescatados (Ciudad Maldita)
+  { const gs = document.getElementById("gameover-screen"); gs.classList.add("has-end-rows"); endSetHero("go-hero","go-title", endHeroHTML(currentArena, player.classKey, false));
+    let rw = document.getElementById("go-rows"); if(!rw){ rw = document.createElement("div"); rw.id = "go-rows"; rw.className = "end-rows"; const ref = document.getElementById("go-progress"); ref.parentNode.insertBefore(rw, ref); }
+    rw.innerHTML = endRowsHTML([["Nivel alcanzado", runLevel], ["Enemigos vencidos", kills], ["Calificación", perf.grade, perf.color], ["Oro total", save.gold], ["Botín", loot.items.length]].concat(loot.gems ? [["Gemas", loot.gems, "#7fe8ff"]] : []));
+    endAnimateCounts(rw); }
   document.getElementById("go-progress").innerHTML = (typeof goalDefeatHtml==="function" ? goalDefeatHtml(runLevel) : "") + (typeof storyDefeatHtml==="function" ? storyDefeatHtml(player.classKey) : "") +
     `${CLASSES[player.classKey].name} ahora en Nv. <b>${save.champions[player.classKey].level}</b> &nbsp;·&nbsp; Oro total: <b>${save.gold}</b><br>
     ${typeof botDisclosureText==="function" && botDisclosureText() ? `<small style="opacity:.7">${botDisclosureText()}</small><br>` : ""}Botín: ${lootLine}${loot.gems?` · <b style="color:#7fe8ff;">+${loot.gems} Gema${loot.gems>1?"s":""}</b>`:""}<br>
@@ -232,13 +285,13 @@ const VICTORY_STEPS = [
     const A = ARENA_MODS[victoryData.arena]||{};
     // la victoria se anuncia tan grande como la derrota (antes era una fila más de la tabla, bajo un título chico)
     document.getElementById("victory-step-title").textContent = (A.label||"Arena") + " — Completada";
-    return `<div class="vic-hero">VICTORIA</div>
+    return `${endHeroHTML(victoryData.arena, victoryData.classKey, true)}<div class="vic-hero">VICTORIA</div>
       <div class="res-rows">
         <div class="res-row"><span>Arena</span><b>${A.label||"—"}</b></div>
         <div class="res-row"><span>Dificultad</span><b>${ARENA_LOOT_LABEL[victoryData.arena]||"—"}</b></div>
         ${typeof diffResultRowHTML==="function" ? diffResultRowHTML(true) : ""}
         <div class="res-row"><span>Guardián</span><b>${CLASSES[victoryData.classKey].name} · Nv. ${victoryData.level}</b></div>
-        <div class="res-row"><span>Enemigos vencidos</span><b>${victoryData.kills}</b></div>
+        <div class="res-row"><span>Enemigos vencidos</span><b data-count="${victoryData.kills}">${victoryData.kills}</b></div>
         ${victoryData.arenaRows||""}
       </div>${typeof goalVictoryRecapHtml==="function" && victoryData.firstClear ? goalVictoryRecapHtml(victoryData) : ""}${typeof storyVictoryHtml==="function" ? storyVictoryHtml(victoryData) : ""}`;
   },
@@ -297,11 +350,11 @@ const VICTORY_STEPS = [
     const pct = Math.min(100, Math.round(champ.xp/need*100));
     return `
       <div class="vic-xp-row"><span>Guardián</span><b>${CLASSES[victoryData.classKey].name}</b></div>
-      <div class="vic-xp-row"><span>Bonus de XP por victoria (calificación ${victoryData.perf.grade})</span><b style="color:var(--ember3);">+${victoryData.victoryXpBonus}</b></div>
+      <div class="vic-xp-row"><span>Bonus de XP por victoria (calificación ${victoryData.perf.grade})</span><b style="color:var(--ember3);" data-count="${victoryData.victoryXpBonus}">+${victoryData.victoryXpBonus}</b></div>
       <div class="vic-xp-row"><span>Nivel actual</span><b>${champ.level}</b></div>
       <div class="score-bar-track"><div class="score-bar-fill" style="width:${pct}%;"></div></div>
       <div class="vic-sub" style="margin-top:-6px;">${champ.xp} / ${need} XP para el próximo nivel</div>
-      <div class="vic-xp-row"><span>Oro total</span><b>${victoryData.gold}</b></div>
+      <div class="vic-xp-row"><span>Oro total</span><b data-count="${victoryData.gold}">${victoryData.gold}</b></div>
       ${endSkinsLinkHTML(victoryData.classKey)}
       <div class="vic-xp-row"><span>Inventario de la cuenta</span><b>${stashUsedSlots()}/${INVENTORY_CAPACITY}</b></div>
       ${typeof storyVictoryScarHtml==="function" ? storyVictoryScarHtml(victoryData) : ""}
@@ -340,6 +393,7 @@ function victoryGoNextArena(){
 function renderVictoryStep(){
   const body = document.getElementById("victory-step-body");
   body.innerHTML = VICTORY_STEPS[victoryStep]();
+  endPaintFigures(body); endAnimateCounts(body);
   if(typeof codexBookPaintArts==="function") codexBookPaintArts(body); // ilustración del fragmento del Libro (si este paso la trae)
   const bindLootButtons = (root)=>{
     root.querySelectorAll("[data-vic-equip]").forEach(btn=> btn.addEventListener("click", ()=>{ equipItem(victoryData.classKey, btn.getAttribute("data-vic-equip")); btn.textContent = "Equipado"; btn.disabled = true; }));
