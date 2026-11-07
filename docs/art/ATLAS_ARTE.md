@@ -17,8 +17,8 @@ Generado por `node tools/art/build-art-atlas.js` (no editar a mano). Fuente de v
 - Skins/cromas/formas de Ascensión: CODEX_OK 9 · FALTA_ANIMACION 90 · ARTE_VIEJO 5
 - Enemigos: CODEX_OK 63 · FALTA_ANIMACION 12 · ARTE_VIEJO 1
 - Jefes y subjefes: CODEX_OK 14 · FALTA_ANIMACION 13 · ARTE_VIEJO 1
-- Archivos (arenas, props, battlefield, enemigos, jefes, campeones): CODEX_OK 873 · HUERFANO 219 · ARTE_VIEJO 30
-- Fuentes del registro: 50 archivos, huella `6a55b59acd8c`
+- Archivos (arenas, props, battlefield, enemigos, jefes, campeones): CODEX_OK 872 · HUERFANO 103 · ARTE_VIEJO 30
+- Fuentes del registro: 50 archivos, huella `f3b34d176b6f`
 
 ## Campeones (cuerpo base)
 
@@ -255,8 +255,8 @@ Cuadros distintos de idle / caminata (perfil) / ataque / muerte medidos con `dra
 | peregrino | subelite | micelial | CODEX_OK | real | 1 | 3 | 2 | 2 | `arenas/micelial/peregrino/atlas.png` 1712x266 |
 | sabueso | normal | micelial | CODEX_OK | real | 1 | 3 | 2 | 2 | `arenas/micelial/sabueso/atlas.png` 1800x210 |
 | chaman | elite | micelial | CODEX_OK | real | 1 | 3 | 2 | 2 | `arenas/micelial/chaman/atlas.png` 1328x410 |
-| nucleo_micelial | subelite | micelial | FALTA_ANIMACION | real | 1 | 1 | 1 | 0 | `arenas/micelial/fx/nucleo_3.png` 34x61 |
-| raiz_absorcion | subelite | micelial | FALTA_ANIMACION | real | 1 | 1 | 1 | 0 | `arenas/micelial/fx/root_curl.png` 78x97 |
+| nucleo_micelial | subelite | micelial | FALTA_ANIMACION | real | 1 | 1 | 1 | 0 | `arenas/micelial/fx/nucleo_3.png` 40x64 |
+| raiz_absorcion | subelite | micelial | FALTA_ANIMACION | real | 1 | 1 | 1 | 0 | `arenas/micelial/fx/root_curl.png` 64x96 |
 | micelio | subjefe | micelial | FALTA_ANIMACION | real | 1 | 2 | 1 | 1 | `battlefield/micelio.png` 1792x384 |
 | madre_espora | jefe | micelial | ARTE_VIEJO | - | 0 | 0 | 0 | 0 | - |
 | ab_errante | normal | abismo | FALTA_ANIMACION | real | 1 | 2 | 6 | 4 | `arenas/abismo/ab_errante/atlas.png` 448x300 |
@@ -299,10 +299,10 @@ Un registro por imagen (PNG; el `.webp` es su copia sin pérdida) en `ATLAS_ARTE
 
 | Carpeta | Imágenes | MB | ARTE_VIEJO | HUERFANO |
 |---|--:|--:|--:|--:|
-| arenas | 185 | 23.6 | 0 | 2 |
+| arenas | 185 | 23.5 | 0 | 2 |
 | battlefield | 32 | 4.0 | 0 | 0 |
-| bosses | 95 | 6.0 | 0 | 0 |
-| champions | 604 | 73.8 | 30 | 217 |
+| bosses | 94 | 5.5 | 0 | 0 |
+| champions | 488 | 72.0 | 30 | 101 |
 | enemies | 206 | 6.2 | 0 | 0 |
 
 ### Huérfanos (no los carga ni los referencia el juego; candidatos a limpieza, NO se borran acá)
@@ -314,54 +314,7 @@ Un registro por imagen (PNG; el `.webp` es su copia sin pérdida) en `ATLAS_ARTE
 - `assets/sprites/champions/aurelia/preview.png` 112x112
 - `assets/sprites/champions/aurelia/skins/aurelia_alt1/preview.png` 112x112
 - `assets/sprites/champions/aurelia/skins/aurelia_alt2/preview.png` 112x112
-- `assets/sprites/champions/axiom/attack_down_01.png` 56x67
-- `assets/sprites/champions/axiom/attack_down_02.png` 64x68
-- `assets/sprites/champions/axiom/attack_side_01.png` 53x71
-- `assets/sprites/champions/axiom/attack_side_02.png` 71x70
-- `assets/sprites/champions/axiom/attack_up_01.png` 58x71
-- `assets/sprites/champions/axiom/attack_up_02.png` 71x72
-- `assets/sprites/champions/axiom/cast_down_01.png` 57x75
-- `assets/sprites/champions/axiom/cast_side_01.png` 57x73
-- `assets/sprites/champions/axiom/cast_up_01.png` 46x73
 - `assets/sprites/champions/axiom/codex-v1/preview.png` 112x112
-- `assets/sprites/champions/axiom/death_down_01.png` 49x72
-- `assets/sprites/champions/axiom/death_down_02.png` 47x65
-- `assets/sprites/champions/axiom/death_down_03.png` 41x56
-- `assets/sprites/champions/axiom/death_down_04.png` 39x39
-- `assets/sprites/champions/axiom/death_side_01.png` 45x74
-- `assets/sprites/champions/axiom/death_side_02.png` 47x68
-- `assets/sprites/champions/axiom/death_side_03.png` 51x55
-- `assets/sprites/champions/axiom/death_side_04.png` 40x45
-- `assets/sprites/champions/axiom/death_up_01.png` 51x71
-- `assets/sprites/champions/axiom/death_up_02.png` 47x46
-- `assets/sprites/champions/axiom/death_up_03.png` 39x55
-- `assets/sprites/champions/axiom/idle_down_01.png` 54x70
-- `assets/sprites/champions/axiom/idle_down_02.png` 46x71
-- `assets/sprites/champions/axiom/idle_down_03.png` 50x70
-- `assets/sprites/champions/axiom/idle_down_04.png` 43x70
-- `assets/sprites/champions/axiom/idle_side_01.png` 51x72
-- `assets/sprites/champions/axiom/idle_side_02.png` 51x73
-- `assets/sprites/champions/axiom/idle_side_03.png` 48x72
-- `assets/sprites/champions/axiom/idle_side_04.png` 45x72
-- `assets/sprites/champions/axiom/idle_up_01.png` 55x72
-- `assets/sprites/champions/axiom/idle_up_02.png` 48x73
-- `assets/sprites/champions/axiom/idle_up_03.png` 46x73
-- `assets/sprites/champions/axiom/idle_up_04.png` 47x73
-- `assets/sprites/champions/axiom/skins/axiom_piedra/atlas.png` 896x336
-- `assets/sprites/champions/axiom/skins/axiom_piedra/preview.png` 112x112
-- `assets/sprites/champions/axiom/skins/sistema/atlas.png` 552x320
-- `assets/sprites/champions/axiom/walk_down_01.png` 47x71
-- `assets/sprites/champions/axiom/walk_down_02.png` 56x70
-- `assets/sprites/champions/axiom/walk_down_03.png` 56x68
-- `assets/sprites/champions/axiom/walk_down_04.png` 53x69
-- `assets/sprites/champions/axiom/walk_side_01.png` 50x73
-- `assets/sprites/champions/axiom/walk_side_02.png` 49x71
-- `assets/sprites/champions/axiom/walk_side_03.png` 49x70
-- `assets/sprites/champions/axiom/walk_side_04.png` 46x69
-- `assets/sprites/champions/axiom/walk_up_01.png` 49x71
-- `assets/sprites/champions/axiom/walk_up_02.png` 56x72
-- `assets/sprites/champions/axiom/walk_up_03.png` 46x71
-- `assets/sprites/champions/axiom/walk_up_04.png` 44x72
 - `assets/sprites/champions/baltra/croma-preview.png` 112x112
 - `assets/sprites/champions/baltra/preview.png` 112x112
 - `assets/sprites/champions/brakk/preview.png` 112x112
@@ -423,7 +376,6 @@ Un registro por imagen (PNG; el `.webp` es su copia sin pérdida) en `ATLAS_ARTE
 - `assets/sprites/champions/musashi/codex-v1/preview.png` 192x160
 - `assets/sprites/champions/nahir/croma-preview.png` 112x112
 - `assets/sprites/champions/nahir/preview.png` 112x112
-- `assets/sprites/champions/nano_gm/atlas.png` 448x1008
 - `assets/sprites/champions/nano_gm/preview.png` 112x112
 - `assets/sprites/champions/nano_gm/skins/nano_gm_alt1/preview.png` 112x112
 - `assets/sprites/champions/nigromante/codex-v1/preview.png` 192x160
@@ -432,81 +384,14 @@ Un registro por imagen (PNG; el `.webp` es su copia sin pérdida) en `ATLAS_ARTE
 - `assets/sprites/champions/oriel/skins/oriel_alt2/preview.png` 112x112
 - `assets/sprites/champions/orsa/croma-preview.png` 112x112
 - `assets/sprites/champions/orsa/preview.png` 112x112
-- `assets/sprites/champions/profeta/unused-skill-icons/ascension_elegido.png` 61x64
-- `assets/sprites/champions/profeta/unused-skill-icons/danza_augurio.png` 58x64
-- `assets/sprites/champions/profeta/unused-skill-icons/destino_restaurado.png` 58x64
-- `assets/sprites/champions/profeta/unused-skill-icons/vision_inmortal.png` 58x64
 - `assets/sprites/champions/renko/croma-preview.png` 112x112
 - `assets/sprites/champions/renko/preview.png` 112x112
 - `assets/sprites/champions/saelis/preview.png` 112x112
 - `assets/sprites/champions/saelis/skins/saelis_alt1/preview.png` 112x112
 - `assets/sprites/champions/saelis/skins/saelis_alt2/preview.png` 112x112
-- `assets/sprites/champions/segador/attack_down_01.png` 58x74
-- `assets/sprites/champions/segador/attack_down_02.png` 71x74
-- `assets/sprites/champions/segador/attack_down_03.png` 70x75
-- `assets/sprites/champions/segador/attack_down_04.png` 68x75
-- `assets/sprites/champions/segador/attack_side_01.png` 63x76
-- `assets/sprites/champions/segador/attack_side_02.png` 66x78
-- `assets/sprites/champions/segador/attack_side_03.png` 64x77
-- `assets/sprites/champions/segador/attack_side_04.png` 68x74
-- `assets/sprites/champions/segador/attack_up_01.png` 63x79
-- `assets/sprites/champions/segador/attack_up_02.png` 53x74
-- `assets/sprites/champions/segador/attack_up_03.png` 43x75
-- `assets/sprites/champions/segador/attack_up_04.png` 67x79
-- `assets/sprites/champions/segador/cast_down_01.png` 51x73
-- `assets/sprites/champions/segador/cast_down_02.png` 54x82
-- `assets/sprites/champions/segador/cast_side_01.png` 53x76
-- `assets/sprites/champions/segador/cast_side_02.png` 44x75
-- `assets/sprites/champions/segador/cast_side_03.png` 54x75
-- `assets/sprites/champions/segador/cast_side_04.png` 57x82
-- `assets/sprites/champions/segador/cast_up_01.png` 46x77
-- `assets/sprites/champions/segador/cast_up_02.png` 41x81
-- `assets/sprites/champions/segador/cast_up_03.png` 56x80
-- `assets/sprites/champions/segador/death_down_01.png` 43x73
-- `assets/sprites/champions/segador/death_down_02.png` 39x63
-- `assets/sprites/champions/segador/death_down_03.png` 43x38
-- `assets/sprites/champions/segador/death_side_01.png` 47x77
-- `assets/sprites/champions/segador/death_side_02.png` 46x67
-- `assets/sprites/champions/segador/death_side_03.png` 44x60
-- `assets/sprites/champions/segador/death_side_04.png` 43x39
-- `assets/sprites/champions/segador/death_up_01.png` 45x76
-- `assets/sprites/champions/segador/death_up_02.png` 48x46
-- `assets/sprites/champions/segador/death_up_03.png` 38x44
-- `assets/sprites/champions/segador/death_up_04.png` 39x44
-- `assets/sprites/champions/segador/hit_down_01.png` 46x73
-- `assets/sprites/champions/segador/hit_down_02.png` 50x74
-- `assets/sprites/champions/segador/hit_side_01.png` 50x77
-- `assets/sprites/champions/segador/hit_side_02.png` 47x75
-- `assets/sprites/champions/segador/hit_up_01.png` 44x77
-- `assets/sprites/champions/segador/hit_up_02.png` 46x69
-- `assets/sprites/champions/segador/idle_down_01.png` 50x75
-- `assets/sprites/champions/segador/idle_down_02.png` 49x74
-- `assets/sprites/champions/segador/idle_down_03.png` 48x75
-- `assets/sprites/champions/segador/idle_down_04.png` 51x75
-- `assets/sprites/champions/segador/idle_side_01.png` 49x77
-- `assets/sprites/champions/segador/idle_side_02.png` 48x77
-- `assets/sprites/champions/segador/idle_side_03.png` 46x77
-- `assets/sprites/champions/segador/idle_side_04.png` 45x77
-- `assets/sprites/champions/segador/idle_up_01.png` 55x78
-- `assets/sprites/champions/segador/idle_up_02.png` 49x77
-- `assets/sprites/champions/segador/idle_up_03.png` 47x77
-- `assets/sprites/champions/segador/idle_up_04.png` 49x78
-- `assets/sprites/champions/segador/walk_down_01.png` 48x76
-- `assets/sprites/champions/segador/walk_down_02.png` 47x75
-- `assets/sprites/champions/segador/walk_down_03.png` 47x76
-- `assets/sprites/champions/segador/walk_down_04.png` 42x75
-- `assets/sprites/champions/segador/walk_side_01.png` 51x78
-- `assets/sprites/champions/segador/walk_side_02.png` 48x76
-- `assets/sprites/champions/segador/walk_side_03.png` 44x77
-- `assets/sprites/champions/segador/walk_side_04.png` 45x75
-- `assets/sprites/champions/segador/walk_up_01.png` 50x72
-- `assets/sprites/champions/segador/walk_up_02.png` 56x73
-- `assets/sprites/champions/segador/walk_up_03.png` 46x73
-- `assets/sprites/champions/segador/walk_up_04.png` 46x74
 - `assets/sprites/champions/sira/croma-preview.png` 112x112
 - `assets/sprites/champions/sira/preview.png` 112x112
 - `assets/sprites/champions/solciju/preview.png` 112x112
-- `assets/sprites/champions/soporte/v2/atlas.png` 448x672
 - `assets/sprites/champions/soporte/v3/atlas.png` 448x1008
 - `assets/sprites/champions/tanque/codex-v1/preview.png` 112x112
 - `assets/sprites/champions/tibor/croma-preview.png` 112x112
@@ -516,7 +401,6 @@ Un registro por imagen (PNG; el `.webp` es su copia sin pérdida) en `ATLAS_ARTE
 - `assets/sprites/champions/velmira/skins/velmira_alt2/preview.png` 112x112
 - `assets/sprites/champions/vesper/croma-preview.png` 112x112
 - `assets/sprites/champions/vesper/preview.png` 112x112
-- `assets/sprites/champions/veyra/atlas.png` 448x1008
 - `assets/sprites/champions/veyra/preview.png` 112x112
 - `assets/sprites/champions/vhal/preview.png` 112x112
 - `assets/sprites/champions/vhal/skins/vhal_alt1/preview.png` 112x112
