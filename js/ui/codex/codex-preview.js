@@ -203,9 +203,29 @@ function _cxDrawEnemy(g, e, x, y, k){
 }
 // La Madre Espora es parte del escenario del Reino (micDrawWorld): en la partida se dibuja su retrato real
 // (mother/mp_full) con respiración, sombrero que late y brazos que se encienden al atacar. Mismo arte acá.
+// Silueta de la Madre: el retrato es una ilustración con fondo oscuro casi opaco, y al teñirlo de negro (silueta de
+// "???") quedaba un rectángulo de ruido. Se recorta el fondo (píxeles oscuros conectados al borde, relleno por
+// inundación) y queda solo la figura. Se calcula una vez.
+let _cxMotherMask = null;
+function _cxMotherSil(src){
+  if(_cxMotherMask && _cxMotherMask.srcW === src.width) return _cxMotherMask.cv;
+  const w = src.width, h = src.height, cv = document.createElement("canvas"); cv.width = w; cv.height = h;
+  const c = cv.getContext("2d", {willReadFrequently:true}); c.drawImage(src, 0, 0);
+  let id; try{ id = c.getImageData(0, 0, w, h); }catch(err){ return null; }
+  const d = id.data, bg = new Uint8Array(w*h), st = [];
+  const dark = i => d[i*4+3] < 40 || (d[i*4] < 70 && d[i*4+1] < 70 && d[i*4+2] < 90);
+  const push = i => { if(!bg[i] && dark(i)){ bg[i] = 1; st.push(i); } };
+  for(let x = 0; x < w; x++){ push(x); push((h-1)*w + x); }
+  for(let y = 0; y < h; y++){ push(y*w); push(y*w + w-1); }
+  while(st.length){ const i = st.pop(), x = i % w; if(x > 0) push(i-1); if(x < w-1) push(i+1); if(i >= w) push(i-w); if(i < w*(h-1)) push(i+w); }
+  for(let i = 0; i < w*h; i++){ d[i*4] = d[i*4+1] = d[i*4+2] = 255; d[i*4+3] = bg[i] ? 0 : 255; }
+  c.putImageData(id, 0, 0);
+  _cxMotherMask = {srcW:w, cv};
+  return cv;
+}
 function _cxDrawMother(g, e){
   if(typeof MIC_MP === "undefined" || !MIC_MP_OK.mp_full) return false;
-  const img = MIC_MP.mp_full, h = (e.radius||40)*5, w = h*img.width/img.height, k = h/img.height;
+  const img = e._cxSil ? (_cxMotherSil(MIC_MP.mp_full) || MIC_MP.mp_full) : MIC_MP.mp_full, h = (e.radius||40)*5, w = h*img.width/img.height, k = h/img.height;
   const t = (e.animT||0)/1000, br = 1 + 0.012*Math.sin(t*1.7);
   g.save(); g.scale(br, 2 - br); g.imageSmoothingEnabled = false;
   g.drawImage(img, -w/2, -h, w, h);
@@ -249,6 +269,7 @@ function _cxEnemyScene(g, p, W, H, t, dt){
   if(S.anim === "skill" && S.skill) return _cxBossSkillScene(g, p, W, H, t, dt, type);
   const m = _cxMeasure(type);
   const e = p.ents[type] || (p.ents[type] = _cxFakeEnemy(type));
+  e._cxSil = !!S.silhouette;
   if(S.atlas) e.atlasKey = S.atlas; // otra paleta del mismo cuerpo (p.ej. la Bestia del Bosque)
   _cxAnimEnemy(e, S.anim, S.set, t, dt);
   const box = m || {w:(e.radius||20)*2.4, h:(e.radius||20)*3, cx:0, bottom:0};
