@@ -280,6 +280,14 @@ function cmDrawTall(it, now){
     case "b": _cmDrawBuilding(it.b, t); break;
     case "statue": {
       const S = CM_MAP.statue;
+      // Estatua del Códice (Runway, estatua_cx_0): monumento completo (estatua + pedestal + estanque turquesa) x2 píxel entero.
+      // Respaldo: el dibujo anterior (elipses + estatua_0) si el arte nuevo no cargó.
+      if(CM_OK.estatua_cx_0){
+        ctx.fillStyle = "rgba(0,0,0,0.35)"; ctx.beginPath(); ctx.ellipse(S.x, S.y + 28, 92, 30, 0, 0, Math.PI*2); ctx.fill();
+        _cmGlow(S.x, S.y + 10, 150, "80,230,210", 0.16 + 0.04*Math.sin(t*2));
+        _cmPiece("estatua_cx_0", S.x, S.y + 34, CM_IMG.estatua_cx_0.height*2);
+        break;
+      }
       ctx.fillStyle = "rgba(0,0,0,0.4)"; ctx.beginPath(); ctx.ellipse(S.x, S.y + 30, 110, 40, 0, 0, Math.PI*2); ctx.fill();
       ctx.fillStyle = "#1a3a3a"; ctx.beginPath(); ctx.ellipse(S.x, S.y + 20, 100, 38, 0, 0, Math.PI*2); ctx.fill();
       ctx.fillStyle = `rgba(80,230,210,${0.35 + 0.1*Math.sin(t*2)})`; ctx.beginPath(); ctx.ellipse(S.x, S.y + 18, 86, 30, 0, 0, Math.PI*2); ctx.fill();
@@ -303,7 +311,7 @@ function cmDrawTall(it, now){
     case "pdeath": { const P = cmS.pr, T = P.t||0, P3 = ENEMY_ATLAS_PACK.cm_presentador3;
       if(P3 && P3.ready){ const arr = P3.sets.death || P3.sets.idle, n = Math.min(arr.length - 1, Math.floor(T/(CM_CFG.presentador.deathMs*0.7/arr.length))); _cmAtlasFrame("cm_presentador3", "death", n, P.x, P.y, 60*3.2, P.fx < 0, Math.max(0, 1 - Math.max(0, T - 7000)/2500), false); }
       break; }
-    case "lamp": { const L = it.L; _cmGlow(L.x, L.y - 80, 110, "255,160,70", 0.28 + 0.05*Math.sin(t*5 + L.x)); if(!_cmPiece("farol_0", L.x, L.y + 4, 84)){ ctx.fillStyle = "#1a1418"; ctx.fillRect(L.x - 3, L.y - 90, 6, 94); } break; }
+    case "lamp": { const L = it.L; _cmGlow(L.x - (CM_OK.farol_cx_0 ? 14 : 0), L.y - (CM_OK.farol_cx_0 ? 62 : 80), 110, "255,160,70", (CM_OK.farol_cx_0 ? 0.42 : 0.28) + 0.05*Math.sin(t*5 + L.x)); if(!(CM_OK.farol_cx_0 ? _cmPiece("farol_cx_0", L.x, L.y + 4, CM_IMG.farol_cx_0.height*2) : _cmPiece("farol_0", L.x, L.y + 4, 84))){ ctx.fillStyle = "#1a1418"; ctx.fillRect(L.x - 3, L.y - 90, 6, 94); } break; }
   }
 }
 function _cmStructOf(b){ const i = b.struct ? cmStructIdx(b.struct) : -1; return i >= 0 ? {i, s:CM_STRUCTS[i], S:cmS.st[i]} : null; }
