@@ -1,0 +1,106 @@
+name: QA regresion central
+# UNICO pipeline de regresion pensado para ser el check requerido de cada PR. Corre el mismo comando que en local:
+#   node tools/quality/qa.js --quick | --fast | --full      (ver tools/quality/qa.js y docs/quality/PIPELINE_QA.md)
+# - Cada PR que toca codigo: clasificacion + contratos + servidor + regresion rapida (qa.js --fast). Sin servicios pagos: solo runners de GitHub.
+# - Todas las noches y a pedido: bateria completa (qa.js --full) con el informe adjunto.
+# - Nada se enmascara: no hay continue-on-error; la clasificacion (qa-manifest-check) hace fallar el PR si alguien agrega uno sin declararlo.
+# - Revision independiente: toda rama de PR no se puede mezclar sin su registro de reviews/ con las 5 etapas aprobadas.
+# - Pruebas del nivel "external" (relay real, Postgres) NO corren aca: dependen de infraestructura que el repositorio no controla.
+on:
+  pull_request:
+    # Sin filtro de rutas: ni assets ni documentación pueden evitar el gate.
+    types: [opened, synchronize, reopened, ready_for_review, converted_to_draft, edited]
+  push:
+    branches: ['beta/**']
+    paths: ['js/**', 'css/**', 'index.html', 'server/**', 'contracts/**', 'tools/**', 'tests/**', 'reviews/**', '.github/workflows/qa-regresion.yml']
+  schedule:
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: 'quick | fast | full'
+        default: 'full'
+permissions:
+  contents: read
+concurrency:
+  group: qa-regresion-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  rapido:
+    name: "Clasificacion, contratos y servidor"
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Propiedad de archivos de los agentes A/B/C (solo ramas de agentes)
+        if: ${{ github.event_name == 'pull_request' }}
+        env:
+          PR_BASE: ${{ github.base_ref }}
+          PR_BRANCH: ${{ github.head_ref }}
+        run: node tools/agents/check-diff.js --agent auto --base "origin/$PR_BASE" --head HEAD --branch "$PR_BRANCH"
+      - name: Revision independiente (todas las ramas; borrador = permitido, listo = exige las 5 etapas)
+        if: ${{ github.event_name == 'pull_request' }}
+        env:
+          PR_BRANCH: ${{ github.head_ref }}
+          PR_HEAD: ${{ github.event.pull_request.head.sha }}
+          REVIEW_MODE: ${{ github.event.pull_request.draft && 'draft' || 'merge' }}
+        run: node tools/review/check.js --branch "$PR_BRANCH" --head "$PR_HEAD" --mode "$REVIEW_MODE"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Dependencias de Art Factory
+        run: python -m pip install -r tools/factory/requirements-test.txt
+      - name: Art Factory y contrato de entrega
+        run: |
+          python -m unittest tools/factory/test_art_factory.py
+          node tools/factory/test-art-handoff.js
+      - name: Clasificacion de la bateria y de los workflows (falsos verdes)
+        run: node tools/quality/qa-manifest-check.js
+      - name: Contratos compartidos y propiedad de archivos
+        run: |
+          for f in schemas independence save_compat economy telemetry; do node tools/contracts/t_contract_$f.js || exit 1; done
+      - name: Servidor (cuentas, billetera, economia, relay en proceso)
+        working-directory: server
+        run: |
+          npm ci --no-audit --no-fund
+          npm test
+      - name: Humo del relay local
+        working-directory: server
+        run: node ../tools/release/relay-smoke.js --local --create-room
+  regresion:
+    name: "Regresion del juego (${{ github.event_name == 'pull_request' && 'rapida' || 'completa' }})"
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-playwright
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Dependencias de Art Factory
+        run: python -m pip install -r tools/factory/requirements-test.txt
+      - name: Bateria
+        env:
+          MODO: ${{ github.event_name == 'workflow_dispatch' && inputs.modo || (github.event_name == 'pull_request' && 'fast' || 'full') }}
+        run: |
+          case "$MODO" in quick|fast|full) ;; *) echo "Modo inválido"; exit 1 ;; esac
+          node tools/quality/qa.js "--$MODO" --skip-server --jobs 2 --out qa-out
+      - name: Resumen en la pagina del job
+        if: always()
+        run: |
+          if [ -f qa-out/informe.md ]; then cat qa-out/informe.md >> "$GITHUB_STEP_SUMMARY"; else echo "No se genero informe" >> "$GITHUB_STEP_SUMMARY"; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: informe-qa
+          path: |
+            qa-out/informe.md
+            qa-out/informe.json
+            qa-out/run-all/resumen.json
+            qa-out/*.log
+          retention-days: 14

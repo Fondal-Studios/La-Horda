@@ -301,7 +301,11 @@ function premiumSkinButton(id, cls){
   const price = premiumPrice(id);
   if(premiumSkinOwned(id) || !(price > 0)) return "";
   // compra enviada sin respuesta (corte de red, recarga): se puede CONFIRMAR sin volver a pagar (mismo ref; el servidor no cobra dos veces)
-  if(premiumPendingFor("skin:" + id)) return `<button type="button" class="${cls || "shop-btn"} premium-btn" data-skin-premium="${id}" title="Confirmar la entrega: no se vuelve a cobrar">↻ Confirmar entrega</button>`;
+  if(PREMIUM.processingId === id) return `<button type="button" class="${cls || "shop-btn"} premium-btn" data-skin-premium="${id}" disabled aria-disabled="true">Procesando…</button>`;   // pedido en curso: aunque el panel se redibuje, el botón sigue bloqueado
+  if(premiumPendingFor("skin:" + id)){
+    if(PREMIUM.busy) return `<button type="button" class="${cls || "shop-btn"} premium-btn" data-skin-premium="${id}" disabled aria-disabled="true">Procesando…</button>`;   // pedido en curso: si el panel se redibuja, el botón sigue bloqueado
+    return `<button type="button" class="${cls || "shop-btn"} premium-btn" data-skin-premium="${id}" title="Confirmar la entrega: no se vuelve a cobrar">↻ Confirmar entrega</button>`;
+  }
   const can = PREMIUM.premium != null && PREMIUM.premium >= price;
   const title = PREMIUM.premium == null ? "Entrá con tu cuenta para usar Brasas" : can ? "Pagar con Brasas" : "No te alcanzan las Brasas";
   return `<button type="button" class="${cls || "shop-btn"} premium-btn" data-skin-premium="${id}" title="${title}" ${PREMIUM.premium != null && !can ? "disabled" : ""}>✦ ${premiumFmt(price)}</button>`;
@@ -320,12 +324,13 @@ if(typeof document !== "undefined") document.addEventListener("click", e => {
   const price = premiumPrice(id), label = b.textContent;
   premiumTrack("purchase_started", { sku: id, kind: premiumTier(id) === "croma" ? "croma" : "skin", price });
   const pend = premiumPendingFor("skin:" + id);
-  gameConfirm(pend ? `Tu compra de «${premiumSkinName(id)}» (✦ ${premiumFmt(price)}) se envió pero no recibimos la confirmación.\nVamos a pedirle al servidor que la confirme: si ya se cobró, NO se vuelve a cobrar.` : `Vas a comprar ${premiumTier(id) === "croma" ? "el croma" : "la skin"} «${premiumSkinName(id)}» por ✦ ${premiumFmt(price)} Brasas.\n${premiumBalanceLine(price)}\nEs solo apariencia: no cambia estadísticas. Brasas ya compradas: este paso no cobra dinero.`, { okText: pend ? "Confirmar entrega" : "Comprar con Brasas", cancelText: "Volver" }).then(async ok => {
+  gameConfirm(pend ? `Tu compra de «${premiumSkinName(id)}» (✦ ${premiumFmt(price)}) se envió pero no recibimos la confirmación.\nVamos a pedirle al servidor que la confirme: si ya se cobró, NO se vuelve a cobrar.` : `¿Comprar ${premiumTier(id) === "croma" ? "el croma" : "la skin"} ${premiumSkinName(id)} por ${premiumFmt(price)} Brasas? Es solo apariencia: no cambia estadísticas.`, { okText: pend ? "Confirmar entrega" : "Comprar con Brasas", cancelText: "Volver" }).then(async ok => {
     if(!ok){ PREMIUM.confirming = false; premiumTrack("purchase_cancelled", { sku: id }); return; }
     b.disabled = true; b.textContent = "Procesando…";
     premiumTrack("purchase_submitted", { sku: id });
     let r;
-    try{ r = await premiumBuySkin(id); } finally { PREMIUM.confirming = false; }
+    PREMIUM.processingId = id;
+    try{ r = await premiumBuySkin(id); } finally { PREMIUM.confirming = false; PREMIUM.processingId = null; }
     if(!r.ok){ b.disabled = false; b.textContent = label; premiumTrack("purchase_failed", { sku: id, code: r.code || "error" }); gameAlert(r.reason); return; }
     premiumTrack("purchase_completed", { sku: id });   // solo con la respuesta 200 del servidor (cobro y entrega)
     if(typeof SET_SKINS !== "undefined" && SET_SKINS[id] && typeof _shopAfterSkinBuy === "function") _shopAfterSkinBuy(id, 0);
@@ -352,7 +357,7 @@ if(typeof document !== "undefined") document.addEventListener("click", e => {
   PREMIUM.confirming = true;
   const label = b.textContent;
   premiumTrack("purchase_started", { sku: "col:" + k, kind: "collection", price: q.price });
-  gameConfirm(`Vas a comprar la colección de ${nm}: ${q.n} apariencias por ✦ ${premiumFmt(q.price)} Brasas.\nSueltas suman ✦ ${premiumFmt(q.sum)}: ahorrás ✦ ${premiumFmt(q.save)} (${q.offPct} %).\n${premiumBalanceLine(q.price)}\nEs solo apariencia: no cambia estadísticas. Brasas ya compradas: este paso no cobra dinero.`, { okText: "Comprar colección", cancelText: "Volver" }).then(async ok => {
+  gameConfirm(`¿Comprar la colección de ${nm} (${q.n} apariencias) por ${premiumFmt(q.price)} Brasas? Sueltas suman ${premiumFmt(q.sum)}: ahorrás ${premiumFmt(q.save)} Brasas (${q.offPct}%). Es solo apariencia: no cambia estadísticas.`, { okText: "Comprar colección", cancelText: "Volver" }).then(async ok => {
     if(!ok){ PREMIUM.confirming = false; premiumTrack("purchase_cancelled", { sku: "col:" + k }); return; }
     b.disabled = true; b.textContent = "Procesando…";
     premiumTrack("purchase_submitted", { sku: "col:" + k });

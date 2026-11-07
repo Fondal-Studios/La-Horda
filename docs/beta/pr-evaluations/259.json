@@ -1,0 +1,53 @@
+{
+ "id": "259",
+ "branch": "art/sylva-layered-walk-prototype",
+ "base": "c89e51baabdd3af8c1dd3a3b9071eb7a4c18aa82",
+ "evaluatedAt": "2026-11-02T09:59:11.633Z",
+ "steps": {
+  "architect": {
+   "verdict": "READY_FOR_MERGE_REVIEW",
+   "findings": [],
+   "files": 229,
+   "categories": {
+    "touchesArt": true,
+    "touchesChampions": false,
+    "touchesNet": false,
+    "touchesGameplay": false,
+    "isArtOnly": true
+   }
+  },
+  "merge": {
+   "clean": true,
+   "conflicts": [],
+   "worktree": "/tmp/eval-wt-259"
+  },
+  "diff": {
+   "files": 229,
+   "art": 193,
+   "shortstat": "229 files changed, 30067 insertions(+), 1 deletion(-)"
+  },
+  "qaQuick": {
+   "exit": 1,
+   "summary": "PASS 37   FLAKY 0   FAIL 1   (de 38)",
+   "failed": [
+    "FAIL art-factory-python (11s)",
+    "FAIL     0s  tools/visual-package/test.js  (código 1)",
+    "FAIL  tools/visual-package/test.js  (código 1)",
+    "FAIL art-factory-python"
+   ]
+  },
+  "ownTests": []
+ },
+ "verdict": "RECHAZAR",
+ "improvement": {
+  "status": "not_established",
+  "note": "Los commits citan \"arquitecto: ACEPTAR 80-84/100\" para Aurelia y Saelis, pero ese arquitecto es el de la propia fábrica; el gate de integración falla en el atlas estándar nuevo."
+ },
+ "verdictInitial": "RECHAZAR",
+ "reason": [
+  "Falla art-factory-python/test_master_reference_passes: assets/sprites/champions/tanque/std-v1/atlas.png (nuevo) tiene hasta 43,2 % de píxeles opacos con borde semitransparente; tope del roster aprobado 30 %; Art Bible §2 exige alfa 0/255 (defecto crítico del evaluador de la fábrica).",
+  "Falla además tools/visual-package/test.js: el manifiesto debe regenerarse (esperable; no es el motivo del rechazo).",
+  "Cambia 5 atlas ya integrados (aurelia, maura, myla, saelis, ynara) y el cargador (champion-sprites.js, entities.js) en un mismo PR de 229 archivos / 30 000 líneas, mayormente auditorías y fuentes; cada reemplazo necesita su comparación bajo las mismas condiciones, que el PR no aporta como evidencia aislada."
+ ],
+ "nextAction": "Devolver a la rama de arte: re-exportar std-v1 de Tanque/Guerrero/Mago con alfa binario (0/255) hasta pasar test_master_reference_passes, y presentar los reemplazos de Aurelia/Maura/Myla/Saelis/Ynara como PR(s) separados con comparación antes/después a igual cámara y escala."
+}

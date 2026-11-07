@@ -1,0 +1,34 @@
+{
+  "component": "A-BODY-thalen-codex",
+  "state": "EN_VALIDACION",
+  "integration": "NO_INTEGRAR",
+  "artGate": "PASS_CAPTURE_SCOPE",
+  "reference": {
+    "path": "assets/ui/codex/champions/mago.png",
+    "gitBlob": "f07788b98aa635bf1587c73f6e0e243c38b3cf64"
+  },
+  "atlas": {
+    "path": "assets/sprites/champions/mago/codex-v1/atlas.png",
+    "sha256": "1be3454246d9526b93bf9e218318915086311789ca204b0ffda3f7eaf8af01aa",
+    "frames": 36,
+    "nonEmpty": 36,
+    "binaryAlpha": true,
+    "edgeAlphaPixels": 0
+  },
+  "capture": {
+    "source": "art-source/entregas/thalen-codex-20261104/post-gameplay-capture-03",
+    "sameAtlasAndRuntime": true,
+    "scenes": 96,
+    "sheets": 8,
+    "arenas": 6,
+    "looks": ["base", "convergencia"],
+    "densities": ["sparse", "dense"],
+    "viewports": ["desktop", "mobile-browser"],
+    "pageErrors": 0
+  },
+  "limits": [
+    "The mobile viewport is not a physical mobile device.",
+    "No dedicated two-client bitmap parity claim; network code is unchanged and global relay remains an exact-head CI gate.",
+    "Publication is not applicable before integration in main."
+  ]
+}

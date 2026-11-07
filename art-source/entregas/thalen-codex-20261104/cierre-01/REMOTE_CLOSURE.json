@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "component": "A-BODY-thalen-codex",
+  "state": "EN_VALIDACION",
+  "integration": "NO_INTEGRAR",
+  "branch": "art/thalen-codex-close-20261105",
+  "pullRequest": 270,
+  "productionHead": "017fe31b07d4c3e2a37d76cac426322b1489cec0",
+  "productionTree": "912bd02ef2789020aa0740d707d953ecb12eee32",
+  "baseMain": "c66d6037c9eba34ec127a274a4eba37e6eaca764",
+  "currentMainObserved": "ef415626fd0d1f4d093de9bcb6703074854e72ae",
+  "currentMainAdvance": {
+    "commits": 53,
+    "overlapWithThalenComponent": [],
+    "action": "preserve; reconcile again before any merge"
+  },
+  "atlas": {
+    "sha256": "1be3454246d9526b93bf9e218318915086311789ca204b0ffda3f7eaf8af01aa",
+    "frames": 36,
+    "nonEmpty": 36
+  },
+  "reference": {
+    "path": "assets/ui/codex/champions/mago.png",
+    "gitBlob": "f07788b98aa635bf1587c73f6e0e243c38b3cf64"
+  },
+  "result": "Component-specific source, consumer, 96-scene gameplay capture, global relay and full-render performance gates passed. PR remains blocked by unrelated or pre-detector exact-head failures.",
+  "merge": "NOT_MERGED",
+  "publication": "NOT_APPLICABLE_NOT_IN_MAIN",
+  "nextAction": "Keep PR draft. Reconcile fresh main and rerun every applicable exact-head workflow after inherited lanes, HTTP-server, skill-icon baseline and Chromium-install blockers are resolved without lowering gates."
+}

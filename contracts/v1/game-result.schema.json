@@ -1,0 +1,63 @@
+{
+  "$id": "fondal/la-horda/GameResult/1.0.0",
+  "title": "GameResult",
+  "type": "object",
+  "required": ["contract", "version", "runId", "accountId", "mode", "arena", "champion", "evidence", "outcome"],
+  "additionalProperties": false,
+  "properties": {
+    "contract": { "const": "GameResult" },
+    "version": { "type": "string", "pattern": "^1\\.\\d+\\.\\d+$" },
+    "runId": { "type": "string", "pattern": "^[a-zA-Z0-9_.:-]{8,80}$" },
+    "accountId": { "type": "string", "pattern": "^[a-zA-Z0-9_.:-]{1,64}$" },
+    "mode": { "enum": ["campaign", "endless", "multiplayer", "crystal_wars", "coliseum", "divina"] },
+    "arena": { "type": "string", "pattern": "^[a-z0-9_]{1,40}$" },
+    "champion": { "type": "string", "pattern": "^[a-z0-9_]{1,40}$" },
+    "outcome": { "enum": ["victory", "defeat", "abandon", "expired", "unknown"] },
+    "claimed": {
+      "description": "Lo que DECLARÓ el cliente. Nunca es base de una acreditación.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "victory": { "type": "boolean" },
+        "durationMs": { "type": "integer", "minimum": 0, "maximum": 21600000 },
+        "round": { "type": "integer", "minimum": 1, "maximum": 400 },
+        "score": { "type": "integer", "minimum": 0, "maximum": 2000000000 }
+      }
+    },
+    "evidence": {
+      "description": "Lo que OBSERVÓ el servidor con su propio reloj. Única base de una acreditación.",
+      "type": "object",
+      "required": ["source", "startedAt", "elapsedMs", "pulses", "closedBy"],
+      "additionalProperties": false,
+      "properties": {
+        "source": { "enum": ["server_run", "client_declared"] },
+        "startedAt": { "type": "integer", "minimum": 0 },
+        "lastPulseAt": { "type": "integer", "minimum": 0 },
+        "elapsedMs": { "type": "integer", "minimum": 0, "maximum": 21600000 },
+        "pulses": { "type": "integer", "minimum": 0, "maximum": 100000 },
+        "closedBy": { "enum": ["finish", "abandon", "expired", "open"] }
+      }
+    },
+    "verified": {
+      "description": "Resultado ya contrastado por el servidor contra la evidencia.",
+      "type": "object",
+      "required": ["durationMs", "round", "verifier"],
+      "additionalProperties": false,
+      "properties": {
+        "durationMs": { "type": "integer", "minimum": 0, "maximum": 21600000 },
+        "round": { "type": "integer", "minimum": 1, "maximum": 400 },
+        "score": { "type": "integer", "minimum": 0, "maximum": 2000000000 },
+        "verifier": { "type": "string", "pattern": "^[a-z0-9_.:-]{3,60}$" }
+      }
+    },
+    "credit": {
+      "type": "object",
+      "required": ["eligible"],
+      "additionalProperties": false,
+      "properties": {
+        "eligible": { "type": "boolean" },
+        "txIds": { "type": "array", "maxItems": 20, "items": { "type": "string", "pattern": "^[a-zA-Z0-9_.:-]{8,80}$" } }
+      }
+    }
+  }
+}

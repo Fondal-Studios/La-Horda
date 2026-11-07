@@ -1,0 +1,25 @@
+{
+  "component": "B100-thalen-body-codex",
+  "champion_id": "mago",
+  "display_name": "Thalen, el Tejedor Elemental",
+  "state": "EN_CORRECCION",
+  "approval": "FIX_NOT_APPROVED",
+  "integration": "NO_INTEGRAR",
+  "frames_nominal": 36,
+  "frames_approved": 0,
+  "assets_installed": 0,
+  "runtime_files_changed": 0,
+  "technical": {
+    "grid": "4x9",
+    "cell": "112x112",
+    "non_empty": "36/36",
+    "alpha": "binary 0/255",
+    "external_edge_alpha_pixels": 0
+  },
+  "visual_findings": [
+    "Codex identity is present across the sheet: hat, blue pendant, violet/navy robe layers, leather kit and blue-crystal staff.",
+    "attack_side is too three-quarter/front-facing and fails the strict directional contract.",
+    "Chroma-derived edges need final visual review after source correction.",
+    "No claim is made for gameplay readability because the candidate is not connected to the renderer."
+  ]
+}

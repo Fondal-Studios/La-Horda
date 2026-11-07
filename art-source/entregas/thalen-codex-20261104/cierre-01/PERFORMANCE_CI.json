@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "head": "017fe31b07d4c3e2a37d76cac426322b1489cec0",
+  "run": 41985106969,
+  "artifact": 13396691483,
+  "artifactDigest": "sha256:72c602175fcfcf87dd61b1c1a42288c8b95644aa5ad4b2bac4ec1715ba1b7735",
+  "sourceArtifactPath": "art-gate/thalen-codex/close-01/PERFORMANCE.json",
+  "rows": [
+    {
+      "view": "desktop",
+      "mode": "legacy",
+      "samples": 360,
+      "clears": 360,
+      "p50": 0.9000000000232831,
+      "p95": 1.5,
+      "max": 57.70000000001164,
+      "candidateReady": true,
+      "legacyReady": true,
+      "enemies": 12,
+      "allies": 2
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "samples": 360,
+      "clears": 360,
+      "p50": 0.7000000000116415,
+      "p95": 1,
+      "max": 38,
+      "candidateReady": true,
+      "legacyReady": true,
+      "enemies": 12,
+      "allies": 2
+    },
+    {
+      "view": "mobile",
+      "mode": "legacy",
+      "samples": 360,
+      "clears": 360,
+      "p50": 0.9000000000232831,
+      "p95": 1.2000000000116415,
+      "max": 39.699999999953434,
+      "candidateReady": true,
+      "legacyReady": true,
+      "enemies": 12,
+      "allies": 2
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "samples": 360,
+      "clears": 360,
+      "p50": 0.8000000000465661,
+      "p95": 1,
+      "max": 38.20000000001164,
+      "candidateReady": true,
+      "legacyReady": true,
+      "enemies": 12,
+      "allies": 2
+    }
+  ],
+  "scope": "Full render() with real clearRect after every sample; 12 enemies and two allies; desktop and mobile browser viewport; candidate and legacy measured separately. Not a physical mobile device, GPU profile or GC attribution; no speedup claim."
+}

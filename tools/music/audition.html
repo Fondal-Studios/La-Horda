@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Audición de música</title>
+<style>
+:root{--bg:#fff;--fg:#1b1b1f;--mut:#5d6068;--card:#f4f4f6;--line:#d8d9de;--ok:#1f7a3d;--no:#a3262a;--acc:#3b5bdb}
+@media (prefers-color-scheme:dark){:root{--bg:#15161a;--fg:#ececf0;--mut:#9aa0ab;--card:#1f2127;--line:#33363f;--ok:#4cc27a;--no:#ef6b6e;--acc:#7c93ff}}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.45 system-ui,sans-serif}
+main{max-width:860px;margin:0 auto;padding:16px}
+h1{font-size:20px;margin:8px 0}h2{font-size:16px;margin:24px 0 8px}
+.note{color:var(--mut)}.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:8px 0}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.row b{flex:1;min-width:180px}
+audio{width:100%;margin:6px 0}button{border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:8px;padding:6px 12px;font:inherit;cursor:pointer}
+button.on.ok{border-color:var(--ok);color:var(--ok)}button.on.no{border-color:var(--no);color:var(--no)}
+input,select,textarea{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:4px 6px}
+.bar{position:sticky;top:0;background:var(--bg);padding:8px 0;border-bottom:1px solid var(--line);z-index:2}
+</style></head><body><main>
+<h1>Audición de música — propuestas por estado y arena</h1>
+<p class="note">Las propuestas salen de <b>medidas</b> (sonoridad, brillo, densidad, tempo, bucle), no de escucha. Aprobá solo lo que escuchaste.
+Servir desde la raíz del repo (<code>python3 -m http.server</code>) con los originales descargados en <code>music-work/</code>. Exportá el JSON y guardalo como <code>docs/audio/assignment-review.v1.json</code>, luego <code>node tools/music/build-runtime.js</code>.</p>
+<div class="bar row"><label>Revisor <input id="who" placeholder="nombre"></label>
+<label>Método <select id="method"><option value="listened-in-context">escuchada en contexto (en el juego)</option><option value="listened-isolated">escuchada aislada</option></select></label>
+<button id="export">Exportar revisión</button><span id="count" class="note"></span></div>
+<div id="slots"></div>
+<script>
+const approvals={};
+function render(p,cat){
+  const by=Object.fromEntries(cat.tracks.map(t=>[t.sha256,t])); const root=document.getElementById('slots');
+  for(const s of p.slots){
+    const h=document.createElement('h2');h.textContent=s.slot+(s.arena?' — arena '+s.arena:'')+'  ('+s.mode+')';root.append(h);
+    if(!s.candidates.length){const e=document.createElement('p');e.className='note';e.textContent='Sin pista adecuada: se queda la música procedural.';root.append(e)}
+    for(const c of s.candidates){const t=by[c.trackId];const card=document.createElement('div');card.className='card';
+      const src='music-work/originals/'+t.slug+'.'+t.format;
+      card.innerHTML='<div class="row"><b></b><button class="ok">Aprobar</button><button class="no">Rechazar</button></div><audio controls preload="none"></audio><div class="note"></div><label class="note">Nota <input class="nt" size="40"></label>';
+      card.querySelector('b').textContent=t.title+' — '+(t.author||'n/d')+' ('+Math.round(t.durationSec)+' s, '+t.license+')';
+      card.querySelector('audio').src=src;card.querySelector('.note').textContent=c.rationale;
+      const [ok,no]=card.querySelectorAll('button');
+      const set=(v)=>{ok.classList.toggle('on',v===1);ok.classList.toggle('ok',true);no.classList.toggle('on',v===-1);no.classList.toggle('no',true);
+        const a=(approvals[s.slot]=approvals[s.slot]||{approved:[],notes:{}});a.approved=a.approved.filter(x=>x!==c.trackId);if(v===1)a.approved.push(c.trackId);
+        a.notes[c.trackId]=(v===-1?'rechazada: ':'')+card.querySelector('.nt').value;document.getElementById('count').textContent=Object.values(approvals).reduce((n,a)=>n+a.approved.length,0)+' aprobadas'};
+      ok.onclick=()=>set(1);no.onclick=()=>set(-1);root.append(card)}
+  }
+}
+Promise.all([fetch('docs/audio/assignment-proposals.v1.json').then(r=>r.json()),fetch('docs/audio/library-catalog.json').then(r=>r.json())]).then(([p,c])=>render(p,c)).catch(e=>{document.getElementById('slots').textContent='No se pudo cargar: '+e.message});
+document.getElementById('export').onclick=()=>{
+  const who=document.getElementById('who').value.trim();if(!who){alert('Escribí el nombre del revisor');return}
+  const out={contract:'MusicAssignmentReview',version:1,approvals:{}};
+  for(const [slot,a] of Object.entries(approvals)) if(a.approved.length) out.approvals[slot]={approved:a.approved,reviewer:who,method:document.getElementById('method').value,date:new Date().toISOString().slice(0,10),notes:a.notes};
+  const b=new Blob([JSON.stringify(out,null,1)],{type:'application/json'});const l=document.createElement('a');l.href=URL.createObjectURL(b);l.download='assignment-review.v1.json';l.click()};
+</script></main></body></html>

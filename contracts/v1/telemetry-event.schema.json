@@ -1,0 +1,44 @@
+{
+  "$id": "fondal/la-horda/TelemetryEvent/1.0.0",
+  "title": "TelemetryEvent",
+  "description": "Un evento anónimo. Sin cuenta, nombre, texto, correo, IP, URL ni pila de errores.",
+  "type": "object",
+  "required": ["contract", "version", "name", "session", "build"],
+  "additionalProperties": false,
+  "properties": {
+    "contract": { "const": "TelemetryEvent" },
+    "version": { "type": "string", "pattern": "^1\\.\\d+\\.\\d+$" },
+    "name": { "type": "string", "pattern": "^[a-z0-9_]{2,40}$" },
+    "session": { "type": "string", "pattern": "^[a-f0-9]{32}$" },
+    "build": { "type": "string", "pattern": "^[a-zA-Z0-9_:.-]{1,80}$" },
+    "traceId": { "type": "string", "pattern": "^[a-f0-9]{16,32}$" },
+    "at": { "type": "integer", "minimum": 0 },
+    "dims": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "champion": { "type": "string", "pattern": "^[a-zA-Z0-9_:.-]{1,80}$" },
+        "arena": { "type": "string", "pattern": "^[a-zA-Z0-9_:.-]{1,80}$" },
+        "skin": { "type": "string", "pattern": "^[a-zA-Z0-9_:.-]{1,80}$" },
+        "croma": { "type": "string", "pattern": "^[a-zA-Z0-9_:.-]{1,80}$" },
+        "ability": { "type": "string", "pattern": "^[a-zA-Z0-9_:.-]{1,80}$" },
+        "talent": { "type": "string", "pattern": "^[a-zA-Z0-9_-]{1,64}$" },
+        "equipment": { "type": "string", "pattern": "^[a-zA-Z0-9_-]{1,64}$" },
+        "set": { "type": "string", "pattern": "^[a-zA-Z0-9_-]{1,64}$" },
+        "step": { "type": "string", "pattern": "^[a-zA-Z0-9_:.-]{1,80}$" },
+        "errorCode": { "type": "string", "pattern": "^[A-Z0-9_]{2,40}$" }
+      }
+    },
+    "values": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "durationMs": { "type": "integer", "minimum": 0, "maximum": 86400000 },
+        "level": { "type": "integer", "minimum": 0, "maximum": 86400000 },
+        "wave": { "type": "integer", "minimum": 0, "maximum": 86400000 },
+        "fps": { "type": "number", "minimum": 0, "maximum": 1000 },
+        "frameMs": { "type": "number", "minimum": 0, "maximum": 60000 }
+      }
+    }
+  }
+}

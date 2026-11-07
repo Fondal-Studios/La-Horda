@@ -1,0 +1,1717 @@
+{
+ "contract": "MusicLibraryAnalysis",
+ "version": 1,
+ "note": "Medidas automáticas; no sustituyen la escucha.",
+ "tracks": {
+  "6042399782e581d753d616bc703e66483d5eccb5fb687a20c9a552d68c49e620": {
+   "slug": "battle-theme-a",
+   "durationSec": 95.9,
+   "rmsMean": 0.2523,
+   "dynamics": 0.197,
+   "centroidHz": 1860,
+   "onsetsPerSec": 3.47,
+   "tempoBPM": 144,
+   "loop": {
+    "headTailSimilarity": 0.479,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0.03,
+    "startRatio": 0.7
+   },
+   "integratedLUFS": -10.3,
+   "loudnessRange": 3.3,
+   "truePeakDBTP": -0.6
+  },
+  "f2f1a7b531e3fea191350684e8ef158e2c8583cde9ce5f31c0caa34bba687a5a": {
+   "slug": "fast-fight-battle-music",
+   "durationSec": 26.6,
+   "rmsMean": 0.464,
+   "dynamics": 0.183,
+   "centroidHz": 2406,
+   "onsetsPerSec": 4.86,
+   "tempoBPM": 103,
+   "loop": {
+    "headTailSimilarity": 0.902,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 0.97,
+    "startRatio": 0.43
+   },
+   "integratedLUFS": -8.2,
+   "loudnessRange": 0.4,
+   "truePeakDBTP": 0.3
+  },
+  "35f75b4381dfbb053992876f7dfc567d9fd959d61b73954d5b1cd519753e7df1": {
+   "slug": "boss-battle-music",
+   "durationSec": 123.4,
+   "rmsMean": 0.4367,
+   "dynamics": 0.172,
+   "centroidHz": 1941,
+   "onsetsPerSec": 3.03,
+   "tempoBPM": 172,
+   "loop": {
+    "headTailSimilarity": 0.979,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.09,
+    "startRatio": 1.12
+   },
+   "integratedLUFS": -6.8,
+   "loudnessRange": 4.4,
+   "truePeakDBTP": 0.3
+  },
+  "4e9614d4bc07e91e4d279199fbef4ab1b02ec190e4c47f5d1741e44b25e87ba9": {
+   "slug": "fast-fight-battle-music-looped",
+   "durationSec": 24.8,
+   "rmsMean": 0.4841,
+   "dynamics": 0.028,
+   "centroidHz": 2378,
+   "onsetsPerSec": 5.33,
+   "tempoBPM": 103,
+   "loop": {
+    "headTailSimilarity": 0.939,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.01,
+    "startRatio": 0.98
+   },
+   "integratedLUFS": -8.1,
+   "loudnessRange": 0.3,
+   "truePeakDBTP": 0.3
+  },
+  "9a63f74305f5cbce8374a72a027a645c07c97663255aba0b817bc1f70c432ed5": {
+   "slug": "boss-battle-theme",
+   "durationSec": 114.3,
+   "rmsMean": 0.2428,
+   "dynamics": 0.117,
+   "centroidHz": 1920,
+   "onsetsPerSec": 3.47,
+   "tempoBPM": 83,
+   "loop": {
+    "headTailSimilarity": 0.896,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.01,
+    "startRatio": 1.07
+   },
+   "integratedLUFS": -12.7,
+   "loudnessRange": 2.5,
+   "truePeakDBTP": 0
+  },
+  "988b173669e718c7a716a8292c13b607d90a36bfbf02a016d3fe41d10a90a7af": {
+   "slug": "long-away-home-8bit",
+   "durationSec": 121.3,
+   "rmsMean": 0.1593,
+   "dynamics": 0.255,
+   "centroidHz": 1641,
+   "onsetsPerSec": 4.29,
+   "tempoBPM": 152,
+   "loop": {
+    "headTailSimilarity": 0.985,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0.27,
+    "startRatio": 0.89
+   },
+   "integratedLUFS": -21.1,
+   "loudnessRange": 3.6,
+   "truePeakDBTP": -3
+  },
+  "7bfe029fcc5cc73688e4b6ca13b8845fe80a4c73d775e5d2c52af30e7a5d75b0": {
+   "slug": "dark-intro",
+   "durationSec": 80.6,
+   "rmsMean": 0.076,
+   "dynamics": 0.377,
+   "centroidHz": 682,
+   "onsetsPerSec": 1.81,
+   "tempoBPM": 136,
+   "loop": {
+    "headTailSimilarity": 0.347,
+    "fadesOut": true,
+    "fadesIn": true,
+    "endRatio": 0.01,
+    "startRatio": 0.22
+   },
+   "integratedLUFS": -20.3,
+   "loudnessRange": 4.5,
+   "truePeakDBTP": -3.7
+  },
+  "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b": {
+   "slug": "determined-pursuit-epic-orchestra-loop",
+   "durationSec": 108,
+   "rmsMean": 0.2058,
+   "dynamics": 0.197,
+   "centroidHz": 2014,
+   "onsetsPerSec": 3.4,
+   "tempoBPM": 161,
+   "loop": {
+    "headTailSimilarity": 0.788,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.08,
+    "startRatio": 0.72
+   },
+   "integratedLUFS": -12.8,
+   "loudnessRange": 4,
+   "truePeakDBTP": -1.1
+  },
+  "8476ce29692d8d317a7d79628af967448ec09d9f66efe692a597336c5cea2629": {
+   "slug": "battle-theme-b-for-rpg",
+   "durationSec": 66,
+   "rmsMean": 0.1795,
+   "dynamics": 0.253,
+   "centroidHz": 1941,
+   "onsetsPerSec": 3.06,
+   "tempoBPM": 144,
+   "loop": {
+    "headTailSimilarity": 0.714,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0.03,
+    "startRatio": 1.04
+   },
+   "integratedLUFS": -12.8,
+   "loudnessRange": 2.9,
+   "truePeakDBTP": -0.1
+  },
+  "8e69e5dadba8b472d684bcb936e8e83ef0c715439e6057029099d008a6be4f49": {
+   "slug": "boss-battle-2-8-bit",
+   "durationSec": 59.6,
+   "rmsMean": 0.1497,
+   "dynamics": 0.174,
+   "centroidHz": 1562,
+   "onsetsPerSec": 4.21,
+   "tempoBPM": 144,
+   "loop": {
+    "headTailSimilarity": 0.991,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1,
+    "startRatio": 0.66
+   },
+   "integratedLUFS": -20.3,
+   "loudnessRange": 2.2,
+   "truePeakDBTP": -1.5
+  },
+  "25f3056aa69985f878fd70526b4661d3f0492f1c4adb1174dadea837ac265f5d": {
+   "slug": "the-rush",
+   "durationSec": 139.7,
+   "rmsMean": 0.1914,
+   "dynamics": 0.227,
+   "centroidHz": 1258,
+   "onsetsPerSec": 4.61,
+   "tempoBPM": 63,
+   "loop": {
+    "headTailSimilarity": 0.866,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.01,
+    "startRatio": 0.99
+   },
+   "integratedLUFS": -15.6,
+   "loudnessRange": 7.2,
+   "truePeakDBTP": -0.5
+  },
+  "9580618dc851f70c3a11b5ff87672867de44cd38b35dabf926d6befde20e78d0": {
+   "slug": "dark-shrine-loop",
+   "durationSec": 56.6,
+   "rmsMean": 0.0713,
+   "dynamics": 0.455,
+   "centroidHz": 629,
+   "onsetsPerSec": 2.69,
+   "tempoBPM": 161,
+   "loop": {
+    "headTailSimilarity": 0.284,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0.01,
+    "startRatio": 1.39
+   },
+   "integratedLUFS": -21.9,
+   "loudnessRange": 6.8,
+   "truePeakDBTP": -6.9
+  },
+  "0748e585c8f2c56a6bb649ca5d87665ed44a14af0e8fe6a316ab2d1db9bc486d": {
+   "slug": "cc0-remakes",
+   "durationSec": 88.6,
+   "rmsMean": 0.1847,
+   "dynamics": 0.287,
+   "centroidHz": 1737,
+   "onsetsPerSec": 4.46,
+   "tempoBPM": 129,
+   "loop": {
+    "headTailSimilarity": 0.477,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.17,
+    "startRatio": 0.49
+   },
+   "integratedLUFS": -14.5,
+   "loudnessRange": 4.6,
+   "truePeakDBTP": -0.1
+  },
+  "34406888886469e6012330e1c496d4818a2eb9be131cbbd22958ccc85cc8a661": {
+   "slug": "boss-battle-3-8-bit-re-upload",
+   "durationSec": 198.5,
+   "rmsMean": 0.1677,
+   "dynamics": 0.14,
+   "centroidHz": 2108,
+   "onsetsPerSec": 4.18,
+   "tempoBPM": 144,
+   "loop": {
+    "headTailSimilarity": 0.92,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.17,
+    "startRatio": 0.87
+   },
+   "integratedLUFS": -16.3,
+   "loudnessRange": 1.7,
+   "truePeakDBTP": -1.9
+  },
+  "a7073a9edfebd1856db6afc212dfb93efaa7d0b52cf60f99d6d5e74550438d5d": {
+   "slug": "love-song-instrumental",
+   "durationSec": 212.2,
+   "rmsMean": 0.1743,
+   "dynamics": 0.573,
+   "centroidHz": 1913,
+   "onsetsPerSec": 2.35,
+   "tempoBPM": 63,
+   "loop": {
+    "headTailSimilarity": 0.603,
+    "fadesOut": true,
+    "fadesIn": true,
+    "endRatio": 0,
+    "startRatio": 0.14
+   },
+   "integratedLUFS": -12.7,
+   "loudnessRange": 18.3,
+   "truePeakDBTP": 0.1
+  },
+  "9730739f83f47247eb55d8acd7bac8e77725662c58adeb2d2cee3b48932d4b9f": {
+   "slug": "rpg-battle-theme-ii",
+   "durationSec": 70.2,
+   "rmsMean": 0.2617,
+   "dynamics": 0.142,
+   "centroidHz": 2245,
+   "onsetsPerSec": 3.84,
+   "tempoBPM": 161,
+   "loop": {
+    "headTailSimilarity": 0.846,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.03,
+    "startRatio": 0.73
+   },
+   "integratedLUFS": -11.4,
+   "loudnessRange": 3.5,
+   "truePeakDBTP": 0.7
+  },
+  "3206999e19c83c4dd912d06c1126469c76b2226fc6a8c30cbfaf9f15e0651e47": {
+   "slug": "boss-battle-4-8-bit-re-upload",
+   "durationSec": 210.4,
+   "rmsMean": 0.1575,
+   "dynamics": 0.08,
+   "centroidHz": 2029,
+   "onsetsPerSec": 5.26,
+   "tempoBPM": 152,
+   "loop": {
+    "headTailSimilarity": 0.965,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 0.96,
+    "startRatio": 0.94
+   },
+   "integratedLUFS": -17,
+   "loudnessRange": 1.1,
+   "truePeakDBTP": -2
+  },
+  "462c85304df0ea5369cb98aaae158108c92227fa5f442fb63a2da6febbe82ded": {
+   "slug": "awake-megawall-10",
+   "durationSec": 57.3,
+   "rmsMean": 0.265,
+   "dynamics": 0.092,
+   "centroidHz": 1858,
+   "onsetsPerSec": 4.08,
+   "tempoBPM": 89,
+   "loop": {
+    "headTailSimilarity": 0.962,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1,
+    "startRatio": 0.92
+   },
+   "integratedLUFS": -12.8,
+   "loudnessRange": 0.9,
+   "truePeakDBTP": 0.2
+  },
+  "974db90d92e6c4a143ce09c112a38c060ca8504b54a2cceb6d64a36416cc215e": {
+   "slug": "cc0-scraps",
+   "durationSec": 72,
+   "rmsMean": 0.1961,
+   "dynamics": 0.173,
+   "centroidHz": 667,
+   "onsetsPerSec": 2.21,
+   "tempoBPM": 60,
+   "loop": {
+    "headTailSimilarity": 0.881,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.13,
+    "startRatio": 0.89
+   },
+   "integratedLUFS": -12.4,
+   "loudnessRange": 2,
+   "truePeakDBTP": -0.2
+  },
+  "8dc0aa25c1d29713bdb416f64eb4c27b1af86fa807d3ca39f3fdb1850b716cea": {
+   "slug": "adventure-time",
+   "durationSec": 86.1,
+   "rmsMean": 0.1357,
+   "dynamics": 0.541,
+   "centroidHz": 1579,
+   "onsetsPerSec": 2.93,
+   "tempoBPM": 60,
+   "loop": {
+    "headTailSimilarity": 0,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0,
+    "startRatio": 0.69
+   },
+   "integratedLUFS": -15.2,
+   "loudnessRange": 9.1,
+   "truePeakDBTP": -0.6
+  },
+  "dde7bd4f10bde031800ba8e22151fad591b7c13e1c9ae51920341b4e4ae37be5": {
+   "slug": "battle-theme-0",
+   "durationSec": 116.1,
+   "rmsMean": 0.2108,
+   "dynamics": 0.318,
+   "centroidHz": 1413,
+   "onsetsPerSec": 1.51,
+   "tempoBPM": 117,
+   "loop": {
+    "headTailSimilarity": 0.675,
+    "fadesOut": true,
+    "fadesIn": true,
+    "endRatio": 0,
+    "startRatio": 0.31
+   },
+   "integratedLUFS": -12,
+   "loudnessRange": 3.7,
+   "truePeakDBTP": 0.3
+  },
+  "53372b1774f58100b438701c4990d058a70800750a0d4b2fbc2fde8bd3a635ed": {
+   "slug": "moon-chime",
+   "durationSec": 204.6,
+   "rmsMean": 0.4891,
+   "dynamics": 0.205,
+   "centroidHz": 1931,
+   "onsetsPerSec": 2.37,
+   "tempoBPM": 62,
+   "loop": {
+    "headTailSimilarity": 0.609,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.06,
+    "startRatio": 0.52
+   },
+   "integratedLUFS": -7.4,
+   "loudnessRange": 2.7,
+   "truePeakDBTP": 0.6
+  },
+  "e599ec70a7ff2987584af237fd75fad8d02ed8092480e4f75ed1aafe2b4402df": {
+   "slug": "loading-screen-loop",
+   "durationSec": 20.6,
+   "rmsMean": 0.1809,
+   "dynamics": 0.105,
+   "centroidHz": 430,
+   "onsetsPerSec": 2.57,
+   "tempoBPM": 63,
+   "loop": {
+    "headTailSimilarity": 0.487,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.17,
+    "startRatio": 0.89
+   },
+   "integratedLUFS": -17.4,
+   "loudnessRange": 0.6,
+   "truePeakDBTP": -6.6
+  },
+  "103a7032a49be7e8399c5cb771f7759eac9ac1a0d2bf227f41fff42ad8d78194": {
+   "slug": "the-field-of-dreams",
+   "durationSec": 84.6,
+   "rmsMean": 0.0507,
+   "dynamics": 0.42,
+   "centroidHz": 1448,
+   "onsetsPerSec": 2.1,
+   "tempoBPM": 144,
+   "loop": {
+    "headTailSimilarity": 0.863,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0.05,
+    "startRatio": 0.57
+   },
+   "integratedLUFS": -23.4,
+   "loudnessRange": 7.1,
+   "truePeakDBTP": -7.7
+  },
+  "8fa296fe15051c7030ae16f61f825c83ef50c9d25fa0a9dfc7bf7e38769e1ee7": {
+   "slug": "menu-music",
+   "durationSec": 47.7,
+   "rmsMean": 0.0978,
+   "dynamics": 0.537,
+   "centroidHz": 1530,
+   "onsetsPerSec": 2.66,
+   "tempoBPM": 60,
+   "loop": {
+    "headTailSimilarity": 0.72,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 0.55,
+    "startRatio": 0.56
+   },
+   "integratedLUFS": -18.8,
+   "loudnessRange": 7.1,
+   "truePeakDBTP": -0.7
+  },
+  "95d620e1ad7bd7c73366979e384f172be21ebc5fe68bdc1af3908faf8a7c7b44": {
+   "slug": "next-to-you",
+   "durationSec": 83.5,
+   "rmsMean": 0.0686,
+   "dynamics": 0.123,
+   "centroidHz": 732,
+   "onsetsPerSec": 2.87,
+   "tempoBPM": 92,
+   "loop": {
+    "headTailSimilarity": 0.863,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 0.85,
+    "startRatio": 1
+   },
+   "integratedLUFS": -22.9,
+   "loudnessRange": 1.5,
+   "truePeakDBTP": -7.2
+  },
+  "c2e7cb7a4c9bb350e12054001b78f53eccdee6411d91662a820d96201a0e4e97": {
+   "slug": "underwater-theme",
+   "durationSec": 170.2,
+   "rmsMean": 0.1572,
+   "dynamics": 0.106,
+   "centroidHz": 771,
+   "onsetsPerSec": 3.65,
+   "tempoBPM": 74,
+   "loop": {
+    "headTailSimilarity": 0.871,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.01,
+    "startRatio": 0.9
+   },
+   "integratedLUFS": -15.5,
+   "loudnessRange": 2.6,
+   "truePeakDBTP": -3.5
+  },
+  "cb52cc2226123233303bb7ea5f49857d818b8d70cddfb76331bf48ca2c39374e": {
+   "slug": "where-was-i",
+   "durationSec": 68.2,
+   "rmsMean": 0.0892,
+   "dynamics": 0.182,
+   "centroidHz": 1339,
+   "onsetsPerSec": 3,
+   "tempoBPM": 70,
+   "loop": {
+    "headTailSimilarity": 0.998,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 0.93,
+    "startRatio": 1
+   },
+   "integratedLUFS": -19,
+   "loudnessRange": 1.7,
+   "truePeakDBTP": -4.4
+  },
+  "fbf9d338a007525bdf94947c2770b70f9b6a56742f3d071006c83ec2f8a3d610": {
+   "slug": "sad-orchestral-theme",
+   "durationSec": 316.4,
+   "rmsMean": 0.2235,
+   "dynamics": 0.528,
+   "centroidHz": 1341,
+   "onsetsPerSec": 3.48,
+   "tempoBPM": 60,
+   "loop": {
+    "headTailSimilarity": 0.698,
+    "fadesOut": true,
+    "fadesIn": true,
+    "endRatio": 0.01,
+    "startRatio": 0.13
+   },
+   "integratedLUFS": -8.6,
+   "loudnessRange": 13,
+   "truePeakDBTP": 6.7
+  },
+  "50aa6a32625fe8565403a0c8ceb772d7fb500b9267d0019eacfe0fc742b6c73d": {
+   "slug": "happy-adventure-loop",
+   "durationSec": 46.8,
+   "rmsMean": 0.1886,
+   "dynamics": 0.176,
+   "centroidHz": 973,
+   "onsetsPerSec": 4.23,
+   "tempoBPM": 62,
+   "loop": {
+    "headTailSimilarity": 0.978,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.14,
+    "startRatio": 0.83
+   },
+   "integratedLUFS": -17.8,
+   "loudnessRange": 1.5,
+   "truePeakDBTP": -0.9
+  },
+  "e74874295992900758cba8077f110024680bd7592e5c6103960f99d29ba8f13d": {
+   "slug": "doodle-menu-like-song",
+   "durationSec": 83.5,
+   "rmsMean": 0.0869,
+   "dynamics": 0.315,
+   "centroidHz": 504,
+   "onsetsPerSec": 2.67,
+   "tempoBPM": 185,
+   "loop": {
+    "headTailSimilarity": 0.658,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 0.92,
+    "startRatio": 0.64
+   },
+   "integratedLUFS": -19.3,
+   "loudnessRange": 7.3,
+   "truePeakDBTP": -2.7
+  },
+  "51ca78e86126286cf55311fe6382fc19db71a846ed6b1206b50c5e463c5d83cf": {
+   "slug": "summer-park-8bit-tune-loop",
+   "durationSec": 44,
+   "rmsMean": 0.2449,
+   "dynamics": 0.359,
+   "centroidHz": 1976,
+   "onsetsPerSec": 3.84,
+   "tempoBPM": 60,
+   "loop": {
+    "headTailSimilarity": 0.662,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 0.6,
+    "startRatio": 1.07
+   },
+   "integratedLUFS": -13,
+   "loudnessRange": 4.4,
+   "truePeakDBTP": 0
+  },
+  "3fe5b2d8aa54e2cfd19b9b4a38dc02577fda13ba6d233d8c135d0c31258a98d9": {
+   "slug": "pulsar-famitracker-2a03",
+   "durationSec": 26.8,
+   "rmsMean": 0.1295,
+   "dynamics": 0.064,
+   "centroidHz": 2732,
+   "onsetsPerSec": 6.11,
+   "tempoBPM": 60,
+   "loop": {
+    "headTailSimilarity": 0.987,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 0.88,
+    "startRatio": 0.89
+   },
+   "integratedLUFS": -18.1,
+   "loudnessRange": 1.2,
+   "truePeakDBTP": -3.2
+  },
+  "d0d2bc4a0a871b92d0c7b3af1e58da7162dbddff110d04cea51aaa72e1cd53c3": {
+   "slug": "prepare-your-swords",
+   "durationSec": 88.3,
+   "rmsMean": 0.1634,
+   "dynamics": 0.349,
+   "centroidHz": 1309,
+   "onsetsPerSec": 1.63,
+   "tempoBPM": 60,
+   "loop": {
+    "headTailSimilarity": 0.61,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0.01,
+    "startRatio": 0.69
+   },
+   "integratedLUFS": -14.5,
+   "loudnessRange": 6.7,
+   "truePeakDBTP": 0.1
+  },
+  "0fd7f99ae046278959645889f9bb0970a0430381ee1bd2e7a68c5f41438b29d8": {
+   "slug": "8bit-title-screen",
+   "durationSec": 22,
+   "rmsMean": 0.3384,
+   "dynamics": 0.051,
+   "centroidHz": 1779,
+   "onsetsPerSec": 5.64,
+   "tempoBPM": 70,
+   "loop": {
+    "headTailSimilarity": 0.563,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 0.9,
+    "startRatio": 1.02
+   },
+   "integratedLUFS": -10.6,
+   "loudnessRange": 1.1,
+   "truePeakDBTP": -0.4
+  },
+  "9c55cfadb5acca6ef9ca81bf89d343b13f2b09984d45ae520cf877f1f9ad4404": {
+   "slug": "meadow-thoughts",
+   "durationSec": 149.7,
+   "rmsMean": 0.1568,
+   "dynamics": 0.599,
+   "centroidHz": 713,
+   "onsetsPerSec": 2.45,
+   "tempoBPM": 60,
+   "loop": {
+    "headTailSimilarity": 0.802,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 0.43,
+    "startRatio": 1.88
+   },
+   "integratedLUFS": -14.8,
+   "loudnessRange": 12,
+   "truePeakDBTP": 0
+  },
+  "83e95b6c6716e07a44df766d18d6c5ae7da5c5f807f65299fb5de639ff5d1e13": {
+   "slug": "short-theme-rockmetal",
+   "durationSec": 56,
+   "rmsMean": 0.1761,
+   "dynamics": 0.423,
+   "centroidHz": 2315,
+   "onsetsPerSec": 2.89,
+   "tempoBPM": 60,
+   "loop": {
+    "headTailSimilarity": 0.34,
+    "fadesOut": true,
+    "fadesIn": true,
+    "endRatio": 0,
+    "startRatio": 0.24
+   },
+   "integratedLUFS": -12.7,
+   "loudnessRange": 6.3,
+   "truePeakDBTP": -0.4
+  },
+  "2abe80e3b68c4bd27ce33998ce1daf208564579bf4a1f91435d64d5b4403a670": {
+   "slug": "wintery-loop",
+   "durationSec": 44.3,
+   "rmsMean": 0.1496,
+   "dynamics": 0.138,
+   "centroidHz": 2645,
+   "onsetsPerSec": 3.02,
+   "tempoBPM": 129,
+   "loop": {
+    "headTailSimilarity": 0.72,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 0.87,
+    "startRatio": 0.96
+   },
+   "integratedLUFS": -12.9,
+   "loudnessRange": 1.8,
+   "truePeakDBTP": -0.8
+  },
+  "36507f399c8951a02e8af3f213c9927f9ac67258702b47c71084a7acab8a784c": {
+   "slug": "6-genuinely-c64-soundtracks-released-as-public-domain-may-2017",
+   "durationSec": 152.6,
+   "rmsMean": 0.2318,
+   "dynamics": 0.094,
+   "centroidHz": 2282,
+   "onsetsPerSec": 4.02,
+   "tempoBPM": 96,
+   "loop": {
+    "headTailSimilarity": 0.83,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 0.99,
+    "startRatio": 0.93
+   },
+   "integratedLUFS": -13.3,
+   "loudnessRange": 2.3,
+   "truePeakDBTP": 0.1
+  },
+  "2cdeaf5b65784117e09d10cde1c5a8fb26716751413a35e3b609b928701226d4": {
+   "slug": "new-sunrise",
+   "durationSec": 136.7,
+   "rmsMean": 0.0452,
+   "dynamics": 1.011,
+   "centroidHz": 1834,
+   "onsetsPerSec": 2.54,
+   "tempoBPM": 185,
+   "loop": {
+    "headTailSimilarity": 0,
+    "fadesOut": true,
+    "fadesIn": true,
+    "endRatio": 0,
+    "startRatio": 0.01
+   },
+   "integratedLUFS": -19,
+   "loudnessRange": 21.8,
+   "truePeakDBTP": -2.6
+  },
+  "28249188861c9c755b051addd2e717561eee4e1de32f38fb8d9ee7900b40dd42": {
+   "slug": "adventure-intro-title-cinematic-epic",
+   "durationSec": 37,
+   "rmsMean": 0.0612,
+   "dynamics": 1.084,
+   "centroidHz": 2431,
+   "onsetsPerSec": 1.35,
+   "tempoBPM": 185,
+   "loop": {
+    "headTailSimilarity": 0.155,
+    "fadesOut": true,
+    "fadesIn": true,
+    "endRatio": 0,
+    "startRatio": 0.26
+   },
+   "integratedLUFS": -15.8,
+   "loudnessRange": 19.5,
+   "truePeakDBTP": -0.1
+  },
+  "f76cd21e3ad219de5e6116a80d558ad273746286f115011b017b77bd23bfc315": {
+   "slug": "green-hills",
+   "durationSec": 104,
+   "rmsMean": 0.232,
+   "dynamics": 0.267,
+   "centroidHz": 1857,
+   "onsetsPerSec": 3.75,
+   "tempoBPM": 60,
+   "loop": {
+    "headTailSimilarity": 0.5,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.21,
+    "startRatio": 0.47
+   },
+   "integratedLUFS": -12.5,
+   "loudnessRange": 5.4,
+   "truePeakDBTP": -3.2
+  },
+  "44fd0978cec5014fb40a26769da7dd262361022831c79cacf3dadeb3b182637c": {
+   "slug": "unexplored-short-ver-orchestra-music",
+   "durationSec": 38.7,
+   "rmsMean": 0.1805,
+   "dynamics": 0.853,
+   "centroidHz": 932,
+   "onsetsPerSec": 2.22,
+   "tempoBPM": 60,
+   "loop": {
+    "headTailSimilarity": 0.331,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0,
+    "startRatio": 0.61
+   },
+   "integratedLUFS": -10.4,
+   "loudnessRange": 4.4,
+   "truePeakDBTP": 1.5
+  },
+  "2877e423ff90cb99b3082840e66cf79d69a809708466c6f27c750c0e1ce2a912": {
+   "slug": "unsolved-investigation",
+   "durationSec": 48,
+   "rmsMean": 0.0792,
+   "dynamics": 0.172,
+   "centroidHz": 359,
+   "onsetsPerSec": 3.92,
+   "tempoBPM": 123,
+   "loop": {
+    "headTailSimilarity": 0.769,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.07,
+    "startRatio": 0.9
+   },
+   "integratedLUFS": -21,
+   "loudnessRange": 2.3,
+   "truePeakDBTP": -9.2
+  },
+  "a842e9e054019132cacc8fd352e7b31c000ebb51e0b227a2511e1bccb4eb166e": {
+   "slug": "heavenly-loop",
+   "durationSec": 33.7,
+   "rmsMean": 0.052,
+   "dynamics": 0.136,
+   "centroidHz": 640,
+   "onsetsPerSec": 3.39,
+   "tempoBPM": 65,
+   "loop": {
+    "headTailSimilarity": 0.623,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 0.84,
+    "startRatio": 1
+   },
+   "integratedLUFS": -23.9,
+   "loudnessRange": 1.5,
+   "truePeakDBTP": -11.9
+  },
+  "42349d7c615fe947866100a90289d61a1e64620e11f2d041b37166eaaa4e5840": {
+   "slug": "crystal-cave-song18",
+   "durationSec": 49.6,
+   "rmsMean": 0.2042,
+   "dynamics": 0.244,
+   "centroidHz": 388,
+   "onsetsPerSec": 4.02,
+   "tempoBPM": 99,
+   "loop": {
+    "headTailSimilarity": 0.879,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0.23,
+    "startRatio": 1.05
+   },
+   "integratedLUFS": -14.5,
+   "loudnessRange": 3.6,
+   "truePeakDBTP": 0
+  },
+  "2657861d5107d4a3c01ef81cb6a4d61ddd5e7a054b6da57e658373d79d0c3466": {
+   "slug": "town-theme-rpg",
+   "durationSec": 97.5,
+   "rmsMean": 0.171,
+   "dynamics": 0.283,
+   "centroidHz": 1008,
+   "onsetsPerSec": 3.35,
+   "tempoBPM": 185,
+   "loop": {
+    "headTailSimilarity": 0.58,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 0.58,
+    "startRatio": 0.89
+   },
+   "integratedLUFS": -13,
+   "loudnessRange": 4.1,
+   "truePeakDBTP": -0.1
+  },
+  "115c233f9f8bc793f12723030aaae6cfda923e565c32a8e54bb274b2a8199ee1": {
+   "slug": "rain-and-thunders",
+   "durationSec": 278.8,
+   "rmsMean": 0.0786,
+   "dynamics": 0.563,
+   "centroidHz": 3518,
+   "onsetsPerSec": 2.79,
+   "tempoBPM": 89,
+   "loop": {
+    "headTailSimilarity": 0.919,
+    "fadesOut": false,
+    "fadesIn": true,
+    "endRatio": 1.76,
+    "startRatio": 0.01
+   },
+   "integratedLUFS": -20.4,
+   "loudnessRange": 7.8,
+   "truePeakDBTP": 0.5
+  },
+  "3d6a51a5f20e885d93f2c8e8ef7ea189fca701063ab7f72aa37d114701c32dcf": {
+   "slug": "enchanted-tiki-86",
+   "durationSec": 117.4,
+   "rmsMean": 0.2437,
+   "dynamics": 0.343,
+   "centroidHz": 519,
+   "onsetsPerSec": 3.81,
+   "tempoBPM": 68,
+   "loop": {
+    "headTailSimilarity": 0.723,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0.04,
+    "startRatio": 0.84
+   },
+   "integratedLUFS": -11.7,
+   "loudnessRange": 6.9,
+   "truePeakDBTP": 0.6
+  },
+  "18da6d6c4492d744f5ebde5bb128a636770df4197d2d4a0b5e8d65df6e27f57b": {
+   "slug": "dungeon-ambience",
+   "durationSec": 206,
+   "rmsMean": 0.0092,
+   "dynamics": 0.511,
+   "centroidHz": 1105,
+   "onsetsPerSec": 2.8,
+   "tempoBPM": 123,
+   "loop": {
+    "headTailSimilarity": 0.271,
+    "fadesOut": true,
+    "fadesIn": true,
+    "endRatio": 0,
+    "startRatio": 0.15
+   },
+   "integratedLUFS": -39.6,
+   "loudnessRange": 8.9,
+   "truePeakDBTP": -19.3
+  },
+  "6e943494d27040091f7a883e5e9e96372def3f912d55d9acc045a2a5f2fa5d22": {
+   "slug": "i-swear-i-saw-it-background-track",
+   "durationSec": 207.4,
+   "rmsMean": 0.1727,
+   "dynamics": 0.487,
+   "centroidHz": 560,
+   "onsetsPerSec": 3.09,
+   "tempoBPM": 185,
+   "loop": {
+    "headTailSimilarity": 0.603,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0.25,
+    "startRatio": 0.38
+   },
+   "integratedLUFS": -14.4,
+   "loudnessRange": 7.2,
+   "truePeakDBTP": 2.4
+  },
+  "c8c1b2b5bad66d2951cc366ad3337a67882a769b1c3057b2791fa2085ae4d09e": {
+   "slug": "factory-ambiance",
+   "durationSec": 123,
+   "rmsMean": 0.0572,
+   "dynamics": 0.448,
+   "centroidHz": 499,
+   "onsetsPerSec": 3.05,
+   "tempoBPM": 108,
+   "loop": {
+    "headTailSimilarity": 0.35,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0.25,
+    "startRatio": 0.38
+   },
+   "integratedLUFS": -24.3,
+   "loudnessRange": 9.5,
+   "truePeakDBTP": -8.7
+  },
+  "c9e83d01741e97a462c44963aff81645a9c2aa3a7a33e5849114a1399d1b0914": {
+   "slug": "dark-forest-theme",
+   "durationSec": 93.1,
+   "rmsMean": 0.1382,
+   "dynamics": 0.273,
+   "centroidHz": 1008,
+   "onsetsPerSec": 3.15,
+   "tempoBPM": 108,
+   "loop": {
+    "headTailSimilarity": 0.829,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 0.68,
+    "startRatio": 0.68
+   },
+   "integratedLUFS": -15.5,
+   "loudnessRange": 6.1,
+   "truePeakDBTP": -1.2
+  },
+  "54c1abdd5ca5d67cf43c29bdf9d8332510dd1d74e8498569e5d9a2824a77079e": {
+   "slug": "sirens-in-darkness",
+   "durationSec": 229.9,
+   "rmsMean": 0.1208,
+   "dynamics": 0.653,
+   "centroidHz": 917,
+   "onsetsPerSec": 3.53,
+   "tempoBPM": 161,
+   "loop": {
+    "headTailSimilarity": 0.332,
+    "fadesOut": true,
+    "fadesIn": true,
+    "endRatio": 0,
+    "startRatio": 0.03
+   },
+   "integratedLUFS": -18.7,
+   "loudnessRange": 12.2,
+   "truePeakDBTP": -3.8
+  },
+  "64ba0b12ee09c106bca11531010534df282f3474a88fb1923d55b3de469898d4": {
+   "slug": "spacelife-14",
+   "durationSec": 110.3,
+   "rmsMean": 0.1119,
+   "dynamics": 0.251,
+   "centroidHz": 527,
+   "onsetsPerSec": 1.99,
+   "tempoBPM": 144,
+   "loop": {
+    "headTailSimilarity": 0.597,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 0.97,
+    "startRatio": 0.66
+   },
+   "integratedLUFS": -19.2,
+   "loudnessRange": 5,
+   "truePeakDBTP": -4.5
+  },
+  "9850aa1d0d5d66bd9c5daf8bb77c6d852e01f2f4de22f283bd5621e8bed13b75": {
+   "slug": "forest-ambience",
+   "durationSec": 44.7,
+   "rmsMean": 0.003,
+   "dynamics": 0.177,
+   "centroidHz": 2681,
+   "onsetsPerSec": 2.28,
+   "tempoBPM": 161,
+   "loop": {
+    "headTailSimilarity": 0.935,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 0.94,
+    "startRatio": 0.98
+   },
+   "integratedLUFS": -46.3,
+   "loudnessRange": 3.6,
+   "truePeakDBTP": -28.1
+  },
+  "6de6e4f770cda4d34db433e4df982deccb6877a8fcc5e32b48eeb57f770dec3b": {
+   "slug": "another-august",
+   "durationSec": 206.6,
+   "rmsMean": 0.0642,
+   "dynamics": 0.58,
+   "centroidHz": 1175,
+   "onsetsPerSec": 3.54,
+   "tempoBPM": 185,
+   "loop": {
+    "headTailSimilarity": 0.307,
+    "fadesOut": true,
+    "fadesIn": true,
+    "endRatio": 0.03,
+    "startRatio": 0.3
+   },
+   "integratedLUFS": -18.8,
+   "loudnessRange": 14.4,
+   "truePeakDBTP": -4.8
+  },
+  "153832c278e7afa6849487a36e341e0363f318386403297f76b3a0590dd2fb28": {
+   "slug": "8-bit-forest-theme",
+   "durationSec": 170.8,
+   "rmsMean": 0.123,
+   "dynamics": 0.039,
+   "centroidHz": 1874,
+   "onsetsPerSec": 2.17,
+   "tempoBPM": 89,
+   "loop": {
+    "headTailSimilarity": 0.409,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1,
+    "startRatio": 0.97
+   },
+   "integratedLUFS": -19.3,
+   "loudnessRange": 1.2,
+   "truePeakDBTP": -5.8
+  },
+  "affee8ea651ac18b5def59388049406c95e271ef2fc223097605a17527175644": {
+   "slug": "beautiful-forest-orchestra",
+   "durationSec": 70,
+   "rmsMean": 0.1101,
+   "dynamics": 0.35,
+   "centroidHz": 1529,
+   "onsetsPerSec": 3.3,
+   "tempoBPM": 172,
+   "loop": {
+    "headTailSimilarity": 0.412,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0.01,
+    "startRatio": 0.67
+   },
+   "integratedLUFS": -15,
+   "loudnessRange": 6.7,
+   "truePeakDBTP": 0
+  },
+  "e44b524d315cc4e7949e93f3f5c68783dcf74a5ecb79acff75111027f14277ac": {
+   "slug": "final-hour",
+   "durationSec": 136.9,
+   "rmsMean": 0.1718,
+   "dynamics": 0.272,
+   "centroidHz": 1741,
+   "onsetsPerSec": 2.5,
+   "tempoBPM": 68,
+   "loop": {
+    "headTailSimilarity": 0.994,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0.27,
+    "startRatio": 1.02
+   },
+   "integratedLUFS": -15.4,
+   "loudnessRange": 4,
+   "truePeakDBTP": -1.4
+  },
+  "7607f3bf232de5ef9f3ca84a5a43ad01b10438e18717c57f2f37b8218da5ecba": {
+   "slug": "bit-forest-ambient",
+   "durationSec": 79.5,
+   "rmsMean": 0.1734,
+   "dynamics": 0.62,
+   "centroidHz": 1223,
+   "onsetsPerSec": 1.64,
+   "tempoBPM": 81,
+   "loop": {
+    "headTailSimilarity": 0.286,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0.01,
+    "startRatio": 0.41
+   },
+   "integratedLUFS": -14.1,
+   "loudnessRange": 11.3,
+   "truePeakDBTP": 1.3
+  },
+  "f20d00393bea4c0b34d2d2b54c950c6ff9982b54694bbf3028bb1ac18919043c": {
+   "slug": "bit-forest-intro",
+   "durationSec": 87,
+   "rmsMean": 0.1024,
+   "dynamics": 0.354,
+   "centroidHz": 1580,
+   "onsetsPerSec": 1.77,
+   "tempoBPM": 81,
+   "loop": {
+    "headTailSimilarity": 0.378,
+    "fadesOut": false,
+    "fadesIn": true,
+    "endRatio": 0.78,
+    "startRatio": 0.11
+   },
+   "integratedLUFS": -18.1,
+   "loudnessRange": 4.9,
+   "truePeakDBTP": 1
+  },
+  "c8f293d692317b505fe251a568eebc38dd38de4fc48131b5d61963d05184e7eb": {
+   "slug": "bit-forest-dark",
+   "durationSec": 60,
+   "rmsMean": 0.1902,
+   "dynamics": 0.576,
+   "centroidHz": 1698,
+   "onsetsPerSec": 2.68,
+   "tempoBPM": 108,
+   "loop": {
+    "headTailSimilarity": 0.344,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0.02,
+    "startRatio": 1.37
+   },
+   "integratedLUFS": -12.3,
+   "loudnessRange": 14.3,
+   "truePeakDBTP": 0.4
+  },
+  "6a912959f7f5886c8dbba551ac9d3b2d30b36e2c9a069d15b40195db808e1530": {
+   "slug": "from-here-to-where",
+   "durationSec": 79.4,
+   "rmsMean": 0.0303,
+   "dynamics": 0.464,
+   "centroidHz": 1334,
+   "onsetsPerSec": 2.78,
+   "tempoBPM": 161,
+   "loop": {
+    "headTailSimilarity": 0.557,
+    "fadesOut": true,
+    "fadesIn": true,
+    "endRatio": 0,
+    "startRatio": 0.26
+   },
+   "integratedLUFS": -28,
+   "loudnessRange": 8.2,
+   "truePeakDBTP": -10.4
+  },
+  "c651fd81c85f8bd94c647304aeb0ef4006114481655da22ac2f779c8bcc4db56": {
+   "slug": "forest-of-hope",
+   "durationSec": 124.5,
+   "rmsMean": 0.1129,
+   "dynamics": 0.253,
+   "centroidHz": 1257,
+   "onsetsPerSec": 2.52,
+   "tempoBPM": 108,
+   "loop": {
+    "headTailSimilarity": 0.545,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.04,
+    "startRatio": 0.57
+   },
+   "integratedLUFS": -17.5,
+   "loudnessRange": 5.8,
+   "truePeakDBTP": -1.9
+  },
+  "a5f7ac3abbc821382000c56631b7942976fcdc3da7546d44f62d3a85baf519cc": {
+   "slug": "the-epic-adventure-album",
+   "durationSec": 32,
+   "rmsMean": 0.1574,
+   "dynamics": 0.384,
+   "centroidHz": 1464,
+   "onsetsPerSec": 2.44,
+   "tempoBPM": 185,
+   "loop": {
+    "headTailSimilarity": 0.906,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0,
+    "startRatio": 0.89
+   },
+   "integratedLUFS": -15.4,
+   "loudnessRange": 3.5,
+   "truePeakDBTP": -3.2
+  },
+  "46e436c4cfd8156884f02599a1f50a63dc01344319e84d45a08a75aa693f35ce": {
+   "slug": "forest-7",
+   "durationSec": 130.2,
+   "rmsMean": 0.096,
+   "dynamics": 0.212,
+   "centroidHz": 1324,
+   "onsetsPerSec": 1.55,
+   "tempoBPM": 161,
+   "loop": {
+    "headTailSimilarity": 0.456,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0,
+    "startRatio": 1.02
+   },
+   "integratedLUFS": -19.8,
+   "loudnessRange": 3.7,
+   "truePeakDBTP": -4.7
+  },
+  "acf1576167caffddf87599bec49d1d37f83c4dd0b11c7d744cc12ea30232ebc0": {
+   "slug": "peaceful-forest",
+   "durationSec": 63.1,
+   "rmsMean": 0.0278,
+   "dynamics": 0.091,
+   "centroidHz": 2007,
+   "onsetsPerSec": 2.61,
+   "tempoBPM": 185,
+   "loop": {
+    "headTailSimilarity": 0.731,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.03,
+    "startRatio": 1.06
+   },
+   "integratedLUFS": -27.8,
+   "loudnessRange": 0.7,
+   "truePeakDBTP": -17.8
+  },
+  "20e3279a0004cef2ddcf4136ae6994610c247f99c7230ad4a923f9dea93898e9": {
+   "slug": "forest-3",
+   "durationSec": 353.5,
+   "rmsMean": 0.2594,
+   "dynamics": 0.169,
+   "centroidHz": 965,
+   "onsetsPerSec": 2.98,
+   "tempoBPM": 74,
+   "loop": {
+    "headTailSimilarity": 0.527,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0,
+    "startRatio": 1.01
+   },
+   "integratedLUFS": -10.7,
+   "loudnessRange": 0.7,
+   "truePeakDBTP": 0.4
+  },
+  "7c21a69b2524718c51008efd48dc08e5df40e718c2dd59d8040df3025ed37d6d": {
+   "slug": "waiting-iii",
+   "durationSec": 34,
+   "rmsMean": 0.076,
+   "dynamics": 0.156,
+   "centroidHz": 1626,
+   "onsetsPerSec": 3.12,
+   "tempoBPM": 117,
+   "loop": {
+    "headTailSimilarity": 0.766,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0.11,
+    "startRatio": 0.99
+   },
+   "integratedLUFS": -18.7,
+   "loudnessRange": 1.2,
+   "truePeakDBTP": -9.9
+  },
+  "75da0c212b36cab3556dfe2928d10d996fa4a6e4ad1e068e06a565389cc2c90c": {
+   "slug": "cyberpunk-moonlight-sonata",
+   "durationSec": 116.7,
+   "rmsMean": 0.1388,
+   "dynamics": 0.158,
+   "centroidHz": 2676,
+   "onsetsPerSec": 3.19,
+   "tempoBPM": 72,
+   "loop": {
+    "headTailSimilarity": 0.733,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 0.82,
+    "startRatio": 0.89
+   },
+   "integratedLUFS": -15.1,
+   "loudnessRange": 1.6,
+   "truePeakDBTP": 0.4
+  },
+  "3ffedb0875b311605321ce00def96d8416c4668e9331ea4ee4abb6430d74ab8b": {
+   "slug": "8-bit-battle-loop",
+   "durationSec": 26.7,
+   "rmsMean": 0.1427,
+   "dynamics": 0.109,
+   "centroidHz": 2628,
+   "onsetsPerSec": 4.47,
+   "tempoBPM": 60,
+   "loop": {
+    "headTailSimilarity": 0.879,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.01,
+    "startRatio": 0.9
+   },
+   "integratedLUFS": -17.1,
+   "loudnessRange": 1.4,
+   "truePeakDBTP": -4.1
+  },
+  "8e80b9d6ca1be4014ab8479c3718e03f466d0803fde86bc9cf17b7e19f57835a": {
+   "slug": "poupis-incredible-adventures-full-album",
+   "durationSec": 45.2,
+   "rmsMean": 0.1655,
+   "dynamics": 0.151,
+   "centroidHz": 2875,
+   "onsetsPerSec": 4.09,
+   "tempoBPM": 152,
+   "loop": {
+    "headTailSimilarity": 0.993,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.24,
+    "startRatio": 0.78
+   },
+   "integratedLUFS": -15.2,
+   "loudnessRange": 1.7,
+   "truePeakDBTP": -1.5
+  },
+  "3e364b94dc1fceff13d8d067af9f034f297cfa5d15ff9cecfbe02fd857801dce": {
+   "slug": "dark-cavern-ambient",
+   "durationSec": 120,
+   "rmsMean": 0.2023,
+   "dynamics": 0.588,
+   "centroidHz": 311,
+   "onsetsPerSec": 3.53,
+   "tempoBPM": 144,
+   "loop": {
+    "headTailSimilarity": 0.611,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0.09,
+    "startRatio": 0.48
+   },
+   "integratedLUFS": -17.3,
+   "loudnessRange": 11.4,
+   "truePeakDBTP": 2.5
+  },
+  "62d699b0ca1810d3c503a7837efd726db052bbeb5de03c54df49dba377e26c1d": {
+   "slug": "8-bit-cave-loop",
+   "durationSec": 64,
+   "rmsMean": 0.1142,
+   "dynamics": 0.616,
+   "centroidHz": 1609,
+   "onsetsPerSec": 3.8,
+   "tempoBPM": 99,
+   "loop": {
+    "headTailSimilarity": 0.736,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.56,
+    "startRatio": 0.39
+   },
+   "integratedLUFS": -17.5,
+   "loudnessRange": 14.4,
+   "truePeakDBTP": -6.7
+  },
+  "08852f14e96347c15f16d3e4a3e9bb3142c4b976627e852b8978602f30b98dec": {
+   "slug": "deep-humidity",
+   "durationSec": 131.1,
+   "rmsMean": 0.133,
+   "dynamics": 0.48,
+   "centroidHz": 89,
+   "onsetsPerSec": 3.87,
+   "tempoBPM": 89,
+   "loop": {
+    "headTailSimilarity": 0.978,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 0.69,
+    "startRatio": 1.69
+   },
+   "integratedLUFS": -22.6,
+   "loudnessRange": 6.3,
+   "truePeakDBTP": -0.2
+  },
+  "0006fbb59dbc82b61e2be60f8c7cc97c73e5665ffe26712a9acee9ee68e9356b": {
+   "slug": "perces",
+   "durationSec": 137.2,
+   "rmsMean": 0.097,
+   "dynamics": 0.255,
+   "centroidHz": 1615,
+   "onsetsPerSec": 2.55,
+   "tempoBPM": 112,
+   "loop": {
+    "headTailSimilarity": 0.224,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0.16,
+    "startRatio": 1.03
+   },
+   "integratedLUFS": -20.5,
+   "loudnessRange": 6,
+   "truePeakDBTP": -4.8
+  },
+  "7815210480b7bdbbdfadd37b151554be8df114888a4667435733652b3c9f8e24": {
+   "slug": "cave-explorer",
+   "durationSec": 73.5,
+   "rmsMean": 0.0621,
+   "dynamics": 0.387,
+   "centroidHz": 2814,
+   "onsetsPerSec": 2.37,
+   "tempoBPM": 60,
+   "loop": {
+    "headTailSimilarity": 0.162,
+    "fadesOut": true,
+    "fadesIn": true,
+    "endRatio": 0.13,
+    "startRatio": 0.26
+   },
+   "integratedLUFS": -22,
+   "loudnessRange": 5.5,
+   "truePeakDBTP": -4.4
+  },
+  "6e7dbc1bf7b1c08e06fd66ad5316bfead89881f6c4dc27b3bc1e4100892cf2de": {
+   "slug": "cave-apr-25",
+   "durationSec": 168,
+   "rmsMean": 0.4855,
+   "dynamics": 0.043,
+   "centroidHz": 193,
+   "onsetsPerSec": 5.69,
+   "tempoBPM": 60,
+   "loop": {
+    "headTailSimilarity": 0.995,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.04,
+    "startRatio": 1.05
+   },
+   "integratedLUFS": -14.4,
+   "loudnessRange": 1.2,
+   "truePeakDBTP": -0.4
+  },
+  "94c61b37a8beeb8ac53a2e4c928e53c0ef93dc27584c116dd532091864af2ad1": {
+   "slug": "osiris-monolith",
+   "durationSec": 79,
+   "rmsMean": 0.2757,
+   "dynamics": 0.255,
+   "centroidHz": 1823,
+   "onsetsPerSec": 2.75,
+   "tempoBPM": 78,
+   "loop": {
+    "headTailSimilarity": 0.815,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 0.62,
+    "startRatio": 0.94
+   },
+   "integratedLUFS": -9.7,
+   "loudnessRange": 4.9,
+   "truePeakDBTP": 0.9
+  },
+  "283a3f1dae583238b68a0f4a1ea8e8ad9a5fbee166dad228c4256f2bc74e989c": {
+   "slug": "ends-of-the-earth",
+   "durationSec": 89.3,
+   "rmsMean": 0.0891,
+   "dynamics": 0.762,
+   "centroidHz": 1766,
+   "onsetsPerSec": 1.57,
+   "tempoBPM": 185,
+   "loop": {
+    "headTailSimilarity": 0.394,
+    "fadesOut": true,
+    "fadesIn": true,
+    "endRatio": 0,
+    "startRatio": 0.33
+   },
+   "integratedLUFS": -18.3,
+   "loudnessRange": 17.4,
+   "truePeakDBTP": -0.5
+  },
+  "d8f7e9038e595718101a2eb0096d49cc8f4a201aaa82365d1da802b80954ff7e": {
+   "slug": "8-bit-cave-loop-0",
+   "durationSec": 50.9,
+   "rmsMean": 0.1315,
+   "dynamics": 0.063,
+   "centroidHz": 1356,
+   "onsetsPerSec": 2.67,
+   "tempoBPM": 76,
+   "loop": {
+    "headTailSimilarity": 0.999,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.03,
+    "startRatio": 1
+   },
+   "integratedLUFS": -18.7,
+   "loudnessRange": 0.4,
+   "truePeakDBTP": -4.1
+  },
+  "021e2fe1c6b4deec50a2402c57a9c3ac8134751a5ad0f1c587f3ac5fb93a1f37": {
+   "slug": "jrpg-end-dungeon",
+   "durationSec": 165.6,
+   "rmsMean": 0.25,
+   "dynamics": 0.25,
+   "centroidHz": 2170,
+   "onsetsPerSec": 3.93,
+   "tempoBPM": 117,
+   "loop": {
+    "headTailSimilarity": 0.76,
+    "fadesOut": true,
+    "fadesIn": true,
+    "endRatio": 0.34,
+    "startRatio": 0.35
+   },
+   "integratedLUFS": -12.1,
+   "loudnessRange": 3.4,
+   "truePeakDBTP": -0.3
+  },
+  "c7b49c466dc4dfec4771ce4b56b34e7e066ec3222bd0b10b425e708ad4a3ed3d": {
+   "slug": "cave-0",
+   "durationSec": 255.6,
+   "rmsMean": 0.0929,
+   "dynamics": 0.236,
+   "centroidHz": 704,
+   "onsetsPerSec": 4.11,
+   "tempoBPM": 152,
+   "loop": {
+    "headTailSimilarity": 0.926,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0,
+    "startRatio": 0.68
+   },
+   "integratedLUFS": -18.2,
+   "loudnessRange": 4.3,
+   "truePeakDBTP": -4.5
+  },
+  "746c1ec3dcc5a91c46eab7bd0ec1ca5368d0b5bf3a99a0e009cd57868b45d1ec": {
+   "slug": "patreon-song-omen",
+   "durationSec": 152.3,
+   "rmsMean": 0.1558,
+   "dynamics": 0.296,
+   "centroidHz": 1822,
+   "onsetsPerSec": 2.19,
+   "tempoBPM": 117,
+   "loop": {
+    "headTailSimilarity": 0.523,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 0.83,
+    "startRatio": 1
+   },
+   "integratedLUFS": -15.4,
+   "loudnessRange": 6.9,
+   "truePeakDBTP": 0.6
+  },
+  "3557cadad7777c1a101076434665dbeffa185095100645f45c27051da5331c83": {
+   "slug": "crystal-cave",
+   "durationSec": 192.1,
+   "rmsMean": 0.3499,
+   "dynamics": 0.146,
+   "centroidHz": 602,
+   "onsetsPerSec": 3.54,
+   "tempoBPM": 60,
+   "loop": {
+    "headTailSimilarity": 0.625,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1,
+    "startRatio": 0.77
+   },
+   "integratedLUFS": -8.9,
+   "loudnessRange": 2.4,
+   "truePeakDBTP": -0.4
+  },
+  "9e7ab0685eade033a460ee51e7a63179ed2483b3d7560df3a34e9af83dd5bc72": {
+   "slug": "icy-realm-seven-and-eight",
+   "durationSec": 82,
+   "rmsMean": 0.1795,
+   "dynamics": 0.296,
+   "centroidHz": 508,
+   "onsetsPerSec": 3.55,
+   "tempoBPM": 99,
+   "loop": {
+    "headTailSimilarity": 0.577,
+    "fadesOut": true,
+    "fadesIn": false,
+    "endRatio": 0.02,
+    "startRatio": 1.02
+   },
+   "integratedLUFS": -13.9,
+   "loudnessRange": 2.9,
+   "truePeakDBTP": 0
+  },
+  "9fd1c9a97740411e7dcaebdc9af17ab017cf070a82089a48503765a24b7bedf4": {
+   "slug": "black-diamond",
+   "durationSec": 201.5,
+   "rmsMean": 0.1868,
+   "dynamics": 0.245,
+   "centroidHz": 2092,
+   "onsetsPerSec": 4.04,
+   "tempoBPM": 72,
+   "loop": {
+    "headTailSimilarity": 0.671,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.28,
+    "startRatio": 0.85
+   },
+   "integratedLUFS": -14,
+   "loudnessRange": 4.2,
+   "truePeakDBTP": 0.4
+  },
+  "37e338161655da1b986eadbd8ca8720e7865c93e8106fbe4ec50f1a00dc36a38": {
+   "slug": "icy-heights",
+   "durationSec": 42,
+   "rmsMean": 0.0295,
+   "dynamics": 0.376,
+   "centroidHz": 746,
+   "onsetsPerSec": 3.24,
+   "tempoBPM": 117,
+   "loop": {
+    "headTailSimilarity": 0.665,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 1.29,
+    "startRatio": 0.86
+   },
+   "integratedLUFS": -29.3,
+   "loudnessRange": 9.5,
+   "truePeakDBTP": -14.3
+  },
+  "c43e068c9c7523eb9cb08b77ff5884f2dc6807b751ddf98dd7ede5afe09f567c": {
+   "slug": "fields-of-ice",
+   "durationSec": 121.8,
+   "rmsMean": 0.0863,
+   "dynamics": 0.134,
+   "centroidHz": 2244,
+   "onsetsPerSec": 4.13,
+   "tempoBPM": 152,
+   "loop": {
+    "headTailSimilarity": 0.553,
+    "fadesOut": false,
+    "fadesIn": false,
+    "endRatio": 0.92,
+    "startRatio": 1.36
+   },
+   "integratedLUFS": -21.8,
+   "loudnessRange": 2.7,
+   "truePeakDBTP": -4
+  }
+ }
+}

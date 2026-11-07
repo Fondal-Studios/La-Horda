@@ -43,7 +43,7 @@ function portadorSlow(h,e,pct,ms){
 function portadorHit(h,e,dmg,proc){
   if(!e.alive)return;
   if(divinaMode){const kind=divinaStructures.includes(e)?"structure":divinaMinions.includes(e)?"minion":"champ";divinaDealDamage({kind,ref:e},dmg,h);}
-  else damageEnemy(e,dmg,{src:h,fromProc:!!proc});
+  else damageEnemy(e,dmg,{src:h,fromProc:!!proc,evoHit:proc===true}); // proc===true: golpe de HABILIDAD que no debe disparar objetos (fromProc) pero SÍ la firma de evolución (evoHit); proc==='echo' es un eco real: ni una cosa ni la otra
 }
 function portadorArea(h,p,r,dmg){ for(const e of portadorEnemies(h)) if(distance(e,p)<=r+(e.radius||0)) portadorHit(h,e,dmg); }
 function portadorCone(h,range,arc,fn){ const d=aimDir(h,range); vfxSkillCone(h.x,h.y,range,Math.atan2(d.y,d.x),arc,h.cls.glow); for(const e of portadorEnemies(h)){ const x=e.x-h.x,y=e.y-h.y,l=Math.hypot(x,y)||1; if(l<=range+(e.radius||0) && (x*d.x+y*d.y)/l>=Math.cos(arc)) fn(e,d); } }
@@ -73,7 +73,7 @@ function portadorResin(h,e,which,duration,dmg){
     portadorCue(h,e,65);
     if(portadorSet(h,3) && !(h.portRefundUntil>runElapsedMs)){h.energy=Math.min(h.maxEnergy,h.energy+8);h.portRefundUntil=runElapsedMs+1500;}
     const a=portadorOwned(h,"alembic").find(z=>distance(z,e)<=z.r);
-    if(a && !(h.portEchoUntil>runElapsedMs)){ h.portEchoUntil=runElapsedMs+650; for(const o of portadorEnemies(h)) if(o!==e && distance(o,e)<85) portadorHit(h,o,blast*0.3,true); }
+    if(a && !(h.portEchoUntil>runElapsedMs)){ h.portEchoUntil=runElapsedMs+650; for(const o of portadorEnemies(h)) if(o!==e && distance(o,e)<85) portadorHit(h,o,blast*0.3,"echo"); }
   }
 }
 

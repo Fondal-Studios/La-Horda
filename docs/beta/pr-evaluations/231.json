@@ -1,0 +1,47 @@
+{
+ "id": "231",
+ "branch": "art/nano-impact-contract-20261026",
+ "base": "4286dc4ad7a501c0508f5209f47ab2f01b0a83c2",
+ "evaluatedAt": "2026-11-02T10:05:28.564Z",
+ "steps": {
+  "architect": {
+   "verdict": "NEEDS_WORK",
+   "findings": [
+    {
+     "level": "W",
+     "id": "asset-size",
+     "msg": "Assets >2 MB: art-source/entregas/nano-gm-kit-20261026/cierre-01/review-temporal-desktop-h2.webp, art-source/entregas/nano-gm-kit-20261026/cierre-02/review-mobile-0.webp, art-source/entregas/nano-gm-kit-20261026/cierre-04/review-desktop-h0.webp, art-source/entregas/nano-gm-kit-20261026/cierre-04/review-desktop-h2.webp, art-source/entregas/nano-gm-kit-20261026/cierre-04/review-mobile-h0.webp, art-source/entregas/nano-gm-kit-20261026/cierre-04/review-mobile-h2.webp"
+    },
+    {
+     "level": "W",
+     "id": "conflict",
+     "msg": "Conflictos de fusión con 4286dc4ad7a501c0508f5209f47ab2f01b0a83c2: docs/production/CORRECTION_BATCH.json"
+    }
+   ],
+   "files": 268,
+   "categories": {
+    "touchesArt": true,
+    "touchesChampions": true,
+    "touchesNet": false,
+    "touchesGameplay": true,
+    "isArtOnly": false
+   }
+  },
+  "merge": {
+   "clean": false,
+   "conflicts": [
+    "docs/production/CORRECTION_BATCH.json"
+   ],
+   "worktree": "/tmp/eval-wt-231"
+  }
+ },
+ "verdict": "RECHAZAR",
+ "verdictInitial": "CONFLICTO",
+ "reason": [
+  "El propio PR se titula \"[FIX / NO_INTEGRAR]\" y #241 documenta: \"NanoGM H1/H3, PR231: continúa FIX por grosor/cobertura del haz; cuerpo NanoGM ya integrado\".",
+  "Hay conflicto de fusión y el trabajo está declarado incompleto por su autor; no hay evidencia de mejora cerrada."
+ ],
+ "improvement": {
+  "status": "not_established"
+ }
+}

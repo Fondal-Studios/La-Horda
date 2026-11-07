@@ -1,0 +1,25 @@
+{
+  "registryVersion": 1,
+  "note": "Registro de contratos: dueño, consumidores, esquema, versión, política de compatibilidad y pruebas. Lo verifica tools/contracts/t_contract_registry.js. Un contrato cambia solo con un PR de contrato (rama claude/contrato-…) que aprueban su dueño y todos sus consumidores.",
+  "compatibility": { "major": "rompe: exige migración y que los consumidores migren primero", "minor": "agrega campos opcionales o valores de lista: el consumidor se actualiza antes que el productor", "patch": "no cambia el esquema" },
+  "areas": {
+    "economia_transacciones": ["GameResult", "EconomyTransaction"],
+    "persistencia_usuarios": ["PlayerProfile"],
+    "telemetria_consentimiento": ["TelemetryEvent", "TelemetryConsent"],
+    "hud_eventos_habilidades": ["SkillEvent"],
+    "seleccion_campeones": ["ChampionSelection"],
+    "lobby_multijugador": ["LobbyMessage"],
+    "fabrica_artistica_ui": ["ArtAsset"]
+  },
+  "contracts": {
+    "GameResult": { "owner": "A", "consumers": ["B", "C"], "schema": "contracts/v1/game-result.schema.json", "adapters": ["fromServerRun"], "tests": ["tools/contracts/t_contract_schemas.js", "tools/contracts/t_contract_economy.js"], "producer": "server/item-economy-live.js" },
+    "EconomyTransaction": { "owner": "A", "consumers": ["B", "C"], "schema": "contracts/v1/economy-transaction.schema.json", "adapters": ["fromWalletEntry"], "tests": ["tools/contracts/t_contract_schemas.js", "tools/contracts/t_contract_economy.js"], "producer": "server/wallet.js" },
+    "PlayerProfile": { "owner": "B", "consumers": ["A", "C", "D"], "schema": "contracts/v1/player-profile.schema.json", "adapters": ["fromSave"], "tests": ["tools/contracts/t_contract_schemas.js", "tools/contracts/t_contract_save_compat.js"], "producer": "server/accounts.js" },
+    "TelemetryEvent": { "owner": "C", "consumers": ["A", "B", "D"], "schema": "contracts/v1/telemetry-event.schema.json", "adapters": ["toWire"], "tests": ["tools/contracts/t_contract_schemas.js", "tools/contracts/t_contract_telemetry.js"], "producer": "js/net/alpha-services.js" },
+    "TelemetryConsent": { "owner": "C", "consumers": ["D", "B"], "schema": "contracts/v1/telemetry-consent.schema.json", "adapters": ["fromConsentStorage"], "tests": ["tools/contracts/t_contract_beta.js"], "producer": "js/net/alpha-services.js" },
+    "SkillEvent": { "owner": "D", "consumers": ["C"], "schema": "contracts/v1/skill-event.schema.json", "adapters": ["fromHudSlot"], "tests": ["tools/contracts/t_contract_beta.js"], "producer": "js/ui/hud.js" },
+    "ChampionSelection": { "owner": "D", "consumers": ["A", "B", "C"], "schema": "contracts/v1/champion-selection.schema.json", "adapters": ["fromSelection"], "tests": ["tools/contracts/t_contract_beta.js"], "producer": "js/ui/champion-select.js" },
+    "ArtAsset": { "owner": "D", "consumers": ["C"], "schema": "contracts/v1/art-asset.schema.json", "adapters": ["fromAssetFile"], "tests": ["tools/contracts/t_contract_beta.js", "tools/factory/test-art-handoff.js"], "producer": "tools/factory/art-handoff.js" },
+    "LobbyMessage": { "owner": "ARQ", "consumers": ["C", "D"], "schema": "contracts/v1/lobby-message.schema.json", "adapters": [], "tests": ["tools/contracts/t_contract_beta.js"], "producer": "server/relay.js", "readOnlyReason": "El relay lo administra su responsable (socio técnico): ningún agente lo modifica; cualquier cambio de protocolo se coordina con él." }
+  }
+}

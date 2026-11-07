@@ -1,0 +1,43 @@
+{
+ "id": "261",
+ "branch": "feature/ui-clarity-hud-shop",
+ "base": "350a229f435405c85619f8fcf3c0886045ae921f",
+ "evaluatedAt": "2026-11-02T09:51:12.911Z",
+ "steps": {
+  "architect": {
+   "verdict": "READY_FOR_MERGE_REVIEW",
+   "findings": [],
+   "files": 62,
+   "categories": {
+    "touchesArt": false,
+    "touchesChampions": false,
+    "touchesNet": false,
+    "touchesGameplay": false,
+    "isArtOnly": false
+   }
+  },
+  "merge": {
+   "clean": true,
+   "conflicts": [],
+   "worktree": "/tmp/eval-wt-261"
+  },
+  "diff": {
+   "files": 62,
+   "art": 0,
+   "shortstat": "62 files changed, 861 insertions(+)"
+  },
+  "qaQuick": {
+   "exit": 0,
+   "summary": "PASS 38   FLAKY 0   FAIL 0   (de 38)",
+   "failed": []
+  },
+  "ownTests": [
+   {
+    "file": "tools/ui-clarity/test-hud-clarity.js",
+    "exit": 0
+   }
+  ]
+ },
+ "verdict": "ACEPTAR_TECNICO",
+ "improvement": null
+}

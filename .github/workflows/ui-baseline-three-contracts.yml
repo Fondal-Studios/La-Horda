@@ -1,7 +1,7 @@
 name: Three UI baseline contracts
 on:
   pull_request:
-    paths: ['css/ui-factory/hud-layout.css', 'css/ui-factory/menus-touch.css', 'tools/ux/test-three-ui-contracts.js', '.github/workflows/ui-baseline-three-contracts.yml']
+    paths: ['index.html', 'js/ui/menus.js', 'tools/ux/test-campaign-start-layout.js', 'css/ui-factory/hud-layout.css', 'css/ui-factory/menus-touch.css', 'tools/ux/test-three-ui-contracts.js', '.github/workflows/ui-baseline-three-contracts.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -14,6 +14,8 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: ./.github/actions/setup-playwright
+      - name: Campaign start stays visible
+        run: node tools/ux/test-campaign-start-layout.js
       - name: Real pointer and geometry contracts
         run: node tools/ux/test-three-ui-contracts.js
       - name: Original complete icon audit

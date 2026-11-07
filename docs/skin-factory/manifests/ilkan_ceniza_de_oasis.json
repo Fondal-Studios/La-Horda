@@ -1,0 +1,64 @@
+{
+ "skin": "ilkan_ceniza_de_oasis",
+ "champion": "ilkan",
+ "tier": "legendaria",
+ "name": "Ilkan, Ceniza de Oasis",
+ "selectionReason": "Cero apariencias en el catálogo (inventario: ilkan = 0). Silueta distintiva (lanza de pendón + Coloso de Arena).",
+ "identity": "Caravanero que quemó su pendón para encender el último pozo. Paleta: ceniza cálida #6b5a4a, brasa #ff8a3d, turquesa de oasis #3fd8c4 solo en detalles. Silueta intacta: lanza larga y pendón a la derecha.",
+ "story": "Cuando el oasis se secó, Ilkan prendió su propio pendón para que la caravana viera el camino. Desde entonces la tela arde sin consumirse y el Coloso de Arena camina con brasas en el pecho.",
+ "abilityFx": "Lanza: estela de brasas turquesa en vuelo; aterrizaje deja anillo de ceniza que se disipa en 400 ms (solo visual). Coloso: grietas incandescentes en el torso.",
+ "constraints": {
+  "stats": false,
+  "damage": false,
+  "range": false,
+  "hitbox": false,
+  "cooldown": false,
+  "silhouette": "idéntica al cuerpo base"
+ },
+ "assets": {
+  "concept_art": {
+   "path": null,
+   "status": "NOT_PRODUCED"
+  },
+  "identity_sheet": {
+   "path": "docs/skin-factory/dossiers.md",
+   "status": "WRITTEN"
+  },
+  "sprite_atlas": {
+   "path": null,
+   "status": "NOT_PRODUCED"
+  },
+  "animations_move_combat": {
+   "path": null,
+   "status": "NOT_PRODUCED"
+  },
+  "skill_fx": {
+   "path": null,
+   "status": "NOT_PRODUCED"
+  },
+  "ultimate_fx": {
+   "path": null,
+   "status": "NOT_PRODUCED"
+  },
+  "select_preview": {
+   "path": null,
+   "status": "NOT_PRODUCED"
+  },
+  "story": {
+   "path": "docs/skin-factory/dossiers.md",
+   "status": "WRITTEN"
+  },
+  "icon": {
+   "path": null,
+   "status": "NOT_PRODUCED"
+  },
+  "commercial_card": {
+   "path": null,
+   "status": "NOT_PRODUCED"
+  }
+ },
+ "status": "DESIGN_ONLY",
+ "blockers": [
+  "Sin capacidad de generación/pintura de imágenes en la sesión autónoma: concept art, atlas 8 columnas y paneles de FX deben ser pintados (flujo tools/factory + Painter) y revisados por un evaluador independiente."
+ ]
+}

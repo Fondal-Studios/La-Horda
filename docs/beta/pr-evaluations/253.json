@@ -1,0 +1,47 @@
+{
+ "id": "253",
+ "branch": "claude/art-factory-2",
+ "base": "6bedb01462943f4c7fcc69a2055b2dd2b158a4ee",
+ "evaluatedAt": "2026-11-02T10:00:38.015Z",
+ "steps": {
+  "architect": {
+   "verdict": "NEEDS_WORK",
+   "findings": [
+    {
+     "level": "W",
+     "id": "conflict",
+     "msg": "Conflictos de fusión con 6bedb01462943f4c7fcc69a2055b2dd2b158a4ee: docs/art-factory/README.md, tools/factory/README.md, tools/factory/art_factory.py, tools/factory/test_art_factory.py"
+    }
+   ],
+   "files": 101,
+   "categories": {
+    "touchesArt": true,
+    "touchesChampions": false,
+    "touchesNet": false,
+    "touchesGameplay": false,
+    "isArtOnly": true
+   }
+  },
+  "merge": {
+   "clean": false,
+   "conflicts": [
+    "docs/art-factory/README.md",
+    "tools/factory/README.md",
+    "tools/factory/art_factory.py",
+    "tools/factory/test_art_factory.py"
+   ],
+   "worktree": "/tmp/eval-wt-253"
+  }
+ },
+ "verdict": "RECHAZAR_OBSOLETO",
+ "verdictInitial": "CONFLICTO",
+ "reason": [
+  "Conflicto en art_factory.py, test_art_factory.py y dos README: es la versión sin endurecer de lo que #255 (\"fail-closed gates\") ya aportó a la integración.",
+  "Lo único exclusivo (art_generator.py con dry-run y tope de gasto; skins-coverage.js) lo reemplaza #256 (SpendGuard + adaptadores BFL/OpenAI) y pertenece a la producción de arte, que va en su propia rama.",
+  "Integrarlo restauraría una versión previa del núcleo de la fábrica sobre la endurecida."
+ ],
+ "improvement": {
+  "status": "none",
+  "note": "Superada por #255 (+#256). Sin mejora respecto de lo ya integrado."
+ }
+}

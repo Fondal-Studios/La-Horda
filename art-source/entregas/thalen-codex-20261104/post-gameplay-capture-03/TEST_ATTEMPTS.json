@@ -1,0 +1,24 @@
+{
+  "productionHead": "68674464b5dfa86c130ed03bccda72fca93d87b0",
+  "new": [
+    {
+      "name": "gameplay_capture_03",
+      "result": "PASS",
+      "evidence": "96 rows, eight sheets, zero page errors; actual render(); 1:1 crop"
+    },
+    {
+      "name": "champion_entry_balance",
+      "result": "FAIL_AFTER_EVIDENCE",
+      "evidence": "entry job 127088491037: steps 1-83 PASS; inherited HTTP server step 84 FAIL; artifact step 86 SUCCESS"
+    },
+    {
+      "name": "lanes",
+      "result": "FAIL",
+      "evidence": "job 127088490756: tools/lanes/flow.js asserts volver a la base >=48px at 844px; no Thalen file overlap with concurrent main reconciliation"
+    }
+  ],
+  "historical": [
+    "gameplay capture 02 FIX at head 5ee56724; superseded for crop and Bosque composition only",
+    "consumer and atlas checks from earlier checkpoints remain historical; not rerun"
+  ]
+}

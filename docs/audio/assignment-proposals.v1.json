@@ -1,0 +1,550 @@
+{
+ "contract": "MusicAssignmentProposals",
+ "version": 1,
+ "generated": "2026-11-01",
+ "note": "Propuesta por medidas y etiquetas. NO escuchada: requiere aprobación humana en docs/audio/assignment-review.v1.json. intro (Hechicero) queda procedural a propósito.",
+ "libraryTracks": 90,
+ "loopCapable": 36,
+ "slots": [
+  {
+   "slot": "title",
+   "mode": "title",
+   "arena": null,
+   "candidates": [
+    {
+     "trackId": "c2e7cb7a4c9bb350e12054001b78f53eccdee6411d91662a820d96201a0e4e97",
+     "slug": "underwater-theme",
+     "score": -0.192,
+     "rationale": "intensidad p39 (objetivo 35), brillo p24, 74 BPM, 771 Hz de centroide, bucle limpio (similitud 0.871). obertura, espaciosa."
+    },
+    {
+     "trackId": "c9e83d01741e97a462c44963aff81645a9c2aa3a7a33e5849114a1399d1b0914",
+     "slug": "dark-forest-theme",
+     "score": -0.219,
+     "rationale": "intensidad p46 (objetivo 35), brillo p31, 108 BPM, 1008 Hz de centroide, bucle limpio (similitud 0.829). obertura, espaciosa."
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "slot": "menu",
+   "mode": "menu",
+   "arena": null,
+   "candidates": [
+    {
+     "trackId": "37e338161655da1b986eadbd8ca8720e7865c93e8106fbe4ec50f1a00dc36a38",
+     "slug": "icy-heights",
+     "score": -0.229,
+     "rationale": "intensidad p21 (objetivo 25), brillo p23, 117 BPM, 746 Hz de centroide, bucle limpio (similitud 0.665). tranquila, no cansa en pantallas largas."
+    },
+    {
+     "trackId": "cb52cc2226123233303bb7ea5f49857d818b8d70cddfb76331bf48ca2c39374e",
+     "slug": "where-was-i",
+     "score": -0.267,
+     "rationale": "intensidad p7 (objetivo 25), brillo p41, 70 BPM, 1339 Hz de centroide, bucle limpio (similitud 0.998). tranquila, no cansa en pantallas largas."
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "slot": "wave",
+   "mode": "wave",
+   "arena": null,
+   "candidates": [
+    {
+     "trackId": "25f3056aa69985f878fd70526b4661d3f0492f1c4adb1174dadea837ac265f5d",
+     "slug": "the-rush",
+     "score": -0.08,
+     "rationale": "intensidad p60 (objetivo 60), brillo p37, 63 BPM, 1258 Hz de centroide, bucle limpio (similitud 0.866). acción sostenida que no tape las señales."
+    },
+    {
+     "trackId": "94c61b37a8beeb8ac53a2e4c928e53c0ef93dc27584c116dd532091864af2ad1",
+     "slug": "osiris-monolith",
+     "score": -0.22,
+     "rationale": "intensidad p63 (objetivo 60), brillo p64, 78 BPM, 1823 Hz de centroide, bucle limpio (similitud 0.815). acción sostenida que no tape las señales."
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "slot": "wave@ciudad",
+   "mode": "wave",
+   "arena": "ciudad",
+   "candidates": [
+    {
+     "trackId": "25f3056aa69985f878fd70526b4661d3f0492f1c4adb1174dadea837ac265f5d",
+     "slug": "the-rush",
+     "score": -0.05,
+     "rationale": "intensidad p60 (objetivo 60), brillo p37, 63 BPM, 1258 Hz de centroide, bucle limpio (similitud 0.866). acción sostenida que no tape las señales."
+    },
+    {
+     "trackId": "c9e83d01741e97a462c44963aff81645a9c2aa3a7a33e5849114a1399d1b0914",
+     "slug": "dark-forest-theme",
+     "score": -0.228,
+     "rationale": "intensidad p46 (objetivo 60), brillo p31, 108 BPM, 1008 Hz de centroide, bucle limpio (similitud 0.829). acción sostenida que no tape las señales."
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "slot": "wave@fortaleza",
+   "mode": "wave",
+   "arena": "fortaleza",
+   "candidates": [
+    {
+     "trackId": "94c61b37a8beeb8ac53a2e4c928e53c0ef93dc27584c116dd532091864af2ad1",
+     "slug": "osiris-monolith",
+     "score": -0.17,
+     "rationale": "intensidad p63 (objetivo 60), brillo p64, 78 BPM, 1823 Hz de centroide, bucle limpio (similitud 0.815). acción sostenida que no tape las señales."
+    },
+    {
+     "trackId": "9a63f74305f5cbce8374a72a027a645c07c97663255aba0b817bc1f70c432ed5",
+     "slug": "boss-battle-theme",
+     "score": -0.177,
+     "rationale": "intensidad p67 (objetivo 60), brillo p72, 83 BPM, 1920 Hz de centroide, bucle limpio (similitud 0.896). acción sostenida que no tape las señales."
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "slot": "wave@bosque",
+   "mode": "wave",
+   "arena": "bosque",
+   "candidates": [
+    {
+     "trackId": "c9e83d01741e97a462c44963aff81645a9c2aa3a7a33e5849114a1399d1b0914",
+     "slug": "dark-forest-theme",
+     "score": 0.082,
+     "rationale": "intensidad p46 (objetivo 60), brillo p31, 108 BPM, 1008 Hz de centroide, bucle limpio (similitud 0.829); etiquetas de arena: forest. acción sostenida que no tape las señales."
+    },
+    {
+     "trackId": "25f3056aa69985f878fd70526b4661d3f0492f1c4adb1174dadea837ac265f5d",
+     "slug": "the-rush",
+     "score": -0.19,
+     "rationale": "intensidad p60 (objetivo 60), brillo p37, 63 BPM, 1258 Hz de centroide, bucle limpio (similitud 0.866). acción sostenida que no tape las señales."
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "slot": "wave@micelial",
+   "mode": "wave",
+   "arena": "micelial",
+   "candidates": [
+    {
+     "trackId": "2877e423ff90cb99b3082840e66cf79d69a809708466c6f27c750c0e1ce2a912",
+     "slug": "unsolved-investigation",
+     "score": -0.093,
+     "rationale": "intensidad p50 (objetivo 60), brillo p4, 123 BPM, 359 Hz de centroide, bucle limpio (similitud 0.769). acción sostenida que no tape las señales."
+    },
+    {
+     "trackId": "c9e83d01741e97a462c44963aff81645a9c2aa3a7a33e5849114a1399d1b0914",
+     "slug": "dark-forest-theme",
+     "score": -0.111,
+     "rationale": "intensidad p46 (objetivo 60), brillo p31, 108 BPM, 1008 Hz de centroide, bucle limpio (similitud 0.829). acción sostenida que no tape las señales."
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "slot": "wave@hielo",
+   "mode": "wave",
+   "arena": "hielo",
+   "candidates": [
+    {
+     "trackId": "9fd1c9a97740411e7dcaebdc9af17ab017cf070a82089a48503765a24b7bedf4",
+     "slug": "black-diamond",
+     "score": 0.899,
+     "rationale": "intensidad p54 (objetivo 60), brillo p81, 72 BPM, 2092 Hz de centroide, bucle limpio (similitud 0.671); etiquetas de arena: ice, cold, winter. acción sostenida que no tape las señales."
+    },
+    {
+     "trackId": "2abe80e3b68c4bd27ce33998ce1daf208564579bf4a1f91435d64d5b4403a670",
+     "slug": "wintery-loop",
+     "score": 0.214,
+     "rationale": "intensidad p56 (objetivo 60), brillo p93, 129 BPM, 2645 Hz de centroide, bucle limpio (similitud 0.72); etiquetas de arena: winter. acción sostenida que no tape las señales."
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "slot": "wave@acuatica",
+   "mode": "wave",
+   "arena": "acuatica",
+   "candidates": [
+    {
+     "trackId": "c2e7cb7a4c9bb350e12054001b78f53eccdee6411d91662a820d96201a0e4e97",
+     "slug": "underwater-theme",
+     "score": 0.426,
+     "rationale": "intensidad p39 (objetivo 60), brillo p24, 74 BPM, 771 Hz de centroide, bucle limpio (similitud 0.871); etiquetas de arena: water, underwater. acción sostenida que no tape las señales."
+    },
+    {
+     "trackId": "2877e423ff90cb99b3082840e66cf79d69a809708466c6f27c750c0e1ce2a912",
+     "slug": "unsolved-investigation",
+     "score": -0.033,
+     "rationale": "intensidad p50 (objetivo 60), brillo p4, 123 BPM, 359 Hz de centroide, bucle limpio (similitud 0.769); etiquetas de arena: sea. acción sostenida que no tape las señales."
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "slot": "wave@laberinto",
+   "mode": "wave",
+   "arena": "laberinto",
+   "candidates": [
+    {
+     "trackId": "2877e423ff90cb99b3082840e66cf79d69a809708466c6f27c750c0e1ce2a912",
+     "slug": "unsolved-investigation",
+     "score": -0.053,
+     "rationale": "intensidad p50 (objetivo 60), brillo p4, 123 BPM, 359 Hz de centroide, bucle limpio (similitud 0.769); etiquetas de arena: mystery. acción sostenida que no tape las señales."
+    },
+    {
+     "trackId": "25f3056aa69985f878fd70526b4661d3f0492f1c4adb1174dadea837ac265f5d",
+     "slug": "the-rush",
+     "score": -0.11,
+     "rationale": "intensidad p60 (objetivo 60), brillo p37, 63 BPM, 1258 Hz de centroide, bucle limpio (similitud 0.866). acción sostenida que no tape las señales."
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "slot": "wave@abismo",
+   "mode": "wave",
+   "arena": "abismo",
+   "candidates": [
+    {
+     "trackId": "2877e423ff90cb99b3082840e66cf79d69a809708466c6f27c750c0e1ce2a912",
+     "slug": "unsolved-investigation",
+     "score": 0.937,
+     "rationale": "intensidad p50 (objetivo 60), brillo p4, 123 BPM, 359 Hz de centroide, bucle limpio (similitud 0.769); etiquetas de arena: dark, horror, ominous. acción sostenida que no tape las señales."
+    },
+    {
+     "trackId": "08852f14e96347c15f16d3e4a3e9bb3142c4b976627e852b8978602f30b98dec",
+     "slug": "deep-humidity",
+     "score": 0.544,
+     "rationale": "intensidad p48 (objetivo 60), brillo p1, 89 BPM, 89 Hz de centroide, bucle limpio (similitud 0.978); etiquetas de arena: dark, horror. acción sostenida que no tape las señales."
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "slot": "wave@minas",
+   "mode": "wave",
+   "arena": "minas",
+   "candidates": [
+    {
+     "trackId": "3557cadad7777c1a101076434665dbeffa185095100645f45c27051da5331c83",
+     "slug": "crystal-cave",
+     "score": 0.137,
+     "rationale": "intensidad p80 (objetivo 60), brillo p14, 60 BPM, 602 Hz de centroide, bucle limpio (similitud 0.625); etiquetas de arena: cave. acción sostenida que no tape las señales."
+    },
+    {
+     "trackId": "94c61b37a8beeb8ac53a2e4c928e53c0ef93dc27584c116dd532091864af2ad1",
+     "slug": "osiris-monolith",
+     "score": -0.003,
+     "rationale": "intensidad p63 (objetivo 60), brillo p64, 78 BPM, 1823 Hz de centroide, bucle limpio (similitud 0.815); etiquetas de arena: cave. acción sostenida que no tape las señales."
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "slot": "wave@infernal",
+   "mode": "wave",
+   "arena": "infernal",
+   "candidates": [
+    {
+     "trackId": "462c85304df0ea5369cb98aaae158108c92227fa5f442fb63a2da6febbe82ded",
+     "slug": "awake-megawall-10",
+     "score": -0.124,
+     "rationale": "intensidad p79 (objetivo 60), brillo p68, 89 BPM, 1858 Hz de centroide, bucle limpio (similitud 0.962). acción sostenida que no tape las señales."
+    },
+    {
+     "trackId": "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b",
+     "slug": "determined-pursuit-epic-orchestra-loop",
+     "score": -0.142,
+     "rationale": "intensidad p89 (objetivo 60), brillo p79, 161 BPM, 2014 Hz de centroide, bucle limpio (similitud 0.788). acción sostenida que no tape las señales."
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "slot": "prelude",
+   "mode": "prelude",
+   "arena": null,
+   "candidates": [
+    {
+     "trackId": "c2e7cb7a4c9bb350e12054001b78f53eccdee6411d91662a820d96201a0e4e97",
+     "slug": "underwater-theme",
+     "score": -0.014,
+     "rationale": "intensidad p39 (objetivo 40), brillo p24, 74 BPM, 771 Hz de centroide, bucle limpio (similitud 0.871). tensión previa al jefe, oscura."
+    },
+    {
+     "trackId": "c9e83d01741e97a462c44963aff81645a9c2aa3a7a33e5849114a1399d1b0914",
+     "slug": "dark-forest-theme",
+     "score": -0.092,
+     "rationale": "intensidad p46 (objetivo 40), brillo p31, 108 BPM, 1008 Hz de centroide, bucle limpio (similitud 0.829). tensión previa al jefe, oscura."
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "slot": "boss",
+   "mode": "boss",
+   "arena": null,
+   "candidates": [
+    {
+     "trackId": "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b",
+     "slug": "determined-pursuit-epic-orchestra-loop",
+     "score": -0.144,
+     "rationale": "intensidad p89 (objetivo 92), brillo p79, 161 BPM, 2014 Hz de centroide, bucle limpio (similitud 0.788). máxima intensidad."
+    },
+    {
+     "trackId": "35f75b4381dfbb053992876f7dfc567d9fd959d61b73954d5b1cd519753e7df1",
+     "slug": "boss-battle-music",
+     "score": -0.24,
+     "rationale": "intensidad p97 (objetivo 92), brillo p76, 172 BPM, 1941 Hz de centroide, bucle limpio (similitud 0.979). máxima intensidad."
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "slot": "boss@ciudad",
+   "mode": "boss",
+   "arena": "ciudad",
+   "candidates": [
+    {
+     "trackId": "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b",
+     "slug": "determined-pursuit-epic-orchestra-loop",
+     "score": -0.174,
+     "rationale": "intensidad p89 (objetivo 92), brillo p79, 161 BPM, 2014 Hz de centroide, bucle limpio (similitud 0.788). máxima intensidad."
+    },
+    {
+     "trackId": "35f75b4381dfbb053992876f7dfc567d9fd959d61b73954d5b1cd519753e7df1",
+     "slug": "boss-battle-music",
+     "score": -0.27,
+     "rationale": "intensidad p97 (objetivo 92), brillo p76, 172 BPM, 1941 Hz de centroide, bucle limpio (similitud 0.979). máxima intensidad."
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "slot": "boss@fortaleza",
+   "mode": "boss",
+   "arena": "fortaleza",
+   "candidates": [
+    {
+     "trackId": "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b",
+     "slug": "determined-pursuit-epic-orchestra-loop",
+     "score": -0.134,
+     "rationale": "intensidad p89 (objetivo 92), brillo p79, 161 BPM, 2014 Hz de centroide, bucle limpio (similitud 0.788). máxima intensidad."
+    },
+    {
+     "trackId": "35f75b4381dfbb053992876f7dfc567d9fd959d61b73954d5b1cd519753e7df1",
+     "slug": "boss-battle-music",
+     "score": -0.137,
+     "rationale": "intensidad p97 (objetivo 92), brillo p76, 172 BPM, 1941 Hz de centroide, bucle limpio (similitud 0.979). máxima intensidad."
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "slot": "boss@bosque",
+   "mode": "boss",
+   "arena": "bosque",
+   "candidates": [
+    {
+     "trackId": "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b",
+     "slug": "determined-pursuit-epic-orchestra-loop",
+     "score": -0.072,
+     "rationale": "intensidad p89 (objetivo 92), brillo p79, 161 BPM, 2014 Hz de centroide, bucle limpio (similitud 0.788). máxima intensidad."
+    },
+    {
+     "trackId": "462c85304df0ea5369cb98aaae158108c92227fa5f442fb63a2da6febbe82ded",
+     "slug": "awake-megawall-10",
+     "score": -0.194,
+     "rationale": "intensidad p79 (objetivo 92), brillo p68, 89 BPM, 1858 Hz de centroide, bucle limpio (similitud 0.962). máxima intensidad."
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "slot": "boss@micelial",
+   "mode": "boss",
+   "arena": "micelial",
+   "candidates": [
+    {
+     "trackId": "3557cadad7777c1a101076434665dbeffa185095100645f45c27051da5331c83",
+     "slug": "crystal-cave",
+     "score": -0.113,
+     "rationale": "intensidad p80 (objetivo 92), brillo p14, 60 BPM, 602 Hz de centroide, bucle limpio (similitud 0.625). máxima intensidad."
+    },
+    {
+     "trackId": "25f3056aa69985f878fd70526b4661d3f0492f1c4adb1174dadea837ac265f5d",
+     "slug": "the-rush",
+     "score": -0.26,
+     "rationale": "intensidad p60 (objetivo 92), brillo p37, 63 BPM, 1258 Hz de centroide, bucle limpio (similitud 0.866). máxima intensidad."
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "slot": "boss@hielo",
+   "mode": "boss",
+   "arena": "hielo",
+   "candidates": [
+    {
+     "trackId": "9fd1c9a97740411e7dcaebdc9af17ab017cf070a82089a48503765a24b7bedf4",
+     "slug": "black-diamond",
+     "score": 0.621,
+     "rationale": "intensidad p54 (objetivo 92), brillo p81, 72 BPM, 2092 Hz de centroide, bucle limpio (similitud 0.671); etiquetas de arena: ice, cold, winter. máxima intensidad."
+    },
+    {
+     "trackId": "2abe80e3b68c4bd27ce33998ce1daf208564579bf4a1f91435d64d5b4403a670",
+     "slug": "wintery-loop",
+     "score": 0.066,
+     "rationale": "intensidad p56 (objetivo 92), brillo p93, 129 BPM, 2645 Hz de centroide, bucle limpio (similitud 0.72); etiquetas de arena: winter. máxima intensidad."
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "slot": "boss@acuatica",
+   "mode": "boss",
+   "arena": "acuatica",
+   "candidates": [
+    {
+     "trackId": "462c85304df0ea5369cb98aaae158108c92227fa5f442fb63a2da6febbe82ded",
+     "slug": "awake-megawall-10",
+     "score": -0.132,
+     "rationale": "intensidad p79 (objetivo 92), brillo p68, 89 BPM, 1858 Hz de centroide, bucle limpio (similitud 0.962). máxima intensidad."
+    },
+    {
+     "trackId": "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b",
+     "slug": "determined-pursuit-epic-orchestra-loop",
+     "score": -0.172,
+     "rationale": "intensidad p89 (objetivo 92), brillo p79, 161 BPM, 2014 Hz de centroide, bucle limpio (similitud 0.788). máxima intensidad."
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "slot": "boss@laberinto",
+   "mode": "boss",
+   "arena": "laberinto",
+   "candidates": [
+    {
+     "trackId": "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b",
+     "slug": "determined-pursuit-epic-orchestra-loop",
+     "score": -0.114,
+     "rationale": "intensidad p89 (objetivo 92), brillo p79, 161 BPM, 2014 Hz de centroide, bucle limpio (similitud 0.788). máxima intensidad."
+    },
+    {
+     "trackId": "35f75b4381dfbb053992876f7dfc567d9fd959d61b73954d5b1cd519753e7df1",
+     "slug": "boss-battle-music",
+     "score": -0.21,
+     "rationale": "intensidad p97 (objetivo 92), brillo p76, 172 BPM, 1941 Hz de centroide, bucle limpio (similitud 0.979). máxima intensidad."
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "slot": "boss@abismo",
+   "mode": "boss",
+   "arena": "abismo",
+   "candidates": [
+    {
+     "trackId": "2877e423ff90cb99b3082840e66cf79d69a809708466c6f27c750c0e1ce2a912",
+     "slug": "unsolved-investigation",
+     "score": 0.557,
+     "rationale": "intensidad p50 (objetivo 92), brillo p4, 123 BPM, 359 Hz de centroide, bucle limpio (similitud 0.769); etiquetas de arena: dark, horror, ominous. máxima intensidad."
+    },
+    {
+     "trackId": "c9e83d01741e97a462c44963aff81645a9c2aa3a7a33e5849114a1399d1b0914",
+     "slug": "dark-forest-theme",
+     "score": -0.101,
+     "rationale": "intensidad p46 (objetivo 92), brillo p31, 108 BPM, 1008 Hz de centroide, bucle limpio (similitud 0.829); etiquetas de arena: dark. máxima intensidad."
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "slot": "boss@minas",
+   "mode": "boss",
+   "arena": "minas",
+   "candidates": [
+    {
+     "trackId": "6e7dbc1bf7b1c08e06fd66ad5316bfead89881f6c4dc27b3bc1e4100892cf2de",
+     "slug": "cave-apr-25",
+     "score": 0.146,
+     "rationale": "intensidad p98 (objetivo 92), brillo p2, 60 BPM, 193 Hz de centroide, bucle limpio (similitud 0.995); etiquetas de arena: cave. máxima intensidad."
+    },
+    {
+     "trackId": "3557cadad7777c1a101076434665dbeffa185095100645f45c27051da5331c83",
+     "slug": "crystal-cave",
+     "score": 0.057,
+     "rationale": "intensidad p80 (objetivo 92), brillo p14, 60 BPM, 602 Hz de centroide, bucle limpio (similitud 0.625); etiquetas de arena: cave. máxima intensidad."
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "slot": "boss@infernal",
+   "mode": "boss",
+   "arena": "infernal",
+   "candidates": [
+    {
+     "trackId": "e4f3be098b50213b56a60aefe60fffae79cd9f7c9008088f93c187ef1bbc856b",
+     "slug": "determined-pursuit-epic-orchestra-loop",
+     "score": -0.118,
+     "rationale": "intensidad p89 (objetivo 92), brillo p79, 161 BPM, 2014 Hz de centroide, bucle limpio (similitud 0.788). máxima intensidad."
+    },
+    {
+     "trackId": "35f75b4381dfbb053992876f7dfc567d9fd959d61b73954d5b1cd519753e7df1",
+     "slug": "boss-battle-music",
+     "score": -0.16,
+     "rationale": "intensidad p97 (objetivo 92), brillo p76, 172 BPM, 1941 Hz de centroide, bucle limpio (similitud 0.979). máxima intensidad."
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "slot": "victory",
+   "mode": "victory",
+   "arena": null,
+   "candidates": [
+    {
+     "trackId": "8476ce29692d8d317a7d79628af967448ec09d9f66efe692a597336c5cea2629",
+     "slug": "battle-theme-b-for-rpg",
+     "score": 0.229,
+     "rationale": "intensidad p74 (objetivo 60), brillo p76, 144 BPM, 1941 Hz de centroide, termina en fade-out. cierre triunfal (puede terminar en fade-out)."
+    },
+    {
+     "trackId": "021e2fe1c6b4deec50a2402c57a9c3ac8134751a5ad0f1c587f3ac5fb93a1f37",
+     "slug": "jrpg-end-dungeon",
+     "score": 0.152,
+     "rationale": "intensidad p88 (objetivo 60), brillo p83, 117 BPM, 2170 Hz de centroide, termina en fade-out. cierre triunfal (puede terminar en fade-out)."
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "slot": "defeat",
+   "mode": "defeat",
+   "arena": null,
+   "candidates": [
+    {
+     "trackId": "c8c1b2b5bad66d2951cc366ad3337a67882a769b1c3057b2791fa2085ae4d09e",
+     "slug": "factory-ambiance",
+     "score": 0.214,
+     "rationale": "intensidad p22 (objetivo 20), brillo p8, 108 BPM, 499 Hz de centroide, termina en fade-out. cierre grave (puede terminar en fade-out)."
+    },
+    {
+     "trackId": "103a7032a49be7e8399c5cb771f7759eac9ac1a0d2bf227f41fff42ad8d78194",
+     "slug": "the-field-of-dreams",
+     "score": 0.153,
+     "rationale": "intensidad p23 (objetivo 20), brillo p46, 144 BPM, 1448 Hz de centroide, termina en fade-out. cierre grave (puede terminar en fade-out)."
+    }
+   ],
+   "status": "proposed"
+  }
+ ]
+}

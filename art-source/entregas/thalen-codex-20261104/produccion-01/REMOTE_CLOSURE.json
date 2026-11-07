@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "component": "B100-thalen-body-codex",
+  "state": "EN_CORRECCION",
+  "approval": "FIX_NOT_APPROVED",
+  "integration": "NO_INTEGRAR",
+  "baseMain": "54aa936fa254112044e29493179893dd0f8694d6",
+  "productionCommit": "73c471928261c04620681c3665471b08535c9b52",
+  "productionTree": "7817eb129316dd2a5b68985f78dd12adad7cbb92",
+  "branch": "art/production-checkpoint-20261103",
+  "pullRequest": 268,
+  "pullRequestUrl": "https://github.com/Fondal-Studios/La-Horda/pull/268",
+  "remoteEvidence": {
+    "files": 16,
+    "sourceBytes": 5792002,
+    "manifestSha256": "c40716eb459d7dba96c2834fb23d247e6d158c41941942b65e8c5bceef1c9c52"
+  },
+  "newTests": [
+    "36/36 non-empty",
+    "binary alpha 0/255",
+    "0 external edge alpha pixels",
+    "deterministic packer output"
+  ],
+  "historicalTests": [],
+  "notRun": [
+    "real consumer",
+    "gameplay before/after",
+    "skins",
+    "desktop/mobile",
+    "multiplayer",
+    "performance",
+    "Art Gate",
+    "exact-head CI"
+  ],
+  "blockingFindings": [
+    "attack_side must be strict profile",
+    "final chroma-edge and continuity review pending",
+    "36-frame consumer/fallback not implemented"
+  ],
+  "nextAction": "Correct side direction and grouped continuity in the saved sources; repack; then connect locally with legacy fallback and run gameplay gates before separating any integrable component.",
+  "publication": "NOT_APPLICABLE_SOURCE_ONLY"
+}

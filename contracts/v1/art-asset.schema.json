@@ -1,0 +1,36 @@
+{
+  "$id": "fondal/la-horda/ArtAsset/1.0.0",
+  "title": "ArtAsset",
+  "description": "Entrega de la fábrica artística / de UI: un archivo de arte con su procedencia y el resultado de sus puertas de calidad.",
+  "type": "object",
+  "required": ["contract", "version", "id", "kind", "path", "format", "width", "height", "sha256", "source", "gates"],
+  "additionalProperties": false,
+  "properties": {
+    "contract": { "const": "ArtAsset" },
+    "version": { "type": "string", "pattern": "^1\\.\\d+\\.\\d+$" },
+    "id": { "type": "string", "pattern": "^[a-z0-9_./-]{1,120}$" },
+    "kind": { "enum": ["sprite_sheet", "atlas", "icon", "ui_panel", "portrait", "vfx_texture", "arena_background"] },
+    "path": { "type": "string", "pattern": "^assets/[A-Za-z0-9_./-]{1,200}$" },
+    "format": { "enum": ["png", "webp", "jpg"] },
+    "width": { "type": "integer", "minimum": 1, "maximum": 8192 },
+    "height": { "type": "integer", "minimum": 1, "maximum": 8192 },
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "source": { "enum": ["authored", "ai_assisted", "procedural"] },
+    "gates": {
+      "type": "object",
+      "required": ["pixelDensity"],
+      "additionalProperties": false,
+      "properties": {
+        "pixelDensity": { "enum": ["pass", "exception", "fail", "not_applicable"] },
+        "styleGate": { "enum": ["pass", "fail", "not_run"] },
+        "emojiLint": { "enum": ["pass", "fail", "not_run"] }
+      }
+    },
+    "exception": {
+      "type": "object",
+      "required": ["reason"],
+      "additionalProperties": false,
+      "properties": { "reason": { "type": "string", "maxLength": 400 }, "signedBy": { "type": "string", "maxLength": 64 } }
+    }
+  }
+}
