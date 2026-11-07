@@ -1,0 +1,134 @@
+{
+ "guardian": "vhal",
+ "title": "Vhal, el Astrónomo",
+ "palette": [
+  "#0e1033",
+  "#3a44b0",
+  "#6f7cf2",
+  "#d9e1ff",
+  "#ffffff"
+ ],
+ "abilities": [
+  {
+   "id": "nova",
+   "kind": "ring",
+   "radius": 70,
+   "frames": 10,
+   "glyph": "star",
+   "baseline": "vh_nova",
+   "replaces": "vh_nova",
+   "params": {
+    "rim": 1,
+    "fill": 0.06,
+    "ticks": 4,
+    "tick_len": 0.12,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.3,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.3,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 1,
+    "motif_n": 6,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 1,
+    "core_density": 0.5
+   },
+   "motif": "bolt",
+   "_dir": {
+    "fill": -1,
+    "ticks": -1,
+    "tick_len": -1,
+    "rim": -1,
+    "sparks": -1,
+    "deco": 1,
+    "motif_n": 1
+   }
+  },
+  {
+   "id": "well",
+   "kind": "ring",
+   "radius": 130,
+   "frames": 10,
+   "glyph": "star",
+   "baseline": "vh_well",
+   "replaces": "vh_well",
+   "params": {},
+   "motif": "spiral"
+  },
+  {
+   "id": "orbit",
+   "kind": "ring",
+   "radius": 60,
+   "frames": 10,
+   "glyph": "star",
+   "baseline": "vh_ring",
+   "replaces": "vh_ring",
+   "params": {
+    "rim": 1,
+    "fill": 0.0,
+    "ticks": 0,
+    "tick_len": 0.08,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.30000000000000004,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.32,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 1,
+    "motif_n": 10,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 0,
+    "core_density": 0.5
+   },
+   "motif": "spiral",
+   "_dir": {
+    "fill": -1,
+    "ticks": -1,
+    "tick_len": -1,
+    "rim": -1,
+    "sparks": -1,
+    "deco": 1,
+    "motif_n": 1
+   }
+  },
+  {
+   "id": "collapse",
+   "kind": "ring",
+   "radius": 190,
+   "frames": 10,
+   "glyph": "star",
+   "baseline": "vh_collapse",
+   "replaces": "vh_collapse",
+   "params": {},
+   "motif": "bolt"
+  },
+  {
+   "id": "star_bolt",
+   "kind": "beam",
+   "tile": [
+    20,
+    18
+   ],
+   "frames": 8,
+   "baseline_beam": "vh_bolt",
+   "replaces": "vh_bolt",
+   "params": {
+    "wave": 3
+   }
+  }
+ ],
+ "codex": "vhal"
+}

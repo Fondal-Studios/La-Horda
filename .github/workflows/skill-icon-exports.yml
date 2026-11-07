@@ -13,7 +13,7 @@ permissions:
   contents: read
 jobs:
   exact-hud-exports:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     env:
       NODE_PATH: /tmp/horda-icons/node_modules

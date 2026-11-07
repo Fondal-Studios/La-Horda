@@ -64,6 +64,7 @@ function liveCommand(s,u,op,b,now){
  }
  if(op==='run.start'){
   if(!ARENAS.includes(b.arena)&&!['divina','coliseum','crystal_wars'].includes(b.arena))fail('BAD_ARENA');
+  if(process.env.BETA_PUBLIC==='1'&&['divina','coliseum','crystal_wars'].includes(b.arena))fail('MODE_NOT_IN_BETA',403);   // beta pública: solo Campaña y Horda Infinita (el bloqueo de cliente no basta)
   const tax=require('./entitlements').taxonomy();if(!tax.ids.includes(b.champion))fail('CHAMPION_LOCKED',403);
   if(!a.unlocked?.length&&tax.meta(b.champion).starterEligible&&tax.meta(b.champion).releaseState==='RELEASED'){a.unlocked=[b.champion];a.starter=b.champion;}
   if(!a.unlocked?.includes(b.champion))fail('CHAMPION_LOCKED',403);
@@ -83,7 +84,7 @@ function liveCommand(s,u,op,b,now){
    const cap=Math.min(120,Math.floor(elapsed/20000));if(!big&&(r.lootCount||0)>=cap)return {items:[]};
    if(!big)r.lootCount=(r.lootCount||0)+1;const item=rollGround(s,r,id,b.rank,b.build===true);if(!item)return {items:[]};s.items[item.uid]=item;unlock(s,id);const automatic=autoLoot(s,id);return {items:[item],automatic};
   }
-  const round=int(b.round||1,1,400);if(round<r.round||round>Math.floor(elapsed/10000)+2)fail('IMPLAUSIBLE_PROGRESS',422);
+  const round=int(b.round||1,1,400);if(round<r.round||round>Math.floor(elapsed/20000)+2)fail('IMPLAUSIBLE_PROGRESS',422);
   if(op==='run.pulse'){if(now-r.last<5000)return {ok:true};r.last=now;r.round=round;r.pulses++;return {ok:true};}
   const duration=int(b.durationMs,0,6*3600000);if(duration>elapsed+5000||duration>=10000&&r.pulses<1)fail('IMPLAUSIBLE_DURATION',422);
   const win=b.victory===true;if(win&&(duration<120000||r.pulses<3))fail('IMPLAUSIBLE_VICTORY',422);
@@ -110,12 +111,13 @@ function liveCommand(s,u,op,b,now){
   }
   unlock(s,id);const automatic=autoLoot(s,id);if(extraMaterials){a.materials=Math.min(1e9,a.materials+extraMaterials);materials+=extraMaterials;}
   r.done=true;r.round=round;
+  r.xpInfo={victory:win,capped,pulses:r.pulses,survived:r.mode==='endless'?int(b.survived!==undefined?b.survived:Math.max(0,round-1),0,round):0};   // lo que el servidor VALIDÓ: el pase lee solo esto, nunca los args del request
   let ranking=null;
   if(r.mode==='endless'){
    const meta=require('./entitlements').taxonomy().meta(r.champion);if(meta.competitiveAllowed&&meta.releaseState==='RELEASED'){
-    const score=int(b.score||0,0,2e9),max=Math.ceil((1+.1*(round-1))*1.5*(28000*capped/60000+4000*round)+225*round*(round+1)/2);
+    const sRound=int(b.survived!==undefined?b.survived:Math.max(0,round-1),0,round),score=int((b.survived!==undefined&&b.survivedScore!==undefined?b.survivedScore:b.score)||0,0,2e9),max=Math.ceil((1+.1*(sRound-1))*1.5*(28000*capped/60000+4000*sRound)+225*sRound*(sRound+1)/2);
     if(score>max)fail('IMPLAUSIBLE_SCORE',422);
-    const season=s.seasons[r.month];if(season&&!season.closed&&now<season.end){const row={userId:id,name:u.name||u.user,guardian:r.champion,score,round,durationMs:capped,at:now};const old=season.results.find(x=>x.userId===id);if(!old||compare(row,old)<0){season.results=season.results.filter(x=>x.userId!==id);season.results.push(row);}season.results.sort(compare);ranking={rank:season.results.findIndex(x=>x.userId===id)+1,total:season.results.length};}
+    const season=s.seasons[r.month];if(season&&!season.closed&&now<season.end){if(sRound<1)return (r.result={ok:true,gold,materials,items:loot,automatic,ranking:null});const row={userId:id,name:u.name||u.user,guardian:r.champion,score,round:sRound,durationMs:capped,at:now};const old=season.results.find(x=>x.userId===id);if(!old||compare(row,old)<0){season.results=season.results.filter(x=>x.userId!==id);season.results.push(row);}season.results.sort(compare);ranking={rank:season.results.findIndex(x=>x.userId===id)+1,total:season.results.length};}
    }
   }
   r.result={ok:true,gold,materials,items:loot,automatic,ranking};return r.result;
@@ -172,7 +174,7 @@ function liveCommand(s,u,op,b,now){
  }
  return undefined;
 }
-function compare(a,b){return b.score-a.score||b.round-a.round||a.durationMs-b.durationMs||a.at-b.at||String(a.userId).localeCompare(String(b.userId));}
+function compare(a,b){return b.round-a.round||b.score-a.score||a.durationMs-b.durationMs||a.at-b.at||String(a.userId).localeCompare(String(b.userId));}
 function seasons(s,now){
  prepare(s);
  for(const season of Object.values(s.seasons))if(!season.closed&&now>=season.end){

@@ -22,7 +22,26 @@ const FLOOR_THEME = {
 };
 let floorPatterns = {};
 const FLOOR_DIM = {bosque:0.14, hielo:0.2, acuatica:0.14, laberinto:0.1, infernal:0.06, divina:0.1};
+// PISOS PINTADOS (Runway + Códice, ver docs/beta-release/ART_CREDITS.md): 1 px nativo = 2 u de mundo. Se precargan al abrir el juego; si no
+// cargaron al armar el piso (o fallan), se usa el piso procedural de siempre. `dim` = escalón de valor para que el piso sea fondo (figura/fondo).
+const FLOOR_PAINTED = {
+  laberinto: { src:"assets/vfx/laberinto/tex_piso.png", dim:0.18 },
+  infernal:  { src:"assets/vfx/infernal/tex_piso.png",  dim:0.42 },
+  acuatica:  { src:"assets/vfx/acuatica/tex_piso.png",  dim:0.20 }
+};
+for(const k in FLOOR_PAINTED){ const e = FLOOR_PAINTED[k]; e.img = new Image(); e.ok = false; e.img.onload = ()=>{ e.ok = true; }; e.img.src = e.src; }
+function _floorPaintedPattern(){
+  const e = FLOOR_PAINTED[currentArena]; if(!e || !e.ok) return null;
+  const t = document.createElement("canvas"); t.width = e.img.width; t.height = e.img.height;
+  const g = t.getContext("2d"); g.imageSmoothingEnabled = false; g.drawImage(e.img, 0, 0);
+  g.fillStyle = `rgba(0,0,0,${e.dim})`; g.fillRect(0, 0, t.width, t.height);
+  const p = ctx.createPattern(t, "repeat");
+  if(p && p.setTransform && typeof DOMMatrix !== "undefined") p.setTransform(new DOMMatrix().scale(2));
+  return p;
+}
 function buildFloorTile(){
+  const _pp = _floorPaintedPattern();
+  if(_pp){ floorPatterns[currentArena] = _pp; floorPattern = _pp; return; }
   const theme = FLOOR_THEME[currentArena] || FLOOR_THEME.infernal;
   const S = 160;
   const t = document.createElement("canvas"); t.width = S; t.height = S;

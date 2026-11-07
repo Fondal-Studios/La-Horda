@@ -48,10 +48,12 @@ function magoCastReleaseFx(eventName, h){
 // Dibuja al Mago usando el atlas real (vía el motor genérico de animación); misma firma que
 // antes, así que drawHero/la previsualización de guardianes no necesitan cambiar nada.
 function drawMagoAtlas(h, drawScale, alpha){
+  if(drawChampPack("mago_codex", h, drawScale, alpha)) return true;
   return drawAnimAtlas(MAGO_ANIM_ATLAS, magoResolveClip(h), h, drawScale, alpha, (ev)=>magoCastReleaseFx(ev,h));
 }
 // Cuadro final de la animación de muerte (mago caído, ya boca abajo en el propio arte)
 function drawMagoFallen(h, alpha){
+  if(drawChampPack("mago_codex", Object.assign({}, h, {_codexSet:"death_down", _codexT:420}), 2.0, alpha)) return true;
   if(!MAGO_IMG_READY) return false;
   const clip = MAGO_ANIM_DEF.clips.death;
   drawAnimFrame(MAGO_ANIM_ATLAS, clip, clip.frames.length-1, h.x, h.y, 2.0, h.fx < -0.12, alpha);
@@ -262,6 +264,7 @@ function champPackDir(h){
   return dir;
 }
 function champPackScale(P, h, drawScale){
+  if(P.presentationHeight) return P.presentationHeight*(drawScale/2)/(P.refH||1);
   return h.radius*2.7*(drawScale/(h.scale||2.0))/(P.refH || P.sets.idle_down[0].height);
 }
 // Set para estado+dirección. Los sets ya vienen completos desde champPackNormalize (izquierda propia
@@ -342,7 +345,8 @@ function drawChampPackDeath(h){
   const key = typeof setSkinPackKey==="function" ? setSkinPackKey(body, base) : base;
   // Supplemental base-only clip: skins/cromas keep their own appearance and fallback.
   const supplement = key === "libertador" ? CHAMP_PACK.libertador_death : key === "tanque" ? CHAMP_PACK.tanque_death : key === "guerrero" ? CHAMP_PACK.guerrero_death : key === "myla" ? CHAMP_PACK.myla_death : null;
-  const P = supplement && supplement.ready ? supplement : CHAMP_PACK[key];
+  const codex = typeof codexChampionPack === "function" ? codexChampionPack(h) : null;
+  const P = codex || (supplement && supplement.ready ? supplement : CHAMP_PACK[key]);
   if(!P || !P.ready) return false;
   if(!h._deadAt){ h._deadAt = animNow; vfxBurst(h.x, h.y-20, 12, "blood", 120, 420, 3, 2, -30, 0); }
   const pick = champPackSet(P, "death", h._pdir || "down", h);

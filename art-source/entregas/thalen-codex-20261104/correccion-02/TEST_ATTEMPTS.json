@@ -1,0 +1,10 @@
+{
+  "new": [
+    {"name": "hybrid-row-composition", "result": "PASS", "rows": ["original", "strict-profile", "original"]},
+    {"name": "selected-row-pixel-equality", "result": "PASS", "changedPixels": [0, 0, 0]},
+    {"name": "pack-thalen-codex-correction-02", "result": "PASS_TECHNICAL", "frames": 36, "nonEmpty": 36, "alphaValues": [0, 255], "edgeAlphaPixels": 0},
+    {"name": "preview-review", "result": "PASS_SOURCE_CANDIDATE", "limits": "No real renderer or gameplay"}
+  ],
+  "historical": ["produccion-01 technical PASS", "correccion-01 profile PASS and whole-sheet preservation FAIL"],
+  "notRun": ["consumer", "gameplay", "skins", "desktop/mobile", "relay", "performance", "Art Gate", "CI connected component"]
+}

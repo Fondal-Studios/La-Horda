@@ -1,0 +1,156 @@
+{
+ "guardian": "veyra",
+ "passed": [
+  "slash",
+  "dash",
+  "lance"
+ ],
+ "escalated": [],
+ "keep_current": [
+  "wound",
+  "pact",
+  "pact_idle",
+  "dash_end"
+ ],
+ "state": {
+  "slash": {
+   "status": "PASS",
+   "rounds": 2,
+   "history": [
+    {
+     "round": 1,
+     "score": 94.7,
+     "status": "FAIL",
+     "improvement": 15.0,
+     "reasons": [
+      "regresión de cobertura legible frente al arte actual (0.59 < 1.00)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 99.7,
+     "status": "PASS",
+     "improvement": 20.0,
+     "reasons": []
+    }
+   ]
+  },
+  "wound": {
+   "status": "KEEP_CURRENT",
+   "rounds": 0,
+   "history": [
+    {
+     "round": 0,
+     "score": null,
+     "status": "KEEP_CURRENT",
+     "improvement": null,
+     "reasons": [
+      "ficha: keep"
+     ]
+    }
+   ]
+  },
+  "pact": {
+   "status": "KEEP_CURRENT",
+   "rounds": 0,
+   "history": [
+    {
+     "round": 0,
+     "score": null,
+     "status": "KEEP_CURRENT",
+     "improvement": null,
+     "reasons": [
+      "el arte actual no llega al radio (0.65): es un ícono/sello con forma propia, no un decal de área"
+     ]
+    }
+   ]
+  },
+  "pact_idle": {
+   "status": "KEEP_CURRENT",
+   "rounds": 0,
+   "history": [
+    {
+     "round": 0,
+     "score": null,
+     "status": "KEEP_CURRENT",
+     "improvement": null,
+     "reasons": [
+      "el arte actual no llega al radio (0.57): es un ícono/sello con forma propia, no un decal de área"
+     ]
+    }
+   ]
+  },
+  "dash_end": {
+   "status": "KEEP_CURRENT",
+   "rounds": 0,
+   "history": [
+    {
+     "round": 0,
+     "score": null,
+     "status": "KEEP_CURRENT",
+     "improvement": null,
+     "reasons": [
+      "el arte actual no llega al radio (0.24): es un ícono/sello con forma propia, no un decal de área"
+     ]
+    }
+   ]
+  },
+  "dash": {
+   "status": "PASS",
+   "rounds": 2,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.0,
+     "status": "FAIL",
+     "improvement": 0.9,
+     "reasons": [
+      "mejora +0.9 < +3.0 sobre el arte actual (94.1)",
+      "silueta más plana que el arte actual: irregularidad 0.00 < 70 % de 0.06"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 98.0,
+     "status": "PASS",
+     "improvement": 3.9,
+     "reasons": []
+    }
+   ]
+  },
+  "lance": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.0,
+     "status": "PASS",
+     "improvement": 11.4,
+     "reasons": []
+    }
+   ]
+  }
+ },
+ "baseline": {
+  "slash": 79.7,
+  "wound": 74.7,
+  "pact": 81.8,
+  "pact_idle": 80.6,
+  "dash_end": 63.4,
+  "dash": 94.1,
+  "lance": 83.6
+ },
+ "log": [
+  "ronda 1: slash FAIL 94.7 — regresión de cobertura legible frente al arte actual (0.59 < 1.00)",
+  "ronda 1: dash FAIL 95.0 — mejora +0.9 < +3.0 sobre el arte actual (94.1); silueta más plana que el arte actual: irregularidad 0.00 < 70 % de 0.06",
+  "ronda 1: lance PASS 95.0 (arte actual 83.6, +11.4)",
+  "ronda 2: slash PASS 99.7 (arte actual 79.7, +20.0)",
+  "ronda 2: dash PASS 98.0 (arte actual 94.1, +3.9)",
+  "arquitecto: integradas ['slash', 'dash', 'lance']; humo OK: SMOKE OK veyra: slash,dash,lance"
+ ],
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['slash', 'dash', 'lance']; humo OK: SMOKE OK veyra: slash,dash,lance"
+ }
+}

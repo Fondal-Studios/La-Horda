@@ -117,6 +117,7 @@ function drawAcuaAmbience(){
 if(typeof PIXRIG_ATLAS!=="undefined"){
   for(const k of ["tiburon_joven", "tiburon_blanco"]){
     const A = PIXRIG_ATLAS[k]; if(!A) continue;
+    if(typeof ENEMY_RUNWAY_SHEETS!=="undefined" && ENEMY_RUNWAY_SHEETS[k]) continue; // hoja completa de Runway (js/assets/enemy-runway-sheets.js) manda sobre el atlas pixrig
     enemyAtlasPackLoad(k, A.src, A.meta);
     ENEMY_ATLAS_PACK[k].hMul = A.meta.hMul;
   }

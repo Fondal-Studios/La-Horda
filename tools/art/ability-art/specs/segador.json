@@ -1,0 +1,81 @@
+{
+ "guardian": "segador",
+ "codex": "segador",
+ "title": "segador",
+ "palette": [
+  "#2a0a0e",
+  "#7a1620",
+  "#c62828",
+  "#ff8a7a",
+  "#ffe9d6"
+ ],
+ "abilities": [
+  {
+   "id": "slash",
+   "kind": "sector",
+   "radius": 140,
+   "frames": 10,
+   "glyph": "drop",
+   "baseline": "sg_slash",
+   "replaces": "sg_slash",
+   "params": {},
+   "motif": "bolt",
+   "half": 0.85
+  },
+  {
+   "id": "roar",
+   "kind": "ring",
+   "radius": 140,
+   "frames": 9,
+   "glyph": "drop",
+   "baseline": "sg_roar",
+   "replaces": "sg_roar",
+   "params": {},
+   "motif": "bolt"
+  },
+  {
+   "id": "flare",
+   "kind": "ring",
+   "radius": 140,
+   "frames": 9,
+   "glyph": "drop",
+   "baseline": "sg_flare",
+   "replaces": "sg_flare",
+   "params": {},
+   "motif": "bolt"
+  },
+  {
+   "id": "berserk",
+   "kind": "ring",
+   "radius": 140,
+   "frames": 10,
+   "glyph": "drop",
+   "baseline": "sg_berserk",
+   "replaces": "sg_berserk",
+   "params": {},
+   "motif": "bolt"
+  },
+  {
+   "id": "armor_idle",
+   "kind": "idle",
+   "radius": 120,
+   "frames": 12,
+   "glyph": "drop",
+   "baseline": "sg_armor_idle",
+   "replaces": "sg_armor_idle",
+   "params": {},
+   "motif": "bolt"
+  },
+  {
+   "id": "berserk_idle",
+   "kind": "idle",
+   "radius": 120,
+   "frames": 12,
+   "glyph": "drop",
+   "baseline": "sg_berserk_idle",
+   "replaces": "sg_berserk_idle",
+   "params": {},
+   "motif": "bolt"
+  }
+ ]
+}

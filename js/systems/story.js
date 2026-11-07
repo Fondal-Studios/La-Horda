@@ -346,7 +346,7 @@ function storyCineShow(){
   const el = storyCineEl(), S = STORY_CINE.list[STORY_CINE.i]; if(!S) return;
   STORY_CINE.t0 = performance.now();
   const bg = el.querySelector(".sc-bg");
-  const art = S.art && S.art!=="black" && S.art!=="crystals" ? `url('assets/ui/codex/arenas/${S.art}.jpg')` : "none";
+  const art = S.art && S.art!=="black" && S.art!=="crystals" ? `url('assets/ui/codex/arenas/${S.art}.png')` : "none";
   if(bg.dataset.art !== S.art){ bg.dataset.art = S.art || ""; bg.style.backgroundImage = art; bg.classList.remove("pan"); void bg.offsetWidth; bg.classList.add("pan"); }
   el.classList.toggle("final", !!S.final);
   el.querySelector(".sc-kicker").textContent = S.kicker || "";

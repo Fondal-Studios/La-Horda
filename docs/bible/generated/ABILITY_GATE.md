@@ -42,7 +42,10 @@ Categorías medidas en el motor: AREA, MULTIPLE, POTENCIA, CURA, CONTROL, MOVILI
 | bront | PASS | Placa Arrojada: AREA+MULTIPLE+CONTROL+INVOCA ◎ | Muro de Placas: AREA+MULTIPLE+CONTROL+INVOCA ◎ | Pulso del Cristal: AREA+MULTIPLE+POTENCIA+CONTROL | Ciudadela: AREA+MULTIPLE+POTENCIA+CURA+CONTROL+INVOCA |
 | oriel | PASS | Abrir Cicatriz: AREA+MULTIPLE+POTENCIA+CURA+CONTROL+MOVILIDAD+INVOCA ◎ | Eco de la Cicatriz: AREA+MULTIPLE+CURA+CONTROL | Paso entre Mundos: AREA+MULTIPLE+CONTROL+MOVILIDAD ◎ | La Gran Cicatriz: AREA+MULTIPLE+POTENCIA+CONTROL+INVOCA ◎ |
 | saelis | PASS | Abanico de Plumas: MULTIPLE+CONTROL+INVOCA ◎ | Ráfaga Ascendente: AREA+MULTIPLE+POTENCIA+CONTROL | Llamado del Plumaje: POTENCIA | Cielo de Plumas: AREA+MULTIPLE+POTENCIA+CONTROL+INVOCA ◎ |
-| solciju | PASS | Vino maldito: AREA+MULTIPLE+CONTROL ◎ | Barrica añeja: AREA+MULTIPLE ◎ | Brindis a solas: POTENCIA+CURA | Gran Reserva: AREA+MULTIPLE+POTENCIA+CONTROL ◎ |
+| ilsa | PASS | Postura de Réplica: POTENCIA | Estocada de Réplica: AREA+MULTIPLE+CONTROL+MOVILIDAD ◎ | Giro de Acero: AREA+MULTIPLE+CONTROL | Duelo de Mil Réplicas: AREA+MULTIPLE+POTENCIA+CONTROL |
+| vorn | PASS | Mudar: AREA+MULTIPLE+POTENCIA+CONTROL | Zarpa: AREA+MULTIPLE+CONTROL ◎ | Instinto: POTENCIA+CURA | Bestia Primordial: AREA+MULTIPLE+POTENCIA+CURA+CONTROL+INVOCA |
+| kora | PASS | Arremetida de Ariete: AREA+MULTIPLE+CONTROL+MOVILIDAD ◎ | Pisotón de Impulso: AREA+MULTIPLE+CONTROL | Cabeza Gacha: POTENCIA+CURA | Estampida: AREA+MULTIPLE+POTENCIA+CONTROL+MOVILIDAD ◎ |
+| solciju | PASS | Vino maldito: AREA+MULTIPLE+CONTROL ◎ | Barrica añeja: AREA+MULTIPLE+CONTROL ◎ | Brindis a solas: POTENCIA+CURA | Gran Reserva: AREA+MULTIPLE+POTENCIA+CONTROL ◎ |
 | veyra | PASS | Abrir la herida: AREA+MULTIPLE+CONTROL ◎ | Paso escarlata: AREA+MULTIPLE+CONTROL+MOVILIDAD ◎ | Pacto de dolor: POTENCIA | La última herida: AREA+MULTIPLE+CURA+CONTROL |
 | brakk | PASS | Muro de asedio: AREA+MULTIPLE+POTENCIA+CONTROL ◎ | Torreta de clavos: MULTIPLE+POTENCIA ◎ | Apuntalar: POTENCIA | Demolición final: AREA+MULTIPLE+CURA+CONTROL |
 | morveth | PASS | Huerto maldito: AREA+MULTIPLE ◎ | Exhalación de peste: AREA+MULTIPLE+CONTROL ◎ | Simbiosis: POTENCIA+CURA | Jardín de la peste: AREA+MULTIPLE+POTENCIA+CONTROL ◎ |

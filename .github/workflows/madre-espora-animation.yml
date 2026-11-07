@@ -12,7 +12,7 @@ permissions:
   contents: read
 jobs:
   mother-animation:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 25 # Expanded ROI oracle, spell matrix and continuous encounter evidence.
     steps:
       - uses: actions/checkout@v4

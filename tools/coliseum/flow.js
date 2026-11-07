@@ -14,8 +14,9 @@ const FIX={tut:{training:1},starterChosen:true,starterGiftV1:true,starterSkin:'v
  for(const [w,h] of [[844,390],[667,375]]){
   const ctx=await b.newContext({viewport:{width:w,height:h},hasTouch:true});await ctx.addInitScript(f=>{try{localStorage.setItem('laHordaSave_v1',JSON.stringify(f));}catch(e){}},FIX);
   const p=await ctx.newPage(),errs=[];p.on('pageerror',e=>errs.push(e.message));if(process.env.THROTTLE){const cdp=await ctx.newCDPSession(p);await cdp.send('Emulation.setCPUThrottlingRate',{rate:Number(process.env.THROTTLE)});}
-  await p.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`,{timeout:120000});await p.waitForFunction(()=>typeof setState==='function'&&typeof renderMainMenu==='function'&&typeof colStart==='function',null,{timeout:60000});
+  await p.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`,{timeout:120000});await p.waitForFunction(()=>typeof setState==='function'&&typeof renderMainMenu==='function'&&typeof colStart==='function',null,{timeout:60000});await p.evaluate(()=>{for(const k of Object.keys(CLASSES)){save.champions[k]||=mkChampion(false);save.champions[k].unlocked=true;}});
   await p.evaluate(()=>{save.tut=save.tut||{};save.tut.training=1;persistNow();setState('mainmenu');renderMainMenu();});
+  await p.waitForTimeout(1200);await p.evaluate(()=>persistNow()); // deja pasar la pasada de misiones (400 ms) que otorga logros ya ganados al entrar al menú
   const before=await p.evaluate(()=>{const o=JSON.parse(localStorage.getItem('laHordaSave_v1'));delete o.postgame;return JSON.stringify(o);});
   await p.evaluate(()=>document.getElementById('hub-coliseum-btn').scrollIntoView({block:'center'}));await p.click('#hub-coliseum-btn');
   await p.waitForSelector('#crystalwars-screen:not(.hidden) #practice');

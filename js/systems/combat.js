@@ -409,6 +409,7 @@ function damageHero(h, amount, src, portTransferred){
     else {
       h.alive = false;
       showBanner(`${h.cls.name} ha caído`);
+      if(typeof SampleBank!=="undefined") try{ SampleBank.voice(h, "allyDeath"); }catch(e){} // voz del aliado que cae (si está a la vista)
       for(let i=0;i<12;i++) particles.push({x:h.x,y:h.y, vx:(Math.random()-0.5)*160, vy:(Math.random()-0.5)*160, life:500, color:h.cls.color});
       if(h.isBossChamp) vfxOnDeath(h); // jefe divino (entidad tipo enemigo): muerte con su sprite
     }

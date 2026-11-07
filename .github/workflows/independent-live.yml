@@ -8,7 +8,7 @@ permissions:
   contents: read
 jobs:
   relay:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 8
     env:
       RELAY: wss://la-horda-nano-relay.onrender.com

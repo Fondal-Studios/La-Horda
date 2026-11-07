@@ -1,0 +1,131 @@
+{
+ "kind": "beam",
+ "score": 95.0,
+ "points": {
+  "alpha": 5.0,
+  "palette": 8.0,
+  "hygiene": 7.0,
+  "edge": 15.0,
+  "coverage": 12.0,
+  "contrast": 8.0,
+  "clear_floor": 5.0,
+  "motion": 15.0,
+  "richness": 15.0,
+  "identity": 5.0
+ },
+ "metrics": {
+  "peak_idx": 2,
+  "alpha_binary": 1.0,
+  "palette_adherence": 1.0,
+  "colors": 4,
+  "isolated": 0.0,
+  "edge_outline": 1.0,
+  "edge_reach": 1.0,
+  "coverage": 1.0,
+  "interior": 0.0,
+  "jag": 0.0,
+  "interior_detail": 0.3,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 15.563254731106335,
+  "peak_pos": 0.2857142857142857,
+  "tail": 0.125,
+  "motion_mean": 0.25,
+  "unique_frames": 1.0,
+  "tones": 4,
+  "highlight_share": 0.1484375,
+  "core_fill": 1.0,
+  "detail_mass": 0.5,
+  "min_sig_dist": 0.0
+ },
+ "hard_fails": [],
+ "ops": [
+  {
+   "knob": "deco",
+   "why": "se parece demasiado a otra habilidad del guardián (distancia 0.00): cambiar el tipo de marca",
+   "add": 1
+  },
+  {
+   "knob": "inner_ring",
+   "why": "segundo anillo para distinguirla",
+   "set": 1
+  },
+  {
+   "knob": "rim",
+   "why": "no supera al arte actual: ganar presencia en el borde",
+   "add": 1
+  },
+  {
+   "knob": "sparks",
+   "why": "no supera al arte actual: más destellos de luz",
+   "add": 2
+  },
+  {
+   "knob": "wave",
+   "why": "el arte actual zigzaguea (relámpago, hilo, tinta): dar forma irregular al rayo",
+   "add": 1
+  },
+  {
+   "knob": "wave_amp",
+   "why": "mayor amplitud de la ondulación",
+   "add": 1
+  }
+ ],
+ "criteria": {
+  "alpha": 1.0,
+  "palette": 1.0,
+  "hygiene": 1.0,
+  "edge": 1.0,
+  "coverage": 1.0,
+  "contrast": 1.0,
+  "clear_floor": 1.0,
+  "motion": 1.0,
+  "richness": 1.0,
+  "identity": 0.5
+ },
+ "baseline_total": 94.1,
+ "baseline_criteria": {
+  "alpha": 1.0,
+  "palette": 1.0,
+  "hygiene": 1.0,
+  "edge": 1.0,
+  "coverage": 1.0,
+  "contrast": 1.0,
+  "clear_floor": 1.0,
+  "motion": 0.758,
+  "richness": 0.85,
+  "identity": 1.0
+ },
+ "baseline_metrics": {
+  "peak_idx": 2,
+  "alpha_binary": 1.0,
+  "palette_adherence": 1.0,
+  "colors": 4,
+  "isolated": 0.0,
+  "edge_outline": 1.0,
+  "edge_reach": 1.0,
+  "coverage": 0.5989583333333334,
+  "interior": 0.0,
+  "jag": 0.0619679336590466,
+  "interior_detail": 0.3,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 14.03426741022569,
+  "peak_pos": 0.2857142857142857,
+  "tail": 0.6956521739130435,
+  "motion_mean": 0.052827380952380945,
+  "unique_frames": 0.875,
+  "tones": 3,
+  "highlight_share": 0.0782608695652174,
+  "core_fill": 0.5989583333333334,
+  "detail_mass": 0.5,
+  "min_sig_dist": 1.0
+ },
+ "improvement": 0.9,
+ "reasons": [
+  "mejora +0.9 < +3.0 sobre el arte actual (94.1)",
+  "silueta más plana que el arte actual: irregularidad 0.00 < 70 % de 0.06"
+ ],
+ "status": "FAIL",
+ "keep_current": false
+}

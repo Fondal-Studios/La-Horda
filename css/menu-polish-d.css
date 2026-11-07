@@ -1,0 +1,189 @@
+/* css/menu-polish-d.css — pulido de menús (re-evaluación de diseño 2): Opciones centradas con pista de scroll, interruptores
+   pixel de la Pausa, cuerpo visual para Modos / Arenas / Pase, cabecera de Victoria con tildes, ligadura «fi» rota,
+   barra «Reliquias Únicas» y mínimos de 12 px en la Tienda. Solo presentación: no toca joystick, cámara, balance ni economía.
+   Arte: assets/ui/menu-stone-64.png (tools/art/menu/make_menu_tile.py) y assets/ui/menu-icons-16.png (tools/art/menu/make_menu_icons.py).
+   Carga después de menu-polish-c.css. */
+
+/* ---- 0. Iconos pixel de estado/cabecera (tira de 12 de 16x16): --i = posición ----
+   0 candado · 1 tilde · 2 estrella · 3 espadas · 4 torre · 5 mundo · 6 regalo · 7 corona · 8 llave · 9 copa · 10 mochila · 11 engranaje */
+.mpd-ico, .mpd-ico-before::before, .mpd-ico-after::after{
+  --s:2; --i:0; content:""; display:inline-block; flex:none; width:calc(16px*var(--s)); height:calc(16px*var(--s));
+  background:url("../assets/ui/menu-icons-16.png") calc(-16px*var(--i)*var(--s)) 0 / calc(192px*var(--s)) calc(16px*var(--s)) no-repeat;
+  image-rendering:pixelated; vertical-align:middle;
+}
+
+/* ---- 1. Ligadura «fi» rota de la fuente retro ("Élñcas", "Calificación", "Lo-ñ"): sin ligaduras en todo el juego ---- */
+*, *::before, *::after{ font-variant-ligatures:none; font-feature-settings:"liga" 0, "clig" 0, "dlig" 0; }
+
+/* ---- 2. OPCIONES: panel centrado, título y «Listo» fijos, cuerpo con scroll y pista de que hay más ---- */
+#hub-options.ui-modal{ align-items:center; justify-content:center; padding:max(12px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left)); }
+#hub-options .ui-modal-panel{
+  width:min(100%,620px); max-width:620px; margin:0 auto; max-height:100%; box-sizing:border-box;
+  scrollbar-width:thin; scrollbar-color:#ff7a2e #120a07;
+  box-shadow:inset 2px 2px 0 rgba(255,200,140,.14), 6px 6px 0 #000, 0 0 22px rgba(255,122,46,.22);
+}
+#hub-options .ui-modal-panel::-webkit-scrollbar{ width:10px; }
+#hub-options .ui-modal-panel::-webkit-scrollbar-track{ background:#120a07; }
+#hub-options .ui-modal-panel::-webkit-scrollbar-thumb{ background:#ff7a2e; border:2px solid #120a07; }
+/* botones que otros scripts agregan al contenedor (Game Master): fuera del flujo, no empujan el panel */
+#hub-options > .btn:not(.ui-modal-panel){ position:absolute; top:10px; right:10px; z-index:5; width:auto; }
+#hub-options .opt-economy-btn{ display:flex; width:100%; max-width:none; min-height:44px; margin:10px 0 0; font-size:14px; align-items:center; justify-content:center; gap:8px; }
+#hub-options .opt-economy-btn::before{ --s:1.5; --i:7; content:""; display:inline-block; width:24px; height:24px; background:url("../assets/ui/menu-icons-16.png") calc(-16px*7*1.5) 0 / 288px 24px no-repeat; image-rendering:pixelated; }
+/* etiquetas alineadas a la izquierda y controles en columna: Música / Estilo / Efectos ya no flotan en el medio */
+#hub-options label.opt-row{ display:grid; grid-template-columns:minmax(0,1fr) minmax(130px,50%); gap:10px; align-items:center; text-align:left; }
+#hub-options label.opt-row:has(> .pxi){ grid-template-columns:24px minmax(0,1fr) minmax(130px,50%); gap:8px 10px; }
+#hub-options label.opt-row input[type=range], #hub-options label.opt-row select, #hub-options label.opt-row input:not([type]){ width:100%; max-width:none; box-sizing:border-box; }
+/* pista de scroll: sombra naranja sobre «Listo» que se apaga al llegar al final + flecha pixel parpadeante */
+#hub-options #opt-close-btn::before{
+  content:""; position:absolute; left:0; right:0; top:-22px; height:22px; pointer-events:none;
+  background:linear-gradient(180deg, rgba(27,15,9,0), rgba(255,122,46,.38) 85%, rgba(255,122,46,.55));
+}
+#hub-options #opt-close-btn::after{
+  content:""; position:absolute; left:50%; top:-15px; margin-left:-7px; pointer-events:none; width:0; height:0;
+  border-left:7px solid transparent; border-right:7px solid transparent; border-top:8px solid #ffcf5c; filter:drop-shadow(0 2px 0 #000);
+  animation:mpdHint 1.1s steps(2,end) infinite;
+}
+@keyframes mpdHint{ 50%{ transform:translateY(3px); } }
+@supports (animation-timeline:scroll()){
+  @keyframes mpdEnd{ 0%,88%{ opacity:1; } 100%{ opacity:0; } }
+  #hub-options #opt-close-btn::before{ animation:mpdEnd linear both; animation-timeline:scroll(nearest block); }
+  #hub-options #opt-close-btn::after{ animation:mpdHint 1.1s steps(2,end) infinite, mpdEnd linear both; animation-timeline:auto, scroll(nearest block); }
+}
+body.reduce-motion #hub-options #opt-close-btn::after{ animation:none; }
+@media (prefers-reduced-motion:reduce){ #hub-options #opt-close-btn::after{ animation:none; } }
+/* móvil horizontal: más ancho, controles más compactos, y «Listo» fijo sin tapar el último ajuste */
+@media (max-height:520px){
+  #hub-options.ui-modal{ padding:6px max(8px,env(safe-area-inset-right)) 6px max(8px,env(safe-area-inset-left)); }
+  #hub-options .ui-modal-panel{ width:min(100%,780px); max-width:780px; scroll-padding-bottom:70px; }
+  #hub-options label.opt-row{ min-height:40px; }
+  #hub-options .opt-row .opt-sub{ font-size:12px; }
+}
+
+/* ---- 3. PAUSA y casillas: interruptor pixel «.ui-toggle» también con puntero táctil / pantallas bajas ----
+   (css/ui-factory/menus-touch.css pinta casillas cuadradas de 44 px en esas condiciones; acá se vuelven interruptor) */
+#pause-screen .pause-audio label input[type=checkbox].ui-toggle, #pause-screen input[type=checkbox].ui-toggle,
+.screen.screen label input[type=checkbox].ui-toggle{
+  -webkit-appearance:none; appearance:none; flex:none; position:relative; box-sizing:border-box; margin:0 0 0 auto; padding:0;
+  width:68px; min-width:68px; max-width:68px; height:44px; min-height:44px; background:#120a07; border:3px solid #6a3e1e; border-radius:0;
+  box-shadow:inset 2px 2px 0 #000, 2px 2px 0 #000;
+}
+#pause-screen input[type=checkbox].ui-toggle::after, .screen.screen label input[type=checkbox].ui-toggle::after{ content:none; display:none; }
+#pause-screen input[type=checkbox].ui-toggle::before, .screen.screen label input[type=checkbox].ui-toggle::before{
+  content:""; position:absolute; top:4px; left:4px; width:30px; height:30px; box-sizing:border-box; background:#b89a86; border:2px solid #000;
+  box-shadow:inset 2px 2px 0 rgba(255,255,255,.28); transition:transform .12s steps(3,end), background .12s;
+}
+#pause-screen input[type=checkbox].ui-toggle:checked, .screen.screen label input[type=checkbox].ui-toggle:checked{ background:#5a3212; border-color:#ffcf5c; box-shadow:inset 2px 2px 0 #000, 2px 2px 0 #000, 0 0 8px rgba(255,207,92,.35); }
+#pause-screen input[type=checkbox].ui-toggle:checked::before, .screen.screen label input[type=checkbox].ui-toggle:checked::before{ transform:translateX(24px); background:#ffcf5c; }
+#pause-screen input[type=checkbox].ui-toggle:focus-visible{ outline:2px solid #ffcf5c; outline-offset:2px; }
+body.reduce-motion #pause-screen input[type=checkbox].ui-toggle::before{ transition:none; }
+#pause-screen .pause-audio label:has(> .ui-toggle){ border-bottom:1px dashed rgba(255,190,110,.18); }
+
+/* ---- 4. MODOS: filas con borde, fondo de piedra pixel, cabecera con icono y estado vacío enmarcado ---- */
+#modeselect-screen .mode-cols{ align-items:start; }
+#modeselect-screen .mode-card{
+  --st:#ffcf5c; position:relative; padding-top:0; overflow:hidden;
+  background:
+    linear-gradient(var(--st),var(--st)) 5px 5px / 4px 4px no-repeat, linear-gradient(var(--st),var(--st)) calc(100% - 5px) 5px / 4px 4px no-repeat,
+    linear-gradient(var(--st),var(--st)) 5px calc(100% - 5px) / 4px 4px no-repeat, linear-gradient(var(--st),var(--st)) calc(100% - 5px) calc(100% - 5px) / 4px 4px no-repeat,
+    linear-gradient(160deg, rgba(40,22,11,.86), rgba(12,7,4,.93)),
+    url("../assets/ui/menu-stone-64.png") 0 0 / 64px 64px repeat;
+  image-rendering:pixelated; box-shadow:inset 0 0 0 2px rgba(255,170,90,.22), 4px 4px 0 #000;
+}
+#modeselect-screen .mode-card .mode-card-title{
+  margin:0 -18px 10px; padding:9px 18px 8px; display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+  background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.25)); border-bottom:2px solid #000; box-shadow:0 1px 0 rgba(255,170,90,.22);
+}
+#modeselect-screen .mode-quickplay{ --st:#ffe06a; } #modeselect-screen .mode-campaign{ --st:#ff9a4a; }
+#modeselect-screen .mode-card:hover:not(.mode-card-soon){ box-shadow:inset 0 0 0 2px rgba(255,207,92,.55), 4px 4px 0 #000; }
+#modeselect-screen .mode-card-desc{ font-size:1.05rem; color:#d8c4af; }
+#modeselect-screen .mode-card-note{ font-size:.95rem; }
+#modeselect-screen .mode-rooms-list{ min-height:72px; padding:6px; box-sizing:border-box; background:rgba(8,5,3,.72); border:2px dashed rgba(255,170,90,.32); }
+#modeselect-screen .mode-rooms-list:empty::before{ content:""; display:block; height:60px; margin:0 auto;
+  --s:2; width:32px; background:url("../assets/ui/menu-icons-16.png") calc(-16px*5*2) 0 / 384px 32px no-repeat; image-rendering:pixelated; height:32px; margin-top:14px; opacity:.5; }
+#modeselect-screen .ui-topbar-title::before, #arenaselect-screen .ui-topbar-title::before{ content:""; display:inline-block; margin-right:10px; vertical-align:-6px;
+  width:32px; height:32px; background:url("../assets/ui/menu-icons-16.png") calc(-16px*5*2) 0 / 384px 32px no-repeat; image-rendering:pixelated; }
+#arenaselect-screen .ui-topbar-title::before{ background-position:calc(-16px*3*2) 0; }
+
+/* ---- 5. ARENAS: rejilla de dos columnas en pantallas anchas, filas de piedra, estado completado con tilde ---- */
+#arenaselect-screen .ui-sub{ padding:7px 16px; border:2px solid #000; background:rgba(10,6,4,.72); box-shadow:inset 0 0 0 1px rgba(255,170,90,.28); color:#e2cdb6; }
+#arenaselect-screen .arena-card{
+  background:linear-gradient(160deg, rgba(40,22,11,.84), rgba(12,7,4,.92)), url("../assets/ui/menu-stone-64.png") 0 0 / 64px 64px repeat;
+  image-rendering:pixelated; box-shadow:inset 0 0 0 2px rgba(255,170,90,.2), 4px 4px 0 #000;
+}
+#arenaselect-screen .arena-card.selected{ box-shadow:inset 0 0 0 2px var(--ember1), 4px 4px 0 #000, 0 0 14px rgba(255,122,46,.3); }
+#arenaselect-screen .arena-card.locked{ background:linear-gradient(160deg, rgba(24,18,14,.9), rgba(8,6,5,.95)), url("../assets/ui/menu-stone-64.png") 0 0 / 64px 64px repeat; }
+#arenaselect-screen .arena-card-done{ display:flex; align-items:center; gap:6px; font-size:.95rem; }
+#arenaselect-screen .arena-card .arena-card-title{ display:flex; align-items:center; gap:6px; }
+#arenaselect-screen #arena-grid .arena-grid-sep{ font-size:12px; letter-spacing:.12em; color:#e2b980; text-align:center; margin:6px 0 10px; display:flex; align-items:center; gap:10px; }
+#arenaselect-screen .arena-grid-sep::before, #arenaselect-screen .arena-grid-sep::after{ content:""; flex:1; height:2px; background:rgba(255,170,90,.28); }
+#arenaselect-screen .arena-card-badge{ font-size:12px; }
+@media (min-width:900px) and (min-height:560px){
+  #arenaselect-screen #arena-grid{ max-width:900px; display:grid; grid-template-columns:1fr 1fr; gap:14px 18px; align-items:start; }
+  #arenaselect-screen #arena-grid .arena-card{ margin-bottom:0; }
+  #arenaselect-screen #arena-grid .arena-grid-sep, #arenaselect-screen #arena-grid .arena-card.divina{ grid-column:1 / -1; }
+  #arenaselect-screen #arena-grid .arena-card.divina{ max-width:440px; justify-self:center; }
+}
+
+/* ---- 6. PASE: marco, filas con fondo de piedra y estados de recompensa con candado / tilde / estrella ---- */
+.bp-panel{ background:linear-gradient(160deg, rgba(36,19,9,.9), rgba(12,7,4,.95)), url("../assets/ui/menu-stone-64.png") 0 0 / 64px 64px repeat; image-rendering:auto;
+  border-color:var(--ember1,#ff7a2e); box-shadow:inset 2px 2px 0 rgba(255,200,140,.14), 6px 6px 0 #000, 0 0 22px rgba(255,122,46,.22); }
+.bp-panel .ui-panel-title{ display:flex; align-items:center; gap:8px; padding-bottom:6px; border-bottom:2px solid #000; box-shadow:0 1px 0 rgba(255,170,90,.22); }
+.bp-top{ padding:8px 12px; background:rgba(0,0,0,.4); border:2px solid #000; box-shadow:inset 0 0 0 1px rgba(255,170,90,.25); font-size:14px; }
+.bp-bar{ height:16px; border:3px solid #000; box-shadow:0 0 0 1px #815323; background:#100a06; }
+.bp-bar i{ background:repeating-linear-gradient(90deg,#f2c26b 0 6px,#d9a04c 6px 8px); }
+.bp-hint{ font-size:12px; color:#d8c4af; opacity:1; }
+.bp-track{ border:3px solid #000; box-shadow:inset 0 0 0 1px rgba(255,170,90,.22); background:rgba(8,5,3,.55); }
+.bp-row{ border-bottom:2px solid #000; background:rgba(0,0,0,.2); }
+.bp-row.bp-reached{ background:rgba(242,194,107,.06); }
+.bp-row.bp-hd{ font-size:13px; letter-spacing:.04em; }
+.bp-lv{ font-size:16px; background:rgba(0,0,0,.45); border:2px solid #000; }
+.bp-cell{ position:relative; padding:5px 34px 5px 8px; font-size:13px; border:2px solid #000; box-shadow:inset 0 0 0 1px rgba(255,170,90,.18); background:rgba(26,15,9,.8); }
+.bp-cell.bp-hd, .bp-row.bp-hd .bp-cell{ padding-right:8px; }
+.bp-cell.bp-locked, .bp-cell.bp-done, .bp-cell.bp-ready{ --s:1.5; }
+.bp-cell.bp-locked::after, .bp-cell.bp-done::after, .bp-cell.bp-ready::after{
+  content:""; position:absolute; right:6px; top:6px; width:24px; height:24px; background:url("../assets/ui/menu-icons-16.png") 0 0 / 288px 24px no-repeat; image-rendering:pixelated;
+}
+.bp-cell.bp-locked::after{ background-position:0 0; opacity:.8; }
+.bp-cell.bp-done::after{ background-position:-24px 0; }
+.bp-cell.bp-ready::after{ background-position:-48px 0; animation:mpdHint 1.1s steps(2,end) infinite; }
+.bp-cell.bp-locked{ background:rgba(10,7,5,.85); color:#cdb6a1; }
+.bp-cell.bp-done{ opacity:1; border-color:#1f4a2a; background:rgba(20,48,28,.45); }
+.bp-cell.bp-ready{ border-color:#f2c26b; background:rgba(242,194,107,.14); box-shadow:inset 0 0 0 1px rgba(242,194,107,.5), 0 0 10px rgba(242,194,107,.25); }
+.bp-tag{ font-size:12px; opacity:1; color:#d8c4af; }
+.bp-soon{ font-size:12px; }
+.bp-ch{ font-size:13px; border-bottom:2px solid #000; padding:7px 8px; background:rgba(0,0,0,.25); margin-bottom:3px; }
+.bp-ch-mode{ font-size:12px; }
+.bp-sub{ font-size:15px; color:#e2b980; }
+body.reduce-motion .bp-cell.bp-ready::after{ animation:none; }
+@media (max-height:500px){ .bp-cell{ padding:2px 30px 2px 6px; } .bp-cell.bp-locked::after, .bp-cell.bp-done::after, .bp-cell.bp-ready::after{ top:50%; margin-top:-12px; } .bp-top{ padding:3px 8px; font-size:12px; } }
+
+/* ---- 7. VICTORIA: «LAS ÚLTIMAS PALABRAS · GUARDIÁN ANCESTRAL» con la fuente retro (sí trae mayúsculas acentuadas), sin pisarse ---- */
+#victory-screen .story-vic .sv-k, .story-vic .sv-k{
+  font-family:var(--font-retro),'VT323',monospace; font-size:1.2rem; line-height:1.15; letter-spacing:.08em; color:#e8b866;
+  white-space:normal; overflow-wrap:anywhere; margin-bottom:6px; text-shadow:1px 1px 0 #000;
+}
+@media (max-height:500px){ #victory-screen .story-vic .sv-k{ font-size:1.05rem; } }
+/* títulos con mayúsculas acentuadas del Códice (la fuente pixel no las trae: «CODICE», «CRONICAS») */
+.cx-home-brand{ font-family:var(--font-retro),'VT323',monospace; font-size:2.6rem; letter-spacing:.16em; line-height:1; }
+.cx-home .cxc-title{ font-family:var(--font-retro),'VT323',monospace; font-size:1.7rem; letter-spacing:.1em; }
+@media (max-height:500px){ .cx-home-brand{ font-size:1.8rem; } .cx-home .cxc-title{ font-size:1.35rem; } }
+
+/* ---- 8. Barra «Reliquias Únicas» (Códice / Guardianes): botón compacto con icono, ≥ 12 px, a la derecha ---- */
+.cx-top > .btn.small{
+  flex:0 0 auto; width:auto; max-width:none; margin:0 0 0 auto; min-height:44px; padding:6px 14px; font-size:14px; letter-spacing:.02em;
+  display:flex; align-items:center; gap:8px; white-space:nowrap;
+}
+.cx-top > .btn.small::before{ --s:1.5; content:""; display:inline-block; width:24px; height:24px; background:url("../assets/ui/menu-icons-16.png") calc(-16px*7*1.5) 0 / 288px 24px no-repeat; image-rendering:pixelated; }
+@media (max-width:700px){ .cx-top > .btn.small{ padding:6px 10px; font-size:13px; } }
+
+/* ---- 9. Tienda / Guardianes: nada por debajo de 12 px ---- */
+#shop-screen .shop-set-theme, #shop-screen .shop-set-count, #shop-screen .shop-bonus, #shop-screen .shop-st, #shop-screen .shop-set-skin,
+#shop-screen .inv-chip, #shop-screen .shop-skill, #shop-screen .shop-champ-role, #shop-screen .shop-champ-lore, #shop-screen .sf-granted,
+#shop-screen .sf-price, #shop-screen .lobby-note, #shop-screen .shop-item-sub, #shop-screen .btn.small, #shop-screen .legal-draft,
+.cx-card-sub{ font-size:12px; line-height:1.3; }
+#shop-screen .set-badge{ font-size:12px; letter-spacing:.02em; }
+#shop-screen .shop-catfilters button, #shop-screen .shop-catfilters .btn{ font-size:12px; line-height:1.3; }
+/* etiquetas con la fuente pixel (más ancha): 10 px mínimo (antes 7-8 px) */
+#shop-screen .sf-tags span, body .category-badge, body .founder-badge, body .founder-badge.fb-sm, body .founder-badge.fb-md{ font-size:10px; letter-spacing:.02em; line-height:1.3; }
+#shop-screen .shop-bonus{ color:#d8c4af; }
+#shop-screen .shop-st{ color:#cdb6a1; }

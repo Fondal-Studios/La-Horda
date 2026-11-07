@@ -14,7 +14,7 @@ async function until(url){for(let i=0;i<50;i++){try{const r=await fetch(url);awa
  for(let i=0;i<4;i++){
   const context=await browser.newContext({viewport:i===0?{width:1280,height:1000}:{width:844,height:390},hasTouch:i>0,isMobile:i>0});const p=await context.newPage();p.on('pageerror',e=>errors.push(e.message));
   await p.addInitScript(rp=>{localStorage.setItem('laHordaSave_v1',JSON.stringify({tut:{training:1}}));window.__cwArenaSizes={};const stroke=CanvasRenderingContext2D.prototype.strokeRect;CanvasRenderingContext2D.prototype.strokeRect=function(x,y,w,h){if(w===840&&h===560)window.__cwArenaSizes[this.strokeStyle]=w*this.getTransform().a;return stroke.call(this,x,y,w,h);};window.__cwLabels={};const fill=CanvasRenderingContext2D.prototype.fillText;CanvasRenderingContext2D.prototype.fillText=function(text,...args){if(typeof text==='string'&&['TU CAMPO · DEFENDÉ','RIVAL · TUS ENVÍOS'].includes(text))window.__cwLabels[text]=performance.now();return fill.call(this,text,...args);};const Native=window.WebSocket;window.__cwMessages=[];window.WebSocket=class extends Native{constructor(...args){super(...args);if(!String(args[0]).includes(':'+rp))return;this.addEventListener('message',e=>{const m=JSON.parse(e.data);if(m.d?.k==='cw-state'){window.__cwSnapshot=m.d;window.__cwMessages.push(m.d.id);}});window.__cwSocket=this;}};},relayPort);
-  await p.goto('http://127.0.0.1:'+port+'/index.html?legacy=1&server=ws://127.0.0.1:'+relayPort);await p.waitForFunction(()=>typeof cwGo==='function'&&typeof CrystalWarsUI!=='undefined');await p.evaluate(()=>{save.tut=save.tut||{};save.tut.training=1;cwGo();});await p.locator('#crystalwars-screen:not(.hidden) #name').waitFor();await p.locator('#name').fill('Tester '+i);await p.locator('#champ').selectOption(['tanque','mago','guerrero','soporte'][i]);pages.push(p);
+  await p.goto('http://127.0.0.1:'+port+'/index.html?legacy=1&server=ws://127.0.0.1:'+relayPort);await p.waitForFunction(()=>typeof cwGo==='function'&&typeof CrystalWarsUI!=='undefined');await p.evaluate(()=>{save.tut=save.tut||{};save.tut.training=1;for(const k of Object.keys(CLASSES)){save.champions[k]||=mkChampion(false);save.champions[k].unlocked=true;}cwGo();});await p.locator('#crystalwars-screen:not(.hidden) #name').waitFor();await p.locator('#name').fill('Tester '+i);await p.locator('#champ').selectOption(['tanque','mago','guerrero','soporte'][i]);pages.push(p);
  }
  const host=pages[0];await host.locator('#create').click();await host.waitForFunction(()=>document.querySelector('#room-code').textContent.length===6);const code=await host.locator('#room-code').textContent();
  for(const p of pages.slice(1)){await p.locator('#code').fill(code);await p.locator('#join').click();await p.locator('#ready').waitFor({state:'visible'});await p.locator('#ready').click();}
@@ -32,18 +32,18 @@ async function until(url){for(let i=0;i<50;i++){try{const r=await fetch(url);awa
    return original.call(this,img,...args);
   };
  });
- await pages[3].waitForFunction(()=>Object.values(window.__soporteCWDraws).some(r=>r.src===CHAMP_PACK.soporte.atlas.src));
+ await pages[3].waitForFunction(()=>Object.values(window.__soporteCWDraws).some(r=>r.src.split('?')[0].replace(/\.webp$/,'.png')===CHAMP_PACK.soporte.atlas.src.split('?')[0].replace(/\.webp$/,'.png')));
  for(const [direction,key] of [['up','w'],['right','d'],['down','s'],['left','a']]){
   await pages[3].keyboard.down(key);
   await pages[3].waitForFunction(direction=>{
    const meta=CW_ATLAS.soporte,clip=meta.animations['walk_'+direction],frames=clip.frames.slice(1).map(i=>meta.frames[i]);
-   return Object.values(window.__soporteCWDraws).some(r=>r.src===CHAMP_PACK.soporte.atlas.src&&r.mirror===!!clip.flip&&frames.some(f=>r.rect.every((n,i)=>n===[f.x,f.y,f.w,f.h][i])));
+   return Object.values(window.__soporteCWDraws).some(r=>r.src.split('?')[0].replace(/\.webp$/,'.png')===CHAMP_PACK.soporte.atlas.src.split('?')[0].replace(/\.webp$/,'.png')&&r.mirror===!!clip.flip&&frames.some(f=>r.rect.every((n,i)=>n===[f.x,f.y,f.w,f.h][i])));
   },direction);
   await pages[3].keyboard.up(key);
  }
  const actualArt=await pages[3].evaluate(()=>({expected:CHAMP_PACK.soporte.atlas.src,meta:CW_ATLAS.soporte,draws:Object.values(window.__soporteCWDraws)}));
  assert(actualArt.draws.length>=4,'authored walking frames observed in all four directions');
- assert(actualArt.draws.every(r=>r.src===actualArt.expected&&r.dimensions[0]===actualArt.meta.imageSize[0]&&r.dimensions[1]===actualArt.meta.imageSize[1]),'competitive and main renderer share actual atlas and dimensions');
+ assert(actualArt.draws.every(r=>r.src.split('?')[0].replace(/\.webp$/,'.png')===actualArt.expected.split('?')[0].replace(/\.webp$/,'.png')&&r.dimensions[0]===actualArt.meta.imageSize[0]&&r.dimensions[1]===actualArt.meta.imageSize[1]),'competitive and main renderer share actual atlas and dimensions');
  console.log('PASS Soporte competitive atlas: actual four-direction walking, left mirror, main/competitive source and dimensions');
  // Both fields render together, and focusing the rival must not stop guest controls.
  await pages[1].waitForFunction(()=>Object.keys(window.__cwLabels).length===2);

@@ -197,6 +197,12 @@ document.getElementById("arenaselect-back-btn").addEventListener("click", ()=>{
 // Tarjetas de selección de arena en el ORDEN CANÓNICO (CAMPAIGN_ORDER): 01 → 10, después la Arena
 // Divina (postgame). El Coliseo (PvP) no se muestra hasta que exista. Las arenas en construcción se muestran con su número
 // pero no se pueden elegir; las bloqueadas dicen qué hay que completar.
+// Miniatura de arena (selección de arenas): la misma panorámica del Códice; bloqueada = silueta + candado.
+const ARENA_THUMB_KEYS = ["ciudad","fortaleza","bosque","micelial","hielo","acuatica","laberinto","abismo","minas","infernal","divina"];
+function arenaThumbHTML(key, locked){
+  const has = ARENA_THUMB_KEYS.indexOf(key) >= 0;
+  return `<div class="arena-thumb${locked?" is-locked":""}${has?"":" no-art"}" aria-hidden="true">${has?`<i style="background-image:url('assets/ui/codex/arenas/${key}.png')"></i>`:""}${locked?'<b class="arena-thumb-lock">🔒</b>':""}</div>`;
+}
 function renderArenaGrid(){
   const grid = document.getElementById("arena-grid");
   if(!grid) return;
@@ -207,6 +213,7 @@ function renderArenaGrid(){
     if(a.comingSoon){
       return `<button class="arena-card locked soon" data-arena="${key}" disabled>
       <span class="arena-card-badge soon">EN CONSTRUCCIÓN</span>
+      ${arenaThumbHTML(key,true)}
       <div class="arena-card-icon">${a.icon}</div>
       <div class="arena-card-title"><span class="arena-card-num">${num}</span> — ${a.label}</div>
       <div class="arena-card-desc">${a.desc}<br><i>Todavía no se puede jugar: la campaña sigue en la próxima arena.</i></div>
@@ -219,6 +226,7 @@ function renderArenaGrid(){
     const need = (save.arenasCleared||{})[prev] ? frontier : prev;
     return `<button class="arena-card ${selected?"selected":""} ${unlocked?"":"locked"} ${fresh?"fresh":""}" data-arena="${key}" ${unlocked?"":"disabled"}>
       ${selected?'<span class="arena-card-badge">ELEGIDA</span>':(fresh?'<span class="arena-card-badge fresh">¡NUEVA!</span>':"")}
+      ${arenaThumbHTML(key,!unlocked)}
       <div class="arena-card-icon">${unlocked?a.icon:"🔒"}</div>
       <div class="arena-card-title"><span class="arena-card-num">${num}</span> — ${a.label}</div>
       <div class="arena-card-desc">${unlocked?a.desc:`🔒 Completá <b>${(ARENA_MODS[need]||{}).label||"la arena anterior"}</b> para desbloquearla.`}</div>
@@ -230,6 +238,7 @@ function renderArenaGrid(){
   const divinaUnlocked = isDivinaUnlocked();
   const divinaCard = `<div class="arena-grid-sep">POSTGAME</div><button class="arena-card divina ${divinaUnlocked?"":"locked"}" data-arena="divina" ${divinaUnlocked?"":"disabled"}>
       <span class="arena-card-badge" style="color:#d9a8ff; border-color:#7a4fae; background:rgba(122,79,174,0.16);">POSTGAME</span>
+      ${arenaThumbHTML("divina",!divinaUnlocked)}
       <div class="arena-card-icon">${divinaUnlocked?"👁":"🔒"}</div>
       <div class="arena-card-title">Arena Divina</div>
       <div class="arena-card-desc">${divinaUnlocked?"Las Cinco Pruebas Divinas: asedio 4 contra 4, derribá las torres y el castillo enemigo antes que a los tuyos.":"🔒 Completá la <b>Arena Infernal</b> para desbloquearla."}</div>
@@ -311,7 +320,7 @@ document.getElementById("prep-start-btn").addEventListener("click", ()=>{
         if(typeof assetsAllReady==="function" && !assetsAllReady()){
           const sb = document.getElementById("prep-start-btn");
           if(sb){ sb.disabled = true; sb.textContent = "Preparando la arena… " + assetsRestPct() + "%"; }
-          whenAssetsReady(()=>{ if(sb){ sb.disabled = false; sb.textContent = "Comenzar"; } hostStart(); },
+          whenAssetsReady(()=>{ if(sb){ sb.disabled = false; sb.textContent = "Comenzar partida"; } hostStart(); },
             pct=>{ if(sb) sb.textContent = "Preparando la arena… " + pct + "%"; });
           return;
         }
@@ -427,7 +436,7 @@ function renderPrepSummary(){
     else netHostBroadcastCos(false);
     return;
   }
-  const sb = document.getElementById("prep-start-btn"); if(sb){ sb.disabled = false; sb.textContent = "Comenzar"; }
+  const sb = document.getElementById("prep-start-btn"); if(sb){ sb.disabled = false; sb.textContent = "Comenzar partida"; }
   document.getElementById("lobby-sub").textContent = "4 lugares · los lugares libres los completa el juego (o tus amigos, con una sala online)";
   const slots = document.getElementById("lobby-slots");
   if(typeof netLobby!=="undefined") netLobby.slotsHTML = ""; // la vista solo reemplaza la de la sala online
@@ -555,6 +564,7 @@ function openCrystalWars(){ competitiveOpen("crystal"); }
 function openColiseum(){ competitiveOpen("coliseum"); }
 let competitivePendingMode = "crystal";
 function competitiveOpen(mode){
+  if(window.BETA_SCOPE && BETA_SCOPE.public){ if(typeof showNetToast==="function") showNetToast("Este modo no está disponible en la beta."); return; }   // alcance de la beta: solo Campaña y Horda Infinita
   if(typeof netInRoom==="function" && netInRoom()){ showNetToast("Salí de tu sala actual antes de entrar al competitivo."); return; }
   competitivePendingMode = mode === "coliseum" ? "coliseum" : "crystal";
   if(!HordaOnboarding.ready(save)){ cwGateOpen(); return; }
@@ -567,7 +577,7 @@ function competitiveOpen(mode){
 (function(){ const b = document.getElementById("hub-coliseum-btn"); if(b) b.addEventListener("click", openColiseum); })();
 // registro de modos (mismo formato que la Horda Infinita: js/data/endless.js)
 window.GAME_MODE_REGISTRY = window.GAME_MODE_REGISTRY || {};
-window.GAME_MODE_REGISTRY.crystalWars = {id:"crystalWars", name:"Convergencia — Guerra de Cristales", icon:"◆",
+window.GAME_MODE_REGISTRY.crystalWars = {id:"crystalWars", name:"Guerra de Cristales", icon:"◆",
   desc:"5 contra 5 con bots (2 contra 2 en línea): 3 carriles, selva, PvP y tu propia horda contra la base rival.", unlock:()=>(typeof postgameUnlocked!=="function"||postgameUnlocked()), open:openCrystalWars, coop:true};
 window.GAME_MODE_REGISTRY.coliseum = {id:"coliseum", name:"Coliseo", icon:"⚔", desc:"Torneo de 8 luchadores: cuatro equipos de dos, duelos 2 contra 2 con anillo que se cierra; el primero a 3 puntos gana.", unlock:()=>(typeof postgameUnlocked!=="function"||postgameUnlocked()), open:openColiseum, coop:true};
 // volver al hub sin pasar por la portada (index.html?return=hub; el Coliseo ya no navega: ver cwGo)
@@ -587,6 +597,7 @@ document.getElementById("mode-coliseum-btn").addEventListener("click", openColis
 // a la que navegar. Si el servidor donde está publicado el juego es una versión vieja sin esos archivos, se avisa claro.
 function cwExit(){ setState("mainmenu"); if(typeof renderMainMenu==="function") renderMainMenu(); }
 function cwGo(opts){
+  if(window.BETA_SCOPE && BETA_SCOPE.public){ if(typeof showNetToast==="function") showNetToast("Este modo no está disponible en la beta."); return; }
   if(typeof CrystalWarsUI==="undefined" || typeof CrystalWars==="undefined"){
     if(typeof showNetToast==="function") showNetToast("El competitivo todavía no está publicado en este servidor. Avisale a quien administra el juego.");
     return;

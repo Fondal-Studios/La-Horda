@@ -16,7 +16,7 @@ const srv=spawn('python3',['-m','http.server',String(PORT)],{cwd:path.resolve(__
  const list=ONLY.length?ONLY:roster;let bad=0;const rows=[];
  for(const champ of list){
   const p=await context.newPage({viewport:{width:844,height:390}}),errs=[];p.on('pageerror',e=>errs.push(e.message));p.on('console',m=>{if(m.type()==='error')errs.push('console:'+m.text().slice(0,160));});
-  await p.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`,{timeout:120000});await p.waitForFunction(()=>typeof lanesStart==='function',null,{timeout:60000});
+  await p.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`,{timeout:120000});await p.waitForFunction(()=>typeof lanesStart==='function',null,{timeout:60000});await p.evaluate(()=>{for(const k of Object.keys(CLASSES)){save.champions[k]||=mkChampion(false);save.champions[k].unlocked=true;}});
   const r=await p.evaluate(({champ,secs})=>{
    setState('mainmenu');lanesStart({champ,seed:11});
    const rep={champ,actualChampion:player.classKey,frames:0,nan:0,cross:0,dead:0,friendly:0,pvp:0};const dt=1000/60;let ang=0;

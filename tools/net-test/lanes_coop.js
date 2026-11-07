@@ -14,6 +14,7 @@ async function client(b,name){
  const page=await ctx.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto(`${SITE}/index.html?server=${encodeURIComponent(RELAY)}&lazy=0`,{waitUntil:'load',timeout:120000});
  await page.waitForFunction(()=>typeof lanesOnlineCreate==='function'&&typeof setState==='function',null,{timeout:60000});
+ await page.evaluate(()=>{for(const k of Object.keys(CLASSES)){save.champions[k]||=mkChampion(false);save.champions[k].unlocked=true;}if(typeof persistNow==='function')persistNow();});
  return {ctx,page,errors,name};
 }
 const ev=(c,fn,a)=>c.page.evaluate(fn,a);

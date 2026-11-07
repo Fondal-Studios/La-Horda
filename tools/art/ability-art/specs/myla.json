@@ -1,0 +1,58 @@
+{
+ "guardian": "myla",
+ "codex": "myla",
+ "title": "myla",
+ "palette": [
+  "#5a2a3e",
+  "#d27a9c",
+  "#e99abb",
+  "#fff1e6",
+  "#ffffff"
+ ],
+ "abilities": [
+  {
+   "id": "bubble_idle",
+   "kind": "idle",
+   "radius": 120,
+   "frames": 12,
+   "glyph": "drop",
+   "baseline": "my_bubble_idle",
+   "replaces": "my_bubble_idle",
+   "params": {},
+   "motif": "pollen"
+  },
+  {
+   "id": "pop",
+   "kind": "ring",
+   "radius": 40,
+   "frames": 9,
+   "glyph": "drop",
+   "baseline": "my_pop",
+   "replaces": "my_pop",
+   "params": {},
+   "motif": "pollen"
+  },
+  {
+   "id": "puddle_idle",
+   "kind": "idle",
+   "radius": 120,
+   "frames": 14,
+   "glyph": "drop",
+   "baseline": "my_puddle_idle",
+   "replaces": "my_puddle_idle",
+   "params": {},
+   "motif": "pollen"
+  },
+  {
+   "id": "cry_idle",
+   "kind": "idle",
+   "radius": 120,
+   "frames": 14,
+   "glyph": "drop",
+   "baseline": "my_cry_idle",
+   "replaces": "my_cry_idle",
+   "params": {},
+   "motif": "pollen"
+  }
+ ]
+}

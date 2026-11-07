@@ -6,9 +6,8 @@
    servidor DECIDE, y tools/collection/pricing-sync.js verifica que coinciden.
    Política (docs/economy/PRECIOS.md):
      · CAMPEONES: siempre se compran con ORO (nunca con Brasas). Ascensión: precio de oro propio por campeón.
-     · BRASAS ✦: apariencia (skins, cromas y paquetes de apariencia) y, por decisión del dueño, las PIEZAS DE SET (equipo,
-       con estadísticas). Es una excepción a "nunca poder": se puede apagar con PIECES_FOR_BRASAS (docs/economy/PRECIOS.md,
-       apartado "Riesgo: poder por dinero"). Los modos competitivos recortan el equipo (LANES.PROGRESS_CAP).
+     · BRASAS ✦: solo apariencia (skins, cromas y paquetes de apariencia). Las piezas con estadísticas se ganan jugando.
+       PIECES_FOR_BRASAS=false es el contrato vigente; el modo legado queda cubierto únicamente para compatibilidad.
      · Un precio global del juego que no está acá (equipo, talentos, Mística) sigue en su sistema, siempre en oro.
    Los precios del Game Master (cosmeticPrices / championPrices, ver docs/production/operations.md) siguen pudiendo
    cambiar el ORO; las Brasas las fija únicamente este archivo.

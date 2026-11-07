@@ -27,7 +27,7 @@ function codexSectionDef(id){ return CODEX_SECTIONS.find(s=>s.id===id) || (id===
 const CODEX_MASTERY = {normal:60, subelite:30, elite:15, invocacion:40, estructura:20, apendice:10, subjefe:3, jefe:3};
 
 let codexStack = [];          // navegación: [{view, id, sub, label}]
-let codexAppearanceFilter = "all";
+let codexAppearanceFilter = "skin";
 let codexChampTab = "ficha";   // pestaña de la ficha de guardián
 let codexFilter = {bestiario:"todas", jefes:"todas"};
 
@@ -266,7 +266,7 @@ function codexHomeHtml(){
       <span class="cxc-txt"><span class="cxc-title"><span class="cx-home-ico">${CODEX_CHRON_SECTION.icon}</span>${CODEX_CHRON_SECTION.label}</span><span class="cx-home-blurb">${CODEX_CHRON_SECTION.blurb}</span></span>
       <span class="cx-home-count">${chronicleCount()} / ${CHRONICLE_PAGES.length} páginas</span></button>` : ""}</div>`;
 }
-function codexArenaImage(a){ return `assets/ui/codex/arenas/${a}.jpg`; }
+function codexArenaImage(a){ return `assets/ui/codex/arenas/${a}.png`; }
 
 /* ---------------- LISTAS ---------------- */
 function codexListHtml(sec){
@@ -634,7 +634,7 @@ function codexApplyAppearanceFilter(body){
   let count = 0;
   body.querySelectorAll("[data-appearance-kind]").forEach(card=>{
     const kind = card.dataset.appearanceKind;
-    card.hidden = !(codexAppearanceFilter === "all" || kind === codexAppearanceFilter || (codexAppearanceFilter === "skin" && kind === "set") || (kind === "set-croma" && ["set","croma"].includes(codexAppearanceFilter)));
+    card.hidden = !(codexAppearanceFilter === "all" || kind === codexAppearanceFilter || (kind === "set-croma" && codexAppearanceFilter === "set"));
     card.style.display = card.hidden ? "none" : "";
     if(!card.hidden) count++;
   });

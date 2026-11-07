@@ -1,0 +1,36 @@
+{
+  "new": [
+    {
+      "test": "pack-thalen-codex-correction-02.py twice",
+      "result": "PASS",
+      "evidence": "atlas 1be3454246d9526b93bf9e218318915086311789ca204b0ffda3f7eaf8af01aa; preview e5b9f259aeb63b0eb0f6d79fd5fe72aaa410df5a456f9124c082743f7c62678a; technical f82bb31448466fe5c4759a2df474f28bc6f8617372dc81b85ad740e93d35268d in both runs"
+    },
+    {
+      "test": "check-thalen-codex-consumer.js",
+      "result": "PASS",
+      "evidence": "36/36 frames non-empty, 21 mappings, candidate/fallback contract"
+    },
+    {
+      "test": "node --check on new and modified harnesses",
+      "result": "PASS"
+    },
+    {
+      "test": "roster-loading-test.js local",
+      "result": "NOT_RUN",
+      "reason": "Playwright module exists but its Chromium executable is absent; delegated to exact-head CI."
+    }
+  ],
+  "historicalReused": [
+    {
+      "test": "gameplay capture 03",
+      "result": "PASS",
+      "scope": "same atlas/runtime; 96 scenes, 8 sheets, six arenas, two looks, two densities, two browser viewports, zero page errors"
+    }
+  ],
+  "notClaimed": [
+    "physical mobile performance",
+    "GPU or GC attribution",
+    "dedicated two-client bitmap parity",
+    "canonical publication"
+  ]
+}

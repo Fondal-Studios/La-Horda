@@ -1,0 +1,293 @@
+{
+  "schema": "fondal.aelith-recovery.v1",
+  "baselineCommit": "54aa936fa254112044e29493179893dd0f8694d6",
+  "source": {
+    "path": "assets/sprites/champions/aelith/atlas.png",
+    "sha256": "8bb5bb0c807bfc80253ec9e32cc711ddde10346b3c00e49c919d53b0806a67c6"
+  },
+  "registry": {
+    "path": "js/champions/ascension/art.js",
+    "sha256": "ca1674f8e85a9488c930265b24d2aed952cbec7d96af2c49e5c9d012a0447f36"
+  },
+  "reference": {
+    "path": "assets/ui/codex/champions/aelith.png",
+    "sha256": "2aa08dcb1414d2b8d4234a2eafbc910fb8a85c512800afbcfced4eabdf3bf738"
+  },
+  "originalLiteral": "champPackLoadAtlas(\"aelith\",\"assets/sprites/champions/aelith/atlas.png\",{\"w\":112,\"h\":112,\"cols\":4,\"refH\":70,\"anchor\":0.9464285714285714,\"fix\":{\"left\":\"mirror\"},\"sets\":{\"idle_down\":[0],\"walk_down\":[0,1,2,3],\"attack_down\":[12,13,14,15],\"cast_down\":[24,25,26,27],\"ultimate_down\":[28,29,30,31],\"hit_down\":[12],\"death_down\":[32,33,34,35],\"idle_side\":[4],\"walk_side\":[4,5,6,7],\"attack_side\":[16,17,18,19],\"cast_side\":[24,25,26,27],\"ultimate_side\":[28,29,30,31],\"hit_side\":[16],\"death_side\":[32,33,34,35],\"idle_up\":[8],\"walk_up\":[8,9,10,11],\"attack_up\":[20,21,22,23],\"cast_up\":[24,25,26,27],\"ultimate_up\":[28,29,30,31],\"hit_up\":[20],\"death_up\":[32,33,34,35]}});",
+  "originalMeta": {
+    "w": 112,
+    "h": 112,
+    "cols": 4,
+    "refH": 70,
+    "anchor": 0.9464285714285714,
+    "fix": {
+      "left": "mirror"
+    },
+    "sets": {
+      "idle_down": [
+        0
+      ],
+      "walk_down": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "attack_down": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "cast_down": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "ultimate_down": [
+        28,
+        29,
+        30,
+        31
+      ],
+      "hit_down": [
+        12
+      ],
+      "death_down": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "idle_side": [
+        4
+      ],
+      "walk_side": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "attack_side": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "cast_side": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "ultimate_side": [
+        28,
+        29,
+        30,
+        31
+      ],
+      "hit_side": [
+        16
+      ],
+      "death_side": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "idle_up": [
+        8
+      ],
+      "walk_up": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "attack_up": [
+        20,
+        21,
+        22,
+        23
+      ],
+      "cast_up": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "ultimate_up": [
+        28,
+        29,
+        30,
+        31
+      ],
+      "hit_up": [
+        20
+      ],
+      "death_up": [
+        32,
+        33,
+        34,
+        35
+      ]
+    }
+  },
+  "candidate": {
+    "path": "assets/sprites/champions/aelith/factory-b76f27906a1dacff0014848b630711fbb0022c4df476f284be6c94afb48bf5eb/atlas.png",
+    "sha256": "b76f27906a1dacff0014848b630711fbb0022c4df476f284be6c94afb48bf5eb",
+    "meta": {
+      "w": 112,
+      "h": 112,
+      "cols": 4,
+      "refH": 70,
+      "anchor": 0.9464285714285714,
+      "fix": {
+        "left": "mirror"
+      },
+      "sets": {
+        "idle_down": [
+          0
+        ],
+        "walk_down": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "attack_down": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "cast_down": [
+          24,
+          25,
+          26,
+          27
+        ],
+        "ultimate_down": [
+          28,
+          29,
+          30,
+          31
+        ],
+        "hit_down": [
+          12
+        ],
+        "death_down": [
+          32,
+          33,
+          34,
+          35
+        ],
+        "idle_side": [
+          4
+        ],
+        "walk_side": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "attack_side": [
+          16,
+          17,
+          18,
+          19
+        ],
+        "cast_side": [
+          24,
+          25,
+          26,
+          27
+        ],
+        "ultimate_side": [
+          28,
+          29,
+          30,
+          31
+        ],
+        "hit_side": [
+          16
+        ],
+        "death_side": [
+          32,
+          33,
+          34,
+          35
+        ],
+        "idle_up": [
+          8
+        ],
+        "walk_up": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "attack_up": [
+          20,
+          21,
+          22,
+          23
+        ],
+        "cast_up": [
+          36,
+          37,
+          38,
+          39
+        ],
+        "ultimate_up": [
+          28,
+          29,
+          30,
+          31
+        ],
+        "hit_up": [
+          20
+        ],
+        "death_up": [
+          32,
+          33,
+          34,
+          35
+        ]
+      }
+    }
+  },
+  "frames": [
+    {
+      "index": 36,
+      "phase": "preparation",
+      "taskId": "1376af51-77c2-4b5d-a1a4-e9ca1db47aca",
+      "sourceSha256": "51c65b3d9d890a396707d5398eb2e84f95cc8d2137a3c2536806cdec9b98da00"
+    },
+    {
+      "index": 37,
+      "phase": "windup",
+      "taskId": "ac533293-272c-4925-aa79-8504803747da",
+      "sourceSha256": "28efbcc667933f8756b27c6f5dd039a6ce1d13cf5887004d3dd85252930aca25"
+    },
+    {
+      "index": 38,
+      "phase": "release",
+      "taskId": "39672591-feca-4a82-a316-ca9eb6bcdf94",
+      "sourceSha256": "41e0c5e2a88a013fda2742622d502e604884c5ccdf2987d142c5fefc7c0bded2"
+    },
+    {
+      "index": 39,
+      "phase": "recovery",
+      "inheritedOriginalCell": 8,
+      "newGeneration": false
+    }
+  ],
+  "original36PixelExact": true,
+  "historicalCreditsSpent": 28,
+  "newCreditsSpent": 0,
+  "newGenerationCalls": 0,
+  "status": "RECONSTRUCTED_NOT_APPROVED",
+  "knownVisualLimitation": "Modest head/cape style seam at original idle transition; prior native review accepted only scoped direction-fix candidate, not full hero quality pass."
+}

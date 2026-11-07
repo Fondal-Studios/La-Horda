@@ -1,0 +1,56 @@
+{
+ "id": "kora_alt2",
+ "name": "Kora, Capataz de Cobre",
+ "prompt": "Armadura de cobre verdoso con capa de lona y hombreras ornadas.",
+ "body": "zahra",
+ "head": "orsa",
+ "paint": [
+  {
+   "part": "body",
+   "hue": [
+    0,
+    100
+   ],
+   "minChroma": 3,
+   "noSkin": true,
+   "to": "#4a8a7a",
+   "keepLight": 0.7,
+   "chroma": 1.0,
+   "maxL": 60
+  }
+ ],
+ "accessories": [
+  {
+   "element": "hombreras_redondas",
+   "scale": 1.0,
+   "materials": {
+    "shell": {
+     "ramp": [
+      "#3a1a08",
+      "#7a3a14",
+      "#c0702c",
+      "#f0b070"
+     ]
+    }
+   }
+  },
+  {
+   "element": "capa_larga",
+   "scale": 0.8,
+   "materials": {
+    "cloth": {
+     "ramp": [
+      "#2a2418",
+      "#5a4a2c",
+      "#8a7448",
+      "#c0a878"
+     ]
+    }
+   }
+  }
+ ],
+ "install": {
+  "champion": "kora",
+  "pack": "kora_alt2"
+ }
+}

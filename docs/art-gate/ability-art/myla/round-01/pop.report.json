@@ -1,0 +1,190 @@
+{
+ "kind": "ring",
+ "score": 80.0,
+ "points": {
+  "alpha": 5.0,
+  "palette": 8.0,
+  "hygiene": 7.0,
+  "edge": 12.57,
+  "coverage": 0.0,
+  "contrast": 8.0,
+  "clear_floor": 2.07,
+  "motion": 15.0,
+  "richness": 12.4,
+  "identity": 10.0
+ },
+ "metrics": {
+  "peak_idx": 2,
+  "alpha_binary": 1.0,
+  "palette_adherence": 1.0,
+  "colors": 5,
+  "isolated": 0.003938745537301388,
+  "edge_outline": 0.6666666666666666,
+  "edge_reach": 0.9031269073103934,
+  "edge_over": 0.0,
+  "coverage": 0.8308823529411765,
+  "interior": 0.717391304347826,
+  "interior_detail": 0.6684782608695652,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 15.781465516001816,
+  "peak_pos": 0.25,
+  "tail": 0.0,
+  "motion_mean": 0.18663194444444445,
+  "unique_frames": 1.0,
+  "tones": 5,
+  "highlight_share": 0.1710914454277286,
+  "core_fill": 0.96875,
+  "detail_mass": 0.6493055555555556,
+  "min_sig_dist": 1.0
+ },
+ "hard_fails": [
+  "el interior tapa al enemigo (72% de píxeles opacos en la zona central; techo 60 %)",
+  "cobertura excesiva (83%): oculta el suelo"
+ ],
+ "ops": [
+  {
+   "knob": "rim",
+   "why": "el filo exterior no está contorneado en 33% del perímetro: engrosar el borde para que el contorno oscuro de 1 px cierre",
+   "add": 1
+  },
+  {
+   "knob": "fill",
+   "why": "cobertura alta (83%): bajar el relleno para no tapar al enemigo",
+   "hard": true,
+   "add": -0.06
+  },
+  {
+   "knob": "ticks",
+   "why": "menos marcas",
+   "hard": true,
+   "add": -4
+  },
+  {
+   "knob": "tick_len",
+   "why": "marcas más cortas",
+   "hard": true,
+   "add": -0.04
+  },
+  {
+   "knob": "inner_ring",
+   "why": "quitar el anillo interior",
+   "hard": true,
+   "set": 0
+  },
+  {
+   "knob": "rim",
+   "why": "borde más fino: la cobertura es excesiva",
+   "hard": true,
+   "add": -1
+  },
+  {
+   "knob": "sparks",
+   "why": "menos chispas",
+   "hard": true,
+   "add": -2
+  },
+  {
+   "knob": "glyph_on",
+   "why": "quitar el glifo: la cobertura es excesiva",
+   "hard": true,
+   "set": 0
+  },
+  {
+   "knob": "fill",
+   "why": "el centro está cargado (72%): despejar el relleno",
+   "hard": true,
+   "add": -0.09
+  },
+  {
+   "knob": "inner_ring",
+   "why": "quitar el anillo interior",
+   "hard": true,
+   "set": 0
+  },
+  {
+   "knob": "glyph_scale",
+   "why": "glifo más chico",
+   "hard": true,
+   "set": 1
+  },
+  {
+   "knob": "sparks",
+   "why": "menos chispas: tapan el centro",
+   "hard": true,
+   "add": -2
+  },
+  {
+   "knob": "ticks",
+   "why": "menos marcas: tapan el centro",
+   "hard": true,
+   "add": -2
+  },
+  {
+   "knob": "glyph_on",
+   "why": "quitar el glifo: no cabe en una zona tan chica",
+   "hard": true,
+   "set": 0
+  }
+ ],
+ "criteria": {
+  "alpha": 1.0,
+  "palette": 1.0,
+  "hygiene": 1.0,
+  "edge": 0.838,
+  "coverage": 0.0,
+  "contrast": 1.0,
+  "clear_floor": 0.413,
+  "motion": 1.0,
+  "richness": 0.826,
+  "identity": 1.0
+ },
+ "baseline_total": 63.5,
+ "baseline_criteria": {
+  "alpha": 1.0,
+  "palette": 0.0,
+  "hygiene": 1.0,
+  "edge": 0.524,
+  "coverage": 0.0,
+  "contrast": 1.0,
+  "clear_floor": 0.196,
+  "motion": 1.0,
+  "richness": 0.845,
+  "identity": 0.7
+ },
+ "baseline_metrics": {
+  "peak_idx": 2,
+  "alpha_binary": 1.0,
+  "palette_adherence": 0.21616871704745166,
+  "colors": 395,
+  "isolated": 0.004901960784313725,
+  "edge_outline": 0.4583333333333333,
+  "edge_reach": 1.0193776955098663,
+  "edge_over": 0.625,
+  "coverage": 0.8333333333333334,
+  "interior": 0.7608695652173914,
+  "interior_detail": 0.6032608695652174,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 11.441163164380466,
+  "peak_pos": 0.25,
+  "tail": 0.0,
+  "motion_mean": 0.1976996527777778,
+  "unique_frames": 1.0,
+  "tones": 4,
+  "highlight_share": 0.0,
+  "core_fill": 0.25,
+  "detail_mass": 0.125,
+  "min_sig_dist": 1.0
+ },
+ "improvement": 16.5,
+ "reasons": [
+  "el interior tapa al enemigo (72% de píxeles opacos en la zona central; techo 60 %)",
+  "cobertura excesiva (83%): oculta el suelo",
+  "criterio bajo: cobertura legible 0.0/12",
+  "criterio bajo: suelo despejado 2.07/5",
+  "puntaje 80.0 < 85"
+ ],
+ "status": "FAIL",
+ "keep_current": false
+}

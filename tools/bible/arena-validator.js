@@ -124,18 +124,18 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
           enemies = [];
           let e; try { e = spawnEnemy(pickFromPool(pool)); } catch (err) { add('spawn', 'spawnEnemy', 'FAIL', err.message); break; }
           if (!e) continue;
-          clampToArena(e); resolveWallCollision(e);
+          for (let pass = 0; pass < 3; pass++) { clampToArena(e); resolveWallCollision(e); } // en el juego se resuelve cada cuadro: un solo paso deja a veces un 10 % de solape con un obstáculo (el círculo se resuelve con k=0,9)
           if (e.flying) continue;
           const okHere = walk(e.x, e.y, e.radius || 18);
           // alcanzable = su celda o una vecina pertenece al área principal (la celda puede tener el centro tapado)
           const ei = Math.floor((e.x - bx0) / C), ej = Math.floor((e.y - by0) / C);
           let reach = false;
           for (let dj = -1; dj <= 1 && !reach; dj++) for (let di = -1; di <= 1 && !reach; di++) { const ni = ei + di, nj = ej + dj; if (ni >= 0 && nj >= 0 && ni < W && nj < H && comp[nj * W + ni] === mainId) reach = true; }
-          if (!okHere) badSpawn++; else if (!reach && !gated) unreach++;
+          if (!okHere) { badSpawn++; (window.__badSpawns = window.__badSpawns || []).push([e.type, Math.round(e.x), Math.round(e.y), e.radius]); } else if (!reach && !gated) unreach++;
           if (sample.length < 60) sample.push([Math.round(e.x), Math.round(e.y), okHere && (reach || gated) ? 1 : 0]);
         }
         enemies = [];
-        add('spawn', 'apariciones válidas', badSpawn ? 'FAIL' : unreach ? 'WARNING' : 'PASS', `${120 - badSpawn - unreach}/120 válidas; ${badSpawn} dentro de colisión, ${unreach} inalcanzables`);
+        add('spawn', 'apariciones válidas', badSpawn ? 'FAIL' : unreach ? 'WARNING' : 'PASS', `${120 - badSpawn - unreach}/120 válidas; ${badSpawn} dentro de colisión (${JSON.stringify((window.__badSpawns||[]).slice(0,3))}), ${unreach} inalcanzables`);
         // ---------- exploración agresiva ----------
         const stats = {frames: 0, nan: 0, outside: 0, oob: 0, trapped: 0, trappedAt: [], oobAt: [], outsideAt: []};
         const mainCells = []; for (let c = 0; c < W * H; c++) if (comp[c] === mainId) mainCells.push(c);

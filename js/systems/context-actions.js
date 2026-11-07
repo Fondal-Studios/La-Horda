@@ -344,14 +344,17 @@ function ctxDrawScreen(){
   }
 }
 
-/* ---- Tecla E (escritorio): mismo comportamiento que mantener el botón ---- */
+/* ---- Tecla E (escritorio): mismo comportamiento que mantener el botón ----
+   Con js/core/input-desk.js cargado la tecla (E en Clásico, F en MOBA, o la que se reasigne) la maneja ese módulo. */
 window.addEventListener("keydown", (ev)=>{
+  if(typeof deskKeyActs==="function") return;
   if(ev.repeat || (ev.key!=="e" && ev.key!=="E") || state!=="playing") return;
   const tag = ev.target && ev.target.tagName; if(tag==="INPUT" || tag==="TEXTAREA") return;
   const btn = document.getElementById("btn-revive");
   if(btn) btn.dispatchEvent(new PointerEvent("pointerdown", {bubbles:true}));
 });
 window.addEventListener("keyup", (ev)=>{
+  if(typeof deskKeyActs==="function") return;
   if(ev.key!=="e" && ev.key!=="E") return;
   const btn = document.getElementById("btn-revive");
   if(btn) btn.dispatchEvent(new PointerEvent("pointerup", {bubbles:true}));

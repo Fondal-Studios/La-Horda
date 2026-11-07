@@ -5,6 +5,10 @@
       "ok": true,
       "active": [
         {
+          "kind": "ex_soil",
+          "owner": 2
+        },
+        {
           "kind": "stroganoff",
           "owner": 1
         },
@@ -22,8 +26,8 @@
         "classes": [
           "brasa",
           "ynara",
-          "eslabon",
-          "orsa"
+          "renko",
+          "guerrero"
         ],
         "casts": 4,
         "objects": [
@@ -32,37 +36,38 @@
             "owner": 0
           },
           {
-            "kind": "chain",
+            "kind": "ex_mound",
+            "owner": 2
+          },
+          {
+            "kind": "ex_faults",
             "owner": 2
           },
           {
             "kind": "patience",
             "owner": 1
-          },
-          {
-            "kind": "shot",
-            "owner": 0
           }
         ]
       },
       "rg": {
         "k": "ynara",
+        "casts": 3,
         "objects": [
           {
             "kind": "turret",
             "owner": 0
           },
           {
-            "kind": "chain",
+            "kind": "ex_mound",
+            "owner": 2
+          },
+          {
+            "kind": "ex_faults",
             "owner": 2
           },
           {
             "kind": "patience",
             "owner": 1
-          },
-          {
-            "kind": "shot",
-            "owner": 0
           }
         ],
         "patience": 1,
@@ -83,7 +88,7 @@
           "ynara",
           "iria",
           "maura",
-          "cazadora"
+          "orsa"
         ],
         "casts": 4,
         "objects": [
@@ -103,6 +108,7 @@
       },
       "rg": {
         "k": "iria",
+        "casts": 3,
         "objects": [
           {
             "kind": "ex_forest",

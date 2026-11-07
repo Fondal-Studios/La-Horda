@@ -1,0 +1,157 @@
+{
+ "guardian": "ynara",
+ "passed": [
+  "gaze",
+  "stew_idle",
+  "stew",
+  "halo_idle",
+  "pulse",
+  "water"
+ ],
+ "escalated": [],
+ "keep_current": [],
+ "state": {
+  "gaze": {
+   "status": "PASS",
+   "rounds": 4,
+   "history": [
+    {
+     "round": 1,
+     "score": 79.0,
+     "status": "FAIL",
+     "improvement": 13.6,
+     "reasons": [
+      "el interior tapa al enemigo (60% de píxeles opacos en la zona central; techo 60 %)",
+      "cobertura excesiva (75%): oculta el suelo",
+      "criterio bajo: cobertura legible 0.0/12",
+      "criterio bajo: suelo despejado 0.57/5",
+      "puntaje 79.0 < 85"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 84.5,
+     "status": "FAIL",
+     "improvement": 19.1,
+     "reasons": [
+      "criterio bajo: suelo despejado 0.0/5",
+      "criterio bajo: riqueza visual 5.63/15",
+      "puntaje 84.5 < 85",
+      "regresión de riqueza visual frente al arte actual (0.38 < 0.56)",
+      "presencia menor que el arte actual: cobertura 25% < 40% (arte actual 73%)"
+     ]
+    },
+    {
+     "round": 3,
+     "score": 75.6,
+     "status": "FAIL",
+     "improvement": 10.2,
+     "reasons": [
+      "el interior tapa al enemigo (63% de píxeles opacos en la zona central; techo 60 %)",
+      "cobertura excesiva (71%): oculta el suelo",
+      "criterio bajo: cobertura legible 0.0/12",
+      "criterio bajo: suelo despejado 0.0/5",
+      "puntaje 75.6 < 85",
+      "regresión de riqueza visual frente al arte actual (0.51 < 0.56)"
+     ]
+    },
+    {
+     "round": 4,
+     "score": 96.5,
+     "status": "PASS",
+     "improvement": 31.1,
+     "reasons": []
+    }
+   ]
+  },
+  "stew_idle": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 94.0,
+     "status": "PASS",
+     "improvement": 10.9,
+     "reasons": []
+    }
+   ]
+  },
+  "stew": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.0,
+     "status": "PASS",
+     "improvement": 19.9,
+     "reasons": []
+    }
+   ]
+  },
+  "halo_idle": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 94.0,
+     "status": "PASS",
+     "improvement": 14.4,
+     "reasons": []
+    }
+   ]
+  },
+  "pulse": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.0,
+     "status": "PASS",
+     "improvement": 18.4,
+     "reasons": []
+    }
+   ]
+  },
+  "water": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 100.0,
+     "status": "PASS",
+     "improvement": 23.2,
+     "reasons": []
+    }
+   ]
+  }
+ },
+ "baseline": {
+  "gaze": 65.4,
+  "stew_idle": 83.1,
+  "stew": 75.1,
+  "halo_idle": 79.6,
+  "pulse": 76.6,
+  "water": 76.8
+ },
+ "log": [
+  "ronda 1: gaze FAIL 79.0 — el interior tapa al enemigo (60% de píxeles opacos en la zona central; techo 60 %); cobertura excesiva (75%): oculta el suelo",
+  "ronda 1: stew_idle PASS 94.0 (arte actual 83.1, +10.9)",
+  "ronda 1: stew PASS 95.0 (arte actual 75.1, +19.9)",
+  "ronda 1: halo_idle PASS 94.0 (arte actual 79.6, +14.4)",
+  "ronda 1: pulse PASS 95.0 (arte actual 76.6, +18.4)",
+  "ronda 1: water PASS 100.0 (arte actual 76.8, +23.2)",
+  "ronda 2: gaze FAIL 84.5 — criterio bajo: suelo despejado 0.0/5; criterio bajo: riqueza visual 5.63/15",
+  "ronda 3: gaze FAIL 75.6 — el interior tapa al enemigo (63% de píxeles opacos en la zona central; techo 60 %); cobertura excesiva (71%): oculta el suelo",
+  "ronda 4: gaze PASS 96.5 (arte actual 65.4, +31.1)",
+  "arquitecto: integradas ['gaze', 'stew_idle', 'stew', 'halo_idle', 'pulse', 'water']; humo OK: SMOKE OK ynara: gaze,stew_idle,stew,halo_idle,pulse,water"
+ ],
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['gaze', 'stew_idle', 'stew', 'halo_idle', 'pulse', 'water']; humo OK: SMOKE OK ynara: gaze,stew_idle,stew,halo_idle,pulse,water"
+ }
+}

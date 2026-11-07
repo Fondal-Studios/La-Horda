@@ -1,0 +1,130 @@
+{
+ "guardian": "renko",
+ "passed": [
+  "burial",
+  "mound",
+  "mound_zone",
+  "soil_zone",
+  "faults",
+  "faults_zone",
+  "trench"
+ ],
+ "escalated": [],
+ "keep_current": [],
+ "state": {
+  "burial": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 96.0,
+     "status": "PASS",
+     "improvement": 27.3,
+     "reasons": []
+    }
+   ]
+  },
+  "mound": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 91.7,
+     "status": "PASS",
+     "improvement": 26.2,
+     "reasons": []
+    }
+   ]
+  },
+  "mound_zone": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.0,
+     "status": "PASS",
+     "improvement": 39.9,
+     "reasons": []
+    }
+   ]
+  },
+  "soil_zone": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.0,
+     "status": "PASS",
+     "improvement": 28.1,
+     "reasons": []
+    }
+   ]
+  },
+  "faults": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.9,
+     "status": "PASS",
+     "improvement": 18.2,
+     "reasons": []
+    }
+   ]
+  },
+  "faults_zone": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.8,
+     "status": "PASS",
+     "improvement": 27.6,
+     "reasons": []
+    }
+   ]
+  },
+  "trench": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 98.3,
+     "status": "PASS",
+     "improvement": 12.7,
+     "reasons": []
+    }
+   ]
+  }
+ },
+ "baseline": {
+  "burial": 68.7,
+  "mound": 65.5,
+  "mound_zone": 55.1,
+  "soil_zone": 66.9,
+  "faults": 77.7,
+  "faults_zone": 68.2,
+  "trench": 85.6
+ },
+ "log": [
+  "ronda 1: burial PASS 96.0 (arte actual 68.7, +27.3)",
+  "ronda 1: mound PASS 91.7 (arte actual 65.5, +26.2)",
+  "ronda 1: mound_zone PASS 95.0 (arte actual 55.1, +39.9)",
+  "ronda 1: soil_zone PASS 95.0 (arte actual 66.9, +28.1)",
+  "ronda 1: faults PASS 95.9 (arte actual 77.7, +18.2)",
+  "ronda 1: faults_zone PASS 95.8 (arte actual 68.2, +27.6)",
+  "ronda 1: trench PASS 98.3 (arte actual 85.6, +12.7)",
+  "arquitecto: integradas ['burial', 'mound', 'mound_zone', 'soil_zone', 'faults', 'faults_zone', 'trench']; humo OK: SMOKE OK renko: burial,mound,mound_zone,soil_zone,faults,faults_zone,trench"
+ ],
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['burial', 'mound', 'mound_zone', 'soil_zone', 'faults', 'faults_zone', 'trench']; humo OK: SMOKE OK renko: burial,mound,mound_zone,soil_zone,faults,faults_zone,trench"
+ }
+}

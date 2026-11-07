@@ -3,7 +3,7 @@
    js/ui/codex/codex-book-art.js
    ILUSTRACIONES DEL LIBRO DE LA HORDA — arte propio, dibujado en vivo sobre canvas (sin imágenes de terceros).
    bookArtDraw(ctx, art, W, H, t): `art` es un nombre ("tapa", "horda", "modos"...) o "arena:<id>", que usa la
-   panorámica real de esa arena (assets/ui/codex/arenas/<id>.jpg, la misma del Códice) teñida de tinta y
+   panorámica real de esa arena (assets/ui/codex/arenas/<id>.png, la misma del Códice) teñida de tinta y
    pergamino. Todo se anima con `t` (segundos) y se recorta a un marco grabado. Si no hay imagen todavía, se
    dibuja un fondo de la paleta de la arena: el libro nunca queda vacío ni espera una descarga.
    Paleta: tinta #120c07, pergamino #bfa56f, oro #e0b060 (solo en las escenas), brasa #ff9a4a.
@@ -17,7 +17,7 @@ const BOOK_ARENA_FOCUS = {minas:0.78};
 const _bkImgs = {};
 function bookArtImage(id){
   let im = _bkImgs[id];
-  if(!im){ im = _bkImgs[id] = new Image(); im.onload = ()=>{ im._ok = true; }; im.onerror = ()=>{ im._bad = true; }; im.src = "assets/ui/codex/arenas/" + id + ".jpg"; }
+  if(!im){ im = _bkImgs[id] = new Image(); im.onload = ()=>{ im._ok = true; }; im.onerror = ()=>{ im._bad = true; }; im.src = "assets/ui/codex/arenas/" + id + ".png"; }
   return im._ok ? im : null;
 }
 function _bkRand(seed){ let s = (seed>>>0) || 1; return ()=>((s = (s*1664525 + 1013904223)>>>0)/4294967296); }

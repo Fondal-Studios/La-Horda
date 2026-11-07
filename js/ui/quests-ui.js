@@ -114,7 +114,7 @@ function _qScreen(){
     <div class="hub-tabs qs-tabs" id="quests-tabs">
       <button class="hub-tab" data-qtab="desafios">Diarios</button>
       <button class="hub-tab" data-qtab="logros">Logros</button>
-      <button class="hub-tab" data-qtab="pase">Pase</button>
+      <button class="hub-tab" data-qtab="pase">Pase de temporada</button>
       <button class="hub-tab" data-qtab="perfil">Perfil</button>
     </div>
     <div class="qs-body" id="quests-body"></div>`;

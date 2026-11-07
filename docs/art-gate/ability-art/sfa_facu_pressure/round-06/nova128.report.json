@@ -1,0 +1,156 @@
+{
+ "kind": "ring",
+ "score": 83.5,
+ "points": {
+  "alpha": 5.0,
+  "palette": 8.0,
+  "hygiene": 7.0,
+  "edge": 15.0,
+  "coverage": 9.45,
+  "contrast": 8.0,
+  "clear_floor": 0.89,
+  "motion": 10.5,
+  "richness": 11.29,
+  "identity": 8.37
+ },
+ "metrics": {
+  "peak_idx": 0,
+  "alpha_binary": 1.0,
+  "palette_adherence": 1.0,
+  "colors": 5,
+  "isolated": 0.0,
+  "edge_outline": 1.0,
+  "edge_reach": 0.9951677561868494,
+  "edge_over": 0.0,
+  "coverage": 0.11879152167035748,
+  "interior": 0.04603358425014476,
+  "interior_detail": 0.04111175448755067,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 17.35178055565364,
+  "peak_pos": 0.0,
+  "tail": 0.0,
+  "motion_mean": 0.06849254261363637,
+  "unique_frames": 1.0,
+  "tones": 5,
+  "highlight_share": 0.10386151797603196,
+  "core_fill": 0.0017921146953405018,
+  "detail_mass": 0.09236857825567503,
+  "min_sig_dist": 0.12788238068798796
+ },
+ "hard_fails": [],
+ "ops": [
+  {
+   "knob": "fill",
+   "why": "cobertura baja (12%): subir el relleno trameado (techo 24 %)",
+   "add": 0.06
+  },
+  {
+   "knob": "ticks",
+   "why": "más marcas para que el área se lea de lejos",
+   "add": 4
+  },
+  {
+   "knob": "rim",
+   "why": "borde más grueso para ganar presencia",
+   "add": 1
+  },
+  {
+   "knob": "fill",
+   "why": "el cuerpo de la zona casi no se ve (5% del interior): subir el relleno trameado",
+   "add": 0.06
+  },
+  {
+   "knob": "ticks",
+   "why": "más marcas internas para dar cuerpo",
+   "add": 4
+  },
+  {
+   "knob": "impact_at",
+   "why": "el pico cae en 0% de la tira: llevarlo a ~30 %",
+   "set": 0.3
+  },
+  {
+   "knob": "ticks",
+   "why": "poco detalle interior (4%): más marcas propias (estelas, hilos, runas)",
+   "add": 4
+  },
+  {
+   "knob": "tick_len",
+   "why": "marcas más largas",
+   "add": 0.04
+  },
+  {
+   "knob": "glyph_scale",
+   "why": "el centro está vacío: glifo propio más grande",
+   "add": 1
+  },
+  {
+   "knob": "deco",
+   "why": "se parece demasiado a otra habilidad del guardián (distancia 0.13): cambiar el tipo de marca",
+   "add": 1
+  },
+  {
+   "knob": "inner_ring",
+   "why": "segundo anillo para distinguirla",
+   "set": 1
+  }
+ ],
+ "criteria": {
+  "alpha": 1.0,
+  "palette": 1.0,
+  "hygiene": 1.0,
+  "edge": 1.0,
+  "coverage": 0.788,
+  "contrast": 1.0,
+  "clear_floor": 0.178,
+  "motion": 0.7,
+  "richness": 0.753,
+  "identity": 0.837
+ },
+ "baseline_total": 54.1,
+ "baseline_criteria": {
+  "alpha": 1.0,
+  "palette": 0.0,
+  "hygiene": 1.0,
+  "edge": 0.415,
+  "coverage": 0.0,
+  "contrast": 1.0,
+  "clear_floor": 0.178,
+  "motion": 0.607,
+  "richness": 0.728,
+  "identity": 0.7
+ },
+ "baseline_metrics": {
+  "peak_idx": 0,
+  "alpha_binary": 1.0,
+  "palette_adherence": 0.38418998048145736,
+  "colors": 5,
+  "isolated": 0.0,
+  "edge_outline": 0.2916666666666667,
+  "edge_reach": 0.7721471749941254,
+  "edge_over": 0.0,
+  "coverage": 0.03250553622271433,
+  "interior": 0.04603358425014476,
+  "interior_detail": 0.04111175448755067,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 17.35178055565364,
+  "peak_pos": 0.0,
+  "tail": 0.0,
+  "motion_mean": 0.025063254616477272,
+  "unique_frames": 1.0,
+  "tones": 4,
+  "highlight_share": 0.0705596107055961,
+  "core_fill": 0.0017921146953405018,
+  "detail_mass": 0.0757915173237754,
+  "min_sig_dist": 1.0
+ },
+ "improvement": 29.4,
+ "reasons": [
+  "criterio bajo: suelo despejado 0.89/5",
+  "puntaje 83.5 < 85"
+ ],
+ "status": "FAIL",
+ "keep_current": false
+}
