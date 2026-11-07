@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Decorados centrales de arena (Runway, vista cenital) -> decal de suelo en escala nativa. Uso: build-centro-arena.py infernal|acuatica
+"""Decorados centrales de arena (Runway, vista cenital) -> decal de suelo en escala nativa. Uso: build-centro-arena.py infernal|acuatica|laberinto|fortaleza
 Quita el croma por relleno desde los bordes (+ mayor componente), erosiona 1 px, aplasta en Y a la proporción oblicua del juego
 (el rectángulo destino ya la tiene), reduce con BOX premultiplicado, cuantiza (<=56 tonos), alfa binario. Se dibuja x2 sobre el mismo
 rectángulo del decal procedural (js/rendering/arena.js DECAL_PAINTED). Determinista, 0 créditos."""
@@ -8,12 +8,15 @@ from collections import deque
 from PIL import Image
 R = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')) + '/'
 CFG = {'infernal': ('infernal/infernal_centro', 'assets/vfx/infernal/centro_pentagrama.png', (266, 190)),
-       'acuatica': ('acuatica/acuatica_centro', 'assets/vfx/acuatica/centro_templo.png', (306, 207))}
+       'acuatica': ('acuatica/acuatica_centro', 'assets/vfx/acuatica/centro_templo.png', (306, 207)),
+       'laberinto': ('laberinto/laberinto_centro', 'assets/vfx/laberinto/centro_medallon.png', (357, 246)),
+       'fortaleza': ('fortaleza/fort_rejilla_lava', 'assets/vfx/fortaleza/rejilla_lava.png', (72, 72))}
 src, dst, (W, H) = CFG[sys.argv[1]]
 a = np.asarray(Image.open(R + 'art-source/runway-world/%s/master.png' % src).convert('RGB')).astype(int); h, w, _ = a.shape
 edge = np.concatenate([a[:8].reshape(-1, 3), a[-8:].reshape(-1, 3), a[:, :8].reshape(-1, 3), a[:, -8:].reshape(-1, 3)])
 bg = np.median(edge, axis=0)
 near = np.abs(a - bg).sum(2) < 75
+if sys.argv[1] in ('laberinto', 'fortaleza'): near |= (a[:, :, 1] > a[:, :, 0] + 35) & (a[:, :, 1] > a[:, :, 2] + 35)   # sombra verde del croma
 seen = np.zeros((h, w), bool); q = deque()
 for x in range(w):
     for y in (0, h - 1):

@@ -44,6 +44,12 @@ Object.assign(JOBS, {
   infernal_centro: 'In the style of @ref: ' + DECAL + 'a large ritual circle with a glowing red-orange five-pointed pentagram inside a double ring of small carved glyph runes, cut into cracked black obsidian stone, thin lava glowing in the carved lines and cracks, scattered embers.',
   acuatica_centro: 'In the style of @ref: ' + DECAL + 'a large sunken temple mosaic circle made of concentric rings of teal-grey stone tiles forming a wave spiral, a golden shell sigil at the centre, a few missing tiles with sand and tiny shells, faint caustic light.'
 });
+Object.assign(JOBS, {
+  laberinto_centro: 'In the style of @ref: ' + DECAL + 'a large ancient desert temple floor medallion: a golden sun disc with sixteen rays in the middle, a bull-horned minotaur seal at its centre, surrounded by rings of sandy-gold and brown radial stone tiles, worn, cracked and half covered with drifting sand.'
+});
+Object.assign(JOBS, {
+  fort_rejilla_lava: 'In the style of @ref: dark fantasy pixel art, flat top-down floor panel seen from directly above, crisp chunky pixel blocks, limited palette, no perspective, no text, no characters, ONE large wide rectangular iron grate made of thick dark iron bars in a regular square grid, set into a riveted dark steel frame, with glowing molten orange-red lava visible under the bars, the whole panel fully inside the frame and centred, isolated on a flat solid pure chroma green #00FF00 background with nothing else.'
+});
 const REFS = {ciudad_estatua: 'ref_statue_crop.png', ciudad_farol: 'ref_statue_crop.png'};
 const cmd = process.argv[2], ids = process.argv.slice(3).filter(a => !a.startsWith('--')), force = process.argv.includes('--force');
 if (cmd === 'status') console.log(JSON.stringify({creditBalance: api('GET', '/organization').creditBalance}));

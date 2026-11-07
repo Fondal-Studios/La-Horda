@@ -30,7 +30,7 @@ function fortTex(name){
   }
   return t.ok ? t.img : null;
 }
-fortTex("tex_planchas_hierro"); fortTex("tex_adoquin_patio");
+fortTex("tex_planchas_hierro"); fortTex("tex_adoquin_patio"); fortTex("rejilla_lava");
 function _fortTexFill(g, w, h, name, shade){
   const im = fortTex(name); if(!im) return false;
   g.imageSmoothingEnabled = false; g.fillStyle = g.createPattern(im, "repeat"); g.fillRect(0, 0, w, h);
@@ -107,6 +107,11 @@ function _fortGearShape(g, cx, cy, R, teeth, col, colLit, colDark, hole){
 
 // Plataforma completa (piso + detalles + borde + cara del risco + almenas) en un canvas.
 // `gaps`: rectángulos de mundo donde el borde queda abierto (puentes, puertas, otras plataformas).
+// Rejilla grande pintada (Runway + Códice: panel de barras de hierro sobre lava), 72x72 px nativos = 144 u. Devuelve false si no cargó.
+function _fortBigGrate(g, cx, cy){
+  const im = fortTex("rejilla_lava"); if(!im) return false;
+  g.imageSmoothingEnabled = false; g.drawImage(im, Math.round(cx - im.width/2), Math.round(cy - im.height/2)); return true;
+}
 function fortArtPlatform(p, gaps){
   const key = "plat_"+p.id; if(FORT_ART[key]) return FORT_ART[key];
   const W = p.hw*2*FORT_K, Hf = p.hh*2*FORT_K, Hc = FORT_CLIFF*FORT_K;
@@ -133,7 +138,7 @@ function fortArtPlatform(p, gaps){
   // detalles de cada tema
   if(th==="patio"){
     for(let i=0;i<14;i++){ const x = rnd()*W, y = rnd()*Hf; f.fillStyle = "rgba(58,46,36,0.5)"; f.beginPath(); f.ellipse(x, y, 6+rnd()*14, 3+rnd()*6, 0, 0, Math.PI*2); f.fill(); }
-    _fortGrate(f, W*0.5-8, Hf*0.35, 16, 10, 3);
+    if(!_fortBigGrate(f, W*0.5, Hf*0.3)) _fortGrate(f, W*0.5-8, Hf*0.35, 16, 10, 3);
     // rosa de los vientos grabada al centro (hito de la entrada)
     f.strokeStyle = "rgba(20,14,10,0.7)"; f.lineWidth = 2; f.beginPath(); f.arc(W/2, Hf*0.55, 26, 0, Math.PI*2); f.stroke();
     f.fillStyle = "rgba(20,14,10,0.6)"; for(let i=0;i<4;i++){ const a = i*Math.PI/2; f.beginPath(); f.moveTo(W/2 + Math.cos(a)*30, Hf*0.55 + Math.sin(a)*30); f.lineTo(W/2 + Math.cos(a+1.3)*6, Hf*0.55 + Math.sin(a+1.3)*6); f.lineTo(W/2 + Math.cos(a-1.3)*6, Hf*0.55 + Math.sin(a-1.3)*6); f.fill(); }
@@ -146,6 +151,7 @@ function fortArtPlatform(p, gaps){
     // canales de lava que cruzan el piso (bajo rejillas)
     for(let i=0;i<3;i++){ const y = Hf*(0.25+0.25*i); f.fillStyle = "#1a0a04"; f.fillRect(0, y-3, W, 6); f.fillStyle = "rgba(255,110,30,0.75)"; f.fillRect(0, y-1, W, 2); }
     for(let i=0;i<18;i++){ const x = rnd()*W, y = rnd()*Hf; f.fillStyle = "rgba(0,0,0,0.3)"; f.beginPath(); f.arc(x, y, 3+rnd()*6, 0, Math.PI*2); f.fill(); }
+    _fortBigGrate(f, W*0.5, Hf*0.5);   // rejilla central sobre el canal del medio (Códice)
   } else if(th==="interior"){
     for(let x=10; x<W; x+=48){ f.fillStyle = "rgba(20,16,14,0.8)"; f.fillRect(x, 0, 3, Hf); f.fillStyle = "rgba(160,82,45,0.35)"; f.fillRect(x+1, 0, 1, Hf); }
   } else if(th==="coreDisc" || th==="core"){

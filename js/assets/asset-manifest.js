@@ -388,6 +388,8 @@ const ASSET_MANIFEST = [
   "assets/vfx/ciudad/escombros_l.png",
   "assets/vfx/infernal/centro_pentagrama.png",
   "assets/vfx/acuatica/centro_templo.png",
+  "assets/vfx/laberinto/centro_medallon.png",
+  "assets/vfx/fortaleza/rejilla_lava.png",
   "assets/vfx/ciudad/fogata_0.png",
   "assets/vfx/ciudad/escombros_0.png",
   "assets/vfx/ciudad/arbol_seco_0.png",

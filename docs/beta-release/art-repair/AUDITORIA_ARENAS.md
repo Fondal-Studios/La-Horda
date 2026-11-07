@@ -10,17 +10,19 @@ Referencia única: Códice (`assets/ui/codex/arenas/*`, `art-source/codex-covers
 ## Segunda tanda (2026-11-07)
 - **Infernal: pentagrama central** y **Acuática: templo/espiral central** repintados (Runway, 16 cr; `infernal-acuatica-centro-antes-despues.png`). Filas 3 y 4 de abajo quedan resueltas en lo central; faltan sus props.
 - **Ciudad: escombros** a escala nativa x1 (pintor determinista, 0 cr). `barril_0` ya se dibuja reduciendo (60x94 a 40-64 px), no se tocó; `fogata_0`, `fuente_0`, `columna_0`, `valla_0`, `arco_0` y `arbol_seco_0` NO se usan en el renderer de Ciudad (código muerto), así que repintarlos no cambia nada visible.
-- Sin saldo en la tanda: disco solar de Laberinto y paneles/vetas de Fortaleza quedan pendientes.
+## Tercera tanda (2026-11-07)
+- **Laberinto: medallón central** (disco solar + cuernos de toro) repintado; **Fortaleza: rejilla grande sobre lava** en el patio y en el centro de la forja (Runway, 16 cr; `laberinto-fortaleza-antes-despues.png`). Más plano que Infernal/Acuática; la lava es más brillante que la del Códice.
+- Siguen pendientes en Fortaleza: vetas/canales de lava laterales y estandartes lisos; paneles de la sala interior.
 - `tools/ciudad/smoke.js` también falla en `main` limpio (`1a2b4c3e`): ver ART_CREDITS/resumen.
 
 ## Pendiente, priorizado por visibilidad
 | # | Arena | Qué no coincide con el Códice / se ve tosco | Dónde | Costo estimado |
 |---|---|---|---|---|
 | 1 | Ciudad | Piezas chicas ampliadas: `barril_0` (60x94), `escombros_0`, `fogata_0`, `fuente_0`, `reja_0`, `arco_0`, `columna_0`, `valla_0` (24-60 px a 2-6x); casas `casa_a/b` en `art-source` sin integrar (casa_b rechazada por vista isométrica); suelo de calle con tile repetido y «huellas» ámbar evidentes | `assets/vfx/ciudad/`, `cm-render.js` | 5-6 gen (≈48 cr) o pintor determinista |
-| 2 | Fortaleza | Arena plana y vacía: pocos props (barriles, rejillas, 2 estandartes rojos lisos); el Códice tiene paneles de rejilla roja grandes y vetas de lava, ausentes | `js/arenas/fortaleza/fort-art.js` | 3-4 gen |
-| 3 | Infernal | Pentagrama central 100 % procedural (líneas de trazo uniforme) sobre piso nuevo; el Códice trae vetas de lava y charcos naranjas | `arena.js`/decorado del hub | 2 gen o pintor |
-| 4 | Acuática | Espiral central y círculos procedurales; faltan corales/ruinas del Códice como arte propio (hoy dibujo por código) | `arena-props.js` | 2-3 gen |
-| 5 | Laberinto | Disco solar central procedural; obeliscos aceptables | `arena-props.js` | 1-2 gen |
+| 2 | Fortaleza | (hecho: rejilla grande) sigue plana: pocos props (barriles, rejillas, 2 estandartes rojos lisos); el Códice tiene paneles de rejilla roja grandes y vetas de lava, ausentes | `js/arenas/fortaleza/fort-art.js` | 3-4 gen |
+| 3 | Infernal | (hecho: pentagrama) quedan columnas, estatuas y fisuras procedurales. Antes: pentagrama 100 % procedural (líneas de trazo uniforme) sobre piso nuevo; el Códice trae vetas de lava y charcos naranjas | `arena.js`/decorado del hub | 2 gen o pintor |
+| 4 | Acuática | (hecho: templo central) quedan; faltan corales/ruinas del Códice como arte propio (hoy dibujo por código) | `arena-props.js` | 2-3 gen |
+| 5 | Laberinto | (hecho: medallón central) obeliscos y arena acumulada siguen procedurales | `arena-props.js` | 1-2 gen |
 | 6 | Divina | Sin pack propio, suelo plano de baldosas y un altar «+» (auditoría previa 35/100); sin captura en esta pasada | `arena.js` | 4+ gen |
 | 7 | Micelial | Suelo posterizado y hongos de dibujo básico frente al Códice (más denso) | `arena.js` | 2-3 gen |
 | 8 | Minas | Concepto del Códice es un mapa isométrico, el juego es cenital: no se puede igualar; props de cristal/vagonetas simples | `js/arenas/minas` | 2-3 gen |

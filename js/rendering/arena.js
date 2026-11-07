@@ -34,7 +34,8 @@ for(const k in FLOOR_PAINTED){ const e = FLOOR_PAINTED[k]; e.img = new Image(); 
 // Si no cargaron (o fallan) se dibuja el decal procedural de siempre.
 const DECAL_PAINTED = {
   infPentagram: { src:"assets/vfx/infernal/centro_pentagrama.png" },
-  sunkTemple:   { src:"assets/vfx/acuatica/centro_templo.png" }
+  sunkTemple:   { src:"assets/vfx/acuatica/centro_templo.png" },
+  minoChamber:  { src:"assets/vfx/laberinto/centro_medallon.png" }
 };
 for(const k in DECAL_PAINTED){ const e = DECAL_PAINTED[k]; e.img = new Image(); e.ok = false; e.img.onload = ()=>{ e.ok = true; }; e.img.src = e.src; }
 function _floorPaintedPattern(){
