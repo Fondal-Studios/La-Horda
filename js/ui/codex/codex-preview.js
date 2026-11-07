@@ -203,31 +203,38 @@ function _cxDrawEnemy(g, e, x, y, k){
 }
 // La Madre Espora es parte del escenario del Reino (micDrawWorld): en la partida se dibuja su retrato real
 // (mother/mp_full) con respiración, sombrero que late y brazos que se encienden al atacar. Mismo arte acá.
-// Silueta de la Madre: el retrato es una ilustración con fondo oscuro casi opaco, y al teñirlo de negro (silueta de
-// "???") quedaba un rectángulo de ruido. Se recorta el fondo (píxeles oscuros conectados al borde, relleno por
-// inundación) y queda solo la figura. Se calcula una vez.
-let _cxMotherMask = null;
-function _cxMotherSil(src){
-  if(_cxMotherMask && _cxMotherMask.srcW === src.width) return _cxMotherMask.cv;
-  const w = src.width, h = src.height, cv = document.createElement("canvas"); cv.width = w; cv.height = h;
-  const c = cv.getContext("2d", {willReadFrequently:true}); c.drawImage(src, 0, 0);
-  let id; try{ id = c.getImageData(0, 0, w, h); }catch(err){ return null; }
-  const d = id.data, bg = new Uint8Array(w*h), st = [];
-  const dark = i => d[i*4+3] < 40 || (d[i*4] < 70 && d[i*4+1] < 70 && d[i*4+2] < 90);
-  const push = i => { if(!bg[i] && dark(i)){ bg[i] = 1; st.push(i); } };
-  for(let x = 0; x < w; x++){ push(x); push((h-1)*w + x); }
-  for(let y = 0; y < h; y++){ push(y*w); push(y*w + w-1); }
-  while(st.length){ const i = st.pop(), x = i % w; if(x > 0) push(i-1); if(x < w-1) push(i+1); if(i >= w) push(i-w); if(i < w*(h-1)) push(i+w); }
-  for(let i = 0; i < w*h; i++){ d[i*4] = d[i*4+1] = d[i*4+2] = 255; d[i*4+3] = bg[i] ? 0 : 255; }
-  c.putImageData(id, 0, 0);
-  _cxMotherMask = {srcW:w, cv};
-  return cv;
+// Silueta de la Madre ("???"): el retrato es una ilustración rectangular con fondo oscuro casi opaco, así que al
+// teñirlo de negro quedaba un rectángulo de ruido. Para el desconocido se dibuja una silueta propia y limpia
+// (sombrero, torso con cuatro brazos de garra y raíces) con las mismas proporciones que el retrato.
+function _cxMotherSil(g, w, h){
+  g.save(); g.fillStyle = "#fff"; g.strokeStyle = "#fff"; g.lineCap = "round"; g.lineJoin = "round";
+  const E = (x, y, rx, ry)=>{ g.beginPath(); g.ellipse(x*w, y*h, rx*w, ry*h, 0, 0, Math.PI*2); g.fill(); };
+  E(0, -0.86, 0.46, 0.115); E(-0.36, -0.70, 0.15, 0.05); E(0.39, -0.68, 0.14, 0.05); E(-0.20, -0.80, 0.14, 0.06); E(0.22, -0.79, 0.14, 0.06);
+  for(const sd of [-1, 1]){ // cortinas que gotean del sombrero
+    for(let i = 0; i < 4; i++){ g.fillRect((sd*(0.10 + i*0.09) - 0.012)*w, -0.80*h, 0.024*w, (0.12 + (i%2)*0.06)*h); }
+  }
+  E(0, -0.66, 0.045, 0.06);                                  // cabeza
+  g.beginPath(); g.moveTo(-0.05*w, -0.62*h); g.lineTo(0.05*w, -0.62*h); g.lineTo(0.17*w, -0.22*h); g.lineTo(0.30*w, -0.02*h);
+  g.lineTo(-0.30*w, -0.02*h); g.lineTo(-0.17*w, -0.22*h); g.closePath(); g.fill();   // torso y falda de raíces
+  g.lineWidth = 0.035*w;
+  for(const sd of [-1, 1]){ // cuatro brazos con garra
+    for(const [x1, y1, x2, y2] of [[0.30, -0.50, 0.42, -0.26], [0.22, -0.40, 0.36, -0.14]]){
+      g.beginPath(); g.moveTo(sd*0.05*w, -0.58*h); g.quadraticCurveTo(sd*x1*w, -0.62*h, sd*x1*w, y1*h);
+      g.quadraticCurveTo(sd*(x1 + 0.04)*w, (y1 + y2)/2*h, sd*x2*w, y2*h); g.stroke();
+      g.beginPath(); g.moveTo(sd*x2*w, y2*h); g.lineTo(sd*(x2 - 0.03)*w, (y2 + 0.07)*h); g.lineTo(sd*(x2 + 0.03)*w, (y2 + 0.05)*h); g.fill();
+    }
+  }
+  g.lineWidth = 0.02*w;
+  for(let i = -5; i <= 5; i++){ g.beginPath(); g.moveTo(i*0.06*w, -0.04*h); g.quadraticCurveTo((i*0.06 + 0.04)*w, -0.10*h, (i*0.065 + 0.02)*w, -0.0*h); g.stroke(); }
+  E(0, -0.015, 0.50, 0.03);
+  g.restore();
 }
 function _cxDrawMother(g, e){
   if(typeof MIC_MP === "undefined" || !MIC_MP_OK.mp_full) return false;
-  const img = e._cxSil ? (_cxMotherSil(MIC_MP.mp_full) || MIC_MP.mp_full) : MIC_MP.mp_full, h = (e.radius||40)*5, w = h*img.width/img.height, k = h/img.height;
+  const img = MIC_MP.mp_full, h = (e.radius||40)*5, w = h*img.width/img.height, k = h/img.height;
   const t = (e.animT||0)/1000, br = 1 + 0.012*Math.sin(t*1.7);
   g.save(); g.scale(br, 2 - br); g.imageSmoothingEnabled = false;
+  if(e._cxSil){ _cxMotherSil(g, w, h); g.restore(); return true; }
   g.drawImage(img, -w/2, -h, w, h);
   g.globalCompositeOperation = "lighter";
   if(MIC_MP_OK.mp_cap){ g.globalAlpha = 0.12 + 0.1*Math.sin(t*2.2); g.drawImage(MIC_MP.mp_cap, -w/2 + 3*k, -h, MIC_MP.mp_cap.width*k, MIC_MP.mp_cap.height*k); }
