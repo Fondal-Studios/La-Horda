@@ -57,7 +57,7 @@ const allFlags='motherArtPilot=1&motherBloomKey=1&motherHeartKey=1&motherCoreLay
   {query:'motherArtLegacy=1&'+allFlags,flags:Array(6).fill(false),files:[]}
  ]){
   const t=await newPage(spec.query);assert.deepEqual(t.flags,spec.flags,'explicit query feature intent preserved');
-  if(spec.files.length)await t.page.waitForFunction(files=>files.every(f=>Object.values(MIC_MP).some(im=>im.src.endsWith('/'+f)&&im.complete&&im.naturalWidth>0)),spec.files,{timeout:120000,polling:100});
+  if(spec.files.length)await t.page.waitForFunction(files=>files.every(f=>Object.values(MIC_MP).some(im=>im.src.split('?')[0].endsWith('/'+f)&&im.complete&&im.naturalWidth>0)),spec.files,{timeout:120000,polling:100});
   else await t.page.waitForTimeout(250);
   assert.deepEqual([...t.requests].sort(),[...spec.files].sort(),'explicit diagnostic eager subset / rollback zero');
   await enterHost(t.page);await t.page.waitForTimeout(250);assert.deepEqual([...t.requests].sort(),[...spec.files].sort(),'entry respects explicit subset/rollback');assert.deepEqual(t.errors,[]);
