@@ -7,7 +7,7 @@
 * **Escaneo estático** de 1.113 PNG de `assets/sprites` (alfa semitransparente, colores, suavidad de degradé, bloque nativo de píxel).
 * **Informe propio del repo** `docs/art-gate/PIXEL_DENSITY.md` (13 entidades con desvío, última generación 2026-11-06) y `docs/art-gate/RUNWAY_ENEMIES.md`.
 * **Contrastado a ojo** contra Thalen en láminas lado a lado (`audit-20261107/*.png`).
-* **No corrido:** `tools/art/pixel-density.js` falla en este entorno (`Execution context was destroyed`), por eso se usó su informe ya generado, no una corrida nueva. No se jugaron partidas completas por arena/jefe ni se probó en dispositivo. Los umbrales de mi escaneo son míos, no del gate.
+* **No corrido:** `tools/art/pixel-density.js` falló en mis primeras corridas porque yo tenía `CHROMIUM_PATH` definido (el script lo usa distinto); sin esa variable corre bien y da lo mismo que su informe (13 entidades con desvío, 0 sin excepción documentada). Se usó ese informe como base. No se jugaron partidas completas por arena/jefe ni se probó en dispositivo. Los umbrales de mi escaneo son míos, no del gate.
 
 ## Resultado general
 Los 46 guardianes en el motor se leen coherentes con Thalen, con una excepción (punto 3). La incoherencia vive en **enemigos, jefes y la arena Micelial**.

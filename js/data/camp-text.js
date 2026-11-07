@@ -114,6 +114,10 @@ const CAMP_SMITH_HERO = {
   sira:"Me pediste tinta que no se corra con la lluvia. Hollín de la fragua y aceite de lámpara: así se marcan los caminos de vuelta.",
   nano_gm:"No sé si sos guardián o algo que manda sobre los guardianes. Te dejé el yunque libre esta noche: lo que quieras forjar, forjalo.",
   facu_gm:"Te mojaste las botas en la arena seca de la Fábrica, y nadie sabe de dónde vino el agua. Te las engrasé con sebo: que el mar te espere.",
+  // Los Siete de la Ciudad, el Laberinto y las Minas (misma voz del herrero).
+  ilsa:"Un estoque de salón, fino como una intención. Te lo enderecé en frío: a un acero así no se lo sienta junto al fuego. Lo que devolvés con interés, te lo cobro en afilado.",
+  vorn:"Dos pieles y ningún apuro. Te remaché las correas de la de piedra y le puse sebo a la de tormenta: la primera pesa, la segunda chispea. Elegí cuál te toca esta noche.",
+  kora:"Un casco con el hierro hundido de tanto embestir. Te lo golpeé de nuevo desde adentro. A vos nadie te frena, ariete; a mi yunque, tampoco: respetá la puerta de la fragua.",
   // Campeones de las expansiones Quality Five y Ascensión (misma voz: lo que un herrero ve en las manos y el arma de cada uno).
   solciju:"Barricas con duelas de roble y aros de hierro: eso sí lo entiendo. Te apreté dos aros flojos; lo que fermenta adentro, no me lo muestres.",
   veyra:"Ese filo no se afila: sangra solo. Le pasé el trapo y se lo bebió. Guardalo lejos de mi yunque, por favor.",
