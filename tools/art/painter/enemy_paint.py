@@ -171,7 +171,10 @@ def build_atlas(spec, mod):
         sets[alias] = [sets[s][j] for s, j in src] if isinstance(src[0], (list, tuple)) else list(src_idx(sets, src))
     img = Image.fromarray(atlas)
     img = limit_palette(img, 48)
-    meta = {'w': W, 'h': H, 'cols': cols, 'refH': spec['refH'], 'anchor': spec['anchor'], 'sets': sets}
+    # refH/anchor medidos del cuadro de reposo: alto real de la figura y línea de pies (el juego dibuja radio*hMul de alto)
+    f0 = frames[sets['idle'][0]]; ys = np.nonzero(f0[..., 3] > 0)[0]
+    refH = int(ys.max() - ys.min() + 1); anchor = round((ys.max() + 1) / H, 4)
+    meta = {'w': W, 'h': H, 'cols': cols, 'refH': refH, 'anchor': anchor, 'sets': sets}
     return img, meta
 
 

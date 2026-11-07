@@ -29,8 +29,9 @@ def add_idle(a, cs, cols=4):
 
 
 def aurelia(a):
+    brown = np.array([58, 36, 16], np.uint8)   # contorno oscuro de 1 px donde el borde era dorado/claro (el Códice lo lleva oscuro)
     for i in range(32):
-        put(a, i, binarize(despeckle_alpha(cell(a, i), 4)))
+        put(a, i, ensure_outline(binarize(despeckle_alpha(cell(a, i), 4)), brown))
     # la muerte original terminaba en dos cuadros casi invisibles: se conservan golpe (32) y rodillas (33) y el
     # desplome (34, 35) sale del cuadro 33 girado, apoyado en el suelo
     k33 = cell(a, 33)

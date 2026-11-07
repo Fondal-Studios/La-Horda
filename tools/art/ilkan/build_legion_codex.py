@@ -42,7 +42,9 @@ if __name__ == '__main__':
     srcs = {'atlas': (R+'art-source/ilkan/codex-v1-atlas-original.png', D+'codex-v1/atlas.png'),
             'colossus': (R+'art-source/ilkan/colossus-espiritu-original.png', D+'v2/colossus.png')}
     q = {k: quantize(Image.open(v[0])) for k, v in srcs.items()}
-    for k, v in srcs.items(): q[k].save(v[1], optimize=True); webp(q[k], v[1][:-4]+'.webp')
+    for k, v in srcs.items():
+        q[k].save(v[1], optimize=True)
+        if os.path.exists(v[1][:-4]+'.webp') or k == 'colossus': webp(q[k], v[1][:-4]+'.webp')   # solo donde el juego pide la copia .webp (asset-webp.js)
     hum = recolor(q['atlas'], True); col = recolor(q['colossus'], False)
     os.makedirs(D+'skins/legion', exist_ok=True)
     for n, im in (('atlas', hum), ('colossus', col)):
