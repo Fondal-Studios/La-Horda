@@ -41,7 +41,7 @@ body.reduce-motion input[type=checkbox].ui-toggle, body.reduce-motion input[type
 @media (max-height:520px){
   #pause-screen{ padding:6px; }
   #pause-screen .pause-panel{ max-width:700px; display:grid; grid-template-columns:1fr 1fr; gap:6px 10px; padding:6px 14px 10px; }
-  #pause-screen .pause-panel > .arena-title, #pause-screen .pause-audio, #pause-screen .pause-btnrow, #pause-screen #stats-panel{ grid-column:1 / -1; }
+  #pause-screen .pause-panel > .arena-title, #pause-screen .pause-audio, #pause-screen .pause-btnrow, #pause-screen #stats-panel, #pause-screen #tactical-panel{ grid-column:1 / -1; min-width:0; }
   #pause-screen .pause-panel > .arena-title{ font-size:20px; line-height:1.1; }
   #pause-screen .pause-note{ display:none; }
   #pause-screen .pause-audio{ gap:2px 18px; }
@@ -112,3 +112,5 @@ body.reduce-motion input[type=checkbox].ui-toggle, body.reduce-motion input[type
   #mainmenu-screen #mainmenu-tienda-btn .hub-tile-sub{ padding-right:62px; }
   body #mainmenu-screen.hub-screen{ padding-bottom:64px; }   /* aire inferior: DESAFÍOS entra completo y el hub sigue deslizándose */
 }
+/* #pause-screen puede ser una grilla de columnas (landscape): el panel envoltorio ocupa todo el ancho */
+#pause-screen > .pause-panel{ grid-column:1 / -1; justify-self:center; width:min(100%, 760px); box-sizing:border-box; }
