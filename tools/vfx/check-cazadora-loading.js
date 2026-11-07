@@ -10,7 +10,7 @@ for(const viewport of [{width:390,height:844},{width:844,height:390}])for(const 
  await p.waitForFunction(m=>['f1','f2','f3'].every(k=>m.includes(k)||SYLVA_RAIN_READY[k])&&['f1','f2','f3','f4'].every(k=>m.includes(k)||SYLVA_TRAP_READY[k]),missing);
  const r=await p.evaluate(missing=>{
   state='menu';const out=[],images=[],errors=[];const old=window.artMipDraw;
-  window.artMipDraw=function(img,...args){if(img.src&&/assets\/vfx\/cazadora/.test(img.src))images.push({src:img.src.split('/').pop(),finite:args.every(Number.isFinite),ready:img.complete&&img.naturalWidth>0});return old.apply(this,arguments);};
+  window.artMipDraw=function(img,...args){if(img.src&&/assets\/vfx\/cazadora/.test(img.src))images.push({src:img.src.split('?')[0].split('/').pop(),finite:args.every(Number.isFinite),ready:img.complete&&img.naturalWidth>0});return old.apply(this,arguments);};
   const cv=document.getElementById('game');cv.width=390;cv.height=280;let renderCopies=[];
   for(const kind of ['trap','rain'])for(let f=1;f<=(kind==='trap'?4:3);f++){
    ctx.setTransform(1,0,0,1,0,0);ctx.fillStyle='#18241a';ctx.fillRect(0,0,390,280);images.length=0;
