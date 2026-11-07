@@ -1,0 +1,398 @@
+{
+ "generatedBy": "tools/art/arena_lineup.js",
+ "unit": "unidades de mundo por píxel de arte (u/px); vsChampion = u/px / mediana del roster de campeones",
+ "rosterMedianUpx": 0.895,
+ "roster": [
+  0.29,
+  0.32,
+  0.64,
+  0.71,
+  0.75,
+  0.77,
+  0.78,
+  0.78,
+  0.79,
+  0.79,
+  0.8,
+  0.8,
+  0.82,
+  0.82,
+  0.86,
+  0.87,
+  0.87,
+  0.88,
+  0.88,
+  0.88,
+  0.89,
+  0.89,
+  0.9,
+  0.9,
+  0.9,
+  0.91,
+  0.91,
+  0.92,
+  0.93,
+  0.93,
+  0.95,
+  0.95,
+  0.96,
+  0.97,
+  0.97,
+  0.98,
+  0.98,
+  0.98,
+  1,
+  1,
+  1.03,
+  1.03,
+  1.05,
+  1.06,
+  1.08,
+  1.12
+ ],
+ "density": {
+  "hielo": [
+   {
+    "t": "tanque (referencia)",
+    "rank": "campeón",
+    "upx": 0.32,
+    "src": "assets/sprites/champions/tanque/atlas.webp?v=20c4d01c",
+    "err": null,
+    "vsChampion": 0.4
+   },
+   {
+    "t": "hada_escarcha",
+    "rank": "normal",
+    "upx": 0.63,
+    "src": "assets/sprites/enemies/hielo/hada_escarcha/v2/atlas.png?v=20c4d01c",
+    "err": null,
+    "vsChampion": 0.7
+   },
+   {
+    "t": "cristal_volador",
+    "rank": "normal",
+    "upx": 0.5,
+    "src": "assets/sprites/enemies/hielo/cristal_volador/v2/atlas.png?v=20c4d01c",
+    "err": null,
+    "vsChampion": 0.6
+   },
+   {
+    "t": "cristal_servo",
+    "rank": "normal",
+    "upx": 0.59,
+    "src": "assets/sprites/enemies/hielo/cristal_servo/v2/atlas.png?v=20c4d01c",
+    "err": null,
+    "vsChampion": 0.7
+   },
+   {
+    "t": "lobo_artico",
+    "rank": "normal",
+    "upx": 1.04,
+    "src": "assets/sprites/enemies/hielo/lobo_artico/v2/atlas.png?v=20c4d01c",
+    "err": null,
+    "vsChampion": 1.2
+   },
+   {
+    "t": "golem_hielo",
+    "rank": "normal",
+    "upx": 0.74,
+    "src": "assets/sprites/enemies/hielo/golem_hielo/v2/atlas.png?v=20c4d01c",
+    "err": null,
+    "vsChampion": 0.8
+   },
+   {
+    "t": "golem_cristal",
+    "rank": "normal",
+    "upx": 0.78,
+    "src": "assets/sprites/enemies/hielo/golem_cristal/v2/atlas.png?v=20c4d01c",
+    "err": null,
+    "vsChampion": 0.9
+   },
+   {
+    "t": "foco_hielo",
+    "rank": "subelite",
+    "upx": 1.57,
+    "src": "assets/vfx/bosses/hielo/bsAngelPillar_1.webp?v=20c4d01c",
+    "err": null,
+    "vsChampion": 1.8
+   },
+   {
+    "t": "dragoncito_hielo",
+    "rank": "elite",
+    "upx": 0.91,
+    "src": "assets/sprites/enemies/hielo/dragoncito_hielo/v2/atlas.webp?v=20c4d01c",
+    "err": null,
+    "vsChampion": 1
+   },
+   {
+    "t": "angel_hielo",
+    "rank": "elite",
+    "upx": 0.75,
+    "src": "assets/sprites/enemies/hielo/angel_hielo/v2/atlas.webp?v=20c4d01c",
+    "err": null,
+    "vsChampion": 0.8
+   },
+   {
+    "t": "demonio_hielo_fuego",
+    "rank": "elite",
+    "upx": 0.87,
+    "src": "assets/sprites/enemies/hielo/demonio_hielo_fuego/v2/atlas.png?v=20c4d01c",
+    "err": null,
+    "vsChampion": 1
+   },
+   {
+    "t": "dragon_hielo",
+    "rank": "elite",
+    "upx": 1.47,
+    "src": "assets/sprites/enemies/hielo/dragon_hielo/v2/atlas.webp?v=20c4d01c",
+    "err": null,
+    "vsChampion": 1.6
+   },
+   {
+    "t": "mago_hielo_cristal",
+    "rank": "jefe",
+    "upx": 1.14,
+    "src": "assets/sprites/bosses/hielo/mago_hielo_cristal/v2/atlas.webp?v=20c4d01c",
+    "err": null,
+    "vsChampion": 1.3
+   },
+   {
+    "t": "angel_caido_hielo",
+    "rank": "jefe",
+    "upx": 1.65,
+    "src": "assets/sprites/bosses/hielo/angel_caido_hielo/v2/atlas.webp?v=20c4d01c",
+    "err": null,
+    "vsChampion": 1.8
+   }
+  ],
+  "bosque": [
+   {
+    "t": "tanque (referencia)",
+    "rank": "campeón",
+    "upx": 0.32,
+    "src": "assets/sprites/champions/tanque/atlas.webp?v=20c4d01c",
+    "err": null,
+    "vsChampion": 0.4
+   },
+   {
+    "t": "enjambre_hadas",
+    "rank": "normal",
+    "upx": 1.04,
+    "src": "assets/sprites/enemies/bosque/enjambre_hadas/v3/atlas.webp?v=20c4d01c",
+    "err": null,
+    "vsChampion": 1.2
+   },
+   {
+    "t": "duende_bosque",
+    "rank": "normal",
+    "upx": 0.56,
+    "src": "assets/sprites/enemies/bosque/duende_bosque/v2/atlas.png?v=20c4d01c",
+    "err": null,
+    "vsChampion": 0.6
+   },
+   {
+    "t": "bestia_bosque",
+    "rank": "subelite",
+    "upx": 0.3,
+    "src": "assets/sprites/battlefield/thornbeast.webp?v=20c4d01c",
+    "err": null,
+    "vsChampion": 0.3
+   },
+   {
+    "t": "cu_sith",
+    "rank": "elite",
+    "upx": 1.27,
+    "src": "assets/sprites/enemies/bosque/cu_sith/v3/atlas.webp?v=20c4d01c",
+    "err": null,
+    "vsChampion": 1.4
+   },
+   {
+    "t": "dama_bosque",
+    "rank": "elite",
+    "upx": 0.69,
+    "src": "assets/sprites/enemies/bosque/dama_bosque/v2/atlas.webp?v=20c4d01c",
+    "err": null,
+    "vsChampion": 0.8
+   },
+   {
+    "t": "ent",
+    "rank": "elite",
+    "upx": 1.18,
+    "src": "assets/sprites/enemies/bosque/ent/v2/atlas.png?v=20c4d01c",
+    "err": null,
+    "vsChampion": 1.3
+   },
+   {
+    "t": "doblador_picaro",
+    "rank": "subjefe",
+    "upx": 1.13,
+    "src": "assets/sprites/bosses/bosque/doblador_picaro/v2/atlas.webp?v=20c4d01c",
+    "err": null,
+    "vsChampion": 1.3
+   },
+   {
+    "t": "doblador_arquera",
+    "rank": "subjefe",
+    "upx": 1.16,
+    "src": "assets/sprites/bosses/bosque/doblador_arquera/v2/atlas.webp?v=20c4d01c",
+    "err": null,
+    "vsChampion": 1.3
+   },
+   {
+    "t": "doblador_clerigo",
+    "rank": "subjefe",
+    "upx": 1.16,
+    "src": "assets/sprites/bosses/bosque/doblador_clerigo/v2/atlas.webp?v=20c4d01c",
+    "err": null,
+    "vsChampion": 1.3
+   },
+   {
+    "t": "doblador_guerrero",
+    "rank": "subjefe",
+    "upx": 1.28,
+    "src": "assets/sprites/bosses/bosque/doblador_guerrero/v2/atlas.webp?v=20c4d01c",
+    "err": null,
+    "vsChampion": 1.4
+   },
+   {
+    "t": "guardian_ancestral",
+    "rank": "jefe",
+    "upx": 2.15,
+    "src": "assets/sprites/bosses/bosque/guardian_ancestral/atlas.webp?v=20c4d01c",
+    "err": null,
+    "vsChampion": 2.4
+   }
+  ],
+  "ciudad": [
+   {
+    "t": "tanque (referencia)",
+    "rank": "campeón",
+    "upx": 0.32,
+    "src": "assets/sprites/champions/tanque/atlas.webp?v=20c4d01c",
+    "err": null,
+    "vsChampion": 0.4
+   },
+   {
+    "t": "cm_perro",
+    "rank": "normal",
+    "upx": 0.81,
+    "src": "assets/sprites/enemies/ciudad/cm_perro/v2/atlas.png?v=20c4d01c",
+    "err": null,
+    "vsChampion": 0.9
+   },
+   {
+    "t": "cm_espectro",
+    "rank": "normal",
+    "upx": 0,
+    "src": null,
+    "err": null,
+    "vsChampion": 0
+   },
+   {
+    "t": "cm_saqueador",
+    "rank": "normal",
+    "upx": 0.93,
+    "src": "assets/sprites/enemies/ciudad/cm_saqueador/v2/atlas.png?v=20c4d01c",
+    "err": null,
+    "vsChampion": 1
+   },
+   {
+    "t": "cm_sectario",
+    "rank": "normal",
+    "upx": 0.94,
+    "src": "assets/sprites/enemies/ciudad/cm_sectario/v2/atlas.png?v=20c4d01c",
+    "err": null,
+    "vsChampion": 1
+   },
+   {
+    "t": "cm_cometa",
+    "rank": "normal",
+    "upx": 0,
+    "src": null,
+    "err": null,
+    "vsChampion": 0
+   },
+   {
+    "t": "cm_espejismo",
+    "rank": "normal",
+    "upx": 0,
+    "src": null,
+    "err": null,
+    "vsChampion": 0
+   },
+   {
+    "t": "cm_acechante",
+    "rank": "subelite",
+    "upx": 0.88,
+    "src": "assets/sprites/enemies/ciudad/cm_acechante/v2/atlas.png?v=20c4d01c",
+    "err": null,
+    "vsChampion": 1
+   },
+   {
+    "t": "cm_raptor",
+    "rank": "subelite",
+    "upx": 1.28,
+    "src": "assets/sprites/enemies/ciudad/cm_raptor/v2/atlas.png?v=20c4d01c",
+    "err": null,
+    "vsChampion": 1.4
+   },
+   {
+    "t": "cm_planidera",
+    "rank": "subelite",
+    "upx": 0.96,
+    "src": "assets/sprites/enemies/ciudad/cm_planidera/v2/atlas.png?v=20c4d01c",
+    "err": null,
+    "vsChampion": 1.1
+   },
+   {
+    "t": "cm_campanero",
+    "rank": "elite",
+    "upx": 0.97,
+    "src": "assets/sprites/enemies/ciudad/cm_campanero/v2/atlas.png?v=20c4d01c",
+    "err": null,
+    "vsChampion": 1.1
+   },
+   {
+    "t": "cm_verdugo",
+    "rank": "elite",
+    "upx": 0.88,
+    "src": "assets/sprites/enemies/ciudad/cm_verdugo/v2/atlas.png?v=20c4d01c",
+    "err": null,
+    "vsChampion": 1
+   },
+   {
+    "t": "cm_maestro",
+    "rank": "subjefe",
+    "upx": 0.47,
+    "src": "assets/sprites/battlefield/cm_maestro.webp?v=20c4d01c",
+    "err": null,
+    "vsChampion": 0.5
+   },
+   {
+    "t": "cm_dama",
+    "rank": "subjefe",
+    "upx": 0.47,
+    "src": "assets/sprites/battlefield/cm_dama.webp?v=20c4d01c",
+    "err": null,
+    "vsChampion": 0.5
+   },
+   {
+    "t": "cm_tramoyista",
+    "rank": "subjefe",
+    "upx": 0.5,
+    "src": "assets/sprites/battlefield/cm_tramoyista.webp?v=20c4d01c",
+    "err": null,
+    "vsChampion": 0.6
+   },
+   {
+    "t": "cm_presentador",
+    "rank": "jefe",
+    "upx": 0.46,
+    "src": "assets/sprites/battlefield/cm_presentador.webp?v=20c4d01c",
+    "err": null,
+    "vsChampion": 0.5
+   }
+  ]
+ },
+ "errors": []
+}
