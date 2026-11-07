@@ -18,12 +18,15 @@
    - bossAssist: ayuda adaptativa del jefe de campaña tras derrotas (js/systems/boss-assist.js); apagada = jefe de siempre.
    - ctlSize:  tamaño de los controles táctiles en % (90-150, 100 = como siempre).
    - ctlOp:    opacidad de los controles táctiles en % (40-100, 100 = como siempre).
+   - ctlScheme: esquema de teclado/mouse: "classic" (WASD + 1/2/3, como siempre) | "moba" (tipo LoL: clic derecho = moverse,
+               Q W E habilidades, R Definitiva, D curación, F acción). Ver js/core/input-desk.js y js/core/controls-panel.js.
+   - keyBinds: teclas reasignadas por esquema: {classic:{accion:"KeyX"}, moba:{...}} (solo lo que se cambió).
    Clave: localStorage "horda_prefs" (JSON). Sin localStorage (modo privado) se usa lo de fábrica.
    ============================================================ */
 const PREFS_KEY = "horda_prefs";
-const PREFS_DEFAULT = { vibrate:true, shake:"normal", textLg:false, lefty:false, contrast:false, botCallouts:false, bossAssist:true, cvd:"off", atkMode:"hold", ctlSize:100, ctlOp:100 };
+const PREFS_DEFAULT = { vibrate:true, shake:"normal", textLg:false, lefty:false, contrast:false, botCallouts:false, bossAssist:true, cvd:"off", atkMode:"hold", ctlSize:100, ctlOp:100, ctlScheme:"classic", keyBinds:{classic:{}, moba:{}} };
 const PREFS = (function(){
-  const p = Object.assign({}, PREFS_DEFAULT);
+  const p = Object.assign({}, PREFS_DEFAULT, {keyBinds:{classic:{}, moba:{}}});
   try{
     const v = JSON.parse(localStorage.getItem(PREFS_KEY) || "null");
     if(v && typeof v==="object"){
@@ -36,6 +39,13 @@ const PREFS = (function(){
       if(typeof v.bossAssist==="boolean") p.bossAssist = v.bossAssist;
       if(v.cvd==="off" || v.cvd==="rg" || v.cvd==="by") p.cvd = v.cvd;
       if(v.atkMode==="hold" || v.atkMode==="toggle" || v.atkMode==="auto") p.atkMode = v.atkMode;
+      if(v.ctlScheme==="classic" || v.ctlScheme==="moba") p.ctlScheme = v.ctlScheme;
+      if(v.keyBinds && typeof v.keyBinds==="object"){
+        for(const sc of ["classic","moba"]){
+          const o = v.keyBinds[sc]; if(!o || typeof o!=="object") continue;
+          for(const a in o) if(/^[a-z0-9]{2,8}$/.test(a) && typeof o[a]==="string" && /^[A-Za-z0-9]{2,16}$/.test(o[a])) p.keyBinds[sc][a] = o[a];
+        }
+      }
       if(typeof v.ctlSize==="number" && isFinite(v.ctlSize)) p.ctlSize = Math.max(90, Math.min(150, Math.round(v.ctlSize/10)*10));
       if(typeof v.ctlOp==="number" && isFinite(v.ctlOp)) p.ctlOp = Math.max(40, Math.min(100, Math.round(v.ctlOp/10)*10));
     }
@@ -57,6 +67,7 @@ function prefsApply(changed){
   b.style.setProperty("--ctl-sc", String(PREFS.ctlSize/100));
   b.style.setProperty("--ctl-inv", String(100/PREFS.ctlSize));
   b.style.setProperty("--ctl-op", String(PREFS.ctlOp/100));
+  b.classList.toggle("scheme-moba", PREFS.ctlScheme==="moba");
   b.classList.toggle("atk-toggle", PREFS.atkMode==="toggle");
   b.classList.toggle("atk-auto", PREFS.atkMode==="auto");
   // los "+" de subir habilidad y el apuntado se ubican con el rect del botón: que se vuelvan a medir
@@ -66,8 +77,10 @@ function prefSet(key, val){
   if(!(key in PREFS_DEFAULT)) return;
   if(key==="ctlSize") val = Math.max(90, Math.min(150, Math.round(+val/10)*10)) || 100;
   if(key==="ctlOp") val = Math.max(40, Math.min(100, Math.round(+val/10)*10)) || 100;
+  if(key==="ctlScheme" && val!=="classic" && val!=="moba") return;
   PREFS[key] = val;
   prefsSave(); prefsApply(true);
+  if(key==="ctlScheme" && typeof deskControlsChanged==="function") deskControlsChanged(); // teclas de los botones, marcador de clic derecho
   if(typeof optionsSync==="function") optionsSync();
 }
 /* ---------------- paleta para daltonismo ----------------
@@ -93,6 +106,7 @@ function hapticPulse(ms, force){
   if(!PREFS.vibrate) return false;
   const now = performance.now();
   if(!force && now - _hapticLast < 380) return false;
+  try{ if(typeof padRumble==="function" && padRumble(ms)){ _hapticLast = now; return true; } }catch(e){} // con mando: vibra el mando (input-desk.js)
   try{
     if(typeof navigator!=="undefined" && typeof navigator.vibrate==="function"){ _hapticLast = now; return navigator.vibrate(ms) !== false; }
   }catch(e){}
