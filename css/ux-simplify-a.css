@@ -19,6 +19,9 @@ html body #pause-screen .pause-body{ flex:1 1 auto; min-height:0; overflow-y:aut
 html body #pause-screen .pause-body > *{ flex:none; margin:0; }
 html body #pause-screen .pause-actions{ flex:none; display:grid; grid-template-columns:minmax(0,1.6fr) minmax(0,1fr); gap:8px; padding:8px 14px 10px;
   background:#140a06; border-top:2px solid var(--ember1,#ff7a2e); position:relative; z-index:2; }
+html body #pause-screen .pause-actions > .btn, html body #pause-screen .pause-btnrow > .btn{ grid-row:auto !important; }
+html body #pause-screen .pause-actions > .btn{ grid-column:auto !important; }
+html body #pause-screen .pause-btnrow > .btn:not(#pause-a11y-btn){ grid-column:auto !important; }
 html body #pause-screen .pause-actions .btn{ width:100%; max-width:none; min-height:48px; margin:0; font-size:16px; }
 html body #pause-screen .pause-actions #resume-btn{ min-height:52px; font-size:18px; }
 html body #pause-screen .pause-actions #quit-btn{ font-size:14px; }
@@ -29,7 +32,7 @@ html body #pause-screen #tactical-panel{ width:100% !important; height:auto !imp
 html body #pause-screen #tactical-panel .tp-head{ margin:0; }
 html body #pause-screen #tactical-panel .tp-name{ font-size:20px; line-height:1.15; }
 html body #pause-screen #tactical-panel .tp-bars{ font-size:14px; margin-top:2px; }
-html body #pause-screen #tactical-panel .tp-section{ margin:0; }
+html body #pause-screen #tactical-panel .tp-section{ margin:0; padding:0; }
 /* acordeón */
 .pause-acc{ background:rgba(20,12,8,.78); border:1px solid #4a2a16; border-radius:8px; text-align:left; }
 .pause-acc-h{ display:flex; align-items:center; gap:8px; width:100%; min-height:44px; padding:6px 10px; box-sizing:border-box; cursor:pointer;
@@ -124,3 +127,7 @@ body.reduce-motion .opt-flash{ animation:none; }
   display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; line-clamp:2; }
 .shop-hero-title{ font-size:max(12px, 0.74rem); }
 @media (max-height:520px){ .shop-hero-title{ font-size:max(12px, 0.9rem); } }
+
+/* avisos durante la pausa: arriba a la derecha, chicos (antes quedaban en el centro sobre el título) */
+body:has(#pause-screen:not(.hidden)) #toast-stack:not(.play):not(.end){ left:auto; right:calc(8px + env(safe-area-inset-right, 0px)); transform:none; width:min(190px, 26vw); top:calc(6px + env(safe-area-inset-top, 0px)); }
+body:has(#pause-screen:not(.hidden)) #toast-stack .qs-toast-head, body:has(#pause-screen:not(.hidden)) #toast-stack .qs-toast-sub{ display:none; }
