@@ -24,7 +24,7 @@ Lámina: verde = caminable y alcanzable · rojo = caminable pero inalcanzable (b
 - ✔ **PASS** [blueprint] ficha completa
 - ✔ **PASS** [geometry] área caminable conexa — 9585 celdas; 0 bolsillos inalcanzables
 - ✔ **PASS** [geometry] si se ve sólido, es sólido — 80 sólidos pintados con colisión
-- ✔ **PASS** [spawn] apariciones válidas — 120/120 válidas; 0 dentro de colisión, 0 inalcanzables
+- ✔ **PASS** [spawn] apariciones válidas — 120/120 válidas; 0 dentro de colisión ([]), 0 inalcanzables
 - ✔ **PASS** [explore] sin NaN — 0
 - ✔ **PASS** [explore] nadie fuera del mapa — 0
 - ✔ **PASS** [explore] héroes siempre en zona caminable — 0 cuadros-héroe dentro de colisión (> 4 u)
@@ -34,7 +34,7 @@ Lámina: verde = caminable y alcanzable · rojo = caminable pero inalcanzable (b
 - ✔ **PASS** [blueprint] ficha completa
 - ⚠ **WARNING** [geometry] área caminable conexa — 12822 celdas; 7 bolsillos inalcanzables: 1770@(-8,-3888) 1038@(8,-2920) 1992@(-9,-1958) 2294@(4,-1068) 280@(4,-336) 1170@(4,383) (geometría con compuertas)
 - ✔ **PASS** [geometry] si se ve sólido, es sólido — sin fondo pintado: el dibujo sale de la misma geometría que la colisión (js/arenas/fortaleza/)
-- ✔ **PASS** [spawn] apariciones válidas — 120/120 válidas; 0 dentro de colisión, 0 inalcanzables
+- ✔ **PASS** [spawn] apariciones válidas — 120/120 válidas; 0 dentro de colisión ([]), 0 inalcanzables
 - ✔ **PASS** [explore] sin NaN — 0
 - ✔ **PASS** [explore] nadie fuera del mapa — 0
 - ✔ **PASS** [explore] héroes siempre en zona caminable — 0 cuadros-héroe dentro de colisión (> 4 u)
@@ -45,7 +45,7 @@ Lámina: verde = caminable y alcanzable · rojo = caminable pero inalcanzable (b
 - ✔ **PASS** [geometry] área caminable conexa — 4056 celdas; 0 bolsillos inalcanzables
 - ✔ **PASS** [geometry] si se ve sólido, es sólido — 21 sólidos pintados con colisión
 - ✔ **PASS** [variants] variantes por semilla sin bolsillos — 8 semillas, 4 trazados distintos
-- ✔ **PASS** [spawn] apariciones válidas — 120/120 válidas; 0 dentro de colisión, 0 inalcanzables
+- ✔ **PASS** [spawn] apariciones válidas — 120/120 válidas; 0 dentro de colisión ([]), 0 inalcanzables
 - ✔ **PASS** [explore] sin NaN — 0
 - ✔ **PASS** [explore] nadie fuera del mapa — 0
 - ✔ **PASS** [explore] héroes siempre en zona caminable — 0 cuadros-héroe dentro de colisión (> 4 u)
@@ -55,7 +55,7 @@ Lámina: verde = caminable y alcanzable · rojo = caminable pero inalcanzable (b
 - ✔ **PASS** [blueprint] ficha completa
 - ✔ **PASS** [geometry] área caminable conexa — 2567 celdas; 0 bolsillos inalcanzables
 - ✔ **PASS** [geometry] si se ve sólido, es sólido — 17 sólidos pintados con colisión
-- ✔ **PASS** [spawn] apariciones válidas — 120/120 válidas; 0 dentro de colisión, 0 inalcanzables
+- ✔ **PASS** [spawn] apariciones válidas — 120/120 válidas; 0 dentro de colisión ([]), 0 inalcanzables
 - ✔ **PASS** [explore] sin NaN — 0
 - ✔ **PASS** [explore] nadie fuera del mapa — 0
 - ✔ **PASS** [explore] héroes siempre en zona caminable — 0 cuadros-héroe dentro de colisión (> 4 u)
@@ -66,7 +66,7 @@ Lámina: verde = caminable y alcanzable · rojo = caminable pero inalcanzable (b
 - ✔ **PASS** [geometry] área caminable conexa — 4308 celdas; 0 bolsillos inalcanzables
 - ✔ **PASS** [geometry] si se ve sólido, es sólido — 17 sólidos pintados con colisión
 - ✔ **PASS** [variants] variantes por semilla sin bolsillos — 8 semillas, 4 trazados distintos
-- ✔ **PASS** [spawn] apariciones válidas — 120/120 válidas; 0 dentro de colisión, 0 inalcanzables
+- ✔ **PASS** [spawn] apariciones válidas — 120/120 válidas; 0 dentro de colisión ([]), 0 inalcanzables
 - ✔ **PASS** [explore] sin NaN — 0
 - ✔ **PASS** [explore] nadie fuera del mapa — 0
 - ✔ **PASS** [explore] héroes siempre en zona caminable — 0 cuadros-héroe dentro de colisión (> 4 u)
@@ -77,7 +77,7 @@ Lámina: verde = caminable y alcanzable · rojo = caminable pero inalcanzable (b
 - ✔ **PASS** [geometry] área caminable conexa — 4319 celdas; 0 bolsillos inalcanzables
 - ✔ **PASS** [geometry] si se ve sólido, es sólido — 7 sólidos pintados con colisión
 - ✔ **PASS** [variants] variantes por semilla sin bolsillos — 8 semillas, 4 trazados distintos
-- ✔ **PASS** [spawn] apariciones válidas — 120/120 válidas; 0 dentro de colisión, 0 inalcanzables
+- ✔ **PASS** [spawn] apariciones válidas — 120/120 válidas; 0 dentro de colisión ([]), 0 inalcanzables
 - ✔ **PASS** [explore] sin NaN — 0
 - ✔ **PASS** [explore] nadie fuera del mapa — 0
 - ✔ **PASS** [explore] héroes siempre en zona caminable — 0 cuadros-héroe dentro de colisión (> 4 u)
@@ -88,7 +88,7 @@ Lámina: verde = caminable y alcanzable · rojo = caminable pero inalcanzable (b
 - ✔ **PASS** [geometry] área caminable conexa — 3838 celdas; 0 bolsillos inalcanzables
 - ✔ **PASS** [geometry] si se ve sólido, es sólido — 4 sólidos pintados con colisión
 - ✔ **PASS** [variants] variantes por semilla sin bolsillos — 8 semillas, 4 trazados distintos
-- ✔ **PASS** [spawn] apariciones válidas — 120/120 válidas; 0 dentro de colisión, 0 inalcanzables
+- ✔ **PASS** [spawn] apariciones válidas — 120/120 válidas; 0 dentro de colisión ([]), 0 inalcanzables
 - ✔ **PASS** [explore] sin NaN — 0
 - ✔ **PASS** [explore] nadie fuera del mapa — 0
 - ✔ **PASS** [explore] héroes siempre en zona caminable — 0 cuadros-héroe dentro de colisión (> 4 u)
@@ -98,7 +98,7 @@ Lámina: verde = caminable y alcanzable · rojo = caminable pero inalcanzable (b
 - ✔ **PASS** [blueprint] ficha completa
 - ✔ **PASS** [geometry] área caminable conexa — 1838 celdas; 0 bolsillos inalcanzables
 - ✔ **PASS** [geometry] si se ve sólido, es sólido — sin fondo pintado: el dibujo sale de la misma geometría que la colisión (js/arenas/abismo/)
-- ✔ **PASS** [spawn] apariciones válidas — 120/120 válidas; 0 dentro de colisión, 0 inalcanzables
+- ✔ **PASS** [spawn] apariciones válidas — 120/120 válidas; 0 dentro de colisión ([]), 0 inalcanzables
 - ✔ **PASS** [explore] sin NaN — 0
 - ✔ **PASS** [explore] nadie fuera del mapa — 0
 - ⚠ **WARNING** [explore] héroes siempre en zona caminable — 105 cuadros-héroe dentro de colisión (> 4 u) [["tanque",218,650,1124,""],["tanque",216,653,1125,""],["tanque",213,657,1126,""],["tanque",227,548,1359,""],["tanque",225,543,1360,""]] (arena con caídas: colgado del borde)
@@ -108,7 +108,7 @@ Lámina: verde = caminable y alcanzable · rojo = caminable pero inalcanzable (b
 - ✔ **PASS** [blueprint] ficha completa
 - ✔ **PASS** [geometry] área caminable conexa — 4543 celdas; 0 bolsillos inalcanzables
 - ✔ **PASS** [geometry] si se ve sólido, es sólido — sin fondo pintado: el dibujo sale de la misma geometría que la colisión (js/arenas/minas/)
-- ✔ **PASS** [spawn] apariciones válidas — 120/120 válidas; 0 dentro de colisión, 0 inalcanzables
+- ✔ **PASS** [spawn] apariciones válidas — 120/120 válidas; 0 dentro de colisión ([]), 0 inalcanzables
 - ✔ **PASS** [explore] sin NaN — 0
 - ✔ **PASS** [explore] nadie fuera del mapa — 0
 - ✔ **PASS** [explore] héroes siempre en zona caminable — 0 cuadros-héroe dentro de colisión (> 4 u)
@@ -119,7 +119,7 @@ Lámina: verde = caminable y alcanzable · rojo = caminable pero inalcanzable (b
 - ✔ **PASS** [geometry] área caminable conexa — 4280 celdas; 0 bolsillos inalcanzables
 - ✔ **PASS** [geometry] si se ve sólido, es sólido — 11 sólidos pintados con colisión
 - ✔ **PASS** [variants] variantes por semilla sin bolsillos — 8 semillas, 4 trazados distintos
-- ✔ **PASS** [spawn] apariciones válidas — 120/120 válidas; 0 dentro de colisión, 0 inalcanzables
+- ✔ **PASS** [spawn] apariciones válidas — 120/120 válidas; 0 dentro de colisión ([]), 0 inalcanzables
 - ✔ **PASS** [explore] sin NaN — 0
 - ✔ **PASS** [explore] nadie fuera del mapa — 0
 - ✔ **PASS** [explore] héroes siempre en zona caminable — 0 cuadros-héroe dentro de colisión (> 4 u)
