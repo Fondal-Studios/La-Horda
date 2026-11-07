@@ -22,3 +22,9 @@
 ### Idiomas ES · EN · PT (nuevo)
 - Selector en pantalla de título, botón en el hub y lista en Opciones; persistencia + `?lang=`. Traductor en caliente (`js/i18n/i18n.js`), diccionarios generados (`tools/i18n/build.py`), CI `i18n.yml` (prueba funcional + cobertura ≥97 % en EN y PT sobre un recorrido de 1.205 textos de interfaz: EN 100 %, PT ≈99 %).
 - **Pendiente (Fase 2)**: talentos, Códice/lore de jefes y enemigos, historia, misiones, bendiciones, textos de servidor y páginas legales siguen en español (fallback). Detalle en `docs/i18n/README.md`.
+
+### Estado al 2026-11-07 (ejecución programada 02:23 UTC)
+- Evaluaciones independientes de diseño: 71 → 75 → **76/100** (objetivo 85). Informes: `EVALUACION_DISENO*.md`, `UX_EQUIPO_*.md`.
+- Hecho: idiomas ES/EN/PT con diccionarios de ~11.9k entradas; título rediseñado (5 héroes vs. jefe de hielo, CTA apilado, fondo de toda La Horda); pausa/opciones/hub simplificados sin quitar opciones.
+- Bloqueo real: `compare-icons` fija «43 campeones, 301 íconos»; la rama tiene 46 (Ilsa, Vorn, Kora de #90). Actualizar ese número del gate requiere aprobación humana.
+- Sin merge a `main`: falta puntaje ≥85, CI verde y decisión del propietario. Runway sigue <250 créditos: sin gasto.

@@ -74,3 +74,7 @@ Herramienta del pintor: `node tools/art-world/runway-guardian.js <guardián> <in
 1. Fijar `runs-on: ubuntu-24.04` (o actualizar Playwright) en los flujos que instalan Chromium: hoy fallan en el runner Ubuntu 26.04 antes de probar nada (también les pasaría a `main`).
 2. Volver a mirar el CI del PR cuando eso se arregle; Guerrero/Tanque death, Soporte v3, quality-five, brasa-abyssal, oficios, skill-icon-exports, art-presentation, vfx-readability y art-production-evidence están sin determinar.
 3. PR aparte para el Libertador nuevo, con las guardas de bytes actualizadas por su responsable.
+
+## Siguiente (2026-11-07)
+1. Decisión del propietario: ¿actualizar el pin de `compare-icons` a 46 campeones, seguir iterando hasta 85, o fusionar PR #277 con el puntaje actual?
+2. Brechas para 85: Códice/Tienda EN/PT (contadores y nombres de ítems), pantalla vieja «Elegí tu guardián», arte de Modos/Desafíos/Pase/Opciones/Pausa, textos <12 px, jerarquía de «Tocá para continuar».
