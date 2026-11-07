@@ -1,0 +1,46 @@
+{
+ "id": "246",
+ "branch": "feature/social-content-factory",
+ "base": "a50ca32ca3044f189c8ccd1644e8f46b1aa0ce3c",
+ "evaluatedAt": "2026-11-02T10:03:46.978Z",
+ "steps": {
+  "architect": {
+   "verdict": "READY_FOR_MERGE_REVIEW",
+   "findings": [],
+   "files": 4,
+   "categories": {
+    "touchesArt": false,
+    "touchesChampions": false,
+    "touchesNet": false,
+    "touchesGameplay": false,
+    "isArtOnly": false
+   }
+  },
+  "merge": {
+   "clean": true,
+   "conflicts": [],
+   "worktree": "/tmp/eval-wt-246"
+  },
+  "diff": {
+   "files": 4,
+   "art": 0,
+   "shortstat": "4 files changed, 64 insertions(+)"
+  },
+  "qaQuick": {
+   "exit": 0,
+   "summary": "PASS 38   FLAKY 0   FAIL 0   (de 38)",
+   "failed": []
+  },
+  "ownTests": []
+ },
+ "verdict": "DIFERIR_FUERA_DE_ALCANCE",
+ "improvement": {
+  "status": "none_for_players"
+ },
+ "verdictInitial": "ACEPTAR_TECNICO",
+ "reason": [
+  "Técnicamente limpio: fusiona, QA 38/38, 4 archivos, sin credenciales ni publicación (solo sube artefactos de revisión).",
+  "Pero es una tubería de marketing que añade un workflow programado (3 veces por semana) contra la URL publicada; no mejora el juego ni la beta y el alcance del cierre excluye funcionalidades nuevas."
+ ],
+ "nextAction": "Integrar después de la beta, o antes si el dueño lo pide explícitamente (introduce CI recurrente)."
+}

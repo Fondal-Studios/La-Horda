@@ -64,14 +64,12 @@ function lanesNetCardRequest(i){ if(netIsGuest()){ netSendToHost({k:"ln-card", i
 Object.assign(ARENA_DEFS.convergencia, {netState:lanesNetState, applyNetState:lanesApplyNetState, guestStart:lanesGuestStart, guestUpdate:lanesGuestUpdate});
 
 /* ---------------- entrada online (la Sala de siempre, con el guardado temporal puesto) ---------------- */
-// Crea una sala con el guardián seleccionado del perfil persistente.
+// Crea una sala de Guerra de Cristales. El anfitrión elige su guardián entre TODOS (el guardado temporal los habilita).
 async function lanesOnlineCreate(champ){
   if(typeof netAvailable === "function" && !netAvailable()){ showNetToast("El modo online no está configurado en esta versión."); return false; }
   if(LN) lanesRestore();
-  const mine = lanesOwnedSelection(champ);
-  if(!mine){ showNetToast("Elegí un guardián de tu colección."); return false; }
   lanesBegin("lobby");
-  selectedClass = mine;
+  if(champ && CLASSES[champ]) selectedClass = champ;
   currentArena = "convergencia";
   setState("prep"); if(typeof renderPrepSummary === "function") renderPrepSummary();
   try{ await netCreateRoom("convergencia", selectedClass, LANES.LEVEL0, null); }
@@ -81,10 +79,8 @@ async function lanesOnlineCreate(champ){
 async function lanesOnlineJoin(code, champ){
   if(typeof netAvailable === "function" && !netAvailable()){ showNetToast("El modo online no está configurado en esta versión."); return false; }
   if(LN) lanesRestore();
-  const mine = lanesOwnedSelection(champ);
-  if(!mine){ showNetToast("Elegí un guardián de tu colección."); return false; }
   lanesBegin("lobby");
-  selectedClass = mine;
+  if(champ && CLASSES[champ]) selectedClass = champ;
   try{ await netJoinRoom(code, selectedClass, LANES.LEVEL0, null); }
   catch(e){ if(LN && LN.lobby) lanesRestore(); if(!(e && e.handled)) showNetToast("⚠ No se pudo unir: " + (e && e.message || e)); return false; }
   return true;

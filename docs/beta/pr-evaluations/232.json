@@ -1,0 +1,48 @@
+{
+ "id": "232",
+ "branch": "feature/fondal-art-engine",
+ "base": "a5fd03440e28acb7effc4a2a6aa6ab4458c1b7dd",
+ "evaluatedAt": "2026-11-02T10:05:18.113Z",
+ "steps": {
+  "architect": {
+   "verdict": "NEEDS_WORK",
+   "findings": [
+    {
+     "level": "W",
+     "id": "asset-size",
+     "msg": "Assets >2 MB: art-source/fondal/aelith-codex/source.png, art-source/fondal/brakk-codex/source.png, art-source/fondal/guerrero-codex/source.png, art-source/fondal/morveth-codex/source.png"
+    },
+    {
+     "level": "W",
+     "id": "conflict",
+     "msg": "Conflictos de fusión con a5fd03440e28acb7effc4a2a6aa6ab4458c1b7dd: docs/art-gate/roster-sheet.png, warning: Cannot merge binary files: docs/art-gate/roster-sheet.png (a5fd03440e28acb7effc4a2a6aa6ab4458c1b7dd vs. origin/feature/fondal-art-engine)"
+    }
+   ],
+   "files": 131,
+   "categories": {
+    "touchesArt": true,
+    "touchesChampions": false,
+    "touchesNet": true,
+    "touchesGameplay": false,
+    "isArtOnly": true
+   }
+  },
+  "merge": {
+   "clean": false,
+   "conflicts": [
+    "docs/art-gate/roster-sheet.png"
+   ],
+   "worktree": "/tmp/eval-wt-232"
+  }
+ },
+ "verdict": "DIFERIR_ABSORBIDO",
+ "verdictInitial": "CONFLICTO",
+ "reason": [
+  "Lo valioso (cuerpos del Códice de Aldric, Kael, Aelith, Morveth) ya viaja en #241, que lo recuperó de este mismo commit e00ba6b0 y fue evaluado ACEPTAR.",
+  "El resto es motor de arte, trabajador persistente de comandos de reparación y una prueba de reparación con BFL con presupuesto: producción de arte con gasto, fuera de la rama funcional.",
+  "Único conflicto: docs/art-gate/roster-sheet.png (imagen de evidencia binaria regenerada), no de código."
+ ],
+ "improvement": {
+  "status": "absorbed_by_241"
+ }
+}

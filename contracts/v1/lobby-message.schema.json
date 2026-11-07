@@ -1,0 +1,17 @@
+{
+  "$id": "fondal/la-horda/LobbyMessage/1.0.0",
+  "title": "LobbyMessage",
+  "description": "Mensajes del protocolo de salas del relay (server/relay.js, PROTOCOL 1) que el cliente y el servidor intercambian. Contrato SOLO DE LECTURA: el relay lo administra su responsable; ningún agente lo modifica. Los mensajes de partida (msg), chat, intercambios y los no listados aquí no se validan.",
+  "protocol": 1,
+  "variants": {
+    "create": { "direction": "c2s", "type": "object", "required": ["t", "protocol", "build", "arena", "champ", "level", "name", "clientId"], "properties": { "t": { "const": "create" }, "protocol": { "type": "integer", "minimum": 0 }, "build": { "type": "string", "maxLength": 40 }, "arena": { "type": "string", "maxLength": 24 }, "champ": { "type": "string", "maxLength": 40 }, "level": { "type": "integer", "minimum": 1, "maximum": 1000 }, "name": { "type": "string", "maxLength": 40 }, "clientId": { "type": "string", "maxLength": 80 }, "public": { "type": "boolean" }, "diff": { "type": "string", "maxLength": 24 } } },
+    "join": { "direction": "c2s", "type": "object", "required": ["t", "protocol", "build", "code", "champ", "name", "clientId"], "properties": { "t": { "const": "join" }, "protocol": { "type": "integer", "minimum": 0 }, "build": { "type": "string", "maxLength": 40 }, "code": { "type": "string", "pattern": "^[A-Z0-9]{4,8}$" }, "champ": { "type": "string", "maxLength": 40 }, "level": { "type": "integer", "minimum": 1, "maximum": 1000 }, "name": { "type": "string", "maxLength": 40 }, "clientId": { "type": "string", "maxLength": 80 } } },
+    "rooms": { "direction": "c2s", "type": "object", "required": ["t"], "properties": { "t": { "const": "rooms" }, "build": { "type": "string", "maxLength": 40 } } },
+    "ping": { "direction": "c2s", "type": "object", "required": ["t"], "properties": { "t": { "const": "ping" } } },
+    "leave": { "direction": "c2s", "type": "object", "required": ["t"], "properties": { "t": { "const": "leave" } } },
+    "joined": { "direction": "s2c", "type": "object", "required": ["t", "slot", "host", "room"], "properties": { "t": { "const": "joined" }, "slot": { "type": "integer", "minimum": 0, "maximum": 3 }, "host": { "type": "boolean" }, "reconnect": { "type": "boolean" }, "room": { "type": "object", "required": ["code", "arena", "state", "protocol", "slots"], "properties": { "code": { "type": "string", "pattern": "^[A-Z0-9]{4,8}$" }, "arena": { "type": "string" }, "state": { "enum": ["lobby", "playing"] }, "protocol": { "type": "integer" }, "pub": { "type": "boolean" }, "slots": { "type": "array", "maxItems": 4 } } } } },
+    "rooms_list": { "direction": "s2c", "t": "rooms", "type": "object", "required": ["t", "list"], "properties": { "t": { "const": "rooms" }, "list": { "type": "array", "maxItems": 40 } } },
+    "pong": { "direction": "s2c", "type": "object", "required": ["t"], "properties": { "t": { "const": "pong" } } },
+    "error": { "direction": "s2c", "type": "object", "required": ["t", "code"], "properties": { "t": { "const": "error" }, "code": { "type": "string", "pattern": "^[A-Z_]{2,32}$" }, "msg": { "type": "string", "maxLength": 200 } } }
+  }
+}

@@ -1,0 +1,943 @@
+{
+ "version": 1,
+ "doc": "Clasificación de la batería de calidad. La verifica tools/quality/qa-manifest-check.js (en CI). Niveles: required = bloquea el PR; informational = se corre y se informa, no bloquea (con motivo); external = depende de infraestructura que el repo no controla (relay real, base de datos, red), se corre aparte.",
+ "tiers": [
+  "required",
+  "informational",
+  "external"
+ ],
+ "categories": {
+  "inicio": "El juego abre, carga y llega al menú sin errores",
+  "navegacion_tutorial": "Navegación entre pantallas, tutorial y primer minuto",
+  "campeones_habilidades": "Campeones, habilidades, evolución, identidad y balance",
+  "campana_progresion": "Campaña, arenas, jefes, dificultad y progresión",
+  "guardados": "Guardado local y en la nube, sanitización, migraciones y recuperación",
+  "economia": "Objetos, botín, tienda, recompensas y economía",
+  "multijugador_simulado": "Salas, equipos y flujo de partida sin relay real",
+  "rendimiento": "Presupuesto de tiempo por cuadro, límites de efectos y de entidades",
+  "sprites_atlas": "Integridad de sprites, atlas, íconos y densidad de píxel",
+  "movil": "Objetivos táctiles, desborde de texto y paneles en pantalla chica",
+  "coordinacion_agentes": "Propiedad de archivos, contratos compartidos e interfaces congeladas entre los agentes A, B y C"
+ },
+ "tests": {
+  "tools/lib/test-serve.js": {
+   "tier": "required",
+   "categories": [
+    "inicio"
+   ]
+  },
+  "tools/lib/test-http-ready.js": {
+   "tier": "required",
+   "categories": [
+    "inicio"
+   ]
+  },
+  "tools/items/t_codex_book_logic.js": {
+   "tier": "required",
+   "categories": [
+    "economia"
+   ]
+  },
+  "tools/balance/check-entry-reference.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/regression/test-aim-hostiles.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/audio/test-rng-isolation.js": {
+   "tier": "required",
+   "categories": [
+    "rendimiento"
+   ]
+  },
+  "tools/quality/test-talent-gate.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/quality/test-single-champion-revive.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/quality/test-floating-text.js": {
+   "tier": "required",
+   "categories": [
+    "rendimiento"
+   ]
+  },
+  "tools/quality/test-combat-language.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/quality/test-vfx-pools.js": {
+   "tier": "required",
+   "categories": [
+    "rendimiento"
+   ]
+  },
+  "tools/quality/test-coliseo-no-revive.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/collection/check-collection.js": {
+   "tier": "required",
+   "categories": [
+    "economia"
+   ]
+  },
+  "tools/alpha/public-defaults.js": {
+   "tier": "required",
+   "categories": [
+    "inicio"
+   ]
+  },
+  "tools/alpha/account-environments.js": {
+   "tier": "required",
+   "categories": [
+    "economia",
+    "multijugador_simulado"
+   ]
+  },
+  "tools/alpha/rooms-unit.js": {
+   "tier": "required",
+   "categories": [
+    "multijugador_simulado"
+   ]
+  },
+  "tools/alpha/services-test.js": {
+   "tier": "required",
+   "categories": [
+    "economia"
+   ]
+  },
+  "tools/alpha/event-receipts-test.js": {
+   "tier": "required",
+   "categories": [
+    "economia"
+   ]
+  },
+  "tests/competitive-roster.test.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tests/competitive-signatures.test.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/crystal-wars/test-competitive.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades",
+    "campana_progresion"
+   ]
+  },
+  "tools/crystal-wars/test-simulation.js": {
+   "tier": "required",
+   "categories": [
+    "campana_progresion"
+   ]
+  },
+  "tools/crystal-wars/balance-gate.js": {
+   "tier": "required",
+   "categories": [
+    "campana_progresion"
+   ]
+  },
+  "tools/crystal-wars/coliseum-balance-gate.js": {
+   "tier": "required",
+   "categories": [
+    "campana_progresion"
+   ]
+  },
+  "tools/crystal-wars/required-files.js": {
+   "tier": "required",
+   "categories": [
+    "campana_progresion",
+    "sprites_atlas"
+   ]
+  },
+  "tools/bible/champion-validator.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/bible/arena-validator.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/bible/boss-validator.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/items/t_abismo.js": {
+   "tier": "required",
+   "categories": [
+    "campana_progresion"
+   ]
+  },
+  "tools/items/t_boons.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/items/t_breakables.js": {
+   "tier": "required",
+   "categories": [
+    "campana_progresion"
+   ]
+  },
+  "tools/items/t_build_uniques.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades",
+    "economia"
+   ]
+  },
+  "tools/items/t_camp.js": {
+   "tier": "required",
+   "categories": [
+    "campana_progresion"
+   ]
+  },
+  "tools/items/t_campaign.js": {
+   "tier": "required",
+   "categories": [
+    "campana_progresion"
+   ]
+  },
+  "tools/items/t_codex.js": {
+   "tier": "required",
+   "categories": [
+    "economia"
+   ]
+  },
+  "tools/items/t_codex_book.js": {
+   "tier": "required",
+   "categories": [
+    "navegacion_tutorial"
+   ]
+  },
+  "tools/items/t_collision.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/items/t_cromas.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/items/t_crystals.js": {
+   "tier": "required",
+   "categories": [
+    "campana_progresion"
+   ]
+  },
+  "tools/items/t_difficulty.js": {
+   "tier": "required",
+   "categories": [
+    "campana_progresion"
+   ]
+  },
+  "tools/items/t_endless.js": {
+   "tier": "required",
+   "categories": [
+    "campana_progresion"
+   ]
+  },
+  "tools/items/t_evolution.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/items/t_ground_loot.js": {
+   "tier": "required",
+   "categories": [
+    "economia"
+   ]
+  },
+  "tools/items/t_hechicero.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/items/t_hpbonus.js": {
+   "tier": "required",
+   "categories": [
+    "campana_progresion"
+   ]
+  },
+  "tools/items/t_itemization.js": {
+   "tier": "required",
+   "categories": [
+    "economia"
+   ]
+  },
+  "tools/items/t_items.js": {
+   "tier": "required",
+   "categories": [
+    "economia"
+   ]
+  },
+  "tools/items/t_mage_kit.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/items/t_nigro_elements.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/items/t_nigro_golems.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades",
+    "sprites_atlas"
+   ]
+  },
+  "tools/items/t_nigromante.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/items/t_pacing.js": {
+   "tier": "required",
+   "categories": [
+    "campana_progresion"
+   ]
+  },
+  "tools/items/t_perf_exploits.js": {
+   "tier": "required",
+   "categories": [
+    "rendimiento"
+   ]
+  },
+  "tools/items/t_q4_economia.js": {
+   "tier": "required",
+   "categories": [
+    "economia"
+   ]
+  },
+  "tools/items/t_quests.js": {
+   "tier": "required",
+   "categories": [
+    "campana_progresion"
+   ]
+  },
+  "tools/items/t_reactions.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/items/t_resonance.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/items/t_roles.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/items/t_sets.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/items/t_skins_brasas.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/items/t_starter_gift.js": {
+   "tier": "required",
+   "categories": [
+    "economia"
+   ]
+  },
+  "tools/items/t_story.js": {
+   "tier": "required",
+   "categories": [
+    "campana_progresion"
+   ]
+  },
+  "tools/items/t_synergies.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/identity/t_identity.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/identity/t_objectives.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/regression/t_bestias.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/regression/t_boss_assist.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/regression/t_champs_se.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/regression/t_checkpoint.js": {
+   "tier": "required",
+   "categories": [
+    "campana_progresion"
+   ]
+  },
+  "tools/regression/t_defeat_clear.js": {
+   "tier": "required",
+   "categories": [
+    "campana_progresion"
+   ]
+  },
+  "tools/regression/t_drag_aim.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/regression/t_hit_react.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/regression/t_ilkan_migration.js": {
+   "tier": "required",
+   "categories": [
+    "guardados"
+   ]
+  },
+  "tools/regression/t_juice.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/regression/t_run_end.js": {
+   "tier": "required",
+   "categories": [
+    "campana_progresion"
+   ]
+  },
+  "tools/regression/t_save_sanitize.js": {
+   "tier": "required",
+   "categories": [
+    "guardados"
+   ]
+  },
+  "tools/regression/t_camera.js": {
+   "tier": "required",
+   "categories": [
+    "campana_progresion"
+   ]
+  },
+  "tools/ux/test-accessibility-prefs.js": {
+   "tier": "required",
+   "categories": [
+    "navegacion_tutorial",
+    "movil"
+   ]
+  },
+  "tools/ux/test-skill-glyphs.js": {
+   "tier": "required",
+   "categories": [
+    "sprites_atlas"
+   ]
+  },
+  "tools/ux/test-ability-inspector.js": {
+   "tier": "required",
+   "categories": [
+    "movil"
+   ]
+  },
+  "tools/ux/test-arena-briefing-tutorial.js": {
+   "tier": "required",
+   "categories": [
+    "navegacion_tutorial"
+   ]
+  },
+  "tools/ux/test-libro-unico.js": {
+   "tier": "required",
+   "categories": [
+    "navegacion_tutorial"
+   ]
+  },
+  "tools/ux/test-hub-legibility.js": {
+   "tier": "required",
+   "categories": [
+    "navegacion_tutorial",
+    "movil"
+   ]
+  },
+  "tools/ux/test-tactical-panel.js": {
+   "tier": "required",
+   "categories": [
+    "movil"
+   ]
+  },
+  "tools/ux/test-text-overflow.js": {
+   "tier": "required",
+   "categories": [
+    "movil"
+   ]
+  },
+  "tools/ux/test-touch-targets.js": {
+   "tier": "required",
+   "categories": [
+    "movil"
+   ]
+  },
+  "tools/ux/test-first-minute-taps.js": {
+   "tier": "required",
+   "categories": [
+    "inicio",
+    "movil"
+   ]
+  },
+  "tools/ux/functional.js": {
+   "tier": "required",
+   "categories": [
+    "navegacion_tutorial"
+   ]
+  },
+  "tools/quality/test-ability-resources.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/quality/test-classic-passives.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/quality/test-floating-text-rate.js": {
+   "tier": "required",
+   "categories": [
+    "rendimiento"
+   ]
+  },
+  "tools/quality/test-nano-render.js": {
+   "tier": "required",
+   "categories": [
+    "rendimiento"
+   ]
+  },
+  "tools/quality/test-projectile-identity.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/vfx/test-ult-forms.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/vfx/test-decal-legible.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades",
+    "sprites_atlas"
+   ]
+  },
+  "tools/art/check-skill-icons.js": {
+   "tier": "required",
+   "categories": [
+    "sprites_atlas"
+   ]
+  },
+  "tools/art/check-pixel-icons.js": {
+   "tier": "required",
+   "categories": [
+    "sprites_atlas"
+   ]
+  },
+  "tools/art/roster-loading-test.js": {
+   "tier": "required",
+   "categories": [
+    "sprites_atlas"
+   ]
+  },
+  "tools/art/t_pixrig_bosses.js": {
+   "tier": "required",
+   "categories": [
+    "sprites_atlas"
+   ]
+  },
+  "tools/art/check-presentation-browser.js": {
+   "tier": "required",
+   "categories": [
+    "sprites_atlas"
+   ]
+  },
+  "tools/lanes/test-sides.js": {
+   "tier": "required",
+   "categories": [
+    "campana_progresion"
+   ]
+  },
+  "tools/lanes/postgame-test.js": {
+   "tier": "required",
+   "categories": [
+    "campana_progresion",
+    "multijugador_simulado"
+   ]
+  },
+  "tools/lanes/team-card-test.js": {
+   "tier": "required",
+   "categories": [
+    "campana_progresion",
+    "multijugador_simulado"
+   ]
+  },
+  "tools/coliseum/flow.js": {
+   "tier": "required",
+   "categories": [
+    "campana_progresion"
+   ]
+  },
+  "tools/lanes/flow.js": {
+   "tier": "required",
+   "categories": [
+    "campana_progresion"
+   ]
+  },
+  "tools/collection/t_shop_rotation.js": {
+   "tier": "required",
+   "categories": [
+    "economia"
+   ]
+  },
+  "tools/collection/shop-pricing-browser.js": {
+   "tier": "required",
+   "categories": [
+    "economia"
+   ]
+  },
+  "tools/collection/pricing-sync.js": {
+   "tier": "required",
+   "categories": [
+    "economia"
+   ]
+  },
+  "tools/collection/browser-collection.js": {
+   "tier": "required",
+   "categories": [
+    "economia"
+   ]
+  },
+  "tools/collection/codex-unlock-progress.js": {
+   "tier": "required",
+   "categories": [
+    "guardados",
+    "economia"
+   ]
+  },
+  "tools/collection/welcome-picks.js": {
+   "tier": "required",
+   "categories": [
+    "guardados",
+    "economia"
+   ]
+  },
+  "tools/balance/test-campaign-startup.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades",
+    "campana_progresion"
+   ]
+  },
+  "tools/balance/entry-gate.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/bible/ability-gate.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/alpha/services-browser.js": {
+   "tier": "required",
+   "categories": [
+    "economia"
+   ]
+  },
+  "tools/alpha/training-test.js": {
+   "tier": "required",
+   "categories": [
+    "navegacion_tutorial"
+   ]
+  },
+  "tools/alpha/goal-guide.js": {
+   "tier": "required",
+   "categories": [
+    "navegacion_tutorial"
+   ]
+  },
+  "tools/alpha/main-flow.js": {
+   "tier": "required",
+   "categories": [
+    "inicio"
+   ]
+  },
+  "tools/alpha/navigation-profiles.js": {
+   "tier": "required",
+   "categories": [
+    "navegacion_tutorial"
+   ]
+  },
+  "tools/alpha/public-onboarding.js": {
+   "tier": "required",
+   "categories": [
+    "inicio"
+   ]
+  },
+  "tools/alpha/bot-identity.js": {
+   "tier": "required",
+   "categories": [
+    "campeones_habilidades"
+   ]
+  },
+  "tools/alpha/training-player.js": {
+   "tier": "required",
+   "categories": [
+    "navegacion_tutorial"
+   ]
+  },
+  "tools/alpha/new-account-starter.js": {
+   "tier": "required",
+   "categories": [
+    "inicio",
+    "guardados"
+   ]
+  },
+  "tools/quality/test-perf-budget.js": {
+   "tier": "required",
+   "categories": [
+    "rendimiento"
+   ]
+  },
+  "tools/contracts/t_contract_schemas.js": {
+   "tier": "required",
+   "categories": [
+    "coordinacion_agentes"
+   ]
+  },
+  "tools/contracts/t_contract_independence.js": {
+   "tier": "required",
+   "categories": [
+    "coordinacion_agentes"
+   ]
+  },
+  "tools/contracts/t_contract_save_compat.js": {
+   "tier": "required",
+   "categories": [
+    "guardados",
+    "coordinacion_agentes"
+   ]
+  },
+  "tools/contracts/t_contract_economy.js": {
+   "tier": "required",
+   "categories": [
+    "economia",
+    "guardados",
+    "coordinacion_agentes"
+   ]
+  },
+  "tools/contracts/t_contract_telemetry.js": {
+   "tier": "required",
+   "categories": [
+    "coordinacion_agentes"
+   ]
+  },
+  "tools/agents/test-agents.js": {
+   "tier": "required",
+   "categories": [
+    "coordinacion_agentes"
+   ]
+  },
+  "tools/release/relay-smoke.js": {
+   "tier": "required",
+   "categories": [
+    "multijugador_simulado",
+    "inicio"
+   ]
+  },
+  "tools/agents/test-conflicts.js": {
+   "tier": "required",
+   "categories": [
+    "coordinacion_agentes"
+   ]
+  },
+  "tools/review/test-review.js": {
+   "tier": "required",
+   "categories": [
+    "coordinacion_agentes"
+   ]
+  },
+  "tools/contracts/t_contract_beta.js": {
+   "tier": "required",
+   "categories": [
+    "coordinacion_agentes",
+    "multijugador_simulado",
+    "navegacion_tutorial",
+    "sprites_atlas"
+   ]
+  },
+  "tools/contracts/t_contract_registry.js": {
+   "tier": "required",
+   "categories": [
+    "coordinacion_agentes"
+   ]
+  },
+  "tools/agents/gen-diagram.js": {
+   "tier": "required",
+   "categories": [
+    "coordinacion_agentes"
+   ]
+  },
+  "tools/factory/test-art-handoff.js": {
+   "tier": "required",
+   "categories": [
+    "sprites_atlas",
+    "coordinacion_agentes"
+   ]
+  },
+  "tools/visual-package/test.js": {
+   "tier": "required",
+   "categories": [
+    "sprites_atlas"
+   ]
+  },
+  "tools/music/test.js": {
+   "tier": "required",
+   "categories": [
+    "rendimiento"
+   ]
+  }
+ },
+ "suites": {
+  "server": {
+   "cmd": "cd server && npm ci && npm test",
+   "tier": "required",
+   "categories": [
+    "guardados",
+    "economia",
+    "multijugador_simulado"
+   ],
+   "note": "incluye test-relay.js (relay en proceso, sin red) y test-item-economy*.js"
+  },
+  "pixel-density": {
+   "cmd": "node tools/art/pixel-density.js --strict",
+   "tier": "informational",
+   "categories": [
+    "sprites_atlas"
+   ],
+   "reason": "docs/ART_BIBLE.md §14 lo define informativo; hoy falla solo por assets/sprites/arenas/world-v1 sin excepción firmada (decisión D-24 del director)",
+   "issue": "D-24"
+  },
+  "relay-externo": {
+   "cmd": "node tools/release/relay-smoke.js --url wss://... (contra un relay real)",
+   "tier": "external",
+   "categories": [
+    "multijugador_simulado"
+   ],
+   "reason": "requiere un relay accesible; lo administra el socio técnico"
+  },
+  "postgres": {
+   "cmd": "cd server && HORDA_TEST_PG_URL=... node test-postgres.js",
+   "tier": "external",
+   "categories": [
+    "guardados"
+   ],
+   "reason": "requiere una base PostgreSQL de prueba"
+  },
+  "art-factory-python": {
+   "tier": "required",
+   "categories": [
+    "sprites_atlas"
+   ],
+   "command": "python3 -m unittest tools/factory/test_art_factory.py"
+  }
+ },
+ "tolerated": {
+  "integracion-pruebas.yml::Golems del nigromante (t_nigro_golems)": {
+   "reason": "Intermitente bajo carga: NGOL.el_golem_se_ordena_por_profundidad falló en 1 de 3 corridas de la batería completa y pasó aislada 2/2 (línea base S0A). Se investiga en el siguiente sprint.",
+   "issue": "S0B-seguimiento"
+  },
+  "pixel-density.yml::Densidad de píxel": {
+   "reason": "Informativo por docs/ART_BIBLE.md §14. Falla solo por assets/sprites/arenas/world-v1 sin excepción firmada (decisión D-24 del director).",
+   "issue": "D-24"
+  },
+  "integracion-pruebas.yml::Equipos claros en Cristales y Coliseo (test-sides)": {
+   "reason": "Intermitente conocida: el muestreo del color de un sprite en Cristales (píxel de minion/ally) falla a veces y pasa en el reintento (FLAKY en run-all en CI).",
+   "issue": "S0C-seguimiento"
+  },
+  "integracion-pruebas.yml::Rompibles (t_breakables)": {
+   "reason": "Intermitente en GitHub Actions: BRK.bot_patea_cuando_la_horda_se_amontona (azar del bot). Pasó localmente 2/2 y en la regresión completa; falló 1 de 1 vez en CI. Sin semilla fija; a investigar.",
+   "issue": "S0C-seguimiento"
+  }
+ }
+}
