@@ -71,12 +71,24 @@ assert(!fs.existsSync(path.join(root, "assets/sprites/champions/mago/atlas.webp"
 assert(!renderer.includes("drawMagoFallen"), "drawFallenHero still calls the removed legacy Mago fallen path");
 assert(renderer.includes("CHAMP_PACK[h.classKey] || skinPack") && meta.sets.death_down.length >= 4, "drawFallenHero does not animate the authored death_down clip");
 assert(!/_codexT:420/.test(renderer.slice(renderer.indexOf("function drawFallenHero"), renderer.indexOf("function drawFallenHero") + 1500)), "Mago death is frozen on the last frame again");
-// Main-game scripts must not reference the legacy file (Crystal Wars' own atlas table is a separate mode).
-function walk(d, out = []) { for (const e of fs.readdirSync(d, { withFileTypes: true })) { const f = path.join(d, e.name); if (e.isDirectory()) { if (!f.includes(path.join("js", "modes", "crystal-wars"))) walk(f, out); } else if (/\.js$/.test(e.name)) out.push(f); } return out; }
+// No script (main game AND Crystal Wars) may reference the legacy file, and the file itself must be gone.
+assert(!fs.existsSync(path.join(root, "assets/sprites/champions/mago/atlas.png")), "legacy Mago atlas.png still exists");
+function walk(d, out = []) { for (const e of fs.readdirSync(d, { withFileTypes: true })) { const f = path.join(d, e.name); if (e.isDirectory()) { walk(f, out); } else if (/\.js$/.test(e.name)) out.push(f); } return out; }
 for (const f of [...walk(path.join(root, "js")), path.join(root, "index.html"), path.join(root, "sw.js")]) {
   if (!fs.existsSync(f)) continue;
   assert(!fs.readFileSync(f, "utf8").includes("champions/mago/atlas.png"), `${path.relative(root, f)} references the legacy Mago atlas`);
 }
+
+// Crystal Wars must draw the Mago from the same current Codex atlas, with matching geometry and clips.
+const CW = require(path.join(root, "js/modes/crystal-wars/atlas.js")).mago;
+assert(CW && CW.src === src, "Crystal Wars Mago does not point to the current Codex atlas");
+assert(CW.imageSize[0] === technical.size[0] && CW.imageSize[1] === technical.size[1], "Crystal Wars Mago imageSize differs from technical.json");
+assert(CW.referenceHeight === meta.refH, "Crystal Wars Mago referenceHeight differs from the pack refH");
+for (const [name, clip] of Object.entries(CW.animations)) {
+  for (const i of clip.frames) { const f = CW.frames[i]; assert(f && f.x >= 0 && f.y >= 0 && f.x + f.w <= CW.imageSize[0] && f.y + f.h <= CW.imageSize[1] && i < technical.frames, `Crystal Wars Mago ${name} frame ${i} outside the atlas`); }
+}
+for (const st of ["idle", "walk", "attack", "cast", "ultimate", "hit", "death"]) for (const d of ["down", "side", "right", "left", "up"]) assert(CW.animations[st + "_" + d], `Crystal Wars Mago missing ${st}_${d}`);
+assert(JSON.stringify(CW.animations.walk_down.frames) === JSON.stringify(meta.sets.walk_down) && JSON.stringify(CW.animations.death_side.frames) === JSON.stringify(meta.sets.death_side), "Crystal Wars Mago clips differ from the pack sets");
 
 const result = {
   status: "PASS",

@@ -8,7 +8,7 @@
  },
  "runtime": {
   "url": "index.html?dev=1&lazy=1 (producción: carga por grupos, webp activo)",
-  "loadedImages": 1600,
+  "loadedImages": 1570,
   "sampling": "24 muestras por estado y dirección (down/side/left/up)"
  },
  "summary": {
@@ -33,7 +33,7 @@
    "ARTE_VIEJO": 1
   },
   "files": {
-   "CODEX_OK": 872,
+   "CODEX_OK": 871,
    "HUERFANO": 104,
    "ARTE_VIEJO": 30
   }
@@ -14991,8 +14991,7 @@
   {"file":"assets/sprites/champions/libertador/v2/fx/spectral_05.png","category":"champions","size":[106,86],"bytes":19359,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"HUERFANO"},
   {"file":"assets/sprites/champions/libertador/v2/horse.png","category":"champions","size":[1000,306],"bytes":70044,"webp":true,"loaded":true,"usedBy":["js/assets/champion-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/libertador/v3/motion.png","category":"champions","size":[1344,112],"bytes":58883,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/champion-sprites.js"],"status":"ARTE_VIEJO"},
-  {"file":"assets/sprites/champions/mago/atlas.png","category":"champions","size":[1254,1254],"bytes":919336,"webp":false,"loaded":false,"usedBy":["js/modes/crystal-wars/atlas.js"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/champions/mago/codex-v1/atlas.png","category":"champions","size":[448,1232],"bytes":369097,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/champion-sprites.js","js/rendering/champion-sprites.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/champions/mago/codex-v1/atlas.png","category":"champions","size":[448,1232],"bytes":369097,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/champion-sprites.js","js/modes/crystal-wars/atlas.js","js/rendering/champion-sprites.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/mago/codex-v1/preview.png","category":"champions","size":[448,1008],"bytes":494633,"webp":false,"loaded":false,"usedBy":[],"status":"HUERFANO"},
   {"file":"assets/sprites/champions/mago/skins/convergencia/atlas.png","category":"champions","size":[736,375],"bytes":299527,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/set-skins-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/mago/skins/convergencia/preview.png","category":"champions","size":[125,173],"bytes":45861,"webp":true,"loaded":true,"usedBy":["js/assets/mythic-collection-meta.js","js/assets/set-skins-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
