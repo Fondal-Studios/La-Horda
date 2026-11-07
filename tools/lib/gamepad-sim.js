@@ -37,7 +37,7 @@ const INIT = (profiles) => {
     if(o.axL){ st.axes[p.axL[0]] = o.axL[0]; st.axes[p.axL[1]] = o.axL[1]; }
     if(o.axR){ st.axes[p.axR[0]] = o.axR[0]; st.axes[p.axR[1]] = o.axR[1]; }
     // la API real publica el mando recién con el primer botón apretado
-    if(st.connected && !st.exposed && (st.buttons.some(b => b.pressed) || (o.axL && Math.hypot(o.axL[0], o.axL[1]) > 0.5))) st.expose();
+    if(st.connected && !st.exposed && (st.buttons.some(b => b.pressed) || (o.hatDir && o.hatDir !== 'NONE') || (o.axL && Math.hypot(o.axL[0], o.axL[1]) > 0.5))) st.expose();
   };
 };
 async function install(target){ await target.addInitScript(INIT, PROFILES); }
