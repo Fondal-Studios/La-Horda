@@ -31,6 +31,7 @@
 // A pasted matchmaking invite must never redirect an authenticated request.
 const ACCOUNT_API_BASE = (()=>{
   try{
+    if(typeof netLanPage==="function" && netLanPage()) return ""; // RED LOCAL: sin cuentas ni nube (net-core.js)
     let q=new URLSearchParams(location.search).get("api");
     // ?api= apuntando a un host no oficial no se usa hasta que el jugador acepte el aviso (net-core.js netGateServer)
     if(q && typeof netGateServer==="function"){ try{ if(!netGateServer(new URL(q).href, "api")) q=""; }catch(e){ q=""; } }

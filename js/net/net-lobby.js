@@ -24,7 +24,7 @@ const NET_ERRORS = {
 
 // SALA PÚBLICA: aparece en MULTIJUGADOR → Salas abiertas (js/net/net-rooms.js) y cualquiera entra con
 // un toque. Se recuerda la elección del anfitrión (localStorage; privada por defecto, como siempre).
-function netPublicPref(){ try{ return localStorage.getItem("horda_pub")==="1"; }catch(e){ return false; } }
+function netPublicPref(){ if(typeof netLanPage==="function" && netLanPage()) return true; /* red local: la sala siempre se lista para los de la casa (js/net/net-lan.js) */ try{ return localStorage.getItem("horda_pub")==="1"; }catch(e){ return false; } }
 function netSetPublicPref(on){ try{ localStorage.setItem("horda_pub", on ? "1" : "0"); }catch(e){} }
 function netTogglePublic(){
   if(net.role!=="host" || !net.room) return;
@@ -34,6 +34,7 @@ function netTogglePublic(){
   showNetToast(on ? "🌍 Sala PÚBLICA: aparece en MULTIJUGADOR → Salas abiertas." : "🔒 Sala privada: solo se entra con el código.");
 }
 function netNotReady(){ return net.room ? net.room.slots.filter((s,i)=> i>0 && s && s.connected && !s.ready) : []; }
+function netLanOn(){ return typeof netLanPage==="function" && netLanPage(); }
 function netInRoom(){ return !!(net.room && net.role); }
 function netHumanCount(){ return net.room ? net.room.slots.filter(s=>s && s.connected).length : 1; }
 function netDuoLoadoutValid(i){ const L=netLobby.loadouts[i], s=net.room.slots[i]; return !!(L&&s&&L.champ===s.champ&&CLASSES[L.champ]); }
@@ -54,8 +55,8 @@ function netRenderLobbyBar(){
     if(!netAvailable()){
       bar._next = `<div class="net-row">${nameInput}<span class="net-off">🌐 Online: servidor no configurado todavía (ver docs/MULTIPLAYER_B1.md). Podés jugar con 3 bots.</span></div>`;
     } else {
-      bar._next = `<div class="net-row">${nameInput}<button class="btn small" id="net-create-btn">🌐 Crear sala online</button>
-          <label class="net-pub-chk"><input type="checkbox" id="net-public-chk" ${netPublicPref()?"checked":""}> 🌍 Pública</label></div>
+      bar._next = `<div class="net-row">${nameInput}<button class="btn small" id="net-create-btn">${netLanOn() ? "📡 Crear sala local" : "🌐 Crear sala online"}</button>
+          ${netLanOn() ? "" : `<label class="net-pub-chk"><input type="checkbox" id="net-public-chk" ${netPublicPref()?"checked":""}> 🌍 Pública</label>`}</div>
         <div class="net-hint">Creá una sala para invitar hasta 3 amigos. Si no invitás a nadie, jugás con bots como siempre. Pública: aparece en MULTIJUGADOR → Salas abiertas y cualquiera se suma con un toque.</div>
         <div class="net-join-box">
           <div class="net-join-title">🔑 UNIRSE CON CÓDIGO</div>
@@ -73,10 +74,11 @@ function netRenderLobbyBar(){
         <button class="btn small" id="net-copy-code-btn">📋 COPIAR CÓDIGO</button></div>
       <div class="net-row"><button class="btn small secondary" id="net-copy-btn">🔗 Copiar enlace</button>
         ${navigator.share ? `<button class="btn small" id="net-share-btn">📨 Invitar</button>` : ""}
-        <button class="btn small ${net.room.pub ? "ready-on" : "secondary"} net-pub-btn" id="net-public-btn" aria-pressed="${net.room.pub?"true":"false"}">${net.room.pub ? "🌍 PÚBLICA" : "🔒 Privada"}</button>
+        ${netLanOn() ? "" : `<button class="btn small ${net.room.pub ? "ready-on" : "secondary"} net-pub-btn" id="net-public-btn" aria-pressed="${net.room.pub?"true":"false"}">${net.room.pub ? "🌍 PÚBLICA" : "🔒 Privada"}</button>`}
         <button class="btn secondary small" id="net-close-btn">Cerrar sala</button></div>
-      <div class="net-hint">${net.room.pub ? "🌍 Tu sala aparece en MULTIJUGADOR → Salas abiertas: cualquiera puede sumarse. " : ""}Pasales el código <b>${net.code}</b> a tus amigos: en su juego van a MULTIJUGADOR → 🔑 UNIRSE CON CÓDIGO (o a su Sala) y lo escriben. También sirve el enlace. Aparecen acá en tiempo real. Cuando estén LISTOS, COMENZAR: los lugares libres los ocupan bots. La arena la cambiás arriba, sin cerrar la sala.</div>
+      <div class="net-hint">${netLanOn() ? "Los celulares y compus de la casa entran con el QR o el código de acá abajo, y aparecen en tiempo real. Cuando estén LISTOS, COMENZAR: los lugares libres los ocupan bots. La arena la cambiás arriba, sin cerrar la sala." : `${net.room.pub ? "🌍 Tu sala aparece en MULTIJUGADOR → Salas abiertas: cualquiera puede sumarse. " : ""}Pasales el código <b>${net.code}</b> a tus amigos: en su juego van a MULTIJUGADOR → 🔑 UNIRSE CON CÓDIGO (o a su Sala) y lo escriben. También sirve el enlace. Aparecen acá en tiempo real. Cuando estén LISTOS, COMENZAR: los lugares libres los ocupan bots. La arena la cambiás arriba, sin cerrar la sala.`}</div>
       <div class="net-link">${url}</div>
+      ${typeof lanBarHTML==="function" ? lanBarHTML() : ""}
       ${typeof lanesTeamHint==="function" ? lanesTeamHint() : ""}
       ${netChampStripHTML()}
       ${dup.length ? `<div class="net-err">Hay guardianes repetidos (${dup.map(k=>CLASSES[k].name).join(", ")}): cada jugador tiene que usar uno distinto.</div>` : ""}
@@ -98,6 +100,7 @@ function netRenderLobbyBar(){
   if(!_netCommitHTML(bar, "barHTML")) return; // idéntica: los botones ya tienen sus eventos
   const ni = document.getElementById("net-name-input");
   if(ni) ni.addEventListener("change", ()=>{ netSetPlayerName(ni.value); });
+  if(typeof lanAfterBar==="function") lanAfterBar(); // red local: "Crear sala local" arma la sala sola al llegar a la Sala (js/net/net-lan.js)
   const c = document.getElementById("net-create-btn");
   if(c) c.addEventListener("click", async ()=>{
     if(!isArenaUnlocked(currentArena)){ netLobby.lastError = "Esa arena todavía no la desbloqueaste."; netRenderLobbyBar(); return; }
@@ -557,7 +560,7 @@ function netValidateCode(raw){
 }
 // Estado visible de las cajas de "unirse" (Sala y Modos de juego).
 function _netSetJoinStatus(text, isErr){
-  for(const id of ["net-join-status","mode-join-status"]){
+  for(const id of ["net-join-status","mode-join-status","lan-join-status"]){
     const el = document.getElementById(id); if(!el) continue;
     el.textContent = text || ""; el.classList.toggle("ok", !!text && !isErr);
   }

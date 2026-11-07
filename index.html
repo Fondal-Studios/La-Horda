@@ -67,6 +67,7 @@
 <link rel="stylesheet" href="css/hub-scroll.css">
 <link rel="stylesheet" href="css/lanes.css">
 <link rel="stylesheet" href="css/hud-horda.css">
+<link rel="stylesheet" href="css/lan.css">
 <link rel="stylesheet" href="css/hud-mobile.css">
 <link rel="stylesheet" href="css/first-minute.css">
 <link rel="stylesheet" href="css/legal.css">
@@ -77,6 +78,8 @@
 <link rel="stylesheet" href="css/ui-clarity/hud-clarity.css">
 <link rel="stylesheet" href="css/ui-clarity/shop-clarity.css"><!-- UC-HUD v1: ver docs/ui-clarity/INTEGRATION_CONTRACTS.md (después de ui-factory y beta-visual) -->
 <link rel="stylesheet" href="css/beta-visual.css">
+<link rel="stylesheet" href="css/screen-tips.css">
+<link rel="stylesheet" href="css/ux-beta-simple.css">
 <!-- rework de interfaz (css/ui-rework.css, js/ui/ui-rework.js, tools/ui-rework): fuera de este PR hasta su revisión; ver docs/beta-release/RESULTADOS_PR.md -->
 </head>
 <body>
@@ -173,6 +176,7 @@
     <button class="btn wide" id="title-continue-btn" disabled>Cargando…</button>
     <div class="lang-host" data-lang-host></div><!-- idioma: ES · EN · PT (js/i18n/i18n.js) -->
     <a href="instalar.html" style="display:block;margin:10px auto;color:#f9c971;font-size:14px">Instalar en mi dispositivo</a>
+    <button type="button" class="title-howto" id="title-howto-btn">¿Cómo se juega?</button><!-- ayuda siempre a mano: js/ui/how-to-play.js -->
     <!-- B1: invitación a una sala online (?room=CÓDIGO en la URL) -->
     <label class="hidden" id="title-join-name">Tu nombre <input maxlength="16" placeholder="Jugador"></label>
     <button class="btn wide hidden" id="title-join-btn">Unirse a la sala</button>
@@ -271,6 +275,9 @@
       <div class="ui-panel-title">⚙ Opciones</div>
       <nav class="opt-jump" id="opt-jump" aria-label="Ir a una sección"><button type="button" class="opt-jump-a11y" data-jump="opt-sec-a11y">Accesibilidad</button><button type="button" data-jump="opt-sec-controls">Controles</button><button type="button" data-jump="opt-sec-legal">Legal y datos</button></nav>
       <label class="opt-row">Tu nombre <input id="opt-name" maxlength="16" placeholder="Jugador"></label>
+      <div class="opt-row" id="opt-help-row"><span class="opt-lbl">Ayuda y tutoriales<span class="opt-sub">Cómo se juega y consejos de cada pantalla</span></span><button class="btn small" id="opt-howto-btn" type="button">Cómo se juega</button></div>
+      <div class="opt-row"><span class="opt-lbl">Consejos en cada pantalla<span class="opt-sub">Un cartel corto la primera vez que entrás</span></span><button class="opt-switch" id="opt-tips-switch" role="switch" aria-checked="true" type="button">Sí</button></div>
+      <div class="opt-row"><span class="opt-lbl">Repetir los consejos<span class="opt-sub">Los vuelve a mostrar desde cero</span></span><button class="btn small secondary" id="opt-tips-reset-btn" type="button">Repetir</button></div>
       <label class="opt-row">Idioma <select id="opt-lang" aria-label="Idioma"><option value="es">Español</option><option value="en">English</option><option value="pt">Português</option></select></label>
       <label class="opt-row">🎵 Música <input type="range" id="opt-vol-music" min="0" max="100" step="5"></label>
       <label class="opt-row">🎼 Estilo
@@ -442,6 +449,11 @@
         <div class="mode-card-desc">La historia en orden, de la Arena 01 a la 10. Elegí cualquier arena que ya abriste y rejugala, sola o con amigos.</div>
         <div class="mode-card-note" id="campaign-first-notice">🏆 El primer jugador en completar el juego puede pedir un campeón con diseño propio.</div>
       </button>
+      <!-- JUGAR EN RED LOCAL (js/net/net-lan.js): cooperativo por el WiFi de la casa, sin internet ni cuenta -->
+      <button class="mode-card mode-lan" id="mode-lan-btn">
+        <div class="mode-card-title">📡 JUGAR EN RED LOCAL</div>
+        <div class="mode-card-desc">Cooperativo de hasta 4 por el WiFi de tu casa, sin internet ni cuenta: la compu anfitriona es la pantalla (una sola cámara con todos) y los demás entran desde el celular. Campaña u Horda Infinita. No cuenta para ranking ni economía.</div>
+      </button>
       <button class="mode-card" id="mode-crystal-wars-btn">
         <div class="mode-card-title">💠 GUERRA DE CRISTALES <span class="ui-tag">ALPHA</span></div>
         <div class="mode-card-desc">Guerra de Cristales: 5 contra 5 con bots (2 contra 2 en línea), tres carriles, selva, torres, PvP y tu propia horda. Postgame: se abre al terminar la campaña.</div>
@@ -455,6 +467,48 @@
         <div class="mode-card-desc" id="mode-endless-desc">Supervivencia: oleadas sin fin, cada vez más duras. ¿Hasta dónde llegás?</div>
       </button>
     </div>
+    </div>
+  </div>
+
+  <!-- JUGAR EN RED LOCAL: dos pasos (Crear sala local · Unirme a sala local). Lógica en js/net/net-lan.js, estilos en css/lan.css -->
+  <div id="lan-screen" class="screen hidden">
+    <div class="ui-topbar">
+      <button class="ui-back" id="lan-back-btn">‹ Modos</button>
+      <div class="ui-topbar-title">JUGAR EN RED LOCAL</div>
+      <div class="ui-topbar-spacer"></div>
+    </div>
+    <div class="lan-body">
+      <div class="lan-intro">Cooperativo por el WiFi de la casa, de hasta 4 jugadores y con una sola cámara alejada en la pantalla de la anfitriona. Sin internet ni cuenta: lo que ganes acá no se guarda y no cuenta para ranking, economía ni Brasas. En red local todas las arenas están abiertas.</div>
+      <div class="mode-card lan-card hidden" id="lan-off">
+        <div class="mode-card-title">📡 CÓMO EMPEZAR</div>
+        <div class="mode-card-desc">1) En la compu anfitriona, ejecutá «npm run lan» en la carpeta del juego (o abrí lan.bat en Windows, lan.sh en Mac y Linux).</div>
+        <div class="mode-card-desc">2) Te muestra una dirección y un código QR: abrila en esta compu y en cada celular conectado al mismo WiFi.</div>
+        <div class="mode-card-desc">3) Ya dentro, elegí «Jugar en red local».</div>
+      </div>
+      <div class="lan-cols hidden" id="lan-on">
+        <div class="mode-card lan-card" id="lan-create-card">
+          <div class="mode-card-title">📡 CREAR SALA LOCAL</div>
+          <div class="mode-card-desc">Vos sos la anfitriona: elegí el modo y tu guardián. La Sala muestra el código y el QR para que los demás entren.</div>
+          <div class="lan-modes">
+            <button class="btn" id="lan-create-campaign">⚔ Campaña</button>
+            <button class="btn" id="lan-create-endless">♾ Horda Infinita</button>
+          </div>
+          <div class="net-err join-status" id="lan-create-status"></div>
+        </div>
+        <div class="mode-card lan-card" id="lan-join-card">
+          <div class="mode-card-title">🔑 UNIRME A SALA LOCAL</div>
+          <div class="mode-card-desc">Tocá una sala de esta red, o escribí el código (o pegá el enlace) que te pasó la anfitriona.</div>
+          <div class="mode-rooms-list" id="lan-rooms-list"></div>
+          <div class="net-hint" id="lan-rooms-status"></div>
+          <div class="join-code-row">
+            <input id="lan-join-code" class="multi-input net-code-input" placeholder="Código (ej. QKL58J)" maxlength="200" autocomplete="off" autocorrect="off" spellcheck="false" autocapitalize="characters">
+            <button class="btn small" id="lan-join-paste">📋 Pegar</button>
+            <button class="btn small net-join-go" id="lan-join-btn">UNIRSE</button>
+          </div>
+          <div class="join-code-meta"><label class="net-name">Tu nombre <input id="lan-join-name" maxlength="16" placeholder="Jugador"></label></div>
+          <div class="net-err join-status" id="lan-join-status"></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -940,6 +994,7 @@
 <script src="js/ui/tactical-panel.js"></script>
 <script src="js/ui/ux-simplify-a.js"></script>
 <script src="js/ui/ux-simplify-b.js"></script>
+<script src="js/ui/screen-tips.js"></script>
 <script src="js/ui/boss-hud.js"></script>
 <script src="js/ui/pixel-font-fix.js"></script>
 <script src="js/ui/pixel-icons.js"></script>
@@ -992,6 +1047,8 @@
 <script src="js/net/net-chat.js"></script>
 <script src="js/net/net-trade.js"></script>
 <script src="js/net/net-rooms.js"></script>
+<script src="js/net/lan-qr.js"></script>
+<script src="js/net/net-lan.js"></script>
 <script src="js/net/quick-play.js"></script>
 <script src="js/modes/crystal-wars/roster.js"></script><script src="js/modes/crystal-wars/simulation.js"></script><script src="js/modes/crystal-wars/atlas.js"></script><script src="js/modes/crystal-wars/client.js"></script>
 <script src="js/net/net-debug.js"></script>

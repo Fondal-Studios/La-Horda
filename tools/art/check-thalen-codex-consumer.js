@@ -16,12 +16,12 @@ function assert(ok, message) {
   if (!ok) throw new Error(message);
 }
 
-const marker = 'champPackLoadAtlas("mago_codex", ';
+const marker = 'champPackLoadAtlas("mago", ';
 const start = assets.indexOf(marker);
-assert(start >= 0, "mago_codex registration missing");
+assert(start >= 0, "mago registration missing");
 const line = assets.slice(start, assets.indexOf("\n", start));
-const match = line.match(/^champPackLoadAtlas\("mago_codex",\s*"([^"]+)",\s*(\{.*\})\);$/);
-assert(match, "mago_codex registration is not a single reproducible JSON metadata call");
+const match = line.match(/^champPackLoadAtlas\("mago",\s*"([^"]+)",\s*(\{.*\})\);$/);
+assert(match, "mago registration is not a single reproducible JSON metadata call");
 const src = match[1];
 const meta = JSON.parse(match[2]);
 
@@ -33,29 +33,62 @@ assert(meta.fix && meta.fix.left === "mirror", "left-facing profile mirror missi
 const expected = {
   walk_down:[0,1,2,3], walk_side:[4,5,6,7], walk_up:[8,9,10,11],
   attack_down:[12,13,14,15], attack_side:[16,17,18,19], attack_up:[20,21,22,23],
-  cast_down:[24,25,26,27], ultimate_down:[28,29,30,31], death_down:[32,33,34,35]
+  cast_down:[24,25,26,27], ultimate_down:[28,29,30,31], death_down:[32,33,34,35],
+  idle_down:[0,36,0,37], idle_side:[4,38,4,39], idle_up:[8,40,8,41]
 };
 for (const [name, frames] of Object.entries(expected)) {
   assert(JSON.stringify(meta.sets[name]) === JSON.stringify(frames), `${name} mapping differs`);
 }
 for (const [name, frames] of Object.entries(meta.sets)) {
   assert(Array.isArray(frames) && frames.length > 0, `${name} is empty`);
-  for (const frame of frames) assert(Number.isInteger(frame) && frame >= 0 && frame < 36, `${name} frame ${frame} out of range`);
+  for (const frame of frames) assert(Number.isInteger(frame) && frame >= 0 && frame < technical.frames, `${name} frame ${frame} out of range`);
 }
-assert(technical.frames === 36 && technical.nonEmpty === 36, "technical frame coverage is not complete");
+assert(technical.frames === 42 && technical.nonEmpty === 42 && technical.size[0] === 448 && technical.size[1] === 1232, "technical frame coverage is not complete (4x11 grid, 36 states + 6 idle frames)");
+assert(technical.sha256 === require("crypto").createHash("sha256").update(fs.readFileSync(path.join(root, technical.atlas))).digest("hex"), "technical.json describes a different atlas.png (stale sha256)");
 assert(technical.binaryAlpha === true && technical.edgeAlphaPixels === 0, "technical alpha gate failed");
 
 const drawStart = renderer.indexOf("function drawMagoAtlas");
+assert(drawStart >= 0, "drawMagoAtlas missing");
 const drawEnd = renderer.indexOf("\n}", drawStart);
 const drawBody = renderer.slice(drawStart, drawEnd);
-assert(drawBody.indexOf('drawChampPack("mago_codex"') >= 0, "new pack is not consulted by drawMagoAtlas");
-assert(drawBody.indexOf('drawChampPack("mago_codex"') < drawBody.indexOf("drawAnimAtlas(MAGO_ANIM_ATLAS"), "legacy atlas is not a load/error fallback");
+assert(drawBody.includes('drawChampPack("mago"'), "new pack is not consulted by drawMagoAtlas");
+// Equivalent-or-stricter replacement of the old "legacy atlas is a load/error fallback" checks: the legacy 16-crop atlas
+// is gone from the main game, so a failed pack must behave like any other champion with a failed pack (draw returns the
+// pack result, drawHero falls to the procedural body) and nothing may still reference the legacy symbols.
+assert(!/drawAnimAtlas|MAGO_ANIM|MAGO_IMG|MAGO_ATLAS/.test(drawBody), "drawMagoAtlas still touches the legacy atlas");
+assert(/return drawChampPack\("mago", h, drawScale, alpha\);/.test(drawBody), "drawMagoAtlas must return the pack result so a failed pack falls through like other champions");
+for (const [label, text] of [["js/assets/champion-sprites.js", assets], ["js/rendering/champion-sprites.js", renderer]]) {
+  assert(!/MAGO_IMG|MAGO_ANIM|MAGO_ATLAS|MAGO_TARGET_HEIGHT|drawMagoFallen|magoResolveClip|magoCastReleaseFx/.test(text.replace(/\/\/[^\n]*/g, "").replace(/\/\*[\s\S]*?\*\//g, "")), `${label} still has orphan legacy Mago symbols`);
+  assert(!text.includes("champions/mago/atlas.png"), `${label} still loads the legacy Mago atlas`);
+}
+// Legacy atlas must not be preloaded or listed for WebP swap (the Codex atlas loads through champPackLoadAtlas, checked above).
+const manifest = fs.readFileSync(path.join(root, "js/assets/asset-manifest.js"), "utf8");
+const webpList = fs.readFileSync(path.join(root, "js/assets/asset-webp.js"), "utf8");
+assert(!manifest.includes('"assets/sprites/champions/mago/atlas.png"'), "legacy Mago atlas still in asset-manifest.js");
+assert(!webpList.includes('"assets/sprites/champions/mago/atlas.png"'), "legacy Mago atlas still in asset-webp.js");
+assert(!fs.existsSync(path.join(root, "assets/sprites/champions/mago/atlas.webp")), "legacy Mago atlas.webp still exists");
+// Nothing in the renderer may call the removed legacy fallen path; the death must be the animated authored clip.
+assert(!renderer.includes("drawMagoFallen"), "drawFallenHero still calls the removed legacy Mago fallen path");
+assert(renderer.includes("CHAMP_PACK[h.classKey] || skinPack") && meta.sets.death_down.length >= 4, "drawFallenHero does not animate the authored death_down clip");
+assert(!/_codexT:420/.test(renderer.slice(renderer.indexOf("function drawFallenHero"), renderer.indexOf("function drawFallenHero") + 1500)), "Mago death is frozen on the last frame again");
+// No script (main game AND Crystal Wars) may reference the legacy file, and the file itself must be gone.
+assert(!fs.existsSync(path.join(root, "assets/sprites/champions/mago/atlas.png")), "legacy Mago atlas.png still exists");
+function walk(d, out = []) { for (const e of fs.readdirSync(d, { withFileTypes: true })) { const f = path.join(d, e.name); if (e.isDirectory()) { walk(f, out); } else if (/\.js$/.test(e.name)) out.push(f); } return out; }
+for (const f of [...walk(path.join(root, "js")), path.join(root, "index.html"), path.join(root, "sw.js")]) {
+  if (!fs.existsSync(f)) continue;
+  assert(!fs.readFileSync(f, "utf8").includes("champions/mago/atlas.png"), `${path.relative(root, f)} references the legacy Mago atlas`);
+}
 
-const fallenStart = renderer.indexOf("function drawMagoFallen");
-const fallenEnd = renderer.indexOf("\n}", fallenStart);
-const fallenBody = renderer.slice(fallenStart, fallenEnd);
-assert(fallenBody.includes('_codexSet:"death_down"'), "authored death sequence is not selected");
-assert(fallenBody.includes("if(!MAGO_IMG_READY) return false"), "legacy fallen fallback missing");
+// Crystal Wars must draw the Mago from the same current Codex atlas, with matching geometry and clips.
+const CW = require(path.join(root, "js/modes/crystal-wars/atlas.js")).mago;
+assert(CW && CW.src === src, "Crystal Wars Mago does not point to the current Codex atlas");
+assert(CW.imageSize[0] === technical.size[0] && CW.imageSize[1] === technical.size[1], "Crystal Wars Mago imageSize differs from technical.json");
+assert(CW.referenceHeight === meta.refH, "Crystal Wars Mago referenceHeight differs from the pack refH");
+for (const [name, clip] of Object.entries(CW.animations)) {
+  for (const i of clip.frames) { const f = CW.frames[i]; assert(f && f.x >= 0 && f.y >= 0 && f.x + f.w <= CW.imageSize[0] && f.y + f.h <= CW.imageSize[1] && i < technical.frames, `Crystal Wars Mago ${name} frame ${i} outside the atlas`); }
+}
+for (const st of ["idle", "walk", "attack", "cast", "ultimate", "hit", "death"]) for (const d of ["down", "side", "right", "left", "up"]) assert(CW.animations[st + "_" + d], `Crystal Wars Mago missing ${st}_${d}`);
+assert(JSON.stringify(CW.animations.walk_down.frames) === JSON.stringify(meta.sets.walk_down) && JSON.stringify(CW.animations.death_side.frames) === JSON.stringify(meta.sets.death_side), "Crystal Wars Mago clips differ from the pack sets");
 
 const result = {
   status: "PASS",
@@ -64,7 +97,7 @@ const result = {
   frames: technical.frames,
   nonEmpty: technical.nonEmpty,
   mappingsChecked: Object.keys(meta.sets).length,
-  fallback: "mago_codex ready -> authored pack; loading/error -> legacy MAGO_ANIM_ATLAS",
+  fallback: "mago ready -> authored pack; loading/error -> drawChampPack false -> procedural body (same as every other champion); legacy atlas removed",
   scope: "static consumer contract; not gameplay, multiplayer, visual Art Gate, or CI approval"
 };
 process.stdout.write(JSON.stringify(result, null, 2) + "\n");

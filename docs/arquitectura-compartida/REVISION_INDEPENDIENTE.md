@@ -16,7 +16,11 @@ Diagrama completo en [`DEPENDENCIAS.md`](DEPENDENCIAS.md). Verificador ejecutabl
 | 2. QA | un revisor de rol `qa` (no el autor) | `evidence`: SHA, informe de `qa.js`, `tests` y `failed` | `tests > 0` y `failed = 0` |
 | 3. Revisión arquitectónica | un revisor de rol `arquitecto` (no el autor ni quien hizo QA) | veredicto | `aprobado` · `rechazado` · `reparacion_parcial` (con lista `repair`) · `reconstruccion` (con `reason`) |
 | 4. Staging | `qa` o `integrador` | prueba en una rama `beta/…` | `tests > 0`, `failed = 0`, rama `beta/…` |
-| 5. Aprobación | una persona de `reviews/DIRECTORES.json` | veredicto | **nunca un agente** |
+| 5. Aprobación | una identidad distinta del autor (política del propietario 2026-11-07: ya **no** se exige una persona de `reviews/DIRECTORES.json`; ver `reviews/POLITICA.json`) | veredicto | no puede darla el autor |
+
+## Política del propietario (2026-11-07)
+
+El propietario (único director) decidió: «Cambio la regla del aprobador humano para siempre». `reviews/POLITICA.json` fija `aprobacionHumana: false`: la aprobación final ya no exige una persona de `reviews/DIRECTORES.json` ni prohíbe que la dé un agente. **Siguen vigentes** R1, R2 (nadie aprueba su propio trabajo; QA y arquitectura distintas entre sí y del autor), R4 (SHA exacto), R5 (pruebas > 0, fallos = 0; staging en `beta/…`), R6 y R7. Sin `POLITICA.json` el comportamiento por defecto sigue siendo estricto. Cambiar esta política es decisión del propietario.
 
 ## Reglas que el verificador hace cumplir
 

@@ -1,0 +1,924 @@
+{
+ "refH": 128,
+ "sheets": [
+  "enemigos_abismo.png",
+  "enemigos_acuatica.png",
+  "enemigos_bosque.png",
+  "enemigos_ciudad.png",
+  "enemigos_fortaleza.png",
+  "enemigos_hielo.png",
+  "enemigos_infernal.png",
+  "enemigos_laberinto.png",
+  "enemigos_micelial.png",
+  "enemigos_minas.png"
+ ],
+ "enemies": {
+  "ab_errante": {
+   "arena": "abismo",
+   "rank": "normal",
+   "srcSize": [
+    31,
+    13
+   ],
+   "scale": 9.846
+  },
+  "ab_devorador": {
+   "arena": "abismo",
+   "rank": "elite",
+   "srcSize": [
+    50,
+    13
+   ],
+   "scale": 9.846
+  },
+  "ab_heraldo": {
+   "arena": "abismo",
+   "rank": "subelite",
+   "srcSize": [
+    42,
+    18
+   ],
+   "scale": 7.111
+  },
+  "ab_jinete": {
+   "arena": "abismo",
+   "rank": "elite",
+   "srcSize": [
+    21,
+    13
+   ],
+   "scale": 9.846
+  },
+  "ab_tentaculo": {
+   "arena": "abismo",
+   "rank": "subelite",
+   "srcSize": [
+    142,
+    110
+   ],
+   "scale": 1.164
+  },
+  "ab_carcelero": {
+   "arena": "abismo",
+   "rank": "subjefe",
+   "srcSize": [
+    222,
+    154
+   ],
+   "scale": 0.831
+  },
+  "ab_morador": {
+   "arena": "abismo",
+   "rank": "jefe",
+   "srcSize": [
+    129,
+    87
+   ],
+   "scale": 1.471
+  },
+  "anguila_electrica": {
+   "arena": "acuatica",
+   "rank": "normal",
+   "srcSize": [
+    108,
+    27
+   ],
+   "scale": 4.741
+  },
+  "cangrejo_acorazado": {
+   "arena": "acuatica",
+   "rank": "normal",
+   "srcSize": [
+    58,
+    34
+   ],
+   "scale": 3.765
+  },
+  "medusa_electrica": {
+   "arena": "acuatica",
+   "rank": "normal",
+   "srcSize": [
+    28,
+    30
+   ],
+   "scale": 4.267
+  },
+  "sirena_abisal": {
+   "arena": "acuatica",
+   "rank": "normal",
+   "srcSize": [
+    22,
+    29
+   ],
+   "scale": 4.414
+  },
+  "tiburon_joven": {
+   "arena": "acuatica",
+   "rank": "normal",
+   "srcSize": [
+    58,
+    29
+   ],
+   "scale": 4.414
+  },
+  "lev_tentaculo": {
+   "arena": "acuatica",
+   "rank": "subelite",
+   "srcSize": [
+    180,
+    123
+   ],
+   "scale": 1.041
+  },
+  "tiburon_blanco": {
+   "arena": "acuatica",
+   "rank": "elite",
+   "srcSize": [
+    92,
+    45
+   ],
+   "scale": 2.844
+  },
+  "kraken_joven": {
+   "arena": "acuatica",
+   "rank": "subjefe",
+   "srcSize": [
+    288,
+    132
+   ],
+   "scale": 0.97
+  },
+  "leviatan": {
+   "arena": "acuatica",
+   "rank": "jefe",
+   "srcSize": [
+    170,
+    158
+   ],
+   "scale": 0.81
+  },
+  "duende_bosque": {
+   "arena": "bosque",
+   "rank": "normal",
+   "srcSize": [
+    26,
+    24
+   ],
+   "scale": 5.333
+  },
+  "enjambre_hadas": {
+   "arena": "bosque",
+   "rank": "normal",
+   "srcSize": [
+    43,
+    46
+   ],
+   "scale": 2.783
+  },
+  "bestia_bosque": {
+   "arena": "bosque",
+   "rank": "subelite",
+   "srcSize": [
+    104,
+    67
+   ],
+   "scale": 1.91
+  },
+  "cu_sith": {
+   "arena": "bosque",
+   "rank": "elite",
+   "srcSize": [
+    77,
+    67
+   ],
+   "scale": 1.91
+  },
+  "dama_bosque": {
+   "arena": "bosque",
+   "rank": "elite",
+   "srcSize": [
+    51,
+    70
+   ],
+   "scale": 1.829
+  },
+  "ent": {
+   "arena": "bosque",
+   "rank": "elite",
+   "srcSize": [
+    35,
+    50
+   ],
+   "scale": 2.56
+  },
+  "doblador_arquera": {
+   "arena": "bosque",
+   "rank": "subjefe",
+   "srcSize": [
+    52,
+    63
+   ],
+   "scale": 2.032
+  },
+  "doblador_clerigo": {
+   "arena": "bosque",
+   "rank": "subjefe",
+   "srcSize": [
+    51,
+    63
+   ],
+   "scale": 2.032
+  },
+  "doblador_guerrero": {
+   "arena": "bosque",
+   "rank": "subjefe",
+   "srcSize": [
+    68,
+    68
+   ],
+   "scale": 1.882
+  },
+  "doblador_picaro": {
+   "arena": "bosque",
+   "rank": "subjefe",
+   "srcSize": [
+    60,
+    60
+   ],
+   "scale": 2.133
+  },
+  "guardian_ancestral": {
+   "arena": "bosque",
+   "rank": "jefe",
+   "srcSize": [
+    160,
+    176
+   ],
+   "scale": 0.727
+  },
+  "jinete_sin_cabeza": {
+   "arena": "bosque",
+   "rank": "jefe",
+   "srcSize": [
+    144,
+    134
+   ],
+   "scale": 0.955
+  },
+  "cm_cometa": {
+   "arena": "ciudad",
+   "rank": "normal",
+   "srcSize": [
+    113,
+    79
+   ],
+   "scale": 1.62
+  },
+  "cm_espectro": {
+   "arena": "ciudad",
+   "rank": "normal",
+   "srcSize": [
+    33,
+    61
+   ],
+   "scale": 2.098
+  },
+  "cm_espejismo": {
+   "arena": "ciudad",
+   "rank": "normal",
+   "srcSize": [
+    91,
+    133
+   ],
+   "scale": 0.962
+  },
+  "cm_perro": {
+   "arena": "ciudad",
+   "rank": "normal",
+   "srcSize": [
+    48,
+    24
+   ],
+   "scale": 5.333
+  },
+  "cm_saqueador": {
+   "arena": "ciudad",
+   "rank": "normal",
+   "srcSize": [
+    38,
+    62
+   ],
+   "scale": 2.065
+  },
+  "cm_sectario": {
+   "arena": "ciudad",
+   "rank": "normal",
+   "srcSize": [
+    30,
+    62
+   ],
+   "scale": 2.065
+  },
+  "cm_acechante": {
+   "arena": "ciudad",
+   "rank": "subelite",
+   "srcSize": [
+    28,
+    27
+   ],
+   "scale": 4.741
+  },
+  "cm_campanero": {
+   "arena": "ciudad",
+   "rank": "elite",
+   "srcSize": [
+    26,
+    39
+   ],
+   "scale": 3.282
+  },
+  "cm_planidera": {
+   "arena": "ciudad",
+   "rank": "subelite",
+   "srcSize": [
+    31,
+    68
+   ],
+   "scale": 1.882
+  },
+  "cm_raptor": {
+   "arena": "ciudad",
+   "rank": "subelite",
+   "srcSize": [
+    66,
+    66
+   ],
+   "scale": 1.939
+  },
+  "cm_verdugo": {
+   "arena": "ciudad",
+   "rank": "elite",
+   "srcSize": [
+    49,
+    94
+   ],
+   "scale": 1.362
+  },
+  "cm_dama": {
+   "arena": "ciudad",
+   "rank": "subjefe",
+   "srcSize": [
+    93,
+    126
+   ],
+   "scale": 1.016
+  },
+  "cm_maestro": {
+   "arena": "ciudad",
+   "rank": "subjefe",
+   "srcSize": [
+    88,
+    112
+   ],
+   "scale": 1.143
+  },
+  "cm_tramoyista": {
+   "arena": "ciudad",
+   "rank": "subjefe",
+   "srcSize": [
+    147,
+    137
+   ],
+   "scale": 0.934
+  },
+  "cm_presentador": {
+   "arena": "ciudad",
+   "rank": "jefe",
+   "srcSize": [
+    124,
+    137
+   ],
+   "scale": 0.934
+  },
+  "carcelero": {
+   "arena": "fortaleza",
+   "rank": "normal",
+   "srcSize": [
+    67,
+    69
+   ],
+   "scale": 1.855
+  },
+  "dragon_bronce": {
+   "arena": "fortaleza",
+   "rank": "normal",
+   "srcSize": [
+    72,
+    55
+   ],
+   "scale": 2.327
+  },
+  "engendro": {
+   "arena": "fortaleza",
+   "rank": "normal",
+   "srcSize": [
+    70,
+    40
+   ],
+   "scale": 3.2
+  },
+  "prisionero": {
+   "arena": "fortaleza",
+   "rank": "normal",
+   "srcSize": [
+    93,
+    68
+   ],
+   "scale": 1.882
+  },
+  "arana": {
+   "arena": "fortaleza",
+   "rank": "subelite",
+   "srcSize": [
+    65,
+    52
+   ],
+   "scale": 2.462
+  },
+  "automata": {
+   "arena": "fortaleza",
+   "rank": "elite",
+   "srcSize": [
+    81,
+    85
+   ],
+   "scale": 1.506
+  },
+  "verdugo": {
+   "arena": "fortaleza",
+   "rank": "elite",
+   "srcSize": [
+    74,
+    92
+   ],
+   "scale": 1.391
+  },
+  "dragon_forja": {
+   "arena": "fortaleza",
+   "rank": "subjefe",
+   "srcSize": [
+    198,
+    152
+   ],
+   "scale": 0.842
+  },
+  "caballero": {
+   "arena": "fortaleza",
+   "rank": "jefe",
+   "srcSize": [
+    175,
+    161
+   ],
+   "scale": 0.795
+  },
+  "cristal_servo": {
+   "arena": "hielo",
+   "rank": "normal",
+   "srcSize": [
+    14,
+    21
+   ],
+   "scale": 6.095
+  },
+  "cristal_volador": {
+   "arena": "hielo",
+   "rank": "normal",
+   "srcSize": [
+    16,
+    20
+   ],
+   "scale": 6.4
+  },
+  "golem_cristal": {
+   "arena": "hielo",
+   "rank": "normal",
+   "srcSize": [
+    68,
+    77
+   ],
+   "scale": 1.662
+  },
+  "golem_hielo": {
+   "arena": "hielo",
+   "rank": "normal",
+   "srcSize": [
+    28,
+    33
+   ],
+   "scale": 3.879
+  },
+  "hada_escarcha": {
+   "arena": "hielo",
+   "rank": "normal",
+   "srcSize": [
+    10,
+    18
+   ],
+   "scale": 7.111
+  },
+  "lobo_artico": {
+   "arena": "hielo",
+   "rank": "normal",
+   "srcSize": [
+    48,
+    39
+   ],
+   "scale": 3.282
+  },
+  "angel_hielo": {
+   "arena": "hielo",
+   "rank": "elite",
+   "srcSize": [
+    48,
+    88
+   ],
+   "scale": 1.455
+  },
+  "demonio_hielo_fuego": {
+   "arena": "hielo",
+   "rank": "elite",
+   "srcSize": [
+    32,
+    39
+   ],
+   "scale": 3.282
+  },
+  "dragon_hielo": {
+   "arena": "hielo",
+   "rank": "elite",
+   "srcSize": [
+    115,
+    80
+   ],
+   "scale": 1.6
+  },
+  "dragoncito_hielo": {
+   "arena": "hielo",
+   "rank": "elite",
+   "srcSize": [
+    67,
+    70
+   ],
+   "scale": 1.829
+  },
+  "foco_hielo": {
+   "arena": "hielo",
+   "rank": "subelite",
+   "srcSize": [
+    84,
+    183
+   ],
+   "scale": 0.699
+  },
+  "angel_caido_hielo": {
+   "arena": "hielo",
+   "rank": "jefe",
+   "srcSize": [
+    95,
+    148
+   ],
+   "scale": 0.865
+  },
+  "mago_hielo_cristal": {
+   "arena": "hielo",
+   "rank": "jefe",
+   "srcSize": [
+    84,
+    112
+   ],
+   "scale": 1.143
+  },
+  "esqueleto": {
+   "arena": "infernal",
+   "rank": "normal",
+   "srcSize": [
+    20,
+    29
+   ],
+   "scale": 4.414
+  },
+  "zombie": {
+   "arena": "infernal",
+   "rank": "normal",
+   "srcSize": [
+    26,
+    32
+   ],
+   "scale": 4.0
+  },
+  "demonio_mago": {
+   "arena": "infernal",
+   "rank": "elite",
+   "srcSize": [
+    30,
+    37
+   ],
+   "scale": 3.459
+  },
+  "demonio_menor": {
+   "arena": "infernal",
+   "rank": "subelite",
+   "srcSize": [
+    30,
+    37
+   ],
+   "scale": 3.459
+  },
+  "esqueleto_h": {
+   "arena": "infernal",
+   "rank": "subelite",
+   "srcSize": [
+    22,
+    37
+   ],
+   "scale": 3.459
+  },
+  "foco_convergencia": {
+   "arena": "infernal",
+   "rank": "subelite",
+   "srcSize": [
+    128,
+    189
+   ],
+   "scale": 0.677
+  },
+  "golem": {
+   "arena": "infernal",
+   "rank": "elite",
+   "srcSize": [
+    68,
+    92
+   ],
+   "scale": 1.391
+  },
+  "hechicero_supremo": {
+   "arena": "infernal",
+   "rank": "subjefe",
+   "srcSize": [
+    117,
+    168
+   ],
+   "scale": 0.762
+  },
+  "angel_corrompido": {
+   "arena": "infernal",
+   "rank": "jefe",
+   "srcSize": [
+    174,
+    201
+   ],
+   "scale": 0.637
+  },
+  "demonio_mayor": {
+   "arena": "infernal",
+   "rank": "jefe",
+   "srcSize": [
+    181,
+    150
+   ],
+   "scale": 0.853
+  },
+  "golem_cuerpos": {
+   "arena": "infernal",
+   "rank": "jefe",
+   "srcSize": [
+    227,
+    178
+   ],
+   "scale": 0.719
+  },
+  "escorpion_gigante": {
+   "arena": "laberinto",
+   "rank": "normal",
+   "srcSize": [
+    27,
+    27
+   ],
+   "scale": 4.741
+  },
+  "golem_piedra": {
+   "arena": "laberinto",
+   "rank": "normal",
+   "srcSize": [
+    45,
+    75
+   ],
+   "scale": 1.707
+  },
+  "druida_arena": {
+   "arena": "laberinto",
+   "rank": "elite",
+   "srcSize": [
+    22,
+    34
+   ],
+   "scale": 3.765
+  },
+  "esfinge": {
+   "arena": "laberinto",
+   "rank": "elite",
+   "srcSize": [
+    65,
+    45
+   ],
+   "scale": 2.844
+  },
+  "medusa": {
+   "arena": "laberinto",
+   "rank": "subelite",
+   "srcSize": [
+    20,
+    32
+   ],
+   "scale": 4.0
+  },
+  "guardian_laberinto": {
+   "arena": "laberinto",
+   "rank": "subjefe",
+   "srcSize": [
+    112,
+    108
+   ],
+   "scale": 1.185
+  },
+  "minotauro": {
+   "arena": "laberinto",
+   "rank": "jefe",
+   "srcSize": [
+    152,
+    152
+   ],
+   "scale": 0.842
+  },
+  "infectado": {
+   "arena": "micelial",
+   "rank": "normal",
+   "srcSize": [
+    46,
+    61
+   ],
+   "scale": 2.098
+  },
+  "sabueso": {
+   "arena": "micelial",
+   "rank": "normal",
+   "srcSize": [
+    51,
+    42
+   ],
+   "scale": 3.048
+  },
+  "acechador": {
+   "arena": "micelial",
+   "rank": "subelite",
+   "srcSize": [
+    46,
+    56
+   ],
+   "scale": 2.286
+  },
+  "chaman": {
+   "arena": "micelial",
+   "rank": "elite",
+   "srcSize": [
+    53,
+    96
+   ],
+   "scale": 1.333
+  },
+  "hinchado": {
+   "arena": "micelial",
+   "rank": "elite",
+   "srcSize": [
+    101,
+    88
+   ],
+   "scale": 1.455
+  },
+  "nucleo_micelial": {
+   "arena": "micelial",
+   "rank": "subelite",
+   "srcSize": [
+    32,
+    58
+   ],
+   "scale": 2.207
+  },
+  "peregrino": {
+   "arena": "micelial",
+   "rank": "subelite",
+   "srcSize": [
+    71,
+    71
+   ],
+   "scale": 1.803
+  },
+  "raiz_absorcion": {
+   "arena": "micelial",
+   "rank": "subelite",
+   "srcSize": [
+    55,
+    70
+   ],
+   "scale": 1.829
+  },
+  "micelio": {
+   "arena": "micelial",
+   "rank": "subjefe",
+   "srcSize": [
+    160,
+    163
+   ],
+   "scale": 0.785
+  },
+  "mn_esclavo": {
+   "arena": "minas",
+   "rank": "normal",
+   "srcSize": [
+    56,
+    63
+   ],
+   "scale": 2.032
+  },
+  "mn_acechador": {
+   "arena": "minas",
+   "rank": "subelite",
+   "srcSize": [
+    58,
+    46
+   ],
+   "scale": 2.783
+  },
+  "mn_consumidor": {
+   "arena": "minas",
+   "rank": "elite",
+   "srcSize": [
+    46,
+    98
+   ],
+   "scale": 1.306
+  },
+  "mn_devoraluz": {
+   "arena": "minas",
+   "rank": "elite",
+   "srcSize": [
+    34,
+    45
+   ],
+   "scale": 2.844
+  },
+  "mn_escupidor": {
+   "arena": "minas",
+   "rank": "subelite",
+   "srcSize": [
+    46,
+    64
+   ],
+   "scale": 2.0
+  },
+  "mn_minero": {
+   "arena": "minas",
+   "rank": "elite",
+   "srcSize": [
+    64,
+    95
+   ],
+   "scale": 1.347
+  },
+  "mn_titan": {
+   "arena": "minas",
+   "rank": "subjefe",
+   "srcSize": [
+    206,
+    170
+   ],
+   "scale": 0.753
+  },
+  "mn_cerbero": {
+   "arena": "minas",
+   "rank": "jefe",
+   "srcSize": [
+    246,
+    159
+   ],
+   "scale": 0.805
+  }
+ },
+ "sinRender": [
+  "madre_espora",
+  "ab_acechador",
+  "ab_tejedor",
+  "mn_insecto"
+ ],
+ "nota": "* = élite, subjefe o jefe. Fuente: drawEnemyBody del juego real (idle de frente)."
+}

@@ -130,7 +130,15 @@ function ascSwarmDraw(h){
 // Apariencia alternativa: atlas propio <id>_altN (tools/art/ascension_sprites.py). Proxy sin mutar el héroe.
 function ascSkinIndex(h){return h===player&&save&&save.champions[h.classKey]?(save.champions[h.classKey].ascSkin|0):(h.ascSkin|0);}
 function ascBodyTarget(h,lift){const n=ascSkinIndex(h),pk=n?h.classKey+'_alt'+n:'';const usePk=pk&&typeof CHAMP_PACK!=='undefined'&&CHAMP_PACK[pk]&&CHAMP_PACK[pk].ready&&!h._codexPack;
- if(!usePk&&!lift)return h;const o=Object.create(h);if(usePk)o._codexPack=pk;if(lift)o.y=h.y-lift;return o;}
+ if(!usePk&&!lift)return h;
+ // UN proxy por héroe (antes: uno nuevo en cada dibujo). El motor de packs guarda su estado de animación en el objeto que
+ // recibe (_aPrev/_aDur: duración del ataque; _pdir/_pleft: dirección): con un proxy descartable ese estado se perdía cada
+ // cuadro y los clips de ataque/cast de las skins de Ascensión (alt1/alt2) quedaban CONGELADOS en su primer cuadro.
+ let o=ASC_BODY_PROXY.get(h);if(!o){o=Object.create(h);ASC_BODY_PROXY.set(h,o);}
+ if(usePk)o._codexPack=pk;else delete o._codexPack;
+ if(lift)o.y=h.y-lift;else delete o.y;
+ return o;}
+const ASC_BODY_PROXY=new WeakMap();
 const ascOriginalDrawPortador=drawPortador;drawPortador=function(h,scale,alpha){
  if(!ascCandidate(h))return ascOriginalDrawPortador(h,scale,alpha);
  if(typeof window!=='undefined'&&window.ART_GATE_NO_VFX)return ascOriginalDrawPortador(ascBodyTarget(h,0),scale,alpha); // Art Gate mide solo el cuerpo
