@@ -71,17 +71,21 @@
   const bg = document.createElement("div"); bg.id = "bt-bg"; bg.setAttribute("aria-hidden", "true");
   bg.innerHTML = '<div class="bt-bg-shade"></div>';
   const cv = document.createElement("canvas"); cv.id = "bt-hero-cv"; cv.setAttribute("aria-hidden", "true");
+  // #bt-col posiciona la columna; #bt-cta (kicker + JUGAR AHORA) y #bt-menu (acceso al menú/campaña + chips) son hermanos: no se superponen
+  const col = document.createElement("div"); col.id = "bt-col";
   const cta = document.createElement("div"); cta.id = "bt-cta";
   cta.innerHTML = '<div class="bt-cta-kick">PRÓXIMA PARTIDA</div>' +
-    '<button type="button" id="bt-play" class="btn bt-play" disabled><span class="bt-play-main">Cargando…</span><span class="bt-play-sub"></span></button>' +
-    '<div class="bt-cta-menu"><div class="bt-cta-menu-sub">Campaña, guardianes y tienda</div></div>' +
+    '<button type="button" id="bt-play" class="btn bt-play" disabled><span class="bt-play-main">Cargando…</span><span class="bt-play-sub"></span></button>';
+  const menuWrap = document.createElement("div"); menuWrap.id = "bt-menu";
+  menuWrap.innerHTML = '<div class="bt-cta-menu"><div class="bt-cta-menu-sub">Campaña, guardianes y tienda</div></div>' +
     '<div class="bt-cta-meta"><span class="ui-tag">Sylva · Cazadora</span><span class="ui-tag new">Ruinas Élficas</span></div>';
+  col.appendChild(cta); col.appendChild(menuWrap);
   scr.insertBefore(bg, scr.firstChild);
   const canvas0 = $("title-canvas");
   if(canvas0) canvas0.insertAdjacentElement("afterend", cv); else scr.appendChild(cv);
-  scr.appendChild(cta);
-  // el acceso al menú/campaña (mismo nodo, mismo id y eventos) pasa a la columna del CTA, justo bajo JUGAR AHORA
-  const contBtn0 = $("title-continue-btn"), menuBox = cta.querySelector(".bt-cta-menu");
+  scr.appendChild(col);
+  // el acceso al menú/campaña (mismo nodo, mismo id y eventos) va justo bajo JUGAR AHORA, en #bt-menu
+  const contBtn0 = $("title-continue-btn"), menuBox = menuWrap.querySelector(".bt-cta-menu");
   if(contBtn0 && menuBox) menuBox.insertBefore(contBtn0, menuBox.firstChild);
   scr.classList.add("bt-title");
 

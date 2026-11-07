@@ -33,7 +33,7 @@ const fail=[];const ok=(c,m)=>{if(!c){fail.push(m);console.log('FAIL',m);}else c
   await boot('?lang=en');ok(await page.evaluate(()=>I18N.lang)==='en','?lang=en manda sobre lo guardado');
   // números: plantillas {n} conservan los valores
   const t=await page.evaluate(()=>I18N.t('Vida 3/10'));ok(t==='Health 3/10','plantilla numérica: '+t);
-  const p=await page.evaluate(async()=>{I18N.setLang('pt');await new Promise(r=>setTimeout(r,50));return I18N.t('Ilkan, el Caminante de Dunas · colección');});ok(/coleção/.test(p)&&/Caminhante/.test(p),'patrón de colección PT: '+p);
+  await page.evaluate(()=>I18N.setLang('pt'));await page.waitForFunction(()=>I18N.lang==='pt',null,{timeout:20000});const p=await page.evaluate(()=>{return I18N.t('Ilkan, el Caminante de Dunas · colección');});ok(/coleção/.test(p)&&/Caminhante/.test(p),'patrón de colección PT: '+p);
   // canvas
   const cv=await page.evaluate(()=>{const c=document.createElement('canvas').getContext('2d');let out='';const o=c.fillText;c.fillText('Pausa',0,0);return c.measureText('Pausar partida').width>0;});ok(cv,'canvas sigue midiendo texto traducido');
   ok(errs.length===0,'sin errores de página '+errs.slice(0,2));

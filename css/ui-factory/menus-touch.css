@@ -65,5 +65,5 @@
   #title-screen.bt-title #title-continue-btn{ top:auto; bottom:calc(60px + env(safe-area-inset-bottom,0px)); min-height:44px; }
 }
 @media (max-height:360px) and (orientation:landscape){
-  #title-screen.bt-title > #bt-cta{ top:calc(50% - 16px); }
+  #title-screen.bt-title > #bt-col{ top:calc(50% - 16px); }
 }

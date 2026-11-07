@@ -1,20 +1,20 @@
 /* css/title-polish.css — pantalla de título ordenada (carga tras menu-polish-d.css).
    Una sola columna de acción (JUGAR AHORA + acceso al menú/campaña), idioma arriba a la derecha, enlaces y pie apilados sin pisarse.
    Todo cuelga de #title-screen.bt-title; los nodos (#title-continue-btn, .lang-host, .legal-title, .build-tag) conservan id y eventos. */
-#title-screen.bt-title #bt-cta{ gap:10px; }
-#title-screen.bt-title #bt-cta .bt-cta-menu{ display:flex; flex-direction:column; align-items:stretch; gap:3px; }
+#title-screen.bt-title #bt-col{ gap:10px; }
+#title-screen.bt-title #bt-col .bt-cta-menu{ display:flex; flex-direction:column; align-items:stretch; gap:3px; }
 /* acceso al menú: mismo ancho que JUGAR AHORA, estilo secundario pero bien visible (anula beta-visual.css y ui-rework.css) */
-body #title-screen.bt-title #bt-cta #title-continue-btn{
+body #title-screen.bt-title #bt-col #title-continue-btn{
   position:static !important; max-width:none !important; inset:auto !important; transform:none !important; width:100% !important; height:auto !important; margin:0 !important;
   min-height:48px; padding:8px 12px; font-size:.95rem !important; line-height:1.2; letter-spacing:.04em; text-align:center; opacity:1;
   color:#ffe9c4; background:linear-gradient(180deg,#3a2415,#1d1009); border:3px solid #c9843a; box-shadow:var(--ui-bevel, none), 3px 3px 0 #000; z-index:4;
 }
-body #title-screen.bt-title #bt-cta #title-continue-btn::after{ content:none !important; display:none !important; }
-body #title-screen.bt-title #bt-cta #title-continue-btn:disabled{ opacity:.65; }
-body #title-screen.bt-title #bt-cta #title-continue-btn:not(:disabled):hover{ filter:brightness(1.15); }
-body #title-screen.bt-title #bt-cta #title-continue-btn:not(:disabled):active{ transform:translate(2px,2px) !important; box-shadow:1px 1px 0 #000; }
+body #title-screen.bt-title #bt-col #title-continue-btn::after{ content:none !important; display:none !important; }
+body #title-screen.bt-title #bt-col #title-continue-btn:disabled{ opacity:.65; }
+body #title-screen.bt-title #bt-col #title-continue-btn:not(:disabled):hover{ filter:brightness(1.15); }
+body #title-screen.bt-title #bt-col #title-continue-btn:not(:disabled):active{ transform:translate(2px,2px) !important; box-shadow:1px 1px 0 #000; }
 .bt-cta-menu-sub{ font-family:var(--ui-font, var(--font-retro)); font-size:1rem; line-height:1.1; color:#d9c7a4; text-shadow:2px 2px 0 #000; text-align:center; }
-#title-screen.bt-title #bt-cta .bt-cta-meta{ margin-top:2px; }
+#title-screen.bt-title #bt-col .bt-cta-meta{ margin-top:2px; }
 
 /* idioma: esquina superior derecha, compacto, 44 px de alto */
 #title-screen.bt-title > .lang-host{ position:absolute; top:max(8px, env(safe-area-inset-top)); right:max(8px, env(safe-area-inset-right)); margin:0; z-index:6; justify-content:flex-end; }
@@ -37,11 +37,15 @@ body #title-screen.bt-title > .build-tag{ bottom:calc(52px + env(safe-area-inset
   body #title-screen.bt-title > .build-tag{ bottom:calc(36px + env(safe-area-inset-bottom, 0px)); }
 }
 @media (max-height:420px){
-  #title-screen.bt-title #bt-cta{ gap:6px; width:min(270px, 44vw); top:46%; }
-  body #title-screen.bt-title #bt-cta #title-continue-btn{ min-height:46px; padding:6px 10px; font-size:.85rem !important; }
+  #title-screen.bt-title #bt-col{ gap:6px; width:min(270px, 44vw); top:46%; }
+  body #title-screen.bt-title #bt-col #title-continue-btn{ min-height:46px; padding:6px 10px; font-size:.85rem !important; }
   .bt-cta-menu-sub{ font-size:.9rem; }
 }
 @media (orientation:portrait){
-  #title-screen.bt-title #bt-cta{ bottom:16%; }
+  #title-screen.bt-title #bt-col{ bottom:16%; }
 }
 @media (max-height:420px){ #title-screen.bt-title #bt-cta .bt-cta-kick{ display:none; } }
+/* #bt-col (posición) contiene #bt-cta (kicker + JUGAR AHORA) y #bt-menu (continuar + chips): hermanos sin superposición */
+#title-screen.bt-title #bt-cta, #title-screen.bt-title #bt-menu{ display:flex; flex-direction:column; align-items:stretch; gap:inherit; }
+#title-screen.bt-title #bt-col{ gap:10px; }
+@media (max-height:520px){ #title-screen.bt-title #bt-col{ gap:6px; } }
