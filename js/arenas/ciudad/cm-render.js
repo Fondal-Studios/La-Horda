@@ -39,6 +39,12 @@ function _cmPiece(key, x, y, h, alpha, flip, anchorY){
   ctx.drawImage(im, -w/2, -h*(anchorY===undefined ? 1 : anchorY), w, h); ctx.restore();
   return true;
 }
+// Escombros pintados a escala nativa (x1, sin ampliar): 3 tamaños; respaldo = escombros_0 ampliado.
+function _cmRubble(x, y, size, alpha){
+  const k = size <= 52 ? "escombros_s_0" : size <= 68 ? "escombros_m_0" : "escombros_l_0";
+  if(CM_OK[k]) return _cmPiece(k, x, y, CM_IMG[k].height, alpha);
+  return _cmPiece("escombros_0", x, y, size, alpha);
+}
 function _cmGlow(x, y, r, rgb, a){ if(a <= 0.01) return; ctx.save(); ctx.globalCompositeOperation = "lighter"; ctx.globalAlpha = Math.min(1, a); ctx.drawImage(glowSprite(rgb), x - r, y - r, r*2, r*2); ctx.restore(); }
 function _cmAtlasFrame(type, set, n, x, y, h, flip, alpha, loop){
   const P = ENEMY_ATLAS_PACK[(typeof bodySwapKey==="function" && bodySwapKey(type)) || type]; if(!P || !P.ready) return false; // cuerpo prestado (body-swaps.js)
@@ -296,7 +302,7 @@ function cmDrawTall(it, now){
       break;
     }
     case "gate": _cmDrawGate(t); break;
-    case "prop": _cmPiece(it.s.r > 24 ? "barril_0" : "escombros_0", it.s.x, it.s.y + 10, it.s.r > 24 ? 64 : 44); break;
+    case "prop": { if(it.s.r > 24) _cmPiece("barril_0", it.s.x, it.s.y + 10, 64); else _cmRubble(it.s.x, it.s.y + 10, 44); } break;
     case "civ": _cmDrawCiv(it.c, t); break;
     case "bar": { const B = it.B, a = Math.min(1, (B.d - B.t)/500, B.t/200);
       ctx.save(); ctx.globalAlpha = a; _cmFillPat("tex_puente", 2, "#5a3a22", B.x0, B.y0 - 40, B.x1 - B.x0, 40 + (B.y1 - B.y0)); ctx.strokeStyle = "#1a0c06"; ctx.lineWidth = 3; ctx.strokeRect(B.x0, B.y0 - 40, B.x1 - B.x0, 40 + (B.y1 - B.y0)); ctx.restore(); break; }
@@ -382,7 +388,7 @@ function _cmDrawRuin(b, t){
   const W = b.x1 - b.x0;
   _cmFillPat("tex_escombros", 2, "#3a3036", b.x0, b.y0 - 30, W, b.y1 - b.y0 + 30);
   ctx.fillStyle = "rgba(10,4,6,0.45)"; ctx.fillRect(b.x0, b.y0 - 30, W, b.y1 - b.y0 + 30);
-  for(let k=0;k<6;k++) _cmPiece("escombros_0", b.x0 + (k + 0.5)*W/6, b.y1 - 10 - _cmHash(k, 9)*80, 50 + _cmHash(k, 4)*30);
+  for(let k=0;k<6;k++) _cmRubble(b.x0 + (k + 0.5)*W/6, b.y1 - 10 - _cmHash(k, 9)*80, 50 + _cmHash(k, 4)*30);
   if(Math.random() < 0.05) vfxBurst(b.cx + cmRand(-W/2, W/2), b.cy, 1, "shadow", 20, 1800, 6, 0, -50, 0);
   _cmGlow(b.cx, b.cy, 120, "255,90,40", 0.12 + 0.05*Math.sin(t*4));
 }

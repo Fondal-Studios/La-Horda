@@ -30,6 +30,13 @@ const FLOOR_PAINTED = {
   acuatica:  { src:"assets/vfx/acuatica/tex_piso.png",  dim:0.20 }
 };
 for(const k in FLOOR_PAINTED){ const e = FLOOR_PAINTED[k]; e.img = new Image(); e.ok = false; e.img.onload = ()=>{ e.ok = true; }; e.img.src = e.src; }
+// DECORADOS CENTRALES PINTADOS (Runway + Códice): sustituyen al decal procedural de la clave dada, en el MISMO rectángulo (1 px nativo = 2 u).
+// Si no cargaron (o fallan) se dibuja el decal procedural de siempre.
+const DECAL_PAINTED = {
+  infPentagram: { src:"assets/vfx/infernal/centro_pentagrama.png" },
+  sunkTemple:   { src:"assets/vfx/acuatica/centro_templo.png" }
+};
+for(const k in DECAL_PAINTED){ const e = DECAL_PAINTED[k]; e.img = new Image(); e.ok = false; e.img.onload = ()=>{ e.ok = true; }; e.img.src = e.src; }
 function _floorPaintedPattern(){
   const e = FLOOR_PAINTED[currentArena]; if(!e || !e.ok) return null;
   const t = document.createElement("canvas"); t.width = e.img.width; t.height = e.img.height;
@@ -157,8 +164,9 @@ function aidDrawDecals(){
     ctx.save();
     if(d.alpha!==1) ctx.globalAlpha = d.alpha;
     ctx.imageSmoothingEnabled = false;
-    if(d.flip){ ctx.translate(d.x, d.y); ctx.scale(-1,1); ctx.drawImage(d.img, -d.w/2, -d.h/2, d.w, d.h); }
-    else ctx.drawImage(d.img, d.x-d.w/2, d.y-d.h/2, d.w, d.h);
+    const P = d.img._arenaArtKey && DECAL_PAINTED[d.img._arenaArtKey], im = (P && P.ok) ? P.img : d.img;
+    if(d.flip){ ctx.translate(d.x, d.y); ctx.scale(-1,1); ctx.drawImage(im, -d.w/2, -d.h/2, d.w, d.h); }
+    else ctx.drawImage(im, d.x-d.w/2, d.y-d.h/2, d.w, d.h);
     ctx.restore();
   }
 }

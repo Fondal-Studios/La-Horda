@@ -39,6 +39,11 @@ Object.assign(JOBS, {
 Object.assign(JOBS, {
   ciudad_farol: 'In the style of @ref: a single tall wrought-iron street lamp post with a small glowing orange lantern at the top and a curled bracket, on a small round stone base, thin and tall, cursed old city. Same oblique three-quarter view as the reference, the whole lamp fully inside the frame, centred. ' + STYLE.replace('one single cursed village house', 'the single lamp post')
 });
+const DECAL = 'dark fantasy pixel art, flat top-down floor decal seen from directly above, crisp chunky pixel blocks, limited palette, no perspective, no text, no characters, the whole circular decal fully inside the frame and centred, isolated on a flat solid pure chroma green #00FF00 background with nothing else, ';
+Object.assign(JOBS, {
+  infernal_centro: 'In the style of @ref: ' + DECAL + 'a large ritual circle with a glowing red-orange five-pointed pentagram inside a double ring of small carved glyph runes, cut into cracked black obsidian stone, thin lava glowing in the carved lines and cracks, scattered embers.',
+  acuatica_centro: 'In the style of @ref: ' + DECAL + 'a large sunken temple mosaic circle made of concentric rings of teal-grey stone tiles forming a wave spiral, a golden shell sigil at the centre, a few missing tiles with sand and tiny shells, faint caustic light.'
+});
 const REFS = {ciudad_estatua: 'ref_statue_crop.png', ciudad_farol: 'ref_statue_crop.png'};
 const cmd = process.argv[2], ids = process.argv.slice(3).filter(a => !a.startsWith('--')), force = process.argv.includes('--force');
 if (cmd === 'status') console.log(JSON.stringify({creditBalance: api('GET', '/organization').creditBalance}));

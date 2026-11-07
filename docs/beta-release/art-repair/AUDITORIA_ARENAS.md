@@ -7,6 +7,12 @@ Referencia única: Códice (`assets/ui/codex/arenas/*`, `art-source/codex-covers
 - **Ciudad Maldita: faroles** (12 por mapa; antes 34x32 ampliado x2,6 con un recuadro gris de halo; ahora farol de hierro forjado 22x46 x2 con linterna naranja).
 - Antes/después: `ciudad-estatua-antes-despues.png`. Respaldo procedural/arte anterior intacto si el PNG no carga.
 
+## Segunda tanda (2026-11-07)
+- **Infernal: pentagrama central** y **Acuática: templo/espiral central** repintados (Runway, 16 cr; `infernal-acuatica-centro-antes-despues.png`). Filas 3 y 4 de abajo quedan resueltas en lo central; faltan sus props.
+- **Ciudad: escombros** a escala nativa x1 (pintor determinista, 0 cr). `barril_0` ya se dibuja reduciendo (60x94 a 40-64 px), no se tocó; `fogata_0`, `fuente_0`, `columna_0`, `valla_0`, `arco_0` y `arbol_seco_0` NO se usan en el renderer de Ciudad (código muerto), así que repintarlos no cambia nada visible.
+- Sin saldo en la tanda: disco solar de Laberinto y paneles/vetas de Fortaleza quedan pendientes.
+- `tools/ciudad/smoke.js` también falla en `main` limpio (`1a2b4c3e`): ver ART_CREDITS/resumen.
+
 ## Pendiente, priorizado por visibilidad
 | # | Arena | Qué no coincide con el Códice / se ve tosco | Dónde | Costo estimado |
 |---|---|---|---|---|
