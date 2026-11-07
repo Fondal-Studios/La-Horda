@@ -157,7 +157,7 @@
     {k:"mago",       fx:0.34, row:1, per:3400, off:1500, kind:"bolt"}
   ];
   const BATTLE_GROUPS = HEROES.map(h => "ch:" + h.k).concat(["ar:hielo"]);
-  const STATIC_T = 4160;   // cuadro fijo (Reducir movimiento): flecha y hechizo en vuelo, golpe del tanque
+  const STATIC_T = 3460;   // cuadro fijo (Reducir movimiento): flecha y hechizo en vuelo, golpe del tanque
   let raf = 0, last = 0, t = 0, parts = [], groupsAsked = false, lastStatic = -1e9, ents = {}, normAt = 0;
   const mkEnemy = type => (typeof _cxFakeEnemy==="function") ? _cxFakeEnemy(type) : null;
   function groupReady(gk){ try{ return typeof _alGroupReady!=="function" || _alGroupReady(gk); }catch(_){ return true; } }
@@ -236,7 +236,7 @@
     const mB = bossOK && _cxMeasure(BOSS), mM = bossOK ? MOBS.map(_cxMeasure) : [];
     const rowY = r => floor - r*H*0.07;
     // ---- posiciones ----
-    const Hb = Hh*(Hh < 100 ? 1.9 : 2.1), kB = mB ? Hb/mB.h : 1, bw = mB ? mB.w*kB : Hh*1.6;
+    const Hb = Math.min(Hh*(Hh < 100 ? 1.9 : 2.1), floor - H*0.38), kB = mB ? Hb/mB.h : 1, bw = mB ? mB.w*kB : Hh*1.6;
     const bossX = Math.min(left + Sw*0.80, right - bw*0.5), bossY = floor - H*0.01;
     const mobDef = [{x:0.60, r:0, th:0.62}, {x:0.66, r:1, th:0.5}, {x:0.55, r:1, th:0.5}];
     const hx = o => left + Sw*o.fx*(portrait ? 1.7 : 1);
@@ -273,12 +273,12 @@
     // ---- jefe y comunes ----
     if(bossOK && mB){
       const e = ents[BOSS] || (ents[BOSS] = mkEnemy(BOSS));
-      e.fx = -1; e.animT = T; e.attackAnim = bAtk ? Math.min(399, Math.max(1, 620 - cB)) : 0; e.stunTimer = bAtk ? 0 : 1;
+      e.fx = -1; e.animT = T; e.attackAnim = 0; e.stunTimer = 1; // el ataque del jefe se insinúa con retroceso + aura (su hoja de ataque cambia de caja y rompe la composición)
       let hb = 0; for(const a of hits.boss) if(a > 0 && a < 260) hb = Math.max(hb, 1 - a/260);
       items.push({y:bossY, draw(){
         g.save(); g.globalCompositeOperation = "lighter";   // aura de jefe (hielo)
         const ag = g.createRadialGradient(bossX, bossY - Hb*0.5, Hb*0.1, bossX, bossY - Hb*0.5, Hb*0.8);
-        ag.addColorStop(0, `rgba(130,200,255,${0.16 + 0.12*hb})`); ag.addColorStop(1, "rgba(130,200,255,0)");
+        ag.addColorStop(0, `rgba(130,200,255,${0.16 + 0.12*hb + (bAtk ? 0.28*Math.sin(cB/620*Math.PI) : 0)})`); ag.addColorStop(1, "rgba(130,200,255,0)");
         g.fillStyle = ag; g.fillRect(bossX - Hb, bossY - Hb*1.4, Hb*2, Hb*1.6); g.restore();
         g.fillStyle = "rgba(0,0,0,0.5)"; g.beginPath(); g.ellipse(bossX, bossY + 2*unit, bw*0.4, Hh*0.1, 0, 0, 6.2832); g.fill();
         _cxDrawEnemy(g, e, bossX - mB.cx*kB + hb*4*unit - (bAtk ? Math.sin(cB/620*Math.PI)*5*unit : 0), bossY - mB.bottom*kB, kB);

@@ -49,6 +49,7 @@
 <link rel="stylesheet" href="css/menu-polish-c.css">
 <link rel="stylesheet" href="css/menu-polish-d.css">
 <link rel="stylesheet" href="css/title-polish.css">
+<link rel="stylesheet" href="css/ux-simplify-a.css">
 <link rel="stylesheet" href="css/loot.css">
 <link rel="stylesheet" href="css/onboarding.css">
 <link rel="stylesheet" href="css/combat-readability.css">
@@ -264,21 +265,15 @@
     <div class="ui-modal-back" data-opt-close></div>
     <div class="ui-panel ui-modal-panel">
       <div class="ui-panel-title">⚙ Opciones</div>
+      <nav class="opt-jump" id="opt-jump" aria-label="Ir a una sección"><button type="button" class="opt-jump-a11y" data-jump="opt-sec-a11y">Accesibilidad</button><button type="button" data-jump="opt-sec-controls">Controles</button><button type="button" data-jump="opt-sec-legal">Legal y datos</button></nav>
       <label class="opt-row">Tu nombre <input id="opt-name" maxlength="16" placeholder="Jugador"></label>
       <label class="opt-row">Idioma <select id="opt-lang" aria-label="Idioma"><option value="es">Español</option><option value="en">English</option><option value="pt">Português</option></select></label>
       <label class="opt-row">🎵 Música <input type="range" id="opt-vol-music" min="0" max="100" step="5"></label>
       <label class="opt-row">🎼 Estilo
         <select id="opt-music-style" aria-label="Estilo de música"><option value="lofi">Lo-fi retro</option><option value="synth">Original</option></select></label>
       <label class="opt-row">💥 Efectos <input type="range" id="opt-vol-sfx" min="0" max="100" step="5"></label>
-      <!-- controles y accesibilidad (js/core/prefs.js): se guardan en este aparato, como el volumen -->
-      <div class="opt-sec">Controles</div>
-      <div class="opt-row"><span class="opt-lbl">Modo zurdo<span class="opt-sub">Joystick a la derecha y botones a la izquierda</span></span><button class="opt-switch" data-pref="lefty" role="switch" aria-checked="false">No</button></div>
-      <div class="opt-row"><span class="opt-lbl">Vibración<span class="opt-sub">Al recibir un golpe fuerte y con la Definitiva</span></span><button class="opt-switch" data-pref="vibrate" role="switch" aria-checked="true">Sí</button></div>
-      <div class="opt-row"><span class="opt-lbl">Ataque<span class="opt-sub">Mantener: apretás el botón. Alternar: un toque prende y otro apaga. Auto: ataca solo si hay un enemigo cerca</span></span><div class="opt-seg" data-pref="atkMode" role="group" aria-label="Modo de ataque"><button data-v="hold">Mantener</button><button data-v="toggle">Alternar</button><button data-v="auto">Auto</button></div></div>
-      <div class="opt-row"><span class="opt-lbl">Tamaño de los controles<span class="opt-sub">Joystick y botones: <b data-pref-out="ctlSize">100%</b></span></span><input type="range" id="opt-ctl-size" data-pref-range="ctlSize" min="90" max="150" step="10" aria-label="Tamaño de los controles táctiles"></div>
-      <div class="opt-row"><span class="opt-lbl">Opacidad de los controles<span class="opt-sub">Más baja: se ve más el juego detrás. <b data-pref-out="ctlOp">100%</b></span></span><input type="range" id="opt-ctl-op" data-pref-range="ctlOp" min="40" max="100" step="10" aria-label="Opacidad de los controles táctiles"></div>
-      <div class="ctl-preview" id="ctl-preview" aria-hidden="true"><span class="cp-cap">Vista previa</span><div class="cp-joy"><i></i></div><div class="cp-btns"><b class="cp-b3"></b><b class="cp-b2"></b><b class="cp-b1"></b><b class="cp-atk">⚔</b></div></div>
-      <div class="opt-sec">Pantalla</div>
+      <div class="opt-sec" id="opt-sec-a11y">Accesibilidad y pantalla</div>
+      <div class="opt-a11y-sum" id="opt-a11y-sum"></div>
       <div class="opt-row"><span class="opt-lbl">Sacudida de pantalla</span><div class="opt-seg" data-pref="shake" role="group" aria-label="Sacudida de pantalla"><button data-v="normal">Normal</button><button data-v="reducida">Poca</button><button data-v="off">No</button></div></div>
       <div class="opt-row"><span class="opt-lbl">Reducir movimiento<span class="opt-sub">Sin sacudidas, cámara lenta ni pulsos</span></span><button class="opt-switch" data-pref="motion" role="switch" aria-checked="false">No</button></div>
       <div class="opt-row"><span class="opt-lbl">Tamaño del texto</span><div class="opt-seg" data-pref="textLg" role="group" aria-label="Tamaño del texto"><button data-v="0">Normal</button><button data-v="1">Grande</button></div></div>
@@ -287,10 +282,18 @@
       <div class="cvd-demo" id="cvd-demo" aria-hidden="true"><span class="cd-ally">Aliado</span><span class="cd-foe">Enemigo</span><span class="cd-danger">Peligro</span><span class="cd-safe">Seguro</span><span class="cd-hp"><i></i></span></div>
       <div class="opt-row"><span class="opt-lbl">Ayuda con el jefe<span class="opt-sub">Solo campaña en solitario, en Normal: tras cada derrota contra el jefe de una arena, ese jefe tiene hasta 25 % menos de vida y daño, y la horda del nivel 10 hasta 25 % menos de daño, en tus próximos intentos. Se avisa siempre. Apagado: el jefe de siempre</span></span><button class="opt-switch" data-pref="bossAssist" role="switch" aria-checked="true">Sí</button></div>
       <div class="opt-row"><span class="opt-lbl">Carteles de los bots<span class="opt-sub">Textos flotantes de aliados controlados por la IA (IMPULSO, PACTO, AFILADA…). Apagado: partida más limpia</span></span><button class="opt-switch" data-pref="botCallouts" role="switch" aria-checked="false">No</button></div>
+      <!-- controles y accesibilidad (js/core/prefs.js): se guardan en este aparato, como el volumen -->
+      <div class="opt-sec" id="opt-sec-controls">Controles</div>
+      <div class="opt-row"><span class="opt-lbl">Modo zurdo<span class="opt-sub">Joystick a la derecha y botones a la izquierda</span></span><button class="opt-switch" data-pref="lefty" role="switch" aria-checked="false">No</button></div>
+      <div class="opt-row"><span class="opt-lbl">Vibración<span class="opt-sub">Al recibir un golpe fuerte y con la Definitiva</span></span><button class="opt-switch" data-pref="vibrate" role="switch" aria-checked="true">Sí</button></div>
+      <div class="opt-row"><span class="opt-lbl">Ataque<span class="opt-sub">Mantener: apretás el botón. Alternar: un toque prende y otro apaga. Auto: ataca solo si hay un enemigo cerca</span></span><div class="opt-seg" data-pref="atkMode" role="group" aria-label="Modo de ataque"><button data-v="hold">Mantener</button><button data-v="toggle">Alternar</button><button data-v="auto">Auto</button></div></div>
+      <div class="opt-row"><span class="opt-lbl">Tamaño de los controles<span class="opt-sub">Joystick y botones: <b data-pref-out="ctlSize">100%</b></span></span><input type="range" id="opt-ctl-size" data-pref-range="ctlSize" min="90" max="150" step="10" aria-label="Tamaño de los controles táctiles"></div>
+      <div class="opt-row"><span class="opt-lbl">Opacidad de los controles<span class="opt-sub">Más baja: se ve más el juego detrás. <b data-pref-out="ctlOp">100%</b></span></span><input type="range" id="opt-ctl-op" data-pref-range="ctlOp" min="40" max="100" step="10" aria-label="Opacidad de los controles táctiles"></div>
+      <div class="ctl-preview" id="ctl-preview" aria-hidden="true"><span class="cp-cap">Vista previa</span><div class="cp-joy"><i></i></div><div class="cp-btns"><b class="cp-b3"></b><b class="cp-b2"></b><b class="cp-b1"></b><b class="cp-atk">⚔</b></div></div>
       <div class="opt-note">Teclado: WASD o flechas para moverte, Espacio para atacar, 1 2 3 habilidades, R Definitiva, Q curación, E acción, Esc pausa. También funciona con mando.</div>
       <div class="opt-note">Compañeros: si en tu equipo faltan jugadores, el juego completa los lugares con compañeros que controla él mismo. Siempre tienen prioridad los jugadores reales.</div>
       <div class="opt-note">El progreso se guarda en este navegador. Para llevarlo a otro lado, usá el código de guardado.</div>
-      <div class="opt-sec">Legal y soporte</div>
+      <div class="opt-sec" id="opt-sec-legal">Legal y soporte</div>
       <div class="legal-foot legal-opts" id="legal-opts"></div>
       <div class="opt-btns">
         <button class="btn small" id="opt-export-btn">Copiar código de guardado</button>
@@ -575,7 +578,17 @@
   <div id="pause-screen" class="screen hidden">
    <div class="pause-panel">
     <div class="arena-title">Pausa</div>
+    <div class="pause-body" id="pause-body">
     <div class="pause-note">En las partidas online no hay pausa. Objetos y talentos se cambian en la Sala antes de entrar; las habilidades se suben en partida con el <b>+</b> que aparece sobre cada botón.</div>
+    <!-- Panel táctico (#tactical-panel, js/ui/tactical-panel.js) se inserta aquí: Estados, Kit, Talentos y Equipo plegados -->
+    <section class="pause-acc" data-acc="stats" id="pause-stats-acc">
+      <button type="button" class="pause-acc-h" aria-expanded="false" aria-controls="pause-stats-body"><span class="pause-acc-t">Estadísticas</span><span class="pause-acc-sub">daño, defensa y resumen</span></button>
+      <div class="pause-acc-b" id="pause-stats-body" inert aria-hidden="true"><div id="stats-panel"></div></div>
+    </section>
+    <!-- AYUDA Y OPCIONES: un solo bloque (antes: nota, "Guía de juego", "Cómo se juega" y dos lugares de opciones) -->
+    <section class="pause-acc" data-acc="help" id="pause-help-acc">
+      <button type="button" class="pause-acc-h" aria-expanded="false" aria-controls="pause-help-body"><span class="pause-acc-t">Ayuda y opciones</span><span class="pause-acc-sub">sonido, accesibilidad, cómo se juega</span></button>
+      <div class="pause-acc-b" id="pause-help-body" inert aria-hidden="true">
     <div class="pause-audio">
       <label>🎵 Música <input type="range" id="vol-music" min="0" max="100" step="5"></label>
       <label>💥 Efectos <input type="range" id="vol-sfx" min="0" max="100" step="5"></label>
@@ -583,12 +596,18 @@
       <label class="pause-motion" title="Menos partículas y sin destellos en definitivas, banners y efectos especiales. No cambia el daño ni los avisos de peligro">✨ Reducir efectos intensos <input type="checkbox" class="ui-toggle" id="opt-reduce-fx"></label>
     </div>
     <div class="pause-btnrow">
-    <button class="btn small secondary pause-opts-btn" id="pause-opts-btn">⚙ Opciones: zurdo, texto, vibración…</button>
-    <button class="btn small secondary" id="pause-howto-btn">? Cómo se juega</button>
+    <button class="btn small secondary" id="pause-a11y-btn" type="button">Accesibilidad: texto, contraste, colores</button>
+    <button class="btn small secondary pause-opts-btn" id="pause-opts-btn" type="button">Todas las opciones</button>
+    <button class="btn small secondary" id="pause-howto-btn" type="button">Cómo se juega</button>
     </div>
-    <div id="stats-panel"></div>
+    <div id="pause-help-arena"></div>
+      </div>
+    </section>
+    </div>
+    <div class="pause-actions">
     <button class="btn wide" id="resume-btn">Continuar</button>
     <button class="btn secondary" id="quit-btn">Abandonar arena</button>
+    </div>
    </div>
   </div>
 </div>
@@ -888,6 +907,7 @@
 <script src="js/ui/hud.js"></script>
 <script src="js/ui/ability-inspector.js"></script>
 <script src="js/ui/tactical-panel.js"></script>
+<script src="js/ui/ux-simplify-a.js"></script>
 <script src="js/ui/boss-hud.js"></script>
 <script src="js/ui/pixel-font-fix.js"></script>
 <script src="js/ui/pixel-icons.js"></script>

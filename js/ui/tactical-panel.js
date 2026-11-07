@@ -17,9 +17,36 @@ function _tpNode(){
   if(el) return el;
   const scr = document.getElementById("pause-screen"); if(!scr) return null;
   el = document.createElement("div"); el.id = "tactical-panel";
+  const body = document.getElementById("pause-body"), note = body && body.querySelector(".pause-note");
+  if(body){ body.insertBefore(el, note ? note.nextSibling : body.firstChild); return el; }
   const title = scr.querySelector(".arena-title");
   if(title && title.parentNode) title.parentNode.insertBefore(el, title.nextSibling); else scr.prepend(el);
   return el;
+}
+// Secciones plegables (acordeón). Todo el contenido sigue en el DOM (solo se pliega la altura): nada se quita, y
+// el estado abierto/cerrado se recuerda entre redibujados (el panel se actualiza cada 0,4 s).
+const _tpOpen = {};
+const TP_SECTIONS = [["status","Estados"],["kit","Kit"],["talents","Talentos"],["gear","Equipo y sets"]];
+function _tpSet(el, html){ if(el && el.__tpHtml !== html){ el.__tpHtml = html; el.innerHTML = html; } }
+function _tpBuild(el){
+  if(el.__tpBuilt) return;
+  el.__tpBuilt = true;
+  el.innerHTML = `<div class="tp-head"></div>` + TP_SECTIONS.map(([k, label])=>
+    `<section class="pause-acc tp-section" data-acc="${k}"><button type="button" class="pause-acc-h" aria-expanded="false" aria-controls="tp-b-${k}"><span class="pause-acc-t">${label}</span><span class="pause-acc-sub" data-sub></span></button><div class="pause-acc-b" id="tp-b-${k}" inert aria-hidden="true"><div class="tp-in"></div></div></section>`).join("");
+  TP_SECTIONS.forEach(([k])=>{ if(_tpOpen[k]) _tpAccSet(el.querySelector(`[data-acc="${k}"]`), true); });
+}
+function _tpAccSet(sec, open){
+  if(!sec) return;
+  sec.classList.toggle("open", !!open);
+  const h = sec.querySelector(".pause-acc-h"), b = sec.querySelector(".pause-acc-b");
+  if(h) h.setAttribute("aria-expanded", open ? "true" : "false");
+  if(b){ b.toggleAttribute("inert", !open); b.setAttribute("aria-hidden", open ? "false" : "true"); }
+}
+function _tpSec(el, k){ return el.querySelector(`[data-acc="${k}"]`); }
+function _tpFill(el, k, html, sub){
+  const sec = _tpSec(el, k); if(!sec) return;
+  _tpSet(sec.querySelector(".tp-in"), html);
+  const s = sec.querySelector("[data-sub]"); if(s && s.textContent !== sub) s.textContent = sub;
 }
 // Estados activos del héroe, con el lenguaje de combate (glifo + nombre; nunca solo color).
 function tacticalStatusList(h){
@@ -81,17 +108,19 @@ function renderTacticalPanel(){
   }
   const defs = championAbilityDefinitions(k, h.cls);
   const card = d=>abilityCardHTML(d, h, {short:true});
-  el.innerHTML = `
-    <div class="tp-head">
+  _tpBuild(el);
+  _tpSet(el.querySelector(".tp-head"), `
       <div class="tp-name">${_tpEsc(h.cls.name || CLASSES[k].name)}</div>
       <div class="tp-sub">${_tpEsc((CLASSES[k]||{}).role||"")}</div>
-      <div class="tp-bars"><span>♥ ${Math.ceil(h.hp)}/${Math.ceil(h.maxHp)}</span><span>✦ ${Math.floor(h.energy||0)}/${Math.round(h.energyMax||h.cls.energyMax||100)}</span><span>Nv. ${champ.level||1}</span>${typeof lanesOn==="function" && lanesOn() ? `<span>${LN.mode==="coliseo" ? "Ronda" : "Oleada"} ${LN.wave}</span>` : (typeof runLevel!=="undefined" ? `<span>Arena ${runLevel}/${typeof LEVEL_COUNT!=="undefined" ? LEVEL_COUNT : 10}</span>` : "")}</div>
-    </div>
-    <div class="tp-section"><div class="tp-h">Estados</div>${_tpStatusHTML(h)}</div>
-    <div class="tp-section"><div class="tp-h">Kit</div><div class="tp-grid">${defs.map(card).join("")}</div></div>
-    <div class="tp-section"><div class="tp-h">Talentos</div>${_tpTalentsHTML(k)}</div>
-    <div class="tp-section"><div class="tp-h">Equipo y sets</div>${_tpGearHTML(h)}</div>
-    <div class="tp-section tp-help"><div class="tp-h">Ayuda</div>${_tpHelpHTML()}</div>`;
+      <div class="tp-bars"><span>♥ ${Math.ceil(h.hp)}/${Math.ceil(h.maxHp)}</span><span>✦ ${Math.floor(h.energy||0)}/${Math.round(h.energyMax||h.cls.energyMax||100)}</span><span>Nv. ${champ.level||1}</span>${typeof lanesOn==="function" && lanesOn() ? `<span>${LN.mode==="coliseo" ? "Ronda" : "Oleada"} ${LN.wave}</span>` : (typeof runLevel!=="undefined" ? `<span>Arena ${runLevel}/${typeof LEVEL_COUNT!=="undefined" ? LEVEL_COUNT : 10}</span>` : "")}</div>`);
+  const nSt = tacticalStatusList(h).length;
+  _tpFill(el, "status", _tpStatusHTML(h), nSt ? String(nSt) : "ninguno");
+  _tpFill(el, "kit", `<div class="tp-grid">${defs.map(card).join("")}</div>`, defs.length + " habilidades");
+  _tpFill(el, "talents", _tpTalentsHTML(k), "");
+  _tpFill(el, "gear", _tpGearHTML(h), "");
+  // Ayuda de la arena (objetivo, regla, peligro) y Guía de juego: dentro del bloque único "Ayuda y opciones" de la pausa
+  const hostHelp = document.getElementById("pause-help-arena");
+  if(hostHelp) _tpSet(hostHelp, `<div class="tp-help">${_tpHelpHTML()}</div>`);
 }
 // Ayuda a pedido (sin voz del Hechicero): objetivo, regla propia, peligro y qué ayuda en esta arena, y la guía de juego.
 function _tpHelpHTML(){
@@ -105,7 +134,7 @@ function _tpHelpHTML(){
 }
 // delegación: el panel se redibuja cada 0,4 s
 document.addEventListener("click", ev=>{
-  const b = ev.target && ev.target.closest && ev.target.closest("#tactical-panel [data-tp]"); if(!b) return;
+  const b = ev.target && ev.target.closest && ev.target.closest("#pause-screen [data-tp]"); if(!b) return;
   if(b.dataset.tp==="guide" && typeof alphaGuideOpen==="function") alphaGuideOpen();
 });
 function tacticalPanelOpen(){
