@@ -5,6 +5,18 @@ Cooperativo para hasta 4 personas por el WiFi de la casa, **sin internet ni cuen
 Modos: **Campaña** y **Horda Infinita** (los dos de la beta). Reutiliza el cooperativo B1 tal cual: la misma sala, el mismo
 lobby y la misma sincronización (`js/net/net-game.js`, host autoritativo); el servidor solo hace de cartero.
 
+## Modo pensado para la compu como pantalla única
+
+Es un modo **distinto** del online: **máximo 4 jugadores** (la anfitriona + 3) y **una sola cámara compartida y alejada** en la
+pantalla de la anfitriona, donde se ven los cuatro a la vez; los demás juegan desde su celular o compu por el WiFi.
+- **Tope duro de 4**: lo hace cumplir el servidor (el 5.º recibe `SALA COMPLETA: en red local juegan 4 como máximo (la anfitriona y 3 más)`)
+  y lo dice la pantalla «Jugar en red local». Los lugares sin humano los ocupan bots, hasta 4 héroes en total.
+- **Cámara única** (`lanCamStep` en `js/net/net-lan.js`): mientras dura una partida local encuadra a todos los héroes vivos con un zoom
+  alejado (por defecto 72 % del zoom normal, y se aleja más a medida que se separan, hasta la arena entera), con suavizado. Es una capa propia
+  que solo corre en modo LAN: **no modifica `js/rendering/camera.js`**, se engancha a `updateArenaCameraZoom()` y usa `CAM_SUBJECT`/`CAM_ZOOM`/`CAM_Y_ANCHOR`.
+- **Invitados**: controlan a su héroe con su mando de siempre (joystick y botones sin tocar). No tienen una cámara propia: calculan el mismo encuadre
+  con los mismos datos, así que todas las pantallas muestran lo mismo. No hay un «modo mando» aparte (no se copió Fondal TV, que queda intacto).
+
 ## Cómo se usa
 
 ### La anfitriona (una compu)
@@ -71,7 +83,7 @@ relay del mismo origen y `js/net/account.js` no se conecta a ningún lado. El mo
 - **Solo `http` en red privada.** Desde `https://` (la página publicada) un navegador no deja abrir `ws://` hacia la LAN (contenido
   mixto): hay que abrir la dirección de la anfitriona. «Instalar» como PWA no aplica por la misma razón (no hay https).
 - **Rendimiento**: la anfitriona simula toda la partida (host autoritativo); los invitados en celulares viejos o WiFi cargado
-  pueden notar tirones. Máximo 4 humanos por sala, como online.
+  pueden notar tirones. Máximo 4 humanos por sala.
 - **Guardados separados por origen**: `localhost:8080` y `192.168.x.x:8080` son sitios distintos para el navegador, cada uno con
   su propio guardado (un invitado nuevo en su celular empieza como perfil nuevo y elige su guardián de regalo).
 - **Fondal TV** (`js/net/fondal-tv.js`, intocable por D4) intenta bajar su pieza común desde `fondalstudios.com` también acá: sin internet
@@ -84,7 +96,7 @@ relay del mismo origen y `js/net/account.js` no se conecta a ningún lado. El mo
 
 | Comando | Qué cubre |
 |---|---|
-| `node tools/lan/test-lan.js` (o `npm run test:lan`) | Levanta `tools/lan/host.js` y 5 navegadores Chromium (127.0.0.1…5: orígenes y guardados independientes). Servidor: `/lan.json`, 404 en `/api` y en rutas fuera de la lista, QR en la terminal. Cliente: entrada al lobby local, solo Campaña e Infinita, crear sala local (se arma sola, código + QR + enlace con IP), unirse por enlace y por la lista de la red, código inválido, 3 humanos juegan Horda Infinita y **se ven y se mueven entre sí**, guardado real intacto, sin ranking, sin salir a Internet, **reconexión** de un invitado, **salida de la anfitriona**, y una partida de Campaña de 2 jugadores. |
+| `node tools/lan/test-lan.js` (o `npm run test:lan`) | Levanta `tools/lan/host.js` y hasta 5 navegadores a la vez (4 jugadores + un 5.º rechazado; luego Campaña) Chromium (127.0.0.1…5: orígenes y guardados independientes). Servidor: `/lan.json`, 404 en `/api` y en rutas fuera de la lista, QR en la terminal. Cliente: entrada al lobby local, solo Campaña e Infinita, crear sala local (se arma sola, código + QR + enlace con IP), unirse por enlace y por la lista de la red, código inválido, 4 humanos juegan Horda Infinita, **se ven y se mueven entre sí** y los 4 caen en el mismo encuadre de la cámara única (también separados al máximo), el 5.º es rechazado con mensaje claro, guardado real intacto, sin ranking, sin salir a Internet, **reconexión** de un invitado, **salida de la anfitriona**, y una partida de Campaña de 2 jugadores. |
 | `node server/test-lan.js` | Relay en modo LAN sin navegador: `/health`, sin `/api` de cuentas, recompensas apagadas, sin intercambio, sala pública, reenvío, reconexión, cierre por salida de la anfitriona. |
 | `python3 tools/i18n/build.py` + `node tools/i18n/tour.js --check en` / `pt` | Traducciones (EN/PT en `tools/i18n/tr/t360.py`). |
 | `node tools/alpha/public-defaults.js`, `node tools/alpha/account-environments.js`, `node server/test-relay.js` | No se relajó nada de lo existente. |
