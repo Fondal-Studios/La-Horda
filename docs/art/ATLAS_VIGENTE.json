@@ -1,0 +1,424 @@
+{
+ "schema": 1,
+ "nota": "Registro CURADO del atlas VIGENTE de cada campeón (cuerpo base). Lo que el juego carga tiene que estar acá (tests/art-runtime-clips.test.js). Cambiar un atlas = editar esto a propósito. generation: codex = atlas codex-v*; audit-fiel = validado contra el Códice en docs/beta-release/AUDITORIA_ARTE_CAMPEONES.md (puntaje >= 80); viejo = generación anterior, pendiente de cuerpo Códice. knownGaps = estados de ciclo con 1 cuadro conocidos (deuda): solo puede achicarse.",
+ "champions": {
+  "tanque": {
+   "generation": "codex",
+   "auditScore": 92,
+   "atlas": [
+    "assets/sprites/champions/tanque/codex-v1/atlas.png"
+   ]
+  },
+  "guerrero": {
+   "generation": "codex",
+   "auditScore": 92,
+   "atlas": [
+    "assets/sprites/champions/guerrero/codex-v1/atlas.png"
+   ]
+  },
+  "mago": {
+   "generation": "codex",
+   "auditScore": 74,
+   "atlas": [
+    "assets/sprites/champions/mago/codex-v1/atlas.png"
+   ]
+  },
+  "soporte": {
+   "generation": "codex",
+   "auditScore": 62,
+   "atlas": [
+    "assets/sprites/champions/soporte/codex-v1/atlas.png"
+   ]
+  },
+  "segador": {
+   "generation": "codex",
+   "auditScore": 64,
+   "atlas": [
+    "assets/sprites/champions/segador/codex-v1/atlas.png"
+   ]
+  },
+  "axiom": {
+   "generation": "codex",
+   "auditScore": 88,
+   "atlas": [
+    "assets/sprites/champions/axiom/codex-v1/atlas.png"
+   ]
+  },
+  "profeta": {
+   "generation": "codex",
+   "auditScore": 66,
+   "atlas": [
+    "assets/sprites/champions/profeta/codex-v1/atlas.png"
+   ]
+  },
+  "musashi": {
+   "generation": "codex",
+   "auditScore": 90,
+   "atlas": [
+    "assets/sprites/champions/musashi/codex-v1/atlas.png"
+   ]
+  },
+  "cazadora": {
+   "generation": "codex",
+   "auditScore": 90,
+   "atlas": [
+    "assets/sprites/champions/cazadora/codex-v1/atlas.png"
+   ]
+  },
+  "nigromante": {
+   "generation": "codex",
+   "auditScore": 90,
+   "atlas": [
+    "assets/sprites/champions/nigromante/codex-v1/atlas.png"
+   ]
+  },
+  "libertador": {
+   "generation": "viejo",
+   "auditScore": 60,
+   "atlas": [
+    "assets/sprites/champions/libertador/v2/atlas.png",
+    "assets/sprites/champions/libertador/v2/death.png",
+    "assets/sprites/champions/libertador/v3/motion.png"
+   ]
+  },
+  "ilkan": {
+   "generation": "codex",
+   "auditScore": 62,
+   "atlas": [
+    "assets/sprites/champions/ilkan/codex-v1/atlas.png"
+   ]
+  },
+  "ynara": {
+   "generation": "viejo",
+   "auditScore": 70,
+   "atlas": [
+    "assets/sprites/champions/ynara/atlas.png"
+   ]
+  },
+  "myla": {
+   "generation": "viejo",
+   "auditScore": 58,
+   "atlas": [
+    "assets/sprites/champions/myla/atlas.png",
+    "assets/sprites/champions/myla/v2/death.png"
+   ]
+  },
+  "brasa": {
+   "generation": "audit-fiel",
+   "auditScore": 88,
+   "atlas": [
+    "assets/sprites/champions/brasa/atlas.png"
+   ]
+  },
+  "eslabon": {
+   "generation": "audit-fiel",
+   "auditScore": 88,
+   "atlas": [
+    "assets/sprites/champions/eslabon/atlas.png"
+   ]
+  },
+  "morwen": {
+   "generation": "audit-fiel",
+   "auditScore": 88,
+   "atlas": [
+    "assets/sprites/champions/morwen/atlas.png"
+   ]
+  },
+  "farolero": {
+   "generation": "audit-fiel",
+   "auditScore": 86,
+   "atlas": [
+    "assets/sprites/champions/farolero/atlas.png"
+   ]
+  },
+  "iria": {
+   "generation": "audit-fiel",
+   "auditScore": 86,
+   "atlas": [
+    "assets/sprites/champions/iria/atlas.png"
+   ]
+  },
+  "vesper": {
+   "generation": "audit-fiel",
+   "auditScore": 86,
+   "atlas": [
+    "assets/sprites/champions/vesper/atlas.png"
+   ]
+  },
+  "nahir": {
+   "generation": "audit-fiel",
+   "auditScore": 86,
+   "atlas": [
+    "assets/sprites/champions/nahir/atlas.png"
+   ]
+  },
+  "baltra": {
+   "generation": "audit-fiel",
+   "auditScore": 86,
+   "atlas": [
+    "assets/sprites/champions/baltra/atlas.png"
+   ]
+  },
+  "maura": {
+   "generation": "audit-fiel",
+   "auditScore": 84,
+   "atlas": [
+    "assets/sprites/champions/maura/atlas.png"
+   ]
+  },
+  "dariel": {
+   "generation": "audit-fiel",
+   "auditScore": 86,
+   "atlas": [
+    "assets/sprites/champions/dariel/atlas.png"
+   ]
+  },
+  "orsa": {
+   "generation": "audit-fiel",
+   "auditScore": 86,
+   "atlas": [
+    "assets/sprites/champions/orsa/atlas.png"
+   ]
+  },
+  "tibor": {
+   "generation": "audit-fiel",
+   "auditScore": 86,
+   "atlas": [
+    "assets/sprites/champions/tibor/atlas.png"
+   ]
+  },
+  "zahra": {
+   "generation": "audit-fiel",
+   "auditScore": 86,
+   "atlas": [
+    "assets/sprites/champions/zahra/atlas.png"
+   ]
+  },
+  "renko": {
+   "generation": "audit-fiel",
+   "auditScore": 85,
+   "atlas": [
+    "assets/sprites/champions/renko/atlas.png"
+   ]
+  },
+  "sira": {
+   "generation": "audit-fiel",
+   "auditScore": 85,
+   "atlas": [
+    "assets/sprites/champions/sira/atlas.png"
+   ]
+  },
+  "nano_gm": {
+   "generation": "codex",
+   "auditScore": 88,
+   "atlas": [
+    "assets/sprites/champions/nano_gm/codex-v2/atlas.png"
+   ]
+  },
+  "facu_gm": {
+   "generation": "viejo",
+   "auditScore": 56,
+   "atlas": [
+    "assets/sprites/champions/facu_gm/atlas.png"
+   ]
+  },
+  "aurelia": {
+   "generation": "viejo",
+   "auditScore": 66,
+   "atlas": [
+    "assets/sprites/champions/aurelia/atlas.png"
+   ]
+  },
+  "khepri": {
+   "generation": "audit-fiel",
+   "auditScore": 82,
+   "atlas": [
+    "assets/sprites/champions/khepri/atlas.png"
+   ]
+  },
+  "velmira": {
+   "generation": "audit-fiel",
+   "auditScore": 84,
+   "atlas": [
+    "assets/sprites/champions/velmira/atlas.png"
+   ]
+  },
+  "vhal": {
+   "generation": "audit-fiel",
+   "auditScore": 80,
+   "atlas": [
+    "assets/sprites/champions/vhal/atlas.png"
+   ]
+  },
+  "bront": {
+   "generation": "audit-fiel",
+   "auditScore": 82,
+   "atlas": [
+    "assets/sprites/champions/bront/atlas.png"
+   ]
+  },
+  "oriel": {
+   "generation": "audit-fiel",
+   "auditScore": 84,
+   "atlas": [
+    "assets/sprites/champions/oriel/atlas.png"
+   ]
+  },
+  "saelis": {
+   "generation": "viejo",
+   "auditScore": 64,
+   "atlas": [
+    "assets/sprites/champions/saelis/atlas.png"
+   ]
+  },
+  "ilsa": {
+   "generation": "viejo",
+   "auditScore": 76,
+   "atlas": [
+    "assets/sprites/champions/ilsa/atlas.png"
+   ]
+  },
+  "vorn": {
+   "generation": "viejo",
+   "auditScore": 76,
+   "atlas": [
+    "assets/sprites/champions/vorn/atlas.png"
+   ]
+  },
+  "kora": {
+   "generation": "viejo",
+   "auditScore": 70,
+   "atlas": [
+    "assets/sprites/champions/kora/atlas.png"
+   ]
+  },
+  "solciju": {
+   "generation": "audit-fiel",
+   "auditScore": 84,
+   "atlas": [
+    "assets/sprites/champions/solciju/atlas.png"
+   ]
+  },
+  "veyra": {
+   "generation": "codex",
+   "auditScore": 90,
+   "atlas": [
+    "assets/sprites/champions/veyra/codex-v1/atlas.png"
+   ]
+  },
+  "brakk": {
+   "generation": "audit-fiel",
+   "auditScore": 88,
+   "atlas": [
+    "assets/sprites/champions/brakk/atlas.png"
+   ]
+  },
+  "morveth": {
+   "generation": "codex",
+   "auditScore": 90,
+   "atlas": [
+    "assets/sprites/champions/morveth/codex-v1/atlas.png"
+   ]
+  },
+  "aelith": {
+   "generation": "codex",
+   "auditScore": 90,
+   "atlas": [
+    "assets/sprites/champions/aelith/codex-v1/atlas.png"
+   ]
+  }
+ },
+ "skinsViejos": {
+  "legion": "skin Legión de Ilkan: atlas procedural violeta de 128x111 (tools/art/ilkan/build.py), sin repintar desde codex-v1 (AUDITORIA_ARTE_CAMPEONES.md)",
+  "merienda_magica": "skin Merienda Mágica de Myla: chef azul del 1 nov, sin repintar desde la base nueva; muerte de 1 cuadro (AUDITORIA_ARTE_CAMPEONES.md)",
+  "convergencia": "skin Ángel Arcano del Mago: atlas 92x75 de 8 columnas anterior al Códice (idle de 1 cuadro, ataque de 2)",
+  "libertador_escarcha": "recolor del atlas v2 del Libertador, sin el motion v3: ataque de 1 cuadro",
+  "libertador_ancestral": "recolor del atlas v2 del Libertador, sin el motion v3: ataque de 1 cuadro"
+ },
+ "knownGaps": {
+  "tanque": [
+   "idle"
+  ],
+  "guerrero": [
+   "idle"
+  ],
+  "axiom": [
+   "idle"
+  ],
+  "musashi": [
+   "idle"
+  ],
+  "cazadora": [
+   "idle"
+  ],
+  "nigromante": [
+   "idle"
+  ],
+  "libertador": [
+   "idle"
+  ],
+  "vesper": [
+   "idle"
+  ],
+  "nahir": [
+   "idle"
+  ],
+  "baltra": [
+   "idle"
+  ],
+  "maura": [
+   "idle"
+  ],
+  "dariel": [
+   "idle"
+  ],
+  "orsa": [
+   "idle"
+  ],
+  "tibor": [
+   "idle"
+  ],
+  "zahra": [
+   "idle"
+  ],
+  "renko": [
+   "idle"
+  ],
+  "sira": [
+   "idle"
+  ],
+  "facu_gm": [
+   "idle"
+  ],
+  "khepri": [
+   "idle"
+  ],
+  "velmira": [
+   "idle"
+  ],
+  "vhal": [
+   "idle"
+  ],
+  "bront": [
+   "idle"
+  ],
+  "oriel": [
+   "idle"
+  ],
+  "saelis": [
+   "idle"
+  ],
+  "solciju": [
+   "idle"
+  ],
+  "brakk": [
+   "idle"
+  ],
+  "morveth": [
+   "idle"
+  ],
+  "aelith": [
+   "idle"
+  ]
+ }
+}
