@@ -245,7 +245,7 @@ function _cxDrawMother(g, e){
 // los jefes (enormes en el mundo) no llegan al tope y se ven igual que antes.
 function _cxMaxZoom(g){
   const c = g && g.canvas, dpr = (c && c.clientWidth) ? c.width/c.clientWidth : 1;
-  return 2.6*dpr;
+  return 4.0*dpr;
 }
 // Ajuste automático: se mide una vez la caja real del sprite (píxeles no transparentes) en reposo.
 function _cxMeasure(type){
