@@ -9,8 +9,8 @@ module.exports=async function thalenFullRenderPerf({page,root}){
     await page.setViewportSize({width:view.width,height:view.height});
     for(const mode of ['legacy','candidate']){
       const result=await page.evaluate(({mode})=>{
-        const P=CHAMP_PACK.mago_codex,ready=P.ready;
-        P.ready=mode==='candidate'?ready:false;
+        const P=CHAMP_PACK.mago,ready=P.ready;const setReady=v=>{P.ready=v;P.failed=!v;}; // "legacy" = el atlas Códice falló: sin failed, champPackPending no dibuja nada
+        setReady(mode==='candidate'?ready:false);
         netMatch=null;window.ART_GATE_NO_VFX=false;
         const rec=save.champions.mago;rec.unlocked=true;rec.level=20;rec.equipment={};rec.croma=null;rec.cosmeticSkin='';
         selectedClass='mago';currentArena='bosque';lobbyAllies=['tanque','soporte'];startRun(1);
@@ -25,7 +25,7 @@ module.exports=async function thalenFullRenderPerf({page,root}){
           if(i%90===0){player.attackAnim=220;player._packCastUntil=performance.now()+220;}
           const t=performance.now();render();times.push(performance.now()-t);ctx.clearRect(0,0,canvas.width,canvas.height);clears++;
         }
-        P.ready=ready;state='menu';
+        setReady(ready);state='menu';
         times.sort((a,b)=>a-b);const q=p=>times[Math.min(times.length-1,Math.floor(times.length*p))];
         return{mode,samples:times.length,clears,p50:q(.50),p95:q(.95),max:times[times.length-1],candidateReady:ready,legacyReady:MAGO_IMG_READY,enemies:12,allies:allies.length};
       },{mode});

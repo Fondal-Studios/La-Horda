@@ -121,6 +121,7 @@ const CODEX_SKILL_FX = {
 const CODEX_CHAMP_EXTRA_ANIMS = {
   libertador:[{label:"Disparo", set:"fire"}, {label:"A caballo", set:"m_run", pack:"libertador_horse"}, {label:"Caída", set:"death_down", pack:"libertador_death"}],
   ilkan:[{label:"Carrera", set:"run"}, {label:"El Coloso", set:"walk_side", pack:"ilkan_colossus"}],
+  mago:[{label:"Definitiva", set:"ultimate_down"}, {label:"Caída", set:"death_down"}],
   cazadora:[{label:"Apuntar", set:"aim"}],
   nigromante:[{label:"Encarnación", set:"ult"}]
 };
