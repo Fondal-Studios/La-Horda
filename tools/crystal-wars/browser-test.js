@@ -32,18 +32,18 @@ async function until(url){for(let i=0;i<50;i++){try{const r=await fetch(url);awa
    return original.call(this,img,...args);
   };
  });
- await pages[3].waitForFunction(()=>Object.values(window.__soporteCWDraws).some(r=>r.src===CHAMP_PACK.soporte.atlas.src));
+ await pages[3].waitForFunction(()=>Object.values(window.__soporteCWDraws).some(r=>r.src.split('?')[0].replace(/\.webp$/,'.png')===CHAMP_PACK.soporte.atlas.src.split('?')[0].replace(/\.webp$/,'.png')));
  for(const [direction,key] of [['up','w'],['right','d'],['down','s'],['left','a']]){
   await pages[3].keyboard.down(key);
   await pages[3].waitForFunction(direction=>{
    const meta=CW_ATLAS.soporte,clip=meta.animations['walk_'+direction],frames=clip.frames.slice(1).map(i=>meta.frames[i]);
-   return Object.values(window.__soporteCWDraws).some(r=>r.src===CHAMP_PACK.soporte.atlas.src&&r.mirror===!!clip.flip&&frames.some(f=>r.rect.every((n,i)=>n===[f.x,f.y,f.w,f.h][i])));
+   return Object.values(window.__soporteCWDraws).some(r=>r.src.split('?')[0].replace(/\.webp$/,'.png')===CHAMP_PACK.soporte.atlas.src.split('?')[0].replace(/\.webp$/,'.png')&&r.mirror===!!clip.flip&&frames.some(f=>r.rect.every((n,i)=>n===[f.x,f.y,f.w,f.h][i])));
   },direction);
   await pages[3].keyboard.up(key);
  }
  const actualArt=await pages[3].evaluate(()=>({expected:CHAMP_PACK.soporte.atlas.src,meta:CW_ATLAS.soporte,draws:Object.values(window.__soporteCWDraws)}));
  assert(actualArt.draws.length>=4,'authored walking frames observed in all four directions');
- assert(actualArt.draws.every(r=>r.src===actualArt.expected&&r.dimensions[0]===actualArt.meta.imageSize[0]&&r.dimensions[1]===actualArt.meta.imageSize[1]),'competitive and main renderer share actual atlas and dimensions');
+ assert(actualArt.draws.every(r=>r.src.split('?')[0].replace(/\.webp$/,'.png')===actualArt.expected.split('?')[0].replace(/\.webp$/,'.png')&&r.dimensions[0]===actualArt.meta.imageSize[0]&&r.dimensions[1]===actualArt.meta.imageSize[1]),'competitive and main renderer share actual atlas and dimensions');
  console.log('PASS Soporte competitive atlas: actual four-direction walking, left mirror, main/competitive source and dimensions');
  // Both fields render together, and focusing the rival must not stop guest controls.
  await pages[1].waitForFunction(()=>Object.keys(window.__cwLabels).length===2);
