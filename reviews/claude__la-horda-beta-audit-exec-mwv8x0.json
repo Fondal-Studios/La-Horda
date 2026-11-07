@@ -1,0 +1,10 @@
+{
+  "subject": { "pr": 285, "branch": "claude/la-horda-beta-audit-exec-mwv8x0", "head": "4650079edeff32edf685c067555ffe637e6ccf0a", "authorAgent": "claude-sesion-principal", "authorId": "claude-sesion-principal" },
+  "stages": [
+    { "stage": "produccion", "by": "claude-sesion-principal", "role": "agent", "commit": "4650079edeff32edf685c067555ffe637e6ccf0a", "at": "2026-11-07T19:00:00Z" },
+    { "stage": "qa", "by": "claude-qa-285", "role": "qa", "verdict": "aprobado", "evidence": { "sha": "4650079edeff32edf685c067555ffe637e6ccf0a", "tests": 22, "failed": 0, "report": "22 ejecuciones (20 comandos de la batería + reintento de main-flow con servidor + sonda Chromium): 0 fallos nuevos; Mago y 3 campeones animan; 0 errores de consola ni 404" }, "at": "2026-11-07T19:30:00Z" },
+    { "stage": "arquitectura", "by": "claude-arq-285", "role": "arquitecto", "verdict": "aprobado", "evidence": { "sha": "4650079edeff32edf685c067555ffe637e6ccf0a", "report": "sin BLOQUEANTES; IMPORTANTES de seguimiento: capa de cámara LANCAM, identidades autodeclaradas y POLITICA.json editable en la misma rama, pin de Aelith documentado" }, "at": "2026-11-07T19:45:00Z" },
+    { "stage": "staging", "by": "claude-integrador-285", "role": "integrador", "verdict": "aprobado", "evidence": { "sha": "4650079edeff32edf685c067555ffe637e6ccf0a", "branch": "beta/integracion-20261107", "tests": 11, "failed": 0, "run": "https://github.com/Fondal-Studios/La-Horda/actions/runs/42403668835" }, "at": "2026-11-07T20:00:00Z" },
+    { "stage": "aprobacion", "by": "claude-integrador-285", "role": "director", "verdict": "aprobado", "evidence": { "sha": "4650079edeff32edf685c067555ffe637e6ccf0a", "report": "Aprobación dada por un agente conforme a reviews/POLITICA.json (decisión del propietario, 2026-11-07: ya no se exige una persona). No la dio ninguna persona." }, "at": "2026-11-07T20:05:00Z" }
+  ]
+}
