@@ -386,8 +386,10 @@ const PAGE_HELPERS = () => {
     const near = await E(() => __se.spawn('duende_bosque', 40, 0, { hp: 99999 }));
     const far = await E(() => __se.spawn('duende_bosque', -200, 0, { hp: 99999 }));
     const out = await E(() => __se.spawn('duende_bosque', 0, 420, { hp: 99999 }));
-    await E(() => { player.cds = [0, 0, 0]; player.energy = 999; useSkill(0, null); });
+    // sin críticos: damageEnemy tira Math.random() por enemigo (combat.js:56) y un crítico en el lejano (x1,19) daba cerca < lejos a veces. Se mide la caída por distancia, no el azar.
+    await E(() => { window.__rnd = Math.random; Math.random = () => 0.9999; player.cds = [0, 0, 0]; player.energy = 999; useSkill(0, null); });
     await simSleep(150);
+    await E(() => { Math.random = window.__rnd; });
     await shot('e11_sismo');
     const s11 = [await E(i => __se.en(i), near), await E(i => __se.en(i), far), await E(i => __se.en(i), out)];
     check('E11.sismo', s11[0].dmg > s11[1].dmg && s11[1].dmg > 0 && s11[2].dmg === 0, { dmgNear: s11[0].dmg, dmgFar: s11[1].dmg, dmgOut: s11[2].dmg });

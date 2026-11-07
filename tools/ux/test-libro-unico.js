@@ -151,7 +151,8 @@ async function boot(browser, viewport, base) {
       const ask = await E(async () => { const out = {}; state = 'codex'; codexGo('arena', 'bosque', 'Ruinas'); await new Promise(r => setTimeout(r, 200)); const cx = document.getElementById('codex-body').innerText;
         out.codex = { goal: /Objetivo/.test(cx), kill: cx.includes(ARENA_BRIEF.bosque.kill.slice(0, 30)), help: cx.includes(ARENA_BRIEF.bosque.help.slice(0, 30)), hech: /Guía del Hechicero|el Hechicero te/.test(cx) };
         selectedClass = 'guerrero'; currentArena = 'bosque'; lobbyAllies = ['tanque', 'soporte', 'mago']; startRun(1); state = 'playing'; update(16); document.getElementById('pause-btn').click(); await new Promise(r => setTimeout(r, 300));
-        const tp = document.getElementById('tactical-panel') ? document.getElementById('tactical-panel').innerText : '';
+        // la ayuda de la arena vive en el bloque «Ayuda y opciones» de la nueva Pausa (#pause-help-arena), no dentro de #tactical-panel; se lee todo lo que la pausa muestra
+        const hp = document.getElementById('pause-help-arena'); const tp = (hp ? (hp.textContent || '') : '') + ' ' + (document.getElementById('pause-screen') ? document.getElementById('pause-screen').textContent : '');
         out.pause = { goal: tp.includes(ARENA_BRIEF.bosque.goal.slice(0, 25)), kill: tp.includes(ARENA_BRIEF.bosque.kill.slice(0, 25)), guide: /Guía de juego/.test(tp), hech: /Hechicero/.test(tp), replay: /Repetir la lección/.test(tp) };
         document.getElementById('pause-screen').classList.add('hidden'); state = 'menu'; return out; });
       check(`${tag}.A_PEDIDO.Codice_Arenas_trae_objetivo_peligros_y_ayuda_de_la_arena_sin_voz_del_Hechicero`, ask.codex.goal && ask.codex.kill && ask.codex.help && !ask.codex.hech, ask.codex);
