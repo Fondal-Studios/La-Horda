@@ -5,25 +5,79 @@
    Todo termina en las mismas variables/funciones que usan los controles táctiles (joyVec,
    basicHeld, useSkill, useUltimate...), así que el cooperativo y la simulación no cambian.
 
-   TECLADO                              MANDO (Gamepad API, mapeo estándar tipo Xbox)
-   - WASD / flechas: moverse            - stick izquierdo / cruceta: moverse
-   - Espacio o J (o clic izquierdo      - A: atacar (mantener)
-     sobre el mapa): atacar             - X / Y / B: habilidades 1 / 2 / 3
-   - 1 / 2 / 3: habilidades             - RB o RT: Definitiva
-     (apuntan al mouse si está sobre    - LB: curación de emergencia
-     el mapa; si no, al mejor objetivo) - LT: revivir / acción (mantener)
-   - R o 4: Definitiva                  - R3 (apretar el stick derecho): Pacto (Nigromante)
-   - Q: curación · E: revivir/acción    - stick derecho: apuntar las habilidades
-   - F: Pacto (Nigromante)              - Start / Select: pausa y continuar
-   - Esc o P: pausa y continuar
+   ESQUEMA CLÁSICO (Opciones > Controles)   MANDO (Gamepad API: "standard" y mandos sin mapeo)
+   - WASD / flechas: moverse                - stick izquierdo / cruceta: moverse
+   - Espacio o J (o clic izquierdo          - A: atacar (mantener)
+     sobre el mapa): atacar                 - X / Y / B: habilidades 1 / 2 / 3
+   - 1 / 2 / 3: habilidades                 - RB o RT: Definitiva
+     (apuntan al mouse sobre el mapa;       - LB: curación de emergencia
+     si no, al mejor objetivo)              - LT: revivir / acción (mantener)
+   - R o 4: Definitiva                      - R3 (apretar el stick derecho): Pacto (Nigromante)
+   - Q: curación · E: revivir/acción        - stick derecho: apuntar las habilidades
+   - F: Pacto (Nigromante)                  - Start / Select: pausa y continuar
+   - Esc o P: pausa y continuar             - En menús: cruceta/stick mueven el foco, A confirma, B vuelve,
+                                              LB/RB cambian de pestaña (js/core/pad-nav.js)
+   ESQUEMA MOBA / tipo LoL
+   - clic DERECHO sobre el mapa: ir hacia ese punto (marcador en el piso; respeta paredes y arena); flechas también mueven
+   - clic izquierdo: atacar · Espacio / J / A: atacar
+   - Q / W / E: habilidades 1 / 2 / 3 · R: Definitiva · D: curación · F: revivir / acción / Pacto
+   Las teclas se pueden reasignar (Opciones > Controles > Ver controles: js/core/controls-panel.js).
    Las teclas se muestran en los botones apenas se usa el teclado (o si el aparato tiene mouse y no
    pantalla táctil); con mando, las letras del mando.
    ============================================================ */
-const DESK = { codes:new Set(), kbVec:{x:0,y:0}, gpVec:{x:0,y:0}, drove:false,
-  mouse:{x:0, y:0, on:false}, mouseBasic:false, kbBasic:false, gpBasic:false,
-  sylvaSrc:null, gp:{prev:[], aim:null, on:false, ctx:false}, device:null };
-const KB_MOVE = { KeyW:[0,-1], KeyA:[-1,0], KeyS:[0,1], KeyD:[1,0], ArrowUp:[0,-1], ArrowLeft:[-1,0], ArrowDown:[0,1], ArrowRight:[1,0] };
-const KB_SKILL = { Digit1:0, Digit2:1, Digit3:2, Numpad1:0, Numpad2:1, Numpad3:2 };
+const DESK = { codes:new Set(), kbVec:{x:0,y:0}, gpVec:{x:0,y:0}, ctmVec:{x:0,y:0}, drove:false,
+  mouse:{x:0, y:0, on:false}, mouseBasic:false, kbBasic:false, gpBasic:false, kbCtx:false,
+  sylvaSrc:null, gp:{prev:{}, aim:null, on:false, ctx:false, id:"", profile:"", seen:""}, device:null,
+  ctm:{on:false, x:0, y:0, hold:null, snapT:0, snapX:0, snapY:0} };
+const KB_ARROWS = { ArrowUp:[0,-1], ArrowLeft:[-1,0], ArrowDown:[0,1], ArrowRight:[1,0] };
+const KB_WASD = { KeyW:[0,-1], KeyA:[-1,0], KeyS:[0,1], KeyD:[1,0] };
+// Esquemas de teclado. "move": teclas de movimiento; "binds": acción -> teclas (la primera es la que se muestra en el botón).
+const KB_SCHEMES = {
+  classic:{ move:Object.assign({}, KB_WASD, KB_ARROWS),
+    binds:{ basic:["Space","KeyJ"], s1:["Digit1","Numpad1"], s2:["Digit2","Numpad2"], s3:["Digit3","Numpad3"], ult:["KeyR","Digit4","Numpad4"], emerg:["KeyQ"], ctx:["KeyE"], pact:["KeyF"] } },
+  moba:{ move:Object.assign({}, KB_ARROWS),
+    binds:{ basic:["Space","KeyJ","KeyA"], s1:["KeyQ"], s2:["KeyW"], s3:["KeyE"], ult:["KeyR"], emerg:["KeyD"], ctx:["KeyF"], pact:["KeyF"] } }
+};
+// acciones que se pueden reasignar, en el orden en que se listan (en MOBA "pact" sigue a "ctx": una sola tecla F para revivir / acción / Pacto)
+const KB_ACTIONS = ["basic","s1","s2","s3","ult","emerg","ctx","pact"];
+const KB_RESERVED = new Set(["Escape","KeyP","Tab","Enter","NumpadEnter","MetaLeft","MetaRight","ContextMenu"]);
+const ACT_BTN = { basic:"btn-basic", s1:"btn-s1", s2:"btn-s2", s3:"btn-s3", ult:"btn-ult", emerg:"btn-emerg", ctx:"btn-revive", pact:"btn-pact" };
+const ACT_SKILL = { s1:0, s2:1, s3:2 };
+function deskScheme(){ return (typeof PREFS!=="undefined" && PREFS.ctlScheme==="moba") ? "moba" : "classic"; }
+function deskMoveKeys(){ return KB_SCHEMES[deskScheme()].move; }
+// teclas de una acción en el esquema activo (con lo reasignado en Opciones)
+function deskActionCodes(act, scheme){
+  scheme = scheme || deskScheme();
+  const ov = typeof PREFS!=="undefined" && PREFS.keyBinds && PREFS.keyBinds[scheme];
+  const base = KB_SCHEMES[scheme].binds;
+  if(scheme==="moba" && act==="pact") act = "ctx"; // MOBA: Pacto comparte tecla con revivir/acción
+  if(ov && ov[act]) return [ov[act]];
+  return base[act].slice();
+}
+let _deskActMap = null;
+function deskBindsInvalidate(){ _deskActMap = null; }
+function _deskBuildActMap(){
+  const m = new Map(), sc = deskScheme();
+  for(const act of KB_ACTIONS){ for(const c of deskActionCodes(act, sc)){ const l = m.get(c) || []; if(!l.includes(act)) l.push(act); m.set(c, l); } }
+  _deskActMap = m; return m;
+}
+// acciones de una tecla (por posición física, ev.code: así Q W E R valen igual en cualquier distribución)
+function deskKeyActs(code){ return (_deskActMap || _deskBuildActMap()).get(code) || []; }
+// botón de pantalla (id) al que corresponde una tecla del esquema activo: lo usan hud-feedback.js y beta-ui.js para el efecto de pulsación
+function deskBtnForCode(code){ const a = deskKeyActs(code); return a.length ? ACT_BTN[a[0]] : ""; }
+// rótulo corto de una tecla para mostrar en pantalla
+function deskKeyLabel(code){
+  if(!code) return "—";
+  let m;
+  if((m = /^Key([A-Z])$/.exec(code))) return m[1];
+  if((m = /^Digit(\d)$/.exec(code))) return m[1];
+  if((m = /^Numpad(\d)$/.exec(code))) return "Num"+m[1];
+  const t = { Space:"Espacio", ArrowUp:"↑", ArrowDown:"↓", ArrowLeft:"←", ArrowRight:"→", Escape:"Esc", ShiftLeft:"Shift", ShiftRight:"Shift", ControlLeft:"Ctrl", ControlRight:"Ctrl",
+    AltLeft:"Alt", AltRight:"Alt", Backquote:"`", Minus:"-", Equal:"=", Comma:",", Period:".", Slash:"/", Semicolon:";", Quote:"'", BracketLeft:"[", BracketRight:"]", Backslash:"\\", CapsLock:"Bloq", Backspace:"Borrar" };
+  return t[code] || code;
+}
+// primera tecla de una acción, como rótulo
+function deskActionLabel(act){ return deskKeyLabel(deskActionCodes(act)[0]); }
 const SKILL_BTN_IDS = ["btn-s1","btn-s2","btn-s3"];
 
 function _deskTyping(ev){
@@ -66,14 +120,15 @@ window.addEventListener("pointerdown", (e)=>{ if(e.pointerType==="touch") deskSe
 /* ---------------- movimiento (teclado + mando) ---------------- */
 function _deskKbVec(){
   let x = 0, y = 0;
-  for(const c of DESK.codes){ const v = KB_MOVE[c]; if(v){ x += v[0]; y += v[1]; } }
+  const mk = deskMoveKeys();
+  for(const c of DESK.codes){ const v = mk[c]; if(v){ x += v[0]; y += v[1]; } }
   const l = Math.hypot(x, y);
   DESK.kbVec = l ? {x:x/l, y:y/l} : {x:0, y:0};
 }
 // El joystick táctil manda; si no se está usando, teclado + mando escriben joyVec.
 function deskApplyMove(){
   if(typeof joyActive!=="undefined" && joyActive) { DESK.drove = false; return; }
-  let x = DESK.kbVec.x + DESK.gpVec.x, y = DESK.kbVec.y + DESK.gpVec.y;
+  let x = DESK.kbVec.x + DESK.gpVec.x + DESK.ctmVec.x, y = DESK.kbVec.y + DESK.gpVec.y + DESK.ctmVec.y;
   const l = Math.hypot(x, y);
   if(l > 0.01){ if(l > 1){ x /= l; y /= l; } joyVec = {x, y}; DESK.drove = true; }
   else if(DESK.drove){ joyVec = {x:0, y:0}; DESK.drove = false; }
@@ -147,7 +202,9 @@ function deskPauseToggle(){
 // Suelta todo lo que el teclado/mando esté manteniendo (lo llama inputResetAll de input.js).
 function deskInputReset(){
   DESK.codes.clear(); DESK.kbVec = {x:0,y:0}; DESK.gpVec = {x:0,y:0};
+  deskMoveCancel();
   DESK.kbBasic = DESK.mouseBasic = DESK.gpBasic = false;
+  if(DESK.kbCtx){ DESK.kbCtx = false; deskCtx(false); }
   if(DESK.drove){ joyVec = {x:0,y:0}; DESK.drove = false; }
   if(DESK.sylvaSrc!==null && player){ player.sylvaCharging = false; player.sylvaChargeTimer = 0; if(typeof netIsGuest==="function" && netIsGuest()) netSendToHost({k:"sylva", on:false, aim:null, cancel:true}); }
   DESK.sylvaSrc = null;
@@ -156,9 +213,33 @@ function deskInputReset(){
 }
 
 /* ---------------- teclado ---------------- */
-const KB_GAME_CODES = new Set(["Space","KeyJ","KeyR","Digit4","Numpad4","KeyF","Escape","KeyP"].concat(Object.keys(KB_MOVE), Object.keys(KB_SKILL)));
+// Revivir / acción / levantar botín (mantener) o, si no hay nada para hacer, el Pacto del Nigromante.
+function deskCtxOrPact(down, both){
+  if(!down){ if(DESK.kbCtx){ DESK.kbCtx = false; deskCtx(false); } return; }
+  const rv = document.getElementById("btn-revive");
+  if(!both || (rv && rv.classList.contains("ready"))){ DESK.kbCtx = true; deskCtx(true); return; }
+  deskPact();
+}
+function deskKeyDown(c, acts){
+  for(const act of acts){
+    if(act==="basic"){ DESK.kbBasic = true; _deskBasicSync(); }
+    else if(act in ACT_SKILL) deskSkill(ACT_SKILL[act], true, "k");
+    else if(act==="ult") deskUlt();
+    else if(act==="emerg"){ if(typeof emergPress==="function" && player && state==="playing") emergPress(); }
+    else if(act==="ctx"){ deskCtxOrPact(true, acts.includes("pact")); return; }
+    else if(act==="pact" && !acts.includes("ctx")) deskPact();
+  }
+}
+function deskKeyUp(c, acts){
+  for(const act of acts){
+    if(act==="basic"){ DESK.kbBasic = false; _deskBasicSync(); }
+    else if(act in ACT_SKILL) deskSkill(ACT_SKILL[act], false, "k");
+    else if(act==="ctx") deskCtxOrPact(false);
+  }
+}
 window.addEventListener("keydown", (ev)=>{
   if(_deskTyping(ev)) return;
+  if(DESK.rebinding) return; // la pantalla de Controles está esperando una tecla (controls-panel.js)
   const c = ev.code;
   if((c==="Escape" || c==="KeyP") && !ev.repeat){
     // Esc: cierra Opciones si están abiertas; en partida, pausa / continuar
@@ -167,22 +248,20 @@ window.addEventListener("keydown", (ev)=>{
     return;
   }
   if(state!=="playing") return;
-  if(!KB_GAME_CODES.has(c) && ev.key!=="q" && ev.key!=="Q" && ev.key!=="e" && ev.key!=="E") return;
+  const mv = deskMoveKeys()[c], acts = deskKeyActs(c);
+  if(!mv && !acts.length) return;
   // que Espacio/flechas no "aprieten" el último botón que quedó con foco (la pausa, un menú) ni scrolleen
   ev.preventDefault();
   deskSetDevice("kb");
-  if(KB_MOVE[c]){ DESK.codes.add(c); _deskKbVec(); deskApplyMove(); return; }
+  if(mv){ DESK.codes.add(c); deskMoveCancel(); _deskKbVec(); deskApplyMove(); return; }
   if(ev.repeat) return;
-  if(c==="Space" || c==="KeyJ"){ DESK.kbBasic = true; _deskBasicSync(); return; }
-  if(c in KB_SKILL){ deskSkill(KB_SKILL[c], true, "k"); return; }
-  if(c==="KeyR" || c==="Digit4" || c==="Numpad4"){ deskUlt(); return; }
-  if(c==="KeyF"){ deskPact(); return; }
+  deskKeyDown(c, acts);
 });
 window.addEventListener("keyup", (ev)=>{
   const c = ev.code;
-  if(KB_MOVE[c]){ DESK.codes.delete(c); _deskKbVec(); deskApplyMove(); }
-  if(c==="Space" || c==="KeyJ"){ DESK.kbBasic = false; _deskBasicSync(); if(state==="playing") ev.preventDefault(); }
-  if(c in KB_SKILL) deskSkill(KB_SKILL[c], false, "k");
+  if(DESK.codes.has(c)){ DESK.codes.delete(c); _deskKbVec(); deskApplyMove(); }
+  const acts = deskKeyActs(c);
+  if(acts.length){ deskKeyUp(c, acts); if(state==="playing" && acts.includes("basic")) ev.preventDefault(); }
 });
 
 /* ---------------- mouse sobre el mapa ---------------- */
