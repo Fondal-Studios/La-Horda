@@ -1,0 +1,10 @@
+{
+  "nota": "Política de la revisión independiente fijada por el PROPIETARIO del repositorio (drmarianojimenez94-sudo), que figura como único director en reviews/DIRECTORES.json.",
+  "aprobacionHumana": false,
+  "decision": {
+    "por": "drmarianojimenez94-sudo (propietario)",
+    "fecha": "2026-11-07",
+    "textoLiteral": "Cambio la regla del aprobador humano para siempre",
+    "alcance": "La etapa 5 (aprobación) ya NO exige una persona de reviews/DIRECTORES.json ni prohíbe que la dé un agente. Siguen vigentes TODAS las demás reglas: R1 orden, R2 nadie aprueba su propio trabajo (QA y arquitectura distintas del autor y entre sí; la aprobación no puede darla el autor), R4 SHA exacto, R5 pruebas > 0 y fallos = 0 (staging en rama beta/…), R6, R7."
+  }
+}

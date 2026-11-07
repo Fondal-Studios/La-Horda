@@ -22,6 +22,9 @@ const AGENT_BRANCH = /^.+$/;
 const isAgentId = id => /^(agente|claude|bot)[-_]/i.test(String(id));
 function validateRecord(rec, ctx = {}){
   const problems = [], mode = ctx.mode || 'merge', directors = ctx.directors || [];
+  // Política del propietario (reviews/POLITICA.json): con aprobacionHumana=false la aprobación final NO exige una persona de DIRECTORES;
+  // la puede dar una identidad distinta del autor. Por defecto (sin política) sigue exigiéndose una persona.
+  const humanApproval = !(ctx.policy && ctx.policy.aprobacionHumana === false);
   const stages = Array.isArray(rec && rec.stages) ? rec.stages : [];
   const subject = (rec && rec.subject) || {};
   const names = stages.map(s => s.stage);
@@ -42,7 +45,7 @@ function validateRecord(rec, ctx = {}){
       // R2 independencia
       if(prod && s.by === prod.by) problems.push(`R2 "${s.by}" revisa "${s.stage}" de su propio trabajo`);
       if(s.by === subject.authorId) problems.push(`R2 "${s.by}" es el autor declarado de la rama y no puede revisarla`);
-      if(isAgentId(s.by) && s.stage === 'aprobacion') problems.push('R3 la aprobación final no puede darla un agente');
+      if(humanApproval && isAgentId(s.by) && s.stage === 'aprobacion') problems.push('R3 la aprobación final no puede darla un agente');
       // R4 SHA
       if(!s.evidence || s.evidence.sha !== subject.head) problems.push(`R4 la evidencia de "${s.stage}" no cita el SHA actual de la rama`);
       // R5 pruebas
@@ -51,7 +54,7 @@ function validateRecord(rec, ctx = {}){
       }
       if(s.stage === 'staging' && s.verdict === 'aprobado' && !(s.evidence && s.evidence.branch && /^beta\//.test(s.evidence.branch))) problems.push('R5 staging se prueba en una rama beta/…');
     } else if(prod && s.commit && s.commit !== subject.head) problems.push('R4 la producción cita un commit distinto del SHA actual');
-    if(s.stage === 'aprobacion' && directors.length && !directors.includes(s.by)) problems.push(`R3 "${s.by}" no figura en reviews/DIRECTORES.json`);
+    if(humanApproval && s.stage === 'aprobacion' && directors.length && !directors.includes(s.by)) problems.push(`R3 "${s.by}" no figura en reviews/DIRECTORES.json`);
     if(s.stage !== 'produccion' && !['aprobado', 'rechazado', 'reparacion_parcial', 'reconstruccion'].includes(s.verdict)) problems.push(`veredicto inválido en "${s.stage}"`);
     if((s.verdict === 'reparacion_parcial' || s.verdict === 'reconstruccion') && s.stage !== 'arquitectura') problems.push(`R6 solo la revisión arquitectónica puede ordenar "${s.verdict}"`);
     if(s.verdict === 'reparacion_parcial' && !(Array.isArray(s.repair) && s.repair.length)) problems.push('R6 reparacion_parcial exige la lista repair');
@@ -74,7 +77,7 @@ function validateReviewedHead(root, reviewedHead, currentHead, recordFile) {
   const fail = reason => ({ok:false, reason, reviewedHead, currentHead});
   if(!/^[a-f0-9]{40}$/.test(reviewedHead || '') || !/^[a-f0-9]{40}$/.test(currentHead || '')) return fail('SHA completo inválido');
   const record = path.relative(root, path.resolve(root, recordFile)).split(path.sep).join('/');
-  if(!/^reviews\/[^/]+\.json$/.test(record) || ['reviews/DIRECTORES.json', 'reviews/TEMPLATE.json'].includes(record)) return fail('Registro fuera del área permitida');
+  if(!/^reviews\/[^/]+\.json$/.test(record) || ['reviews/DIRECTORES.json', 'reviews/TEMPLATE.json', 'reviews/POLITICA.json'].includes(record)) return fail('Registro fuera del área permitida');
   const git = args => cp.execFileSync('git', args, {cwd:root, encoding:'utf8', stdio:['ignore','pipe','pipe'], maxBuffer:16*1024*1024});
   try {
     git(['cat-file', '-e', reviewedHead + '^{commit}']);
@@ -93,11 +96,12 @@ module.exports = { validateRecord, validateReviewedHead, ORDER, AGENT_BRANCH, is
 if(require.main === module){
   const a = process.argv.slice(2), val = (k, d) => { const i = a.indexOf(k); return i >= 0 ? a[i + 1] : d; };
   const dirs = JSON.parse(fs.readFileSync(path.join(ROOT, 'reviews/DIRECTORES.json'), 'utf8')).directores;
+  const polFile = path.join(ROOT, 'reviews/POLITICA.json'), policy = fs.existsSync(polFile) ? JSON.parse(fs.readFileSync(polFile, 'utf8')) : {};
   const recPath = f => path.join(ROOT, 'reviews', f.replace(/\//g, '__') + '.json');
   let bad = 0;
   if(a.includes('--all')){
-    for(const f of fs.readdirSync(path.join(ROOT, 'reviews')).filter(x => x.endsWith('.json') && !['DIRECTORES.json', 'TEMPLATE.json'].includes(x))){
-      const r = validateRecord(JSON.parse(fs.readFileSync(path.join(ROOT, 'reviews', f), 'utf8')), { mode: 'draft', directors: dirs });
+    for(const f of fs.readdirSync(path.join(ROOT, 'reviews')).filter(x => x.endsWith('.json') && !['DIRECTORES.json', 'TEMPLATE.json', 'POLITICA.json'].includes(x))){
+      const r = validateRecord(JSON.parse(fs.readFileSync(path.join(ROOT, 'reviews', f), 'utf8')), { mode: 'draft', directors: dirs, policy });
       console.log(`${r.ok ? 'PASS' : 'FAIL'} ${f} (${r.state})${r.problems.map(p => '\n  - ' + p).join('')}`); if(!r.ok) bad++;
     }
     console.log(bad ? `${bad} registro(s) inválido(s)` : 'OK: todos los registros son válidos'); process.exit(bad ? 1 : 0);
@@ -113,7 +117,7 @@ if(require.main === module){
   }
   const rec = JSON.parse(fs.readFileSync(path.resolve(file), 'utf8'));
   // El SHA y la rama del registro deben identificar exactamente el sujeto revisado.
-  const r = validateRecord(rec, { mode, directors: dirs });
+  const r = validateRecord(rec, { mode, directors: dirs, policy });
   if(branch && rec.subject.branch !== branch) { r.ok = false; r.problems.push("R4 el registro pertenece a otra rama"); }
   if(head) {
     const binding = validateReviewedHead(ROOT, rec.subject.head, head, path.resolve(file));
