@@ -35,3 +35,4 @@ Gasto de esta ejecución programada: 40 créditos (de 60 permitidos).
 | 2026-11-07 | sin cambio | Myla/Ilkan (tanda arte): 0 créditos Runway; solo pintor/derivación determinista (tools/art/myla/build_anim.py, tools/art/ilkan/build_legion_codex.py) |
 
 ## Runway: 0 creditos gastados en esta pasada (pintor determinista tools/art/painter/enemy_paint.py).
+| 2026-11-07 | 70 (sin cambio) | Jefes críticos, ronda 1: Núcleo Micelial (4 etapas + wither/dead) y Raíz de Absorción repintados con el pintor determinista (`tools/art/painter/micelial/core_root.py --install`), referencia lámina del Códice `art-source/micelial/bosses.png`. **0 créditos Runway, 0 tareas.** Capturas: `docs/beta-release/art-repair/jefes-micelial-{ANTES,DESPUES}.png`. Pendiente: Abismo (El Que Mora Debajo, Tentáculo) |
