@@ -33,3 +33,5 @@ Gasto de esta ejecución programada: 40 créditos (de 60 permitidos).
 | 2026-11-07 | - | **Tanda otros guardianes (aurelia, kora, ynara, mago, ilsa, vorn): 0 créditos Runway.** Todo con el pintor determinista (`tools/art/painter/retouch/`: lib.py, kora/ilsa/vorn.py enganchados con `"retouch"` en la ficha, installed.py para aurelia/ynara/mago; hojas de origen en `art-source/retouch-base/`). Elementos nuevos de la forja: casco_minero, sombrero_esgrimista, cuernos_de_basalto |
 | 2026-11-07 | sin cambio | Soporte, Segador y Profeta: cuerpo del Códice reinstalado con el pintor determinista (`tools/art-world/build-codex-trio.py`, recorte de FRENTE/LADO/ESPALDA + animación por píxel entero). **0 créditos Runway gastados** (tope de 20 no tocado). Atlas `codex-v1` de 52 cuadros por guardián; sin evaluación independiente |
 | 2026-11-07 | sin cambio | Myla/Ilkan (tanda arte): 0 créditos Runway; solo pintor/derivación determinista (tools/art/myla/build_anim.py, tools/art/ilkan/build_legion_codex.py) |
+
+## Runway: 0 creditos gastados en esta pasada (pintor determinista tools/art/painter/enemy_paint.py).
