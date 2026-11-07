@@ -142,6 +142,7 @@ function padDefault(cands){
   const inModal = pool.filter(c => c.el.closest(".ui-modal"));
   if(inModal.length) pool = inModal; // un panel encima: se empieza por su primer control (no por el "Listo" del final)
   for(const sel of PN_DEFAULT_SEL.slice(0, inModal.length ? 2 : PN_DEFAULT_SEL.length)){ const c = pool.find(x => x.el.matches(sel)); if(c) return c; }
+  if(!inModal.length){ const tab = pool.find(c => c.el.matches(PN_TAB_SEL) && c.el.matches(PN_ACTIVE_SEL)); if(tab && !pool.some(c => c.el.matches('.btn:not(.secondary):not(.small)'))) return tab; } // pantallas con pestañas: arranca en la activa
   return pool.find(c => !c.sticky) || pool[0] || order[0];
 }
 
