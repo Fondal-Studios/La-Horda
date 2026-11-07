@@ -28,3 +28,15 @@ Los 46 guardianes en el motor se leen coherentes con Thalen, con una excepción 
 
 ## Orden sugerido
 1 y 2 son sistémicos y los más visibles; 3 es de una sola función; 4 se coordina con #260; 5 ya tiene plan en las excepciones del gate.
+
+## Correcciones aplicadas (rama `art/pixel-coherence-20261107`)
+| Punto | Qué se hizo | Verificado |
+|---|---|---|
+| 1 Enemigos Runway | Las 26 hojas se reconstruyeron desde sus fuentes (`art-source/runway-enemies/*`) con `targetH × hMul` igual al anterior (mismo tamaño en pantalla) pero `hMul` 1,3 (antes 2,0–3,25) y K=48. Sin generar nada nuevo en Runway. | Las 26 cargan y su grilla cabe en el PNG; sin errores de página; comparación a ojo antes/después |
+| 3 `facu_gm` | `ascFacuMantle` dibuja en una capa de píxeles con alfa binario y relleno en tablero | En el motor: 34 % → 0 % de píxeles semitransparentes; el tablero se ve marcado, queda para revisión de arte |
+| 4 Micelial | Alfa binario en sabueso, acechador, infectado, chamán, peregrino, hinchado y micelio | Alfa 0/255; **el arte sigue siendo pintado, sin contorno**: esto no lo repinta |
+| 5 / átlas heredados | Alfa binario en el átlas viejo de `mago` y en las skins `convergencia` y `profecia` | Idem |
+| 2 Jefes de campo | **No hecho**: requiere repintar o regenerar |  |
+| Tanque / Guerrero | **No hecho**: sus compuertas fijan los bytes del maestro y existe `codex-v1` sin metadatos de cuadros ni cargador; lo correcto es pasarlos a Códice (PR #259), no parchear el átlas viejo | — |
+
+`tools/quality/qa.js` no existe en `main` (está en `integration/beta-20261101`), así que **no se corrió la batería completa**.
