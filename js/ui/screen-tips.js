@@ -17,9 +17,9 @@
 const SCREEN_TIPS_AUTO_MS = 20000;
 const SCREEN_TIPS = [
   {id:"hub", topic:"objetivo", when:()=>state==="mainmenu", steps:[
-    {ic:"🏠", t:"Esta es tu base", x:"Tocá JUGAR para seguir la campaña. Abajo tenés el Códice, tus Guardianes y la Tienda. Si te perdés, el botón Ayuda explica todo."}]},
+    {ic:"🏰", t:"Esta es tu base", x:"Tocá JUGAR para seguir la campaña. Abajo tenés el Códice, tus Guardianes y la Tienda. Si te perdés, el botón Ayuda explica todo."}]},
   {id:"arenas", topic:"objetivo", when:()=>state==="arenaselect", steps:[
-    {ic:"🗺", t:"Elegí una arena", x:"La historia va en orden, de la 01 a la 10. Tocá una para ver su ficha y empezar. Las que tienen candado se abren al terminar la anterior."}]},
+    {ic:"🧭", t:"Elegí una arena", x:"La historia va en orden, de la 01 a la 10. Tocá una para ver su ficha y empezar. Las que tienen candado se abren al terminar la anterior."}]},
   {id:"horda", topic:"infinita", when:()=>state==="menu" && typeof endlessPending!=="undefined" && endlessPending, steps:[
     {ic:"♾", t:"Horda Infinita", x:"Elegí un guardián y aguantá oleadas que no terminan. No hay final: se trata de llegar lo más lejos posible. Cada tanto elegís un refuerzo."}]},
   {id:"sala", topic:"objetivo", when:()=>state==="prep", steps:[
@@ -29,7 +29,7 @@ const SCREEN_TIPS = [
   {id:"equipo", topic:"botin", when:()=>_tipChampTab()==="equipo", steps:[
     {ic:"🎒", t:"Equipo", x:"Los objetos que juntás en las arenas se equipan acá, en los huecos del guardián. Se comparten entre todos tus guardianes. Si no tenés ninguno, jugá una arena: el botín cae al piso."}]},
   {id:"talentos", topic:"progreso", when:()=>_tipChampTab()==="talentos", steps:[
-    {ic:"⭐", t:"Talentos", x:"Cada vez que el guardián sube de nivel ganás puntos. Gastalos acá: son mejoras permanentes solo para este guardián."}]},
+    {ic:"✨", t:"Talentos", x:"Cada vez que el guardián sube de nivel ganás puntos. Gastalos acá: son mejoras permanentes solo para este guardián."}]},
   {id:"maestria", topic:"progreso", when:()=>_tipChampTab()==="habilidades", steps:[
     {ic:"👑", t:"Maestría", x:"Es el camino final del guardián y se elige una sola. Tocá una para leer qué pide y qué da antes de decidir."}]},
   {id:"skins", topic:"tienda", when:()=>_tipChampTab()==="skins", steps:[
@@ -47,7 +47,7 @@ const SCREEN_TIPS = [
   {id:"pausa", topic:"pausa", when:()=>state==="paused", steps:[
     {ic:"⏸", t:"Pausa", x:"El juego está detenido. «Continuar» sigue la partida. «Resumen» muestra tu daño y «Ayuda y opciones» tiene el sonido y Cómo se juega."}]},
   {id:"fin", topic:"botin", when:()=>state==="gameover" || state==="victory", steps:[
-    {ic:"🏁", t:"Fin de la partida", x:"Podés reintentar o volver al menú. Lo que juntaste ya quedó guardado en tu cuenta: miralo en Guardianes › Equipo."}]}
+    {ic:"🚩", t:"Fin de la partida", x:"Podés reintentar o volver al menú. Lo que juntaste ya quedó guardado en tu cuenta: miralo en Guardianes › Equipo."}]}
 ];
 
 let _tip = {id:null, i:0, el:null, since:0, auto:0, seenTicks:0, cand:null};

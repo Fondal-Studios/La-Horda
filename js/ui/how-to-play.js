@@ -38,9 +38,9 @@ const HOWTO_STEPS = {
     {ic:"🎒", t:"Mi inventario", x:"Lista todo lo que juntaste. Filtrá por rareza o por ranura, y activá la gestión automática del botín si querés ahorrar tiempo."}
   ],
   progreso:[
-    {ic:"⭐", t:"Talentos", x:"Cada vez que un guardián sube de nivel ganás puntos. Gastalos en Guardianes › Talentos: son mejoras permanentes para ese guardián."},
+    {ic:"✨", t:"Talentos", x:"Cada vez que un guardián sube de nivel ganás puntos. Gastalos en Guardianes › Talentos: son mejoras permanentes para ese guardián."},
     {ic:"👑", t:"Maestría", x:"Es el camino final de cada guardián, y se elige una sola. Mirá qué pide en Guardianes › Maestría."},
-    {ic:"➕", t:"Habilidades en partida", x:"Cuando ves un + sobre una habilidad, tenés un punto para hacerla más fuerte. Tocalo."}
+    {ic:"✚", t:"Habilidades en partida", x:"Cuando ves un + sobre una habilidad, tenés un punto para hacerla más fuerte. Tocalo."}
   ],
   tienda:[
     {ic:"🪙", t:"Oro", x:"Lo ganás jugando. Con oro comprás guardianes y objetos en la Tienda. Mirá «Ofertas del día»: cambian solas."},
@@ -60,9 +60,9 @@ const HOWTO_STEPS = {
 };
 const HOWTO_TOPICS = [
   {id:"objetivo", ic:"🎯", label:"Objetivo"},
-  {id:"controles", ic:"🕹", label:"Controles"},
+  {id:"controles", ic:"🎯", label:"Controles"},
   {id:"botin", ic:"🎁", label:"Botín y objetos"},
-  {id:"progreso", ic:"⭐", label:"Talentos"},
+  {id:"progreso", ic:"✨", label:"Talentos"},
   {id:"tienda", ic:"🪙", label:"Tienda y Brasas"},
   {id:"pausa", ic:"⏸", label:"Pausa y Códice"},
   {id:"infinita", ic:"♾", label:"Horda Infinita"}
