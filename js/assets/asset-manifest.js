@@ -981,7 +981,6 @@ const ASSET_MANIFEST = [
   "assets/sprites/champions/cazadora/wolf/run.png",
   "assets/sprites/champions/cazadora/wolf/bite.png",
   "assets/sprites/champions/cazadora/wolf/jump.png",
-  "assets/sprites/champions/mago/atlas.png",
   "assets/sprites/champions/soporte/atlas.png",
   "assets/sprites/champions/tanque/atlas.png",
   "assets/sprites/champions/guerrero/atlas.png",

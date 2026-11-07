@@ -53,9 +53,9 @@ module.exports=async function captureThalenGameplay({page,root}){
       const compare=makeSheet(6,2);n=0;
       for(const look of ['base','convergencia'])for(const mode of ['legacy','candidate'])for(const s of [states[2],states[5],states[9]]){setup('hielo',look,'sparse');setReady(mode==='candidate'?realReady:false);pose(s);render();stamp(compare,n++,look+' · '+mode+' · '+s.id);}
       const matrix=[];
-      for(const density of ['sparse','dense'])for(const mode of ['legacy','candidate'])for(const look of ['base','convergencia'])for(const arena of arenas){setup(arena,look,density);setReady(mode==='candidate'?realReady:false);pose(states[5]);render();matrix.push({view:view.id,density,mode,look,arena,state:'attack_side',hash:sceneHash(),resolvedSkin:activeSetSkinId(player),candidateReady:P.ready,legacyReady:MAGO_IMG_READY,alive:player.alive});}
+      for(const density of ['sparse','dense'])for(const mode of ['legacy','candidate'])for(const look of ['base','convergencia'])for(const arena of arenas){setup(arena,look,density);setReady(mode==='candidate'?realReady:false);pose(states[5]);render();matrix.push({view:view.id,density,mode,look,arena,state:'attack_side',hash:sceneHash(),resolvedSkin:activeSetSkinId(player),candidateReady:P.ready,legacyRemoved:typeof MAGO_IMG==='undefined'&&typeof MAGO_ANIM_ATLAS==='undefined',alive:player.alive});}
       setReady(realReady);state='menu';
-      return{sparseSequence:sparseSequence[0].toDataURL(),denseSequence:denseSequence[0].toDataURL(),arenas:arenaSheet[0].toDataURL(),comparison:compare[0].toDataURL(),matrix,realReady,legacyReady:MAGO_IMG_READY};
+      return{sparseSequence:sparseSequence[0].toDataURL(),denseSequence:denseSequence[0].toDataURL(),arenas:arenaSheet[0].toDataURL(),comparison:compare[0].toDataURL(),matrix,realReady,legacyRemoved:typeof MAGO_IMG==='undefined'&&typeof MAGO_ANIM_ATLAS==='undefined'};
     },{view});
     const savePng=(name,data)=>fs.writeFileSync(path.join(out,name),Buffer.from(data.split(',')[1],'base64'));
     savePng(view.id+'-sparse-sequence.png',result.sparseSequence);

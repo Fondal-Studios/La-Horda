@@ -27,12 +27,12 @@ module.exports=async function thalenFullRenderPerf({page,root}){
         }
         setReady(ready);state='menu';
         times.sort((a,b)=>a-b);const q=p=>times[Math.min(times.length-1,Math.floor(times.length*p))];
-        return{mode,samples:times.length,clears,p50:q(.50),p95:q(.95),max:times[times.length-1],candidateReady:ready,legacyReady:MAGO_IMG_READY,enemies:12,allies:allies.length};
+        return{mode,samples:times.length,clears,p50:q(.50),p95:q(.95),max:times[times.length-1],candidateReady:ready,legacyRemoved:typeof MAGO_IMG==='undefined'&&typeof MAGO_ANIM_ATLAS==='undefined',enemies:12,allies:allies.length};
       },{mode});
       rows.push({view:view.id,...result});
     }
   }
-  const result={status:rows.every(r=>r.candidateReady&&r.legacyReady&&r.samples===360&&r.clears===360)?'PASS':'FAIL',rows,scope:'Full render() with real clearRect after every sample; 12 enemies and two allies; desktop and mobile viewport; candidate and legacy runs measured separately. Local CI Chromium, not a physical mobile device, GPU profile or GC attribution; no speedup claim.'};
+  const result={status:rows.every(r=>r.candidateReady&&r.legacyRemoved&&r.samples===360&&r.clears===360)?'PASS':'FAIL',rows,scope:'Full render() with real clearRect after every sample; 12 enemies and two allies; desktop and mobile viewport; candidate and legacy runs measured separately. Local CI Chromium, not a physical mobile device, GPU profile or GC attribution; no speedup claim.'};
   fs.writeFileSync(path.join(out,'PERFORMANCE.json'),JSON.stringify(result,null,2)+'\n');
   return result;
 };

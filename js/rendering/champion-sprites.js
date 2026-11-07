@@ -6,58 +6,13 @@
    ============================================================ */
 
 /* ============================================================
-   MAGO — sprites reales provistos por el usuario (atlas PNG + JSON)
-   Reemplaza SOLO el dibujo del Mago; estadísticas, hitbox, controles
-   y habilidades siguen exactamente igual que antes.
-
-   PRUEBA PILOTO de migración al motor ANIM ATLAS de arriba: magoAtlasFrame/drawMagoAtlas/
-   drawMagoFallen conservan exactamente la misma firma de siempre (los siguen llamando
-   drawHero, la previsualización de guardianes y el dibujo de cadáveres, sin cambios ahí),
-   pero ahora delegan en el motor genérico en vez de tener su propia lógica de frames a
-   mano. Se agrega además UN evento de ejemplo ("cast_release", en el clip "cast") que
-   dispara una ráfaga de partículas en el momento exacto en que el Mago suelta el
-   hechizo -puramente visual: el daño real de las habilidades lo sigue resolviendo
-   castAbility con su propio timer, sin depender de esto para nada.
+   MAGO (Thalen) — cuerpo Códice, pack "mago" (assets/sprites/champions/mago/codex-v1/atlas.png).
+   El atlas legado de 16 recortes (mago/atlas.png, MAGO_ANIM_ATLAS) ya no se carga ni se dibuja: si el pack falla,
+   el Mago se comporta como cualquier otro guardián con pack fallido (drawChampPack devuelve false y drawHero cae al
+   cuerpo procedural). Estadísticas, hitbox, controles y habilidades no dependen del dibujo.
    ============================================================ */
-const MAGO_ATLAS = {"image": "mago.png", "imageSize": [1254, 1254], "referenceHeight": 270, "anchor": "bottom-center", "frames": [{"x": 54, "y": 32, "w": 225, "h": 264, "pivotX": 111}, {"x": 362, "y": 33, "w": 223, "h": 263, "pivotX": 113}, {"x": 678, "y": 32, "w": 218, "h": 264, "pivotX": 107}, {"x": 987, "y": 32, "w": 220, "h": 264, "pivotX": 108}, {"x": 50, "y": 343, "w": 238, "h": 269, "pivotX": 115}, {"x": 364, "y": 347, "w": 227, "h": 265, "pivotX": 111}, {"x": 669, "y": 344, "w": 231, "h": 269, "pivotX": 116}, {"x": 982, "y": 346, "w": 232, "h": 266, "pivotX": 113}, {"x": 45, "y": 664, "w": 243, "h": 256, "pivotX": 120}, {"x": 358, "y": 621, "w": 228, "h": 299, "pivotX": 117}, {"x": 645, "y": 688, "w": 341, "h": 232, "pivotX": 120}, {"x": 996, "y": 665, "w": 213, "h": 255, "pivotX": 99}, {"x": 55, "y": 1009, "w": 221, "h": 209, "pivotX": 110}, {"x": 358, "y": 1038, "w": 213, "h": 183, "pivotX": 117}, {"x": 646, "y": 1042, "w": 245, "h": 179, "pivotX": 119}, {"x": 951, "y": 1110, "w": 276, "h": 111, "pivotX": 134}], "animations": {"idle": {"frames": [0, 1, 2, 3], "fps": 4, "loop": true}, "walk": {"frames": [4, 5, 6, 7], "fps": 8, "loop": true}, "cast": {"frames": [8, 9, 10, 11], "fps": 8, "loop": false}, "hurt": {"frames": [12], "fps": 6, "loop": false}, "death": {"frames": [12, 13, 14, 15], "fps": 6, "loop": false}}};
-const MAGO_TARGET_HEIGHT = 70; // altura visible aproximada en unidades de mundo, a escala normal (drawScale=2.0)
-
-// Definición + atlas del Mago en el formato nuevo, construida a partir de la misma tabla de
-// frames/animaciones de siempre (MAGO_ATLAS) vía el adaptador -ni un número tocado a mano.
-// El evento "cast_release" en el frame relativo 2 del clip "cast" (de 4 frames, a 8fps: cae
-// justo antes de que termine la animación de lanzar) dispara una ráfaga de partículas; el
-// daño real de la habilidad NO depende de esto, lo sigue resolviendo castAbility aparte.
-const MAGO_ANIM_DEF = buildAnimDefFromLegacy(MAGO_ATLAS, MAGO_TARGET_HEIGHT, { cast: {2:"cast_release"} });
-const MAGO_ANIM_ATLAS = wrapAnimImage(MAGO_IMG, ()=>MAGO_IMG_READY, MAGO_ANIM_DEF);
-
-// Qué clip tocar según el estado actual del Mago (reposo/caminar/lanzar/daño) — esto sigue
-// siendo decisión del propio guardián, el motor de animación no sabe nada de estas reglas.
-function magoResolveClip(h){
-  if(h.attackAnim>0) return "cast";
-  if(h.hurtTimer>0) return "hurt";
-  if(h.moving) return "walk";
-  return "idle";
-}
-function magoCastReleaseFx(eventName, h){
-  if(eventName!=="cast_release") return;
-  const a = Math.random()*Math.PI*2;
-  for(let i=0;i<6;i++){
-    particles.push({x:h.x, y:h.y-40, vx:Math.cos(a+i)*70, vy:Math.sin(a+i)*70-30, life:280, color:h.cls.glow});
-  }
-}
-// Dibuja al Mago usando el atlas real (vía el motor genérico de animación); misma firma que
-// antes, así que drawHero/la previsualización de guardianes no necesitan cambiar nada.
 function drawMagoAtlas(h, drawScale, alpha){
-  if(drawChampPack("mago", h, drawScale, alpha)) return true;
-  return drawAnimAtlas(MAGO_ANIM_ATLAS, magoResolveClip(h), h, drawScale, alpha, (ev)=>magoCastReleaseFx(ev,h));
-}
-// Caída del Mago con el atlas LEGADO: solo respaldo si el atlas Códice falló al cargar. Con el atlas Códice
-// listo, drawFallenHero lo dibuja por drawChampPackDeath (clip death_down de 4 cuadros, animado y no congelado).
-function drawMagoFallen(h, alpha){
-  if(!MAGO_IMG_READY) return false;
-  const clip = MAGO_ANIM_DEF.clips.death;
-  drawAnimFrame(MAGO_ANIM_ATLAS, clip, clip.frames.length-1, h.x, h.y, 2.0, h.fx < -0.12, alpha);
-  return true;
+  return drawChampPack("mago", h, drawScale, alpha);
 }
 
 /* ============================================================
@@ -573,7 +528,6 @@ function drawRealFallen(h, alpha){
 function drawFallenHero(h){
   const skinPack = typeof setSkinPackKey==="function" && setSkinPackKey(h, h.classKey) !== h.classKey;
   if((CHAMP_PACK[h.classKey] || skinPack || h.classKey === "tanque" || h.classKey === "guerrero") && drawChampPackDeath(h)) return; // muerte con sus frames reales (o los de su skin de set)
-  if(h.classKey==="mago" && drawMagoFallen(h, 0.5)) return; // el propio arte ya lo muestra boca abajo
   // DEATH del guardián con su propio sprite real: reacción al golpe, caída de costado y
   // queda tendido semitransparente (antes: siempre el sprite procedural, fuera cual fuera el arte).
   if(!h._deadAt){ h._deadAt = animNow; vfxBurst(h.x, h.y-20, 12, "blood", 120, 420, 3, 2, -30, 0); }
