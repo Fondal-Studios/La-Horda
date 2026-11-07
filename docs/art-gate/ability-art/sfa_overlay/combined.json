@@ -1,0 +1,6701 @@
+{
+ "guardian": "sfa_overlay",
+ "abilities": [
+  {
+   "id": "aelith_debt_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_debt",
+    "size": 48
+   }
+  },
+  {
+   "id": "aelith_debt_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_debt",
+    "size": 64
+   }
+  },
+  {
+   "id": "aelith_debt_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_debt",
+    "size": 96
+   }
+  },
+  {
+   "id": "aelith_debt_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_debt",
+    "size": 128
+   }
+  },
+  {
+   "id": "aelith_debt_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_debt",
+    "size": 160
+   }
+  },
+  {
+   "id": "aelith_debt_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_debt",
+    "size": 192
+   }
+  },
+  {
+   "id": "aelith_debt_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_debt",
+    "size": 48
+   }
+  },
+  {
+   "id": "aelith_debt_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_debt",
+    "size": 64
+   }
+  },
+  {
+   "id": "aelith_debt_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_debt",
+    "size": 80
+   }
+  },
+  {
+   "id": "aelith_debt_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_debt",
+    "size": 96
+   }
+  },
+  {
+   "id": "aelith_debt_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_debt",
+    "size": 128
+   }
+  },
+  {
+   "id": "aelith_debt_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_debt",
+    "size": 160
+   }
+  },
+  {
+   "id": "aelith_debt_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_debt",
+    "size": 192
+   }
+  },
+  {
+   "id": "aelith_echo_nova32",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_echo",
+    "size": 32
+   }
+  },
+  {
+   "id": "aelith_echo_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_echo",
+    "size": 48
+   }
+  },
+  {
+   "id": "aelith_echo_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_echo",
+    "size": 64
+   }
+  },
+  {
+   "id": "aelith_echo_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_echo",
+    "size": 80
+   }
+  },
+  {
+   "id": "aelith_echo_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_echo",
+    "size": 96
+   }
+  },
+  {
+   "id": "aelith_echo_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_echo",
+    "size": 128
+   }
+  },
+  {
+   "id": "aelith_echo_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_echo",
+    "size": 160
+   }
+  },
+  {
+   "id": "aelith_echo_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_echo",
+    "size": 192
+   }
+  },
+  {
+   "id": "aelith_echo_zone32",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_echo",
+    "size": 32
+   }
+  },
+  {
+   "id": "aelith_echo_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_echo",
+    "size": 48
+   }
+  },
+  {
+   "id": "aelith_echo_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_echo",
+    "size": 64
+   }
+  },
+  {
+   "id": "aelith_echo_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_echo",
+    "size": 80
+   }
+  },
+  {
+   "id": "aelith_echo_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_echo",
+    "size": 96
+   }
+  },
+  {
+   "id": "aelith_echo_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_echo",
+    "size": 128
+   }
+  },
+  {
+   "id": "aelith_echo_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_echo",
+    "size": 160
+   }
+  },
+  {
+   "id": "aelith_echo_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_echo",
+    "size": 192
+   }
+  },
+  {
+   "id": "aelith_fracture_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_fracture",
+    "size": 48
+   }
+  },
+  {
+   "id": "aelith_fracture_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_fracture",
+    "size": 64
+   }
+  },
+  {
+   "id": "aelith_fracture_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_fracture",
+    "size": 96
+   }
+  },
+  {
+   "id": "aelith_fracture_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_fracture",
+    "size": 128
+   }
+  },
+  {
+   "id": "aelith_fracture_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_fracture",
+    "size": 160
+   }
+  },
+  {
+   "id": "aelith_fracture_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_fracture",
+    "size": 192
+   }
+  },
+  {
+   "id": "aelith_fracture_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_fracture",
+    "size": 48
+   }
+  },
+  {
+   "id": "aelith_fracture_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_fracture",
+    "size": 64
+   }
+  },
+  {
+   "id": "aelith_fracture_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_fracture",
+    "size": 80
+   }
+  },
+  {
+   "id": "aelith_fracture_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_fracture",
+    "size": 96
+   }
+  },
+  {
+   "id": "aelith_fracture_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_fracture",
+    "size": 128
+   }
+  },
+  {
+   "id": "aelith_fracture_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_fracture",
+    "size": 160
+   }
+  },
+  {
+   "id": "aelith_fracture_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_fracture",
+    "size": 192
+   }
+  },
+  {
+   "id": "aelith_haste_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_haste",
+    "size": 48
+   }
+  },
+  {
+   "id": "aelith_haste_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_haste",
+    "size": 64
+   }
+  },
+  {
+   "id": "aelith_haste_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_haste",
+    "size": 96
+   }
+  },
+  {
+   "id": "aelith_haste_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_haste",
+    "size": 128
+   }
+  },
+  {
+   "id": "aelith_haste_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_haste",
+    "size": 160
+   }
+  },
+  {
+   "id": "aelith_haste_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_haste",
+    "size": 192
+   }
+  },
+  {
+   "id": "aelith_haste_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_haste",
+    "size": 48
+   }
+  },
+  {
+   "id": "aelith_haste_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_haste",
+    "size": 64
+   }
+  },
+  {
+   "id": "aelith_haste_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_haste",
+    "size": 80
+   }
+  },
+  {
+   "id": "aelith_haste_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_haste",
+    "size": 96
+   }
+  },
+  {
+   "id": "aelith_haste_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_haste",
+    "size": 128
+   }
+  },
+  {
+   "id": "aelith_haste_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_haste",
+    "size": 160
+   }
+  },
+  {
+   "id": "aelith_haste_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_haste",
+    "size": 192
+   }
+  },
+  {
+   "id": "aelith_slow_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_slow",
+    "size": 48
+   }
+  },
+  {
+   "id": "aelith_slow_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_slow",
+    "size": 64
+   }
+  },
+  {
+   "id": "aelith_slow_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_slow",
+    "size": 96
+   }
+  },
+  {
+   "id": "aelith_slow_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_slow",
+    "size": 128
+   }
+  },
+  {
+   "id": "aelith_slow_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_slow",
+    "size": 160
+   }
+  },
+  {
+   "id": "aelith_slow_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "aelith_slow",
+    "size": 192
+   }
+  },
+  {
+   "id": "aelith_slow_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_slow",
+    "size": 48
+   }
+  },
+  {
+   "id": "aelith_slow_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_slow",
+    "size": 64
+   }
+  },
+  {
+   "id": "aelith_slow_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_slow",
+    "size": 80
+   }
+  },
+  {
+   "id": "aelith_slow_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_slow",
+    "size": 96
+   }
+  },
+  {
+   "id": "aelith_slow_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_slow",
+    "size": 128
+   }
+  },
+  {
+   "id": "aelith_slow_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_slow",
+    "size": 160
+   }
+  },
+  {
+   "id": "aelith_slow_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "aelith_slow",
+    "size": 192
+   }
+  },
+  {
+   "id": "alchemy_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "alchemy",
+    "size": 48
+   }
+  },
+  {
+   "id": "alchemy_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "alchemy",
+    "size": 64
+   }
+  },
+  {
+   "id": "alchemy_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "alchemy",
+    "size": 80
+   }
+  },
+  {
+   "id": "alchemy_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "alchemy",
+    "size": 96
+   }
+  },
+  {
+   "id": "alchemy_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "alchemy",
+    "size": 128
+   }
+  },
+  {
+   "id": "alchemy_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "alchemy",
+    "size": 160
+   }
+  },
+  {
+   "id": "alchemy_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "alchemy",
+    "size": 192
+   }
+  },
+  {
+   "id": "alchemy_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "alchemy",
+    "size": 48
+   }
+  },
+  {
+   "id": "alchemy_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "alchemy",
+    "size": 64
+   }
+  },
+  {
+   "id": "alchemy_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "alchemy",
+    "size": 80
+   }
+  },
+  {
+   "id": "alchemy_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "alchemy",
+    "size": 96
+   }
+  },
+  {
+   "id": "alchemy_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "alchemy",
+    "size": 128
+   }
+  },
+  {
+   "id": "alchemy_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "alchemy",
+    "size": 160
+   }
+  },
+  {
+   "id": "alchemy_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "alchemy",
+    "size": 192
+   }
+  },
+  {
+   "id": "baltra_clapper_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "baltra_clapper",
+    "size": 48
+   }
+  },
+  {
+   "id": "baltra_clapper_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "baltra_clapper",
+    "size": 64
+   }
+  },
+  {
+   "id": "baltra_clapper_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "baltra_clapper",
+    "size": 80
+   }
+  },
+  {
+   "id": "baltra_clapper_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "baltra_clapper",
+    "size": 96
+   }
+  },
+  {
+   "id": "baltra_clapper_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "baltra_clapper",
+    "size": 128
+   }
+  },
+  {
+   "id": "baltra_clapper_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "baltra_clapper",
+    "size": 160
+   }
+  },
+  {
+   "id": "baltra_clapper_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "baltra_clapper",
+    "size": 192
+   }
+  },
+  {
+   "id": "baltra_clapper_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "baltra_clapper",
+    "size": 48
+   }
+  },
+  {
+   "id": "baltra_clapper_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "baltra_clapper",
+    "size": 64
+   }
+  },
+  {
+   "id": "baltra_clapper_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "baltra_clapper",
+    "size": 80
+   }
+  },
+  {
+   "id": "baltra_clapper_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "baltra_clapper",
+    "size": 96
+   }
+  },
+  {
+   "id": "baltra_clapper_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "baltra_clapper",
+    "size": 128
+   }
+  },
+  {
+   "id": "baltra_clapper_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "baltra_clapper",
+    "size": 160
+   }
+  },
+  {
+   "id": "baltra_clapper_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "baltra_clapper",
+    "size": 192
+   }
+  },
+  {
+   "id": "baltra_guard_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "baltra_guard",
+    "size": 48
+   }
+  },
+  {
+   "id": "baltra_guard_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "baltra_guard",
+    "size": 64
+   }
+  },
+  {
+   "id": "baltra_guard_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "baltra_guard",
+    "size": 80
+   }
+  },
+  {
+   "id": "baltra_guard_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "baltra_guard",
+    "size": 96
+   }
+  },
+  {
+   "id": "baltra_guard_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "baltra_guard",
+    "size": 128
+   }
+  },
+  {
+   "id": "baltra_guard_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "baltra_guard",
+    "size": 160
+   }
+  },
+  {
+   "id": "baltra_guard_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "baltra_guard",
+    "size": 192
+   }
+  },
+  {
+   "id": "baltra_guard_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "baltra_guard",
+    "size": 48
+   }
+  },
+  {
+   "id": "baltra_guard_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "baltra_guard",
+    "size": 64
+   }
+  },
+  {
+   "id": "baltra_guard_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "baltra_guard",
+    "size": 80
+   }
+  },
+  {
+   "id": "baltra_guard_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "baltra_guard",
+    "size": 96
+   }
+  },
+  {
+   "id": "baltra_guard_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "baltra_guard",
+    "size": 128
+   }
+  },
+  {
+   "id": "baltra_guard_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "baltra_guard",
+    "size": 160
+   }
+  },
+  {
+   "id": "baltra_guard_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "baltra_guard",
+    "size": 192
+   }
+  },
+  {
+   "id": "baltra_wave_nova32",
+   "sfa": {
+    "art": "nova",
+    "theme": "baltra_wave",
+    "size": 32
+   }
+  },
+  {
+   "id": "baltra_wave_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "baltra_wave",
+    "size": 48
+   }
+  },
+  {
+   "id": "baltra_wave_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "baltra_wave",
+    "size": 64
+   }
+  },
+  {
+   "id": "baltra_wave_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "baltra_wave",
+    "size": 80
+   }
+  },
+  {
+   "id": "baltra_wave_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "baltra_wave",
+    "size": 96
+   }
+  },
+  {
+   "id": "baltra_wave_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "baltra_wave",
+    "size": 128
+   }
+  },
+  {
+   "id": "baltra_wave_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "baltra_wave",
+    "size": 160
+   }
+  },
+  {
+   "id": "baltra_wave_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "baltra_wave",
+    "size": 192
+   }
+  },
+  {
+   "id": "baltra_wave_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "baltra_wave",
+    "size": 48
+   }
+  },
+  {
+   "id": "baltra_wave_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "baltra_wave",
+    "size": 64
+   }
+  },
+  {
+   "id": "baltra_wave_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "baltra_wave",
+    "size": 80
+   }
+  },
+  {
+   "id": "baltra_wave_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "baltra_wave",
+    "size": 96
+   }
+  },
+  {
+   "id": "baltra_wave_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "baltra_wave",
+    "size": 128
+   }
+  },
+  {
+   "id": "baltra_wave_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "baltra_wave",
+    "size": 160
+   }
+  },
+  {
+   "id": "baltra_wave_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "baltra_wave",
+    "size": 192
+   }
+  },
+  {
+   "id": "bell_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "bell",
+    "size": 48
+   }
+  },
+  {
+   "id": "bell_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "bell",
+    "size": 64
+   }
+  },
+  {
+   "id": "bell_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "bell",
+    "size": 80
+   }
+  },
+  {
+   "id": "bell_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "bell",
+    "size": 96
+   }
+  },
+  {
+   "id": "bell_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "bell",
+    "size": 128
+   }
+  },
+  {
+   "id": "bell_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "bell",
+    "size": 160
+   }
+  },
+  {
+   "id": "bell_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "bell",
+    "size": 192
+   }
+  },
+  {
+   "id": "bell_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "bell",
+    "size": 48
+   }
+  },
+  {
+   "id": "bell_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "bell",
+    "size": 64
+   }
+  },
+  {
+   "id": "bell_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "bell",
+    "size": 80
+   }
+  },
+  {
+   "id": "bell_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "bell",
+    "size": 96
+   }
+  },
+  {
+   "id": "bell_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "bell",
+    "size": 128
+   }
+  },
+  {
+   "id": "bell_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "bell",
+    "size": 160
+   }
+  },
+  {
+   "id": "bell_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "bell",
+    "size": 192
+   }
+  },
+  {
+   "id": "blood_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "blood",
+    "size": 48
+   }
+  },
+  {
+   "id": "blood_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "blood",
+    "size": 64
+   }
+  },
+  {
+   "id": "blood_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "blood",
+    "size": 80
+   }
+  },
+  {
+   "id": "blood_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "blood",
+    "size": 96
+   }
+  },
+  {
+   "id": "blood_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "blood",
+    "size": 128
+   }
+  },
+  {
+   "id": "blood_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "blood",
+    "size": 160
+   }
+  },
+  {
+   "id": "blood_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "blood",
+    "size": 192
+   }
+  },
+  {
+   "id": "blood_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "blood",
+    "size": 48
+   }
+  },
+  {
+   "id": "blood_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "blood",
+    "size": 64
+   }
+  },
+  {
+   "id": "blood_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "blood",
+    "size": 80
+   }
+  },
+  {
+   "id": "blood_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "blood",
+    "size": 96
+   }
+  },
+  {
+   "id": "blood_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "blood",
+    "size": 128
+   }
+  },
+  {
+   "id": "blood_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "blood",
+    "size": 160
+   }
+  },
+  {
+   "id": "blood_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "blood",
+    "size": 192
+   }
+  },
+  {
+   "id": "brakk_build_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "brakk_build",
+    "size": 64
+   }
+  },
+  {
+   "id": "brakk_build_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "brakk_build",
+    "size": 96
+   }
+  },
+  {
+   "id": "brakk_build_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "brakk_build",
+    "size": 128
+   }
+  },
+  {
+   "id": "brakk_build_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "brakk_build",
+    "size": 160
+   }
+  },
+  {
+   "id": "brakk_build_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "brakk_build",
+    "size": 192
+   }
+  },
+  {
+   "id": "brakk_build_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_build",
+    "size": 48
+   }
+  },
+  {
+   "id": "brakk_build_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_build",
+    "size": 64
+   }
+  },
+  {
+   "id": "brakk_build_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_build",
+    "size": 80
+   }
+  },
+  {
+   "id": "brakk_build_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_build",
+    "size": 96
+   }
+  },
+  {
+   "id": "brakk_build_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_build",
+    "size": 128
+   }
+  },
+  {
+   "id": "brakk_build_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_build",
+    "size": 160
+   }
+  },
+  {
+   "id": "brakk_build_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_build",
+    "size": 192
+   }
+  },
+  {
+   "id": "brakk_deploy_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "brakk_deploy",
+    "size": 64
+   }
+  },
+  {
+   "id": "brakk_deploy_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "brakk_deploy",
+    "size": 96
+   }
+  },
+  {
+   "id": "brakk_deploy_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "brakk_deploy",
+    "size": 128
+   }
+  },
+  {
+   "id": "brakk_deploy_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "brakk_deploy",
+    "size": 160
+   }
+  },
+  {
+   "id": "brakk_deploy_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "brakk_deploy",
+    "size": 192
+   }
+  },
+  {
+   "id": "brakk_deploy_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_deploy",
+    "size": 48
+   }
+  },
+  {
+   "id": "brakk_deploy_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_deploy",
+    "size": 64
+   }
+  },
+  {
+   "id": "brakk_deploy_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_deploy",
+    "size": 80
+   }
+  },
+  {
+   "id": "brakk_deploy_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_deploy",
+    "size": 96
+   }
+  },
+  {
+   "id": "brakk_deploy_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_deploy",
+    "size": 128
+   }
+  },
+  {
+   "id": "brakk_deploy_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_deploy",
+    "size": 160
+   }
+  },
+  {
+   "id": "brakk_deploy_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_deploy",
+    "size": 192
+   }
+  },
+  {
+   "id": "brakk_nails_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "brakk_nails",
+    "size": 64
+   }
+  },
+  {
+   "id": "brakk_nails_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "brakk_nails",
+    "size": 96
+   }
+  },
+  {
+   "id": "brakk_nails_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "brakk_nails",
+    "size": 128
+   }
+  },
+  {
+   "id": "brakk_nails_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "brakk_nails",
+    "size": 160
+   }
+  },
+  {
+   "id": "brakk_nails_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "brakk_nails",
+    "size": 192
+   }
+  },
+  {
+   "id": "brakk_nails_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_nails",
+    "size": 48
+   }
+  },
+  {
+   "id": "brakk_nails_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_nails",
+    "size": 64
+   }
+  },
+  {
+   "id": "brakk_nails_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_nails",
+    "size": 80
+   }
+  },
+  {
+   "id": "brakk_nails_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_nails",
+    "size": 96
+   }
+  },
+  {
+   "id": "brakk_nails_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_nails",
+    "size": 128
+   }
+  },
+  {
+   "id": "brakk_nails_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_nails",
+    "size": 160
+   }
+  },
+  {
+   "id": "brakk_nails_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_nails",
+    "size": 192
+   }
+  },
+  {
+   "id": "brakk_repair_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "brakk_repair",
+    "size": 64
+   }
+  },
+  {
+   "id": "brakk_repair_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "brakk_repair",
+    "size": 96
+   }
+  },
+  {
+   "id": "brakk_repair_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "brakk_repair",
+    "size": 128
+   }
+  },
+  {
+   "id": "brakk_repair_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "brakk_repair",
+    "size": 160
+   }
+  },
+  {
+   "id": "brakk_repair_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "brakk_repair",
+    "size": 192
+   }
+  },
+  {
+   "id": "brakk_repair_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_repair",
+    "size": 48
+   }
+  },
+  {
+   "id": "brakk_repair_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_repair",
+    "size": 64
+   }
+  },
+  {
+   "id": "brakk_repair_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_repair",
+    "size": 80
+   }
+  },
+  {
+   "id": "brakk_repair_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_repair",
+    "size": 96
+   }
+  },
+  {
+   "id": "brakk_repair_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_repair",
+    "size": 128
+   }
+  },
+  {
+   "id": "brakk_repair_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_repair",
+    "size": 160
+   }
+  },
+  {
+   "id": "brakk_repair_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "brakk_repair",
+    "size": 192
+   }
+  },
+  {
+   "id": "brasa_dismantle_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_dismantle",
+    "size": 48
+   }
+  },
+  {
+   "id": "brasa_dismantle_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_dismantle",
+    "size": 64
+   }
+  },
+  {
+   "id": "brasa_dismantle_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_dismantle",
+    "size": 80
+   }
+  },
+  {
+   "id": "brasa_dismantle_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_dismantle",
+    "size": 96
+   }
+  },
+  {
+   "id": "brasa_dismantle_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_dismantle",
+    "size": 128
+   }
+  },
+  {
+   "id": "brasa_dismantle_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_dismantle",
+    "size": 160
+   }
+  },
+  {
+   "id": "brasa_dismantle_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_dismantle",
+    "size": 192
+   }
+  },
+  {
+   "id": "brasa_dismantle_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_dismantle",
+    "size": 48
+   }
+  },
+  {
+   "id": "brasa_dismantle_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_dismantle",
+    "size": 64
+   }
+  },
+  {
+   "id": "brasa_dismantle_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_dismantle",
+    "size": 80
+   }
+  },
+  {
+   "id": "brasa_dismantle_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_dismantle",
+    "size": 96
+   }
+  },
+  {
+   "id": "brasa_dismantle_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_dismantle",
+    "size": 128
+   }
+  },
+  {
+   "id": "brasa_dismantle_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_dismantle",
+    "size": 160
+   }
+  },
+  {
+   "id": "brasa_dismantle_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_dismantle",
+    "size": 192
+   }
+  },
+  {
+   "id": "brasa_mount_nova32",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_mount",
+    "size": 32
+   }
+  },
+  {
+   "id": "brasa_mount_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_mount",
+    "size": 48
+   }
+  },
+  {
+   "id": "brasa_mount_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_mount",
+    "size": 64
+   }
+  },
+  {
+   "id": "brasa_mount_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_mount",
+    "size": 80
+   }
+  },
+  {
+   "id": "brasa_mount_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_mount",
+    "size": 96
+   }
+  },
+  {
+   "id": "brasa_mount_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_mount",
+    "size": 128
+   }
+  },
+  {
+   "id": "brasa_mount_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_mount",
+    "size": 160
+   }
+  },
+  {
+   "id": "brasa_mount_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_mount",
+    "size": 192
+   }
+  },
+  {
+   "id": "brasa_mount_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_mount",
+    "size": 48
+   }
+  },
+  {
+   "id": "brasa_mount_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_mount",
+    "size": 64
+   }
+  },
+  {
+   "id": "brasa_mount_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_mount",
+    "size": 80
+   }
+  },
+  {
+   "id": "brasa_mount_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_mount",
+    "size": 96
+   }
+  },
+  {
+   "id": "brasa_mount_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_mount",
+    "size": 128
+   }
+  },
+  {
+   "id": "brasa_mount_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_mount",
+    "size": 160
+   }
+  },
+  {
+   "id": "brasa_mount_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_mount",
+    "size": 192
+   }
+  },
+  {
+   "id": "brasa_purge_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_purge",
+    "size": 48
+   }
+  },
+  {
+   "id": "brasa_purge_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_purge",
+    "size": 64
+   }
+  },
+  {
+   "id": "brasa_purge_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_purge",
+    "size": 80
+   }
+  },
+  {
+   "id": "brasa_purge_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_purge",
+    "size": 96
+   }
+  },
+  {
+   "id": "brasa_purge_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_purge",
+    "size": 128
+   }
+  },
+  {
+   "id": "brasa_purge_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_purge",
+    "size": 160
+   }
+  },
+  {
+   "id": "brasa_purge_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_purge",
+    "size": 192
+   }
+  },
+  {
+   "id": "brasa_purge_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_purge",
+    "size": 48
+   }
+  },
+  {
+   "id": "brasa_purge_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_purge",
+    "size": 64
+   }
+  },
+  {
+   "id": "brasa_purge_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_purge",
+    "size": 80
+   }
+  },
+  {
+   "id": "brasa_purge_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_purge",
+    "size": 96
+   }
+  },
+  {
+   "id": "brasa_purge_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_purge",
+    "size": 128
+   }
+  },
+  {
+   "id": "brasa_purge_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_purge",
+    "size": 160
+   }
+  },
+  {
+   "id": "brasa_purge_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_purge",
+    "size": 192
+   }
+  },
+  {
+   "id": "brasa_vent_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_vent",
+    "size": 48
+   }
+  },
+  {
+   "id": "brasa_vent_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_vent",
+    "size": 64
+   }
+  },
+  {
+   "id": "brasa_vent_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_vent",
+    "size": 80
+   }
+  },
+  {
+   "id": "brasa_vent_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_vent",
+    "size": 96
+   }
+  },
+  {
+   "id": "brasa_vent_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_vent",
+    "size": 128
+   }
+  },
+  {
+   "id": "brasa_vent_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_vent",
+    "size": 160
+   }
+  },
+  {
+   "id": "brasa_vent_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "brasa_vent",
+    "size": 192
+   }
+  },
+  {
+   "id": "brasa_vent_zone32",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_vent",
+    "size": 32
+   }
+  },
+  {
+   "id": "brasa_vent_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_vent",
+    "size": 48
+   }
+  },
+  {
+   "id": "brasa_vent_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_vent",
+    "size": 64
+   }
+  },
+  {
+   "id": "brasa_vent_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_vent",
+    "size": 80
+   }
+  },
+  {
+   "id": "brasa_vent_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_vent",
+    "size": 96
+   }
+  },
+  {
+   "id": "brasa_vent_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_vent",
+    "size": 128
+   }
+  },
+  {
+   "id": "brasa_vent_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_vent",
+    "size": 160
+   }
+  },
+  {
+   "id": "brasa_vent_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "brasa_vent",
+    "size": 192
+   }
+  },
+  {
+   "id": "chain_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "chain",
+    "size": 48
+   }
+  },
+  {
+   "id": "chain_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "chain",
+    "size": 64
+   }
+  },
+  {
+   "id": "chain_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "chain",
+    "size": 80
+   }
+  },
+  {
+   "id": "chain_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "chain",
+    "size": 96
+   }
+  },
+  {
+   "id": "chain_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "chain",
+    "size": 128
+   }
+  },
+  {
+   "id": "chain_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "chain",
+    "size": 160
+   }
+  },
+  {
+   "id": "chain_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "chain",
+    "size": 192
+   }
+  },
+  {
+   "id": "chain_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "chain",
+    "size": 48
+   }
+  },
+  {
+   "id": "chain_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "chain",
+    "size": 64
+   }
+  },
+  {
+   "id": "chain_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "chain",
+    "size": 80
+   }
+  },
+  {
+   "id": "chain_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "chain",
+    "size": 96
+   }
+  },
+  {
+   "id": "chain_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "chain",
+    "size": 128
+   }
+  },
+  {
+   "id": "chain_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "chain",
+    "size": 160
+   }
+  },
+  {
+   "id": "chain_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "chain",
+    "size": 192
+   }
+  },
+  {
+   "id": "crystal_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "crystal",
+    "size": 48
+   }
+  },
+  {
+   "id": "crystal_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "crystal",
+    "size": 64
+   }
+  },
+  {
+   "id": "crystal_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "crystal",
+    "size": 80
+   }
+  },
+  {
+   "id": "crystal_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "crystal",
+    "size": 96
+   }
+  },
+  {
+   "id": "crystal_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "crystal",
+    "size": 128
+   }
+  },
+  {
+   "id": "crystal_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "crystal",
+    "size": 160
+   }
+  },
+  {
+   "id": "crystal_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "crystal",
+    "size": 192
+   }
+  },
+  {
+   "id": "crystal_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "crystal",
+    "size": 48
+   }
+  },
+  {
+   "id": "crystal_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "crystal",
+    "size": 64
+   }
+  },
+  {
+   "id": "crystal_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "crystal",
+    "size": 80
+   }
+  },
+  {
+   "id": "crystal_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "crystal",
+    "size": 96
+   }
+  },
+  {
+   "id": "crystal_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "crystal",
+    "size": 128
+   }
+  },
+  {
+   "id": "crystal_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "crystal",
+    "size": 160
+   }
+  },
+  {
+   "id": "crystal_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "crystal",
+    "size": 192
+   }
+  },
+  {
+   "id": "dariel_discord_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "dariel_discord",
+    "size": 48
+   }
+  },
+  {
+   "id": "dariel_discord_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "dariel_discord",
+    "size": 64
+   }
+  },
+  {
+   "id": "dariel_discord_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "dariel_discord",
+    "size": 80
+   }
+  },
+  {
+   "id": "dariel_discord_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "dariel_discord",
+    "size": 96
+   }
+  },
+  {
+   "id": "dariel_discord_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "dariel_discord",
+    "size": 128
+   }
+  },
+  {
+   "id": "dariel_discord_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "dariel_discord",
+    "size": 160
+   }
+  },
+  {
+   "id": "dariel_discord_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "dariel_discord",
+    "size": 192
+   }
+  },
+  {
+   "id": "dariel_discord_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "dariel_discord",
+    "size": 48
+   }
+  },
+  {
+   "id": "dariel_discord_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "dariel_discord",
+    "size": 64
+   }
+  },
+  {
+   "id": "dariel_discord_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "dariel_discord",
+    "size": 80
+   }
+  },
+  {
+   "id": "dariel_discord_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "dariel_discord",
+    "size": 96
+   }
+  },
+  {
+   "id": "dariel_discord_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "dariel_discord",
+    "size": 128
+   }
+  },
+  {
+   "id": "dariel_discord_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "dariel_discord",
+    "size": 160
+   }
+  },
+  {
+   "id": "dariel_discord_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "dariel_discord",
+    "size": 192
+   }
+  },
+  {
+   "id": "dariel_march_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "dariel_march",
+    "size": 48
+   }
+  },
+  {
+   "id": "dariel_march_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "dariel_march",
+    "size": 64
+   }
+  },
+  {
+   "id": "dariel_march_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "dariel_march",
+    "size": 80
+   }
+  },
+  {
+   "id": "dariel_march_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "dariel_march",
+    "size": 96
+   }
+  },
+  {
+   "id": "dariel_march_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "dariel_march",
+    "size": 128
+   }
+  },
+  {
+   "id": "dariel_march_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "dariel_march",
+    "size": 192
+   }
+  },
+  {
+   "id": "dariel_march_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "dariel_march",
+    "size": 48
+   }
+  },
+  {
+   "id": "dariel_march_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "dariel_march",
+    "size": 64
+   }
+  },
+  {
+   "id": "dariel_march_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "dariel_march",
+    "size": 80
+   }
+  },
+  {
+   "id": "dariel_march_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "dariel_march",
+    "size": 96
+   }
+  },
+  {
+   "id": "dariel_march_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "dariel_march",
+    "size": 128
+   }
+  },
+  {
+   "id": "dariel_march_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "dariel_march",
+    "size": 160
+   }
+  },
+  {
+   "id": "dariel_march_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "dariel_march",
+    "size": 192
+   }
+  },
+  {
+   "id": "dariel_refrain_nova32",
+   "sfa": {
+    "art": "nova",
+    "theme": "dariel_refrain",
+    "size": 32
+   }
+  },
+  {
+   "id": "dariel_refrain_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "dariel_refrain",
+    "size": 48
+   }
+  },
+  {
+   "id": "dariel_refrain_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "dariel_refrain",
+    "size": 64
+   }
+  },
+  {
+   "id": "dariel_refrain_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "dariel_refrain",
+    "size": 80
+   }
+  },
+  {
+   "id": "dariel_refrain_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "dariel_refrain",
+    "size": 96
+   }
+  },
+  {
+   "id": "dariel_refrain_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "dariel_refrain",
+    "size": 128
+   }
+  },
+  {
+   "id": "dariel_refrain_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "dariel_refrain",
+    "size": 160
+   }
+  },
+  {
+   "id": "dariel_refrain_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "dariel_refrain",
+    "size": 192
+   }
+  },
+  {
+   "id": "dariel_refrain_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "dariel_refrain",
+    "size": 48
+   }
+  },
+  {
+   "id": "dariel_refrain_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "dariel_refrain",
+    "size": 64
+   }
+  },
+  {
+   "id": "dariel_refrain_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "dariel_refrain",
+    "size": 80
+   }
+  },
+  {
+   "id": "dariel_refrain_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "dariel_refrain",
+    "size": 96
+   }
+  },
+  {
+   "id": "dariel_refrain_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "dariel_refrain",
+    "size": 128
+   }
+  },
+  {
+   "id": "dariel_refrain_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "dariel_refrain",
+    "size": 160
+   }
+  },
+  {
+   "id": "dariel_refrain_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "dariel_refrain",
+    "size": 192
+   }
+  },
+  {
+   "id": "eslabon_hook_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "eslabon_hook",
+    "size": 48
+   }
+  },
+  {
+   "id": "eslabon_hook_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "eslabon_hook",
+    "size": 64
+   }
+  },
+  {
+   "id": "eslabon_hook_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "eslabon_hook",
+    "size": 80
+   }
+  },
+  {
+   "id": "eslabon_hook_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "eslabon_hook",
+    "size": 96
+   }
+  },
+  {
+   "id": "eslabon_hook_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "eslabon_hook",
+    "size": 128
+   }
+  },
+  {
+   "id": "eslabon_hook_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "eslabon_hook",
+    "size": 160
+   }
+  },
+  {
+   "id": "eslabon_hook_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "eslabon_hook",
+    "size": 192
+   }
+  },
+  {
+   "id": "eslabon_hook_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "eslabon_hook",
+    "size": 48
+   }
+  },
+  {
+   "id": "eslabon_hook_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "eslabon_hook",
+    "size": 64
+   }
+  },
+  {
+   "id": "eslabon_hook_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "eslabon_hook",
+    "size": 80
+   }
+  },
+  {
+   "id": "eslabon_hook_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "eslabon_hook",
+    "size": 96
+   }
+  },
+  {
+   "id": "eslabon_hook_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "eslabon_hook",
+    "size": 128
+   }
+  },
+  {
+   "id": "eslabon_hook_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "eslabon_hook",
+    "size": 160
+   }
+  },
+  {
+   "id": "eslabon_hook_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "eslabon_hook",
+    "size": 192
+   }
+  },
+  {
+   "id": "eslabon_line_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "eslabon_line",
+    "size": 48
+   }
+  },
+  {
+   "id": "eslabon_line_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "eslabon_line",
+    "size": 64
+   }
+  },
+  {
+   "id": "eslabon_line_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "eslabon_line",
+    "size": 80
+   }
+  },
+  {
+   "id": "eslabon_line_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "eslabon_line",
+    "size": 96
+   }
+  },
+  {
+   "id": "eslabon_line_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "eslabon_line",
+    "size": 128
+   }
+  },
+  {
+   "id": "eslabon_line_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "eslabon_line",
+    "size": 160
+   }
+  },
+  {
+   "id": "eslabon_line_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "eslabon_line",
+    "size": 192
+   }
+  },
+  {
+   "id": "eslabon_line_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "eslabon_line",
+    "size": 48
+   }
+  },
+  {
+   "id": "eslabon_line_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "eslabon_line",
+    "size": 64
+   }
+  },
+  {
+   "id": "eslabon_line_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "eslabon_line",
+    "size": 80
+   }
+  },
+  {
+   "id": "eslabon_line_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "eslabon_line",
+    "size": 96
+   }
+  },
+  {
+   "id": "eslabon_line_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "eslabon_line",
+    "size": 128
+   }
+  },
+  {
+   "id": "eslabon_line_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "eslabon_line",
+    "size": 160
+   }
+  },
+  {
+   "id": "eslabon_line_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "eslabon_line",
+    "size": 192
+   }
+  },
+  {
+   "id": "eslabon_ward_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "eslabon_ward",
+    "size": 48
+   }
+  },
+  {
+   "id": "eslabon_ward_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "eslabon_ward",
+    "size": 64
+   }
+  },
+  {
+   "id": "eslabon_ward_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "eslabon_ward",
+    "size": 80
+   }
+  },
+  {
+   "id": "eslabon_ward_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "eslabon_ward",
+    "size": 96
+   }
+  },
+  {
+   "id": "eslabon_ward_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "eslabon_ward",
+    "size": 128
+   }
+  },
+  {
+   "id": "eslabon_ward_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "eslabon_ward",
+    "size": 160
+   }
+  },
+  {
+   "id": "eslabon_ward_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "eslabon_ward",
+    "size": 192
+   }
+  },
+  {
+   "id": "eslabon_ward_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "eslabon_ward",
+    "size": 48
+   }
+  },
+  {
+   "id": "eslabon_ward_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "eslabon_ward",
+    "size": 64
+   }
+  },
+  {
+   "id": "eslabon_ward_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "eslabon_ward",
+    "size": 80
+   }
+  },
+  {
+   "id": "eslabon_ward_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "eslabon_ward",
+    "size": 96
+   }
+  },
+  {
+   "id": "eslabon_ward_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "eslabon_ward",
+    "size": 128
+   }
+  },
+  {
+   "id": "eslabon_ward_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "eslabon_ward",
+    "size": 160
+   }
+  },
+  {
+   "id": "eslabon_ward_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "eslabon_ward",
+    "size": 192
+   }
+  },
+  {
+   "id": "facu_current_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_current",
+    "size": 48
+   }
+  },
+  {
+   "id": "facu_current_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_current",
+    "size": 64
+   }
+  },
+  {
+   "id": "facu_current_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_current",
+    "size": 80
+   }
+  },
+  {
+   "id": "facu_current_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_current",
+    "size": 96
+   }
+  },
+  {
+   "id": "facu_current_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_current",
+    "size": 128
+   }
+  },
+  {
+   "id": "facu_current_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_current",
+    "size": 160
+   }
+  },
+  {
+   "id": "facu_current_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_current",
+    "size": 192
+   }
+  },
+  {
+   "id": "facu_current_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_current",
+    "size": 48
+   }
+  },
+  {
+   "id": "facu_current_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_current",
+    "size": 64
+   }
+  },
+  {
+   "id": "facu_current_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_current",
+    "size": 80
+   }
+  },
+  {
+   "id": "facu_current_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_current",
+    "size": 96
+   }
+  },
+  {
+   "id": "facu_current_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_current",
+    "size": 128
+   }
+  },
+  {
+   "id": "facu_current_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_current",
+    "size": 160
+   }
+  },
+  {
+   "id": "facu_current_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_current",
+    "size": 192
+   }
+  },
+  {
+   "id": "facu_pressure_nova32",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_pressure",
+    "size": 32
+   }
+  },
+  {
+   "id": "facu_pressure_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_pressure",
+    "size": 48
+   }
+  },
+  {
+   "id": "facu_pressure_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_pressure",
+    "size": 64
+   }
+  },
+  {
+   "id": "facu_pressure_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_pressure",
+    "size": 80
+   }
+  },
+  {
+   "id": "facu_pressure_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_pressure",
+    "size": 96
+   }
+  },
+  {
+   "id": "facu_pressure_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_pressure",
+    "size": 48
+   }
+  },
+  {
+   "id": "facu_pressure_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_pressure",
+    "size": 64
+   }
+  },
+  {
+   "id": "facu_pressure_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_pressure",
+    "size": 80
+   }
+  },
+  {
+   "id": "facu_pressure_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_pressure",
+    "size": 96
+   }
+  },
+  {
+   "id": "facu_pressure_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_pressure",
+    "size": 128
+   }
+  },
+  {
+   "id": "facu_pressure_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_pressure",
+    "size": 160
+   }
+  },
+  {
+   "id": "facu_pressure_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_pressure",
+    "size": 192
+   }
+  },
+  {
+   "id": "facu_ride_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_ride",
+    "size": 48
+   }
+  },
+  {
+   "id": "facu_ride_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_ride",
+    "size": 64
+   }
+  },
+  {
+   "id": "facu_ride_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_ride",
+    "size": 80
+   }
+  },
+  {
+   "id": "facu_ride_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_ride",
+    "size": 96
+   }
+  },
+  {
+   "id": "facu_ride_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_ride",
+    "size": 128
+   }
+  },
+  {
+   "id": "facu_ride_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_ride",
+    "size": 160
+   }
+  },
+  {
+   "id": "facu_ride_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "facu_ride",
+    "size": 192
+   }
+  },
+  {
+   "id": "facu_ride_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_ride",
+    "size": 48
+   }
+  },
+  {
+   "id": "facu_ride_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_ride",
+    "size": 64
+   }
+  },
+  {
+   "id": "facu_ride_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_ride",
+    "size": 80
+   }
+  },
+  {
+   "id": "facu_ride_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_ride",
+    "size": 96
+   }
+  },
+  {
+   "id": "facu_ride_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_ride",
+    "size": 128
+   }
+  },
+  {
+   "id": "facu_ride_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_ride",
+    "size": 160
+   }
+  },
+  {
+   "id": "facu_ride_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "facu_ride",
+    "size": 192
+   }
+  },
+  {
+   "id": "farolero_flash_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_flash",
+    "size": 48
+   }
+  },
+  {
+   "id": "farolero_flash_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_flash",
+    "size": 64
+   }
+  },
+  {
+   "id": "farolero_flash_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_flash",
+    "size": 80
+   }
+  },
+  {
+   "id": "farolero_flash_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_flash",
+    "size": 96
+   }
+  },
+  {
+   "id": "farolero_flash_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_flash",
+    "size": 128
+   }
+  },
+  {
+   "id": "farolero_flash_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_flash",
+    "size": 160
+   }
+  },
+  {
+   "id": "farolero_flash_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_flash",
+    "size": 192
+   }
+  },
+  {
+   "id": "farolero_flash_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_flash",
+    "size": 48
+   }
+  },
+  {
+   "id": "farolero_flash_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_flash",
+    "size": 64
+   }
+  },
+  {
+   "id": "farolero_flash_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_flash",
+    "size": 80
+   }
+  },
+  {
+   "id": "farolero_flash_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_flash",
+    "size": 96
+   }
+  },
+  {
+   "id": "farolero_flash_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_flash",
+    "size": 128
+   }
+  },
+  {
+   "id": "farolero_flash_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_flash",
+    "size": 160
+   }
+  },
+  {
+   "id": "farolero_flash_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_flash",
+    "size": 192
+   }
+  },
+  {
+   "id": "farolero_kindling_nova32",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_kindling",
+    "size": 32
+   }
+  },
+  {
+   "id": "farolero_kindling_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_kindling",
+    "size": 48
+   }
+  },
+  {
+   "id": "farolero_kindling_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_kindling",
+    "size": 64
+   }
+  },
+  {
+   "id": "farolero_kindling_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_kindling",
+    "size": 80
+   }
+  },
+  {
+   "id": "farolero_kindling_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_kindling",
+    "size": 96
+   }
+  },
+  {
+   "id": "farolero_kindling_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_kindling",
+    "size": 48
+   }
+  },
+  {
+   "id": "farolero_kindling_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_kindling",
+    "size": 64
+   }
+  },
+  {
+   "id": "farolero_kindling_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_kindling",
+    "size": 80
+   }
+  },
+  {
+   "id": "farolero_kindling_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_kindling",
+    "size": 96
+   }
+  },
+  {
+   "id": "farolero_kindling_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_kindling",
+    "size": 128
+   }
+  },
+  {
+   "id": "farolero_kindling_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_kindling",
+    "size": 160
+   }
+  },
+  {
+   "id": "farolero_kindling_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_kindling",
+    "size": 192
+   }
+  },
+  {
+   "id": "farolero_path_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_path",
+    "size": 48
+   }
+  },
+  {
+   "id": "farolero_path_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_path",
+    "size": 64
+   }
+  },
+  {
+   "id": "farolero_path_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_path",
+    "size": 80
+   }
+  },
+  {
+   "id": "farolero_path_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_path",
+    "size": 96
+   }
+  },
+  {
+   "id": "farolero_path_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_path",
+    "size": 128
+   }
+  },
+  {
+   "id": "farolero_path_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_path",
+    "size": 160
+   }
+  },
+  {
+   "id": "farolero_path_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "farolero_path",
+    "size": 192
+   }
+  },
+  {
+   "id": "farolero_path_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_path",
+    "size": 48
+   }
+  },
+  {
+   "id": "farolero_path_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_path",
+    "size": 64
+   }
+  },
+  {
+   "id": "farolero_path_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_path",
+    "size": 80
+   }
+  },
+  {
+   "id": "farolero_path_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_path",
+    "size": 96
+   }
+  },
+  {
+   "id": "farolero_path_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_path",
+    "size": 128
+   }
+  },
+  {
+   "id": "farolero_path_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_path",
+    "size": 160
+   }
+  },
+  {
+   "id": "farolero_path_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "farolero_path",
+    "size": 192
+   }
+  },
+  {
+   "id": "fire_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "fire",
+    "size": 48
+   }
+  },
+  {
+   "id": "fire_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "fire",
+    "size": 64
+   }
+  },
+  {
+   "id": "fire_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "fire",
+    "size": 80
+   }
+  },
+  {
+   "id": "fire_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "fire",
+    "size": 96
+   }
+  },
+  {
+   "id": "fire_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "fire",
+    "size": 128
+   }
+  },
+  {
+   "id": "fire_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "fire",
+    "size": 160
+   }
+  },
+  {
+   "id": "fire_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "fire",
+    "size": 192
+   }
+  },
+  {
+   "id": "fire_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "fire",
+    "size": 48
+   }
+  },
+  {
+   "id": "fire_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "fire",
+    "size": 64
+   }
+  },
+  {
+   "id": "fire_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "fire",
+    "size": 80
+   }
+  },
+  {
+   "id": "fire_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "fire",
+    "size": 96
+   }
+  },
+  {
+   "id": "fire_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "fire",
+    "size": 128
+   }
+  },
+  {
+   "id": "fire_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "fire",
+    "size": 160
+   }
+  },
+  {
+   "id": "fire_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "fire",
+    "size": 192
+   }
+  },
+  {
+   "id": "frost_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "frost",
+    "size": 48
+   }
+  },
+  {
+   "id": "frost_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "frost",
+    "size": 64
+   }
+  },
+  {
+   "id": "frost_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "frost",
+    "size": 80
+   }
+  },
+  {
+   "id": "frost_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "frost",
+    "size": 96
+   }
+  },
+  {
+   "id": "frost_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "frost",
+    "size": 128
+   }
+  },
+  {
+   "id": "frost_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "frost",
+    "size": 160
+   }
+  },
+  {
+   "id": "frost_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "frost",
+    "size": 192
+   }
+  },
+  {
+   "id": "frost_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "frost",
+    "size": 48
+   }
+  },
+  {
+   "id": "frost_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "frost",
+    "size": 64
+   }
+  },
+  {
+   "id": "frost_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "frost",
+    "size": 80
+   }
+  },
+  {
+   "id": "frost_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "frost",
+    "size": 96
+   }
+  },
+  {
+   "id": "frost_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "frost",
+    "size": 128
+   }
+  },
+  {
+   "id": "frost_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "frost",
+    "size": 160
+   }
+  },
+  {
+   "id": "frost_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "frost",
+    "size": 192
+   }
+  },
+  {
+   "id": "glitch_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "glitch",
+    "size": 48
+   }
+  },
+  {
+   "id": "glitch_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "glitch",
+    "size": 64
+   }
+  },
+  {
+   "id": "glitch_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "glitch",
+    "size": 80
+   }
+  },
+  {
+   "id": "glitch_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "glitch",
+    "size": 96
+   }
+  },
+  {
+   "id": "glitch_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "glitch",
+    "size": 128
+   }
+  },
+  {
+   "id": "glitch_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "glitch",
+    "size": 160
+   }
+  },
+  {
+   "id": "glitch_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "glitch",
+    "size": 192
+   }
+  },
+  {
+   "id": "glitch_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "glitch",
+    "size": 48
+   }
+  },
+  {
+   "id": "glitch_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "glitch",
+    "size": 64
+   }
+  },
+  {
+   "id": "glitch_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "glitch",
+    "size": 80
+   }
+  },
+  {
+   "id": "glitch_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "glitch",
+    "size": 96
+   }
+  },
+  {
+   "id": "glitch_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "glitch",
+    "size": 128
+   }
+  },
+  {
+   "id": "glitch_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "glitch",
+    "size": 160
+   }
+  },
+  {
+   "id": "glitch_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "glitch",
+    "size": 192
+   }
+  },
+  {
+   "id": "hunt_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "hunt",
+    "size": 48
+   }
+  },
+  {
+   "id": "hunt_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "hunt",
+    "size": 64
+   }
+  },
+  {
+   "id": "hunt_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "hunt",
+    "size": 80
+   }
+  },
+  {
+   "id": "hunt_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "hunt",
+    "size": 96
+   }
+  },
+  {
+   "id": "hunt_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "hunt",
+    "size": 128
+   }
+  },
+  {
+   "id": "hunt_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "hunt",
+    "size": 160
+   }
+  },
+  {
+   "id": "hunt_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "hunt",
+    "size": 192
+   }
+  },
+  {
+   "id": "hunt_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "hunt",
+    "size": 48
+   }
+  },
+  {
+   "id": "hunt_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "hunt",
+    "size": 64
+   }
+  },
+  {
+   "id": "hunt_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "hunt",
+    "size": 80
+   }
+  },
+  {
+   "id": "hunt_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "hunt",
+    "size": 96
+   }
+  },
+  {
+   "id": "hunt_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "hunt",
+    "size": 128
+   }
+  },
+  {
+   "id": "hunt_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "hunt",
+    "size": 160
+   }
+  },
+  {
+   "id": "hunt_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "hunt",
+    "size": 192
+   }
+  },
+  {
+   "id": "ink_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "ink",
+    "size": 48
+   }
+  },
+  {
+   "id": "ink_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "ink",
+    "size": 64
+   }
+  },
+  {
+   "id": "ink_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "ink",
+    "size": 80
+   }
+  },
+  {
+   "id": "ink_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "ink",
+    "size": 96
+   }
+  },
+  {
+   "id": "ink_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "ink",
+    "size": 128
+   }
+  },
+  {
+   "id": "ink_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "ink",
+    "size": 160
+   }
+  },
+  {
+   "id": "ink_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "ink",
+    "size": 192
+   }
+  },
+  {
+   "id": "ink_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "ink",
+    "size": 48
+   }
+  },
+  {
+   "id": "ink_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "ink",
+    "size": 64
+   }
+  },
+  {
+   "id": "ink_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "ink",
+    "size": 80
+   }
+  },
+  {
+   "id": "ink_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "ink",
+    "size": 96
+   }
+  },
+  {
+   "id": "ink_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "ink",
+    "size": 128
+   }
+  },
+  {
+   "id": "ink_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "ink",
+    "size": 160
+   }
+  },
+  {
+   "id": "ink_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "ink",
+    "size": 192
+   }
+  },
+  {
+   "id": "lantern_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "lantern",
+    "size": 48
+   }
+  },
+  {
+   "id": "lantern_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "lantern",
+    "size": 64
+   }
+  },
+  {
+   "id": "lantern_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "lantern",
+    "size": 80
+   }
+  },
+  {
+   "id": "lantern_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "lantern",
+    "size": 96
+   }
+  },
+  {
+   "id": "lantern_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "lantern",
+    "size": 128
+   }
+  },
+  {
+   "id": "lantern_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "lantern",
+    "size": 160
+   }
+  },
+  {
+   "id": "lantern_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "lantern",
+    "size": 192
+   }
+  },
+  {
+   "id": "lantern_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "lantern",
+    "size": 48
+   }
+  },
+  {
+   "id": "lantern_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "lantern",
+    "size": 64
+   }
+  },
+  {
+   "id": "lantern_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "lantern",
+    "size": 80
+   }
+  },
+  {
+   "id": "lantern_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "lantern",
+    "size": 96
+   }
+  },
+  {
+   "id": "lantern_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "lantern",
+    "size": 128
+   }
+  },
+  {
+   "id": "lantern_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "lantern",
+    "size": 160
+   }
+  },
+  {
+   "id": "lantern_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "lantern",
+    "size": 192
+   }
+  },
+  {
+   "id": "libertador_bayonet_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "libertador_bayonet",
+    "size": 48
+   }
+  },
+  {
+   "id": "libertador_bayonet_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "libertador_bayonet",
+    "size": 64
+   }
+  },
+  {
+   "id": "libertador_bayonet_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "libertador_bayonet",
+    "size": 80
+   }
+  },
+  {
+   "id": "libertador_bayonet_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "libertador_bayonet",
+    "size": 96
+   }
+  },
+  {
+   "id": "libertador_bayonet_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "libertador_bayonet",
+    "size": 128
+   }
+  },
+  {
+   "id": "libertador_bayonet_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "libertador_bayonet",
+    "size": 160
+   }
+  },
+  {
+   "id": "libertador_bayonet_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "libertador_bayonet",
+    "size": 192
+   }
+  },
+  {
+   "id": "libertador_bayonet_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "libertador_bayonet",
+    "size": 48
+   }
+  },
+  {
+   "id": "libertador_bayonet_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "libertador_bayonet",
+    "size": 64
+   }
+  },
+  {
+   "id": "libertador_bayonet_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "libertador_bayonet",
+    "size": 80
+   }
+  },
+  {
+   "id": "libertador_bayonet_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "libertador_bayonet",
+    "size": 96
+   }
+  },
+  {
+   "id": "libertador_bayonet_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "libertador_bayonet",
+    "size": 128
+   }
+  },
+  {
+   "id": "libertador_bayonet_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "libertador_bayonet",
+    "size": 160
+   }
+  },
+  {
+   "id": "libertador_bayonet_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "libertador_bayonet",
+    "size": 192
+   }
+  },
+  {
+   "id": "libertador_charge_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "libertador_charge",
+    "size": 48
+   }
+  },
+  {
+   "id": "libertador_charge_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "libertador_charge",
+    "size": 64
+   }
+  },
+  {
+   "id": "libertador_charge_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "libertador_charge",
+    "size": 80
+   }
+  },
+  {
+   "id": "libertador_charge_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "libertador_charge",
+    "size": 96
+   }
+  },
+  {
+   "id": "libertador_charge_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "libertador_charge",
+    "size": 128
+   }
+  },
+  {
+   "id": "libertador_charge_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "libertador_charge",
+    "size": 160
+   }
+  },
+  {
+   "id": "libertador_charge_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "libertador_charge",
+    "size": 192
+   }
+  },
+  {
+   "id": "libertador_charge_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "libertador_charge",
+    "size": 48
+   }
+  },
+  {
+   "id": "libertador_charge_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "libertador_charge",
+    "size": 64
+   }
+  },
+  {
+   "id": "libertador_charge_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "libertador_charge",
+    "size": 80
+   }
+  },
+  {
+   "id": "libertador_charge_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "libertador_charge",
+    "size": 96
+   }
+  },
+  {
+   "id": "libertador_charge_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "libertador_charge",
+    "size": 128
+   }
+  },
+  {
+   "id": "libertador_charge_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "libertador_charge",
+    "size": 160
+   }
+  },
+  {
+   "id": "libertador_charge_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "libertador_charge",
+    "size": 192
+   }
+  },
+  {
+   "id": "libertador_command_nova32",
+   "sfa": {
+    "art": "nova",
+    "theme": "libertador_command",
+    "size": 32
+   }
+  },
+  {
+   "id": "libertador_command_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "libertador_command",
+    "size": 48
+   }
+  },
+  {
+   "id": "libertador_command_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "libertador_command",
+    "size": 64
+   }
+  },
+  {
+   "id": "libertador_command_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "libertador_command",
+    "size": 80
+   }
+  },
+  {
+   "id": "libertador_command_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "libertador_command",
+    "size": 48
+   }
+  },
+  {
+   "id": "libertador_command_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "libertador_command",
+    "size": 64
+   }
+  },
+  {
+   "id": "libertador_command_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "libertador_command",
+    "size": 80
+   }
+  },
+  {
+   "id": "libertador_command_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "libertador_command",
+    "size": 96
+   }
+  },
+  {
+   "id": "libertador_command_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "libertador_command",
+    "size": 128
+   }
+  },
+  {
+   "id": "libertador_command_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "libertador_command",
+    "size": 160
+   }
+  },
+  {
+   "id": "libertador_command_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "libertador_command",
+    "size": 192
+   }
+  },
+  {
+   "id": "maura_roots_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "maura_roots",
+    "size": 48
+   }
+  },
+  {
+   "id": "maura_roots_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "maura_roots",
+    "size": 64
+   }
+  },
+  {
+   "id": "maura_roots_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "maura_roots",
+    "size": 80
+   }
+  },
+  {
+   "id": "maura_roots_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "maura_roots",
+    "size": 96
+   }
+  },
+  {
+   "id": "maura_roots_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "maura_roots",
+    "size": 128
+   }
+  },
+  {
+   "id": "maura_roots_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "maura_roots",
+    "size": 160
+   }
+  },
+  {
+   "id": "maura_roots_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "maura_roots",
+    "size": 192
+   }
+  },
+  {
+   "id": "maura_roots_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "maura_roots",
+    "size": 48
+   }
+  },
+  {
+   "id": "maura_roots_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "maura_roots",
+    "size": 64
+   }
+  },
+  {
+   "id": "maura_roots_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "maura_roots",
+    "size": 80
+   }
+  },
+  {
+   "id": "maura_roots_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "maura_roots",
+    "size": 96
+   }
+  },
+  {
+   "id": "maura_roots_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "maura_roots",
+    "size": 128
+   }
+  },
+  {
+   "id": "maura_roots_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "maura_roots",
+    "size": 160
+   }
+  },
+  {
+   "id": "maura_roots_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "maura_roots",
+    "size": 192
+   }
+  },
+  {
+   "id": "maura_shears_nova32",
+   "sfa": {
+    "art": "nova",
+    "theme": "maura_shears",
+    "size": 32
+   }
+  },
+  {
+   "id": "maura_shears_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "maura_shears",
+    "size": 48
+   }
+  },
+  {
+   "id": "maura_shears_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "maura_shears",
+    "size": 64
+   }
+  },
+  {
+   "id": "maura_shears_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "maura_shears",
+    "size": 80
+   }
+  },
+  {
+   "id": "maura_shears_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "maura_shears",
+    "size": 96
+   }
+  },
+  {
+   "id": "maura_shears_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "maura_shears",
+    "size": 128
+   }
+  },
+  {
+   "id": "maura_shears_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "maura_shears",
+    "size": 48
+   }
+  },
+  {
+   "id": "maura_shears_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "maura_shears",
+    "size": 64
+   }
+  },
+  {
+   "id": "maura_shears_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "maura_shears",
+    "size": 80
+   }
+  },
+  {
+   "id": "maura_shears_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "maura_shears",
+    "size": 96
+   }
+  },
+  {
+   "id": "maura_shears_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "maura_shears",
+    "size": 128
+   }
+  },
+  {
+   "id": "maura_shears_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "maura_shears",
+    "size": 160
+   }
+  },
+  {
+   "id": "maura_shears_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "maura_shears",
+    "size": 192
+   }
+  },
+  {
+   "id": "morveth_growth_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_growth",
+    "size": 48
+   }
+  },
+  {
+   "id": "morveth_growth_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_growth",
+    "size": 64
+   }
+  },
+  {
+   "id": "morveth_growth_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_growth",
+    "size": 80
+   }
+  },
+  {
+   "id": "morveth_growth_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_growth",
+    "size": 96
+   }
+  },
+  {
+   "id": "morveth_growth_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_growth",
+    "size": 128
+   }
+  },
+  {
+   "id": "morveth_growth_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_growth",
+    "size": 160
+   }
+  },
+  {
+   "id": "morveth_growth_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_growth",
+    "size": 192
+   }
+  },
+  {
+   "id": "morveth_growth_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_growth",
+    "size": 48
+   }
+  },
+  {
+   "id": "morveth_growth_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_growth",
+    "size": 64
+   }
+  },
+  {
+   "id": "morveth_growth_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_growth",
+    "size": 80
+   }
+  },
+  {
+   "id": "morveth_growth_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_growth",
+    "size": 96
+   }
+  },
+  {
+   "id": "morveth_growth_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_growth",
+    "size": 128
+   }
+  },
+  {
+   "id": "morveth_growth_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_growth",
+    "size": 160
+   }
+  },
+  {
+   "id": "morveth_growth_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_growth",
+    "size": 192
+   }
+  },
+  {
+   "id": "morveth_pulse_nova32",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_pulse",
+    "size": 32
+   }
+  },
+  {
+   "id": "morveth_pulse_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_pulse",
+    "size": 48
+   }
+  },
+  {
+   "id": "morveth_pulse_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_pulse",
+    "size": 64
+   }
+  },
+  {
+   "id": "morveth_pulse_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_pulse",
+    "size": 80
+   }
+  },
+  {
+   "id": "morveth_pulse_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_pulse",
+    "size": 96
+   }
+  },
+  {
+   "id": "morveth_pulse_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_pulse",
+    "size": 128
+   }
+  },
+  {
+   "id": "morveth_pulse_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_pulse",
+    "size": 48
+   }
+  },
+  {
+   "id": "morveth_pulse_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_pulse",
+    "size": 64
+   }
+  },
+  {
+   "id": "morveth_pulse_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_pulse",
+    "size": 80
+   }
+  },
+  {
+   "id": "morveth_pulse_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_pulse",
+    "size": 96
+   }
+  },
+  {
+   "id": "morveth_pulse_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_pulse",
+    "size": 128
+   }
+  },
+  {
+   "id": "morveth_pulse_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_pulse",
+    "size": 160
+   }
+  },
+  {
+   "id": "morveth_pulse_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_pulse",
+    "size": 192
+   }
+  },
+  {
+   "id": "morveth_spores_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_spores",
+    "size": 48
+   }
+  },
+  {
+   "id": "morveth_spores_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_spores",
+    "size": 64
+   }
+  },
+  {
+   "id": "morveth_spores_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_spores",
+    "size": 80
+   }
+  },
+  {
+   "id": "morveth_spores_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_spores",
+    "size": 96
+   }
+  },
+  {
+   "id": "morveth_spores_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_spores",
+    "size": 128
+   }
+  },
+  {
+   "id": "morveth_spores_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_spores",
+    "size": 160
+   }
+  },
+  {
+   "id": "morveth_spores_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_spores",
+    "size": 192
+   }
+  },
+  {
+   "id": "morveth_spores_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_spores",
+    "size": 48
+   }
+  },
+  {
+   "id": "morveth_spores_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_spores",
+    "size": 64
+   }
+  },
+  {
+   "id": "morveth_spores_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_spores",
+    "size": 80
+   }
+  },
+  {
+   "id": "morveth_spores_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_spores",
+    "size": 96
+   }
+  },
+  {
+   "id": "morveth_spores_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_spores",
+    "size": 128
+   }
+  },
+  {
+   "id": "morveth_spores_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_spores",
+    "size": 160
+   }
+  },
+  {
+   "id": "morveth_spores_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_spores",
+    "size": 192
+   }
+  },
+  {
+   "id": "morveth_symbiosis_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_symbiosis",
+    "size": 48
+   }
+  },
+  {
+   "id": "morveth_symbiosis_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_symbiosis",
+    "size": 64
+   }
+  },
+  {
+   "id": "morveth_symbiosis_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_symbiosis",
+    "size": 80
+   }
+  },
+  {
+   "id": "morveth_symbiosis_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_symbiosis",
+    "size": 96
+   }
+  },
+  {
+   "id": "morveth_symbiosis_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_symbiosis",
+    "size": 128
+   }
+  },
+  {
+   "id": "morveth_symbiosis_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_symbiosis",
+    "size": 160
+   }
+  },
+  {
+   "id": "morveth_symbiosis_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "morveth_symbiosis",
+    "size": 192
+   }
+  },
+  {
+   "id": "morveth_symbiosis_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_symbiosis",
+    "size": 48
+   }
+  },
+  {
+   "id": "morveth_symbiosis_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_symbiosis",
+    "size": 64
+   }
+  },
+  {
+   "id": "morveth_symbiosis_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_symbiosis",
+    "size": 80
+   }
+  },
+  {
+   "id": "morveth_symbiosis_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_symbiosis",
+    "size": 96
+   }
+  },
+  {
+   "id": "morveth_symbiosis_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_symbiosis",
+    "size": 128
+   }
+  },
+  {
+   "id": "morveth_symbiosis_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_symbiosis",
+    "size": 160
+   }
+  },
+  {
+   "id": "morveth_symbiosis_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "morveth_symbiosis",
+    "size": 192
+   }
+  },
+  {
+   "id": "music_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "music",
+    "size": 48
+   }
+  },
+  {
+   "id": "music_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "music",
+    "size": 64
+   }
+  },
+  {
+   "id": "music_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "music",
+    "size": 80
+   }
+  },
+  {
+   "id": "music_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "music",
+    "size": 96
+   }
+  },
+  {
+   "id": "music_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "music",
+    "size": 128
+   }
+  },
+  {
+   "id": "music_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "music",
+    "size": 160
+   }
+  },
+  {
+   "id": "music_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "music",
+    "size": 192
+   }
+  },
+  {
+   "id": "music_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "music",
+    "size": 48
+   }
+  },
+  {
+   "id": "music_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "music",
+    "size": 64
+   }
+  },
+  {
+   "id": "music_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "music",
+    "size": 80
+   }
+  },
+  {
+   "id": "music_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "music",
+    "size": 96
+   }
+  },
+  {
+   "id": "music_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "music",
+    "size": 128
+   }
+  },
+  {
+   "id": "music_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "music",
+    "size": 160
+   }
+  },
+  {
+   "id": "music_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "music",
+    "size": 192
+   }
+  },
+  {
+   "id": "patria_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "patria",
+    "size": 48
+   }
+  },
+  {
+   "id": "patria_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "patria",
+    "size": 64
+   }
+  },
+  {
+   "id": "patria_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "patria",
+    "size": 80
+   }
+  },
+  {
+   "id": "patria_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "patria",
+    "size": 96
+   }
+  },
+  {
+   "id": "patria_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "patria",
+    "size": 128
+   }
+  },
+  {
+   "id": "patria_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "patria",
+    "size": 160
+   }
+  },
+  {
+   "id": "patria_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "patria",
+    "size": 192
+   }
+  },
+  {
+   "id": "patria_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "patria",
+    "size": 48
+   }
+  },
+  {
+   "id": "patria_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "patria",
+    "size": 64
+   }
+  },
+  {
+   "id": "patria_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "patria",
+    "size": 80
+   }
+  },
+  {
+   "id": "patria_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "patria",
+    "size": 96
+   }
+  },
+  {
+   "id": "patria_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "patria",
+    "size": 128
+   }
+  },
+  {
+   "id": "patria_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "patria",
+    "size": 160
+   }
+  },
+  {
+   "id": "patria_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "patria",
+    "size": 192
+   }
+  },
+  {
+   "id": "plague_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "plague",
+    "size": 48
+   }
+  },
+  {
+   "id": "plague_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "plague",
+    "size": 64
+   }
+  },
+  {
+   "id": "plague_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "plague",
+    "size": 80
+   }
+  },
+  {
+   "id": "plague_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "plague",
+    "size": 96
+   }
+  },
+  {
+   "id": "plague_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "plague",
+    "size": 128
+   }
+  },
+  {
+   "id": "plague_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "plague",
+    "size": 160
+   }
+  },
+  {
+   "id": "plague_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "plague",
+    "size": 192
+   }
+  },
+  {
+   "id": "plague_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "plague",
+    "size": 48
+   }
+  },
+  {
+   "id": "plague_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "plague",
+    "size": 64
+   }
+  },
+  {
+   "id": "plague_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "plague",
+    "size": 80
+   }
+  },
+  {
+   "id": "plague_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "plague",
+    "size": 96
+   }
+  },
+  {
+   "id": "plague_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "plague",
+    "size": 128
+   }
+  },
+  {
+   "id": "plague_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "plague",
+    "size": 160
+   }
+  },
+  {
+   "id": "plague_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "plague",
+    "size": 192
+   }
+  },
+  {
+   "id": "prism_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "prism",
+    "size": 48
+   }
+  },
+  {
+   "id": "prism_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "prism",
+    "size": 64
+   }
+  },
+  {
+   "id": "prism_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "prism",
+    "size": 80
+   }
+  },
+  {
+   "id": "prism_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "prism",
+    "size": 96
+   }
+  },
+  {
+   "id": "prism_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "prism",
+    "size": 128
+   }
+  },
+  {
+   "id": "prism_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "prism",
+    "size": 160
+   }
+  },
+  {
+   "id": "prism_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "prism",
+    "size": 192
+   }
+  },
+  {
+   "id": "prism_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "prism",
+    "size": 48
+   }
+  },
+  {
+   "id": "prism_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "prism",
+    "size": 64
+   }
+  },
+  {
+   "id": "prism_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "prism",
+    "size": 80
+   }
+  },
+  {
+   "id": "prism_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "prism",
+    "size": 96
+   }
+  },
+  {
+   "id": "prism_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "prism",
+    "size": 128
+   }
+  },
+  {
+   "id": "prism_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "prism",
+    "size": 160
+   }
+  },
+  {
+   "id": "prism_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "prism",
+    "size": 192
+   }
+  },
+  {
+   "id": "sand_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "sand",
+    "size": 48
+   }
+  },
+  {
+   "id": "sand_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "sand",
+    "size": 64
+   }
+  },
+  {
+   "id": "sand_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "sand",
+    "size": 80
+   }
+  },
+  {
+   "id": "sand_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "sand",
+    "size": 96
+   }
+  },
+  {
+   "id": "sand_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "sand",
+    "size": 128
+   }
+  },
+  {
+   "id": "sand_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "sand",
+    "size": 160
+   }
+  },
+  {
+   "id": "sand_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "sand",
+    "size": 192
+   }
+  },
+  {
+   "id": "sand_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "sand",
+    "size": 48
+   }
+  },
+  {
+   "id": "sand_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "sand",
+    "size": 64
+   }
+  },
+  {
+   "id": "sand_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "sand",
+    "size": 80
+   }
+  },
+  {
+   "id": "sand_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "sand",
+    "size": 96
+   }
+  },
+  {
+   "id": "sand_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "sand",
+    "size": 128
+   }
+  },
+  {
+   "id": "sand_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "sand",
+    "size": 160
+   }
+  },
+  {
+   "id": "sand_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "sand",
+    "size": 192
+   }
+  },
+  {
+   "id": "scarab_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "scarab",
+    "size": 48
+   }
+  },
+  {
+   "id": "scarab_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "scarab",
+    "size": 64
+   }
+  },
+  {
+   "id": "scarab_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "scarab",
+    "size": 80
+   }
+  },
+  {
+   "id": "scarab_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "scarab",
+    "size": 96
+   }
+  },
+  {
+   "id": "scarab_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "scarab",
+    "size": 128
+   }
+  },
+  {
+   "id": "scarab_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "scarab",
+    "size": 160
+   }
+  },
+  {
+   "id": "scarab_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "scarab",
+    "size": 192
+   }
+  },
+  {
+   "id": "scarab_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "scarab",
+    "size": 48
+   }
+  },
+  {
+   "id": "scarab_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "scarab",
+    "size": 64
+   }
+  },
+  {
+   "id": "scarab_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "scarab",
+    "size": 80
+   }
+  },
+  {
+   "id": "scarab_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "scarab",
+    "size": 96
+   }
+  },
+  {
+   "id": "scarab_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "scarab",
+    "size": 128
+   }
+  },
+  {
+   "id": "scarab_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "scarab",
+    "size": 160
+   }
+  },
+  {
+   "id": "scarab_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "scarab",
+    "size": 192
+   }
+  },
+  {
+   "id": "siege_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "siege",
+    "size": 64
+   }
+  },
+  {
+   "id": "siege_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "siege",
+    "size": 96
+   }
+  },
+  {
+   "id": "siege_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "siege",
+    "size": 128
+   }
+  },
+  {
+   "id": "siege_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "siege",
+    "size": 160
+   }
+  },
+  {
+   "id": "siege_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "siege",
+    "size": 192
+   }
+  },
+  {
+   "id": "siege_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "siege",
+    "size": 48
+   }
+  },
+  {
+   "id": "siege_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "siege",
+    "size": 64
+   }
+  },
+  {
+   "id": "siege_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "siege",
+    "size": 80
+   }
+  },
+  {
+   "id": "siege_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "siege",
+    "size": 96
+   }
+  },
+  {
+   "id": "siege_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "siege",
+    "size": 128
+   }
+  },
+  {
+   "id": "siege_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "siege",
+    "size": 160
+   }
+  },
+  {
+   "id": "siege_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "siege",
+    "size": 192
+   }
+  },
+  {
+   "id": "steam_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "steam",
+    "size": 48
+   }
+  },
+  {
+   "id": "steam_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "steam",
+    "size": 64
+   }
+  },
+  {
+   "id": "steam_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "steam",
+    "size": 80
+   }
+  },
+  {
+   "id": "steam_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "steam",
+    "size": 96
+   }
+  },
+  {
+   "id": "steam_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "steam",
+    "size": 128
+   }
+  },
+  {
+   "id": "steam_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "steam",
+    "size": 160
+   }
+  },
+  {
+   "id": "steam_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "steam",
+    "size": 192
+   }
+  },
+  {
+   "id": "steam_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "steam",
+    "size": 48
+   }
+  },
+  {
+   "id": "steam_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "steam",
+    "size": 64
+   }
+  },
+  {
+   "id": "steam_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "steam",
+    "size": 80
+   }
+  },
+  {
+   "id": "steam_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "steam",
+    "size": 96
+   }
+  },
+  {
+   "id": "steam_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "steam",
+    "size": 128
+   }
+  },
+  {
+   "id": "steam_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "steam",
+    "size": 160
+   }
+  },
+  {
+   "id": "steam_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "steam",
+    "size": 192
+   }
+  },
+  {
+   "id": "storm_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "storm",
+    "size": 48
+   }
+  },
+  {
+   "id": "storm_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "storm",
+    "size": 64
+   }
+  },
+  {
+   "id": "storm_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "storm",
+    "size": 80
+   }
+  },
+  {
+   "id": "storm_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "storm",
+    "size": 96
+   }
+  },
+  {
+   "id": "storm_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "storm",
+    "size": 128
+   }
+  },
+  {
+   "id": "storm_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "storm",
+    "size": 160
+   }
+  },
+  {
+   "id": "storm_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "storm",
+    "size": 192
+   }
+  },
+  {
+   "id": "storm_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "storm",
+    "size": 48
+   }
+  },
+  {
+   "id": "storm_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "storm",
+    "size": 64
+   }
+  },
+  {
+   "id": "storm_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "storm",
+    "size": 80
+   }
+  },
+  {
+   "id": "storm_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "storm",
+    "size": 96
+   }
+  },
+  {
+   "id": "storm_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "storm",
+    "size": 128
+   }
+  },
+  {
+   "id": "storm_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "storm",
+    "size": 160
+   }
+  },
+  {
+   "id": "storm_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "storm",
+    "size": 192
+   }
+  },
+  {
+   "id": "thorn_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "thorn",
+    "size": 48
+   }
+  },
+  {
+   "id": "thorn_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "thorn",
+    "size": 64
+   }
+  },
+  {
+   "id": "thorn_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "thorn",
+    "size": 80
+   }
+  },
+  {
+   "id": "thorn_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "thorn",
+    "size": 96
+   }
+  },
+  {
+   "id": "thorn_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "thorn",
+    "size": 128
+   }
+  },
+  {
+   "id": "thorn_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "thorn",
+    "size": 160
+   }
+  },
+  {
+   "id": "thorn_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "thorn",
+    "size": 192
+   }
+  },
+  {
+   "id": "thorn_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "thorn",
+    "size": 48
+   }
+  },
+  {
+   "id": "thorn_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "thorn",
+    "size": 64
+   }
+  },
+  {
+   "id": "thorn_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "thorn",
+    "size": 80
+   }
+  },
+  {
+   "id": "thorn_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "thorn",
+    "size": 96
+   }
+  },
+  {
+   "id": "thorn_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "thorn",
+    "size": 128
+   }
+  },
+  {
+   "id": "thorn_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "thorn",
+    "size": 160
+   }
+  },
+  {
+   "id": "thorn_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "thorn",
+    "size": 192
+   }
+  },
+  {
+   "id": "thread_nova32",
+   "sfa": {
+    "art": "nova",
+    "theme": "thread",
+    "size": 32
+   }
+  },
+  {
+   "id": "thread_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "thread",
+    "size": 48
+   }
+  },
+  {
+   "id": "thread_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "thread",
+    "size": 64
+   }
+  },
+  {
+   "id": "thread_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "thread",
+    "size": 80
+   }
+  },
+  {
+   "id": "thread_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "thread",
+    "size": 96
+   }
+  },
+  {
+   "id": "thread_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "thread",
+    "size": 128
+   }
+  },
+  {
+   "id": "thread_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "thread",
+    "size": 160
+   }
+  },
+  {
+   "id": "thread_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "thread",
+    "size": 192
+   }
+  },
+  {
+   "id": "thread_zone32",
+   "sfa": {
+    "art": "zone",
+    "theme": "thread",
+    "size": 32
+   }
+  },
+  {
+   "id": "thread_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "thread",
+    "size": 48
+   }
+  },
+  {
+   "id": "thread_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "thread",
+    "size": 64
+   }
+  },
+  {
+   "id": "thread_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "thread",
+    "size": 80
+   }
+  },
+  {
+   "id": "thread_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "thread",
+    "size": 96
+   }
+  },
+  {
+   "id": "thread_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "thread",
+    "size": 128
+   }
+  },
+  {
+   "id": "thread_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "thread",
+    "size": 160
+   }
+  },
+  {
+   "id": "thread_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "thread",
+    "size": 192
+   }
+  },
+  {
+   "id": "tide_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "tide",
+    "size": 48
+   }
+  },
+  {
+   "id": "tide_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "tide",
+    "size": 64
+   }
+  },
+  {
+   "id": "tide_nova80",
+   "sfa": {
+    "art": "nova",
+    "theme": "tide",
+    "size": 80
+   }
+  },
+  {
+   "id": "tide_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "tide",
+    "size": 96
+   }
+  },
+  {
+   "id": "tide_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "tide",
+    "size": 128
+   }
+  },
+  {
+   "id": "tide_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "tide",
+    "size": 160
+   }
+  },
+  {
+   "id": "tide_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "tide",
+    "size": 192
+   }
+  },
+  {
+   "id": "tide_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "tide",
+    "size": 48
+   }
+  },
+  {
+   "id": "tide_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "tide",
+    "size": 64
+   }
+  },
+  {
+   "id": "tide_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "tide",
+    "size": 80
+   }
+  },
+  {
+   "id": "tide_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "tide",
+    "size": 96
+   }
+  },
+  {
+   "id": "tide_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "tide",
+    "size": 128
+   }
+  },
+  {
+   "id": "tide_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "tide",
+    "size": 160
+   }
+  },
+  {
+   "id": "tide_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "tide",
+    "size": 192
+   }
+  },
+  {
+   "id": "time_nova48",
+   "sfa": {
+    "art": "nova",
+    "theme": "time",
+    "size": 48
+   }
+  },
+  {
+   "id": "time_nova64",
+   "sfa": {
+    "art": "nova",
+    "theme": "time",
+    "size": 64
+   }
+  },
+  {
+   "id": "time_nova96",
+   "sfa": {
+    "art": "nova",
+    "theme": "time",
+    "size": 96
+   }
+  },
+  {
+   "id": "time_nova128",
+   "sfa": {
+    "art": "nova",
+    "theme": "time",
+    "size": 128
+   }
+  },
+  {
+   "id": "time_nova160",
+   "sfa": {
+    "art": "nova",
+    "theme": "time",
+    "size": 160
+   }
+  },
+  {
+   "id": "time_nova192",
+   "sfa": {
+    "art": "nova",
+    "theme": "time",
+    "size": 192
+   }
+  },
+  {
+   "id": "time_zone48",
+   "sfa": {
+    "art": "zone",
+    "theme": "time",
+    "size": 48
+   }
+  },
+  {
+   "id": "time_zone64",
+   "sfa": {
+    "art": "zone",
+    "theme": "time",
+    "size": 64
+   }
+  },
+  {
+   "id": "time_zone80",
+   "sfa": {
+    "art": "zone",
+    "theme": "time",
+    "size": 80
+   }
+  },
+  {
+   "id": "time_zone96",
+   "sfa": {
+    "art": "zone",
+    "theme": "time",
+    "size": 96
+   }
+  },
+  {
+   "id": "time_zone128",
+   "sfa": {
+    "art": "zone",
+    "theme": "time",
+    "size": 128
+   }
+  },
+  {
+   "id": "time_zone160",
+   "sfa": {
+    "art": "zone",
+    "theme": "time",
+    "size": 160
+   }
+  },
+  {
+   "id": "time_zone192",
+   "sfa": {
+    "art": "zone",
+    "theme": "time",
+    "size": 192
+   }
+  }
+ ]
+}

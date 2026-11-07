@@ -16,7 +16,8 @@ function colStart(opts){
   if(LN || (typeof ALPHA_TRAINING!=="undefined" && ALPHA_TRAINING.active)) return false;
   opts = opts || {};
   const roster = Object.keys(CLASSES).filter(k=>championBotEligible(k));
-  const mine = opts.champ && CLASSES[opts.champ] ? opts.champ : (CLASSES[selectedClass] ? selectedClass : roster[0]);
+  const mine = lanesOwnedSelection(opts.champ);
+  if(!mine) return false;
   const taken = [mine];
   const pick = (want)=>{ if(want && CLASSES[want] && !taken.includes(want)){ taken.push(want); return want; }
     const pool = roster.filter(k=>!taken.includes(k)); const k = pool[(Math.random()*pool.length)|0]; taken.push(k); return k; };

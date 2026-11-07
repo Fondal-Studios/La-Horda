@@ -1,0 +1,200 @@
+{
+ "name": "cuernos_de_basalto",
+ "description": "Par de cuernos curvos de basalto con vetas de tormenta, salen del yelmo hacia arriba y afuera.",
+ "layer": "front",
+ "anchor": "headTop",
+ "materials": {
+  "stone": {
+   "ramp": [
+    "#101414",
+    "#2a3434",
+    "#4e625e",
+    "#86a09a"
+   ],
+   "jitter": 0.05
+  },
+  "vein": {
+   "ramp": [
+    "#1e4a52",
+    "#3a8a9a",
+    "#8ae0f0"
+   ],
+   "round": 0.5
+  }
+ },
+ "shapes": [
+  {
+   "type": "poly",
+   "points": [
+    [
+     -4,
+     9
+    ],
+    [
+     -13,
+     8
+    ],
+    [
+     -17,
+     3
+    ],
+    [
+     -16,
+     -3
+    ],
+    [
+     -12,
+     -1
+    ],
+    [
+     -12,
+     3
+    ],
+    [
+     -7,
+     3
+    ]
+   ],
+   "material": "stone",
+   "group": "hornL",
+   "views": [
+    "down",
+    "up"
+   ]
+  },
+  {
+   "type": "poly",
+   "points": [
+    [
+     4,
+     9
+    ],
+    [
+     13,
+     8
+    ],
+    [
+     17,
+     3
+    ],
+    [
+     16,
+     -3
+    ],
+    [
+     12,
+     -1
+    ],
+    [
+     12,
+     3
+    ],
+    [
+     7,
+     3
+    ]
+   ],
+   "material": "stone",
+   "group": "hornR",
+   "views": [
+    "down",
+    "up"
+   ]
+  },
+  {
+   "type": "line",
+   "points": [
+    [
+     -9,
+     6
+    ],
+    [
+     -14,
+     2
+    ]
+   ],
+   "width": 1,
+   "material": "vein",
+   "group": "veinL",
+   "views": [
+    "down"
+   ]
+  },
+  {
+   "type": "line",
+   "points": [
+    [
+     9,
+     6
+    ],
+    [
+     14,
+     2
+    ]
+   ],
+   "width": 1,
+   "material": "vein",
+   "group": "veinR",
+   "views": [
+    "down"
+   ]
+  },
+  {
+   "type": "poly",
+   "points": [
+    [
+     -6,
+     9
+    ],
+    [
+     -12,
+     6
+    ],
+    [
+     -14,
+     0
+    ],
+    [
+     -10,
+     -3
+    ],
+    [
+     -8,
+     1
+    ],
+    [
+     -1,
+     4
+    ],
+    [
+     3,
+     9
+    ]
+   ],
+   "material": "stone",
+   "group": "horn",
+   "views": [
+    "side"
+   ]
+  },
+  {
+   "type": "line",
+   "points": [
+    [
+     -4,
+     6
+    ],
+    [
+     -10,
+     0
+    ]
+   ],
+   "width": 1,
+   "material": "vein",
+   "group": "vein",
+   "views": [
+    "side"
+   ]
+  }
+ ]
+}

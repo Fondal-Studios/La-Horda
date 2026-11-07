@@ -3,6 +3,14 @@
    La usa js/assets/preload.js para saber cuándo terminó de cargar todo. Si agregás una imagen
    nueva al juego, sumala también acá. */
 const ASSET_MANIFEST = [
+  "assets/sprites/champions/guerrero/codex-v1/atlas.png",
+  "assets/sprites/champions/morveth/codex-v1/atlas.png",
+  "assets/sprites/champions/aelith/codex-v1/atlas.png",
+  "assets/sprites/champions/tanque/codex-v1/atlas.png",
+  "assets/sprites/champions/soporte/codex-v1/atlas.png",
+  "assets/sprites/champions/segador/codex-v1/atlas.png",
+  "assets/sprites/champions/profeta/codex-v1/atlas.png",
+
   "assets/sprites/champions/nano_gm/codex-v2/atlas.png",
   // Complete set outfits: eight champions and mounted Granadero.
   "assets/sprites/champions/tanque/skins/baluarte/atlas.png",
@@ -392,6 +400,7 @@ const ASSET_MANIFEST = [
   "assets/vfx/ciudad/tex_puente.png",
   "assets/vfx/ciudad/tex_muralla.png",
   "assets/vfx/ciudad/tex_techo.png",
+  "assets/vfx/ciudad/tex_techo_roja.png",
   "assets/vfx/ciudad/tex_pared_ext.png",
   "assets/vfx/ciudad/tex_pared_int.png",
   "assets/vfx/ciudad/tex_puerta.png",

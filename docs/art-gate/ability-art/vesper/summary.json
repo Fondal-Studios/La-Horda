@@ -1,0 +1,128 @@
+{
+ "guardian": "vesper",
+ "passed": [
+  "needles",
+  "seam",
+  "unpick",
+  "last_stitch",
+  "stitch_zone"
+ ],
+ "escalated": [],
+ "keep_current": [],
+ "state": {
+  "needles": {
+   "status": "PASS",
+   "rounds": 3,
+   "history": [
+    {
+     "round": 1,
+     "score": 94.8,
+     "status": "FAIL",
+     "improvement": 9.3,
+     "reasons": [
+      "regresión de cobertura legible frente al arte actual (0.73 < 0.91)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 96.9,
+     "status": "FAIL",
+     "improvement": 11.4,
+     "reasons": [
+      "presencia menor que el arte actual: cobertura 37% < 40% (arte actual 52%)"
+     ]
+    },
+    {
+     "round": 3,
+     "score": 97.3,
+     "status": "PASS",
+     "improvement": 11.8,
+     "reasons": []
+    }
+   ]
+  },
+  "seam": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 98.3,
+     "status": "PASS",
+     "improvement": 5.8,
+     "reasons": []
+    }
+   ]
+  },
+  "unpick": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.8,
+     "status": "PASS",
+     "improvement": 18.6,
+     "reasons": []
+    }
+   ]
+  },
+  "last_stitch": {
+   "status": "PASS",
+   "rounds": 2,
+   "history": [
+    {
+     "round": 1,
+     "score": 93.7,
+     "status": "FAIL",
+     "improvement": 16.3,
+     "reasons": [
+      "regresión de cobertura legible frente al arte actual (0.82 < 1.00)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 95.8,
+     "status": "PASS",
+     "improvement": 18.4,
+     "reasons": []
+    }
+   ]
+  },
+  "stitch_zone": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 98.0,
+     "status": "PASS",
+     "improvement": 15.0,
+     "reasons": []
+    }
+   ]
+  }
+ },
+ "baseline": {
+  "needles": 85.5,
+  "seam": 92.5,
+  "unpick": 77.2,
+  "last_stitch": 77.4,
+  "stitch_zone": 83.0
+ },
+ "log": [
+  "ronda 1: needles FAIL 94.8 — regresión de cobertura legible frente al arte actual (0.73 < 0.91)",
+  "ronda 1: seam PASS 98.3 (arte actual 92.5, +5.8)",
+  "ronda 1: unpick PASS 95.8 (arte actual 77.2, +18.6)",
+  "ronda 1: last_stitch FAIL 93.7 — regresión de cobertura legible frente al arte actual (0.82 < 1.00)",
+  "ronda 1: stitch_zone PASS 98.0 (arte actual 83.0, +15.0)",
+  "ronda 2: needles FAIL 96.9 — presencia menor que el arte actual: cobertura 37% < 40% (arte actual 52%)",
+  "ronda 2: last_stitch PASS 95.8 (arte actual 77.4, +18.4)",
+  "ronda 3: needles PASS 97.3 (arte actual 85.5, +11.8)",
+  "arquitecto: integradas ['needles', 'seam', 'unpick', 'last_stitch', 'stitch_zone']; humo OK: SMOKE OK vesper: needles,seam,unpick,last_stitch,stitch_zone"
+ ],
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['needles', 'seam', 'unpick', 'last_stitch', 'stitch_zone']; humo OK: SMOKE OK vesper: needles,seam,unpick,last_stitch,stitch_zone"
+ }
+}

@@ -23,6 +23,7 @@ const FORT_ATLAS_META = {"carcelero":{"w":270,"h":108,"cols":8,"refH":95,"anchor
   "dragon_forja":{"w":248,"h":131,"cols":8,"refH":85,"anchor":0.9237,"hMul":2.9,"sets":{"idle":[25,26,27,26],"walk":[28,29,30,31],"fly":[18,19,20,21],"atk":[0,1,2,3,4],"breath":[9,10],"bomb":[5,6,7,8],"flap":[15,16,17],"hit":[22,23,24],"death":[11,12,13,14]}},
   "caballero":{"w":228,"h":115,"cols":8,"refH":74,"anchor":0.9391,"hMul":2.75,"sets":{"idle":[9,10,11,12,13],"walk":[38,39,40,41,42,43],"turn":[34,35,36,37],"atk":[26,27,28,29,30],"shield":[17,18,19,20],"charge":[0,1],"sweep":[21,22,23,24,25],"exec":[3,4,5,6],"plant":[14],"hit":[7,8],"rage":[15,16],"tf":[31,32,33],"death":[8,2]}}};
 for(const k in FORT_ATLAS_META){
+  if(typeof ENEMY_RUNWAY_SHEETS!=="undefined" && ENEMY_RUNWAY_SHEETS[k]) continue; // hoja completa de Runway (js/assets/enemy-runway-sheets.js)
   enemyAtlasPackLoad(k, "assets/sprites/arenas/fortaleza/"+k+"/atlas.png", FORT_ATLAS_META[k]);
   ENEMY_ATLAS_PACK[k].hMul = FORT_ATLAS_META[k].hMul;
 }

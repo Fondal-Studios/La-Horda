@@ -1,0 +1,7 @@
+/* Selector de idioma (js/i18n/i18n.js): tres botones ES · EN · PT en el título y un botón que rota idioma en el hub. Objetivos táctiles de 44 px. */
+.lang-host{ display:flex; justify-content:center; margin:8px auto 0; }
+.lang-select{ display:inline-flex; gap:6px; }
+.lang-btn{ min-width:52px; min-height:44px; padding:2px 10px; font:inherit; font-weight:700; letter-spacing:.06em; color:#f1e3c6; background:rgba(20,16,12,.72); border:2px solid #6b5636; border-radius:8px; cursor:pointer; }
+.lang-btn.on, .lang-btn[aria-pressed="true"]{ color:#1a1208; background:#f9c971; border-color:#f9c971; }
+.lang-btn:focus-visible, #hub-lang-btn:focus-visible{ outline:2px solid #f9c971; outline-offset:2px; }
+#hub-lang-btn{ font-size:.9rem; font-weight:700; letter-spacing:.04em; }

@@ -25,13 +25,14 @@ let ok=0;const pass=m=>{ok++;console.log('  ok  '+m);};
  const p=await ctx.newPage(),errs=[];p.on('pageerror',e=>errs.push(e.message));p.on('console',m=>{if(m.type()==='error'&&!/ERR_TUNNEL|ERR_NAME_NOT_RESOLVED|ERR_INTERNET/.test(m.text()))errs.push('console:'+m.text().slice(0,160));});  // (recursos externos sin red en el entorno: no son del juego)
  await p.goto(`http://127.0.0.1:${PORT}/index.html?lazy=0`,{timeout:120000});
  await p.waitForFunction(()=>typeof setState==='function'&&typeof renderMainMenu==='function'&&typeof lanesStart==='function'&&typeof postgameSettle==='function',null,{timeout:60000});
+ p.on('requestfailed', req=>console.error('REQUEST_FAILED', req.url(), req.failure()?.errorText));
  const E=(fn,arg)=>p.evaluate(fn,arg);
 
  console.log('1) bloqueo / desbloqueo por campaña');
  assert.equal(await E(()=>POSTGAME_GATE),'open','el interruptor viene ABIERTO por defecto (alfa)');pass('POSTGAME_GATE viene en "open" (alfa)');
  assert.equal(await E(()=>postgameUnlocked(defaultSave())),true);pass('con el interruptor abierto un perfil nuevo entra (y usa su progreso real con tope)');
  await E(()=>{POSTGAME_GATE='campaign';});   // el resto de esta sección prueba la regla de cierre
- await E(()=>{save.tut=save.tut||{};save.tut.training=1;persistNow();setState('mainmenu');renderMainMenu();});
+ await E(()=>{save.champions.mago.unlocked=true;save.tut=save.tut||{};save.tut.training=1;persistNow();setState('mainmenu');renderMainMenu();});
  let r=await E(()=>({un:postgameUnlocked(),text:postgameLockText(),gate:POSTGAME_GATE,cls:document.getElementById('hub-crystal-btn').className,sub:document.getElementById('hub-crystal-sub').textContent,subC:document.getElementById('hub-coliseum-sub').textContent}));
  assert.equal(r.un,false,'perfil nuevo: bloqueado');assert.equal(r.gate,'campaign');assert.match(r.text,/Se abre al terminar la campaña/);
  assert.match(r.cls,/locked/);assert.match(r.sub,/Se abre al terminar la campaña/);assert.match(r.sub,/Entrenamiento/);assert.match(r.subC,/Se abre al terminar la campaña/);pass('perfil nuevo: tarjetas bloqueadas con la condición ("'+r.sub+'")');
@@ -109,8 +110,8 @@ let ok=0;const pass=m=>{ok++;console.log('  ok  '+m);};
  r=await E(()=>{lanesStart({champ:'mago',seed:5,training:true});const o={prog:LN.pg.progress,why:LN.pg.why,hp:player.maxHp,dmg:player.baseDmg,stash:save.stash.length,lvl:save.champions.mago.level,tag:!!player._pg};lanesStop('mainmenu');return o;});
  assert.equal(r.prog,false);assert.equal(r.why,'training');assert.equal(r.stash,0);assert.equal(r.tag,false);pass('Entrenamiento (mismo guardado): sin progreso, sin equipo, campeón normalizado');
  // campeón que no es propio: entrena
- r=await E(()=>{const k='tanque';save.champions[k].unlocked=false;lanesStart({champ:k,seed:5});const o={prog:LN.pg.progress,why:LN.pg.why};lanesStop('mainmenu');save.champions[k].unlocked=true;return o;});
- assert.equal(r.prog,false);assert.equal(r.why,'notowned');pass('campeón que no tenés: Entrenamiento (sin recompensas ni progreso)');
+ r=await E(()=>{const k='tanque',owned=save.champions[k].unlocked;save.champions[k].unlocked=false;const started=lanesStart({champ:k,seed:5});const o={started,active:!!LN};save.champions[k].unlocked=owned;return o;});
+ assert.deepEqual(r,{started:false,active:false});pass('campeón que no tenés: no inicia ni crea perfil temporal');
  // Coliseo: nivel fijo 10 + tope
  r=await E(()=>{const C=LANES.PROGRESS_CAP;save.arenasCleared.infernal=true;setState('mainmenu');
    const naked=(()=>{colStart({champ:'mago',seed:9,training:true});const o={hp:player.maxHp,dmg:player.baseDmg,spd:player.baseSpeed};lanesStop('mainmenu');return o;})();

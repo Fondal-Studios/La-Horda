@@ -355,7 +355,7 @@ function _cmDrawBuilding(b, t){
     for(const x of [b.x0 + 60, b.cx, b.x1 - 60]){ ctx.fillStyle = "#1a0c12"; ctx.beginPath(); ctx.moveTo(x - 40, ry0 - 60); ctx.lineTo(x, ry0 - 200); ctx.lineTo(x + 40, ry0 - 60); ctx.closePath(); ctx.fill(); }
     ctx.fillStyle = `rgba(220,40,60,${0.5 + 0.2*Math.sin(t*1.5)})`; ctx.beginPath(); ctx.arc(b.cx, ry0 + 10, 30, 0, Math.PI*2); ctx.fill(); _cmGlow(b.cx, ry0 + 10, 110, "255,40,70", 0.35);
   } else {
-    _cmFillPat("tex_techo", 2, "#5a1e24", b.x0 - 8, ry0, W + 16, ry1 - ry0 + 4);
+    _cmFillPat((((parseInt(String(b.id).replace(/\D/g, ""), 10) || 0) % 2 === 0) && CM_OK.tex_techo_roja) ? "tex_techo_roja" : "tex_techo", 2, "#5a1e24", b.x0 - 8, ry0, W + 16, ry1 - ry0 + 4);   // techos alternados: pizarra azulada y teja roja (pueblo, no un solo patrón)
     ctx.fillStyle = "rgba(0,0,0,0.28)"; ctx.fillRect(b.x0 - 8, ry1 - 10, W + 16, 14);
     ctx.fillStyle = "rgba(255,210,180,0.10)"; ctx.fillRect(b.x0 - 8, (ry0 + ry1)/2 - 3, W + 16, 6);            // cumbrera
     ctx.fillStyle = "#1a1016"; ctx.fillRect(b.x0 + W*0.72, ry0 - 26, 22, 34);                                  // chimenea

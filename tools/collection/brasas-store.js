@@ -36,7 +36,11 @@ const SECRET='secreto-de-prueba-brasas-0123';
   await page.waitForFunction(()=>typeof assetsAllReady==='function'&&assetsAllReady()&&typeof shopOpen==='function'&&typeof renderMainMenu==='function');
   if(logged)await page.waitForFunction(()=>acct.lastPull&&!acct.pulling&&!acct.applying,null,{timeout:30000});
   // perfil fuera de la primera partida, con guardianes propios (para la tira "¿Qué compro con Brasas?")
-  await page.evaluate(c=>{for(const k of Object.keys(c)){save.champions[k]=Object.assign(save.champions[k]||{},c[k]);}save.firstRun=null;selectedClass='tanque';setState('mainmenu');renderMainMenu();},champs);
+  const fixture=c=>{for(const k of Object.keys(c)){save.champions[k]=Object.assign(save.champions[k]||{},c[k]);}save.firstRun=null;selectedClass='tanque';setState('mainmenu');renderMainMenu();};
+  await page.evaluate(fixture,champs);
+  // El perfil de la prueba manda: una sincronización tardía de la cuenta/economía (más probable con la página pesada) puede volver a aplicar la nube sin
+  // guardianes y mandar al juego a la pantalla del guardián de regalo; se vuelve a fijar el perfil hasta que quede estable ~1 s.
+  if(logged){let stable=0;for(let i=0;i<40&&stable<5;i++){await page.waitForTimeout(250);const bad=await page.evaluate(()=>state!=='mainmenu'||!save.champions.tanque||!save.champions.tanque.unlocked);if(bad){stable=0;await page.evaluate(fixture,champs);}else stable++;}}
   return {page,ctx,errors};
  }
  const noOverflow=async(page,label)=>{const r=await page.evaluate(()=>{const bad=[];const de=document.documentElement;if(de.scrollWidth>de.clientWidth+1)bad.push('document '+de.scrollWidth+'>'+de.clientWidth);
@@ -50,12 +54,16 @@ const SECRET='secreto-de-prueba-brasas-0123';
    await chip.click();ok(await page.evaluate(()=>state==='shop'&&shopTab==='brasas'),'chip abre Brasas');
    await page.locator('.brasas-status').getByText('Iniciá sesión para comprar Brasas.').waitFor();checks++;
    ok(await page.locator('[data-brasas-buy]').count()===0,'sin sesión no hay compra');
-   await page.getByText('Las Brasas compran apariencia y piezas de set (equipo). Las piezas también se consiguen jugando.').waitFor();checks++;
+   ok(await page.evaluate(()=>PIECES_FOR_BRASAS===false),'contrato predeterminado: Brasas solo cosméticas');
+   await page.getByText('Las Brasas solo compran apariencia. Nunca poder.',{exact:true}).waitFor();checks++;
    assert.deepEqual(errors,[]);await ctx.close();}
 
   // ---- con sesión ----
   const {page,ctx,errors}=await open(true);
   await page.waitForFunction(()=>PREMIUM.at>0,null,{timeout:15000});
+  // La billetera puede responder antes de terminar la transición visual del hub.
+  // Esperar visibilidad real (igual que sin sesión), sin force-click ni ocultar overlays.
+  await page.locator('#hub-premium-btn').waitFor({state:'visible',timeout:15000});
   ok(await page.locator('#hub-premium-btn').isVisible(),'chip visible con sesión');
   ok(/✦\s*0/.test(await page.locator('#hub-premium-btn').innerText()),'saldo 0 en el chip');
   ok(await page.locator('#hub-badge-offer').isVisible(),'OFERTA en la ficha Tienda');

@@ -1,0 +1,57 @@
+name: Skill icon baseline classification
+on:
+  pull_request:
+    paths: ['.github/workflows/skill-icon-baseline-classification.yml', 'tools/quality/classify-skill-icon-baseline.py', 'tools/quality/test-skill-icon-baseline-classifier.py']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compare-icons:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: ./.github/actions/setup-playwright
+      - name: Fail-closed classifier negative controls
+        run: python3 tools/quality/test-skill-icon-baseline-classifier.py -v
+      - name: Run unmodified icon contract on candidate and full pinned main
+        env:
+          EXPECTED_CANDIDATE: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          BASELINE=34ac2852154035b97e53c4807a0a20ee289a40b2
+          CANDIDATE="$PWD"
+          OUT=/tmp/skill-icon-comparison
+          mkdir -p "$OUT"
+          git rev-parse HEAD > "$OUT/candidate-revision.txt"
+          git fetch --depth=1 origin "$BASELINE"
+          git worktree add --detach /tmp/skill-icon-main "$BASELINE"
+          (cd /tmp/skill-icon-main && git rev-parse HEAD) > "$OUT/baseline-revision.txt"
+          # Do not transplant production files or change any checker assertion.
+          FILES='tools/art/check-skill-icons.js tools/lib/serve.js tools/lib/pw-tune.js tools/lib/http-ready.js'
+          sha256sum $FILES > "$OUT/candidate-harness.sha256"
+          (cd /tmp/skill-icon-main && sha256sum $FILES) > "$OUT/baseline-harness.sha256"
+          cmp "$OUT/candidate-harness.sha256" "$OUT/baseline-harness.sha256"
+          set -o pipefail
+          set +e
+          node tools/art/check-skill-icons.js --self-test 2>&1 | tee "$OUT/candidate.log"
+          CANDIDATE_PIPE=("${PIPESTATUS[@]}")
+          cd /tmp/skill-icon-main || exit 1
+          node tools/art/check-skill-icons.js --self-test 2>&1 | tee "$OUT/baseline.log"
+          BASELINE_PIPE=("${PIPESTATUS[@]}")
+          set -e
+          printf '%s\n' "${CANDIDATE_PIPE[0]}" > "$OUT/candidate-exit.txt"
+          printf '%s\n' "${CANDIDATE_PIPE[1]}" > "$OUT/candidate-tee-exit.txt"
+          printf '%s\n' "${BASELINE_PIPE[0]}" > "$OUT/baseline-exit.txt"
+          printf '%s\n' "${BASELINE_PIPE[1]}" > "$OUT/baseline-tee-exit.txt"
+          # Candidate original gate MUST pass. The pinned historical defect is
+          # retained as CONTRACT_FAIL, never renamed PASS. Crashes, truncation,
+          # changed harness/refs and evidence writer errors remain blocking.
+          python3 "$CANDIDATE/tools/quality/classify-skill-icon-baseline.py" "$OUT" --candidate-sha "$EXPECTED_CANDIDATE"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: skill-icon-baseline-evidence
+          path: /tmp/skill-icon-comparison/
+          retention-days: 14

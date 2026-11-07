@@ -6,9 +6,8 @@
    servidor DECIDE, y tools/collection/pricing-sync.js verifica que coinciden.
    Política (docs/economy/PRECIOS.md):
      · CAMPEONES: siempre se compran con ORO (nunca con Brasas). Ascensión: precio de oro propio por campeón.
-     · BRASAS ✦: apariencia (skins, cromas y paquetes de apariencia) y, por decisión del dueño, las PIEZAS DE SET (equipo,
-       con estadísticas). Es una excepción a "nunca poder": se puede apagar con PIECES_FOR_BRASAS (docs/economy/PRECIOS.md,
-       apartado "Riesgo: poder por dinero"). Los modos competitivos recortan el equipo (LANES.PROGRESS_CAP).
+     · BRASAS ✦: solo apariencia (skins, cromas y paquetes de apariencia). Las piezas con estadísticas se ganan jugando.
+       PIECES_FOR_BRASAS=false es el contrato vigente; el modo legado queda cubierto únicamente para compatibilidad.
      · Un precio global del juego que no está acá (equipo, talentos, Mística) sigue en su sistema, siempre en oro.
    Los precios del Game Master (cosmeticPrices / championPrices, ver docs/production/operations.md) siguen pudiendo
    cambiar el ORO; las Brasas las fija únicamente este archivo.
@@ -38,12 +37,13 @@ var PRICING = {
 
 /* ============================================================
    INTERRUPTOR DE LAS PIEZAS DE SET POR BRASAS ✦ — un único lugar (docs/economy/PRECIOS.md, "Riesgo: poder por dinero")
-     true  (POR DEFECTO, decisión del dueño): las piezas de set se compran con Brasas, validado por el servidor.
-     false : no se venden piezas de set por ningún medio (el cliente no muestra el botón y el servidor rechaza /api/wallet/buy-piece).
+     true  : las piezas de set se compran con Brasas, validado por el servidor (modo anterior).
+     false (POR DEFECTO desde 2026-11-02, DECISIÓN DEL DUEÑO: «las Brasas ya no están conectadas a los sets, solo a los cosméticos»):
+             no se venden piezas de set por Brasas ni por ningún medio (el cliente no muestra el botón y el servidor rechaza /api/wallet/buy-piece).
    Las piezas NUNCA se compran con oro (el oro es del cliente y editable: regalaría la skin que da el set completo). Las piezas que
    se ganan jugando (drops) no dependen de esto.
    ============================================================ */
-var PIECES_FOR_BRASAS = true;
+var PIECES_FOR_BRASAS = false;   // las Brasas compran SOLO apariencia; completar un set sigue desbloqueando su cosmético (jugando)
 
 /* ============================================================
    INTERRUPTOR DE LA TIENDA DE OBJETOS — un único lugar (docs/economy/TIENDA_ROTACION.md)

@@ -5,7 +5,12 @@ for(const [k,p] of Object.entries(EXPEDITION)){
 }
 const exCromaLoad=cromaEnsureLoaded;cromaEnsureLoaded=function(id){
  const d=exCromaLoad(id);if(!d?.exPalette||d._exBuilt)return d;d._exBuilt=true;
- const B=CHAMP_PACK[d.champ],key='croma_'+id;d.packs[d.champ]=key;
- const apply=()=>{const P=CHAMP_PACK[key]=Object.assign({},B,{ready:false,failed:false,footX:null});const c=portadorRecolorAtlas(P,d.exPalette),im=new Image();im.onload=()=>{P.atlas=im;P.ready=true;};im.onerror=()=>{P.failed=true;};im.src=c.toDataURL();};
- if(B.ready)apply();else{const prev=B.atlas.onload;B.atlas.onload=e=>{if(prev)prev(e);apply();};}return d;
+ const build=(baseKey,key)=>{const B=CHAMP_PACK[baseKey];if(!B||!B.atlas)return;d.packs[baseKey]=key;
+  const apply=()=>{const P=CHAMP_PACK[key]=Object.assign({},B,{ready:false,failed:false,footX:null});const c=portadorRecolorAtlas(P,d.exPalette),im=new Image();im.onload=()=>{P.atlas=im;P.ready=true;};im.onerror=()=>{P.failed=true;};im.src=c.toDataURL();};
+  if(B.ready)apply();else{const prev=B.atlas.onload;B.atlas.onload=e=>{if(prev)prev(e);apply();};}};
+ build(d.champ,'croma_'+id);
+ // Guardián con cuerpo del Códice: la croma recolorea TAMBIÉN ese cuerpo (se dibuja por codexChampionPack con su propia normalización);
+ // el pack clásico se conserva para el contrato de grilla de t_cromas y como respaldo mientras el del Códice carga.
+ if(CHAMP_PACK['codex_'+d.champ])build('codex_'+d.champ,'croma_'+id+'_codex');
+ return d;
 };

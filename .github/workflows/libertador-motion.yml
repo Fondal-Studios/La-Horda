@@ -7,7 +7,7 @@ permissions:
   contents: read
 jobs:
   component:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
@@ -19,20 +19,19 @@ jobs:
       - run: npm install --no-save playwright
       - run: npx playwright install --with-deps chromium
       - run: python -m unittest tools/factory/test_outline_gaps.py tools/factory/test_authored_clip.py tools/factory/test_authored_frame.py
-      - name: Reproduce contour repair and exact selected frames
+      - name: Exact extraction from the approved Codex-design source and scanner
         run: |
-          python tools/factory/repair-outline-gaps.py art-source/entregas/bloques/B004_libertador/outline-repair.json /tmp/libertador-outline
           python tools/factory/extract-authored-clip.py docs/art-gate/libertador-motion/source.json /tmp/motion.png /tmp/extraction.json
+          python -m pip install --quiet scipy
           python - <<'PY'
+          import importlib.util
           from PIL import Image
-          import json
-          assert Image.open('/tmp/libertador-outline/atlas.png').tobytes() == Image.open('art-source/entregas/bloques/B004_libertador/revision-native-v7/atlas.png').tobytes()
           assert Image.open('/tmp/motion.png').tobytes() == Image.open('assets/sprites/champions/libertador/v3/motion.png').tobytes()
-          scan=json.load(open('/tmp/libertador-outline/repair.json'))['after']
-          assert scan['halo']==scan['semi']==scan['fragments']==0
+          s=importlib.util.spec_from_file_location('scan','tools/art/scan_sprites.py');m=importlib.util.module_from_spec(s);s.loader.exec_module(m)
+          for p in ('assets/sprites/champions/libertador/v3/motion.png','assets/sprites/champions/libertador/v2/atlas.png','assets/sprites/champions/libertador/v2/death.png'):
+              r=m.analyze(p); assert r['halo']==r['semi']==r['fragments']==0,(p,r)
           PY
-      - run: node tools/art/check-authored-density.js art-source/entregas/bloques/B004_libertador/revision-native-v7/atlas.png docs/art-gate/libertador-motion/native-source.json 1
-      - run: python tools/art/painter/style_gate.py --strict art-source/entregas/bloques/B004_libertador/revision-native-v7/atlas.png
+      - run: node tools/art/check-authored-clip-density.js assets/sprites/champions/libertador/v3/motion.png docs/art-gate/libertador-motion/native-source.json 1 12
       - run: node tools/art/check-libertador-motion.js
       - run: node tools/art/check-libertador-death.js
       - name: Existing roster and cosmetics

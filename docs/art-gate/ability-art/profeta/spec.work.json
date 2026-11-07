@@ -1,0 +1,100 @@
+{
+ "guardian": "profeta",
+ "codex": "profeta",
+ "title": "profeta",
+ "palette": [
+  "#0d2f33",
+  "#2a8f86",
+  "#4fd8c4",
+  "#bffff0",
+  "#ffffff"
+ ],
+ "abilities": [
+  {
+   "id": "rewind",
+   "kind": "ring",
+   "radius": 140,
+   "frames": 10,
+   "glyph": "eye",
+   "baseline": "pf_rewind",
+   "replaces": "pf_rewind",
+   "params": {},
+   "motif": "serpent"
+  },
+  {
+   "id": "bubble_idle",
+   "kind": "idle",
+   "radius": 38,
+   "frames": 12,
+   "glyph": "eye",
+   "baseline": "pf_bubble_idle",
+   "replaces": "pf_bubble_idle",
+   "params": {},
+   "motif": "serpent"
+  },
+  {
+   "id": "spin",
+   "kind": "ring",
+   "radius": 140,
+   "frames": 10,
+   "glyph": "eye",
+   "baseline": "pf_spin",
+   "replaces": "pf_spin",
+   "params": {},
+   "motif": "serpent"
+  },
+  {
+   "id": "stun",
+   "kind": "ring",
+   "radius": 24,
+   "frames": 9,
+   "glyph": "eye",
+   "baseline": "pf_stun",
+   "replaces": "pf_stun",
+   "params": {
+    "rim": 1,
+    "fill": 0.06,
+    "ticks": 4,
+    "tick_len": 0.12,
+    "glyph_scale": 1,
+    "sparks": 0,
+    "flash": 0.3,
+    "spin": 1,
+    "inner_ring": 0,
+    "highlight_arc": 1,
+    "impact_at": 0.3,
+    "fade_to": 0.0,
+    "core": 2,
+    "glyph_on": 0,
+    "wave": 0,
+    "motif_on": 1,
+    "motif_n": 6,
+    "wave_amp": 2,
+    "thick": 1,
+    "deco": 1,
+    "core_density": 0.5
+   },
+   "motif": "serpent",
+   "_dir": {
+    "rim": -1,
+    "fill": -1,
+    "ticks": -1,
+    "tick_len": -1,
+    "sparks": -1,
+    "deco": 1,
+    "motif_n": 1
+   }
+  },
+  {
+   "id": "fuse_idle",
+   "kind": "idle",
+   "radius": 40,
+   "frames": 12,
+   "glyph": "eye",
+   "baseline": "pf_fuse_idle",
+   "replaces": "pf_fuse_idle",
+   "params": {},
+   "motif": "serpent"
+  }
+ ]
+}

@@ -1,0 +1,37 @@
+name: Cosmetics-only store contract
+on:
+  pull_request:
+    paths: ['js/ui/shop-ui.js', 'js/data/pricing.js', 'server/**', 'tools/collection/**', 'tools/ui-clarity/**', '.github/workflows/cosmetics-only.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-playwright
+      - run: npm ci --prefix server
+      - name: Remove tracked screenshots before collecting fresh evidence
+        run: rm -f docs/production/brasas-store-844x390.png docs/production/hub-brasas-chip.png
+      - name: Default pieces blocked and legacy compatibility (isolated API)
+        run: node server/test-wallet-pieces.js
+      - name: Cosmetic prices, ownership and idempotency (isolated API)
+        if: ${{ !cancelled() }}
+        run: node server/test-wallet.js
+      - name: Rotation retains catalog, no power purchase buttons
+        if: ${{ !cancelled() }}
+        run: node tools/collection/t_shop_rotation.js
+      - name: Brasas store with isolated real API
+        if: ${{ !cancelled() }}
+        run: node tools/collection/brasas-store.js
+      - name: Retain actual browser evidence
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: cosmetics-only-browser-${{ github.sha }}
+          path: |
+            docs/production/brasas-store-844x390.png
+            docs/production/hub-brasas-chip.png
+          if-no-files-found: error

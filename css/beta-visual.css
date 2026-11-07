@@ -14,7 +14,7 @@
 .bt-title .title-brand{ text-shadow:3px 3px 0 #000, 0 0 28px rgba(255,200,90,.45); z-index:3; }
 .bt-title .brand-sub{ color:#d8e6cf; z-index:3; }
 
-#title-screen > #bt-cta{
+#title-screen > #bt-col{
   position:absolute; z-index:4; right:max(5%, env(safe-area-inset-right)); top:50%; transform:translateY(-38%);
   width:min(300px, 40vw); display:flex; flex-direction:column; align-items:stretch; gap:8px; text-align:center;
   animation:btCtaIn .7s var(--ui-ease, ease) .15s both;
@@ -45,14 +45,14 @@
 }
 .bt-title #title-continue-btn:disabled{ opacity:.6; }
 .bt-title.bt-launch > *{ transition:opacity .5s, filter .5s; }
-.bt-title.bt-launch #bt-cta, .bt-title.bt-launch #title-continue-btn{ opacity:0; }
+.bt-title.bt-launch #bt-col, .bt-title.bt-launch #title-continue-btn{ opacity:0; }
 .bt-title.bt-launch #bt-hero-cv{ transform:scale(1.18); transition:transform .55s cubic-bezier(.5,0,.2,1), opacity .5s; opacity:.0; }
 .bt-title.bt-launch #bt-hero-cv{ opacity:0; transition:opacity .4s; }
 @media (max-height:420px){
-  #title-screen > #bt-cta{ width:min(260px, 42vw); gap:5px; }
+  #title-screen > #bt-col{ width:min(260px, 42vw); gap:5px; }
   .bt-play{ min-height:54px; padding:8px 10px 6px; } .bt-play-main{ font-size:.85rem; } .bt-cta-kick{ font-size:.9rem; }
 }
-@media (orientation:portrait){ #title-screen > #bt-cta{ right:50%; transform:translate(50%,0); top:auto; bottom:18%; width:min(320px, 80vw); animation:none; } }
+@media (orientation:portrait){ #title-screen > #bt-col{ right:50%; transform:translate(50%,0); top:auto; bottom:18%; width:min(320px, 80vw); animation:none; } }
 @media (prefers-reduced-motion:reduce){ #bt-bg, .bt-play, .bt-play::after{ animation:none !important; } }
 body.reduce-motion .bt-play, body.reduce-motion .bt-play::after{ animation:none !important; }
 
@@ -98,3 +98,6 @@ body.reduce-motion.beta-visual #controls .ability-btn.bt-press, body.reduce-moti
 /* transición de arranque: fundido limpio a negro (ronda 2: el fundido anterior quedaba a medio hacer) */
 #title-screen.bt-title::after{ content:""; position:absolute; inset:0; background:#020503; opacity:0; pointer-events:none; z-index:9; transition:opacity .5s ease-in; }
 #title-screen.bt-title.bt-launch::after{ opacity:1; }
+
+/* Alcance de la beta pública (js/beta/beta-scope.js): modos fuera de alcance ocultos, sin borrar nada. */
+body.beta-public #hub-crystal-btn, body.beta-public #hub-coliseum-btn, body.beta-public #mode-crystal-wars-btn, body.beta-public #mode-coliseum-btn{ display:none !important; }

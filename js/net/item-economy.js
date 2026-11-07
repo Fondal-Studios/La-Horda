@@ -44,6 +44,8 @@ async function economyFinish(victory,extra={}){
  const duration=Math.max(0,Math.round((extra.durationMs??runElapsedMs??0)-(ECON.elapsedBase||0))),round=extra.round||1;
  ECON.finishing=(async()=>{await ECON.start;if(!ECON.run)return null;
   const requestId=crypto.randomUUID(),args={run:ECON.run.id,victory,durationMs:duration,round,score:extra.score||0};
+  // ranking personal: ronda y puntaje que ESTE jugador sobrevivió (el botín final sigue usando la ronda del grupo)
+  if(extra.survived!==undefined){args.survived=extra.survived|0;args.survivedScore=extra.survivedScore|0;}
   ECON.pending={requestId,args,user:accountState().user};localStorage.setItem('horda_economy_pending',JSON.stringify(ECON.pending));
   try{const r=await economyAction('run.finish',args,{requestId});ECON.pending=null;localStorage.removeItem('horda_economy_pending');ECON.run=null;ECON.start=null;
    if(typeof victoryData!=='undefined'&&victoryData?.economyPending){victoryData.rewards=r.items;victoryData.gems=r.materials;victoryData.gold=save.gold;victoryData.economyPending=false;if(state==='victory')renderVictoryStep();}
@@ -61,7 +63,7 @@ async function economyRetry(){
 const _ecoStartRun=startRun;startRun=function(...args){const r=_ecoStartRun(...args);economyStart();return r;};
 const _ecoStarter=grantStarterChampion;grantStarterChampion=function(k){if(!economyActive())return _ecoStarter(k);if(!ECON.data.account.unlocked.length)economyAction('starter',{champion:k}).catch(e=>economyNotify(e.message));return _ecoStarter(k);};
 const _ecoLoot=grantEndOfRunLoot;grantEndOfRunLoot=function(champ,perf,win){if(!economyActive())return _ecoLoot(champ,perf,win);if(typeof endlessOn==='function'&&endlessOn())return {items:[],inventoryFull:false,grade:perf.grade,gems:0,pending:true};economyFinish(win).catch(()=>{});return {items:[],inventoryFull:false,grade:perf.grade,gems:0,pending:true};};
-const _ecoLB=lbAfterRun;lbAfterRun=function(L){if(!economyActive())return _ecoLB(L);L.lb={st:'sending'};economyFinish(false,{round:EN.round,score:Math.round(EN.score),durationMs:L.timeMs}).then(r=>{L.lb={st:r?.ranking?'ok':'rejected',rank:r?.ranking?.rank,total:r?.ranking?.total,msg:'Solo participan campeones competitivos.'};_lbRenderRunLine();}).catch(e=>{L.lb={st:'offline',msg:e.message};_lbRenderRunLine();});};
+const _ecoLB=lbAfterRun;lbAfterRun=function(L){if(!economyActive())return _ecoLB(L);L.lb={st:'sending'};economyFinish(false,{round:EN.round,score:Math.round(EN.score),durationMs:L.timeMs,survived:L.survived|0,survivedScore:L.survivedScore|0}).then(r=>{L.lb={st:r?.ranking?'ok':'rejected',rank:r?.ranking?.rank,total:r?.ranking?.total,msg:'Solo participan campeones competitivos.'};_lbRenderRunLine();}).catch(e=>{L.lb={st:'offline',msg:e.message};_lbRenderRunLine();});};
 const _ecoAdd=addItemToInventory;addItemToInventory=function(...args){if(economyActive())return null;return _ecoAdd(...args);};
 // Combat coins are a preview only; settled value comes from the run receipt.
 const _ecoGold=grantGold;grantGold=function(n){if(economyActive())return;return _ecoGold(n);};

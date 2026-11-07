@@ -1,0 +1,110 @@
+{
+ "kind": "beam",
+ "score": 98.3,
+ "points": {
+  "alpha": 5.0,
+  "palette": 8.0,
+  "hygiene": 7.0,
+  "edge": 15.0,
+  "coverage": 12.0,
+  "contrast": 8.0,
+  "clear_floor": 5.0,
+  "motion": 13.29,
+  "richness": 15.0,
+  "identity": 10.0
+ },
+ "metrics": {
+  "peak_idx": 1,
+  "alpha_binary": 1.0,
+  "palette_adherence": 1.0,
+  "colors": 4,
+  "isolated": 0.0,
+  "edge_outline": 1.0,
+  "edge_reach": 1.0,
+  "coverage": 0.5708333333333333,
+  "interior": 0.0,
+  "jag": 0.08926760501737165,
+  "interior_detail": 0.3,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 15.11784148001039,
+  "peak_pos": 0.14285714285714285,
+  "tail": 0.17518248175182483,
+  "motion_mean": 0.256547619047619,
+  "unique_frames": 1.0,
+  "tones": 4,
+  "highlight_share": 0.24452554744525548,
+  "core_fill": 0.5708333333333333,
+  "detail_mass": 0.5,
+  "min_sig_dist": 1.0
+ },
+ "hard_fails": [],
+ "ops": [
+  {
+   "knob": "wave",
+   "why": "el arte actual zigzaguea (relámpago, hilo, tinta): dar forma irregular al rayo",
+   "add": 1
+  },
+  {
+   "knob": "wave_amp",
+   "why": "mayor amplitud de la ondulación",
+   "add": 1
+  }
+ ],
+ "criteria": {
+  "alpha": 1.0,
+  "palette": 1.0,
+  "hygiene": 1.0,
+  "edge": 1.0,
+  "coverage": 1.0,
+  "contrast": 1.0,
+  "clear_floor": 1.0,
+  "motion": 0.886,
+  "richness": 1.0,
+  "identity": 1.0
+ },
+ "baseline_total": 82.7,
+ "baseline_criteria": {
+  "alpha": 1.0,
+  "palette": 0.0,
+  "hygiene": 1.0,
+  "edge": 0.915,
+  "coverage": 0.743,
+  "contrast": 1.0,
+  "clear_floor": 1.0,
+  "motion": 0.873,
+  "richness": 1.0,
+  "identity": 0.7
+ },
+ "baseline_metrics": {
+  "peak_idx": 3,
+  "alpha_binary": 1.0,
+  "palette_adherence": 0.5769230769230769,
+  "colors": 626,
+  "isolated": 0.0,
+  "edge_outline": 0.7291666666666666,
+  "edge_reach": 1.0,
+  "coverage": 0.42291666666666666,
+  "interior": 0.0,
+  "jag": 0.1726375799946767,
+  "interior_detail": 0.3,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 14.442288747930025,
+  "peak_pos": 0.42857142857142855,
+  "tail": 0.5123152709359606,
+  "motion_mean": 0.17083333333333334,
+  "unique_frames": 1.0,
+  "tones": 5,
+  "highlight_share": 0.12807881773399016,
+  "core_fill": 0.42291666666666666,
+  "detail_mass": 0.5,
+  "min_sig_dist": 1.0
+ },
+ "improvement": 15.6,
+ "reasons": [
+  "silueta más plana que el arte actual: irregularidad 0.09 < 70 % de 0.17"
+ ],
+ "status": "FAIL",
+ "keep_current": false
+}

@@ -17,6 +17,8 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   await p.click('#title-continue-btn');
   // modo campaña: primero se elige el campeón de regalo
   await p.click('.starter-card[data-champ="tanque"]'); await p.click('#starter-yes-btn');
+  // primer minuto limpio (PR #153): tras el campeón de regalo el juego entra directo a la partida; para probar el selector de modos se vuelve al menú
+  await p.evaluate(() => { try { if (typeof endRunToMenu === 'function') endRunToMenu(); } catch (e) {} setState('mainmenu'); renderMainMenu(); });
   await p.click('#mainmenu-jugar-btn'); await p.click('#mode-arena-btn');
   const cards = await p.$$eval('.arena-card:not(.divina)', els => els.map(e => e.dataset.arena + ':' + (e.disabled ? 'locked' : 'open')));
   // orden canónico (docs/lore/LA_HORDA_LORE_BIBLE.md): 01 Ciudad … 08 Abismo · 09 Minas · 10 Infernal

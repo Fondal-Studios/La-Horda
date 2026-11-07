@@ -1,0 +1,137 @@
+{
+ "kind": "idle",
+ "score": 94.1,
+ "points": {
+  "alpha": 5.0,
+  "palette": 8.0,
+  "hygiene": 7.0,
+  "edge": 15.0,
+  "coverage": 12.0,
+  "contrast": 8.0,
+  "clear_floor": 4.78,
+  "motion": 15.0,
+  "richness": 14.23,
+  "identity": 5.08
+ },
+ "metrics": {
+  "peak_idx": 6,
+  "alpha_binary": 1.0,
+  "palette_adherence": 1.0,
+  "colors": 5,
+  "isolated": 0.0,
+  "edge_outline": 1.0,
+  "edge_reach": 0.980380499108583,
+  "edge_over": 0.0,
+  "coverage": 0.489778534923339,
+  "interior": 0.45751633986928103,
+  "interior_detail": 0.4215686274509804,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 14.854795380405353,
+  "peak_pos": 0.5,
+  "tail": 0.0,
+  "loop_gap": 0.08801020408163265,
+  "motion_mean": 0.09085111317254174,
+  "unique_frames": 1.0,
+  "tones": 5,
+  "highlight_share": 0.05304347826086957,
+  "core_fill": 0.5,
+  "detail_mass": 0.5284455128205129,
+  "min_sig_dist": 0.022706180542015997
+ },
+ "hard_fails": [],
+ "ops": [
+  {
+   "knob": "deco",
+   "why": "se parece demasiado a otra habilidad del guardián (distancia 0.02): cambiar el tipo de marca",
+   "add": 1
+  },
+  {
+   "knob": "inner_ring",
+   "why": "segundo anillo para distinguirla",
+   "set": 1
+  },
+  {
+   "knob": "motif_on",
+   "why": "activar el motivo temático del guardián (el arte actual lo tiene)",
+   "set": 1
+  },
+  {
+   "knob": "motif_n",
+   "why": "el arte actual tiene más trama temática: motivo más denso",
+   "add": 1
+  },
+  {
+   "knob": "ticks",
+   "why": "el arte actual tiene más trama interior: sumar marcas propias",
+   "add": 4
+  },
+  {
+   "knob": "glyph_scale",
+   "why": "el arte actual tiene más presencia central: glifo más grande",
+   "add": 1
+  },
+  {
+   "knob": "deco",
+   "why": "probar otra familia de marcas",
+   "cycle": true
+  }
+ ],
+ "criteria": {
+  "alpha": 1.0,
+  "palette": 1.0,
+  "hygiene": 1.0,
+  "edge": 1.0,
+  "coverage": 1.0,
+  "contrast": 1.0,
+  "clear_floor": 0.956,
+  "motion": 1.0,
+  "richness": 0.949,
+  "identity": 0.508
+ },
+ "baseline_total": 85.3,
+ "baseline_criteria": {
+  "alpha": 1.0,
+  "palette": 0.0,
+  "hygiene": 1.0,
+  "edge": 0.753,
+  "coverage": 1.0,
+  "contrast": 1.0,
+  "clear_floor": 1.0,
+  "motion": 1.0,
+  "richness": 1.0,
+  "identity": 0.7
+ },
+ "baseline_metrics": {
+  "peak_idx": 1,
+  "alpha_binary": 1.0,
+  "palette_adherence": 0.17389138016940708,
+  "colors": 947,
+  "isolated": 0.0,
+  "edge_outline": 0.5,
+  "edge_reach": 0.9907895468227297,
+  "edge_over": 0.0,
+  "coverage": 0.46039182282793867,
+  "interior": 0.32598039215686275,
+  "interior_detail": 0.13316993464052287,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 15.30002636177044,
+  "peak_pos": 0.5,
+  "tail": 0.0,
+  "loop_gap": 0.0,
+  "motion_mean": 0.10650510204081633,
+  "unique_frames": 1.0,
+  "tones": 5,
+  "highlight_share": 0.040731504571903575,
+  "core_fill": 0.18269230769230768,
+  "detail_mass": 0.17147435897435895,
+  "min_sig_dist": 1.0
+ },
+ "improvement": 8.8,
+ "reasons": [
+  "regresión de riqueza visual frente al arte actual (0.95 < 1.00)"
+ ],
+ "status": "FAIL",
+ "keep_current": false
+}

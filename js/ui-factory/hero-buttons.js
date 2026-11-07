@@ -59,7 +59,6 @@
     rows12.forEach(function(r,y){ for(var x=0;x<12;x++) g14[y+1][x+1] = (r[x]||".").replace(/[rgcw]/,"a"); });
     var rows = pxiIconCompose(g14.map(function(r){ return r.join(""); }), "basic"), c = hex2rgb(color);
     var colors = pxiIconColors("basic", {m:rgb2hex(c), l:rgb2hex(mix(c,WHITE,.55)), d:rgb2hex(mix(c,BLACK,.45))}, rgb2hex(mix(c,WHITE,.82)));
-    colors.f = rgb2hex(mix(c,BLACK,.55));            // marco del ícono: oscuro del color del héroe
     return cache[id] = pxiIconDataURL(rows, colors);
   }
   function swapBasic(uri){

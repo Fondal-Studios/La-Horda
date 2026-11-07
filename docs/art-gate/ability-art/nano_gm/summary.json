@@ -1,0 +1,92 @@
+{
+ "guardian": "nano_gm",
+ "passed": [
+  "law",
+  "verdict",
+  "burst_d",
+  "decree"
+ ],
+ "escalated": [],
+ "keep_current": [],
+ "state": {
+  "law": {
+   "status": "PASS",
+   "rounds": 2,
+   "history": [
+    {
+     "round": 1,
+     "score": 91.4,
+     "status": "FAIL",
+     "improvement": 17.3,
+     "reasons": [
+      "regresión de cobertura legible frente al arte actual (0.70 < 0.97)"
+     ]
+    },
+    {
+     "round": 2,
+     "score": 95.0,
+     "status": "PASS",
+     "improvement": 20.9,
+     "reasons": []
+    }
+   ]
+  },
+  "verdict": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 94.3,
+     "status": "PASS",
+     "improvement": 24.9,
+     "reasons": []
+    }
+   ]
+  },
+  "burst_d": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 93.1,
+     "status": "PASS",
+     "improvement": 11.1,
+     "reasons": []
+    }
+   ]
+  },
+  "decree": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 100.0,
+     "status": "PASS",
+     "improvement": 24.9,
+     "reasons": []
+    }
+   ]
+  }
+ },
+ "baseline": {
+  "law": 74.1,
+  "verdict": 69.4,
+  "burst_d": 82.0,
+  "decree": 75.1
+ },
+ "log": [
+  "ronda 1: law FAIL 91.4 — regresión de cobertura legible frente al arte actual (0.70 < 0.97)",
+  "ronda 1: verdict PASS 94.3 (arte actual 69.4, +24.9)",
+  "ronda 1: burst_d PASS 93.1 (arte actual 82.0, +11.1)",
+  "ronda 1: decree PASS 100.0 (arte actual 75.1, +24.9)",
+  "ronda 2: law PASS 95.0 (arte actual 74.1, +20.9)",
+  "arquitecto: integradas ['law', 'verdict', 'burst_d', 'decree']; humo OK: SMOKE OK nano_gm: law,verdict,burst_d,decree"
+ ],
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['law', 'verdict', 'burst_d', 'decree']; humo OK: SMOKE OK nano_gm: law,verdict,burst_d,decree"
+ }
+}

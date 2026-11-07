@@ -1,0 +1,40 @@
+name: Three UI baseline contracts
+on:
+  pull_request:
+    paths: ['css/ui-factory/hud-layout.css', 'css/ui-factory/menus-touch.css', 'tools/ux/test-three-ui-contracts.js', '.github/workflows/ui-baseline-three-contracts.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contracts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: ./.github/actions/setup-playwright
+      - name: Real pointer and geometry contracts
+        run: node tools/ux/test-three-ui-contracts.js
+      - name: Original complete icon audit
+        if: ${{ !cancelled() }}
+        run: node tools/art/check-skill-icons.js --self-test
+      - name: Original complete lanes flow (both viewports)
+        if: ${{ !cancelled() }}
+        run: node tools/lanes/flow.js
+      - name: Original complete public onboarding
+        if: ${{ !cancelled() }}
+        run: |
+          python3 -m http.server 8813 > /tmp/ui-http.log 2>&1 &
+          SERVER=$!
+          trap 'kill "$SERVER"' EXIT
+          curl --retry 10 --retry-connrefused --retry-delay 1 --silent --fail http://127.0.0.1:8813/ > /dev/null
+          node tools/alpha/public-onboarding.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: three-ui-contracts-evidence
+          path: |
+            docs/ux/three-ui-contracts/
+            docs/public-alpha/
+          retention-days: 14

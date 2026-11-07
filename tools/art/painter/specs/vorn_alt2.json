@@ -1,0 +1,68 @@
+{
+ "id": "vorn_alt2",
+ "name": "Vorn, Piel de Ceniza",
+ "prompt": "Roca ennegrecida con grietas de brasa y capa de ceniza.",
+ "body": "renko_skin",
+ "head": "baltra_skin",
+ "paint": [
+  {
+   "part": "head",
+   "hue": [
+    0,
+    120
+   ],
+   "minChroma": 3,
+   "noSkin": true,
+   "to": "#4a3a34",
+   "keepLight": 0.7,
+   "chroma": 1.0
+  },
+  {
+   "part": "body",
+   "hue": [
+    0,
+    120
+   ],
+   "minChroma": 3,
+   "noSkin": true,
+   "to": "#3e3430",
+   "keepLight": 0.7,
+   "chroma": 1.0,
+   "maxL": 70
+  }
+ ],
+ "accessories": [
+  {
+   "element": "corona_de_picos",
+   "scale": 0.9,
+   "materials": {
+    "metal": {
+     "ramp": [
+      "#2a0a04",
+      "#7a2a0c",
+      "#d8641c",
+      "#ffb060"
+     ]
+    }
+   }
+  },
+  {
+   "element": "capa_larga",
+   "scale": 0.8,
+   "materials": {
+    "cloth": {
+     "ramp": [
+      "#1a1414",
+      "#3a3030",
+      "#6a5a54",
+      "#a89890"
+     ]
+    }
+   }
+  }
+ ],
+ "install": {
+  "champion": "vorn",
+  "pack": "vorn_alt2"
+ }
+}

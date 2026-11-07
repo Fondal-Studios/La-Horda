@@ -128,12 +128,13 @@ function _shopUntilTxt(d){ return d==null ? "" : d===0 ? "A la venta hoy" : d===
 function shopRotationRowHTML(){
   if(!shopIsLive()) return "";
   const list = shopRotationToday(), info = shopRotationInfo(), gold = save.gold || 0;
+  const piecesOn = typeof PIECES_FOR_BRASAS!=="undefined" && PIECES_FOR_BRASAS;
   const cards = list.map(e=>{
     const it = shopPreviewItem(e), col = itemColor(it), price = shopPriceOf(e), n = shopOwnedCount(e), miss = Math.max(0, price - gold);
     if(e.cat==="set") return `<div class="shop-rot-card" data-rot="${e.key}" style="--ic:${col}">
       <div class="shop-rot-top">${itemIconHTML(it)}<div class="shop-rot-meta"><div class="shop-rot-name" style="color:${col}">${it.name}</div><div class="shop-item-sub">${_shopRotLabel(e)} · ${ITEM_TYPES[it.type].label}</div></div></div>
       <div class="shop-rot-price">${n ? `<span class="shop-st own">Tenés ${n}</span>` : ""}</div>
-      ${typeof premiumPieceButton==="function" ? premiumPieceButton(e.id) : ""}</div>`;
+      ${typeof PIECES_FOR_BRASAS!=="undefined" && PIECES_FOR_BRASAS ? (typeof premiumPieceButton==="function" ? premiumPieceButton(e.id) : "") : '<div class="shop-item-sub" data-piece-earned>Se consigue jugando</div>'}</div>`;
     const pct = Math.max(0, Math.min(100, Math.round(gold*100/Math.max(1, price))));
     return `<div class="shop-rot-card" data-rot="${e.key}" style="--ic:${col}">
       <div class="shop-rot-top">${itemIconHTML(it)}<div class="shop-rot-meta"><div class="shop-rot-name" style="color:${col}">${it.name}</div><div class="shop-item-sub">${_shopRotLabel(e)} · ${ITEM_TYPES[it.type].label}</div></div></div>
@@ -141,9 +142,9 @@ function shopRotationRowHTML(){
       ${miss ? `<div class="shop-rot-miss">Te faltan <b>🪙 ${fmtGold(miss)}</b></div><div class="shop-goal-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}" aria-label="Oro hacia ${it.name}"><i style="width:${pct}%"></i></div>` : '<div class="shop-rot-miss ok">Te alcanza</div>'}
       <button class="shop-btn" type="button" data-rot-buy="${e.key}" data-gold-price="${price}" ${miss ? "disabled" : ""}>Comprar</button></div>`;
   }).join("");
-  return `<div class="shop-rot" data-shop-rot><div class="shop-row-head"><span class="shop-row-title">A LA VENTA HOY</span><span class="shop-renew" data-shop-renew data-prefix="Se renueva en ">Se renueva en ${_shopRenewTxt()}</span></div>
+  return `<div class="shop-rot" data-shop-rot><div class="shop-row-head"><span class="shop-row-title">${piecesOn ? "A LA VENTA HOY" : "CATÁLOGO DEL DÍA"}</span><span class="shop-renew" data-shop-renew data-prefix="Se renueva en ">Se renueva en ${_shopRenewTxt()}</span></div>
     <div class="shop-rot-strip ui-scroll-x">${cards}</div>
-    <div class="shop-rot-note">Piezas de set y legendarios: cada día salen ${info.perDay} distintas (cambian a las 00:00 UTC, ${_shopRenewClock()} en tu reloj). El precio no cambia ni hay cantidad limitada. Cada pieza vuelve a salir al menos cada ${info.maxGapDays} días; en <b>Objetos</b> ves cuándo vuelve la que buscás. Guardianes y equipo Básico se compran siempre.</div></div>`;
+    <div class="shop-rot-note">${!piecesOn ? "Las piezas de set se consiguen jugando; esta vitrina no limita sus drops. Solo los legendarios ofrecen compra con oro. " : ""}Piezas de set y legendarios: cada día salen ${info.perDay} distintas (cambian a las 00:00 UTC, ${_shopRenewClock()} en tu reloj). El precio no cambia ni hay cantidad limitada. Cada pieza vuelve a salir al menos cada ${info.maxGapDays} días; en <b>Objetos</b> ${piecesOn ? "ves cuándo vuelve la que buscás" : "ves el catálogo completo de piezas para conseguir jugando"}. Guardianes y equipo Básico se compran siempre.</div></div>`;
 }
 function shopRotationBind(panel){
   panel.querySelectorAll("[data-rot-buy]").forEach(b=> b.addEventListener("click", ev=>{
@@ -353,17 +354,17 @@ function renderShopChampions(panel){
 }
 
 /* ---------------- Objetos y sets ---------------- */
-// Piezas de set: se compran SOLO con Brasas ✦ (js/systems/premium.js, validado por el servidor). Sin cuenta, el botón da el aviso de siempre.
+// Piezas de set: por defecto solo jugando. El modo legado PIECES_FOR_BRASAS=true ofrece Brasas, siempre validado por el servidor.
 function _shopPieceBuyHTML(entry, n, rotLine){
   const btn = typeof premiumPieceButton==="function" ? premiumPieceButton(entry.id) : "";
-  const st = n ? `<div class="shop-st own">Tenés ${n}</div>` : '<div class="shop-st">No comprado</div>';
+  const st = n ? `<div class="shop-st own">Tenés ${n}</div>` : '<div class="shop-st">No obtenido</div>';
   const how = btn ? "" : (typeof premiumPiecePrice==="function" && premiumPiecePrice(entry.id) > 0 ? "" : '<div class="shop-item-sub">Se consigue jugando</div>');
   return `${st}${rotLine || ""}${btn}${how}`;
 }
 function _shopItemCard(entry, tier){
   const it = shopPreviewItem(entry, tier), col = itemColor(it), n = shopOwnedCount(entry);
   const lines = itemEffectLines(it).slice(0, 3).map(l=>`<div class="shop-eff ${l.cls}">${l.txt}</div>`).join("");
-  const rot = shopIsLive() && shopRotates(entry), today = !rot || shopRotationHas(entry.key);
+  const rot = shopIsLive() && shopRotates(entry) && (entry.cat!=="set" || (typeof PIECES_FOR_BRASAS!=="undefined" && PIECES_FOR_BRASAS)), today = !rot || shopRotationHas(entry.key);
   const rotLine = rot ? `<div class="shop-st shop-rot-state ${today ? "on" : ""}">${today ? "A la venta hoy" : "No está hoy · " + _shopUntilTxt(shopRotationDaysUntil(entry.key)).toLowerCase()}</div>` : "";
   const tiers = entry.kind==="archetype" ? `<div class="shop-tiers">${SHOP_ARCHETYPE_TIERS.map(t=>`<button class="shop-tier ${t===tier?"on":""}" data-tier-for="${entry.key}" data-tier="${t}" style="--tc:${RARITY_META[t].color}">${TIER_LABEL[t]}</button>`).join("")}</div>` : "";
   return `<div class="shop-item" data-item="${entry.key}" style="--ic:${col}">
@@ -394,7 +395,7 @@ function _shopSetBlock(setId){
       <span class="shop-set-count">${have}/${ids.length} piezas · ${eq} equipadas</span></div>
     <div class="shop-set-bonus">${bon}</div>
     <div class="shop-set-pieces">${entries.map(e=>_shopItemCard(e)).join("")}</div>
-    ${missing.length && shopIsLive() ? `<div class="shop-item-sub shop-set-live" data-set-live>Hoy a la venta: ${entries.filter(e=>missing.includes(e.id) && shopRotationHas(e.key)).length} de las ${missing.length} que te faltan. Las piezas se compran de a una, cuando salen (no hay paquete).</div>` : missing.length ? `<div class="shop-item-sub shop-set-ember" data-set-ember>Las piezas se compran de a una con Brasas ✦ (no hay paquete) o se consiguen jugando.${typeof SET_SKINS!=="undefined" && SET_SKINS[setId] ? " Reunir el set completo regala su skin." : ""}</div>`: '<div class="shop-st own">✔ Tenés el set completo</div>'}
+    ${missing.length && !(typeof PIECES_FOR_BRASAS!=="undefined" && PIECES_FOR_BRASAS) ? '<div class="shop-item-sub" data-set-earned>Las piezas se consiguen jugando, no se compran con Brasas. Reunir el set completo desbloquea su skin cuando tiene una asociada.</div>' : missing.length && shopIsLive() ? `<div class="shop-item-sub shop-set-live" data-set-live>Hoy a la venta: ${entries.filter(e=>missing.includes(e.id) && shopRotationHas(e.key)).length} de las ${missing.length} que te faltan. Las piezas se compran de a una, cuando salen (no hay paquete).</div>` : missing.length ? `<div class="shop-item-sub shop-set-ember" data-set-ember>Las piezas se compran de a una con Brasas ✦ (no hay paquete) o se consiguen jugando.${typeof SET_SKINS!=="undefined" && SET_SKINS[setId] ? " Reunir el set completo regala su skin." : ""}</div>`: '<div class="shop-st own">✔ Tenés el set completo</div>'}
   </div>`;
 }
 function renderShopObjects(panel){
@@ -467,7 +468,7 @@ function renderShopSkins(panel){
   }).join("");
   const pending = Object.keys(SET_DB).filter(id=>!withSkin.includes(id)).map(id=>SET_DB[id].name);
   const focusBar = focus ? `<div class="shop-skin-focus" data-skin-focus="${focus}"><span>Apariencias de <b style="color:${CLASSES[focus].color}">${CLASSES[focus].name}</b></span><button class="shop-btn sec" type="button" id="shop-skin-focus-clear">Ver todas</button></div>` : "";
-  panel.innerHTML = `${focusBar}<div class="lobby-note">Reunir un set o recibir un regalo desbloquea su apariencia. Usarla no cambia tus objetos ni estadísticas. Cada apariencia se paga con Brasas o con oro: el precio de las dos está a la vista.</div>
+  panel.innerHTML = `${focusBar}<div class="lobby-note">Reunir un set o recibir un regalo desbloquea su apariencia. Usarla no cambia tus objetos ni estadísticas. Las apariencias se pagan solo con Brasas ✦ (el oro no las compra): el precio completo y lo que te falta están a la vista.</div>
     ${_shopCollectionsHTML({champ:focus})}
     ${cards || !focus ? `<div class="shop-skin-list">${cards || '<div class="inv-empty">Todavía no hay skins.</div>'}</div>` : ""}
     ${focus ? "" : `<div class="shop-soon-box shop-soon-small">Sets sin skin todavía (arte pendiente, ver docs/assets_faltantes/skins_sets/): ${pending.join(" · ")}. Con el set completo se ve su aura plena.</div>`}`;
@@ -552,7 +553,9 @@ function renderShopBrasas(panel){
   const regular = packs.filter(p=>!p.once);
   const on = premiumPaymentsOn();
   let status = "";
-  if(!logged) status = `<div class="brasas-status"><b>Iniciá sesión para comprar Brasas.</b> <button class="shop-btn" type="button" id="brasas-login">Iniciar sesión</button></div>`;
+  if(!logged) status = `<div class="brasas-status"><b>Iniciá sesión para comprar Brasas.</b> <button class="shop-btn" type="button" id="brasas-login">Iniciar sesión</button></div>
+    <div class="mpc-preview-cap">Con Brasas se desbloquean</div>
+    <div class="mpc-locked-row" aria-hidden="true">${["🎨","👑","✦","🎁","💠"].map(i => `<span class="mpc-locked"><span>${i}</span><span class="mpc-lk">🔒</span></span>`).join("")}</div>`;
   else if(!PREMIUM.at) status = `<div class="brasas-status">Cargando paquetes…</div>`;
   else if(!on) status = `<div class="brasas-status" data-brasas-soon-note><b>Muy pronto.</b> Los pagos todavía no están conectados: por ahora no se pueden comprar Brasas.</div>`;
   panel.innerHTML = `<div class="brasas-head">

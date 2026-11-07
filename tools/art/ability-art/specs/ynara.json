@@ -1,0 +1,82 @@
+{
+ "guardian": "ynara",
+ "codex": "ynara",
+ "title": "ynara",
+ "palette": [
+  "#40182c",
+  "#b04a78",
+  "#ed8db5",
+  "#fff0f7",
+  "#ffffff"
+ ],
+ "abilities": [
+  {
+   "id": "gaze",
+   "kind": "sector",
+   "radius": 140,
+   "frames": 10,
+   "glyph": "drop",
+   "baseline": "yn_gaze",
+   "replaces": "yn_gaze",
+   "params": {},
+   "motif": "pollen",
+   "half": 0.85
+  },
+  {
+   "id": "stew_idle",
+   "kind": "idle",
+   "radius": 120,
+   "frames": 12,
+   "glyph": "drop",
+   "baseline": "yn_stew_idle",
+   "replaces": "yn_stew_idle",
+   "params": {},
+   "motif": "pollen"
+  },
+  {
+   "id": "stew",
+   "kind": "ring",
+   "radius": 120,
+   "frames": 10,
+   "glyph": "drop",
+   "baseline": "yn_stew",
+   "replaces": "yn_stew",
+   "params": {},
+   "motif": "pollen"
+  },
+  {
+   "id": "halo_idle",
+   "kind": "idle",
+   "radius": 120,
+   "frames": 12,
+   "glyph": "drop",
+   "baseline": "yn_halo_idle",
+   "replaces": "yn_halo_idle",
+   "params": {},
+   "motif": "pollen"
+  },
+  {
+   "id": "pulse",
+   "kind": "ring",
+   "radius": 120,
+   "frames": 10,
+   "glyph": "drop",
+   "baseline": "yn_pulse",
+   "replaces": "yn_pulse",
+   "params": {},
+   "motif": "pollen"
+  },
+  {
+   "id": "water",
+   "kind": "beam",
+   "tile": [
+    18,
+    16
+   ],
+   "frames": 8,
+   "baseline_beam": "yn_water",
+   "replaces": "yn_water",
+   "params": {}
+  }
+ ]
+}

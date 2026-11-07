@@ -58,3 +58,12 @@
   #pause-screen:has(#tactical-panel) #quit-btn{ grid-column:3; grid-row:5; }
   #pause-screen:has(#tactical-panel) #stats-panel{ grid-column:2 / 4; grid-row:6; max-width:none; margin:6px 0 0; }
 }
+
+/* El pie legal conserva sus enlaces táctiles de 44 px. En apaisado bajo, reservar
+   una fila separada para Continuar: no superponer controles ni eludir el consentimiento. */
+@media (max-height:520px) and (orientation:landscape){
+  #title-screen.bt-title #title-continue-btn{ top:auto; bottom:calc(60px + env(safe-area-inset-bottom,0px)); min-height:44px; }
+}
+@media (max-height:360px) and (orientation:landscape){
+  #title-screen.bt-title > #bt-col{ top:calc(50% - 16px); }
+}

@@ -116,8 +116,12 @@ function micDrawNetLinks(t){
 // corazón abierto: halo que late sobre el pecho
 function micDrawNetHeart(t){
   const m = enemies.find(o=>o.alive && o.type==="madre_espora"); if(!m || !(m._expT > 0) || !inView(m.x, m.y, 400)) return;
-  const q = 0.5 + 0.5*Math.sin(t*9);
-  _micGlow(m.x, m.y - 190, 120 + q*50, "255,90,150", 0.55 + q*0.3);
+  const q = 0.5 + 0.5*Math.sin((typeof runElapsedMs==="number"?runElapsedMs/1000:t)*9);
+  // Opt-in successful core composition shares its exact seed anchor. Legacy or
+  // unavailable art retains the original cue; no hitbox/range/timing changes.
+  const core=typeof _micMotherRenderedCoreAnchor==="function" ? _micMotherRenderedCoreAnchor(m) : null;
+  if(core) _micGlow(core.x,core.y,28+q*8,"255,90,150",0.12+q*0.08);
+  else _micGlow(m.x, m.y - 190, 120 + q*50, "255,90,150", 0.55 + q*0.3);
   ctx.save(); ctx.strokeStyle = `rgba(255,200,230,${0.5 + q*0.4})`; ctx.lineWidth = 4;
   ctx.beginPath(); ctx.ellipse(m.x, m.y + 10, 220 + q*20, (220 + q*20)*0.55, 0, 0, Math.PI*2); ctx.stroke(); ctx.restore();
 }

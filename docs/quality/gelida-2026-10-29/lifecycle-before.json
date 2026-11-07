@@ -1,0 +1,41 @@
+{
+  "results": [
+    {
+      "mode": "active",
+      "before": 4,
+      "after": 3,
+      "exposed": 0,
+      "pass": true
+    },
+    {
+      "mode": "interrupted",
+      "before": 4,
+      "after": 3,
+      "exposed": 5200,
+      "pass": false
+    },
+    {
+      "mode": "dead",
+      "before": 4,
+      "after": 3,
+      "exposed": 0,
+      "pass": false
+    },
+    {
+      "mode": "replaced",
+      "before": 4,
+      "after": 3,
+      "exposed": 0,
+      "pass": false
+    },
+    {
+      "mode": "last-fire",
+      "before": 1,
+      "after": 1,
+      "exposed": 0,
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "failed": 3
+}

@@ -25,7 +25,7 @@ env:
 jobs:
   canonical-art:
     name: Fondal canonical files (read-only)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
@@ -38,7 +38,7 @@ jobs:
           name: fondal-canonical-publication
           path: docs/art-gate/canonical-publication.json
   relay:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
@@ -48,7 +48,7 @@ jobs:
       - run: node tools/net-test/live_relay.js
   phones:
     needs: relay
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
@@ -61,7 +61,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with: { name: phones-shots, path: shots, if-no-files-found: ignore }
   load:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
@@ -71,7 +71,7 @@ jobs:
       - run: SE_BASE_URL="$SITE" node tools/audit/loadtime.js load-out
   android:
     needs: relay
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4

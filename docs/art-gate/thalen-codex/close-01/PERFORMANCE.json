@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "view": "desktop",
+      "mode": "legacy",
+      "samples": 360,
+      "clears": 360,
+      "p50": 0.8999999994412065,
+      "p95": 1.400000000372529,
+      "max": 48.09999999962747,
+      "candidateReady": true,
+      "legacyReady": true,
+      "enemies": 12,
+      "allies": 2
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "samples": 360,
+      "clears": 360,
+      "p50": 0.900000000372529,
+      "p95": 1.2000000001862645,
+      "max": 39.799999999813735,
+      "candidateReady": true,
+      "legacyReady": true,
+      "enemies": 12,
+      "allies": 2
+    },
+    {
+      "view": "mobile",
+      "mode": "legacy",
+      "samples": 360,
+      "clears": 360,
+      "p50": 0.8999999994412065,
+      "p95": 1.400000000372529,
+      "max": 33.700000000186265,
+      "candidateReady": true,
+      "legacyReady": true,
+      "enemies": 12,
+      "allies": 2
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "samples": 360,
+      "clears": 360,
+      "p50": 0.900000000372529,
+      "p95": 1.1000000005587935,
+      "max": 31,
+      "candidateReady": true,
+      "legacyReady": true,
+      "enemies": 12,
+      "allies": 2
+    }
+  ],
+  "scope": "Full render() with real clearRect after every sample; 12 enemies and two allies; desktop and mobile viewport; candidate and legacy runs measured separately. Local CI Chromium, not a physical mobile device, GPU profile or GC attribution; no speedup claim."
+}

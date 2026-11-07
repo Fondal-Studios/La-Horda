@@ -13,7 +13,7 @@ Qué sale de acá (todo a assets/vfx/minas/ + js/assets/minas-extra-meta.js):
   * PORTAL INFERNAL: los 5 paneles grandes de la secuencia (sellado, grietas, apertura, activo, idle) con los
     bordes fundidos a transparente para apoyarlos sobre la pared del Umbral.
   * CADENAS DE CERBERO: tensión (6), rotura (6), caída (7) y restos: fondo a cuadros gris quitado desde el borde.
-  * Retrato grande de Cerbero para el Códice (assets/ui/codex/minas/cerbero.jpg).
+  * Retrato grande de Cerbero para el Códice (assets/ui/codex/minas/cerbero.png (luego de tools/art/codex_card_clean.py)).
 usage: python3 tools/art/minas/extract_extra.py
 """
 import os, json

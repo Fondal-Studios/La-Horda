@@ -1,0 +1,125 @@
+{
+ "kind": "ring",
+ "score": 91.4,
+ "points": {
+  "alpha": 5.0,
+  "palette": 8.0,
+  "hygiene": 7.0,
+  "edge": 15.0,
+  "coverage": 12.0,
+  "contrast": 8.0,
+  "clear_floor": 1.76,
+  "motion": 15.0,
+  "richness": 9.64,
+  "identity": 10.0
+ },
+ "metrics": {
+  "peak_idx": 3,
+  "alpha_binary": 1.0,
+  "palette_adherence": 1.0,
+  "colors": 5,
+  "isolated": 0.0,
+  "edge_outline": 1.0,
+  "edge_reach": 0.9951677561868494,
+  "edge_over": 0.0,
+  "coverage": 0.18269534957291997,
+  "interior": 0.061667631731326,
+  "interior_detail": 0.04226983207874928,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 16.078564516567035,
+  "peak_pos": 0.2727272727272727,
+  "tail": 0.0,
+  "motion_mean": 0.047124689275568184,
+  "unique_frames": 1.0,
+  "tones": 5,
+  "highlight_share": 0.06796536796536796,
+  "core_fill": 0.0,
+  "detail_mass": 0.01568100358422939,
+  "min_sig_dist": 0.18495474973072684
+ },
+ "hard_fails": [],
+ "ops": [
+  {
+   "knob": "fill",
+   "why": "el cuerpo de la zona casi no se ve (6% del interior): subir el relleno trameado",
+   "add": 0.06
+  },
+  {
+   "knob": "ticks",
+   "why": "más marcas internas para dar cuerpo",
+   "add": 4
+  },
+  {
+   "knob": "ticks",
+   "why": "poco detalle interior (4%): más marcas propias (estelas, hilos, runas)",
+   "add": 4
+  },
+  {
+   "knob": "tick_len",
+   "why": "marcas más largas",
+   "add": 0.04
+  },
+  {
+   "knob": "glyph_scale",
+   "why": "el centro está vacío: glifo propio más grande",
+   "add": 1
+  }
+ ],
+ "criteria": {
+  "alpha": 1.0,
+  "palette": 1.0,
+  "hygiene": 1.0,
+  "edge": 1.0,
+  "coverage": 1.0,
+  "contrast": 1.0,
+  "clear_floor": 0.352,
+  "motion": 1.0,
+  "richness": 0.643,
+  "identity": 1.0
+ },
+ "baseline_total": 50.5,
+ "baseline_criteria": {
+  "alpha": 1.0,
+  "palette": 0.0,
+  "hygiene": 1.0,
+  "edge": 0.088,
+  "coverage": 0.0,
+  "contrast": 1.0,
+  "clear_floor": 0.185,
+  "motion": 0.859,
+  "richness": 0.559,
+  "identity": 0.7
+ },
+ "baseline_metrics": {
+  "peak_idx": 3,
+  "alpha_binary": 1.0,
+  "palette_adherence": 0.26606227828143475,
+  "colors": 5,
+  "isolated": 0.0,
+  "edge_outline": 0.125,
+  "edge_reach": 0.11678512782415253,
+  "edge_over": 0.0,
+  "coverage": 0.025466624485922178,
+  "interior": 0.04661262304574407,
+  "interior_detail": 0.02721482339316734,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 16.078564516567035,
+  "peak_pos": 0.2727272727272727,
+  "tail": 0.0,
+  "motion_mean": 0.017472700639204544,
+  "unique_frames": 1.0,
+  "tones": 4,
+  "highlight_share": 0.09627329192546584,
+  "core_fill": 0.0,
+  "detail_mass": 0.0,
+  "min_sig_dist": 1.0
+ },
+ "improvement": 40.9,
+ "reasons": [
+  "criterio bajo: suelo despejado 1.76/5"
+ ],
+ "status": "FAIL",
+ "keep_current": false
+}

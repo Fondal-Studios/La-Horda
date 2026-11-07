@@ -1,0 +1,898 @@
+{
+ "rows": [
+  {
+   "type": "cm_saqueador",
+   "arena": "ciudad",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 46,
+   "radius": 20,
+   "rank": "normal"
+  },
+  {
+   "type": "cm_perro",
+   "arena": "ciudad",
+   "route": "hoja Runway",
+   "states": 8,
+   "worldH": 41,
+   "radius": 18,
+   "rank": "normal"
+  },
+  {
+   "type": "cm_raptor",
+   "arena": "ciudad",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 57,
+   "radius": 21,
+   "rank": "subelite"
+  },
+  {
+   "type": "cm_verdugo",
+   "arena": "ciudad",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 95,
+   "radius": 36,
+   "rank": "elite"
+  },
+  {
+   "type": "cm_planidera",
+   "arena": "ciudad",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 56,
+   "radius": 21,
+   "rank": "subelite"
+  },
+  {
+   "type": "cm_acechante",
+   "arena": "ciudad",
+   "route": "hoja Runway",
+   "states": 8,
+   "worldH": 54,
+   "radius": 20,
+   "rank": "subelite"
+  },
+  {
+   "type": "cm_sectario",
+   "arena": "ciudad",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 55,
+   "radius": 20,
+   "rank": "normal"
+  },
+  {
+   "type": "cm_campanero",
+   "arena": "ciudad",
+   "route": "hoja Runway",
+   "states": 8,
+   "worldH": 79,
+   "radius": 30,
+   "rank": "elite"
+  },
+  {
+   "type": "cm_espectro",
+   "arena": "ciudad",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 52,
+   "radius": 19,
+   "rank": "normal"
+  },
+  {
+   "type": "cm_maestro",
+   "arena": "ciudad",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 111,
+   "radius": 32,
+   "rank": "subjefe"
+  },
+  {
+   "type": "cm_tramoyista",
+   "arena": "ciudad",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 136,
+   "radius": 48,
+   "rank": "subjefe"
+  },
+  {
+   "type": "cm_dama",
+   "arena": "ciudad",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 125,
+   "radius": 36,
+   "rank": "subjefe"
+  },
+  {
+   "type": "cm_presentador",
+   "arena": "ciudad",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 136,
+   "radius": 40,
+   "rank": "jefe"
+  },
+  {
+   "type": "carcelero",
+   "arena": "fortaleza",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 70,
+   "radius": 26,
+   "rank": "normal"
+  },
+  {
+   "type": "dragon_bronce",
+   "arena": "fortaleza",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 57,
+   "radius": 21,
+   "rank": "normal"
+  },
+  {
+   "type": "prisionero",
+   "arena": "fortaleza",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 70,
+   "radius": 25,
+   "rank": "normal"
+  },
+  {
+   "type": "engendro",
+   "arena": "fortaleza",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 39,
+   "radius": 15,
+   "rank": "normal"
+  },
+  {
+   "type": "arana",
+   "arena": "fortaleza",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 51,
+   "radius": 19,
+   "rank": "subelite"
+  },
+  {
+   "type": "automata",
+   "arena": "fortaleza",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 84,
+   "radius": 31,
+   "rank": "elite"
+  },
+  {
+   "type": "verdugo",
+   "arena": "fortaleza",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 90,
+   "radius": 33,
+   "rank": "elite"
+  },
+  {
+   "type": "dragon_forja",
+   "arena": "fortaleza",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 186,
+   "radius": 78,
+   "rank": "subjefe"
+  },
+  {
+   "type": "caballero",
+   "arena": "fortaleza",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 142,
+   "radius": 52,
+   "rank": "jefe"
+  },
+  {
+   "type": "duende_bosque",
+   "arena": "bosque",
+   "route": "hoja Runway",
+   "states": 8,
+   "worldH": 47,
+   "radius": 18,
+   "rank": "normal"
+  },
+  {
+   "type": "enjambre_hadas",
+   "arena": "bosque",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 44,
+   "radius": 16,
+   "rank": "normal"
+  },
+  {
+   "type": "bestia_bosque",
+   "arena": "bosque",
+   "route": "otro",
+   "states": 8,
+   "worldH": 66,
+   "radius": 22,
+   "rank": "subelite"
+  },
+  {
+   "type": "cu_sith",
+   "arena": "bosque",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 65,
+   "radius": 27,
+   "rank": "elite"
+  },
+  {
+   "type": "dama_bosque",
+   "arena": "bosque",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 68,
+   "radius": 27,
+   "rank": "elite"
+  },
+  {
+   "type": "ent",
+   "arena": "bosque",
+   "route": "hoja Runway",
+   "states": 8,
+   "worldH": 100,
+   "radius": 38,
+   "rank": "elite"
+  },
+  {
+   "type": "doblador_guerrero",
+   "arena": "bosque",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 70,
+   "radius": 26,
+   "rank": "subjefe"
+  },
+  {
+   "type": "doblador_arquera",
+   "arena": "bosque",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 62,
+   "radius": 24,
+   "rank": "subjefe"
+  },
+  {
+   "type": "doblador_picaro",
+   "arena": "bosque",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 59,
+   "radius": 23,
+   "rank": "subjefe"
+  },
+  {
+   "type": "doblador_clerigo",
+   "arena": "bosque",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 64,
+   "radius": 24,
+   "rank": "subjefe"
+  },
+  {
+   "type": "guardian_ancestral",
+   "arena": "bosque",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 173,
+   "radius": 74,
+   "rank": "jefe"
+  },
+  {
+   "type": "infectado",
+   "arena": "micelial",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 64,
+   "radius": 23,
+   "rank": "normal"
+  },
+  {
+   "type": "sabueso",
+   "arena": "micelial",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 42,
+   "radius": 18,
+   "rank": "normal"
+  },
+  {
+   "type": "acechador",
+   "arena": "micelial",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 55,
+   "radius": 21,
+   "rank": "subelite"
+  },
+  {
+   "type": "peregrino",
+   "arena": "micelial",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 70,
+   "radius": 22,
+   "rank": "subelite"
+  },
+  {
+   "type": "hinchado",
+   "arena": "micelial",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 104,
+   "radius": 34,
+   "rank": "elite"
+  },
+  {
+   "type": "chaman",
+   "arena": "micelial",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 87,
+   "radius": 24,
+   "rank": "elite"
+  },
+  {
+   "type": "nucleo_micelial",
+   "arena": "micelial",
+   "route": "otro",
+   "states": 0,
+   "worldH": -999,
+   "radius": 30,
+   "rank": "subelite"
+  },
+  {
+   "type": "raiz_absorcion",
+   "arena": "micelial",
+   "route": "otro",
+   "states": 0,
+   "worldH": -999,
+   "radius": 22,
+   "rank": "subelite"
+  },
+  {
+   "type": "micelio",
+   "arena": "micelial",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 178,
+   "radius": 70,
+   "rank": "subjefe"
+  },
+  {
+   "type": "madre_espora",
+   "arena": "micelial",
+   "route": "otro",
+   "states": 0,
+   "worldH": -999,
+   "radius": 140,
+   "rank": "jefe"
+  },
+  {
+   "type": "lobo_artico",
+   "arena": "hielo",
+   "route": "otro",
+   "states": 8,
+   "worldH": 43,
+   "radius": 18,
+   "rank": "normal"
+  },
+  {
+   "type": "golem_hielo",
+   "arena": "hielo",
+   "route": "hoja Runway",
+   "states": 8,
+   "worldH": 63,
+   "radius": 24,
+   "rank": "normal"
+  },
+  {
+   "type": "hada_escarcha",
+   "arena": "hielo",
+   "route": "hoja Runway",
+   "states": 8,
+   "worldH": 41,
+   "radius": 14,
+   "rank": "normal"
+  },
+  {
+   "type": "dragoncito_hielo",
+   "arena": "hielo",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 66,
+   "radius": 23,
+   "rank": "elite"
+  },
+  {
+   "type": "angel_hielo",
+   "arena": "hielo",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 87,
+   "radius": 26,
+   "rank": "elite"
+  },
+  {
+   "type": "demonio_hielo_fuego",
+   "arena": "hielo",
+   "route": "hoja Runway",
+   "states": 8,
+   "worldH": 74,
+   "radius": 28,
+   "rank": "elite"
+  },
+  {
+   "type": "golem_cristal",
+   "arena": "hielo",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 61,
+   "radius": 24,
+   "rank": "normal"
+  },
+  {
+   "type": "cristal_servo",
+   "arena": "hielo",
+   "route": "hoja Runway",
+   "states": 8,
+   "worldH": 42,
+   "radius": 16,
+   "rank": "normal"
+  },
+  {
+   "type": "cristal_volador",
+   "arena": "hielo",
+   "route": "hoja Runway",
+   "states": 8,
+   "worldH": 36,
+   "radius": 15,
+   "rank": "normal"
+  },
+  {
+   "type": "dragon_hielo",
+   "arena": "hielo",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 78,
+   "radius": 44,
+   "rank": "elite"
+  },
+  {
+   "type": "mago_hielo_cristal",
+   "arena": "hielo",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 102,
+   "radius": 40,
+   "rank": "jefe"
+  },
+  {
+   "type": "angel_caido_hielo",
+   "arena": "hielo",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 150,
+   "radius": 68,
+   "rank": "jefe"
+  },
+  {
+   "type": "tiburon_joven",
+   "arena": "acuatica",
+   "route": "hoja Runway",
+   "states": 8,
+   "worldH": 54,
+   "radius": 22,
+   "rank": "normal"
+  },
+  {
+   "type": "medusa_electrica",
+   "arena": "acuatica",
+   "route": "hoja Runway",
+   "states": 8,
+   "worldH": 61,
+   "radius": 22,
+   "rank": "normal"
+  },
+  {
+   "type": "cangrejo_acorazado",
+   "arena": "acuatica",
+   "route": "hoja Runway",
+   "states": 8,
+   "worldH": 63,
+   "radius": 26,
+   "rank": "normal"
+  },
+  {
+   "type": "sirena_abisal",
+   "arena": "acuatica",
+   "route": "hoja Runway",
+   "states": 8,
+   "worldH": 58,
+   "radius": 22,
+   "rank": "normal"
+  },
+  {
+   "type": "anguila_electrica",
+   "arena": "acuatica",
+   "route": "hoja Runway",
+   "states": 8,
+   "worldH": 44,
+   "radius": 20,
+   "rank": "normal"
+  },
+  {
+   "type": "tiburon_blanco",
+   "arena": "acuatica",
+   "route": "hoja Runway",
+   "states": 8,
+   "worldH": 87,
+   "radius": 34,
+   "rank": "elite"
+  },
+  {
+   "type": "kraken_joven",
+   "arena": "acuatica",
+   "route": "otro",
+   "states": 8,
+   "worldH": 132,
+   "radius": 60,
+   "rank": "subjefe"
+  },
+  {
+   "type": "leviatan",
+   "arena": "acuatica",
+   "route": "otro",
+   "states": 8,
+   "worldH": 199,
+   "radius": 90,
+   "rank": "jefe"
+  },
+  {
+   "type": "escorpion_gigante",
+   "arena": "laberinto",
+   "route": "hoja Runway",
+   "states": 8,
+   "worldH": 45,
+   "radius": 20,
+   "rank": "normal"
+  },
+  {
+   "type": "golem_piedra",
+   "arena": "laberinto",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 73,
+   "radius": 30,
+   "rank": "normal"
+  },
+  {
+   "type": "medusa",
+   "arena": "laberinto",
+   "route": "hoja Runway",
+   "states": 8,
+   "worldH": 63,
+   "radius": 24,
+   "rank": "subelite"
+  },
+  {
+   "type": "druida_arena",
+   "arena": "laberinto",
+   "route": "hoja Runway",
+   "states": 8,
+   "worldH": 68,
+   "radius": 26,
+   "rank": "elite"
+  },
+  {
+   "type": "esfinge",
+   "arena": "laberinto",
+   "route": "hoja Runway",
+   "states": 8,
+   "worldH": 98,
+   "radius": 34,
+   "rank": "elite"
+  },
+  {
+   "type": "guardian_laberinto",
+   "arena": "laberinto",
+   "route": "otro",
+   "states": 8,
+   "worldH": 103,
+   "radius": 40,
+   "rank": "subjefe"
+  },
+  {
+   "type": "minotauro",
+   "arena": "laberinto",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 171,
+   "radius": 72,
+   "rank": "jefe"
+  },
+  {
+   "type": "ab_errante",
+   "arena": "abismo",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 59,
+   "radius": 22,
+   "rank": "normal"
+  },
+  {
+   "type": "ab_acechador",
+   "arena": "abismo",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 44,
+   "radius": 20,
+   "rank": "subelite"
+  },
+  {
+   "type": "ab_heraldo",
+   "arena": "abismo",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 62,
+   "radius": 22,
+   "rank": "subelite"
+  },
+  {
+   "type": "ab_devorador",
+   "arena": "abismo",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 86,
+   "radius": 38,
+   "rank": "elite"
+  },
+  {
+   "type": "ab_tejedor",
+   "arena": "abismo",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 54,
+   "radius": 24,
+   "rank": "subelite"
+  },
+  {
+   "type": "ab_jinete",
+   "arena": "abismo",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 97,
+   "radius": 34,
+   "rank": "elite"
+  },
+  {
+   "type": "ab_tentaculo",
+   "arena": "abismo",
+   "route": "otro",
+   "states": 0,
+   "worldH": -999,
+   "radius": 30,
+   "rank": "subelite"
+  },
+  {
+   "type": "ab_carcelero",
+   "arena": "abismo",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 153,
+   "radius": 62,
+   "rank": "subjefe"
+  },
+  {
+   "type": "ab_morador",
+   "arena": "abismo",
+   "route": "otro",
+   "states": 0,
+   "worldH": -999,
+   "radius": 180,
+   "rank": "jefe"
+  },
+  {
+   "type": "mn_esclavo",
+   "arena": "minas",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 59,
+   "radius": 20,
+   "rank": "normal"
+  },
+  {
+   "type": "mn_insecto",
+   "arena": "minas",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 38,
+   "radius": 17,
+   "rank": "normal"
+  },
+  {
+   "type": "mn_acechador",
+   "arena": "minas",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 51,
+   "radius": 20,
+   "rank": "subelite"
+  },
+  {
+   "type": "mn_minero",
+   "arena": "minas",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 90,
+   "radius": 32,
+   "rank": "elite"
+  },
+  {
+   "type": "mn_escupidor",
+   "arena": "minas",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 59,
+   "radius": 22,
+   "rank": "subelite"
+  },
+  {
+   "type": "mn_consumidor",
+   "arena": "minas",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 79,
+   "radius": 24,
+   "rank": "elite"
+  },
+  {
+   "type": "mn_devoraluz",
+   "arena": "minas",
+   "route": "hoja Runway",
+   "states": 8,
+   "worldH": 112,
+   "radius": 34,
+   "rank": "elite"
+  },
+  {
+   "type": "mn_titan",
+   "arena": "minas",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 169,
+   "radius": 54,
+   "rank": "subjefe"
+  },
+  {
+   "type": "mn_cerbero",
+   "arena": "minas",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 157,
+   "radius": 58,
+   "rank": "jefe"
+  },
+  {
+   "type": "esqueleto",
+   "arena": "infernal",
+   "route": "hoja Runway",
+   "states": 8,
+   "worldH": 58,
+   "radius": 22,
+   "rank": "normal"
+  },
+  {
+   "type": "zombie",
+   "arena": "infernal",
+   "route": "hoja Runway",
+   "states": 8,
+   "worldH": 63,
+   "radius": 24,
+   "rank": "normal"
+  },
+  {
+   "type": "esqueleto_h",
+   "arena": "infernal",
+   "route": "hoja Runway",
+   "states": 8,
+   "worldH": 74,
+   "radius": 28,
+   "rank": "subelite"
+  },
+  {
+   "type": "demonio_menor",
+   "arena": "infernal",
+   "route": "hoja Runway",
+   "states": 8,
+   "worldH": 74,
+   "radius": 28,
+   "rank": "subelite"
+  },
+  {
+   "type": "demonio_mago",
+   "arena": "infernal",
+   "route": "hoja Runway",
+   "states": 8,
+   "worldH": 74,
+   "radius": 28,
+   "rank": "elite"
+  },
+  {
+   "type": "golem",
+   "arena": "infernal",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 91,
+   "radius": 38,
+   "rank": "elite"
+  },
+  {
+   "type": "hechicero_supremo",
+   "arena": "infernal",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 159,
+   "radius": 40,
+   "rank": "subjefe"
+  },
+  {
+   "type": "angel_corrompido",
+   "arena": "infernal",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 188,
+   "radius": 46,
+   "rank": "jefe"
+  },
+  {
+   "type": "golem_cuerpos",
+   "arena": "infernal",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 201,
+   "radius": 78,
+   "rank": "jefe"
+  },
+  {
+   "type": "demonio_mayor",
+   "arena": "infernal",
+   "route": "otro",
+   "states": 8,
+   "worldH": 164,
+   "radius": 70,
+   "rank": "jefe"
+  },
+  {
+   "type": "jinete_sin_cabeza",
+   "arena": "divina",
+   "route": "atlas",
+   "states": 8,
+   "worldH": 155,
+   "radius": 74,
+   "rank": "jefe"
+  }
+ ],
+ "notInCodex": [],
+ "notInGame": [],
+ "errors": []
+}

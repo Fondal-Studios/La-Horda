@@ -25,5 +25,6 @@ sfaDefineTheme('frost',   {pal: {o: '#0c1c2c', d: '#3a78a8', a: '#7ad0ff', b: '#
 sfaDefineTheme('storm',   {pal: {o: '#20184a', d: '#6a58d8', a: '#ffe36a', b: '#fff6b0', c: '#ffffff', e: '#a89cff'}, shape: 'glitch',  motifs: ['bolt', 'spark', 'bolt', 'star'],    emblem: 'bolt'});
 sfaDefineTheme('thorn',   {pal: {o: '#1a2010', d: '#4a5a30', a: '#879c60', b: '#cfe0a0', c: '#f4ffe0', e: '#d86a8a'}, shape: 'petal',   motifs: ['thorn', 'seed', 'vine', 'leaf'],    emblem: 'seed'});
 sfaDefineTheme('plague',  {pal: {o: '#121c08', d: '#4a6a24', a: '#a4c56a', b: '#dcf0a0', c: '#f8ffe0', e: '#b070d8'}, shape: 'scallop', motifs: ['spore', 'shroom', 'drop', 'smoke'], emblem: 'shroom'});
+sfaDefineTheme('necro',   {pal: {o: '#06140c', d: '#1d5a3a', a: '#3fe08a', b: '#a8ffc8', c: '#f0fff4', e: '#9a6ad8'}, shape: 'scallop', motifs: ['skull', 'spore', 'smoke', 'spark'], emblem: 'spark'});   // Nigromante: fuego de almas verde y violeta de cripta
 sfaDefineTheme('alchemy', {pal: {o: '#24101e', d: '#6e3a60', a: '#a46191', b: '#edd0a5', c: '#fff6e8', e: '#7ae0b0'}, shape: 'hex',     motifs: ['flask', 'bubble', 'drop', 'spark'], emblem: 'flask'});
 sfaDefineTheme('ink',     {pal: {o: '#080c14', d: '#2a4a68', a: '#5aa8d8', b: '#bfe4ff', c: '#ffffff', e: '#e04040'}, shape: 'spike',   motifs: ['slash', 'petal', 'ink', 'spark'],   emblem: 'blade'});

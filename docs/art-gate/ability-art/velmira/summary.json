@@ -1,0 +1,146 @@
+{
+ "guardian": "velmira",
+ "passed": [
+  "ring0",
+  "ring1",
+  "ring2",
+  "ring3",
+  "beam0",
+  "beam1",
+  "beam2",
+  "beam3"
+ ],
+ "escalated": [],
+ "keep_current": [],
+ "state": {
+  "ring0": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 95.0,
+     "status": "PASS",
+     "improvement": 18.1,
+     "reasons": []
+    }
+   ]
+  },
+  "ring1": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 94.7,
+     "status": "PASS",
+     "improvement": 18.9,
+     "reasons": []
+    }
+   ]
+  },
+  "ring2": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 94.7,
+     "status": "PASS",
+     "improvement": 19.0,
+     "reasons": []
+    }
+   ]
+  },
+  "ring3": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 94.7,
+     "status": "PASS",
+     "improvement": 18.7,
+     "reasons": []
+    }
+   ]
+  },
+  "beam0": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 93.3,
+     "status": "PASS",
+     "improvement": 11.4,
+     "reasons": []
+    }
+   ]
+  },
+  "beam1": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 93.3,
+     "status": "PASS",
+     "improvement": 9.5,
+     "reasons": []
+    }
+   ]
+  },
+  "beam2": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 93.3,
+     "status": "PASS",
+     "improvement": 9.5,
+     "reasons": []
+    }
+   ]
+  },
+  "beam3": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 93.3,
+     "status": "PASS",
+     "improvement": 9.5,
+     "reasons": []
+    }
+   ]
+  }
+ },
+ "baseline": {
+  "ring0": 76.9,
+  "ring1": 75.8,
+  "ring2": 75.7,
+  "ring3": 76.0,
+  "beam0": 81.9,
+  "beam1": 83.8,
+  "beam2": 83.8,
+  "beam3": 83.8
+ },
+ "log": [
+  "ronda 1: ring0 PASS 95.0 (arte actual 76.9, +18.1)",
+  "ronda 1: ring1 PASS 94.7 (arte actual 75.8, +18.9)",
+  "ronda 1: ring2 PASS 94.7 (arte actual 75.7, +19.0)",
+  "ronda 1: ring3 PASS 94.7 (arte actual 76.0, +18.7)",
+  "ronda 1: beam0 PASS 93.3 (arte actual 81.9, +11.4)",
+  "ronda 1: beam1 PASS 93.3 (arte actual 83.8, +9.5)",
+  "ronda 1: beam2 PASS 93.3 (arte actual 83.8, +9.5)",
+  "ronda 1: beam3 PASS 93.3 (arte actual 83.8, +9.5)",
+  "arquitecto: integradas ['ring0', 'ring1', 'ring2', 'ring3', 'beam0', 'beam1', 'beam2', 'beam3']; humo OK: SMOKE OK velmira: ring0,ring1,ring2,ring3,beam0,beam1,beam2,beam3"
+ ],
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['ring0', 'ring1', 'ring2', 'ring3', 'beam0', 'beam1', 'beam2', 'beam3']; humo OK: SMOKE OK velmira: ring0,ring1,ring2,ring3,beam0,beam1,beam2,beam3"
+ }
+}

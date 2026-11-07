@@ -1,15 +1,21 @@
 {
   "key": "soporte",
-  "atlas": "assets/sprites/champions/soporte/v3/atlas.png",
+  "atlas": "assets/sprites/champions/soporte/codex-v1/atlas.png",
   "meta": {
     "w": 112,
     "h": 112,
     "cols": 4,
-    "refH": 71,
+    "refH": 78,
     "anchor": 0.9464285714285714,
+    "fix": {
+      "left": "mirror"
+    },
     "sets": {
       "idle_down": [
-        0
+        36,
+        37,
+        38,
+        39
       ],
       "walk_down": [
         0,
@@ -29,14 +35,17 @@
         26,
         27
       ],
-      "hit_down": [
-        12
-      ],
       "ultimate_down": [
         28,
         29,
         30,
         31
+      ],
+      "hit_down": [
+        48,
+        49,
+        50,
+        51
       ],
       "death_down": [
         32,
@@ -45,7 +54,10 @@
         35
       ],
       "idle_side": [
-        4
+        40,
+        41,
+        42,
+        43
       ],
       "walk_side": [
         4,
@@ -65,14 +77,17 @@
         26,
         27
       ],
-      "hit_side": [
-        16
-      ],
       "ultimate_side": [
         28,
         29,
         30,
         31
+      ],
+      "hit_side": [
+        48,
+        49,
+        50,
+        51
       ],
       "death_side": [
         32,
@@ -81,7 +96,10 @@
         35
       ],
       "idle_up": [
-        8
+        44,
+        45,
+        46,
+        47
       ],
       "walk_up": [
         8,
@@ -101,26 +119,23 @@
         26,
         27
       ],
-      "hit_up": [
-        20
-      ],
       "ultimate_up": [
         28,
         29,
         30,
         31
       ],
+      "hit_up": [
+        48,
+        49,
+        50,
+        51
+      ],
       "death_up": [
         32,
         33,
         34,
         35
-      ],
-      "ultimate_left": [
-        -29,
-        -30,
-        -31,
-        -32
       ]
     }
   }

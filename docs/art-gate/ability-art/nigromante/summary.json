@@ -1,0 +1,50 @@
+{
+ "guardian": "nigromante",
+ "passed": [
+  "abyss",
+  "demon_idle"
+ ],
+ "escalated": [],
+ "keep_current": [],
+ "state": {
+  "abyss": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 99.8,
+     "status": "PASS",
+     "improvement": 27.3,
+     "reasons": []
+    }
+   ]
+  },
+  "demon_idle": {
+   "status": "PASS",
+   "rounds": 1,
+   "history": [
+    {
+     "round": 1,
+     "score": 99.0,
+     "status": "PASS",
+     "improvement": 17.2,
+     "reasons": []
+    }
+   ]
+  }
+ },
+ "baseline": {
+  "abyss": 72.5,
+  "demon_idle": 81.8
+ },
+ "log": [
+  "ronda 1: abyss PASS 99.8 (arte actual 72.5, +27.3)",
+  "ronda 1: demon_idle PASS 99.0 (arte actual 81.8, +17.2)",
+  "arquitecto: integradas ['abyss', 'demon_idle']; humo OK: SMOKE OK nigromante: abyss,demon_idle"
+ ],
+ "integration": {
+  "ok": true,
+  "detail": "integradas ['abyss', 'demon_idle']; humo OK: SMOKE OK nigromante: abyss,demon_idle"
+ }
+}

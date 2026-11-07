@@ -1,0 +1,37 @@
+/* PASE DE BATALLA (js/ui/battlepass-ui.js): mismo lenguaje que el ranking (ui-modal / ui-panel). */
+.bp-panel{ max-width:min(960px,96vw); max-height:92vh; overflow:auto; }
+.bp-top{ display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; font-size:.95rem; margin:4px 0 6px; }
+.bp-bar{ height:14px; border:2px solid #815323; background:#100a06; margin-bottom:8px; }
+.bp-bar i{ display:block; height:100%; background:linear-gradient(#f2c26b,#c9822c); }
+.bp-prem{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:8px; }
+.bp-hint{ font-size:.8rem; opacity:.8; }
+.bp-tag{ font-size:.78rem; opacity:.85; }
+.bp-tag.bp-on{ color:#f2c26b; opacity:1; font-weight:bold; }
+.bp-msg{ padding:8px 0; } .bp-err{ color:#ff9a8a; }
+.bp-cols{ display:flex; gap:14px; align-items:flex-start; }
+.bp-track{ flex:1 1 60%; min-width:0; max-height:52vh; overflow:auto; border:1px solid #3a2415; }
+.bp-chs{ flex:1 1 40%; min-width:0; }
+.bp-sub{ font-weight:bold; margin-bottom:4px; }
+.bp-row{ display:grid; grid-template-columns:34px 1fr 1fr; gap:4px; padding:3px; border-bottom:1px solid #2a1a10; align-items:stretch; }
+.bp-row.bp-hd{ position:sticky; top:0; background:#100a06; font-weight:bold; z-index:1; }
+.bp-row.bp-reached .bp-lv{ color:#f2c26b; }
+.bp-lv{ display:flex; align-items:center; justify-content:center; font-weight:bold; }
+.bp-cell{ display:flex; flex-direction:column; justify-content:center; gap:3px; padding:4px 6px; min-height:44px; border:1px solid #3a2415; background:rgba(255,255,255,.03); font-size:.82rem; }
+.bp-cell.bp-ready{ border-color:#f2c26b; background:rgba(242,194,107,.10); }
+.bp-cell.bp-done{ opacity:.65; } .bp-cell.bp-empty{ opacity:.35; align-items:center; }
+.bp-soon{ opacity:.7; font-size:.72rem; }
+.bp-claim,.bp-buy{ min-height:36px; }
+.bp-ch{ font-size:.82rem; padding:5px 0; border-bottom:1px solid #2a1a10; } .bp-ch-done{ opacity:.65; }
+.bp-ch-mode{ display:inline-block; font-size:.7rem; padding:0 5px; border:1px solid #815323; margin-right:4px; }
+.bp-foot{ display:flex; justify-content:center; margin-top:8px; }
+@media (max-width:700px){ .bp-cols{ flex-direction:column; } .bp-track{ max-height:40vh; width:100%; } }
+/* Horizontal bajo (teléfono): cabecera compacta y la lista de niveles ocupa el alto restante; los desafíos pasan a una columna angosta. */
+@media (max-height:520px){
+  .bp-panel{ max-height:96vh; padding:6px 10px; }
+  .bp-panel .ui-panel-title{ font-size:1rem; margin:0 0 2px; }
+  .bp-top{ font-size:.8rem; margin:0 0 3px; } .bp-bar{ height:10px; margin-bottom:4px; }
+  .bp-prem{ margin-bottom:4px; gap:8px; } .bp-hint{ display:none; }
+  .bp-track{ max-height:calc(96vh - 150px); } .bp-chs{ flex:0 0 36%; max-height:calc(96vh - 150px); overflow:auto; }
+  .bp-cell{ min-height:36px; padding:2px 5px; font-size:.74rem; } .bp-claim,.bp-buy{ min-height:30px; }
+  .bp-foot{ margin-top:4px; } .bp-foot .btn{ min-height:32px; }
+}

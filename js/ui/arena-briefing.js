@@ -55,7 +55,7 @@ function arenaBriefingDecorate(el, arena){
   box.innerHTML = arenaBriefingHTML(arena);
   let img = card.querySelector(".abr-img");
   if(!img){ img = document.createElement("div"); img.className = "abr-img"; card.insertBefore(img, card.firstChild); }
-  img.style.backgroundImage = `url('assets/ui/codex/arenas/${arena}.jpg')`;
+  img.style.backgroundImage = `url('assets/ui/codex/arenas/${arena}.png')`;
   img.classList.toggle("hidden", !(typeof ARENA_BLUEPRINTS!=="undefined" && ARENA_BLUEPRINTS[arena]));
   box.classList.remove("hidden");
 }

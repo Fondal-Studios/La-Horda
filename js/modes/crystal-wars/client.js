@@ -25,7 +25,20 @@ const portalImg=new Image();portalImg.src='assets/vfx/abismo/portal_activo_0.png
 const crystalImg=new Image();crystalImg.src='assets/vfx/bosses/hielo/bsAngelPillar_1.png';
 let crystalAmber=null,floorPat=null;
 crystalImg.onload=()=>{try{const c=document.createElement('canvas');c.width=crystalImg.naturalWidth;c.height=crystalImg.naturalHeight;const g=c.getContext('2d');g.drawImage(crystalImg,0,0);const d=g.getImageData(0,0,c.width,c.height),a=d.data;for(let i=0;i<a.length;i+=4){const r=a[i],gg=a[i+1],b=a[i+2];a[i]=b;a[i+1]=Math.round((gg+b)/2*0.78);a[i+2]=Math.round(r*0.55);}g.putImageData(d,0,0);crystalAmber=c;}catch(e){crystalAmber=null;}};
-const images={};function refreshRoster(){const selected=$('champ').value,founder=typeof accountIdentity==='function'?accountIdentity()?.founder:null;$('champ').replaceChildren();for(const k of Object.keys(C.ROLES)){if(C.ROLES[k].ownerOnly&&C.ROLES[k].founder!==founder)continue;const o=document.createElement('option');o.value=k;o.textContent=C.ROLES[k].name;$('champ').appendChild(o);}if([...$('champ').options].some(o=>o.value===selected))$('champ').value=selected;}refreshRoster();
+const images={};function refreshRoster(){
+ const selected=typeof selectedClass!== 'undefined' ? selectedClass : $('champ').value;
+ const founder=typeof accountIdentity==='function'?accountIdentity()?.founder:null;
+ const real=typeof lanesOwnedRoster==='function';
+ const keys=real?lanesOwnedRoster():Object.keys(C.ROLES);
+ $('champ').replaceChildren();
+ for(const k of keys){
+  const role=real?CLASSES[k]:C.ROLES[k];
+  if(!role || (!real && role.ownerOnly && role.founder!==founder))continue;
+  const o=document.createElement('option');o.value=k;
+  o.textContent=role.name+(real?' · Nv. '+save.champions[k].level:'');$('champ').appendChild(o);
+ }
+ if([...$('champ').options].some(o=>o.value===selected))$('champ').value=selected;
+}refreshRoster();
 let sim=null,ws=null,room=null,slot=0,host=false,offline=true,viewOther=false,inputs={},keys={},joy={x:0,y:0},last=0,acc=0,lastSend=0,lastSnap=0,matchId='',snapshotN=0,lastN=-1,shownResult=false,sound=false,audio=null,connection=null,retryTimer=0,closing=false;
 const remoteTimes={},lastActions={};
 let clientId;try{clientId=sessionStorage.getItem('cw-client');if(!clientId){clientId=crypto.randomUUID();sessionStorage.setItem('cw-client',clientId);}}catch{clientId=String(Math.random()).slice(2);}
@@ -34,7 +47,7 @@ function send(m){if(ws&&ws.readyState===WebSocket.OPEN){ws.send(JSON.stringify(m
 function message(d,to){return send({t:'msg',d,to});}
 function signatureText(r){return r.passive?[r.passive.name,r.passive.desc].filter(Boolean).join(' · '):'';}
 function skillGuide(container){container.replaceChildren();const r=C.ROLES[$('champ').value]||C.ROLES[sim?.heroes[slot]?.role];if(!r)return;const signature=signatureText(r);if(signature){const p=document.createElement('p');p.className='cw-signature';p.textContent=signature;container.appendChild(p);}r.skills.forEach((name,i)=>{const p=document.createElement('p'),strong=document.createElement('strong');strong.textContent=(i+1)+' · '+name;p.append(strong,document.createElement('br'),document.createTextNode(r.skillDescriptions?.[i]||name));container.appendChild(p);});const cards=document.createElement('p');cards.textContent='Cartas: Meteorito daña; Escarcha ralentiza. Apuntan automáticamente a la posición del rival vivo con menos vida al lanzarlas. El círculo avisa el impacto 1,35 s antes: moverse permite esquivarlo. Comparten 8 s de recarga de equipo.';container.appendChild(cards);}
-function kit(){const r=C.ROLES[$('champ').value];$('kit').textContent=r.skills.join(' · ')+(signatureText(r)?' — '+signatureText(r):'');$('kit').title=(r.skillDescriptions||[]).join(' | ');if(room)send({t:'update',champ:$('champ').value,ready:false});if(document.getElementById('cw-kit-details'))skillGuide(document.getElementById('cw-kit-details'));}
+function kit(){const r=C.ROLES[$('champ').value];if(!r){$('kit').textContent='Usás las habilidades de tu guardián de campaña.';return;}$('kit').textContent=r.skills.join(' · ')+(signatureText(r)?' — '+signatureText(r):'');$('kit').title=(r.skillDescriptions||[]).join(' | ');if(room)send({t:'update',champ:$('champ').value,ready:false});if(document.getElementById('cw-kit-details'))skillGuide(document.getElementById('cw-kit-details'));}
 // Textos del lobby según la regla REAL de cada modo. En el motor real (por defecto): Cristales = 5 contra 5 contra bots (en línea, 2 contra 2);
 // Coliseo = torneo de cuatro equipos de dos, duelos 2 contra 2, el primero a 3 puntos. El simulador viejo (?legacy=1) conserva su regla (15 bajas).
 const MODE_TEXT={
@@ -46,14 +59,14 @@ const MODE_TEXT={
   intro:'Los cuatro campeones comparten la arena. Coordiná habilidades, usá los obstáculos como cobertura y derrotá al equipo rival. Hay monstruos neutrales: aportan fragmentos, pero no puntos de victoria.',
   rules:[['01 / COMBATÍ','El ataque básico es automático. Movete, combiná cuatro habilidades y protegé a tu compañero con la cobertura.'],['02 / INTERFERÍ','Lanzá Meteorito o Escarcha al rival con menos vida. El objetivo queda fijado al lanzar y puede esquivar el círculo de impacto.'],['03 / GANÁ','El primer equipo con 15 bajas de campeones gana. A los 7 minutos vence el de más bajas; si siguen iguales, hay empate. Reaparecés 5 segundos después de caer.']],
   result:'COLISEO · COMBATE 2 CONTRA 2'},
- crystalReal:{title:'CONVERGENCIA · GUERRA DE CRISTALES',h1:'CONVERGENCIA<br><em>GUERRA DE CRISTALES</em>',eyebrow:'5 CONTRA 5 CON BOTS · EN LÍNEA 2 CONTRA 2 · 3 CARRILES',
+ crystalReal:{title:'GUERRA DE CRISTALES',h1:'GUERRA DE CRISTALES',eyebrow:'5 CONTRA 5 CON BOTS · EN LÍNEA 2 CONTRA 2 · 3 CARRILES',
   intro:'Mapa de tres carriles con selva, río y objetivos épicos. Tu horda sale sola por cada carril; con cada nivel elegís una carta para hacerla más fuerte. Derribá las torres y el cristal rival. El PvP está permitido y jugás con tus habilidades de siempre.',
   rules:[['01 / EMPUJÁ','Tu horda sale sola por tres carriles. Derribá torres; con una inhibidora caída, el cristal queda expuesto.'],['02 / CRECÉ','Nivel 3 a 15 con súbditos, selva y héroes. Cada nivel da una carta para tu horda. B vuelve a la base.'],['03 / REMATÁ','Vencé héroes rivales para ganar oro. Eclipse a los 13 min; a los 18 gana quien tenga más torres y vida.']],
-  result:'CONVERGENCIA · GUERRA DE CRISTALES'},
- crystalLegacy:{title:'CONVERGENCIA · GUERRA DE CRISTALES',h1:'CONVERGENCIA<br><em>GUERRA DE CRISTALES</em>',eyebrow:'2 CONTRA 2 · UNA HORDA · ECLIPSE A LOS 5 MINUTOS',
+  result:'GUERRA DE CRISTALES'},
+ crystalLegacy:{title:'GUERRA DE CRISTALES',h1:'GUERRA DE CRISTALES',eyebrow:'2 CONTRA 2 · UNA HORDA · ECLIPSE A LOS 5 MINUTOS',
   intro:'Cada equipo defiende su cristal contra la misma horda. Ganás cuando el cristal rival cae: por sus errores, por tus envíos de monstruos o por el Eclipse final. Convertí las bajas en fragmentos y decidí cómo usarlos.',
   rules:[['01 / RESISTÍ','Entrás directo en acción. El ataque básico es automático: movete y combiná tus cuatro habilidades.'],['02 / DECIDÍ','Al comienzo de cada oleada, tenés 7 segundos para reparar, mejorar o enviar amenazas. Mirá cómo atacan en el campo rival, siempre visible.'],['03 / REMATÁ','Pasados los 5 minutos llega el ECLIPSE: los dos cristales se apagan cada vez más rápido. Gana el que más vida conserve. Si vas perdiendo, el cristal te ayuda con fragmentos extra.']],
-  result:'CONVERGENCIA · GUERRA DE CRISTALES'}
+  result:'GUERRA DE CRISTALES'}
 };
 function modePresentation(){
  const col=mode()==='coliseum',lobby=$('lobby'),T=MODE_TEXT[(col?'coliseum':'crystal')+(useReal()?'Real':'Legacy')];
@@ -95,7 +108,7 @@ $('copy').onclick=async()=>{const u=new URL(location.href);u.hash='';const srv=o
 function disconnect(){closing=true;clearTimeout(retryTimer);if(ws){send({t:'leave'});ws.close();}ws=null;room=null;connection=null;host=false;offline=true;$('champ').disabled=false;$('name').disabled=false;renderRoom();}
 $('leave').onclick=()=>{disconnect();status('Saliste de la sala.');};
 function receive(m){
- if(m.t==='error'){const errors={NOT_FOUND:'No existe esa sala.',BUILD:'Ese código pertenece a otro modo o versión. Abrí la invitación de Convergencia o Coliseo.',ROOM_FULL:'La sala ya tiene cuatro jugadores.',STARTED:'La partida ya comenzó.',VERSION:'El servidor necesita actualizarse.',ORIGIN:'El servidor no admite esta dirección del juego.',HOST_RECONNECT:'El anfitrión debe crear una sala nueva.'};status(errors[m.code]||('No se pudo completar: '+m.code));return;}
+ if(m.t==='error'){const errors={NOT_FOUND:'No existe esa sala.',BUILD:'Ese código pertenece a otro modo o versión. Abrí la invitación de Guerra de Cristales o Coliseo.',ROOM_FULL:'La sala ya tiene cuatro jugadores.',STARTED:'La partida ya comenzó.',VERSION:'El servidor necesita actualizarse.',ORIGIN:'El servidor no admite esta dirección del juego.',HOST_RECONNECT:'El anfitrión debe crear una sala nueva.'};status(errors[m.code]||('No se pudo completar: '+m.code));return;}
  if(m.t==='joined'){room=m.room;if(modeSelect)modeSelect.value=room.arena==='coliseum'?'coliseum':'crystal';slot=m.slot;host=!!m.host;offline=false;renderRoom();status('Conectado · Equipo '+(slot<2?'Zafiro':'Ámbar'));if(!host)message({k:'cw-sync'});return;}
  if(m.t==='room'){room=m.room;renderRoom();if(host&&sim&&!sim.ended){for(const h of sim.heroes){h.bot=!room.slots[h.slot]?.connected;if(h.bot){delete inputs[h.slot];delete remoteTimes[h.slot];}}}if(room.state==='lobby'&&sim){sim=null;closeResult();showLobby();status('Sala lista para la revancha.');}return;}
  if(m.t==='closed'){if(sim&&!sim.ended)abort('La sala se cerró: '+m.reason);disconnect();return;}
@@ -118,17 +131,17 @@ function begin(){
 }
 // Guerra de Cristales usa el MOTOR REAL de la campaña (mismas habilidades, HUD y controles; js/arenas/lanes/).
 // El motor simplificado queda como respaldo (enlace con ?legacy=1) y para el Coliseo hasta que tenga el suyo.
-function realCrystal(){const champ=$('champ').value;if(!close())return;const training=!!(document.getElementById('pg-training')&&document.getElementById('pg-training').checked);try{if(mode()==='coliseum')colStart({champ,training});else lanesStart({champ,training});}catch(err){console.error(err);status('No se pudo iniciar la partida. Probá de nuevo.');}}
+function realCrystal(){const champ=$('champ').value;if(typeof lanesOwnedSelection==='function' && !lanesOwnedSelection(champ)){status('Elegí primero un guardián de tu colección.');return;}if(!close())return;const training=!!(document.getElementById('pg-training')&&document.getElementById('pg-training').checked);try{if(mode()==='coliseum')colStart({champ,training});else lanesStart({champ,training});}catch(err){console.error(err);status('No se pudo iniciar la partida. Probá de nuevo.');}}
 function useReal(){return (mode()==='crystal'&&typeof lanesStart==='function'||mode()==='coliseum'&&typeof colStart==='function')&&!query().get('legacy');}
 $('practice').onclick=()=>{if(useReal())realCrystal();else begin();};$('start').onclick=()=>{if(host&&room?.state==='lobby'&&!$('start').disabled)begin();};
-function showGame(){ $('view').hidden=isColiseum();canvas.setAttribute('aria-label',isColiseum()?'Coliseo: arena compartida 2 contra 2':'Convergencia: ambos campos visibles');viewOther=false;$('view').textContent='Ampliar rival'; $('lobby').hidden=true;$('game').hidden=false;drawControls(); }
+function showGame(){ $('view').hidden=isColiseum();canvas.setAttribute('aria-label',isColiseum()?'Coliseo: arena compartida 2 contra 2':'Guerra de Cristales: ambos campos visibles');viewOther=false;$('view').textContent='Ampliar rival'; $('lobby').hidden=true;$('game').hidden=false;drawControls(); }
 function showLobby(){ modePresentation();$('lobby').hidden=false;$('game').hidden=true;keys={};joy={x:0,y:0};renderRoom(); }
 function closeResult(){if($('result').open)$('result').close();}
 function escapeHTML(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function recordGet(){try{return JSON.parse(localStorage.getItem('cw-record-'+(sim?.mode||mode()))||'{}')||{};}catch{return {};}}
 function recordSet(r){try{localStorage.setItem('cw-record-'+(sim?.mode||mode()),JSON.stringify(r));}catch{}}
 function mvpOf(team){const hs=sim.heroes.filter(h=>h.team===team&&!h.bot);const score=h=>h.stats.dmg+h.stats.heal*1.5+h.stats.kills*8+h.stats.sent*20-h.stats.deaths*60;return (hs.length?hs:sim.heroes.filter(h=>h.team===team)).sort((a,b)=>score(b)-score(a))[0];}
-function showResult(){if(shownResult)return;shownResult=true;const me=sim.heroes[slot],team=me.team,won=sim.winner===team;$('result-title').textContent=sim.winner===-1?'EMPATE':won?'VICTORIA · '+(isColiseum()?'COLISEO':'CONVERGENCIA'):'DERROTA · '+(isColiseum()?'COLISEO':'CONVERGENCIA');
+function showResult(){if(shownResult)return;shownResult=true;const me=sim.heroes[slot],team=me.team,won=sim.winner===team;$('result-title').textContent=sim.winner===-1?'EMPATE':won?'VICTORIA · '+(isColiseum()?'COLISEO':'GUERRA DE CRISTALES'):'DERROTA · '+(isColiseum()?'COLISEO':'GUERRA DE CRISTALES');
  $('result-detail').textContent=isColiseum()?'Zafiro '+sim.teams[0].score+' · Ámbar '+sim.teams[1].score+' · Bajas de campeones.': 'Zafiro '+Math.ceil(sim.teams[0].hp)+' · Ámbar '+Math.ceil(sim.teams[1].hp)+' · '+sim.wave+' oleadas. Esta prueba no modifica tu campaña.'+(sim.heroes.some(h=>h.bot)?' Algunos compañeros son controlados por el juego.':'');
  const rows=sim.heroes.map(h=>{const st=h.stats||{dmg:0,kills:0,heal:0,deaths:0,sent:0};return '<tr'+(h.slot===slot?' class="me"':'')+'><td>'+(mvpOf(h.team)===h?'★ ':'')+escapeHTML(h.name)+'</td><td>'+(h.team?'Ámbar':'Zafiro')+'</td><td>'+Math.round(st.dmg)+'</td><td>'+st.kills+'</td><td>'+Math.round(st.heal)+'</td><td>'+st.deaths+'</td><td>'+st.sent+'</td></tr>';}).join('');
  $('result-stats').innerHTML='<table><thead><tr><th>Jugador</th><th>Equipo</th><th>Daño</th><th>Bajas</th><th>Cura</th><th>Caídas</th><th>Envíos</th></tr></thead><tbody>'+rows+'</tbody></table><small>★ = mejor jugador de cada equipo.</small>';

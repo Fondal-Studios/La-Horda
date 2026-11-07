@@ -1,0 +1,184 @@
+{
+ "kind": "sector",
+ "score": 84.5,
+ "points": {
+  "alpha": 5.0,
+  "palette": 8.0,
+  "hygiene": 7.0,
+  "edge": 15.0,
+  "coverage": 12.0,
+  "contrast": 8.0,
+  "clear_floor": 0.0,
+  "motion": 13.86,
+  "richness": 5.63,
+  "identity": 10.0
+ },
+ "metrics": {
+  "peak_idx": 4,
+  "alpha_binary": 1.0,
+  "palette_adherence": 1.0,
+  "colors": 3,
+  "isolated": 0.0,
+  "edge_outline": 1.0,
+  "edge_reach": 1.0107170551368858,
+  "edge_over": 0.0,
+  "coverage": 0.25,
+  "interior": 0.0,
+  "interior_detail": 0.0,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 14.76574275082512,
+  "peak_pos": 0.4444444444444444,
+  "tail": 0.0,
+  "motion_mean": 0.030544704861111112,
+  "unique_frames": 0.8,
+  "tones": 3,
+  "highlight_share": 0.0,
+  "core_fill": 0.1953125,
+  "detail_mass": 0.1640625,
+  "min_sig_dist": 1.0
+ },
+ "hard_fails": [],
+ "ops": [
+  {
+   "knob": "fill",
+   "why": "el cuerpo de la zona casi no se ve (0% del interior): subir el relleno trameado",
+   "add": 0.06
+  },
+  {
+   "knob": "ticks",
+   "why": "más marcas internas para dar cuerpo",
+   "add": 4
+  },
+  {
+   "knob": "ticks",
+   "why": "poco detalle interior (0%): más marcas propias (estelas, hilos, runas)",
+   "add": 4
+  },
+  {
+   "knob": "thick",
+   "why": "estelas más gruesas para que se lean de lejos",
+   "add": 1
+  },
+  {
+   "knob": "tick_len",
+   "why": "marcas más largas",
+   "add": 0.04
+  },
+  {
+   "knob": "highlight_arc",
+   "why": "usar los 5 tonos de la rampa (falta luz o brillo)",
+   "set": 1
+  },
+  {
+   "knob": "flash",
+   "why": "agregar destello de impacto",
+   "add": 0.2
+  },
+  {
+   "knob": "sparks",
+   "why": "agregar destellos brillantes (tono 5)",
+   "add": 2
+  },
+  {
+   "knob": "motif_on",
+   "why": "activar el motivo temático del guardián (el arte actual lo tiene)",
+   "set": 1
+  },
+  {
+   "knob": "motif_n",
+   "why": "el arte actual tiene más trama temática: motivo más denso",
+   "add": 1
+  },
+  {
+   "knob": "ticks",
+   "why": "el arte actual tiene más trama interior: sumar marcas propias",
+   "add": 4
+  },
+  {
+   "knob": "glyph_scale",
+   "why": "el arte actual tiene más presencia central: glifo más grande",
+   "add": 1
+  },
+  {
+   "knob": "deco",
+   "why": "probar otra familia de marcas",
+   "cycle": true
+  },
+  {
+   "knob": "fill",
+   "why": "el arte actual tiene más cuerpo: subir el relleno trameado (techo del motor 24 %)",
+   "add": 0.06
+  },
+  {
+   "knob": "ticks",
+   "why": "el arte actual tiene más trama: sumar marcas",
+   "add": 2
+  },
+  {
+   "knob": "rim",
+   "why": "el arte actual tiene más presencia: borde más grueso",
+   "add": 1
+  }
+ ],
+ "criteria": {
+  "alpha": 1.0,
+  "palette": 1.0,
+  "hygiene": 1.0,
+  "edge": 1.0,
+  "coverage": 1.0,
+  "contrast": 1.0,
+  "clear_floor": 0.0,
+  "motion": 0.924,
+  "richness": 0.375,
+  "identity": 1.0
+ },
+ "baseline_total": 65.4,
+ "baseline_criteria": {
+  "alpha": 1.0,
+  "palette": 0.0,
+  "hygiene": 1.0,
+  "edge": 1.0,
+  "coverage": 0.0,
+  "contrast": 1.0,
+  "clear_floor": 0.0,
+  "motion": 1.0,
+  "richness": 0.56,
+  "identity": 0.7
+ },
+ "baseline_metrics": {
+  "peak_idx": 3,
+  "alpha_binary": 1.0,
+  "palette_adherence": 0.2514985665884806,
+  "colors": 490,
+  "isolated": 0.0,
+  "edge_outline": 0.9583333333333334,
+  "edge_reach": 0.9961873697225058,
+  "edge_over": 0.0,
+  "coverage": 0.7273809523809524,
+  "interior": 0.6635220125786163,
+  "interior_detail": 0.559748427672956,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 15.162223466533712,
+  "peak_pos": 0.3333333333333333,
+  "tail": 0.0,
+  "motion_mean": 0.04758029513888889,
+  "unique_frames": 1.0,
+  "tones": 4,
+  "highlight_share": 0.0,
+  "core_fill": 0.3828125,
+  "detail_mass": 0.242578125,
+  "min_sig_dist": 1.0
+ },
+ "improvement": 19.1,
+ "reasons": [
+  "criterio bajo: suelo despejado 0.0/5",
+  "criterio bajo: riqueza visual 5.63/15",
+  "puntaje 84.5 < 85",
+  "regresión de riqueza visual frente al arte actual (0.38 < 0.56)",
+  "presencia menor que el arte actual: cobertura 25% < 40% (arte actual 73%)"
+ ],
+ "status": "FAIL",
+ "keep_current": false
+}

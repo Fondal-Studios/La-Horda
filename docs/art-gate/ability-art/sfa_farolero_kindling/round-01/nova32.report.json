@@ -1,0 +1,166 @@
+{
+ "kind": "ring",
+ "score": 95.6,
+ "points": {
+  "alpha": 5.0,
+  "palette": 8.0,
+  "hygiene": 7.0,
+  "edge": 15.0,
+  "coverage": 8.63,
+  "contrast": 8.0,
+  "clear_floor": 5.0,
+  "motion": 15.0,
+  "richness": 15.0,
+  "identity": 8.96
+ },
+ "metrics": {
+  "peak_idx": 3,
+  "alpha_binary": 1.0,
+  "palette_adherence": 1.0,
+  "colors": 5,
+  "isolated": 0.0,
+  "edge_outline": 0.875,
+  "edge_reach": 0.9519943708356616,
+  "edge_over": 0.0,
+  "coverage": 0.5702702702702702,
+  "interior": 0.2657894736842105,
+  "interior_detail": 0.19473684210526315,
+  "arena_ok": 1.0,
+  "has_outline_and_light": true,
+  "lum_gap": 15.676465547059067,
+  "peak_pos": 0.2727272727272727,
+  "tail": 0.0,
+  "motion_mean": 0.08939985795454546,
+  "unique_frames": 1.0,
+  "tones": 5,
+  "highlight_share": 0.07345971563981042,
+  "core_fill": 0.4166666666666667,
+  "detail_mass": 0.2611111111111111,
+  "min_sig_dist": 0.14678963724421304
+ },
+ "hard_fails": [],
+ "ops": [
+  {
+   "knob": "fill",
+   "why": "cobertura alta (57%): bajar el relleno para no tapar al enemigo",
+   "hard": true,
+   "add": -0.06
+  },
+  {
+   "knob": "ticks",
+   "why": "menos marcas",
+   "hard": true,
+   "add": -4
+  },
+  {
+   "knob": "tick_len",
+   "why": "marcas más cortas",
+   "hard": true,
+   "add": -0.04
+  },
+  {
+   "knob": "inner_ring",
+   "why": "quitar el anillo interior",
+   "hard": true,
+   "set": 0
+  },
+  {
+   "knob": "rim",
+   "why": "borde más fino: la cobertura es excesiva",
+   "hard": true,
+   "add": -1
+  },
+  {
+   "knob": "sparks",
+   "why": "menos chispas",
+   "hard": true,
+   "add": -2
+  },
+  {
+   "knob": "deco",
+   "why": "se parece demasiado a otra habilidad del guardián (distancia 0.15): cambiar el tipo de marca",
+   "add": 1
+  },
+  {
+   "knob": "inner_ring",
+   "why": "segundo anillo para distinguirla",
+   "set": 1
+  },
+  {
+   "knob": "fill",
+   "why": "el arte actual cubre mejor la zona: ajustar el relleno",
+   "add": -0.03
+  },
+  {
+   "knob": "sparks",
+   "why": "el arte actual cubre mejor la zona: menos chispas",
+   "add": -2
+  },
+  {
+   "knob": "motif_on",
+   "why": "activar el motivo temático del guardián (el arte actual lo tiene)",
+   "set": 1
+  },
+  {
+   "knob": "motif_n",
+   "why": "el arte actual tiene más trama temática: motivo más denso",
+   "add": 1
+  }
+ ],
+ "criteria": {
+  "alpha": 1.0,
+  "palette": 1.0,
+  "hygiene": 1.0,
+  "edge": 1.0,
+  "coverage": 0.719,
+  "contrast": 1.0,
+  "clear_floor": 1.0,
+  "motion": 1.0,
+  "richness": 1.0,
+  "identity": 0.896
+ },
+ "baseline_total": 67.1,
+ "baseline_criteria": {
+  "alpha": 1.0,
+  "palette": 0.0,
+  "hygiene": 1.0,
+  "edge": 0.015,
+  "coverage": 0.897,
+  "contrast": 0.7,
+  "clear_floor": 1.0,
+  "motion": 1.0,
+  "richness": 0.768,
+  "identity": 0.7
+ },
+ "baseline_metrics": {
+  "peak_idx": 3,
+  "alpha_binary": 1.0,
+  "palette_adherence": 0.10241657077100115,
+  "colors": 5,
+  "isolated": 0.0,
+  "edge_outline": 0.020833333333333332,
+  "edge_reach": 0.42443859592557165,
+  "edge_over": 0.0,
+  "coverage": 0.12972972972972974,
+  "interior": 0.15789473684210525,
+  "interior_detail": 0.07368421052631578,
+  "arena_ok": 1.0,
+  "has_outline_and_light": false,
+  "lum_gap": 15.676465547059067,
+  "peak_pos": 0.2727272727272727,
+  "tail": 0.0,
+  "motion_mean": 0.04323508522727273,
+  "unique_frames": 1.0,
+  "tones": 3,
+  "highlight_share": 0.0,
+  "core_fill": 0.4166666666666667,
+  "detail_mass": 0.25833333333333336,
+  "min_sig_dist": 1.0
+ },
+ "improvement": 28.5,
+ "reasons": [
+  "regresión de cobertura legible frente al arte actual (0.72 < 0.90)"
+ ],
+ "status": "FAIL",
+ "keep_current": false
+}

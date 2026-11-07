@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "package": "madre-espora",
+  "owner": "/root/animate_madre_espora",
+  "branch": "fix/madre-espora-animation-20261101",
+  "pr": 260,
+  "code_head_sha": "5f77cb01dfdb2308009e0eeaacec08df22528eba",
+  "updated_utc": "2026-11-02T03:22:00Z",
+  "execution_policy": "Continue existing owner/slice; automation must not launch duplicate generations. No formal PR approval or unvalidated main merge.",
+  "accepted_scopes": [
+    "opt-in high-detail idle pilot",
+    "opt-in high-detail phase1 anticipation/impact/recovery pilot",
+    "opt-in bloom transformation and matching idle pilot (architect fc2e99b6 runtime GO)",
+    "opt-in phase2 physical claw and whip attack pilot (architect796483a6 runtime GO)",
+    "opt-in immediate spore cast phase1/2 (architect7a9f1d80 runtime GO; warning packs routing-only)",
+    "opt-in core replacement during all-phase exposed idle/actions; architect e3c2e88b scoped GO, mobile final readability/open-close still pending",
+    "opt-in articulated bark opening/closing and aligned seed cue; architect c7ba1360 scoped GO",
+    "opt-in authored three-pose death collapse; architect3a1b2c0c runtime GO, not smooth continuous collapse",
+    "opt-in grounded reveal reusing articulated cyan poses; architect a479b67b scoped GO",
+    "warning spell routes + ROI byte-equivalence; architect23d9ed90 scoped GO",
+    "continuous HP-assisted full encounter with real allied/enemy AI; architect 5f77cb01 scoped GO"
+  ],
+  "not_accepted": [
+    "full boss release",
+    "default/main integration",
+    "physical-phone performance certification"
+  ],
+  "validation": {
+    "unit_pass": 38,
+    "browser_pass": 60,
+    "phase1_timing": "Mother damage5350ms; first impact render5382ms (+32ms)",
+    "actual_evidence_dir": "/tmp/mother-ci-232b2b20/high-detail-pilot",
+    "github_run_id": 41381017915,
+    "github_artifact_id": 13113509568,
+    "independent_reviewer": "/root/review_art_pilot_architecture",
+    "camera_and_boss_hooks": "PASS",
+    "geometry_run_id": 41366010676,
+    "geometry_artifact_id": 13107069326,
+    "latest_fungal_status": "BOTH_PASS at 5f77cb01",
+    "bloom_sequence_run_id": 41367462917,
+    "bloom_sequence_artifact_id": 13107414710,
+    "historical_fixture_failures": [
+      "MADRE.fase3_corazon_expuesto_y_vulnerable",
+      "SAVE.guardado_viejo_conserva_el_hielo_y_abre_el_reino"
+    ],
+    "baseline_failures": [],
+    "local_pending_unit_pass": 39,
+    "core_layer": "144 pose/stage pixel cases per viewport + lifecycle + actual AI/openclose PASS",
+    "performance": "ROI CI cold median6.3\u20136.4ms max18.4ms; warm max2.2ms oneoutlier;32MiBretainedcache. Not physicaldevice60fps certification",
+    "death": "Actual killEnemy cleanup +4700/6600/8000/9000 +10500 victoryonce/rewardidempotence PASS",
+    "roi_equivalence": "144 wholeRGBA old/new cases byte-exact in CI",
+    "warning_routes": "32 actualAI desktop/mobile cases PASS and independent scoped visual GO",
+    "full_encounter": "PASS at 1280x720 and 844x390; actual allied/enemy AI, all body/action routes observed, no legacy body fallback, reward once. Explicit HP assistance logged; not natural victory or balance proof."
+  },
+  "current_slice": {
+    "id": "default-lazy-rollout",
+    "status": "DEFAULT_LAZY_CANDIDATE_CI_PENDING",
+    "active_generation": null,
+    "last_generation": {
+      "provider": "OpenAI built-in imagegen",
+      "file": "generated_images/exec-c8ed1d0a-43a8-446a-b610-f73f53c6d661.png",
+      "sha256": "3f61581c856d4d2b40c18a30be0d97817c7cbc98cc615ae55b2af53b7c99175c",
+      "verdict": "Source and normalizedgeometry independent GO; no reroll requested"
+    },
+    "next_gate": "Exact default/lazy ordinary-URL CI, missing/pending/malformed assets and request counts, then final independent completeness review",
+    "next_job_key": "madre-default-lazy-rollout-v1",
+    "provider_task_id": null,
+    "previous_rejected_generation": {
+      "provider": "OpenAI built-in imagegen",
+      "request_id": null,
+      "request_id_note": "Tool does not expose successful request IDs; output file ID below is artifact identifier, not request ID.",
+      "output_file": "/workspace/scratch/4ef56534d38c/generated_images/exec-25365843-420d-4073-a174-5154e910b8c5.png",
+      "sha256": "29867a649bc805132f3aab413855241bd9a7ba3ee47af6c996a3c38dc5ad92d4",
+      "refs": [
+        {
+          "path": "/workspace/scratch/4ef56534d38c/generated_images/exec-37ea7b5a-35a4-4bb3-9fdd-e34962f34dce.png",
+          "sha256": "1b5822783d5ec11b2cfff20ba0c811c4dc68e3ec5c8a4d091f2dc9b1c378528b"
+        },
+        {
+          "path": "/tmp/madre-bloom-canonical-reference.png",
+          "sha256": "ccd194e580f5b0fb602fa75258422a0a49744dbfd4e892be9ed4f3879cb50c57"
+        }
+      ],
+      "verdict": "REJECTED_SOURCE_NOT_INSTALLED",
+      "reasons": [
+        "Bloom not sufficiently evolved: retained same cyan canopy rather than broad warm orange/pink gills crown",
+        "Adjacent root/glow silhouettes contact; bottom-left fingers hit outer edge",
+        "Do not crop overlap or normalize each frame independently to fake invariant scale"
+      ]
+    },
+    "sequence_sources": [
+      {
+        "kind": "transition",
+        "file": "/workspace/scratch/4ef56534d38c/generated_images/exec-7e3d43dd-2f21-4826-bcff-fc5d92c93519.png",
+        "sha256": "fe96f2d97fea467257a9a1db45c83b1541b8e6dd06714e10e4fa2387b95f37d7",
+        "request_id": null,
+        "verdict": "SOURCE_GO_RUNTIME_PENDING",
+        "provider": "OpenAI built-in imagegen"
+      },
+      {
+        "kind": "idle",
+        "file": "/workspace/scratch/4ef56534d38c/generated_images/exec-ab353cc7-336f-411e-84e9-4e25517d164f.png",
+        "sha256": "db2c41b50d8bc69dd5d7bf072b07ccf02eb7c27f7aa15c1a19b6bcceca085909",
+        "request_id": null,
+        "verdict": "SOURCE_GO_RUNTIME_PENDING",
+        "provider": "OpenAI built-in imagegen"
+      }
+    ],
+    "name": "Continuous scripted HP-assisted encounter with real allied/enemy AI",
+    "cast_sources": [
+      {
+        "phase": 1,
+        "file": "/workspace/scratch/4ef56534d38c/generated_images/exec-3cf25e0d-5da0-4c54-b1fe-b3887713d6c6.png",
+        "sha256": "0e4b1b57eafa358929477a508d8047c0d2ec8fa8a00fdf34ee76b41d6559fad5",
+        "request_id": null,
+        "verdict": "SCOPED_RUNTIME_GO_7a9f1d80"
+      },
+      {
+        "phase": 2,
+        "file": "/workspace/scratch/4ef56534d38c/generated_images/exec-e2f6ffa3-f841-46f3-be8a-5631593ff501.png",
+        "sha256": "b09e5ad0cc900040712681b0310fa4f9047c1cd72196dc5a2b19387486678223",
+        "request_id": null,
+        "verdict": "SCOPED_RUNTIME_GO_7a9f1d80"
+      }
+    ],
+    "rejected_cast_source": {
+      "file": "exec-0412cd6b-2de2-49ea-bc88-c8e0faa67d23.png",
+      "reason": "phase1 rootfan29%too broad; replaced by targeted lowerbody correction, not installed"
+    }
+  },
+  "user_deliverable": {
+    "file_id": "file_0000000073e48230a5e2238281bc725b",
+    "library_file_id": "libfile_8e03553a38d481919252fad2d69c67d1",
+    "name": "madre-idle-mobile-PROTOTYPE.mp4",
+    "scope": "idle prototype only, not main"
+  },
+  "spend": "No Runway credits or purchases; built-in imagegen unit cost not exposed.",
+  "previous_remote_head": "7a9f1d80d83da5f1122d789c30518a2746944b47",
+  "user_deliverable_bloom": {
+    "file_id": "file_0000000056e081fd83d80fd0da44dac6",
+    "library_file_id": "libfile_0f0e771b7fb88191b085629005a9bfd6",
+    "name": "madre-bloom-PROTOTYPE-not-main.mp4",
+    "scope": "actual phase2 transition and idle, scoped visual GO, not main or complete boss",
+    "evidence_head": "34ba9c8e618ebdacaf86fe282c0011460274cadd"
+  },
+  "inflight": {
+    "owner": "/root/animate_madre_espora",
+    "scope": "Continuous full lifecycle/phase body coverage and independent native review; exactdefault-on not yetapplied",
+    "head": "23d9ed907028067084d4095610517650f5932b32",
+    "job_key": "madre-full-encounter-v1",
+    "provider_request_id": null,
+    "output_file": "generated_images/exec-c8ed1d0a-43a8-446a-b610-f73f53c6d661.png",
+    "source_sha256": "3f61581c856d4d2b40c18a30be0d97817c7cbc98cc615ae55b2af53b7c99175c",
+    "duplicate_jobs_forbidden": true,
+    "source_gate": "No newart or gameplayproductionchange"
+  }
+}

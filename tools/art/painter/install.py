@@ -5,7 +5,8 @@
 
 - La ficha (specs/<id>.json) dice dónde va: "install": {"champion": "aurelia", "pack": "aurelia"}
   (pack = id del atlas en el juego; para skins, "<campeón>_altN").
-- Exige que la hoja pase el gate de estilo (style_gate.py). Si no pasa, no instala nada.
+- Exige gate numérico y visual-review.json ligado por SHA-256 al atlas, ficha, Códice y evidencias.
+  Un PASS numérico no aprueba identidad ni continuidad visual.
 - Copia atlas y vista previa a assets/sprites/champions/<campeón>/[skins/<pack>/] y reescribe la línea de
   js/champions/ascension/art.js con el metadato del DONANTE de cuerpo (poses por fila y altura de referencia),
   porque las poses y la escala son las suyas.
@@ -15,6 +16,7 @@
 import json, re, sys, shutil, subprocess, datetime
 from pathlib import Path
 from PIL import Image
+from install_review import require_review, digest
 
 ROOT = Path(__file__).resolve().parents[3]
 HERE = Path(__file__).resolve().parent
@@ -39,7 +41,10 @@ def donor_meta(donor_key):
 
 
 def install(pid):
-    spec = json.loads((HERE / 'specs' / (pid + '.json')).read_text())
+    if not re.fullmatch(r'[a-z][a-z0-9_]*', pid):
+        raise SystemExit('invalid painter spec id')
+    spec_path = HERE / 'specs' / (pid + '.json')
+    spec = json.loads(spec_path.read_text())
     inst = spec.get('install') or {}
     champ = inst.get('champion') or pid.split('_alt')[0]
     pack = inst.get('pack') or pid
@@ -50,6 +55,15 @@ def install(pid):
     if g.returncode != 0:
         print(g.stdout.strip())
         raise SystemExit(f'{pid}: NO pasa el gate de estilo; no se instala')
+    if not all(re.fullmatch(r'[a-z][a-z0-9_]*', value) for value in (champ, pack)):
+        raise SystemExit('invalid champion/pack destination')
+    receipt = out.parent / 'visual-review.json'
+    try:
+        review = require_review(ROOT, out, spec_path, receipt)
+    except (ValueError, OSError) as exc:
+        raise SystemExit(f'{pid}: no visual approval: {exc}')
+    # Resolve metadata before writing any runtime asset.
+    meta = donor_meta(spec['body'])
     dest = ROOT / 'assets/sprites/champions' / champ
     if pack != champ:
         dest = dest / 'skins' / pack
@@ -57,7 +71,6 @@ def install(pid):
     shutil.copyfile(out, dest / 'atlas.png')
     a = Image.open(out).convert('RGBA')
     a.crop((0, 0, 112, 112)).save(dest / 'preview.png')
-    meta = donor_meta(spec['body'])
     meta['fix'] = meta.get('fix') or {'left': 'mirror'}
     rel = str((dest / 'atlas.png').relative_to(ROOT))
     line = 'champPackLoadAtlas("%s","%s",%s);' % (pack, rel, json.dumps(meta, separators=(',', ':')))
@@ -71,7 +84,7 @@ def install(pid):
     log_path = ROOT / 'docs/art-gate/painter-installs.json'
     log = json.loads(log_path.read_text()) if log_path.exists() else {}
     log[pack] = {'champion': champ, 'spec': f'tools/art/painter/specs/{pid}.json', 'body': spec['body'], 'head': spec.get('head'),
-                 'styleGate': 'PASS', 'date': datetime.date.today().isoformat()}
+                 'styleGate': 'PASS', 'visualReview': str(receipt.relative_to(ROOT)), 'reviewSha256': digest(receipt), 'atlasSha256': digest(out), 'date': datetime.date.today().isoformat()}
     log_path.write_text(json.dumps(log, indent=1, ensure_ascii=False) + '\n')
     print(f'instalado {pack} -> {rel} (metadato de {spec["body"]})')
 

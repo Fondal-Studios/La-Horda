@@ -16,6 +16,7 @@ let chromium;
 try { ({ chromium } = require('playwright')); } catch (e) { ({ chromium } = require(process.env.PLAYWRIGHT_MODULE || '/opt/node22/lib/node_modules/playwright')); }
 const { server, accounts } = require('../../server/relay');
 const wallet = require('../../server/wallet');
+wallet.setTestFlags({ PIECES_FOR_BRASAS: true }); // el modo con piezas sigue soportado (interruptor); por defecto ya está apagado (decisión del dueño, 2026-11-02)
 const BASE = process.env.SE_BASE_URL || process.env.BASE_URL || 'http://127.0.0.1:8771';
 const API = 'http://127.0.0.1:' + process.env.PORT;
 const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -43,7 +44,7 @@ async function api(method, p, body, token) {
   await page.goto(`${BASE}/index.html`, { waitUntil: 'load', timeout: 180000 });
   for (let k = 0; k < 300; k++) { if (await page.evaluate(() => !document.getElementById('title-continue-btn').disabled)) break; await sleep(100); }
   const E = (fn, a) => page.evaluate(fn, a);
-  await E(() => { loop = function(){}; cromaLoadAll(); window.__alerts = []; gameAlert = function(m){ window.__alerts.push(String(m)); return Promise.resolve(); };
+  await E(() => { PIECES_FOR_BRASAS = true; loop = function(){}; cromaLoadAll(); window.__alerts = []; gameAlert = function(m){ window.__alerts.push(String(m)); return Promise.resolve(); };
     gameConfirm = function(){ return Promise.resolve(true); }; });
 
   // ---------- 0) catálogo y precio ----------
@@ -171,7 +172,7 @@ async function api(method, p, body, token) {
 
   // ---------- 5) tienda live ----------
   await credit(2000);
-  wallet.setTestFlags({ SHOP_MODE: 'live' });   // el servidor también en modo live
+  wallet.setTestFlags({ SHOP_MODE: 'live', PIECES_FOR_BRASAS: true });   // el servidor también en modo live
   const live = await E(async (SET) => {
     SHOP_MODE = 'live'; _shopRotCtx = null; _shopRotNext = null; state = 'menu';
     acct.session = { token: 't', apiBase: 'x' }; save.stash = []; save.collection = {}; save.cosmeticUnlocks = {}; persistNow();
@@ -198,7 +199,7 @@ async function api(method, p, body, token) {
     return r.status + ':' + (r.j && r.j.error);
   });
   check('LIVE.el_servidor_tambien_rechaza_una_pieza_que_no_sale_hoy (saltando al cliente)', direct2 === '409:NOT_ON_SALE', direct2);
-  wallet.setTestFlags(null);
+  wallet.setTestFlags({ PIECES_FOR_BRASAS: true });
 
   // ---------- 6) interruptor apagado ----------
   wallet.setTestFlags({ PIECES_FOR_BRASAS: false });
@@ -214,7 +215,7 @@ async function api(method, p, body, token) {
     return { btns: p.querySelectorAll('[data-piece-premium]').length, goldBtns: p.querySelectorAll('[data-buy-item],[data-buy-set]').length, note: /Se consigue jugando/.test(p.textContent), r: r.reason, direct: direct.status + ':' + (direct.j && direct.j.error),
       goldOk: gold.ok, stashIgual: stashItems().length === stash0, goldIgual: save.gold === g0 };
   }, SET);
-  wallet.setTestFlags(null);
+  wallet.setTestFlags({ PIECES_FOR_BRASAS: true });
   check('APAGADO.sin_botones_y_el_cliente_no_compra', off.btns === 0 && off.goldBtns === 0 && off.note && !!off.r && off.stashIgual, off);
   check('APAGADO.el_servidor_responde_PIECES_OFF', off.direct === '403:PIECES_OFF', off.direct);
   check('APAGADO.el_oro_tampoco_compra_piezas (apagar no reabre la puerta)', !off.goldOk && off.goldIgual, off);

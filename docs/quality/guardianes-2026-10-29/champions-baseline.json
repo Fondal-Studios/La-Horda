@@ -1,0 +1,513 @@
+{
+ "schemaVersion": 1,
+ "generatedBy": "tools/bible/champion-validator.js",
+ "scope": "Automated runtime checks. PASS = no automated failures; it is NOT human design, balance or art approval. PASS* = passes with warnings.",
+ "champions": [
+  {
+   "key": "tanque",
+   "name": "Aldric, el Último Bastión",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "guerrero",
+   "name": "Kael, la Daga Carmesí",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "mago",
+   "name": "Thalen, el Tejedor Elemental",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "soporte",
+   "name": "Elyra, la Guardiana del Alba",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "segador",
+   "name": "Segador, el Olvidado",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "axiom",
+   "name": "Axiom, el Reescritor",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "profeta",
+   "name": "Ismara, la Profeta Ciega",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "musashi",
+   "name": "Musashi, el Rōnin del Bokken",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "cazadora",
+   "name": "Sylva, la Cazadora del Bosque",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "nigromante",
+   "name": "Ilvar, el Señor de las Criptas",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "libertador",
+   "name": "San Martín, el Libertador",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "ilkan",
+   "name": "Ilkan, el Caminante de Dunas",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "ynara",
+   "name": "Ynara, la Médica de los Refugios",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "myla",
+   "name": "Myla, la Niña de la Cuchara",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "brasa",
+   "name": "Brasa, la Mecánica Fugitiva",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "eslabon",
+   "name": "Garren, el Eslabón",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "morwen",
+   "name": "Morwen, la Destiladora de Ecos",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "farolero",
+   "name": "Tobías, el Farolero",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "iria",
+   "name": "Iria, la Tejedora de Límites",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "vesper",
+   "name": "Vesper, la Costurera de Sombras",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "nahir",
+   "name": "Nahir, el Restaurador de Espejos",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "baltra",
+   "name": "Baltra, la Campana Sumergida",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "maura",
+   "name": "Maura, la Pastora de Espinas",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "dariel",
+   "name": "Dáriel, el Último Compás",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "orsa",
+   "name": "Orsa, la Guardacables",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "tibor",
+   "name": "Tibor, el Rey sin Corona",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "zahra",
+   "name": "Zahra, la Mano de la Válvula",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "renko",
+   "name": "Renko, el Jardinero de Nombres",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "sira",
+   "name": "Sira, la Cartógrafa del Regreso",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "nano_gm",
+   "name": "Nano GM, el Regente del Umbral",
+   "status": "PASS*",
+   "summary": {
+    "fail": 0,
+    "warning": 2,
+    "pass": 34
+   },
+   "nonPassChecks": [
+    {
+     "area": "loot",
+     "name": "set propio",
+     "level": "WARNING",
+     "detail": ""
+    },
+    {
+     "area": "metadata",
+     "name": "Autoridad del GM: descripción larga (273): el tooltip usa shortDescription",
+     "level": "WARNING",
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "key": "facu_gm",
+   "name": "Facu GM, el Soberano de las Mareas",
+   "status": "PASS*",
+   "summary": {
+    "fail": 0,
+    "warning": 3,
+    "pass": 34
+   },
+   "nonPassChecks": [
+    {
+     "area": "loot",
+     "name": "set propio",
+     "level": "WARNING",
+     "detail": ""
+    },
+    {
+     "area": "metadata",
+     "name": "Mente de Marea: descripción larga (269): el tooltip usa shortDescription",
+     "level": "WARNING",
+     "detail": ""
+    },
+    {
+     "area": "metadata",
+     "name": "El Océano Reclama la Arena: descripción larga (204): el tooltip usa shortDescription",
+     "level": "WARNING",
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "key": "aurelia",
+   "name": "Aurelia, la Arquitecta Solar",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "khepri",
+   "name": "Khepri, el Portador del Enjambre",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "velmira",
+   "name": "Velmira, la Reina de las Máscaras",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "vhal",
+   "name": "Vhal, el Astrónomo Caído",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "bront",
+   "name": "Bront, la Fortaleza Viviente",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "oriel",
+   "name": "Oriel, la Portera de las Cicatrices",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "saelis",
+   "name": "Saelis, la Heraldo del Plumaje",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "solciju",
+   "name": "Solciju, la Enóloga",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "veyra",
+   "name": "Veyra, la Última Herida",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "brakk",
+   "name": "Brakk, el Arquitecto del Fin",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "morveth",
+   "name": "Morveth, el Jardinero de la Peste",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  },
+  {
+   "key": "aelith",
+   "name": "Aelith, la Ladrona de Segundos",
+   "status": "PASS",
+   "summary": {
+    "fail": 0,
+    "warning": 0,
+    "pass": 35
+   },
+   "nonPassChecks": []
+  }
+ ],
+ "pageErrors": []
+}
