@@ -462,12 +462,13 @@ function renderShopSkins(panel){
         <div class="shop-skin-name">${sk.name || "Skin de " + S.name}${typeof cosmeticArtPending==="function" && cosmeticArtPending(sk) ? " · croma de set" : ""}</div>
         <div class="shop-item-sub">${champ ? CLASSES[champ].name : "Universal"} · colección <b>${S.name}</b> · apariencia sin cambios de poder</div>
         <div class="shop-st ${active?"own":""}">${active ? "✔ EQUIPADA en " + activeOn.map(k=>CLASSES[k].name).join(", ") : (!skinOwnedFull(id) ? `${have}/${ids.length} piezas · ${eq} equipadas` : "🔓 Desbloqueada")}</div>
+        ${typeof UCShop!=="undefined" ? UCShop.skinLine(id, previewKey) : ""}
         ${action}
       </div></div>`;
   }).join("");
   const pending = Object.keys(SET_DB).filter(id=>!withSkin.includes(id)).map(id=>SET_DB[id].name);
   const focusBar = focus ? `<div class="shop-skin-focus" data-skin-focus="${focus}"><span>Apariencias de <b style="color:${CLASSES[focus].color}">${CLASSES[focus].name}</b></span><button class="shop-btn sec" type="button" id="shop-skin-focus-clear">Ver todas</button></div>` : "";
-  panel.innerHTML = `${focusBar}<div class="lobby-note">Reunir un set o recibir un regalo desbloquea su apariencia. Usarla no cambia tus objetos ni estadísticas. Cada apariencia se paga con Brasas o con oro: el precio de las dos está a la vista.</div>
+  panel.innerHTML = `${focusBar}<div class="lobby-note">Reunir un set o recibir un regalo desbloquea su apariencia. Usarla no cambia tus objetos ni estadísticas. Las apariencias se pagan solo con Brasas ✦ (no con oro): el precio, tu saldo y lo que te falta están en cada tarjeta.</div>
     ${_shopCollectionsHTML({champ:focus})}
     ${cards || !focus ? `<div class="shop-skin-list">${cards || '<div class="inv-empty">Todavía no hay skins.</div>'}</div>` : ""}
     ${focus ? "" : `<div class="shop-soon-box shop-soon-small">Sets sin skin todavía (arte pendiente, ver docs/assets_faltantes/skins_sets/): ${pending.join(" · ")}. Con el set completo se ve su aura plena.</div>`}`;
@@ -476,7 +477,7 @@ function renderShopSkins(panel){
   _bindSkinBuy(panel);
   panel.querySelectorAll("[data-skin-equip]").forEach(b=> b.addEventListener("click", ()=>{
     const id = b.getAttribute("data-skin-equip"), k = b.getAttribute("data-skin-champ");
-    if(skinEquipOn(id, k)) _skinEquippedFeedback(id, k); else gameAlert("No se pudo usar: revisá que hayas desbloqueado esta apariencia para el guardián.");
+    if(skinEquipOn(id, k)){ _skinEquippedFeedback(id, k); try{ if(typeof telemetryEvent==="function") telemetryEvent("cosmetic_equipped", {sku:id, champion:k, from:"shop"}); }catch(e){} } else gameAlert("No se pudo usar: revisá que hayas desbloqueado esta apariencia para el guardián.");
     renderShop();
   }));
   if(typeof shopCromaMount==="function") shopCromaMount(panel); // cromas sueltas por Brasas ✦ (js/ui/shop-cromas.js)
@@ -594,6 +595,7 @@ function shopOpen(tab, opts){
   if(typeof codexReturnTo!=="undefined") codexReturnTo = null;
   if(typeof state!=="undefined" && state!=="shop") setState("shop");
   renderShop();
+  try{ if(typeof telemetryEvent==="function") telemetryEvent("shop_opened", {tab:shopTab, focus:!!shopSkinFocus}); }catch(e){}
   const p = document.getElementById("shop-screen"); if(p && !shopSkinFocus) p.scrollTop = 0;
   if(shopTab==="brasas" && typeof premiumRefresh==="function") premiumRefresh(true);
 }
