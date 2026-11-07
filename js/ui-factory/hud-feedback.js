@@ -130,11 +130,13 @@
 
   /* ---- entrada: teclado ---- */
   function typing(ev){ var t = ev.target && ev.target.tagName; return t==="INPUT" || t==="TEXTAREA" || t==="SELECT"; }
+  // con js/core/input-desk.js las teclas dependen del esquema elegido en Opciones (Clásico / MOBA) y de lo reasignado
+  function keyBtn(code){ return typeof deskBtnForCode==="function" ? deskBtnForCode(code) : KEYS[code]; }
   window.addEventListener("keydown", function(ev){
-    if(ev.repeat || typing(ev)) return; var id = KEYS[ev.code]; if(!id) return;
+    if(ev.repeat || typing(ev)) return; var id = keyBtn(ev.code); if(!id) return;
     press(id, "key:"+ev.code, ev.timeStamp);
   }, {capture:true, passive:true});
-  window.addEventListener("keyup", function(ev){ var id = KEYS[ev.code]; if(id) release(id, "key:"+ev.code); }, {capture:true, passive:true});
+  window.addEventListener("keyup", function(ev){ var id = keyBtn(ev.code); if(id) release(id, "key:"+ev.code); }, {capture:true, passive:true});
 
   /* ---- confirmación de ejecución: verdad de terreno leída del juego (cooldown iniciado, carga gastada, básico disparado) ----
      La presión pendiente vive mientras el dedo/tecla siguen abajo y hasta CONFIRM_WINDOW_MS después de soltar. */
@@ -177,7 +179,7 @@
     if(!el.getAttribute("aria-label")) el.setAttribute("aria-label", NAMES[el.id]||el.id);
     // Sin tabindex a propósito: Enter/Espacio sobre un div enfocado no ejecutaría nada y Espacio ya es "atacar" en partida.
     // Los atajos reales se anuncian con aria-keyshortcuts.
-    var ks = { "btn-basic":"Space", "btn-s1":"1", "btn-s2":"2", "btn-s3":"3", "btn-ult":"R", "btn-emerg":"Q", "btn-pact":"F" }[el.id];
+    var ks = { "btn-basic":"Space", "btn-s1":"1", "btn-s2":"2", "btn-s3":"3", "btn-ult":"R", "btn-emerg":"Q", "btn-pact":"F" }[el.id]; // (input-desk.js lo actualiza al cambiar de esquema)
     if(ks && !el.getAttribute("aria-keyshortcuts")) el.setAttribute("aria-keyshortcuts", ks);
   }
   function syncAria(){

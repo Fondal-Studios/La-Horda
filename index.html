@@ -51,6 +51,7 @@
 <link rel="stylesheet" href="css/title-polish.css">
 <link rel="stylesheet" href="css/ux-simplify-a.css">
 <link rel="stylesheet" href="css/ux-simplify-b.css">
+<link rel="stylesheet" href="css/controls-polish.css">
 <link rel="stylesheet" href="css/loot.css">
 <link rel="stylesheet" href="css/onboarding.css">
 <link rel="stylesheet" href="css/combat-readability.css">
@@ -285,13 +286,15 @@
       <div class="opt-row"><span class="opt-lbl">Carteles de los bots<span class="opt-sub">Textos flotantes de aliados controlados por la IA (IMPULSO, PACTO, AFILADA…). Apagado: partida más limpia</span></span><button class="opt-switch" data-pref="botCallouts" role="switch" aria-checked="false">No</button></div>
       <!-- controles y accesibilidad (js/core/prefs.js): se guardan en este aparato, como el volumen -->
       <div class="opt-sec" id="opt-sec-controls">Controles</div>
+      <div class="opt-row" id="opt-scheme-row"><span class="opt-lbl">Esquema de control<span class="opt-sub">Clásico: WASD para moverte y 1 2 3 para las habilidades. MOBA: clic derecho para moverte y Q W E R para las habilidades</span></span><div class="opt-seg" data-pref="ctlScheme" role="group" aria-label="Esquema de control"><button data-v="classic">Clásico</button><button data-v="moba">MOBA (tipo LoL)</button></div></div>
+      <div class="opt-row"><span class="opt-lbl">Teclas y mando<span class="opt-sub">Mirá las teclas y los botones del mando de tu esquema y cambiá las teclas</span></span><button class="btn small" id="opt-keys-btn" type="button">Ver controles</button></div>
       <div class="opt-row"><span class="opt-lbl">Modo zurdo<span class="opt-sub">Joystick a la derecha y botones a la izquierda</span></span><button class="opt-switch" data-pref="lefty" role="switch" aria-checked="false">No</button></div>
       <div class="opt-row"><span class="opt-lbl">Vibración<span class="opt-sub">Al recibir un golpe fuerte y con la Definitiva</span></span><button class="opt-switch" data-pref="vibrate" role="switch" aria-checked="true">Sí</button></div>
       <div class="opt-row"><span class="opt-lbl">Ataque<span class="opt-sub">Mantener: apretás el botón. Alternar: un toque prende y otro apaga. Auto: ataca solo si hay un enemigo cerca</span></span><div class="opt-seg" data-pref="atkMode" role="group" aria-label="Modo de ataque"><button data-v="hold">Mantener</button><button data-v="toggle">Alternar</button><button data-v="auto">Auto</button></div></div>
       <div class="opt-row"><span class="opt-lbl">Tamaño de los controles<span class="opt-sub">Joystick y botones: <b data-pref-out="ctlSize">100%</b></span></span><input type="range" id="opt-ctl-size" data-pref-range="ctlSize" min="90" max="150" step="10" aria-label="Tamaño de los controles táctiles"></div>
       <div class="opt-row"><span class="opt-lbl">Opacidad de los controles<span class="opt-sub">Más baja: se ve más el juego detrás. <b data-pref-out="ctlOp">100%</b></span></span><input type="range" id="opt-ctl-op" data-pref-range="ctlOp" min="40" max="100" step="10" aria-label="Opacidad de los controles táctiles"></div>
       <div class="ctl-preview" id="ctl-preview" aria-hidden="true"><span class="cp-cap">Vista previa</span><div class="cp-joy"><i></i></div><div class="cp-btns"><b class="cp-b3"></b><b class="cp-b2"></b><b class="cp-b1"></b><b class="cp-atk">⚔</b></div></div>
-      <div class="opt-note">Teclado: WASD o flechas para moverte, Espacio para atacar, 1 2 3 habilidades, R Definitiva, Q curación, E acción, Esc pausa. También funciona con mando.</div>
+      <div class="opt-note" id="opt-keys-note">Teclado: WASD o flechas para moverte, Espacio para atacar, 1 2 3 habilidades, R Definitiva, Q curación, E acción, Esc pausa. También funciona con mando.</div>
       <div class="opt-note">Compañeros: si en tu equipo faltan jugadores, el juego completa los lugares con compañeros que controla él mismo. Siempre tienen prioridad los jugadores reales.</div>
       <div class="opt-note">El progreso se guarda en este navegador. Para llevarlo a otro lado, usá el código de guardado.</div>
       <div class="opt-sec" id="opt-sec-legal">Legal y soporte</div>
@@ -301,6 +304,22 @@
         <button class="btn small secondary" id="opt-import-btn">Restaurar con código</button>
       </div>
       <button class="btn wide" id="opt-close-btn" data-opt-close>Listo</button>
+    </div>
+  </div>
+
+  <!-- CONTROLES: teclas y mando del esquema activo, con reasignación (js/core/controls-panel.js) -->
+  <div id="ctl-map" class="ui-modal hidden" role="dialog" aria-label="Controles">
+    <div class="ui-modal-back" data-ctl-close></div>
+    <div class="ui-panel ui-modal-panel ctl-panel">
+      <div class="ui-panel-title">Controles</div>
+      <div class="opt-seg ctl-scheme" id="ctl-scheme" data-pref="ctlScheme" role="group" aria-label="Esquema de control"><button data-v="classic">Clásico</button><button data-v="moba">MOBA (tipo LoL)</button></div>
+      <div class="ctl-sub" id="ctl-scheme-sub"></div>
+      <div class="ctl-head"><span>Acción</span><span>Teclado y mouse</span><span>Mando</span></div>
+      <div id="ctl-map-body"></div>
+      <div class="ctl-msg" id="ctl-msg" role="status" aria-live="polite"></div>
+      <div class="ctl-pad-line" id="ctl-pad-line"></div>
+      <div class="opt-btns"><button class="btn small secondary" id="ctl-reset-btn" type="button">Restaurar teclas</button></div>
+      <button class="btn wide" id="ctl-map-close" data-ctl-close data-pad-back type="button">Listo</button>
     </div>
   </div>
 
@@ -898,6 +917,8 @@
 <script src="js/core/input.js"></script>
 <script src="js/core/aim.js"></script>
 <script src="js/core/input-desk.js"></script>
+<script src="js/core/pad-nav.js"></script>
+<script src="js/core/controls-panel.js"></script>
 <script src="js/ui/screens.js"></script>
 <script src="js/ui/panels-skills.js"></script>
 <script src="js/ui/panels-inventory.js"></script>

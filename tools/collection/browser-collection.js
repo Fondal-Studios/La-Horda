@@ -29,7 +29,11 @@ const assert = require('node:assert/strict');
    assert.ok(await page.locator('#cx-appearance-empty').isVisible());
    await page.click('[data-appearance-filter="skin"]');
    assert.ok(await page.locator('[data-appearance-kind="skin"]:visible').count()>=2);
+   // Desde la separación cosmético puro / set (propietario): el filtro SKINS ya no incluye los sets; los sets viven en su propio filtro SET.
+   assert.equal(await page.locator('[data-appearance-kind="set"]:visible').count(),0);
+   await page.click('[data-appearance-filter="set"]');
    assert.ok(await page.locator('[data-appearance-kind="set"]:visible').count());
+   await page.click('[data-appearance-filter="skin"]');
    const pure = await page.evaluate(()=>{const before=JSON.stringify(save);document.querySelector('[data-appearance-kind="skin"] [data-appearance-preview]').click();return JSON.stringify(save)===before;});
    assert.equal(pure,true, 'Preview must not mutate save');
    assert.ok(await page.evaluate(()=>!!CODEX_PV.get(document.querySelector('.cx-stage-pv')).spec.skin));
