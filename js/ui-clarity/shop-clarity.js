@@ -33,6 +33,7 @@
     panel.querySelectorAll("[data-skin-premium]").forEach(function(b){
       var id = b.getAttribute("data-skin-premium"), price = 0; try{ price = premiumPrice(id); }catch(e){}
       if(!(price>0)) return;
+      if(typeof PREMIUM!=="undefined" && PREMIUM.processingId===id){ b.disabled = true; b.setAttribute("aria-disabled", "true"); return; }   /* pedido en curso: no pisar «Procesando…» ni reactivar el botón */
       var want = "✦ " + fmt(price) + " Brasas"; if(b.textContent!==want) b.textContent = want;
       b.setAttribute("aria-label", "Comprar " + (typeof premiumSkinName==="function" ? premiumSkinName(id) : id) + " por " + fmt(price) + " Brasas");
       var bal0 = balance(); if(loggedIn() && bal0!=null){ var short = bal0 < price; if(b.disabled !== short) b.disabled = short; b.setAttribute("aria-disabled", short ? "true" : "false"); } /* el saldo cambia sin redibujar la tienda: el botón sigue al saldo real */
