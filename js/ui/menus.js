@@ -577,7 +577,7 @@ function competitiveOpen(mode){
 (function(){ const b = document.getElementById("hub-coliseum-btn"); if(b) b.addEventListener("click", openColiseum); })();
 // registro de modos (mismo formato que la Horda Infinita: js/data/endless.js)
 window.GAME_MODE_REGISTRY = window.GAME_MODE_REGISTRY || {};
-window.GAME_MODE_REGISTRY.crystalWars = {id:"crystalWars", name:"Convergencia — Guerra de Cristales", icon:"◆",
+window.GAME_MODE_REGISTRY.crystalWars = {id:"crystalWars", name:"Guerra de Cristales", icon:"◆",
   desc:"5 contra 5 con bots (2 contra 2 en línea): 3 carriles, selva, PvP y tu propia horda contra la base rival.", unlock:()=>(typeof postgameUnlocked!=="function"||postgameUnlocked()), open:openCrystalWars, coop:true};
 window.GAME_MODE_REGISTRY.coliseum = {id:"coliseum", name:"Coliseo", icon:"⚔", desc:"Torneo de 8 luchadores: cuatro equipos de dos, duelos 2 contra 2 con anillo que se cierra; el primero a 3 puntos gana.", unlock:()=>(typeof postgameUnlocked!=="function"||postgameUnlocked()), open:openColiseum, coop:true};
 // volver al hub sin pasar por la portada (index.html?return=hub; el Coliseo ya no navega: ver cwGo)

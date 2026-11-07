@@ -27,8 +27,8 @@
     const box = document.getElementById("hub-options"), el = document.getElementById(id);
     if(!box || !el) return;
     const panel = box.querySelector(".ui-modal-panel"); if(!panel) return;
-    const bar = panel.querySelector(".ui-panel-title"), nav = document.getElementById("opt-jump");
-    const off = (bar ? bar.offsetHeight : 0) + (nav ? nav.offsetHeight : 0) + 6;
+    const bar = panel.querySelector(".ui-panel-title");
+    const off = (bar ? bar.offsetHeight : 0) + 6;
     const top = el.getBoundingClientRect().top - panel.getBoundingClientRect().top + panel.scrollTop - off;
     panel.scrollTo({top: Math.max(0, top), behavior: (typeof JUICE!=="undefined" && JUICE.reduceMotion) ? "auto" : "smooth"});
     el.classList.remove("opt-flash"); void el.offsetWidth; el.classList.add("opt-flash");

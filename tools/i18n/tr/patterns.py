@@ -1,6 +1,14 @@
 # -*- coding: utf-8 -*-
 # (regex ES, plantilla EN, plantilla PT). $1.. = grupo traducido con el diccionario si existe.
 P=[
+# --- UX simplify A (t330): castigo de la derrota, renovación de la Tienda, ofertas y apariencias
+(r"^No terminaste la arena: perdiste el (\d+)% de lo ganado (en esta partida|desde el punto de control) \((.+)\)\.$","You didn't finish the arena: you lost $1% of what you earned $2 ($3).","Você não terminou a arena: perdeu $1% do que ganhou $2 ($3)."),
+(r"^No terminaste la arena: no perdiste nada de lo ganado (en esta partida|desde el punto de control)\.$","You didn't finish the arena: you lost nothing of what you earned $1.","Você não terminou a arena: não perdeu nada do que ganhou $1."),
+(r"^([\d.,]+ de XP|volviste a Nv\. \d+|[\d.,]+ de oro), ([\d.,]+ de XP|volviste a Nv\. \d+|[\d.,]+ de oro) y ([\d.,]+ de XP|volviste a Nv\. \d+|[\d.,]+ de oro)$","$1, $2 and $3","$1, $2 e $3"),
+(r"^([\d.,]+ de XP|volviste a Nv\. \d+|[\d.,]+ de oro) y ([\d.,]+ de XP|volviste a Nv\. \d+|[\d.,]+ de oro)$","$1 and $2","$1 e $2"),
+(r"^Se renueva en (.+)$","Renews in $1","Renova em $1"),
+(r"^OFERTA [-−](\d+)%$","SALE -$1%","OFERTA -$1%"),
+(r"^Ver apariencias de (.+)$","View looks for $1","Ver aparências de $1"),
 (r"^· Skin de ([^,]+), (.+) · cosmético, no da poder$","· Skin of $1, $2 · cosmetic, grants no power","· Skin de $1, $2 · cosmético, não dá poder"),
 (r"^· Croma de ([^,]+), (.+) · cosmético, no da poder$","· Chroma of $1, $2 · cosmetic, grants no power","· Croma de $1, $2 · cosmético, não dá poder"),
 (r"^con ([^,]+), (.+) · Nv\. (.+)$","with $1, $2 · Lv. $3","com $1, $2 · Nv. $3"),

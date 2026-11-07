@@ -1,0 +1,59 @@
+/* ============================================================
+   css/ux-simplify-b.css  (UX simplify B)
+   Título con jerarquía, cabecera del hub agrupada ("⋯ Más"), modos bloqueados que se ven bloqueados, "OTROS MODOS".
+   Solo presentación. Se carga tras ux-simplify-a.css.
+   ============================================================ */
+
+/* ---------- TÍTULO: JUGAR AHORA manda; "Tocá para continuar" es secundario ---------- */
+html body #title-screen.bt-title #bt-cta #title-continue-btn{
+  min-height:44px; padding:6px 10px; font-size:.8rem !important; letter-spacing:.02em; font-weight:400;
+  color:#f2dfba; background:rgba(18,10,6,.72); border:2px solid #9a6a34; box-shadow:2px 2px 0 #000; }
+html body #title-screen.bt-title #bt-cta #title-continue-btn:disabled{ opacity:.65; }
+html body #title-screen.bt-title #bt-cta .bt-cta-menu{ gap:2px; margin-top:2px; }
+html body #title-screen.bt-title #bt-cta .bt-cta-menu-sub{ font-size:.85rem; color:#cdbb98; line-height:1.15; }
+@media (min-width:900px) and (min-height:560px){ html body #title-screen.bt-title #bt-cta #title-continue-btn{ font-size:.9rem !important; min-height:46px; } }
+
+/* ---------- HUB: cabecera ---------- */
+#mainmenu-screen .hub-top .ux-help-btn{ width:auto; min-width:44px; padding:0 10px; display:inline-flex; align-items:center; gap:6px; }
+#mainmenu-screen .hub-top .ux-help-btn .ux-help-lbl{ font-size:14px; letter-spacing:.03em; }
+#mainmenu-screen .hub-top .ui-icon-btn, #mainmenu-screen .hub-top .ux-more-btn{ min-height:44px; min-width:44px; }
+#mainmenu-screen .hub-top .ux-more-btn{ position:relative; font-size:20px; line-height:1; }
+#mainmenu-screen .hub-top .ux-more-btn.ux-dot::after{ content:""; position:absolute; top:4px; right:4px; width:10px; height:10px; border-radius:50%; background:#ff5a3a; border:2px solid #120a07; }
+@media (max-width:900px){ #mainmenu-screen .hub-top .ui-icon-btn.ux-help-btn{ width:auto; } #mainmenu-screen .hub-top .ux-more-btn{ width:44px; } }
+
+.ux-more-menu{ position:absolute; right:0; top:100%; margin-top:4px; z-index:30; display:flex; flex-direction:column; gap:4px; min-width:220px; max-width:min(92vw,300px);
+  padding:8px; background:#1b0f09; border:3px solid var(--ember1,#ff7a2e); box-shadow:4px 4px 0 #000; }
+.ux-more-menu.hidden{ display:none; }
+#mainmenu-screen .ux-more-menu .ux-more-item{ display:flex; margin:0 !important; width:100% !important; max-width:none !important; position:static; flex:none; align-items:center; justify-content:flex-start; gap:10px; width:100%; min-width:0; height:auto; min-height:44px; padding:6px 12px; box-sizing:border-box; text-align:left; font-size:14px; }
+#mainmenu-screen .ux-more-menu .ux-more-item.hidden{ display:none; }
+.ux-more-menu .ux-more-lbl{ font-size:14px; letter-spacing:.02em; color:#ffe3b8; }
+
+/* Ayuda (dentro del cuadro "Cómo se juega") */
+.ux-help-more{ display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 6px; }
+.ux-help-more .btn{ flex:1 1 140px; min-height:44px; font-size:14px; }
+
+/* ---------- HUB: lo que no es "JUGAR" no lleva el mismo naranja; lo bloqueado se ve bloqueado ---------- */
+html body #mainmenu-screen .hub-tile-wide{ border-color:#8a5a2a; }
+#mainmenu-screen .hub-tile.locked{ border-color:#5c5a66; border-style:dashed; background:linear-gradient(160deg,#1c1b22,#101015); filter:none; }
+#mainmenu-screen .hub-tile.locked .hub-tile-title{ color:#a9a6b4; }
+#mainmenu-screen .hub-tile.locked .hub-tile-ico{ filter:grayscale(1) brightness(.7); }
+#mainmenu-screen .hub-tile.locked .hub-tile-sub{ color:#d6cfae; }
+#mainmenu-screen .hub-endless.locked{ border-color:#5c5a66; border-style:dashed; background:linear-gradient(160deg,#1c1b22,#101015); filter:none; }
+#mainmenu-screen .hub-endless.locked .hub-endless-txt b{ color:#a9a6b4; }
+#mainmenu-screen .hub-endless.locked .hub-endless-sub{ color:#d6cfae; white-space:normal; overflow:visible; text-overflow:clip; }
+/* el ranking depende de la Horda Infinita: mientras esté bloqueada se ve apagado (sigue tocable) */
+#mainmenu-screen .hub-endless.locked ~ .hub-endless-rank{ border-color:#5c5a66; background:linear-gradient(160deg,#1c1b22,#101015); opacity:.85; }
+#mainmenu-screen .hub-endless.locked ~ .hub-endless-rank .hub-endless-rank-txt{ color:#a9a6b4; }
+
+/* ---------- MODOS: JUGAR YA primero; el resto, agrupado ---------- */
+#modeselect-screen #mode-join-card{ border-color:#7a4e24; }
+#modeselect-screen .mode-campaign{ --st:#8a5a2a; }
+#modeselect-screen .mode-campaign, #modeselect-screen #mode-crystal-wars-btn, #modeselect-screen #mode-coliseum-btn, #modeselect-screen #mode-endless-btn{ border-color:#6a4a2a; }
+.ux-more-modes{ display:flex; flex-direction:column; gap:2px; padding:8px 4px 2px; margin:0; border-top:2px dashed #6a4a2a; }
+.ux-more-modes b{ font-size:16px; letter-spacing:.06em; color:#ffd98a; font-weight:400; }
+.ux-more-modes span{ font-size:14px; color:#cdbb98; line-height:1.2; }
+
+/* cuenta: "Invitado · Entrar" entero (la cabecera ahora tiene sitio) */
+#mainmenu-screen .hub-profile{ flex:0 0 auto; }
+#mainmenu-screen .hub-profile-txt{ flex:0 0 auto; min-width:max-content; }
+#mainmenu-screen .hub-profile-lvl{ white-space:nowrap; overflow:visible; text-overflow:clip; }

@@ -126,7 +126,7 @@ async function canvasNonBlank(page) {
     check('nav.arena_titles', titles.length >= 5, titles);
     await page.click('#arenaselect-back-btn');
     await page.click('#modeselect-back-btn');
-    await page.click('#mainmenu-back-btn');
+    await page.click('#hub-more-btn'); await page.click('#mainmenu-back-btn');
     check('nav.back_to_title', await vis(page, '#title-screen'));
     const errs = await gameErrors(page, errors);
     check('nav.no_errors', errs.length === 0, errs);

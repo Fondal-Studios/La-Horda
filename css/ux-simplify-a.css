@@ -101,12 +101,12 @@ body.lefty #toast-stack.end{ right:auto; left:calc(8px + env(safe-area-inset-lef
 #pause-screen input[type=range]{ min-height:44px; }
 
 /* ---------- 4. OPCIONES: salto a Accesibilidad y resumen ---------- */
-.opt-jump{ position:sticky; top:0; z-index:2; display:flex; flex-wrap:wrap; gap:6px; margin:0 -14px 6px; padding:6px 14px; background:#1b0f09; border-bottom:1px solid #3a2415; }
-.opt-jump button{ min-height:44px; flex:1 1 auto; padding:4px 12px; font:inherit; font-size:14px; color:#ffe6a8; background:#2a1a10; border:2px solid #000; border-radius:4px; cursor:pointer; box-shadow:inset 0 0 0 1px rgba(255,190,110,.25); }
+.opt-jump{ display:flex; flex-wrap:wrap; gap:6px; margin:0 -14px 6px; padding:6px 14px; background:#1b0f09; border-bottom:1px solid #3a2415; }
+.opt-jump button{ min-height:44px; min-width:44px; flex:1 1 auto; padding:4px 12px; font:inherit; font-size:14px; color:#ffe6a8; background:#2a1a10; border:2px solid #000; border-radius:4px; cursor:pointer; box-shadow:inset 0 0 0 1px rgba(255,190,110,.25); }
 .opt-jump button.opt-jump-a11y{ background:#5a3212; border-color:#d9b25a; }
 .opt-jump button:focus-visible{ outline:2px solid #ffcf5c; outline-offset:2px; }
 #hub-options .ui-modal-panel > .ui-panel-title{ position:sticky; top:0; }
-#hub-options .opt-sec{ scroll-margin-top:110px; }
+#hub-options .opt-sec{ scroll-margin-top:60px; }
 #hub-options #opt-sec-a11y{ color:#ffd98a; border-bottom:2px solid #d9b25a; padding-bottom:3px; }
 .opt-a11y-sum{ display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin:4px 0 6px; font-size:12px; color:#cdb6a1; }
 .opt-a11y-sum .oas-k{ color:#d2bba6; }
@@ -116,17 +116,17 @@ body.lefty #toast-stack.end{ right:auto; left:calc(8px + env(safe-area-inset-lef
 body.reduce-motion .opt-flash{ animation:none; }
 
 /* ---------- 5. TEXTOS LARGOS (PT/EN): sin partir palabras ni elipsis donde falta información ---------- */
-.cx-home-title{ overflow-wrap:normal; word-break:normal; hyphens:auto; -webkit-hyphens:auto; font-size:max(12px, clamp(11px, 1.6vw, 0.78rem)); min-width:0; }
+.cx-home-title{ overflow-wrap:normal; word-break:keep-all; hyphens:manual; -webkit-hyphens:manual; font-size:max(12px, clamp(11px, 1.6vw, 0.78rem)); letter-spacing:0; gap:5px; min-width:0; }
 .cx-home-title > span, .cx-home-title > b{ overflow-wrap:normal; min-width:0; }
 #mainmenu-screen .hub-endless-sub, .hub-endless-sub{ white-space:normal; overflow:visible; text-overflow:clip; line-height:1.2;
   display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; line-clamp:2; overflow:hidden; }
-.cx-card-title, .founders-card .cx-card-title{ white-space:normal; overflow:hidden; text-overflow:clip; line-height:1.15;
+html body .cx-card-title, html body .champ-title.cx-card-title{ white-space:normal; overflow:hidden; text-overflow:clip; line-height:1.15;
   display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; line-clamp:2; }
-.shop-item-sub, .shop-deal .shop-item-sub, .shop-bundle .shop-item-sub, .shop-rot-meta .shop-item-sub, .brasas-what-card .shop-item-sub{
+html body .shop-item-sub, html body .shop-deal .shop-item-sub, html body .shop-bundle .shop-item-sub, html body .shop-rot-meta .shop-item-sub, html body .brasas-what-card .shop-item-sub{
   white-space:normal; overflow:hidden; text-overflow:clip; line-height:1.25;
   display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; line-clamp:2; }
-.shop-hero-title{ font-size:max(12px, 0.74rem); }
-@media (max-height:520px){ .shop-hero-title{ font-size:max(12px, 0.9rem); } }
+html body .shop-hero-title{ font-size:max(12px, 0.74rem); }
+@media (max-height:520px){ html body .shop-hero-title{ font-size:max(12px, 0.9rem); } }
 
 /* avisos durante la pausa: arriba a la derecha, chicos (antes quedaban en el centro sobre el título) */
 body:has(#pause-screen:not(.hidden)) #toast-stack:not(.play):not(.end){ left:auto; right:calc(8px + env(safe-area-inset-right, 0px)); transform:none; width:min(190px, 26vw); top:calc(6px + env(safe-area-inset-top, 0px)); }
