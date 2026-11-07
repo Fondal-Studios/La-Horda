@@ -1,0 +1,113 @@
+/* menu-polish-a.css — pulido de menús (evaluación de diseño 71 -> 85): Pausa, Opciones en móvil, tipografía mínima,
+   título con un solo CTA y cabecera/rejilla del hub. Carga después de i18n.css; solo layout/estilo, sin lógica. */
+
+/* ---------- casilla pixel reutilizable (.ui-toggle): reemplaza el checkbox blanco del navegador ---------- */
+input[type=checkbox].ui-toggle{
+  -webkit-appearance:none; appearance:none; flex:none; position:relative; cursor:pointer; margin:0;
+  width:52px; height:30px; background:#120a07; border:3px solid #6a3e1e; border-radius:0;
+  box-shadow:inset 2px 2px 0 #000, 2px 2px 0 #000; transition:background .12s, border-color .12s;
+}
+input[type=checkbox].ui-toggle::before{
+  content:""; position:absolute; top:2px; left:2px; width:18px; height:18px; background:#b89a86; border:2px solid #000;
+  box-shadow:inset 2px 2px 0 rgba(255,255,255,.28); transition:transform .12s, background .12s;
+}
+input[type=checkbox].ui-toggle:checked{ background:#5a3212; border-color:#ffcf5c; }
+input[type=checkbox].ui-toggle:checked::before{ transform:translateX(22px); background:#ffcf5c; }
+input[type=checkbox].ui-toggle:focus-visible{ outline:2px solid #ffcf5c; outline-offset:2px; }
+body.reduce-motion input[type=checkbox].ui-toggle, body.reduce-motion input[type=checkbox].ui-toggle::before{ transition:none; }
+
+/* ---------- 1. PAUSA: panel con marco naranja, botones del mismo alto ---------- */
+#pause-screen{ justify-content:center; align-items:center; padding:10px; box-sizing:border-box; }
+#pause-screen .pause-panel{
+  position:relative; width:100%; max-width:560px; max-height:100%; overflow-y:auto; box-sizing:border-box;
+  display:flex; flex-direction:column; align-items:stretch; gap:10px; padding:14px 18px 16px;
+  background:linear-gradient(160deg,#241309,#120a07); border:3px solid var(--ember1,#ff7a2e);
+  box-shadow:inset 2px 2px 0 rgba(255,200,140,.18), inset -2px -2px 0 #000, 6px 6px 0 #000, 0 0 22px rgba(255,122,46,.25);
+}
+#pause-screen .pause-panel > *{ margin-top:0; margin-bottom:0; }
+#pause-screen .pause-panel .arena-title{ text-align:center; margin:0; }
+#pause-screen .pause-note{ max-width:none; margin:0; font-size:12px; line-height:1.4; color:#d2bba6; text-align:center; }
+#pause-screen .pause-audio{ display:grid; grid-template-columns:1fr 1fr; gap:6px 18px; margin:0; font-size:15px; }
+#pause-screen .pause-audio label{ display:flex; align-items:center; justify-content:space-between; gap:8px; min-height:40px; }
+#pause-screen .pause-audio input[type=range]{ width:100%; max-width:130px; flex:1; min-width:70px; }
+#pause-screen .pause-audio .pause-motion{ grid-column:1 / -1; }
+#pause-screen .pause-audio .pause-motion .ui-toggle{ width:52px; height:30px; }
+#pause-screen .pause-btnrow{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+#pause-screen .pause-panel .btn{ width:100%; max-width:none; min-height:48px; height:auto; margin:0; padding:6px 10px; box-sizing:border-box;
+  display:flex; align-items:center; justify-content:center; text-align:center; font-size:14px; line-height:1.2; }
+#pause-screen .pause-panel .btn.small{ font-size:13px; }
+#pause-screen #resume-btn{ min-height:54px; font-size:18px; }
+#pause-screen #stats-panel{ max-height:30vh; overflow-y:auto; }
+@media (max-height:520px){
+  #pause-screen{ padding:6px; }
+  #pause-screen .pause-panel{ max-width:700px; display:grid; grid-template-columns:1fr 1fr; gap:6px 10px; padding:6px 14px 10px; }
+  #pause-screen .pause-panel > .arena-title, #pause-screen .pause-audio, #pause-screen .pause-btnrow, #pause-screen #stats-panel{ grid-column:1 / -1; }
+  #pause-screen .pause-panel > .arena-title{ font-size:20px; line-height:1.1; }
+  #pause-screen .pause-note{ display:none; }
+  #pause-screen .pause-audio{ gap:2px 18px; }
+  #pause-screen .pause-audio label{ min-height:38px; font-size:14px; }
+  #pause-screen .pause-audio .pause-motion{ grid-column:auto; }
+  #pause-screen .pause-btnrow{ gap:8px; }
+  #pause-screen .pause-panel .btn{ min-height:44px; }
+  #pause-screen #resume-btn{ min-height:48px; font-size:16px; }
+  #pause-screen #stats-panel{ max-height:22vh; }
+}
+#pause-screen .pause-audio label, #hub-options .opt-row{ text-align:left; }
+#pause-screen .pause-audio label{ justify-content:flex-start; gap:8px; }
+#pause-screen .pause-audio label > input[type=range]{ margin-left:auto; }
+#pause-screen .pause-audio label > .ui-toggle{ margin-left:auto; }
+
+/* ---------- 6. OPCIONES: panel centrado con scroll propio; título y «Listo» fijos, sin tapar ajustes ---------- */
+#hub-options.ui-modal{ align-items:center; justify-content:center; }
+#hub-options .ui-modal-panel{ display:block; overflow-y:auto; -webkit-overflow-scrolling:touch; overscroll-behavior:contain; max-height:100%; max-width:560px; margin:0 auto;
+  padding:0 14px 0; border-color:var(--ember1,#ff7a2e); scroll-padding-bottom:64px; }
+#hub-options .ui-modal-panel > .ui-panel-title{ position:sticky; top:0; z-index:3; margin:0 -14px 6px; padding:10px 14px 6px; background:#1b0f09; border-bottom:2px solid #3a1c10; }
+#hub-options #opt-close-btn{ position:sticky; bottom:0; z-index:3; display:block; width:calc(100% + 28px); max-width:none; margin:10px -14px 0; min-height:48px; box-sizing:border-box; border-width:3px 0 0; }
+#hub-options .opt-btns{ margin-bottom:6px; }
+@media (max-height:520px){
+  #hub-options.ui-modal{ padding:6px; }
+  #hub-options .ui-modal-panel{ max-width:760px; }
+  #hub-options .ui-modal-panel > .ui-panel-title{ padding:6px 14px 4px; font-size:1.1rem; }
+  #hub-options #opt-close-btn{ min-height:44px; }
+}
+
+/* ---------- 7. Mínimos tipográficos: nada de descripciones por debajo de 12 px ---------- */
+.shop-item-sub, .sf-granted, .sf-price, .net-hint, .mode-rooms-status, .pause-note, .legal-draft,
+#shop-screen .btn.small, #modeselect-screen .btn.small, #hub-options .btn.small,
+#arenaselect-screen .arena-sub, #arenaselect-screen small{ font-size:max(12px,1em); }
+.shop-item-sub, .net-hint, .mode-rooms-status{ font-size:12px; line-height:1.3; color:#d8c4af; }
+.sf-granted{ font-size:12px; } .sf-price{ font-size:12px; }
+#shop-screen .btn.small, #modeselect-screen .btn.small, #hub-options .btn.small{ font-size:12px; }
+#hub-options .opt-row .opt-sub{ font-size:12px; color:#cdb6a1; line-height:1.25; }
+#hub-options .opt-note{ color:#d2bba6; }
+#hub-options .opt-sec{ color:#e2b980; }
+.locked .sub, .arena-card.locked .sub, #arenaselect-screen .locked{ color:#cdb6a1; }
+
+/* ---------- 8. TÍTULO: un solo CTA primario; «Tocá para continuar» pasa a acceso secundario discreto ---------- */
+#title-screen #title-continue-btn:not(.bt-play){
+  background:transparent; border:2px solid rgba(255,207,92,.45); box-shadow:none; color:#f2e3d3;
+  width:auto; min-width:170px; max-width:260px; min-height:44px; padding:6px 16px; font-size:13px; letter-spacing:.04em; opacity:.92;
+}
+#title-screen #title-continue-btn:disabled{ opacity:.7; }
+#title-screen .legal-draft{ display:none; }                       /* sin insignia BORRADOR a la vista en el título */
+#title-screen .build-tag{ opacity:.9 !important; color:#f2e3d3; text-shadow:1px 1px 0 #000, 0 0 6px #000; font-size:12px; }
+#title-screen .legal-title, #title-screen .legal-title a{ color:#f2e3d3; text-shadow:1px 1px 0 #000, 0 0 6px #000; }
+#title-screen .legal-title a{ color:#ffd98a; }
+
+/* ---------- 9. HUB: cabecera sin recortes y «DESAFÍOS» completo ---------- */
+#mainmenu-screen .hub-brand{ overflow:visible; white-space:nowrap; text-overflow:clip; }
+@media (max-width:900px){
+  #mainmenu-screen .hub-top{ gap:5px; }
+  #mainmenu-screen .hub-top .ui-icon-btn{ width:40px; min-width:40px; }
+  #mainmenu-screen .hub-brand{ flex:0 1 auto; min-width:max-content; font-size:13px; letter-spacing:0; padding:0 2px; }
+  #mainmenu-screen .hub-profile{ min-width:0; }
+}
+@media (min-width:1000px) and (max-height:800px){
+  #mainmenu-screen .hub-row-explore{ grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px; }
+  #mainmenu-screen .hub-row-explore .hub-tile{ min-height:76px; padding:8px 10px; }
+  #mainmenu-screen .hub-row-explore .hub-tile-title{ font-size:17px; }
+  #mainmenu-screen .hub-row-explore .hub-tile-sub{ font-size:14px; }
+}
+@media (min-width:1000px) and (max-height:800px){
+  #mainmenu-screen #mainmenu-tienda-btn .hub-tile-sub{ padding-right:62px; }
+}

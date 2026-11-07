@@ -37,6 +37,7 @@ function _bpEl(){
     const b = ev.target.closest && ev.target.closest("[data-bp-act]"); if(!b || b.disabled) return;
     if(b.dataset.bpAct === "close") bpClose();
     else if(b.dataset.bpAct === "retry") bpLoad();
+    else if(b.dataset.bpAct === "login"){ bpClose(); if(typeof window.accountOpen === "function") window.accountOpen(); }
     else if(b.dataset.bpAct === "premium") bpBuyPremium();
     else if(b.dataset.bpAct === "claim") bpClaim(+b.dataset.tier, b.dataset.track);
   });
@@ -95,7 +96,10 @@ function _bpRender(){
   if(!d){
     let body;
     if(BP.loading) body = `<div class="bp-msg">Cargando el pase…</div>`;
-    else if(BP.err === "login") body = `<div class="bp-msg">Iniciá sesión con tu cuenta para ver y reclamar el pase. Tu progreso del pase se guarda en el servidor y te sigue entre dispositivos.</div>`;
+    else if(BP.err === "login") body = `<div class="bp-msg">Iniciá sesión con tu cuenta para ver y reclamar el pase. Tu progreso del pase se guarda en el servidor y te sigue entre dispositivos.</div>
+      <div class="mpc-preview-cap">Recompensas del pase</div>
+      <div class="mpc-locked-row" aria-hidden="true">${["🪙","✦","🎨","🎖","👑","🎁"].map(i => `<span class="mpc-locked"><span>${i}</span><span class="mpc-lk">🔒</span></span>`).join("")}</div>
+      <div class="mpc-cta-row"><button class="btn small" type="button" data-bp-act="login">Iniciar sesión</button></div>`;
     else body = `<div class="bp-msg bp-err">${_bpEsc(BP.err || "")}</div><button class="btn small" type="button" data-bp-act="retry">Reintentar</button>`;
     P.innerHTML = head + body + close; return;
   }

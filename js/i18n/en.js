@@ -8443,5 +8443,14 @@ if(window.I18N) I18N.add("en",{
 "{n}. Seguridad": "{n}. Security",
 "{n}. Transferencias internacionales": "{n}. International transfers",
 "{n}. Tus derechos": "{n}. Your rights",
-"Última actualización:": "Last updated:"
+"Última actualización:": "Last updated:",
+"Nivel alcanzado": "Level reached",
+"Enemigos vencidos": "Enemies defeated",
+"Oro total": "Total gold",
+"Gemas": "Gems",
+"Poseído": "Owned",
+"Regalo": "Gift",
+"Concepto": "Concept",
+"Recompensas del pase": "Pass rewards",
+"Con Brasas se desbloquean": "Unlocked with Embers"
 },[["^· Skin de ([^,]+), (.+) · cosmético, no da poder$", "· Skin of $1, $2 · cosmetic, grants no power"], ["^· Croma de ([^,]+), (.+) · cosmético, no da poder$", "· Chroma of $1, $2 · cosmetic, grants no power"], ["^con ([^,]+), (.+) · Nv\\. (.+)$", "with $1, $2 · Lv. $3"], ["^◆ (.+)$", "◆ $1"], ["^‹ (.+)$", "‹ $1"], ["^· Croma de (.+)$", "· Chroma of $1"], ["^(.+)\\.{1,2} Coordiná tu control de grupos con tus aliados; administrá energía y enfriamientos\\.$", "$1. Coordinate your crowd control with your allies; manage energy and cooldowns."], ["^El polvo del viaje cubre la ropa antes de que llegue la primera luz\\. (.+) conserva sus herramientas: cambian los colores, no las promesas\\.$", "Travel dust covers the clothes before the first light arrives. $1 keeps their tools: the colors change, the promises don't."], ["^Los colores de (.+) acompañan un nuevo viaje\\. Conserva su vestuario y sus decisiones: esta apariencia cambia únicamente la paleta\\.$", "The colors of $1 accompany a new journey. It keeps its outfit and its choices: this look changes only the palette."], ["^(.+) · colección$", "$1 · collection"], ["^Colección de (.+)$", "$1 collection"], ["^(.+) · Definitiva$", "$1 · Ultimate"], ["^(.+) · Manifestación$", "$1 · Manifestation"]]);

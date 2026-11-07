@@ -197,6 +197,12 @@ document.getElementById("arenaselect-back-btn").addEventListener("click", ()=>{
 // Tarjetas de selección de arena en el ORDEN CANÓNICO (CAMPAIGN_ORDER): 01 → 10, después la Arena
 // Divina (postgame). El Coliseo (PvP) no se muestra hasta que exista. Las arenas en construcción se muestran con su número
 // pero no se pueden elegir; las bloqueadas dicen qué hay que completar.
+// Miniatura de arena (selección de arenas): la misma panorámica del Códice; bloqueada = silueta + candado.
+const ARENA_THUMB_KEYS = ["ciudad","fortaleza","bosque","micelial","hielo","acuatica","laberinto","abismo","minas","infernal","divina"];
+function arenaThumbHTML(key, locked){
+  const has = ARENA_THUMB_KEYS.indexOf(key) >= 0;
+  return `<div class="arena-thumb${locked?" is-locked":""}${has?"":" no-art"}" aria-hidden="true">${has?`<i style="background-image:url('assets/ui/codex/arenas/${key}.png')"></i>`:""}${locked?'<b class="arena-thumb-lock">🔒</b>':""}</div>`;
+}
 function renderArenaGrid(){
   const grid = document.getElementById("arena-grid");
   if(!grid) return;
@@ -207,6 +213,7 @@ function renderArenaGrid(){
     if(a.comingSoon){
       return `<button class="arena-card locked soon" data-arena="${key}" disabled>
       <span class="arena-card-badge soon">EN CONSTRUCCIÓN</span>
+      ${arenaThumbHTML(key,true)}
       <div class="arena-card-icon">${a.icon}</div>
       <div class="arena-card-title"><span class="arena-card-num">${num}</span> — ${a.label}</div>
       <div class="arena-card-desc">${a.desc}<br><i>Todavía no se puede jugar: la campaña sigue en la próxima arena.</i></div>
@@ -219,6 +226,7 @@ function renderArenaGrid(){
     const need = (save.arenasCleared||{})[prev] ? frontier : prev;
     return `<button class="arena-card ${selected?"selected":""} ${unlocked?"":"locked"} ${fresh?"fresh":""}" data-arena="${key}" ${unlocked?"":"disabled"}>
       ${selected?'<span class="arena-card-badge">ELEGIDA</span>':(fresh?'<span class="arena-card-badge fresh">¡NUEVA!</span>':"")}
+      ${arenaThumbHTML(key,!unlocked)}
       <div class="arena-card-icon">${unlocked?a.icon:"🔒"}</div>
       <div class="arena-card-title"><span class="arena-card-num">${num}</span> — ${a.label}</div>
       <div class="arena-card-desc">${unlocked?a.desc:`🔒 Completá <b>${(ARENA_MODS[need]||{}).label||"la arena anterior"}</b> para desbloquearla.`}</div>
@@ -230,6 +238,7 @@ function renderArenaGrid(){
   const divinaUnlocked = isDivinaUnlocked();
   const divinaCard = `<div class="arena-grid-sep">POSTGAME</div><button class="arena-card divina ${divinaUnlocked?"":"locked"}" data-arena="divina" ${divinaUnlocked?"":"disabled"}>
       <span class="arena-card-badge" style="color:#d9a8ff; border-color:#7a4fae; background:rgba(122,79,174,0.16);">POSTGAME</span>
+      ${arenaThumbHTML("divina",!divinaUnlocked)}
       <div class="arena-card-icon">${divinaUnlocked?"👁":"🔒"}</div>
       <div class="arena-card-title">Arena Divina</div>
       <div class="arena-card-desc">${divinaUnlocked?"Las Cinco Pruebas Divinas: asedio 4 contra 4, derribá las torres y el castillo enemigo antes que a los tuyos.":"🔒 Completá la <b>Arena Infernal</b> para desbloquearla."}</div>

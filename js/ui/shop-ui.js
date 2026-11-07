@@ -553,7 +553,9 @@ function renderShopBrasas(panel){
   const regular = packs.filter(p=>!p.once);
   const on = premiumPaymentsOn();
   let status = "";
-  if(!logged) status = `<div class="brasas-status"><b>Iniciá sesión para comprar Brasas.</b> <button class="shop-btn" type="button" id="brasas-login">Iniciar sesión</button></div>`;
+  if(!logged) status = `<div class="brasas-status"><b>Iniciá sesión para comprar Brasas.</b> <button class="shop-btn" type="button" id="brasas-login">Iniciar sesión</button></div>
+    <div class="mpc-preview-cap">Con Brasas se desbloquean</div>
+    <div class="mpc-locked-row" aria-hidden="true">${["🎨","👑","✦","🎁","💠"].map(i => `<span class="mpc-locked"><span>${i}</span><span class="mpc-lk">🔒</span></span>`).join("")}</div>`;
   else if(!PREMIUM.at) status = `<div class="brasas-status">Cargando paquetes…</div>`;
   else if(!on) status = `<div class="brasas-status" data-brasas-soon-note><b>Muy pronto.</b> Los pagos todavía no están conectados: por ahora no se pueden comprar Brasas.</div>`;
   panel.innerHTML = `<div class="brasas-head">
