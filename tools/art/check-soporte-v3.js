@@ -40,7 +40,7 @@ const sha=file=>crypto.createHash('sha256').update(fs.readFileSync(path.join(ROO
     enemies=[];particles=[];spawnTimer=1e9;arenaHazardTimer=1e9;runElapsedMs=10000;animNow=20000;
     state='paused';const hero=player;hero._codexSkin=null;hero.x=hero.y=0;
     const P=CHAMP_PACK.soporte;
-    check('codex-v1 loaded',new URL(P.atlas.currentSrc||P.atlas.src,location.href).pathname.endsWith('/soporte/codex-v1/atlas.png'));
+    check('codex-v1 loaded',new URL(P.atlas.currentSrc||P.atlas.src,location.href).pathname.replace(/\.webp$/,'.png').endsWith('/soporte/codex-v1/atlas.png'));
     check('52 canonical cells (36 v3 contract + idle/hit)',P.fw===112&&P.fh===112&&P.cols===4&&P.atlas.naturalWidth===448&&P.atlas.naturalHeight===1456);
     check('ref/foot metadata',P.refH===78&&Math.abs(P.anchor*112-106)<1e-6);
     const cv=document.createElement('canvas');cv.width=cv.height=260;const g=cv.getContext('2d',{willReadFrequently:true});
