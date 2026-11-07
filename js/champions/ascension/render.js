@@ -66,20 +66,28 @@ function ascNanoConduits(h,scale,alpha){
  ctx.restore();
 }
 /* ---------------- Facu: manto de agua, corona de corrientes, leviatán ---------------- */
+/* Capa de píxeles: dibuja en un lienzo chico (1 px = 1 unidad de arte, ~1 u/px como Thalen), cuantiza el alfa a 0/255 y se ampliará SIN suavizado.
+   Evita el trazo vectorial antialias sobre un sprite pixelado (auditoría de coherencia, punto 3). */
+const ASC_PIX={};
+function ascPixelLayer(key,w,h){const c=ASC_PIX[key]||(ASC_PIX[key]=document.createElement('canvas'));if(c.width!==w){c.width=w;c.height=h;}const g=c.getContext('2d',{willReadFrequently:true});g.setTransform(1,0,0,1,0,0);g.clearRect(0,0,w,h);return {c,g};}
+function ascPixelFlush(L,w,h,dither){const im=L.g.getImageData(0,0,w,h),d=im.data;for(let i=3;i<d.length;i+=4){const q=i>>2,x=q%w,y=(q-x)/w;d[i]=d[i]>=110&&(!dither||((x+y)&1)===0)?255:0;}L.g.putImageData(im,0,0);} // dither = tablero de ajedrez: da la transparencia del relleno sin alfa parcial
 function ascFacuMantle(h,scale,alpha){
  const P=ascSkinOf(h),s=h.asState||{},t=ascT(),high=s.highTideUntil>runElapsedMs,ult=h._ascLiftUntil>runElapsedMs,lift=ascLift(h),k=ult?1.6:high?1.25:1;
- ctx.save();ctx.translate(h.x,h.y-26*scale-lift);ctx.scale(scale,scale);ctx.globalAlpha=alpha*.55;
- // manto: dos lenguas de agua que caen de los hombros y ondulan
- for(const side of [-1,1]){ctx.beginPath();ctx.moveTo(side*5,-6);
-  for(let i=1;i<=6;i++){const y=-6+i*4.5*k,x=side*(6+i*2.2*k)+Math.sin(t*3+i*.9)*1.6;ctx.lineTo(x,y);}
-  ctx.lineTo(side*3,18*k);ctx.closePath();ctx.fillStyle=P.sea;ctx.fill();ctx.strokeStyle=P.foam;ctx.lineWidth=.8;ctx.stroke();}
+ const W=72,H=72,F=ascPixelLayer('facuF',W,H),L=ascPixelLayer('facu',W,H),f=F.g,g=L.g;f.translate(W/2,H/2+4);g.translate(W/2,H/2+4);
+ // manto: dos lenguas de agua que caen de los hombros y ondulan. Relleno en tablero (50 %) y borde de 1 px liso: sin transparencia parcial
+ for(const side of [-1,1]){for(const q of [f,g]){q.beginPath();q.moveTo(side*5,-6);
+  for(let i=1;i<=6;i++){const y=-6+i*4.5*k,x=side*(6+i*2.2*k)+Math.sin(t*3+i*.9)*1.6;q.lineTo(x,y);}
+  q.lineTo(side*3,18*k);q.closePath();}
+  f.fillStyle=P.sea;f.fill();g.strokeStyle=P.foam;g.lineWidth=1;g.stroke();}
  // corona de corrientes: arcos que giran sobre la cabeza
- ctx.globalAlpha=alpha*.8;ctx.strokeStyle=P.glow;ctx.lineWidth=1.2;
- for(let i=0;i<3;i++){ctx.beginPath();ctx.arc(0,-16,7+i*2.5,t*(1.5+i*.4)+i*2,t*(1.5+i*.4)+i*2+1.6);ctx.stroke();}
- if(P.bone){ctx.fillStyle='#e8e0d0';for(let i=-2;i<=2;i++){ctx.beginPath();ctx.moveTo(i*3,-19);ctx.lineTo(i*3+1,-25-Math.abs(i));ctx.lineTo(i*3+2,-19);ctx.fill();}}
+ g.strokeStyle=P.glow;g.lineWidth=1.2;
+ for(let i=0;i<3;i++){g.beginPath();g.arc(0,-16,7+i*2.5,t*(1.5+i*.4)+i*2,t*(1.5+i*.4)+i*2+1.6);g.stroke();}
+ if(P.bone){g.fillStyle='#e8e0d0';for(let i=-2;i<=2;i++){g.beginPath();g.moveTo(i*3,-19);g.lineTo(i*3+1,-25-Math.abs(i));g.lineTo(i*3+2,-19);g.fill();}}
  // gotas en órbita (bioluminiscencia)
- const n=fxBudget(high||ult?8:4);ctx.fillStyle=P.glow;for(let i=0;i<n;i++){const a=t*2+i*6.283/n;ctx.globalAlpha=alpha*(.5+.5*Math.sin(t*4+i));ctx.beginPath();ctx.arc(Math.cos(a)*14*k,-4+Math.sin(a)*6*k,1.2,0,Math.PI*2);ctx.fill();}
- ctx.restore();
+ const n=fxBudget(high||ult?8:4);g.fillStyle=P.glow;for(let i=0;i<n;i++){const a=t*2+i*6.283/n;g.beginPath();g.arc(Math.cos(a)*14*k,-4+Math.sin(a)*6*k,1.2,0,Math.PI*2);g.fill();}
+ ascPixelFlush(F,W,H,true);ascPixelFlush(L,W,H);
+ ctx.save();ctx.translate(h.x,h.y-26*scale-lift);ctx.globalAlpha=alpha;ctx.imageSmoothingEnabled=false;
+ ctx.drawImage(F.c,-W/2*scale,-(H/2-4)*scale,W*scale,H*scale);ctx.drawImage(L.c,-W/2*scale,-(H/2-4)*scale,W*scale,H*scale);ctx.restore();
 }
 function ascLeviathan(x,y,t,alpha,P){
  // silueta abisal: cuerpo largo en S con aletas y un ojo; trazo único, sin física
