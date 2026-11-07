@@ -10,6 +10,7 @@
    Estado para pruebas: window.I18N.
    ============================================================ */
 (function(){
+  const SELF = document.currentScript && document.currentScript.src, loaded = {};
   const LANGS = ["es", "en", "pt"], KEY = "horda_lang";
   const NAMES = { es: "Español", en: "English", pt: "Português" };
   const dict = { en: Object.create(null), pt: Object.create(null) }, pats = { en: [], pt: [] };
@@ -53,6 +54,7 @@
   const rev = { en: null, pt: null };
   function unTr(cur){
     const t = cur.trim(); if(!t) return cur;
+    if(dict.en[t] !== undefined || dict.pt[t] !== undefined) return cur;   // ya es un original en español
     for(const l of LANGS){ if(l === "es") continue; if(!rev[l]){ rev[l] = new Map(); for(const k in dict[l]){ const v = dict[l][k]; if(v !== k && !rev[l].has(v)) rev[l].set(v, k); } }
       const k = rev[l].get(t); if(k !== undefined) return cur.replace(t, k); }
     return cur;
@@ -124,13 +126,18 @@
       const w = function(t){ if(lang !== "es" && typeof t === "string"){ arguments[0] = tr(t); } return o.apply(this, arguments); }; w.__i18n = true; P[f] = w;
     }
   })();
+  function load(l, cb){
+    if(!SELF || loaded[l] === "pending") return; loaded[l] = "pending";
+    const sc = document.createElement("script"); sc.src = SELF.replace(/i18n\.js(\?.*)?$/, l + ".js");
+    sc.onload = cb; sc.onerror = () => { loaded[l] = false; }; document.head.appendChild(sc);
+  }
   // ---------- API ----------
   const listeners = [];
   const I18N = {
     LANGS, NAMES,
     get lang(){ return lang; },
     get on(){ return lang !== "es"; },
-    add(l, d, patterns){ if(!dict[l]) return; Object.assign(dict[l], d || {}); if(patterns) for(const [re, to] of patterns) pats[l].push([typeof re === "string" ? new RegExp(re) : re, to]); cache[l].clear(); rev[l] = null; if(l === lang) apply(); },
+    add(l, d, patterns){ if(!dict[l]) return; loaded[l] = true; Object.assign(dict[l], d || {}); if(patterns) for(const [re, to] of patterns) pats[l].push([typeof re === "string" ? new RegExp(re) : re, to]); cache[l].clear(); rev[l] = null; if(l === lang) apply(); },
     t: tr,
     // texto con variables: I18N.tf("Hola {nombre}", {nombre: "Ana"}) (la clave traducida conserva los {…})
     tf(s, vars){ let o = tr(s); if(vars) o = o.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? vars[k] : m)); return o; },
@@ -139,6 +146,7 @@
     size(l){ return dict[l] ? Object.keys(dict[l]).length : 0; },
     setLang(l){
       if(!LANGS.includes(l) || l === lang) return;
+      if(l !== "es" && !loaded[l]){ load(l, () => I18N.setLang(l)); return; }   // el diccionario (~900 KB) se baja solo cuando se necesita
       lang = l; try{ localStorage.setItem(KEY, l); }catch(e){}
       apply(); for(const f of listeners){ try{ f(l); }catch(e){} }
     },
@@ -159,6 +167,9 @@
   };
   lang = detect();
   window.I18N = I18N;
+  // idioma distinto de español al arrancar: carga bloqueante del diccionario durante el parseo (sin parpadeo en español)
+  if(lang !== "es" && SELF && document.readyState === "loading") document.write('<script src="' + SELF.replace(/i18n\.js(\?.*)?$/, lang + '.js') + '"><\/script>');
+  else if(lang !== "es" && !loaded[lang]) load(lang, () => apply());
   const boot = () => {
     startObserver(); for(const h of document.querySelectorAll("[data-lang-host]")) I18N.mountSelector(h);
     // hub: un botón que rota el idioma (ES → EN → PT); opciones: lista desplegable

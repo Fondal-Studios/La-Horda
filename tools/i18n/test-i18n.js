@@ -28,12 +28,12 @@ const fail=[];const ok=(c,m)=>{if(!c){fail.push(m);console.log('FAIL',m);}else c
   ok(await page.evaluate(()=>I18N.lang)==='es','Opciones vuelve a español');
   const back=await page.evaluate(()=>document.body.innerText);const A=spanish.split('\n'),B=back.split('\n');const diff=B.filter(l=>!A.includes(l)).slice(0,5);if(diff.length)console.log('dif:',JSON.stringify(diff));ok(diff.length===0,'al volver a español no queda texto traducido ni cambiado');
   // persistencia y ?lang=
-  await page.evaluate(()=>I18N.setLang('pt'));await boot('');
+  await page.evaluate(()=>I18N.setLang('pt'));await page.waitForFunction(()=>I18N.lang==='pt');await boot('');
   ok(await page.evaluate(()=>I18N.lang)==='pt','la elección persiste al recargar');
   await boot('?lang=en');ok(await page.evaluate(()=>I18N.lang)==='en','?lang=en manda sobre lo guardado');
   // números: plantillas {n} conservan los valores
   const t=await page.evaluate(()=>I18N.t('Vida 3/10'));ok(t==='Health 3/10','plantilla numérica: '+t);
-  const p=await page.evaluate(()=>{I18N.setLang('pt');return I18N.t('Ilkan, el Caminante de Dunas · colección');});ok(/coleção/.test(p)&&/Caminhante/.test(p),'patrón de colección PT: '+p);
+  const p=await page.evaluate(async()=>{I18N.setLang('pt');await new Promise(r=>setTimeout(r,50));return I18N.t('Ilkan, el Caminante de Dunas · colección');});ok(/coleção/.test(p)&&/Caminhante/.test(p),'patrón de colección PT: '+p);
   // canvas
   const cv=await page.evaluate(()=>{const c=document.createElement('canvas').getContext('2d');let out='';const o=c.fillText;c.fillText('Pausa',0,0);return c.measureText('Pausar partida').width>0;});ok(cv,'canvas sigue midiendo texto traducido');
   ok(errs.length===0,'sin errores de página '+errs.slice(0,2));
