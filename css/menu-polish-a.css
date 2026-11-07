@@ -105,9 +105,10 @@ body.reduce-motion input[type=checkbox].ui-toggle, body.reduce-motion input[type
 @media (min-width:1000px) and (max-height:800px){
   #mainmenu-screen .hub-row-explore{ grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px; }
   #mainmenu-screen .hub-row-explore .hub-tile{ min-height:76px; padding:8px 10px; }
-  #mainmenu-screen .hub-row-explore .hub-tile-title{ font-size:17px; }
+  #mainmenu-screen .hub-row-explore .hub-tile-title{ font-size:18px; }
   #mainmenu-screen .hub-row-explore .hub-tile-sub{ font-size:14px; }
 }
 @media (min-width:1000px) and (max-height:800px){
   #mainmenu-screen #mainmenu-tienda-btn .hub-tile-sub{ padding-right:62px; }
+  body #mainmenu-screen.hub-screen{ padding-bottom:64px; }   /* aire inferior: DESAFÍOS entra completo y el hub sigue deslizándose */
 }

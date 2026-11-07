@@ -46,7 +46,7 @@ function endPaintFigures(root){
   const paint = ()=>{
     if((state!=="victory" && state!=="gameover") || !cvs[0].isConnected){ clearInterval(_endFigTimer); return; }
     cvs.forEach(c=>{ try{ const g = c.getContext("2d"); g.clearRect(0,0,c.width,c.height); g.imageSmoothingEnabled = false;
-      const win = c.dataset.win==="1"; drawChampFigure(g, c.dataset.endFig, c.width/2, c.height*0.9, 3, 1, win ? performance.now()%100000 : 0, win); }catch(e){} });
+      const win = c.dataset.win==="1"; drawChampFigure(g, c.dataset.endFig, c.width/2, c.height*0.9, 2.3, 1, win ? performance.now()%100000 : 0, win); }catch(e){} });
   };
   paint(); if(cvs.length && !endReduceMotion()) _endFigTimer = setInterval(paint, 110);
 }
