@@ -1,0 +1,76 @@
+{
+  "component": "A-BODY-thalen-codex/gameplay-capture-03",
+  "status": "EN_VALIDACION",
+  "artGate": "PASS_CAPTURE_SCOPE",
+  "integration": "NO_INTEGRAR",
+  "productionHead": "68674464b5dfa86c130ed03bccda72fca93d87b0",
+  "baseMain": "c66d6037c9eba34ec127a274a4eba37e6eaca764",
+  "reference": {
+    "path": "assets/ui/codex/champions/mago.png",
+    "gitBlob": "f07788b98aa635bf1587c73f6e0e243c38b3cf64"
+  },
+  "atlas": {
+    "path": "assets/sprites/champions/mago/codex-v1/atlas.png",
+    "sha256": "1be3454246d9526b93bf9e218318915086311789ca204b0ffda3f7eaf8af01aa"
+  },
+  "ci": {
+    "workflow": "Champion entry balance",
+    "run": 41980261256,
+    "job": 127088491037,
+    "artifact": 13394491282,
+    "artifactDigest": "sha256:e5c541bd31419bb60a6bcce3e2e04e348a4041167221abaeb078692a1a4f6ba5",
+    "harness": "PASS: 96 gameplay rows / 8 sheets / 0 page errors",
+    "entryConclusion": "FAIL after evidence upload: inherited HTTP server step 84",
+    "lanesConclusion": "FAIL: inherited UI flow expected volver a la base >=48px at 844px; branch has no Thalen overlap with seven concurrent main files",
+    "artifactUploaded": true
+  },
+  "technical": {
+    "rows": 96,
+    "sheets": 8,
+    "pageErrors": 0,
+    "arenas": 6,
+    "densities": [
+      "sparse",
+      "dense"
+    ],
+    "looks": [
+      "base",
+      "convergencia"
+    ],
+    "viewports": [
+      "desktop",
+      "mobile browser viewport"
+    ],
+    "modes": [
+      "legacy",
+      "candidate"
+    ],
+    "crop": "256x192 exact 1:1 gameplay pixels"
+  },
+  "visualReview": {
+    "reviewed": [
+      "desktop-dense-sequence.png",
+      "desktop-legacy-vs-candidate.png",
+      "desktop-six-arenas-sparse-dense.png",
+      "desktop-sparse-sequence.png",
+      "mobile-dense-sequence.png",
+      "mobile-legacy-vs-candidate.png",
+      "mobile-six-arenas-sparse-dense.png",
+      "mobile-sparse-sequence.png"
+    ],
+    "verdict": "PASS_CAPTURE_SCOPE",
+    "improvements": [
+      "Bosque subject is separated from the fixed central rune while keeping the real renderer",
+      "All sheets use a 256x192 1:1 crop with no evidence downscaling",
+      "Base and Convergencia silhouettes remain readable in all six arenas and both densities",
+      "Walk, attack, cast, ultimate and death frames remain distinct at gameplay scale"
+    ],
+    "limits": [
+      "Mobile viewport proves real gameplay scale and hookup; it is not a physical-device capture",
+      "No new two-client relay or full-render performance gate on production head",
+      "Capture scope does not approve the whole champion kit or every skin"
+    ]
+  },
+  "approved": false,
+  "installedInMain": false
+}

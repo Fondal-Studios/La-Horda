@@ -1,0 +1,65 @@
+{
+  "productionHead": "017fe31b07d4c3e2a37d76cac426322b1489cec0",
+  "pullRequest": 270,
+  "workflowSummary": {
+    "total": 16,
+    "success": 11,
+    "failure": 5
+  },
+  "componentEvidence": {
+    "rosterLoading": {
+      "run": 41985106969,
+      "job": 127103898209,
+      "step": 35,
+      "result": "PASS",
+      "frames": 36,
+      "gameplayScenes": 96,
+      "gameplaySheets": 8,
+      "pageErrors": 0,
+      "performance": "PASS"
+    },
+    "globalRelay": {
+      "run": 41985106969,
+      "job": 127103898209,
+      "step": 78,
+      "result": "PASS",
+      "scope": "global relay; no dedicated two-client bitmap-parity claim"
+    },
+    "exactEntrySteps": "steps 1-83 PASS; step 84 inherited HTTP server command failed; artifact upload PASS",
+    "artifact": {
+      "id": 13396691483,
+      "digest": "sha256:72c602175fcfcf87dd61b1c1a42288c8b95644aa5ad4b2bac4ec1715ba1b7735",
+      "sizeBytes": 114689812
+    }
+  },
+  "blockingFailures": [
+    {
+      "workflow": "Champion entry balance",
+      "run": 41985106969,
+      "cause": "inherited lanes UI assertion at 844px and inherited HTTP server step; Thalen component steps passed"
+    },
+    {
+      "workflow": "Integracion pruebas",
+      "run": 41985106981,
+      "cause": "global skill-icon baseline: 86 failures across 43 champions, including 42x42 basic-button display; body component does not modify icons or UI"
+    },
+    {
+      "workflow": "VFX readability and combat parity",
+      "run": 41985106864,
+      "cause": "Chromium installation failed before detectors"
+    },
+    {
+      "workflow": "Pixel density gate (informativo)",
+      "run": 41985106995,
+      "cause": "Chromium installation failed before detectors"
+    },
+    {
+      "workflow": "Art presentation verification",
+      "run": 41985107035,
+      "cause": "Chromium installation failed before detectors"
+    }
+  ],
+  "merge": "BLOCKED",
+  "thresholdsChanged": false,
+  "infrastructureChanged": false
+}
