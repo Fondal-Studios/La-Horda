@@ -1,0 +1,830 @@
+[
+ {
+  "t": "esqueleto",
+  "name": "Esqueleto",
+  "arena": "infernal",
+  "rank": "normal",
+  "w": 20,
+  "h": 29
+ },
+ {
+  "t": "zombie",
+  "name": "Zombi",
+  "arena": "infernal",
+  "rank": "normal",
+  "w": 26,
+  "h": 32
+ },
+ {
+  "t": "esqueleto_h",
+  "name": "Esqueleto Cornudo",
+  "arena": "infernal",
+  "rank": "subelite",
+  "w": 22,
+  "h": 37
+ },
+ {
+  "t": "demonio_menor",
+  "name": "Demonio Menor",
+  "arena": "infernal",
+  "rank": "subelite",
+  "w": 30,
+  "h": 37
+ },
+ {
+  "t": "golem",
+  "name": "Gólem",
+  "arena": "infernal",
+  "rank": "elite",
+  "w": 68,
+  "h": 92
+ },
+ {
+  "t": "demonio_mago",
+  "name": "Demonio Hechicero",
+  "arena": "infernal",
+  "rank": "elite",
+  "w": 30,
+  "h": 37
+ },
+ {
+  "t": "demonio_mayor",
+  "name": "Demonio Mayor",
+  "arena": "infernal",
+  "rank": "jefe",
+  "w": 181,
+  "h": 150
+ },
+ {
+  "t": "hechicero_supremo",
+  "name": "Hechicero Supremo",
+  "arena": "infernal",
+  "rank": "subjefe",
+  "w": 117,
+  "h": 168
+ },
+ {
+  "t": "golem_cuerpos",
+  "name": "Golem de Cuerpos",
+  "arena": "infernal",
+  "rank": "jefe",
+  "w": 227,
+  "h": 178
+ },
+ {
+  "t": "angel_corrompido",
+  "name": "Ángel Corrompido",
+  "arena": "infernal",
+  "rank": "jefe",
+  "w": 174,
+  "h": 201
+ },
+ {
+  "t": "foco_convergencia",
+  "name": "Foco de Convergencia",
+  "arena": "infernal",
+  "rank": "subelite",
+  "w": 128,
+  "h": 189
+ },
+ {
+  "t": "lobo_artico",
+  "name": "Lobo Ártico",
+  "arena": "hielo",
+  "rank": "normal",
+  "w": 48,
+  "h": 39
+ },
+ {
+  "t": "hada_escarcha",
+  "name": "Hada de Escarcha",
+  "arena": "hielo",
+  "rank": "normal",
+  "w": 10,
+  "h": 18
+ },
+ {
+  "t": "golem_hielo",
+  "name": "Gólem de Hielo",
+  "arena": "hielo",
+  "rank": "normal",
+  "w": 28,
+  "h": 33
+ },
+ {
+  "t": "dragoncito_hielo",
+  "name": "Dragoncito de Hielo",
+  "arena": "hielo",
+  "rank": "elite",
+  "w": 67,
+  "h": 70
+ },
+ {
+  "t": "angel_hielo",
+  "name": "Ángel de Hielo y Cristal",
+  "arena": "hielo",
+  "rank": "elite",
+  "w": 48,
+  "h": 88
+ },
+ {
+  "t": "demonio_hielo_fuego",
+  "name": "Demonio de Hielo y Fuego",
+  "arena": "hielo",
+  "rank": "elite",
+  "w": 32,
+  "h": 39
+ },
+ {
+  "t": "dragon_hielo",
+  "name": "Tundraverx, Soberano de Hielo",
+  "arena": "hielo",
+  "rank": "elite",
+  "w": 115,
+  "h": 80
+ },
+ {
+  "t": "mago_hielo_cristal",
+  "name": "El Mago Gélido",
+  "arena": "hielo",
+  "rank": "jefe",
+  "w": 84,
+  "h": 112
+ },
+ {
+  "t": "golem_cristal",
+  "name": "Gólem de Cristal",
+  "arena": "hielo",
+  "rank": "normal",
+  "w": 68,
+  "h": 77
+ },
+ {
+  "t": "cristal_servo",
+  "name": "Servo de Cristal",
+  "arena": "hielo",
+  "rank": "normal",
+  "w": 14,
+  "h": 21
+ },
+ {
+  "t": "cristal_volador",
+  "name": "Cristal Volador",
+  "arena": "hielo",
+  "rank": "normal",
+  "w": 16,
+  "h": 20
+ },
+ {
+  "t": "angel_caido_hielo",
+  "name": "Ángel Caído de Hielo",
+  "arena": "hielo",
+  "rank": "jefe",
+  "w": 95,
+  "h": 148
+ },
+ {
+  "t": "foco_hielo",
+  "name": "Foco de Hielo",
+  "arena": "hielo",
+  "rank": "subelite",
+  "w": 84,
+  "h": 183
+ },
+ {
+  "t": "duende_bosque",
+  "name": "Duende del Bosque",
+  "arena": "bosque",
+  "rank": "normal",
+  "w": 26,
+  "h": 24
+ },
+ {
+  "t": "enjambre_hadas",
+  "name": "Enjambre de Hadas",
+  "arena": "bosque",
+  "rank": "normal",
+  "w": 43,
+  "h": 46
+ },
+ {
+  "t": "bestia_bosque",
+  "name": "Bestia del Bosque",
+  "arena": "bosque",
+  "rank": "subelite",
+  "w": 104,
+  "h": 67
+ },
+ {
+  "t": "cu_sith",
+  "name": "Cù-Sìth",
+  "arena": "bosque",
+  "rank": "elite",
+  "w": 77,
+  "h": 67
+ },
+ {
+  "t": "ent",
+  "name": "Ent",
+  "arena": "bosque",
+  "rank": "elite",
+  "w": 35,
+  "h": 50
+ },
+ {
+  "t": "dama_bosque",
+  "name": "Dama del Bosque",
+  "arena": "bosque",
+  "rank": "elite",
+  "w": 51,
+  "h": 70
+ },
+ {
+  "t": "doblador_guerrero",
+  "name": "Doppelgänger — Guerrero",
+  "arena": "bosque",
+  "rank": "subjefe",
+  "w": 68,
+  "h": 68
+ },
+ {
+  "t": "doblador_arquera",
+  "name": "Doppelgänger — Arquera",
+  "arena": "bosque",
+  "rank": "subjefe",
+  "w": 52,
+  "h": 63
+ },
+ {
+  "t": "doblador_picaro",
+  "name": "Doppelgänger — Pícaro",
+  "arena": "bosque",
+  "rank": "subjefe",
+  "w": 60,
+  "h": 60
+ },
+ {
+  "t": "doblador_clerigo",
+  "name": "Doppelgänger — Clérigo",
+  "arena": "bosque",
+  "rank": "subjefe",
+  "w": 51,
+  "h": 63
+ },
+ {
+  "t": "guardian_ancestral",
+  "name": "Guardián Ancestral Corrompido",
+  "arena": "bosque",
+  "rank": "jefe",
+  "w": 160,
+  "h": 176
+ },
+ {
+  "t": "jinete_sin_cabeza",
+  "name": "Jinete Sin Cabeza",
+  "arena": "bosque",
+  "rank": "jefe",
+  "w": 144,
+  "h": 134
+ },
+ {
+  "t": "escorpion_gigante",
+  "name": "Escorpión Gigante",
+  "arena": "laberinto",
+  "rank": "normal",
+  "w": 27,
+  "h": 27
+ },
+ {
+  "t": "golem_piedra",
+  "name": "Gólem de Piedra",
+  "arena": "laberinto",
+  "rank": "normal",
+  "w": 45,
+  "h": 75
+ },
+ {
+  "t": "medusa",
+  "name": "Medusa",
+  "arena": "laberinto",
+  "rank": "subelite",
+  "w": 20,
+  "h": 32
+ },
+ {
+  "t": "druida_arena",
+  "name": "Druida de Arena",
+  "arena": "laberinto",
+  "rank": "elite",
+  "w": 22,
+  "h": 34
+ },
+ {
+  "t": "esfinge",
+  "name": "Esfinge",
+  "arena": "laberinto",
+  "rank": "elite",
+  "w": 65,
+  "h": 45
+ },
+ {
+  "t": "guardian_laberinto",
+  "name": "Guardián del Laberinto",
+  "arena": "laberinto",
+  "rank": "subjefe",
+  "w": 112,
+  "h": 108
+ },
+ {
+  "t": "minotauro",
+  "name": "Minotauro",
+  "arena": "laberinto",
+  "rank": "jefe",
+  "w": 152,
+  "h": 152
+ },
+ {
+  "t": "tiburon_joven",
+  "name": "Tiburón Joven",
+  "arena": "acuatica",
+  "rank": "normal",
+  "w": 58,
+  "h": 29
+ },
+ {
+  "t": "medusa_electrica",
+  "name": "Medusa Eléctrica",
+  "arena": "acuatica",
+  "rank": "normal",
+  "w": 28,
+  "h": 30
+ },
+ {
+  "t": "cangrejo_acorazado",
+  "name": "Cangrejo Araña",
+  "arena": "acuatica",
+  "rank": "normal",
+  "w": 58,
+  "h": 34
+ },
+ {
+  "t": "sirena_abisal",
+  "name": "Sirena Abisal",
+  "arena": "acuatica",
+  "rank": "normal",
+  "w": 22,
+  "h": 29
+ },
+ {
+  "t": "anguila_electrica",
+  "name": "Anguila Eléctrica",
+  "arena": "acuatica",
+  "rank": "normal",
+  "w": 108,
+  "h": 27
+ },
+ {
+  "t": "tiburon_blanco",
+  "name": "Tiburón Blanco",
+  "arena": "acuatica",
+  "rank": "elite",
+  "w": 92,
+  "h": 45
+ },
+ {
+  "t": "kraken_joven",
+  "name": "Kraken Joven",
+  "arena": "acuatica",
+  "rank": "subjefe",
+  "w": 288,
+  "h": 132
+ },
+ {
+  "t": "leviatan",
+  "name": "Leviatán",
+  "arena": "acuatica",
+  "rank": "jefe",
+  "w": 170,
+  "h": 158
+ },
+ {
+  "t": "lev_tentaculo",
+  "name": "Tentáculo del Leviatán",
+  "arena": "acuatica",
+  "rank": "subelite",
+  "w": 180,
+  "h": 123
+ },
+ {
+  "t": "carcelero",
+  "name": "Carcelero Deforme",
+  "arena": "fortaleza",
+  "rank": "normal",
+  "w": 67,
+  "h": 69
+ },
+ {
+  "t": "dragon_bronce",
+  "name": "Dragón de Bronce",
+  "arena": "fortaleza",
+  "rank": "normal",
+  "w": 72,
+  "h": 55
+ },
+ {
+  "t": "automata",
+  "name": "Autómata de Hierro",
+  "arena": "fortaleza",
+  "rank": "elite",
+  "w": 81,
+  "h": 85
+ },
+ {
+  "t": "prisionero",
+  "name": "Prisionero Ensamblado",
+  "arena": "fortaleza",
+  "rank": "normal",
+  "w": 93,
+  "h": 68
+ },
+ {
+  "t": "engendro",
+  "name": "Engendro Encadenado",
+  "arena": "fortaleza",
+  "rank": "normal",
+  "w": 70,
+  "h": 40
+ },
+ {
+  "t": "verdugo",
+  "name": "Verdugo de Vapor",
+  "arena": "fortaleza",
+  "rank": "elite",
+  "w": 74,
+  "h": 92
+ },
+ {
+  "t": "arana",
+  "name": "Araña Mecánica",
+  "arena": "fortaleza",
+  "rank": "subelite",
+  "w": 65,
+  "h": 52
+ },
+ {
+  "t": "dragon_forja",
+  "name": "Dragón de la Forja",
+  "arena": "fortaleza",
+  "rank": "subjefe",
+  "w": 198,
+  "h": 152
+ },
+ {
+  "t": "caballero",
+  "name": "Caballero de la Armadura Oxidada",
+  "arena": "fortaleza",
+  "rank": "jefe",
+  "w": 175,
+  "h": 161
+ },
+ {
+  "t": "infectado",
+  "name": "Infectado Micelial",
+  "arena": "micelial",
+  "rank": "normal",
+  "w": 46,
+  "h": 61
+ },
+ {
+  "t": "acechador",
+  "name": "Acechador de Esporas",
+  "arena": "micelial",
+  "rank": "subelite",
+  "w": 46,
+  "h": 56
+ },
+ {
+  "t": "hinchado",
+  "name": "Hinchado",
+  "arena": "micelial",
+  "rank": "elite",
+  "w": 101,
+  "h": 88
+ },
+ {
+  "t": "peregrino",
+  "name": "Peregrino Enraizado",
+  "arena": "micelial",
+  "rank": "subelite",
+  "w": 71,
+  "h": 71
+ },
+ {
+  "t": "sabueso",
+  "name": "Sabueso Cordyceps",
+  "arena": "micelial",
+  "rank": "normal",
+  "w": 51,
+  "h": 42
+ },
+ {
+  "t": "chaman",
+  "name": "Chamán de la Colonia",
+  "arena": "micelial",
+  "rank": "elite",
+  "w": 53,
+  "h": 96
+ },
+ {
+  "t": "nucleo_micelial",
+  "name": "Núcleo Micelial",
+  "arena": "micelial",
+  "rank": "subelite",
+  "w": 32,
+  "h": 58
+ },
+ {
+  "t": "raiz_absorcion",
+  "name": "Raíz de Absorción",
+  "arena": "micelial",
+  "rank": "subelite",
+  "w": 55,
+  "h": 70
+ },
+ {
+  "t": "micelio",
+  "name": "Micelio Primigenio",
+  "arena": "micelial",
+  "rank": "subjefe",
+  "w": 160,
+  "h": 163
+ },
+ {
+  "t": "madre_espora",
+  "name": "La Madre Espora",
+  "arena": "micelial",
+  "rank": "jefe",
+  "err": "vacío"
+ },
+ {
+  "t": "ab_errante",
+  "name": "Errante del Vacío",
+  "arena": "abismo",
+  "rank": "normal",
+  "w": 31,
+  "h": 13
+ },
+ {
+  "t": "ab_acechador",
+  "name": "Acechador del Borde",
+  "arena": "abismo",
+  "rank": "subelite",
+  "err": "vacío"
+ },
+ {
+  "t": "ab_heraldo",
+  "name": "Heraldo del Ojo",
+  "arena": "abismo",
+  "rank": "subelite",
+  "w": 42,
+  "h": 18
+ },
+ {
+  "t": "ab_devorador",
+  "name": "Devorador de Piedra",
+  "arena": "abismo",
+  "rank": "elite",
+  "w": 50,
+  "h": 13
+ },
+ {
+  "t": "ab_tejedor",
+  "name": "Tejedor del Vacío",
+  "arena": "abismo",
+  "rank": "subelite",
+  "err": "vacío"
+ },
+ {
+  "t": "ab_jinete",
+  "name": "Jinete Sin Cabeza",
+  "arena": "abismo",
+  "rank": "elite",
+  "w": 21,
+  "h": 13
+ },
+ {
+  "t": "ab_carcelero",
+  "name": "El Carcelero del Vacío",
+  "arena": "abismo",
+  "rank": "subjefe",
+  "w": 222,
+  "h": 154
+ },
+ {
+  "t": "ab_morador",
+  "name": "El Que Mora Debajo",
+  "arena": "abismo",
+  "rank": "jefe",
+  "w": 129,
+  "h": 87
+ },
+ {
+  "t": "ab_tentaculo",
+  "name": "Tentáculo del Abismo",
+  "arena": "abismo",
+  "rank": "subelite",
+  "w": 142,
+  "h": 110
+ },
+ {
+  "t": "cm_saqueador",
+  "name": "Saqueador Maldito",
+  "arena": "ciudad",
+  "rank": "normal",
+  "w": 38,
+  "h": 62
+ },
+ {
+  "t": "cm_perro",
+  "name": "Perro del Albañal",
+  "arena": "ciudad",
+  "rank": "normal",
+  "w": 48,
+  "h": 24
+ },
+ {
+  "t": "cm_raptor",
+  "name": "Raptor",
+  "arena": "ciudad",
+  "rank": "subelite",
+  "w": 66,
+  "h": 66
+ },
+ {
+  "t": "cm_verdugo",
+  "name": "Verdugo",
+  "arena": "ciudad",
+  "rank": "elite",
+  "w": 49,
+  "h": 94
+ },
+ {
+  "t": "cm_planidera",
+  "name": "Plañidera",
+  "arena": "ciudad",
+  "rank": "subelite",
+  "w": 31,
+  "h": 68
+ },
+ {
+  "t": "cm_acechante",
+  "name": "Acechante de los Tejados",
+  "arena": "ciudad",
+  "rank": "subelite",
+  "w": 28,
+  "h": 27
+ },
+ {
+  "t": "cm_campanero",
+  "name": "Campanero",
+  "arena": "ciudad",
+  "rank": "elite",
+  "w": 26,
+  "h": 39
+ },
+ {
+  "t": "cm_sectario",
+  "name": "Sectario Fanático",
+  "arena": "ciudad",
+  "rank": "normal",
+  "w": 30,
+  "h": 62
+ },
+ {
+  "t": "cm_espectro",
+  "name": "Espectro Ciudadano",
+  "arena": "ciudad",
+  "rank": "normal",
+  "w": 33,
+  "h": 61
+ },
+ {
+  "t": "cm_maestro",
+  "name": "Maestro de Ceremonias",
+  "arena": "ciudad",
+  "rank": "subjefe",
+  "w": 88,
+  "h": 112
+ },
+ {
+  "t": "cm_tramoyista",
+  "name": "El Tramoyista",
+  "arena": "ciudad",
+  "rank": "subjefe",
+  "w": 147,
+  "h": 137
+ },
+ {
+  "t": "cm_dama",
+  "name": "La Dama del Telón",
+  "arena": "ciudad",
+  "rank": "subjefe",
+  "w": 93,
+  "h": 126
+ },
+ {
+  "t": "cm_cometa",
+  "name": "Gran Número",
+  "arena": "ciudad",
+  "rank": "normal",
+  "w": 113,
+  "h": 79
+ },
+ {
+  "t": "cm_espejismo",
+  "name": "Espejismo de la Dama",
+  "arena": "ciudad",
+  "rank": "normal",
+  "w": 91,
+  "h": 133
+ },
+ {
+  "t": "cm_presentador",
+  "name": "El Presentador",
+  "arena": "ciudad",
+  "rank": "jefe",
+  "w": 124,
+  "h": 137
+ },
+ {
+  "t": "mn_esclavo",
+  "name": "Esclavo Enlazado",
+  "arena": "minas",
+  "rank": "normal",
+  "w": 56,
+  "h": 63
+ },
+ {
+  "t": "mn_insecto",
+  "name": "Insecto de Cristal",
+  "arena": "minas",
+  "rank": "normal",
+  "err": "vacío"
+ },
+ {
+  "t": "mn_acechador",
+  "name": "Acechador Ciego",
+  "arena": "minas",
+  "rank": "subelite",
+  "w": 58,
+  "h": 46
+ },
+ {
+  "t": "mn_minero",
+  "name": "Minero Corrompido",
+  "arena": "minas",
+  "rank": "elite",
+  "w": 64,
+  "h": 95
+ },
+ {
+  "t": "mn_escupidor",
+  "name": "Escupidor de Oscuridad",
+  "arena": "minas",
+  "rank": "subelite",
+  "w": 46,
+  "h": 64
+ },
+ {
+  "t": "mn_consumidor",
+  "name": "Consumidor Luminoso",
+  "arena": "minas",
+  "rank": "elite",
+  "w": 46,
+  "h": 98
+ },
+ {
+  "t": "mn_devoraluz",
+  "name": "Devoraluz",
+  "arena": "minas",
+  "rank": "elite",
+  "w": 34,
+  "h": 45
+ },
+ {
+  "t": "mn_titan",
+  "name": "Titán de Piedra",
+  "arena": "minas",
+  "rank": "subjefe",
+  "w": 206,
+  "h": 170
+ },
+ {
+  "t": "mn_cerbero",
+  "name": "Cerbero",
+  "arena": "minas",
+  "rank": "jefe",
+  "w": 246,
+  "h": 159
+ }
+]
