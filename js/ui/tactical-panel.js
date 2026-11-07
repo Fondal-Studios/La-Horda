@@ -18,7 +18,7 @@ function _tpNode(){
   const scr = document.getElementById("pause-screen"); if(!scr) return null;
   el = document.createElement("div"); el.id = "tactical-panel";
   const title = scr.querySelector(".arena-title");
-  if(title && title.nextSibling) scr.insertBefore(el, title.nextSibling); else scr.prepend(el);
+  if(title && title.parentNode) title.parentNode.insertBefore(el, title.nextSibling); else scr.prepend(el);
   return el;
 }
 // Estados activos del héroe, con el lenguaje de combate (glifo + nombre; nunca solo color).
