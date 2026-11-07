@@ -65,7 +65,7 @@ const vis = (page, sel) => page.evaluate(s => { const e = document.querySelector
       ok(s.el === 'bt-play', 'título: cruceta arriba vuelve a JUGAR AHORA', s);
       await G.tap(page, 'A');
       ok(await waitState(page, 'playing', 10000), 'título: A en JUGAR AHORA arranca la partida (solo con el mando)');
-      await sleep(600);
+      await sleep(600); await page.evaluate(() => { window.__god = setInterval(() => { if (window.player) { player.stunTimer = 0; player.slowAmt = 0; player.hp = player.maxHp; } }, 40); });
       // moverse con el stick: zona muerta y recorrido
       const x0 = await page.evaluate(() => player.x);
       await G.stick(page, 'L', 0.12, 0); await sleep(350);
@@ -166,7 +166,7 @@ const vis = (page, sel) => page.evaluate(s => { const e = document.querySelector
       // diálogo de confirmación
       await page.evaluate(() => { window.__dlg = null; gameConfirm('¿Abandonar?', { danger: true, okText: 'Abandonar', cancelText: 'Seguir' }).then(v => { window.__dlg = v; }); }); await sleep(400);
       s = await S(page);
-      ok(s.shown && /gd-cancel/.test(s.el || ''), 'diálogo peligroso: el foco empieza en Cancelar', s);
+      ok(s.shown && await page.evaluate(() => PADNAV.el.classList.contains('gd-cancel')), 'diálogo peligroso: el foco empieza en Cancelar', s);
       await shot(page, 'dialogo-foco');
       await G.tap(page, 'RIGHT'); await G.tap(page, 'A'); await sleep(350);
       ok(await page.evaluate(() => window.__dlg) === true, 'diálogo: cruceta a Aceptar + A confirma');
@@ -193,7 +193,7 @@ const vis = (page, sel) => page.evaluate(s => { const e = document.querySelector
       await G.tap(page, 'UP');
       await G.tap(page, 'A');
       ok(await waitState(page, 'playing', 10000), prof + ': el botón A de su propia numeración arranca la partida');
-      await sleep(600);
+      await sleep(600); await page.evaluate(() => { window.__god = setInterval(() => { if (window.player) { player.stunTimer = 0; player.slowAmt = 0; player.hp = player.maxHp; } }, 40); });
       const x0 = await page.evaluate(() => player.x);
       await G.stick(page, 'L', 1, 0); await sleep(500); await G.stick(page, 'L', 0, 0);
       ok(await page.evaluate(() => player.x) > x0 + 20, prof + ': stick izquierdo mueve al guardián');
@@ -216,6 +216,7 @@ const vis = (page, sel) => page.evaluate(s => { const e = document.querySelector
       await page.evaluate(() => { prefSet('ctlScheme', 'moba'); });
       await page.click('#bt-play'); ok(await waitState(page, 'playing', 10000), 'MOBA: arranca la partida con el mouse'); await sleep(700);
       await page.evaluate(() => {
+        window.__god = setInterval(() => { if (window.player) { player.stunTimer = 0; player.slowAmt = 0; player.hp = player.maxHp; } }, 40);
         window.__spy = { skill: [], ult: 0, emerg: 0 };
         const us = window.useSkill; window.useSkill = function (i, a) { window.__spy.skill.push(i); return us.apply(this, arguments); };
         const uu = window.useUltimate; window.useUltimate = function () { window.__spy.ult++; return uu.apply(this, arguments); };
@@ -279,7 +280,7 @@ const vis = (page, sel) => page.evaluate(s => { const e = document.querySelector
       ok(fired2.Digit1 && fired2.Digit2 && fired2.Digit3 && sp3.ult === 1 && sp3.emerg === 1, 'Clásico: 1 2 3, R y Q siguen igual', [fired2, sp3]);
       const q0 = await page.evaluate(() => ({ x: player.x, y: player.y }));
       await page.keyboard.down('KeyD'); await sleep(350); await page.keyboard.up('KeyD');
-      ok((await page.evaluate(() => player.x)) > q0.x + 15, 'Clásico: WASD siguen moviendo');
+      ok((await page.evaluate(() => player.x)) > q0.x + 15, 'Clásico: WASD siguen moviendo', [q0, await page.evaluate(() => ({ x: player.x, y: player.y, st: player.stunTimer, joy: joyVec, codes: [...DESK.codes], sc: deskScheme() }))]);
       await page.evaluate(() => { const r = canvas.getBoundingClientRect(); window.__c = { x: r.left + r.width * 0.7, y: r.top + r.height * 0.4 }; });
       const c2 = await page.evaluate(() => window.__c); await page.mouse.move(c2.x, c2.y); await page.mouse.down({ button: 'right' }); await sleep(60); await page.mouse.up({ button: 'right' });
       ok(!(await page.evaluate(() => DESK.ctm.on)), 'Clásico: el clic derecho no mueve (es solo del esquema MOBA)');

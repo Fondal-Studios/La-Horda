@@ -65,7 +65,12 @@ function _pnInspect(el, vw, vh){
   if(r.width*r.height > 0.55*vw*vh && el.tagName!=="BUTTON" && el.tagName!=="A") return null; // fondos de diálogo
   if(el.getAttribute("aria-hidden")==="true" && el.tagName!=="BUTTON") return null;
   let clip = {l:0, t:0, r:vw, b:vh}, scroller = null;
-  for(const s of _pnScrollers(el)){
+  const scs = _pnScrollers(el);
+  // pegado (sticky) dentro de su lista, como la barra de pestañas o el "Listo" de Opciones: siempre "está a mano", así que
+  // no gana contra las filas de la lista al moverse (solo cuando no queda nada más en esa dirección)
+  let sticky = false;
+  { const top = scs.length ? scs[0].el : null; for(let p = el; p && p!==top && p!==document.body; p = p.parentElement){ const ps = p===el ? cs : getComputedStyle(p); if(ps.position==="sticky"){ sticky = true; break; } } if(!top) sticky = false; }
+  for(const s of scs){
     const pr = s.el.getBoundingClientRect();
     clip = {l:Math.max(clip.l, pr.left), t:Math.max(clip.t, pr.top), r:Math.min(clip.r, pr.right), b:Math.min(clip.b, pr.bottom)};
     if(s.scroll && !scroller) scroller = s.el;
@@ -73,14 +78,19 @@ function _pnInspect(el, vw, vh){
   const il = Math.max(r.left, clip.l), it = Math.max(r.top, clip.t), ir = Math.min(r.right, clip.r), ib = Math.min(r.bottom, clip.b);
   if(ir - il >= 6 && ib - it >= 6){
     const h = document.elementFromPoint((il + ir)/2, (it + ib)/2);
-    if(!h || !(el===h || el.contains(h) || h.contains(el))) return null; // tapado por otra capa
-    return {el, rect:r, off:false};
+    if(!h) return null;
+    if(!(el===h || el.contains(h) || h.contains(el))){
+      // tapado por una barra pegada de su propia lista (el "Listo" de Opciones): se llega desplazando; tapado por otra capa: no vale
+      if(scroller && scroller.contains(h)) return {el, rect:r, off:true, sticky};
+      return null;
+    }
+    return {el, rect:r, off:false, sticky};
   }
   if(scroller){ // fuera del área visible de su lista: vale si la lista misma está a la vista y destapada
     const sr = scroller.getBoundingClientRect();
     const sx = Math.max(0, Math.min(vw, (sr.left + sr.right)/2)), sy = Math.max(0, Math.min(vh, (sr.top + Math.min(sr.bottom, vh))/2));
     const h = document.elementFromPoint(sx, sy);
-    if(h && scroller.contains(h)) return {el, rect:r, off:true};
+    if(h && scroller.contains(h)) return {el, rect:r, off:true, sticky};
   }
   return null;
 }
@@ -118,7 +128,9 @@ function padPick(from, dir, cands){
     const prim = vert ? Math.abs(cc.y - fc.y) : Math.abs(cc.x - fc.x), sec = vert ? Math.abs(cc.x - fc.x) : Math.abs(cc.y - fc.y);
     const gap = vert ? (cc.y > fc.y ? r.top - fr.bottom : fr.top - r.bottom) : (cc.x > fc.x ? r.left - fr.right : fr.left - r.right);
     const ov = vert ? _pnOverlap(fr.left, fr.right, r.left, r.right) : _pnOverlap(fr.top, fr.bottom, r.top, r.bottom);
-    const s = Math.max(0, gap) + prim*0.3 + (ov > 0 ? sec*0.25 : sec*2.2 + 40) + (c.off ? 30 : 0);
+    // vertical: manda la fila más cercana (la columna importa poco: las filas de Opciones tienen la etiqueta a un lado y el control al otro);
+    // horizontal: se queda en la fila, y solo si no hay nada ahí salta a otra (con castigo)
+    const s = Math.max(0, gap) + prim*0.1 + (vert ? sec*(ov > 0 ? 0.15 : 0.4) : sec*(ov > 0 ? 0.3 : 2.5) + (ov > 0 ? 0 : 60)) + (c.off ? 30 : 0) + (c.sticky ? 600 : 0);
     if(s < bestS){ bestS = s; best = c; }
   }
   return best;
@@ -126,9 +138,11 @@ function padPick(from, dir, cands){
 function padDefault(cands){
   if(!cands.length) return null;
   const order = cands.slice().sort((a, b)=>{ const ay = Math.round(a.rect.top/28), by = Math.round(b.rect.top/28); return ay - by || a.rect.left - b.rect.left; });
-  const inView = order.filter(c => !c.off);
-  for(const sel of PN_DEFAULT_SEL){ const c = inView.find(x => x.el.matches(sel)); if(c) return c; }
-  return inView[0] || order[0];
+  let pool = order.filter(c => !c.off);
+  const inModal = pool.filter(c => c.el.closest(".ui-modal"));
+  if(inModal.length) pool = inModal; // un panel encima: se empieza por su primer control (no por el "Listo" del final)
+  for(const sel of PN_DEFAULT_SEL.slice(0, inModal.length ? 2 : PN_DEFAULT_SEL.length)){ const c = pool.find(x => x.el.matches(sel)); if(c) return c; }
+  return pool.find(c => !c.sticky) || pool[0] || order[0];
 }
 
 /* ---------------- foco visible ---------------- */
@@ -151,10 +165,23 @@ function _pnSig(el){
   const r = el.getBoundingClientRect(), c = _pnCenter(r);
   return {id:el.id || "", tag:el.tagName, text:(el.textContent || "").trim().slice(0, 40), x:c.x, y:c.y};
 }
+// si una barra pegada (sticky) de la lista tapa el elemento, se desplaza la lista hasta destaparlo
+function _pnReveal(el){
+  for(let i = 0; i < 3; i++){
+    const r = el.getBoundingClientRect(); if(r.width < 1) return;
+    const cx = Math.max(1, Math.min(innerWidth - 1, (r.left + r.right)/2)), cy = Math.max(1, Math.min(innerHeight - 1, (r.top + r.bottom)/2));
+    const h = document.elementFromPoint(cx, cy);
+    if(!h || el===h || el.contains(h) || h.contains(el)) return;
+    const sc = _pnScrollers(el).find(s => s.scroll); if(!sc || !sc.el.contains(h)) return;
+    const hr = h.getBoundingClientRect(), d = hr.top > r.top ? (r.bottom - hr.top + 10) : -(hr.bottom - r.top + 10);
+    const before = sc.el.scrollTop; sc.el.scrollTop += d; if(sc.el.scrollTop===before) return;
+  }
+}
 function padPlace(c, instant){
   if(!c) return false;
   PADNAV.el = c.el; PADNAV.shown = true; PADNAV.need = false;
   try{ c.el.scrollIntoView({block:"nearest", inline:"nearest", behavior:"instant"}); }catch(e){ try{ c.el.scrollIntoView(false); }catch(_){} }
+  _pnReveal(c.el);
   PADNAV.sig = _pnSig(c.el);
   _pnBox(); _pnDraw();
   return true;
