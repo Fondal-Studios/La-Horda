@@ -28,6 +28,8 @@
      MAX_ROOMS        tope de salas simultáneas (default 300)
      DATABASE_URL, DATA_DIR, ...  cuentas de usuario (ver server/accounts.js)
      SIM_LATENCY_MS   SOLO PRUEBAS: demora artificial de cada mensaje (default 0)
+     LA_HORDA_LAN     "1" = MODO RED LOCAL (tools/lan/host.js): sin cuentas, sin nube, sin recompensas de servidor
+                      (el relay solo junta jugadores de la misma red). Ver docs/beta-release/MULTIJUGADOR_LOCAL.md
 
    SALAS PÚBLICAS: el anfitrión puede marcar su sala como pública ("create"/"update" con public:true).
    Las públicas que esperan en la Sala, no están llenas y tienen al anfitrión conectado se listan en
@@ -89,6 +91,9 @@ function chatFilter(text){
   return { text: out, hit };
 }
 
+// MODO RED LOCAL: el mismo servidor de salas, pero sin /api de cuentas, sin guardado en la nube y sin bandeja de
+// recompensas (nada de la partida local toca economía, ranking ni Brasas). Sin la variable, todo igual que siempre.
+const LAN = process.env.LA_HORDA_LAN === "1";
 const rooms = new Map(); // code -> room
 // Salas públicas: lista cacheada 1 s, límite por IP (HTTP) y por conexión (WS), y tope de filas.
 const ROOMS_LIST_MAX = 40, ROOMS_CACHE_MS = 1000, ROOMS_WS_MIN_GAP_MS = 900;
@@ -164,7 +169,8 @@ function closeRoom(room, reason){
 function humanCount(room){ return room.slots.filter(Boolean).length; }
 
 async function handle(ws, msg){
-  if(await campaignInbox.handle(ws,msg)) return;
+  if(LAN && /^reward-(open|get|ack)$/.test(msg.t)){ send(ws, { t: "reward-list", ids: [] }); return; }
+  if(!LAN && await campaignInbox.handle(ws,msg)) return;
   const room = ws._room ? rooms.get(ws._room) : null;
   const me = room ? room.slots[ws._slot] : null;
   switch(msg.t){
@@ -177,6 +183,7 @@ async function handle(ws, msg){
     }
     case "trade": // intercambio (server/trades.js): terminar uno pendiente no necesita sala
       if(typeof msg.op !== "string") return;
+      if(LAN) return send(ws, { t: "error", code: "TRADE_OFF", trade: true, msg: "El intercambio no está disponible en la red local" });
       return trades.handle(ws, msg, room && me ? { room, slot: ws._slot, me } : null);
     case "create": {
       if(msg.protocol !== PROTOCOL) return send(ws, { t: "error", code: "VERSION", msg: "Versión distinta del servidor" });
@@ -270,7 +277,7 @@ async function handle(ws, msg){
       room.slots.forEach((m, i) => { if(i > 0 && m && !m.ws) room.slots[i] = null; });
       room.campaignStartRejected=true;
       try{
-        if(!await campaignInbox.start(room)) return send(ws,{t:"error",code:"REWARDS_PENDING",msg:"Recuperá tus recompensas pendientes antes de iniciar otra partida."});
+        if(!LAN && !await campaignInbox.start(room)) return send(ws,{t:"error",code:"REWARDS_PENDING",msg:"Recuperá tus recompensas pendientes antes de iniciar otra partida."});
       }catch(e){ return send(ws,{t:"error",code:"REWARDS_STORAGE",msg:"No se pudo preparar el guardado de recompensas. Reintentá antes de iniciar."}); }
       room.campaignStartRejected=false;
       room.state = "playing";
@@ -294,7 +301,7 @@ async function handle(ws, msg){
     case "msg": {
       // relay: los invitados solo le hablan al anfitrión; el anfitrión a uno o a todos
       if(ws._slot===0 && room.campaignStartRejected) return;
-      if(ws._slot===0){ campaignInbox.capture(room,msg.d); await campaignInbox.finish(room,msg.d); if(msg.d?.k==="end")send(ws,{t:"reward-committed"}); }
+      if(ws._slot===0 && !LAN){ campaignInbox.capture(room,msg.d); await campaignInbox.finish(room,msg.d); if(msg.d?.k==="end")send(ws,{t:"reward-committed"}); }
       const str = JSON.stringify({ t: "msg", from: ws._slot, d: msg.d });
       if(ws._slot !== 0){ const h = room.slots[0]; if(h && h.ws) sendRaw(h.ws, str); return; }
       if(typeof msg.to === "number"){ const m = room.slots[msg.to]; if(m && m.ws) sendRaw(m.ws, str); return; }
@@ -374,10 +381,11 @@ function roomsHttp(req, res){
 const server = http.createServer((req, res) => {
   const p = req.url.split("?")[0];
   if(p === "/api/rooms" || p === "/api/rooms/") return roomsHttp(req, res); // salas públicas (antes que las cuentas)
+  if(LAN && p.startsWith("/api/")){ res.writeHead(404, { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" }); res.end('{"error":"LAN"}'); return; } // red local: sin cuentas ni nube
   if(accounts.handle(req, res)) return; // /api/* (cuentas y guardado en la nube)
   if(p === "/" || p === "/health"){
     res.writeHead(200, { "content-type": "text/plain; charset=utf-8", "access-control-allow-origin": "*", "cache-control": "no-store" });
-    res.end(`LA HORDA relay OK · protocolo ${PROTOCOL} · salas ${rooms.size}\n${accounts.healthLine()}\n`);
+    res.end(`LA HORDA relay OK · protocolo ${PROTOCOL} · salas ${rooms.size}\n${LAN ? "cuentas: ninguna (red local, sin nube)" : accounts.healthLine()}\n`);
     return;
   }
   res.writeHead(404); res.end();
@@ -438,4 +446,4 @@ const PORT = parseInt(process.env.PORT || "8787", 10);
 const HOST = (process.env.HOST || "").trim();
 const onListening = () => log("RELAY_LISTENING", { host: HOST || "*", port: PORT, protocol: PROTOCOL, allowed: ALLOWED });
 if(HOST) server.listen(PORT, HOST, onListening); else server.listen(PORT, onListening);
-module.exports = { server, rooms, chatFilter, accounts, originAllowed, trades, publicRoomList };
+module.exports = { server, rooms, LAN, chatFilter, accounts, originAllowed, trades, publicRoomList };

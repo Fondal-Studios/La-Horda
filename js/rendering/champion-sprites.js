@@ -48,12 +48,12 @@ function magoCastReleaseFx(eventName, h){
 // Dibuja al Mago usando el atlas real (vía el motor genérico de animación); misma firma que
 // antes, así que drawHero/la previsualización de guardianes no necesitan cambiar nada.
 function drawMagoAtlas(h, drawScale, alpha){
-  if(drawChampPack("mago_codex", h, drawScale, alpha)) return true;
+  if(drawChampPack("mago", h, drawScale, alpha)) return true;
   return drawAnimAtlas(MAGO_ANIM_ATLAS, magoResolveClip(h), h, drawScale, alpha, (ev)=>magoCastReleaseFx(ev,h));
 }
-// Cuadro final de la animación de muerte (mago caído, ya boca abajo en el propio arte)
+// Caída del Mago con el atlas LEGADO: solo respaldo si el atlas Códice falló al cargar. Con el atlas Códice
+// listo, drawFallenHero lo dibuja por drawChampPackDeath (clip death_down de 4 cuadros, animado y no congelado).
 function drawMagoFallen(h, alpha){
-  if(drawChampPack("mago_codex", Object.assign({}, h, {_codexSet:"death_down", _codexT:420}), 2.0, alpha)) return true;
   if(!MAGO_IMG_READY) return false;
   const clip = MAGO_ANIM_DEF.clips.death;
   drawAnimFrame(MAGO_ANIM_ATLAS, clip, clip.frames.length-1, h.x, h.y, 2.0, h.fx < -0.12, alpha);

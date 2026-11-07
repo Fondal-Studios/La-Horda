@@ -299,7 +299,7 @@ function _trItemHTML(it){
 function netRenderTrade(){
   const box = document.getElementById("net-trade"); if(!box) return;
   if(!netInRoom()){ netTrade.out = null; netTrade.inc = null; } // lo que quedó "en camino" sigue en save.trades
-  const inRoom = netInRoom() && state==="prep";
+  const inRoom = netInRoom() && state==="prep" && !(typeof netLanPage==="function" && netLanPage()); // red local: sin intercambio (sin cuentas ni inventario real)
   // la pestaña Sala online avisa si hay algo que responder (te ofrecen algo / aceptaron lo tuyo)
   const tab = document.querySelector('[data-prep-sec="online"]');
   if(tab) tab.classList.toggle("trade-ask", !!((netTrade.inc && netTrade.inc.st==="offered") || (netTrade.out && netTrade.out.st==="accepted")));

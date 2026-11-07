@@ -24,12 +24,12 @@ const server=http.createServer((req,res)=>{const file=path.resolve(root,'.'+deco
    cells.push({set:sets[row],frame,ok,opaque});
   }
   const comparison=makeCanvas(360,180),h1=makeHero('mago',true,90,158),h2=makeHero('mago',true,270,158);Object.assign(h1,{fx:0,fy:1,moving:false,attackAnim:0,hurtTimer:0,_codexSet:'walk_down',_codexT:140,_codexFps:140});Object.assign(h2,h1,{x:270});
-  const candidate=draw(comparison[1],h1,()=>drawMagoAtlas(h1,h1.scale,1)),P=CHAMP_PACK.mago_codex,ready=P.ready;P.ready=false;const fallback=draw(comparison[1],h2,()=>drawMagoAtlas(h2,h2.scale,1));P.ready=ready;
+  const candidate=draw(comparison[1],h1,()=>drawMagoAtlas(h1,h1.scale,1)),P=CHAMP_PACK.mago,ready=P.ready;P.ready=false;const fallback=draw(comparison[1],h2,()=>drawMagoAtlas(h2,h2.scale,1));P.ready=ready;
   const skinCellW=180,skinCellH=140;const skin=makeCanvas(4*skinCellW,skinCellH);save.champions.mago.cosmeticSkin='convergencia';
   const skinStates=[['idle_down',0],['walk_side',140],['attack_up',280],['death_down',420]];
   const skinCells=[];for(let i=0;i<skinStates.length;i++){const h=makeHero('mago',true,i*skinCellW+skinCellW/2,128),[set,t]=skinStates[i];Object.assign(h,{fx:set.includes('side')?1:0,fy:set.includes('up')?-1:1,moving:false,attackAnim:0,hurtTimer:0,_codexSet:set,_codexT:t,_codexFps:140});const drawn=draw(skin[1],h,()=>drawHeroBody(h,h.scale,false,false));const ok=drawn!==false;const px=skin[1].getImageData(i*skinCellW,0,skinCellW,skinCellH).data;let opaque=0;for(let z=3;z<px.length;z+=4)if(px[z])opaque++;skinCells.push({set,t,ok,opaque});}
   save.champions.mago.cosmeticSkin=savedSkin;save.champions.mago.croma=savedCroma;
-  return{base:base[0].toDataURL(),comparison:comparison[0].toDataURL(),skin:skin[0].toDataURL(),cells,skinCells,candidate,fallback,atlasReady:CHAMP_PACK.mago_codex.ready,legacyReady:MAGO_IMG_READY};
+  return{base:base[0].toDataURL(),comparison:comparison[0].toDataURL(),skin:skin[0].toDataURL(),cells,skinCells,candidate,fallback,atlasReady:CHAMP_PACK.mago.ready,legacyReady:MAGO_IMG_READY};
  });
  const td=path.join(root,'docs/art-gate/thalen-codex');fs.mkdirSync(td,{recursive:true});const png=(name,data)=>fs.writeFileSync(path.join(td,name),Buffer.from(data.split(',')[1],'base64'));
  png('runtime-base-36.png',thalen.base);png('candidate-vs-legacy-fallback.png',thalen.comparison);png('convergencia-priority.png',thalen.skin);delete thalen.base;delete thalen.comparison;delete thalen.skin;

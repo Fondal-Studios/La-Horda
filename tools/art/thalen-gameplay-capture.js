@@ -25,7 +25,7 @@ module.exports=async function captureThalenGameplay({page,root}){
         {id:'ultimate_down',fx:0,fy:1,attackAnim:160,cast:true,ultimate:true},
         {id:'death_down',fx:0,fy:1,death:true}
       ];
-      const P=CHAMP_PACK.mago_codex,realReady=P.ready;
+      const P=CHAMP_PACK.mago,realReady=P.ready;const setReady=v=>{P.ready=v;P.failed=!v;}; // "legacy" = el atlas Códice falló: sin failed, champPackPending no dibuja nada
       const setup=(arena,look,density='sparse')=>{
         netMatch=null;window.ART_GATE_NO_VFX=true;
         const rec=save.champions.mago;rec.unlocked=true;rec.level=20;rec.equipment={};rec.croma=null;rec.cosmeticSkin=look==='convergencia'?'convergencia':'';
@@ -46,15 +46,15 @@ module.exports=async function captureThalenGameplay({page,root}){
       const makeSheet=(cols,rows)=>{const c=document.createElement('canvas');c.width=cols*256;c.height=rows*216;const g=c.getContext('2d');g.imageSmoothingEnabled=false;g.fillStyle='#091018';g.fillRect(0,0,c.width,c.height);return[c,g];};
       const stamp=(sheet,index,label)=>{const [c,g]=sheet,col=index%(c.width/256|0),row=Math.floor(index/(c.width/256));const sw=Math.min(256,cv.width),sh=Math.min(192,cv.height),sx=Math.max(0,(cv.width-sw)/2),sy=Math.max(0,(cv.height-sh)/2);g.drawImage(cv,sx,sy,sw,sh,col*256,row*216,sw,sh);g.fillStyle='#091018';g.fillRect(col*256,row*216+192,256,24);g.fillStyle='#f3ead2';g.font='12px sans-serif';g.fillText(label,col*256+6,row*216+208);};
       const sparseSequence=makeSheet(5,4),denseSequence=makeSheet(5,4);let n=0;
-      for(const look of ['base','convergencia']){setup('hielo',look,'sparse');P.ready=realReady;for(const s of states){pose(s);render();stamp(sparseSequence,n++,look+' · sparse · '+s.id);}}
-      n=0;for(const look of ['base','convergencia']){setup('bosque',look,'dense');P.ready=realReady;for(const s of states){pose(s);render();stamp(denseSequence,n++,look+' · dense · '+s.id);}}
+      for(const look of ['base','convergencia']){setup('hielo',look,'sparse');setReady(realReady);for(const s of states){pose(s);render();stamp(sparseSequence,n++,look+' · sparse · '+s.id);}}
+      n=0;for(const look of ['base','convergencia']){setup('bosque',look,'dense');setReady(realReady);for(const s of states){pose(s);render();stamp(denseSequence,n++,look+' · dense · '+s.id);}}
       const arenaSheet=makeSheet(6,4);n=0;
-      for(const density of ['sparse','dense'])for(const look of ['base','convergencia'])for(const arena of arenas){setup(arena,look,density);P.ready=realReady;pose(states[5]);render();stamp(arenaSheet,n++,look+' · '+density+' · '+arena);}
+      for(const density of ['sparse','dense'])for(const look of ['base','convergencia'])for(const arena of arenas){setup(arena,look,density);setReady(realReady);pose(states[5]);render();stamp(arenaSheet,n++,look+' · '+density+' · '+arena);}
       const compare=makeSheet(6,2);n=0;
-      for(const look of ['base','convergencia'])for(const mode of ['legacy','candidate'])for(const s of [states[2],states[5],states[9]]){setup('hielo',look,'sparse');P.ready=mode==='candidate'?realReady:false;pose(s);render();stamp(compare,n++,look+' · '+mode+' · '+s.id);}
+      for(const look of ['base','convergencia'])for(const mode of ['legacy','candidate'])for(const s of [states[2],states[5],states[9]]){setup('hielo',look,'sparse');setReady(mode==='candidate'?realReady:false);pose(s);render();stamp(compare,n++,look+' · '+mode+' · '+s.id);}
       const matrix=[];
-      for(const density of ['sparse','dense'])for(const mode of ['legacy','candidate'])for(const look of ['base','convergencia'])for(const arena of arenas){setup(arena,look,density);P.ready=mode==='candidate'?realReady:false;pose(states[5]);render();matrix.push({view:view.id,density,mode,look,arena,state:'attack_side',hash:sceneHash(),resolvedSkin:activeSetSkinId(player),candidateReady:P.ready,legacyReady:MAGO_IMG_READY,alive:player.alive});}
-      P.ready=realReady;state='menu';
+      for(const density of ['sparse','dense'])for(const mode of ['legacy','candidate'])for(const look of ['base','convergencia'])for(const arena of arenas){setup(arena,look,density);setReady(mode==='candidate'?realReady:false);pose(states[5]);render();matrix.push({view:view.id,density,mode,look,arena,state:'attack_side',hash:sceneHash(),resolvedSkin:activeSetSkinId(player),candidateReady:P.ready,legacyReady:MAGO_IMG_READY,alive:player.alive});}
+      setReady(realReady);state='menu';
       return{sparseSequence:sparseSequence[0].toDataURL(),denseSequence:denseSequence[0].toDataURL(),arenas:arenaSheet[0].toDataURL(),comparison:compare[0].toDataURL(),matrix,realReady,legacyReady:MAGO_IMG_READY};
     },{view});
     const savePng=(name,data)=>fs.writeFileSync(path.join(out,name),Buffer.from(data.split(',')[1],'base64'));

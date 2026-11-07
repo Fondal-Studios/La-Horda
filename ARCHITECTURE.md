@@ -112,6 +112,10 @@ se llama `cazadora`. Las carpetas de assets usan esos nombres internos.
    **Multijugador cooperativo B1** (`js/net/`, servidor en `server/`): la pre-sala puede crear
    una sala online real (hasta 4 humanos); el anfitrión simula la única partida y los invitados
    la reciben y mandan sus intenciones. Ver `docs/MULTIPLAYER_B1.md`.
+   **Multijugador local (LAN)**: el mismo cooperativo por el WiFi de la casa, sin internet ni cuentas
+   (`tools/lan/host.js` sirve el juego + el relay en modo `LA_HORDA_LAN=1`; cliente en `js/net/net-lan.js`,
+   QR sin dependencias en `js/net/lan-qr.js`; trabaja sobre una copia del guardado y no persiste nada).
+   Ver `docs/beta-release/MULTIJUGADOR_LOCAL.md`.
 4. **Comenzar** → `startRun()` en `js/core/run.js` crea al jugador y los 3 aliados
    (`js/champions/hero-factory.js`), arma el escenario (`js/arenas/arena-identity.js`) y arranca
    el nivel (`beginLevel` en `js/systems/waves.js`). La Arena Divina entra por

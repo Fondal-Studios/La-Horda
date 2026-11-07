@@ -2,21 +2,21 @@
   "atlas": "assets/sprites/champions/mago/codex-v1/atlas.png",
   "size": [
     448,
-    1008
+    1232
   ],
   "cell": [
     112,
     112
   ],
-  "frames": 36,
-  "nonEmpty": 36,
+  "frames": 42,
+  "nonEmpty": 42,
   "alphaValues": [
     0,
     255
   ],
   "binaryAlpha": true,
   "edgeAlphaPixels": 0,
-  "sha256": "1be3454246d9526b93bf9e218318915086311789ca204b0ffda3f7eaf8af01aa",
+  "sha256": "ae7a03065cae36e2aada7edc0a5435b2ba6b520d6c2f2b2dc0089fc7978f7cb9",
   "sources": {
     "attacks-12.png": {
       "path": "art-source/entregas/thalen-codex-20261104/correccion-02/sources/attacks-12.png",
@@ -461,6 +461,78 @@
         3,
         66,
         109,
+        106
+      ]
+    },
+    {
+      "index": 36,
+      "state": "idle_down",
+      "phase": 1,
+      "source": "idle variant added in 1fa7ccc8 (no source sheet recorded)",
+      "bbox": [
+        16,
+        7,
+        95,
+        106
+      ]
+    },
+    {
+      "index": 37,
+      "state": "idle_down",
+      "phase": 3,
+      "source": "idle variant added in 1fa7ccc8 (no source sheet recorded)",
+      "bbox": [
+        16,
+        5,
+        95,
+        106
+      ]
+    },
+    {
+      "index": 38,
+      "state": "idle_side",
+      "phase": 1,
+      "source": "idle variant added in 1fa7ccc8 (no source sheet recorded)",
+      "bbox": [
+        16,
+        7,
+        96,
+        106
+      ]
+    },
+    {
+      "index": 39,
+      "state": "idle_side",
+      "phase": 3,
+      "source": "idle variant added in 1fa7ccc8 (no source sheet recorded)",
+      "bbox": [
+        16,
+        5,
+        96,
+        106
+      ]
+    },
+    {
+      "index": 40,
+      "state": "idle_up",
+      "phase": 1,
+      "source": "idle variant added in 1fa7ccc8 (no source sheet recorded)",
+      "bbox": [
+        20,
+        7,
+        92,
+        106
+      ]
+    },
+    {
+      "index": 41,
+      "state": "idle_up",
+      "phase": 3,
+      "source": "idle variant added in 1fa7ccc8 (no source sheet recorded)",
+      "bbox": [
+        20,
+        5,
+        92,
         106
       ]
     }

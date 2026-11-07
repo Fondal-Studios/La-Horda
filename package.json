@@ -1,0 +1,12 @@
+{
+  "name": "la-horda",
+  "private": true,
+  "description": "LA HORDA — juego HTML5 (vanilla JS). Este package.json solo agrupa atajos; el juego no tiene paso de build.",
+  "scripts": {
+    "lan": "node tools/lan/host.js",
+    "test:lan": "node tools/lan/test-lan.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

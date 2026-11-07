@@ -1,0 +1,25 @@
+name: Multijugador local (LAN)
+# Liviano: solo cuando cambian el modo de red local, el relay o su cliente. Ver docs/beta-release/MULTIJUGADOR_LOCAL.md
+on:
+  pull_request:
+    paths: ['tools/lan/**', 'js/net/**', 'server/relay.js', 'server/test-lan.js', 'css/lan.css', 'index.html', 'js/storage/save.js', 'lan.sh', 'lan.bat', 'package.json', '.github/workflows/lan-local-multiplayer.yml']
+  push:
+    branches: [main]
+    paths: ['tools/lan/**', 'js/net/**', 'server/relay.js', 'server/test-lan.js', 'css/lan.css', 'index.html', 'js/storage/save.js', 'lan.sh', 'lan.bat', 'package.json', '.github/workflows/lan-local-multiplayer.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  lan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-playwright
+      - run: npm ci --prefix server --no-audit --no-fund
+      - name: "Relay en modo red local (sin navegador)"
+        run: node server/test-lan.js
+      - name: "Relay normal sin cambios"
+        run: node server/test-relay.js
+      - name: "Servidor LAN + 5 navegadores (Horda Infinita, Campaña, reconexión, salida de la anfitriona)"
+        run: node tools/lan/test-lan.js
