@@ -1,4 +1,4 @@
-# Evaluación de `main` — 2026-11-07 — **72/100, aprobado con reservas**
+# Evaluación de `main` — 2026-11-07 — **72/100 antes de los arreglos · 78/100 después, aprobado con reservas**
 
 Puntuación del implementador (juicio sobre datos medidos; **no** es el scorecard del repo). Base: `qa.js --fast` sobre la integración resuelta (134 pruebas: 128 PASS, 5 FAIL, 1 FLAKY), ejecución de las 4 pruebas rojas contra `main` previo, y la auditoría de arte (`docs/art-gate/AUDITORIA_COHERENCIA_20261107.md`).
 
@@ -26,3 +26,6 @@ Puntuación del implementador (juicio sobre datos medidos; **no** es el scorecar
 
 ## Sin evaluar
 Dispositivos reales, relay multijugador real, pagos reales, CI de GitHub sobre el `main` fusionado. Seis pruebas pasan sin imprimir aserciones (falsos verdes posibles): `functional.js`, `required-files.js`, `check-presentation-browser.js`, `shop-pricing-browser.js`, `pricing-sync.js`, `welcome-picks.js`.
+
+## Resultado tras los arreglos (`qa.js --fast`, rama `fix/main-red-tests-20261107`)
+133 pruebas: **132 PASS, 1 FLAKY, 0 FAIL**; `art-factory-python`, `clasificacion`, `server` y `pixel-density` en PASS. La intermitente es `t_champs_se` (esta vez E19.agotamiento; pasó al reintentar): sigue siendo sensible a la carga. Las áreas de Campeones y Proceso suben (+6 y +8 en mi juicio); arte, rendimiento y revisión independiente no cambian.
