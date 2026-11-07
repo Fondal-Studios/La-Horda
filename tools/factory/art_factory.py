@@ -274,7 +274,7 @@ def contrast_vs(a, bg):
 
 
 def bg_sample():
-    p = ROOT / 'assets' / 'ui' / 'codex' / 'arenas' / 'bosque.jpg'  # suelo de Ruinas (referencia aprobada del Códice)
+    p = ROOT / 'assets' / 'ui' / 'codex' / 'arenas' / 'bosque.png'  # suelo de Ruinas (referencia aprobada del Códice)
     im = Image.open(p).convert('RGB'); w, h = im.size
     return np.array(im.crop((int(w * .05), int(h * .55), int(w * .25), int(h * .8))))
 
