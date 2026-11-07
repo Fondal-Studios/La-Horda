@@ -3,12 +3,6 @@
 T=[]
 T+=[
 ('JUGAR EN RED LOCAL', 'PLAY ON LOCAL NETWORK', 'JOGAR EM REDE LOCAL'),
-('Cooperativo por el WiFi de tu casa, sin internet ni cuenta: una compu hace de anfitriona y los demás entran desde el celular. Campaña u Horda Infinita. No cuenta para ranking ni economía.',
- 'Co-op over your home WiFi, no internet or account needed: one computer hosts and everyone else joins from their phone. Campaign or Endless Horde. It does not count for ranking or economy.',
- 'Cooperativo pelo WiFi da sua casa, sem internet nem conta: um computador faz de anfitriã e os outros entram pelo celular. Campanha ou Horda Infinita. Não conta para ranking nem economia.'),
-('Cooperativo por el WiFi de la casa. Sin internet ni cuenta: lo que ganes acá no se guarda y no cuenta para ranking, economía ni Brasas. En red local todas las arenas están abiertas.',
- 'Co-op over the home WiFi. No internet or account: what you earn here is not saved and does not count for ranking, economy or Embers. On the local network every arena is open.',
- 'Cooperativo pelo WiFi de casa. Sem internet nem conta: o que você ganhar aqui não é salvo e não conta para ranking, economia nem Brasas. Na rede local todas as arenas estão abertas.'),
 ('CÓMO EMPEZAR', 'HOW TO START', 'COMO COMEÇAR'),
 ('1) En la compu anfitriona, ejecutá «npm run lan» en la carpeta del juego (o abrí lan.bat en Windows, lan.sh en Mac y Linux).',
  '1) On the host computer, run "npm run lan" in the game folder (or open lan.bat on Windows, lan.sh on Mac and Linux).',
@@ -50,4 +44,11 @@ T+=[
 ('Los celulares y compus de la casa entran con el QR o el código de acá abajo, y aparecen en tiempo real. Cuando estén LISTOS, COMENZAR: los lugares libres los ocupan bots. La arena la cambiás arriba, sin cerrar la sala.',
  'Phones and computers at home join with the QR or the code below, and show up in real time. When everyone is READY, START: the free spots are filled by bots. You change the arena above, without closing the room.',
  'Celulares e computadores da casa entram com o QR ou o código abaixo e aparecem em tempo real. Quando todos estiverem PRONTOS, COMEÇAR: as vagas livres são ocupadas por bots. A arena você troca acima, sem fechar a sala.'),
+('Cooperativo de hasta 4 por el WiFi de tu casa, sin internet ni cuenta: la compu anfitriona es la pantalla (una sola cámara con todos) y los demás entran desde el celular. Campaña u Horda Infinita. No cuenta para ranking ni economía.',
+ 'Co-op for up to 4 over your home WiFi, no internet or account needed: the host computer is the screen (one single camera with everyone) and the others join from their phone. Campaign or Endless Horde. It does not count for ranking or economy.',
+ 'Cooperativo para até 4 pelo WiFi da sua casa, sem internet nem conta: o computador anfitrião é a tela (uma única câmera com todos) e os outros entram pelo celular. Campanha ou Horda Infinita. Não conta para ranking nem economia.'),
+('Cooperativo por el WiFi de la casa, de hasta 4 jugadores y con una sola cámara alejada en la pantalla de la anfitriona. Sin internet ni cuenta: lo que ganes acá no se guarda y no cuenta para ranking, economía ni Brasas. En red local todas las arenas están abiertas.',
+ 'Co-op over the home WiFi, up to 4 players, with a single zoomed-out camera on the host screen. No internet or account: what you earn here is not saved and does not count for ranking, economy or Embers. On the local network every arena is open.',
+ 'Cooperativo pelo WiFi de casa, até 4 jogadores e com uma única câmera afastada na tela da anfitriã. Sem internet nem conta: o que você ganhar aqui não é salvo e não conta para ranking, economia nem Brasas. Na rede local todas as arenas estão abertas.'),
+('SALA COMPLETA: en red local juegan 4 como máximo (la anfitriona y 3 más).', 'ROOM FULL: on the local network 4 play at most (the host and 3 more).', 'SALA CHEIA: na rede local jogam no máximo 4 (a anfitriã e mais 3).'),
 ]

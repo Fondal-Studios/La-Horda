@@ -50,6 +50,10 @@ function client(){
     g.send({ t: "reward-open", key: String(i).repeat(64).slice(0, 64) }); await g.wait(m => m.t === "reward-list");
     guests.push(g);
   }
+  const fifth = await client();
+  fifth.send({ t: "join", protocol: 1, code, name: "Quinto", champ: "axiom", clientId: "X5", build: BUILD });
+  const e5 = await fifth.wait(m => m.t === "error");
+  check("lan.quinto_rechazado_tope_4", e5.code === "ROOM_FULL" && /4 como máximo/.test(e5.msg), e5);
   host.send({ t: "start" });
   const started = await guests[0].wait(m => m.t === "room" && m.room.state === "playing");
   check("lan.empieza_sin_bandeja", started.room.state === "playing");

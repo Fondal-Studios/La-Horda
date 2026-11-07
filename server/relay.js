@@ -231,7 +231,7 @@ async function handle(ws, msg){
       }
       if(r.state !== "lobby") return send(ws, { t: "error", code: "STARTED", msg: "La partida ya comenzó" });
       slot = r.slots.findIndex((m, i) => i > 0 && !m);
-      if(slot < 0 || humanCount(r) >= MAX_HUMANS){ log("ROOM_FULL", { code }); return send(ws, { t: "error", code: "ROOM_FULL", msg: "SALA COMPLETA" }); }
+      if(slot < 0 || humanCount(r) >= MAX_HUMANS){ log("ROOM_FULL", { code }); return send(ws, { t: "error", code: "ROOM_FULL", msg: LAN ? "SALA COMPLETA: en red local juegan 4 como máximo (la anfitriona y 3 más)." : "SALA COMPLETA" }); }
       const joinChamp = clean(msg.champ, 24);
       r.slots[slot] = { ws, clientId: cid, name: clean(msg.name, 24) || ("Jugador " + (slot + 1)),
         champ: presence.champAllowed(ws, joinChamp) ? joinChamp : "", level: msg.level|0, ready: false, lostAt: 0, founder: presence.memberFounder(ws) };

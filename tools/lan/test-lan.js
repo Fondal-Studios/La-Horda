@@ -117,21 +117,45 @@ const HOST_A = '127.0.0.1', HOST_B = '127.0.0.2', HOST_C = '127.0.0.3';
   check('unirse.codigo_invalido_explica', /6 caracteres/.test(bad), bad);
   await click(C, `#lan-rooms-list [data-room-join="${code}"]`);
   check('unirse.lista_entra_a_la_sala', await waitFor(C, () => state === 'prep' && net.role === 'guest' && net.slot === 2, null, 20000), await ev(C, () => ({ st: state, role: net.role, err: document.getElementById('lan-join-status').textContent })));
-  for (const g of [B, C]) await ev(g, () => { document.getElementById('net-ready-btn').click(); });
-  check('sala.anfitriona_ve_a_los_tres', await waitFor(A, () => net.room.slots.filter(s => s && s.connected).length === 3 && net.room.slots.slice(1, 3).every(s => s.ready)), await ev(A, () => net.room.slots));
+  // cuarto jugador por el lobby local y quinto rechazado con un mensaje claro (tope duro de 4)
+  const F = await client('127.0.0.6', 'Fede', 'tanque');
+  await click(F, '#title-continue-btn'); await waitFor(F, () => state === 'lan');
+  await ev(F, c => { lanJoin(c); }, code);
+  check('tope.cuarto_jugador_entra', await waitFor(F, () => state === 'prep' && net.role === 'guest' && net.slot === 3, null, 20000), await ev(F, () => ({ st: state })));
+  const G = await client('127.0.0.7', 'Gabi', 'mago');
+  await click(G, '#title-continue-btn'); await waitFor(G, () => state === 'lan');
+  const full = await ev(G, c => { lanJoin(c); return null; }, code).then(() => waitFor(G, () => /4 como máximo/.test(document.getElementById('lan-join-status').textContent), null, 15000));
+  check('tope.quinto_rechazado_con_mensaje_claro', full && await ev(G, () => !net.role && state === 'lan'), await ev(G, () => ({ st: state, msg: document.getElementById('lan-join-status').textContent })));
+  check('tope.servidor_sigue_con_4', await ev(A, () => net.room.slots.filter(s => s && s.connected).length === 4));
+  check('tope.la_pantalla_lo_dice', await ev(G, () => /hasta 4 jugadores/.test(document.getElementById('lan-screen').textContent)));
+  await G.ctx.close().catch(() => {});
+  for (const g of [B, C, F]) await ev(g, () => { document.getElementById('net-ready-btn').click(); });
+  check('sala.anfitriona_ve_a_los_cuatro', await waitFor(A, () => net.room.slots.filter(s => s && s.connected).length === 4 && net.room.slots.slice(1, 4).every(s => s.ready)), await ev(A, () => net.room.slots));
 
   // empezar la Horda Infinita
   await ev(A, () => { document.getElementById('prep-start-btn').click(); });
-  const playing = await waitFor(A, () => state === 'playing', null, 40000) && await waitFor(B, () => state === 'playing', null, 60000) && await waitFor(C, () => state === 'playing', null, 60000);
-  check('partida.los_tres_juegan_horda_infinita', playing && await ev(B, () => endlessActive) && await ev(C, () => endlessActive), await Promise.all([A, B, C].map(c => ev(c, () => state))));
+  const playing = await waitFor(A, () => state === 'playing', null, 40000) && await waitFor(B, () => state === 'playing', null, 60000) && await waitFor(C, () => state === 'playing', null, 60000) && await waitFor(F, () => state === 'playing', null, 60000);
+  check('partida.los_cuatro_juegan_horda_infinita', playing && await ev(B, () => endlessActive) && await ev(C, () => endlessActive), await Promise.all([A, B, C, F].map(c => ev(c, () => state))));
   await sleep(2500);
   await ev(A, () => { for (const h of heroes) h.invulnTimer = 1e9; });
-  const views = await Promise.all([A, B, C].map(c => ev(c, () => ({ me: player.netName || (netMatch.slots[netMatch.mySlot] || {}).name, names: heroes.map(h => h.netName).filter(Boolean).sort(), n: heroes.length }))));
-  const NAMES = ['Ana', 'Beto', 'Cata'];
+  const views = await Promise.all([A, B, C, F].map(c => ev(c, () => ({ me: player.netName || (netMatch.slots[netMatch.mySlot] || {}).name, names: heroes.map(h => h.netName).filter(Boolean).sort(), n: heroes.length }))));
+  const NAMES = ['Ana', 'Beto', 'Cata', 'Fede'];
   check('partida.se_ven_entre_si', views.every(v => NAMES.every(n => v.names.includes(n)) && v.n === 4), views);
+  // UNA SOLA CÁMARA alejada: en cada pantalla los 4 héroes caen dentro del mismo encuadre
+  const frame = () => ({ sub: CAM_SUBJECT === LANCAM.subj, z: CAM_ZOOM, normal: computeCamZoom(VW, VH), pts: heroes.map(h => { const p = worldToScreen(h.x, h.y); return { n: h.netName, ok: p.x > 0 && p.x < VW && p.y > 0 && p.y < VH }; }), cam: { x: camSub().x, y: camSub().y } });
+  const allIn = async () => await Promise.all([A, B, C, F].map(c => ev(c, frame)));
+  let fr = await allIn();
+  check('camara.unica_alejada_en_las_cuatro_pantallas', fr.every(f => f.sub && f.z < f.normal * 0.8 && f.pts.every(p => p.ok)), fr.map(f => ({ sub: f.sub, z: f.z, normal: f.normal, out: f.pts.filter(p => !p.ok) })));
+  check('camara.mismo_encuadre_en_todas', fr.every(f => Math.abs(f.cam.x - fr[0].cam.x) < 60 && Math.abs(f.cam.y - fr[0].cam.y) < 60 && Math.abs(f.z - fr[0].z) < 0.03), fr.map(f => ({ cam: f.cam, z: f.z })));
+  // separados al máximo (esquinas opuestas de la arena): nadie queda fuera de cámara en la pantalla de la anfitriona
+  await ev(A, () => { const R = ARENA_RADIUS * 0.6, spots = [[-R, -R * 0.5], [R, -R * 0.5], [-R * 0.3, R], [R * 0.3, R]]; heroes.forEach((h, i) => { h.x = spots[i][0]; h.y = spots[i][1]; if (h._net) { h._net.px = h.x; h._net.py = h.y; } }); });
+  await sleep(2500);
+  const spread = await ev(A, frame);
+  check('camara.nadie_queda_fuera_aun_separados', spread.sub && spread.pts.every(p => p.ok) && spread.z < spread.normal * 0.6, spread);
   // movimiento: lo que hace el invitado lo ve la anfitriona y el otro invitado
   const p0 = await ev(B, () => ({ x: player.x, y: player.y }));
-  await ev(B, () => { joyVec = { x: 1, y: 0 }; }); await sleep(1300); await ev(B, () => { joyVec = { x: 0, y: 0 }; }); await sleep(900);
+  const d0 = p0.x > 0 ? -1 : 1;   // hacia el centro de la arena (ya no están en el origen)
+  await ev(B, d => { joyVec = { x: d, y: 0 }; }, d0); await sleep(1300); await ev(B, () => { joyVec = { x: 0, y: 0 }; }); await sleep(900);
   const p1 = await ev(B, () => ({ x: player.x, y: player.y }));
   const seen = await Promise.all([A, C].map(c => ev(c, () => { const h = heroes.find(x => x.netName === 'Beto'); return { x: h.x, y: h.y }; })));
   check('partida.invitado_se_mueve_y_los_otros_lo_ven', Math.hypot(p1.x - p0.x, p1.y - p0.y) > 50 && seen.every(s => Math.hypot(s.x - p1.x, s.y - p1.y) < 50), { p0, p1, seen });
@@ -165,10 +189,10 @@ const HOST_A = '127.0.0.1', HOST_B = '127.0.0.2', HOST_C = '127.0.0.3';
 
   // ---- 5) salida de la anfitriona ----
   await click(A, '#en-leave-btn');   // «Cerrar la sala y salir» desde los resultados (camino real: netLeaveAfterMatch)
-  const left = await Promise.all([B, C].map(c => waitFor(c, () => !net.room && !net.role, null, 15000)));
-  check('anfitriona_sale.la_sala_se_cierra_para_los_invitados', left.every(Boolean), await Promise.all([B, C].map(c => ev(c, () => ({ st: state, role: net.role })))));
+  const left = await Promise.all([B, C, F].map(c => waitFor(c, () => !net.room && !net.role, null, 15000)));
+  check('anfitriona_sale.la_sala_se_cierra_para_los_invitados', left.every(Boolean), await Promise.all([B, C, F].map(c => ev(c, () => ({ st: state, role: net.role })))));
   check('anfitriona_sale.sin_salas_en_el_servidor', JSON.parse((await get(BASE + '/api/rooms')).body).rooms.length === 0);
-  await click(B, '#en-leave-btn'); await click(C, '#en-leave-btn');
+  await click(B, '#en-leave-btn'); await click(C, '#en-leave-btn'); await click(F, '#en-leave-btn');
   await sleep(500);
   check('anfitriona_sale.todos_en_el_menu', (await Promise.all([A, B, C].map(c => ev(c, () => state)))).every(st => st === 'lan' || st === 'mainmenu'), await Promise.all([A, B, C].map(c => ev(c, () => state))));
   // al volver al menú, la copia se descarta y el guardado en memoria es el real, intacto
@@ -176,7 +200,7 @@ const HOST_A = '127.0.0.1', HOST_B = '127.0.0.2', HOST_C = '127.0.0.3';
   check('economia.al_volver_al_menu_el_guardado_es_el_real', finals.every(f => f.sb === false && f.gold === 777 && f.gems === 33), finals.map(f => ({ sb: f.sb, gold: f.gold, gems: f.gems })));
   check('economia.guardado_real_identico_al_de_antes', finals[0].raw === realSave0 || JSON.parse(finals[0].raw).gold === 777, null);
   // ---- 6) Campaña en red local (el otro modo de la beta) ----
-  for (const c of [A, B, C]) await c.ctx.close().catch(() => {});   // libera memoria: cada cliente es un juego completo
+  for (const c of [A, B, C, F]) await c.ctx.close().catch(() => {});   // libera memoria: cada cliente es un juego completo
   const D = await client('127.0.0.4', 'Dani', 'tanque'), E = await client('127.0.0.5', 'Eli', 'mago');
   await click(D, '#title-continue-btn');
   check('campana.pantalla_local', await waitFor(D, () => state === 'lan'));
@@ -199,7 +223,7 @@ const HOST_A = '127.0.0.1', HOST_B = '127.0.0.2', HOST_C = '127.0.0.3';
   await sleep(1500);
   check('campana.sin_horda_infinita', await ev(E, () => !endlessActive && currentArena === 'bosque'));
   check('red.nada_sale_a_internet', outside.length === 0, outside.slice(0, 5));
-  check('sin_errores', [A, B, C, D, E].every(c => !c.errors.length), [A, B, C, D, E].map(c => c.errors.slice(0, 3)));
+  check('sin_errores', [A, B, C, D, E, F].every(c => !c.errors.length), [A, B, C, D, E, F].map(c => c.errors.slice(0, 3)));
   console.log(fails ? `${fails} FALLAS` : 'OK');
   await browser.close(); killSrv();
   process.exit(fails ? 1 : 0);

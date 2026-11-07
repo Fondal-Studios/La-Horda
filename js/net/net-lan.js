@@ -14,6 +14,10 @@
    - SIN PROGRESO: al entrar a la red local el juego trabaja sobre una COPIA del guardado (lanEnter) y persistNow no escribe
      (lanNoPersist, js/storage/save.js): no se toca economía, ranking, Brasas ni el guardado real; no se sube nada. Al volver
      al menú se descarta la copia (lanLeave). En red local todas las arenas están abiertas (solo en la copia).
+   - UNA SOLA CÁMARA: la pantalla de la anfitriona es la vista común (hasta 4 jugadores). Mientras dura una partida local, una capa
+     PROPIA (lanCamStep, abajo) encuadra a los héroes vivos con un zoom alejado, sin modificar js/rendering/camera.js: se engancha
+     a updateArenaCameraZoom() y usa CAM_SUBJECT/CAM_ZOOM, que ya existen. Los invitados calculan el mismo encuadre con los mismos
+     datos de la partida, así que todas las pantallas muestran lo mismo; su mando (joystick y botones) no se toca.
    Fuera de una página servida por la anfitriona, la entrada solo explica cómo empezar y no cambia nada del juego.
    ============================================================ */
 const LAN = { info:null, infoAt:0, sandbox:false, snap:null, wantCreate:false, autoOpened:false, roomsAt:-1e9, roomsBusy:false };
@@ -176,4 +180,42 @@ function lanJoin(raw){
   });
   setInterval(()=>{ if(typeof state!=="undefined" && state==="lan" && !document.hidden) lanRefreshRooms(false); }, 2000);
   if(lanOn()) document.body.classList.add("lan-page");
+})();
+
+/* ---------------- cámara única y alejada ---------------- */
+const LAN_MAX_PLAYERS = 4;                       // tope duro de la sala local (el servidor lo hace cumplir: MAX_HUMANS)
+const LANCAM = { on:false, subj:{x:0, y:0}, z:0, lastFit:null };
+if(lanOn() && typeof NET_ERRORS!=="undefined") NET_ERRORS.ROOM_FULL = "SALA COMPLETA: en red local juegan 4 como máximo (la anfitriona y 3 más).";
+function lanCamActive(){
+  return lanOn() && typeof netMatch!=="undefined" && !!netMatch && state==="playing" && typeof heroes!=="undefined" && heroes.length > 1 && !!player;
+}
+// Zoom que mete a todos en pantalla (con aire), nunca más cerca que el normal y nunca más lejos que la arena entera.
+function lanCamFit(list){
+  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+  for(const h of list){ x0 = Math.min(x0, h.x); x1 = Math.max(x1, h.x); y0 = Math.min(y0, h.y); y1 = Math.max(y1, h.y); }
+  const PAD = 190, normal = computeCamZoom(VW, VH);
+  const need = Math.min((VW * 0.92) / ((x1 - x0) + PAD * 2), (VH * 0.78) / ((y1 - y0) + PAD * 2));
+  const farthest = Math.min(VW, VH) * 0.8 / (ARENA_RADIUS * 2 + 200);       // la arena completa
+  const z = Math.max(farthest, Math.min(normal * 0.72, need));              // "alejada" por defecto (72 % del zoom normal)
+  return { z, cx:(x0 + x1) / 2, cy:(y0 + y1) / 2 };
+}
+(function lanWrapCamera(){
+  if(typeof updateArenaCameraZoom!=="function") return;
+  const orig = updateArenaCameraZoom;
+  updateArenaCameraZoom = function(){
+    orig.apply(this, arguments);
+    if(state==="paused") return;
+    if(!lanCamActive()){
+      if(LANCAM.on){ LANCAM.on = false; if(CAM_SUBJECT===LANCAM.subj) CAM_SUBJECT = null; }   // camera.js vuelve solo al zoom normal (_arenaZoomActive)
+      return;
+    }
+    const live = heroes.filter(h=>h && h.alive!==false && Number.isFinite(h.x) && Number.isFinite(h.y));
+    const f = lanCamFit(live.length ? live : [player]);
+    LANCAM.lastFit = f;
+    if(!LANCAM.on){ LANCAM.on = true; LANCAM.z = CAM_ZOOM; LANCAM.subj.x = f.cx; LANCAM.subj.y = f.cy; }
+    LANCAM.z += (f.z - LANCAM.z) * 0.1;
+    LANCAM.subj.x += (f.cx - LANCAM.subj.x) * 0.18; LANCAM.subj.y += (f.cy - LANCAM.subj.y) * 0.18;
+    CAM_SUBJECT = LANCAM.subj; CAM_ZOOM = LANCAM.z; CAM_Y_ANCHOR = camFitAnchor(VW, VH, CAM_ZOOM);
+    _arenaZoomActive = true;                      // al terminar, camera.js recupera el zoom normal con su propio suavizado
+  };
 })();
