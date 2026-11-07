@@ -1,5 +1,5 @@
 {
-  "contractVersion": 1,
+  "contractVersion": 2,
   "baseSha": "e194910bddf5d976778e1e8e949e3d440d71fc2d",
   "note": "Fuente de verdad de la propiedad de archivos. tools/contracts/t_contract_independence.js la verifica. Un patrón con '*' no cruza '/'; '**' sí.",
   "packages": {
@@ -132,7 +132,8 @@
         "server/item-economy-live.js"
       ],
       "ownsContracts": [
-        "TelemetryEvent"
+        "TelemetryEvent",
+        "TelemetryConsent"
       ],
       "dependsOn": [
         "contracts/v1"
@@ -140,6 +141,43 @@
       "providesTo": {
         "A": "registro de pruebas en run-all y en CI para sus manifiestos",
         "B": "registro de pruebas en run-all y en CI para sus manifiestos"
+      }
+    },
+    "D": {
+      "name": "Fábrica de UI y arte",
+      "branchPrefix": "claude/s4-ui-",
+      "allowed": [
+        "js/ui/**",
+        "css/**",
+        "assets/**",
+        "js/assets/**",
+        "tools/art/**",
+        "tools/ux/**",
+        "tools/factory/**",
+        "tools/vfx/**",
+        "docs/ART_BIBLE.md",
+        "docs/art-gate/**",
+        "docs/ui-factory/**"
+      ],
+      "deny": [
+        "js/ui/legal.js"
+      ],
+      "readOnly": [
+        "contracts/v1/**",
+        "js/data/pricing.js",
+        "server/**"
+      ],
+      "ownsContracts": [
+        "SkillEvent",
+        "ChampionSelection",
+        "ArtAsset"
+      ],
+      "dependsOn": [
+        "contracts/v1"
+      ],
+      "providesTo": {
+        "C": "eventos SkillEvent y ChampionSelection para la telemetría (con consentimiento)",
+        "A": "ChampionSelection para validar derechos de campeón en el servidor"
       }
     }
   },
@@ -154,6 +192,14 @@
     "index.html": {
       "owner": "Integrador",
       "rule": "Ningún paquete lo toca: los contratos son solo de servidor y no agregan scripts."
+    },
+    "reviews/**": {
+      "owner": "arquitecto/qa/director",
+      "rule": "Los registros de revisión los escriben revisores; ningún agente A/B/C/D puede tocarlos."
+    },
+    "contracts/registry.json": {
+      "owner": "Arquitectura",
+      "rule": "Dueño y consumidores de cada contrato; solo cambia en una rama claude/contrato-…"
     }
   },
   "forbiddenForAll": [
@@ -165,8 +211,8 @@
     "js/arenas/**",
     "js/combat/**",
     "js/entities/**",
-    "assets/**",
-    "index.html"
+    "index.html",
+    "reviews/**"
   ],
   "frozenInterfaces": [
     "item-economy-live.project(state, accountId, data)",
@@ -182,5 +228,27 @@
     "server/game-master.js <-> server/item-economy*.js y wallet.js: ciclo de lectura de estado raíz; se mantiene como interfaz congelada, no se rompe en S0A.",
     "server/accounts.js -> item-economy-live.project / item-economy.recordLogin / wallet: B llama a A solo por las firmas congeladas.",
     "Texto del aviso de compra: lo emiten js/ui/legal.js (C) y js/net/account.js (B); A publica una única función en js/data/pricing.js y los otros dos la consumen."
-  ]
+  ],
+  "roles": {
+    "arquitecto": {
+      "may": [
+        "contracts/v1/**",
+        "docs/arquitectura-compartida/**",
+        "reviews/**"
+      ],
+      "note": "revisa; no escribe código de los agentes"
+    },
+    "qa": {
+      "may": [
+        "reviews/**"
+      ],
+      "note": "verifica y deja evidencia; no aprueba arquitectura"
+    },
+    "director": {
+      "may": [
+        "aprobar"
+      ],
+      "note": "única aprobación final; es una persona, nunca un agente"
+    }
+  }
 }

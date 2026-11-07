@@ -15,7 +15,12 @@ const CODES = Object.freeze({
   NOT_CREDITABLE: 'el resultado no tiene evidencia verificada por el servidor',
   EVIDENCE_REQUIRED: 'la acreditación exige una referencia de evidencia',
   IDEMPOTENCY_MISMATCH: 'misma clave de idempotencia con contenido distinto',
-  SIGN_MISMATCH: 'el signo del monto no corresponde al tipo de asiento'
+  SIGN_MISMATCH: 'el signo del monto no corresponde al tipo de asiento',
+  UNKNOWN_MESSAGE: 'tipo de mensaje de sala no cubierto por el contrato',
+  NOT_CONSENTED: 'la telemetría exige un consentimiento explícito del usuario',
+  DUPLICATE_CHAMPION: 'campeón repetido en la selección',
+  NOT_UNLOCKED: 'el campeón elegido no está desbloqueado',
+  INCOMPLETE_EVENT: 'al evento le falta un dato que su tipo exige'
 });
 class ContractError extends Error {
   constructor(errors){ super(errors.map(e => `${e.path || '$'}: ${e.code}${e.detail ? ' (' + e.detail + ')' : ''}`).join('; ')); this.name = 'ContractError'; this.errors = errors; }

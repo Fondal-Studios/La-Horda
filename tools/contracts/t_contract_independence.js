@@ -7,24 +7,25 @@ const files = cp.execFileSync('git', ['ls-files'], { cwd: ROOT, maxBuffer: 1 << 
 const rx = g => new RegExp('^' + g.replace(/[.+^${}()|[\]\\]/g, '\\$&').replace(/\*\*/g, '\u0000').replace(/\*/g, '[^/]*').replace(/\u0000/g, '.*') + '$');
 const match = (g, f) => rx(g).test(f);
 const P = Object.keys(own.packages);
-check('hay exactamente tres paquetes A, B y C', P.join() === 'A,B,C');
+check('hay exactamente cuatro paquetes A, B, C y D', P.join() === 'A,B,C,D');
 
 // 1. Cada archivo (existente) pertenece como mucho a UN paquete.
-const owners = f => P.filter(p => own.packages[p].allowed.some(g => match(g, f)));
+const inPkg = (p, f) => own.packages[p].allowed.some(g => match(g, f)) && !(own.packages[p].deny || []).some(g => match(g, f));
+const owners = f => P.filter(p => inPkg(p, f));
 const multi = files.filter(f => owners(f).length > 1);
 check('ningún archivo del repo es permitido a dos paquetes', multi.length === 0, multi.slice(0, 10));
 // 2. Los patrones de un paquete no se pisan con los de otro, ni siquiera para archivos nuevos (se prueba el literal de cada patrón sin comodín).
 const literal = g => g.replace(/\/?\*\*$/, '/x.txt').replace(/\*/g, 'x');
 const cross = [];
-for(const a of P) for(const g of own.packages[a].allowed) for(const b of P) if(a !== b && own.packages[b].allowed.some(h => match(h, literal(g)))) cross.push(`${a}:${g} ~ ${b}`);
+for(const a of P) for(const g of own.packages[a].allowed) for(const b of P) if(a !== b && inPkg(a, literal(g)) && inPkg(b, literal(g))) cross.push(`${a}:${g} ~ ${b}`);
 check('los patrones permitidos de paquetes distintos no se solapan', cross.length === 0, cross.slice(0, 10));
 // 3. Lo prohibido para todos no está permitido a nadie; los archivos compartidos tampoco.
 const forb = own.forbiddenForAll, sharedGlobs = Object.keys(own.shared);
 const bad = [];
-for(const p of P) for(const g of own.packages[p].allowed){ const lit = literal(g); if(forb.some(h => match(h, lit))) bad.push(p + ':' + g); }
+for(const p of P) for(const g of own.packages[p].allowed){ const lit = literal(g); if(forb.some(h => match(h, lit)) && inPkg(p, lit)) bad.push(p + ':' + g); }
 check('ningún paquete tiene permitido un archivo prohibido para todos', bad.length === 0, bad);
 const sharedLeak = [];
-for(const p of P) for(const g of own.packages[p].allowed){ const lit = literal(g); for(const s of sharedGlobs) if(s !== 'contracts/v1/**' && match(s, lit)) sharedLeak.push(p + ':' + g + ' en ' + s); }
+for(const p of P) for(const g of own.packages[p].allowed){ const lit = literal(g); for(const s of sharedGlobs) if(s !== 'contracts/v1/**' && match(s, lit) && inPkg(p, lit)) sharedLeak.push(p + ':' + g + ' en ' + s); }
 check('ningún paquete invade un archivo compartido (salvo la excepción documentada de migrations.js)', sharedLeak.length === 0, sharedLeak);
 // 4. Los archivos clave existen y tienen dueño único (los patrones que no son comodín deben existir o estar marcados como nuevos).
 const missing = [];
@@ -52,6 +53,8 @@ function cyc(){ const st = {}; const go = n => { if(st[n] === 1) return true; if
 check('el grafo de módulos de los contratos no tiene ciclos', !cyc());
 // 7. Ningún módulo de los paquetes importa a otro paquete: dependsOn solo apunta a contracts/v1.
 check('cada paquete depende únicamente de contracts/v1', P.every(p => own.packages[p].dependsOn.join() === 'contracts/v1'));
+check('D (UI) no puede tocar el aviso legal (js/ui/legal.js es de C)', owners('js/ui/legal.js').join() === 'C' && owners('js/ui/hud.js').join() === 'D');
+check('los registros de revisión no son de ningún agente', owners('reviews/x.json').length === 0);
 // Importaciones reales entre archivos de paquetes distintos que YA existen (acoplamiento actual a vigilar, no a prohibir).
 const reqs = [];
 for(const f of files.filter(f => /^server\/[^/]+\.js$/.test(f) && owners(f).length)){
@@ -65,6 +68,6 @@ console.log('INFO acoplamientos de producción entre paquetes (cada uno exige in
 check('los acoplamientos entre paquetes están cubiertos por una interfaz congelada declarada', own.frozenInterfaces.length >= 6);
 // 8. Cada contrato tiene un propietario que existe, y cada propietario es un paquete.
 const C = require('../../contracts/v1');
-check('los propietarios de contrato son paquetes válidos', Object.values(C.OWNERS).every(o => P.includes(o)));
+check('los propietarios de contrato son paquetes válidos (o ARQ para los de solo lectura)', Object.values(C.OWNERS).every(o => P.includes(o) || o === 'ARQ'));
 check('los contratos declarados en ownership.json coinciden con OWNERS', P.every(p => own.packages[p].ownsContracts.every(c => C.OWNERS[c] === p)));
-summary('independencia de los tres módulos');
+summary('independencia de los cuatro módulos');

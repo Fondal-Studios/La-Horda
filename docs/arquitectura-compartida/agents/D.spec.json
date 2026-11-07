@@ -1,0 +1,44 @@
+{
+ "id": "D",
+ "name": "Fábrica de UI y arte",
+ "entryGates": [
+  "node tools/quality/qa-manifest-check.js",
+  "node tools/contracts/t_contract_beta.js",
+  "node tools/contracts/t_contract_registry.js",
+  "node tools/agents/test-agents.js"
+ ],
+ "acceptance": [
+  {
+   "id": "D1",
+   "text": "Los eventos de habilidad del HUD se expresan como SkillEvent v1 válidos para los 43 campeones y los 4 botones",
+   "cmd": "node tools/contracts/t_contract_beta.js"
+  },
+  {
+   "id": "D2",
+   "text": "La selección de campeón valida contra los derechos del servidor (ChampionSelection v1)",
+   "cmd": "node tools/contracts/t_contract_beta.js"
+  },
+  {
+   "id": "D3",
+   "text": "Toda entrega de arte nueva sale como ArtAsset v1 con sus puertas (pixelDensity/styleGate/emojiLint)",
+   "cmd": "node tools/ui-factory/t_art_asset_delivery.js",
+   "pending": "tools/ui-factory/t_art_asset_delivery.js"
+  },
+  {
+   "id": "D4",
+   "text": "Móvil: objetivos táctiles y desborde de texto en la UI nueva",
+   "cmd": "node tools/lib/with-site.js tools/ux/test-touch-targets.js && node tools/lib/with-site.js tools/ux/test-text-overflow.js"
+  },
+  {
+   "id": "D5",
+   "text": "pixel-density sin desvíos nuevos (las excepciones las firma el director)",
+   "cmd": "node tools/art/pixel-density.js --strict",
+   "external": true
+  },
+  {
+   "id": "D6",
+   "text": "Solo cambian archivos del agente D",
+   "cmd": "node tools/agents/check-diff.js --agent D"
+  }
+ ]
+}

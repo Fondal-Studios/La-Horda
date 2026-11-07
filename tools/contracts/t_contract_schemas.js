@@ -12,8 +12,9 @@ const te = (o = {}) => ({ contract: 'TelemetryEvent', version: '1.0.0', name: 'v
 // 1. Los esquemas existen, tienen $id y la versión del esquema coincide con VERSIONS.
 for(const [n, s] of Object.entries(C.SCHEMAS)){
   check(`${n}: esquema declara su $id con la versión vigente`, s.$id === `fondal/la-horda/${n}/${C.VERSIONS[n]}`, s.$id);
-  check(`${n}: propietario asignado`, ['A', 'B', 'C'].includes(C.OWNERS[n]));
-  check(`${n}: rechaza campos no declarados (additionalProperties:false)`, s.additionalProperties === false);
+  check(`${n}: propietario asignado`, ['A', 'B', 'C', 'D', 'ARQ'].includes(C.OWNERS[n]));
+  if(n === 'LobbyMessage') check(`${n}: cada variante exige el tipo y los campos obligatorios de su mensaje`, Object.values(s.variants).every(v => v.required.includes('t') && v.properties.t.const && ['c2s', 's2c'].includes(v.direction)));
+  else check(`${n}: rechaza campos no declarados (additionalProperties:false)`, s.additionalProperties === false);
 }
 // 2. Un ejemplo válido de cada contrato pasa.
 check('GameResult válido pasa', C.validate('GameResult', gr()).ok, C.validate('GameResult', gr()).errors);
