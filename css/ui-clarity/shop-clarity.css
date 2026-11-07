@@ -1,0 +1,14 @@
+/* css/ui-clarity/shop-clarity.css — UC-SHOP v1. Solo presentación. Se apaga con html.uc-off (el JS ni siquiera se instala). */
+.uc-need{ margin:4px 0 2px; padding:3px 7px; font-family:var(--ui-font, 'VT323', monospace); font-size:1rem; line-height:1.15; color:#e8e0d0; background:rgba(10,8,14,.7); border-left:3px solid #7fc4ff; }
+.uc-need.uc-short{ color:#fff; border-left:3px double #ff8a6a; }
+.shop-btn.uc-cmp{ margin-top:6px; min-height:44px; }
+.uc-cmp-tag{ margin-top:4px; padding:3px 7px; font-family:var(--ui-font, 'VT323', monospace); font-size:1rem; color:#fff; background:rgba(20,50,77,.9); border:1px dashed #7fc4ff; }
+.shop-btn[data-skin-premium]:disabled, .shop-btn[data-col-premium]:disabled{ opacity:.9; color:#fff; border-style:dashed; }
+
+.uc-reco{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:6px 0; padding:5px 9px; font-family:var(--ui-font, 'VT323', monospace); font-size:1.05rem; color:#fff; background:rgba(20,50,77,.85); border:1px solid #7fc4ff; }
+
+/* En pantallas angostas el saldo de Brasas desaparecía del encabezado de la Tienda (solo quedaba el oro): el saldo es lo que decide si se puede comprar */
+@media (max-width:700px){
+  html:not(.uc-off) #shop-gold-line .ui-chip.premium{ display:inline-flex !important; }
+  html:not(.uc-off) #shop-gold-line .ui-chip:not(.gold):not(.premium){ display:none; }
+}

@@ -131,3 +131,7 @@ Idea: permitir "completar" un campeón con Brasas cuando falten pocas partidas d
 ## 6. Qué se verificó
 
 Ver el informe de la rama `claude/pricing-overhaul`. Pruebas que fijan estos precios: `server/test-wallet.js` (`cd server && npm test`), `tools/collection/shop-pricing-browser.js`, `tools/collection/pricing-sync.js`, `tools/collection/brasas-store.js`, `tools/collection/welcome-picks.js`. Para las piezas por Brasas: `server/test-wallet-pieces.js` (en `npm test`), `tools/items/t_piezas_brasas.js` y `tools/collection/t_shop_rotation.js`. Se agregaron al workflow `.github/workflows/champion-entry-balance.yml`: `test-wallet-pieces.js`, `t_piezas_brasas.js`, `t_shop_rotation.js` y `t_skins_brasas.js` (los tres últimos no estaban).
+
+
+## Actualización 2026-11-02 (decisión del dueño)
+`PIECES_FOR_BRASAS = false` por defecto: **las Brasas compran solo cosméticos** (skins y cromas, y sus colecciones). Las piezas de set no se venden por Brasas ni por oro; se ganan jugando, y completar un set sigue desbloqueando su cosmético. El interruptor sigue existiendo (`js/data/pricing.js`) y sus pruebas lo activan explícitamente.
