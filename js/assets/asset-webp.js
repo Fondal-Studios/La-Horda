@@ -362,7 +362,6 @@ const ASSET_WEBP = new Set([
 "assets/sprites/champions/libertador/v2/fx/spectral_04.png",
 "assets/sprites/champions/libertador/v2/fx/spectral_05.png",
 "assets/sprites/champions/libertador/v2/horse.png",
-"assets/sprites/champions/mago/atlas.png",
 "assets/sprites/champions/mago/skins/convergencia/atlas.png",
 "assets/sprites/champions/mago/skins/convergencia/preview.png",
 "assets/sprites/champions/morveth/codex-v1/atlas.png",

@@ -198,10 +198,6 @@ WOLF_REAL_IMG.jump = new Image();
 WOLF_REAL_READY.jump = false;
 WOLF_REAL_IMG.jump.onload = () => { WOLF_REAL_READY.jump = true; };
 WOLF_REAL_IMG.jump.src = "assets/sprites/champions/cazadora/wolf/jump.png";
-const MAGO_IMG = new Image();
-let MAGO_IMG_READY = false;
-MAGO_IMG.onload = () => { MAGO_IMG_READY = true; };
-MAGO_IMG.src = "assets/sprites/champions/mago/atlas.png";
 const SOPORTE_IMG = new Image();
 let SOPORTE_IMG_READY = false;
 SOPORTE_IMG.onload = () => { SOPORTE_IMG_READY = true; };
@@ -414,7 +410,7 @@ champPackLoadAtlas("cazadora", "assets/sprites/champions/cazadora/codex-v1/atlas
 // CHAMP_PACK[classKey] (caída/muerte animada, espera de carga champPackPending, lista de animaciones del Códice, skins de
 // set vía setSkinPackKey) lo ve. Antes se registraba como "mago_codex" y esos caminos lo trataban como un guardián sin pack:
 // la muerte se congelaba en el último cuadro y, mientras bajaba el atlas, se dibujaba el Mago viejo. El atlas legado de 16
-// recortes (MAGO_ANIM_ATLAS) queda SOLO como respaldo si este atlas falla.
+// recortes ya no existe: si este atlas falla, el Mago cae al cuerpo procedural como cualquier otro guardián.
 champPackLoadAtlas("mago", "assets/sprites/champions/mago/codex-v1/atlas.png", {"w":112,"h":112,"cols":4,"refH":94,"anchor":0.9464285714285714,"fix":{"left":"mirror"},"sets":{"idle_down":[0,36,0,37],"walk_down":[0,1,2,3],"attack_down":[12,13,14,15],"cast_down":[24,25,26,27],"ultimate_down":[28,29,30,31],"hit_down":[12],"death_down":[32,33,34,35],"idle_side":[4,38,4,39],"walk_side":[4,5,6,7],"attack_side":[16,17,18,19],"cast_side":[24,25,26,27],"ultimate_side":[28,29,30,31],"hit_side":[16],"death_side":[32,33,34,35],"idle_up":[8,40,8,41],"walk_up":[8,9,10,11],"attack_up":[20,21,22,23],"cast_up":[24,25,26,27],"ultimate_up":[28,29,30,31],"hit_up":[20],"death_up":[32,33,34,35]}});
 champPackLoadAtlas("axiom", "assets/sprites/champions/axiom/codex-v1/atlas.png", {"w":112,"h":112,"cols":4,"refH":76,"anchor":0.9464285714285714,"fix":{"left":"mirror"},"sets":{"idle_down":[0],"walk_down":[0,1,2,3],"attack_down":[12,13,14,15],"cast_down":[24,25,26,27],"ultimate_down":[28,29,30,31],"hit_down":[12],"death_down":[32,33,34,35],"idle_side":[4],"walk_side":[4,5,6,7],"attack_side":[16,17,18,19],"cast_side":[24,25,26,27],"ultimate_side":[28,29,30,31],"hit_side":[16],"death_side":[32,33,34,35],"idle_up":[8],"walk_up":[8,9,10,11],"attack_up":[20,21,22,23],"cast_up":[24,25,26,27],"ultimate_up":[28,29,30,31],"hit_up":[20],"death_up":[32,33,34,35]}});
 champPackLoadAtlas("nigromante", "assets/sprites/champions/nigromante/codex-v1/atlas.png", {"w":192,"h":160,"cols":4,"refH":84,"anchor":0.7125,"fix":{"left":"mirror"},"sets":{"idle_down":[36,37,38,39],"walk_down":[0,50,1,2,3],"attack_down":[16,17,19],"hit_down":[40,41,42,43],"death_down":[44,45,46,47,48,49],"idle_side":[4],"walk_side":[4,5,6,7],"attack_side":[12,13,14,15],"hit_side":[40,41,42,43],"death_side":[44,45,46,47,48,49],"idle_up":[8],"walk_up":[8,9,10,11],"attack_up":[20,21,22,23],"hit_up":[40,41,42,43],"death_up":[44,45,46,47,48,49],"cast_side":[24,25,26,27],"run":[4,5,6,7],"ult":[32,33,34,35],"idle_left":[-5],"walk_left":[-5,-6,-7,-8],"walk_up_left":[-9,-10,-11,-12]}});

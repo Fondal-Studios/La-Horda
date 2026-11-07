@@ -3,12 +3,12 @@
  "generator": "tools/art/build-art-atlas.js",
  "reference": "Códice (docs/LA_HORDA_CODEX.md); decisión curada en docs/art/ATLAS_VIGENTE.json",
  "sources": {
-  "hash": "f3b34d176b6f8484bbb546e14ce0c55778e321a2",
-  "files": 50
+  "hash": "ae19735645907f2ba6866c5076045a080a0176b7",
+  "files": 51
  },
  "runtime": {
   "url": "index.html?dev=1&lazy=1 (producción: carga por grupos, webp activo)",
-  "loadedImages": 1591,
+  "loadedImages": 1570,
   "sampling": "24 muestras por estado y dirección (down/side/left/up)"
  },
  "summary": {
@@ -33,8 +33,8 @@
    "ARTE_VIEJO": 1
   },
   "files": {
-   "CODEX_OK": 872,
-   "HUERFANO": 103,
+   "CODEX_OK": 871,
+   "HUERFANO": 104,
    "ARTE_VIEJO": 30
   }
  },
@@ -616,7 +616,7 @@
         736,
         375
        ],
-       "bytes": 229026
+       "bytes": 226844
       }
      ],
      "clips": {
@@ -1398,7 +1398,7 @@
         544,
         372
        ],
-       "bytes": 167542
+       "bytes": 165862
       }
      ],
      "clips": {
@@ -11588,7 +11588,7 @@
     },
     {
      "key": "aelith",
-     "file": "assets/sprites/champions/aelith/atlas.png",
+     "file": "assets/sprites/champions/aelith/factory-b76f27906a1dacff0014848b630711fbb0022c4df476f284be6c94afb48bf5eb/atlas.png",
      "ready": true
     }
    ],
@@ -11875,10 +11875,10 @@
      "file": "assets/sprites/enemies/infernal/esqueleto/v2/atlas.png",
      "loadedAs": "png",
      "size": [
-      688,
-      176
+      1336,
+      338
      ],
-     "bytes": 72972
+     "bytes": 218383
     }
    ],
    "frames": {
@@ -11900,10 +11900,10 @@
      "file": "assets/sprites/enemies/infernal/zombie/v2/atlas.png",
      "loadedAs": "png",
      "size": [
-      784,
-      208
+      1520,
+      398
      ],
-     "bytes": 61564
+     "bytes": 176735
     }
    ],
    "frames": {
@@ -11925,10 +11925,10 @@
      "file": "assets/sprites/enemies/infernal/esqueleto_h/v2/atlas.png",
      "loadedAs": "png",
      "size": [
-      664,
-      184
+      1288,
+      354
      ],
-     "bytes": 54010
+     "bytes": 163334
     }
    ],
    "frames": {
@@ -11950,10 +11950,10 @@
      "file": "assets/sprites/enemies/infernal/demonio_menor/v2/atlas.png",
      "loadedAs": "png",
      "size": [
-      768,
-      168
+      1496,
+      320
      ],
-     "bytes": 58009
+     "bytes": 180579
     }
    ],
    "frames": {
@@ -12000,10 +12000,10 @@
      "file": "assets/sprites/enemies/infernal/demonio_mago/v2/atlas.png",
      "loadedAs": "png",
      "size": [
-      1016,
-      176
+      1992,
+      336
      ],
-     "bytes": 49829
+     "bytes": 152438
     }
    ],
    "frames": {
@@ -12175,10 +12175,10 @@
      "file": "assets/sprites/enemies/hielo/hada_escarcha/v2/atlas.png",
      "loadedAs": "png",
      "size": [
-      552,
-      249
+      1176,
+      525
      ],
-     "bytes": 79646
+     "bytes": 284381
     }
    ],
    "frames": {
@@ -12200,10 +12200,10 @@
      "file": "assets/sprites/enemies/hielo/golem_hielo/v2/atlas.png",
      "loadedAs": "png",
      "size": [
-      800,
-      294
+      1552,
+      561
      ],
-     "bytes": 171075
+     "bytes": 530304
     }
    ],
    "frames": {
@@ -12275,10 +12275,10 @@
      "file": "assets/sprites/enemies/hielo/demonio_hielo_fuego/v2/atlas.png",
      "loadedAs": "png",
      "size": [
-      960,
-      92
+      1880,
+      177
      ],
-     "bytes": 58145
+     "bytes": 166766
     }
    ],
    "frames": {
@@ -12375,10 +12375,10 @@
      "file": "assets/sprites/enemies/hielo/cristal_servo/v2/atlas.png",
      "loadedAs": "png",
      "size": [
-      744,
-      162
+      1440,
+      306
      ],
-     "bytes": 47846
+     "bytes": 145838
     }
    ],
    "frames": {
@@ -12400,10 +12400,10 @@
      "file": "assets/sprites/enemies/hielo/cristal_volador/v2/atlas.png",
      "loadedAs": "png",
      "size": [
-      824,
-      160
+      1480,
+      282
      ],
-     "bytes": 67332
+     "bytes": 184101
     }
    ],
    "frames": {
@@ -12475,10 +12475,10 @@
      "file": "assets/sprites/enemies/bosque/duende_bosque/v2/atlas.png",
      "loadedAs": "png",
      "size": [
-      912,
-      188
+      1784,
+      360
      ],
-     "bytes": 44990
+     "bytes": 129709
     }
    ],
    "frames": {
@@ -12575,10 +12575,10 @@
      "file": "assets/sprites/enemies/bosque/ent/v2/atlas.png",
      "loadedAs": "png",
      "size": [
-      632,
-      282
+      1216,
+      543
      ],
-     "bytes": 114055
+     "bytes": 349866
     }
    ],
    "frames": {
@@ -12775,10 +12775,10 @@
      "file": "assets/sprites/enemies/laberinto/escorpion_gigante/v2/atlas.png",
      "loadedAs": "png",
      "size": [
-      632,
-      138
+      1040,
+      222
      ],
-     "bytes": 45140
+     "bytes": 103953
     }
    ],
    "frames": {
@@ -12825,10 +12825,10 @@
      "file": "assets/sprites/enemies/laberinto/medusa/v2/atlas.png",
      "loadedAs": "png",
      "size": [
-      752,
-      184
+      1456,
+      354
      ],
-     "bytes": 55874
+     "bytes": 174460
     }
    ],
    "frames": {
@@ -12850,10 +12850,10 @@
      "file": "assets/sprites/enemies/laberinto/druida_arena/v2/atlas.png",
      "loadedAs": "png",
      "size": [
-      792,
-      196
+      1536,
+      374
      ],
-     "bytes": 64276
+     "bytes": 201397
     }
    ],
    "frames": {
@@ -12875,10 +12875,10 @@
      "file": "assets/sprites/enemies/laberinto/esfinge/v2/atlas.png",
      "loadedAs": "png",
      "size": [
-      984,
-      148
+      2056,
+      302
      ],
-     "bytes": 59835
+     "bytes": 210304
     }
    ],
    "frames": {
@@ -12977,10 +12977,10 @@
      "file": "assets/sprites/enemies/acuatica/tiburon_joven/v2/atlas.png",
      "loadedAs": "png",
      "size": [
-      1016,
-      138
+      1832,
+      242
      ],
-     "bytes": 34570
+     "bytes": 104143
     }
    ],
    "frames": {
@@ -13002,10 +13002,10 @@
      "file": "assets/sprites/enemies/acuatica/medusa_electrica/v2/atlas.png",
      "loadedAs": "png",
      "size": [
-      1056,
-      297
+      2072,
+      573
      ],
-     "bytes": 71675
+     "bytes": 198581
     }
    ],
    "frames": {
@@ -13027,10 +13027,10 @@
      "file": "assets/sprites/enemies/acuatica/cangrejo_acorazado/v2/atlas.png",
      "loadedAs": "png",
      "size": [
-      1040,
-      156
+      1880,
+      276
      ],
-     "bytes": 52133
+     "bytes": 124278
     }
    ],
    "frames": {
@@ -13052,10 +13052,10 @@
      "file": "assets/sprites/enemies/acuatica/sirena_abisal/v2/atlas.png",
      "loadedAs": "png",
      "size": [
-      808,
-      206
+      1560,
+      396
      ],
-     "bytes": 35697
+     "bytes": 95765
     }
    ],
    "frames": {
@@ -13077,10 +13077,10 @@
      "file": "assets/sprites/enemies/acuatica/anguila_electrica/v2/atlas.png",
      "loadedAs": "png",
      "size": [
-      1200,
-      100
+      1816,
+      144
      ],
-     "bytes": 27923
+     "bytes": 63542
     }
    ],
    "frames": {
@@ -13102,10 +13102,10 @@
      "file": "assets/sprites/enemies/acuatica/tiburon_blanco/v2/atlas.png",
      "loadedAs": "png",
      "size": [
-      1112,
-      150
+      2048,
+      266
      ],
-     "bytes": 68924
+     "bytes": 202624
     }
    ],
    "frames": {
@@ -13439,7 +13439,7 @@
       1520,
       204
      ],
-     "bytes": 182076
+     "bytes": 112750
     }
    ],
    "frames": {
@@ -13464,7 +13464,7 @@
       1744,
       210
      ],
-     "bytes": 160306
+     "bytes": 96506
     }
    ],
    "frames": {
@@ -13489,7 +13489,7 @@
       1792,
       288
      ],
-     "bytes": 246590
+     "bytes": 176798
     }
    ],
    "frames": {
@@ -13514,7 +13514,7 @@
       1712,
       266
      ],
-     "bytes": 144888
+     "bytes": 82544
     }
    ],
    "frames": {
@@ -13539,7 +13539,7 @@
       1800,
       210
      ],
-     "bytes": 145776
+     "bytes": 88740
     }
    ],
    "frames": {
@@ -13564,7 +13564,7 @@
       1328,
       410
      ],
-     "bytes": 320186
+     "bytes": 206494
     }
    ],
    "frames": {
@@ -13926,10 +13926,10 @@
      "file": "assets/sprites/enemies/ciudad/cm_perro/v2/atlas.png",
      "loadedAs": "png",
      "size": [
-      968,
-      140
+      1640,
+      230
      ],
-     "bytes": 51126
+     "bytes": 139853
     }
    ],
    "frames": {
@@ -14026,10 +14026,10 @@
      "file": "assets/sprites/enemies/ciudad/cm_acechante/v2/atlas.png",
      "loadedAs": "png",
      "size": [
-      768,
-      210
+      1520,
+      399
      ],
-     "bytes": 54246
+     "bytes": 142937
     }
    ],
    "frames": {
@@ -14051,10 +14051,10 @@
      "file": "assets/sprites/enemies/ciudad/cm_campanero/v2/atlas.png",
      "loadedAs": "png",
      "size": [
-      712,
-      196
+      1368,
+      374
      ],
-     "bytes": 53976
+     "bytes": 182269
     }
    ],
    "frames": {
@@ -14416,10 +14416,10 @@
      "file": "assets/sprites/enemies/minas/mn_devoraluz/v2/atlas.png",
      "loadedAs": "png",
      "size": [
-      744,
-      204
+      1792,
+      484
      ],
-     "bytes": 115681
+     "bytes": 379160
     }
    ],
    "frames": {
@@ -14557,8 +14557,8 @@
   {"file":"assets/sprites/arenas/fortaleza/fx/verdugo_steam_b.png","category":"arenas","size":[35,33],"bytes":3326,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/fortaleza/prisionero/atlas.png","category":"arenas","size":[2000,272],"bytes":260078,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/fortaleza/verdugo/atlas.png","category":"arenas","size":[2016,328],"bytes":320491,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/arenas/micelial/acechador/atlas.png","category":"arenas","size":[1744,210],"bytes":192145,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/arenas/micelial/chaman/atlas.png","category":"arenas","size":[1328,410],"bytes":382370,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/arenas/micelial/acechador/atlas.png","category":"arenas","size":[1744,210],"bytes":127870,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/arenas/micelial/chaman/atlas.png","category":"arenas","size":[1328,410],"bytes":270443,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/fx/aura_cluster.png","category":"arenas","size":[222,161],"bytes":83570,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/fx/bite_slash.png","category":"arenas","size":[43,62],"bytes":6092,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/fx/boom_big.png","category":"arenas","size":[93,100],"bytes":21912,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
@@ -14631,12 +14631,12 @@
   {"file":"assets/sprites/arenas/micelial/fx/spore_rain_a.png","category":"arenas","size":[77,36],"bytes":4884,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/fx/spore_rain_b.png","category":"arenas","size":[120,46],"bytes":9480,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/fx/spore_rain_c.png","category":"arenas","size":[77,50],"bytes":6519,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/arenas/micelial/hinchado/atlas.png","category":"arenas","size":[1792,288],"bytes":291085,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/arenas/micelial/infectado/atlas.png","category":"arenas","size":[1520,204],"bytes":217217,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/arenas/micelial/hinchado/atlas.png","category":"arenas","size":[1792,288],"bytes":227907,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/arenas/micelial/infectado/atlas.png","category":"arenas","size":[1520,204],"bytes":148678,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/madre_espora/atlas.png","category":"arenas","size":[1360,417],"bytes":545847,"webp":false,"loaded":true,"usedBy":["js/arenas/micelial/mic-render.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/map/map_initial.png","category":"arenas","size":[1536,1024],"bytes":483868,"webp":true,"loaded":true,"usedBy":["js/arenas/micelial/mic-render.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/map/map_mature.png","category":"arenas","size":[1536,1024],"bytes":525327,"webp":true,"loaded":true,"usedBy":["js/arenas/micelial/mic-render.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/arenas/micelial/micelio/atlas.png","category":"arenas","size":[1536,500],"bytes":655771,"webp":true,"loaded":true,"usedBy":["js/arenas/common/boss-blueprints.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/arenas/micelial/micelio/atlas.png","category":"arenas","size":[1536,500],"bytes":630795,"webp":true,"loaded":true,"usedBy":["js/arenas/common/boss-blueprints.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/mother/mp_arm_l.png","category":"arenas","size":[190,235],"bytes":138978,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/mother/mp_arm_r.png","category":"arenas","size":[135,235],"bytes":95359,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/mother/mp_body.png","category":"arenas","size":[190,300],"bytes":178449,"webp":false,"loaded":false,"usedBy":[],"status":"HUERFANO"},
@@ -14653,8 +14653,8 @@
   {"file":"assets/sprites/arenas/micelial/mother/pilot_death.png","category":"arenas","size":[1968,560],"bytes":1186377,"webp":false,"loaded":true,"usedBy":["runtime(cargado)"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/mother/pilot_heart_key.png","category":"arenas","size":[656,560],"bytes":537918,"webp":false,"loaded":true,"usedBy":["runtime(cargado)"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/mother/pilot_idle.png","category":"arenas","size":[1296,496],"bytes":1185952,"webp":false,"loaded":true,"usedBy":["js/arenas/micelial/mic-render.js"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/arenas/micelial/peregrino/atlas.png","category":"arenas","size":[1712,266],"bytes":176422,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/arenas/micelial/sabueso/atlas.png","category":"arenas","size":[1800,210],"bytes":174155,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/arenas/micelial/peregrino/atlas.png","category":"arenas","size":[1712,266],"bytes":112641,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/arenas/micelial/sabueso/atlas.png","category":"arenas","size":[1800,210],"bytes":117928,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/minas/mn_acechador/atlas.png","category":"arenas","size":[432,300],"bytes":85286,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/minas-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/minas/mn_cerbero/atlas.png","category":"arenas","size":[1536,2112],"bytes":576239,"webp":true,"loaded":true,"usedBy":["js/arenas/common/boss-blueprints.js","js/assets/minas-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/minas/mn_consumidor/atlas.png","category":"arenas","size":[320,270],"bytes":77684,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/minas-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
@@ -14792,10 +14792,11 @@
   {"file":"assets/sprites/bosses/laberinto/minotauro/static.png","category":"bosses","size":[79,72],"bytes":10059,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/bosses/laberinto/minotauro/v3/atlas.png","category":"bosses","size":[1168,455],"bytes":423588,"webp":true,"loaded":true,"usedBy":["js/arenas/common/boss-blueprints.js","js/assets/canon-sheets-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/bosses/laberinto/minotauro/walk-strip.png","category":"bosses","size":[1620,74],"bytes":156622,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/champions/aelith/atlas.png","category":"champions","size":[448,1008],"bytes":290634,"webp":false,"loaded":true,"usedBy":["js/champions/ascension/art.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/champions/aelith/atlas.png","category":"champions","size":[448,1008],"bytes":290634,"webp":false,"loaded":false,"usedBy":[],"status":"HUERFANO"},
   {"file":"assets/sprites/champions/aelith/codex-v1/atlas.png","category":"champions","size":[448,1008],"bytes":259408,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/codex-champion-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/aelith/codex-v1/preview.png","category":"champions","size":[112,112],"bytes":7749,"webp":false,"loaded":false,"usedBy":[],"status":"HUERFANO"},
   {"file":"assets/sprites/champions/aelith/croma-preview.png","category":"champions","size":[112,112],"bytes":8434,"webp":false,"loaded":false,"usedBy":["js/assets/quality-five-collection-meta.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/champions/aelith/factory-b76f27906a1dacff0014848b630711fbb0022c4df476f284be6c94afb48bf5eb/atlas.png","category":"champions","size":[448,1120],"bytes":318962,"webp":false,"loaded":true,"usedBy":["js/champions/ascension/art.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/aelith/preview.png","category":"champions","size":[112,112],"bytes":7986,"webp":false,"loaded":false,"usedBy":[],"status":"HUERFANO"},
   {"file":"assets/sprites/champions/aelith/skins/aelith_alt1/atlas.png","category":"champions","size":[448,1008],"bytes":311963,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/quality-five-skins-meta.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/aelith/skins/aelith_alt1/preview.png","category":"champions","size":[112,112],"bytes":7980,"webp":false,"loaded":false,"usedBy":["js/assets/quality-five-skins-meta.js"],"status":"CODEX_OK"},
@@ -14990,10 +14991,9 @@
   {"file":"assets/sprites/champions/libertador/v2/fx/spectral_05.png","category":"champions","size":[106,86],"bytes":19359,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"HUERFANO"},
   {"file":"assets/sprites/champions/libertador/v2/horse.png","category":"champions","size":[1000,306],"bytes":70044,"webp":true,"loaded":true,"usedBy":["js/assets/champion-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/libertador/v3/motion.png","category":"champions","size":[1344,112],"bytes":58883,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/champion-sprites.js"],"status":"ARTE_VIEJO"},
-  {"file":"assets/sprites/champions/mago/atlas.png","category":"champions","size":[1254,1254],"bytes":1248766,"webp":true,"loaded":true,"usedBy":["js/assets/champion-sprites.js","js/modes/crystal-wars/atlas.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/champions/mago/codex-v1/atlas.png","category":"champions","size":[448,1232],"bytes":369097,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/champion-sprites.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/champions/mago/codex-v1/atlas.png","category":"champions","size":[448,1232],"bytes":369097,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/champion-sprites.js","js/modes/crystal-wars/atlas.js","js/rendering/champion-sprites.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/mago/codex-v1/preview.png","category":"champions","size":[448,1008],"bytes":494633,"webp":false,"loaded":false,"usedBy":[],"status":"HUERFANO"},
-  {"file":"assets/sprites/champions/mago/skins/convergencia/atlas.png","category":"champions","size":[736,375],"bytes":301583,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/set-skins-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/champions/mago/skins/convergencia/atlas.png","category":"champions","size":[736,375],"bytes":299527,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/set-skins-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/mago/skins/convergencia/preview.png","category":"champions","size":[125,173],"bytes":45861,"webp":true,"loaded":true,"usedBy":["js/assets/mythic-collection-meta.js","js/assets/set-skins-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/maura/atlas.png","category":"champions","size":[448,1008],"bytes":295535,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/champions/expedition/art.js","js/modes/crystal-wars/atlas.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/maura/croma-preview.png","category":"champions","size":[112,112],"bytes":6713,"webp":false,"loaded":false,"usedBy":[],"status":"HUERFANO"},
@@ -15157,7 +15157,7 @@
   {"file":"assets/sprites/champions/profeta/codex-v1/atlas.png","category":"champions","size":[448,1456],"bytes":225816,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/champion-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/profeta/cromas/ancestral/atlas.png","category":"champions","size":[744,665],"bytes":299908,"webp":false,"loaded":false,"usedBy":["js/assets/croma-skins-meta.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/profeta/cromas/ancestral/preview.png","category":"champions","size":[216,273],"bytes":22859,"webp":false,"loaded":false,"usedBy":["js/assets/croma-skins-meta.js"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/champions/profeta/skins/profecia/atlas.png","category":"champions","size":[544,372],"bytes":223061,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/set-skins-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/champions/profeta/skins/profecia/atlas.png","category":"champions","size":[544,372],"bytes":221350,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/set-skins-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/profeta/skins/profecia/preview.png","category":"champions","size":[220,317],"bytes":156135,"webp":true,"loaded":true,"usedBy":["js/assets/set-skins-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/profeta/skins/profeta_ancestral/atlas.png","category":"champions","size":[896,336],"bytes":223672,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/unique-skins-meta.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/profeta/skins/profeta_ancestral/preview.png","category":"champions","size":[112,112],"bytes":9902,"webp":false,"loaded":false,"usedBy":["js/assets/unique-skins-meta.js"],"status":"CODEX_OK"},
@@ -15295,28 +15295,28 @@
   {"file":"assets/sprites/enemies/acuatica/anguila_electrica/idle_02.png","category":"enemies","size":[71,27],"bytes":2566,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/acuatica/anguila_electrica/idle_03.png","category":"enemies","size":[70,28],"bytes":3049,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/acuatica/anguila_electrica/idle_04.png","category":"enemies","size":[61,29],"bytes":4329,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/enemies/acuatica/anguila_electrica/v2/atlas.png","category":"enemies","size":[1200,100],"bytes":27923,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/enemies/acuatica/anguila_electrica/v2/atlas.png","category":"enemies","size":[1816,144],"bytes":63542,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/acuatica/cangrejo_acorazado/atk.png","category":"enemies","size":[35,38],"bytes":3604,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/acuatica/cangrejo_acorazado/idle.png","category":"enemies","size":[49,34],"bytes":4389,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/acuatica/cangrejo_acorazado/idle2.png","category":"enemies","size":[39,34],"bytes":2471,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/enemies/acuatica/cangrejo_acorazado/v2/atlas.png","category":"enemies","size":[1040,156],"bytes":52133,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/enemies/acuatica/cangrejo_acorazado/v2/atlas.png","category":"enemies","size":[1880,276],"bytes":124278,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/acuatica/medusa_electrica/atk.png","category":"enemies","size":[33,36],"bytes":2061,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/acuatica/medusa_electrica/idle.png","category":"enemies","size":[34,47],"bytes":3753,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/acuatica/medusa_electrica/idle2.png","category":"enemies","size":[45,51],"bytes":4300,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/enemies/acuatica/medusa_electrica/v2/atlas.png","category":"enemies","size":[1056,297],"bytes":71675,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/enemies/acuatica/medusa_electrica/v2/atlas.png","category":"enemies","size":[2072,573],"bytes":198581,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/acuatica/sirena_abisal/atk.png","category":"enemies","size":[41,45],"bytes":2786,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/acuatica/sirena_abisal/idle.png","category":"enemies","size":[35,48],"bytes":3074,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/enemies/acuatica/sirena_abisal/v2/atlas.png","category":"enemies","size":[808,206],"bytes":35697,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/enemies/acuatica/sirena_abisal/v2/atlas.png","category":"enemies","size":[1560,396],"bytes":95765,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/acuatica/tiburon_blanco/atk.png","category":"enemies","size":[56,73],"bytes":6571,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/acuatica/tiburon_blanco/atlas.png","category":"enemies","size":[1728,1248],"bytes":153367,"webp":true,"loaded":true,"usedBy":["js/assets/pixrig-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/acuatica/tiburon_blanco/idle.png","category":"enemies","size":[86,67],"bytes":8440,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/acuatica/tiburon_blanco/idle2.png","category":"enemies","size":[52,30],"bytes":2725,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/enemies/acuatica/tiburon_blanco/v2/atlas.png","category":"enemies","size":[1112,150],"bytes":68924,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/enemies/acuatica/tiburon_blanco/v2/atlas.png","category":"enemies","size":[2048,266],"bytes":202624,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/acuatica/tiburon_joven/atk.png","category":"enemies","size":[77,36],"bytes":6606,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/acuatica/tiburon_joven/atlas.png","category":"enemies","size":[1088,800],"bytes":76881,"webp":true,"loaded":true,"usedBy":["js/assets/pixrig-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/acuatica/tiburon_joven/idle.png","category":"enemies","size":[42,33],"bytes":3488,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/acuatica/tiburon_joven/idle2.png","category":"enemies","size":[42,33],"bytes":3491,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/enemies/acuatica/tiburon_joven/v2/atlas.png","category":"enemies","size":[1016,138],"bytes":34570,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/enemies/acuatica/tiburon_joven/v2/atlas.png","category":"enemies","size":[1832,242],"bytes":104143,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/bosque/bestia_bosque/atk1.png","category":"enemies","size":[60,41],"bytes":4822,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/bosque/bestia_bosque/atk2.png","category":"enemies","size":[58,48],"bytes":5094,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/bosque/bestia_bosque/atk3.png","category":"enemies","size":[65,45],"bytes":5320,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
@@ -15349,7 +15349,7 @@
   {"file":"assets/sprites/enemies/bosque/duende_bosque/idle1.png","category":"enemies","size":[33,44],"bytes":3255,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/bosque/duende_bosque/idle2.png","category":"enemies","size":[29,44],"bytes":3032,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/bosque/duende_bosque/idle3.png","category":"enemies","size":[30,44],"bytes":3179,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/enemies/bosque/duende_bosque/v2/atlas.png","category":"enemies","size":[912,188],"bytes":44990,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/enemies/bosque/duende_bosque/v2/atlas.png","category":"enemies","size":[1784,360],"bytes":129709,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/bosque/duende_bosque/walk1.png","category":"enemies","size":[34,39],"bytes":3174,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/bosque/duende_bosque/walk2.png","category":"enemies","size":[29,40],"bytes":2949,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/bosque/duende_bosque/walk3.png","category":"enemies","size":[29,40],"bytes":2887,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
@@ -15373,15 +15373,15 @@
   {"file":"assets/sprites/enemies/bosque/ent/idle3.png","category":"enemies","size":[59,56],"bytes":7308,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/bosque/ent/idle4.png","category":"enemies","size":[54,56],"bytes":8635,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/bosque/ent/static.png","category":"enemies","size":[22,37],"bytes":1607,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/enemies/bosque/ent/v2/atlas.png","category":"enemies","size":[632,282],"bytes":114055,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/enemies/bosque/ent/v2/atlas.png","category":"enemies","size":[1216,543],"bytes":349866,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/bosque/ent/walk1.png","category":"enemies","size":[56,51],"bytes":8296,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/bosque/ent/walk2.png","category":"enemies","size":[60,51],"bytes":8644,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/bosque/ent/walk3.png","category":"enemies","size":[59,51],"bytes":8553,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/bosque/ent/walk4.png","category":"enemies","size":[52,51],"bytes":6252,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/enemies/ciudad/cm_acechante/v2/atlas.png","category":"enemies","size":[768,210],"bytes":54246,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/enemies/ciudad/cm_campanero/v2/atlas.png","category":"enemies","size":[712,196],"bytes":53976,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/enemies/ciudad/cm_acechante/v2/atlas.png","category":"enemies","size":[1520,399],"bytes":142937,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/enemies/ciudad/cm_campanero/v2/atlas.png","category":"enemies","size":[1368,374],"bytes":182269,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/ciudad/cm_espectro/v2/atlas.png","category":"enemies","size":[672,304],"bytes":20104,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/enemies/ciudad/cm_perro/v2/atlas.png","category":"enemies","size":[968,140],"bytes":51126,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/enemies/ciudad/cm_perro/v2/atlas.png","category":"enemies","size":[1640,230],"bytes":139853,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/ciudad/cm_planidera/v2/atlas.png","category":"enemies","size":[576,440],"bytes":23655,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/ciudad/cm_raptor/v2/atlas.png","category":"enemies","size":[768,380],"bytes":31280,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/ciudad/cm_saqueador/v2/atlas.png","category":"enemies","size":[640,240],"bytes":19321,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
@@ -15390,9 +15390,9 @@
   {"file":"assets/sprites/enemies/hielo/angel_hielo/static.png","category":"enemies","size":[122,105],"bytes":15467,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/hielo/angel_hielo/v2/atlas.png","category":"enemies","size":[1000,366],"bytes":334244,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/canon-sheets-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/hielo/cristal_servo/atlas.png","category":"enemies","size":[456,148],"bytes":57525,"webp":true,"loaded":true,"usedBy":["js/assets/boss-sheets-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/enemies/hielo/cristal_servo/v2/atlas.png","category":"enemies","size":[744,162],"bytes":47846,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/enemies/hielo/cristal_servo/v2/atlas.png","category":"enemies","size":[1440,306],"bytes":145838,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/hielo/cristal_volador/atlas.png","category":"enemies","size":[576,210],"bytes":54407,"webp":true,"loaded":true,"usedBy":["js/assets/boss-sheets-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/enemies/hielo/cristal_volador/v2/atlas.png","category":"enemies","size":[824,160],"bytes":67332,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/enemies/hielo/cristal_volador/v2/atlas.png","category":"enemies","size":[1480,282],"bytes":184101,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/hielo/demonio_hielo_fuego/atk1.png","category":"enemies","size":[48,47],"bytes":6330,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/hielo/demonio_hielo_fuego/atk2.png","category":"enemies","size":[64,46],"bytes":7548,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/hielo/demonio_hielo_fuego/atk3.png","category":"enemies","size":[56,46],"bytes":5529,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
@@ -15406,7 +15406,7 @@
   {"file":"assets/sprites/enemies/hielo/demonio_hielo_fuego/idle2.png","category":"enemies","size":[52,58],"bytes":8053,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/hielo/demonio_hielo_fuego/idle3.png","category":"enemies","size":[49,58],"bytes":7628,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/hielo/demonio_hielo_fuego/static.png","category":"enemies","size":[146,110],"bytes":12452,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/enemies/hielo/demonio_hielo_fuego/v2/atlas.png","category":"enemies","size":[960,92],"bytes":58145,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/enemies/hielo/demonio_hielo_fuego/v2/atlas.png","category":"enemies","size":[1880,177],"bytes":166766,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/hielo/demonio_hielo_fuego/walk1.png","category":"enemies","size":[51,49],"bytes":6879,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/hielo/demonio_hielo_fuego/walk2.png","category":"enemies","size":[51,49],"bytes":6793,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/hielo/demonio_hielo_fuego/walk3.png","category":"enemies","size":[49,49],"bytes":6504,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
@@ -15428,19 +15428,19 @@
   {"file":"assets/sprites/enemies/hielo/golem_hielo/idle1.png","category":"enemies","size":[54,51],"bytes":7867,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/hielo/golem_hielo/idle2.png","category":"enemies","size":[48,50],"bytes":6978,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/hielo/golem_hielo/static.png","category":"enemies","size":[91,92],"bytes":9598,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/enemies/hielo/golem_hielo/v2/atlas.png","category":"enemies","size":[800,294],"bytes":171075,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/enemies/hielo/golem_hielo/v2/atlas.png","category":"enemies","size":[1552,561],"bytes":530304,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/hielo/golem_hielo/walk1.png","category":"enemies","size":[54,47],"bytes":7130,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/hielo/golem_hielo/walk2.png","category":"enemies","size":[49,45],"bytes":6373,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/hielo/golem_hielo/walk3.png","category":"enemies","size":[41,44],"bytes":5316,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/hielo/hada_escarcha/atlas.png","category":"enemies","size":[371,82],"bytes":36101,"webp":true,"loaded":true,"usedBy":["js/assets/bestias-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/enemies/hielo/hada_escarcha/v2/atlas.png","category":"enemies","size":[552,249],"bytes":79646,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/enemies/hielo/hada_escarcha/v2/atlas.png","category":"enemies","size":[1176,525],"bytes":284381,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/hielo/lobo_artico/atlas.png","category":"enemies","size":[384,630],"bytes":265058,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/infernal/demonio_mago/atlas.png","category":"enemies","size":[476,714],"bytes":222119,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/enemies/infernal/demonio_mago/v2/atlas.png","category":"enemies","size":[1016,176],"bytes":49829,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/enemies/infernal/demonio_mago/v2/atlas.png","category":"enemies","size":[1992,336],"bytes":152438,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/infernal/demonio_menor/atlas.png","category":"enemies","size":[476,714],"bytes":199062,"webp":true,"loaded":true,"usedBy":["js/arenas/common/boss-blueprints.js","js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/enemies/infernal/demonio_menor/v2/atlas.png","category":"enemies","size":[768,168],"bytes":58009,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/enemies/infernal/demonio_menor/v2/atlas.png","category":"enemies","size":[1496,320],"bytes":180579,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/infernal/esqueleto/atlas.png","category":"enemies","size":[476,714],"bytes":195638,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/enemies/infernal/esqueleto/v2/atlas.png","category":"enemies","size":[688,176],"bytes":72972,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/enemies/infernal/esqueleto/v2/atlas.png","category":"enemies","size":[1336,338],"bytes":218383,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/infernal/esqueleto_h/atk1.png","category":"enemies","size":[56,44],"bytes":6021,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/infernal/esqueleto_h/atk2.png","category":"enemies","size":[59,44],"bytes":6489,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/infernal/esqueleto_h/atk3.png","category":"enemies","size":[72,45],"bytes":5707,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
@@ -15453,7 +15453,7 @@
   {"file":"assets/sprites/enemies/infernal/esqueleto_h/idle2.png","category":"enemies","size":[49,50],"bytes":5983,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/infernal/esqueleto_h/idle3.png","category":"enemies","size":[44,49],"bytes":5486,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/infernal/esqueleto_h/idle4.png","category":"enemies","size":[46,48],"bytes":3927,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/enemies/infernal/esqueleto_h/v2/atlas.png","category":"enemies","size":[664,184],"bytes":54010,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/enemies/infernal/esqueleto_h/v2/atlas.png","category":"enemies","size":[1288,354],"bytes":163334,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/infernal/esqueleto_h/walk1.png","category":"enemies","size":[45,44],"bytes":3376,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/infernal/esqueleto_h/walk2.png","category":"enemies","size":[50,43],"bytes":3582,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/infernal/esqueleto_h/walk3.png","category":"enemies","size":[43,46],"bytes":3650,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
@@ -15471,20 +15471,20 @@
   {"file":"assets/sprites/enemies/infernal/zombie/idle2.png","category":"enemies","size":[33,48],"bytes":4144,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/infernal/zombie/idle3.png","category":"enemies","size":[31,47],"bytes":3951,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/infernal/zombie/idle4.png","category":"enemies","size":[30,48],"bytes":3858,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/enemies/infernal/zombie/v2/atlas.png","category":"enemies","size":[784,208],"bytes":61564,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/enemies/infernal/zombie/v2/atlas.png","category":"enemies","size":[1520,398],"bytes":176735,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/infernal/zombie/walk1.png","category":"enemies","size":[34,45],"bytes":4078,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/infernal/zombie/walk2.png","category":"enemies","size":[33,45],"bytes":3964,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/infernal/zombie/walk3.png","category":"enemies","size":[31,44],"bytes":3768,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/enemies/laberinto/druida_arena/v2/atlas.png","category":"enemies","size":[792,196],"bytes":64276,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/enemies/laberinto/druida_arena/v2/atlas.png","category":"enemies","size":[1536,374],"bytes":201397,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/laberinto/druida_arena/walk-strip.png","category":"enemies","size":[2430,70],"bytes":219572,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/enemies/laberinto/escorpion_gigante/v2/atlas.png","category":"enemies","size":[632,138],"bytes":45140,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/enemies/laberinto/escorpion_gigante/v2/atlas.png","category":"enemies","size":[1040,222],"bytes":103953,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/laberinto/escorpion_gigante/walk-strip.png","category":"enemies","size":[880,44],"bytes":42971,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/enemies/laberinto/esfinge/v2/atlas.png","category":"enemies","size":[984,148],"bytes":59835,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/enemies/laberinto/esfinge/v2/atlas.png","category":"enemies","size":[2056,302],"bytes":210304,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/laberinto/esfinge/walk-strip.png","category":"enemies","size":[2542,72],"bytes":245873,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/laberinto/golem_piedra/v2/atlas.png","category":"enemies","size":[768,72],"bytes":53060,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/canon-sheets-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/laberinto/golem_piedra/walk-strip.png","category":"enemies","size":[4125,61],"bytes":230805,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","js/modes/crystal-wars/client.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/enemies/laberinto/medusa/v2/atlas.png","category":"enemies","size":[752,184],"bytes":55874,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/enemies/laberinto/medusa/v2/atlas.png","category":"enemies","size":[1456,354],"bytes":174460,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/laberinto/medusa/walk-strip.png","category":"enemies","size":[2607,72],"bytes":259860,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/enemies/minas/mn_devoraluz/v2/atlas.png","category":"enemies","size":[744,204],"bytes":115681,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"}
+  {"file":"assets/sprites/enemies/minas/mn_devoraluz/v2/atlas.png","category":"enemies","size":[1792,484],"bytes":379160,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"}
  ]
 }
