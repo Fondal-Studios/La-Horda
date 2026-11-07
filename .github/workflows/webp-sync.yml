@@ -1,0 +1,24 @@
+name: WebP sincronizado con PNG
+# Los navegadores reales cargan el .webp (js/assets/asset-webp.js) y no el .png: un .webp viejo muestra arte anterior
+# (pasó con San Martín, Ilkan, Profeta, Leviatán). Falla si algún .webp no coincide pixel a pixel con su PNG.
+on:
+  pull_request:
+    paths: ['assets/**', 'tools/art/webp_convert.py', '.github/workflows/webp-sync.yml']
+  push:
+    branches: [main]
+    paths: ['assets/**', 'tools/art/webp_convert.py', '.github/workflows/webp-sync.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  webp-sync:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m pip install --quiet pillow
+      - run: python3 tools/art/webp_convert.py --check
+      - name: asset-webp.js al día
+        run: |
+          python3 tools/art/webp_convert.py
+          git diff --exit-code js/assets/asset-webp.js

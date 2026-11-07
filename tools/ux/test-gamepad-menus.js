@@ -278,7 +278,7 @@ const vis = (page, sel) => page.evaluate(s => { const e = document.querySelector
       await press('KeyR'); await press('KeyQ');
       const sp3 = await page.evaluate(() => window.__spy);
       ok(fired2.Digit1 && fired2.Digit2 && fired2.Digit3 && sp3.ult === 1 && sp3.emerg === 1, 'Clásico: 1 2 3, R y Q siguen igual', [fired2, sp3]);
-      const q0 = await page.evaluate(() => ({ x: player.x, y: player.y }));
+      const q0 = await page.evaluate(() => { player.stunTimer = 0; player.rootTimer = 0; player.casting = null; return { x: player.x, y: player.y }; });   // las habilidades de arriba pueden dejar al guardián aturdido/en cast unos ms
       await page.keyboard.down('KeyD'); await sleep(350); await page.keyboard.up('KeyD');
       ok((await page.evaluate(() => player.x)) > q0.x + 15, 'Clásico: WASD siguen moviendo', [q0, await page.evaluate(() => ({ x: player.x, y: player.y, st: player.stunTimer, joy: joyVec, codes: [...DESK.codes], sc: deskScheme() }))]);
       await page.evaluate(() => { const r = canvas.getBoundingClientRect(); window.__c = { x: r.left + r.width * 0.7, y: r.top + r.height * 0.4 }; });

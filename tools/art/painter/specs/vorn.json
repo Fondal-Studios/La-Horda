@@ -33,20 +33,6 @@
  ],
  "accessories": [
   {
-   "element": "corona_de_picos",
-   "scale": 0.9,
-   "materials": {
-    "metal": {
-     "ramp": [
-      "#14181a",
-      "#2e3a3a",
-      "#566a66",
-      "#8aa09a"
-     ]
-    }
-   }
-  },
-  {
    "element": "hombreras_redondas",
    "scale": 0.95,
    "materials": {
@@ -59,10 +45,14 @@
      ]
     }
    }
+  },
+  {
+   "element": "cuernos_de_basalto"
   }
  ],
  "install": {
   "champion": "vorn",
   "pack": "vorn"
- }
+ },
+ "retouch": "vorn"
 }

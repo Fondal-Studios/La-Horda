@@ -475,6 +475,7 @@ function ilkanUltBlocked(h){
 }
 
 /* ---------------- dibujo ---------------- */
+const ILKAN_ATK_SEQ = [[0,1,3],[0,2,3],[0,1,2,3]];
 function _ilkanFrame(P, set, prog, flip, h, s, alpha){
   const arr = P.sets[set]; if(!arr) return false;
   const n = Math.min(arr.length-1, Math.max(0, Math.floor(prog*arr.length)));
@@ -535,7 +536,10 @@ function drawIlkan(h, drawScale, alpha){
   if(h.ilkanExhaustTimer>0 && !h.moving && h.ilkanExhaustTimer > ILKAN_CFG.exhausted.durationMs-2500) return _ilkanFrame(P, "exhausted", 0, left, h, sHuman, alpha);
   if(h.attackAnim>0){
     const prog = 1 - h.attackAnim/(h.ilkanAtkTotal||200), st = h.ilkanAtkStep||0;
-    return _ilkanFrame(P, "attack_side", (st + prog)/3.0001, left, h, sHuman, alpha);
+    // cada golpe muestra 3-4 poses distintas de attack_side [anticipo, estocada, tajo, recuperación] (antes 1-2 por golpe)
+    const seq = ILKAN_ATK_SEQ[st % 3], arr = P.sets.attack_side;
+    if(arr) champPackDrawFrame(P, arr[Math.min(arr.length-1, seq[Math.max(0, Math.min(seq.length-1, Math.floor(prog*seq.length)))])], h.x, h.y, sHuman, left, alpha);
+    return !!arr;
   }
   if(h.moving && (h.ilkanAdvanceTimer>0 || ilkanLowHp(h))) return _ilkanFrame(P, "run", ((h.animT||0)/100 % 4)/4, left, h, sHuman, alpha);
   return drawChampPack("ilkan", h, drawScale, alpha);
