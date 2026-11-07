@@ -100,7 +100,22 @@ function netGateServer(url, source){
   netAskUnofficial(url, source);
   return "";
 }
+/* ---- MODO RED LOCAL (tools/lan/host.js, docs/beta-release/MULTIJUGADOR_LOCAL.md) ----------------------------
+   La anfitriona sirve el juego con window.__HORDA_LAN__ = true. En esa página, y SOLO si el host es de la máquina o
+   de una red privada y el protocolo es http, el relay es el del MISMO origen (ws://host:puerto): sin internet, sin
+   cuentas (js/net/account.js no se conecta a ningún lado) y sin pasar por el aviso de servidor no oficial. */
+function netLanPage(){
+  try{
+    if(typeof window==="undefined" || window.__HORDA_LAN__!==true) return false;
+    if(location.protocol!=="http:") return false;
+    const h = String(location.hostname||"").toLowerCase();
+    if(typeof laHordaPrivateHost==="function") return laHordaPrivateHost(h);
+    return h==="localhost" || h==="[::1]" || /^[a-z0-9-]+\.local$/.test(h) || /^(10\.|127\.|192\.168\.|169\.254\.|172\.(1[6-9]|2\d|3[01])\.)/.test(h);
+  }catch(e){ return false; }
+}
+function netLanServer(){ return netLanPage() ? "ws://" + location.host : ""; }
 function netInitialServer(){
+  const lan = netLanServer(); if(lan) return lan;
   const official = netNormalizeServer(NET_CONFIG.serverUrl);
   try{
     const q=new URLSearchParams(location.search).get("server");
@@ -112,12 +127,14 @@ function netInitialServer(){
 }
 function netServerUrl(){ return net.serverOverride ? netNormalizeServer(net.serverOverride) : netInitialServer(); }
 function netEnvironment(url){
+  if(netLanPage()) return {kind:"lan",label:"RED LOCAL · SIN INTERNET"};
   const value=netNormalizeServer(url||netServerUrl());
   if(value==="wss://fondalstudios.com/la-horda/red") return {kind:"primary",label:"FONDAL · ALPHA PRINCIPAL"};
   if(value==="wss://la-horda-relay.onrender.com") return {kind:"legacy",label:"RENDER · SERVIDOR ANTERIOR"};
   return {kind:"test",label:"PRUEBAS · SERVIDOR MANUAL"};
 }
 function netEnvironmentHTML(){
+  if(netLanPage()) return `<div class="net-environment net-environment-lan"><b>📡 RED LOCAL</b><span>Sin internet ni cuenta: no cuenta para ranking, economía ni Brasas.</span></div>`;
   const env=netEnvironment(), escape=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   return `<div class="net-environment"><b>${env.label}</b><span>${escape(netServerUrl())}</span>${env.kind!=="primary"?'<a class="btn secondary small" href="https://fondalstudios.com/la-horda/jugar/">IR A LA ALPHA PRINCIPAL</a>':''}</div>`;
 }
@@ -375,6 +392,7 @@ function netLeaveRoom(){
 }
 function netInviteUrl(){
   if(!net.code) return "";
+  if(typeof lanInviteUrl==="function" && netLanPage()) return lanInviteUrl(net.code); // red local: la dirección de la compu en la WiFi, no "localhost"
   const u = new URL(location.href);
   u.search = "";
   u.hash = "";

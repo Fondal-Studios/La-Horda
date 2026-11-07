@@ -1,0 +1,33 @@
+/* ============================================================
+   css/lan.css — JUGAR EN RED LOCAL (js/net/net-lan.js)
+   Pantalla de dos pasos (Crear sala local · Unirme a sala local), QR de la Sala y aviso de red local.
+   Mismo lenguaje que MODOS Y MULTIJUGADOR (paneles oscuros, borde brasa, VT323). No toca el joystick ni la cámara.
+   ============================================================ */
+#lan-screen{ justify-content:flex-start; font-family:var(--font-retro); overflow-y:auto; }
+#lan-screen .lan-body{ width:100%; max-width:980px; display:flex; flex-direction:column; gap:12px; }
+#lan-screen .lan-intro{ font-size:1.05rem; color:#d8c4af; background:rgba(8,5,3,.72); border:2px dashed rgba(255,170,90,.32); padding:8px 12px; line-height:1.25; }
+#lan-screen .lan-cols{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.2fr); gap:12px; width:100%; align-items:start; }
+#lan-screen .lan-cols.hidden, #lan-screen .lan-card.hidden{ display:none; }
+#lan-screen .lan-card{ max-width:none; margin:0; width:100%; box-sizing:border-box; text-align:left; cursor:default;
+  background:linear-gradient(160deg, rgba(40,22,11,.86), rgba(12,7,4,.93)); box-shadow:inset 0 0 0 2px rgba(255,170,90,.22), 4px 4px 0 #000; padding:0 18px 14px; }
+#lan-screen .lan-card .mode-card-title{ margin:0 -18px 10px; padding:9px 18px 8px; background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.25)); border-bottom:2px solid #000; }
+#lan-screen .lan-card .mode-card-desc{ font-size:1.05rem; color:#d8c4af; line-height:1.25; }
+#lan-screen .lan-modes{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
+#lan-screen .lan-modes .btn{ flex:1 1 150px; min-height:48px; }
+#lan-screen .mode-rooms-list{ min-height:48px; margin:8px 0; padding:6px; box-sizing:border-box; background:rgba(8,5,3,.72); border:2px dashed rgba(255,170,90,.32); }
+#lan-screen .join-code-row{ display:flex; gap:6px; flex-wrap:wrap; align-items:center; margin-top:6px; }
+#lan-screen .join-code-row .net-code-input{ flex:1 1 140px; min-width:0; }
+#lan-screen .join-code-meta{ margin-top:8px; font-size:1.05rem; }
+@media (max-width:600px){ #lan-screen .lan-cols{ grid-template-columns:1fr; } }
+
+/* Sala: QR y enlace para los invitados */
+.lan-share{ display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin:8px 0; padding:8px; background:rgba(8,5,3,.72); border:2px dashed rgba(255,170,90,.32); }
+.lan-share .lan-qr{ flex:none; background:#fff; line-height:0; padding:2px; }
+.lan-share .lan-qr svg{ width:132px; height:132px; display:block; image-rendering:pixelated; }
+.lan-share .lan-share-txt{ flex:1 1 180px; min-width:0; font-size:1.05rem; line-height:1.25; color:#d8c4af; }
+.lan-share .lan-share-txt > b{ display:block; margin-bottom:2px; }
+.lan-share .lan-share-txt > b:last-of-type{ font-size:1.5rem; letter-spacing:.12em; color:#ffcf5c; }
+.lan-share code{ display:block; max-width:100%; overflow-wrap:anywhere; color:#ffcf5c; margin:2px 0 6px; }
+.lan-warn{ color:#ff9a4a; }
+.net-environment-lan{ border-color:#4fd16a; }
+.net-environment-lan b{ color:#4fd16a; }

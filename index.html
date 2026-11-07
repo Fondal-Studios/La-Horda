@@ -67,6 +67,7 @@
 <link rel="stylesheet" href="css/hub-scroll.css">
 <link rel="stylesheet" href="css/lanes.css">
 <link rel="stylesheet" href="css/hud-horda.css">
+<link rel="stylesheet" href="css/lan.css">
 <link rel="stylesheet" href="css/hud-mobile.css">
 <link rel="stylesheet" href="css/first-minute.css">
 <link rel="stylesheet" href="css/legal.css">
@@ -440,6 +441,11 @@
         <div class="mode-card-desc">La historia en orden, de la Arena 01 a la 10. Elegí cualquier arena que ya abriste y rejugala, sola o con amigos.</div>
         <div class="mode-card-note" id="campaign-first-notice">🏆 El primer jugador en completar el juego puede pedir un campeón con diseño propio.</div>
       </button>
+      <!-- JUGAR EN RED LOCAL (js/net/net-lan.js): cooperativo por el WiFi de la casa, sin internet ni cuenta -->
+      <button class="mode-card mode-lan" id="mode-lan-btn">
+        <div class="mode-card-title">📡 JUGAR EN RED LOCAL</div>
+        <div class="mode-card-desc">Cooperativo por el WiFi de tu casa, sin internet ni cuenta: una compu hace de anfitriona y los demás entran desde el celular. Campaña u Horda Infinita. No cuenta para ranking ni economía.</div>
+      </button>
       <button class="mode-card" id="mode-crystal-wars-btn">
         <div class="mode-card-title">💠 GUERRA DE CRISTALES <span class="ui-tag">ALPHA</span></div>
         <div class="mode-card-desc">Guerra de Cristales: 5 contra 5 con bots (2 contra 2 en línea), tres carriles, selva, torres, PvP y tu propia horda. Postgame: se abre al terminar la campaña.</div>
@@ -453,6 +459,48 @@
         <div class="mode-card-desc" id="mode-endless-desc">Supervivencia: oleadas sin fin, cada vez más duras. ¿Hasta dónde llegás?</div>
       </button>
     </div>
+    </div>
+  </div>
+
+  <!-- JUGAR EN RED LOCAL: dos pasos (Crear sala local · Unirme a sala local). Lógica en js/net/net-lan.js, estilos en css/lan.css -->
+  <div id="lan-screen" class="screen hidden">
+    <div class="ui-topbar">
+      <button class="ui-back" id="lan-back-btn">‹ Modos</button>
+      <div class="ui-topbar-title">JUGAR EN RED LOCAL</div>
+      <div class="ui-topbar-spacer"></div>
+    </div>
+    <div class="lan-body">
+      <div class="lan-intro">Cooperativo por el WiFi de la casa. Sin internet ni cuenta: lo que ganes acá no se guarda y no cuenta para ranking, economía ni Brasas. En red local todas las arenas están abiertas.</div>
+      <div class="mode-card lan-card hidden" id="lan-off">
+        <div class="mode-card-title">📡 CÓMO EMPEZAR</div>
+        <div class="mode-card-desc">1) En la compu anfitriona, ejecutá «npm run lan» en la carpeta del juego (o abrí lan.bat en Windows, lan.sh en Mac y Linux).</div>
+        <div class="mode-card-desc">2) Te muestra una dirección y un código QR: abrila en esta compu y en cada celular conectado al mismo WiFi.</div>
+        <div class="mode-card-desc">3) Ya dentro, elegí «Jugar en red local».</div>
+      </div>
+      <div class="lan-cols hidden" id="lan-on">
+        <div class="mode-card lan-card" id="lan-create-card">
+          <div class="mode-card-title">📡 CREAR SALA LOCAL</div>
+          <div class="mode-card-desc">Vos sos la anfitriona: elegí el modo y tu guardián. La Sala muestra el código y el QR para que los demás entren.</div>
+          <div class="lan-modes">
+            <button class="btn" id="lan-create-campaign">⚔ Campaña</button>
+            <button class="btn" id="lan-create-endless">♾ Horda Infinita</button>
+          </div>
+          <div class="net-err join-status" id="lan-create-status"></div>
+        </div>
+        <div class="mode-card lan-card" id="lan-join-card">
+          <div class="mode-card-title">🔑 UNIRME A SALA LOCAL</div>
+          <div class="mode-card-desc">Tocá una sala de esta red, o escribí el código (o pegá el enlace) que te pasó la anfitriona.</div>
+          <div class="mode-rooms-list" id="lan-rooms-list"></div>
+          <div class="net-hint" id="lan-rooms-status"></div>
+          <div class="join-code-row">
+            <input id="lan-join-code" class="multi-input net-code-input" placeholder="Código (ej. QKL58J)" maxlength="200" autocomplete="off" autocorrect="off" spellcheck="false" autocapitalize="characters">
+            <button class="btn small" id="lan-join-paste">📋 Pegar</button>
+            <button class="btn small net-join-go" id="lan-join-btn">UNIRSE</button>
+          </div>
+          <div class="join-code-meta"><label class="net-name">Tu nombre <input id="lan-join-name" maxlength="16" placeholder="Jugador"></label></div>
+          <div class="net-err join-status" id="lan-join-status"></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -984,6 +1032,8 @@
 <script src="js/net/net-chat.js"></script>
 <script src="js/net/net-trade.js"></script>
 <script src="js/net/net-rooms.js"></script>
+<script src="js/net/lan-qr.js"></script>
+<script src="js/net/net-lan.js"></script>
 <script src="js/net/quick-play.js"></script>
 <script src="js/modes/crystal-wars/roster.js"></script><script src="js/modes/crystal-wars/simulation.js"></script><script src="js/modes/crystal-wars/atlas.js"></script><script src="js/modes/crystal-wars/client.js"></script>
 <script src="js/net/net-debug.js"></script>
