@@ -31,11 +31,11 @@ Object.assign(ANIM_PROFILES, {
    Infectado 1.05 · Acechador 0.9 · Hinchado 1.7 · Peregrino 1.15 · Sabueso 0.7 · Chamán 1.4 ·
    Micelio Primigenio 3.0 · La Madre Espora ≈ 8.6 (retrato por partes, mic-render.js) */
 const MIC_ATLAS_META = {
-  "infectado":{"w":190,"h":102,"cols":8,"refH":88,"anchor":0.9412,"sets":{"idle":[9,10],"walk":[11,4,12,4],"atk":[0,1],"burst":[3,2,4],"hit":[7,8],"death":[5,6]},"hMul":2.96},
-  "acechador":{"w":218,"h":105,"cols":8,"refH":88,"anchor":0.9429,"sets":{"idle":[6,7],"walk":[11,12,13,12],"hide":[3],"leap":[8,9,10],"atk":[0,1],"hit":[4,5],"death":[5,2]},"hMul":2.86},
+  "infectado":{"w":259,"h":213,"cols":8,"refH":200,"anchor":0.9765,"sets":{"idle":[0,1],"walk":[8,9,10,11,12,13],"atk":[3,2],"burst":[3,2,4],"hit":[5],"death":[5,6]},"hMul":1.3},
+  "acechador":{"w":211,"h":207,"cols":8,"refH":194,"anchor":0.9758,"sets":{"idle":[0,2],"walk":[6,7,8,9,10,11],"hide":[0],"leap":[1,4,3],"atk":[1,4],"hit":[4],"death":[4,5]},"hMul":1.3},
   "hinchado":{"w":224,"h":144,"cols":8,"refH":124,"anchor":0.9375,"sets":{"idle":[5,8],"walk":[8,5,9,5],"atk":[0,9],"prep":[6,7],"boom":[1],"hit":[3,4],"death":[4,2]},"hMul":3.24},
   "peregrino":{"w":214,"h":133,"cols":8,"refH":99,"anchor":0.9398,"sets":{"idle":[3,8],"walk":[7,8,9,8],"plant":[4,5],"atk":[5,6],"hit":[1,2],"death":[2,0]},"hMul":3.4},
-  "sabueso":{"w":225,"h":105,"cols":8,"refH":82,"anchor":0.9429,"sets":{"idle":[3,4],"walk":[8,9,7,9],"run":[7,9,5,9],"atk":[0,7],"leap":[5,6],"hit":[2],"death":[2,1]},"hMul":2.55},
+  "sabueso":{"w":272,"h":171,"cols":8,"refH":160,"anchor":0.9708,"sets":{"idle":[4,5],"walk":[0,2,1,3],"run":[0,2,1,3],"atk":[3,0],"leap":[3,2],"hit":[4],"death":[4,9]},"hMul":1.3},
   "chaman":{"w":166,"h":205,"cols":8,"refH":163,"anchor":0.9415,"sets":{"idle":[5,6],"walk":[9,10,6,10],"channel":[2,7],"regen":[8],"atk":[0,1],"hit":[4],"death":[4,3]},"hMul":3.8},
   "micelio":{"w":192,"h":100,"cols":8,"refH":82,"anchor":0.93,"sets":{"idle":[16,17,18,19,20],"walk":[33,34,35,36,37],"turn":[30,31,32],"atk":[2,3,4,5,6],"lash":[21,22,23],"rain":[24,18],"germ":[10,11],"absorb":[0,1],"hit":[12,13,14,15],"roar":[25,26,27,28,29],"death":[7,8,9]},"hMul":2.79}
 
