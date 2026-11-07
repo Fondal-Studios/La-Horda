@@ -35,3 +35,6 @@ Gasto de esta ejecución programada: 40 créditos (de 60 permitidos).
 | 2026-11-07 | sin cambio | Myla/Ilkan (tanda arte): 0 créditos Runway; solo pintor/derivación determinista (tools/art/myla/build_anim.py, tools/art/ilkan/build_legion_codex.py) |
 
 ## Runway: 0 creditos gastados en esta pasada (pintor determinista tools/art/painter/enemy_paint.py).
+
+## Enemigos de Fortaleza (pintor determinista) - 2026-11-07
+Sin gasto de Runway (0 creditos, 0 generaciones). Rehechos con tools/art/painter/enemies/ (arana, carcelero, automata, verdugo, prisionero; base comun _brute.py), escala nativa, contorno 1 px, alfa binario, <=48 tonos, cuadros reales idle/walk/atk/hit/death + estados propios (chain, charge, steam, rip, net). Instalados en assets/sprites/enemies/fortaleza/<id>/v2/ y registrados en ENEMY_RUNWAY_SHEETS (el atlas viejo de assets/sprites/arenas/fortaleza/ queda de respaldo). Antes/despues en docs/beta-release/art-repair/enemigos-fortaleza/. Estado: GENERATED_NOT_APPROVED (sin revision independiente de arte).
