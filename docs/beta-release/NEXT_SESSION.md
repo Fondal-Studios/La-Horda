@@ -10,10 +10,18 @@
 - **Multijugador local (LAN)**: `npm run lan` / `lan.bat` / `lan.sh`, docs en `MULTIJUGADOR_LOCAL.md`.
 - **Interfaz**: piso de 14 px, tutoriales por pantalla (`js/ui/screen-tips.js`), guía "Cómo se juega" (7 pestañas), opciones de ayuda.
 
-## Decisiones pendientes del propietario
-1. **Atlas legacy del Mago** (`assets/sprites/champions/mago/atlas.png`, ~2 MB) sigue como respaldo (`MAGO_IMG`): quitarlo exige adaptar `check-thalen-codex-consumer.js` y `roster-loading-test.js` (se parece a relajar gates). ¿Autorizás?
-2. **Runway**: saldo ~22 créditos. Los enemigos necesitan hojas con cuadros reales (no cuadros sueltos); estimar ~8 cr por imagen y varias imágenes por enemigo. ¿Recargar?
-3. Fondal TV en páginas LAN: `js/net/fondal-tv.js` intenta bajar el script de la nube; ¿cortar la llamada?
+## Decisiones del propietario (resueltas 2026-11-07)
+1. **Revisión independiente**: «Cambio la regla del aprobador humano para siempre» → `reviews/POLITICA.json` (`aprobacionHumana:false`); siguen R1, R2, R4, R5, R6, R7. Cada merge a main necesita un registro `reviews/<rama>.json` (QA, arquitectura, staging en `beta/…`, aprobación) cuyo SHA sea el del contenido; solo el registro puede cambiar después. Seguimiento recomendado: proteger main con checks requeridos y CODEOWNERS sobre `reviews/` (las identidades de los revisores son autodeclaradas).
+2. **Pin de Aelith**: actualizado (`reconstruct.py` BASELINE_PINS.registry = `art-source/aelith-recovery-20261102/manifest.json` registry.sha256 = sha256 de `js/champions/ascension/art.js` con la línea de Aelith reemplazada por su original).
+3. **Atlas viejo del Mago**: BORRADO (incluido el de Crystal Wars, repuntado a `mago/codex-v1`) y gates de Thalen adaptados sin debilitarlos.
+4. **Runway**: seguimos con lo que hay (~22 créditos; no recargar por ahora).
+5. **Fondal TV**: NO se toca (función compartida de todos los juegos del estudio). **Modo LAN de compu**: máximo 4 jugadores y una sola cámara alejada en la pantalla de la anfitriona.
+
+## Seguimiento tras el merge
+- Capa de cámara LAN (`js/net/net-lan.js`, `lanCamStep`): confirmar con el otro desarrollador de la cámara local y probar con dos dispositivos reales (lanes/coliseo no deben verse afectados).
+- Endurecer el servidor LAN: bind por defecto a todas las interfaces, CORS `*` en `/lan.json`, WebSocket sin allowlist de Origin; tests de path traversal de `resolveStatic`.
+- `tools/perf/bump-asset-version.js --check` no verifica nada (sale 0).
+- Restos del nombre `candidate-vs-legacy-fallback.png` y el id `mago_codex` en `assets/visual-packages/manifest.v1.json`.
 
 ## Arte pendiente (priorizado)
 - Campeones con idle de 1 cuadro (25): tanque, guerrero, axiom, musashi, cazadora, nigromante, vesper, nahir, baltra, maura, dariel, orsa, tibor, zahra, renko, sira, khepri, velmira, vhal, bront, oriel, solciju, brakk, morveth, aelith.

@@ -155,10 +155,16 @@ const HOST_A = '127.0.0.1', HOST_B = '127.0.0.2', HOST_C = '127.0.0.3';
   // movimiento: lo que hace el invitado lo ve la anfitriona y el otro invitado
   const p0 = await ev(B, () => ({ x: player.x, y: player.y }));
   const d0 = p0.x > 0 ? -1 : 1;   // hacia el centro de la arena (ya no están en el origen)
-  // En CI el cuadro por segundo baja: en vez de un tiempo fijo, se empuja hasta que el invitado recorre >60 px (máx. 8 s).
-  await ev(B, d => { joyVec = { x: d, y: 0 }; }, d0);
-  for (let t = 0; t < 40; t++) { await sleep(200); const q = await ev(B, () => ({ x: player.x, y: player.y })); if (Math.hypot(q.x - p0.x, q.y - p0.y) > 60) break; }
-  await ev(B, () => { joyVec = { x: 0, y: 0 }; }); await sleep(900);
+  // El héroe puede nacer pegado a otro o a un obstáculo: se prueban varias direcciones (hacia el centro, arriba, abajo, afuera) hasta que recorre >60 px.
+  // Además, en CI el cuadro por segundo baja, así que no se usa un tiempo fijo (máx. 3 s por dirección).
+  let moved = false;
+  for (const v of [{ x: d0, y: 0 }, { x: 0, y: -1 }, { x: 0, y: 1 }, { x: -d0, y: 0 }]) {
+    await ev(B, v => { joyVec = v; }, v);
+    for (let t = 0; t < 15 && !moved; t++) { await sleep(200); const q = await ev(B, () => ({ x: player.x, y: player.y })); if (Math.hypot(q.x - p0.x, q.y - p0.y) > 60) moved = true; }
+    await ev(B, () => { joyVec = { x: 0, y: 0 }; });
+    if (moved) break;
+  }
+  await sleep(900);
   const p1 = await ev(B, () => ({ x: player.x, y: player.y }));
   const seen = await Promise.all([A, C].map(c => ev(c, () => { const h = heroes.find(x => x.netName === 'Beto'); return { x: h.x, y: h.y }; })));
   check('partida.invitado_se_mueve_y_los_otros_lo_ven', Math.hypot(p1.x - p0.x, p1.y - p0.y) > 50 && seen.every(s => Math.hypot(s.x - p1.x, s.y - p1.y) < 50), { p0, p1, seen });
