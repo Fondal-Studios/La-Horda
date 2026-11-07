@@ -123,7 +123,10 @@ function laHordaDevMode(){
 // de talento de esos niveles se suman igual que al subir jugando (1 por nivel); no se tocan objetos, oro
 // ni lo que ya estaba completado. Las pruebas automáticas de campaña lo saltean (window.__campaignMode).
 function applyTestUnlock90(){
-  if(save.testUnlock90V1 || !laHordaDevMode()) return;
+  // V2: el roster crece (campeones nuevos y candidatos TESTING como Ilsa, Vorn, Kora…). La bandera nueva vuelve a
+  // aplicarse UNA vez en perfiles de desarrollo que ya habían recibido el V1 antes de que existieran esos campeones.
+  if(save.testUnlock90V2 || !laHordaDevMode()) return;
+  if(typeof CLASSES!=="undefined" && typeof mkChampion==="function") for(const k of Object.keys(CLASSES)) if(!save.champions[k]) save.champions[k] = mkChampion(false);
   for(const k in save.champions){
     const c = save.champions[k];
     c.unlocked = true;
@@ -133,6 +136,7 @@ function applyTestUnlock90(){
   save.legacyOpenArenas = ARENA_ORDER.slice();
   save.divineArenaUnlocked = true;
   save.testUnlock90V1 = true;
+  save.testUnlock90V2 = true;
   persist();
 }
 // PEDIDO DEL USUARIO: todas las skins compradas y puestas, UNA sola vez por perfil (testSkinsV1).

@@ -46,9 +46,8 @@
   document.addEventListener("pointerdown", onPress, {capture:true, passive:true});
   // teclado (PC): mismo feedback
   document.addEventListener("keydown", e=>{
-    // las teclas reales las define el esquema activo (js/core/input-desk.js); sin él, la tabla de siempre
-    const map = {KeyJ:"btn-basic", KeyK:"btn-s1", KeyL:"btn-s2", KeyU:"btn-s3", KeyI:"btn-ult", Digit1:"btn-s1", Digit2:"btn-s2", Digit3:"btn-s3", KeyR:"btn-ult"};
-    const id = typeof deskBtnForCode==="function" ? deskBtnForCode(e.code) : map[e.code], el = id && $(id); if(!el || e.repeat || BTN_IDS.indexOf(id) < 0) return;
+    const map = {KeyJ:"btn-basic", KeyK:"btn-s1", KeyL:"btn-s2", KeyU:"btn-s3", KeyI:"btn-ult", Digit1:"btn-s1", Digit2:"btn-s2", Digit3:"btn-s3", KeyQ:"btn-s1", KeyW:"btn-s2", KeyE:"btn-s3", KeyR:"btn-ult"};
+    const id = map[e.code], el = id && $(id); if(!el || e.repeat) return;
     onPress({target:el});
   }, true);
   // cuando una habilidad vuelve a estar lista (hud.js pone .ready-pop): destello extra de anillo
