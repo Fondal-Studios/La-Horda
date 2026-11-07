@@ -107,12 +107,23 @@ let saveLoadStarted = false;
 // juega la campaña real (guardián de regalo, Arena 01, nivel 1). Los perfiles que ya los recibieron los
 // conservan (quedan marcados en el guardado). Para darlos en un perfil nuevo: abrir el juego con ?dev=1
 // (queda recordado en ese navegador; ?dev=0 lo apaga).
+// ¿El host es de la máquina o de una red PRIVADA (Wi-Fi de casa)? Nunca true para un dominio público ni una IP pública.
+// Sirve para probar en un teléfono por la IP de la compu (http://192.168.x.x:8000) sin abrir el modo dev en internet.
+function laHordaPrivateHost(h){
+  h = String(h||"").toLowerCase();
+  if(h==="localhost" || h==="[::1]" || h==="::1") return true;
+  if(/^[a-z0-9-]+\.local$/.test(h)) return true;                       // mDNS / Bonjour (mi-compu.local)
+  const m = /^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/.exec(h);
+  if(!m) return false;
+  const a = +m[1], b = +m[2]; if([a,b,+m[3],+m[4]].some(n=>n>255)) return false;
+  return a===127 || a===10 || (a===192 && b===168) || (a===172 && b>=16 && b<=31) || (a===169 && b===254);
+}
 function laHordaDevMode(){
   if(typeof window==="undefined" || window.__campaignMode) return false;
   try{
     // Public URLs must never grant the old level-90/test inventory shortcut.
-    // Local debug mode is only a developer convenience, not an anti-cheat boundary.
-    if(!["localhost","127.0.0.1","[::1]"].includes(location.hostname)) return false;
+    // Local debug mode (localhost o red privada) is only a developer convenience, not an anti-cheat boundary.
+    if(!laHordaPrivateHost(location.hostname)) return false;
     const q = new URLSearchParams(location.search).get("dev");
     if(q==="1") localStorage.setItem("laHordaDev", "1"); else if(q==="0") localStorage.removeItem("laHordaDev");
     return localStorage.getItem("laHordaDev")==="1";
@@ -123,7 +134,10 @@ function laHordaDevMode(){
 // de talento de esos niveles se suman igual que al subir jugando (1 por nivel); no se tocan objetos, oro
 // ni lo que ya estaba completado. Las pruebas automáticas de campaña lo saltean (window.__campaignMode).
 function applyTestUnlock90(){
-  if(save.testUnlock90V1 || !laHordaDevMode()) return;
+  // V2: el roster crece (campeones nuevos y candidatos TESTING como Ilsa, Vorn, Kora…). La bandera nueva vuelve a
+  // aplicarse UNA vez en perfiles de desarrollo que ya habían recibido el V1 antes de que existieran esos campeones.
+  if(save.testUnlock90V2 || !laHordaDevMode()) return;
+  if(typeof CLASSES!=="undefined" && typeof mkChampion==="function") for(const k of Object.keys(CLASSES)) if(!save.champions[k]) save.champions[k] = mkChampion(false);
   for(const k in save.champions){
     const c = save.champions[k];
     c.unlocked = true;
@@ -133,6 +147,7 @@ function applyTestUnlock90(){
   save.legacyOpenArenas = ARENA_ORDER.slice();
   save.divineArenaUnlocked = true;
   save.testUnlock90V1 = true;
+  save.testUnlock90V2 = true;
   persist();
 }
 // PEDIDO DEL USUARIO: todas las skins compradas y puestas, UNA sola vez por perfil (testSkinsV1).

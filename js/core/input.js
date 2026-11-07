@@ -88,10 +88,10 @@ bindAbilityButton(document.getElementById("btn-basic"), ()=> triggerBasic(player
 // objetivo; mantener y arrastrar = apuntar con previsualización del área.
 // La definitiva (btn-ult) se maneja en js/ui/ability-inspector.js: tocar = lanzar al soltar, mantener = inspeccionar.
 // Nigromante: Pacto (gasta 5 almas -> la próxima habilidad sale potenciada)
-// Curación de emergencia (1 por nivel). Tecla Q (Clásico) o D (MOBA) en escritorio.
+// Curación de emergencia (1 por nivel). Tecla Q en escritorio.
 function emergPress(){ if(netIsGuest()) netSendToHost({k:"emerg"}); else emergUse(player); }
 bindAbilityButton(document.getElementById("btn-emerg"), emergPress);
-// (la tecla de la curación la maneja js/core/input-desk.js según el esquema activo: Q en Clásico, D en MOBA)
+window.addEventListener("keydown", (ev)=>{ if(ev.repeat || (ev.key!=="q" && ev.key!=="Q") || state!=="playing") return; const tag = ev.target && ev.target.tagName; if(tag==="INPUT" || tag==="TEXTAREA") return; emergPress(); });
 bindAbilityButton(document.getElementById("btn-pact"), ()=>{ if(netIsGuest()) netSendToHost({k:"pact"}); else nigroTogglePact(player); });
 
 let basicHeld = false;
