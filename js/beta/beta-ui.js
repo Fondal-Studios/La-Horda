@@ -186,6 +186,15 @@
     }
     g.restore();
   }
+  // las animaciones de ataque reales disparan partículas/temblor del MUNDO (vfx.js, cámara): en el título no hay mundo,
+  // así que se silencian solo mientras se dibuja la escena (y se restauran siempre).
+  const WORLD_FX = ["vfxBurst", "vfxConverge", "vfxShock", "vfxShake", "vfxRing", "vfxSpark", "vfxText", "playSfx"];
+  function quiet(fn){
+    const saved = {};
+    for(const n of WORLD_FX){ if(typeof window[n]==="function"){ saved[n] = window[n]; window[n] = function(){}; } }
+    try{ fn(); }catch(e){ if(!quiet.warned){ quiet.warned = 1; console.error("title battle", e); } }
+    finally{ for(const n in saved) window[n] = saved[n]; }
+  }
   function heroFrame(now){
     if(scr.classList.contains("hidden")){ raf = 0; return; }
     raf = requestAnimationFrame(heroFrame);
@@ -203,7 +212,7 @@
     if(!parts.length){ for(let i=0;i<42;i++) parts.push({x:brand()*W, y:H*(0.25 + brand()*0.7), v:(8 + brand()*22)*unit, s:(1 + brand()*2)*unit, ph:brand()*6.28, c:brand()<0.55}); }
     const loading = playBtn.disabled;
     if(!loading && !groupsAsked){ groupsAsked = true; try{ if(typeof assetsStartGroup==="function") BATTLE_GROUPS.forEach(assetsStartGroup); }catch(_){} } // carga liviana: solo lo del cuadro, ya con "Tocá para continuar"
-    if(!loading && typeof drawChampFigure==="function" && typeof _cxDrawEnemy==="function") try{ battle(g, W, H, unit, T, still, now); }catch(e){ if(!battle.warned){ battle.warned = 1; console.error("title battle", e); } }
+    if(!loading && typeof drawChampFigure==="function" && typeof _cxDrawEnemy==="function") quiet(()=>battle(g, W, H, unit, T, still, now));
     // polvo dorado y luciérnagas (aditivo; quietos con Reducir movimiento)
     g.globalCompositeOperation = "lighter";
     for(const p of parts){
@@ -264,7 +273,7 @@
     // ---- jefe y comunes ----
     if(bossOK && mB){
       const e = ents[BOSS] || (ents[BOSS] = mkEnemy(BOSS));
-      e.fx = -1; e.animT = T; e.attackAnim = bAtk ? Math.max(1, 620 - cB) : 0; e.stunTimer = bAtk ? 0 : 1;
+      e.fx = -1; e.animT = T; e.attackAnim = bAtk ? Math.min(399, Math.max(1, 620 - cB)) : 0; e.stunTimer = bAtk ? 0 : 1;
       let hb = 0; for(const a of hits.boss) if(a > 0 && a < 260) hb = Math.max(hb, 1 - a/260);
       items.push({y:bossY, draw(){
         g.save(); g.globalCompositeOperation = "lighter";   // aura de jefe (hielo)
