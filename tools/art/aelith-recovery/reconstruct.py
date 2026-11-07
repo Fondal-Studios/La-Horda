@@ -8,7 +8,7 @@ ROOT=Path(__file__).resolve().parents[3]
 OUT=ROOT/'art-source/aelith-recovery-20261102'
 EXPECTED='b76f27906a1dacff0014848b630711fbb0022c4df476f284be6c94afb48bf5eb'
 TASKS=[('preparation','1376af51-77c2-4b5d-a1a4-e9ca1db47aca','51c65b3d9d890a396707d5398eb2e84f95cc8d2137a3c2536806cdec9b98da00'),('windup','ac533293-272c-4925-aa79-8504803747da','28efbcc667933f8756b27c6f5dd039a6ce1d13cf5887004d3dd85252930aca25'),('release','39672591-feca-4a82-a316-ca9eb6bcdf94','41e0c5e2a88a013fda2742622d502e604884c5ccdf2987d142c5fefc7c0bded2')]
-BASELINE_PINS = {'source': '8bb5bb0c807bfc80253ec9e32cc711ddde10346b3c00e49c919d53b0806a67c6', 'registry': 'c0c014f5b4fc1314bc7e8c5cfe49ccaaf579d35a799b64b1ca9b3a82537a23ea', 'reference': '2aa08dcb1414d2b8d4234a2eafbc910fb8a85c512800afbcfced4eabdf3bf738'}
+BASELINE_PINS = {'source': '8bb5bb0c807bfc80253ec9e32cc711ddde10346b3c00e49c919d53b0806a67c6', 'registry': '10414603ce2dd8e296921d26e04010f7c67fa488e61c139f3a066f780508b501', 'reference': '2aa08dcb1414d2b8d4234a2eafbc910fb8a85c512800afbcfced4eabdf3bf738'}
 class GateError(ValueError):pass
 def require(condition,message):
  if not condition:raise GateError(message)
