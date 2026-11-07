@@ -7,7 +7,7 @@
    Subí ASSET_VER (tools/perf/bump-asset-version.js) cada vez que cambia arte instalado. Debe cargar ANTES que cualquier cargador de imágenes.
    El service worker (sw.js) valida por ruta + hash y no se ve afectado por la query.
    ============================================================ */
-window.ASSET_VER = "1fbb9376";
+window.ASSET_VER = "02cd2301";
 (function(){
   try{
     const d = Object.getOwnPropertyDescriptor(HTMLImageElement.prototype, "src");
