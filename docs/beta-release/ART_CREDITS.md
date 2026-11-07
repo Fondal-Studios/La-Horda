@@ -35,3 +35,6 @@ Gasto de esta ejecución programada: 40 créditos (de 60 permitidos).
 | 2026-11-07 | sin cambio | Myla/Ilkan (tanda arte): 0 créditos Runway; solo pintor/derivación determinista (tools/art/myla/build_anim.py, tools/art/ilkan/build_legion_codex.py) |
 
 ## Runway: 0 creditos gastados en esta pasada (pintor determinista tools/art/painter/enemy_paint.py).
+
+## Pintor procedural para enemigos viejos - 2026-11-07: DESCARTADO (0 creditos Runway)
+Se pintaron 28 enemigos (Fortaleza, Abismo, Micelial, Minas, Hielo, Ciudad) con arquetipos deterministas (bruto, cuadrupedo, volador, flotante, aranha). Comparados en partida con arena_lineup.js (antes: docs/beta-release/art-repair/lineup_antes/, con candidatos: docs/beta-release/art-repair/lineup/), el arte actual derivado del Codice es mas detallado y coherente con Titan/Cerbero/Micelio/Dragon de la Forja; los candidatos geometricos quedaron visiblemente mas toscos (torsos poligonales, sin texturas). No se instalo ninguno: el estado de main queda intacto. Lo que falta a esos enemigos es cantidad de cuadros (2-3 de caminata), no fidelidad: la via valida es Runway/arte a mano con hoja completa y referencia del Codice, no el pintor generico.
