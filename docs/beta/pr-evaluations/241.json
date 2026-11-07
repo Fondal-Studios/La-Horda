@@ -1,0 +1,77 @@
+{
+ "id": "241",
+ "branch": "fix/recover-generated-art-20261029",
+ "base": "350a229f435405c85619f8fcf3c0886045ae921f",
+ "evaluatedAt": "2026-11-02T09:56:11.532Z",
+ "steps": {
+  "architect": {
+   "verdict": "NEEDS_WORK",
+   "findings": [
+    {
+     "level": "W",
+     "id": "asset-size",
+     "msg": "Assets >2 MB: art-source/fondal/aelith-codex/source.png, art-source/fondal/guerrero-codex/source.png, art-source/fondal/morveth-codex/source.png"
+    }
+   ],
+   "files": 60,
+   "categories": {
+    "touchesArt": true,
+    "touchesChampions": false,
+    "touchesNet": false,
+    "touchesGameplay": false,
+    "isArtOnly": true
+   }
+  },
+  "merge": {
+   "clean": true,
+   "conflicts": [],
+   "worktree": "/tmp/eval-wt-241"
+  },
+  "diff": {
+   "files": 60,
+   "art": 24,
+   "shortstat": "60 files changed, 31957 insertions(+), 10 deletions(-)"
+  },
+  "qaQuick": {
+   "exit": 1,
+   "summary": "PASS 37   FLAKY 0   FAIL 1   (de 38)",
+   "failed": [
+    "FAIL     0s  tools/visual-package/test.js  (código 1)",
+    "FAIL  tools/visual-package/test.js  (código 1)"
+   ]
+  },
+  "ownTests": [],
+  "extraChecks": {
+   "tools/art/check-tanque-death.js": "PASS 135",
+   "tools/art/check-tanque-hurt.js": "PASS 234",
+   "tools/art/check-guerrero-death.js": "PASS 133",
+   "tools/art/roster-loading-test.js": "PASS 43 campeones/158 packs/3384 renders"
+  },
+  "qaFastAfterIntegration": {
+   "introducedByThisPR": [
+    "tools/items/t_cromas.js",
+    "tools/collection/browser-collection.js",
+    "tools/coliseum/flow.js",
+    "tools/lanes/test-sides.js"
+   ],
+   "method": "mismos tests ejecutados en worktrees de origin/main, de la rama antes de los 5 PR, tras #261 y tras #241: pasan en los tres primeros y fallan tras #241",
+   "causes": {
+    "t_cromas": "DIBUJO.silueta_propia_en_skins_y_preservada_en_cromas: las cromas (recolores del cuerpo viejo) ya no preservan la silueta del cuerpo base nuevo (Tanque, Nigromante, Libertador, Segador...)",
+    "browser-collection / coliseum-flow": "aserciones de \"roster completo\"/colección fallan con los nuevos cuerpos",
+    "lanes/test-sides": "timeout de waitForFunction"
+   }
+  }
+ },
+ "verdict": "RECHAZAR",
+ "improvement": {
+  "status": "blocked_by_regressions"
+ },
+ "verdictInitial": "RECHAZAR",
+ "correction": "Regenerar assets/visual-packages/manifest.v1.json (+4 paquetes: codex_aelith, codex_guerrero, codex_morveth, codex_tanque; 107 válidos, 0 errores). El fallo inicial era mi prueba de contrato detectando registros nuevos, no una regresión del PR.",
+ "verdictInitial2": "ACEPTAR_CON_CORRECCION",
+ "reason": [
+  "Corrección de veredicto: el ACEPTAR_CON_CORRECCION inicial se basó solo en la QA rápida y en los checks de arte; la QA --fast sobre la integración mostró 4 regresiones que este PR introduce.",
+  "Es coherente con el diseño: #241 cambia el cuerpo base de Tanque/Guerrero/Aelith/Morveth, pero cromas y skins siguen derivando del atlas anterior."
+ ],
+ "nextAction": "Devolver a la rama de arte: regenerar/derivar cromas y skins desde los cuerpos nuevos (o declarar explícitamente la separación y ajustar los contratos de silueta con aprobación), y volver a presentar con t_cromas, browser-collection, coliseum/flow y lanes/test-sides en verde."
+}

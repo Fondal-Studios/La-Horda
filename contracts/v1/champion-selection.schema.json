@@ -1,0 +1,16 @@
+{
+  "$id": "fondal/la-horda/ChampionSelection/1.0.0",
+  "title": "ChampionSelection",
+  "description": "Selección de campeón al entrar a una partida: el propio, los aliados (bots o humanos) y los que la cuenta tiene desbloqueados.",
+  "type": "object",
+  "required": ["contract", "version", "selected", "allies", "unlocked"],
+  "additionalProperties": false,
+  "properties": {
+    "contract": { "const": "ChampionSelection" },
+    "version": { "type": "string", "pattern": "^1\\.\\d+\\.\\d+$" },
+    "selected": { "type": "string", "pattern": "^[a-z0-9_]{1,40}$" },
+    "allies": { "type": "array", "maxItems": 3, "items": { "type": "string", "pattern": "^[a-z0-9_]{1,40}$" } },
+    "unlocked": { "type": "array", "maxItems": 200, "items": { "type": "string", "pattern": "^[a-z0-9_]{1,40}$" } },
+    "mode": { "enum": ["campaign", "endless", "multiplayer", "crystal_wars", "coliseum", "divina", "training"] }
+  }
+}

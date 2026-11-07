@@ -21,6 +21,9 @@ function netRoomsUrl(){
 // Pide la lista (una a la vez). Devuelve la lista o null si falló.
 async function netFetchRooms(){
   const url = netRoomsUrl(); if(!url) return null;
+  // Navegador automatizado sin ?server=: no sale a Internet (misma regla que netCapsProbe/netWarmup en net-core.js). Antes esta consulta
+  // llegaba al servidor real y, desde 127.0.0.1, su CORS la rechazaba: error de consola que hacía fallar t_codex y postgame-test.
+  try{ if(navigator.webdriver && !/[?&]server=/.test(location.search)) return null; }catch(e){}
   if(netRooms.busy) return netRooms.list;
   netRooms.busy = true; netRooms.at = performance.now(); // también si falla: no reintenta en cada segundo
   let t=0;

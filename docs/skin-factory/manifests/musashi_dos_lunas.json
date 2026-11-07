@@ -1,0 +1,64 @@
+{
+ "skin": "musashi_dos_lunas",
+ "champion": "musashi",
+ "tier": "epica",
+ "name": "Musashi, Dos Lunas",
+ "selectionReason": "Una sola apariencia; dos filos permiten FX de doble luna sin cambiar alcance.",
+ "identity": "Rōnin con haori nocturno y dos filos con vainas de luna creciente/menguante. Paleta: índigo #2a2f5a, plata lunar #cfd8ff, rojo sello #b8322f en detalles.",
+ "story": "Juró no volver a desenvainar hasta que dos lunas coincidieran. Esa noche llegó, y sus dos filos aprendieron a brillar con luz prestada.",
+ "abilityFx": "Cortes: arcos plateados con halo lunar; paso fantasma: dos medias lunas que se unen. Sin cambios de alcance.",
+ "constraints": {
+  "stats": false,
+  "damage": false,
+  "range": false,
+  "hitbox": false,
+  "cooldown": false,
+  "silhouette": "idéntica al cuerpo base"
+ },
+ "assets": {
+  "concept_art": {
+   "path": null,
+   "status": "NOT_PRODUCED"
+  },
+  "identity_sheet": {
+   "path": "docs/skin-factory/dossiers.md",
+   "status": "WRITTEN"
+  },
+  "sprite_atlas": {
+   "path": null,
+   "status": "NOT_PRODUCED"
+  },
+  "animations_move_combat": {
+   "path": null,
+   "status": "NOT_PRODUCED"
+  },
+  "skill_fx": {
+   "path": null,
+   "status": "NOT_PRODUCED"
+  },
+  "ultimate_fx": {
+   "path": null,
+   "status": "NOT_PRODUCED"
+  },
+  "select_preview": {
+   "path": null,
+   "status": "NOT_PRODUCED"
+  },
+  "story": {
+   "path": "docs/skin-factory/dossiers.md",
+   "status": "WRITTEN"
+  },
+  "icon": {
+   "path": null,
+   "status": "NOT_PRODUCED"
+  },
+  "commercial_card": {
+   "path": null,
+   "status": "NOT_PRODUCED"
+  }
+ },
+ "status": "DESIGN_ONLY",
+ "blockers": [
+  "Sin capacidad de generación/pintura de imágenes en la sesión autónoma: concept art, atlas 8 columnas y paneles de FX deben ser pintados (flujo tools/factory + Painter) y revisados por un evaluador independiente."
+ ]
+}

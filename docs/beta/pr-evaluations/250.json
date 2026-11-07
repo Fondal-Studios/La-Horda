@@ -1,0 +1,65 @@
+{
+ "id": "250",
+ "branch": "feature/beta-premium-skins",
+ "base": "a50ca32ca3044f189c8ccd1644e8f46b1aa0ce3c",
+ "evaluatedAt": "2026-11-02T10:02:20.028Z",
+ "steps": {
+  "architect": {
+   "verdict": "NEEDS_WORK",
+   "findings": [
+    {
+     "level": "W",
+     "id": "no-tests",
+     "msg": "Cambia gameplay (js/) sin pruebas asociadas."
+    }
+   ],
+   "files": 11,
+   "categories": {
+    "touchesArt": false,
+    "touchesChampions": false,
+    "touchesNet": false,
+    "touchesGameplay": true,
+    "isArtOnly": false
+   }
+  },
+  "merge": {
+   "clean": true,
+   "conflicts": [],
+   "worktree": "/tmp/eval-wt-250"
+  },
+  "diff": {
+   "files": 11,
+   "art": 0,
+   "shortstat": "11 files changed, 1740 insertions(+)"
+  },
+  "qaQuick": {
+   "exit": 0,
+   "summary": "PASS 38   FLAKY 0   FAIL 0   (de 38)",
+   "failed": []
+  },
+  "ownTests": [
+   {
+    "file": "tools/skin-factory/t_catalog.js",
+    "exit": 2
+   }
+  ],
+  "ownTestsRerun": {
+   "tools/skin-factory/t_catalog.js": "PASS 56 comprobaciones (con sitio en 8771)"
+  }
+ },
+ "verdict": "ACEPTAR_TECNICO",
+ "improvement": {
+  "status": "tooling_only",
+  "evidence": "Inventario de 48 skins + manifiestos de 3 candidatas para guiar la producción; el módulo cosmetic-catalog.js no está cableado a index.html, así que no cambia nada para el jugador.",
+  "caveats": [
+   "No es mejora visible para jugadores",
+   "Precios de packs son simulados; no son una decisión de Economía V2"
+  ]
+ },
+ "verdictInitial": "RECHAZAR",
+ "reason": [
+  "El código 2 inicial era del arnés (puerto fijo 8771).",
+  "Fusión limpia, QA 38/38, sin hallazgos del arquitecto, 0 assets.",
+  "Pureza verificada por su prueba: no toca el guardado, sin ventaja competitiva (mismo sello de estadísticas), compras solo simuladas (moneda TEST, simulated:true); coherente con Cosmetic Bible (Alpha: sin checkout ni precios reales)."
+ ]
+}

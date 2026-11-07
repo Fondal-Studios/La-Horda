@@ -1,0 +1,141 @@
+{
+ "fuente": "Art Bible §2 (Master Reference: Tanque) + hojas encargadas del roster; Códice: assets/ui/codex/*",
+ "reglas": {
+  "alfa": "nítido 0/255 (semi_alpha ≈ 0)",
+  "contorno": "1 px oscuro uniforme",
+  "sombreado": "2-3 tonos por color, sin degradé suave",
+  "densidad": "1 u/px (canon), ≤ 2,4 u/px (docs/art-gate/pixel-density-report.json)",
+  "luz": "arriba-izquierda, sombra de contacto elíptica",
+  "siluetas": "chibi: cabeza ~40-45 % de la altura; lectura inmediata en móvil",
+  "animación": "pies estables entre cuadros (±2 px), sin saltos de escala > 6 %"
+ },
+ "metricas": {
+  "master": {
+   "frames": 2,
+   "colors": {
+    "p10": 871.8,
+    "median": 919.0,
+    "p90": 966.2,
+    "min_ok": 741.03,
+    "max_ok": 1111.13
+   },
+   "outline": {
+    "p10": 0.958,
+    "median": 0.968,
+    "p90": 0.978,
+    "min_ok": 0.814,
+    "max_ok": 1.124
+   },
+   "soft": {
+    "p10": 0.109,
+    "median": 0.123,
+    "p90": 0.137,
+    "min_ok": 0.092,
+    "max_ok": 0.158
+   },
+   "detail": {
+    "p10": 0.575,
+    "median": 0.597,
+    "p90": 0.619,
+    "min_ok": 0.489,
+    "max_ok": 0.711
+   },
+   "shade_sd": {
+    "p10": 56.09,
+    "median": 58.05,
+    "p90": 60.01,
+    "min_ok": 47.677,
+    "max_ok": 69.011
+   }
+  },
+  "roster": {
+   "frames": 153,
+   "colors": {
+    "p10": 154.6,
+    "median": 456.0,
+    "p90": 1411.4,
+    "min_ok": 131.41,
+    "max_ok": 1623.11
+   },
+   "outline": {
+    "p10": 0.791,
+    "median": 0.977,
+    "p90": 1.0,
+    "min_ok": 0.673,
+    "max_ok": 1.15
+   },
+   "soft": {
+    "p10": 0.05,
+    "median": 0.12,
+    "p90": 0.286,
+    "min_ok": 0.043,
+    "max_ok": 0.329
+   },
+   "detail": {
+    "p10": 0.348,
+    "median": 0.548,
+    "p90": 0.759,
+    "min_ok": 0.296,
+    "max_ok": 0.873
+   },
+   "shade_sd": {
+    "p10": 27.34,
+    "median": 39.1,
+    "p90": 64.8,
+    "min_ok": 23.239,
+    "max_ok": 74.52
+   }
+  },
+  "legibilidad_min_cuerpo_vs_suelo_ruinas": 0.201
+ },
+ "paleta_roster_top24": [
+  "#080808",
+  "#181818",
+  "#282828",
+  "#181828",
+  "#383838",
+  "#281818",
+  "#080818",
+  "#484848",
+  "#989878",
+  "#281828",
+  "#282838",
+  "#180818",
+  "#a87848",
+  "#382818",
+  "#483838",
+  "#181838",
+  "#180808",
+  "#382828",
+  "#382838",
+  "#584848",
+  "#181808",
+  "#684828",
+  "#484838",
+  "#081828"
+ ],
+ "paginas_codex_referencia": [
+  "assets/ui/codex/arenas/abismo.jpg",
+  "assets/ui/codex/arenas/acuatica.jpg",
+  "assets/ui/codex/arenas/bosque.jpg",
+  "assets/ui/codex/arenas/ciudad.jpg",
+  "assets/ui/codex/arenas/divina.jpg",
+  "assets/ui/codex/arenas/fortaleza.jpg",
+  "assets/ui/codex/arenas/hielo.jpg",
+  "assets/ui/codex/arenas/infernal.jpg",
+  "assets/ui/codex/arenas/laberinto.jpg",
+  "assets/ui/codex/arenas/micelial.jpg",
+  "assets/ui/codex/arenas/minas.jpg",
+  "assets/ui/codex/minas/acechador.jpg",
+  "assets/ui/codex/minas/cerbero.jpg",
+  "assets/ui/codex/minas/consumidor.jpg",
+  "assets/ui/codex/minas/devoraluz.jpg",
+  "assets/ui/codex/minas/devoraluz_full.jpg",
+  "assets/ui/codex/minas/esclavo.jpg",
+  "assets/ui/codex/minas/escupidor.jpg",
+  "assets/ui/codex/minas/insecto.jpg",
+  "assets/ui/codex/minas/minero.jpg",
+  "assets/ui/codex/minas/titan.jpg",
+  "assets/ui/codex/minas/titan_full.jpg"
+ ]
+}

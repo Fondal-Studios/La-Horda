@@ -1,0 +1,3664 @@
+{
+ "refs": "ART_DIRECTION_REFS.json",
+ "sets": [
+  {
+   "set": "assets/sprites/enemies/acuatica/anguila_electrica",
+   "score": 80.1,
+   "critical": 0,
+   "pass": false,
+   "frames": 15,
+   "parts": {
+    "alfa": 100,
+    "estilo": 50,
+    "animacion": 76,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster",
+    "detalle fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/enemies/acuatica/cangrejo_acorazado",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 3,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/enemies/acuatica/medusa_electrica",
+   "score": 85.0,
+   "critical": 0,
+   "pass": false,
+   "frames": 3,
+   "parts": {
+    "alfa": 100,
+    "estilo": 50,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster",
+    "detalle fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/enemies/acuatica/sirena_abisal",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/enemies/acuatica/tiburon_blanco",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 4,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/enemies/acuatica/tiburon_joven",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 4,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/enemies/bosque/bestia_bosque",
+   "score": 72.5,
+   "critical": 0,
+   "pass": false,
+   "frames": 17,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 0,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster",
+    "pies inestables entre cuadros (±16 px)"
+   ]
+  },
+  {
+   "set": "assets/sprites/enemies/bosque/cu_sith",
+   "score": 85.0,
+   "critical": 0,
+   "pass": false,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 50,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster",
+    "detalle fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/enemies/bosque/cu_sith/v3",
+   "score": 85.0,
+   "critical": 0,
+   "pass": false,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 50,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster",
+    "detalle fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/enemies/bosque/dama_bosque",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/enemies/bosque/dama_bosque/v2",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/enemies/bosque/duende_bosque",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 16,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/enemies/bosque/enjambre_hadas",
+   "score": 85.0,
+   "critical": 0,
+   "pass": false,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 50,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster",
+    "detalle fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/enemies/bosque/enjambre_hadas/v3",
+   "score": 85.0,
+   "critical": 0,
+   "pass": false,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 50,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster",
+    "detalle fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/enemies/bosque/ent",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 20,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "detalle fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/enemies/hielo/angel_hielo",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/enemies/hielo/angel_hielo/v2",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/enemies/hielo/cristal_servo",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/enemies/hielo/cristal_volador",
+   "score": 91.7,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 59,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/enemies/hielo/demonio_hielo_fuego",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 16,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "detalle fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/enemies/hielo/dragon_hielo",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/enemies/hielo/dragon_hielo/v2",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/enemies/hielo/dragoncito_hielo",
+   "score": 85.0,
+   "critical": 0,
+   "pass": false,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 50,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster",
+    "detalle fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/enemies/hielo/dragoncito_hielo/v2",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/enemies/hielo/golem_cristal",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/enemies/hielo/golem_hielo",
+   "score": 92.2,
+   "critical": 0,
+   "pass": true,
+   "frames": 16,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 99,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "detalle fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/enemies/hielo/hada_escarcha",
+   "score": 77.5,
+   "critical": 0,
+   "pass": false,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 25,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster",
+    "detalle fuera del rango del roster",
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/enemies/hielo/lobo_artico",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/enemies/infernal/demonio_mago",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/enemies/infernal/demonio_menor",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/enemies/infernal/esqueleto",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/enemies/infernal/esqueleto_h",
+   "score": 92.2,
+   "critical": 0,
+   "pass": true,
+   "frames": 16,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 99,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "detalle fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/enemies/infernal/golem",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/enemies/infernal/golem/v2",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/enemies/infernal/zombie",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 14,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "detalle fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/enemies/laberinto/druida_arena",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "detalle fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/enemies/laberinto/escorpion_gigante",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "detalle fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/enemies/laberinto/esfinge",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/enemies/laberinto/golem_piedra",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/enemies/laberinto/golem_piedra/v2",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/enemies/laberinto/medusa",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "detalle fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/bosses/acuatica/kraken_joven",
+   "score": 85.6,
+   "critical": 0,
+   "pass": false,
+   "frames": 20,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 28,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "pies inestables entre cuadros (±7 px)"
+   ]
+  },
+  {
+   "set": "assets/sprites/bosses/acuatica/leviatan",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 15,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/bosses/bosque/doblador_arquera",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/bosses/bosque/doblador_arquera/v2",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/bosses/bosque/doblador_clerigo",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/bosses/bosque/doblador_clerigo/v2",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/bosses/bosque/doblador_guerrero",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/bosses/bosque/doblador_guerrero/v2",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/bosses/bosque/doblador_picaro",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/bosses/bosque/doblador_picaro/v2",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/bosses/bosque/guardian_ancestral",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/bosses/bosque/jinete_sin_cabeza",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/bosses/bosque/jinete_sin_cabeza/v2",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/bosses/hielo/angel_caido_hielo",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/bosses/hielo/angel_caido_hielo/v2",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/bosses/hielo/mago_hielo_cristal",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/bosses/hielo/mago_hielo_cristal/v2",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/bosses/infernal/demonio_mayor",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/bosses/infernal/hechicero",
+   "score": 80.4,
+   "critical": 1,
+   "pass": false,
+   "frames": 21,
+   "parts": {
+    "alfa": 39,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "1 cuadros con silueta tocando el borde",
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/bosses/infernal/hechicero/angel",
+   "score": 85.0,
+   "critical": 0,
+   "pass": false,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 50,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster",
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/bosses/infernal/hechicero/fx",
+   "score": 80.4,
+   "critical": 0,
+   "pass": false,
+   "frames": 16,
+   "parts": {
+    "alfa": 39,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/bosses/infernal/hechicero/golem",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/bosses/infernal/hechicero/golem/v2",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "detalle fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/bosses/laberinto/guardian_laberinto",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 19,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "detalle fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/bosses/laberinto/minotauro",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 3,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/bosses/laberinto/minotauro/v3",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/aelith",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/aelith/skins/aelith_alt1",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/aelith/skins/quality_aelith",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/aurelia",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/aurelia/skins/aurelia_alt1",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/aurelia/skins/aurelia_alt2",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/axiom",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 48,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "detalle fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/axiom/cromas/piedra",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/axiom/skins/axiom_piedra",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/axiom/skins/sistema",
+   "score": 91.4,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 95,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/axiom/v2",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/baltra",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/baltra/skins/baltra_set",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/baltra/skins/baltra_skin",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/brakk",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/brakk/skins/brakk_alt1",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "detalle fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/brakk/skins/quality_brakk",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/brasa",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/brasa/skins/brasa_abisal",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/brasa/skins/ultimo_turno",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/bront",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/bront/skins/bront_alt1",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/bront/skins/bront_alt2",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/cazadora",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 18,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/cazadora/cromas/escarcha",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/cazadora/skins/cazadora_escarcha",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/cazadora/skins/manada",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/cazadora/v2",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/cazadora/wolf",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 4,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/dariel",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/dariel/skins/dariel_luthier",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/dariel/skins/dariel_set",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/dariel/skins/dariel_skin",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/eslabon",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/eslabon/skins/eslabon_porcelana",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/eslabon/skins/juramento_roto",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/facu_gm",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/facu_gm/skins/facu_gm_alt1",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/farolero",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/farolero/skins/farolero_guardavia",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/farolero/skins/lumbre_persistente",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/guerrero",
+   "score": 82.5,
+   "critical": 0,
+   "pass": false,
+   "frames": 2,
+   "parts": {
+    "alfa": 50,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "degradé fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/guerrero/skins/nocturno",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/guerrero/v3",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/ilkan/skins/legion",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/ilkan/v2",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 16,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/ilkan/v2/fx",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 14,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/iria",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/iria/skins/hilo_umbral",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/khepri",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/khepri/skins/khepri_alt1",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/khepri/skins/khepri_alt2",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/libertador/cromas/ancestral",
+   "score": 90.6,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 91,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/libertador/cromas/escarcha",
+   "score": 90.6,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 91,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/libertador/skins/granadero",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/libertador/skins/libertador_ancestral",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/libertador/skins/libertador_escarcha",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/libertador/v2",
+   "score": 72.5,
+   "critical": 1,
+   "pass": false,
+   "frames": 21,
+   "parts": {
+    "alfa": 0,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "bordes semitransparentes (máx 50.1% de píxeles opacos)",
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/libertador/v2/fx",
+   "score": 72.5,
+   "critical": 1,
+   "pass": false,
+   "frames": 18,
+   "parts": {
+    "alfa": 0,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "bordes semitransparentes (máx 50.1% de píxeles opacos)",
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/libertador/v3",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/mago",
+   "score": 75.3,
+   "critical": 0,
+   "pass": false,
+   "frames": 1,
+   "parts": {
+    "alfa": 52,
+    "estilo": 50,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "degradé fuera del rango del roster",
+    "detalle fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/mago/skins/convergencia",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/maura",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/maura/skins/maura_set",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/maura/skins/maura_skin",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/morveth",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "detalle fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/morveth/skins/morveth_alt1",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/morveth/skins/quality_morveth",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "detalle fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/morwen",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/morwen/skins/morwen_escarcha",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/morwen/skins/vidrio_negro",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/musashi",
+   "score": 93.4,
+   "critical": 1,
+   "pass": false,
+   "frames": 25,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 67,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "1 cuadros con silueta tocando el borde"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/musashi/cromas/ancestral",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/musashi/skins/errante",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/musashi/skins/musashi_ancestral",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/musashi/v2",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/myla",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 3,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/myla/cromas/myla_arandanos",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/myla/skins/merienda_magica",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/myla/skins/myla_arandanos",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/myla/v2",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/nahir",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/nahir/skins/nahir_set",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/nahir/skins/nahir_skin",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/nano_gm",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/nano_gm/codex-v2",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/nano_gm/skins/nano_gm_alt1",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/nigromante",
+   "score": 90.8,
+   "critical": 0,
+   "pass": true,
+   "frames": 54,
+   "parts": {
+    "alfa": 91,
+    "estilo": 100,
+    "animacion": 63,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/nigromante/coloso",
+   "score": 85.0,
+   "critical": 0,
+   "pass": false,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 50,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "degradé fuera del rango del roster",
+    "detalle fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/nigromante/cromas/escarcha",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/nigromante/cromas/piedra",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/nigromante/demon",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 7,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/nigromante/golem",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/nigromante/golems/fire",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/nigromante/golems/ice",
+   "score": 77.3,
+   "critical": 0,
+   "pass": false,
+   "frames": 1,
+   "parts": {
+    "alfa": 99,
+    "estilo": 25,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "contorno fuera del rango del roster",
+    "detalle fuera del rango del roster",
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/nigromante/golems/stone",
+   "score": 98.3,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 91,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/nigromante/skeleton",
+   "score": 94.7,
+   "critical": 0,
+   "pass": true,
+   "frames": 9,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 74,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/nigromante/skeleton/v2",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/nigromante/skins/nigromante_escarcha",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/nigromante/skins/nigromante_piedra",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/nigromante/skins/requiem",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/nigromante/v2",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/oriel",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/oriel/skins/oriel_alt1",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/oriel/skins/oriel_alt2",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/orsa",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/orsa/skins/orsa_set",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/orsa/skins/orsa_skin",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/profeta",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 6,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/profeta/cromas/ancestral",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/profeta/skins/profecia",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/profeta/skins/profeta_ancestral",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/profeta/unused-skill-icons",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 4,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/profeta/v2",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/renko",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/renko/skins/renko_set",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/renko/skins/renko_skin",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/saelis",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/saelis/skins/saelis_alt1",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/saelis/skins/saelis_alt2",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/segador",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 66,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/segador/cromas/escarcha",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/segador/skins/marea",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/segador/skins/segador_escarcha",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/segador/v2",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/sira",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/sira/skins/sira_set",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/sira/skins/sira_skin",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/solciju",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/solciju/skins/quality_solciju",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/solciju/skins/solciju_alt1",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/soporte",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 3,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/soporte/skins/custodio",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/soporte/v2",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/soporte/v3",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/tanque",
+   "score": 92.8,
+   "critical": 0,
+   "pass": true,
+   "frames": 3,
+   "parts": {
+    "alfa": 64,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/tanque/cromas/ancestral",
+   "score": 59.8,
+   "critical": 1,
+   "pass": false,
+   "frames": 4,
+   "parts": {
+    "alfa": 11,
+    "estilo": 25,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "bordes semitransparentes (máx 37.4% de píxeles opacos)",
+    "contorno fuera del rango del roster",
+    "degradé fuera del rango del roster",
+    "detalle fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/tanque/cromas/juicio",
+   "score": 59.8,
+   "critical": 1,
+   "pass": false,
+   "frames": 4,
+   "parts": {
+    "alfa": 11,
+    "estilo": 25,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "bordes semitransparentes (máx 37.4% de píxeles opacos)",
+    "contorno fuera del rango del roster",
+    "degradé fuera del rango del roster",
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/tanque/skins/baluarte",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/tanque/skins/tanque_ancestral",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/tanque/skins/tanque_juicio",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/tanque/v3",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 2,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/tibor",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/tibor/skins/tibor_set",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/tibor/skins/tibor_skin",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/velmira",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/velmira/skins/velmira_alt1",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/velmira/skins/velmira_alt2",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/vesper",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/vesper/skins/vesper_set",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/vesper/skins/vesper_skin",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/veyra",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/veyra/skins/quality_veyra",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/veyra/skins/veyra_alt1",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/vhal",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/vhal/skins/vhal_alt1",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/vhal/skins/vhal_alt2",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/ynara",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/ynara/cromas/ynara_celeste",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/ynara/skins/santa_paciencia",
+   "score": 92.5,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 75,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": [
+    "sombreado fuera del rango del roster"
+   ]
+  },
+  {
+   "set": "assets/sprites/champions/ynara/skins/ynara_celeste",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/zahra",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/zahra/skins/zahra_set",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  },
+  {
+   "set": "assets/sprites/champions/zahra/skins/zahra_skin",
+   "score": 100.0,
+   "critical": 0,
+   "pass": true,
+   "frames": 1,
+   "parts": {
+    "alfa": 100,
+    "estilo": 100,
+    "animacion": 100,
+    "legibilidad": 100,
+    "integridad": 100
+   },
+   "defects": []
+  }
+ ]
+}

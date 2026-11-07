@@ -1,0 +1,39 @@
+{
+ "name": "Economía y seguridad",
+ "entryGates": [
+  "node tools/quality/qa-manifest-check.js",
+  "node tools/contracts/t_contract_schemas.js",
+  "node tools/contracts/t_contract_economy.js",
+  "node tools/agents/test-agents.js"
+ ],
+ "acceptance": [
+  {
+   "id": "A1",
+   "text": "El saldo sube exactamente una vez por partida aunque el cierre se repita con otras claves",
+   "cmd": "node tools/contracts/t_contract_economy.js"
+  },
+  {
+   "id": "A2",
+   "text": "Batería de servidor verde con la Economía V2 apagada y encendida",
+   "cmd": "cd server && HORDA_ITEM_ECONOMY=0 npm test && HORDA_ITEM_ECONOMY=1 npm test"
+  },
+  {
+   "id": "A3",
+   "text": "GameResult de una partida cerrada sale eligible sin datos extra (el servidor persiste outcome/claimed)",
+   "cmd": "node tools/economy/t_game_result_eligible.js",
+   "pending": "tools/economy/t_game_result_eligible.js"
+  },
+  {
+   "id": "A4",
+   "text": "Todo asiento de acreditación incluye monto, moneda, cuenta y evidenceRef",
+   "cmd": "node tools/economy/t_audit_completeness.js",
+   "pending": "tools/economy/t_audit_completeness.js"
+  },
+  {
+   "id": "A5",
+   "text": "Solo cambian archivos del agente A",
+   "cmd": "node tools/agents/check-diff.js --agent A"
+  }
+ ],
+ "id": "A"
+}
