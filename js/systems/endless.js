@@ -32,7 +32,7 @@ try{ Object.defineProperty(window, "endlessMode", {get:()=>endlessActive, config
 const EN = {
   id:0, round:1, score:0, mutators:[], week:"", arenas:[], stintArena:null, stintKind:"sub", baseLevel:1,
   bossKills:0, rescues:0, rescueFails:0, ended:false, rng:null, rescueAt:-1, rescueSeq:0, prevArena:null,
-  endReason:"", synergies:0,
+  endReason:"", synergies:0, relics:0, hrelPhase:0, hrelOffer:[],
   local:null // lo propio de ESTE jugador (botín, oro y XP ganados): no viaja
 };
 
@@ -93,6 +93,7 @@ function endlessBeginRun(){
   EN.rng = _enMulberry(EN.id ^ 0x9e3779b9);
   EN.round = 1; EN.score = 0; EN.mutators = wk.ids.slice(); EN.week = wk.key; EN.arenas = [];
   EN.bossKills = 0; EN.rescues = 0; EN.rescueFails = 0; EN.ended = false; EN.rescueAt = -1; EN.prevArena = null; EN.endReason = ""; EN.synergies = 0;
+  if(typeof hrelReset==="function") hrelReset(); // reliquias: cada partida empieza limpia
   if(EN.returnArena===undefined || !endlessActive) EN.returnArena = currentArena;
   endlessRescues = [];
   endlessActive = true;
@@ -120,6 +121,7 @@ function endlessOnRunStart(){
   runLevel = endlessLevelForRound(EN.round);
   if(!EN.local || EN.local.id!==EN.id) endlessLocalReset();
   endlessRescues = [];
+  if(typeof hrelReset==="function") hrelReset();
   endlessStat("endless_start", EN.round);
   runLater(400, ()=>{ if(endlessOn()) endlessArenaCard(true); });
 }
@@ -171,6 +173,7 @@ function endlessBossDown(){
 }
 // Después de elegir refuerzo: próxima ronda (y, cada 5, próxima arena).
 function endlessAdvance(){
+  EN.hrelPhase = 0; EN.hrelOffer = [];
   EN.round++;
   if((EN.round - 1) % ENDLESS_CFG.roundsPerArena === 0){
     EN.prevArena = currentArena;
@@ -330,6 +333,7 @@ function endlessOpenBuffChoice(){
       if(netIsHost()){ cards.innerHTML = `<div class="net-wait">Elegiste <b>${buffOptName(opt)}</b>.</div>`; netHostPickedLocal(); return; }
       player.hp = Math.min(player.maxHp, player.hp + player.maxHp*ENDLESS_CFG.hpRefillOnRound);
       player.energy = player.maxEnergy;
+      if(typeof hrelNextPhase==="function" && hrelNextPhase()) return; // reliquias: segunda elección tras el jefe (js/systems/horde-relics.js)
       setState("playing");
       endlessAdvance();
     });
@@ -466,6 +470,7 @@ function endlessUpdate(dt){
   if(!endlessActive) return;
   endlessTrackSurvival();
   if(runEnding) return;
+  if(typeof hrelUpdate==="function") hrelUpdate(dt); // reliquias: efectos periódicos
   if(EN.rescueAt >= 0 && levelTimer >= EN.rescueAt && !bossActive && !levelClearing){ EN.rescueAt = -1; endlessSpawnRescue(); }
   for(let i=endlessRescues.length-1;i>=0;i--){
     const t = endlessRescues[i];
@@ -540,7 +545,7 @@ function endlessNetGet(){
   // claves con prefijo "en": las arenas agregan nombres cortos a NET_SKIP_KEYS (p.ej. "sc" en la Ciudad)
   if(!endlessActive) return 0;
   return {enId:EN.id, enR:EN.round, enSc:EN.score, enMu:EN.mutators.join(","), enWk:EN.week, enAr:EN.arenas.join(","), enSk:EN.stintKind, enBl:EN.baseLevel,
-    enBk:EN.bossKills, enRs:EN.rescues, enRf:EN.rescueFails, enSy:EN.synergies,
+    enBk:EN.bossKills, enRs:EN.rescues, enRf:EN.rescueFails, enSy:EN.synergies, enRl:(EN.hrelOffer||[]).join(","), enRc:EN.relics|0,
     enRq:endlessRescues.map(t=>({id:t.id, kind:t.kind, x:t.x, y:t.y, r:t.r, prog:Math.round(t.prog||0), dur:t.dur, t:Math.round(t.t), tmax:t.tmax, h:t.h, done:t.done?1:0, fade:Math.round(t.fade||0)}))};
 }
 function endlessNetSet(v){
@@ -549,7 +554,7 @@ function endlessNetSet(v){
   endlessActive = true;
   EN.id = v.enId; EN.round = v.enR|0; EN.score = v.enSc|0; EN.mutators = v.enMu ? String(v.enMu).split(",") : []; EN.week = v.enWk || "";
   EN.arenas = v.enAr ? String(v.enAr).split(",") : []; EN.stintKind = v.enSk || "sub"; EN.baseLevel = v.enBl|0 || 1;
-  EN.bossKills = v.enBk|0; EN.rescues = v.enRs|0; EN.rescueFails = v.enRf|0; EN.synergies = v.enSy|0;
+  EN.bossKills = v.enBk|0; EN.rescues = v.enRs|0; EN.rescueFails = v.enRf|0; EN.synergies = v.enSy|0; EN.hrelOffer = v.enRl ? String(v.enRl).split(",") : []; EN.relics = v.enRc|0;
   endlessRescues = (v.enRq||[]).map(t=>Object.assign({}, t, {done:!!t.done}));
   if(fresh){ EN.ended = false; if(netIsGuest()) endlessLocalReset(); }
 }
@@ -649,6 +654,7 @@ function endlessShowResults(){
       <div class="res-row"><span>Récord de ${(CLASSES[cls]||{}).name||cls}</span><b>${_enFmt(G.score)} · ronda ${G.round||0}</b></div>
       <div class="res-row"><span>Récord global</span><b>${_enFmt(S.best.score)} · ronda ${S.best.round||0}</b></div>
     </div>
+    ${typeof hrelResultsHTML==="function" ? hrelResultsHTML(L.hrel || player) : ""}
     <div class="en-res-sub">Arenas recorridas</div><div class="en-res-arenas">${arenas}</div>
 </div>`;
   if(typeof _lbRenderRunLine==="function") _lbRenderRunLine(); // "Puesto #N esta temporada" (o el aviso para invitados)
@@ -670,6 +676,7 @@ function endlessShowResults(){
 // Sale del modo (vuelve la arena de campaña que estaba elegida).
 function endlessFinish(){
   endlessActive = false; endlessRescues = [];
+  if(typeof hrelReset==="function") hrelReset(); // las reliquias se pierden al terminar la partida
   if(EN.returnArena && ARENA_ORDER.indexOf(EN.returnArena) >= 0) currentArena = EN.returnArena;
   EN.returnArena = undefined;
   endlessHudTick();

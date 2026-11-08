@@ -501,10 +501,11 @@ function netHostOpenBuffs(){
     if(!h || !h._net || !h._net.connected){ netMatch.buffPicks[s.slot] = "skip"; continue; }
     // cartas armadas con SU guardián (h): 1-2 refuerzos que transforman sus habilidades + genéricos
     const endless = typeof endlessOn==="function" && endlessOn();
-    const opts = boonBuildOffers(h, endless ? endlessBuffPool() : BUFF_POOL, endless);
+    const relic = endless && typeof hrelPhaseActive==="function" && hrelPhaseActive(); // reliquias de la Horda: UNA oferta para todos (js/systems/horde-relics.js)
+    const opts = relic ? hrelCurrentOffer().slice() : boonBuildOffers(h, endless ? endlessBuffPool() : BUFF_POOL, endless);
     netMatch.buffPicks[s.slot] = null;
     netMatch["buffOpts"+s.slot] = opts;
-    netSendTo(s.slot, {k:"buffs", opts, level:runLevel});
+    netSendTo(s.slot, {k:"buffs", opts, level:runLevel, relic:relic ? 1 : 0});
   }
 }
 function netHostBuffPicked(slot, id){
@@ -522,9 +523,11 @@ function netHostTryResume(){
   const p = netMatch.buffPicks; if(!p || p[0]!=="done") { netBuffWaitingText(); return; }
   const pending = Object.keys(p).filter(k=>p[k]===null);
   if(pending.length && performance.now() < netMatch.buffDeadline){ netBuffWaitingText(pending); return; }
-  for(const k of pending) netHostBuffPicked(k|0, null); // se acabó el tiempo: refuerzo automático
-  netMatch.buffPicks = null;
+  for(const k of pending){ if(netMatch.buffPicks !== p) break; netHostBuffPicked(k|0, null); } // se acabó el tiempo: refuerzo automático
+  if(netMatch.buffPicks !== p) return; // una llamada anidada ya siguió la partida: no avanzar dos veces
   const endless = typeof endlessOn==="function" && endlessOn();
+  if(endless && typeof hrelNextPhase==="function" && hrelNextPhase()) return; // Horda: reliquia tras el jefe (segunda elección)
+  netMatch.buffPicks = null;
   if(!endless) runLevel++;
   heroes.forEach((h,i)=>{ const s = netMatch.slots[i]; if(s && s.kind==="human" && h.alive){ h.hp = Math.min(h.maxHp, h.hp + h.maxHp*0.25); h.energy = h.maxEnergy; } });
   if(endless){ setState("playing"); endlessAdvance(); } // Horda Infinita: próxima ronda (y cada 5, la Cicatriz a otra arena)
@@ -782,7 +785,7 @@ function netGuestOnMsg(from, d){
       netMatch.lastRxAt = performance.now();
       netApplySnapshot(d); return;
     case "buffs": netGuestShowBuffs(d); return;
-    case "resume": if(netIsGuest() && state==="buff") setState("playing"); return;
+    case "resume": if(typeof hrelCloseUI==="function") hrelCloseUI(); if(netIsGuest() && state==="buff") setState("playing"); return;
     case "end": netGuestEnd(d); return;
   }
 }
@@ -866,6 +869,8 @@ function netGuestCast(idx, aim){
   return true;
 }
 function netGuestShowBuffs(d){
+  if(d.relic && typeof hrelGuestShow==="function"){ hrelGuestShow(d); return; } // reliquias de la Horda
+  if(typeof hrelCloseUI==="function") hrelCloseUI();
   setState("buff");
   document.getElementById("buff-title").textContent = (typeof endlessOn==="function" && endlessOn()) ? `Ronda ${EN.round} contenida — elegí tu refuerzo` : `Nivel ${d.level} superado — elegí tu refuerzo`;
   if(typeof buffNoteRefresh==="function") buffNoteRefresh();
