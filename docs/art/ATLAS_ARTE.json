@@ -8,7 +8,7 @@
  },
  "runtime": {
   "url": "index.html?dev=1&lazy=1 (producción: carga por grupos, webp activo)",
-  "loadedImages": 1570,
+  "loadedImages": 1576,
   "sampling": "24 muestras por estado y dirección (down/side/left/up)"
  },
  "summary": {
@@ -13436,15 +13436,15 @@
      "file": "assets/sprites/arenas/micelial/infectado/atlas.png",
      "loadedAs": "webp",
      "size": [
-      1520,
-      204
+      2072,
+      426
      ],
-     "bytes": 112750
+     "bytes": 58852
     }
    ],
    "frames": {
     "idle": 1,
-    "walk": 3,
+    "walk": 6,
     "attack": 2,
     "death": 2
    }
@@ -13461,15 +13461,15 @@
      "file": "assets/sprites/arenas/micelial/acechador/atlas.png",
      "loadedAs": "webp",
      "size": [
-      1744,
-      210
+      1688,
+      414
      ],
-     "bytes": 96506
+     "bytes": 47676
     }
    ],
    "frames": {
     "idle": 1,
-    "walk": 3,
+    "walk": 6,
     "attack": 2,
     "death": 2
    }
@@ -13536,15 +13536,15 @@
      "file": "assets/sprites/arenas/micelial/sabueso/atlas.png",
      "loadedAs": "webp",
      "size": [
-      1800,
-      210
+      2176,
+      342
      ],
-     "bytes": 88740
+     "bytes": 50398
     }
    ],
    "frames": {
     "idle": 1,
-    "walk": 3,
+    "walk": 4,
     "attack": 2,
     "death": 2
    }
@@ -14557,7 +14557,7 @@
   {"file":"assets/sprites/arenas/fortaleza/fx/verdugo_steam_b.png","category":"arenas","size":[35,33],"bytes":3326,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/fortaleza/prisionero/atlas.png","category":"arenas","size":[2000,272],"bytes":260078,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/fortaleza/verdugo/atlas.png","category":"arenas","size":[2016,328],"bytes":320491,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/arenas/micelial/acechador/atlas.png","category":"arenas","size":[1744,210],"bytes":127870,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/arenas/micelial/acechador/atlas.png","category":"arenas","size":[1688,414],"bytes":173011,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/chaman/atlas.png","category":"arenas","size":[1328,410],"bytes":270443,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/fx/aura_cluster.png","category":"arenas","size":[222,161],"bytes":83570,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/fx/bite_slash.png","category":"arenas","size":[43,62],"bytes":6092,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
@@ -14632,7 +14632,7 @@
   {"file":"assets/sprites/arenas/micelial/fx/spore_rain_b.png","category":"arenas","size":[120,46],"bytes":9480,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/fx/spore_rain_c.png","category":"arenas","size":[77,50],"bytes":6519,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/hinchado/atlas.png","category":"arenas","size":[1792,288],"bytes":227907,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/arenas/micelial/infectado/atlas.png","category":"arenas","size":[1520,204],"bytes":148678,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/arenas/micelial/infectado/atlas.png","category":"arenas","size":[2072,426],"bytes":207420,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/madre_espora/atlas.png","category":"arenas","size":[1360,417],"bytes":545847,"webp":false,"loaded":true,"usedBy":["js/arenas/micelial/mic-render.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/map/map_initial.png","category":"arenas","size":[1536,1024],"bytes":483868,"webp":true,"loaded":true,"usedBy":["js/arenas/micelial/mic-render.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/map/map_mature.png","category":"arenas","size":[1536,1024],"bytes":525327,"webp":true,"loaded":true,"usedBy":["js/arenas/micelial/mic-render.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
@@ -14654,7 +14654,7 @@
   {"file":"assets/sprites/arenas/micelial/mother/pilot_heart_key.png","category":"arenas","size":[656,560],"bytes":537918,"webp":false,"loaded":true,"usedBy":["runtime(cargado)"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/mother/pilot_idle.png","category":"arenas","size":[1296,496],"bytes":1185952,"webp":false,"loaded":true,"usedBy":["js/arenas/micelial/mic-render.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/peregrino/atlas.png","category":"arenas","size":[1712,266],"bytes":112641,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/arenas/micelial/sabueso/atlas.png","category":"arenas","size":[1800,210],"bytes":117928,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/arenas/micelial/sabueso/atlas.png","category":"arenas","size":[2176,342],"bytes":154028,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/minas/mn_acechador/atlas.png","category":"arenas","size":[432,300],"bytes":85286,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/minas-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/minas/mn_cerbero/atlas.png","category":"arenas","size":[1536,2112],"bytes":576239,"webp":true,"loaded":true,"usedBy":["js/arenas/common/boss-blueprints.js","js/assets/minas-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/minas/mn_consumidor/atlas.png","category":"arenas","size":[320,270],"bytes":77684,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/minas-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
