@@ -163,7 +163,7 @@ La Crónica de la Noche del Regreso de Ismena (`js/data/story-text.js`) no se to
 **minas — LA LUZ ES TERRITORIO**
 > Las Minas guardan lo que dejaron los que bajaron antes: nombres rayados en la roca, cuentas de días que se cortan a mitad de raya. Alguien grabó la palabra luz cuarenta veces, cada vez más chica. Cerbero cuidaba la puerta del fondo. Fue perro de mina, dicen.
 >
-> _Lo que sigue (LAS BRASAS ✦):_ Las Brasas son otra moneda: compran apariencia, o sea pieles y cromas, y nada más: no compran piezas de set ni dan poder. No hacen falta para llegar al final. Las piezas caen peleando, y todo el poder se consigue con el oro que ganás en las arenas.
+> _Lo que sigue (LAS BRASAS ✦):_ Las Brasas son otra moneda: compran apariencia, o sea pieles y cromas, y nada más: no compran piezas de set ni dan poder. No hacen falta para llegar al final. Las piezas también caen peleando, y todo el poder se consigue con el oro que ganás en las arenas.
 
 **infernal — EL QUE ELIGIÓ QUEDARSE**
 > Te mentí en lo que importaba. Fui el Primero de los Cuatro, y me quedé con la Horda porque quise: iba a fundir los cristales para ser la Horda. Cuando caí dije que alguien tenía que sostenerla, y lo creí, que es lo peor. Este libro lo escribí yo, con tinta de hollín. Los cristales necesitan portadores. Ahora son ustedes.

@@ -23,4 +23,4 @@ jobs:
       - name: "Flujo en navegador: oferta tras el jefe, teclado, mando simulado, efectos, limpieza"
         run: node tools/ux/test-horde-relics.js
       - name: "Cooperativo: misma oferta, cada jugador aplica su elección"
-        run: NODE_PATH="$PWD/server/node_modules" node tools/net-test/relics_coop.js
+        run: NODE_PATH="$PWD/server/node_modules:$NODE_PATH" node tools/net-test/relics_coop.js
