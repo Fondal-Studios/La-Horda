@@ -10,6 +10,13 @@
 - **Multijugador local (LAN)**: `npm run lan` / `lan.bat` / `lan.sh`, docs en `MULTIJUGADOR_LOCAL.md`.
 - **Interfaz**: piso de 14 px, tutoriales por pantalla (`js/ui/screen-tips.js`), guía "Cómo se juega" (7 pestañas), opciones de ayuda.
 
+## Tanda 2 (2026-11-08): retención de la Horda + seguridad
+- **Auditoría integral**: 52/100 «preparado para beta pública»; ítems/sets 58, cosméticos 52, retención 45 (informe en la conversación; puntos críticos abajo).
+- **Hecho**: reliquias de la Horda (elegir 1 de 3 tras la ronda 3 y cada jefe; `docs/beta-release/HORDA_MEJORAS.md`); probador libre de apariencias + catálogo único (`js/data/cosmetics-catalog.js`) + pestañas Sets/Apariencias separadas; racha diaria sin tiempo jugado ni Brasas; seguridad: lista blanca de eventos de red (`netPlayEvent`) y escape en el lobby (CodeQL net-game.js:232 y net-lobby.js:162); CI: `circuit` en paralelo, atlas regenerado, 6 iconos VFX más chicos.
+- **Pendiente (decisión del dueño)**: Pack de bienvenida US$6,99 con 3 guardianes (`server/premium-packs.json`, `championGifts:3`) contradice «Brasas = solo cosméticos»; cosméticos `bp:*` del pase (alas/auras/efectos) sin arte.
+- **Puntos críticos restantes de la auditoría**: ranking verificable de la Horda (servidor); carga en frío 14,7 s/17 MB (bundle + caché); cosméticos del pase con arte y precio final; música por arena y ronda; micro-animación de idles de 1 cuadro; empaquetado y legales para tiendas; sinergias de set 2/4/6 con cruces; Rangos de Cicatriz (ascensiones); validar racha en servidor; arte propio para manifestaciones.
+- **Riesgos conocidos**: balance de reliquias medido solo con piloto automático (ajustar `firstRound`/`hrelOfferRound` con jugadores reales); el cambio de 6 iconos VFX conviene mirarlo con ojos de arte; CodeQL: 4 alertas restantes son falsos positivos/bajas (`founder-presence.js:44`, `relay.js:136`, `talents.js:104`, `net-game.js:770`).
+
 ## Decisiones del propietario (resueltas 2026-11-07)
 1. **Revisión independiente**: «Cambio la regla del aprobador humano para siempre» → `reviews/POLITICA.json` (`aprobacionHumana:false`); siguen R1, R2, R4, R5, R6, R7. Cada merge a main necesita un registro `reviews/<rama>.json` (QA, arquitectura, staging en `beta/…`, aprobación) cuyo SHA sea el del contenido; solo el registro puede cambiar después. Seguimiento recomendado: proteger main con checks requeridos y CODEOWNERS sobre `reviews/` (las identidades de los revisores son autodeclaradas).
 2. **Pin de Aelith**: actualizado (`reconstruct.py` BASELINE_PINS.registry = `art-source/aelith-recovery-20261102/manifest.json` registry.sha256 = sha256 de `js/champions/ascension/art.js` con la línea de Aelith reemplazada por su original).
