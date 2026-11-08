@@ -7,7 +7,7 @@ const vm=require('node:vm');
 const src=fs.readFileSync(path.resolve(__dirname,'../js/net/net-game.js'),'utf8');
 const cut=(a,b)=>{const i=src.indexOf(a),j=src.indexOf(b,i);assert(i>=0&&j>i,'marcador '+a);return src.slice(i,j);};
 const code=[cut('const NET_EVENT_FNS','const NET_INLINE_EVENTS'),'const NET_ORIG = {};',
-  cut('function netDecode(','function netRestore'),cut('const NET_PLAY_ALLOWED','/* =====================================================================\n   ANFITRI')].join('\n');
+  cut('function netDecode(','function netRestore'),cut('const NET_PLAY_EXTRA','/* =====================================================================\n   ANFITRI')].join('\n');
 const calls=[];
 const ctx={netMatch:{mySlot:1,ents:new Map()},heroes:[],CLASSES:{},selectedClass:'x',save:{champions:{x:{level:1}}},
   netLog(){},netRestore:o=>o,divinaMode:false,ENEMY_BASE:{},
@@ -34,3 +34,20 @@ assert.deepEqual(calls.map(c=>c[0]),['xp','gold','hurt','useXp','floatText']);
 play(['gold',[9],0]); play(['gold',new Array(40).fill(1)]);
 assert.equal(calls.length,5);
 console.log('PASS net-play-event');
+// REGRESIÓN (revisión arquitectónica): otros módulos agregan sus eventos a NET_EVENT_FNS DESPUÉS de cargar net-game.js
+// (skill-fx-a/engine.js vfxSfaPlay, vfx-b/pixfx.js kvbFx, systems/story.js storyVoice y storyPageDrop). La lista blanca debe verlos.
+const late=[];
+for(const f of ['js/champions/skill-fx-a/engine.js','js/champions/vfx-b/pixfx.js','js/systems/story.js']){
+  const t=fs.readFileSync(path.resolve(__dirname,'..',f),'utf8');
+  for(const m of t.matchAll(/NET_EVENT_FNS\.push\(\s*['"]([A-Za-z0-9_]+)['"]\s*\)/g)) late.push(m[1]);
+  for(const m of t.matchAll(/for\s*\(const n of \[([^\]]+)\]\)[^;]*NET_EVENT_FNS\.push\(n\)/g)) for(const q of m[1].matchAll(/['"]([A-Za-z0-9_]+)['"]/g)) late.push(q[1]);
+}
+for(const n of ['vfxSfaPlay','kvbFx','storyVoice','storyPageDrop']) assert(late.includes(n),'el código real debe registrar '+n+' (se encontró: '+late.join(',')+')');
+for(const n of new Set(late)){
+  ctx[n]=(...a)=>calls.push(['late:'+n,a]);
+  vm.runInContext('NET_EVENT_FNS.push('+JSON.stringify(n)+')',ctx);
+  const before=calls.length; play([n,[1,2]]);
+  assert.equal(calls.length,before+1,'evento registrado tarde debe pasar la lista blanca: '+n);
+}
+console.log('PASS net-play-event (eventos registrados tarde)');
+

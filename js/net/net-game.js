@@ -105,7 +105,7 @@ function netDecode(v, inline){
   if(v.$h!==undefined) return heroes[v.$h] || null;
   if(v.$e!==undefined){ const e = netMatch && netMatch.ents.get(v.$e); if(e) return e; if(inline && v.$o) return netRestore(netDecode(v.$o)); return null; }
   if(Array.isArray(v)) return v.map(x=>netDecode(x, inline));
-  const o = {}; for(const k in v) o[k] = netDecode(v[k], inline); return netRestore(o);
+  const o = {}; for(const k in v){ if(k==="__proto__" || k==="constructor" || k==="prototype") continue; o[k] = netDecode(v[k], inline); } return netRestore(o);
 }
 function netRestore(o){ if(o && o.classKey && CLASSES[o.classKey] && o.maxEnergy!==undefined) o.cls = CLASSES[o.classKey]; return o; }
 
@@ -213,12 +213,15 @@ function netDrawNameTags(){
 function netEmitTo(slot, name, args){ if(netIsHost()) netRecord(name, args||[], slot); }
 // LISTA BLANCA de eventos que el anfitrión puede pedirle al invitado: los visuales/sonoros grabados por netHookEvents
 // más los que el juego emite con netEmitTo/netRecord. El nombre llega por la red: jamás se busca en window sin pasar por acá.
-const NET_PLAY_ALLOWED = new Set([...NET_EVENT_FNS, "xp","gold","hurt","useXp","juiceStreakShow","juiceHitLocal","groundLootDrop","endlessGuestReward"]);
+// OJO: NET_EVENT_FNS NO está congelada: otros módulos que cargan DESPUÉS (skill-fx-a/engine.js vfxSfaPlay, vfx-b/pixfx.js kvbFx, systems/story.js storyVoice y
+// storyPageDrop) le agregan sus eventos con .push. Por eso se consulta en cada llamada (el array es del cliente y nunca viene de la red).
+const NET_PLAY_EXTRA = new Set(["xp","gold","hurt","useXp","juiceStreakShow","juiceHitLocal","groundLootDrop","endlessGuestReward"]);
+const netPlayAllowed = name => NET_PLAY_EXTRA.has(name) || NET_EVENT_FNS.includes(name);
 const NET_PLAY_MAX_ARGS = 16;
 function netPlayEvent(ev){
   if(!Array.isArray(ev)) return;
   const [name, rawArgs, to] = ev;
-  if(typeof name!=="string" || name.length>40 || !NET_PLAY_ALLOWED.has(name)) return;
+  if(typeof name!=="string" || name.length>40 || !netPlayAllowed(name)) return;
   if(!Array.isArray(rawArgs) || rawArgs.length>NET_PLAY_MAX_ARGS) return;
   if(to!==undefined && (!netMatch || to!==netMatch.mySlot)) return;
   const args = rawArgs.map(a=>netDecode(a, true));

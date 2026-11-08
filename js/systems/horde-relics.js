@@ -101,7 +101,7 @@ function hrelBuildOffer(seed, round, maps){
 }
 function hrelParse(opt){
   if(typeof opt!=="string" || opt.indexOf("hr:") !== 0) return null;
-  return HRELIC_BY_ID[opt.slice(3)] ? opt.slice(3) : null;
+  return Object.hasOwn(HRELIC_BY_ID, opt.slice(3)) ? opt.slice(3) : null;
 }
 function hrelHumans(){
   if(typeof netMatch!=="undefined" && netMatch && netMatch.slots)

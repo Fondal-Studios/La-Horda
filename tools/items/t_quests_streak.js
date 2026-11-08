@@ -43,7 +43,7 @@ let fails = 0; const ok = (c, m, x) => { console.log((c ? 'PASS ' : 'FAIL ') + m
     const base = await E(() => __snap());
     const r2 = await E(() => { __day(2026, 3, 11); const before = questsStreakInfo(); __complete(); __day(2026, 3, 12); __complete(); return { before, s: __snap() }; });
     ok(r2.before.count === 1 && r2.before.atRisk, 'al día siguiente la racha sigue viva y se ve "falta hoy"', r2.before);
-    ok(r2.s.s.count === 3 && r2.s.s.claimed['3'], 'tres días seguidos: racha 3 y hito cobrado', r2.s.s);
+    ok(r2.s.s.count === 3 && r2.s.s.claimed['2026-03:3'], 'tres días seguidos: racha 3 y hito cobrado', r2.s.s);
     const g3 = await E(() => window.__streakGrants);
     ok(g3.length === 1 && JSON.stringify(g3[0]) === '{"chest":2}' && r2.s.chests === base.chests + 1, 'el hito de 3 días da un cofre y nada de oro, gemas ni Brasas', g3);
     ok(r2.s.s.freezes === 1 && r2.s.s.weekEarned, 'el congelador se ganó jugando (3 desafíos diarios en la semana)', r2.s.s);
@@ -53,8 +53,6 @@ let fails = 0; const ok = (c, m, x) => { console.log((c ? 'PASS ' : 'FAIL ') + m
       return { key, keyNow: questsDayKey(), sameList: JSON.stringify(save.quests.daily.list) === list, clockBack: QST.clockBack, again: __complete(), count: save.quests.streak.count, same: JSON.stringify(pre.s) === JSON.stringify(post.s), seen: save.quests.streak.seen }; });
     ok(r3.keyNow === '2026-03-12' && r3.sameList && r3.clockBack && r3.seen === '2026-03-12', 'reloj atrasado: se sigue usando el último día registrado y no se re-rotan los desafíos', r3);
     ok(r3.count === 3 && r3.same, 'reloj atrasado: la racha no se infla ni cambia', r3);
-    const bak = await E(() => { __day(2020, 1, 1); __complete(); return { count: save.quests.streak.count, hub: questsStreakHubText(), info: questsStreakInfo().clockBack }; });
-    ok(bak.count === 3 && bak.info, 'un salto enorme hacia el pasado tampoco suma', bak);
 
     // --- saltearse un día con congelador: se salva; sin congelador: se reinicia ---
     const r4 = await E(() => { __day(2026, 3, 14); const info = questsStreakInfo(); __complete(); const s = __snap().s; __day(2026, 3, 17); const info2 = questsStreakInfo(); __complete(); return { info, s, info2, s2: __snap().s }; });
@@ -71,13 +69,25 @@ let fails = 0; const ok = (c, m, x) => { console.log((c ? 'PASS ' : 'FAIL ') + m
     const again = await E(() => { __day(2026, 6, 14); const b = __snap(); __complete(); return JSON.stringify(b.s.claimed) === JSON.stringify(__snap().s.claimed) && __snap().chests === b.chests; });
     ok(again, 'los hitos no se cobran dos veces');
 
+    // --- los hitos se cobran A LO SUMO una vez por mes aunque se pierda y se rearme la racha (un reloj adelantado a mano no farmea cofres) ---
+    const farm = await E(() => { const n0 = window.__streakGrants.length;
+      for (let r = 0; r < 4; r++) { __day(2026, 8, 1 + r * 9); __complete(); __day(2026, 8, 2 + r * 9); __complete(); __day(2026, 8, 3 + r * 9); __complete(); }   // 4 veces: 3 días seguidos, perder la racha, otra vez
+      return { n: window.__streakGrants.length - n0, keys: Object.keys(save.quests.streak.claimed) }; });
+    ok(farm.n <= 1 && farm.keys.every(k => k.startsWith('2026-08')), 'perder y rearmar la racha el mismo mes NO vuelve a dar el hito de 3 días (máx. un cofre por mes)', farm);
+    // --- un reloj puesto muy hacia adelante y luego corregido no deja al jugador atascado (se reinicia la racha, no se queda en el futuro) ---
+    const stuck = await E(() => { __day(2099, 1, 1); __complete(); __day(2026, 9, 20); const before = save.quests.streak.count; questsEnsureRotation(); return { before, day: questsDayKey(), count: save.quests.streak.count, seen: save.quests.streak.seen }; });
+    ok(stuck.day === '2026-09-20' && stuck.seen === '2026-09-20' && stuck.count === 0, 'reloj adelantado >7 días y luego corregido: se acepta la vuelta y la racha se reinicia (no queda atascado)', stuck);
+    // un retroceso chico (<=7 días) sigue rechazado
+    const small = await E(() => { __day(2026, 9, 25); __complete(); __day(2026, 9, 22); questsEnsureRotation(); return { day: questsDayKey(), back: QST.clockBack }; });
+    ok(small.day === '2026-09-25' && small.back, 'un retroceso chico (<=7 días) sigue rechazado', small);
+
     // --- reloj real atrasado tras recargar (sin __questsNow) ---
     await E(() => { window.__questsNow = null; save.quests.streak.seen = '2099-01-01'; persist(); });
     await page.reload(); await H.goto(page, site.url + '/index.html').catch(() => {});
     await page.waitForFunction(() => typeof questsEvaluate === 'function' && save.quests, null, { timeout: 240000 });
     await page.waitForTimeout(1500);
     const rl = await E(() => { questsEnsureRotation(); return { day: questsDayKey(), back: QST.clockBack, seen: save.quests.streak.seen }; });
-    ok(rl.day === '2099-01-01' && rl.back && rl.seen === '2099-01-01', 'tras recargar, un reloj atrasado se sigue rechazando (último día registrado en el guardado)', rl);
+    ok(rl.day !== '2099-01-01' && !rl.back && rl.seen === rl.day, 'tras recargar, un guardado con un día en el futuro lejano (>7 días) no deja atascado: se acepta el reloj real', rl);
     ok(errs.length === 0, 'sin errores de página', errs);
   } finally { await browser.close(); await site.close(); }
   console.log(fails ? `\n${fails} FALLA(S)` : '\nTodo en verde'); process.exit(fails ? 1 : 0);

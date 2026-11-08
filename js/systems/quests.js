@@ -74,7 +74,7 @@ function questsNow(){
   const raw = _qRawNow();
   let seen = "";
   try{ seen = (typeof save !== "undefined" && save && save.quests && save.quests.streak && save.quests.streak.seen) || ""; }catch(e){}
-  if(seen && questsDayKey(raw) < seen){ const p = seen.split("-"); return new Date(+p[0], +p[1]-1, +p[2], 12, 0, 0); }
+  if(seen && questsDayKey(raw) < seen && _qDayNum(seen) - _qDayNum(questsDayKey(raw)) <= 7){ const p = seen.split("-"); return new Date(+p[0], +p[1]-1, +p[2], 12, 0, 0); }
   return raw;
 }
 const _q2 = n => String(n).padStart(2, "0");
@@ -174,6 +174,7 @@ function questsRoll(kind, key, V, exclude){
   }
   return out;
 }
+const _qNeedsMigration = q => ["daily","weekly"].some(k => q[k] && Array.isArray(q[k].list) && q[k].list.some(c => !CHALLENGE_TEMPLATES.some(t => t.id === c.tpl)));
 // Plantillas que ya no existen (p. ej. "minutes", quitada: el tiempo jugado no se premia): se reemplazan por otro desafío.
 function _qMigrateChallenges(q, V){
   let changed = false;
@@ -189,7 +190,7 @@ function questsEnsureRotation(){
   const q = questsState();
   const clockChanged = _qTouchClock();
   const dk = questsDayKey(), wk = questsWeekKey();
-  if(_qMigrateChallenges(q, questsView())){ persist(); }
+  if(_qNeedsMigration(q) && _qMigrateChallenges(q, questsView())){ persist(); }
   if(q.daily.key === dk && q.weekly.key === wk){ if(clockChanged) persist(); return false; }
   const V = questsView();
   let changed = false;
@@ -331,6 +332,8 @@ const _qDayNum = key => { const p = String(key).split("-"); return Math.round(Da
 // Registra el último día visto. Devuelve true si cambió algo que hay que guardar. QST.clockBack = el reloj está atrasado (se ignora).
 function _qTouchClock(){
   const s = _qStreak(), raw = questsDayKey(_qRawNow());
+  // Reloj atrasado MÁS de 7 días (alguien lo adelantó y lo volvió a corregir): se acepta la vuelta para no dejarlo atascado, pero la racha se reinicia.
+  if(s.seen && raw < s.seen && _qDayNum(s.seen) - _qDayNum(raw) > 7){ s.seen = raw; s.last = ""; s.count = 0; QST.clockBack = false; return true; }
   QST.clockBack = !!(s.seen && raw < s.seen);
   if(!s.seen || raw > s.seen){ s.seen = raw; return true; }
   return false;
@@ -350,12 +353,17 @@ function _qStreakCredit(silent){
   if(!s.last) s.count = 1;
   else if(gap === 1) s.count++;
   else if(gap - 1 <= s.freezes){ s.freezes -= gap - 1; s.count++; if(!silent) _qToast({kind:"chal", icon:"shield", tint:"#9fdcff", head:"RACHA SALVADA", name:"El congelador protegió tu racha"}); }
-  else { s.count = 1; s.claimed = {}; }                // se perdió: arranca de nuevo (y vuelve a poder cobrar los hitos)
+  else { s.count = 1; }                                // se perdió: arranca de nuevo (los hitos NO se pueden recobrar: ver abajo)
   s.last = today; s.best = Math.max(s.best, s.count);
   if(!silent) _qToast({kind:"chal", icon:"flame", tint:"#ff9a3c", head:"RACHA DIARIA", name:`${s.count} ${s.count === 1 ? "día seguido" : "días seguidos"}`});
+  // Cada hito se cobra A LO SUMO una vez por mes calendario (aunque se pierda y se rearme la racha): así un reloj adelantado a mano no
+  // convierte los cofres (gemas/ítems) en una fuente infinita. Los cofres NO son economía cero: por eso el tope.
+  const mk = today.slice(0, 7);
   for(const m of STREAK_MILESTONES){
-    if(s.count < m.days || s.claimed[m.days]) continue;
-    s.claimed[m.days] = true;
+    const ck = mk + ":" + m.days;
+    if(s.count < m.days || s.claimed[ck]) continue;
+    s.claimed[ck] = true;
+    for(const k of Object.keys(s.claimed)) if(k.slice(0, 7) !== mk) delete s.claimed[k];   // solo se recuerda el mes en curso
     questsGrant(m.reward, true);
     if(!silent) _qToast({kind:"chal", icon:"trophy", tint:"#ffcf5c", head:"HITO DE RACHA", name:`${m.days} días seguidos`, sub:questsRewardText(m.reward)});
   }
