@@ -37,3 +37,9 @@
 - `circuit` (CI) se cancela a los 10 min en todas las corridas: diagnosticar.
 - `tools/ciudad/smoke.js` falla en victoria/resultados_civiles también en main; `test-libro-unico` falla 2 chequeos en main; `t_server_param` falla 1 en main.
 - Pase de batalla de 30 días y token de partida del ranking (server/battlepass.js), traducción legal por abogado, build nativo Steam/IAP.
+
+## Probador libre, Sets vs Apariencias y rachas (decisiones del dueño, sesión posterior)
+- **Probador libre**: la ficha de cualquier guardián (aunque no lo tengas) abre Sets y Apariencias; probar no equipa ni escribe el guardado (`tools/collection/free-tryon.js`). Catálogo único en `js/data/cosmetics-catalog.js` (solo lee; ids y precios intactos). Las 15 manifestaciones son "Efecto de habilidades" (VER EFECTO lanza la definitiva teñida), ya no skins con sprite prestado.
+- **Sets = poder** (se ganan jugando, nunca Brasas) y **Apariencias = identidad** (Brasas/pase/logro/ascensión): pestañas separadas (`tools/collection/sets-vs-looks.js`).
+- **Rachas**: sin plantillas por tiempo jugado; racha diaria con hitos 3/7/14 (cofre/título/marco) y congelador semanal ganado jugando (`tools/items/t_quests_streak.js`). El reloj del cliente solo se frena con "último día visto"; **la validación fuerte (día contado por el servidor) falta y va al servidor**.
+- Pendiente: precios/ofertas y `server/premium-packs.json` (decisión del dueño); arte propio para las manifestaciones (hoy solo tiñen el efecto); pase de batalla (`bp:*`) aún sin cosméticos del catálogo por guardián.
