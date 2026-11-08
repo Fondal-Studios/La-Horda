@@ -452,7 +452,7 @@ function codexChampHtml(key){
   const own = ch && ch.unlocked, L = CODEX_CHAMP_LORE[key] || {};
   const sel = own && selectedClass === key;
   const need = own ? xpToNext(ch.level) : 1, pct = own ? Math.min(100, Math.round(ch.xp/need*100)) : 0;
-  const tabs = [["ficha","Ficha"],["equipo","Equipo"],["talentos","Talentos"],["habilidades","Maestría"],["skins","Apariencias"]];
+  const tabs = [["ficha","Ficha"],["equipo","Equipo"],["talentos","Talentos"],["habilidades","Maestría"],["sets","Sets"],["skins","Apariencias"]];
   const NEEDS_OWN = ["equipo","talentos","habilidades"]; // Sets y Apariencias son consulta/prueba: sirven con cualquier guardián
   const stage = `<div class="cx-stage">${_pv({kind:"champ", key, anim:"idle", arena:"champ"}, "cx-pv cx-stage-pv")}
       <div class="cx-stage-name" style="color:${cls.color}">${_cxEsc(championShortName(key))}</div><div class="cx-stage-title">${_cxEsc(championTitle(key))}</div></div>
@@ -468,6 +468,7 @@ function codexChampHtml(key){
   let panel = head;
   if(!own && NEEDS_OWN.includes(codexChampTab)) panel += codexLockedTabHtml(key);
   else if(codexChampTab === "skins") panel += codexSkinsTabHtml(key);
+  else if(codexChampTab === "sets") panel += codexSetsTabHtml(key);
   else if(codexChampTab === "ficha" || !own){
     const sk = [...cls.skills, cls.ultimate];
     panel += codexChampSheetHtml(key);
@@ -519,7 +520,7 @@ function codexSkillNumbers(s, ult){
   return out.join(" · ");
 }
 function codexChampSkins(key){ return Object.keys(typeof SET_SKINS!=="undefined" ? SET_SKINS : {}).filter(id=>SET_SKINS[id].champ===key).concat(typeof cromaIdsFor==="function" ? cromaIdsFor(key) : []); }
-// Chip de una CROMA (js/systems/cromas.js): cosmético suelto por oro, se usa/quita acá mismo.
+// Chip de una CROMA (js/systems/cromas.js): cosmético suelto por Brasas ✦, se usa/quita acá mismo.
 function _cxCromaChip(key, id){
   const d = CROMA_SKINS[id], C = CROMA_CRYSTALS[d.crystal] || {label:d.crystal};
   const st = cromaIsEquipped(id) ? "✔ EQUIPADA" : (cromaOwned(id) ? "Comprada: usala" : `🪙 ${fmtGold(cromaPrice(id))}`);
@@ -605,6 +606,38 @@ function codexSkinDetail(body, key, id){
   if(eqb) eqb.addEventListener("click", ()=>{ skinEquipOn(id, key); codexRender(); });
   const shop = el.querySelector("#cx-skin-shop");
   if(shop) shop.addEventListener("click", ()=>{ codexReturnTo = "codex"; if(typeof shopTab!=="undefined") shopTab = "skins"; setState("shop"); renderShop(); }); // la Tienda REAL (no hay compra duplicada)
+}
+// Pestaña SETS (poder): piezas, progreso y dónde se consiguen. Un set se gana JUGANDO (botín, arenas, Tienda por oro, Forja):
+// nunca con Brasas. Sus apariencias son otra cosa y viven en la pestaña Apariencias (js/data/cosmetics-catalog.js).
+function codexSetSources(id){
+  const arenas = typeof SET_ARENA_WEIGHTS!=="undefined" ? Object.keys(SET_ARENA_WEIGHTS).filter(a=>(SET_ARENA_WEIGHTS[a][id]||0) > 0) : [];
+  const ids = setPieceIds(id);
+  const sold = typeof shopCatalog==="function" && ids.length > 0 && ids.every(pid=>shopCatalog().find(e=>e.kind==="designed" && e.id===pid));
+  return {arenas:arenas.map(a=>(ARENA_MODS[a] && ARENA_MODS[a].label) || a), shop:!!sold, forge:true, brasas:false};
+}
+function _cxSetCard(key, id, own, open){
+  const S = SET_DB[id], ids = setPieceIds(id), owned = ownedDesignIds(), have = ids.filter(p=>owned.has(p)).length;
+  const eq = own && typeof equippedSetCount==="function" ? equippedSetCount(key, id) : 0, src = codexSetSources(id), pct = Math.round(100*have/Math.max(1, ids.length));
+  const pieces = ids.map(pid=>{ const d = DESIGNED_ITEMS[pid] || {}, t = ITEM_TYPES[d.type] || {label:""}; return `<li class="${owned.has(pid)?"own":""}"><span class="cx-set-mark">${owned.has(pid) ? "✔" : "·"}</span> <b>${_cxEsc(d.name || pid)}</b> <i>${_cxEsc(t.label)}</i></li>`; }).join("");
+  const bonus = (S.thresholds || []).map(th=>`<li class="${eq >= th.count ? "on" : have >= th.count ? "ready" : ""}"><b>${th.count} piezas</b> <span>${_cxEsc(th.desc)}</span></li>`).join("");
+  const where = `<ul class="cx-set-where">${src.arenas.length ? `<li><b>Botín de arenas:</b> ${_cxEsc(src.arenas.join(", "))}</li>` : `<li><b>Botín:</b> cae como recompensa al terminar partidas.</li>`}
+      ${src.shop ? `<li><b>Tienda:</b> las piezas se compran con oro.</li>` : ""}<li><b>Forja:</b> dos piezas repetidas se reforjan en una que te falta.</li>
+      ${(typeof PIECES_FOR_BRASAS!=="undefined" && PIECES_FOR_BRASAS) ? "" : `<li data-set-no-brasas><b>Brasas:</b> no compran piezas de set.</li>`}</ul>`;
+  const skin = typeof SET_SKINS!=="undefined" && SET_SKINS[id] && !SET_SKINS[id].manifest ? `<button class="cx-btn" data-ctab-go="skins">Ver la apariencia de este set</button>` : "";
+  return `<details class="cx-set" data-set-card="${id}" ${open ? "open" : ""}><summary><b style="color:${SET_COLOR}">${_cxEsc(S.name)}</b> <span class="cx-set-prog">${have}/${ids.length} piezas</span> <span class="cx-dim">${_cxEsc(S.theme || "")}</span></summary>
+    <div class="cx-set-bar" role="progressbar" aria-valuemin="0" aria-valuemax="${ids.length}" aria-valuenow="${have}"><i style="width:${pct}%"></i></div>
+    <div class="cx-set-h">Piezas</div><ul class="cx-set-pieces">${pieces}</ul>
+    <div class="cx-set-h">Bonificaciones</div><ul class="cx-set-bonus">${bonus}</ul>
+    <div class="cx-set-h">Dónde se consigue</div>${where}${skin}</details>`;
+}
+function codexSetsTabHtml(key){
+  const own = _cxAppOwnsChamp(key), all = Object.keys(typeof SET_DB!=="undefined" ? SET_DB : {});
+  const mine = all.filter(id=>SET_DB[id].champion === key || (typeof SET_SKINS!=="undefined" && SET_SKINS[id] && SET_SKINS[id].champ === key));
+  const uni = all.filter(id=>!mine.includes(id) && !SET_DB[id].champion && !(SET_SKINS[id] && SET_SKINS[id].manifest));
+  const intro = `<p class="cx-dim">Los sets son poder: dan bonificaciones de combate. Se ganan jugando y nunca se compran con Brasas. Sus apariencias son aparte, en la pestaña Apariencias.</p>`;
+  const lock = own ? "" : `<div class="cx-active cx-try-banner">Podés ver los sets de este guardián, pero equiparlos pide tenerlo.</div>`;
+  return _sec("Sets · poder del guardián", `${lock}${intro}${mine.length ? mine.map(id=>_cxSetCard(key, id, own, true)).join("") : `<p class="cx-dim">Este guardián todavía no tiene un set propio.</p>`}`, "combat")
+    + (uni.length ? _sec("Sets universales · para cualquier guardián", uni.map(id=>_cxSetCard(key, id, own, false)).join(""), "combat") : "");
 }
 // Pestaña bloqueada: Equipo, Talentos y Maestría operan sobre el guardado del guardián, así que piden tenerlo.
 function codexLockedTabHtml(key){

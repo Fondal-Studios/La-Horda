@@ -276,3 +276,12 @@ button.cx-card:hover, button.cx-home-card:hover, button.cx-chapter:hover, button
 .cx-how-lock{ color:#ffb08a; font-weight:700; }
 .cx-try-banner{ margin:0 0 8px; font-size:0.95rem; line-height:1.35; }
 .gx-skin .gx-skin-sub, .gx-skin .gx-skin-st{ font-size:0.875rem; }
+.cx-set{ margin:0 0 8px; border:2px solid #000; background:var(--ui-inset,rgba(0,0,0,.35)); padding:6px 10px; }
+.cx-set summary{ cursor:pointer; min-height:40px; display:flex; flex-wrap:wrap; gap:4px 10px; align-items:center; font-size:1rem; }
+.cx-set-prog{ color:var(--ui-gold,#ffd76a); font-size:0.95rem; }
+.cx-set-bar{ height:8px; background:#000; margin:4px 0 8px; } .cx-set-bar i{ display:block; height:100%; background:var(--ui-gold,#ffd76a); }
+.cx-set-h{ font-family:var(--font-retro); color:var(--ui-gold,#ffd76a); font-size:1.02rem; margin:8px 0 2px; }
+.cx-set ul{ margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:3px; font-size:0.95rem; line-height:1.35; }
+.cx-set-pieces .own b{ color:#9dffb0; } .cx-set-pieces i{ color:var(--cx-dim); font-style:normal; }
+.cx-set-bonus li.on{ color:#9dffb0; } .cx-set-bonus li.ready{ color:#ffe9a0; }
+.cx-set .cx-btn{ margin-top:8px; }

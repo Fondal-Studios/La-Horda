@@ -6,7 +6,7 @@
    authoredPacks usa metadata independiente; files sigue admitiendo cromas futuras.
    Generador histórico de cromas:
    (tools/art/cromas/build.py -> js/assets/croma-skins-meta.js). No son skins de set: se compran
-   sueltas con ORO DEL JUEGO en la Tienda y se equipan por guardián. Cosmético puro: no dan poder
+   sueltas SOLO con Brasas ✦ (el oro no las compra) y se equipan por guardián. Cosmético puro: no dan poder
    (nunca plata real, sin pay-to-win). Paletas ligadas a los cristales de los Guardianes:
    Ancestral (verde), Escarcha (celeste), Piedra (ámbar), Juicio (oro blanco).
 
