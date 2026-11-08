@@ -25,7 +25,7 @@
   };
   KVB_FX['segador.armor'] = (x, y, r) => { kvbDecal('sg_roar', x, y, r, 720, {layer: 'g'}); kvbEmit('sg_ember', 8, x, y, {ring: 18, v0: 10, v1: 40, up: 60, l0: 440, l1: 760, scale: 1.2, flat: .6}); };
   KVB_FX['segador.last'] = (x, y, r) => { kvbDecal('sg_flare', x, y, r, 700, {layer: 'g'}); kvbPart('sg_heart', x, y - 50, {dur: 800, scale: 1.9, layer: 't', vy: -22, fadeAt: .5}); kvbEmit('sg_ember', 8, x, y, {ring: 14, v0: 10, v1: 40, up: 70, l0: 420, l1: 720, scale: 1.2, flat: .6}); };
-  KVB_FX['segador.ult'] = (x, y, r) => { kvbDecal('sg_berserk', x, y, r, 1000, {layer: 'g'}); kvbPart('sg_skull', x, y - 62, {dur: 1000, scale: 2.6, layer: 't', vy: -16, fadeAt: .5}); kvbEmit('sg_wisp', 10, x, y, {ring: r * .5, v0: 10, v1: 40, up: 90, l0: 600, l1: 1000, scale: 1.4, flat: .6}); };
+  KVB_FX['segador.ult'] = (x, y, r) => { kvbDecal('sg_berserk', x, y, r, 1000, {layer: 'g'}); kvbPart('sg_skull', x, y - 90, {dur: 1000, scale: 1.6, layer: 't', vy: -16, fadeAt: .5}); kvbEmit('sg_wisp', 10, x, y, {ring: r * .5, v0: 10, v1: 40, up: 90, l0: 600, l1: 1000, scale: 1.4, flat: .6}); };
   kvbClassic('segador', 'cone_slash', (c, sk, u, sc) => { const furyArea = c.furyArmorTimer > 0 ? (c.furyAreaMult || 1) : 1; return ['segador.slash', c.x, c.y, sk.range * sc.AREA * furyArea, Math.atan2(c.fy, c.fx), sk.arc / 2, 0]; });
   kvbClassic('segador', 'fury_armor', (c, sk) => ['segador.armor', c.x, c.y, 46, 0, 0, 0]);
   kvbClassic('segador', 'last_stand_burst', (c, sk) => ['segador.last', c.x, c.y, 40, 0, 0, 0]);
