@@ -22,6 +22,8 @@ const SCREEN_TIPS = [
     {ic:"🧭", t:"Elegí una arena", x:"La historia va en orden, de la 01 a la 10. Tocá una para ver su ficha y empezar. Las que tienen candado se abren al terminar la anterior."}]},
   {id:"horda", topic:"infinita", when:()=>state==="menu" && typeof endlessPending!=="undefined" && endlessPending, steps:[
     {ic:"♾", t:"Horda Infinita", x:"Elegí un guardián y aguantá oleadas que no terminan. No hay final: se trata de llegar lo más lejos posible. Cada tanto elegís un refuerzo."}]},
+  {id:"reliquias", topic:"infinita", when:()=>state==="buff" && typeof hrelPhaseVisible==="function" && hrelPhaseVisible(), steps:[
+    {ic:"✦", t:"Reliquias de la Horda", x:"Una mejora solo para esta partida: elegí 1 de 3 cartas. Las del mismo tipo se potencian entre sí. Se pierden al terminar y no dan oro ni botín."}]},
   {id:"sala", topic:"objetivo", when:()=>state==="prep", steps:[
     {ic:"🛡", t:"Antes de entrar", x:"Acá ves a tu guardián y su equipo. Para cambiar objetos o talentos, usá las pestañas. Cuando estés listo, tocá el botón grande para entrar a la arena."}]},
   {id:"guardian", topic:"botin", when:()=>_tipChampTab()==="ficha", steps:[

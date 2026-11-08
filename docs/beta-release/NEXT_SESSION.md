@@ -17,6 +17,10 @@
 4. **Runway**: seguimos con lo que hay (~22 créditos; no recargar por ahora).
 5. **Fondal TV**: NO se toca (función compartida de todos los juegos del estudio). **Modo LAN de compu**: máximo 4 jugadores y una sola cámara alejada en la pantalla de la anfitriona.
 
+## Reliquias de la Horda (retención de la Horda Infinita)
+- Decisiones dentro de la partida: tras la ronda 3 y cada jefe/subjefe, 1 de 3 reliquias (24, con etiquetas, rarezas, topes y sinergias). Diseño, tabla, topes y cómo balancear: `HORDA_MEJORAS.md`. Pruebas: `tools/balance/relics_budget.js`, `tools/ux/test-horde-relics.js`, `tools/net-test/relics_coop.js`; workflow `Reliquias de la Horda`.
+- Pendiente: tanda con jugadores reales (¿alguna etiqueta domina?, ¿ritmo de ofertas?), y dispositivos reales para el mando y el táctil de la pantalla de elección.
+
 ## Seguimiento tras el merge
 - Capa de cámara LAN (`js/net/net-lan.js`, `lanCamStep`): confirmar con el otro desarrollador de la cámara local y probar con dos dispositivos reales (lanes/coliseo no deben verse afectados).
 - Endurecer el servidor LAN: bind por defecto a todas las interfaces, CORS `*` en `/lan.json`, WebSocket sin allowlist de Origin; tests de path traversal de `resolveStatic`.
