@@ -108,6 +108,20 @@ Referencia: un refuerzo común de la Horda da +20% de daño (`BUFF_POOL`) y se e
 5. `node tools/balance/endless_econ.js` debe seguir dando el mismo oro, XP y objetos por minuto que sin reliquias (las reliquias no los tocan).
 6. Un efecto nuevo con disparo: pasá su daño por `hrelHit` (usa el techo por segundo), dale enfriamiento interno (`hrelReady`) y no crees entidades. Una estadística nueva en la capa: sumala a `HR_MULT_KEYS`/`HR_ADD_KEYS` y ponele tope en `layerCap`.
 
+## Mediciones (2026-11-08, piloto automático, `tools/balance/relics_effect.js`, pareado, GOD = el equipo no muere, 8 min de juego)
+
+Con el piloto automático nivel 12 la partida "real" no se pierde en 12 minutos: las rondas alcanzadas quedan topadas por el tiempo (ronda ~10), así que la señal útil son bajas, daño y puntaje por minuto. Cada partida acumula solo **2 a 3 reliquias** en 8 minutos (rondas 3, 5 y quizá 10). Las partidas divergen solas (el azar de combate cambia con cada efecto), por eso las cifras por guardián son muy ruidosas: mirar los totales y el signo, no el decimal.
+
+| Muestra | Rondas | Puntaje | Bajas/min | Daño/min |
+|---|---|---|---|---|
+| guerrero + mago + cazadora, política `first`, 4 partidas c/u (n=12 por brazo) | +0,17 | +5,1% | +2,7% | +7,7% |
+| mago, política `first`, 8 partidas (n=8 por brazo) | +0,37 | +9,0% | +7,1% | +10,7% |
+| guerrero + cazadora, política `best` (la que más sube el daño), 4 c/u (n=8) | 0,00 | -0,3% | +4,1% | -5,6% |
+
+Lectura: el efecto en el juego es **chico y dentro del ruido** (0 a +10%), de acuerdo con el presupuesto (la mejor build vale 1,40 y en 8 minutos se llevan 2-3 reliquias). Lo que sí se mide: con más tiempo (jefes 10, 15, 20...) se llenan los 12 niveles y el techo de 1,40 pasa a pesar; conviene repetir con partidas de 20-30 minutos y con jugadores reales antes de subir cualquier cifra.
+
+Economía (`tools/balance/endless_econ.js`, GOD, 6 min, guerrero, solo Horda, 3 partidas): mismo código, mismas fuentes de oro/XP/objetos. Con reliquias: 197 de oro/min, 512 de XP/min, 0,88 objetos/min; sin reliquias (árbol de `main`): 281 de oro/min, 660 de XP/min, 1,58 objetos/min. La diferencia sale de **en qué arena cae cada partida** (las partidas que empiezan en la Ciudad se quedan más tiempo en la ronda del subjefe), no de las reliquias: con la comparación pareada (5 partidas por brazo, misma semilla, 6 min) las partidas con reliquias llegaron más lejos (ronda 7,0 contra 5,6) y juntaron más oro y objetos por el mismo motivo. Ningún valor por kill, por ronda ni por cofre cambió (el código de las reliquias ni los nombra; lo vigila `relics_budget.js`). Efecto indirecto aceptado: si matás más rápido, avanzás más rondas por minuto.
+
 ## Pruebas
 
 | Prueba | Qué cubre |
