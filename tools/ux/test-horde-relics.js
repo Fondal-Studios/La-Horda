@@ -108,7 +108,8 @@ const shot = async (page, name) => { if (SHOTS) { fs.mkdirSync(OUT, { recursive:
     ok(post.st === 'playing' && post.round === 4 && post.phase === 0 && post.offer === 0 && post.hrel[picked] === 1 && Object.keys(post.hrel).length === 1, 'elegir con la tecla 2 aplica esa reliquia y la partida sigue (ronda 4)', { post, picked });
     ok(post.relics === 1 && post.runStatsLayer, 'contador de reliquias de la partida y capa aplicada', post);
     const money = await E(() => ({ gold: save.gold, gems: save.gems, loot: (EN.local.loot || []).length, m0: window.__money0 }));
-    ok(money.gold === money.m0.gold && money.gems === money.m0.gems && money.loot === money.m0.loot, 'elegir una reliquia no da oro, gemas ni botín', money);
+    // (el oro del piso se recoge cuando corre el juego; lo que se prueba acá es que la ELECCIÓN no da gemas ni botín; el oro se mide aislado más abajo, alrededor de hrelGrant)
+    ok(money.gems === money.m0.gems && money.loot === money.m0.loot, 'elegir una reliquia no da gemas ni botín', money);
 
     // ronda 5: subjefe y vuelve la oferta; no se repite la de la ronda 3
     const f45 = await E(() => { const a = __finish(); const r = __finish(true); return { a, r, offer: EN.hrelOffer.slice(), round: EN.round, boss: endlessIsBossRound() }; });
@@ -249,6 +250,34 @@ const shot = async (page, name) => { if (SHOTS) { fs.mkdirSync(OUT, { recursive:
     const gd = await Q.evaluate(() => { clearInterval(window.__t); return { st: state, round: EN.round, hrel: player.hrel ? Object.keys(player.hrel) : [], offer: EN.hrelOffer }; });
     ok(gd.st === 'playing' && gd.round === 6 && gd.hrel.length === 1, '[mando] A elige la reliquia enfocada, se aplica y la partida sigue', gd);
     await P.ctx.close();
+
+    // ---------- 7. celular acostado, táctil real y textos EN/PT
+    const T = await browser.newContext({ viewport: { width: 844, height: 390 }, isMobile: true, hasTouch: true, deviceScaleFactor: 2 });
+    await G.install(T);
+    await T.addInitScript(s => { try { if (!sessionStorage.getItem('__hr')) { localStorage.setItem('laHordaSave_v1', JSON.stringify(s)); sessionStorage.setItem('__hr', '1'); } } catch (e) {} }, SAVE);
+    const tp = await T.newPage(); tp.on('pageerror', e => errs.push('pageerror: ' + e.message));
+    await tp.route('**/api/rooms?*', r => r.fulfill({ status: 200, contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: '{"rooms":[]}' }));
+    await tp.goto(site.url + '/index.html?lazy=0', { waitUntil: 'load', timeout: 180000 });
+    await tp.waitForFunction(() => { const b = document.getElementById('title-continue-btn'); return typeof setState === 'function' && typeof assetsAllReady === 'function' && assetsAllReady() && b && !b.disabled; }, null, { timeout: 120000 });
+    await tp.evaluate(() => { for (const k of Object.keys(save.champions)) { save.champions[k].unlocked = true; save.champions[k].level = 12; } save.arenasCleared = Object.assign(save.arenasCleared || {}, { ciudad: true, fortaleza: true });
+      selectedClass = 'guerrero'; lobbyAllies = null; endlessOpen(); document.getElementById('start-btn').click(); document.getElementById('prep-start-btn').click();
+      for (const h of heroes) h.invulnTimer = 1e9; EN.round = 3; endlessOpenBuffChoice(); const c = document.querySelector('#buff-cards .buff-card'); c.click(); });
+    const tv = await tp.evaluate(() => ({ st: state, vis: hrelPhaseVisible(), r: [...document.querySelectorAll('#buff-cards button.hrel-card')].map(b => { const q = b.getBoundingClientRect(); return { x: Math.round(q.left), y: Math.round(q.top), w: Math.round(q.width), h: Math.round(q.height), r: Math.round(q.right), b: Math.round(q.bottom) }; }),
+      vw: innerWidth, vh: innerHeight, hscroll: document.documentElement.scrollWidth > innerWidth + 1, fs: [...document.querySelectorAll('#buff-cards .buff-desc')].map(e => parseFloat(getComputedStyle(e).fontSize)) }));
+    ok(tv.st === 'buff' && tv.vis && tv.r.length === 3 && tv.r.every(q => q.h >= 44 && q.w >= 44 && q.x >= 0 && q.r <= tv.vw && q.y >= 0 && q.b <= tv.vh), '[táctil] 844x390: 3 tarjetas de >= 44 px dentro de la pantalla', tv);
+    ok(!tv.hscroll && tv.fs.every(f => f >= 14), '[táctil] sin scroll horizontal y texto >= 14 px', tv.fs);
+    await shot(tp, 'oferta-celular-844x390');
+    const offT = await tp.evaluate(() => EN.hrelOffer.slice());
+    await tp.touchscreen.tap(tv.r[2].x + tv.r[2].w / 2, tv.r[2].y + tv.r[2].h / 2); await sleep(300);
+    const tt = await tp.evaluate(() => ({ st: state, round: EN.round, hrel: Object.keys(player.hrel || {}) }));
+    ok(tt.st === 'playing' && tt.hrel.length === 1 && tt.hrel[0] === offT[2].slice(3), '[táctil] tocar la tercera tarjeta la elige y la partida sigue', { tt, offT });
+    // textos en inglés y portugués (t370.py)
+    const tr = await tp.evaluate(async () => { const out = {}; for (const lang of ['en', 'pt']) { I18N.setLang(lang); await new Promise(r => setTimeout(r, 400));
+      const opt = ['hr:brasa_viva', 'hr:corazon_magma', 'hr:ojo_afilado']; player.hrel = {}; const d = document.createElement('div'); d.innerHTML = opt.map(o => '<button class="buff-card">' + buffOptHTML(o, player) + '</button>').join(''); document.body.appendChild(d); await new Promise(r => setTimeout(r, 500));
+      out[lang] = d.innerText.replace(/\s+/g, ' '); d.remove(); } I18N.setLang('es'); return out; });
+    ok(/Living ember/.test(tr.en) && /set the enemy on fire/.test(tr.en) && /Magma heart/.test(tr.en) && /Fire/i.test(tr.en) && /Rare|Epic|Common/i.test(tr.en) && !/Brasa viva|prender fuego/.test(tr.en), '[EN] nombre, descripción y etiqueta traducidos', tr.en);
+    ok(/Brasa viva/.test(tr.pt) && /incendiar o inimigo/.test(tr.pt) && /Coração de magma/.test(tr.pt) && /Fogo/i.test(tr.pt) && !/prender fuego/.test(tr.pt), '[PT] nombre, descripción y etiqueta traducidos', tr.pt);
+    await T.close();
 
     ok(errs.length === 0, 'sin errores de página', errs.slice(0, 3));
   } catch (e) { console.error(e); fails++; }
