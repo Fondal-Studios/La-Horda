@@ -44,6 +44,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   const r1 = await E(() => {
     const V = questsView(), ids = l => l.map(c => c.tpl + (c.champ ? ':' + c.champ : '') + '=' + c.n).join(',');
     const day = d => new Date(2026, 8, d, 12).getTime();
+    save.quests.streak.seen = '';   // dispositivo "nuevo": el reloj simulado (septiembre) queda antes del día real que el guardado ya vio; ese rechazo se prueba en t_quests_streak.js
     const a1 = ids(questsRoll('daily', questsDayKey(new Date(day(28))), V)), a2 = ids(questsRoll('daily', questsDayKey(new Date(day(28))), V));
     const days = []; for (let d = 1; d <= 14; d++) days.push(ids(questsRoll('daily', questsDayKey(new Date(day(d))), V)));
     const wk = []; for (let d = 21; d <= 29; d++) wk.push(questsWeekKey(new Date(day(d))));
@@ -52,12 +53,14 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
     window.__questsNow = day(28); save.quests.daily.key = ''; questsEnsureRotation(); const k28 = save.quests.daily.key, w28 = save.quests.weekly.key, l28 = ids(save.quests.daily.list); // lunes
     window.__questsNow = day(29); questsEnsureRotation(); const k29 = save.quests.daily.key, w29 = save.quests.weekly.key;
     window.__questsNow = day(30); questsEnsureRotation(); const w30 = save.quests.weekly.key;
-    window.__questsNow = day(28); questsEnsureRotation(); const back = ids(save.quests.daily.list);
+    const l30 = ids(save.quests.daily.list);
+    window.__questsNow = day(28); questsEnsureRotation(); const back = ids(save.quests.daily.list);   // reloj hacia atrás: se ignora (no re-rota ni repite desafíos)
     const unique = new Set(days).size, allThree = days.every(s => s.split(',').length === 3);
     const noDup = days.every(s => new Set(s.split(',').map(x => x.split(/[:=]/)[0])).size === 3);
-    return { same: a1 === a2, unique, allThree, noDup, wk, k28, k29, w27, w28, w29, w30, back28: back === l28 };
+    return { same: a1 === a2, unique, allThree, noDup, wk, k28, k29, w27, w28, w29, w30, back28: back === l30 };
   });
   check('Q.diarios_determinísticos_por_fecha', r1.same && r1.back28, r1);
+  check('Q.sin_plantilla_por_tiempo_jugado', await E(() => !CHALLENGE_TEMPLATES.some(t => t.stat === 'minutes' || t.id === 'minutes') && !CHALLENGE_TEMPLATES.some(t => /minutos|horas/i.test(t.name + ' ' + t.desc(5, 'x'))) && !ACHIEVEMENTS.some(a => /minutes|timeMs/.test(String(a.prog)) && (a.reward.gold || a.reward.brasas))));
   check('Q.diarios_rotan_y_varían', r1.unique >= 10 && r1.allThree && r1.noDup, { unique: r1.unique });
   check('Q.semana_iso_cambia_el_lunes', r1.wk[0] === r1.wk[6] && r1.wk[7] !== r1.wk[6] && r1.w27 !== r1.w28 && r1.w28 === r1.w29 && r1.w29 === r1.w30 && r1.k28 !== r1.k29, r1);
 

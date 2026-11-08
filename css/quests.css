@@ -164,3 +164,9 @@
 @media (max-width:560px){
   .qs-acc .qs-bar{ display:none; }
 }
+/* Racha diaria */
+.qs-streak{ border:2px solid #000; background:var(--ui-inset,rgba(0,0,0,.3)); padding:8px 10px; margin:0 0 10px; }
+.qs-streak-n{ font-family:var(--font-retro); font-size:1.15rem; margin:2px 0 6px; } .qs-streak-n b{ color:#ffb870; font-size:1.5rem; font-weight:400; } .qs-streak-n i{ font-style:normal; font-size:0.95rem; color:var(--text-dim); }
+.qs-streak-ms{ list-style:none; margin:0 0 6px; padding:0; display:flex; flex-wrap:wrap; gap:6px; }
+.qs-streak-ms li{ border:2px solid #000; padding:4px 8px; font-size:0.95rem; background:rgba(0,0,0,.35); color:var(--text-dim); } .qs-streak-ms li b{ color:#fff1dc; } .qs-streak-ms li.got{ color:#7dffa0; } .qs-streak-ms li.next{ border-color:#ffb870; }
+.qs-warn{ color:#ffb08a; }

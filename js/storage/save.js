@@ -79,7 +79,7 @@ function defaultSave(){
     stash:[], rewardOverflow:[], stashV1:true, affixV1:true, // inventario de la CUENTA (30 espacios, compartido por los guardianes): ver js/systems/items.js
     crystals:{ancestral:false, escarcha:false, piedra:false}, // cristales de los Guardianes (js/systems/crystals.js)
     collection:{},          // objetos con nombre propio / sets / míticos / únicos descubiertos alguna vez (catálogo)
-    cromas:{},              // cromas compradas (cosméticas, oro del juego): {id:true}; la equipada va en champions[k].croma (js/systems/cromas.js)
+    cromas:{},              // cromas compradas (cosméticas, solo Brasas ✦): {id:true}; la equipada va en champions[k].croma (js/systems/cromas.js)
     shop:null,              // ofertas de objetos del día (js/systems/shop.js)
     quests:null,            // logros, desafíos, pase de temporada y perfil (js/systems/quests.js: questsNormalize completa los campos)
     // DIFICULTADES (js/systems/difficulty-tiers.js): arenas superadas en Pesadilla / Infierno (Normal es

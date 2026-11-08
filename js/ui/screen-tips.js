@@ -25,7 +25,7 @@ const SCREEN_TIPS = [
   {id:"sala", topic:"objetivo", when:()=>state==="prep", steps:[
     {ic:"🛡", t:"Antes de entrar", x:"Acá ves a tu guardián y su equipo. Para cambiar objetos o talentos, usá las pestañas. Cuando estés listo, tocá el botón grande para entrar a la arena."}]},
   {id:"guardian", topic:"botin", when:()=>_tipChampTab()==="ficha", steps:[
-    {ic:"🛡", t:"Tu guardián", x:"Con ‹ › cambiás de guardián. Las pestañas de arriba: Equipo (objetos), Talentos, Maestría y Apariencias (skins)."}]},
+    {ic:"🛡", t:"Tu guardián", x:"Con ‹ › cambiás de guardián. Las pestañas de arriba: Equipo (objetos), Talentos, Maestría, Sets (poder) y Apariencias (skins, sin poder)."}]},
   {id:"equipo", topic:"botin", when:()=>_tipChampTab()==="equipo", steps:[
     {ic:"🎒", t:"Equipo", x:"Los objetos que juntás en las arenas se equipan acá, en los huecos del guardián. Se comparten entre todos tus guardianes. Si no tenés ninguno, jugá una arena: el botín cae al piso."}]},
   {id:"talentos", topic:"progreso", when:()=>_tipChampTab()==="talentos", steps:[

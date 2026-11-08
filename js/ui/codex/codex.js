@@ -452,7 +452,8 @@ function codexChampHtml(key){
   const own = ch && ch.unlocked, L = CODEX_CHAMP_LORE[key] || {};
   const sel = own && selectedClass === key;
   const need = own ? xpToNext(ch.level) : 1, pct = own ? Math.min(100, Math.round(ch.xp/need*100)) : 0;
-  const tabs = [["ficha","Ficha"],["equipo","Equipo"],["talentos","Talentos"],["habilidades","Maestría"],["skins","Apariencias"]];
+  const tabs = [["ficha","Ficha"],["equipo","Equipo"],["talentos","Talentos"],["habilidades","Maestría"],["sets","Sets"],["skins","Apariencias"]];
+  const NEEDS_OWN = ["equipo","talentos","habilidades"]; // Sets y Apariencias son consulta/prueba: sirven con cualquier guardián
   const stage = `<div class="cx-stage">${_pv({kind:"champ", key, anim:"idle", arena:"champ"}, "cx-pv cx-stage-pv")}
       <div class="cx-stage-name" style="color:${cls.color}">${_cxEsc(championShortName(key))}</div><div class="cx-stage-title">${_cxEsc(championTitle(key))}</div></div>
     ${_animChips(codexChampAnimList(key))}
@@ -463,9 +464,12 @@ function codexChampHtml(key){
   const head = `<div class="cx-panel-head">${codexStepper()}<div class="cx-kicker">${HUB_ROLE_LABEL[cls.roleCategory]||""}${own ? " · Nv. " + ch.level : ""}</div>
       <h2 class="cx-title" style="color:${cls.color}">${_cxEsc(championShortName(key))}</h2><div class="cx-subtitle"><b>${_cxEsc(championTitle(key))}</b> · ${_cxEsc(cls.role)}</div>
       ${own ? `<div class="cx-xp"><div style="width:${pct}%"></div></div><div class="cx-dim">${ch.xp} / ${need} XP · Puntos sin gastar: <b>${ch.talentPoints||0}</b> · Talentos: <b>${treePointsAvailable(key)}</b></div>` : ""}
-      <div class="cx-tabs cx-scroll-x">${tabs.map(([t,l])=>`<button class="cx-tab ${codexChampTab===t?"on":""} ${!own && t!=="ficha"?"dim":""}" data-ctab="${t}">${l}</button>`).join("")}</div></div>`;
+      <div class="cx-tabs cx-scroll-x">${tabs.map(([t,l])=>`<button class="cx-tab ${codexChampTab===t?"on":""} ${!own && NEEDS_OWN.includes(t)?"dim":""}" data-ctab="${t}">${l}</button>`).join("")}</div></div>`;
   let panel = head;
-  if(codexChampTab === "ficha" || !own){
+  if(!own && NEEDS_OWN.includes(codexChampTab)) panel += codexLockedTabHtml(key);
+  else if(codexChampTab === "skins") panel += codexSkinsTabHtml(key);
+  else if(codexChampTab === "sets") panel += codexSetsTabHtml(key);
+  else if(codexChampTab === "ficha" || !own){
     const sk = [...cls.skills, cls.ultimate];
     panel += codexChampSheetHtml(key);
     panel += _sec("¿Quién es?", `<blockquote class="cx-quote">«${_cxEsc(cat.lore)}»</blockquote>${L.origin ? `<div class="cx-origin">Origen: <b>${_cxEsc(L.origin)}</b></div>` : ""}${codexDistinctHistory(cat.lore, L.history)}`, "lore");
@@ -481,8 +485,7 @@ function codexChampHtml(key){
     panel += _sec("Skins", codexChampSkinsHtml(key), "skins");
     const cset = Object.entries(typeof CHAMPION_SETS!=="undefined" ? CHAMPION_SETS : {}).find(([id, S])=>S.champion===key);
     if(cset) panel += _sec("Equipamiento propio", `<button class="cx-link-card" data-go="set:${cset[0]}"><b>${_cxEsc(cset[1].name)}</b><span>${_cxEsc(cset[1].theme||"")} · solo ${_cxEsc(cls.name)}</span></button>`);
-  } else if(codexChampTab === "skins") panel += codexSkinsTabHtml(key);
-  else panel += `<div class="cx-hub-panel" id="cx-hub-panel"></div>`;
+  } else panel += `<div class="cx-hub-panel" id="cx-hub-panel"></div>`;
   return codexEntryHtml(stage, panel, "cx-entry-champ");
 }
 function codexChampAnimList(key){
@@ -517,7 +520,7 @@ function codexSkillNumbers(s, ult){
   return out.join(" · ");
 }
 function codexChampSkins(key){ return Object.keys(typeof SET_SKINS!=="undefined" ? SET_SKINS : {}).filter(id=>SET_SKINS[id].champ===key).concat(typeof cromaIdsFor==="function" ? cromaIdsFor(key) : []); }
-// Chip de una CROMA (js/systems/cromas.js): cosmético suelto por oro, se usa/quita acá mismo.
+// Chip de una CROMA (js/systems/cromas.js): cosmético suelto por Brasas ✦, se usa/quita acá mismo.
 function _cxCromaChip(key, id){
   const d = CROMA_SKINS[id], C = CROMA_CRYSTALS[d.crystal] || {label:d.crystal};
   const st = cromaIsEquipped(id) ? "✔ EQUIPADA" : (cromaOwned(id) ? "Comprada: usala" : `🪙 ${fmtGold(cromaPrice(id))}`);
@@ -543,9 +546,9 @@ function codexBindChamp(body, key){
   body.querySelectorAll("[data-cx-voice]").forEach(b=>b.addEventListener("click",()=>codexSpeakVoice(key,b.dataset.cxVoice)));
   const stopVoice=body.querySelector("[data-cx-stop]"); if(stopVoice)stopVoice.addEventListener("click",codexStopVoice);
   body.querySelectorAll("[data-ctab]").forEach(b=>b.addEventListener("click", ()=>{
-    if(!own && b.dataset.ctab !== "ficha"){ if(typeof showNetToast==="function") showNetToast(`${CLASSES[key].name} está bloqueado: desbloquealo en la Tienda.`); return; }
     codexChampTab = b.dataset.ctab; codexRender();
   }));
+  body.querySelectorAll("[data-ctab-go]").forEach(b=>b.addEventListener("click", ()=>{ codexChampTab = b.dataset.ctabGo; codexRender(); }));
   body.querySelectorAll("[data-skill]").forEach(b=>b.addEventListener("click", ()=>{
     const i = +b.dataset.skill;
     body.querySelectorAll("[data-skill]").forEach(x=>x.classList.remove("on")); b.classList.add("on");
@@ -578,56 +581,130 @@ function codexBindChamp(body, key){
 function codexSkinDetail(body, key, id){
   const el = body.querySelector("#cx-skin-detail"); if(!el) return;
   if(!id){ el.innerHTML = `<div class="cx-skin-box"><b>Apariencia original</b><p>Siempre disponible. Conserva todas las estadísticas del campeón.</p></div>`; return; }
+  const ent = typeof cosmeticEntry==="function" ? cosmeticEntry(id) : null;
+  if(ent && ent.kind==="efecto"){
+    el.innerHTML = `<div class="cx-skin-box"><b>${_cxEsc(ent.name)}</b><div class="cx-dim">Efecto de habilidades: tiñe los efectos de las habilidades de tu guardián cuando lo llevás. No cambia su aspecto ni sus estadísticas.</div><div class="cx-dim">La vista previa lanza la definitiva con el color del efecto.</div>${codexAppearanceHowHtml(key, id)}</div>`;
+    return;
+  }
+  if(ent && ent.kind==="ascension"){
+    el.innerHTML = `<div class="cx-skin-box"><b>${_cxEsc(ent.name)}</b><div class="cx-dim">Apariencia de Ascensión: cambia el aspecto y los colores de las habilidades de este guardián. No cambia sus estadísticas.</div>${codexAppearanceHowHtml(key, id)}</div>`;
+    return;
+  }
   if(typeof isCromaId==="function" && isCromaId(id)){ _cxCromaDetail(el, key, id); return; }
   const sk = SET_SKINS[id], S = SET_DB[id] || {}, miss = typeof shopSetMissing==="function" ? shopSetMissing(id) : [];
   const full = typeof setFullCount==="function" ? setFullCount(id) : 4, eq = typeof equippedSetCount==="function" ? equippedSetCount(key, id) : 0;
   let act;
   if(skinIsActiveOn(id, key)) act = `<div class="cx-active">✔ Apariencia equipada</div>`;
-  else if(skinOwnedFull(id)) act = `<button class="cx-btn primary" id="cx-skin-equip">USAR APARIENCIA</button>`;
+  else if(skinOwnedFull(id)) act = _cxAppOwnsChamp(key) ? `<button class="cx-btn primary" id="cx-skin-equip">USAR APARIENCIA</button>` : "";
   else act = `<button class="cx-btn" id="cx-skin-shop">Ver en la Tienda · te faltan ${miss.length} piezas</button>`;
   const meta = typeof cosmeticMetadata==="function" ? cosmeticMetadata(id) : null;
   el.innerHTML = `<div class="cx-skin-box"><b>${_cxEsc(sk.name)}</b><div class="cx-dim">${_cxEsc(meta ? meta.lore : S.lore || "")}</div>${meta ? `<p class="cx-dim">${meta.artPending ? "Recolor de set · una skin con diseño propio sigue pendiente.<br>" : ""}${_cxEsc(meta.type)} · ${_cxEsc(meta.rarity)} · ${_cxEsc(meta.collection)}<br>Origen: ${_cxEsc(meta.unlockSource)}<br>VFX: ${_cxEsc(meta.vfxProfile)} · SFX: ${_cxEsc(meta.sfxProfile)}</p>` : ""}
     <div class="cx-dim">La apariencia no cambia estadísticas ni equipa objetos. Se obtiene al reunir el set o mediante un regalo del Game Master.</div>${act}
-    <button class="cx-link-card small" data-go="set:${id}"><b>${_cxEsc(S.name || id)}</b><span>ver el set</span></button></div>`;
+    <button class="cx-link-card small" data-go="set:${id}"><b>${_cxEsc(S.name || id)}</b><span>ver el set</span></button>${codexAppearanceHowHtml(key, id)}</div>`;
   el.querySelectorAll("[data-go]").forEach(x=>x.addEventListener("click", ()=>codexLink(x.dataset.go)));
   const eqb = el.querySelector("#cx-skin-equip");
   if(eqb) eqb.addEventListener("click", ()=>{ skinEquipOn(id, key); codexRender(); });
   const shop = el.querySelector("#cx-skin-shop");
   if(shop) shop.addEventListener("click", ()=>{ codexReturnTo = "codex"; if(typeof shopTab!=="undefined") shopTab = "skins"; setState("shop"); renderShop(); }); // la Tienda REAL (no hay compra duplicada)
 }
-// Pestaña SKINS de la ficha: todas las skins del guardián con su preview animada; USAR la que ya tenés
-// (equipa su set completo), ver la que lleva puesta o comprar las piezas que faltan ahí mismo.
+// Pestaña SETS (poder): piezas, progreso y dónde se consiguen. Un set se gana JUGANDO (botín, arenas, Tienda por oro, Forja):
+// nunca con Brasas. Sus apariencias son otra cosa y viven en la pestaña Apariencias (js/data/cosmetics-catalog.js).
+function codexSetSources(id){
+  const arenas = typeof SET_ARENA_WEIGHTS!=="undefined" ? Object.keys(SET_ARENA_WEIGHTS).filter(a=>(SET_ARENA_WEIGHTS[a][id]||0) > 0) : [];
+  const ids = setPieceIds(id);
+  const sold = typeof shopCatalog==="function" && ids.length > 0 && ids.every(pid=>shopCatalog().find(e=>e.kind==="designed" && e.id===pid));
+  return {arenas:arenas.map(a=>(ARENA_MODS[a] && ARENA_MODS[a].label) || a), shop:!!sold, forge:true, brasas:false};
+}
+function _cxSetCard(key, id, own, open){
+  const S = SET_DB[id], ids = setPieceIds(id), owned = ownedDesignIds(), have = ids.filter(p=>owned.has(p)).length;
+  const eq = own && typeof equippedSetCount==="function" ? equippedSetCount(key, id) : 0, src = codexSetSources(id), pct = Math.round(100*have/Math.max(1, ids.length));
+  const pieces = ids.map(pid=>{ const d = DESIGNED_ITEMS[pid] || {}, t = ITEM_TYPES[d.type] || {label:""}; return `<li class="${owned.has(pid)?"own":""}"><span class="cx-set-mark">${owned.has(pid) ? "✔" : "·"}</span> <b>${_cxEsc(d.name || pid)}</b> <i>${_cxEsc(t.label)}</i></li>`; }).join("");
+  const bonus = (S.thresholds || []).map(th=>`<li class="${eq >= th.count ? "on" : have >= th.count ? "ready" : ""}"><b>${th.count} piezas</b> <span>${_cxEsc(th.desc)}</span></li>`).join("");
+  const where = `<ul class="cx-set-where">${src.arenas.length ? `<li><b>Botín de arenas:</b> ${_cxEsc(src.arenas.join(", "))}</li>` : `<li><b>Botín:</b> cae como recompensa al terminar partidas.</li>`}
+      ${src.shop ? `<li><b>Tienda:</b> las piezas se compran con oro.</li>` : ""}<li><b>Forja:</b> dos piezas repetidas se reforjan en una que te falta.</li>
+      ${(typeof PIECES_FOR_BRASAS!=="undefined" && PIECES_FOR_BRASAS) ? "" : `<li data-set-no-brasas><b>Brasas:</b> no compran piezas de set.</li>`}</ul>`;
+  const skin = typeof SET_SKINS!=="undefined" && SET_SKINS[id] && !SET_SKINS[id].manifest ? `<button class="cx-btn" data-ctab-go="skins">Ver la apariencia de este set</button>` : "";
+  return `<details class="cx-set" data-set-card="${id}" ${open ? "open" : ""}><summary><b style="color:${SET_COLOR}">${_cxEsc(S.name)}</b> <span class="cx-set-prog">${have}/${ids.length} piezas</span> <span class="cx-dim">${_cxEsc(S.theme || "")}</span></summary>
+    <div class="cx-set-bar" role="progressbar" aria-valuemin="0" aria-valuemax="${ids.length}" aria-valuenow="${have}"><i style="width:${pct}%"></i></div>
+    <div class="cx-set-h">Piezas</div><ul class="cx-set-pieces">${pieces}</ul>
+    <div class="cx-set-h">Bonificaciones</div><ul class="cx-set-bonus">${bonus}</ul>
+    <div class="cx-set-h">Dónde se consigue</div>${where}${skin}</details>`;
+}
+function codexSetsTabHtml(key){
+  const own = _cxAppOwnsChamp(key), all = Object.keys(typeof SET_DB!=="undefined" ? SET_DB : {});
+  const mine = all.filter(id=>SET_DB[id].champion === key || (typeof SET_SKINS!=="undefined" && SET_SKINS[id] && SET_SKINS[id].champ === key));
+  const uni = all.filter(id=>!mine.includes(id) && !SET_DB[id].champion && !(SET_SKINS[id] && SET_SKINS[id].manifest));
+  const intro = `<p class="cx-dim">Los sets son poder: dan bonificaciones de combate. Se ganan jugando y nunca se compran con Brasas. Sus apariencias son aparte, en la pestaña Apariencias.</p>`;
+  const lock = own ? "" : `<div class="cx-active cx-try-banner">Podés ver los sets de este guardián, pero equiparlos pide tenerlo.</div>`;
+  return _sec("Sets · poder del guardián", `${lock}${intro}${mine.length ? mine.map(id=>_cxSetCard(key, id, own, true)).join("") : `<p class="cx-dim">Este guardián todavía no tiene un set propio.</p>`}`, "combat")
+    + (uni.length ? _sec("Sets universales · para cualquier guardián", uni.map(id=>_cxSetCard(key, id, own, false)).join(""), "combat") : "");
+}
+// Pestaña bloqueada: Equipo, Talentos y Maestría operan sobre el guardado del guardián, así que piden tenerlo.
+function codexLockedTabHtml(key){
+  return _sec("Guardián bloqueado", `<p>Esta pestaña usa el progreso de este guardián, y todavía no lo tenés.</p><p class="cx-dim">Desbloquealo para usarla. Mientras tanto podés ver su Ficha, sus Apariencias y probarlas gratis.</p>${codexUnlockHintHtml(key)}<button class="cx-btn primary" data-ctab-go="skins">Probar sus apariencias</button>`, "lore");
+}
+// Pestaña APARIENCIAS (identidad, nunca poder) y PROBADOR LIBRE: cualquier guardián, esté o no desbloqueado,
+// muestra TODAS sus apariencias (catálogo único: js/data/cosmetics-catalog.js) con vista previa animada y su
+// "Cómo conseguirla". Probar no equipa nada ni escribe en el guardado: solo cambia la vista (codexPreviewSet).
+// USAR/comprar solo aparecen para lo que se puede usar de verdad (guardián propio + apariencia propia).
 function codexSkinIds(key){
   if(typeof SET_SKINS==="undefined") return [];
-  return Object.keys(SET_SKINS).filter(id=>SET_DB[id] && (typeof skinSetChamp!=="function" || !skinSetChamp(id) || skinSetChamp(id)===key));
+  return Object.keys(SET_SKINS).filter(id=>!SET_SKINS[id].manifest && SET_DB[id] && (typeof skinSetChamp!=="function" || !skinSetChamp(id) || skinSetChamp(id)===key));
+}
+function _cxAppOwnsChamp(key){ const c = save.champions[key]; return !!(c && c.unlocked); }
+// Bloque "Cómo conseguirla" de una apariencia (origen, precio informativo, progreso del set y aviso de guardián bloqueado).
+function codexAppearanceHowHtml(key, id){
+  const e = typeof cosmeticEntry==="function" ? cosmeticEntry(id) : null; if(!e) return "";
+  const src = COSMETIC_SOURCES[e.source] || {label:""};
+  let prog = "";
+  if(e.setId && typeof setPieceIds==="function"){ const tot = setPieceIds(e.setId).length, have = tot - shopSetMissing(e.setId).length; prog = `<div class="cx-how-prog"><span>Piezas del set:</span> <b>${have}/${tot}</b></div>`; }
+  const lock = _cxAppOwnsChamp(key) ? "" : `<p class="cx-how-lock">Desbloqueá a <b>${_cxEsc(championShortName(key))}</b> primero.</p>`;
+  return `<div class="cx-how" data-how-for="${_cxEsc(id)}"><div class="cx-how-h">CÓMO CONSEGUIRLA</div>
+    <div class="cx-how-src"><b>${_cxEsc(src.label)}</b>${e.price > 0 ? ` · <b>✦ ${premiumFmt(e.price)}</b>` : ""}</div><p>${_cxEsc(e.howTo)}</p>${prog}${lock}</div>`;
+}
+// Tarjeta de una apariencia del catálogo (para el guardián `key`).
+function _cxAppCard(key, e, own){
+  const id = e.id, S = SET_DB[id] || {}, dom = e.kind==="efecto" ? "efecto" : e.kind==="ascension" ? "ascension" : cosmeticAppearanceKind(id);
+  const rec = save.champions[key] || {};
+  let sub = "", st = "", act = "", on = false;
+  if(e.kind==="set-skin" || e.kind==="set-croma"){
+    const miss = shopSetMissing(id), full = skinOwnedFull(id), tot = setPieceIds(id).length; on = skinIsActiveOn(id, key);
+    sub = `Set ${_cxEsc(S.name || id)}${e.kind==="set-croma" ? " · croma de set" : ""}`;
+    st = on ? "" : full ? "Apariencia desbloqueada" : `${tot - miss.length}/${tot} piezas`;
+    act = on ? '<span class="ui-tag ok">✔ EQUIPADA</span>' : full ? (own ? `<button class="cx-btn primary" data-skin-use="${id}">USAR</button>` : "") : (typeof premiumSkinButton==="function" ? premiumSkinButton(id, "cx-btn") : "");
+  } else if(e.kind==="skin" || e.kind==="croma"){
+    const d = CROMA_SKINS[id], C = (typeof CROMA_CRYSTALS!=="undefined" && CROMA_CRYSTALS[d.crystal]) || {label:d.crystal}; on = cromaIsEquipped(id);
+    sub = `${cosmeticAppearanceLabel(id)} · ${_cxEsc(C.label)}`;
+    st = on ? (cromaHiddenBySet(key) ? "✔ EQUIPADA · la tapa el set completo" : "✔ EQUIPADA") : (cromaOwned(id) ? "Comprada" : "Cosmética: no da poder");
+    act = on ? `<button class="cx-btn" data-croma-off="${id}">Quitar</button>` : cromaOwned(id) ? (own ? `<button class="cx-btn primary" data-croma-use="${id}">USAR</button>` : "") : (typeof premiumSkinButton==="function" ? premiumSkinButton(id, "cx-btn") : "");
+  } else if(e.kind==="efecto"){
+    const full = skinOwnedFull(id), gated = e.requiresSet && !skinOwnedFull(e.requiresSet); on = skinIsActiveOn(id, key);
+    sub = "Efecto de habilidades"; st = on ? "" : full ? "Efecto desbloqueado" : "No cambia el aspecto";
+    act = on ? '<span class="ui-tag ok">✔ EQUIPADA</span>' : full ? (own ? `<button class="cx-btn primary" data-skin-use="${id}">USAR</button>` : "") : (!gated && typeof premiumSkinButton==="function" ? premiumSkinButton(id, "cx-btn") : "");
+  } else { // ascension
+    on = own && (rec.ascSkin|0) === e.ascIndex;
+    sub = "Apariencia de Ascensión"; st = on ? "" : "Viene con el guardián";
+    act = on ? '<span class="ui-tag ok">✔ EQUIPADA</span>' : (own ? `<button class="cx-btn primary" data-asc-use="${e.ascIndex}">USAR</button>` : "");
+  }
+  const vis = e.kind==="efecto"
+    ? `<div class="gx-fx-swatch" style="--tint:${_cxEsc(e.tint || "#ffcf5c")}" role="img" aria-label="Color del efecto"></div>`
+    : `<canvas class="champ-anim gx-skin-anim" width="84" height="84" data-class-key="${key}" data-skin="${e.kind==="ascension" ? "" : id}" ${e.kind==="ascension" ? `data-asc-skin="${e.ascIndex}"` : ""} data-idle="1"></canvas>`;
+  return `<div class="gx-skin ${on?"on":""}" data-skin-pv="${id}" data-appearance-kind="${dom}">${vis}
+      <div class="gx-skin-name">${_cxEsc(e.name)}</div><div class="gx-skin-sub">${sub}</div><div class="gx-skin-st">${st}</div>
+      <button class="cx-btn" data-appearance-preview="${id}">${e.kind==="efecto" ? "VER EFECTO" : "PROBAR APARIENCIA"}</button>
+      <button class="cx-btn" data-appearance-how="${id}">CÓMO CONSEGUIRLA</button>${act}</div>`;
 }
 function codexSkinsTabHtml(key){
-  const ids = codexSkinIds(key), cromas = typeof cromaIdsFor==="function" ? cromaIdsFor(key) : [];
-  const activeAny = ids.some(id=>skinIsActiveOn(id, key)) || cromas.some(id=>cromaIsEquipped(id));
-  const card = (id, name, sub, st, act, on)=>`<div class="gx-skin ${on?"on":""}" data-skin-pv="${id}" data-appearance-kind="${cosmeticAppearanceKind(id)}">
-      <canvas class="champ-anim gx-skin-anim" width="84" height="84" data-class-key="${key}" data-skin="${id}" data-idle="1"></canvas>
-      <div class="gx-skin-name">${_cxEsc(name)}</div><div class="gx-skin-sub">${sub}</div><div class="gx-skin-st">${st}</div><button class="cx-btn" data-appearance-preview="${id}">PROBAR APARIENCIA</button>${act}</div>`;
-  let html = card("", "Apariencia base", "Siempre disponible", activeAny ? "" : "✔ EN USO", `<button class="cx-btn" data-appearance-original>USAR ORIGINAL</button>`, !activeAny);
-  for(const id of ids){
-    const sk = SET_SKINS[id], S = SET_DB[id] || {}, miss = shopSetMissing(id), on = skinIsActiveOn(id, key), full = skinOwnedFull(id);
-    const act = on ? '<span class="ui-tag ok">✔ EQUIPADA</span>'
-      : full ? `<button class="cx-btn primary" data-skin-use="${id}">USAR</button>`
-      : `${(typeof premiumSkinButton === "function" ? premiumSkinButton(id, "cx-btn") : "")}`;
-    const st = on ? "" : full ? "Apariencia desbloqueada" : `${setPieceIds(id).length - miss.length}/${setPieceIds(id).length} piezas`;
-    const meta = typeof cosmeticMetadata==="function" ? cosmeticMetadata(id) : null;
-    html += card(id, sk.name || S.name, `Set ${_cxEsc(S.name || id)}${meta && meta.artPending ? " · croma de set" : ""}`, st, act, on);
-  }
-  // CROMAS (js/systems/cromas.js): la misma armadura con la paleta de un cristal; cosmético suelto por oro
-  for(const id of cromas){
-    const d = CROMA_SKINS[id], C = (typeof CROMA_CRYSTALS!=="undefined" && CROMA_CRYSTALS[d.crystal]) || {label:d.crystal}, on = cromaIsEquipped(id);
-    const act = on ? `<button class="cx-btn" data-croma-off="${id}">Quitar</button>`
-      : cromaOwned(id) ? `<button class="cx-btn primary" data-croma-use="${id}">USAR</button>`
-      : `${(typeof premiumSkinButton === "function" ? premiumSkinButton(id, "cx-btn") : "")}`;
-    const st = on ? (cromaHiddenBySet(key) ? "✔ EQUIPADA · la tapa el set completo" : "✔ EQUIPADA") : (cromaOwned(id) ? "Comprada" : "Cosmética: no da poder");
-    html += card(id, d.name, `${cosmeticAppearanceLabel(id)} · ${_cxEsc(C.label)}`, st, act, on);
-  }
-  const none = ids.length || cromas.length ? "" : `<div class="cx-dim">${_cxEsc(CLASSES[key].name)} todavía no tiene skins: por ahora luce su apariencia base.</div>`;
-  return _sec("Apariencias · disponibles para pruebas", `<div class="cx-anim-chips cx-scroll-x" aria-label="Tipo de apariencia">${[["all","TODAS"],["original","ORIGINAL"],["skin","SKINS"],["croma","CROMAS"],["set","SET"]].map(([id,label])=>`<button class="cx-chip ${codexAppearanceFilter===id?"on":""}" data-appearance-filter="${id}" aria-pressed="${codexAppearanceFilter===id}">${label}</button>`).join("")}</div><p class="cx-dim">Probá cualquier apariencia en la vista animada, sin gastar oro ni modificar tu equipo.</p><div class="gx-skins">${html}</div><p class="cx-dim" id="cx-appearance-empty" hidden>No hay apariencias de este tipo para este guardián.</p><div class="cx-skin-detail" id="cx-skin-detail"></div>${none}
+  const own = _cxAppOwnsChamp(key), list = typeof cosmeticsForChampion==="function" ? cosmeticsForChampion(key) : [];
+  const rec = save.champions[key] || {};
+  const activeAny = list.some(e=>e.kind==="ascension" ? own && (rec.ascSkin|0)===e.ascIndex : (e.kind==="skin" || e.kind==="croma") ? cromaIsEquipped(e.id) : skinIsActiveOn(e.id, key));
+  const base = `<div class="gx-skin ${activeAny?"":"on"}" data-skin-pv="" data-appearance-kind="original"><canvas class="champ-anim gx-skin-anim" width="84" height="84" data-class-key="${key}" data-skin="" data-idle="1"></canvas>
+      <div class="gx-skin-name">Apariencia base</div><div class="gx-skin-sub">Siempre disponible</div><div class="gx-skin-st">${activeAny ? "" : "✔ EN USO"}</div><button class="cx-btn" data-appearance-preview="">PROBAR APARIENCIA</button>${own ? `<button class="cx-btn" data-appearance-original>USAR ORIGINAL</button>` : ""}</div>`;
+  const cards = base + list.map(e=>_cxAppCard(key, e, own)).join("");
+  const none = list.length ? "" : `<div class="cx-dim">${_cxEsc(CLASSES[key].name)} todavía no tiene skins: por ahora luce su apariencia base.</div>`;
+  const locked = own ? "" : `<div class="cx-active cx-try-banner" data-try-banner>Estás probando a un guardián que todavía no tenés: podés ver todas sus apariencias, pero no equiparlas.</div>`;
+  const chips = [["all","TODAS"],["original","ORIGINAL"],["skin","SKINS"],["croma","CROMAS"],["set","SET"],["efecto","EFECTOS"],["ascension","ASCENSIÓN"]];
+  return _sec("Apariencias · disponibles para pruebas", `${locked}<p class="cx-dim">Las apariencias son identidad: no dan poder ni estadísticas. El poder está en los Sets, en su propia pestaña.</p><div class="cx-anim-chips cx-scroll-x" aria-label="Tipo de apariencia">${chips.map(([id,label])=>`<button class="cx-chip ${codexAppearanceFilter===id?"on":""}" data-appearance-filter="${id}" aria-pressed="${codexAppearanceFilter===id}">${label}</button>`).join("")}</div><p class="cx-dim">Probá cualquier apariencia en la vista animada, sin gastar oro ni modificar tu equipo.</p><div class="gx-skins">${cards}</div><p class="cx-dim" id="cx-appearance-empty" hidden>No hay apariencias de este tipo para este guardián.</p><div class="cx-skin-detail" id="cx-skin-detail"></div>${none}
     <div class="cx-dim">Reuní el set para usar su apariencia. USAR cambia solo el aspecto y conserva tu equipamiento. Las skins independientes tienen vestuario propio y se compran con Brasas ✦.</div>`, "skins");
 }
 function codexApplyAppearanceFilter(body){
@@ -644,37 +721,59 @@ function codexApplyAppearanceFilter(body){
     b.classList.toggle("on", active); b.setAttribute("aria-pressed", String(active));
   });
 }
+// Vista previa SOLO visual: nada de esto toca save. Efecto = se lanza la definitiva con el color del efecto;
+// Ascensión = el guardián con ese perfil (extra.ascSkin); resto = el atlas de la skin.
+function codexPreviewAppearance(cv, key, id){
+  if(!cv) return;
+  const e = id && typeof cosmeticEntry==="function" ? cosmeticEntry(id) : null;
+  if(e && e.kind==="efecto"){ codexPreviewSet(cv, {skin:null, anim:"skill", skill:Object.assign({}, codexSkillFx(key, 3), {color:e.tintRgb}), extra:undefined}); return; }
+  if(e && e.kind==="ascension"){ codexPreviewSet(cv, {skin:null, anim:"idle", skill:null, extra:{ascSkin:e.ascIndex}}); return; }
+  codexPreviewSet(cv, {skin:id, anim:"idle", skill:null, extra:undefined});
+}
 function codexBindSkinsTab(body, key, cv){
   codexApplyAppearanceFilter(body);
+  const own = _cxAppOwnsChamp(key);
   const original = body.querySelector("[data-appearance-original]");
-  if(original) original.addEventListener("click", ()=>{ skinCosmeticEquip(key, null); codexRender(); });
+  if(original && own) original.addEventListener("click", ()=>{ skinCosmeticEquip(key, null); if(save.champions[key].ascSkin){ save.champions[key].ascSkin = 0; persist(); } codexRender(); });
   body.querySelectorAll("[data-appearance-filter]").forEach(b=>b.addEventListener("click", ()=>{
     codexAppearanceFilter = b.dataset.appearanceFilter; codexApplyAppearanceFilter(body);
   }));
   body.querySelectorAll("[data-appearance-preview]").forEach(b=>b.addEventListener("click", ()=>{
     const id = b.dataset.appearancePreview || null;
-    if(cv) codexPreviewSet(cv, {skin:id, anim:"idle"});
+    codexPreviewAppearance(cv, key, id);
     codexSkinDetail(body, key, id);
     if(typeof showNetToast==="function") showNetToast("Vista previa · tu equipo no cambió");
+  }));
+  body.querySelectorAll("[data-appearance-how]").forEach(b=>b.addEventListener("click", ()=>{
+    const el = body.querySelector("#cx-skin-detail"); if(!el) return;
+    el.innerHTML = `<div class="cx-skin-box">${codexAppearanceHowHtml(key, b.dataset.appearanceHow)}</div>`;
+    el.scrollIntoView({block:"nearest"});
   }));
   if(body.querySelector(".gx-skins")) startChampAnimLoop();
   body.querySelectorAll("[data-skin-pv]").forEach(c=> c.addEventListener("click", ev=>{
     if(ev.target.closest("button")) return;
     body.querySelectorAll("[data-skin-pv]").forEach(x=>x.classList.toggle("sel", x===c));
-    if(cv) codexPreviewSet(cv, {skin:c.dataset.skinPv || null, anim:"idle"});
+    codexPreviewAppearance(cv, key, c.dataset.skinPv || null);
   }));
   body.querySelectorAll("[data-skin-use]").forEach(b=> b.addEventListener("click", ()=>{
     const id = b.dataset.skinUse;
-    if(skinEquipOn(id, key)){ if(typeof _skinEquippedFeedback==="function") _skinEquippedFeedback(id, key); }
+    if(own && skinEquipOn(id, key)){ if(typeof _skinEquippedFeedback==="function") _skinEquippedFeedback(id, key); }
     else gameAlert("No se pudo usar: revisá que hayas desbloqueado esta apariencia.");
     codexRender();
   }));
   body.querySelectorAll("[data-croma-use]").forEach(b=> b.addEventListener("click", ()=>{
     const id = b.dataset.cromaUse;
-    if(cromaEquip(key, id)){ if(typeof playSfx==="function") playSfx("levelup"); if(typeof showNetToast==="function") showNetToast(`🎨 ${cosmeticAppearanceLabel(id).toUpperCase()} EQUIPADA · ${CROMA_SKINS[id].name}`); }
+    if(own && cromaEquip(key, id)){ if(typeof playSfx==="function") playSfx("levelup"); if(typeof showNetToast==="function") showNetToast(`🎨 ${cosmeticAppearanceLabel(id).toUpperCase()} EQUIPADA · ${CROMA_SKINS[id].name}`); }
     codexRender();
   }));
-  body.querySelectorAll("[data-croma-off]").forEach(b=> b.addEventListener("click", ()=>{ cromaEquip(key, null); codexRender(); }));
+  body.querySelectorAll("[data-croma-off]").forEach(b=> b.addEventListener("click", ()=>{ if(own) cromaEquip(key, null); codexRender(); }));
+  body.querySelectorAll("[data-asc-use]").forEach(b=> b.addEventListener("click", ()=>{
+    if(!own) return;
+    const c = save.champions[key], n = +b.dataset.ascUse | 0;
+    if(typeof state!=="undefined" && state==="playing") return;
+    c.ascSkin = n; c.cosmeticSkin = ""; c.croma = null; persist(); if(typeof cromaAfterEquip==="function") cromaAfterEquip(key);
+    codexRender();
+  }));
 }
 function _cxCromaDetail(el, key, id){
   const d = CROMA_SKINS[id], C = CROMA_CRYSTALS[d.crystal] || {label:d.crystal}, own = save.champions[key] && save.champions[key].unlocked;
@@ -683,7 +782,7 @@ function _cxCromaDetail(el, key, id){
   else if(cromaOwned(id)) act = own ? `<button class="cx-btn primary" id="cx-croma-on">USAR</button>` : `<div class="cx-dim">Conseguí a ${_cxEsc(CLASSES[key].name)} para usarla.</div>`;
   else act = `${(typeof premiumSkinButton === "function" ? premiumSkinButton(id, "cx-btn") : "")}`;
   el.innerHTML = `<div class="cx-skin-box"><b>${_cxEsc(d.name)}</b><div class="cx-dim">${_cxEsc(d.lore)}</div>
-    <div class="cx-dim">${cosmeticAppearanceLabel(id)} · ${_cxEsc(d.visualTheme || C.label)}. Cosmético puro (no da poder), se compra con Brasas ✦.</div>${act}</div>`;
+    <div class="cx-dim">${cosmeticAppearanceLabel(id)} · ${_cxEsc(d.visualTheme || C.label)}. Cosmético puro (no da poder), se compra con Brasas ✦.</div>${act}${codexAppearanceHowHtml(key, id)}</div>`;
   const on = el.querySelector("#cx-croma-on"), off = el.querySelector("#cx-croma-off");
   if(on) on.addEventListener("click", ()=>{ if(cromaEquip(key, id) && typeof showNetToast==="function") showNetToast(`🎨 ${cosmeticAppearanceLabel(id).toUpperCase()} EQUIPADA · ${d.name}`); codexRender(); });
   if(off) off.addEventListener("click", ()=>{ cromaEquip(key, null); codexRender(); });

@@ -6,7 +6,7 @@
    - Guardianes: todos los de CHAMPION_CATALOG, animados, con rol, historia, habilidades, precio y compra.
    - Objetos y sets: TODO el catálogo (shopCatalog en js/systems/shop.js) por categoría; los sets se
      muestran como conjunto (piezas que tenés / que faltan, bonus y cuáles tenés activos).
-   - Skins: las skins de set que existen (SET_SKINS). Cada apariencia cuesta Brasas ✦ o su precio en oro (escalones en js/data/pricing.js) y da SOLO la
+   - Skins: las skins de set que existen (SET_SKINS). Cada apariencia cuesta Brasas ✦ (nunca oro; escalones en js/data/pricing.js) y da SOLO la
      apariencia (js/systems/premium.js); completar el set la sigue regalando. Las piezas se compran aparte.
    - ✦ Brasas: saldo, paquetes con precio en moneda real (los manda el servidor), Pack de bienvenida mientras no
      se haya comprado y tres skins de tus guardianes como ejemplo. Las Brasas compran apariencia y, con el interruptor PIECES_FOR_BRASAS, piezas de set;

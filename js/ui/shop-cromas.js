@@ -1,8 +1,8 @@
 "use strict";
 /* ============================================================
    js/ui/shop-cromas.js
-   CROMAS en la Tienda (pestaña Skins): productos cosméticos que se compran sueltos con ORO DEL
-   JUEGO (js/systems/cromas.js). Bloque autocontenido: renderShopSkins lo monta con una sola línea
+   CROMAS en la Tienda (pestaña Skins): productos cosméticos que se compran sueltos SOLO con Brasas ✦ (no con oro; antes con ORO DEL
+   JUEGO) (js/systems/cromas.js). Bloque autocontenido: renderShopSkins lo monta con una sola línea
    (shopCromaMount), así la vitrina de la Tienda se puede rediseñar sin tocar esta lógica; los
    datos para otra vitrina salen de shopCromaProducts().
    ============================================================ */

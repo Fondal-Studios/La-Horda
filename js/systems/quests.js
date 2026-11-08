@@ -46,6 +46,7 @@ function questsNormalize(q){
     frame: QUEST_FRAMES[q.frame] ? q.frame : "madera",
     emblems: Array.isArray(q.emblems) ? q.emblems.filter(e=>QUEST_EMBLEMS[e]) : ["guardian"],
     emblem: QUEST_EMBLEMS[q.emblem] ? q.emblem : "guardian",
+    streak: _qStreakNorm(q.streak),                           // racha diaria (ver "RACHA DIARIA" más abajo)
     counts: Object.assign({daily:0, weekly:0, chests:0}, q.counts||{}),
     seen: Object.assign({}, q.seen||{}),                    // logros ya vistos en la pantalla (para el "¡NUEVO!")
     retro: fresh || !!q.retro                                // primer arranque con logros: se desbloquea lo ya hecho en silencio
@@ -60,10 +61,21 @@ function questsState(){
 
 /* ---------------- fecha (determinística, sin servidor) ---------------- */
 // window.__questsNow (número o función) permite a las pruebas mover el reloj.
-function questsNow(){
+function _qRawNow(){
   const o = (typeof window !== "undefined") ? window.__questsNow : null;
   const t = typeof o === "function" ? o() : o;
   return t ? new Date(t) : new Date();
+}
+// El reloj del cliente NO puede inflar la racha ni repetir desafíos: se registra el último día visto
+// (save.quests.streak.seen) y si el reloj va hacia atrás se sigue usando ese último día (saltos hacia atrás rechazados).
+// OJO: esto solo frena el atajo más obvio. Un reloj adelantado a mano sigue siendo del cliente; la validación fuerte
+// (día contado por el servidor, con la fecha del servidor) irá al servidor junto con el resto de la economía de cuenta.
+function questsNow(){
+  const raw = _qRawNow();
+  let seen = "";
+  try{ seen = (typeof save !== "undefined" && save && save.quests && save.quests.streak && save.quests.streak.seen) || ""; }catch(e){}
+  if(seen && questsDayKey(raw) < seen){ const p = seen.split("-"); return new Date(+p[0], +p[1]-1, +p[2], 12, 0, 0); }
+  return raw;
 }
 const _q2 = n => String(n).padStart(2, "0");
 function questsDayKey(d){ d = d || questsNow(); return `${d.getFullYear()}-${_q2(d.getMonth()+1)}-${_q2(d.getDate())}`; }
@@ -102,7 +114,6 @@ function questsView(){
   const V = Object.assign({}, st);
   for(const k of ["kills","fis","revives","duoEntries","civ","subjefes","timeMs"]) V[k] = (st[k]||0) + (live[k]||0);
   V.maxRunKills = Math.max(st.maxRunKills||0, live.kills||0);
-  V.minutes = Math.floor(V.timeMs/60000);
   V.cleared = save.arenasCleared || {};
   V.champs = save.champions || {};
   V.crystals = (typeof crystalsOwned === "function") ? crystalsOwned().length : 0;
@@ -163,10 +174,23 @@ function questsRoll(kind, key, V, exclude){
   }
   return out;
 }
+// Plantillas que ya no existen (p. ej. "minutes", quitada: el tiempo jugado no se premia): se reemplazan por otro desafío.
+function _qMigrateChallenges(q, V){
+  let changed = false;
+  for(const kind of ["daily","weekly"]){
+    const R = q[kind], known = c => CHALLENGE_TEMPLATES.some(t=>t.id === c.tpl);
+    if(R.list.every(known)) continue;
+    const alt = questsRoll(kind, R.key + "#m", V, R.list.map(c=>c.tpl));
+    R.list = R.list.map(c=>known(c) ? c : (alt.shift() || null)).filter(Boolean); changed = true;
+  }
+  return changed;
+}
 function questsEnsureRotation(){
   const q = questsState();
+  const clockChanged = _qTouchClock();
   const dk = questsDayKey(), wk = questsWeekKey();
-  if(q.daily.key === dk && q.weekly.key === wk) return false;
+  if(_qMigrateChallenges(q, questsView())){ persist(); }
+  if(q.daily.key === dk && q.weekly.key === wk){ if(clockChanged) persist(); return false; }
   const V = questsView();
   let changed = false;
   if(q.daily.key !== dk){ q.daily = {key:dk, list:questsRoll("daily", dk, V), bonus:false, rerolls:0}; changed = true; }
@@ -273,6 +297,7 @@ function questsEvaluate(silent){
       if(c.done) continue;
       if(questsChalProgress(c, V) < c.n) continue;
       c.done = true; q.counts[kind]++;
+      if(kind === "daily") _qStreakCredit(silent);
       const T = questsChalText(c);
       questsGrant({gold:c.gold}, true);
       questsAddXp(QUEST_XP[kind], silent);
@@ -286,6 +311,63 @@ function questsEvaluate(silent){
     }
   }
   return got;
+}
+
+
+/* ---------------- RACHA DIARIA ----------------
+   Cada día con ≥1 desafío DIARIO completado suma +1 (STREAK_MILESTONES y STREAK_FREEZE_NEED en js/data/quests.js).
+   Hitos 3/7/14: cofre, título o marco (sin Brasas ni oro). Congelador: se gana completando 3 desafíos diarios en la semana.
+   Estado en save.quests.streak = {count, best, last (último día contado), seen (último día visto por el reloj),
+   freezes (0..1), weekKey/weekDone/weekEarned, claimed:{días:true}}. Tiempo jugado: no cuenta ni paga. */
+function _qStreakNorm(s){
+  s = s && typeof s === "object" ? s : {};
+  const day = v => typeof v === "string" && /^\d{4}-\d{2}-\d{2}$/.test(v) ? v : "";
+  return {count:Math.max(0, s.count|0), best:Math.max(0, s.best|0), last:day(s.last), seen:day(s.seen), freezes:Math.min(1, Math.max(0, s.freezes|0)),
+    weekKey:typeof s.weekKey === "string" ? s.weekKey : "", weekDone:Math.max(0, s.weekDone|0), weekEarned:typeof s.weekEarned === "string" ? s.weekEarned : "",
+    claimed:Object.assign({}, s.claimed && typeof s.claimed === "object" ? s.claimed : {})};
+}
+function _qStreak(q){ q = q || questsState(); if(!q.streak || typeof q.streak !== "object") q.streak = _qStreakNorm(null); return q.streak; }
+const _qDayNum = key => { const p = String(key).split("-"); return Math.round(Date.UTC(+p[0], +p[1]-1, +p[2])/86400000); };
+// Registra el último día visto. Devuelve true si cambió algo que hay que guardar. QST.clockBack = el reloj está atrasado (se ignora).
+function _qTouchClock(){
+  const s = _qStreak(), raw = questsDayKey(_qRawNow());
+  QST.clockBack = !!(s.seen && raw < s.seen);
+  if(!s.seen || raw > s.seen){ s.seen = raw; return true; }
+  return false;
+}
+function _qStreakCredit(silent){
+  const q = questsState(), s = _qStreak(q), today = questsDayKey(), wk = questsWeekKey();
+  // congelador semanal (se gana jugando)
+  if(s.weekKey !== wk){ s.weekKey = wk; s.weekDone = 0; }
+  s.weekDone++;
+  if(s.weekDone >= STREAK_FREEZE_NEED && s.weekEarned !== wk){
+    s.weekEarned = wk;
+    if(s.freezes < 1){ s.freezes = 1; if(!silent) _qToast({kind:"chal", icon:"shield", tint:"#9fdcff", head:"CONGELADOR DE RACHA", name:"Ganaste un congelador de racha", sub:"Protege un día sin desafíos"}); }
+  }
+  if(s.last === today) return;
+  const gap = s.last ? _qDayNum(today) - _qDayNum(s.last) : 0;
+  if(s.last && gap < 0) return;                        // reloj atrasado: nunca suma
+  if(!s.last) s.count = 1;
+  else if(gap === 1) s.count++;
+  else if(gap - 1 <= s.freezes){ s.freezes -= gap - 1; s.count++; if(!silent) _qToast({kind:"chal", icon:"shield", tint:"#9fdcff", head:"RACHA SALVADA", name:"El congelador protegió tu racha"}); }
+  else { s.count = 1; s.claimed = {}; }                // se perdió: arranca de nuevo (y vuelve a poder cobrar los hitos)
+  s.last = today; s.best = Math.max(s.best, s.count);
+  if(!silent) _qToast({kind:"chal", icon:"flame", tint:"#ff9a3c", head:"RACHA DIARIA", name:`${s.count} ${s.count === 1 ? "día seguido" : "días seguidos"}`});
+  for(const m of STREAK_MILESTONES){
+    if(s.count < m.days || s.claimed[m.days]) continue;
+    s.claimed[m.days] = true;
+    questsGrant(m.reward, true);
+    if(!silent) _qToast({kind:"chal", icon:"trophy", tint:"#ffcf5c", head:"HITO DE RACHA", name:`${m.days} días seguidos`, sub:questsRewardText(m.reward)});
+  }
+}
+// Lo que muestra el hub y la pantalla DESAFÍOS (la racha "perdida" se ve en 0 aunque el dato se reinicie recién al próximo desafío).
+function questsStreakInfo(){
+  const q = questsState(), s = _qStreak(q), today = questsDayKey(), wk = questsWeekKey();
+  const doneToday = s.last === today;
+  let count = s.count|0;
+  if(s.last && !doneToday){ const gap = _qDayNum(today) - _qDayNum(s.last); if(gap < 0 || gap - 1 > s.freezes) count = 0; }
+  return {count, best:s.best|0, doneToday, atRisk:count > 0 && !doneToday, freezes:s.freezes|0, weekDone:s.weekKey === wk ? s.weekDone : 0, freezeNeed:STREAK_FREEZE_NEED,
+    next:STREAK_MILESTONES.find(m=>m.days > count) || null, claimed:Object.assign({}, s.claimed), clockBack:!!QST.clockBack};
 }
 
 /* ---------------- ciclo de la partida ---------------- */

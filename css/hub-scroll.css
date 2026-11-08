@@ -97,3 +97,6 @@
 /* Modos de postgame bloqueados (js/ui/hub.js: renderPostgameTiles): se ven apagados pero la condición se lee entera */
 #mainmenu-screen .hub-tile.locked{ filter:grayscale(.55) brightness(.9); border-style:dashed; }
 #mainmenu-screen .hub-tile.locked .hub-tile-sub{ color:var(--hud-gold,#ffcf5c); white-space:normal; font-size:14px; line-height:1.2; }
+/* Racha diaria: chip chico en el borde inferior del botón DESAFÍOS (el sub-texto de los botones está oculto en el hub compacto). */
+#mainmenu-screen .hub-tile-streak{ position:absolute; left:64px; right:6px; bottom:3px; display:block; font-size:14px; line-height:1.1; color:#ffb870; text-align:right; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; pointer-events:none; }
+#mainmenu-screen .hub-tile-streak:empty{ display:none; }

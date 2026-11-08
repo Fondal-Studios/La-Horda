@@ -1,0 +1,23 @@
+# Pestaña Sets del guardián (poder: piezas, progreso, dónde se consiguen; nunca Brasas)
+T=[
+("Sets · poder del guardián","Sets · the guardian's power","Sets · o poder do guardião"),
+("Sets universales · para cualquier guardián","Universal sets · for any guardian","Sets universais · para qualquer guardião"),
+("Podés ver los sets de este guardián, pero equiparlos pide tenerlo.","You can see this guardian's sets, but equipping them requires owning it.","Você pode ver os sets deste guardião, mas equipá-los exige tê-lo."),
+("Los sets son poder: dan bonificaciones de combate. Se ganan jugando y nunca se compran con Brasas. Sus apariencias son aparte, en la pestaña Apariencias.","Sets are power: they give combat bonuses. They are earned by playing and never bought with Embers. Their looks are separate, in the Looks tab.","Os sets são poder: dão bônus de combate. Ganham-se jogando e nunca se compram com Brasas. As aparências são à parte, na aba Aparências."),
+("Este guardián todavía no tiene un set propio.","This guardian has no set of its own yet.","Este guardião ainda não tem um set próprio."),
+("Piezas","Pieces","Peças"),
+("Bonificaciones","Bonuses","Bônus"),
+("Dónde se consigue","Where to get it","Onde conseguir"),
+("{n}/{n} piezas","{n}/{n} pieces","{n}/{n} peças"),
+("{n} piezas","{n} pieces","{n} peças"),
+("Botín de arenas:","Arena loot:","Espólio das arenas:"),
+("Botín:","Loot:","Espólio:"),
+("cae como recompensa al terminar partidas.","drops as a reward when you finish matches.","cai como recompensa ao terminar partidas."),
+("Tienda:","Shop:","Loja:"),
+("las piezas se compran con oro.","the pieces are bought with gold.","as peças são compradas com ouro."),
+("Forja:","Forge:","Forja:"),
+("dos piezas repetidas se reforjan en una que te falta.","two duplicate pieces are reforged into one you are missing.","duas peças repetidas são reforjadas em uma que falta."),
+("Brasas:","Embers:","Brasas:"),
+("no compran piezas de set.","do not buy set pieces.","não compram peças de set."),
+("Ver la apariencia de este set","See this set's look","Ver a aparência deste set"),
+]
