@@ -36,6 +36,7 @@ jobs:
       - run: node tests/competitive-roster.test.js
       - run: node tests/competitive-signatures.test.js
       - run: node tests/net-play-event.test.js
+      - run: node tests/net-lobby-injection.test.js
       - run: node tools/crystal-wars/test-competitive.js
       - run: node tools/crystal-wars/test-simulation.js
       - run: node tools/crystal-wars/balance-gate.js
