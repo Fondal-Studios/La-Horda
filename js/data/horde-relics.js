@@ -19,7 +19,7 @@ const HRELIC_CFG = {
   budget: 20,                                  // tope de puntos de poder por jugador (una build llena de épicas no pasa de acá)
   maxTotalStacks: 12,
   // Tope de la capa de estadísticas (multiplicadores y sumas) que pueden aportar TODAS las reliquias juntas.
-  // Referencia: un refuerzo común de la Horda da +20% de daño (BUFF_POOL); ninguna build de reliquias se acerca a un refuerzo y medio.
+  // Referencia: un refuerzo común de la Horda da +20% de daño (BUFF_POOL); la mejor build de reliquias posible vale menos que DOS refuerzos (índice < 1,44; tools/balance/relics_budget.js).
   layerCap: {dmgMult:[1, 1.28], critChance:[0, 0.14], critMult:[0, 0.40], cdMult:[0.84, 1], speedMult:[1, 1.15], atkSpeedMult:[1, 1.20],
              hpMult:[1, 1.25], regenPct:[0, 0.010], eliteDmgMult:[1, 1.15], executeBonus:[0, 0.20], ultChargeMult:[1, 1.15]},
   // Daño extra por segundo que pueden sumar los efectos con disparo (golpes extra, explosiones, espíritus) por héroe,
