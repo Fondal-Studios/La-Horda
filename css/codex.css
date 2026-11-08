@@ -268,3 +268,11 @@ button.cx-card:hover, button.cx-home-card:hover, button.cx-chapter:hover, button
 .cx-art-sheet a{display:block;color:inherit;border:1px solid #806342;border-radius:8px;overflow:hidden;background:#211f1c}
 .cx-art-sheet img{display:block;width:100%;max-width:100%;height:auto;object-fit:contain}
 .cx-art-sheet figcaption{margin-top:8px;color:#c7b494;font-size:12px;line-height:1.5}
+/* Probador libre: efecto de habilidades (sin sprite), "Cómo conseguirla", sets y avisos. */
+.gx-fx-swatch{ width:84px; height:84px; border:2px solid #000; background:radial-gradient(circle at 50% 50%, var(--tint,#ffcf5c) 0%, color-mix(in srgb, var(--tint,#ffcf5c) 45%, transparent) 38%, transparent 70%), var(--ui-inset,#150d08); }
+.cx-how{ display:flex; flex-direction:column; gap:4px; padding:8px 10px; border:2px solid #000; background:var(--ui-inset,rgba(0,0,0,.35)); }
+.cx-how-h{ font-family:var(--font-retro); font-size:1.05rem; color:var(--ui-gold,#ffd76a); }
+.cx-how p, .cx-how-src, .cx-how-prog{ margin:0; font-size:0.95rem; line-height:1.35; }
+.cx-how-lock{ color:#ffb08a; font-weight:700; }
+.cx-try-banner{ margin:0 0 8px; font-size:0.95rem; line-height:1.35; }
+.gx-skin .gx-skin-sub, .gx-skin .gx-skin-st{ font-size:0.875rem; }

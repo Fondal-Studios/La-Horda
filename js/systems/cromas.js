@@ -180,7 +180,7 @@ function cosmeticMetadata(id){
     lore:d.lore || COSMETIC_SET_STORIES[id] || "Historia de esta apariencia pendiente de completar.",
     artPending:!croma && cosmeticArtPending(d),
     lorePending:!d.lore && !COSMETIC_SET_STORIES[id], visualTheme:d.visualTheme || (croma ? d.crystal : set && set.theme) || d.name,
-    unlockSource:croma ? "Galería · oro obtenido jugando" : "Reunir " + (set ? set.name : id),
+    unlockSource:croma ? "Brasas ✦ · cosmético, no da poder" : "Reunir " + (set ? set.name : id),
     sourceArenas:sources, collection:d.collection || (croma ? "Cristales de los Guardianes" : set ? set.name : id),
     vfxProfile:fx ? "Variantes visuales del set" : "Original", sfxProfile:d.sfxProfile || "Original",
     preview:d.preview || d.src || null, premiumPrice:null, currency:null, availability:"alpha-preview",
