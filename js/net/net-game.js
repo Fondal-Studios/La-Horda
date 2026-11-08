@@ -211,9 +211,16 @@ function netDrawNameTags(){
 }
 // Evento para UN jugador (sus números de daño, su pantalla roja al recibir un golpe, su XP...).
 function netEmitTo(slot, name, args){ if(netIsHost()) netRecord(name, args||[], slot); }
+// LISTA BLANCA de eventos que el anfitrión puede pedirle al invitado: los visuales/sonoros grabados por netHookEvents
+// más los que el juego emite con netEmitTo/netRecord. El nombre llega por la red: jamás se busca en window sin pasar por acá.
+const NET_PLAY_ALLOWED = new Set([...NET_EVENT_FNS, "xp","gold","hurt","useXp","juiceStreakShow","juiceHitLocal","groundLootDrop","endlessGuestReward"]);
+const NET_PLAY_MAX_ARGS = 16;
 function netPlayEvent(ev){
+  if(!Array.isArray(ev)) return;
   const [name, rawArgs, to] = ev;
-  if(to!==undefined && to!==netMatch.mySlot) return;
+  if(typeof name!=="string" || name.length>40 || !NET_PLAY_ALLOWED.has(name)) return;
+  if(!Array.isArray(rawArgs) || rawArgs.length>NET_PLAY_MAX_ARGS) return;
+  if(to!==undefined && (!netMatch || to!==netMatch.mySlot)) return;
   const args = rawArgs.map(a=>netDecode(a, true));
   try{
     switch(name){
@@ -228,7 +235,7 @@ function netPlayEvent(ev){
         if(args[0] && typeof args[0]==="object"){ args[0].alive = false; args[0].hp = 0; }
         break;
     }
-    const f = NET_ORIG[name] || window[name];
+    const f = Object.hasOwn(NET_ORIG, name) ? NET_ORIG[name] : window[name];
     if(typeof f==="function") f.apply(null, args);
   }catch(e){ /* un efecto que no se pudo reproducir no debe cortar la partida */ }
 }
@@ -712,14 +719,16 @@ function netApplySnapshot(s){
   if(!s) return;
   if(s.full){ /* keyframe: reemplaza todo lo que haya */ }
   // 1) crear objetos nuevos (para que las referencias cruzadas se resuelvan)
-  const colls = s.c || {};
+  // las claves de colecciones/globales/héroes vienen del anfitrión: solo las conocidas (sin __proto__/constructor)
+  const colls = {};
+  if(s.c && typeof s.c==="object") for(const name of Object.keys(s.c)) if(Object.hasOwn(NET_COLLS, name)) colls[name] = s.c[name];
   for(const name in colls){
     const map = M.colls[name] || (M.colls[name] = new Map());
     for(const [id] of colls[name].u) if(!map.has(id)){ const o = {_new:1}; map.set(id, o); if(name==="enemies") M.ents.set(id, o); }
   }
   // 2) globales
   const g = s.g || {};
-  for(const k in g){ const setter = NET_GLOBALS[k]; if(setter) setter[1](netDecode(g[k])); }
+  for(const k in g){ const setter = Object.hasOwn(NET_GLOBALS, k) ? NET_GLOBALS[k] : null; if(setter) setter[1](netDecode(g[k])); }
   // 3) héroes
   (s.h||[]).forEach((d,i)=>{
     if(!d) return;
@@ -727,6 +736,7 @@ function netApplySnapshot(s){
     const own = h===player;
     if(d.classKey && d.classKey!==h.classKey){ const keep={_duoStart:h._duoStart,_duoReserve:h._duoReserve,_duoSpawn:h._duoSpawn,_netSlot:h._netSlot,netName:h.netName}; const fresh=makeHero(d.classKey,h.isBot,d.x||h.x,d.y||h.y); for(const k of Object.keys(h)) delete h[k]; Object.assign(h,fresh,keep); if(own){ selectedClass=d.classKey; runStartXp=duoProgress[selectedClass]??totalXpForChamp(selectedClass); updateAbilityButtons(); resetSkillLevelUI(); } }
     for(const k in d){
+      if(k==="__proto__" || k==="constructor" || k==="prototype") continue;
       if(own && k==="x"){ h._hx = d.x; continue; }
       if(own && k==="y"){ h._hy = d.y; continue; }
       // quieto, la mirada propia la decide el anfitrión (se da vuelta hacia lo que ataca, como en solitario)
@@ -749,6 +759,7 @@ function netApplySnapshot(s){
       const o = map.get(id);
       const interp = name==="enemies";
       for(const k in d){
+        if(k==="__proto__" || k==="constructor" || k==="prototype") continue;
         if(interp && (k==="x"||k==="y")){ if(k==="x") o._tx = d.x; else o._ty = d.y; if(o._new){ o[k] = d[k]; } continue; }
         if(interp && k==="animT" && !o._new) continue;
         o[k] = netDecode(d[k]);
