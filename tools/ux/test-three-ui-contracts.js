@@ -44,7 +44,7 @@ const overlaps=(a,b)=>Math.min(a.x+a.width,b.x+b.width)>Math.max(a.x,b.x)+.5&&Ma
    await p.waitForFunction(()=>typeof lanesStart==='function'&&typeof renderMainMenu==='function');
    await p.evaluate(()=>{save.tut.training=1;persistNow();setState('mainmenu');renderMainMenu();});
    await p.locator('#hub-crystal-btn').click();await p.locator('#practice').waitFor({state:'visible'});
-   const owned=await p.evaluate(()=>lanesOwnedRoster());await p.selectOption('#champ',owned.includes('mago')?'mago':owned[0]);await p.click('#practice');await p.waitForFunction(()=>state==='playing'&&lanesOn());
+   const owned=await p.evaluate(()=>[...document.querySelectorAll('#champ option')].map(o=>o.value));await p.selectOption('#champ',owned.includes('mago')?'mago':owned[0]);await p.click('#practice');await p.waitForFunction(()=>state==='playing'&&lanesOn());
    await p.click('.ln-chip');
    for(const lefty of [false,true]){
     await p.evaluate(v=>document.body.classList.toggle('lefty',v),lefty);
