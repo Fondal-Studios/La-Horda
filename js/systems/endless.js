@@ -39,8 +39,10 @@ const EN = {
 /* ---------------- utilidades ---------------- */
 function _enMulberry(seed){ let a = seed>>>0; return function(){ a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a>>>15, 1 | a); t = t + Math.imul(t ^ t>>>7, 61 | t) ^ t; return ((t ^ t>>>14)>>>0)/4294967296; }; }
 function _enHash(str){ let h = 2166136261; for(let i=0;i<str.length;i++){ h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); } return h>>>0; }
-// Temporada ISO (UTC) de una fecha: "2026-W40".
+// Temporada (mes calendario, UTC) de una fecha: "2026-11".
 function endlessWeekKey(date){ return date.toISOString().slice(0,7); }
+// Cómo se muestra la temporada al jugador: "11/2026" (antes se cortaba por "-W" y salía "undefined").
+function endlessSeasonLabel(key){ const m = /^(\d{4})-(\d{2})/.exec(key||""); return m ? m[2] + "/" + m[1] : ""; }
 // Mutadores de la temporada: 2 distintos, determinísticos (todos juegan la misma temporada).
 function endlessWeeklyMutators(date){
   const key = endlessWeekKey(date || new Date());
@@ -130,7 +132,7 @@ function endlessArenaCard(first){
   const A = ARENA_MODS[currentArena]||{};
   const muts = EN.mutators.map(m=>ENDLESS_MUTATORS[m].icon + " " + ENDLESS_MUTATORS[m].name).join(" · ");
   if(typeof arenaTitleCard==="function")
-    arenaTitleCard(first ? "HORDA INFINITA" : "LA CICATRIZ TE LLEVA", `${A.icon||""} ${A.label||currentArena}`, first ? `Temporada ${EN.week.split("-W")[1]} · ${muts}` : `Ronda ${EN.round} · ${EN.stintKind==="boss" ? "el jefe de la arena espera" : "contené a la Horda"}`, 3600);
+    arenaTitleCard(first ? "HORDA INFINITA" : "LA CICATRIZ TE LLEVA", `${A.icon||""} ${A.label||currentArena}`, first ? `Temporada ${endlessSeasonLabel(EN.week)} · ${muts}` : `Ronda ${EN.round} · ${EN.stintKind==="boss" ? "el jefe de la arena espera" : "contené a la Horda"}`, 3600);
 }
 
 /* ---------------- rondas ---------------- */
@@ -630,7 +632,7 @@ function endlessShowResults(){
   const loot = (L.loot||[]).map(it=>{ const tm = LOOT_TIER_META[itemTier(it)]||{}; return `<div class="en-loot-item" style="--tc:${tm.color||"#ddd"}">${typeof itemIconHTML==="function" ? itemIconHTML(it) : ""}<span class="en-loot-name" style="color:${tm.color||"#ddd"}">${it.name}</span><span class="en-loot-tier">${tm.label||""}</span></div>`; }).join("");
   const badge = (on, txt)=> on ? `<span class="en-new">${txt}</span>` : "";
   el.innerHTML = `<div class="en-res">
-    <div class="en-res-kicker">HORDA INFINITA · SEMANA ${(EN.week||"").split("-W")[1]||""}</div>
+    <div class="en-res-kicker">HORDA INFINITA · TEMPORADA ${endlessSeasonLabel(EN.week)}</div>
     <div class="en-res-title">${EN.endReason==="quit" ? "Contención abandonada" : "La Horda siguió avanzando"}</div>
     <div class="en-res-big"><div><span>Ronda</span><b>${EN.round}</b></div><div><span>Puntaje</span><b>${_enFmt(EN.score)}</b></div></div>
     <div class="en-res-badges">${badge(L.newGlobal, "¡NUEVO RÉCORD GLOBAL!")}${badge(L.newGuardian && !L.newGlobal, `¡Récord de ${(CLASSES[cls]||{}).name||cls}!`)}${badge(L.newWeek && !L.newGlobal && !L.newGuardian, "¡Mejor de la temporada!")}</div>
@@ -747,7 +749,7 @@ function endlessDecoratePrep(){
   const guest = typeof netInRoom==="function" && netInRoom() && net.role==="guest";
   box.classList.remove("hidden");
   box.innerHTML = `<div class="la-head">HORDA INFINITA <span class="la-by">· ${guest ? "la arranca el anfitrión" : "la Cicatriz elige las arenas"}</span></div>
-    <div class="la-desc">∞ Rondas sin fin: cada 5, un jefe o subjefe y la Cicatriz te lleva a otra arena. Temporada ${wk.key.split("-W")[1]}: ${wk.ids.map(m=>`<b title="${ENDLESS_MUTATORS[m].desc}">${ENDLESS_MUTATORS[m].icon} ${ENDLESS_MUTATORS[m].name}</b>`).join(" · ")}.</div>
+    <div class="la-desc">∞ Rondas sin fin: cada 5, un jefe o subjefe y la Cicatriz te lleva a otra arena. Temporada ${endlessSeasonLabel(wk.key)}: ${wk.ids.map(m=>`<b title="${ENDLESS_MUTATORS[m].desc}">${ENDLESS_MUTATORS[m].icon} ${ENDLESS_MUTATORS[m].name}</b>`).join(" · ")}.</div>
     <div class="la-desc">Récord con ${(CLASSES[selectedClass]||{}).name||""}: <b>${_enFmt(G.score)}</b> (ronda ${G.round||0}) · Global: <b>${_enFmt(S.best.score)}</b> (ronda ${S.best.round||0})${typeof lbOpen==="function" ? ` <button type="button" class="btn secondary small lb-open-btn" id="en-prep-rank">🏆 Ranking</button>` : ""}</div>`;
   box._html = "endless";
   const rk = document.getElementById("en-prep-rank"); if(rk) rk.addEventListener("click", ev=>{ ev.stopPropagation(); lbOpen({guardian:""}); });

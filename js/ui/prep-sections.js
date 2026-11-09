@@ -47,6 +47,11 @@ function prepSecSync(){
   const num = typeof campaignNumberLabel==="function" ? campaignNumberLabel(currentArena) : "";
   const al = document.getElementById("prep-sec-arena");
   if(al) al.textContent = "Arena" + (num ? " " + num : "") + (A.label ? " · " + A.label : "");
+  // Horda Infinita: la pestaña no tiene una arena fija; muestra el modo y el Rango de Cicatriz elegido (ahí se elige).
+  if(al && typeof endlessPending!=="undefined" && endlessPending){
+    const sel = typeof scarSave==="function" ? scarSave().sel : 0;
+    al.textContent = "Horda Infinita" + (sel > 0 && typeof SCAR_RANKS!=="undefined" ? " · " + SCAR_RANKS[sel].name : "");
+  }
   const warn = !!document.querySelector("#lobby-arena .la-warn");
   const ab = document.querySelector('[data-prep-sec="arena"]'); if(ab) ab.classList.toggle("warn", warn);
   const ol = document.getElementById("prep-sec-online");

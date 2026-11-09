@@ -49,6 +49,12 @@ const SAVE = { tut: { training: 1 }, starterChosen: true, starterGiftV1: true, s
     ok(r1.sel === 2 && r1.onNow[2] === true, '[2] elegir un rango abierto lo guarda y lo marca', r1);
     ok(/Cicatriz II/.test(r1.info) && /ronda\s*20/.test(r1.info) && /1\.30/.test(r1.info), '[2] el texto informa nombre, meta y bono de puntaje', r1.info);
 
+    // 2b. la pestaña dice Horda Infinita + el rango, y no quedan "undefined" en los textos de la Horda
+    const r2b = await E(() => { prepSecSync(); return { tab: document.getElementById('prep-sec-arena').textContent, txt: document.getElementById('lobby-arena').innerText, season: endlessSeasonLabel('2026-11'), none: endlessSeasonLabel('x') }; });
+    ok(/^Horda Infinita · Cicatriz II$/.test(r2b.tab), '[2b] la pestaña muestra Horda Infinita y el rango elegido (no una arena fija)', r2b.tab);
+    ok(!/undefined/.test(r2b.txt) && /Temporada \d{2}\/\d{4}/.test(r2b.txt), '[2b] la preparación muestra la temporada sin "undefined"', r2b.txt.slice(0, 200));
+    ok(r2b.season === '11/2026' && r2b.none === '', '[2b] etiqueta de temporada: mes/año; vacía si la clave no sirve', r2b);
+
     // 3. mutadores en la partida
     const r3 = await E(() => {
       document.getElementById('prep-start-btn').click();
@@ -88,6 +94,7 @@ const SAVE = { tut: { training: 1 }, starterChosen: true, starterGiftV1: true, s
     ok(!r4.short.cleared && r4.short.unlocked === null && r4.short.max === 2 && r4.short.best === 12, '[4] sin llegar a la meta no abre nada y guarda el mejor', r4.short);
     ok(r4.long.cleared && r4.long.unlocked === 3 && r4.long.max === 3 && r4.long.title === 'marcado_2' && r4.long.has && r4.long.best === 22, '[4] llegar a la meta abre el siguiente rango y da el título', r4.long);
     ok(/Te faltaron 8 rondas para Cicatriz III/.test(r4.short.shown), '[4] sin llegar a la meta, los resultados dicen cuántas rondas faltaron', r4.short.shown && r4.short.shown.slice(0, 300));
+    ok(!/undefined/.test(r4.long.shown) && /TEMPORADA \d{2}\/\d{4}/.test(r4.long.shown), '[4] el encabezado de resultados muestra la temporada', r4.long.shown.slice(0, 120));
     ok(/Cicatriz III/.test(r4.long.shown) && /Rompe|Cicatriz Viva/.test(r4.long.shown), '[4] la pantalla de resultados lo muestra', r4.long.shown.slice(0, 300));
     ok(r4.replay.max === 3 && r4.replay.unlocked === null || r4.replay.max >= 3, '[4] rejugar rangos bajos no baja el máximo', r4.replay);
 
