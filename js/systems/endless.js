@@ -536,11 +536,11 @@ function endlessHudTick(){
     span.parentElement.insertBefore(chip, span);
   }
   if(!chip) return;
-  const key = EN.round + "|" + EN.score + "|" + EN.mutators.join(",") + "|" + kills;
+  const key = EN.round + "|" + EN.score + "|" + EN.mutators.join(",") + "|" + kills + "|" + (EN.scar|0);
   if(key===_enHudKey) return;
   _enHudKey = key;
   const boss = endlessIsBossRound();
-  chip.innerHTML = `<b class="en-inf">∞</b> Ronda <b>${EN.round}</b>${boss ? ' <span class="en-boss">☠</span>' : ""} · <b>${EN.score.toLocaleString("es-AR")}</b> pts · Bajas <b>${kills}</b> <span class="en-muts" title="${EN.mutators.map(m=>ENDLESS_MUTATORS[m].name).join(" · ")}">${EN.mutators.map(m=>ENDLESS_MUTATORS[m].icon).join("")}</span>`;
+  chip.innerHTML = `<b class="en-inf">∞</b> Ronda <b>${EN.round}</b>${boss ? ' <span class="en-boss">☠</span>' : ""} · <b>${EN.score.toLocaleString("es-AR")}</b><span class="en-pts"> pts</span>${EN.scar>0 && typeof SCAR_RANKS!=="undefined" ? ` · <span class="en-scar-tag" title="${SCAR_RANKS[EN.scar].name}">C${SCAR_RANKS[EN.scar].short}</span>` : ""}<span class="en-kills"> · Bajas <b>${kills}</b></span> <span class="en-muts" title="${EN.mutators.map(m=>ENDLESS_MUTATORS[m].name).join(" · ")}">${EN.mutators.map(m=>ENDLESS_MUTATORS[m].icon).join("")}</span>`;
 }
 
 /* ---------------- red (mismo canal de snapshots) ---------------- */

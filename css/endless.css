@@ -108,3 +108,9 @@
 .en-scar-chip.locked,.en-scar-chip:disabled{ opacity:.55; cursor:default; }
 .en-scar-chip:focus-visible{ outline:2px solid #ffd76a; outline-offset:2px; }
 .en-scar-info{ margin-top:4px; font-size:0.8em; opacity:.9; }
+
+/* HUD de la Horda en pantallas angostas: lo importante (ronda, puntaje, rango, mutadores) a la vista; "Bajas" queda en la pausa */
+#hud-endless .en-scar-tag{ color:#ff9ac8; font-family:var(--font-pixel); font-size:0.58rem; }
+@media (max-width:760px){ #hud-endless .en-kills, #hud-endless .en-pts{ display:none; } #hud-endless .en-muts{ letter-spacing:0; } }
+/* insignias de resultados: respiran en vez de pegarse */
+.en-res-badges .en-new{ margin:3px 2px; }
