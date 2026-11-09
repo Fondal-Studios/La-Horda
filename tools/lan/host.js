@@ -18,7 +18,7 @@
              --quiet (sin QR ni avisos)  --no-install (no instalar `ws` solo)
    Ver docs/beta-release/MULTIJUGADOR_LOCAL.md
    ============================================================ */
-const fs = require("fs"), os = require("os"), path = require("path"), net = require("net"), cp = require("child_process");
+const fs = require("fs"), os = require("os"), path = require("path"), net = require("net"), cp = require("child_process"), zlib = require("zlib");
 const ROOT = path.resolve(__dirname, "..", "..");
 const args = process.argv.slice(2);
 const opt = (k, d) => { const i = args.indexOf("--" + k); return i < 0 ? d : (args[i + 1] && !args[i + 1].startsWith("--") ? args[i + 1] : true); };
@@ -87,7 +87,9 @@ function serveStatic(req, res, urlPath){
   const type = MIME[path.extname(file).toLowerCase()] || "application/octet-stream";
   const headers = { "content-type": type, "cache-control": "no-cache", "x-content-type-options": "nosniff", "accept-ranges": "bytes" };
   if(path.basename(file) === "index.html" && file === path.join(ROOT, "index.html")){
-    const body = indexBody(file);
+    let body = indexBody(file);
+    const ienc = pickEncoding(req.headers["accept-encoding"]);
+    if(ienc){ body = ienc === "br" ? zlib.brotliCompressSync(body) : zlib.gzipSync(body); headers["content-encoding"] = ienc; headers.vary = "Accept-Encoding"; }
     res.writeHead(200, Object.assign(headers, { "content-length": body.length }));
     if(req.method === "HEAD") return res.end();
     return res.end(body);
@@ -102,9 +104,45 @@ function serveStatic(req, res, urlPath){
     if(req.method === "HEAD") return res.end();
     return fs.createReadStream(file, { start, end }).pipe(res);
   }
+  const etag = `W/"${st.size.toString(16)}-${Math.floor(st.mtimeMs).toString(16)}"`;
+  headers.etag = etag;
+  if(req.headers["if-none-match"] === etag){ res.writeHead(304, headers); return res.end(); }
+  const enc = compressible(file) ? pickEncoding(req.headers["accept-encoding"]) : null;
+  if(enc){
+    const body = packed(file, st, enc);
+    res.writeHead(200, Object.assign(headers, { "content-encoding": enc, "content-length": body.length, vary: "Accept-Encoding" }));
+    if(req.method === "HEAD") return res.end();
+    return res.end(body);
+  }
   res.writeHead(200, Object.assign(headers, { "content-length": st.size }));
   if(req.method === "HEAD") return res.end();
   fs.createReadStream(file).pipe(res);
+}
+/* Compresión de texto (JS/CSS/HTML/JSON/SVG): ~75 % menos bytes por WiFi. Imágenes/audio ya vienen comprimidos. */
+const COMPRESSIBLE = new Set([".js", ".css", ".html", ".json", ".svg", ".txt", ".map"]);
+const _packedCache = new Map();
+const PACK_MAX = 64 * 1024 * 1024;
+let _packedBytes = 0;
+function compressible(file){ return COMPRESSIBLE.has(path.extname(file).toLowerCase()); }
+function pickEncoding(header){
+  const h = String(header || "");
+  if(/\bbr\b/.test(h)) return "br";
+  if(/\bgzip\b/.test(h)) return "gzip";
+  return null;
+}
+function packed(file, st, enc){
+  const key = enc + ":" + file;
+  const hit = _packedCache.get(key);
+  if(hit && hit.mtime === st.mtimeMs) return hit.body;
+  const raw = fs.readFileSync(file);
+  const body = enc === "br"
+    ? zlib.brotliCompressSync(raw, { params: { [zlib.constants.BROTLI_PARAM_QUALITY]: 5 } })
+    : zlib.gzipSync(raw, { level: 6 });
+  if(hit) _packedBytes -= hit.body.length;
+  if(_packedBytes + body.length > PACK_MAX){ _packedCache.clear(); _packedBytes = 0; }
+  _packedCache.set(key, { mtime: st.mtimeMs, body });
+  _packedBytes += body.length;
+  return body;
 }
 
 /* ---------------- puerto libre ---------------- */
