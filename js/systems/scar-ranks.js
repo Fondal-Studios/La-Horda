@@ -48,15 +48,14 @@ function scarPrepHTML(guest){
   const C = scarSave(), sel = guest ? scarClamp(EN.scar) : C.sel;
   const chips = SCAR_RANKS.map(R=>{
     const open = scarCanPick(R.rank, C.max), on = R.rank === sel;
-    const best = C.best[R.rank] ? ` · mejor ronda ${C.best[R.rank]}` : "";
-    const lock = open ? "" : ` · se abre llegando a la ronda ${SCAR_CFG.clearRound[R.rank-1]} en ${SCAR_RANKS[R.rank-1].name}`;
-    return `<button class="en-scar-chip${on?" on":""}${open?"":" locked"}" data-scar="${R.rank}" ${open && !guest ? "" : "disabled"} aria-pressed="${on}" title="${R.desc}${best}${lock}">${open ? R.short : "🔒"}</button>`;
+    return `<button class="en-scar-chip${on?" on":""}${open?"":" locked"}" data-scar="${R.rank}" ${open && !guest ? "" : "disabled"} aria-pressed="${on}" title="${R.desc}">${open ? R.short : "🔒"}</button>`;
   }).join("");
   const R = SCAR_RANKS[sel] || SCAR_RANKS[0];
   const goal = SCAR_CFG.clearRound[sel];
-  const next = sel < SCAR_CFG.maxRank ? ` Llegá a la ronda <b>${goal}</b> para abrir ${SCAR_RANKS[sel+1].name}.` : ` Llegá a la ronda <b>${goal}</b> para el marco Cicatriz.`;
+  const next = sel < SCAR_CFG.maxRank ? `Llegá a la ronda ${goal} para abrir ${SCAR_RANKS[sel+1].name}.` : `Llegá a la ronda ${goal} para el marco Cicatriz.`;
+  // una frase por nodo de texto: así cada una se traduce sola (js/i18n/i18n.js traduce por nodo, con los números como {n})
   return `<div class="la-desc en-scar" id="en-scar"><b>Rango de Cicatriz:</b> <span class="en-scar-chips">${chips}</span>
-    <div class="en-scar-info"><b>${R.name}</b> · ${R.desc} Puntaje ×${scarScoreBonus(sel).toFixed(2)}.${next}${guest ? " (lo elige el anfitrión)" : ""}</div></div>`;
+    <div class="en-scar-info"><b>${R.name}</b> <span>${R.desc}</span> <span>Puntaje ×${scarScoreBonus(sel).toFixed(2)}</span> <span>${next}</span>${guest ? ' <span>(lo elige el anfitrión)</span>' : ""}</div></div>`;
 }
 (function scarWire(){
   if(typeof endlessDecoratePrep === "function"){

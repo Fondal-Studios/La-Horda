@@ -101,6 +101,20 @@ const SAVE = { tut: { training: 1 }, starterChosen: true, starterGiftV1: true, s
     // 6. rango 0 intacto
     const r6 = await E(() => { endlessActive = false; scarSave().sel = 0; endlessBeginRun(); return { scar: EN.scar, mut: EN.mutators.slice(), wk: endlessWeeklyMutators().ids, mult: endlessScoreMult() }; });
     ok(r6.scar === 0 && r6.mut.join() === r6.wk.join(), '[6] rango 0: solo los mutadores de la temporada', r6);
+    // 7. traducciones EN/PT de los textos de rangos (render real y lectura del texto traducido)
+    const r7 = await E(async () => {
+      const out = {}; scarSave().sel = 2;
+      for (const lang of ['en', 'pt']) {
+        I18N.setLang(lang);
+        const d = document.createElement('div'); d.id = 'tr-probe';
+        d.innerHTML = scarPrepHTML(false) + '<span>Te faltaron 8 rondas para Cicatriz III</span><span>¡Cicatriz II completada!</span><span>Título «Rompe-Jefes»</span><span>HORDA INFINITA · TEMPORADA 11/2026</span>';
+        document.body.appendChild(d); await new Promise(r => setTimeout(r, 400));
+        out[lang] = d.innerText.replace(/\s+/g, ' '); d.remove();
+      }
+      I18N.setLang('es'); return out;
+    });
+    ok(/Scar Rank:/.test(r7.en) && /Double elites and faster enemies\./.test(r7.en) && /Score ×1\.30/.test(r7.en) && /Reach round 20 to unlock Scar III\./.test(r7.en) && /You were 8 rounds short of Scar III/.test(r7.en) && /Scar II complete!/.test(r7.en) && /Boss-Breaker/.test(r7.en) && /SEASON 11\/2026/.test(r7.en) && !/Rango de Cicatriz|Llegá a la ronda|Te faltaron/.test(r7.en), '[7] EN: los textos de rangos se traducen', r7.en);
+    ok(/Nível de Cicatriz:/.test(r7.pt) && /Elites duplas e inimigos mais rápidos\./.test(r7.pt) && /Pontuação ×1\.30/.test(r7.pt) && /Chegue à rodada 20 para abrir Cicatriz III\./.test(r7.pt) && /Faltaram 8 rodadas para Cicatriz III/.test(r7.pt) && /Quebra-Chefes/.test(r7.pt) && !/Rango de Cicatriz|Llegá a la ronda|Te faltaron/.test(r7.pt), '[7] PT: los textos de rangos se traducen', r7.pt);
     ok(errs.length === 0, 'sin errores de página', errs.slice(0, 3));
   } catch (e) { console.error(e); fails++; }
   finally { await browser.close(); await site.close(); }
