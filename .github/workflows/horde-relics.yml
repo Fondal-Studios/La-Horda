@@ -3,10 +3,10 @@ name: Reliquias de la Horda
 # Diseño y tabla de mejoras: docs/beta-release/HORDA_MEJORAS.md
 on:
   pull_request:
-    paths: ['js/data/horde-relics.js', 'js/systems/horde-relics.js', 'js/systems/endless.js', 'js/net/net-game.js', 'css/horde-relics.css', 'tools/balance/relics_*.js', 'tools/ux/test-horde-relics.js', 'tools/net-test/relics_coop.js', 'tools/i18n/tr/t370.py', 'index.html', '.github/workflows/horde-relics.yml']
+    paths: ['js/data/horde-relics.js', 'js/systems/horde-relics.js', 'js/systems/endless.js', 'js/data/scar-ranks.js', 'js/systems/scar-ranks.js', 'tools/balance/test-scar-ranks.js', 'tools/ux/test-scar-ranks.js', 'js/net/net-game.js', 'css/horde-relics.css', 'tools/balance/relics_*.js', 'tools/ux/test-horde-relics.js', 'tools/net-test/relics_coop.js', 'tools/i18n/tr/t370.py', 'index.html', '.github/workflows/horde-relics.yml']
   push:
     branches: [main]
-    paths: ['js/data/horde-relics.js', 'js/systems/horde-relics.js', 'js/systems/endless.js', 'js/net/net-game.js', 'css/horde-relics.css', 'tools/balance/relics_*.js', 'tools/ux/test-horde-relics.js', 'tools/net-test/relics_coop.js', 'tools/i18n/tr/t370.py', 'index.html', '.github/workflows/horde-relics.yml']
+    paths: ['js/data/horde-relics.js', 'js/systems/horde-relics.js', 'js/systems/endless.js', 'js/data/scar-ranks.js', 'js/systems/scar-ranks.js', 'tools/balance/test-scar-ranks.js', 'tools/ux/test-scar-ranks.js', 'js/net/net-game.js', 'css/horde-relics.css', 'tools/balance/relics_*.js', 'tools/ux/test-horde-relics.js', 'tools/net-test/relics_coop.js', 'tools/i18n/tr/t370.py', 'index.html', '.github/workflows/horde-relics.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -24,3 +24,7 @@ jobs:
         run: node tools/ux/test-horde-relics.js
       - name: "Cooperativo: misma oferta, cada jugador aplica su elección"
         run: NODE_PATH="$PWD/server/node_modules:$NODE_PATH" node tools/net-test/relics_coop.js
+      - name: "Rangos de Cicatriz: reglas puras (sin navegador)"
+        run: node tools/balance/test-scar-ranks.js
+      - name: "Rangos de Cicatriz: selector, mutadores, desbloqueo y recompensas en navegador"
+        run: node tools/ux/test-scar-ranks.js

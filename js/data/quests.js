@@ -122,6 +122,11 @@ const QUEST_TITLES = {
   pastor:        {name:"Pastor de Almas"},
   matagigantes:  {name:"Matagigantes"},
   coleccionista: {name:"Coleccionista de Guardianes"},
+  marcado_1:     {name:"Marcado por la Cicatriz"},   // Rangos de Cicatriz (Horda Infinita): se ganan completando cada rango
+  marcado_2:     {name:"Cicatriz Viva"},
+  marcado_3:     {name:"Rompe-Jefes"},
+  marcado_4:     {name:"Sin Respiro"},
+  marcado_5:     {name:"Hijo de la Cicatriz"},
   leyenda:       {name:"Leyenda Viviente"},
   resonante:     {name:"Voz de los Cristales"},
   escuadra:      {name:"Hermano de Armas"},
@@ -152,6 +157,7 @@ const QUEST_FRAMES = {
   abismo:   {name:"Abismo",           c:["#d29aff","#6a3aa0","#1e0e30"], glow:"176,106,255"},
   cristal:  {name:"Cristal",          c:["#e8fff4","#7fe0c0","#1c5a4a"], glow:"127,224,192"},
   hermandad:{name:"Hermandad",        c:["#c8ffd8","#3ddc71","#124a24"], glow:"61,220,113"},
+  cicatriz: {name:"Cicatriz",         c:["#ffd0e8","#e0407a","#4a0a24"], glow:"224,64,122"},
   oro:      {name:"Oro",              c:["#fff6d6","#f0c84a","#8a6a1c"], glow:"255,210,90"},
   infierno: {name:"Infierno",         c:["#ffb070","#b83a2a","#3a0a06"], glow:"255,90,60"},
   racha:    {name:"Racha de Brasa",     c:["#ffe2b0","#ff9a3c","#5a1c08"], glow:"255,140,60", anim:true}, // hito de racha: 14 días

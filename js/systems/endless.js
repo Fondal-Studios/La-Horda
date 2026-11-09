@@ -32,7 +32,7 @@ try{ Object.defineProperty(window, "endlessMode", {get:()=>endlessActive, config
 const EN = {
   id:0, round:1, score:0, mutators:[], week:"", arenas:[], stintArena:null, stintKind:"sub", baseLevel:1,
   bossKills:0, rescues:0, rescueFails:0, ended:false, rng:null, rescueAt:-1, rescueSeq:0, prevArena:null,
-  endReason:"", synergies:0, relics:0, hrelPhase:0, hrelOffer:[],
+  endReason:"", synergies:0, relics:0, scar:0, hrelPhase:0, hrelOffer:[],
   local:null // lo propio de ESTE jugador (botín, oro y XP ganados): no viaja
 };
 
@@ -50,7 +50,7 @@ function endlessWeeklyMutators(date){
   return {key, ids:out};
 }
 function endlessHas(m){ return EN.mutators.indexOf(m) >= 0; }
-function endlessScoreMult(){ let k = 1; for(const m of EN.mutators) k *= (ENDLESS_MUTATORS[m]||{}).scoreMult || 1; return k; }
+function endlessScoreMult(){ let k = 1; for(const m of EN.mutators) k *= (ENDLESS_MUTATORS[m]||{}).scoreMult || 1; if(typeof scarScoreBonus==="function") k *= scarScoreBonus(EN.scar); return k; }
 function endlessStat(k, v){ try{ window.dispatchEvent(new CustomEvent("horda-stat", {detail:{k, v}})); }catch(e){} }
 function endlessSave(){
   if(!save.endless || typeof save.endless!=="object") save.endless = {};
@@ -91,8 +91,9 @@ function endlessBeginRun(){
   const wk = endlessWeeklyMutators(new Date());
   EN.id = ((Math.random()*1e9)|0) + 1;
   EN.rng = _enMulberry(EN.id ^ 0x9e3779b9);
-  EN.round = 1; EN.score = 0; EN.mutators = wk.ids.slice(); EN.week = wk.key; EN.arenas = [];
+  EN.round = 1; EN.score = 0; EN.mutators = wk.ids.slice(); EN.week = wk.key; EN.arenas = []; EN.scar = 0;
   EN.bossKills = 0; EN.rescues = 0; EN.rescueFails = 0; EN.ended = false; EN.rescueAt = -1; EN.prevArena = null; EN.endReason = ""; EN.synergies = 0;
+  if(typeof scarApplyToRun==="function") scarApplyToRun(); // Rangos de Cicatriz: suma los mutadores del rango elegido
   if(typeof hrelReset==="function") hrelReset(); // reliquias: cada partida empieza limpia
   if(EN.returnArena===undefined || !endlessActive) EN.returnArena = currentArena;
   endlessRescues = [];
@@ -545,7 +546,7 @@ function endlessNetGet(){
   // claves con prefijo "en": las arenas agregan nombres cortos a NET_SKIP_KEYS (p.ej. "sc" en la Ciudad)
   if(!endlessActive) return 0;
   return {enId:EN.id, enR:EN.round, enSc:EN.score, enMu:EN.mutators.join(","), enWk:EN.week, enAr:EN.arenas.join(","), enSk:EN.stintKind, enBl:EN.baseLevel,
-    enBk:EN.bossKills, enRs:EN.rescues, enRf:EN.rescueFails, enSy:EN.synergies, enRl:(EN.hrelOffer||[]).join(","), enRc:EN.relics|0,
+    enBk:EN.bossKills, enRs:EN.rescues, enRf:EN.rescueFails, enSy:EN.synergies, enRl:(EN.hrelOffer||[]).join(","), enRc:EN.relics|0, enSr:EN.scar|0,
     enRq:endlessRescues.map(t=>({id:t.id, kind:t.kind, x:t.x, y:t.y, r:t.r, prog:Math.round(t.prog||0), dur:t.dur, t:Math.round(t.t), tmax:t.tmax, h:t.h, done:t.done?1:0, fade:Math.round(t.fade||0)}))};
 }
 function endlessNetSet(v){
@@ -554,7 +555,7 @@ function endlessNetSet(v){
   endlessActive = true;
   EN.id = v.enId; EN.round = v.enR|0; EN.score = v.enSc|0; EN.mutators = v.enMu ? String(v.enMu).split(",") : []; EN.week = v.enWk || "";
   EN.arenas = v.enAr ? String(v.enAr).split(",") : []; EN.stintKind = v.enSk || "sub"; EN.baseLevel = v.enBl|0 || 1;
-  EN.bossKills = v.enBk|0; EN.rescues = v.enRs|0; EN.rescueFails = v.enRf|0; EN.synergies = v.enSy|0; EN.hrelOffer = v.enRl ? String(v.enRl).split(",") : []; EN.relics = v.enRc|0;
+  EN.bossKills = v.enBk|0; EN.rescues = v.enRs|0; EN.rescueFails = v.enRf|0; EN.synergies = v.enSy|0; EN.hrelOffer = v.enRl ? String(v.enRl).split(",") : []; EN.relics = v.enRc|0; EN.scar = v.enSr|0;
   endlessRescues = (v.enRq||[]).map(t=>Object.assign({}, t, {done:!!t.done}));
   if(fresh){ EN.ended = false; if(netIsGuest()) endlessLocalReset(); }
 }
@@ -588,6 +589,7 @@ function endlessEndRun(reason){
     L.newWeek = EN.score > (S.week.score||0);
     if(L.newWeek){ S.week.score = EN.score; S.week.round = round; }
     S.last = {score:EN.score, round, cls, at:Date.now()};
+    if(typeof scarOnRunEnd==="function") scarOnRunEnd(round, L); // Rangos de Cicatriz: desbloqueo, récord por rango y recompensas de identidad
     L.goldGained = (save.gold||0) - L.gold0;
     L.xpGained = Math.max(0, _enTotalXp(cls) - L.xp0);
     L.lvl1 = (save.champions[cls]||{}).level || L.lvl0;

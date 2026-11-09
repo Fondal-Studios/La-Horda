@@ -99,3 +99,12 @@
   .lb-row{ grid-template-columns:36px minmax(0,1fr) 30px 76px 34px; }
   .lb-g i, .lb-time{ display:none; }
 }
+
+/* Rangos de Cicatriz: selector en la preparación de la Horda */
+.en-scar{ margin-top:6px; }
+.en-scar-chips{ display:inline-flex; gap:4px; vertical-align:middle; flex-wrap:wrap; }
+.en-scar-chip{ min-width:34px; min-height:34px; padding:2px 8px; font-family:var(--font-pixel); font-size:0.6rem; color:#f0dcc8; background:#2a1c12; border:2px solid #6b4424; cursor:pointer; }
+.en-scar-chip.on{ color:#111; background:linear-gradient(180deg,#ff9ac8,#e0407a); border-color:#ffd0e8; }
+.en-scar-chip.locked,.en-scar-chip:disabled{ opacity:.55; cursor:default; }
+.en-scar-chip:focus-visible{ outline:2px solid #ffd76a; outline-offset:2px; }
+.en-scar-info{ margin-top:4px; font-size:0.8em; opacity:.9; }

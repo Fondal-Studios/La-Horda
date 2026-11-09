@@ -139,3 +139,11 @@ Economía (`tools/balance/endless_econ.js`, GOD, 6 min, guerrero, solo Horda, 3 
 - Los efectos con disparo se ejecutan en el anfitrión; en el invitado solo se ven por los eventos de red habituales (`kitFx` pasa por los mismos `vfx*`). Con latencia alta se verán un poco después.
 - Las pruebas de otras personas que elijan una sola vez entre "refuerzo" y "estado `playing`" en la Horda deben elegir hasta salir de `buff` (ya hecho en `autopilot.js`).
 - Ranking competitivo (`js/net/item-economy.js`): las reliquias no se declaran al servidor; si el ranking pasa a validar builds, hay que mandar `h.hrel`.
+
+## Rangos de Cicatriz (ascensiones de la Horda)
+Cinco rangos opcionales (Cicatriz I–V) sobre la Horda Infinita. Cada uno **suma mutadores fijos** (los de `ENDLESS_MUTATORS`, ya balanceados) a los de la temporada y **+15 % de puntaje por rango**. Se abre el siguiente rango llegando a la ronda 10/15/20/25/30 jugando en el rango anterior. Recompensa **solo de identidad**: un título por rango (`marcado_1…5`) y el marco `cicatriz` en el V. Nada de oro, Brasas ni poder.
+- Datos y reglas puras: `js/data/scar-ranks.js` (`SCAR_CFG`, `SCAR_RANKS`, `scarOutcome`…). Motor y pantalla: `js/systems/scar-ranks.js` (selector en la preparación de la Horda, resumen en resultados). Enganches mínimos en `js/systems/endless.js` (`scarApplyToRun`, `scarOnRunEnd`, bono en `endlessScoreMult`, `enSr` en la red).
+- Cooperativo: el anfitrión elige el rango; los mutadores ya viajan por `enMu`, el invitado ve el rango por `enSr` y no puede cambiarlo.
+- Guardado: `save.endless.scar = {max, sel, best:{rango:ronda}, cleared:{rango:1}}`.
+- Pruebas: `tools/balance/test-scar-ranks.js` (puras) y `tools/ux/test-scar-ranks.js` (navegador); ambas en el workflow `Reliquias de la Horda`.
+- Pendiente: medir con jugadores reales si las rondas meta (10/15/20/25/30) son alcanzables; ajustar `SCAR_CFG.clearRound`.
