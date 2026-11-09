@@ -147,3 +147,13 @@ Cinco rangos opcionales (Cicatriz I–V) sobre la Horda Infinita. Cada uno **sum
 - Guardado: `save.endless.scar = {max, sel, best:{rango:ronda}, cleared:{rango:1}}`.
 - Pruebas: `tools/balance/test-scar-ranks.js` (puras) y `tools/ux/test-scar-ranks.js` (navegador); ambas en el workflow `Reliquias de la Horda`.
 - Pendiente: medir con jugadores reales si las rondas meta (10/15/20/25/30) son alcanzables; ajustar `SCAR_CFG.clearRound`.
+
+### Medición de rangos (2026-11-09, `tools/balance/scar_sim.js`, piloto automático, GOD, 6 min, guerrero nv 12)
+| Rango | Mutadores efectivos (esta temporada ya trae `furious` y `elites_x2`) | Ronda a los 6 min | Máx. enemigos | Multiplicador de puntaje |
+|---|---|---|---|---|
+| 0 | furious, elites_x2 | 10 | 86 | ×1,44 |
+| III | + fast_horde | 5 | 39 | ×2,51 |
+| V | + fast_horde, dense, no_potions | 11 | 85 | ×4,35 |
+- Sin errores de página en ningún rango. La ronda 5 es de jefe: el piloto tarda más ahí, por eso el rango III queda atrás en rondas (no es una falla del rango).
+- **Límite de la medición**: es un solo piloto, una sola semilla y con GOD; sirve para ver que se juega, no para fijar la dificultad. Las rondas meta (10/15/20/25/30) hay que ajustarlas con jugadores reales.
+- **Solapamiento con la temporada**: si la temporada ya trae un mutador del rango (p. ej. `furious`), ese rango suma menos. El multiplicador de puntaje sí sube igual (bono por rango). Si molesta, el remedio es elegir mutadores de rango que la temporada no pueda traer, o reemplazar el repetido por otro.
