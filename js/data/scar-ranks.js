@@ -18,10 +18,18 @@ const SCAR_RANKS = [
 
 /* ---- funciones puras (las usa el motor y las pruebas) ---- */
 function scarClamp(r){ r = r|0; return r < 0 ? 0 : r > SCAR_CFG.maxRank ? SCAR_CFG.maxRank : r; }
-// Mutadores efectivos de una partida: los de la temporada + los del rango, sin repetir y en orden estable.
+// Reserva: si la temporada YA trae un mutador del rango, se sustituye por el siguiente de esta lista que todavía no esté activo.
+// Así cada rango agrega siempre tantos mutadores NUEVOS como dice su tabla (sin esto, un rango "no hacía nada" el mes en que
+// la temporada coincidía con él). En el rango V quedan activos los 7 mutadores.
+const SCAR_RESERVE = ["swarm", "rifts", "elites_x2", "fast_horde", "furious", "dense", "no_potions"];
+// Mutadores efectivos de una partida: los de la temporada + los del rango; los repetidos se sustituyen desde la reserva. Orden estable.
 function scarMergeMutators(weekly, rank){
-  const out = [];
-  for(const m of (weekly||[]).concat((SCAR_RANKS[scarClamp(rank)]||SCAR_RANKS[0]).mutators)) if(out.indexOf(m) < 0) out.push(m);
+  const out = (weekly||[]).filter((m, i, a) => a.indexOf(m) === i);
+  for(const m of (SCAR_RANKS[scarClamp(rank)]||SCAR_RANKS[0]).mutators){
+    if(out.indexOf(m) < 0){ out.push(m); continue; }
+    const alt = SCAR_RESERVE.find(r => out.indexOf(r) < 0);
+    if(alt) out.push(alt);
+  }
   return out;
 }
 function scarScoreBonus(rank){ return 1 + SCAR_CFG.scoreBonusPerRank * scarClamp(rank); }
@@ -41,4 +49,4 @@ function scarOutcome(rank, round, max){
 // Un rango se puede elegir si es 0 o ya está desbloqueado.
 function scarCanPick(rank, max){ return scarClamp(rank) <= scarClamp(max); }
 // Compatibilidad con Node para las pruebas puras.
-if(typeof module !== "undefined" && module.exports) module.exports = {SCAR_CFG, SCAR_RANKS, scarClamp, scarMergeMutators, scarScoreBonus, scarOutcome, scarCanPick};
+if(typeof module !== "undefined" && module.exports) module.exports = {SCAR_CFG, SCAR_RANKS, SCAR_RESERVE, scarClamp, scarMergeMutators, scarScoreBonus, scarOutcome, scarCanPick};
