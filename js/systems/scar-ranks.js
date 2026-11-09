@@ -80,6 +80,11 @@ function scarPrepHTML(guest){
       const r = _sr.apply(this, arguments);
       try{
         const L = EN.local || {}, S = L.scar, el = document.getElementById("endless-screen"), host = el && el.querySelector(".en-res-badges");
+        if(S && host && !S.cleared && !S.unlocked){
+          const goal = SCAR_CFG.clearRound[S.rank], left = Math.max(1, goal - (S.round|0));
+          const what = S.rank < SCAR_CFG.maxRank ? SCAR_RANKS[S.rank+1].name : "el marco Cicatriz";
+          host.insertAdjacentHTML("beforeend", `<span class="en-new" id="en-scar-goal">Te faltaron ${left} ${left===1?"ronda":"rondas"} para ${what}</span>`);
+        }
         if(S && host && (S.rank > 0 || S.unlocked)){
           const bits = [`<span class="en-new">${SCAR_RANKS[S.rank].name}</span>`];
           if(S.cleared && S.rank > 0) bits.push(`<span class="en-new">¡${SCAR_RANKS[S.rank].name} completada!</span>`);

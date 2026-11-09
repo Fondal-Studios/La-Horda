@@ -73,7 +73,7 @@ const SAVE = { tut: { training: 1 }, starterChosen: true, starterGiftV1: true, s
     const r4 = await E(() => {
       const out = {}; const q = questsState();
       EN.round = 12; endlessEndRun('defeat');                         // rango II, meta 20: no completa
-      out.short = { cleared: EN.local.scar.cleared, unlocked: EN.local.scar.unlocked, max: scarSave().max, best: scarSave().best[2] };
+      out.short = { shown: document.getElementById('endless-screen').innerText, cleared: EN.local.scar.cleared, unlocked: EN.local.scar.unlocked, max: scarSave().max, best: scarSave().best[2] };
       endlessFinish();
       endlessActive = false; endlessBeginRun(); EN.scar = 2;
       EN.round = 22; endlessEndRun('defeat');                         // meta cumplida
@@ -87,6 +87,7 @@ const SAVE = { tut: { training: 1 }, starterChosen: true, starterGiftV1: true, s
     });
     ok(!r4.short.cleared && r4.short.unlocked === null && r4.short.max === 2 && r4.short.best === 12, '[4] sin llegar a la meta no abre nada y guarda el mejor', r4.short);
     ok(r4.long.cleared && r4.long.unlocked === 3 && r4.long.max === 3 && r4.long.title === 'marcado_2' && r4.long.has && r4.long.best === 22, '[4] llegar a la meta abre el siguiente rango y da el título', r4.long);
+    ok(/Te faltaron 8 rondas para Cicatriz III/.test(r4.short.shown), '[4] sin llegar a la meta, los resultados dicen cuántas rondas faltaron', r4.short.shown && r4.short.shown.slice(0, 300));
     ok(/Cicatriz III/.test(r4.long.shown) && /Rompe|Cicatriz Viva/.test(r4.long.shown), '[4] la pantalla de resultados lo muestra', r4.long.shown.slice(0, 300));
     ok(r4.replay.max === 3 && r4.replay.unlocked === null || r4.replay.max >= 3, '[4] rejugar rangos bajos no baja el máximo', r4.replay);
 
