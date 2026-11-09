@@ -39,6 +39,8 @@ html:not(.uc-off) .ability-btn.uc-noen > div:not(.ico):not(.cd-overlay):not(.kh)
 /* UC-LAYOUT B2 (Guerra de Cristales): el panel de suministros (bottom:66 px) cubría el botón VOLVER apilado sobre el chip (48 px de alto desde 58 px) y le robaba los toques,
    aunque el propio panel dice «B vuelve». Con el panel abierto el minimapa ya está oculto: VOLVER baja a la franja inferior, a la izquierda del chip de suministros. */
 html:not(.uc-off) body.lanes-on .lanes-hud.ln-shop-open .ln-recall{ left:auto; right:calc(50% + 80px); transform:none; bottom:calc(6px + env(safe-area-inset-bottom,0px)); }
+/* Zurdo: a la izquierda del centro está el botón de emergencia (left:178px); VOLVER pasa al otro lado del chip de suministros. */
+html:not(.uc-off) body.lefty.lanes-on .lanes-hud.ln-shop-open .ln-recall{ right:auto; left:calc(50% + 80px); }
 
 /* UC-SHOP v1: estado de la apariencia en TEXTO + forma de marca (no solo color), saldo/faltante y comparación base/variante */
 html:not(.uc-off) .uc-shop-state{ font-size:.82rem; line-height:1.25; padding:3px 6px; border-left:4px solid #8a8a98; background:rgba(255,255,255,.05); color:#e8e0d0; }
