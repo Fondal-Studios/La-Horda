@@ -236,3 +236,21 @@ T+=[('Pantalla','Screen','Tela'),
  ('Salir','Quit','Sair'),
  ('¿Cerrar el juego? Tu progreso ya está guardado.','Close the game? Your progress is already saved.','Fechar o jogo? Seu progresso já está salvo.')]
 T+=[('Dispara de lejos y corre rápido. Pega sin acercarse al peligro.','Shoots from afar and runs fast. Hits without getting close to danger.','Atira de longe e corre rápido. Ataca sem se aproximar do perigo.')]
+# --- Renglón «▶ qué hacer» del tutorial (js/systems/alpha-training.js: "▶ " + objetivo, un solo nodo de texto)
+_OBJ=[('Leé la misión (se sigue sola)','Read the mission (it continues on its own)','Leia a missão (continua sozinha)'),
+ ('Movete por la arena','Move around the arena','Mova-se pela arena'),
+ ('Derrotá al enemigo con Ataque','Defeat the enemy with Attack','Derrote o inimigo com Ataque'),
+ ('Lanzá una habilidad','Cast an ability','Lance uma habilidade'),
+ ('Esquivá el golpe marcado','Dodge the marked strike','Desvie do golpe marcado'),
+ ('Elegí: JUGAR YA o Seguir practicando','Choose: PLAY NOW or Keep practicing','Escolha: JOGAR AGORA ou Continuar praticando'),
+ ('Mantené una habilidad para leer su ficha','Hold an ability to read its card','Segure uma habilidade para ler a ficha dela'),
+ ('Volvé a usar la habilidad cuando recargue','Use the ability again when it recharges','Use a habilidade de novo quando recarregar'),
+ ('Lanzá tu definitiva','Cast your ultimate','Lance sua definitiva'),
+ ('Recogé la poción roja','Pick up the red potion','Pegue a poção vermelha'),
+ ('Mantené ✚ junto a Elyra hasta revivirla','Hold ✚ next to Elyra until she is revived','Segure ✚ junto a Elyra até reanimá-la'),
+ ('Derrotá al esqueleto y subí de nivel','Defeat the skeleton and level up','Derrote o esqueleto e suba de nível'),
+ ('Recogé el objeto','Pick up the item','Pegue o item'),
+ ('Abrí el Panel táctico y volvé','Open the Tactical panel and come back','Abra o Painel tático e volte'),
+ ('Derrotá a los tres enemigos','Defeat the three enemies','Derrote os três inimigos'),
+ ('Mantené el clic sobre una habilidad para leer su ficha','Hold the click on an ability to read its card','Segure o clique em uma habilidade para ler a ficha dela')]
+T+=[('▶ '+a,'▶ '+b,'▶ '+c) for a,b,c in _OBJ]
