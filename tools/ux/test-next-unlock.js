@@ -200,12 +200,12 @@ const SHOTS = process.env.NU_SHOTS || '';
       const track = []; for (let t = 1; t <= 30; t++) track.push({ tier: t, free: { gold: 100 }, premium: t === 10 ? { cosmetic: 'bp:skin_1' } : t === 5 ? { brasas: 30 } : null });
       BP.data = { season: { id: 1, daysLeft: 20 }, tier: 6, tiers: 30, xp: 6200, xpPerTier: 1000, premium: false, pricePremiumBrasas: 950, claimed: [], track, challenges: [] }; BP.err = ''; BP.loading = false;
       _bpEl().classList.remove('hidden'); _bpRender();
-      const P = document.querySelector('.bp-panel'), out = { pending: _bpPremiumPending(BP.data), note: (P.querySelector('[data-bp-pending]') || {}).textContent || '', buy: P.querySelectorAll('.bp-buy').length };
+      const P = document.querySelector('.bp-panel'), out = { pending: _bpPremiumPending(BP.data), hold: !!P.querySelector('[data-bp-hold]'), holdOn: BP_PREMIUM_HOLD, buy: P.querySelectorAll('.bp-buy').length };
       BP.data.track.forEach(t => { if (t.premium && t.premium.cosmetic) t.premium = { brasas: 10 }; }); _bpRender();
-      out.noPend = { pending: _bpPremiumPending(BP.data), note: !!P.querySelector('[data-bp-pending]'), buy: P.querySelectorAll('.bp-buy').length };
+      out.noPend = { pending: _bpPremiumPending(BP.data), hold: !!P.querySelector('[data-bp-hold]'), buy: P.querySelectorAll('.bp-buy').length };
       BP.data = null; bpClose(); return out;
     });
-    ok(r8c.pending && /todavía no tienen el arte final/.test(r8c.note) && !r8c.noPend.pending && !r8c.noPend.note && r8c.noPend.buy === 1, '[8] premium con cosméticos sin arte: lo avisa; con arte, no', r8c);
+    ok(r8c.holdOn && r8c.pending && r8c.buy === 0 && r8c.hold && !r8c.noPend.pending && !r8c.noPend.hold && r8c.noPend.buy === 1, '[8] premium con cosméticos sin arte: no se vende y lo avisa; con arte final, el botón vuelve', r8c);
 
     // 9. pantalla chica (667x375): el panel no se sale
     await page.setViewportSize({ width: 667, height: 375 });
