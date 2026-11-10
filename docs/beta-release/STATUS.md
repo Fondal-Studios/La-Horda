@@ -31,4 +31,4 @@
 
 ### Ejecución programada 20:23 UTC (2026-11-10)
 - PR #288 fusionada en `main` (eb0d0578) con revisión independiente (QA, arquitectura, integrador; reservas en `reviews/`). Rama de trabajo rehecha desde `main`.
-- Flake `t_identity` BOS corregido (causa: `bossStrikes` pendientes); queda la firma INF. Runway sin gasto (saldo <250).
+- Flake `t_identity` BOS corregido en la prueba (causa dentro del test: `bossStrikes` pendientes; no se vio bug de juego; 10/10 corridas locales, sin log archivado); queda la firma INF y falta nombrar el emisor del golpe. Runway sin gasto (saldo <250).
