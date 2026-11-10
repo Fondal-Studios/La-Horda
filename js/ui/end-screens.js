@@ -245,17 +245,23 @@ function victoryReceiptsTrim(keepId){
 }
 // Los botones de la victoria NUNCA quedan trabados por el guardado: si no se puede escribir se avisa una vez
 // (por pantalla de victoria) y se deja seguir. Única espera real: el servidor guardando la recompensa del equipo.
-let victorySaveWarnedFor = null;
+let victorySaveFailsFor = null, victorySaveFails = 0;
+const VICTORY_SAVE_RETRIES = 3; // intentos de salir con la escritura fallando que se frenan con aviso; después se deja seguir sin guardar
 function victorySaveReady(){
   if(netMatch && netMatch.rewardPending){netBroadcast(netMatch.rewardEndMessage);gameAlert("El servidor todavía está guardando las recompensas del equipo. Volvé a intentar en unos segundos.");return false;}
   // Test Lab, red local (sandbox) y Guerra de Cristales no escriben a propósito: no hay nada que esperar.
   if(typeof saveNoWriteByDesign==="function" ? saveNoWriteByDesign() : (typeof testLabActive==="function" && testLabActive())) return true;
   if(persistNow()) return true;
   if(typeof saveNoticeWriteHandled==="function") saveNoticeWriteHandled(); // este aviso reemplaza al general de save.js
-  if(victorySaveWarnedFor !== victoryData){
-    victorySaveWarnedFor = victoryData;
-    if(typeof gameAlert==="function") gameAlert("No se pudo guardar el progreso de esta partida.\nPodés seguir, pero el botín se puede perder al cerrar el juego.");
+  if(victorySaveFailsFor !== victoryData){ victorySaveFailsFor = victoryData; victorySaveFails = 0; }
+  victorySaveFails++;
+  // Los primeros intentos se frenan con aviso (el botín reclamado todavía no está en disco); si la escritura NUNCA va a andar
+  // (almacenamiento lleno o bloqueado) no se deja al jugador trabado: el siguiente intento sigue y avisa que se puede perder.
+  if(victorySaveFails <= VICTORY_SAVE_RETRIES){
+    if(typeof gameAlert==="function") gameAlert("No se pudo guardar el progreso de esta partida.\nProbá de nuevo; si sigue fallando, la próxima vez podés seguir sin guardar.");
+    return false;
   }
+  if(victorySaveFails === VICTORY_SAVE_RETRIES + 1 && typeof gameAlert==="function") gameAlert("No se pudo guardar el progreso de esta partida.\nPodés seguir, pero el botín se puede perder al cerrar el juego.");
   return true;
 }
 // Tarjeta de un objeto obtenido, con presentación según su categoría (común simple … mítico máximo).

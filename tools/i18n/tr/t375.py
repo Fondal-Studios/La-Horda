@@ -223,3 +223,6 @@ add('No se pudo guardar el progreso de esta partida.\nPodés seguir, pero el bot
 add('Tu inventario llegó al máximo: lo que no entró quedó en Recompensas pendientes, en el menú principal.',
     "Your inventory is full: what didn't fit went to Pending rewards, in the main menu.",
     'Seu inventário chegou ao máximo: o que não coube ficou em Recompensas pendentes, no menu principal.')
+T+=[('No se pudo guardar el progreso de esta partida.\nProbá de nuevo; si sigue fallando, la próxima vez podés seguir sin guardar.',
+ 'Your progress for this run could not be saved.\nTry again; if it keeps failing, next time you can continue without saving.',
+ 'Não foi possível salvar o progresso desta partida.\nTente de novo; se continuar falhando, da próxima vez você poderá seguir sem salvar.')]
