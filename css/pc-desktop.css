@@ -32,3 +32,9 @@ body.inp-pad #joy-base.on, body.inp-pad #joy-base.on ~ #joy-knob{ visibility:vis
 /* ---------- 3. Opciones: lo táctil no se muestra con teclado ni mando; "Salir del juego" solo en la app de escritorio ---------- */
 body.inp-kb .opt-touch-only, body.inp-pad .opt-touch-only{ display:none; }
 .opt-desktop-only[hidden]{ display:none; }
+
+/* ---------- 4. App de escritorio (Steam): la beta muestra Campaña y Horda Infinita ----------
+   Guerra de Cristales y el Coliseo siguen en el código (y en el navegador); en la app de Steam no se ofrecen todavía. */
+body.app-desktop #hub-crystal-btn, body.app-desktop #hub-coliseum-btn,
+body.app-desktop #mode-crystal-wars-btn, body.app-desktop #mode-coliseum-btn,
+body.app-desktop #hub-postgame-title, body.app-desktop .hub-row-modes, body.app-desktop #ux-more-modes{ display:none; }

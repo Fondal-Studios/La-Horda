@@ -37,6 +37,9 @@ const SAVE = { tut: { training: 1 }, starterChosen: true, starterGiftV1: true, s
       });
       ok(r.sec && r.fsBtn && r.toggled === 1, tag + 'Opciones tiene Pantalla completa y el botón alterna', r);
       ok(r.touchRows >= 4 && r.hiddenWithKb && r.hiddenWithPad, tag + 'con teclado o mando se esconden las filas táctiles', r);
+      const modes = await page.evaluate(() => { const v = id => { const e = document.getElementById(id); return !!e && getComputedStyle(e).display !== 'none'; }; setState('mainmenu'); renderMainMenu(); return { crystal: v('hub-crystal-btn'), coliseum: v('hub-coliseum-btn'), endless: v('hub-endless-btn'), play: v('hub-play-btn'), title: v('hub-postgame-title') }; });
+      ok(modes.play && modes.endless, tag + 'Campaña y Horda Infinita siempre visibles', modes);
+      ok(desktop ? (!modes.crystal && !modes.coliseum && !modes.title) : (modes.crystal && modes.coliseum), tag + (desktop ? 'la app de Steam no ofrece Cristales ni Coliseo (ni el título "Otros modos")' : 'el navegador sigue ofreciendo Cristales y Coliseo'), modes);
       ok(r.quitVisible === desktop, tag + (desktop ? '"Salir del juego" se ve en la app de escritorio' : '"Salir del juego" NO se ve en el navegador'), r);
       if (desktop) {
         const q = await page.evaluate(async () => {

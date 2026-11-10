@@ -28,9 +28,11 @@ function _bpRewardText(r){
 }
 // ¿La ruta premium trae cosméticos `bp:*` sin arte aprobado? (los mismos que _bpRewardText rotula «arte pendiente»)
 function _bpPremiumPending(d){ return !!(d && Array.isArray(d.track) && d.track.some(t => t && t.premium && t.premium.cosmetic)); }
-// RETENER LA VENTA del premium mientras tenga cosméticos sin arte. Hoy queda en false porque tools/ux/test-battlepass-ui.js
-// compra el premium con el botón `.bp-buy`; al pasarlo a true (y adaptar esa prueba) el botón se reemplaza por un aviso neutro.
-const BP_PREMIUM_HOLD = false;
+// RETENER LA VENTA del premium mientras tenga cosméticos sin arte (decisión de producto: no se vende lo que no tiene arte final).
+// El botón se reemplaza por un aviso neutro. Para probar el flujo de compra real, una prueba (o el equipo) puede abrirlo con
+// `window.__BP_PREMIUM_OPEN__ = true` antes de cargar el juego (tools/ux/test-battlepass-ui.js lo hace). Cuando los cosméticos
+// `bp:*` tengan arte, la ruta deja de estar "pendiente" (_bpPremiumPending) y el botón vuelve solo.
+const BP_PREMIUM_HOLD = !(typeof window !== "undefined" && window.__BP_PREMIUM_OPEN__ === true);
 // Salidas útiles cuando el pase del servidor no se puede ver (sin cuenta, sin conexión): el pase gratis del cliente y el probador.
 function _bpExitsHTML(login){
   const quests = typeof window.questsOpen === "function", skins = typeof openGuardians === "function";

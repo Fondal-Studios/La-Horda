@@ -19,10 +19,12 @@ const TYPES={'.html':'text/html','.js':'text/javascript','.css':'text/css','.png
  await app.store.gmUpdate(async raw=>{const r=BP.root(raw);BP.acct(r,String(uid),Date.now()).xp=6500;return {state:r,value:null};});   // nivel 6 (solo test)
  await app.store.walletApply({userId:uid,delta:2000,reason:'purchase:test',ref:'t-credit',actor:null,at:Date.now()});
  const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox','--disable-dev-shm-usage']});let checks=0;const ok=(c,m)=>{assert(c,m);checks++;};
+ let HOLD=false; // true: el juego tal como sale (sin abrir la venta del premium)
  async function open(logged,w,h){
   const ctx=await browser.newContext({viewport:{width:w,height:h}});
   if(logged)await ctx.addInitScript(([b,t])=>{try{localStorage.setItem('horda_account:'+encodeURIComponent(b),JSON.stringify({token:t,user:'Pasero',name:'Pasero',expiresAt:Date.now()+86400000,apiBase:b}));}catch(e){}},[base,token]);
   const page=await ctx.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  if(!HOLD)await page.addInitScript(()=>{window.__BP_PREMIUM_OPEN__=true;}); // abre la venta del premium para probar el flujo de compra real (por defecto el juego la retiene mientras falte el arte)
   await page.goto(base+'/index.html?lazy=0&api='+encodeURIComponent(base));
   await page.waitForFunction(()=>typeof bpOpen==='function'&&typeof renderMainMenu==='function'&&typeof assetsAllReady==='function'&&assetsAllReady());
   if(logged)await page.waitForFunction(()=>acct.lastPull&&!acct.pulling&&!acct.applying,null,{timeout:30000});
@@ -32,6 +34,16 @@ const TYPES={'.html':'text/html','.js':'text/javascript','.css':'text/css','.png
  // sin sesión: pide iniciar sesión
  {const {page,ctx,errors}=await open(false,844,390);await page.evaluate(()=>bpOpen());await page.waitForSelector('.bp-msg');
   ok(/Iniciá sesión/.test(await page.locator('.bp-panel').innerText()),'sin sesión pide iniciar sesión');ok(errors.length===0,errors.join());await ctx.close();}
+ { // El juego tal como sale: el premium con cosméticos sin arte NO se vende; el pase gratis sigue completo.
+  HOLD=true;const {page,ctx}=await open(true,844,390);
+  await page.evaluate(()=>{const b=document.getElementById('hub-pass-btn')||document.querySelector('[data-bp-open]');});
+  await page.evaluate(()=>{if(typeof bpOpen==='function')bpOpen();});
+  await page.waitForSelector('.bp-panel');
+  ok(await page.locator('.bp-buy').count()===0,'por defecto no hay botón para comprar el premium (cosméticos sin arte final)');
+  ok(await page.locator('[data-bp-hold]').count()>=1 && /llega más adelante/i.test(await page.locator('.bp-panel').innerText()),'en su lugar hay un aviso neutro: el premium llega más adelante');
+  ok(await page.locator('[data-key="free:5"]').count()===1,'la ruta gratuita sigue visible');
+  await ctx.close();HOLD=false;
+ }
  for(const [w,h] of [[844,390],[568,320]]){
   const {page,ctx,errors}=await open(true,w,h);
   ok(await page.evaluate(()=>!!document.getElementById('hub-pass-btn')),'existe el botón del pase en el hub');
