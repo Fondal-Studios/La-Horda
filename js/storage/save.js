@@ -346,6 +346,8 @@ const SAVE_MSG_UNREADABLE_NO_BACKUP = "No pudimos leer tu guardado ni hacerle un
 const SAVE_MSG_WRITE_FAILED = "No se pudo guardar el progreso: el almacenamiento está lleno o bloqueado.\nPodés seguir jugando, pero lo nuevo se puede perder al cerrar. Liberá espacio: el juego vuelve a intentar solo.";
 const _saveNotices = [];
 let _saveNoticeTimer = null;
+// El reintento del aviso no debe retener el proceso fuera del navegador (pruebas en Node: tools/regression/test-critical-rewards.js).
+function _saveNoticeLater(ms){ const t = setTimeout(_saveNoticePump, ms); if(t && typeof t.unref==="function") t.unref(); return t; }
 function _saveNoticePump(){
   _saveNoticeTimer = null;
   if(!_saveNotices.length) return;
@@ -353,16 +355,16 @@ function _saveNoticePump(){
   const n = _saveNotices[0];
   // en partida no se interrumpe; en la victoria el aviso de escritura lo da la propia pantalla (victorySaveReady)
   const canShow = typeof gameAlert==="function" && st && st!=="playing" && st!=="buff" && !(n.write && st==="victory");
-  if(!canShow){ _saveNoticeTimer = setTimeout(_saveNoticePump, 500); return; }
+  if(!canShow){ _saveNoticeTimer = _saveNoticeLater(500); return; }
   _saveNotices.shift();
   let p = null;
   try{ p = gameAlert(n.msg, {title:"Guardado"}); }catch(x){}
-  const done = ()=>{ try{ if(n.onAck) n.onAck(); }catch(x){} if(_saveNotices.length && !_saveNoticeTimer) _saveNoticeTimer = setTimeout(_saveNoticePump, 300); };
+  const done = ()=>{ try{ if(n.onAck) n.onAck(); }catch(x){} if(_saveNotices.length && !_saveNoticeTimer) _saveNoticeTimer = _saveNoticeLater(300); };
   if(p && typeof p.then==="function") p.then(done); else done();
 }
 function _saveNoticePush(n){
   _saveNotices.push(n);
-  if(!_saveNoticeTimer) _saveNoticeTimer = setTimeout(_saveNoticePump, 400);
+  if(!_saveNoticeTimer) _saveNoticeTimer = _saveNoticeLater(400);
 }
 function saveNoticeUnreadable(bk){
   if(!bk.had) return;   // no había nada que leer (almacenamiento inaccesible): lo cubre el aviso de escritura

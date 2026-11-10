@@ -136,10 +136,13 @@ async function netJoinPublicRoom(code, btn){
     else if(state==="mainmenu" && now - netRooms.hubAt > NET_ROOMS_HUB_EVERY_MS && !netRooms.busy){ netRooms.hubAt = now; netFetchRooms().then(netRenderHubRooms); }
   }, 1000);
   // se cortó / volvió la red con la pantalla abierta: el cartel cambia al instante y la lista se vuelve a pedir
+  // (con guarda: tools/alpha/rooms-unit.js carga este archivo fuera del navegador, sin `window`)
+  if(typeof window!=="undefined" && window.addEventListener){
   window.addEventListener("offline", ()=>{ if(netRooms.list===null) netRooms.err = NET_ROOMS_OFFLINE; netRenderRoomsList(); });
   window.addEventListener("online", ()=>{
     if(netRooms.err===NET_ROOMS_OFFLINE) netRooms.err = "";
     if(typeof state!=="undefined" && state==="modeselect" && netAvailable() && !netRooms.busy) netRefreshRooms(); else netRenderRoomsList();
   });
+  }
   netRenderRoomsList();
 })();
