@@ -24,7 +24,10 @@ if (isGame) {
     const locals = {}; for (const k of KEYS) locals[k] = get(k);
     const plan = ipcRenderer.sendSync('lahorda:save-plan', locals, marks);
     if (plan) {
-      for (const k of Object.keys(plan.set || {})) if (KEYS.includes(k) && typeof plan.set[k] === 'string') { try { localStorage.setItem(k, plan.set[k]); } catch (e) {} }
+      for (const k of Object.keys(plan.set || {})) if (KEYS.includes(k) && typeof plan.set[k] === 'string') {
+        try { const cur = localStorage.getItem(k); if (cur != null && cur !== plan.set[k]) localStorage.setItem(k + '_antesDeEspejo', cur); } catch (e) {}   // lo local que se reemplaza queda aparte, nunca se pierde
+        try { localStorage.setItem(k, plan.set[k]); } catch (e) {}
+      }
       marks = plan.marks || marks; writeMarks();
       if (plan.conflicts && plan.conflicts.length) console.warn('[save] guardado de otra máquina en conflicto; se conserva el local:', plan.conflicts.join(', '));
     }

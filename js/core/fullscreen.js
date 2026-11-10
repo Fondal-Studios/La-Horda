@@ -50,7 +50,7 @@ const FULLSCREEN = (function(){
     S.toggles++;
     try{
       const D = window.HORDA_DESKTOP; // app de escritorio: la ventana la maneja la app
-      if(D && typeof D.setFullscreen==="function"){ S.native = !S.native; D.setFullscreen(S.native); return true; }
+      if(D && typeof D.setFullscreen==="function"){ S.native = !S.native; D.setFullscreen(); return true; }   // sin argumento: la app alterna según el estado REAL de la ventana (F11 lo cambia sin avisarle al juego)
     }catch(e){}
     if(active()) return leave();
     if(!req) return false;

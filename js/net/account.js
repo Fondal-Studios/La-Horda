@@ -227,6 +227,7 @@ function accountApplyCloud(cloud){
     _acctRefreshUi();
   }catch(e){ console.error("No se pudo aplicar el guardado de la nube", e); }
   finally{ acct.applying = false; }
+  if(typeof saveRecoveredClear==="function") saveRecoveredClear();   // ya es el de la nube: deja de ser un perfil recuperado
   const y = acct.sync;
   y.version = cloud.version | 0; y.hash = _acctHash(cloudRaw); y.updatedAt = cloud.updatedAt || 0; y.lastOk = Date.now(); y.beacon = null;
   y.dirty = _acctHash(_acctLocalRaw()) !== y.hash; // si una migración lo tocó al cargar, queda para subir
@@ -268,6 +269,9 @@ async function accountUpload(reason){
   const s = acct.session, y = acct.sync;
   if(!s || !y || acct.uploading || acct.conflict) return false;
   if(y.user !== _acctKey(s.user)) return false;   // todavía no se reconcilió este dispositivo con esta cuenta
+  // Perfil recuperado tras un guardado ilegible: NUNCA se sube en silencio (pisaría la nube con un perfil de fábrica). Se baja la nube y se
+  // reconcilia: la nube gana si lo local no tiene progreso real; si lo tiene, se le pregunta al jugador (_acctReconcile).
+  if(typeof saveRecoveredIs==="function" && saveRecoveredIs()){ if(!acct.pulling) accountPull("perfil-recuperado"); return false; }
   const raw = _acctLocalRaw(); if(!raw) return false;
   let data; try{ data = JSON.parse(raw); }catch(e){ return false; }
   acct.uploading = true; _acctEmit();
@@ -327,14 +331,19 @@ async function _acctReconcile(cloud){
   const raw = _acctLocalRaw();
   let local = null; try{ local = raw ? JSON.parse(raw) : null; }catch(e){}
   const firstHere = y.user !== key;
+  const recovered = typeof saveRecoveredIs==="function" && saveRecoveredIs();
+  // 0) perfil recuperado tras un guardado ilegible: si lo local no tiene progreso real, gana la nube SIEMPRE (aunque las versiones coincidan)
+  if(recovered && cloud.data && !_acctMeaningful(local)){ y.user = key; accountApplyCloud(cloud); return; }
   // 1) la nube está vacía: se sube lo de este dispositivo (el invitado que crea su cuenta)
   if(!cloud.data){
+    if(typeof saveRecoveredClear==="function") saveRecoveredClear();   // no hay nada en la nube que proteger
     y.user = key; y.version = cloud.version | 0; y.dirty = true; _acctSaveSync();
     await accountUpload("primera");
     return;
   }
   // 2) ya son iguales: solo se anota la versión
   if(local && JSON.stringify(cloud.data) === JSON.stringify(local)){
+    if(typeof saveRecoveredClear==="function") saveRecoveredClear();
     Object.assign(y, { user: key, version: cloud.version, hash: _acctHash(raw), dirty: false, beacon: null, updatedAt: cloud.updatedAt, lastOk: Date.now() });
     _acctSaveSync(); return;
   }
@@ -352,7 +361,7 @@ async function _acctReconcile(cloud){
   // 4) lo local no tiene progreso real (perfil recién creado): gana la nube
   if(!_acctMeaningful(local)){ y.user = key; accountApplyCloud(cloud); return; }
   // 5) cambios locales sobre la misma versión que tiene la nube: se suben
-  if(!firstHere && y.dirty && cloud.version === y.version){ await accountUpload("pendiente"); return; }
+  if(!firstHere && y.dirty && cloud.version === y.version && !recovered){ await accountUpload("pendiente"); return; }   // recuperado con progreso nuevo: se pregunta (caso 6)
   // 6) los dos cambiaron: se pregunta
   acct.conflict = { cloud, local, localRaw: raw, shown: false };
   _acctEmit();
@@ -479,7 +488,7 @@ async function accountResolveConflict(choice){
   const y = acct.sync, key = _acctKey(acct.session.user);
   if(choice === "cloud"){
     acct.conflict = null; y.user = key;
-    accountApplyCloud(c.cloud);
+    accountApplyCloud(c.cloud);   // (también limpia la marca de perfil recuperado)
     if(typeof showNetToast === "function") showNetToast("☁ Usando el progreso de la nube (el de este dispositivo quedó respaldado).");
     return true;
   }
@@ -491,6 +500,7 @@ async function accountResolveConflict(choice){
     const r = await accountFetch("PUT", "/api/save", { data, baseVersion: c.cloud.version | 0, force: true });
     if(r.status === 200){
       acct.conflict = null;
+      if(typeof saveRecoveredClear==="function") saveRecoveredClear();   // el jugador eligió explícitamente quedarse con este dispositivo
       Object.assign(y, { user: key, version: r.j.version | 0, hash: _acctHash(raw), dirty: false, updatedAt: r.j.updatedAt, lastOk: Date.now() });
       _acctSaveSync(); _acctEmit();
       if(typeof showNetToast === "function") showNetToast("📱 Se subió el progreso de este dispositivo a la nube.");

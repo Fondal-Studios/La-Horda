@@ -71,6 +71,16 @@ const check = (name, ok, info) => { if (!ok) fails.push(name); console.log((ok ?
       conf.set[K] === undefined && conf.conflicts.includes(K) && fs.existsSync(path.join(dir, K + '.conflict-3.json')) && conf.marks[K].rev === 3);
     const w5 = M.writeEnvelope(dir, K, local4, conf.marks[K].rev, 'pc');
     check('guardado: la escritura posterior queda por encima del archivo ajeno', w5.rev === 4 && M.readEnvelope(dir, K).value === local4);
+    // guardado LOCAL ilegible (JSON dañado) y archivo del disco sano: manda el archivo (si no, el juego arranca como perfil nuevo y rota la buena copia)
+    {
+      const cur = M.readEnvelope(dir, K), corrupt = '{"gold":5000,"champions":{"guerrero":{"lev';
+      const pl = M.startupPlan(dir, {[K]: corrupt}, {[K]: {rev: cur.rev, hash: M.hashOf(corrupt)}});
+      check('guardado: local ILEGIBLE y archivo sano -> se adopta el archivo (no se pierde la buena copia)', pl.set[K] === cur.value && pl.conflicts.length === 0, pl);
+      const keep = M.startupPlan(dir, {[K]: cur.value}, {[K]: {rev: cur.rev, hash: M.hashOf(cur.value)}});
+      check('guardado: local legible y al día -> nada cambia (la regla del archivo sano no se activa sola)', Object.keys(keep.set).length === 0);
+      const other = M.startupPlan(dir, {horda_prefs: 'no es json'}, {});
+      check('guardado: una preferencia suelta con texto no-JSON no activa la regla (solo el guardado principal)', other.set.horda_prefs === undefined && other.conflicts.length === 0);
+    }
     // archivo dañado (corte a mitad de una copia de la nube, disco lleno...)
     for (const junk of ['', '{"v":1,"key":"laHordaSave_v1","rev":9,"value":"{no json"}', '{"v":1,"key":"otra","rev":9,"value":"{}"}', '{"v":1,"key":"laHordaSave_v1","rev":9', 'null']) {
       fs.writeFileSync(f, junk);

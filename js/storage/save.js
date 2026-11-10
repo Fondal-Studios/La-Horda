@@ -366,12 +366,18 @@ function _saveNoticePush(n){
   _saveNotices.push(n);
   if(!_saveNoticeTimer) _saveNoticeTimer = _saveNoticeLater(400);
 }
+// Perfil RECUPERADO: el guardado anterior no se pudo leer y el jugador aceptó empezar con uno nuevo. Esa marca (persistente: sobrevive a recargar)
+// le dice a la cuenta (js/net/account.js) que este perfil de fábrica NO puede pisar la copia de la nube: la nube gana, o se le pregunta al jugador.
+const SAVE_RECOVERED_KEY = SAVE_KEY + "_recuperado";
+function saveRecoveredSet(){ try{ localStorage.setItem(SAVE_RECOVERED_KEY, String(Date.now())); }catch(x){} }
+function saveRecoveredIs(){ try{ return localStorage.getItem(SAVE_RECOVERED_KEY) != null; }catch(x){ return false; } }
+function saveRecoveredClear(){ try{ localStorage.removeItem(SAVE_RECOVERED_KEY); }catch(x){} }
 function saveNoticeUnreadable(bk){
   if(!bk.had) return;   // no había nada que leer (almacenamiento inaccesible): lo cubre el aviso de escritura
   if(!bk.key){ _saveNoticePush({msg:SAVE_MSG_UNREADABLE_NO_BACKUP}); return; }   // sin copia no se habilita la escritura
   _saveNoticePush({msg:SAVE_MSG_UNREADABLE, onAck:()=>{
     let safe = false; try{ safe = localStorage.getItem(bk.key) != null; }catch(x){}
-    if(safe) saveLoadFailed = false;   // el próximo guardado escribe el perfil nuevo; el anterior queda en bk.key
+    if(safe){ saveRecoveredSet(); saveLoadFailed = false; }   // la marca va ANTES de habilitar la escritura; el próximo guardado escribe el perfil nuevo y el anterior queda en bk.key
   }});
 }
 // Una escritura falló (almacenamiento lleno o bloqueado): un aviso por SESIÓN, no uno por intento.

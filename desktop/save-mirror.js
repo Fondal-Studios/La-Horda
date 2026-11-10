@@ -59,9 +59,12 @@ function writeEnvelope(dir, key, value, baseRev, device) {
   fs.renameSync(tmp, f);
   return {rev, hash: hashOf(value)};
 }
-function decide(env, localValue, mark) {
+function decide(env, localValue, mark, opts) {
   const mrev = mark && Number.isInteger(mark.rev) ? mark.rev : 0;
   if (!env) return 'keep';
+  // El guardado local NO se puede leer (JSON dañado) y el archivo del disco sí: manda el archivo (el juego, al no poder leer lo local, arrancaría
+  // como perfil nuevo y rotaría la buena copia del disco). El valor local dañado se conserva aparte (preload.js: *_antesDeEspejo).
+  if (opts && opts.localCorrupt && env.value !== null) return 'adopt';
   if (env.rev <= mrev) return 'keep';
   if (env.value === null) return 'keep';
   if (localValue == null) return mrev === 0 || (mark && mark.hash === 'null') ? 'adopt' : 'keep';   // borrado local aún sin espejar: manda lo local
@@ -75,7 +78,9 @@ function startupPlan(dir, locals, marks) {
   const out = {set: {}, marks: Object.assign({}, marks || {}), conflicts: []};
   for (const key of SAVE_KEYS) {
     const env = readEnvelope(dir, key), local = locals && locals[key] != null ? String(locals[key]) : null, mark = out.marks[key];
-    const d = decide(env, local, mark);
+    let corrupt = false;
+    if (key === SAVE_KEYS[0] && local !== null) { try { JSON.parse(local); } catch (e) { corrupt = true; } }
+    const d = decide(env, local, mark, {localCorrupt: corrupt});
     if (d === 'adopt') { out.set[key] = env.value; out.marks[key] = {rev: env.rev, hash: hashOf(env.value)}; }
     else if (d === 'conflict') {
       out.conflicts.push(key);
