@@ -21,7 +21,7 @@ const STARTER_RECOMMENDED = [
   {id:"tanque",   why:"Aguanta y protege. Perdona errores: ideal para aprender."},
   {id:"mago",     why:"Pega de lejos con fuego, escarcha y rayos. Fácil de entender."},
   {id:"soporte",  why:"Cura y protege al equipo. Juega en segunda línea."},
-  {id:"guerrero", why:"Rápido y letal, con trampas. Pide algo más de puntería."}
+  {id:"cazadora", why:"Dispara de lejos y corre rápido. Pega sin acercarse al peligro."}
 ];
 const STARTER_TAP_GUARD_MS = 400;
 let _starterOpenedAt = 0, _starterAll = false;

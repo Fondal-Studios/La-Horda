@@ -235,3 +235,4 @@ T+=[('Pantalla','Screen','Tela'),
  ('Cierra el juego y vuelve al escritorio','Closes the game and returns to the desktop','Fecha o jogo e volta para a área de trabalho'),
  ('Salir','Quit','Sair'),
  ('¿Cerrar el juego? Tu progreso ya está guardado.','Close the game? Your progress is already saved.','Fechar o jogo? Seu progresso já está salvo.')]
+T+=[('Dispara de lejos y corre rápido. Pega sin acercarse al peligro.','Shoots from afar and runs fast. Hits without getting close to danger.','Atira de longe e corre rápido. Ataca sem se aproximar do perigo.')]
