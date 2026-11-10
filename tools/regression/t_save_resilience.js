@@ -160,6 +160,18 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
     }
     // ---------- G. perfil recuperado + cuenta: un perfil de fábrica NUNCA pisa la nube ----------
     {
+      {   // G2: con una cuenta ya abierta, al aceptar el aviso se baja la nube enseguida (antes de cualquier subida)
+        const { ctx: c2, page: p2 } = await open(BAD, 'G2');
+        await p2.evaluate(() => {
+          window.__calls = []; const c = defaultSave(); c.gold = 12345; c.starterChosen = true; c.arenasCleared = { ciudad: true }; window.__cloud = c;
+          accountFetch = async (method, path, body) => { window.__calls.push({ method, path }); if (method === 'GET') return { status: 200, j: { version: 3, updatedAt: 1, data: window.__cloud } }; return { status: 200, j: { version: 4, updatedAt: 2 } }; };
+          acct.session = { token: 't', user: 'tester' }; acct.sync = { user: _acctKey('tester'), version: 3, hash: 'otro', dirty: true };
+        });
+        const m2 = await waitDialog(p2, 8000); if (m2 != null) await accept(p2); await sleep(800);
+        const gp = await p2.evaluate(() => ({ gets: window.__calls.filter(c => c.method === 'GET').length, puts: window.__calls.filter(c => c.method === 'PUT').length }));
+        ok(gp.gets >= 1 && gp.puts === 0, '[G] al aceptar el aviso con una cuenta abierta se baja la nube enseguida y no se sube nada', gp);
+        await c2.close();
+      }
       const { ctx, page } = await open(BAD, 'G');
       const msg = await waitDialog(page, 8000); if (msg != null) await accept(page); await sleep(300);
       const g0 = await page.evaluate(() => ({ rec: saveRecoveredIs(), failed: saveLoadFailed }));
@@ -206,6 +218,30 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
         return { puts: window.__calls.filter(c => c.method === 'PUT').length, rec: saveRecoveredIs() };
       });
       ok(g4.puts === 1 && g4.rec === false, '[G] control: sin perfil recuperado, los cambios locales siguen subiendo como siempre', g4);
+      // 3b) cerrar la pestaña: el beacon TAMBIÉN es una subida y no sale con la marca puesta (y sin marca sí sale)
+      const g6 = await page.evaluate(() => {
+        let beacons = 0; Object.defineProperty(navigator, 'sendBeacon', { configurable: true, value: () => { beacons++; return true; } });
+        acct.conflict = null; acct.session = { token: 't', user: 'tester' };
+        const mine = window.__mk(321, { ciudad: true }); localStorage.setItem(SAVE_KEY, JSON.stringify(mine)); loadSave();
+        acct.sync = { user: _acctKey('tester'), version: 3, hash: 'otro', dirty: true };
+        saveRecoveredSet(); window.dispatchEvent(new Event('pagehide')); const conMarca = beacons;
+        saveRecoveredClear(); acct.sync.dirty = true; window.dispatchEvent(new Event('pagehide')); const sinMarca = beacons - conMarca;
+        return { conMarca, sinMarca };
+      });
+      ok(g6.conMarca === 0 && g6.sinMarca === 1, '[G] al cerrar la pestaña con el perfil recuperado NO se manda el beacon (sin la marca, sí)', g6);
+      // 3c) la marca también se limpia con la nube vacía y al elegir "este dispositivo"
+      const g7 = await page.evaluate(async () => {
+        window.__calls.length = 0; acct.conflict = null; saveRecoveredSet();
+        acct.sync = { user: _acctKey('tester'), version: 0, hash: 'otro', dirty: true };
+        await _acctReconcile({ version: 0, updatedAt: 0, data: null });
+        const vacia = { puts: window.__calls.filter(c => c.method === 'PUT').length, rec: saveRecoveredIs() };
+        window.__calls.length = 0; saveRecoveredSet();
+        acct.conflict = { cloud: { version: 5, updatedAt: 1, data: window.__mk(1, { ciudad: true }) }, local: null, localRaw: null, shown: true };
+        const r = await accountResolveConflict('device');
+        return { vacia, device: { ok: r, force: window.__calls.some(c => c.method === 'PUT' && c.force), rec: saveRecoveredIs() } };
+      });
+      ok(g7.vacia.puts === 1 && g7.vacia.rec === false, '[G] nube vacía: no hay nada que proteger, se sube y se limpia la marca', g7);
+      ok(g7.device.ok === true && g7.device.force && g7.device.rec === false, '[G] elegir "este dispositivo" es una decisión explícita: sube y limpia la marca', g7);
       // 4) la marca sobrevive a recargar la página (persistente) mientras no se resuelva
       await page.evaluate(() => saveRecoveredSet());
       await page.reload({ waitUntil: 'load' }); await ready(page);

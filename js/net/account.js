@@ -221,13 +221,15 @@ function accountApplyCloud(cloud){
   const cloudRaw = JSON.stringify(cloud.data);
   if(raw && raw !== cloudRaw) _acctBackup("_antesDeNube", raw);
   acct.applying = true;
+  let loaded = false;
   try{
     localStorage.setItem(SAVE_KEY, cloudRaw);
     loadSave();              // misma carga (y migraciones) que al abrir el juego
     _acctRefreshUi();
+    loaded = true;
   }catch(e){ console.error("No se pudo aplicar el guardado de la nube", e); }
   finally{ acct.applying = false; }
-  if(typeof saveRecoveredClear==="function") saveRecoveredClear();   // ya es el de la nube: deja de ser un perfil recuperado
+  if(loaded && typeof saveRecoveredClear==="function") saveRecoveredClear();   // ya es el de la nube: deja de ser un perfil recuperado (si la carga falló, la marca sigue protegiendo la nube)
   const y = acct.sync;
   y.version = cloud.version | 0; y.hash = _acctHash(cloudRaw); y.updatedAt = cloud.updatedAt || 0; y.lastOk = Date.now(); y.beacon = null;
   y.dirty = _acctHash(_acctLocalRaw()) !== y.hash; // si una migración lo tocó al cargar, queda para subir
@@ -941,6 +943,7 @@ function _acctRenderChip(){
   window.addEventListener("pagehide", () => {
     const s = acct.session, y = acct.sync;
     if(!s || !y || !y.dirty || acct.conflict || y.user !== _acctKey(s.user) || !navigator.sendBeacon) return;
+    if(typeof saveRecoveredIs==="function" && saveRecoveredIs()) return;   // perfil recuperado: el beacon también es una subida y pisaría la nube
     const raw = _acctLocalRaw(); if(!raw) return;
     const body = '{"token":' + JSON.stringify(s.token) + ',"baseVersion":' + (y.version | 0) + ',"data":' + raw + "}";
     if(body.length > ACCOUNT_BEACON_MAX) return;

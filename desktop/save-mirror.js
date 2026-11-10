@@ -79,7 +79,7 @@ function startupPlan(dir, locals, marks) {
   for (const key of SAVE_KEYS) {
     const env = readEnvelope(dir, key), local = locals && locals[key] != null ? String(locals[key]) : null, mark = out.marks[key];
     let corrupt = false;
-    if (key === SAVE_KEYS[0] && local !== null) { try { JSON.parse(local); } catch (e) { corrupt = true; } }
+    if (key === SAVE_KEYS[0] && local !== null) { try { const o = JSON.parse(local); corrupt = !(o && typeof o === 'object' && !Array.isArray(o)); } catch (e) { corrupt = true; } }   // JSON dañado, o no es un objeto: no es un guardado legible (el tamaño no cuenta: uno grande pero válido NO es ilegible)
     const d = decide(env, local, mark, {localCorrupt: corrupt});
     if (d === 'adopt') { out.set[key] = env.value; out.marks[key] = {rev: env.rev, hash: hashOf(env.value)}; }
     else if (d === 'conflict') {

@@ -377,7 +377,10 @@ function saveNoticeUnreadable(bk){
   if(!bk.key){ _saveNoticePush({msg:SAVE_MSG_UNREADABLE_NO_BACKUP}); return; }   // sin copia no se habilita la escritura
   _saveNoticePush({msg:SAVE_MSG_UNREADABLE, onAck:()=>{
     let safe = false; try{ safe = localStorage.getItem(bk.key) != null; }catch(x){}
-    if(safe){ saveRecoveredSet(); saveLoadFailed = false; }   // la marca va ANTES de habilitar la escritura; el próximo guardado escribe el perfil nuevo y el anterior queda en bk.key
+    if(safe){
+      saveRecoveredSet(); saveLoadFailed = false;
+      try{ if(typeof accountPull==="function" && typeof acct!=="undefined" && acct.session && !acct.pulling) accountPull("perfil-recuperado"); }catch(x){}   // con cuenta: se baja la nube YA, antes de cualquier subida
+    }   // la marca va ANTES de habilitar la escritura; el próximo guardado escribe el perfil nuevo y el anterior queda en bk.key
   }});
 }
 // Una escritura falló (almacenamiento lleno o bloqueado): un aviso por SESIÓN, no uno por intento.

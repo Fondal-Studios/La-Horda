@@ -76,6 +76,11 @@ const check = (name, ok, info) => { if (!ok) fails.push(name); console.log((ok ?
       const cur = M.readEnvelope(dir, K), corrupt = '{"gold":5000,"champions":{"guerrero":{"lev';
       const pl = M.startupPlan(dir, {[K]: corrupt}, {[K]: {rev: cur.rev, hash: M.hashOf(corrupt)}});
       check('guardado: local ILEGIBLE y archivo sano -> se adopta el archivo (no se pierde la buena copia)', pl.set[K] === cur.value && pl.conflicts.length === 0, pl);
+      const arr = M.startupPlan(dir, {[K]: '[1,2,3]'}, {[K]: {rev: cur.rev, hash: M.hashOf('[1,2,3]')}});
+      check('guardado: un local que es JSON pero no un objeto también cuenta como ilegible', arr.set[K] === cur.value, arr);
+      const big = JSON.stringify({gold: 1, pad: 'x'.repeat(9 * 1024 * 1024)});
+      const bigPlan = M.startupPlan(dir, {[K]: big}, {[K]: {rev: cur.rev, hash: M.hashOf(big)}});
+      check('guardado: un local grande pero VÁLIDO no se trata como ilegible', bigPlan.set[K] === undefined, Object.keys(bigPlan.set));
       const keep = M.startupPlan(dir, {[K]: cur.value}, {[K]: {rev: cur.rev, hash: M.hashOf(cur.value)}});
       check('guardado: local legible y al día -> nada cambia (la regla del archivo sano no se activa sola)', Object.keys(keep.set).length === 0);
       const other = M.startupPlan(dir, {horda_prefs: 'no es json'}, {});
