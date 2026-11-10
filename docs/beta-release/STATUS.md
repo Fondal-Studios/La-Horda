@@ -28,3 +28,7 @@
 - Hecho: idiomas ES/EN/PT con diccionarios de ~11.9k entradas; título rediseñado (5 héroes vs. jefe de hielo, CTA apilado, fondo de toda La Horda); pausa/opciones/hub simplificados sin quitar opciones.
 - Bloqueo real: `compare-icons` fija «43 campeones, 301 íconos»; la rama tiene 46 (Ilsa, Vorn, Kora de #90). Actualizar ese número del gate requiere aprobación humana.
 - Sin merge a `main`: falta puntaje ≥85, CI verde y decisión del propietario. Runway sigue <250 créditos: sin gasto.
+
+### Ejecución programada 20:23 UTC (2026-11-10)
+- PR #288 fusionada en `main` (eb0d0578) con revisión independiente (QA, arquitectura, integrador; reservas en `reviews/`). Rama de trabajo rehecha desde `main`.
+- Flake `t_identity` BOS corregido (causa: `bossStrikes` pendientes); queda la firma INF. Runway sin gasto (saldo <250).
