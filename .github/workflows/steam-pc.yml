@@ -4,7 +4,7 @@ name: Preparación para Steam (PC)
 # Estado real y pendientes: docs/steam/README.md · docs/beta-release/auditoria-steam/
 on:
   pull_request:
-    paths: ['js/core/**', 'js/net/account.js', 'js/net/net-rooms.js', 'js/ui/**', 'js/storage/**', 'js/systems/alpha-training.js', 'js/assets/preload.js', 'js/rendering/pixel-stroke.js', 'css/**', 'index.html', 'desktop/**', 'tools/ux/test-pc-*.js', 'tools/ux/test-next-unlock.js', 'tools/perf/test-hud-throttle.js', 'tools/regression/t_save_resilience.js', '.github/workflows/steam-pc.yml']
+    paths: ['js/core/**', 'js/net/account.js', 'js/net/net-rooms.js', 'js/ui/**', 'js/storage/**', 'js/systems/alpha-training.js', 'js/assets/preload.js', 'js/rendering/pixel-stroke.js', 'css/**', 'index.html', 'desktop/**', 'tools/ux/test-pc-*.js', 'tools/ux/test-next-unlock.js', 'tools/ux/test-steam-achievements.js', 'tools/steam/**', 'docs/steam/**', 'js/systems/quests.js', 'js/data/quests.js', 'tools/perf/test-hud-throttle.js', 'tools/regression/t_save_resilience.js', '.github/workflows/steam-pc.yml']
   push:
     branches: [main]
   workflow_dispatch:
@@ -31,3 +31,5 @@ jobs:
         run: node tools/perf/test-hud-throttle.js
       - name: "Contenedor de escritorio: lista blanca, referencias de index.html y carga del staging"
         run: node desktop/test-stage.mjs
+      - name: "Logros de Steam: lista para Steamworks al día, un envío por logro nuevo, id en minúsculas, sin romper si Steam falla"
+        run: node tools/ux/test-steam-achievements.js

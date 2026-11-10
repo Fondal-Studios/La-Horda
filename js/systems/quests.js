@@ -274,6 +274,13 @@ function questsAddXp(n, silent){
   }
 }
 
+/* ---------------- Steam ---------------- */
+// Los logros internos son los de Steam (tools/steam/export-achievements.js genera la lista para Steamworks). El "API Name" es el id en minúsculas
+// (desktop/main.js solo acepta [a-z0-9_]). Solo existe en la app de escritorio (window.HORDA_DESKTOP); nunca rompe el juego si falla.
+function questsSteamId(id){ return String(id).toLowerCase(); }
+function questsSteamUnlock(id){
+  try{ const D = typeof window!=="undefined" ? window.HORDA_DESKTOP : null; if(D && typeof D.unlockAchievement==="function") D.unlockAchievement(questsSteamId(id)); }catch(e){}
+}
 /* ---------------- evaluación ---------------- */
 // Revisa logros y desafíos; entrega lo que se completó. silent: sin avisos (desbloqueo retroactivo).
 function questsEvaluate(silent){
@@ -288,6 +295,7 @@ function questsEvaluate(silent){
     if(P.p < P.goal) continue;
     q.ach[a.id] = Date.now();
     got.push(a);
+    questsSteamUnlock(a.id); // app de escritorio (Steam): el mismo logro; en el navegador no hace nada
     questsGrant(a.reward, true);
     questsAddXp(QUEST_XP.achievement, silent);
     if(!silent) _qToast({kind:"ach", icon:a.icon, tint:a.tint, cat:a.cat, head:a.secret ? "LOGRO SECRETO" : "LOGRO DESBLOQUEADO", name:a.name, sub:questsRewardText(a.reward)});

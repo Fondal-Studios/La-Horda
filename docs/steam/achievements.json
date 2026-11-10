@@ -1,0 +1,537 @@
+{
+ "note": "Generado por tools/steam/export-achievements.js. El id es el API Name en Steamworks.",
+ "count": 59,
+ "achievements": [
+  {
+   "id": "c_first_win",
+   "internal": "c_first_win",
+   "name": "Primera sangre",
+   "description": "Ganá tu primera arena.",
+   "category": "campana",
+   "hidden": false,
+   "goal": 1
+  },
+  {
+   "id": "c_arenas3",
+   "internal": "c_arenas3",
+   "name": "Camino al infierno",
+   "description": "Completá 3 arenas de la campaña.",
+   "category": "campana",
+   "hidden": false,
+   "goal": 3
+  },
+  {
+   "id": "c_arenas6",
+   "internal": "c_arenas6",
+   "name": "Mitad del descenso",
+   "description": "Completá 6 arenas de la campaña.",
+   "category": "campana",
+   "hidden": false,
+   "goal": 6
+  },
+  {
+   "id": "c_arenas_all",
+   "internal": "c_arenas_all",
+   "name": "El infierno conquistado",
+   "description": "Completá todas las arenas de la campaña.",
+   "category": "campana",
+   "hidden": false,
+   "goal": null
+  },
+  {
+   "id": "c_divina",
+   "internal": "c_divina",
+   "name": "Las Cinco Pruebas",
+   "description": "Abrí la Arena Divina.",
+   "category": "campana",
+   "hidden": false,
+   "goal": 1
+  },
+  {
+   "id": "c_divina_win",
+   "internal": "c_divina_win",
+   "name": "Asedio divino",
+   "description": "Derribá el castillo enemigo en la Arena Divina.",
+   "category": "campana",
+   "hidden": false,
+   "goal": 1
+  },
+  {
+   "id": "c_divina5",
+   "internal": "c_divina5",
+   "name": "Ascenso divino",
+   "description": "Llegá al nivel 5 de la Arena Divina.",
+   "category": "campana",
+   "hidden": false,
+   "goal": 5
+  },
+  {
+   "id": "c_runs10",
+   "internal": "c_runs10",
+   "name": "Veterano de la Horda",
+   "description": "Jugá 10 partidas.",
+   "category": "campana",
+   "hidden": false,
+   "goal": 10
+  },
+  {
+   "id": "c_runs50",
+   "internal": "c_runs50",
+   "name": "Incansable",
+   "description": "Jugá 50 partidas.",
+   "category": "campana",
+   "hidden": false,
+   "goal": 50
+  },
+  {
+   "id": "c_civ25",
+   "internal": "c_civ25",
+   "name": "Esperanza de la Ciudad",
+   "description": "Rescatá 25 civiles en la Ciudad Maldita.",
+   "category": "campana",
+   "hidden": false,
+   "goal": 25
+  },
+  {
+   "id": "c_civ100",
+   "internal": "c_civ100",
+   "name": "Pastor de almas",
+   "description": "Rescatá 100 civiles en la Ciudad Maldita.",
+   "category": "campana",
+   "hidden": false,
+   "goal": 100
+  },
+  {
+   "id": "c_fis10",
+   "internal": "c_fis10",
+   "name": "Sellador",
+   "description": "Cerrá 10 fisuras en la Arena Infernal.",
+   "category": "campana",
+   "hidden": false,
+   "goal": 10
+  },
+  {
+   "id": "j_ciudad",
+   "internal": "j_ciudad",
+   "name": "Se baja el telón",
+   "description": "Vencé a El Presentador en la Ciudad Maldita.",
+   "category": "jefes",
+   "hidden": false,
+   "goal": 1
+  },
+  {
+   "id": "j_fortaleza",
+   "internal": "j_fortaleza",
+   "name": "Caballero caído",
+   "description": "Vencé al Caballero de la Fortaleza.",
+   "category": "jefes",
+   "hidden": false,
+   "goal": 1
+  },
+  {
+   "id": "j_hielo",
+   "internal": "j_hielo",
+   "name": "Deshielo",
+   "description": "Vencé al Demonio Gélido (las dos formas del Mago Gélido).",
+   "category": "jefes",
+   "hidden": false,
+   "goal": 1
+  },
+  {
+   "id": "j_acuatica",
+   "internal": "j_acuatica",
+   "name": "Mar en calma",
+   "description": "Vencé al Leviatán en sus tres fases.",
+   "category": "jefes",
+   "hidden": false,
+   "goal": 1
+  },
+  {
+   "id": "j_laberinto",
+   "internal": "j_laberinto",
+   "name": "Sin salida para la bestia",
+   "description": "Vencé al Minotauro del Laberinto.",
+   "category": "jefes",
+   "hidden": false,
+   "goal": 1
+  },
+  {
+   "id": "j_infernal",
+   "internal": "j_infernal",
+   "name": "Regicida",
+   "description": "Vencé al Rey de la Horda en la Arena Infernal.",
+   "category": "jefes",
+   "hidden": false,
+   "goal": 1
+  },
+  {
+   "id": "j_jinete",
+   "internal": "j_jinete",
+   "name": "Sin cabeza, sin piedad",
+   "description": "Derrotá al Jinete Sin Cabeza.",
+   "category": "jefes",
+   "hidden": false,
+   "goal": 1
+  },
+  {
+   "id": "j_sub10",
+   "internal": "j_sub10",
+   "name": "Rompefilas",
+   "description": "Tu equipo derrota 10 subjefes.",
+   "category": "jefes",
+   "hidden": false,
+   "goal": 10
+  },
+  {
+   "id": "j_sub40",
+   "internal": "j_sub40",
+   "name": "Matagigantes",
+   "description": "Tu equipo derrota 40 subjefes.",
+   "category": "jefes",
+   "hidden": false,
+   "goal": 40
+  },
+  {
+   "id": "g_own3",
+   "internal": "g_own3",
+   "name": "Hermandad",
+   "description": "Tené 3 guardianes.",
+   "category": "guardianes",
+   "hidden": false,
+   "goal": 3
+  },
+  {
+   "id": "g_own6",
+   "internal": "g_own6",
+   "name": "Escuadrón completo",
+   "description": "Tené 6 guardianes.",
+   "category": "guardianes",
+   "hidden": false,
+   "goal": 6
+  },
+  {
+   "id": "g_own_all",
+   "internal": "g_own_all",
+   "name": "Todos los guardianes",
+   "description": "Tené a todos los guardianes.",
+   "category": "guardianes",
+   "hidden": false,
+   "goal": null
+  },
+  {
+   "id": "g_lvl20",
+   "internal": "g_lvl20",
+   "name": "Forjado en batalla",
+   "description": "Llevá un guardián al nivel 20.",
+   "category": "guardianes",
+   "hidden": false,
+   "goal": 20
+  },
+  {
+   "id": "g_lvl40",
+   "internal": "g_lvl40",
+   "name": "Curtido",
+   "description": "Llevá un guardián al nivel 40.",
+   "category": "guardianes",
+   "hidden": false,
+   "goal": 40
+  },
+  {
+   "id": "g_lvl60",
+   "internal": "g_lvl60",
+   "name": "Leyenda viviente",
+   "description": "Llevá un guardián al nivel 60.",
+   "category": "guardianes",
+   "hidden": false,
+   "goal": 60
+  },
+  {
+   "id": "g_win4",
+   "internal": "g_win4",
+   "name": "Versátil",
+   "description": "Ganá una arena con 4 guardianes distintos.",
+   "category": "guardianes",
+   "hidden": false,
+   "goal": 4
+  },
+  {
+   "id": "g_roles",
+   "internal": "g_roles",
+   "name": "Todos los roles",
+   "description": "Ganá con un Tanque, un Asesino, un Mago y un Soporte.",
+   "category": "guardianes",
+   "hidden": false,
+   "goal": 4
+  },
+  {
+   "id": "g_fav25",
+   "internal": "g_fav25",
+   "name": "Inseparables",
+   "description": "Jugá 25 partidas con el mismo guardián.",
+   "category": "guardianes",
+   "hidden": false,
+   "goal": 25
+  },
+  {
+   "id": "r_crystal1",
+   "internal": "r_crystal1",
+   "name": "El primer cristal",
+   "description": "Liberá el cristal de un Guardián.",
+   "category": "cristales",
+   "hidden": false,
+   "goal": 1
+  },
+  {
+   "id": "r_crystal3",
+   "internal": "r_crystal3",
+   "name": "Los tres cristales",
+   "description": "Liberá los tres cristales de los Guardianes.",
+   "category": "cristales",
+   "hidden": false,
+   "goal": 3
+  },
+  {
+   "id": "r_juicio",
+   "internal": "r_juicio",
+   "name": "El Juicio",
+   "description": "Despertá el Cristal del Juicio.",
+   "category": "cristales",
+   "hidden": false,
+   "goal": 1
+  },
+  {
+   "id": "r_reso1",
+   "internal": "r_reso1",
+   "name": "Resonancia",
+   "description": "Ganá una arena llevando un cristal.",
+   "category": "cristales",
+   "hidden": false,
+   "goal": 1
+  },
+  {
+   "id": "r_reso10",
+   "internal": "r_reso10",
+   "name": "Eco cristalino",
+   "description": "Ganá 10 arenas llevando un cristal.",
+   "category": "cristales",
+   "hidden": false,
+   "goal": 10
+  },
+  {
+   "id": "r_reso_all",
+   "internal": "r_reso_all",
+   "name": "Afinidad total",
+   "description": "Ganá con cada cristal: Ancestral, Escarcha, Piedra y Juicio.",
+   "category": "cristales",
+   "hidden": false,
+   "goal": 4
+  },
+  {
+   "id": "co_first",
+   "internal": "co_first",
+   "name": "Juntos en la Horda",
+   "description": "Jugá una partida online con otro jugador.",
+   "category": "coop",
+   "hidden": false,
+   "goal": 1
+  },
+  {
+   "id": "co_win",
+   "internal": "co_win",
+   "name": "Hermanos de armas",
+   "description": "Ganá una arena en cooperativo.",
+   "category": "coop",
+   "hidden": false,
+   "goal": 1
+  },
+  {
+   "id": "co_win10",
+   "internal": "co_win10",
+   "name": "Escuadra",
+   "description": "Ganá 10 arenas en cooperativo.",
+   "category": "coop",
+   "hidden": false,
+   "goal": 10
+  },
+  {
+   "id": "co_full",
+   "internal": "co_full",
+   "name": "Sala llena",
+   "description": "Jugá una partida con 4 jugadores.",
+   "category": "coop",
+   "hidden": false,
+   "goal": 1
+  },
+  {
+   "id": "co_rev10",
+   "internal": "co_rev10",
+   "name": "Nadie se queda atrás",
+   "description": "Reviví a 10 aliados.",
+   "category": "coop",
+   "hidden": false,
+   "goal": 10
+  },
+  {
+   "id": "co_runs25",
+   "internal": "co_runs25",
+   "name": "Compañeros de ruta",
+   "description": "Jugá 25 partidas en cooperativo.",
+   "category": "coop",
+   "hidden": false,
+   "goal": 25
+  },
+  {
+   "id": "m_gradea",
+   "internal": "m_gradeA",
+   "name": "Buen trabajo",
+   "description": "Ganá una arena con calificación A o mejor.",
+   "category": "maestria",
+   "hidden": false,
+   "goal": 1
+  },
+  {
+   "id": "m_grades",
+   "internal": "m_gradeS",
+   "name": "Sobresaliente",
+   "description": "Conseguí una calificación S.",
+   "category": "maestria",
+   "hidden": false,
+   "goal": 1
+  },
+  {
+   "id": "m_gradesp",
+   "internal": "m_gradeSP",
+   "name": "Perfección",
+   "description": "Conseguí una S+ (una partida sin caídas y casi perfecta).",
+   "category": "maestria",
+   "hidden": false,
+   "goal": 1
+  },
+  {
+   "id": "m_sp5",
+   "internal": "m_sp5",
+   "name": "Maestro de la Horda",
+   "description": "Conseguí S+ en 5 arenas distintas.",
+   "category": "maestria",
+   "hidden": false,
+   "goal": 5
+  },
+  {
+   "id": "m_deathless",
+   "internal": "m_deathless",
+   "name": "Sin un rasguño",
+   "description": "Ganá una arena sin caer ni una vez.",
+   "category": "maestria",
+   "hidden": false,
+   "goal": 1
+  },
+  {
+   "id": "m_deathless10",
+   "internal": "m_deathless10",
+   "name": "Inquebrantable",
+   "description": "Ganá 10 arenas sin caer.",
+   "category": "maestria",
+   "hidden": false,
+   "goal": 10
+  },
+  {
+   "id": "m_kills1k",
+   "internal": "m_kills1k",
+   "name": "Mil caídos",
+   "description": "Eliminá 1.000 enemigos.",
+   "category": "maestria",
+   "hidden": false,
+   "goal": 1000
+  },
+  {
+   "id": "m_kills10k",
+   "internal": "m_kills10k",
+   "name": "Diez mil caídos",
+   "description": "Eliminá 10.000 enemigos.",
+   "category": "maestria",
+   "hidden": false,
+   "goal": 10000
+  },
+  {
+   "id": "m_runkills",
+   "internal": "m_runkills",
+   "name": "Carnicería",
+   "description": "Eliminá 300 enemigos en una sola partida.",
+   "category": "maestria",
+   "hidden": false,
+   "goal": 300
+  },
+  {
+   "id": "m_hours5",
+   "internal": "m_hours5",
+   "name": "Dedicación",
+   "description": "Jugá 5 horas en las arenas.",
+   "category": "maestria",
+   "hidden": false,
+   "goal": 300
+  },
+  {
+   "id": "s_night",
+   "internal": "s_night",
+   "name": "Noctámbulo",
+   "description": "Jugá una partida entre la medianoche y las 5 de la mañana.",
+   "category": "secretos",
+   "hidden": true,
+   "goal": 1
+  },
+  {
+   "id": "s_close",
+   "internal": "s_close",
+   "name": "Por un pelo",
+   "description": "Ganá una arena con menos del 10% de vida.",
+   "category": "secretos",
+   "hidden": true,
+   "goal": 1
+  },
+  {
+   "id": "s_fast",
+   "internal": "s_fast",
+   "name": "Relámpago",
+   "description": "Ganá una arena en menos de 8 minutos.",
+   "category": "secretos",
+   "hidden": true,
+   "goal": 1
+  },
+  {
+   "id": "s_rich",
+   "internal": "s_rich",
+   "name": "Tesoro del dragón",
+   "description": "Juntá 50.000 de oro.",
+   "category": "secretos",
+   "hidden": true,
+   "goal": 50000
+  },
+  {
+   "id": "s_perfect_rescue",
+   "internal": "s_perfect_rescue",
+   "name": "Nadie queda atrás",
+   "description": "Ganá la Ciudad Maldita sin perder ni un civil.",
+   "category": "secretos",
+   "hidden": true,
+   "goal": 1
+  },
+  {
+   "id": "s_duel",
+   "internal": "s_duel",
+   "name": "Senda del Rōnin",
+   "description": "Ganá 5 duelos en una sola partida con Musashi.",
+   "category": "secretos",
+   "hidden": true,
+   "goal": 1
+  },
+  {
+   "id": "s_stubborn",
+   "internal": "s_stubborn",
+   "name": "Terco",
+   "description": "Caé 10 veces ante la Horda… y seguí volviendo.",
+   "category": "secretos",
+   "hidden": true,
+   "goal": 10
+  }
+ ]
+}

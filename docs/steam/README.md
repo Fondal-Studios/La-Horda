@@ -88,3 +88,8 @@ Estado al 2026-11-10, rama `claude/la-horda-beta-audit-exec-mwv8x0`. Estados: **
 3. Juego: salir al escritorio, pausa al perder el foco, opción de pantalla completa, restos táctiles.
 4. Subir a una rama privada de Steam, probar overlay, Cloud y Steam Deck.
 5. Recién entonces: logros, reducción de tamaño (WebP), página de la tienda.
+
+## Logros de Steam (hecho en el código, falta cargarlos en Steamworks)
+- El juego tiene 59 logros internos (`js/data/quests.js`). Cada vez que se desbloquea uno, `js/systems/quests.js` (`questsSteamUnlock`) llama a `window.HORDA_DESKTOP.unlockAchievement(id)`; en el navegador no hace nada. El API Name es el id **en minúsculas** (`m_gradeA` → `m_gradea`).
+- La lista lista para cargar en Steamworks está en `docs/steam/achievements.csv` y `.json` (se regenera con `node tools/steam/export-achievements.js`; el CI falla si quedan desactualizados).
+- **Falta (del dueño)**: crear los 59 logros en el panel de Steamworks con esos API Name, nombres y descripciones, y subir sus íconos. Hasta entonces el desbloqueo no tiene efecto visible en Steam. Probado solo con una app simulada: no se probó contra Steamworks real.
