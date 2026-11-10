@@ -202,8 +202,16 @@ const HOST_A = '127.0.0.1', HOST_B = '127.0.0.2', HOST_C = '127.0.0.3';
   const reconn = await waitFor(B, () => state === 'playing' && net.status === 'open' && net.slot === 1 && net.room && net.room.slots[1].connected, null, 30000) && await waitFor(A, () => heroes[1].isRemote === true && net.room.slots[1].connected, null, 30000);
   check('reconexion.invitado_vuelve_al_mismo_lugar', reconn, await ev(B, () => ({ st: state, slot: net.slot, status: net.status })));
   const q0 = await ev(B, () => ({ x: player.x, y: player.y })), dir = q0.x < 700 ? 1 : -1;
-  await ev(B, d => { joyVec = { x: d, y: 0 }; }, dir); await sleep(1200); await ev(B, () => { joyVec = { x: 0, y: 0 }; });
-  const q1 = await ev(B, () => ({ x: player.x, y: player.y }));
+  // igual que arriba: el héroe puede estar pegado a un obstáculo y en CI baja el cuadro por segundo, así que se prueban varias direcciones
+  // hasta que recorre >60 px (máx. 3 s por dirección) en vez de un tiempo fijo en una sola.
+  let q1 = q0;
+  for (const v of [{ x: dir, y: 0 }, { x: 0, y: -1 }, { x: 0, y: 1 }, { x: -dir, y: 0 }]) {
+    await ev(B, v => { joyVec = v; }, v);
+    for (let t = 0; t < 15 && Math.hypot(q1.x - q0.x, q1.y - q0.y) <= 60; t++) { await sleep(200); q1 = await ev(B, () => ({ x: player.x, y: player.y })); }
+    await ev(B, () => { joyVec = { x: 0, y: 0 }; });
+    if (Math.hypot(q1.x - q0.x, q1.y - q0.y) > 60) break;
+  }
+  q1 = await ev(B, () => ({ x: player.x, y: player.y }));
   const sync = await waitFor(A, q => { const h = heroes.find(x => x.netName === 'Beto'); return Math.hypot(h.x - q.x, h.y - q.y) < 50; }, q1, 8000);
   check('reconexion.se_mueve_de_nuevo', Math.hypot(q1.x - q0.x, q1.y - q0.y) > 50 && sync, { q0, q1 });
 
