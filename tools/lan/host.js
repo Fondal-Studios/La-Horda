@@ -18,7 +18,7 @@
              --quiet (sin QR ni avisos)  --no-install (no instalar `ws` solo)
    Ver docs/beta-release/MULTIJUGADOR_LOCAL.md
    ============================================================ */
-const fs = require("fs"), os = require("os"), path = require("path"), net = require("net"), cp = require("child_process");
+const fs = require("fs"), os = require("os"), path = require("path"), net = require("net"), cp = require("child_process"), zlib = require("zlib");
 const ROOT = path.resolve(__dirname, "..", "..");
 const args = process.argv.slice(2);
 const opt = (k, d) => { const i = args.indexOf("--" + k); return i < 0 ? d : (args[i + 1] && !args[i + 1].startsWith("--") ? args[i + 1] : true); };
@@ -87,7 +87,9 @@ function serveStatic(req, res, urlPath){
   const type = MIME[path.extname(file).toLowerCase()] || "application/octet-stream";
   const headers = { "content-type": type, "cache-control": "no-cache", "x-content-type-options": "nosniff", "accept-ranges": "bytes" };
   if(path.basename(file) === "index.html" && file === path.join(ROOT, "index.html")){
-    const body = indexBody(file);
+    let body = indexBody(file);
+    const ienc = pickEncoding(req.headers["accept-encoding"]);
+    if(ienc){ body = packedIndex(body, ienc); headers["content-encoding"] = ienc; headers.vary = "Accept-Encoding"; }
     res.writeHead(200, Object.assign(headers, { "content-length": body.length }));
     if(req.method === "HEAD") return res.end();
     return res.end(body);
@@ -102,9 +104,55 @@ function serveStatic(req, res, urlPath){
     if(req.method === "HEAD") return res.end();
     return fs.createReadStream(file, { start, end }).pipe(res);
   }
+  const etag = `W/"${st.size.toString(16)}-${Math.floor(st.mtimeMs).toString(16)}"`;
+  headers.etag = etag;
+  if(req.headers["if-none-match"] === etag){ res.writeHead(304, Object.assign(headers, compressible(file) ? { vary: "Accept-Encoding" } : {})); return res.end(); }
+  const enc = compressible(file) ? pickEncoding(req.headers["accept-encoding"]) : null;
+  if(enc){
+    const body = packed(file, st, enc);
+    res.writeHead(200, Object.assign(headers, { "content-encoding": enc, "content-length": body.length, vary: "Accept-Encoding" }));
+    if(req.method === "HEAD") return res.end();
+    return res.end(body);
+  }
   res.writeHead(200, Object.assign(headers, { "content-length": st.size }));
   if(req.method === "HEAD") return res.end();
   fs.createReadStream(file).pipe(res);
+}
+/* Compresión de texto (JS/CSS/HTML/JSON/SVG): ~75 % menos bytes por WiFi. Imágenes/audio ya vienen comprimidos. */
+const COMPRESSIBLE = new Set([".js", ".css", ".html", ".json", ".svg", ".txt", ".map"]);
+const _packedCache = new Map();
+const PACK_MAX = 64 * 1024 * 1024;
+let _packedBytes = 0;
+function compressible(file){ return COMPRESSIBLE.has(path.extname(file).toLowerCase()); }
+function pickEncoding(header){
+  // respeta q=0 ("br;q=0" = no la quiero)
+  const ok = name => { const m = new RegExp("(?:^|[,\\s])" + name + "(?:\\s*;\\s*q=([0-9.]+))?(?=\\s*(?:,|$))", "i").exec(String(header || "")); return !!m && (m[1] === undefined || parseFloat(m[1]) > 0); };
+  if(ok("br")) return "br";
+  if(ok("gzip")) return "gzip";
+  return null;
+}
+// index.html (con la bandera LAN) comprimido una sola vez por contenido: antes se recomprimía en CADA petición (brotli bloquea el loop).
+const _idxPacked = new Map();
+function packedIndex(body, enc){
+  const hit = _idxPacked.get(enc);
+  if(hit && hit.src === body) return hit.out;
+  const out = enc === "br" ? zlib.brotliCompressSync(body, { params: { [zlib.constants.BROTLI_PARAM_QUALITY]: 5 } }) : zlib.gzipSync(body, { level: 6 });
+  _idxPacked.set(enc, { src: body, out });
+  return out;
+}
+function packed(file, st, enc){
+  const key = enc + ":" + file;
+  const hit = _packedCache.get(key);
+  if(hit && hit.mtime === st.mtimeMs) return hit.body;
+  const raw = fs.readFileSync(file);
+  const body = enc === "br"
+    ? zlib.brotliCompressSync(raw, { params: { [zlib.constants.BROTLI_PARAM_QUALITY]: 5 } })
+    : zlib.gzipSync(raw, { level: 6 });
+  if(hit) _packedBytes -= hit.body.length;
+  if(_packedBytes + body.length > PACK_MAX){ _packedCache.clear(); _packedBytes = 0; }
+  _packedCache.set(key, { mtime: st.mtimeMs, body });
+  _packedBytes += body.length;
+  return body;
 }
 
 /* ---------------- puerto libre ---------------- */

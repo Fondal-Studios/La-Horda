@@ -32,15 +32,17 @@ try{ Object.defineProperty(window, "endlessMode", {get:()=>endlessActive, config
 const EN = {
   id:0, round:1, score:0, mutators:[], week:"", arenas:[], stintArena:null, stintKind:"sub", baseLevel:1,
   bossKills:0, rescues:0, rescueFails:0, ended:false, rng:null, rescueAt:-1, rescueSeq:0, prevArena:null,
-  endReason:"", synergies:0,
+  endReason:"", synergies:0, relics:0, scar:0, hrelPhase:0, hrelOffer:[],
   local:null // lo propio de ESTE jugador (botín, oro y XP ganados): no viaja
 };
 
 /* ---------------- utilidades ---------------- */
 function _enMulberry(seed){ let a = seed>>>0; return function(){ a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a>>>15, 1 | a); t = t + Math.imul(t ^ t>>>7, 61 | t) ^ t; return ((t ^ t>>>14)>>>0)/4294967296; }; }
 function _enHash(str){ let h = 2166136261; for(let i=0;i<str.length;i++){ h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); } return h>>>0; }
-// Temporada ISO (UTC) de una fecha: "2026-W40".
+// Temporada (mes calendario, UTC) de una fecha: "2026-11".
 function endlessWeekKey(date){ return date.toISOString().slice(0,7); }
+// Cómo se muestra la temporada al jugador: "11/2026" (antes se cortaba por "-W" y salía "undefined").
+function endlessSeasonLabel(key){ const m = /^(\d{4})-(\d{2})/.exec(key||""); return m ? m[2] + "/" + m[1] : ""; }
 // Mutadores de la temporada: 2 distintos, determinísticos (todos juegan la misma temporada).
 function endlessWeeklyMutators(date){
   const key = endlessWeekKey(date || new Date());
@@ -50,7 +52,7 @@ function endlessWeeklyMutators(date){
   return {key, ids:out};
 }
 function endlessHas(m){ return EN.mutators.indexOf(m) >= 0; }
-function endlessScoreMult(){ let k = 1; for(const m of EN.mutators) k *= (ENDLESS_MUTATORS[m]||{}).scoreMult || 1; return k; }
+function endlessScoreMult(){ let k = 1; for(const m of EN.mutators) k *= (ENDLESS_MUTATORS[m]||{}).scoreMult || 1; if(typeof scarScoreBonus==="function") k *= scarScoreBonus(EN.scar); return k; }
 function endlessStat(k, v){ try{ window.dispatchEvent(new CustomEvent("horda-stat", {detail:{k, v}})); }catch(e){} }
 function endlessSave(){
   if(!save.endless || typeof save.endless!=="object") save.endless = {};
@@ -91,8 +93,10 @@ function endlessBeginRun(){
   const wk = endlessWeeklyMutators(new Date());
   EN.id = ((Math.random()*1e9)|0) + 1;
   EN.rng = _enMulberry(EN.id ^ 0x9e3779b9);
-  EN.round = 1; EN.score = 0; EN.mutators = wk.ids.slice(); EN.week = wk.key; EN.arenas = [];
+  EN.round = 1; EN.score = 0; EN.mutators = wk.ids.slice(); EN.week = wk.key; EN.arenas = []; EN.scar = 0;
   EN.bossKills = 0; EN.rescues = 0; EN.rescueFails = 0; EN.ended = false; EN.rescueAt = -1; EN.prevArena = null; EN.endReason = ""; EN.synergies = 0;
+  if(typeof scarApplyToRun==="function") scarApplyToRun(); // Rangos de Cicatriz: suma los mutadores del rango elegido
+  if(typeof hrelReset==="function") hrelReset(); // reliquias: cada partida empieza limpia
   if(EN.returnArena===undefined || !endlessActive) EN.returnArena = currentArena;
   endlessRescues = [];
   endlessActive = true;
@@ -120,6 +124,7 @@ function endlessOnRunStart(){
   runLevel = endlessLevelForRound(EN.round);
   if(!EN.local || EN.local.id!==EN.id) endlessLocalReset();
   endlessRescues = [];
+  if(typeof hrelReset==="function") hrelReset();
   endlessStat("endless_start", EN.round);
   runLater(400, ()=>{ if(endlessOn()) endlessArenaCard(true); });
 }
@@ -127,7 +132,7 @@ function endlessArenaCard(first){
   const A = ARENA_MODS[currentArena]||{};
   const muts = EN.mutators.map(m=>ENDLESS_MUTATORS[m].icon + " " + ENDLESS_MUTATORS[m].name).join(" · ");
   if(typeof arenaTitleCard==="function")
-    arenaTitleCard(first ? "HORDA INFINITA" : "LA CICATRIZ TE LLEVA", `${A.icon||""} ${A.label||currentArena}`, first ? `Temporada ${EN.week.split("-W")[1]} · ${muts}` : `Ronda ${EN.round} · ${EN.stintKind==="boss" ? "el jefe de la arena espera" : "contené a la Horda"}`, 3600);
+    arenaTitleCard(first ? "HORDA INFINITA" : "LA CICATRIZ TE LLEVA", `${A.icon||""} ${A.label||currentArena}`, first ? `Temporada ${endlessSeasonLabel(EN.week)} · ${muts}` : `Ronda ${EN.round} · ${EN.stintKind==="boss" ? "el jefe de la arena espera" : "contené a la Horda"}`, 3600);
 }
 
 /* ---------------- rondas ---------------- */
@@ -171,6 +176,7 @@ function endlessBossDown(){
 }
 // Después de elegir refuerzo: próxima ronda (y, cada 5, próxima arena).
 function endlessAdvance(){
+  EN.hrelPhase = 0; EN.hrelOffer = [];
   EN.round++;
   if((EN.round - 1) % ENDLESS_CFG.roundsPerArena === 0){
     EN.prevArena = currentArena;
@@ -328,8 +334,9 @@ function endlessOpenBuffChoice(){
       buffApplyOpt(player, opt);
       if(b) endlessOnBuffPicked(player, b.id);
       if(netIsHost()){ cards.innerHTML = `<div class="net-wait">Elegiste <b>${buffOptName(opt)}</b>.</div>`; netHostPickedLocal(); return; }
-      player.hp = Math.min(player.maxHp, player.hp + player.maxHp*ENDLESS_CFG.hpRefillOnRound);
+      if(player.alive) player.hp = Math.min(player.maxHp, player.hp + player.maxHp*ENDLESS_CFG.hpRefillOnRound); // caído: no gana vida estando en el suelo
       player.energy = player.maxEnergy;
+      if(typeof hrelNextPhase==="function" && hrelNextPhase()) return; // reliquias: segunda elección tras el jefe (js/systems/horde-relics.js)
       setState("playing");
       endlessAdvance();
     });
@@ -344,7 +351,9 @@ function endlessOpenBuffChoice(){
 // usePity) la protección contra la mala suerte, que avanza como una victoria.
 function endlessRollItem(grade, arena, usePity){
   if(typeof lootTierWeights!=="function" || !player) return null;
-  const L = EN.local || {}; if(stashFull()){ L.full = true; return null; }
+  // Inventario lleno: el cofre NO se pierde (antes se descartaba sin tirar el objeto). Va al buzón "Recompensas
+  // pendientes" igual que el botín de la Campaña (addItemToInventory con earnedReward -> rewardOverflowPush).
+  const L = EN.local || {}, full = stashFull(); if(full) L.full = true;
   save.lootPity = Object.assign({legendario:0, set:0, mitico:0, unico:0}, save.lootPity||{});
   const pity = usePity ? save.lootPity : null;
   const tier = _pick(lootTierWeights(arena, grade, pity, false), Math.random) || "comun";
@@ -353,7 +362,7 @@ function endlessRollItem(grade, arena, usePity){
   if(usePity) for(const t in LOOT_PITY) save.lootPity[t] = (t===spec.tier) ? 0 : (save.lootPity[t]||0) + 1;
   const it = materializeLoot(spec, selectedClass, arena);
   it.lootTier = spec.tier;
-  addItemToInventory(selectedClass, it);
+  if(!addItemToInventory(selectedClass, it, true)) return null;
   if(L.loot) L.loot.push(it);
   persist();
   const tm = LOOT_TIER_META[itemTier(it)] || {};
@@ -373,8 +382,9 @@ function endlessAwardChest(kind){
     showBanner(`COFRE MENOR DE LA CICATRIZ: +${g} de oro y +1 gema`);
     return;
   }
+  const full = stashFull(); // lleno: el objeto va a Recompensas pendientes (endlessRollItem)
   const it = endlessRollItem(grade, arena, true);
-  showBanner(it ? `COFRE DE LA CICATRIZ: ${it.name}` : "COFRE DE LA CICATRIZ (inventario lleno)");
+  showBanner(it ? `COFRE DE LA CICATRIZ: ${it.name}${full ? " (a Recompensas pendientes)" : ""}` : "COFRE DE LA CICATRIZ (inventario lleno)");
   if(netIsHost()) netRecord("endlessGuestReward", [{k:"item", grade, arena, pity:1, why:kind}]);
 }
 // Invitado: recompensa decidida por el anfitrión, cobrada en SU guardado.
@@ -466,6 +476,7 @@ function endlessUpdate(dt){
   if(!endlessActive) return;
   endlessTrackSurvival();
   if(runEnding) return;
+  if(typeof hrelUpdate==="function") hrelUpdate(dt); // reliquias: efectos periódicos
   if(EN.rescueAt >= 0 && levelTimer >= EN.rescueAt && !bossActive && !levelClearing){ EN.rescueAt = -1; endlessSpawnRescue(); }
   for(let i=endlessRescues.length-1;i>=0;i--){
     const t = endlessRescues[i];
@@ -528,11 +539,11 @@ function endlessHudTick(){
     span.parentElement.insertBefore(chip, span);
   }
   if(!chip) return;
-  const key = EN.round + "|" + EN.score + "|" + EN.mutators.join(",") + "|" + kills;
+  const key = EN.round + "|" + EN.score + "|" + EN.mutators.join(",") + "|" + kills + "|" + (EN.scar|0);
   if(key===_enHudKey) return;
   _enHudKey = key;
   const boss = endlessIsBossRound();
-  chip.innerHTML = `<b class="en-inf">∞</b> Ronda <b>${EN.round}</b>${boss ? ' <span class="en-boss">☠</span>' : ""} · <b>${EN.score.toLocaleString("es-AR")}</b> pts · Bajas <b>${kills}</b> <span class="en-muts" title="${EN.mutators.map(m=>ENDLESS_MUTATORS[m].name).join(" · ")}">${EN.mutators.map(m=>ENDLESS_MUTATORS[m].icon).join("")}</span>`;
+  chip.innerHTML = `<b class="en-inf">∞</b> Ronda <b>${EN.round}</b>${boss ? ' <span class="en-boss">☠</span>' : ""} · <b>${EN.score.toLocaleString("es-AR")}</b><span class="en-pts"> pts</span>${EN.scar>0 && typeof SCAR_RANKS!=="undefined" ? ` · <span class="en-scar-tag" title="${SCAR_RANKS[scarClamp(EN.scar)].name}">C${SCAR_RANKS[scarClamp(EN.scar)].short}</span>` : ""}<span class="en-kills"> · Bajas <b>${kills}</b></span> <span class="en-muts" title="${EN.mutators.map(m=>ENDLESS_MUTATORS[m].name).join(" · ")}">${EN.mutators.map(m=>ENDLESS_MUTATORS[m].icon).join("")}</span>`;
 }
 
 /* ---------------- red (mismo canal de snapshots) ---------------- */
@@ -540,7 +551,7 @@ function endlessNetGet(){
   // claves con prefijo "en": las arenas agregan nombres cortos a NET_SKIP_KEYS (p.ej. "sc" en la Ciudad)
   if(!endlessActive) return 0;
   return {enId:EN.id, enR:EN.round, enSc:EN.score, enMu:EN.mutators.join(","), enWk:EN.week, enAr:EN.arenas.join(","), enSk:EN.stintKind, enBl:EN.baseLevel,
-    enBk:EN.bossKills, enRs:EN.rescues, enRf:EN.rescueFails, enSy:EN.synergies,
+    enBk:EN.bossKills, enRs:EN.rescues, enRf:EN.rescueFails, enSy:EN.synergies, enRl:(EN.hrelOffer||[]).join(","), enRc:EN.relics|0, enSr:EN.scar|0,
     enRq:endlessRescues.map(t=>({id:t.id, kind:t.kind, x:t.x, y:t.y, r:t.r, prog:Math.round(t.prog||0), dur:t.dur, t:Math.round(t.t), tmax:t.tmax, h:t.h, done:t.done?1:0, fade:Math.round(t.fade||0)}))};
 }
 function endlessNetSet(v){
@@ -549,7 +560,7 @@ function endlessNetSet(v){
   endlessActive = true;
   EN.id = v.enId; EN.round = v.enR|0; EN.score = v.enSc|0; EN.mutators = v.enMu ? String(v.enMu).split(",") : []; EN.week = v.enWk || "";
   EN.arenas = v.enAr ? String(v.enAr).split(",") : []; EN.stintKind = v.enSk || "sub"; EN.baseLevel = v.enBl|0 || 1;
-  EN.bossKills = v.enBk|0; EN.rescues = v.enRs|0; EN.rescueFails = v.enRf|0; EN.synergies = v.enSy|0;
+  EN.bossKills = v.enBk|0; EN.rescues = v.enRs|0; EN.rescueFails = v.enRf|0; EN.synergies = v.enSy|0; EN.hrelOffer = v.enRl ? String(v.enRl).split(",") : []; EN.relics = v.enRc|0; EN.scar = typeof scarClamp==="function" ? scarClamp(v.enSr) : (v.enSr|0);
   endlessRescues = (v.enRq||[]).map(t=>Object.assign({}, t, {done:!!t.done}));
   if(fresh){ EN.ended = false; if(netIsGuest()) endlessLocalReset(); }
 }
@@ -583,6 +594,7 @@ function endlessEndRun(reason){
     L.newWeek = EN.score > (S.week.score||0);
     if(L.newWeek){ S.week.score = EN.score; S.week.round = round; }
     S.last = {score:EN.score, round, cls, at:Date.now()};
+    if(typeof scarOnRunEnd==="function") scarOnRunEnd(round, L); // Rangos de Cicatriz: desbloqueo, récord por rango y recompensas de identidad
     L.goldGained = (save.gold||0) - L.gold0;
     L.xpGained = Math.max(0, _enTotalXp(cls) - L.xp0);
     L.lvl1 = (save.champions[cls]||{}).level || L.lvl0;
@@ -623,7 +635,7 @@ function endlessShowResults(){
   const loot = (L.loot||[]).map(it=>{ const tm = LOOT_TIER_META[itemTier(it)]||{}; return `<div class="en-loot-item" style="--tc:${tm.color||"#ddd"}">${typeof itemIconHTML==="function" ? itemIconHTML(it) : ""}<span class="en-loot-name" style="color:${tm.color||"#ddd"}">${it.name}</span><span class="en-loot-tier">${tm.label||""}</span></div>`; }).join("");
   const badge = (on, txt)=> on ? `<span class="en-new">${txt}</span>` : "";
   el.innerHTML = `<div class="en-res">
-    <div class="en-res-kicker">HORDA INFINITA · SEMANA ${(EN.week||"").split("-W")[1]||""}</div>
+    <div class="en-res-kicker">HORDA INFINITA · TEMPORADA ${endlessSeasonLabel(EN.week)}</div>
     <div class="en-res-title">${EN.endReason==="quit" ? "Contención abandonada" : "La Horda siguió avanzando"}</div>
     <div class="en-res-big"><div><span>Ronda</span><b>${EN.round}</b></div><div><span>Puntaje</span><b>${_enFmt(EN.score)}</b></div></div>
     <div class="en-res-badges">${badge(L.newGlobal, "¡NUEVO RÉCORD GLOBAL!")}${badge(L.newGuardian && !L.newGlobal, `¡Récord de ${(CLASSES[cls]||{}).name||cls}!`)}${badge(L.newWeek && !L.newGlobal && !L.newGuardian, "¡Mejor de la temporada!")}</div>
@@ -635,7 +647,7 @@ function endlessShowResults(){
       ${online ? `<button class="btn secondary" id="en-leave-btn">${guest ? "Salir de la sala" : "Cerrar la sala y salir"}</button>` : ""}
     </div>
     <div class="en-res-sub">Botín juntado</div>
-    <div class="en-res-loot">${loot || `<div class="en-loot-empty">${EN.round < 5 ? "Sin cofres todavía: el primero llega al vencer al subjefe de la ronda 5; desde la ronda 10, también el cofre final." : "El inventario estaba lleno o la suerte no acompañó."}</div>`}${L.full ? `<div class="en-loot-empty" style="color:#ff9a7a;">Tu inventario llegó al máximo: algunas recompensas no se pudieron guardar.</div>` : ""}</div>
+    <div class="en-res-loot">${loot || `<div class="en-loot-empty">${EN.round < 5 ? "Sin cofres todavía: el primero llega al vencer al subjefe de la ronda 5; desde la ronda 10, también el cofre final." : "El inventario estaba lleno o la suerte no acompañó."}</div>`}${L.full ? `<div class="en-loot-empty" style="color:#ff9a7a;">Tu inventario llegó al máximo: lo que no entró quedó en Recompensas pendientes, en el menú principal.</div>` : ""}</div>
     <div class="en-res-muts">${muts}</div>
     <div class="res-rows en-res-rows">
       <div class="res-row"><span>Tiempo</span><b>${Math.floor(secs/60)}:${String(secs%60).padStart(2,"0")}</b></div>
@@ -649,6 +661,7 @@ function endlessShowResults(){
       <div class="res-row"><span>Récord de ${(CLASSES[cls]||{}).name||cls}</span><b>${_enFmt(G.score)} · ronda ${G.round||0}</b></div>
       <div class="res-row"><span>Récord global</span><b>${_enFmt(S.best.score)} · ronda ${S.best.round||0}</b></div>
     </div>
+    ${typeof hrelResultsHTML==="function" ? hrelResultsHTML(L.hrel || player) : ""}
     <div class="en-res-sub">Arenas recorridas</div><div class="en-res-arenas">${arenas}</div>
 </div>`;
   if(typeof _lbRenderRunLine==="function") _lbRenderRunLine(); // "Puesto #N esta temporada" (o el aviso para invitados)
@@ -670,6 +683,7 @@ function endlessShowResults(){
 // Sale del modo (vuelve la arena de campaña que estaba elegida).
 function endlessFinish(){
   endlessActive = false; endlessRescues = [];
+  if(typeof hrelReset==="function") hrelReset(); // las reliquias se pierden al terminar la partida
   if(EN.returnArena && ARENA_ORDER.indexOf(EN.returnArena) >= 0) currentArena = EN.returnArena;
   EN.returnArena = undefined;
   endlessHudTick();
@@ -738,7 +752,7 @@ function endlessDecoratePrep(){
   const guest = typeof netInRoom==="function" && netInRoom() && net.role==="guest";
   box.classList.remove("hidden");
   box.innerHTML = `<div class="la-head">HORDA INFINITA <span class="la-by">· ${guest ? "la arranca el anfitrión" : "la Cicatriz elige las arenas"}</span></div>
-    <div class="la-desc">∞ Rondas sin fin: cada 5, un jefe o subjefe y la Cicatriz te lleva a otra arena. Temporada ${wk.key.split("-W")[1]}: ${wk.ids.map(m=>`<b title="${ENDLESS_MUTATORS[m].desc}">${ENDLESS_MUTATORS[m].icon} ${ENDLESS_MUTATORS[m].name}</b>`).join(" · ")}.</div>
+    <div class="la-desc">∞ Rondas sin fin: cada 5, un jefe o subjefe y la Cicatriz te lleva a otra arena. Temporada ${endlessSeasonLabel(wk.key)}: ${wk.ids.map(m=>`<b title="${ENDLESS_MUTATORS[m].desc}">${ENDLESS_MUTATORS[m].icon} ${ENDLESS_MUTATORS[m].name}</b>`).join(" · ")}.</div>
     <div class="la-desc">Récord con ${(CLASSES[selectedClass]||{}).name||""}: <b>${_enFmt(G.score)}</b> (ronda ${G.round||0}) · Global: <b>${_enFmt(S.best.score)}</b> (ronda ${S.best.round||0})${typeof lbOpen==="function" ? ` <button type="button" class="btn secondary small lb-open-btn" id="en-prep-rank">🏆 Ranking</button>` : ""}</div>`;
   box._html = "endless";
   const rk = document.getElementById("en-prep-rank"); if(rk) rk.addEventListener("click", ev=>{ ev.stopPropagation(); lbOpen({guardian:""}); });

@@ -1,10 +1,67 @@
 {
-  "subject": { "pr": 285, "branch": "claude/la-horda-beta-audit-exec-mwv8x0", "head": "8868324dcb6f5d03cee39a2e6b624595f429d01a", "authorAgent": "claude-sesion-principal", "authorId": "claude-sesion-principal" },
-  "stages": [
-    { "stage": "produccion", "by": "claude-sesion-principal", "role": "agent", "commit": "8868324dcb6f5d03cee39a2e6b624595f429d01a", "at": "2026-11-07T21:00:00Z" },
-    { "stage": "qa", "by": "claude-qa-285", "role": "qa", "verdict": "aprobado", "evidence": { "sha": "8868324dcb6f5d03cee39a2e6b624595f429d01a", "tests": 12, "failed": 0, "report": "Revisión completa del SHA 4650079e (22 ejecuciones, 0 fallos nuevos) + revisión del delta 4650079e..8868324d (exactamente 4 archivos: registro, manifest de Aelith, tools/lan/test-lan.js, NEXT_SESSION.md): 12 ejecuciones, 0 fallos; test LAN x3 verde; la aserción LAN no se debilitó" }, "at": "2026-11-07T21:10:00Z" },
-    { "stage": "arquitectura", "by": "claude-arq-285", "role": "arquitecto", "verdict": "aprobado", "evidence": { "sha": "8868324dcb6f5d03cee39a2e6b624595f429d01a", "report": "Revisión completa de 4650079e: aprobado, sin bloqueantes. Delta a 8868324d: veredicto sobre el CONTENIDO = aprobado sin bloqueantes (pin de Aelith reproducible y coherente, gate no debilitado; test LAN con la misma aserción; NEXT_SESSION.md veraz). Su veredicto formal fue 'reparacion_parcial' únicamente porque el registro citaba el SHA anterior; esa reparación es este re-sellado. Seguimientos IMPORTANTES: identidades de revisores autodeclaradas; capa de cámara LAN." }, "at": "2026-11-07T21:20:00Z" },
-    { "stage": "staging", "by": "claude-integrador-285", "role": "integrador", "verdict": "aprobado", "evidence": { "sha": "8868324dcb6f5d03cee39a2e6b624595f429d01a", "branch": "beta/integracion-20261107", "tests": 12, "failed": 0, "run": "https://github.com/Fondal-Studios/La-Horda/pull/285" }, "at": "2026-11-07T21:30:00Z" },
-    { "stage": "aprobacion", "by": "claude-integrador-285", "role": "director", "verdict": "aprobado", "evidence": { "sha": "8868324dcb6f5d03cee39a2e6b624595f429d01a", "report": "Aprobación condicionada: que este registro pase check.js --mode merge, que sea el único archivo que cambia y que el CI no muestre rojos nuevos (contracts, VFX, readability, entry-reference y Regresión rápida ya estaban rojos en #284). CodeQL: 6 alertas en líneas preexistentes (deuda de seguridad previa, incluida 1 crítica) que el propietario debe conocer. Aprobación dada por un agente conforme a reviews/POLITICA.json (decisión del propietario 2026-11-07); la escritura de este registro fue autorizada expresamente por el propietario en el chat. No la dio ninguna persona." }, "at": "2026-11-07T21:35:00Z" }
-  ]
+ "subject": {
+  "pr": 288,
+  "branch": "claude/la-horda-beta-audit-exec-mwv8x0",
+  "head": "32777ca60b0b2fc335005e5a9b53e73d7722aebb",
+  "authorAgent": "claude-sesion-principal",
+  "authorId": "claude-sesion-principal"
+ },
+ "stages": [
+  {
+   "stage": "produccion",
+   "by": "claude-sesion-principal",
+   "role": "agent",
+   "commit": "32777ca60b0b2fc335005e5a9b53e73d7722aebb",
+   "at": "2026-11-10T17:00:00Z"
+  },
+  {
+   "stage": "qa",
+   "by": "claude-qa-292",
+   "role": "qa",
+   "verdict": "aprobado",
+   "evidence": {
+    "sha": "32777ca60b0b2fc335005e5a9b53e73d7722aebb",
+    "tests": 30,
+    "failed": 0,
+    "report": "30 ejecuciones sobre 32777ca6, 0 fallos de la rama. Flake: t_identity (INF.el_campeon_no_sale_por_la_fisura) falló 1 de 3 y pasó 2/2 al repetir; tools/net-test/accounts.js falla en el sandbox del revisor (entorno). Sin BLOCKER ni IMPORTANT. No se probó a mano en táctil ni con un segundo cliente cooperativo (lo cubren t_camera, three-ui-contracts y test-scar-ranks)."
+   },
+   "at": "2026-11-10T17:30:00Z"
+  },
+  {
+   "stage": "arquitectura",
+   "by": "claude-arq-292",
+   "role": "arquitecto",
+   "verdict": "aprobado",
+   "evidence": {
+    "sha": "32777ca60b0b2fc335005e5a9b53e73d7722aebb",
+    "report": "Revisión previa reparó el BLOQUEANTE B1 (sobrescritura de la nube por perfil de fábrica tras guardado ilegible) y el hueco del beacon pagehide, con pruebas que fallan sin el arreglo. Revisión del delta sobre 32777ca6: aprobado, 0 bloqueantes, 0 importantes, 1 menor."
+   },
+   "at": "2026-11-10T17:40:00Z"
+  },
+  {
+   "stage": "staging",
+   "by": "claude-integrador-292",
+   "role": "integrador",
+   "verdict": "aprobado",
+   "evidence": {
+    "sha": "32777ca60b0b2fc335005e5a9b53e73d7722aebb",
+    "branch": "beta/integracion-20261110",
+    "tests": 38,
+    "failed": 0,
+    "run": "https://github.com/Fondal-Studios/La-Horda/pull/288"
+   },
+   "at": "2026-11-10T18:35:00Z"
+  },
+  {
+   "stage": "aprobacion",
+   "by": "claude-integrador-292",
+   "role": "director",
+   "verdict": "aprobado",
+   "evidence": {
+    "sha": "32777ca60b0b2fc335005e5a9b53e73d7722aebb",
+    "report": "Aprobado con reservas de proceso. Verificado por el integrador: beta/integracion-20261110 == 32777ca6; CI 38 de 39 en success, 'Regresion del juego (completa)' pasó al reintento sin commit nuevo; solo 'Clasificacion' quedaba en rojo por el registro viejo. Flake t_identity preexistente (en origin/main limpio falló 3/8 en la medición del autor; el integrador no lo reprodujo en 6 corridas). Riesgos: sin prueba táctil manual ni segundo cliente cooperativo; informe de arquitectura 292 no verificado directamente por el integrador; balance de reliquias solo con piloto automático; 6 íconos VFX sin ojo de arte; claves 'claimed' viejas y farmeo en servidor. Aprobación dada por un agente conforme a reviews/POLITICA.json (decisión del propietario); no la dio ninguna persona."
+   },
+   "at": "2026-11-10T18:40:00Z"
+  }
+ ]
 }

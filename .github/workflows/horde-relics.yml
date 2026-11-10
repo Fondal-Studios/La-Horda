@@ -1,0 +1,30 @@
+name: Reliquias de la Horda
+# Presupuesto de poder (sin navegador) + flujo con navegador (teclado y mando simulado) + cooperativo con relay propio.
+# Diseño y tabla de mejoras: docs/beta-release/HORDA_MEJORAS.md
+on:
+  pull_request:
+    paths: ['js/data/horde-relics.js', 'js/systems/horde-relics.js', 'js/systems/endless.js', 'js/data/scar-ranks.js', 'js/systems/scar-ranks.js', 'tools/balance/test-scar-ranks.js', 'tools/ux/test-scar-ranks.js', 'js/net/net-game.js', 'css/horde-relics.css', 'tools/balance/relics_*.js', 'tools/ux/test-horde-relics.js', 'tools/net-test/relics_coop.js', 'tools/i18n/tr/t370.py', 'index.html', '.github/workflows/horde-relics.yml']
+  push:
+    branches: [main]
+    paths: ['js/data/horde-relics.js', 'js/systems/horde-relics.js', 'js/systems/endless.js', 'js/data/scar-ranks.js', 'js/systems/scar-ranks.js', 'tools/balance/test-scar-ranks.js', 'tools/ux/test-scar-ranks.js', 'js/net/net-game.js', 'css/horde-relics.css', 'tools/balance/relics_*.js', 'tools/ux/test-horde-relics.js', 'tools/net-test/relics_coop.js', 'tools/i18n/tr/t370.py', 'index.html', '.github/workflows/horde-relics.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  relics:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-playwright
+      - run: npm ci --prefix server --no-audit --no-fund
+      - name: "Presupuesto de poder, determinismo y economía (sin navegador)"
+        run: node tools/balance/relics_budget.js
+      - name: "Flujo en navegador: oferta tras el jefe, teclado, mando simulado, efectos, limpieza"
+        run: node tools/ux/test-horde-relics.js
+      - name: "Cooperativo: misma oferta, cada jugador aplica su elección"
+        run: NODE_PATH="$PWD/server/node_modules:$NODE_PATH" node tools/net-test/relics_coop.js
+      - name: "Rangos de Cicatriz: reglas puras (sin navegador)"
+        run: node tools/balance/test-scar-ranks.js
+      - name: "Rangos de Cicatriz: selector, mutadores, desbloqueo y recompensas en navegador"
+        run: node tools/ux/test-scar-ranks.js

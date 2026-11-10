@@ -99,3 +99,23 @@
   .lb-row{ grid-template-columns:36px minmax(0,1fr) 30px 76px 34px; }
   .lb-g i, .lb-time{ display:none; }
 }
+
+/* Rangos de Cicatriz: selector en la preparación de la Horda */
+.en-scar{ margin-top:6px; }
+.en-scar-chips{ display:inline-flex; gap:4px; vertical-align:middle; flex-wrap:wrap; }
+.en-scar-chip{ min-width:44px; min-height:44px; padding:2px 8px; font-family:var(--font-pixel); font-size:0.6rem; color:#f0dcc8; background:#2a1c12; border:2px solid #6b4424; cursor:pointer; }
+.en-scar-chip.on{ color:#111; background:linear-gradient(180deg,#ff9ac8,#e0407a); border-color:#ffd0e8; }
+.en-scar-chip.locked,.en-scar-chip:disabled{ opacity:.55; cursor:default; }
+.en-scar-chip:focus-visible{ outline:2px solid #ffd76a; outline-offset:2px; }
+.en-scar-info{ margin-top:4px; font-size:0.8em; opacity:.9; }
+/* Legibilidad (auditoría PC): las fichas y el texto del rango medían 9,6 y 10 px. Piso de 14 px (la letra VT323 se ve chica: el texto va a 17-18 px); el HUD (#hud-endless) no cambia. */
+#en-scar .en-scar-chip{ font-size:14px; }
+#en-scar{ font-size:17px; line-height:1.3; }
+#en-scar .en-scar-info{ font-size:18px; line-height:1.35; opacity:1; margin-top:6px; }
+#en-scar .en-scar-info span{ display:inline-block; margin-right:6px; }
+
+/* HUD de la Horda en pantallas angostas: lo importante (ronda, puntaje, rango, mutadores) a la vista; "Bajas" queda en la pausa */
+#hud-endless .en-scar-tag{ color:#ff9ac8; font-family:var(--font-pixel); font-size:0.58rem; }
+@media (max-width:760px){ #hud-endless .en-kills, #hud-endless .en-pts{ display:none; } #hud-endless .en-muts{ letter-spacing:0; } }
+/* insignias de resultados: respiran en vez de pegarse */
+.en-res-badges .en-new{ margin:3px 2px; }

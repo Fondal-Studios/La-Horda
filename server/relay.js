@@ -138,7 +138,7 @@ function newCode(){
   }
   return null;
 }
-function clean(s, max){ return String(s == null ? "" : s).replace(/[<>\u0000-\u001f]/g, "").slice(0, max); }
+function clean(s, max){ return String(s == null ? "" : s).replace(/[<>"'`\u0000-\u001f\u007f]/g, "").slice(0, max); }
 function publicRoom(room){
   return {
     code: room.code, arena: room.arena, state: room.state, hostSlot: 0, protocol: PROTOCOL, pub: !!room.pub, diff: room.diff || "",

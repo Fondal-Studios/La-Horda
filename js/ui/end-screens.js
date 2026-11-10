@@ -222,6 +222,7 @@ function buildVictoryData(){
     data.questSummary = typeof questsOnRunEnd==="function" ? questsOnRunEnd(true) : null;
     save.lastVictoryReward = {id, data:JSON.parse(JSON.stringify(data)), reviewed:false};
     save.victoryReceipts[id] = save.lastVictoryReward;
+    victoryReceiptsTrim(id);
   }catch(e){
     save = before;
     if(questsBefore){for(const k of Object.keys(QST))delete QST[k];Object.assign(QST,questsBefore);}
@@ -231,13 +232,37 @@ function buildVictoryData(){
   persistNow();
   return save.lastVictoryReward.data;
 }
+// Los recibos son la marca de "esta victoria ya se cobró" (idempotencia). Antes crecían para siempre (uno por
+// victoria) y el guardado vive en localStorage. Se conservan los últimos VICTORY_RECEIPTS_KEEP ya revisados
+// (los más viejos se sueltan: una partida de hace 50 victorias no se vuelve a presentar) y SIEMPRE el actual
+// y los que todavía no se revisaron (traen el botín adentro).
+const VICTORY_RECEIPTS_KEEP = 50;
+function victoryReceiptsTrim(keepId){
+  const R = save.victoryReceipts; if(!R || typeof R!=="object") return;
+  const last = save.lastVictoryReward && save.lastVictoryReward.id;
+  const old = Object.keys(R).filter(k=>{ const r = R[k]; return k!==keepId && k!==last && r && r.reviewed===true && !r.data; }); // orden de alta
+  for(let i=0; i<old.length-VICTORY_RECEIPTS_KEEP; i++) delete R[old[i]];
+}
+// Los botones de la victoria NUNCA quedan trabados por el guardado: si no se puede escribir se avisa una vez
+// (por pantalla de victoria) y se deja seguir. Única espera real: el servidor guardando la recompensa del equipo.
+let victorySaveFailsFor = null, victorySaveFails = 0;
+const VICTORY_SAVE_RETRIES = 3; // intentos de salir con la escritura fallando que se frenan con aviso; después se deja seguir sin guardar
 function victorySaveReady(){
   if(netMatch && netMatch.rewardPending){netBroadcast(netMatch.rewardEndMessage);gameAlert("El servidor todavía está guardando las recompensas del equipo. Volvé a intentar en unos segundos.");return false;}
+  // Test Lab, red local (sandbox) y Guerra de Cristales no escriben a propósito: no hay nada que esperar.
+  if(typeof saveNoWriteByDesign==="function" ? saveNoWriteByDesign() : (typeof testLabActive==="function" && testLabActive())) return true;
   if(persistNow()) return true;
-  // Test Lab deliberately does not write real progress.
-  if(typeof testLabActive==="function" && testLabActive()) return true;
-  if(typeof gameAlert==="function") gameAlert("No se pudo guardar el botín. Sigue en esta sesión: liberá espacio y volvé a intentar antes de cerrar el juego.");
-  return false;
+  if(typeof saveNoticeWriteHandled==="function") saveNoticeWriteHandled(); // este aviso reemplaza al general de save.js
+  if(victorySaveFailsFor !== victoryData){ victorySaveFailsFor = victoryData; victorySaveFails = 0; }
+  victorySaveFails++;
+  // Los primeros intentos se frenan con aviso (el botín reclamado todavía no está en disco); si la escritura NUNCA va a andar
+  // (almacenamiento lleno o bloqueado) no se deja al jugador trabado: el siguiente intento sigue y avisa que se puede perder.
+  if(victorySaveFails <= VICTORY_SAVE_RETRIES){
+    if(typeof gameAlert==="function") gameAlert("No se pudo guardar el progreso de esta partida.\nProbá de nuevo; si sigue fallando, la próxima vez podés seguir sin guardar.");
+    return false;
+  }
+  if(victorySaveFails === VICTORY_SAVE_RETRIES + 1 && typeof gameAlert==="function") gameAlert("No se pudo guardar el progreso de esta partida.\nPodés seguir, pero el botín se puede perder al cerrar el juego.");
+  return true;
 }
 // Tarjeta de un objeto obtenido, con presentación según su categoría (común simple … mítico máximo).
 function lootCardHTML(item, classKey, idx){

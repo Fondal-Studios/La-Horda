@@ -65,7 +65,7 @@ function renderHub(){
   if(bs){ bs.textContent = vale ? "🎁 REGALO" : "NUEVO"; bs.classList.toggle("hidden", !vale && (typeof shopDayKey!=="function" || save.shopDealsSeen === shopDayKey())); }
   // OFERTA: hay ofertas del día (rotan a la medianoche; sin contadores falsos)
   const bo = document.getElementById("hub-badge-offer");
-  if(bo){ let deals = 0; try{ deals = typeof shopDailyShowcase==="function" ? shopDailyShowcase().deals.length : 0; }catch(e){} bo.classList.toggle("hidden", !deals); }
+  if(bo){ let deals = 0; try{ deals = typeof shopDailyShowcase==="function" ? shopDailyShowcase().deals.length : 0; }catch(e){} bo.classList.toggle("hidden", !deals || (typeof shopDayKey==="function" && save.shopDealsSeen === shopDayKey())); }
   if(typeof premiumRender==="function") premiumRender(); // chip ✦: siempre visible ("✦ —" sin sesión)
   const tsub = document.querySelector("#mainmenu-tienda-btn .hub-tile-sub");
   if(tsub) tsub.textContent = vale ? "Tenés una skin de regalo: elegila" : "Ofertas del día · skins";
@@ -146,7 +146,9 @@ function openGuardians(tab){
   codexStack = [{view:"list", id:"campeones", label:"GUARDIANES"}];
   codexChampTab = tab || "ficha";   // UX: el jugador nuevo ve primero la Ficha (el Equipo vacío no explica nada)
   const k = selectedClass;
-  if(save.champions[k] && save.champions[k].unlocked) codexStack.push({view:"champ", id:k, label:(CLASSES[k]||{}).name || k});
+  // Probador libre: Apariencias y Sets se pueden ver con cualquier guardián, aunque todavía no esté desbloqueado.
+  const freeTab = codexChampTab === "skins" || codexChampTab === "sets";
+  if(CLASSES[k] && ((save.champions[k] && save.champions[k].unlocked) || freeTab)) codexStack.push({view:"champ", id:k, label:(CLASSES[k]||{}).name || k});
   setState("codex"); codexRender(true);
   if(typeof playSfx==="function") playSfx("ready");
 }

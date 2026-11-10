@@ -97,7 +97,7 @@ const ACHIEVEMENTS = [
   {id:"m_kills1k",  cat:"maestria", icon:"skull",  name:"Mil caídos", desc:"Eliminá 1.000 enemigos.", goal:1000, prog:V=>V.kills, reward:{gold:130}},
   {id:"m_kills10k", cat:"maestria", icon:"skull",  name:"Diez mil caídos", desc:"Eliminá 10.000 enemigos.", goal:10000, prog:V=>V.kills, reward:{gold:250, emblem:"calavera"}},
   {id:"m_runkills", cat:"maestria", icon:"sword",  name:"Carnicería", desc:"Eliminá 300 enemigos en una sola partida.", goal:300, prog:V=>V.maxRunKills, reward:{gold:150}},
-  {id:"m_hours5",   cat:"maestria", icon:"hourglass", name:"Dedicación", desc:"Jugá 5 horas en las arenas.", goal:300, unit:"min", prog:V=>Math.floor(V.timeMs/60000), reward:{gold:200}},
+  {id:"m_hours5",   cat:"maestria", icon:"hourglass", name:"Dedicación", desc:"Jugá 5 horas en las arenas.", goal:300, unit:"min", prog:V=>Math.floor(V.timeMs/60000), reward:{title:"dedicado"}},
   // ---------------- SECRETOS ----------------
   {id:"s_night",   cat:"secretos", secret:true, icon:"moon",  name:"Noctámbulo", desc:"Jugá una partida entre la medianoche y las 5 de la mañana.", goal:1, prog:V=>V.night?1:0, reward:{gold:80, title:"noctambulo"}},
   {id:"s_close",   cat:"secretos", secret:true, icon:"heart", tint:"#ff5a4a", name:"Por un pelo", desc:"Ganá una arena con menos del 10% de vida.", goal:1, prog:V=>V.closeWin?1:0, reward:{gold:100}},
@@ -117,9 +117,16 @@ const QUEST_TITLES = {
   conquistador:  {name:"Conquistador del Infierno"},
   asediador:     {name:"Asediador Divino"},
   incansable:    {name:"Incansable"},
+  dedicado:      {name:"Dedicado"},        // 5 horas en las arenas (antes pagaba oro: el tiempo jugado no se paga)
+  constante:     {name:"Constante"},        // hito de racha: 7 días
   pastor:        {name:"Pastor de Almas"},
   matagigantes:  {name:"Matagigantes"},
   coleccionista: {name:"Coleccionista de Guardianes"},
+  marcado_1:     {name:"Marcado por la Cicatriz"},   // Rangos de Cicatriz (Horda Infinita): se ganan completando cada rango
+  marcado_2:     {name:"Cicatriz Viva"},
+  marcado_3:     {name:"Rompe-Jefes"},
+  marcado_4:     {name:"Sin Respiro"},
+  marcado_5:     {name:"Hijo de la Cicatriz"},
   leyenda:       {name:"Leyenda Viviente"},
   resonante:     {name:"Voz de los Cristales"},
   escuadra:      {name:"Hermano de Armas"},
@@ -150,10 +157,12 @@ const QUEST_FRAMES = {
   abismo:   {name:"Abismo",           c:["#d29aff","#6a3aa0","#1e0e30"], glow:"176,106,255"},
   cristal:  {name:"Cristal",          c:["#e8fff4","#7fe0c0","#1c5a4a"], glow:"127,224,192"},
   hermandad:{name:"Hermandad",        c:["#c8ffd8","#3ddc71","#124a24"], glow:"61,220,113"},
+  cicatriz_v:{name:"Cicatriz V",      c:["#ffd0e8","#e0407a","#4a0a24"], glow:"224,64,122"}, // Rango de Cicatriz V (antes compartía el id `cicatriz` con el marco del ranking: js/systems/scar-ranks.js lo traduce)
   oro:      {name:"Oro",              c:["#fff6d6","#f0c84a","#8a6a1c"], glow:"255,210,90"},
   infierno: {name:"Infierno",         c:["#ffb070","#b83a2a","#3a0a06"], glow:"255,90,60"},
+  racha:    {name:"Racha de Brasa",     c:["#ffe2b0","#ff9a3c","#5a1c08"], glow:"255,140,60", anim:true}, // hito de racha: 14 días
   temporada1:{name:"Los Nuevos Guardianes", c:["#fff6d6","#ffcf5c","#b83a2a"], glow:"255,200,90", anim:true},
-  cicatriz:  {name:"La Cicatriz",      c:["#ffd2ec","#ff7ac8","#3a0f2a"], glow:"255,90,170", anim:true} // top 10 del ranking semanal
+  cicatriz:  {name:"La Cicatriz",      c:["#ffd2ec","#ff7ac8","#3a0f2a"], glow:"255,90,170", anim:true} // top 10 del ranking de la Horda (js/net/leaderboard.js); el del Rango V es `cicatriz_v`
 };
 // EMBLEMAS del perfil (el retrato): "guardian" = tu guardián favorito animado; el resto, glifos.
 const QUEST_EMBLEMS = {
@@ -218,7 +227,7 @@ const QUEST_CHESTS = {
   4:{grade:"S+", items:2, gems:4}
 };
 
-// DESAFÍOS. stat = contador de la vista V que avanza (el progreso es lo que sube desde que el desafío
+// DESAFÍOS (decisión del dueño: se premian LOGROS, nunca el tiempo jugado: no hay plantillas por minutos). stat = contador de la vista V que avanza (el progreso es lo que sube desde que el desafío
 // aparece). n = meta [diaria, semanal] (null = no sale en esa rotación). champ: pide un guardián propio.
 // avail(V): si se puede cumplir con lo que tiene la cuenta (p.ej. fisuras solo con la Infernal abierta).
 // reward: oro [diario, semanal] (alfa, Q4: ×0,55 de lo que pagaban antes; ver docs/alfa/q4_economia.md).
@@ -235,10 +244,18 @@ const CHALLENGE_TEMPLATES = [
   {id:"gradeA",  icon:"star",   stat:"gradeA",   n:[1, null],   gold:[120, 0],    name:"Buena nota",          desc:()=>"Ganá una arena con calificación A o mejor."},
   {id:"gradeS",  icon:"star",   stat:"gradeS",   n:[null, 3],   gold:[0, 720],   name:"Sobresaliente",       desc:n=>`Ganá ${n} arenas con calificación S o S+.`},
   {id:"revives", icon:"heart",  stat:"revives", n:[1, 6],      gold:[110, 550], name:"Nadie se queda atrás",desc:n=>n>1 ? `Reviví a ${n} aliados.` : "Reviví a un aliado."},
-  {id:"minutes", icon:"hourglass",stat:"minutes",n:[20, 120],   gold:[100, 500],  name:"Tiempo en la arena",  desc:n=>`Jugá ${n} minutos en las arenas.`},
   {id:"arenas",  icon:"map",    stat:"distinctArenas", n:[null, 3], gold:[0, 660], name:"Recorrido",         desc:n=>`Ganá en ${n} arenas distintas.`},
   {id:"champs",  icon:"duo",    stat:"distinctChamps", n:[null, 3], gold:[0, 600], name:"Rotación",          desc:n=>`Ganá con ${n} guardianes distintos.`, avail:V=>Object.keys(V.champs).filter(k=>V.champs[k].unlocked).length >= 3}
 ];
+// RACHA DIARIA: cada día con al menos 1 desafío DIARIO completado suma +1. Los hitos dan cofre, título o marco:
+// NUNCA Brasas ni oro (decisión del dueño). El CONGELADOR protege un día perdido; no se compra: se gana completando
+// STREAK_FREEZE_NEED desafíos diarios en una misma semana (se guarda como máximo 1).
+const STREAK_MILESTONES = [
+  {days:3,  reward:{chest:2}},
+  {days:7,  reward:{title:"constante"}},
+  {days:14, reward:{chest:3, frame:"racha"}}
+];
+const STREAK_FREEZE_NEED = 3;
 // Bonos por completar los 3 de la rotación: un cofre (reforzado para el día, dorado para la semana).
 const CHALLENGE_BONUS = {daily:{chest:1}, weekly:{chest:3}};
 

@@ -105,7 +105,7 @@ function netDecode(v, inline){
   if(v.$h!==undefined) return heroes[v.$h] || null;
   if(v.$e!==undefined){ const e = netMatch && netMatch.ents.get(v.$e); if(e) return e; if(inline && v.$o) return netRestore(netDecode(v.$o)); return null; }
   if(Array.isArray(v)) return v.map(x=>netDecode(x, inline));
-  const o = {}; for(const k in v) o[k] = netDecode(v[k], inline); return netRestore(o);
+  const o = {}; for(const k in v){ if(k==="__proto__" || k==="constructor" || k==="prototype") continue; o[k] = netDecode(v[k], inline); } return netRestore(o);
 }
 function netRestore(o){ if(o && o.classKey && CLASSES[o.classKey] && o.maxEnergy!==undefined) o.cls = CLASSES[o.classKey]; return o; }
 
@@ -211,9 +211,19 @@ function netDrawNameTags(){
 }
 // Evento para UN jugador (sus números de daño, su pantalla roja al recibir un golpe, su XP...).
 function netEmitTo(slot, name, args){ if(netIsHost()) netRecord(name, args||[], slot); }
+// LISTA BLANCA de eventos que el anfitrión puede pedirle al invitado: los visuales/sonoros grabados por netHookEvents
+// más los que el juego emite con netEmitTo/netRecord. El nombre llega por la red: jamás se busca en window sin pasar por acá.
+// OJO: NET_EVENT_FNS NO está congelada: otros módulos que cargan DESPUÉS (skill-fx-a/engine.js vfxSfaPlay, vfx-b/pixfx.js kvbFx, systems/story.js storyVoice y
+// storyPageDrop) le agregan sus eventos con .push. Por eso se consulta en cada llamada (el array es del cliente y nunca viene de la red).
+const NET_PLAY_EXTRA = new Set(["xp","gold","hurt","useXp","juiceStreakShow","juiceHitLocal","groundLootDrop","endlessGuestReward"]);
+const netPlayAllowed = name => NET_PLAY_EXTRA.has(name) || NET_EVENT_FNS.includes(name);
+const NET_PLAY_MAX_ARGS = 16;
 function netPlayEvent(ev){
+  if(!Array.isArray(ev)) return;
   const [name, rawArgs, to] = ev;
-  if(to!==undefined && to!==netMatch.mySlot) return;
+  if(typeof name!=="string" || name.length>40 || !netPlayAllowed(name)) return;
+  if(!Array.isArray(rawArgs) || rawArgs.length>NET_PLAY_MAX_ARGS) return;
+  if(to!==undefined && (!netMatch || to!==netMatch.mySlot)) return;
   const args = rawArgs.map(a=>netDecode(a, true));
   try{
     switch(name){
@@ -228,7 +238,7 @@ function netPlayEvent(ev){
         if(args[0] && typeof args[0]==="object"){ args[0].alive = false; args[0].hp = 0; }
         break;
     }
-    const f = NET_ORIG[name] || window[name];
+    const f = Object.hasOwn(NET_ORIG, name) ? NET_ORIG[name] : window[name];
     if(typeof f==="function") f.apply(null, args);
   }catch(e){ /* un efecto que no se pudo reproducir no debe cortar la partida */ }
 }
@@ -501,10 +511,11 @@ function netHostOpenBuffs(){
     if(!h || !h._net || !h._net.connected){ netMatch.buffPicks[s.slot] = "skip"; continue; }
     // cartas armadas con SU guardián (h): 1-2 refuerzos que transforman sus habilidades + genéricos
     const endless = typeof endlessOn==="function" && endlessOn();
-    const opts = boonBuildOffers(h, endless ? endlessBuffPool() : BUFF_POOL, endless);
+    const relic = endless && typeof hrelPhaseActive==="function" && hrelPhaseActive(); // reliquias de la Horda: UNA oferta para todos (js/systems/horde-relics.js)
+    const opts = relic ? hrelCurrentOffer().slice() : boonBuildOffers(h, endless ? endlessBuffPool() : BUFF_POOL, endless);
     netMatch.buffPicks[s.slot] = null;
     netMatch["buffOpts"+s.slot] = opts;
-    netSendTo(s.slot, {k:"buffs", opts, level:runLevel});
+    netSendTo(s.slot, {k:"buffs", opts, level:runLevel, relic:relic ? 1 : 0});
   }
 }
 function netHostBuffPicked(slot, id){
@@ -522,9 +533,11 @@ function netHostTryResume(){
   const p = netMatch.buffPicks; if(!p || p[0]!=="done") { netBuffWaitingText(); return; }
   const pending = Object.keys(p).filter(k=>p[k]===null);
   if(pending.length && performance.now() < netMatch.buffDeadline){ netBuffWaitingText(pending); return; }
-  for(const k of pending) netHostBuffPicked(k|0, null); // se acabó el tiempo: refuerzo automático
-  netMatch.buffPicks = null;
+  for(const k of pending){ if(netMatch.buffPicks !== p) break; netHostBuffPicked(k|0, null); } // se acabó el tiempo: refuerzo automático
+  if(netMatch.buffPicks !== p) return; // una llamada anidada ya siguió la partida: no avanzar dos veces
   const endless = typeof endlessOn==="function" && endlessOn();
+  if(endless && typeof hrelNextPhase==="function" && hrelNextPhase()) return; // Horda: reliquia tras el jefe (segunda elección)
+  netMatch.buffPicks = null;
   if(!endless) runLevel++;
   heroes.forEach((h,i)=>{ const s = netMatch.slots[i]; if(s && s.kind==="human" && h.alive){ h.hp = Math.min(h.maxHp, h.hp + h.maxHp*0.25); h.energy = h.maxEnergy; } });
   if(endless){ setState("playing"); endlessAdvance(); } // Horda Infinita: próxima ronda (y cada 5, la Cicatriz a otra arena)
@@ -712,14 +725,16 @@ function netApplySnapshot(s){
   if(!s) return;
   if(s.full){ /* keyframe: reemplaza todo lo que haya */ }
   // 1) crear objetos nuevos (para que las referencias cruzadas se resuelvan)
-  const colls = s.c || {};
+  // las claves de colecciones/globales/héroes vienen del anfitrión: solo las conocidas (sin __proto__/constructor)
+  const colls = {};
+  if(s.c && typeof s.c==="object") for(const name of Object.keys(s.c)) if(Object.hasOwn(NET_COLLS, name)) colls[name] = s.c[name];
   for(const name in colls){
     const map = M.colls[name] || (M.colls[name] = new Map());
     for(const [id] of colls[name].u) if(!map.has(id)){ const o = {_new:1}; map.set(id, o); if(name==="enemies") M.ents.set(id, o); }
   }
   // 2) globales
   const g = s.g || {};
-  for(const k in g){ const setter = NET_GLOBALS[k]; if(setter) setter[1](netDecode(g[k])); }
+  for(const k in g){ const setter = Object.hasOwn(NET_GLOBALS, k) ? NET_GLOBALS[k] : null; if(setter) setter[1](netDecode(g[k])); }
   // 3) héroes
   (s.h||[]).forEach((d,i)=>{
     if(!d) return;
@@ -727,6 +742,7 @@ function netApplySnapshot(s){
     const own = h===player;
     if(d.classKey && d.classKey!==h.classKey){ const keep={_duoStart:h._duoStart,_duoReserve:h._duoReserve,_duoSpawn:h._duoSpawn,_netSlot:h._netSlot,netName:h.netName}; const fresh=makeHero(d.classKey,h.isBot,d.x||h.x,d.y||h.y); for(const k of Object.keys(h)) delete h[k]; Object.assign(h,fresh,keep); if(own){ selectedClass=d.classKey; runStartXp=duoProgress[selectedClass]??totalXpForChamp(selectedClass); updateAbilityButtons(); resetSkillLevelUI(); } }
     for(const k in d){
+      if(k==="__proto__" || k==="constructor" || k==="prototype") continue;
       if(own && k==="x"){ h._hx = d.x; continue; }
       if(own && k==="y"){ h._hy = d.y; continue; }
       // quieto, la mirada propia la decide el anfitrión (se da vuelta hacia lo que ataca, como en solitario)
@@ -749,6 +765,7 @@ function netApplySnapshot(s){
       const o = map.get(id);
       const interp = name==="enemies";
       for(const k in d){
+        if(k==="__proto__" || k==="constructor" || k==="prototype") continue;
         if(interp && (k==="x"||k==="y")){ if(k==="x") o._tx = d.x; else o._ty = d.y; if(o._new){ o[k] = d[k]; } continue; }
         if(interp && k==="animT" && !o._new) continue;
         o[k] = netDecode(d[k]);
@@ -782,7 +799,7 @@ function netGuestOnMsg(from, d){
       netMatch.lastRxAt = performance.now();
       netApplySnapshot(d); return;
     case "buffs": netGuestShowBuffs(d); return;
-    case "resume": if(netIsGuest() && state==="buff") setState("playing"); return;
+    case "resume": if(typeof hrelCloseUI==="function") hrelCloseUI(); if(netIsGuest() && state==="buff") setState("playing"); return;
     case "end": netGuestEnd(d); return;
   }
 }
@@ -866,6 +883,8 @@ function netGuestCast(idx, aim){
   return true;
 }
 function netGuestShowBuffs(d){
+  if(d.relic && typeof hrelGuestShow==="function"){ hrelGuestShow(d); return; } // reliquias de la Horda
+  if(typeof hrelCloseUI==="function") hrelCloseUI();
   setState("buff");
   document.getElementById("buff-title").textContent = (typeof endlessOn==="function" && endlessOn()) ? `Ronda ${EN.round} contenida — elegí tu refuerzo` : `Nivel ${d.level} superado — elegí tu refuerzo`;
   if(typeof buffNoteRefresh==="function") buffNoteRefresh();

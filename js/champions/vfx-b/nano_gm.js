@@ -41,7 +41,7 @@
   };
   KVB_FX['nano.judgement'] = (x, y, r) => { // la mitad blanca / negra y la costura las dibuja el objeto del Juicio (radio real); aquí las esquirlas y la ley que cae
     kvbEmit('ng_shard_d', 14, x, y, {ring: r * .15, v0: 80, v1: 260, up: 90, grav: 200, l0: 520, l1: 900, scale: 1.8, spin: 5, flat: .7}); kvbEmit('ng_shard_l', 14, x, y, {ring: r * .15, v0: 80, v1: 260, up: 90, grav: 200, l0: 520, l1: 900, scale: 1.8, spin: 5, flat: .7});
-    kvbPart('ng_scroll', x, y - 46, {dur: 1200, scale: 3, layer: 't', vy: -10, fadeAt: .55});
+    kvbPart('ng_scroll', x, y - 80, {dur: 1200, scale: 2, layer: 't', vy: -10, fadeAt: .55});
   };
   kvbBind('asc:sentence', 'nano.sentence'); kvbBind('asc:edict', 'nano.edict'); kvbBind('asc:invert', 'nano.invert'); kvbBind('asc:judgement', 'nano.judgement');
   kvbBasic('nano_gm', NG, 'ng_mote');

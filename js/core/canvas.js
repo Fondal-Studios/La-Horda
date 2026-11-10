@@ -83,9 +83,25 @@ function resize(force){
   return true;
 }
 // Chequeo por cuadro: si la caja real cambió y el navegador no avisó, se corrige.
+// Leer canvas.clientWidth obliga al navegador a resolver estilo + layout en ese instante; hacerlo en CADA cuadro (después
+// de las escrituras del HUD del cuadro anterior) costaba ~0,5 ms por cuadro (4,7 % del JS del loop, medido). Ahora la caja
+// se vuelve a medir solo cuando algo avisó que pudo cambiar: un ResizeObserver sobre el propio canvas (lo marca "sucio";
+// NO redimensiona ahí mismo, porque corre después del dibujo del cuadro y cambiar canvas.width borraría lo ya dibujado) y,
+// por si el navegador no avisa (iOS), una medición de control cada CANVAS_BOX_RECHECK cuadros (pocos: es la red de seguridad de iOS). El DPR y la tele se siguen
+// comparando en cada cuadro (no tocan layout). Sin ResizeObserver, o sin layout todavía, se mide cada cuadro como antes.
+const CANVAS_BOX_RECHECK = 4; // 4 cuadros (~66 ms a 60 fps): tools/regression/t_camera.js exige que un tamaño viejo se corrija solo en < 200 ms
+const CANVAS_BOX = { dirty:true, frames:0, ro:null, reads:0 };
+try{
+  if(typeof ResizeObserver === "function"){ CANVAS_BOX.ro = new ResizeObserver(()=>{ CANVAS_BOX.dirty = true; }); CANVAS_BOX.ro.observe(canvas); }
+}catch(e){ CANVAS_BOX.ro = null; }
 function ensureCanvasSize(){
   const tv = _teleBuffer();
-  if(canvas.clientWidth !== VW || canvas.clientHeight !== VH || _dprWanted(VH, tv) !== DPR || (tv && canvas.width !== tv.ancho)) resize();
+  if(_dprWanted(VH, tv) !== DPR || (tv && canvas.width !== tv.ancho)){ resize(); return; }
+  if(CANVAS_BOX.ro && !CANVAS_BOX.dirty && ++CANVAS_BOX.frames < CANVAS_BOX_RECHECK) return;
+  CANVAS_BOX.frames = 0; CANVAS_BOX.reads++;
+  const w = canvas.clientWidth, h = canvas.clientHeight;
+  CANVAS_BOX.dirty = !w || !h; // sin layout (canvas oculto): se sigue mirando cada cuadro
+  if(w !== VW || h !== VH) resize();
 }
 window.addEventListener("resize", ()=>resize());
 window.addEventListener("orientationchange", ()=>{ resize(); setTimeout(()=>resize(), 250); });

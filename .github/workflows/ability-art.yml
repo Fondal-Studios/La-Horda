@@ -8,7 +8,7 @@ permissions:
 jobs:
   circuit:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -17,4 +17,6 @@ jobs:
       - name: Painter / evaluator / architect unit tests (includes rejection canaries)
         run: python3 -m unittest tools/art/ability-art/test_ability_art.py
       - name: Integrated modules match the approved painting and still pass the canon
-        run: for s in tools/art/ability-art/specs/*.json; do python3 tools/art/ability-art/pipeline.py check "$s"; done
+        # 82 specs x ~9 s en serie superaban los 10 min; el chequeo es CPU puro e independiente por spec, así que
+        # corre en paralelo (un proceso por núcleo). xargs sale con 123 si CUALQUIER spec falla: sigue siendo estricto.
+        run: ls tools/art/ability-art/specs/*.json | xargs -P "$(nproc)" -n 1 python3 tools/art/ability-art/pipeline.py check

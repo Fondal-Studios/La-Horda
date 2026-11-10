@@ -71,6 +71,8 @@ const modules=[];
   }
   if(guest==='morveth'){const hs=await a.evaluate(()=>(heroes[1].morvethInfections||[]).length),gs=await g.evaluate(()=>(player.morvethInfections||[]).length);checks.push({name:'Morveth infections remain host authoritative',ok:hs>0&&gs===0,hs,gs});}
   if(guest==='brakk'){
+   // la torreta llega del anfitrión por red: se espera (hasta 5 s) en vez de mirar a los 450 ms (flake bajo la carga de CI); la comprobación sigue exigiendo muro Y torreta
+   await g.waitForFunction(()=>{const k=portadorObjects.filter(o=>o.owner===player&&o.brakk&&o.life>0).map(o=>o.kind);return k.includes('brk_wall')&&k.includes('brk_turret');},null,{timeout:5000}).catch(()=>{});
    const builds=await g.evaluate(()=>portadorObjects.filter(o=>o.owner===player&&o.brakk&&o.life>0).map(o=>o.kind));
    checks.push({name:'Brakk wall and turret replicate with guest owner',ok:builds.includes('brk_wall')&&builds.includes('brk_turret'),builds});
   }

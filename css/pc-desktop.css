@@ -1,0 +1,48 @@
+/* ============================================================
+   css/pc-desktop.css — ajustes de ESCRITORIO (teclado + mouse, o mando). Solo presentación.
+   El juego marca el <body> con el dispositivo que se usó por última vez (js/core/input-desk.js, deskSetDevice):
+     body.inp-kb   teclado / mouse          body.inp-pad   mando
+     (sin ninguna de las dos: pantalla táctil)
+   Las clases cambian en caliente: un toque en la pantalla las saca y todo lo de acá deja de aplicar al instante.
+   ============================================================ */
+
+/* ---------- 1. Joystick táctil: no se dibuja con teclado ni con mando ----------
+   Se oculta la PERILLA y su base (visibility), no la zona: #joyzone sigue midiendo lo mismo y recibiendo el mouse
+   (esquema MOBA: clic derecho para moverse; js/core/input-desk.js). Si igual se arrastra con el mouse sobre esa
+   zona, el joystick aparece mientras dura el arrastre (#joy-base.on) para que se vea qué está moviendo al guardián.
+   La botonera de la derecha NO se oculta: con teclado y mando es la barra de recargas y muestra la tecla de cada
+   habilidad (.kh). El apuntador (#aim-pad) tampoco: ya viene oculto y solo aparece mientras se arrastra una habilidad. */
+body.inp-kb #joy-base, body.inp-kb #joy-knob,
+body.inp-pad #joy-base, body.inp-pad #joy-knob{ visibility:hidden; }
+body.inp-kb #joy-base.on, body.inp-kb #joy-base.on ~ #joy-knob,
+body.inp-pad #joy-base.on, body.inp-pad #joy-base.on ~ #joy-knob{ visibility:visible; }
+
+/* ---------- 2. Refuerzos de nivel: número de tecla en cada carta (js/ui/buff-choice.js) ----------
+   Mismo aspecto que el número de las Reliquias de la Horda (.hrel-key, css/horde-relics.css). El número viene en
+   data-n y lo pinta ::before: el texto de la carta no cambia. */
+#buff-cards .buff-card:not(.hrel-card){ position:relative; }
+.buff-key{ position:absolute; top:-9px; left:-9px; width:22px; height:22px; line-height:22px; text-align:center; box-sizing:content-box;
+  background:#120806; color:#ffd34d; border:2px solid #ffd34d; font-family:var(--font-retro); font-size:0.95rem; pointer-events:none; }
+.buff-key::before{ content:attr(data-n); }
+#buff-cards .buff-card:not(.hrel-card):focus{ outline:none; }
+#buff-cards .buff-card:not(.hrel-card):focus-visible{ outline:3px solid #ffd34d; outline-offset:2px; border-color:#ffd34d; }
+#buff-key-note{ font-size:0.7rem; color:var(--text-dim); margin-top:6px; max-width:340px; }
+#buff-key-note.hidden{ display:none; }
+
+/* ---------- 3. Opciones: lo táctil no se muestra con teclado ni mando; "Salir del juego" solo en la app de escritorio ---------- */
+body.inp-kb .opt-touch-only, body.inp-pad .opt-touch-only{ display:none; }
+.opt-desktop-only[hidden]{ display:none; }
+
+/* ---------- 4. App de escritorio (Steam): la beta muestra Campaña y Horda Infinita ----------
+   Guerra de Cristales y el Coliseo siguen en el código (y en el navegador); en la app de Steam no se ofrecen todavía. */
+body.app-desktop #hub-crystal-btn, body.app-desktop #hub-coliseum-btn,
+body.app-desktop #mode-crystal-wars-btn, body.app-desktop #mode-coliseum-btn,
+body.app-desktop #hub-postgame-title, body.app-desktop .hub-row-modes, body.app-desktop #ux-more-modes{ display:none; }
+
+/* ---------- 5. HUD y botones en pantallas grandes ----------
+   El mundo se agranda con la ventana pero el HUD seguía en píxeles fijos (a 1080p los paneles medían ~165 px y los botones de
+   habilidad ~60 px). Se agranda TODO el HUD en proporción con `zoom` (igual que el menú principal en css/hub-scroll.css), solo
+   desde 1700 px de ancho: los tamaños de las pruebas (844, 1000, 1280, 1366) quedan exactamente como estaban. */
+@media (min-width:1700px) and (min-height:950px){ #hud, #controls{ zoom:1.4; } }
+@media (min-width:2400px) and (min-height:1300px){ #hud, #controls{ zoom:1.9; } }
+@media (min-width:3600px) and (min-height:2000px){ #hud, #controls{ zoom:2.8; } }

@@ -300,6 +300,10 @@ function killEnemy(e){
   }
 }
 
+// TOPE de la reducción de daño que dan los refuerzos de armadura de la partida (runStats.defBonus). 0.80 = como
+// mucho 80 % menos de daño por esta vía. AJUSTABLE POR DISEÑO: por debajo del tope nada cambia (5 "Piel de Brasa"
+// = 0,80 exacto, igual que antes). La defensa base, los escudos y las habilidades se siguen multiplicando aparte.
+const RUN_DEF_BONUS_CAP = 0.80;
 let _avoidableHit = false; // lo prende bossHitHero: el golpe venía con aviso en el suelo
 function damageHero(h, amount, src, portTransferred){
   if(!h || !h.alive) return;
@@ -323,11 +327,14 @@ function damageHero(h, amount, src, portTransferred){
   }
   // Espinas (refuerzo): devuelve parte del golpe a quien pegó cuerpo a cuerpo al jugador
   if(h===player && runStats.thorns>0 && src && src.type && src.alive && src.hp>0 && typeof src.maxHp==="number") damageEnemy(src, amount*runStats.thorns, {src:player});
-  const defBonus = (h===player) ? runStats.defBonus : 0;
+  // Refuerzos de armadura de la partida ("Piel de Brasa", "Baluarte", sinergia Muralla Viva): se apilan sin límite
+  // en la Horda; sin tope, con 6 "Piel de Brasa" (1,02) el golpe pasaba a CURAR. Ver RUN_DEF_BONUS_CAP.
+  const defBonus = (h===player) ? Math.max(0, Math.min(RUN_DEF_BONUS_CAP, runStats.defBonus||0)) : 0;
   const passiveDef = h.classKey ? Math.min(0.5, passiveSum(h.classKey,"def_add")) : 0; // "Piel de Brasa"
   let dmg = amount * (1 - h.def) * (1 - defBonus) * (1-(h.buffDefMult?(1-h.buffDefMult):0)) * (1-passiveDef);
   dmg *= portadorTakenMult(h, src);
   if(!portTransferred) dmg = portadorShareDamage(h, dmg, src);
+  if(!(dmg > 0)) dmg = 0; // el daño recibido nunca es negativo (un golpe no cura), pase lo que pase con los multiplicadores
   const mitigated = Math.max(0, amount - dmg), dmgBeforeShields = dmg;
   if(h.shield>0){
     const absorbed = Math.min(h.shield, dmg);
@@ -354,6 +361,7 @@ function damageHero(h, amount, src, portTransferred){
   }
   ynaraOnHit(h, dmgBeforeShields);
   h.hp -= dmg;
+  if(h.maxHp > 0 && h.hp > h.maxHp) h.hp = h.maxHp; // la vida nunca queda por encima del máximo después de un golpe
   if(src && src.eliteMods && dmg>0) eliteOnHitHero(src, h, dmg); // élite con nombre: vampírico / encantado de fuego
   if(h.classKey==="ilkan" && dmg>0) ilkanOnHurt(h, dmg);
   const absorbed = Math.max(0, dmgBeforeShields - dmg);

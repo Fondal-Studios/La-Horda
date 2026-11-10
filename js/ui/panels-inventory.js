@@ -214,6 +214,7 @@ function renderStatsPanel(){
       <div class="stat-row"><span>Puntos de talento (árbol)</span><b>${treePointsAvailable(classKey)}</b></div>
     </div>
     ${typeof boonStatsBlockHTML==="function" ? boonStatsBlockHTML(player) : ""}
+    ${typeof hrelStatsBlockHTML==="function" ? hrelStatsBlockHTML(player) : ""}
     ${classKey==="musashi" ? renderMusashiRoninStatsBlock(player) : ""}`;
 }
 // Bloque propio de Musashi en Estadísticas (sección 26): progresión INTRAPARTIDA, se reinicia

@@ -148,3 +148,7 @@ body.book-open{ overflow:hidden; }
 #victory-step-body:has(.vic-book){ max-width:min(720px, 94vw); }
 .vic-book{ margin-bottom:64px; }
 @media (max-width:560px){ .vic-book{ flex-direction:column; } .vic-book .vb-art{ width:100%; flex-basis:auto; min-height:120px; } }
+
+/* Botón CÓDICE del menú principal: la insignia NUEVO va en la esquina, chica, como las de TIENDA (antes tapaba el rótulo). */
+#mainmenu-screen .hub-tile{ position:relative; }
+#mainmenu-screen .hub-tile > .cxb-new{ position:absolute; top:2px; right:2px; left:auto; margin:0; font-size:13px; line-height:1.15; letter-spacing:0; padding:1px 6px; box-shadow:none; }

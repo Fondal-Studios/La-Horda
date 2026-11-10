@@ -16,7 +16,9 @@
    - Q: curación · E: revivir/acción        - stick derecho: apuntar las habilidades
    - F: Pacto (Nigromante)                  - Start / Select: pausa y continuar
    - Esc o P: pausa y continuar             - En menús: cruceta/stick mueven el foco, A confirma, B vuelve,
-                                              LB/RB cambian de pestaña (js/core/pad-nav.js)
+   - En menús: Esc vuelve atrás (lo mismo     LB/RB cambian de pestaña (js/core/pad-nav.js)
+     que B del mando), las flechas mueven
+     el foco y Enter confirma
    ESQUEMA MOBA / tipo LoL
    - clic DERECHO sobre el mapa: ir hacia ese punto (marcador en el piso; respeta paredes y arena); flechas también mueven
    - clic izquierdo: atacar · Espacio / J / A: atacar
@@ -238,17 +240,109 @@ function deskKeyUp(c, acts){
     else if(act==="ctx") deskCtxOrPact(false);
   }
 }
+/* ---------------- teclado en los MENÚS ----------------
+   Esc = atrás y flechas = mover el foco, con las MISMAS reglas que el mando (padBack / padMove / padActivate de
+   js/core/pad-nav.js): un solo lugar decide qué botón es "Volver" y cuál es el vecino. En partida nada de esto corre
+   (Esc pausa y las flechas mueven al guardián); tampoco mientras se escribe en un campo de texto. */
+const KB_NAV_DIR = { ArrowUp:"UP", ArrowDown:"DOWN", ArrowLeft:"LEFT", ArrowRight:"RIGHT" };
+// "foto" de lo que hay en pantalla: si otra pantalla ya atendió esta misma tecla (cerró su panel), no se actúa dos veces
+function _deskUiSig(){
+  let k = "";
+  try{ k = typeof _pnCtxKey==="function" ? _pnCtxKey() : String(state); }catch(e){ k = String(state); }
+  return k + "#" + document.querySelectorAll(".hidden").length + "#" + (document.body ? document.body.children.length : 0);
+}
+let _deskKeySig = null;
+// en captura (antes que cualquier otra pantalla): se guarda cómo estaba todo al apretar la tecla
 window.addEventListener("keydown", (ev)=>{
-  if(_deskTyping(ev)) return;
+  const c = ev.code;
+  _deskKeySig = (state!=="playing" && (c==="Escape" || c==="Enter" || c==="NumpadEnter" || c==="Space" || KB_NAV_DIR[c])) ? _deskUiSig() : null;
+}, true);
+function _deskKeyHandledElsewhere(ev){
+  if(ev && ev.defaultPrevented) return true;
+  try{ if(typeof GAME_DIALOG!=="undefined" && GAME_DIALOG.cur) return true; }catch(e){} // el diálogo maneja sus teclas (Esc = cancelar)
+  if(_deskOverlayOpen()) return true;
+  return _deskKeySig!==null && _deskKeySig!==_deskUiSig();
+}
+// Esc en un menú: lo mismo que B del mando (botón Volver / Cerrar / Cancelar de la capa de arriba). Nunca cierra el juego.
+function deskMenuBack(ev){
+  if(state==="playing" || state==="paused") return false;
+  if(typeof padBack!=="function" || _deskKeyHandledElsewhere(ev)) return false;
+  const ok = padBack();
+  if(ok && ev) ev.preventDefault();
+  return ok;
+}
+function _deskKbNavShown(){ return typeof PADNAV!=="undefined" && PADNAV.shown && !!PADNAV.el && _pnVisibleEl(PADNAV.el); }
+function _deskKbNavPlace(c){
+  if(!c || !padPlace(c)) return false;
+  DESK.kbNav = true; DESK.kbNavKey = _pnCtxKey(); DESK.kbNavPend = 0;
+  // el foco del navegador no se queda en otro botón: si no, Enter/Espacio apretarían ese y no el marcado
+  const ae = document.activeElement; if(ae && ae!==document.body && typeof ae.blur==="function"){ try{ ae.blur(); }catch(e){} }
+  return true;
+}
+// flechas / Enter / Espacio fuera de la partida
+function deskMenuKey(ev){
+  const c = ev.code, dir = KB_NAV_DIR[c], act = c==="Enter" || c==="NumpadEnter" || c==="Space";
+  if(typeof padMove!=="function" || typeof PADNAV==="undefined") return;
+  if(c==="Tab"){ if(DESK.kbNav){ DESK.kbNav = false; padNavHide(); } return; } // Tab: manda el foco del navegador
+  if(!dir && !act) return;
+  if(ev.altKey || ev.ctrlKey || ev.metaKey) return;
+  if(state==="buff") return; // refuerzos y reliquias tienen sus teclas (js/ui/buff-choice.js, js/systems/horde-relics.js)
+  if(_deskKeyHandledElsewhere(ev)) return;
+  if(act){
+    if(ev.repeat || DESK.device!=="kb" || !DESK.kbNav || !_deskKbNavShown()) return; // sin foco de flechas: Enter/Espacio de siempre
+    ev.preventDefault(); padActivate(PADNAV.el); return;
+  }
+  ev.preventDefault(); // que la flecha no desplace la página ni cambie de opción por su cuenta
+  deskSetDevice("kb");
+  if(!DESK.kbNav || !_deskKbNavShown() || DESK.kbNavKey!==_pnCtxKey()){
+    // primer toque: aparece el foco (desde el botón que ya tenía el foco del navegador, si lo había)
+    const cands = padCandidates(), ae = document.activeElement;
+    const cur = ae && ae!==document.body ? cands.find(x => x.el===ae) : null;
+    if(cur){ _deskKbNavPlace(cur); padMove(dir); } else _deskKbNavPlace(padDefault(cands));
+    return;
+  }
+  padMove(dir);
+}
+// una vez por cuadro: el marco sigue a su botón y, si cambió la pantalla, se reubica solo (como con el mando)
+let _deskKbNavN = 0;
+function deskKbNavTick(){
+  if(!DESK.kbNav || typeof PADNAV==="undefined") return;
+  if(DESK.device!=="kb" || state==="playing" || state==="buff"){ DESK.kbNav = false; if(DESK.device==="kb") padNavHide(); return; }
+  if(!PADNAV.shown && !DESK.kbNavPend){ DESK.kbNav = false; return; } // el mouse o un toque lo ocultaron
+  if((++_deskKbNavN % 6)===0){
+    const key = _pnCtxKey(), t = performance.now();
+    if(key!==DESK.kbNavKey){ DESK.kbNavKey = key; DESK.kbNavPend = t; padNavHide(); }
+    else if(DESK.kbNavPend && t - DESK.kbNavPend > 140){
+      DESK.kbNavPend = 0;
+      let dlg = false; try{ dlg = typeof GAME_DIALOG!=="undefined" && !!GAME_DIALOG.cur; }catch(e){}
+      if(dlg || _deskOverlayOpen() || !_deskKbNavPlace(padDefault(padCandidates()))) DESK.kbNav = false;
+    }
+  }
+  if(PADNAV.shown) _pnDraw();
+}
+window.addEventListener("keydown", (ev)=>{
+  if(_deskTyping(ev)){
+    // en un campo de texto: Esc lo suelta (sin volver atrás) y ↑ / ↓ salen del campo hacia el botón vecino
+    const t = ev.target, ty = (t.type || "").toLowerCase();
+    const textLike = t.tagName==="INPUT" && (ty==="" || ty==="text" || ty==="search" || ty==="email" || ty==="password" || ty==="tel" || ty==="url");
+    if(state==="playing" || DESK.rebinding || ev.defaultPrevented || !textLike) return;
+    if(ev.code==="Escape"){ try{ t.blur(); }catch(e){} return; }
+    if((ev.code!=="ArrowUp" && ev.code!=="ArrowDown") || ev.altKey || ev.ctrlKey || ev.metaKey || typeof padCandidates!=="function") return;
+    if(_deskKeyHandledElsewhere(ev)) return;
+    const cur = padCandidates().find(x => x.el===t); if(!cur) return;
+    ev.preventDefault(); deskSetDevice("kb"); _deskKbNavPlace(cur); padMove(KB_NAV_DIR[ev.code]);
+    return;
+  }
   if(DESK.rebinding) return; // la pantalla de Controles está esperando una tecla (controls-panel.js)
   const c = ev.code;
   if((c==="Escape" || c==="KeyP") && !ev.repeat){
-    // Esc: cierra Opciones si están abiertas; en partida, pausa / continuar
+    // Esc: cierra Opciones si están abiertas; en partida, pausa / continuar; en cualquier otro menú, vuelve atrás
     if(_deskOptionsOpen()){ ev.preventDefault(); if(typeof closeHubOptions==="function") closeHubOptions(); return; }
-    if((state==="playing" || state==="paused") && !_deskOverlayOpen()){ ev.preventDefault(); deskPauseToggle(); }
+    if((state==="playing" || state==="paused") && !_deskOverlayOpen()){ ev.preventDefault(); deskPauseToggle(); return; }
+    if(c==="Escape") deskMenuBack(ev);
     return;
   }
-  if(state!=="playing") return;
+  if(state!=="playing"){ deskMenuKey(ev); return; }
   const mv = deskMoveKeys()[c], acts = deskKeyActs(c);
   if(!mv && !acts.length) return;
   // que Espacio/flechas no "aprieten" el último botón que quedó con foco (la pausa, un menú) ni scrolleen
@@ -390,6 +484,8 @@ const GP_PROFILES = {
   // genéricos sin mapeo (estilo xpad/HID): A 0, B 1, X 2, Y 3...; stick derecho en 2-3 (4 ejes) o 3-4 (6 o más), gatillos analógicos en 2 y 5
   generic:{ label:"Genérico", btn:{A:0,B:1,X:2,Y:3,LB:4,RB:5,LT:6,RT:7,BACK:8,START:9,L3:10,R3:11,UP:12,DOWN:13,LEFT:14,RIGHT:15}, left:[0,1], right:null, hat:9 }
 };
+// ¿Es un mando de PlayStation? (también cuando el navegador ya lo mapea como "standard": Chrome con DualShock/DualSense)
+function gpIsPlayStation(id){ return /054c|sony|playstation|dualshock|dualsense|ps[345] /i.test(id||""); }
 function gpProfileOf(g){
   if(g.mapping==="standard") return "standard";
   if(/054c|sony|playstation|dualshock|dualsense|wireless controller|ps[345] /i.test(g.id||"")) return "ps";
@@ -440,6 +536,7 @@ function deskPadConnected(g){
   if(!g) return;
   const id = g.id || "pad";
   DESK.gp.id = id; DESK.gp.profile = gpProfileOf(g);
+  _deskPadGlyphSync();
   if(_gpToastedId===id) return;
   _gpToastedId = id;
   deskSetDevice("pad");
@@ -450,6 +547,7 @@ window.addEventListener("gamepadconnected", (e)=> deskPadConnected(e.gamepad));
 function deskPadGone(){
   if(!_gpToastedId) return;
   _gpToastedId = ""; DESK.gp.id = ""; DESK.gp.prev = {};
+  _deskPadGlyphSync();
   _gpToast("Mando desconectado");
   if(typeof deskControlsChanged==="function") deskControlsChanged();
 }
@@ -502,6 +600,7 @@ function deskGamepadTick(){
    Hechicero, adaptado a teclado/mando con ctlHint(). */
 function ctlHint(kind){
   const d = DESK.device;
+  if(d==="pad" && padGlyphSet()==="ps") return {move:"Movete con el stick izquierdo", attack:"Mantené ✕ para pelear", skill:"Apretá □, △ o ○ (el stick derecho apunta)", ult:"Apretá R1", loot:"Pasá por encima del botín o apretá L2"}[kind];
   if(d==="pad") return {move:"Movete con el stick izquierdo", attack:"Mantené A para pelear", skill:"Apretá X, Y o B (el stick derecho apunta)", ult:"Apretá RB", loot:"Pasá por encima del botín o apretá LT"}[kind];
   if(d==="kb"){
     const moba = deskScheme()==="moba", dflt = !(PREFS.keyBinds && PREFS.keyBinds[deskScheme()] && Object.keys(PREFS.keyBinds[deskScheme()]).length);
@@ -532,7 +631,19 @@ function deskOnboardTick(){
 /* ---------------- teclas en los botones ---------------- */
 // rótulo del mando por botón de pantalla (fijo: el mando no se reasigna)
 const PAD_HINTS = { "btn-basic":"A", "btn-s1":"X", "btn-s2":"Y", "btn-s3":"B", "btn-ult":"RB", "btn-emerg":"LB", "btn-pact":"R3", "btn-revive":"LT", "pause-btn":"Start" };
+// mando de PlayStation (DualShock / DualSense): los mismos botones con sus símbolos
+const PAD_HINTS_PS = { "btn-basic":"✕", "btn-s1":"□", "btn-s2":"△", "btn-s3":"○", "btn-ult":"R1", "btn-emerg":"L1", "btn-pact":"R3", "btn-revive":"L2", "pause-btn":"Options" };
+// nombre lógico del botón (A B X Y LB RB LT RT START BACK L3 R3) -> lo que dice el mando que está conectado
+const PAD_GLYPHS_PS = { A:"✕", B:"○", X:"□", Y:"△", LB:"L1", RB:"R1", LT:"L2", RT:"R2", START:"Options", BACK:"Share", L3:"L3", R3:"R3" };
+function padGlyphSet(){ return DESK.gp.id && gpIsPlayStation(DESK.gp.id) ? "ps" : "xbox"; }
+function padHints(){ return padGlyphSet()==="ps" ? PAD_HINTS_PS : PAD_HINTS; }
+function padGlyph(name){ return padGlyphSet()==="ps" ? (PAD_GLYPHS_PS[name] || name) : (name==="START" ? "Start" : name==="BACK" ? "Select" : name); }
+function _deskPadGlyphSync(){
+  const b = document.body; if(b) b.classList.toggle("pad-ps", padGlyphSet()==="ps");
+  try{ deskRefreshHints(); }catch(e){}
+}
 function deskRefreshHints(){
+  const PH = padHints();
   for(const id in PAD_HINTS){
     const el = document.getElementById(id); if(!el) continue;
     let s = el.querySelector(".kh");
@@ -540,7 +651,7 @@ function deskRefreshHints(){
     const act = Object.keys(ACT_BTN).find(a => ACT_BTN[a]===id);
     const kb = id==="pause-btn" ? "Esc" : deskActionLabel(act);
     if(s.dataset.kb!==kb) s.dataset.kb = kb;
-    if(s.dataset.pad!==PAD_HINTS[id]) s.dataset.pad = PAD_HINTS[id];
+    if(s.dataset.pad!==PH[id]) s.dataset.pad = PH[id];
     if(act && el.hasAttribute("aria-keyshortcuts")){ const ks = (deskActionCodes(act)[0] || "").replace(/^(Key|Digit)/, ""); if(el.getAttribute("aria-keyshortcuts")!==ks) el.setAttribute("aria-keyshortcuts", ks); }
   }
 }
@@ -557,7 +668,7 @@ function deskControlsChanged(){
 
 // un solo bucle liviano para el mando y la guía (no depende del bucle del juego: la pausa también lo escucha)
 (function loop(){
-  try{ deskGamepadTick(); deskCtmTick(); deskOnboardTick(); }catch(e){ if(typeof console!=="undefined") console.warn("input-desk", e); }
+  try{ deskGamepadTick(); deskCtmTick(); deskOnboardTick(); deskKbNavTick(); }catch(e){ if(typeof console!=="undefined") console.warn("input-desk", e); }
   requestAnimationFrame(loop);
 })();
 // al rotar el teléfono o cambiar a modo zurdo, los "+" de subir habilidad se vuelven a ubicar junto a su botón

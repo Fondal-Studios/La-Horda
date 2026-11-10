@@ -97,7 +97,10 @@ function questsShowRunSummary(sum){
   el.innerHTML = `<b>🏆 DESAFÍOS</b><span>+${sum.xp} XP de cuenta</span><span>Pase Nv. ${sum.pass.level}${sum.passUp > 0 ? " ▲" : ""}</span>${done.length ? `<span>${done.join(" · ")}</span>` : ""}`;
 }
 // Al salir de la pantalla de fin, el resumen se va (la próxima partida arma el suyo).
-function _qClearRunSummary(){ document.querySelectorAll(".qs-run-sum").forEach(e=>e.remove()); }
+function _qClearRunSummary(){
+  document.querySelectorAll(".qs-run-sum").forEach(e=>e.remove());
+  if(typeof nextUnlockClear === "function") nextUnlockClear();   // panel «Lo próximo que desbloqueás» (js/ui/next-unlock.js)
+}
 
 /* ---------------- pantalla ---------------- */
 let questsTab = "desafios", questsCat = "todos", _qReturn = "mainmenu";
@@ -162,14 +165,26 @@ function _qBodyClick(ev){
 function _qChalCard(c, i, kind, V, canReroll){
   const T = questsChalText(c), p = questsChalProgress(c, V), pct = Math.round(100*p/Math.max(1,c.n));
   const tint = kind === "weekly" ? "#d29aff" : "#7fe0f0";
-  const unit = c.stat === "minutes" ? " min" : "";
   return `<div class="qs-card${c.done ? " done" : ""}">
     ${_qIco(T.icon, tint, false)}
     <div class="qs-card-main"><div class="qs-name">${_qEsc(T.name)}${c.done ? ' <span class="qs-ok">✔</span>' : ""}</div>
       <div class="qs-desc">${_qEsc(T.desc)}</div>
-      <div class="qs-bar"><i style="width:${pct}%"></i><span>${p}/${c.n}${unit}</span></div></div>
+      <div class="qs-bar"><i style="width:${pct}%"></i><span>${p}/${c.n}</span></div></div>
     <div class="qs-side"><div class="qs-rew">🪙 ${c.gold}</div>${canReroll && !c.done ? `<button class="qs-mini" data-qreroll="${i}" title="Cambiar este desafío (1 por día)" aria-label="Cambiar desafío">↻</button>` : ""}</div>
   </div>`;
+}
+// RACHA DIARIA: contador, hitos (cofre/título/marco, sin Brasas ni oro) y congelador semanal.
+function _qStreakHTML(){
+  const S = questsStreakInfo();
+  const ms = STREAK_MILESTONES.map(m=>`<li class="${S.count >= m.days ? "got" : S.next && S.next.days === m.days ? "next" : ""}"><b>${m.days} días</b> <span>${_qEsc(questsRewardText(m.reward))}</span></li>`).join("");
+  const frz = S.freezes ? "Congelador de racha: listo (protege un día sin desafíos)." : `Congelador de racha: se gana completando ${S.freezeNeed} desafíos diarios en la semana.`;
+  return `<div class="qs-streak" data-qs-streak>
+    <div class="qs-h">RACHA DIARIA <span class="qs-reset">${S.doneToday ? "hoy ya sumaste" : "completá un desafío diario hoy"}</span></div>
+    <div class="qs-streak-n"><b>${S.count}</b> ${S.count === 1 ? "día seguido" : "días seguidos"} <i>· mejor racha ${S.best}</i></div>
+    <ul class="qs-streak-ms">${ms}</ul>
+    <div class="qs-desc">${frz} ${S.freezes ? "" : `<b>${S.weekDone}/${S.freezeNeed}</b>`}</div>
+    ${S.clockBack ? '<div class="qs-desc qs-warn" data-qs-clockback>El reloj de tu dispositivo está atrasado: se usa el último día registrado.</div>' : ""}
+    <div class="qs-desc">La racha premia lo que lográs, no el tiempo jugado: los hitos dan cofre, título o marco, nunca Brasas ni oro.</div></div>`;
 }
 function _qChalHTML(){
   const q = questsState(), V = questsView();
@@ -181,7 +196,7 @@ function _qChalHTML(){
       ${R.list.map((c,i)=>_qChalCard(c, i, kind, V, kind === "daily" && canReroll)).join("")}
       <div class="qs-bonus${R.bonus ? " done" : ""}">${R.bonus ? "✔ " : ""}Completá los 3: <b>${questsRewardText(bonus)}</b></div></div>`;
   };
-  return `${chests ? `<div class="qs-chestbar"><canvas class="qs-chest-mini" width="68" height="44" data-variant="${q.chests[0]}"></canvas><span>Tenés <b>${chests}</b> cofre${chests>1?"s":""} sin abrir</span><button class="btn qs-open" data-qchest>ABRIR</button></div>` : ""}
+  return `${_qStreakHTML()}${chests ? `<div class="qs-chestbar"><canvas class="qs-chest-mini" width="68" height="44" data-variant="${q.chests[0]}"></canvas><span>Tenés <b>${chests}</b> cofre${chests>1?"s":""} sin abrir</span><button class="btn qs-open" data-qchest>ABRIR</button></div>` : ""}
     <div class="qs-cols">${col("daily", "DIARIOS")}${col("weekly", "SEMANALES")}</div>
     <div class="qs-note">Se cumplen jugando normal, solo o en cooperativo (cada jugador suma a su cuenta). ${canReroll ? "Podés cambiar un desafío diario por día con ↻." : ""}</div>`;
 }
@@ -329,7 +344,12 @@ function _qMenuButton(){
     if(back) mm.insertBefore(b, back); else mm.appendChild(b);
   }
 }
+function questsStreakHubText(){
+  const S = questsStreakInfo();
+  return S.doneToday ? `Racha ${S.count} ✔` : S.count ? `Racha ${S.count} · hoy` : "Racha 0";
+}
 function _qUpdateMenuBadge(){
+  document.querySelectorAll("#hub-streak").forEach(s=>{ try{ const S = questsStreakInfo(); s.textContent = questsStreakHubText(); s.title = S.count ? `Racha diaria: ${S.count} ${S.count === 1 ? "día seguido" : "días seguidos"}` : "Completá un desafío diario hoy para empezar tu racha"; }catch(e){} });
   const n = questsBadgeCount();
   document.querySelectorAll("[data-quests-open] .qs-badge").forEach(s=>{ s.textContent = n > 9 ? "9+" : String(n); s.classList.toggle("hidden", !n); });
 }

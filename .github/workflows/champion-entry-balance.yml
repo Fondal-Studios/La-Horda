@@ -1,10 +1,10 @@
 name: Champion entry balance
 on:
   pull_request:
-    paths: ['js/**', 'css/**', 'server/**', 'tools/ux/**', 'tools/factory/**', 'tools/ascension/**', 'tools/founders/**', 'docs/founders/**', 'tools/alpha/**', 'tools/collection/**', 'tools/quality/**', 'docs/production/**', 'docs/ART_BIBLE.md', 'AGENTS.md', 'index.html', 'crystal-wars.html', 'tools/crystal-wars/**', 'tools/lanes/**', 'tools/coliseum/**', 'tools/net-test/**', 'tests/competitive-*.test.js', 'tests/art-runtime-clips.test.js', 'docs/art/**', 'tools/art/build-art-atlas.js', 'tools/art/lib/**', 'docs/modes/**', 'docs/balance/**', 'tools/balance/**', 'tools/audio/**', 'tools/bible/**', 'tools/bosses/**', 'docs/bible/**', 'tools/art/painter/**', 'BALANCE_CAMPEONES.md', '.github/workflows/champion-entry-balance.yml']
+    paths: ['js/**', 'css/**', 'server/**', 'tools/ux/**', 'tools/factory/**', 'tools/ascension/**', 'tools/founders/**', 'docs/founders/**', 'tools/alpha/**', 'tools/collection/**', 'tools/quality/**', 'docs/production/**', 'docs/ART_BIBLE.md', 'AGENTS.md', 'index.html', 'crystal-wars.html', 'tools/crystal-wars/**', 'tools/lanes/**', 'tools/coliseum/**', 'tools/net-test/**', 'tests/competitive-*.test.js', 'tests/net-*.test.js', 'tests/art-runtime-clips.test.js', 'docs/art/**', 'tools/art/build-art-atlas.js', 'tools/art/lib/**', 'docs/modes/**', 'docs/balance/**', 'tools/balance/**', 'tools/audio/**', 'tools/bible/**', 'tools/bosses/**', 'docs/bible/**', 'tools/art/painter/**', 'BALANCE_CAMPEONES.md', '.github/workflows/champion-entry-balance.yml']
   push:
     branches: [main, 'chatgpt/**']
-    paths: ['js/**', 'css/**', 'server/**', 'tools/ux/**', 'tools/factory/**', 'tools/ascension/**', 'tools/founders/**', 'docs/founders/**', 'tools/alpha/**', 'tools/collection/**', 'tools/quality/**', 'docs/production/**', 'docs/ART_BIBLE.md', 'AGENTS.md', 'index.html', 'crystal-wars.html', 'tools/crystal-wars/**', 'tools/lanes/**', 'tools/coliseum/**', 'tools/net-test/**', 'tests/competitive-*.test.js', 'tests/art-runtime-clips.test.js', 'docs/art/**', 'tools/art/build-art-atlas.js', 'tools/art/lib/**', 'docs/modes/**', 'docs/balance/**', 'tools/balance/**', 'tools/audio/**', 'tools/bible/**', 'tools/bosses/**', 'docs/bible/**', 'tools/art/painter/**', 'BALANCE_CAMPEONES.md', '.github/workflows/champion-entry-balance.yml']
+    paths: ['js/**', 'css/**', 'server/**', 'tools/ux/**', 'tools/factory/**', 'tools/ascension/**', 'tools/founders/**', 'docs/founders/**', 'tools/alpha/**', 'tools/collection/**', 'tools/quality/**', 'docs/production/**', 'docs/ART_BIBLE.md', 'AGENTS.md', 'index.html', 'crystal-wars.html', 'tools/crystal-wars/**', 'tools/lanes/**', 'tools/coliseum/**', 'tools/net-test/**', 'tests/competitive-*.test.js', 'tests/net-*.test.js', 'tests/art-runtime-clips.test.js', 'docs/art/**', 'tools/art/build-art-atlas.js', 'tools/art/lib/**', 'docs/modes/**', 'docs/balance/**', 'tools/balance/**', 'tools/audio/**', 'tools/bible/**', 'tools/bosses/**', 'docs/bible/**', 'tools/art/painter/**', 'BALANCE_CAMPEONES.md', '.github/workflows/champion-entry-balance.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -35,6 +35,8 @@ jobs:
       - run: node tools/quality/test-vfx-pools.js
       - run: node tests/competitive-roster.test.js
       - run: node tests/competitive-signatures.test.js
+      - run: node tests/net-play-event.test.js
+      - run: node tests/net-lobby-injection.test.js
       - run: node tools/crystal-wars/test-competitive.js
       - run: node tools/crystal-wars/test-simulation.js
       - run: node tools/crystal-wars/balance-gate.js

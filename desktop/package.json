@@ -1,0 +1,25 @@
+{
+  "name": "la-horda-desktop",
+  "productName": "La Horda",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Contenedor de escritorio (Steam) de La Horda. Vive aparte del juego: tiene su propio node_modules. No se construyó ni se probó en este repositorio.",
+  "main": "main.js",
+  "scripts": {
+    "stage": "node stage.mjs",
+    "test:stage": "node test-stage.mjs",
+    "start": "node stage.mjs && electron .",
+    "dist:win": "node stage.mjs && electron-builder --win dir --x64",
+    "dist:linux": "node stage.mjs && electron-builder --linux dir --x64"
+  },
+  "optionalDependencies": {
+    "steamworks.js": "^0.4.0"
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.8"
+  },
+  "engines": {
+    "node": ">=20.11"
+  }
+}

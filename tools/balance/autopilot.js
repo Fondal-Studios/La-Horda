@@ -112,7 +112,9 @@
   }
   const origUpdate = window.update;
   window.update = function(dt){ try{ tick(dt); }catch(e){ AP.err = String(e); } return origUpdate(dt); };
-  AP.pickBuff = function(){ const c = document.querySelector('#buff-cards .buff-card'); if(c){ c.click(); return true; } return false; };
+  // Horda Infinita: tras el refuerzo normal puede venir la pantalla de Reliquias (otra tanda de cartas en el mismo estado "buff"):
+  // se elige hasta salir del estado, así los bucles `if(state==="buff") pickBuff(); if(state!=="playing") break;` siguen siendo válidos.
+  AP.pickBuff = function(){ let any = false; for(let n=0; n<4 && state==="buff"; n++){ const c = document.querySelector('#buff-cards .buff-card'); if(!c) break; c.click(); any = true; } return any; };
   // Accelerated simulation without render: runs update() in fixed steps.
   AP.sim = function(ms, stepMs){
     stepMs = stepMs || 16.67; const n = Math.round(ms/stepMs); let t = 0;

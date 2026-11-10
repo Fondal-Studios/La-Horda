@@ -1,0 +1,29 @@
+/* css/horde-relics.css — pantalla de Reliquias de la Horda (js/systems/horde-relics.js). Solo presentación. */
+.buff-card.hrel-card{
+  position:relative; display:flex; flex-direction:column; align-items:center; gap:4px; text-align:center; color:inherit; font:inherit;
+  min-height:44px; min-width:140px; -webkit-appearance:none; appearance:none;
+}
+.buff-card.hrel-card:focus-visible{ outline:3px solid #ffd34d; outline-offset:2px; border-color:#ffd34d; }
+.buff-card.hrel-card.hrel-rar-0{ border-color:#6a5e48; }
+.buff-card.hrel-card.hrel-rar-1{ border-color:#2f6aa8; box-shadow:inset 0 0 0 1px rgba(95,176,255,0.18), 4px 4px 0 #000; }
+.buff-card.hrel-card.hrel-rar-2{ border-color:#7a3fb0; box-shadow:inset 0 0 0 1px rgba(199,125,255,0.22), 0 0 10px rgba(180,110,255,0.25), 4px 4px 0 #000; }
+.hrel-top{ display:flex; width:100%; justify-content:space-between; align-items:center; font-family:var(--font-retro); font-size:0.95rem; letter-spacing:0.05em; text-transform:uppercase; line-height:1; }
+.hrel-lvl{ color:var(--text-dim); text-transform:none; }
+.hrel-key{ position:absolute; top:-9px; left:-9px; width:22px; height:22px; line-height:22px; text-align:center; background:#120806; color:#ffd34d; border:2px solid #ffd34d; font-family:var(--font-retro); font-size:0.95rem; }
+.hrel-ico{ display:flex; align-items:center; justify-content:center; width:44px; height:44px; font-size:2rem; filter:drop-shadow(0 0 6px var(--hr-c, #ffb04a)); }
+.hrel-ico .pxi{ width:36px; height:36px; }
+.hrel-tag{ font-family:var(--font-retro); font-size:0.95rem; text-transform:uppercase; letter-spacing:0.05em; line-height:1; display:flex; gap:5px; align-items:center; justify-content:center; }
+.hrel-tag .pxi, .hrel-chip .pxi{ width:16px; height:16px; }
+.hrel-syn{ font-family:var(--font-retro); font-size:0.92rem; color:#ffd76a; line-height:1.1; }
+#hrel-owned{ font-family:var(--font-retro); font-size:0.95rem; color:var(--text-dim); margin-top:10px; max-width:min(760px, 94vw); text-align:center; line-height:1.3; }
+.hrel-owned-t{ color:var(--text-dim); }
+.hrel-chip{ display:inline-flex; gap:4px; align-items:center; margin:0 4px; white-space:nowrap; }
+.en-res-relics{ display:flex; flex-wrap:wrap; gap:6px 10px; justify-content:center; font-family:var(--font-retro); font-size:1.05rem; }
+.hrel-stats .stat-row small{ color:var(--text-dim); }
+@media (max-height:500px) and (min-aspect-ratio:4/3){
+  .buff-card.hrel-card{ min-width:0; gap:2px; }
+  .hrel-ico{ width:30px; height:30px; } .hrel-ico .pxi{ width:26px; height:26px; }
+  .buff-card.hrel-card .buff-name{ font-size:1.1rem; } .buff-card.hrel-card .buff-desc{ font-size:0.9rem; }
+  .hrel-syn, .hrel-tag, #hrel-owned{ font-size:0.85rem; } #hrel-owned{ margin-top:6px; }
+}
+@media (prefers-reduced-motion: reduce){ .buff-card.hrel-card{ transition:none; } }

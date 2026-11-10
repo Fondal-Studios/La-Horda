@@ -42,6 +42,23 @@ const HOST_A = '127.0.0.1', HOST_B = '127.0.0.2', HOST_C = '127.0.0.3';
   check('servidor.lan_json', info.lan === true && info.port === port && Array.isArray(info.urls), info);
   check('servidor.sirve_el_juego_con_bandera_lan', await (async () => { const r = await get(BASE + '/'); return r.status === 200 && /window\.__HORDA_LAN__=true/.test(r.body) && /js\/net\/net-lan\.js/.test(r.body); })());
   check('servidor.sirve_js_y_css', (await get(BASE + '/js/net/net-lan.js')).status === 200 && (await get(BASE + '/css/lan.css')).status === 200);
+  { // compresión de texto: menos bytes por WiFi, mismo contenido, y revalidación con ETag
+    const zlib = require('zlib');
+    const raw = await new Promise(res => http.get(BASE + '/js/net/net-lan.js', { headers: { 'accept-encoding': 'identity' } }, x => { const c = []; x.on('data', d => c.push(d)); x.on('end', () => res({ h: x.headers, b: Buffer.concat(c) })); }));
+    const gz = await new Promise(res => http.get(BASE + '/js/net/net-lan.js', { headers: { 'accept-encoding': 'gzip' } }, x => { const c = []; x.on('data', d => c.push(d)); x.on('end', () => res({ h: x.headers, b: Buffer.concat(c) })); }));
+    check('servidor.comprime_texto_con_gzip', gz.h['content-encoding'] === 'gzip' && gz.b.length < raw.b.length * 0.6 && zlib.gunzipSync(gz.b).equals(raw.b), { raw: raw.b.length, gz: gz.b.length });
+    check('servidor.sin_accept_encoding_no_comprime', !raw.h['content-encoding'], raw.h);
+    const r304 = await new Promise(res => http.get(BASE + '/js/net/net-lan.js', { headers: { 'if-none-match': raw.h.etag } }, x => { x.resume(); x.on('end', () => res(x.statusCode)); }));
+    check('servidor.revalida_con_etag_304', !!raw.h.etag && r304 === 304, { etag: raw.h.etag, r304 });
+    const png = await new Promise(res => http.get(BASE + '/assets/ui/menu-icons-16.png', { headers: { 'accept-encoding': 'gzip' } }, x => { x.resume(); x.on('end', () => res(x.headers['content-encoding'] || null)); }));
+    const q0 = await new Promise(res => http.get(BASE + '/js/net/net-lan.js', { headers: { 'accept-encoding': 'br;q=0, gzip;q=0' } }, x => { x.resume(); x.on('end', () => res(x.headers['content-encoding'] || null)); }));
+    check('servidor.respeta_q0_en_accept_encoding', q0 === null, q0);
+    const r304v = await new Promise(res => http.get(BASE + '/js/net/net-lan.js', { headers: { 'if-none-match': raw.h.etag } }, x => { x.resume(); x.on('end', () => res(x.headers.vary || null)); }));
+    check('servidor.304_lleva_vary', /Accept-Encoding/i.test(r304v || ''), r304v);
+    const idx1 = await get(BASE + '/', { headers: { 'accept-encoding': 'gzip' } }), t0 = Date.now(); for (let i = 0; i < 10; i++) await get(BASE + '/', { headers: { 'accept-encoding': 'br' } });
+    check('servidor.index_comprimido_se_sirve_rapido_de_cache', idx1.headers['content-encoding'] === 'gzip' && (Date.now() - t0) < 1500, { ms: Date.now() - t0 });
+    check('servidor.no_recomprime_imagenes', png === null, png);
+  }
   for (const p of ['/server/relay.js', '/tools/lan/host.js', '/.git/config', '/js/../server/relay.js', '/%2e%2e/server/relay.js', '/js/%2e%2e/server/package.json', '/AGENTS.md', '/docs/beta-release/MULTIJUGADOR_LOCAL.md']) {
     const r = await get(BASE + p); check('servidor.no_expone ' + p, r.status === 404, r.status);
   }
@@ -185,8 +202,16 @@ const HOST_A = '127.0.0.1', HOST_B = '127.0.0.2', HOST_C = '127.0.0.3';
   const reconn = await waitFor(B, () => state === 'playing' && net.status === 'open' && net.slot === 1 && net.room && net.room.slots[1].connected, null, 30000) && await waitFor(A, () => heroes[1].isRemote === true && net.room.slots[1].connected, null, 30000);
   check('reconexion.invitado_vuelve_al_mismo_lugar', reconn, await ev(B, () => ({ st: state, slot: net.slot, status: net.status })));
   const q0 = await ev(B, () => ({ x: player.x, y: player.y })), dir = q0.x < 700 ? 1 : -1;
-  await ev(B, d => { joyVec = { x: d, y: 0 }; }, dir); await sleep(1200); await ev(B, () => { joyVec = { x: 0, y: 0 }; });
-  const q1 = await ev(B, () => ({ x: player.x, y: player.y }));
+  // igual que arriba: el héroe puede estar pegado a un obstáculo y en CI baja el cuadro por segundo, así que se prueban varias direcciones
+  // hasta que recorre >60 px (máx. 3 s por dirección) en vez de un tiempo fijo en una sola.
+  let q1 = q0;
+  for (const v of [{ x: dir, y: 0 }, { x: 0, y: -1 }, { x: 0, y: 1 }, { x: -dir, y: 0 }]) {
+    await ev(B, v => { joyVec = v; }, v);
+    for (let t = 0; t < 15 && Math.hypot(q1.x - q0.x, q1.y - q0.y) <= 60; t++) { await sleep(200); q1 = await ev(B, () => ({ x: player.x, y: player.y })); }
+    await ev(B, () => { joyVec = { x: 0, y: 0 }; });
+    if (Math.hypot(q1.x - q0.x, q1.y - q0.y) > 60) break;
+  }
+  q1 = await ev(B, () => ({ x: player.x, y: player.y }));
   const sync = await waitFor(A, q => { const h = heroes.find(x => x.netName === 'Beto'); return Math.hypot(h.x - q.x, h.y - q.y) < 50; }, q1, 8000);
   check('reconexion.se_mueve_de_nuevo', Math.hypot(q1.x - q0.x, q1.y - q0.y) > 50 && sync, { q0, q1 });
 

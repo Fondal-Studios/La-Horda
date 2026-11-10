@@ -193,7 +193,7 @@ function netRenderLobbySlots(){
   slots._next = [0,1,2,3].map(i=>{
     const s = net.room.slots[i];
     if(!s) return `<div class="lobby-slot empty"><div class="lobby-empty">＋</div><div class="lobby-name">Esperando jugador…</div><div class="lobby-meta">al comenzar: lo completa el juego</div></div>`;
-    const you = i===net.slot, key = you ? selectedClass : s.champ, skin = you ? (champSkinId(selectedClass)||"") : (netSlotSkin(i)||"");
+    const you = i===net.slot, key = you ? selectedClass : (typeof s.champ==="string" && Object.hasOwn(CLASSES, s.champ) ? s.champ : "guerrero"), skin = you ? (champSkinId(selectedClass)||"") : (netSlotSkin(i)||"");
     const cls = CLASSES[key] || CLASSES.guerrero;
     const lv = you ? save.champions[selectedClass].level : s.level;
     const tag = `P${i+1} · ` + (i===0 ? "HOST" : (you ? "VOS" : "AMIGO"));
@@ -201,7 +201,7 @@ function netRenderLobbySlots(){
     const fb = s.founder && typeof founderBadgeHTML==="function" ? founderBadgeHTML(s.founder, "md") : "";
     return `<div class="lobby-slot pc${i} ${you?"you":""} ${fb?"is-founder":""}">
       <div class="lobby-tag p${i}">${tag}</div>
-      <canvas class="champ-anim lobby-anim" width="120" height="120" data-class-key="${key}" data-skin="${skin}" data-idle="1" data-ph="${i*1.3}" style="background:${cls.color}1c;"></canvas>
+      <canvas class="champ-anim lobby-anim" width="120" height="120" data-class-key="${guideEsc(key)}" data-skin="${guideEsc(skin)}" data-idle="1" data-ph="${i*1.3}" style="background:${cls.color}1c;"></canvas>
       <div class="lobby-name" style="color:${NET_SLOT_COLORS[i]}">${guideEsc(s.name)}</div>${fb ? `<div class="lobby-founder">${fb}</div>` : ""}
       ${skin && (typeof skinDefOf==="function" ? skinDefOf(skin) : SET_SKINS[skin]) ? `<div class="lobby-skin">🎨 ${(typeof skinDefOf==="function" ? skinDefOf(skin) : SET_SKINS[skin]).name}</div>` : ""}
       <div class="lobby-meta">${cls.name} · ${NET_ROLE_LABEL[cls.roleCategory]||""}</div>
@@ -253,9 +253,19 @@ function champSkinId(k){
   if(!k || !save.champions[k] || typeof activeSetSkinId!=="function") return null;
   try{ return activeSetSkinId({classKey:k}) || null; }catch(e){ return null; }
 }
+// La skin de otro jugador llega por red: solo se acepta un id que exista en los catálogos (nunca texto libre en el DOM).
+function netKnownSkin(id){
+  if(typeof id!=="string" || !/^[\w.-]{1,64}$/.test(id)) return null;
+  try{
+    const own = (typeof SET_SKINS!=="undefined" && Object.hasOwn(SET_SKINS, id)) || (typeof CROMA_SKINS!=="undefined" && Object.hasOwn(CROMA_SKINS, id));
+    if(own && (typeof skinDefOf==="function" ? skinDefOf(id) : SET_SKINS[id])) return id;
+  }catch(e){}
+  return null;
+}
 function netSlotSkin(i){
-  if(net.role==="host") return (netLobby.loadouts[i]||{}).skin || null;
-  return (netLobby.cos||{})[i] || null;
+  if(net.role==="host"){ const L = Object.hasOwn(netLobby.loadouts, i) ? netLobby.loadouts[i] : null; return netKnownSkin(L && L.skin); }
+  const c = netLobby.cos || {};
+  return netKnownSkin(Object.hasOwn(c, i) ? c[i] : null);
 }
 function netHostBroadcastCos(force){
   if(net.role!=="host" || !net.room) return;

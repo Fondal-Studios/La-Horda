@@ -26,6 +26,19 @@ function _bpRewardText(r){
   }
   return "";
 }
+// ¿La ruta premium trae cosméticos `bp:*` sin arte aprobado? (los mismos que _bpRewardText rotula «arte pendiente»)
+function _bpPremiumPending(d){ return !!(d && Array.isArray(d.track) && d.track.some(t => t && t.premium && t.premium.cosmetic)); }
+// RETENER LA VENTA del premium mientras tenga cosméticos sin arte (decisión de producto: no se vende lo que no tiene arte final).
+// El botón se reemplaza por un aviso neutro. Para probar el flujo de compra real, una prueba (o el equipo) puede abrirlo con
+// `window.__BP_PREMIUM_OPEN__ = true` antes de cargar el juego (tools/ux/test-battlepass-ui.js lo hace). Cuando los cosméticos
+// `bp:*` tengan arte, la ruta deja de estar "pendiente" (_bpPremiumPending) y el botón vuelve solo.
+const BP_PREMIUM_HOLD = !(typeof window !== "undefined" && window.__BP_PREMIUM_OPEN__ === true);
+// Salidas útiles cuando el pase del servidor no se puede ver (sin cuenta, sin conexión): el pase gratis del cliente y el probador.
+function _bpExitsHTML(login){
+  const quests = typeof window.questsOpen === "function", skins = typeof openGuardians === "function";
+  return `${quests ? '<div class="bp-msg" data-bp-free>Sin cuenta también tenés un pase: el Pase de temporada es gratis y se juega desde Desafíos.</div>' : ""}
+    <div class="mpc-cta-row">${quests ? '<button class="btn small" type="button" data-bp-act="freepass">Ver el pase gratis</button>' : ""}${skins ? '<button class="btn small secondary" type="button" data-bp-act="skins">Probar apariencias</button>' : ""}${login ? '<button class="btn small secondary" type="button" data-bp-act="login">Iniciar sesión</button>' : ""}</div>`;
+}
 function _bpEl(){
   if(BP.el && document.body.contains(BP.el)) return BP.el;
   const el = document.createElement("div");
@@ -38,6 +51,8 @@ function _bpEl(){
     if(b.dataset.bpAct === "close") bpClose();
     else if(b.dataset.bpAct === "retry") bpLoad();
     else if(b.dataset.bpAct === "login"){ bpClose(); if(typeof window.accountOpen === "function") window.accountOpen(); }
+    else if(b.dataset.bpAct === "freepass"){ bpClose(); if(typeof window.questsOpen === "function") window.questsOpen("pase"); }
+    else if(b.dataset.bpAct === "skins"){ bpClose(); if(typeof openGuardians === "function") openGuardians("skins"); }
     else if(b.dataset.bpAct === "premium") bpBuyPremium();
     else if(b.dataset.bpAct === "claim") bpClaim(+b.dataset.tier, b.dataset.track);
   });
@@ -83,7 +98,8 @@ async function bpClaim(tier, track){
 }
 async function bpBuyPremium(){
   const d = BP.data; if(!d || d.premium) return;
-  const ok = typeof gameConfirm === "function" ? await gameConfirm(`¿Activar la ruta premium por ✦ ${_bpFmt(d.pricePremiumBrasas)} Brasas? Dura toda la temporada y solo da cosméticos, oro y Brasas (nunca poder).`) : true;
+  if(BP_PREMIUM_HOLD && _bpPremiumPending(d)) return;
+  const ok = typeof gameConfirm === "function" ? await gameConfirm(`¿Activar la ruta premium por ✦ ${_bpFmt(d.pricePremiumBrasas)} Brasas? Dura toda la temporada y solo da cosméticos, oro y Brasas (nunca poder).${_bpPremiumPending(d) ? " Sus cosméticos todavía no tienen el arte final." : ""}`) : true;
   if(!ok) return;
   const r = await _bpPost("/api/battlepass/premium", {});
   if(r){ try{ if(typeof premiumRefresh === "function") premiumRefresh(true); }catch(e){} if(typeof showNetToast === "function") showNetToast("Ruta premium activada"); }
@@ -97,29 +113,29 @@ function _bpRender(){
     let body;
     if(BP.loading) body = `<div class="bp-msg">Cargando el pase…</div>`;
     else if(BP.err === "login") body = `<div class="bp-msg">Iniciá sesión con tu cuenta para ver y reclamar el pase. Tu progreso del pase se guarda en el servidor y te sigue entre dispositivos.</div>
-      <div class="mpc-preview-cap">Recompensas del pase</div>
-      <div class="mpc-locked-row" aria-hidden="true">${["🪙","✦","🎨","🎖","👑","🎁"].map(i => `<span class="mpc-locked"><span>${i}</span><span class="mpc-lk">🔒</span></span>`).join("")}</div>
-      <div class="mpc-cta-row"><button class="btn small" type="button" data-bp-act="login">Iniciar sesión</button></div>`;
-    else body = `<div class="bp-msg bp-err">${_bpEsc(BP.err || "")}</div><button class="btn small" type="button" data-bp-act="retry">Reintentar</button>`;
+      ${_bpExitsHTML(true)}`;
+    else body = `<div class="bp-msg bp-err">${_bpEsc(BP.err || "")}</div><button class="btn small" type="button" data-bp-act="retry">Reintentar</button>${_bpExitsHTML(false)}`;
     P.innerHTML = head + body + close; return;
   }
   const into = d.xp - d.tier * d.xpPerTier, pct = d.tier >= d.tiers ? 100 : Math.max(0, Math.min(100, Math.round(into / d.xpPerTier * 100)));
-  const claimed = new Set(d.claimed), dis = BP.busy ? " disabled" : "";
+  const claimed = new Set(d.claimed), dis = BP.busy ? " disabled" : "", pend = _bpPremiumPending(d);
   const cell = (t, track) => {
     const rw = t[track]; if(!rw) return `<div class="bp-cell bp-empty">—</div>`;
     const key = track + ":" + t.tier, done = claimed.has(key), unlocked = d.tier >= t.tier, canPremium = track !== "premium" || d.premium;
     const st = done ? "done" : (unlocked && canPremium ? "ready" : "locked");
     const act = st === "ready" ? `<button class="btn small bp-claim" type="button" data-bp-act="claim" data-tier="${t.tier}" data-track="${track}"${dis}>Reclamar</button>`
-      : st === "done" ? `<span class="bp-tag">✔ Reclamado</span>` : `<span class="bp-tag">${!unlocked ? "Nivel " + t.tier : "Requiere premium"}</span>`;
+      : st === "done" ? `<span class="bp-tag">✔ Reclamado</span>` : `<span class="bp-tag">${!unlocked ? "Nivel " + t.tier : (BP_PREMIUM_HOLD && pend ? "Más adelante" : "Requiere premium")}</span>`;
     return `<div class="bp-cell bp-${st}" data-key="${key}"><div class="bp-rw">${_bpRewardText(rw)}</div>${act}</div>`;
   };
   const rows = d.track.map(t => `<div class="bp-row${d.tier >= t.tier ? " bp-reached" : ""}"><div class="bp-lv">${t.tier}</div>${cell(t, "free")}${cell(t, "premium")}</div>`).join("");
   const chs = d.challenges.map(c => `<div class="bp-ch${c.done ? " bp-ch-done" : ""}"><span class="bp-ch-mode">${_bpEsc(c.mode)}</span> ${_bpEsc(c.text)} <b>${c.progress}/${c.target}</b> · +${_bpFmt(c.xp)} XP${c.done ? " ✔" : ""}</div>`).join("");
-  const prem = d.premium ? `<span class="bp-tag bp-on">Ruta premium activa</span>` : `<button class="btn small bp-buy" type="button" data-bp-act="premium"${dis}>Activar premium · ✦ ${_bpFmt(d.pricePremiumBrasas)}</button>`;
+  const prem = d.premium ? `<span class="bp-tag bp-on">Ruta premium activa</span>`
+    : BP_PREMIUM_HOLD && pend ? `<span class="bp-tag" data-bp-hold>El pase premium llega más adelante.</span>`
+    : `<button class="btn small bp-buy" type="button" data-bp-act="premium"${dis}>Activar premium · ✦ ${_bpFmt(d.pricePremiumBrasas)}</button>`;
   P.innerHTML = head +
     `<div class="bp-top"><div><b>Temporada ${d.season.id}</b> · quedan ${d.season.daysLeft} días</div><div>Nivel <b>${d.tier}</b>/${d.tiers} · ${_bpFmt(d.xp)} XP</div></div>` +
     `<div class="bp-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}"><i style="width:${pct}%"></i></div>` +
-    `<div class="bp-prem">${prem}<span class="bp-hint">El XP se gana al terminar partidas de Campaña y Horda Infinita. Premium no da poder.</span></div>` +
+    `<div class="bp-prem">${prem}<span class="bp-hint">El XP se gana al terminar partidas de Campaña y Horda Infinita. Premium no da poder.</span>${pend && !d.premium && !BP_PREMIUM_HOLD ? '<span class="bp-hint" data-bp-pending>Los cosméticos premium todavía no tienen el arte final. El pase gratis no cambia.</span>' : ""}</div>` +
     (BP.note ? `<div class="bp-msg bp-err" role="alert">${_bpEsc(BP.note)}</div>` : "") +
     `<div class="bp-cols"><div class="bp-track"><div class="bp-row bp-hd"><div class="bp-lv">Nv</div><div class="bp-cell">Gratis</div><div class="bp-cell">Premium ✦</div></div>${rows}</div>` +
     `<div class="bp-chs"><div class="bp-sub">Desafíos de la temporada</div>${chs}</div></div>` + close;

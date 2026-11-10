@@ -11,7 +11,7 @@ const ALPHA_GUIDE = Object.freeze([
   {level:6, title:"Sets", text:"Las piezas verdes pertenecen a Sets. Consultá piezas faltantes y origen para elegir qué arena repetir. La apariencia de Set es cosmética; los efectos del equipo se describen aparte."},
   {level:7, title:"Fusión", text:"Revisá la fusión en Equipamiento: usá duplicados compatibles y comprobá el resultado antes de confirmar. Conservá las piezas que necesitás para tu Set."},
   {level:8, title:"Multijugador", text:"Creá una sala o ingresá su código. Prepará campeón, equipo, talentos y apariencia antes de estar listo. El anfitrión comienza la partida. Mantené ✚ junto a un aliado caído para revivirlo."},
-  {level:9, title:"Galería y colección", text:"Visitá la galería para comparar skins y cromas. Durante Alpha las apariencias habilitadas para pruebas no requieren dinero real. Revisá el origen de cada recompensa en el Códice."},
+  {level:9, title:"Galería y colección", text:"Visitá la galería para comparar skins y cromas. Revisá el origen de cada recompensa en el Códice."},
   {level:10, title:"Maestría y siguiente objetivo", text:"Consultá los requisitos de maestría del campeón: aprender el sistema no elimina sus requisitos. Elegí un Set, una arena o una habilidad para practicar. Volvé a esta Guía cuando lo necesites."}
 ]);
 // El tutorial se juega con el guardián que elegiste (antes forzaba a Thalen, el Mago). Si el elegido no se puede usar acá
@@ -21,12 +21,45 @@ function alphaTrainingClassKey(){
   const ok=!!(c&&c.unlocked&&CLASSES[k]&&(typeof championPlayable!=='function'||championPlayable(k)));
   return {cls:ok?k:'mago',want:k,fallback:!ok&&k!=='mago'};
 }
+// Con qué se juega AHORA: "kb" (teclado y mouse), "pad" (mando) o "touch". Es la misma detección que usan los botones del HUD y
+// el Hechicero (js/core/input-desk.js: DESK.device, ctlHint, deskActionLabel): acá no hay tabla de teclas propia.
+function alphaTrainingDevice(){
+  try{ const d=typeof DESK!=='undefined'?DESK.device:null; return (d==='kb'||d==='pad')&&typeof ctlHint==='function'?d:'touch'; }catch(e){ return 'touch'; }
+}
+// Textos del tutorial para teclado o mando. En táctil no se usa: quedan los textos de siempre (ALPHA_TRAINING_STEPS).
+function alphaTrainingDeskText(id,d,nm,plain){
+  const key=a=>typeof deskActionLabel==='function'?deskActionLabel(a):'';
+  if(id==='attack') return `${ctlHint('attack')}: ${plain?'tu mago dispara':nm+' golpea'} al enemigo cercano. Derrotá al esqueleto.`;
+  if(id==='skill') return `Las habilidades pegan mucho más que el ataque. ${ctlHint('skill')}.`;
+  if(id==='inspect') return d==='kb'?'¿Qué hace cada habilidad? MANTENÉ el clic sobre su botón sin arrastrar: aparece su ficha y NO se lanza. Soltá para cerrarla.':null;
+  if(id==='cooldown') return `El barrido del botón y el número indican cuánto falta. Esperá a que se llene la MISMA habilidad que usaste recién (la que está resaltada) y volvé a apretar su ${d==='pad'?'botón':'tecla'}.`;
+  if(id==='ultimate') return `La definitiva (★) se carga peleando y se habilita avanzada la arena. Te la cargué: ${ctlHint('ult').replace(/^A/,'a')} para usarla contra el grupo.`;
+  if(id==='revive') return `Elyra cayó. Parate a su lado y MANTENÉ ${d==='pad'?padGlyph('LT'):key('ctx')} (unos 5 s). Un golpe no te corta; soltar o alejarte, sí.`;
+  if(id==='tactical') return `Apretá ${d==='pad'?padGlyph('START'):'Esc'}: el Panel táctico muestra tu kit, recargas, estados y equipo. Sola pausa; en multijugador la partida SIGUE. Cerralo con Continuar.`;
+  return null;
+}
 function alphaTrainingText(s){
-  const t=ALPHA_TRAINING,cls=t.cls||'mago',nm=(CLASSES[cls]&&CLASSES[cls].name)||'tu guardián';
-  if(s.id==='move') return t.fallback?`Tu guardián no se puede usar en el entrenamiento: practicamos con ${nm} y después volvés a tu campeón. Usá el joystick de abajo a la izquierda para moverte.`
-    :cls==='mago'&&!t.chosen?s.text:`Practicás con ${nm}, tu guardián. Usá el joystick de abajo a la izquierda para moverte.`;
-  if(s.id==='attack'&&!(cls==='mago'&&!t.chosen)) return `Mantené el botón Ataque de la derecha: ${nm} golpea al enemigo cercano. Derrotá al esqueleto.`;
+  const t=ALPHA_TRAINING,cls=t.cls||'mago',nm=(CLASSES[cls]&&CLASSES[cls].name)||'tu guardián',d=alphaTrainingDevice(),plain=cls==='mago'&&!t.chosen;
+  // cómo moverse: en táctil la frase de siempre; con teclado o mando, las teclas/el stick reales
+  const move=d==='touch'?'Usá el joystick de abajo a la izquierda para moverte.':ctlHint('move')+'.';
+  if(s.id==='move') return t.fallback?`Tu guardián no se puede usar en el entrenamiento: practicamos con ${nm} y después volvés a tu campeón. ${move}`
+    :plain?(d==='touch'?s.text:`Practicamos con Thalen; después volvés a tu campeón. ${move}`):`Practicás con ${nm}, tu guardián. ${move}`;
+  if(d!=='touch'){ const x=alphaTrainingDeskText(s.id,d,nm,plain); if(x) return x; }
+  if(s.id==='attack'&&!plain) return `Mantené el botón Ataque de la derecha: ${nm} golpea al enemigo cercano. Derrotá al esqueleto.`;
   return s.text;
+}
+// Renglón "▶ qué hacer" de cada paso, también según el dispositivo.
+function alphaTrainingTarget(s){
+  const d=alphaTrainingDevice();
+  if(d==='kb'&&s.id==='inspect') return 'Mantené el clic sobre una habilidad para leer su ficha';
+  if(d!=='touch'&&s.id==='revive') return `Mantené ${d==='pad'?padGlyph('LT'):deskActionLabel('ctx')} junto a Elyra hasta revivirla`;
+  return s.target;
+}
+// Guía (nivel 1): la primera frase nombra el control real.
+function alphaGuideText(g){
+  const d=alphaTrainingDevice();
+  if(g.level!==1||d==='touch') return g.text;
+  return g.text.replace('Movete con el joystick. Mantené Ataque para golpear al enemigo cercano.',`${ctlHint('move')}. ${ctlHint('attack')}: tu guardián golpea al enemigo cercano.`);
 }
 const ALPHA_TRAINING = {active:false, step:0, elapsed:0, phaseTime:0, doneAt:0, snapshot:null, metrics:{}};
 function alphaFirstRunContinue(){
@@ -81,11 +114,12 @@ const ALPHA_TRAINING_STEPS = Object.freeze([
 function snapshotChosen(){return typeof ALPHA_TRAINING!=='undefined'&&ALPHA_TRAINING.snapshot&&ALPHA_TRAINING.snapshot.save&&ALPHA_TRAINING.snapshot.save.starterChosen;}
 function alphaTrainingActive(){return ALPHA_TRAINING.active;}
 function alphaTrainingEmit(event, extra){ window.dispatchEvent(new CustomEvent("horda-alpha",{detail:Object.assign({event,mode:"training"},extra||{})})); }
-function alphaGuideHTML(){ return '<div class="alpha-guide-list">'+ALPHA_GUIDE.map(g=>`<section><h3>Nivel ${g.level} · ${g.title}</h3><p>${g.text}</p></section>`).join('')+'</div>'; }
+function alphaGuideHTML(){ return '<div class="alpha-guide-list">'+ALPHA_GUIDE.map(g=>`<section><h3>Nivel ${g.level} · ${g.title}</h3><p>${alphaGuideText(g)}</p></section>`).join('')+'</div>'; }
 function alphaGuideOpen(){
   if(ALPHA_TRAINING.active) return;
   let el=document.getElementById('alpha-guide');
   if(!el){el=document.createElement('dialog');el.id='alpha-guide';el.className='alpha-guide';el.innerHTML='<header><h2>CÓDICE · GUÍA DE JUEGO</h2><button type="button" data-close>Cerrar</button></header>'+alphaGuideHTML()+'<button type="button" data-train>ARENA DE ENTRENAMIENTO · 3 minutos</button>';document.body.appendChild(el);el.querySelector('[data-close]').onclick=()=>el.close();el.querySelector('[data-train]').onclick=()=>{el.close();alphaTrainingStart();};}
+  else{ const l=el.querySelector('.alpha-guide-list'); if(l) l.outerHTML=alphaGuideHTML(); } // el texto de controles sigue al dispositivo en uso
   if(!el.open) el.showModal();
 }
 // Punto de salida temprana: con lo básico ya se puede jugar; lo demás se consulta en la Guía y en Códice › Arenas.
@@ -119,7 +153,7 @@ function alphaTrainingEnterStep(){
   if(s.id==='danger')alphaTrainingDanger();
   if(s.id==='revive')alphaTrainingDowned();
   const arenaLabel=document.getElementById('hud-arena');if(arenaLabel)arenaLabel.textContent='Entrenamiento';
-  const el=alphaTrainingPanel();t.choice=null;el.classList.remove('hidden');el.querySelector('.alpha-cp').classList.toggle('hidden',s.id!=='checkpoint');el.querySelector('strong').textContent=s.title;el.querySelector('p').textContent=alphaTrainingText(s);el.querySelector('.alpha-training-goal').textContent='▶ '+s.target;
+  const el=alphaTrainingPanel();t.choice=null;el.classList.remove('hidden');el.querySelector('.alpha-cp').classList.toggle('hidden',s.id!=='checkpoint');el.querySelector('strong').textContent=s.title;el.querySelector('p').textContent=alphaTrainingText(s);el.querySelector('.alpha-training-goal').textContent='▶ '+alphaTrainingTarget(s);
   alphaTrainingEmit('tutorial_step',{step:s.id});
 }
 // Peligro: un golpe marcado en el piso (vfxTelegraph real) sobre el jugador; si al llenarse ya salió, aprendió.
@@ -211,7 +245,7 @@ function alphaOnboardingMenu(){
   const c=save.champions[selectedClass]||{},level=Math.max(1,Math.min(10,c.level||1)),seen=(save.tut&&save.tut.onboarding)||{},g=alphaOnboardingLesson(level,seen);
   card.dataset.lesson=g?String(g.level):'';
   card.querySelector('summary').textContent=g?`Guía · Nivel ${g.level}: ${g.title}`:'Guía · al día';
-  card.querySelector('p').textContent=g?g.text:'Ya revisaste los consejos disponibles para este campeón. Podés volver a consultar la Guía cuando quieras.';
+  card.querySelector('p').textContent=g?alphaGuideText(g):'Ya revisaste los consejos disponibles para este campeón. Podés volver a consultar la Guía cuando quieras.';
   card.querySelector('[data-understood]').hidden=!g;
   card.querySelector('[data-train]').textContent=save.tut&&save.tut.training?'REPETIR TUTORIAL · 3 min':'ARENA DE ENTRENAMIENTO · 3 min';
 }

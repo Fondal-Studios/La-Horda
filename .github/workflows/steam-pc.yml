@@ -1,0 +1,35 @@
+name: Preparación para Steam (PC)
+# Entrada y pantallas de escritorio (teclado, mando, pantalla completa, salir), tutorial con teclas reales, robustez del guardado,
+# presupuesto del HUD/cachés, panel "Lo próximo que desbloqueás" y el contenedor de escritorio (staging con lista blanca).
+# Estado real y pendientes: docs/steam/README.md · docs/beta-release/auditoria-steam/
+on:
+  pull_request:
+    paths: ['js/core/**', 'js/net/account.js', 'js/net/net-rooms.js', 'js/ui/**', 'js/storage/**', 'js/systems/combat.js', 'js/champions/skill-fx-a/**', 'js/systems/alpha-training.js', 'js/assets/preload.js', 'js/rendering/pixel-stroke.js', 'css/**', 'index.html', 'desktop/**', 'tools/ux/test-pc-*.js', 'tools/ux/test-next-unlock.js', 'tools/ux/test-steam-achievements.js', 'tools/steam/**', 'docs/steam/**', 'js/systems/quests.js', 'js/data/quests.js', 'tools/perf/test-hud-throttle.js', 'tools/regression/t_save_resilience.js', '.github/workflows/steam-pc.yml']
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  steam-pc:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-playwright
+      - name: "Entrada de PC: Esc, flechas, refuerzos con teclado, pantalla completa, pausa por foco, invitado, salas sin red"
+        run: node tools/ux/test-pc-input.js
+      - name: "Primer minuto en PC: tutorial y ayuda con teclas reales, selector de guardianes, menú a 1080p, restos de alfa"
+        run: node tools/ux/test-pc-onboarding.js
+      - name: "Opciones en PC: pantalla completa, salir (solo app), filas táctiles, modos de la beta, mando de PlayStation"
+        run: node tools/ux/test-pc-options.js
+      - name: "Robustez del guardado: victoria sin trabarse, guardado ilegible o lleno, daño que nunca cura, cofres de la Horda"
+        run: node tools/regression/t_save_resilience.js
+      - name: "Panel «Lo próximo que desbloqueás»"
+        run: node tools/ux/test-next-unlock.js
+      - name: "Presupuesto del HUD, del canvas y de las cachés"
+        run: node tools/perf/test-hud-throttle.js
+      - name: "Contenedor de escritorio: lista blanca, referencias de index.html y carga del staging"
+        run: node desktop/test-stage.mjs
+      - name: "Logros de Steam: lista para Steamworks al día, un envío por logro nuevo, id en minúsculas, sin romper si Steam falla"
+        run: node tools/ux/test-steam-achievements.js

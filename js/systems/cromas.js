@@ -6,7 +6,7 @@
    authoredPacks usa metadata independiente; files sigue admitiendo cromas futuras.
    Generador histórico de cromas:
    (tools/art/cromas/build.py -> js/assets/croma-skins-meta.js). No son skins de set: se compran
-   sueltas con ORO DEL JUEGO en la Tienda y se equipan por guardián. Cosmético puro: no dan poder
+   sueltas SOLO con Brasas ✦ (el oro no las compra) y se equipan por guardián. Cosmético puro: no dan poder
    (nunca plata real, sin pay-to-win). Paletas ligadas a los cristales de los Guardianes:
    Ancestral (verde), Escarcha (celeste), Piedra (ámbar), Juicio (oro blanco).
 
@@ -180,7 +180,7 @@ function cosmeticMetadata(id){
     lore:d.lore || COSMETIC_SET_STORIES[id] || "Historia de esta apariencia pendiente de completar.",
     artPending:!croma && cosmeticArtPending(d),
     lorePending:!d.lore && !COSMETIC_SET_STORIES[id], visualTheme:d.visualTheme || (croma ? d.crystal : set && set.theme) || d.name,
-    unlockSource:croma ? "Galería · oro obtenido jugando" : "Reunir " + (set ? set.name : id),
+    unlockSource:croma ? "Brasas ✦ · cosmético, no da poder" : "Reunir " + (set ? set.name : id),
     sourceArenas:sources, collection:d.collection || (croma ? "Cristales de los Guardianes" : set ? set.name : id),
     vfxProfile:fx ? "Variantes visuales del set" : "Original", sfxProfile:d.sfxProfile || "Original",
     preview:d.preview || d.src || null, premiumPrice:null, currency:null, availability:"alpha-preview",

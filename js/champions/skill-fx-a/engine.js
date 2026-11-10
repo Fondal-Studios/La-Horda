@@ -15,11 +15,34 @@
    ============================================================ */
 const SFA_POOL_MAX = 40;
 const sfaPool = [];
-const sfaCache = new Map();
+const sfaCache = new Map();   // horneados de la arena en curso (la clave termina en "|arena"); solo contiene los de ESA arena
 let sfaCacheArena = null;
+// PRESUPUESTO DE MEMORIA (bytes de píxeles = ancho × alto × 4 de cada tira):
+//  · sfaCache no tenía tope: crecía con cada (arte, tema, tamaño) usado en la arena. Ahora, al pasar SFA_CACHE_MAX_BYTES se
+//    sueltan los horneados menos usados recientemente (nunca el recién horneado ni los usados en este mismo cuadro).
+//  · Al cambiar de arena se vaciaba ENTERO, y al volver a una arena ya jugada (otra partida, vuelta al menú, rejugar) había
+//    que hornear todo de nuevo (~10 ms por tira, en el hilo principal). Ahora los horneados de la arena que se deja pasan a
+//    sfaStash (LRU con tope SFA_STASH_MAX_BYTES) y se recuperan tal cual si se vuelve: mismo canvas, mismos píxeles.
+//    En equipos con poca memoria el tope es 0: se comporta exactamente como antes (no se retiene ninguna otra arena).
+// sfaCache.clear() (lo usan las herramientas para forzar un horneado nuevo) también vacía sfaStash.
+const sfaLowMem = (() => { try { return (navigator.deviceMemory && navigator.deviceMemory <= 4) || (typeof matchMedia === 'function' && matchMedia('(pointer: coarse)').matches && !matchMedia('(any-pointer: fine)').matches); } catch (e) { return false; } })();
+const SFA_CACHE_MAX_BYTES = 64 * 1048576;
+const SFA_STASH_MAX_BYTES = sfaLowMem ? 0 : 32 * 1048576;
+const sfaStash = new Map();
+let sfaUse = 0;
+const sfaBytesOf = b => (b && b.cv ? b.cv.width * b.cv.height * 4 : 0);
+const sfaMapBytes = m => { let n = 0; for (const b of m.values()) n += sfaBytesOf(b); return n; };
+// suelta los menos usados de un mapa hasta quedar bajo el tope; keep(b) protege entradas
+function sfaTrim(map, max, keep) {
+  let bytes = sfaMapBytes(map); if (bytes <= max) return 0;
+  const order = [...map.entries()].sort((x, y) => (x[1].u || 0) - (y[1].u || 0)); let dropped = 0;
+  for (const [k, b] of order) { if (bytes <= max) break; if (keep && keep(b)) continue; map.delete(k); bytes -= sfaBytesOf(b); dropped++; }
+  return dropped;
+}
+sfaCache.clear = function () { sfaStash.clear(); return Map.prototype.clear.call(this); };
 const sfaThemes = {};
 let sfaLastT = 0;
-const sfaStats = {baked: 0, bakeMs: 0, drawn: 0};
+const sfaStats = {baked: 0, bakeMs: 0, drawn: 0, restored: 0, evicted: 0};
 
 const sfaCol = hex => { const n = parseInt(hex.slice(1), 16); return (((255 << 24) | ((n & 255) << 16) | (((n >> 8) & 255) << 8) | ((n >> 16) & 255)) >>> 0); };
 const sfaHash = (x, y) => { let h = (x * 374761393 + y * 668265263) | 0; h = Math.imul(h ^ (h >>> 13), 1274126177); return ((h ^ (h >>> 16)) >>> 0) / 4294967296; };
@@ -274,9 +297,14 @@ function sfaTintTheme(T, arena) {
 }
 function sfaBake(art, theme, size, arc) {
   const arena = sfaArenaKey();
-  // Arena tint must not retain ten copies of every baked animation on mobile.
-  if (arena !== sfaCacheArena) { sfaCache.clear(); sfaCacheArena = arena; }
-  const key = art + '|' + theme + '|' + size + '|' + (arc || 0) + '|' + arena; let b = sfaCache.get(key); if (b) return b;
+  // Arena tint must not retain ten copies of every baked animation on mobile: sfaCache keeps ONLY the current arena;
+  // the arena being left goes to the byte-capped LRU stash (cap 0 on low-memory devices = dropped, as before).
+  if (arena !== sfaCacheArena) {
+    if (SFA_STASH_MAX_BYTES > 0) { for (const [k, v] of sfaCache) sfaStash.set(k, v); sfaStats.evicted += sfaTrim(sfaStash, SFA_STASH_MAX_BYTES); }
+    Map.prototype.clear.call(sfaCache); sfaCacheArena = arena;
+  }
+  const key = art + '|' + theme + '|' + size + '|' + (arc || 0) + '|' + arena; let b = sfaCache.get(key); if (b) { b.u = ++sfaUse; return b; }
+  if ((b = sfaStash.get(key))) { sfaStash.delete(key); b.u = ++sfaUse; sfaCache.set(key, b); sfaStats.restored++; return b; }
   let T = sfaTheme(theme); if (!T) return null;
   if (arena) T = sfaTintTheme(T, arena);
   const t0 = performance.now();
@@ -286,9 +314,13 @@ function sfaBake(art, theme, size, arc) {
   else if (art === 'beam') S = sfaBakeBeam(T, size); else if (art === 'burst') S = sfaBakeBurst(T, size); else if (art === 'aura') S = sfaBakeAura(T);
   else if (art === 'rays') S = sfaBakeRays(T, size); else if (art === 'rings') S = sfaBakeRings(T, size); else if (art === 'column') S = sfaBakeColumn(T);
   else return null;
-  b = {cv: S.toCanvas(), w: S.w, h: S.h, n: S.n}; sfaCache.set(key, b); sfaStats.baked++; sfaStats.bakeMs += performance.now() - t0; return b;
+  b = {cv: S.toCanvas(), w: S.w, h: S.h, n: S.n, u: ++sfaUse}; sfaCache.set(key, b); sfaStats.baked++; sfaStats.bakeMs += performance.now() - t0;
+  // tope por bytes: no se suelta lo horneado/usado en los últimos SFA_POOL_MAX*4 usos (lo que se está dibujando ahora)
+  if (sfaCache.size > 1) { const floor = sfaUse - SFA_POOL_MAX * 4; sfaStats.evicted += sfaTrim(sfaCache, SFA_CACHE_MAX_BYTES, x => x === b || (x.u || 0) > floor); }
+  return b;
 }
 function sfaDefineTheme(name, def) {
+  if (sfaStash.size) sfaStash.clear(); // un tema redefinido no debe recuperar horneados viejos de otra arena
   const px = {}; for (const k in def.pal) px[k] = sfaCol(def.pal[k]);
   sfaThemes[name] = Object.assign({shape: 'round', nMotif: 8, emblem: 'spark', motifs: ['spark']}, def, {px});
 }

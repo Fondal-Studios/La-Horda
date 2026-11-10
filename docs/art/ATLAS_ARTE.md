@@ -18,7 +18,7 @@ Generado por `node tools/art/build-art-atlas.js` (no editar a mano). Fuente de v
 - Enemigos: CODEX_OK 63 · FALTA_ANIMACION 12 · ARTE_VIEJO 1
 - Jefes y subjefes: CODEX_OK 14 · FALTA_ANIMACION 13 · ARTE_VIEJO 1
 - Archivos (arenas, props, battlefield, enemigos, jefes, campeones): CODEX_OK 871 · HUERFANO 104 · ARTE_VIEJO 30
-- Fuentes del registro: 51 archivos, huella `ae1973564590`
+- Fuentes del registro: 51 archivos, huella `86dcb027c894`
 
 ## Campeones (cuerpo base)
 
@@ -249,11 +249,11 @@ Cuadros distintos de idle / caminata (perfil) / ataque / muerte medidos con `dra
 | arana | subelite | fortaleza | CODEX_OK | real | 1 | 3 | 2 | 2 | `arenas/fortaleza/arana/atlas.png` 1424x230 |
 | dragon_forja | subjefe | fortaleza | FALTA_ANIMACION | real | 1 | 2 | 1 | 1 | `battlefield/dragon_forja.png` 1792x384 |
 | caballero | jefe | fortaleza | CODEX_OK | real | 1 | 6 | 5 | 2 | `arenas/fortaleza/caballero/atlas.png` 1824x690 |
-| infectado | normal | micelial | CODEX_OK | real | 1 | 3 | 2 | 2 | `arenas/micelial/infectado/atlas.png` 1520x204 |
-| acechador | subelite | micelial | CODEX_OK | real | 1 | 3 | 2 | 2 | `arenas/micelial/acechador/atlas.png` 1744x210 |
+| infectado | normal | micelial | CODEX_OK | real | 1 | 6 | 2 | 2 | `arenas/micelial/infectado/atlas.png` 2072x426 |
+| acechador | subelite | micelial | CODEX_OK | real | 1 | 6 | 2 | 2 | `arenas/micelial/acechador/atlas.png` 1688x414 |
 | hinchado | elite | micelial | CODEX_OK | real | 1 | 3 | 2 | 2 | `arenas/micelial/hinchado/atlas.png` 1792x288 |
 | peregrino | subelite | micelial | CODEX_OK | real | 1 | 3 | 2 | 2 | `arenas/micelial/peregrino/atlas.png` 1712x266 |
-| sabueso | normal | micelial | CODEX_OK | real | 1 | 3 | 2 | 2 | `arenas/micelial/sabueso/atlas.png` 1800x210 |
+| sabueso | normal | micelial | CODEX_OK | real | 1 | 4 | 2 | 2 | `arenas/micelial/sabueso/atlas.png` 2176x342 |
 | chaman | elite | micelial | CODEX_OK | real | 1 | 3 | 2 | 2 | `arenas/micelial/chaman/atlas.png` 1328x410 |
 | nucleo_micelial | subelite | micelial | FALTA_ANIMACION | real | 1 | 1 | 1 | 0 | `arenas/micelial/fx/nucleo_3.png` 40x64 |
 | raiz_absorcion | subelite | micelial | FALTA_ANIMACION | real | 1 | 1 | 1 | 0 | `arenas/micelial/fx/root_curl.png` 64x96 |
@@ -299,7 +299,7 @@ Un registro por imagen (PNG; el `.webp` es su copia sin pérdida) en `ATLAS_ARTE
 
 | Carpeta | Imágenes | MB | ARTE_VIEJO | HUERFANO |
 |---|--:|--:|--:|--:|
-| arenas | 185 | 23.1 | 0 | 2 |
+| arenas | 185 | 23.2 | 0 | 2 |
 | battlefield | 32 | 4.0 | 0 | 0 |
 | bosses | 94 | 5.5 | 0 | 0 |
 | champions | 488 | 71.1 | 30 | 102 |

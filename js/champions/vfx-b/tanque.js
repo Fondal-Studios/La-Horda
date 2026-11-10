@@ -29,8 +29,8 @@
     kvbBeam('al_charge', x, y, ex, ey, 38, 520, {layer: 'g'}); kvbEmit('al_dust', 5, x, y, {ang: ang + 3.14, spread: 1.2, v0: 30, v1: 90, up: 15, l0: 380, l1: 560, scale: 1.4});
     kvbDecal('al_shout', ex, ey, 34, 480, {layer: 'g'}); kvbPart('al_shield', ex, ey - 30, {dur: 520, scale: 1.8, layer: 't', vy: -20, fadeAt: .5}); kvbEmit('al_spark', 7, ex, ey, {v0: 40, v1: 130, up: 30, l0: 240, l1: 420, scale: 1.3, shrink: true});
   };
-  KVB_FX['aldric.warcry'] = (x, y, r) => { kvbDecal('al_shout', x, y, r, 820, {layer: 'g'}); kvbEmit('al_chev', 5, x, y, {ring: 18, v0: 5, v1: 20, up: 70, l0: 520, l1: 800, scale: 1.3, flat: .6}); kvbPart('al_shield', x, y - 54, {dur: 800, scale: 1.7, layer: 't', vy: -16, fadeAt: .5}); };
-  KVB_FX['aldric.taunt'] = (x, y, r) => { kvbDecal('al_taunt', x, y, r, 980, {layer: 'g'}); kvbEmit('al_spark', 12, x, y, {ring: r * .5, v0: 30, v1: 140, up: 40, l0: 300, l1: 520, scale: 1.4, flat: .7, shrink: true}); kvbPart('al_excl', x, y - 64, {dur: 900, scale: 2.4, layer: 't', vy: -12, fadeAt: .5}); };
+  KVB_FX['aldric.warcry'] = (x, y, r) => { kvbDecal('al_shout', x, y, r, 820, {layer: 'g'}); kvbEmit('al_chev', 5, x, y, {ring: 18, v0: 5, v1: 20, up: 70, l0: 520, l1: 800, scale: 1.3, flat: .6}); kvbPart('al_shield', x, y - 54, {dur: 800, scale: 1.2, layer: 't', vy: -16, fadeAt: .5}); };
+  KVB_FX['aldric.taunt'] = (x, y, r) => { kvbDecal('al_taunt', x, y, r, 980, {layer: 'g'}); kvbEmit('al_spark', 12, x, y, {ring: r * .5, v0: 30, v1: 140, up: 40, l0: 300, l1: 520, scale: 1.4, flat: .7, shrink: true}); kvbPart('al_excl', x, y - 64, {dur: 900, scale: 1.6, layer: 't', vy: -12, fadeAt: .5}); };
 
   kvbClassic('tanque', 'spin_channel', (c, sk, u, sc) => ['aldric.spin', c.x, c.y, c.spinRadius || sk.radius * sc.AREA, 0, 0, 0]);
   kvbClassic('tanque', 'charge_drag', (c, sk, u, sc, aim, pre) => { const d = Math.hypot(c.x - pre.x, c.y - pre.y); return ['aldric.charge', pre.x, pre.y, 26, Math.atan2(c.y - pre.y, c.x - pre.x), d, 0]; });

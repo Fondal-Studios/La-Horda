@@ -93,7 +93,8 @@ function startChampAnimLoop(){
     for(const cvs of list){
       const g = cvs.getContext("2d");
       // data-skin: skin a mostrar ("" = ninguna). Sin el atributo, la del guardado local (tus guardianes).
-      const ex = cvs.dataset.skin !== undefined ? {_codexSkin:cvs.dataset.skin || null} : undefined;
+      let ex = cvs.dataset.skin !== undefined ? {_codexSkin:cvs.dataset.skin || null} : undefined;
+      if(cvs.dataset.ascSkin !== undefined) ex = Object.assign(ex || {}, {ascSkin:+cvs.dataset.ascSkin | 0}); // vista previa de una apariencia de Ascensión (solo visual)
       g.clearRect(0,0,cvs.width,cvs.height);
       if(cvs.dataset.idle){
         // quieto y RESPIRANDO: animación de reposo + el pecho que sube y baja (cada uno a su ritmo)
@@ -522,11 +523,21 @@ function netLeaveAfterMatch(){
   if(netMatch || netInRoom()){ netFinishMatch(); if(netInRoom()) netLeaveRoom(); return true; }
   return gone;
 }
+// "JUGAR AHORA" del título (partida rápida con un guardián prestado) puede jugarse SIN tener ningún guardián propio. Al terminar,
+// "Volver al menú" caía en ELEGÍ TU GUARDIÁN con todo bloqueado y hacían falta tres "Volver" para llegar al menú. Sin guardián
+// propio se va derecho al menú principal, donde JUGAR regala el primer guardián (hubPlay → openStarterSelect). No toca la economía.
+function noGuardianToHub(){
+  if(typeof needsStarterChampion!=="function" || !needsStarterChampion()) return false;
+  if(typeof prepReturnTo!=="undefined") prepReturnTo = null;
+  setState("mainmenu"); renderMainMenu();
+  return true;
+}
 document.getElementById("menu-btn-1").addEventListener("click", ()=>{
   const go = ()=>{
     if(netLeaveAfterMatch()){ setState("mainmenu"); renderMainMenu(); return; }
     if(typeof firstRunToHub==="function" && firstRunToHub()) return; // primera partida: al hub (js/ui/hub.js)
     if(currentArena==="divina"){ setState("divina"); return; }
+    if(noGuardianToHub()) return;
     setState("menu"); renderChampGrid(); renderSaveLine();
   };
   if(net.role==="host" && netHumanCount()>1){
@@ -541,6 +552,7 @@ document.getElementById("menu-btn-2").addEventListener("click", ()=>{
   const go = ()=>{
     if(netLeaveAfterMatch()){ setState("mainmenu"); renderMainMenu(); return; }
     if(typeof firstRunToHub==="function" && firstRunToHub()) return; // primera partida: al hub (js/ui/hub.js)
+    if(noGuardianToHub()) return;
     setState("menu"); renderChampGrid(); renderSaveLine();
   };
   if(net.role==="host" && netHumanCount()>1){
