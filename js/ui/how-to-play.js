@@ -92,7 +92,7 @@ function howtoDeskText(key, i, d){
     "Se carga peleando y se habilita desde el nivel 5 de la arena. Cuando brilla, usala: " + low(ctlHint("ult")) + "."][i];
   if(key==="botin" && i===0) return "Los enemigos sueltan objetos en el piso, con un haz de luz según su rareza. " + ctlHint("loot") + ".";
   if(key==="progreso" && i===2 && d==="kb") return "Cuando ves un + sobre una habilidad, tenés un punto para hacerla más fuerte. Hacele clic.";
-  if(key==="pausa" && i===0) return "Apretá " + (d==="pad" ? "Start" : "Esc") + ". Con la partida pausada ves tu Resumen, la ayuda y las opciones. En partidas online no hay pausa.";
+  if(key==="pausa" && i===0) return "Apretá " + (d==="pad" ? padGlyph("START") : "Esc") + ". Con la partida pausada ves tu Resumen, la ayuda y las opciones. En partidas online no hay pausa.";
   return null;
 }
 function howtoSteps(topic, modeKey){

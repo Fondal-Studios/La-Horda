@@ -73,3 +73,19 @@ const FULLSCREEN = (function(){
   }, true);
   return { enter, active, toggle, get toggles(){ return S.toggles; }, get enabled(){ return on; }, get requests(){ return S.requests; }, get lockOk(){ return S.lockOk; } };
 })();
+
+/* Opciones › Pantalla: botón de pantalla completa y, solo en la app de escritorio, "Salir del juego". */
+(function wireScreenOptions(){
+  function wire(){
+    const fs = document.getElementById("opt-fs-btn"), qr = document.getElementById("opt-quit-row"), qb = document.getElementById("opt-quit-btn");
+    if(fs) fs.addEventListener("click", ()=>{ try{ FULLSCREEN.toggle(); }catch(e){} });
+    const D = window.HORDA_DESKTOP;
+    if(qr && D && typeof D.quit === "function") qr.hidden = false;
+    if(qb) qb.addEventListener("click", async ()=>{
+      const D2 = window.HORDA_DESKTOP; if(!D2 || typeof D2.quit !== "function") return;
+      let ok = true; try{ ok = typeof gameConfirm === "function" ? await gameConfirm("¿Cerrar el juego? Tu progreso ya está guardado.", {okText:"Salir"}) : true; }catch(e){}
+      if(ok) try{ if(typeof persistNow === "function") persistNow(); }catch(e){} if(ok) D2.quit();
+    });
+  }
+  if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire); else wire();
+})();

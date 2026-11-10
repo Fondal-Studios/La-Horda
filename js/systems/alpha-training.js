@@ -34,8 +34,8 @@ function alphaTrainingDeskText(id,d,nm,plain){
   if(id==='inspect') return d==='kb'?'¿Qué hace cada habilidad? MANTENÉ el clic sobre su botón sin arrastrar: aparece su ficha y NO se lanza. Soltá para cerrarla.':null;
   if(id==='cooldown') return `El barrido del botón y el número indican cuánto falta. Esperá a que se llene la MISMA habilidad que usaste recién (la que está resaltada) y volvé a apretar su ${d==='pad'?'botón':'tecla'}.`;
   if(id==='ultimate') return `La definitiva (★) se carga peleando y se habilita avanzada la arena. Te la cargué: ${ctlHint('ult').replace(/^A/,'a')} para usarla contra el grupo.`;
-  if(id==='revive') return `Elyra cayó. Parate a su lado y MANTENÉ ${d==='pad'?'LT':key('ctx')} (unos 5 s). Un golpe no te corta; soltar o alejarte, sí.`;
-  if(id==='tactical') return `Apretá ${d==='pad'?'Start':'Esc'}: el Panel táctico muestra tu kit, recargas, estados y equipo. Sola pausa; en multijugador la partida SIGUE. Cerralo con Continuar.`;
+  if(id==='revive') return `Elyra cayó. Parate a su lado y MANTENÉ ${d==='pad'?padGlyph('LT'):key('ctx')} (unos 5 s). Un golpe no te corta; soltar o alejarte, sí.`;
+  if(id==='tactical') return `Apretá ${d==='pad'?padGlyph('START'):'Esc'}: el Panel táctico muestra tu kit, recargas, estados y equipo. Sola pausa; en multijugador la partida SIGUE. Cerralo con Continuar.`;
   return null;
 }
 function alphaTrainingText(s){
@@ -52,7 +52,7 @@ function alphaTrainingText(s){
 function alphaTrainingTarget(s){
   const d=alphaTrainingDevice();
   if(d==='kb'&&s.id==='inspect') return 'Mantené el clic sobre una habilidad para leer su ficha';
-  if(d!=='touch'&&s.id==='revive') return `Mantené ${d==='pad'?'LT':deskActionLabel('ctx')} junto a Elyra hasta revivirla`;
+  if(d!=='touch'&&s.id==='revive') return `Mantené ${d==='pad'?padGlyph('LT'):deskActionLabel('ctx')} junto a Elyra hasta revivirla`;
   return s.target;
 }
 // Guía (nivel 1): la primera frase nombra el control real.

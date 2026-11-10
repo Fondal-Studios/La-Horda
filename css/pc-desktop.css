@@ -28,3 +28,7 @@ body.inp-pad #joy-base.on, body.inp-pad #joy-base.on ~ #joy-knob{ visibility:vis
 #buff-cards .buff-card:not(.hrel-card):focus-visible{ outline:3px solid #ffd34d; outline-offset:2px; border-color:#ffd34d; }
 #buff-key-note{ font-size:0.7rem; color:var(--text-dim); margin-top:6px; max-width:340px; }
 #buff-key-note.hidden{ display:none; }
+
+/* ---------- 3. Opciones: lo táctil no se muestra con teclado ni mando; "Salir del juego" solo en la app de escritorio ---------- */
+body.inp-kb .opt-touch-only, body.inp-pad .opt-touch-only{ display:none; }
+.opt-desktop-only[hidden]{ display:none; }

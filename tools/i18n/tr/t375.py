@@ -41,14 +41,14 @@ SKILL={'123':('Apretá 1, 2 o 3 (apuntan al mouse)','Press 1, 2 or 3 (they aim a
 def _ult(k): return ('Apretá '+k,'Press '+k,'Aperte '+k)
 def _loot(k): return ('Pasá por encima del botín o apretá '+k,'Walk over the loot or press '+k,'Passe por cima do espólio ou aperte '+k)
 # (mover, atacar, habilidad, definitiva, botín, tecla de revivir del tutorial, tecla de pausa, ¿mando?)
-# En el tutorial el mando dice siempre LT / Start (js/systems/alpha-training.js), también con mando de PlayStation.
+# En el tutorial el mando dice LT / Start (Xbox) o L2 / Options (PlayStation): js/systems/alpha-training.js usa padGlyph().
 DEV=[
  (MOVE['kb'],  ATK['kb'],   SKILL['123'], _ult('R'),  _loot('E'),  'E',  'Esc',   False),  # teclado clásico
  (MOVE['kb'],  ATK['kb'],   SKILL['keys'],_ult('R'),  _loot('E'),  'E',  'Esc',   False),  # clásico con teclas reasignadas
  (MOVE['moba'],ATK['kb'],   SKILL['qwe'], _ult('R'),  _loot('F'),  'F',  'Esc',   False),  # MOBA
  (MOVE['moba'],ATK['kb'],   SKILL['keys'],_ult('R'),  _loot('F'),  'F',  'Esc',   False),  # MOBA con teclas reasignadas
  (MOVE['pad'], ATK['xbox'], SKILL['xbox'],_ult('RB'), _loot('LT'), 'LT', 'Start', True),   # mando Xbox / genérico
- (MOVE['pad'], ATK['ps'],   SKILL['ps'],  _ult('R1'), _loot('L2'), 'LT', 'Start', True),   # mando PlayStation
+ (MOVE['pad'], ATK['ps'],   SKILL['ps'],  _ult('R1'), _loot('L2'), 'L2', 'Options', True),   # mando PlayStation
 ]
 THALEN=('Thalen, el Tejedor Elemental','Thalen, the Elemental Weaver','Thalen, o Tecelão Elemental')
 
@@ -226,3 +226,12 @@ add('Tu inventario llegó al máximo: lo que no entró quedó en Recompensas pen
 T+=[('No se pudo guardar el progreso de esta partida.\nProbá de nuevo; si sigue fallando, la próxima vez podés seguir sin guardar.',
  'Your progress for this run could not be saved.\nTry again; if it keeps failing, next time you can continue without saving.',
  'Não foi possível salvar o progresso desta partida.\nTente de novo; se continuar falhando, da próxima vez você poderá seguir sem salvar.')]
+# --- Opciones › Pantalla (index.html #opt-sec-screen, js/core/fullscreen.js)
+T+=[('Pantalla','Screen','Tela'),
+ ('Pantalla completa','Fullscreen','Tela cheia'),
+ ('También con F11 o Alt+Enter','Also with F11 or Alt+Enter','Também com F11 ou Alt+Enter'),
+ ('Alternar','Toggle','Alternar'),
+ ('Salir del juego','Quit game','Sair do jogo'),
+ ('Cierra el juego y vuelve al escritorio','Closes the game and returns to the desktop','Fecha o jogo e volta para a área de trabalho'),
+ ('Salir','Quit','Sair'),
+ ('¿Cerrar el juego? Tu progreso ya está guardado.','Close the game? Your progress is already saved.','Fechar o jogo? Seu progresso já está salvo.')]
