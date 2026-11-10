@@ -56,7 +56,7 @@ let assetsRegisterSource = function(){};
   }
   ASSET_LOAD.core.total = core.length;
   for(const g in byGroup){ ASSET_LOAD.groups[g] = {list:byGroup[g], done:0, total:byGroup[g].length, started:false}; ASSET_LOAD.rest.total += byGroup[g].length; }
-  const label = "Tocá para continuar"; // el HTML arranca en "Cargando…" y deshabilitado (no se puede tocar antes de tiempo)
+  const label = (window.HORDA_DESKTOP && window.HORDA_DESKTOP.desktop) ? "Continuar" : "Tocá para continuar"; // en la app de PC no hay nada que "tocar" // el HTML arranca en "Cargando…" y deshabilitado (no se puede tocar antes de tiempo)
   function load(list, bucket, onStep){
     for(const src of list){
       const im = new Image();
