@@ -38,3 +38,11 @@ body.inp-kb .opt-touch-only, body.inp-pad .opt-touch-only{ display:none; }
 body.app-desktop #hub-crystal-btn, body.app-desktop #hub-coliseum-btn,
 body.app-desktop #mode-crystal-wars-btn, body.app-desktop #mode-coliseum-btn,
 body.app-desktop #hub-postgame-title, body.app-desktop .hub-row-modes, body.app-desktop #ux-more-modes{ display:none; }
+
+/* ---------- 5. HUD y botones en pantallas grandes ----------
+   El mundo se agranda con la ventana pero el HUD seguía en píxeles fijos (a 1080p los paneles medían ~165 px y los botones de
+   habilidad ~60 px). Se agranda TODO el HUD en proporción con `zoom` (igual que el menú principal en css/hub-scroll.css), solo
+   desde 1700 px de ancho: los tamaños de las pruebas (844, 1000, 1280, 1366) quedan exactamente como estaban. */
+@media (min-width:1700px) and (min-height:950px){ #hud, #controls{ zoom:1.4; } }
+@media (min-width:2400px) and (min-height:1300px){ #hud, #controls{ zoom:1.9; } }
+@media (min-width:3600px) and (min-height:2000px){ #hud, #controls{ zoom:2.8; } }

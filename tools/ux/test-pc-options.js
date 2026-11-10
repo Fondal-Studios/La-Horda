@@ -69,6 +69,34 @@ const SAVE = { tut: { training: 1 }, starterChosen: true, starterGiftV1: true, s
       }
       await ctx.close();
     }
+    // 5. HUD escalado en pantallas grandes: los botones de habilidad siguen dentro de la pantalla y reciben el clic donde se dibujan
+    for (const [w, h, minZoom] of [[1280, 720, 1], [1920, 1080, 1.3], [2560, 1440, 1.8]]) {
+      const ctx = await browser.newContext({ viewport: { width: w, height: h } });
+      await ctx.addInitScript(s => { try { if (!sessionStorage.getItem('__h')) { localStorage.setItem('laHordaSave_v1', JSON.stringify(s)); sessionStorage.setItem('__h', '1'); } } catch (e) {} }, SAVE);
+      const page = await ctx.newPage(); page.on('pageerror', e => errs.push(e.message));
+      await page.goto(site.url + '/index.html?lazy=0', { waitUntil: 'load', timeout: 180000 });
+      await page.waitForFunction(() => { const b = document.getElementById('title-continue-btn'); return typeof setState === 'function' && assetsAllReady() && b && !b.disabled; }, null, { timeout: 180000 });
+      await page.evaluate(() => {
+        for (const k of Object.keys(save.champions)) { save.champions[k].unlocked = true; save.champions[k].level = 12; }
+        save.arenasCleared = Object.assign(save.arenasCleared || {}, { ciudad: true, fortaleza: true }); gameDialogAutoConfirm = () => true;
+        selectedClass = 'guerrero'; lobbyAllies = null; endlessOpen(); document.getElementById('start-btn').click(); document.getElementById('prep-start-btn').click();
+      });
+      await page.waitForFunction(() => state === 'playing', null, { timeout: 60000 });
+      await page.waitForTimeout(600);
+      const q = await page.evaluate(() => {
+        loop = function () {}; for (let i = 0; i < 30; i++) update(16.67); render();
+        const out = { zoom: +getComputedStyle(document.getElementById('hud')).zoom, vw: innerWidth, vh: innerHeight, btns: [] };
+        for (const id of ['btn-basic', 'btn-s1', 'btn-s2', 'btn-s3', 'btn-ult', 'pause-btn']) {
+          const e = document.getElementById(id); if (!e) { out.btns.push({ id, missing: true }); continue; }
+          const r = e.getBoundingClientRect(), cx = r.x + r.width / 2, cy = r.y + r.height / 2, hit = document.elementFromPoint(cx, cy);
+          out.btns.push({ id, inside: r.x >= 0 && r.y >= 0 && r.right <= innerWidth + 1 && r.bottom <= innerHeight + 1, hit: !!hit && (hit === e || e.contains(hit)), w: Math.round(r.width) });
+        }
+        return out;
+      });
+      ok(q.zoom >= minZoom && (minZoom === 1 ? q.zoom === 1 : true), `[HUD ${w}x${h}] escala del HUD ${q.zoom} (mínimo ${minZoom}; a 1280x720 no cambia)`, q);
+      ok(q.btns.every(b => !b.missing && b.inside && b.hit), `[HUD ${w}x${h}] botones dentro de la pantalla y con el clic donde se dibujan`, q.btns);
+      await ctx.close();
+    }
     ok(errs.length === 0, 'sin errores de página', errs.slice(0, 3));
   } catch (e) { console.error(e); fails++; } finally { await browser.close(); await site.close(); }
   console.log(fails ? `\n${fails} FALLAS` : '\nTODO OK'); process.exit(fails ? 1 : 0);
