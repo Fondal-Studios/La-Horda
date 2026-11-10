@@ -33,6 +33,9 @@ o = S.scarOutcome(0, 10, 0); check('rango0_ronda10_abre_I_sin_titulo', o.cleared
 o = S.scarOutcome(1, 15, 1); check('I_ronda15_abre_II_y_da_titulo', o.cleared && o.unlock === 2 && o.title === 'marcado_1', o);
 o = S.scarOutcome(1, 40, 3); check('rejugar_un_rango_viejo_no_baja_el_maximo', o.unlock === null && o.title === 'marcado_1', o);
 o = S.scarOutcome(5, 35, 5); check('V_ronda35_da_titulo_y_marco_sin_nuevo_rango', o.cleared && o.unlock === null && o.title === 'marcado_5' && o.frame === 'cicatriz', o);
+o = S.scarOutcome(3, 25, 0); check('rango_ajeno_no_desbloquea_ni_premia', !o.eligible && !o.cleared && o.unlock === null && !o.title && !o.frame, o);
+o = S.scarOutcome(5, 40, 2); check('invitado_en_rango_V_con_maximo_2_no_recibe_marco', !o.cleared && o.unlock === null && !o.title && !o.frame, o);
+o = S.scarOutcome(2, 20, 2); check('rango_propio_si_cuenta', o.eligible && o.cleared && o.unlock === 3 && o.title === 'marcado_2', o);
 check('titulos_y_marco_estan_en_el_catalogo', (() => {
   const q = fs.readFileSync(path.join(ROOT, 'js/data/quests.js'), 'utf8');
   return S.SCAR_RANKS.filter(R => R.title).every(R => new RegExp('\\b' + R.title + ':\\s*\\{name:').test(q)) && /\bcicatriz:\s*\{name:/.test(q);

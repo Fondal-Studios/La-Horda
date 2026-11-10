@@ -89,7 +89,7 @@ function serveStatic(req, res, urlPath){
   if(path.basename(file) === "index.html" && file === path.join(ROOT, "index.html")){
     let body = indexBody(file);
     const ienc = pickEncoding(req.headers["accept-encoding"]);
-    if(ienc){ body = ienc === "br" ? zlib.brotliCompressSync(body) : zlib.gzipSync(body); headers["content-encoding"] = ienc; headers.vary = "Accept-Encoding"; }
+    if(ienc){ body = packedIndex(body, ienc); headers["content-encoding"] = ienc; headers.vary = "Accept-Encoding"; }
     res.writeHead(200, Object.assign(headers, { "content-length": body.length }));
     if(req.method === "HEAD") return res.end();
     return res.end(body);
@@ -106,7 +106,7 @@ function serveStatic(req, res, urlPath){
   }
   const etag = `W/"${st.size.toString(16)}-${Math.floor(st.mtimeMs).toString(16)}"`;
   headers.etag = etag;
-  if(req.headers["if-none-match"] === etag){ res.writeHead(304, headers); return res.end(); }
+  if(req.headers["if-none-match"] === etag){ res.writeHead(304, Object.assign(headers, compressible(file) ? { vary: "Accept-Encoding" } : {})); return res.end(); }
   const enc = compressible(file) ? pickEncoding(req.headers["accept-encoding"]) : null;
   if(enc){
     const body = packed(file, st, enc);
@@ -125,10 +125,20 @@ const PACK_MAX = 64 * 1024 * 1024;
 let _packedBytes = 0;
 function compressible(file){ return COMPRESSIBLE.has(path.extname(file).toLowerCase()); }
 function pickEncoding(header){
-  const h = String(header || "");
-  if(/\bbr\b/.test(h)) return "br";
-  if(/\bgzip\b/.test(h)) return "gzip";
+  // respeta q=0 ("br;q=0" = no la quiero)
+  const ok = name => { const m = new RegExp("(?:^|[,\\s])" + name + "(?:\\s*;\\s*q=([0-9.]+))?(?=\\s*(?:,|$))", "i").exec(String(header || "")); return !!m && (m[1] === undefined || parseFloat(m[1]) > 0); };
+  if(ok("br")) return "br";
+  if(ok("gzip")) return "gzip";
   return null;
+}
+// index.html (con la bandera LAN) comprimido una sola vez por contenido: antes se recomprimía en CADA petición (brotli bloquea el loop).
+const _idxPacked = new Map();
+function packedIndex(body, enc){
+  const hit = _idxPacked.get(enc);
+  if(hit && hit.src === body) return hit.out;
+  const out = enc === "br" ? zlib.brotliCompressSync(body, { params: { [zlib.constants.BROTLI_PARAM_QUALITY]: 5 } }) : zlib.gzipSync(body, { level: 6 });
+  _idxPacked.set(enc, { src: body, out });
+  return out;
 }
 function packed(file, st, enc){
   const key = enc + ":" + file;

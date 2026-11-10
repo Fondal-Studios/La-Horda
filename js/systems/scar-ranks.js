@@ -6,8 +6,10 @@ function scarSave(){
   if(!S.scar || typeof S.scar !== "object") S.scar = {};
   const C = S.scar;
   C.max = scarClamp(C.max); C.sel = Math.min(scarClamp(C.sel), C.max);
-  if(!C.best || typeof C.best !== "object") C.best = {};
-  if(!C.cleared || typeof C.cleared !== "object") C.cleared = {};
+  // best/cleared vienen del guardado (editable): solo rangos 0..max y enteros no negativos
+  const clean = (o, f)=>{ const r = {}; if(o && typeof o === "object") for(let k = 0; k <= SCAR_CFG.maxRank; k++){ const v = f(o[k]); if(v) r[k] = v; } return r; };
+  C.best = clean(C.best, v=>{ v = +v; return isFinite(v) && v > 0 ? Math.min(Math.floor(v), 1e6) : 0; });
+  C.cleared = clean(C.cleared, v=>v ? 1 : 0);
   return C;
 }
 function scarRank(){ return scarClamp(EN.scar); }
@@ -26,10 +28,10 @@ function scarSelect(rank){
 // Al terminar la partida (endlessEndRun, dentro del bloque de récords): desbloqueo, récord por rango y recompensas de identidad.
 function scarOnRunEnd(round, L){
   const C = scarSave(), rank = scarRank();
-  const prevBest = C.best[rank] || 0, newBest = round > prevBest;
-  if(newBest) C.best[rank] = round;
   const o = scarOutcome(rank, round, C.max);
-  const res = {rank, round, cleared:o.cleared, newBest, unlocked:null, title:null, frame:null};
+  const prevBest = C.best[rank] || 0, newBest = o.eligible && round > prevBest;   // el récord por rango solo cuenta rangos abiertos
+  if(newBest) C.best[rank] = round;
+  const res = {rank, round, cleared:o.cleared, eligible:o.eligible, newBest, unlocked:null, title:null, frame:null};
   if(o.cleared) C.cleared[rank] = 1;
   if(o.unlock){ C.max = o.unlock; res.unlocked = o.unlock; if(C.sel < C.max && rank === C.sel) C.sel = C.max; }
   try{
@@ -48,7 +50,7 @@ function scarPrepHTML(guest){
   const C = scarSave(), sel = guest ? scarClamp(EN.scar) : C.sel;
   const chips = SCAR_RANKS.map(R=>{
     const open = scarCanPick(R.rank, C.max), on = R.rank === sel;
-    return `<button class="en-scar-chip${on?" on":""}${open?"":" locked"}" data-scar="${R.rank}" ${open && !guest ? "" : "disabled"} aria-pressed="${on}" title="${R.desc}">${open ? R.short : "🔒"}</button>`;
+    return `<button class="en-scar-chip${on?" on":""}${open?"":" locked"}" data-scar="${R.rank}" ${open && !guest ? "" : "disabled"} aria-pressed="${on}" title="${R.desc}">${(open || on) ? R.short : "🔒"}</button>`;
   }).join("");
   const R = SCAR_RANKS[sel] || SCAR_RANKS[0];
   const goal = SCAR_CFG.clearRound[sel];
@@ -79,7 +81,7 @@ function scarPrepHTML(guest){
       const r = _sr.apply(this, arguments);
       try{
         const L = EN.local || {}, S = L.scar, el = document.getElementById("endless-screen"), host = el && el.querySelector(".en-res-badges");
-        if(S && host && !S.cleared && !S.unlocked){
+        if(S && host && S.eligible && !S.cleared && !S.unlocked){
           const goal = SCAR_CFG.clearRound[S.rank], left = Math.max(1, goal - (S.round|0));
           const what = S.rank < SCAR_CFG.maxRank ? SCAR_RANKS[S.rank+1].name : "el marco Cicatriz";
           host.insertAdjacentHTML("beforeend", `<span class="en-new" id="en-scar-goal">Te faltaron ${left} ${left===1?"ronda":"rondas"} para ${what}</span>`);

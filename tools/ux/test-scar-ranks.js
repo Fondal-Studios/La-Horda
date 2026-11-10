@@ -98,6 +98,20 @@ const SAVE = { tut: { training: 1 }, starterChosen: true, starterGiftV1: true, s
     ok(/Cicatriz III/.test(r4.long.shown) && /Rompe|Cicatriz Viva/.test(r4.long.shown), '[4] la pantalla de resultados lo muestra', r4.long.shown.slice(0, 300));
     ok(r4.replay.max === 3 && r4.replay.unlocked === null || r4.replay.max >= 3, '[4] rejugar rangos bajos no baja el máximo', r4.replay);
 
+    // 4b. invitado en una sala de rango superior al que tiene abierto: juega ese rango pero no se salta la progresión; y lo que llega por red se acota
+    const r4b = await E(() => {
+      scarSave().max = 1; scarSave().sel = 1; endlessActive = false; endlessBeginRun(); EN.scar = 4; EN.round = 30; endlessEndRun('defeat');
+      const S = EN.local.scar, out = { eligible: S.eligible, cleared: S.cleared, unlocked: S.unlocked, title: S.title, frame: S.frame, max: scarSave().max, best4: scarSave().best[4] || 0, shown: document.getElementById('endless-screen').innerText };
+      endlessFinish();
+      const g = endlessNetGet(); endlessNetSet(Object.assign({}, g, { enSr: 99 })); out.netHigh = EN.scar; endlessNetSet(Object.assign({}, g, { enSr: 'x' })); out.netBad = EN.scar; endlessNetSet(Object.assign({}, g, { enSr: -4 })); out.netNeg = EN.scar;
+      save.endless.scar.max = 99; save.endless.scar.best = { 0: 'x', 1: -3, 2: 7.9, 9: 5 }; save.endless.scar.cleared = { 1: 1, 7: 1 }; const C = scarSave(); out.clean = { max: C.max, best: C.best, cleared: C.cleared };
+      return out;
+    });
+    ok(!r4b.eligible && !r4b.cleared && r4b.unlocked === null && !r4b.title && !r4b.frame && r4b.max === 1 && r4b.best4 === 0, '[4b] un rango por encima del tuyo no desbloquea, no premia y no guarda récord', r4b);
+    ok(!/Te faltaron/.test(r4b.shown), '[4b] y los resultados no prometen una meta que no es tuya', r4b.shown.slice(0, 160));
+    ok(r4b.netHigh === 5 && r4b.netBad === 0 && r4b.netNeg === 0, '[4b] el rango que llega por la red se acota a 0..5', r4b);
+    ok(r4b.clean.max === 5 && JSON.stringify(r4b.clean.best) === JSON.stringify({ 2: 7 }) && JSON.stringify(r4b.clean.cleared) === JSON.stringify({ 1: 1 }), '[4b] un guardado editado se sanea (máximo, récords y cerrados)', r4b.clean);
+
     // 6. rango 0 intacto
     const r6 = await E(() => { endlessActive = false; scarSave().sel = 0; endlessBeginRun(); return { scar: EN.scar, mut: EN.mutators.slice(), wk: endlessWeeklyMutators().ids, mult: endlessScoreMult() }; });
     ok(r6.scar === 0 && r6.mut.join() === r6.wk.join(), '[6] rango 0: solo los mutadores de la temporada', r6);

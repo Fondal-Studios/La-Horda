@@ -540,7 +540,7 @@ function endlessHudTick(){
   if(key===_enHudKey) return;
   _enHudKey = key;
   const boss = endlessIsBossRound();
-  chip.innerHTML = `<b class="en-inf">∞</b> Ronda <b>${EN.round}</b>${boss ? ' <span class="en-boss">☠</span>' : ""} · <b>${EN.score.toLocaleString("es-AR")}</b><span class="en-pts"> pts</span>${EN.scar>0 && typeof SCAR_RANKS!=="undefined" ? ` · <span class="en-scar-tag" title="${SCAR_RANKS[EN.scar].name}">C${SCAR_RANKS[EN.scar].short}</span>` : ""}<span class="en-kills"> · Bajas <b>${kills}</b></span> <span class="en-muts" title="${EN.mutators.map(m=>ENDLESS_MUTATORS[m].name).join(" · ")}">${EN.mutators.map(m=>ENDLESS_MUTATORS[m].icon).join("")}</span>`;
+  chip.innerHTML = `<b class="en-inf">∞</b> Ronda <b>${EN.round}</b>${boss ? ' <span class="en-boss">☠</span>' : ""} · <b>${EN.score.toLocaleString("es-AR")}</b><span class="en-pts"> pts</span>${EN.scar>0 && typeof SCAR_RANKS!=="undefined" ? ` · <span class="en-scar-tag" title="${SCAR_RANKS[scarClamp(EN.scar)].name}">C${SCAR_RANKS[scarClamp(EN.scar)].short}</span>` : ""}<span class="en-kills"> · Bajas <b>${kills}</b></span> <span class="en-muts" title="${EN.mutators.map(m=>ENDLESS_MUTATORS[m].name).join(" · ")}">${EN.mutators.map(m=>ENDLESS_MUTATORS[m].icon).join("")}</span>`;
 }
 
 /* ---------------- red (mismo canal de snapshots) ---------------- */
@@ -557,7 +557,7 @@ function endlessNetSet(v){
   endlessActive = true;
   EN.id = v.enId; EN.round = v.enR|0; EN.score = v.enSc|0; EN.mutators = v.enMu ? String(v.enMu).split(",") : []; EN.week = v.enWk || "";
   EN.arenas = v.enAr ? String(v.enAr).split(",") : []; EN.stintKind = v.enSk || "sub"; EN.baseLevel = v.enBl|0 || 1;
-  EN.bossKills = v.enBk|0; EN.rescues = v.enRs|0; EN.rescueFails = v.enRf|0; EN.synergies = v.enSy|0; EN.hrelOffer = v.enRl ? String(v.enRl).split(",") : []; EN.relics = v.enRc|0; EN.scar = v.enSr|0;
+  EN.bossKills = v.enBk|0; EN.rescues = v.enRs|0; EN.rescueFails = v.enRf|0; EN.synergies = v.enSy|0; EN.hrelOffer = v.enRl ? String(v.enRl).split(",") : []; EN.relics = v.enRc|0; EN.scar = typeof scarClamp==="function" ? scarClamp(v.enSr) : (v.enSr|0);
   endlessRescues = (v.enRq||[]).map(t=>Object.assign({}, t, {done:!!t.done}));
   if(fresh){ EN.ended = false; if(netIsGuest()) endlessLocalReset(); }
 }

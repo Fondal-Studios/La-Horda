@@ -51,6 +51,12 @@ const HOST_A = '127.0.0.1', HOST_B = '127.0.0.2', HOST_C = '127.0.0.3';
     const r304 = await new Promise(res => http.get(BASE + '/js/net/net-lan.js', { headers: { 'if-none-match': raw.h.etag } }, x => { x.resume(); x.on('end', () => res(x.statusCode)); }));
     check('servidor.revalida_con_etag_304', !!raw.h.etag && r304 === 304, { etag: raw.h.etag, r304 });
     const png = await new Promise(res => http.get(BASE + '/assets/ui/menu-icons-16.png', { headers: { 'accept-encoding': 'gzip' } }, x => { x.resume(); x.on('end', () => res(x.headers['content-encoding'] || null)); }));
+    const q0 = await new Promise(res => http.get(BASE + '/js/net/net-lan.js', { headers: { 'accept-encoding': 'br;q=0, gzip;q=0' } }, x => { x.resume(); x.on('end', () => res(x.headers['content-encoding'] || null)); }));
+    check('servidor.respeta_q0_en_accept_encoding', q0 === null, q0);
+    const r304v = await new Promise(res => http.get(BASE + '/js/net/net-lan.js', { headers: { 'if-none-match': raw.h.etag } }, x => { x.resume(); x.on('end', () => res(x.headers.vary || null)); }));
+    check('servidor.304_lleva_vary', /Accept-Encoding/i.test(r304v || ''), r304v);
+    const idx1 = await get(BASE + '/', { headers: { 'accept-encoding': 'gzip' } }), t0 = Date.now(); for (let i = 0; i < 10; i++) await get(BASE + '/', { headers: { 'accept-encoding': 'br' } });
+    check('servidor.index_comprimido_se_sirve_rapido_de_cache', idx1.headers['content-encoding'] === 'gzip' && (Date.now() - t0) < 1500, { ms: Date.now() - t0 });
     check('servidor.no_recomprime_imagenes', png === null, png);
   }
   for (const p of ['/server/relay.js', '/tools/lan/host.js', '/.git/config', '/js/../server/relay.js', '/%2e%2e/server/relay.js', '/js/%2e%2e/server/package.json', '/AGENTS.md', '/docs/beta-release/MULTIJUGADOR_LOCAL.md']) {

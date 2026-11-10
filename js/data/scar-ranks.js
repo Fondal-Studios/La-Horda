@@ -34,11 +34,14 @@ function scarMergeMutators(weekly, rank){
 }
 function scarScoreBonus(rank){ return 1 + SCAR_CFG.scoreBonusPerRank * scarClamp(rank); }
 // Qué pasa al terminar una partida jugada en `rank` y llegando a `round`, dado el máximo desbloqueado `max`.
-// Devuelve {cleared, unlock (nuevo máximo o null), title, frame}. No muta nada.
+// Devuelve {cleared, eligible, unlock (nuevo máximo o null), title, frame}. No muta nada.
 function scarOutcome(rank, round, max){
   rank = scarClamp(rank); max = scarClamp(max);
-  const cleared = (round|0) >= SCAR_CFG.clearRound[rank];
-  const out = {cleared, unlock:null, title:null, frame:null};
+  // Solo cuenta el rango que ya tenías abierto: un invitado en la sala de un anfitrión de rango más alto juega ese rango,
+  // pero no se salta la progresión (ni desbloqueo, ni título, ni marco).
+  const eligible = rank <= max;
+  const cleared = eligible && (round|0) >= SCAR_CFG.clearRound[rank];
+  const out = {cleared, eligible, unlock:null, title:null, frame:null};
   if(!cleared) return out;
   if(rank < SCAR_CFG.maxRank && max < rank + 1) out.unlock = rank + 1;
   const R = SCAR_RANKS[rank];
