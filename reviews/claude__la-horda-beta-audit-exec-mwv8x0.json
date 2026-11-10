@@ -1,10 +1,67 @@
 {
-  "subject": { "pr": 286, "branch": "claude/la-horda-beta-audit-exec-mwv8x0", "head": "af28ca50c95b846a2a9ab4503df09e90f433705b", "authorAgent": "claude-sesion-principal", "authorId": "claude-sesion-principal" },
-  "stages": [
-    { "stage": "produccion", "by": "claude-sesion-principal", "role": "agent", "commit": "af28ca50c95b846a2a9ab4503df09e90f433705b", "at": "2026-11-08T14:00:00Z" },
-    { "stage": "qa", "by": "claude-qa-286", "role": "qa", "verdict": "aprobado", "evidence": { "sha": "af28ca50c95b846a2a9ab4503df09e90f433705b", "tests": 32, "failed": 0, "report": "32 ejecuciones sobre af28ca50, 0 fallos nuevos ni preexistentes: seguridad de red (incluye eventos registrados tarde), lobby, reliquias, probador libre, Sets/Apariencias, rachas, LAN, cooperativo con clientes reales, legibilidad VFX, balance (entry-gate 84 simulaciones), Aelith. Dos fallos transitorios fueron del entorno del revisor (relay sin NODE_PATH) y pasan repetidos en la rama y en main." }, "at": "2026-11-08T14:30:00Z" },
-    { "stage": "arquitectura", "by": "claude-arq-286", "role": "arquitecto", "verdict": "aprobado", "evidence": { "sha": "af28ca50c95b846a2a9ab4503df09e90f433705b", "report": "Primera revisión de f322f7cf: reparacion_parcial (BLOQUEANTE: lista blanca de eventos de red congelada que dejaba fuera eventos registrados tarde). Reparado en af28ca50 (lista dinámica, test de regresión, hitos de racha una vez por mes, reloj sin atascos, hasOwn en reliquias, filtro de __proto__). Revisión del delta: aprobado sin bloqueantes. Seguimientos IMPORTANTES: migración de claves 'claimed' viejas (un doble pago único) y farmeo residual alternando meses con reloj del cliente (cierre fuerte en servidor); test de farmeo con <=1 a endurecer." }, "at": "2026-11-08T14:40:00Z" },
-    { "stage": "staging", "by": "claude-integrador-286", "role": "integrador", "verdict": "aprobado", "evidence": { "sha": "af28ca50c95b846a2a9ab4503df09e90f433705b", "branch": "beta/integracion-20261107", "tests": 18, "failed": 0, "run": "https://github.com/Fondal-Studios/La-Horda/pull/286" }, "at": "2026-11-08T14:50:00Z" },
-    { "stage": "aprobacion", "by": "claude-integrador-286", "role": "director", "verdict": "aprobado", "evidence": { "sha": "af28ca50c95b846a2a9ab4503df09e90f433705b", "report": "Aprobación condicionada a que 'Regresion del juego (completa)' termine en success y a que el registro pase check.js --mode merge siendo el único archivo que cambia. Riesgos posteriores: balance de reliquias medido solo con piloto automático; 6 iconos VFX necesitan ojo de arte; hitos de racha = cofres con gemas/ítems limitados a uno por mes. Aprobación dada por un agente conforme a reviews/POLITICA.json (decisión del propietario); no la dio ninguna persona." }, "at": "2026-11-08T14:55:00Z" }
-  ]
+ "subject": {
+  "pr": 288,
+  "branch": "claude/la-horda-beta-audit-exec-mwv8x0",
+  "head": "32777ca60b0b2fc335005e5a9b53e73d7722aebb",
+  "authorAgent": "claude-sesion-principal",
+  "authorId": "claude-sesion-principal"
+ },
+ "stages": [
+  {
+   "stage": "produccion",
+   "by": "claude-sesion-principal",
+   "role": "agent",
+   "commit": "32777ca60b0b2fc335005e5a9b53e73d7722aebb",
+   "at": "2026-11-10T17:00:00Z"
+  },
+  {
+   "stage": "qa",
+   "by": "claude-qa-292",
+   "role": "qa",
+   "verdict": "aprobado",
+   "evidence": {
+    "sha": "32777ca60b0b2fc335005e5a9b53e73d7722aebb",
+    "tests": 30,
+    "failed": 0,
+    "report": "30 ejecuciones sobre 32777ca6, 0 fallos de la rama. Flake: t_identity (INF.el_campeon_no_sale_por_la_fisura) falló 1 de 3 y pasó 2/2 al repetir; tools/net-test/accounts.js falla en el sandbox del revisor (entorno). Sin BLOCKER ni IMPORTANT. No se probó a mano en táctil ni con un segundo cliente cooperativo (lo cubren t_camera, three-ui-contracts y test-scar-ranks)."
+   },
+   "at": "2026-11-10T17:30:00Z"
+  },
+  {
+   "stage": "arquitectura",
+   "by": "claude-arq-292",
+   "role": "arquitecto",
+   "verdict": "aprobado",
+   "evidence": {
+    "sha": "32777ca60b0b2fc335005e5a9b53e73d7722aebb",
+    "report": "Revisión previa reparó el BLOQUEANTE B1 (sobrescritura de la nube por perfil de fábrica tras guardado ilegible) y el hueco del beacon pagehide, con pruebas que fallan sin el arreglo. Revisión del delta sobre 32777ca6: aprobado, 0 bloqueantes, 0 importantes, 1 menor."
+   },
+   "at": "2026-11-10T17:40:00Z"
+  },
+  {
+   "stage": "staging",
+   "by": "claude-integrador-292",
+   "role": "integrador",
+   "verdict": "aprobado",
+   "evidence": {
+    "sha": "32777ca60b0b2fc335005e5a9b53e73d7722aebb",
+    "branch": "beta/integracion-20261110",
+    "tests": 38,
+    "failed": 0,
+    "run": "https://github.com/Fondal-Studios/La-Horda/pull/288"
+   },
+   "at": "2026-11-10T18:35:00Z"
+  },
+  {
+   "stage": "aprobacion",
+   "by": "claude-integrador-292",
+   "role": "director",
+   "verdict": "aprobado",
+   "evidence": {
+    "sha": "32777ca60b0b2fc335005e5a9b53e73d7722aebb",
+    "report": "Aprobado con reservas de proceso. Verificado por el integrador: beta/integracion-20261110 == 32777ca6; CI 38 de 39 en success, 'Regresion del juego (completa)' pasó al reintento sin commit nuevo; solo 'Clasificacion' quedaba en rojo por el registro viejo. Flake t_identity preexistente (en origin/main limpio falló 3/8 en la medición del autor; el integrador no lo reprodujo en 6 corridas). Riesgos: sin prueba táctil manual ni segundo cliente cooperativo; informe de arquitectura 292 no verificado directamente por el integrador; balance de reliquias solo con piloto automático; 6 íconos VFX sin ojo de arte; claves 'claimed' viejas y farmeo en servidor. Aprobación dada por un agente conforme a reviews/POLITICA.json (decisión del propietario); no la dio ninguna persona."
+   },
+   "at": "2026-11-10T18:40:00Z"
+  }
+ ]
 }
