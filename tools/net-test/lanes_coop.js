@@ -50,12 +50,12 @@ async function waitFor(c,fn,a,ms){for(let k=0;k<(ms||20000)/150;k++){if(await ev
  check('partida.avatares_y_estructuras_sincronizados',px[0]===24&&px[1]===24,px);   // 4 héroes + 20 estructuras
  // compra del invitado
  await ev(A,()=>{heroes[1].gold=900;});await waitFor(B,()=>player.gold>=890,null,5000);
- await ev(B,()=>{lanesBuy(player.team,'ward',player);});await sleep(900);
+ await ev(B,()=>{lanesBuy(player.team,'ward',player);});await waitFor(A,()=>LN.team[0].S.filter(x=>x.ward===200).length===1,null,5000).catch(()=>{});await waitFor(B,()=>LN.team[0].S.filter(x=>x.ward===200).length===1,null,5000).catch(()=>{});
  const up=await Promise.all([ev(A,()=>LN.team[0].S.filter(x=>x.ward===200).length),ev(B,()=>LN.team[0].S.filter(x=>x.ward===200).length)]);
  check('compra.invitado_valida_el_anfitrion',up[0]===1&&up[1]===1,up);
  await ev(B,()=>{netSendToHost({k:'ln-buy',key:'__proto__'});netSendToHost({k:'ln-buy',key:'toString'});return 1;});await sleep(500);
  check('compra.clave_falsa_rechazada',await ev(A,()=>heroes[1].gold>=900-140-30));
- await ev(B,()=>{lanesBuy(player.team,'item:atk',player);});await sleep(900);
+ await ev(B,()=>{lanesBuy(player.team,'item:atk',player);});await waitFor(A,()=>heroes[1].itAtk===1,null,5000).catch(()=>{});await waitFor(B,()=>player.itAtk===1,null,5000).catch(()=>{});   // la compra viaja por red: se espera la condición (antes, 900 ms fijos: flake bajo la carga de CI)
  const it=await Promise.all([ev(A,()=>heroes[1].itAtk),ev(B,()=>player.itAtk)]);
  check('compra.objeto_del_invitado_en_la_base',it[0]===1&&it[1]===1,it);
  // carta de horda: el invitado la elige por la red y la aplica el anfitrión
