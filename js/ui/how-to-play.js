@@ -25,7 +25,8 @@ const HOWTO_STEPS = {
     {ic:"⌛", t:"Cada ronda", x:"Primero hay unos segundos de preparación. Después se pelea; si pasa mucho tiempo el anillo del suelo se cierra y obliga a pelear."},
     {ic:"💀", t:"Si caés", x:"No revivís en la ronda: mirás a tu equipo desde la cámara de espectador hasta que termina."}
   ],
-  // Temas de ayuda (una pestaña cada uno). Los textos dan las tres formas de jugar: táctil, teclado y mando.
+  // Temas de ayuda (una pestaña cada uno). Estos son los textos táctiles (con las tres formas de jugar); con teclado o mando
+  // detectados, howtoSteps() cambia los pasos de controles por las teclas/botones reales.
   controles:[
     {ic:"↔", t:"Moverte", x:"Táctil: joystick de abajo a la izquierda. Teclado: WASD o flechas. Mando: stick izquierdo."},
     {ic:"⚔️", t:"Atacar", x:"Táctil: mantené el botón grande de ATAQUE. Teclado: Espacio. Mando: A. Tu guardián le pega solo al enemigo más cercano."},
@@ -76,9 +77,29 @@ function howtoClose(){
   const el = document.getElementById("howto"); if(el) el.classList.add("hidden");
 }
 function howtoEsc(t){ return String(t).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+// Con teclado o mando los pasos que hablan de controles nombran las teclas/botones reales. Las teclas salen del mismo lugar que
+// las del HUD y del Hechicero (js/core/input-desk.js: DESK.device y ctlHint): acá no hay tabla propia. En táctil no cambia nada.
+function howtoDevice(){
+  try{ const d = typeof DESK!=="undefined" ? DESK.device : null; return (d==="kb" || d==="pad") && typeof ctlHint==="function" ? d : "touch"; }catch(e){ return "touch"; }
+}
+function howtoDeskText(key, i, d){
+  const low = t=>t.charAt(0).toLowerCase() + t.slice(1);
+  if(key==="campana" && i===1) return ctlHint("move") + ". " + ctlHint("attack") + ". Habilidades: " + low(ctlHint("skill")) + ". La definitiva (ULT) se carga peleando: " + low(ctlHint("ult")) + ".";
+  if(key==="controles") return [
+    ctlHint("move") + ".",
+    ctlHint("attack") + ". Tu guardián le pega solo al enemigo más cercano.",
+    "Pegan mucho más fuerte que el ataque y tienen recarga. " + ctlHint("skill") + ".",
+    "Se carga peleando y se habilita desde el nivel 5 de la arena. Cuando brilla, usala: " + low(ctlHint("ult")) + "."][i];
+  if(key==="botin" && i===0) return "Los enemigos sueltan objetos en el piso, con un haz de luz según su rareza. " + ctlHint("loot") + ".";
+  if(key==="progreso" && i===2 && d==="kb") return "Cuando ves un + sobre una habilidad, tenés un punto para hacerla más fuerte. Hacele clic.";
+  if(key==="pausa" && i===0) return "Apretá " + (d==="pad" ? "Start" : "Esc") + ". Con la partida pausada ves tu Resumen, la ayuda y las opciones. En partidas online no hay pausa.";
+  return null;
+}
 function howtoSteps(topic, modeKey){
-  if(topic==="objetivo") return HOWTO_STEPS[modeKey] || HOWTO_STEPS.campana;
-  return HOWTO_STEPS[topic] || HOWTO_STEPS.campana;
+  const key = topic==="objetivo" ? (HOWTO_STEPS[modeKey] ? modeKey : "campana") : (HOWTO_STEPS[topic] ? topic : "campana");
+  const steps = HOWTO_STEPS[key], d = howtoDevice();
+  if(d==="touch") return steps;
+  return steps.map((s, i)=>{ const x = howtoDeskText(key, i, d); return x ? Object.assign({}, s, {x}) : s; });
 }
 function howtoRenderList(el, topic, modeKey){
   const steps = howtoSteps(topic, modeKey);

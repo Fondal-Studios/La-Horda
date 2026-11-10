@@ -3,7 +3,8 @@
    js/assets/preload.js
    CARGA POR DEMANDA con grupos (ver lazy-images.js):
      1ª tanda (core)  lo que se ve al abrir: título, menús, miniaturas. "Tocá para continuar" se habilita
-                      apenas termina ESTA tanda (antes también esperaba el atlas de los 38 guardianes: ~17 MB).
+                      apenas termina ESTA tanda (antes también esperaba el atlas de los 38 guardianes: ~17 MB)
+                      Y el guardado ya está cargado (ver "guardado listo" abajo).
      grupos           "ch:<guardián>" (todo lo pesado de un guardián), "ar:<arena>" (arte de una arena) y "common"
                       (efectos compartidos). Se piden según lo que haga falta: tu guardián y el de tu equipo, la arena
                       elegida y los efectos comunes. El resto baja en segundo plano, de a poco.
@@ -68,10 +69,24 @@ let assetsRegisterSource = function(){};
       im.src = src;
     }
   }
+  // GUARDADO LISTO. Este archivo es de los primeros <script> y js/main.js (que llama a loadSave()) es el último, ~520
+  // scripts después. Con el disco local (Steam) la 1ª tanda terminaba 2-3 s ANTES de que corriera main.js: el botón quedaba
+  // clicable sin guardado cargado y la cola de ~800 imágenes de 2º plano competía con los scripts que faltaban.
+  // Ahora el botón y esa cola esperan además a la señal de main: su setState("title") (que llama a assetsOnState justo
+  // después de loadSave()) o, como red de seguridad, DOMContentLoaded (todos los <script> clásicos ya corrieron).
+  // La 1ª tanda NO espera: arranca ya, así el menú no se demora más que lo que tarden los scripts.
+  let saveReady = document.readyState !== "loading"; // inyectado tarde (herramientas): no hay nada que esperar
+  const coreDone = () => ASSET_LOAD.core.done >= ASSET_LOAD.core.total;
+  function markSaveReady(){
+    if(saveReady) return;
+    saveReady = true; refreshTitle();
+    if(coreDone()) startRest();
+  }
+  if(!saveReady) document.addEventListener("DOMContentLoaded", markSaveReady, {once:true});
   function refreshTitle(){
     const c = ASSET_LOAD.core;
     if(!btn) return;
-    if(c.done >= c.total){ btn.textContent = label; btn.disabled = false; return; }
+    if(c.done >= c.total && saveReady){ btn.textContent = label; btn.disabled = false; return; }
     btn.textContent = "Cargando… " + Math.floor(c.done*100/Math.max(1, c.total)) + "%";
   }
   function refreshRest(){
@@ -89,7 +104,7 @@ let assetsRegisterSource = function(){};
     const g = lazy ? LAZY_IMG.groupOf(src) : null;
     if(!g){
       ASSET_LOAD.core.total++;
-      load([src], ASSET_LOAD.core, ()=>{ refreshTitle(); if(ASSET_LOAD.core.done >= ASSET_LOAD.core.total) startRest(); });
+      load([src], ASSET_LOAD.core, ()=>{ refreshTitle(); if(coreDone()) startRest(); });
       return;
     }
     const o = ASSET_LOAD.groups[g] || (ASSET_LOAD.groups[g] = {list:[], done:0, total:0, started:false});
@@ -122,9 +137,18 @@ let assetsRegisterSource = function(){};
   assetsStartAllChampions = function(){ for(const g in ASSET_LOAD.groups) if(g.startsWith("ch:")) assetsStartGroup(g); };
   // pantallas que muestran muchos guardianes: se piden ya
   const CHAMP_SCREENS = new Set(["starter","champions","champhub","menu","prep","shop","codex","modeselect"]);
-  assetsOnState = function(s){ try{ assetsNeededGroups().forEach(assetsStartGroup); }catch(e){} if(CHAMP_SCREENS.has(s)) assetsStartAllChampions(); };
+  assetsOnState = function(s){
+    // señal de main: solo vale la que llega desde js/main.js (ya corrió loadSave) o con el documento ya interpretado
+    if(!saveReady){
+      let fromMain = document.readyState !== "loading";
+      try{ const cs = document.currentScript; if(cs && /(^|\/)js\/main\.js(\?|$)/.test(cs.getAttribute("src") || "")) fromMain = true; }catch(e){}
+      if(fromMain) markSaveReady();
+    }
+    if(!saveReady) return; // antes del guardado no se pide arte pesado (lo pedirá startRest)
+    try{ assetsNeededGroups().forEach(assetsStartGroup); }catch(e){} if(CHAMP_SCREENS.has(s)) assetsStartAllChampions();
+  };
   function startRest(){
-    if(ASSET_LOAD.restStarted) return;
+    if(ASSET_LOAD.restStarted || !saveReady) return;
     ASSET_LOAD.restStarted = true;
     // prioridad: efectos comunes + la arena por defecto/elegida + los guardianes que se van a ver primero
     ["common"].forEach(assetsStartGroup);
@@ -137,7 +161,7 @@ let assetsRegisterSource = function(){};
     refreshRest();
   }
   if(btn) btn.disabled = true;
-  load(core, ASSET_LOAD.core, ()=>{ refreshTitle(); if(ASSET_LOAD.core.done >= ASSET_LOAD.core.total) startRest(); });
+  load(core, ASSET_LOAD.core, ()=>{ refreshTitle(); if(coreDone()) startRest(); });
   refreshTitle();
   if(!core.length) startRest();
 })();

@@ -195,6 +195,25 @@ function shopNowRowHTML(sc){
       ${t.go ? '<button class="shop-btn sec" type="button" data-now-go="basics">Ver Básicos</button>' : ""}
       <div class="shop-goal-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}" aria-label="Oro hacia tu próxima meta"><i style="width:${pct}%"></i></div></div></div>`;
 }
+// Renglón de la croma: el nombre de su cristal solo si existe en CROMA_CRYSTALS (las cromas sin cristal no muestran "undefined" ni un id interno).
+function _shopCromaLabel(p){
+  const C = p && typeof CROMA_CRYSTALS!=="undefined" ? CROMA_CRYSTALS[p.crystal] : null;
+  return C && C.label ? C.label : "";
+}
+// Salidas útiles cuando no se puede comprar (sin cuenta o sin pagos): lo que ya se puede hacer gratis. No toca pagos.
+function _shopFreeExitsHTML(){
+  const skins = typeof openGuardians==="function", quests = typeof window.questsOpen==="function";
+  if(!skins && !quests) return "";
+  return `<div class="brasas-status" data-shop-exits><span>Mientras tanto, esto ya es tuyo sin pagar:</span>
+    ${skins ? '<button class="shop-btn sec" type="button" data-shop-exit="skins">Probar apariencias</button>' : ""}
+    ${quests ? '<button class="shop-btn sec" type="button" data-shop-exit="quests">Ver desafíos</button>' : ""}</div>`;
+}
+function _shopFreeExitsBind(panel){
+  panel.querySelectorAll("[data-shop-exit]").forEach(b=> b.addEventListener("click", ()=>{
+    if(b.getAttribute("data-shop-exit")==="skins"){ if(typeof openGuardians==="function") openGuardians("skins"); }
+    else if(typeof window.questsOpen==="function") window.questsOpen();
+  }));
+}
 function renderShopShowcase(panel){
   const sc = shopDailyShowcase(), f = sc.featured, seenNow = [];
   let hero = "";
@@ -254,7 +273,7 @@ function renderShopShowcase(panel){
     return `<div class="shop-bundle shop-croma-card ${p.owned ? "owned" : ""}" data-croma-card="${p.id}">
       <div class="shop-bundle-art"><img src="${p.preview}" alt="" loading="lazy">${p.owned ? "" : _shopTagNew(key)}</div>
       <div class="shop-bundle-name">${p.name}</div>
-      <div class="shop-item-sub"><span style="color:${p.color}">◆</span> ${p.champName} · ${p.crystalLabel}</div>
+      <div class="shop-item-sub"><span style="color:${p.color}">◆</span> ${p.champName}${_shopCromaLabel(p) ? " · " + _shopCromaLabel(p) : ""}</div>
       <div class="shop-deal-buy">${act}${_shopVoucherBtn(p.id)}</div>
     </div>`;
   }).join("");
@@ -276,7 +295,7 @@ function renderShopShowcase(panel){
     ${cromas ? `<div class="shop-row-head"><span class="shop-row-title">CROMAS</span><span class="shop-renew">otra paleta · solo cosmético</span></div><div class="shop-strip ui-scroll-x">${cromas}</div>` : ""}
     ${champs ? `<div class="shop-row-head"><span class="shop-row-title">GUARDIANES</span><span class="shop-renew">${locked.length} por desbloquear</span></div><div class="shop-strip ui-scroll-x">${champs}</div>` : ""}
     ${founders.length ? `<div class="shop-row-head"><span class="shop-row-title">FUNDADORES · LOS REGENTES</span><span class="shop-renew">no se compran: se conceden</span></div><div class="shop-strip ui-scroll-x">${founders.map(c=>shopFounderCardHTML(c.id)).join("")}</div>` : ""}
-    <div class="shop-fair">⚖ Casi todo el poder se consigue jugando, con el oro que ganás en las arenas. ${typeof premiumRuleText==="function" ? premiumRuleText() : ""} Míticos y Únicos no se venden: se fabrican o se ganan peleando.</div>`;
+    <div class="shop-fair">⚖ Todo el poder se consigue jugando, con el oro que ganás en las arenas. ${typeof premiumRuleText==="function" ? premiumRuleText() : ""} Míticos y Únicos no se venden: se fabrican o se ganan peleando.</div>`;
   panel.querySelectorAll("[data-now-go]").forEach(b=> b.addEventListener("click", ()=>{ shopTab = "objetos"; shopCat = "base"; renderShop(); const p = document.getElementById("shop-screen"); if(p) p.scrollTop = 0; }));
   const fb = panel.querySelector("#shop-feat-buy");
   if(fb) fb.addEventListener("click", ()=>{
@@ -471,7 +490,7 @@ function renderShopSkins(panel){
   panel.innerHTML = `${focusBar}<div class="lobby-note">Reunir un set o recibir un regalo desbloquea su apariencia. Usarla no cambia tus objetos ni estadísticas. Las apariencias se pagan solo con Brasas ✦ (el oro no las compra): el precio completo y lo que te falta están a la vista.</div>
     ${_shopCollectionsHTML({champ:focus})}
     ${cards || !focus ? `<div class="shop-skin-list">${cards || '<div class="inv-empty">Todavía no hay skins.</div>'}</div>` : ""}
-    ${focus ? "" : `<div class="shop-soon-box shop-soon-small">Sets sin skin todavía (arte pendiente, ver docs/assets_faltantes/skins_sets/): ${pending.join(" · ")}. Con el set completo se ve su aura plena.</div>`}`;
+    ${focus || !pending.length ? "" : `<div class="shop-soon-box shop-soon-small">Más apariencias de set llegan más adelante. Con el set completo se ve su aura plena.</div>`}`;
   const fc = panel.querySelector("#shop-skin-focus-clear");
   if(fc) fc.addEventListener("click", ()=>{ shopSkinFocus = null; renderShop(); });
   _bindSkinBuy(panel);
@@ -555,9 +574,9 @@ function renderShopBrasas(panel){
   let status = "";
   if(!logged) status = `<div class="brasas-status"><b>Iniciá sesión para comprar Brasas.</b> <button class="shop-btn" type="button" id="brasas-login">Iniciar sesión</button></div>
     <div class="mpc-preview-cap">Con Brasas se desbloquean</div>
-    <div class="mpc-locked-row" aria-hidden="true">${["🎨","👑","✦","🎁","💠"].map(i => `<span class="mpc-locked"><span>${i}</span><span class="mpc-lk">🔒</span></span>`).join("")}</div>`;
+    <div class="shop-item-sub" data-brasas-what-note>Cromas, skins y efectos visuales. Solo apariencia.</div>${_shopFreeExitsHTML()}`;
   else if(!PREMIUM.at) status = `<div class="brasas-status">Cargando paquetes…</div>`;
-  else if(!on) status = `<div class="brasas-status" data-brasas-soon-note><b>Muy pronto.</b> Los pagos todavía no están conectados: por ahora no se pueden comprar Brasas.</div>`;
+  else if(!on) status = `<div class="brasas-status" data-brasas-soon-note><b>Muy pronto.</b> Los pagos todavía no están conectados: por ahora no se pueden comprar Brasas.</div>${_shopFreeExitsHTML()}`;
   panel.innerHTML = `<div class="brasas-head">
       <div class="brasas-bal">✦ <b data-premium-balance>${premiumLabel()}</b> <span>Brasas</span></div>
       <div class="brasas-rule">${typeof premiumRuleText==="function" ? premiumRuleText() : ""}</div>
@@ -568,6 +587,7 @@ function renderShopBrasas(panel){
     <div class="brasas-fine">La moneda y el importe de cada paquete se muestran antes de pagar. Mercado Pago cobra en pesos argentinos (AR$). Cada apariencia tiene precio fijo en Brasas: croma ${premiumFmt(PRICING.brasas.croma)}, skin ${premiumFmt(PRICING.brasas.set)} y skin con diseño propio ${premiumFmt(PRICING.brasas.autor)} Brasas. Los campeones no se compran con Brasas: se compran con oro. Sin cajas sorpresa: comprás exactamente lo que ves.</div>` : ""}
     ${_brasasWhatHTML()}
     ${logged ? _shopCollectionsHTML({limit:4}) : ""}`;
+  _shopFreeExitsBind(panel);
   const lg = panel.querySelector("#brasas-login");
   if(lg) lg.addEventListener("click", ()=>{ if(typeof window.accountOpen==="function") window.accountOpen(); });
   panel.querySelectorAll("[data-brasas-buy]").forEach(b=> b.addEventListener("click", async ()=>{

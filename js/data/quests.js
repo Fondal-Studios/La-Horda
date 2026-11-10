@@ -157,12 +157,12 @@ const QUEST_FRAMES = {
   abismo:   {name:"Abismo",           c:["#d29aff","#6a3aa0","#1e0e30"], glow:"176,106,255"},
   cristal:  {name:"Cristal",          c:["#e8fff4","#7fe0c0","#1c5a4a"], glow:"127,224,192"},
   hermandad:{name:"Hermandad",        c:["#c8ffd8","#3ddc71","#124a24"], glow:"61,220,113"},
-  cicatriz: {name:"Cicatriz",         c:["#ffd0e8","#e0407a","#4a0a24"], glow:"224,64,122"},
+  cicatriz_v:{name:"Cicatriz V",      c:["#ffd0e8","#e0407a","#4a0a24"], glow:"224,64,122"}, // Rango de Cicatriz V (antes compartía el id `cicatriz` con el marco del ranking: js/systems/scar-ranks.js lo traduce)
   oro:      {name:"Oro",              c:["#fff6d6","#f0c84a","#8a6a1c"], glow:"255,210,90"},
   infierno: {name:"Infierno",         c:["#ffb070","#b83a2a","#3a0a06"], glow:"255,90,60"},
   racha:    {name:"Racha de Brasa",     c:["#ffe2b0","#ff9a3c","#5a1c08"], glow:"255,140,60", anim:true}, // hito de racha: 14 días
   temporada1:{name:"Los Nuevos Guardianes", c:["#fff6d6","#ffcf5c","#b83a2a"], glow:"255,200,90", anim:true},
-  cicatriz:  {name:"La Cicatriz",      c:["#ffd2ec","#ff7ac8","#3a0f2a"], glow:"255,90,170", anim:true} // top 10 del ranking semanal
+  cicatriz:  {name:"La Cicatriz",      c:["#ffd2ec","#ff7ac8","#3a0f2a"], glow:"255,90,170", anim:true} // top 10 del ranking de la Horda (js/net/leaderboard.js); el del Rango V es `cicatriz_v`
 };
 // EMBLEMAS del perfil (el retrato): "guardian" = tu guardián favorito animado; el resto, glifos.
 const QUEST_EMBLEMS = {

@@ -10,9 +10,24 @@ function scarSave(){
   const clean = (o, f)=>{ const r = {}; if(o && typeof o === "object") for(let k = 0; k <= SCAR_CFG.maxRank; k++){ const v = f(o[k]); if(v) r[k] = v; } return r; };
   C.best = clean(C.best, v=>{ v = +v; return isFinite(v) && v > 0 ? Math.min(Math.floor(v), 1e6) : 0; });
   C.cleared = clean(C.cleared, v=>v ? 1 : 0);
+  scarFrameSync(C);
   return C;
 }
 function scarRank(){ return scarClamp(EN.scar); }
+// Marco propio del Rango V. Los datos (js/data/scar-ranks.js) todavía dicen `cicatriz`, que es el id del marco del top 10 del
+// ranking (js/net/leaderboard.js): acá se traduce al marco exclusivo `cicatriz_v`. Si los datos pasan a decir `cicatriz_v`, sigue igual.
+function scarFrameId(id){
+  if(id === "cicatriz" && typeof QUEST_FRAMES !== "undefined" && QUEST_FRAMES.cicatriz_v) return "cicatriz_v";
+  return id || null;
+}
+// Quien ya había completado el Rango V antes del marco propio lo recibe (conserva el que tenía).
+function scarFrameSync(C){
+  try{
+    const top = SCAR_CFG.maxRank, id = scarFrameId((SCAR_RANKS[top] || {}).frame);
+    const q = C && C.cleared && C.cleared[top] && id && typeof questsState === "function" ? questsState() : null;
+    if(q && Array.isArray(q.frames) && QUEST_FRAMES[id] && !q.frames.includes(id)) q.frames.push(id);
+  }catch(e){}
+}
 // Se llama al armar la partida (endlessBeginRun): fija el rango elegido y mezcla sus mutadores.
 function scarApplyToRun(){
   const C = scarSave();
@@ -38,7 +53,8 @@ function scarOnRunEnd(round, L){
     const q = typeof questsState === "function" ? questsState() : null;
     if(q){
       if(o.title && q.titles && !q.titles.includes(o.title)){ q.titles.push(o.title); res.title = o.title; }
-      if(o.frame && q.frames && !q.frames.includes(o.frame)){ q.frames.push(o.frame); res.frame = o.frame; }
+      const fr = scarFrameId(o.frame);
+      if(fr && q.frames && !q.frames.includes(fr)){ q.frames.push(fr); res.frame = fr; }
     }
   }catch(e){ console.error(e); }
   if(L) L.scar = res;

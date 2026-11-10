@@ -16,6 +16,12 @@
 const PREP_SECS = ["equipo", "arena", "online"];
 let prepSec = "equipo";
 let _prepSecRoom = null; // código de la sala online para la que ya se abrió sola la pestaña
+let _prepSecMenuFrom = null; // desde qué pantalla se entró a ELEGÍ TU GUARDIÁN ("prep" = "Cambiar campeón" desde la Sala)
+(function(){
+  if(typeof setState!=="function") return;
+  const base = setState;
+  setState = function(s){ if(s==="menu" && typeof state!=="undefined" && state!=="menu") _prepSecMenuFrom = state; return base.apply(this, arguments); };
+})();
 
 function prepSecSet(sec){
   if(!PREP_SECS.includes(sec)) return;
@@ -29,10 +35,15 @@ function prepSecSet(sec){
 }
 // Al entrar a la Sala desde afuera (menú, resultados, Modos…): la pestaña que corresponde.
 function prepSecOnEnter(prev){
-  if(["menu","shop","codex","champdetail","inventory","account"].includes(prev)){ prepSecSet(prepSec); return; } // volvés de un paso intermedio
   const online = typeof netInRoom==="function" && netInRoom();
+  // HORDA INFINITA (sin sala online): la Sala abre en la pestaña "Horda Infinita", que es donde se ve y se elige el Rango de
+  // Cicatriz (antes abría en Equipo y el rango quedaba escondido). A la Horda se entra pasando por ELEGÍ TU GUARDIÁN ("menu"):
+  // si a esa pantalla se llegó desde la propia Sala ("Cambiar campeón") es una vuelta y se queda en la pestaña donde estabas.
+  const endless = typeof endlessPending!=="undefined" && !!endlessPending && !online;
+  if(endless && prev==="menu" && _prepSecMenuFrom!=="prep"){ _prepSecRoom = null; prepSecSet("arena"); return; }
+  if(["menu","shop","codex","champdetail","inventory","account"].includes(prev)){ prepSecSet(prepSec); return; } // volvés de un paso intermedio
   _prepSecRoom = online ? net.code : null;
-  let sec = "equipo";
+  let sec = endless ? "arena" : "equipo";
   if(typeof lobbyNextArena!=="undefined" && lobbyNextArena) sec = "arena"; // después de ganar: la SIGUIENTE, a la vista (también en la sala online)
   else if(online || (typeof netLobby!=="undefined" && (netLobby.pendingJoin || netLobby.lastError))) sec = "online";
   prepSecSet(sec);

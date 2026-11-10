@@ -100,3 +100,19 @@
 /* Racha diaria: chip chico en el borde inferior del botón DESAFÍOS (el sub-texto de los botones está oculto en el hub compacto). */
 #mainmenu-screen .hub-tile-streak{ position:absolute; left:64px; right:6px; bottom:3px; display:block; font-size:14px; line-height:1.1; color:#ffb870; text-align:right; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; pointer-events:none; }
 #mainmenu-screen .hub-tile-streak:empty{ display:none; }
+
+/* ---------- ESCRITORIO GRANDE (1600x900 en adelante: 1080p, 1440p, 4K) ----------
+   El hub estaba pensado para 1000 px de ancho: a 1920x1080 quedaba una columna angosta con 280 px vacíos arriba y DESAFÍOS
+   caía solo a una segunda fila. Acá se agranda TODO el hub en proporción (cabecera + tarjetas, con zoom: letras, íconos y
+   bordes crecen juntos) y EXPLORAR vuelve a ser una fila de 5. No toca 1280x720 ni el celular (las reglas de arriba siguen igual). */
+@media (min-width:1600px) and (min-height:900px){
+  #mainmenu-screen .hub-top, #mainmenu-screen .hub-main{ zoom:1.25; }
+  #mainmenu-screen .hub-row-explore{ grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px; }
+  #mainmenu-screen .hub-row-explore .hub-tile{ min-height:76px; padding:8px 10px; }
+  #mainmenu-screen .hub-row-explore .hub-tile-title{ font-size:18px; }
+  #mainmenu-screen .hub-row-explore .hub-tile-sub{ font-size:14px; }
+  #mainmenu-screen #mainmenu-tienda-btn .hub-tile-sub{ padding-right:62px; }
+}
+@media (min-width:1900px) and (min-height:1000px){ #mainmenu-screen .hub-top, #mainmenu-screen .hub-main{ zoom:1.5; } }
+@media (min-width:2500px) and (min-height:1400px){ #mainmenu-screen .hub-top, #mainmenu-screen .hub-main{ zoom:2; } }
+@media (min-width:3800px) and (min-height:2100px){ #mainmenu-screen .hub-top, #mainmenu-screen .hub-main{ zoom:3; } }

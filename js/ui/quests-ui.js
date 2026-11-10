@@ -97,7 +97,10 @@ function questsShowRunSummary(sum){
   el.innerHTML = `<b>🏆 DESAFÍOS</b><span>+${sum.xp} XP de cuenta</span><span>Pase Nv. ${sum.pass.level}${sum.passUp > 0 ? " ▲" : ""}</span>${done.length ? `<span>${done.join(" · ")}</span>` : ""}`;
 }
 // Al salir de la pantalla de fin, el resumen se va (la próxima partida arma el suyo).
-function _qClearRunSummary(){ document.querySelectorAll(".qs-run-sum").forEach(e=>e.remove()); }
+function _qClearRunSummary(){
+  document.querySelectorAll(".qs-run-sum").forEach(e=>e.remove());
+  if(typeof nextUnlockClear === "function") nextUnlockClear();   // panel «Lo próximo que desbloqueás» (js/ui/next-unlock.js)
+}
 
 /* ---------------- pantalla ---------------- */
 let questsTab = "desafios", questsCat = "todos", _qReturn = "mainmenu";

@@ -1,0 +1,39 @@
+# electron-builder: produce la carpeta DESEMPAQUETADA (target "dir") que se sube a Steam con steamcmd/SteamPipe. No genera instalador.
+# NO se ejecutó en este repositorio: revisar la primera vez que se construya (ver LEEME.md).
+appId: com.lahorda.desktop              # CONFIRMAR con el dueño (identificador inverso del estudio)
+productName: La Horda
+copyright: "(c) CONFIRMAR razón social"
+directories:
+  output: dist
+  buildResources: build
+asar: true
+asarUnpack:
+  - "**/node_modules/steamworks.js/**"   # los .dll/.so de Steamworks no pueden quedar dentro del asar
+files:                                   # código del contenedor (va dentro de app.asar)
+  - main.js
+  - preload.js
+  - url-policy.js
+  - save-mirror.js
+  - package.json
+extraResources:                          # el juego va SUELTO en resources/game (lo arma stage.mjs): SteamPipe hace mejores parches
+  - from: game
+    to: game
+    filter:
+      - "**/*"
+      - "!**/*.map"
+win:
+  target:
+    - target: dir
+      arch: [x64]
+  # icon: build/icon.ico                 # FALTA: hoy solo existen assets/icons/icon-192.png e icon-512.png
+linux:
+  target:
+    - target: dir
+      arch: [x64]
+  category: Game
+  # icon: build/icon.png                 # FALTA (512x512)
+electronFuses:
+  runAsNode: false
+  enableNodeCliInspectArguments: false
+  enableNodeOptionsEnvironmentVariable: false
+  onlyLoadAppFromAsar: true

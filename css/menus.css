@@ -165,6 +165,22 @@
 /* Concepto (arte en producción): silueta con el brillo del campeón, nunca el sprite sin aprobar */
 .champ-card.concept canvas, .cx-champ-card.concept canvas, .shop-champ-row.concept canvas{ filter:brightness(0) drop-shadow(0 0 3px rgba(255,190,240,.85)); }
 .champ-unlock-how{font-size:0.78rem; color:#ffb0e8; margin-top:3px; line-height:1.25;}
+/* ELEGÍ TU GUARDIÁN en pantallas anchas (PC): con 46 guardianes en 2 columnas de 420 px la página medía ~7.000 px y
+   "Entrar a la Arena" quedaba al fondo. Grilla de muchas columnas con tarjetas compactas (el detalle sigue en
+   "Habilidades y estilo") y el botón de continuar SIEMPRE visible, pegado abajo. El celular (≤900 px) no cambia. */
+@media (min-width:1100px) and (min-height:521px){
+  #menu-screen{ justify-content:flex-start; }
+  #menu-screen .champ-grid{ grid-template-columns:repeat(auto-fill, minmax(168px, 1fr)); gap:8px; max-width:min(1720px, 96vw); margin-bottom:14px; align-items:start; }
+  #menu-screen .champ-card{ padding:8px 6px; gap:3px; min-width:0; }
+  #menu-screen .champ-card:hover{ border-color:#7a4a26; }
+  #menu-screen .champ-card.selected, #menu-screen .champ-card.selected:hover{ border-color:var(--ember1); }
+  #menu-screen .champ-preview{ width:64px; height:64px; }
+  #menu-screen .champ-name{ font-size:1.1rem; line-height:1.1; }
+  #menu-screen .champ-role{ display:none; } /* la descripción larga queda dentro de "Habilidades y estilo" y en la ficha del guardián */
+  #menu-screen .champ-lvl{ margin-top:0; }
+  #menu-screen #start-btn{ position:sticky; bottom:10px; z-index:6; flex-shrink:0; min-width:340px;
+    box-shadow:0 0 0 8px rgba(9,5,3,0.94), 0 -14px 22px 8px rgba(0,0,0,0.75), 4px 4px 0 #000; }
+}
 
 .btn{
   font-family:var(--font-retro); font-size:1.35rem; font-weight:400; letter-spacing:0.02em;
@@ -279,6 +295,14 @@
 #title-join-btn{ margin-top:8px; position:relative; z-index:2; }
 .title-join-status{ margin-top:6px; font-size:0.72rem; color:var(--text-dim); position:relative; z-index:2; max-width:420px; }
 .build-tag{ position:absolute; bottom:calc(6px + env(safe-area-inset-bottom,0px)); left:0; right:0; font-size:0.55rem; letter-spacing:0.12em; color:rgba(255,207,92,0.55); z-index:2; }
+/* Textos de desarrollo fuera de la vista del jugador (lanzamiento en PC). Los nodos siguen en el DOM (js/ui/legal.js y sus
+   pruebas no cambian): la marca "borrador" de los enlaces legales y "Soporte: correo sin configurar" solo se ocultan.
+   OJO dueño: falta el correo real de soporte y la aprobación legal (js/data/legal-config.js: supportEmail, draft). */
+span.legal-draft{ display:none; }
+span.legal-support:has(> .legal-nomail){ display:none; }
+/* "Instalar en mi dispositivo" es la PWA del celular: en escritorio (mouse, sin pantalla táctil) no tiene sentido. */
+/* (css/title-polish.css lo fuerza con display:flex !important: por eso el selector largo) */
+@media (hover:hover) and (pointer:fine){ html body #title-screen a[href="instalar.html"], html body #title-screen.bt-title > a[href="instalar.html"]{ display:none !important; } }
 #net-toast{ position:fixed; left:50%; top:calc(14px + env(safe-area-inset-top,0px)); transform:translateX(-50%); z-index:60;
   background:#1a0f0a; border:2px solid var(--ember1); color:var(--text); padding:8px 14px; font-size:0.8rem; opacity:0; pointer-events:none; }
 #net-toast.show{ animation:netToast 3.2s ease forwards; }

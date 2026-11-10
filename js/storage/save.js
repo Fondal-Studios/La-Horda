@@ -308,13 +308,93 @@ function _loadSaveInner(){
     // PISABA en localStorage (y con cuenta, en la nube). Ahora queda una copia intacta del guardado que no
     // se pudo leer, el error se ve en la consola y no se escribe encima hasta cargar bien (saveLoadFailed).
     try{ console.error("No se pudo cargar el guardado:", e); }catch(x){}
-    try{ const raw = localStorage.getItem(SAVE_KEY); if(raw) localStorage.setItem(SAVE_KEY + "_noCargo", raw); }catch(x){}
+    // El jugador se entera (antes era mudo: jugaba horas como perfil nuevo sin que nada se guardara) y, cuando
+    // acepta el aviso, el juego vuelve a guardar. Hasta entonces no se escribe nada: el original sigue intacto.
+    const bk = saveBackupUnreadable();
     saveLoadFailed = true;
     save = defaultSave();
+    saveNoticeUnreadable(bk);
   }
 }
 // true si el último loadSave() falló: persistNow no pisa el guardado real con el de fábrica.
+// Vuelve a false cuando el jugador acepta el aviso (saveNoticeUnreadable) y la copia de respaldo existe.
 let saveLoadFailed = false;
+
+/* ---------------- guardado ilegible / almacenamiento lleno: respaldo y avisos ---------------- */
+// Copia el guardado que no se pudo leer. NUNCA pisa un respaldo existente: la primera copia va a
+// SAVE_KEY+"_noCargo"; si ya hay una distinta, la nueva va a SAVE_KEY+"_noCargo_<fecha>".
+// Devuelve {had, key}: had = había algo guardado; key = dónde quedó la copia (null si no se pudo copiar).
+function saveBackupUnreadable(){
+  let raw = null;
+  try{ raw = localStorage.getItem(SAVE_KEY); }catch(x){ return {had:false, key:null}; }
+  if(!raw) return {had:false, key:null};
+  const base = SAVE_KEY + "_noCargo";
+  try{
+    const cur = localStorage.getItem(base);
+    if(cur === raw) return {had:true, key:base};
+    if(cur == null){ localStorage.setItem(base, raw); return {had:true, key:base}; }
+    for(let i=0; i<localStorage.length; i++){ const k = localStorage.key(i); if(k && k.indexOf(base + "_")===0 && localStorage.getItem(k)===raw) return {had:true, key:k}; }
+    let key = base + "_" + Date.now(); while(localStorage.getItem(key) != null) key += "b";
+    localStorage.setItem(key, raw);
+    return {had:true, key};
+  }catch(x){ return {had:true, key:null}; }
+}
+// Avisos del guardado: se muestran con el diálogo del juego cuando hay una pantalla donde leerlos
+// (nunca en plena pelea). Cola propia: loadSave corre antes de que exista la interfaz.
+const SAVE_MSG_UNREADABLE = "No pudimos leer tu guardado.\nNo se borró: quedó una copia de respaldo en este dispositivo.\nEmpezás con un perfil nuevo y el juego lo va a guardar normalmente.";
+const SAVE_MSG_UNREADABLE_NO_BACKUP = "No pudimos leer tu guardado ni hacerle una copia de respaldo.\nPara no pisarlo, lo que juegues en esta sesión no se va a guardar. Liberá espacio y volvé a abrir el juego.";
+const SAVE_MSG_WRITE_FAILED = "No se pudo guardar el progreso: el almacenamiento está lleno o bloqueado.\nPodés seguir jugando, pero lo nuevo se puede perder al cerrar. Liberá espacio: el juego vuelve a intentar solo.";
+const _saveNotices = [];
+let _saveNoticeTimer = null;
+function _saveNoticePump(){
+  _saveNoticeTimer = null;
+  if(!_saveNotices.length) return;
+  const st = typeof state!=="undefined" ? state : null;
+  const n = _saveNotices[0];
+  // en partida no se interrumpe; en la victoria el aviso de escritura lo da la propia pantalla (victorySaveReady)
+  const canShow = typeof gameAlert==="function" && st && st!=="playing" && st!=="buff" && !(n.write && st==="victory");
+  if(!canShow){ _saveNoticeTimer = setTimeout(_saveNoticePump, 500); return; }
+  _saveNotices.shift();
+  let p = null;
+  try{ p = gameAlert(n.msg, {title:"Guardado"}); }catch(x){}
+  const done = ()=>{ try{ if(n.onAck) n.onAck(); }catch(x){} if(_saveNotices.length && !_saveNoticeTimer) _saveNoticeTimer = setTimeout(_saveNoticePump, 300); };
+  if(p && typeof p.then==="function") p.then(done); else done();
+}
+function _saveNoticePush(n){
+  _saveNotices.push(n);
+  if(!_saveNoticeTimer) _saveNoticeTimer = setTimeout(_saveNoticePump, 400);
+}
+function saveNoticeUnreadable(bk){
+  if(!bk.had) return;   // no había nada que leer (almacenamiento inaccesible): lo cubre el aviso de escritura
+  if(!bk.key){ _saveNoticePush({msg:SAVE_MSG_UNREADABLE_NO_BACKUP}); return; }   // sin copia no se habilita la escritura
+  _saveNoticePush({msg:SAVE_MSG_UNREADABLE, onAck:()=>{
+    let safe = false; try{ safe = localStorage.getItem(bk.key) != null; }catch(x){}
+    if(safe) saveLoadFailed = false;   // el próximo guardado escribe el perfil nuevo; el anterior queda en bk.key
+  }});
+}
+// Una escritura falló (almacenamiento lleno o bloqueado): un aviso por SESIÓN, no uno por intento.
+let saveWriteWarned = false;
+function saveNoticeWriteFailed(){
+  if(saveWriteWarned) return;
+  saveWriteWarned = true;
+  _saveNoticePush({msg:SAVE_MSG_WRITE_FAILED, write:true});
+}
+// La pantalla de victoria ya avisó por su cuenta: no repetir el aviso general.
+function saveNoticeWriteHandled(){
+  saveWriteWarned = true;
+  for(let i=_saveNotices.length-1; i>=0; i--) if(_saveNotices[i].write) _saveNotices.splice(i, 1);
+}
+// ¿Esta sesión no escribe el guardado A PROPÓSITO? (no es una falla: nadie tiene que esperar ni avisar)
+function saveNoWriteByDesign(){
+  // GM / TEST LAB: una sesión de prueba nunca escribe el progreso real (js/systems/test-lab.js).
+  if(typeof testLabActive==="function" && testLabActive()) return true;
+  // RED LOCAL (js/net/net-lan.js): la sesión trabaja sobre una COPIA del guardado y nada se escribe (ni se sube a la nube).
+  if(typeof lanNoPersist==="function" && lanNoPersist()) return true;
+  // Guerra de Cristales juega con un guardado temporal: nunca se escribe. ÚNICA excepción: la recompensa final del postgame, que se escribe
+  // sobre el guardado REAL mientras postgame.js lo pone (window.__pgCommit, js/systems/postgame.js).
+  if(typeof lanesOn==="function" && lanesOn() && !window.__pgCommit) return true;
+  return false;
+}
 
 // Migración one-shot del Talent Gate 40. Reasigna el árbol ordinario con la nueva
 // economía, pero nunca revoca decisiones irreversibles de Maestría. El respaldo
@@ -489,19 +569,15 @@ function persistNow(){
   if(_persistBatchDepth) return false;
   saveLastWriteOK = false;
   if(_persistTimer){ clearTimeout(_persistTimer); _persistTimer = null; }
-  // GM / TEST LAB: una sesión de prueba nunca escribe el progreso real (js/systems/test-lab.js).
-  if(typeof testLabActive==="function" && testLabActive()) return;
-  // RED LOCAL (js/net/net-lan.js): la sesión trabaja sobre una COPIA del guardado y nada se escribe (ni se sube a la nube).
-  if(typeof lanNoPersist==="function" && lanNoPersist()) return;
-  // Guerra de Cristales juega con un guardado temporal: nunca se escribe. ÚNICA excepción: la recompensa final del postgame, que se escribe
-  // sobre el guardado REAL mientras postgame.js lo pone (window.__pgCommit, js/systems/postgame.js).
-  if(typeof lanesOn==="function" && lanesOn() && !window.__pgCommit) return;
+  // Test Lab, red local y Guerra de Cristales no escriben a propósito (saveNoWriteByDesign, más arriba).
+  if(saveNoWriteByDesign()) return;
   // B1: mientras el anfitrión simula a un invitado, su guardián usa los datos del invitado;
   // netPersistView escribe siempre los datos propios del anfitrión.
   if(saveLoadFailed) return; // el guardado de verdad sigue en localStorage (y copiado en _noCargo)
   if(!saveLoadStarted){ try{ console.warn("persist antes de cargar el guardado: ignorado"); }catch(e){} return; }
   const data = (typeof netPersistView==="function") ? netPersistView(save) : save;
-  try{ localStorage.setItem(SAVE_KEY, JSON.stringify(data)); saveLastWriteOK = true; }catch(e){ return false; }
+  try{ localStorage.setItem(SAVE_KEY, JSON.stringify(data)); saveLastWriteOK = true; }
+  catch(e){ saveNoticeWriteFailed(); return false; } // almacenamiento lleno o bloqueado: se avisa una vez por sesión
   // CUENTAS: avisa que el guardado cambió (se sube a la nube con demora: js/net/account.js)
   if(typeof accountOnPersist==="function"){ try{ accountOnPersist(); }catch(e){} }
   return true;

@@ -334,7 +334,7 @@ function endlessOpenBuffChoice(){
       buffApplyOpt(player, opt);
       if(b) endlessOnBuffPicked(player, b.id);
       if(netIsHost()){ cards.innerHTML = `<div class="net-wait">Elegiste <b>${buffOptName(opt)}</b>.</div>`; netHostPickedLocal(); return; }
-      player.hp = Math.min(player.maxHp, player.hp + player.maxHp*ENDLESS_CFG.hpRefillOnRound);
+      if(player.alive) player.hp = Math.min(player.maxHp, player.hp + player.maxHp*ENDLESS_CFG.hpRefillOnRound); // caído: no gana vida estando en el suelo
       player.energy = player.maxEnergy;
       if(typeof hrelNextPhase==="function" && hrelNextPhase()) return; // reliquias: segunda elección tras el jefe (js/systems/horde-relics.js)
       setState("playing");
@@ -351,7 +351,9 @@ function endlessOpenBuffChoice(){
 // usePity) la protección contra la mala suerte, que avanza como una victoria.
 function endlessRollItem(grade, arena, usePity){
   if(typeof lootTierWeights!=="function" || !player) return null;
-  const L = EN.local || {}; if(stashFull()){ L.full = true; return null; }
+  // Inventario lleno: el cofre NO se pierde (antes se descartaba sin tirar el objeto). Va al buzón "Recompensas
+  // pendientes" igual que el botín de la Campaña (addItemToInventory con earnedReward -> rewardOverflowPush).
+  const L = EN.local || {}, full = stashFull(); if(full) L.full = true;
   save.lootPity = Object.assign({legendario:0, set:0, mitico:0, unico:0}, save.lootPity||{});
   const pity = usePity ? save.lootPity : null;
   const tier = _pick(lootTierWeights(arena, grade, pity, false), Math.random) || "comun";
@@ -360,7 +362,7 @@ function endlessRollItem(grade, arena, usePity){
   if(usePity) for(const t in LOOT_PITY) save.lootPity[t] = (t===spec.tier) ? 0 : (save.lootPity[t]||0) + 1;
   const it = materializeLoot(spec, selectedClass, arena);
   it.lootTier = spec.tier;
-  addItemToInventory(selectedClass, it);
+  if(!addItemToInventory(selectedClass, it, true)) return null;
   if(L.loot) L.loot.push(it);
   persist();
   const tm = LOOT_TIER_META[itemTier(it)] || {};
@@ -380,8 +382,9 @@ function endlessAwardChest(kind){
     showBanner(`COFRE MENOR DE LA CICATRIZ: +${g} de oro y +1 gema`);
     return;
   }
+  const full = stashFull(); // lleno: el objeto va a Recompensas pendientes (endlessRollItem)
   const it = endlessRollItem(grade, arena, true);
-  showBanner(it ? `COFRE DE LA CICATRIZ: ${it.name}` : "COFRE DE LA CICATRIZ (inventario lleno)");
+  showBanner(it ? `COFRE DE LA CICATRIZ: ${it.name}${full ? " (a Recompensas pendientes)" : ""}` : "COFRE DE LA CICATRIZ (inventario lleno)");
   if(netIsHost()) netRecord("endlessGuestReward", [{k:"item", grade, arena, pity:1, why:kind}]);
 }
 // Invitado: recompensa decidida por el anfitrión, cobrada en SU guardado.
@@ -644,7 +647,7 @@ function endlessShowResults(){
       ${online ? `<button class="btn secondary" id="en-leave-btn">${guest ? "Salir de la sala" : "Cerrar la sala y salir"}</button>` : ""}
     </div>
     <div class="en-res-sub">Botín juntado</div>
-    <div class="en-res-loot">${loot || `<div class="en-loot-empty">${EN.round < 5 ? "Sin cofres todavía: el primero llega al vencer al subjefe de la ronda 5; desde la ronda 10, también el cofre final." : "El inventario estaba lleno o la suerte no acompañó."}</div>`}${L.full ? `<div class="en-loot-empty" style="color:#ff9a7a;">Tu inventario llegó al máximo: algunas recompensas no se pudieron guardar.</div>` : ""}</div>
+    <div class="en-res-loot">${loot || `<div class="en-loot-empty">${EN.round < 5 ? "Sin cofres todavía: el primero llega al vencer al subjefe de la ronda 5; desde la ronda 10, también el cofre final." : "El inventario estaba lleno o la suerte no acompañó."}</div>`}${L.full ? `<div class="en-loot-empty" style="color:#ff9a7a;">Tu inventario llegó al máximo: lo que no entró quedó en Recompensas pendientes, en el menú principal.</div>` : ""}</div>
     <div class="en-res-muts">${muts}</div>
     <div class="res-rows en-res-rows">
       <div class="res-row"><span>Tiempo</span><b>${Math.floor(secs/60)}:${String(secs%60).padStart(2,"0")}</b></div>

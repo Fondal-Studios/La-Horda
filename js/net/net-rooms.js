@@ -11,6 +11,12 @@
    ============================================================ */
 const netRooms = { list:null, at:-1e9, busy:false, err:"", hubAt:-1e9, hubCount:-1, unsupported:false };
 const NET_ROOMS_EVERY_MS = 6000, NET_ROOMS_HUB_EVERY_MS = 30000;
+// Sin red la tarjeta no se queda "buscando": a los 4 s (o al instante si el navegador ya sabe que no hay conexión)
+// dice esto. La lista se sigue reintentando sola cada NET_ROOMS_EVERY_MS, así que aparece apenas vuelve la red.
+const NET_ROOMS_TIMEOUT_MS = 4000;
+const NET_ROOMS_OFFLINE = "Sin conexión: podés jugar en solitario.";
+function _roomsOffline(){ try{ return typeof navigator!=="undefined" && navigator.onLine===false; }catch(e){ return false; } }
+function _roomsSleep(ms){ return new Promise(r => setTimeout(()=> r(null), ms)); }
 
 function _roomsEsc(s){ return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
 function netRoomsUrl(){
@@ -23,16 +29,21 @@ async function netFetchRooms(){
   const url = netRoomsUrl(); if(!url) return null;
   // Navegador automatizado sin ?server=: no sale a Internet (misma regla que netCapsProbe/netWarmup en net-core.js). Antes esta consulta
   // llegaba al servidor real y, desde 127.0.0.1, su CORS la rechazaba: error de consola que hacía fallar t_codex y postgame-test.
-  try{ if(navigator.webdriver && !/[?&]server=/.test(location.search) && !(typeof netLanPage==="function" && netLanPage())) return null; }catch(e){} // red local: el servidor es la anfitriona, nunca Internet
+  // (no se consulta nada: la tarjeta lo dice en vez de quedarse en "Buscando salas…" para siempre)
+  try{ if(navigator.webdriver && !/[?&]server=/.test(location.search) && !(typeof netLanPage==="function" && netLanPage())){ if(netRooms.list===null) netRooms.err = NET_ROOMS_OFFLINE; return null; } }catch(e){} // red local: el servidor es la anfitriona, nunca Internet
   if(netRooms.busy) return netRooms.list;
+  // el navegador ya sabe que no hay red: ni se intenta (antes: más de 14 s en "Buscando salas…")
+  if(_roomsOffline() && !(typeof netLanPage==="function" && netLanPage())){ netRooms.at = performance.now(); netRooms.err = NET_ROOMS_OFFLINE; return null; }
   netRooms.busy = true; netRooms.at = performance.now(); // también si falla: no reintenta en cada segundo
   let t=0;
   try{
     // servidor viejo sin /api (net-core.js: netCaps): ni se pide (404 sin CORS = error en la consola)
-    if(typeof netCapsProbe==="function" && netCaps.api===null) await netCapsProbe();
+    // (la consulta de /health puede tardar un minuto con el servidor dormido: acá se la espera 4 s como mucho; sigue sola de fondo)
+    if(typeof netCapsProbe==="function" && netCaps.api===null) await Promise.race([netCapsProbe(), _roomsSleep(NET_ROOMS_TIMEOUT_MS)]);
     if(typeof netApiMissing==="function" && netApiMissing()){ netRooms.unsupported = true; netRooms.err = ""; netRooms.list = []; return []; }
+    const left = Math.max(1200, NET_ROOMS_TIMEOUT_MS - (performance.now() - netRooms.at));
     const ctl = typeof AbortController!=="undefined" ? new AbortController() : null;
-    t = ctl ? setTimeout(()=>ctl.abort(), 12000) : 0;
+    t = ctl ? setTimeout(()=>ctl.abort(), left) : 0;
     const r = await fetch(url, {cache:"no-store", signal: ctl ? ctl.signal : undefined});
     if(url!==netRoomsUrl())return null;
     if(r.status===404){ netRooms.unsupported = true; netRooms.err = ""; netRooms.list = []; return []; }
@@ -43,7 +54,8 @@ async function netFetchRooms(){
     netRooms.list = Array.isArray(j.rooms) ? j.rooms.slice(0, 40) : [];
     return netRooms.list;
   }catch(e){
-    netRooms.err = "No se pudo consultar el servidor (puede estar despertando: probá en un minuto).";
+    // sin lista todavía: lo que le sirve al jugador es saber que puede jugar igual; con una lista ya en pantalla, el aviso de siempre
+    netRooms.err = (netRooms.list===null || _roomsOffline()) ? NET_ROOMS_OFFLINE : "No se pudo consultar el servidor (puede estar despertando: probá en un minuto).";
     return null;
   }finally{ clearTimeout(t); netRooms.busy = false; }
 }
@@ -68,7 +80,7 @@ function netRenderRoomsList(){
   let html = "", msg = "";
   if(!netAvailable()) msg = "El modo online no está configurado en esta versión.";
   else if(netRooms.unsupported) msg = "Las salas abiertas todavía no están disponibles en el servidor: entrá con el código de tu amigo.";
-  else if(netRooms.list===null) msg = netRooms.err || (netRooms.busy && performance.now() - netRooms.at > 4000 ? "Despertando el servidor… (la primera vez puede tardar hasta un minuto)" : "Buscando salas…");
+  else if(netRooms.list===null) msg = netRooms.err || (_roomsOffline() || (netRooms.busy && performance.now() - netRooms.at > NET_ROOMS_TIMEOUT_MS) ? NET_ROOMS_OFFLINE : "Buscando salas…");
   else if(!netRooms.list.length) msg = netRooms.err || "No hay salas públicas abiertas ahora. Creá una y marcala 🌍 Pública en la Sala.";
   else { html = netRooms.list.map(_roomRowHTML).join(""); msg = netRooms.err; }
   if(box._html !== html){ box._html = html; box.innerHTML = html; }
@@ -119,9 +131,15 @@ async function netJoinPublicRoom(code, btn){
   setInterval(()=>{
     if(typeof state==="undefined" || !netAvailable() || document.hidden) return;
     const now = performance.now();
-    if(state==="modeselect" && netRooms.busy && netRooms.list===null) netRenderRoomsList(); // "Despertando el servidor…"
+    if(state==="modeselect" && netRooms.busy && netRooms.list===null) netRenderRoomsList(); // pasó el tope: "Sin conexión…"
     if(state==="modeselect" && now - netRooms.at > NET_ROOMS_EVERY_MS && !netRooms.busy) netRefreshRooms();
     else if(state==="mainmenu" && now - netRooms.hubAt > NET_ROOMS_HUB_EVERY_MS && !netRooms.busy){ netRooms.hubAt = now; netFetchRooms().then(netRenderHubRooms); }
   }, 1000);
+  // se cortó / volvió la red con la pantalla abierta: el cartel cambia al instante y la lista se vuelve a pedir
+  window.addEventListener("offline", ()=>{ if(netRooms.list===null) netRooms.err = NET_ROOMS_OFFLINE; netRenderRoomsList(); });
+  window.addEventListener("online", ()=>{
+    if(netRooms.err===NET_ROOMS_OFFLINE) netRooms.err = "";
+    if(typeof state!=="undefined" && state==="modeselect" && netAvailable() && !netRooms.busy) netRefreshRooms(); else netRenderRoomsList();
+  });
   netRenderRoomsList();
 })();

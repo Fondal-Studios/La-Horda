@@ -272,9 +272,25 @@ document.getElementById("pause-btn").addEventListener("click", ()=>{
 // Celular: una llamada, una notificación o cambiar de app en plena partida SOLO. Antes el juego
 // quedaba congelado y al volver seguía de golpe, con la horda encima y sin aviso. Ahora vuelve en
 // pausa (en cooperativo no hay pausa: la partida es de todos y la sigue el anfitrión).
-document.addEventListener("visibilitychange", ()=>{
-  if(document.visibilityState==="hidden" && state==="playing" && !netMatch && typeof renderStatsPanel==="function"){ setState("paused"); renderStatsPanel(); if(typeof tacticalPanelOpen==="function") tacticalPanelOpen(); }
-});
+function autoPauseAway(){
+  if(state==="playing" && !netMatch && typeof renderStatsPanel==="function"){ setState("paused"); renderStatsPanel(); if(typeof tacticalPanelOpen==="function") tacticalPanelOpen(); return true; }
+  return false;
+}
+document.addEventListener("visibilitychange", ()=>{ if(document.visibilityState==="hidden") autoPauseAway(); });
+// Escritorio: Alt+Tab o un clic en otra ventana NO cambian la visibilidad de la página (sigue "visible" detrás), así que
+// la partida en solitario seguía corriendo sin nadie al mando. La ventana perdió el foco = pausa, con la misma regla de
+// arriba (online no se pausa). Solo cuenta el blur REAL de la ventana: uno fabricado con dispatchEvent no pausa, y en un
+// teléfono sin teclado ni mando no se usa (ahí ya alcanza con visibilitychange y un blur suelto no debe cortar la partida).
+function autoPauseOnBlur(ev){
+  if(ev && ev.target!==window) return false;
+  if(ev && ev.type==="blur" && ev.isTrusted===false) return false;
+  let coarse = false; try{ coarse = typeof matchMedia==="function" && matchMedia("(pointer:coarse)").matches; }catch(e){}
+  const dev = typeof DESK!=="undefined" ? DESK.device : null;
+  if(coarse && dev!=="kb" && dev!=="pad") return false;
+  return autoPauseAway();
+}
+window.addEventListener("blur", autoPauseOnBlur);
+window.addEventListener("lahorda-blur", autoPauseOnBlur); // app de escritorio: la ventana avisa que perdió el foco
 // Multijugador: tocar el fondo del panel táctico lo cierra (la partida nunca se detuvo).
 document.getElementById("pause-screen").addEventListener("click", (ev)=>{
   if(netMatch && state==="playing" && ev.target===ev.currentTarget) ev.currentTarget.classList.add("hidden");

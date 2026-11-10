@@ -18,7 +18,8 @@ const PADNAV = { el:null, sig:null, shown:false, key:"", need:false, rep:{dir:""
 const PN_SEL = 'button, a[href], [role="button"], [role="tab"], [role="switch"], [role="checkbox"], [role="menuitem"], select, input:not([type="hidden"]), textarea, summary, [tabindex]:not([tabindex="-1"])';
 const PN_TAB_SEL = '[role="tab"], .hub-tab, .shop-tab, .cx-tab, .tab, button[class*="-tab"]';
 const PN_ACTIVE_SEL = '.on, .active, .sel, .selected, [aria-selected="true"], [aria-pressed="true"]';
-const PN_BACK_SEL = '[data-pad-back], .gd-cancel, .ui-back, .cx-back, [id$="-back-btn"], [id$="-close-btn"], [id="resume-btn"], [data-opt-close].btn, [data-cw-gate-close].btn, [data-pg-gate-close].btn, .modal-close, [aria-label="Cerrar"], [aria-label="Close"]';
+// (#menu-btn-1 / #menu-btn-2: "Volver al menú" de derrota y victoria; en los pasos intermedios de la victoria está oculto y no cuenta)
+const PN_BACK_SEL = '[data-pad-back], #menu-btn-1, #menu-btn-2, .gd-cancel, .ui-back, .cx-back, [id$="-back-btn"], [id$="-close-btn"], [id="resume-btn"], [data-opt-close].btn, [data-cw-gate-close].btn, [data-pg-gate-close].btn, .modal-close, [aria-label="Cerrar"], [aria-label="Close"]';
 const PN_BACK_TXT = /^(‹\s*)?(volver|atr[aá]s|cerrar|cancelar|listo|salir|back|close|cancel|done|exit|voltar|fechar|pronto|sair)$/i;
 const PN_DEFAULT_SEL = ['[data-pad-default]', '.gd-danger .gd-cancel', '#bt-play', '#hub-play-btn', '#starter-yes-btn', '.ri-go', '.gd-ok', '#resume-btn',
   '.btn:not(.secondary):not(.small)', 'button.btn', 'button'];

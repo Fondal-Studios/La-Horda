@@ -53,6 +53,8 @@ function hudHtml(el, v){ if(el && el._hh !== v){ el._hh = v; el.innerHTML = v; }
 function hudCss(el, prop, v){ if(el){ const k = "_hs_" + prop; if(el[k] !== v){ el[k] = v; el.style[prop] = v; } } }
 // classList.add/remove reescriben el atributo "class" (y el navegador lo registra como cambio) aunque la clase ya
 // esté puesta o ya falte: con estos HUD ocultos se hacía cuatro veces por cuadro. Acá solo se toca si cambia.
+// title: igual criterio (antes "Vida 80/100" y "Escudo 0" se reescribían en cada cuadro aunque no cambiaran)
+function hudTitle(el, v){ if(el && el._ht !== v){ el._ht = v; el.title = v; } }
 function hudHide(el, hide){ if(el && el.classList.contains("hidden") !== hide) el.classList.toggle("hidden", hide); }
 const hudPct05 = x => (Math.round(x*2)/2) + "%";
 const hudPct = x => (Math.round(x*10)/10) + "%"; // décimas de punto: menos escrituras, sin salto visible
@@ -133,10 +135,11 @@ function updateHUD(){
   const hpFillEl = document.getElementById("hp-fill");
   hudCss(hpFillEl, "left", "0%");
   hudCss(hpFillEl, "width", hudPct(vitals.hpPct));
-  const healthRow = hpFillEl.closest(".bar-row");
-  if(healthRow) healthRow.title = `Vida ${Math.ceil(vitals.hp)}/${Math.ceil(vitals.maxHp)}`;
+  let healthRow = hpFillEl._hudRow; // la fila no cambia: se busca una vez (antes un closest() por cuadro)
+  if(!healthRow || !healthRow.contains(hpFillEl)) healthRow = hpFillEl._hudRow = hpFillEl.closest(".bar-row");
+  hudTitle(healthRow, `Vida ${Math.ceil(vitals.hp)}/${Math.ceil(vitals.maxHp)}`);
   const shieldRow = document.getElementById("hp-shield-row");
-  if(shieldRow){ shieldRow.title = `Escudo ${Math.ceil(vitals.shield)}`; hudHide(shieldRow, !vitals.shield && !player.itemMaxShield); }
+  if(shieldRow){ hudTitle(shieldRow, `Escudo ${Math.ceil(vitals.shield)}`); hudHide(shieldRow, !vitals.shield && !player.itemMaxShield); }
   hudCss(document.getElementById("en-fill"), "width", hudPct05(player.energy/player.maxEnergy*100)); // la energía regenera de a poco: pasos de 0,5 % (<1 px) en vez de reescribir casi cada cuadro
   const plevelEl = document.getElementById("plevel");
   const champMastery = talentState(player.classKey).mastery;

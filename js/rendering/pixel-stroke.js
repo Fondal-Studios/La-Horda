@@ -11,19 +11,33 @@
    API: pxsRing(x, y, rx, ry, capas, o) (o.a0 / o.a1 = arco)   pxsLine(x0, y0, x1, y1, capas, o)   pxsPath(puntos, capas, o)   pxsDisc(x, y, rx, ry, color, o)
         capas = [[color css, ancho en u], ...] de abajo hacia arriba (sombra, color, filo); o.dash = [celdas on, celdas off, fase]
    ============================================================ */
-const PXS = {cv: null, g: null, buf: null, u32: null, cap: 0, cache: {}, drawn: 0};
+const PXS = {cv: null, g: null, buf: null, u32: null, cap: 0, cache: new Map(), old: new Map(), parsed: 0, drawn: 0};
+const PXS_CACHE_GEN = 256; // colores por generación (se retienen como mucho 2 generaciones = 512)
 const PXS_BAYER = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
 const PXS_LE = new Uint8Array(new Uint32Array([1]).buffer)[0] === 1; // little endian: ABGR en el Uint32
 // color css → {c: entero ABGR opaco, lvl: alfa 0..1 (pasa a tramado)}
+// Caché por GENERACIONES (LRU aproximado, O(1)): antes era un objeto que dejaba de aceptar claves al llegar a 400 y nunca
+// soltaba ninguna. Los efectos que desvanecen generan una cadena rgba() distinta por cuadro, así que se llenaba en el primer
+// minuto con colores de un solo uso y desde ahí TODO color nuevo (también los fijos de una arena o un guardián que entraban
+// después) se volvía a interpretar en cada trazo, pagando además un Object.keys() de 400 claves. Ahora: generación actual +
+// anterior; al llenarse la actual pasa a ser la anterior y la más vieja se suelta. Un color en uso se promueve y no se pierde.
+// El valor devuelto es el mismo de siempre (la interpretación no cambió): el píxel resultante es idéntico.
 function pxsParse(c){
-  let v = PXS.cache[c]; if(v) return v;
-  let r = 255, g = 255, b = 255, a = 1, m = /^rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)\s*(?:,\s*([\d.]+)\s*)?\)$/.exec(c);
+  let v = PXS.cache.get(c); if(v) return v;
+  v = PXS.old.get(c);
+  if(!v) v = pxsParseColor(c);
+  if(PXS.cache.size >= PXS_CACHE_GEN){ PXS.old = PXS.cache; PXS.cache = new Map(); }
+  PXS.cache.set(c, v); return v;
+}
+function pxsParseColor(c){
+  PXS.parsed++;
+  let v, r = 255, g = 255, b = 255, a = 1, m = /^rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)\s*(?:,\s*([\d.]+)\s*)?\)$/.exec(c);
   if(m){ r = +m[1]; g = +m[2]; b = +m[3]; a = m[4] === undefined ? 1 : +m[4]; }
   else if((m = /^#([0-9a-f]{6})([0-9a-f]{2})?$/i.exec(c))){ const n = parseInt(m[1], 16); r = n >> 16 & 255; g = n >> 8 & 255; b = n & 255; a = m[2] ? parseInt(m[2], 16) / 255 : 1; }
   else if((m = /^#([0-9a-f])([0-9a-f])([0-9a-f])$/i.exec(c))){ r = parseInt(m[1] + m[1], 16); g = parseInt(m[2] + m[2], 16); b = parseInt(m[3] + m[3], 16); }
   r &= 255; g &= 255; b &= 255;
   v = {c: PXS_LE ? ((255 << 24) | (b << 16) | (g << 8) | r) >>> 0 : ((r << 24) | (g << 16) | (b << 8) | 255) >>> 0, lvl: Math.max(0, Math.min(1, a))};
-  if(Object.keys(PXS.cache).length < 400) PXS.cache[c] = v; return v;
+  return v;
 }
 function pxsBuffer(n){
   if(!PXS.cv){ PXS.cv = document.createElement('canvas'); PXS.g = PXS.cv.getContext('2d'); }

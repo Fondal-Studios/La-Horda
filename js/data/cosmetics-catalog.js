@@ -23,7 +23,7 @@ const COSMETIC_SOURCES = {
 };
 // Textos fijos de "cómo conseguirla" (sin datos intercalados: cada oración se traduce entera).
 const COSMETIC_HOWTO = {
-  set:         "Reuní las piezas del set jugando: caen como botín, se compran con oro en la Tienda o se reforjan.",
+  set:         "Reuní las piezas del set jugando: caen como botín o se reforjan con piezas repetidas.",
   setBrasas:   "También podés comprar solo esta apariencia con Brasas; no da piezas ni poder.",
   brasas:      "Se compra con Brasas. Es solo un cambio de aspecto: no da poder ni estadísticas.",
   efectoBase:  "Completá en Colección las seis piezas del conjunto: se desbloquea para siempre.",

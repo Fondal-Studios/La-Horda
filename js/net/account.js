@@ -46,7 +46,17 @@ const ACCOUNT_API_BASE = (()=>{
 const ACCOUNT_SCOPE=encodeURIComponent(ACCOUNT_API_BASE);
 const ACCOUNT_KEY = "horda_account:"+ACCOUNT_SCOPE;           // {token, user, name, expiresAt}
 const ACCOUNT_SYNC_KEY = "horda_account_sync:"+ACCOUNT_SCOPE; // {user, version, hash, dirty, updatedAt, lastOk}
-const ACCOUNT_GUEST_KEY = "horda_guest_tab";   // sessionStorage: esta pestaña eligió invitado
+const ACCOUNT_GUEST_KEY = "horda_guest_tab";   // eligió "Jugar como invitado": localStorage (se recuerda entre arranques; en escritorio
+                                               // la pantalla de cuenta reaparecía en cada inicio) + sessionStorage (por si localStorage falla)
+function _acctGuestGet(){
+  try{ if(localStorage.getItem(ACCOUNT_GUEST_KEY) === "1") return true; }catch(e){}
+  try{ if(sessionStorage.getItem(ACCOUNT_GUEST_KEY) === "1") return true; }catch(e){}
+  return false;
+}
+function _acctGuestSet(on){
+  try{ if(on) localStorage.setItem(ACCOUNT_GUEST_KEY, "1"); else localStorage.removeItem(ACCOUNT_GUEST_KEY); }catch(e){}
+  try{ if(on) sessionStorage.setItem(ACCOUNT_GUEST_KEY, "1"); else sessionStorage.removeItem(ACCOUNT_GUEST_KEY); }catch(e){}
+}
 const ACCOUNT_DEBOUNCE_MS = 6000, ACCOUNT_DEBOUNCE_PLAYING_MS = 30000;
 const ACCOUNT_BEACON_MAX = 60000;              // navigator.sendBeacon no acepta mucho más de 64 KB
 const acct = {
@@ -495,7 +505,7 @@ async function accountResolveConflict(choice){
 function _acctSetSession(j){
   acct.session = { token: j.token, user: j.user.user, name: j.user.name || j.user.user, expiresAt: j.expiresAt, apiBase: ACCOUNT_API_BASE };
   _acctSaveSession();
-  try{ sessionStorage.removeItem(ACCOUNT_GUEST_KEY); }catch(e){}
+  _acctGuestSet(false);
   // el nombre de la cuenta pasa a ser el de la Sala multijugador
   if(typeof netSetPlayerName === "function") netSetPlayerName(acct.session.name);
   _acctEmit();
@@ -689,7 +699,7 @@ async function _acctSubmit(reg){
   _acctFinish(reg ? `¡Cuenta creada! Bienvenido, ${acct.session.name}.` : `Hola, ${acct.session.name}. Progreso sincronizado.`);
 }
 function _acctGuest(){
-  try{ sessionStorage.setItem(ACCOUNT_GUEST_KEY, "1"); }catch(e){}
+  _acctGuestSet(true);
   _acctFinish(null);
 }
 // Sale de la pantalla de cuenta hacia donde iba (menú principal / guardián de regalo) o de vuelta.
@@ -867,8 +877,7 @@ function _acctAutoSkip(){
 // de cuenta (y next() se llama después); false para seguir directo como siempre.
 function accountGate(next){
   if(acct.session){ if(acct.conflict && !acct.conflict.shown){ acct.after = next; acct.back = null; _acctShow(); _acctShowConflict(); return true; } return false; }
-  let guestTab = false; try{ guestTab = sessionStorage.getItem(ACCOUNT_GUEST_KEY) === "1"; }catch(e){}
-  if(guestTab || _acctAutoSkip()) return false;
+  if(_acctGuestGet() || _acctAutoSkip()) return false;
   acct.after = next; acct.back = null;
   _acctShow();
   _acctRenderAuth("login");

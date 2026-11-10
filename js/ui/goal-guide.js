@@ -74,12 +74,12 @@ function goalChipTick(){
   if(typeof hudCompact==="function" && hudCompact()){
     const now = performance.now(), key = t===null ? "" : t.replace(/\d+:\d\d/, "").replace(/^NIVEL \d+\/\d+/, "NIVEL");
     if(key !== _goalKey){ _goalKey = key; if(t!==null) _goalPeekUntil = now + GOAL_PEEK_MS; }
-    el.classList.add("peekable");
+    if(!el.classList.contains("peekable")) el.classList.add("peekable"); // sin escribir al DOM en cada cuadro
     el.classList.toggle("hidden", t===null || now > _goalPeekUntil);
     if(t!==null && el.textContent!==t) el.textContent = t;
     return;
   }
-  el.classList.remove("peekable");
+  if(el.classList.contains("peekable")) el.classList.remove("peekable");
   el.classList.toggle("hidden", t===null);
   if(t!==null && el.textContent!==t) el.textContent = t;
 }

@@ -81,6 +81,8 @@
 <link rel="stylesheet" href="css/screen-tips.css">
 <link rel="stylesheet" href="css/horde-relics.css">
 <link rel="stylesheet" href="css/ux-beta-simple.css">
+<link rel="stylesheet" href="css/pc-desktop.css">
+<link rel="stylesheet" href="css/next-unlock.css">
 <!-- rework de interfaz (css/ui-rework.css, js/ui/ui-rework.js, tools/ui-rework): fuera de este PR hasta su revisión; ver docs/beta-release/RESULTADOS_PR.md -->
 </head>
 <body>
@@ -183,7 +185,7 @@
     <button class="btn wide hidden" id="title-join-btn">Unirse a la sala</button>
     <div class="title-join-status" id="title-join-status"></div>
     <div class="legal-foot legal-title" id="legal-title" role="contentinfo" aria-label="Legal y soporte"></div>
-    <div class="build-tag">LA HORDA — ALFA COOPERATIVA</div>
+    <div class="build-tag">LA HORDA</div>
   </div>
 
   <!-- MENÚ PRINCIPAL (HUB): JUGAR continúa la campaña; accesos a Guardianes, Tienda, Multijugador,
@@ -456,11 +458,11 @@
         <div class="mode-card-desc">Cooperativo de hasta 4 por el WiFi de tu casa, sin internet ni cuenta: la compu anfitriona es la pantalla (una sola cámara con todos) y los demás entran desde el celular. Campaña u Horda Infinita. No cuenta para ranking ni economía.</div>
       </button>
       <button class="mode-card" id="mode-crystal-wars-btn">
-        <div class="mode-card-title">💠 GUERRA DE CRISTALES <span class="ui-tag">ALPHA</span></div>
+        <div class="mode-card-title">💠 GUERRA DE CRISTALES</div>
         <div class="mode-card-desc">Guerra de Cristales: 5 contra 5 con bots (2 contra 2 en línea), tres carriles, selva, torres, PvP y tu propia horda. Postgame: se abre al terminar la campaña.</div>
       </button>
       <button class="mode-card" id="mode-coliseum-btn">
-        <div class="mode-card-title">⚔ COLISEO <span class="ui-tag">ALPHA</span></div>
+        <div class="mode-card-title">⚔ COLISEO</div>
         <div class="mode-card-desc">Torneo de ocho luchadores: cuatro equipos de dos; en cada ronda se juegan dos duelos 2 contra 2 con anillo que se cierra. Gana el primer equipo en llegar a 3 puntos. Postgame: se abre al terminar la campaña.</div>
       </button>
       <button class="mode-card mode-endless hidden" id="mode-endless-btn">
@@ -517,7 +519,7 @@
        Lógica en js/modes/crystal-wars/*, estilos acotados a esta pantalla en css/crystal-wars.css. -->
   <div id="crystalwars-screen" class="screen hidden">
 <div id="cw-root">
-<header><button id="back" type="button">‹ LA HORDA</button><span id="competitive-title">GUERRA DE CRISTALES · ALPHA</span><button id="sound" aria-pressed="false">Sonido: apagado</button></header>
+<header><button id="back" type="button">‹ LA HORDA</button><span id="competitive-title">GUERRA DE CRISTALES</span><button id="sound" aria-pressed="false">Sonido: apagado</button></header>
 <main id="lobby">
  <div class="eyebrow">5 CONTRA 5 CON BOTS · EN LÍNEA 2 CONTRA 2 · 3 CARRILES</div><h1>GUERRA DE CRISTALES</h1>
  <p class="intro">Mapa de tres carriles con selva, río y objetivos épicos. Tu horda sale sola por cada carril; con cada nivel elegís una carta para hacerla más fuerte. Derribá las torres y el cristal rival. El PvP está permitido y jugás con tus habilidades de siempre.</p>
@@ -1082,6 +1084,7 @@
 <script src="js/systems/horde-relics.js"></script>
 <script src="js/data/scar-ranks.js"></script>
 <script src="js/systems/scar-ranks.js"></script>
+<script src="js/ui/next-unlock.js"></script>
 <script src="js/champions/ascension/catalog.js"></script>
 <script src="js/champions/siete/catalog.js"></script>
 <script src="js/champions/ascension/register.js"></script>
