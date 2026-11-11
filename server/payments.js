@@ -99,7 +99,9 @@ async function checkout({ user, pack, bought, expectedPrice, onOrder, onOrderFai
     try{ await onOrder({ orderId, pack: p.id }); }catch(e){ if(e && e.status === 429) throw e; fail("PAYMENTS_UNAVAILABLE", 503, "No se pudo abrir el pago. Probá de nuevo en un rato."); }
     let r; try{ r = await steam.initTxn({ orderId, steamId: user.steamId, itemId: p.steamItemId, cents: Math.round(price.amount * 100), description: (p.name || (p.premium + " Brasas")) + " · La Horda" }); }
     catch(e){
-      if(typeof onOrderFailed === "function") await onOrderFailed({ orderId, pack: p.id }).catch(() => {});   // Steam no lo aceptó: no cuenta para el tope de pendientes
+      // Solo un RECHAZO DEFINITIVO de Steam (respuesta entendida con result != OK, o 4xx) anula el pedido. Un timeout, error de red, 429 o 5xx es AMBIGUO:
+      // Steam pudo crearlo y el jugador verlo en el overlay, así que queda abierto para que el barrido lo acredite si lo aprueba.
+      if(e instanceof steam.SteamError && e.message === "STEAM_INIT_FAILED" && typeof onOrderFailed === "function") await onOrderFailed({ orderId, pack: p.id }).catch(() => {});
       if(e instanceof steam.SteamError) fail(e.message, e.status, e.human); throw e;
     }
     return { ok: true, steam: true, orderId: r.orderId, pack: p.id, price };
