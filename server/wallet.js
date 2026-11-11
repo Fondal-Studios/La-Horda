@@ -181,7 +181,7 @@ function routes(ctx){
       pieces: { enabled: !!flags().PIECES_FOR_BRASAS, price: P.brasas.pieza, mode: flags().SHOP_MODE },
       prices: { brasas: P.brasas, goldCosmetic: P.gold.cosmetic, collection: P.collection, skinPremium: P.brasas.set, skinGold: P.gold.cosmetic.set },
       welcome: { pack: P.welcome.pack, champions: P.welcome.champions, entitled: welcome.entitled, claimed: welcome.claimed, remaining: welcome.remaining, eligible: welcome.eligible },
-      ledger: (await store().walletLedger(user.id, 20)).map(e => ({ delta: e.delta, balanceAfter: e.balanceAfter, reason: e.reason, at: e.at })),
+      ledger: (await store().walletLedger(user.id, 80)).filter(e => !(typeof e.reason === "string" && e.reason.startsWith("steam_order:"))).slice(0, 20).map(e => ({ delta: e.delta, balanceAfter: e.balanceAfter, reason: e.reason, at: e.at })),   // los asientos de pedido (monto 0) son internos
       payments: { ...(await payments.publicInfo(bought(user.id))), enabled: !!store().persistent && payments.enabled() } };
   });
 
@@ -423,13 +423,17 @@ function routes(ctx){
     });
   });
   // El pedido queda anotado en el servidor (asiento de monto 0, referencia única) ANTES de pedirlo a Steam (ver payments.checkout).
+  const STEAM_PENDING_MAX = parseInt(process.env.STEAM_PENDING_MAX || "12", 10) || 12;   // pedidos sin acreditar en 24 h por cuenta (evita llenar el libro y el barrido)
   const steamOrderEntry = (userId) => async ({ orderId, pack }) => {
+    const recent = (await store().walletLedger(userId, 400)).filter(e => now() - e.at < 86400000);
+    const open = recent.filter(e => typeof e.reason === "string" && /^steam_order:/.test(e.reason) && !recent.some(x => x.reason === "purchase:" + e.reason.split(":")[1] + ":steam" + e.reason.split(":")[2]));
+    if(open.length >= STEAM_PENDING_MAX) fail("TOO_MANY_PENDING", 429, "Tenés varios pedidos de Steam sin terminar. Aprobalos o esperá un rato antes de abrir otro.");
     await store().walletApply({ userId, delta: 0, reason: "steam_order:" + pack + ":" + orderId, ref: "steamord:" + orderId, actor: null, at: now() });
   };
   // BARRIDO: cada pocos minutos recorre los pedidos anotados de las cuentas con Steam y los lleva a su estado final aunque el jugador no vuelva:
   //   aprobado y sin cerrar -> se cierra y acredita; cerrado sin crédito (caída entre cobro y crédito) -> se acredita; reembolsado -> se revierte.
   // Los pedidos con crédito se vuelven a mirar como máximo cada 6 h durante 30 días (reembolsos tardíos). Cuesta O(cuentas con Steam).
-  const _swept = new Map();
+  const _swept = new Map(), _loggedIgnored = new Set();
   const RECHECK_MS = process.env.STEAM_RECHECK_MS !== undefined ? Math.max(0, parseInt(process.env.STEAM_RECHECK_MS, 10) || 0) : 6 * 3600000;
   async function steamSweepOnce(){
     if(!payments.steamEnabled() || !store().persistent || !store().listUsers) return { checked: 0 };
@@ -449,7 +453,7 @@ function routes(ctx){
           await withLock("steam:" + u.id, async () => {
             const c = await payments.steamEvaluate({ user: u, orderId, bought: bought(u.id) });
             if(!c || c.pending) return;
-            if(c.ignored) return;
+            if(c.ignored){ if(!_loggedIgnored.has(orderId)){ _loggedIgnored.add(orderId); log("PAYMENT_STATUS_REVIEW", { paymentId: c.paymentId, status: c.status, via: "sweep" }); } return; }   // una vez por pedido
             if(credited && !c.reverse) return;   // ya acreditado y sin novedades
             await steamSettle(c, u.id); acted++;
           });

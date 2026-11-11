@@ -96,7 +96,7 @@ async function checkout({ user, pack, bought, expectedPrice, onOrder }){
     // pedidos aunque el jugador nunca vuelva a consultar (reembolsos, cierre del juego, caída entre el cobro y el crédito).
     const orderId = steam.newOrderId();
     if(typeof onOrder !== "function") fail("PAYMENTS_UNAVAILABLE", 503, "No se pudo abrir el pago. Probá de nuevo en un rato.");
-    try{ await onOrder({ orderId, pack: p.id }); }catch(e){ fail("PAYMENTS_UNAVAILABLE", 503, "No se pudo abrir el pago. Probá de nuevo en un rato."); }
+    try{ await onOrder({ orderId, pack: p.id }); }catch(e){ if(e && e.status === 429) throw e; fail("PAYMENTS_UNAVAILABLE", 503, "No se pudo abrir el pago. Probá de nuevo en un rato."); }
     let r; try{ r = await steam.initTxn({ orderId, steamId: user.steamId, itemId: p.steamItemId, cents: Math.round(price.amount * 100), description: (p.name || (p.premium + " Brasas")) + " · La Horda" }); }
     catch(e){ if(e instanceof steam.SteamError) fail(e.message, e.status, e.human); throw e; }
     return { ok: true, steam: true, orderId: r.orderId, pack: p.id, price };
