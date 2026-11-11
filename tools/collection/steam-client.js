@@ -42,11 +42,22 @@ const TYPES={'.html':'text/html','.js':'text/javascript','.css':'text/css','.png
   await page.waitForFunction(()=>typeof assetsAllReady==='function'&&assetsAllReady()&&typeof shopOpen==='function'&&typeof accountSteamLogin==='function');
   return{page,ctx,errors};
  }
- // diálogos reales del juego (.gd-*): se lee el mensaje y se acepta
- const dialog=async(page)=>{await page.locator('.gd-ok').waitFor({state:'visible',timeout:30000});const m=await page.locator('.gd-msg').innerText();await page.locator('.gd-ok').click();await page.locator('.gd-ok').waitFor({state:'hidden',timeout:5000}).catch(()=>{});return m;};
- // la primera compra con dinero real pide aceptar términos (js/ui/legal.js): se acepta como lo haría el jugador
- const buyClick=async(page,id)=>{await page.locator(`[data-brasas-buy="${id}"]`).click();const cb=page.locator('#legal-buy-cb');if(await cb.isVisible().catch(()=>false)||await cb.waitFor({state:'visible',timeout:3000}).then(()=>true).catch(()=>false)){const t=await page.locator('.legal-buy-p').innerText();ok(/Steam/.test(t)&&!/Mercado Pago/.test(t),'el aviso legal habla de Steam, no de Mercado Pago: '+t);await cb.check();await page.locator('.legal-btns .btn:not(.secondary)').click();}};
- const approveNewOrder=async(afterMs)=>{const t0=Date.now();for(;;){const id=Object.keys(orders).find(k=>orders[k].status==='Init'&&!orders[k]._seen);if(id){orders[id]._seen=true;setTimeout(()=>{orders[id].status='Approved';},afterMs);return id;}if(Date.now()-t0>20000)throw new Error('no se abrió ningún pedido');await new Promise(r=>setTimeout(r,100));}};
+ // diálogos reales del juego (.gd-*): se espera un mensaje NUEVO (el panel puede reutilizarse entre un diálogo y el siguiente), se lee y se acepta
+ const lastMsg=new WeakMap();
+ const dialog=async(page)=>{const prev=lastMsg.get(page)||null;await page.waitForFunction(prev=>{const ok=document.querySelector('.gd-ok'),m=document.querySelector('.gd-msg');return ok&&ok.offsetParent!==null&&m&&m.textContent&&m.textContent!==prev;},prev,{timeout:40000});const m=await page.locator('.gd-msg').innerText();lastMsg.set(page,m);await page.waitForTimeout(400);   // el diálogo ignora clics en sus primeros 250 ms (evita contestar con el mismo toque que lo abrió)
+  await page.locator('.gd-ok').click();await page.waitForFunction(m=>{const ok=document.querySelector('.gd-ok'),t=document.querySelector('.gd-msg');return !ok||ok.offsetParent===null||!t||t.textContent!==m;},m,{timeout:10000});return m;};
+  // la primera compra con dinero real pide aceptar términos (js/ui/legal.js): se acepta como lo haría el jugador
+ const buyClick=async(page,id)=>{
+  // la tienda se vuelve a dibujar cuando llegan la billetera y los paquetes: un clic puede caer en un botón que ya se reemplazó -> se reintenta
+  for(let intento=0;intento<6;intento++){
+   await page.locator(`[data-brasas-buy="${id}"]`).click();
+   const visto=await page.waitForFunction(()=>{const cb=document.getElementById('legal-buy-cb'),ok=document.querySelector('.gd-ok');return (cb&&cb.offsetParent!==null)?'legal':(ok&&ok.offsetParent!==null)?'dialogo':false;},null,{timeout:4000}).then(h=>h.jsonValue()).catch(()=>false);
+   if(visto==='legal'){const t=await page.locator('.legal-buy-p').innerText();ok(/Steam/.test(t)&&!/Mercado Pago/.test(t),'el aviso legal habla de Steam, no de Mercado Pago: '+t);await page.locator('#legal-buy-cb').check();await page.locator('.legal-btns .btn:not(.secondary)').click();return;}
+   if(visto==='dialogo')return;
+  }
+  throw new Error('el clic en Comprar no abrió ningún aviso');
+ };
+ const approveNewOrder=async(afterMs)=>{const t0=Date.now();for(;;){const id=Object.keys(orders).find(k=>orders[k].status==='Init'&&!orders[k]._seen);if(id){orders[id]._seen=true;setTimeout(()=>{orders[id].status='Approved';},afterMs);return id;}if(Date.now()-t0>45000)throw new Error('no se abrió ningún pedido');await new Promise(r=>setTimeout(r,100));}};
 
  // ---- 1) «Entrar con Steam» crea la cuenta y deja la sesión abierta ----
  {
