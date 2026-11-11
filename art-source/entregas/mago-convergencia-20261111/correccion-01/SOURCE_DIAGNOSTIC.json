@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "decision": "FIX_NOT_APPROVED",
+  "attempts": [
+    {
+      "file": "source-candidate-01.png",
+      "size": [
+        1585,
+        992
+      ],
+      "alpha": {
+        "distinct": 256,
+        "zero": 519313,
+        "partial": 1052886,
+        "opaque": 121
+      },
+      "suspectChroma": {
+        "red": 126299,
+        "yellow": 46124
+      }
+    },
+    {
+      "file": "source-front-row-02.png",
+      "size": [
+        2172,
+        724
+      ],
+      "alpha": {
+        "distinct": 256,
+        "zero": 1158802,
+        "partial": 413590,
+        "opaque": 136
+      },
+      "suspectChroma": {
+        "red": 155,
+        "yellow": 163
+      }
+    }
+  ],
+  "conclusion": "Full-sheet edit worsened alpha/chroma. Split-row generation reduced red/yellow contamination by >99% but still has 413590 partial-alpha pixels; no atlas extraction."
+}
