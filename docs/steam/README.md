@@ -46,13 +46,13 @@ Estado al 2026-11-10, rama `claude/la-horda-beta-audit-exec-mwv8x0`. Estados: **
 
 | Punto | Estado | Detalle |
 |---|---|---|
-| Pantalla completa | NO VERIFICADO | La da el contenedor (F11 / Alt+Enter). **Falta** la opción en el menú de Opciones del juego. |
-| Salir al escritorio desde el juego | **FALTA** | Ver arriba. |
-| Pausa al perder el foco (Alt+Tab) | **FALTA** | El contenedor emite `lahorda-blur` / `lahorda-focus`; el juego no los escucha. |
-| Interfaz en 1440p y ultrawide | **FALTA** | Interfaz en px fijos (auditoría de plataforma). |
-| Joystick táctil y textos "Tocá…" con teclado | **FALTA** | Restos de la versión móvil. |
+| Pantalla completa | HECHO (en Chromium) / NO VERIFICADO (en Electron) | Opción «Pantalla completa» en Opciones (`js/core/fullscreen.js`, vía `HORDA_DESKTOP.setFullscreen`) además de F11 / Alt+Enter del contenedor. Prueba: `tools/ux/test-pc-options.js`. |
+| Salir al escritorio desde el juego | HECHO (en Chromium) / NO VERIFICADO (en Electron) | Fila «Salir al escritorio» en Opciones, con confirmación (`HORDA_DESKTOP.quit()`); solo visible en la app de escritorio. |
+| Pausa al perder el foco (Alt+Tab) | HECHO (lógica) / NO VERIFICADO (en Electron) | `autoPauseOnBlur` (`js/core/input.js`): pausa solo con un `blur` real o el aviso `lahorda-blur` del contenedor; online no se pausa. Prueba: `tools/ux/test-pc-input.js`. |
+| Interfaz en 1440p y ultrawide | HECHO parcial | HUD y controles escalan con `zoom` ×1,4 / ×1,9 / ×2,8 desde 1.700 / 2.400 / 3.600 px de ancho (`css/pc-desktop.css`); probado con prueba de clic. Sin verificar en pantallas reales. |
+| Joystick táctil y textos «Tocá…» con teclado | HECHO | El joystick se oculta con teclado o mando y las opciones solo táctiles se esconden (`css/pc-desktop.css`); la Guía y el tutorial hablan de teclas o botones según el dispositivo. |
 | Limitador de FPS / V-Sync | **FALTA** | `requestAnimationFrame` sin tope. |
-| Mando | NO VERIFICADO | Implementado en el juego; sin probar con mando físico ni Steam Input. Los avisos muestran siempre botones de Xbox. |
+| Mando | HECHO (lógica) / NO VERIFICADO (físico) | Los avisos muestran Xbox o PlayStation según el perfil detectado. Sin probar con mando físico ni Steam Input. |
 | Teclado remapeable, Esc pausa | HECHO | Ya existía. |
 | Rendimiento con GPU real | NO VERIFICADO | Todas las medidas son en Chromium headless sin GPU. Las optimizaciones de esta fase se verificaron por conteos (escrituras al DOM, lecturas de layout, horneados), no por FPS. |
 
@@ -64,7 +64,7 @@ Estado al 2026-11-10, rama `claude/la-horda-beta-audit-exec-mwv8x0`. Estados: **
 | steamcmd y script de subida | **FALTA** | Plantilla de `app_build.vdf` en `desktop/LEEME.md`; necesita AppID y DepotID reales. |
 | Página de la tienda (capturas, tráiler, descripción, cápsulas) | **FALTA** | Depende del dueño. |
 | Overlay de Steam | NO VERIFICADO | Interruptores de GPU incluidos solo cuando lo lanza Steam. Electron + overlay es históricamente frágil. |
-| Logros | **FALTA** | 60 logros internos; el puente `HORDA_DESKTOP.unlockAchievement` existe, el juego no lo llama y los logros no están cargados en Steamworks. |
+| Logros | HECHO (llamada) / FALTA (carga en Steamworks) | 60 logros internos; `js/systems/quests.js` llama a `HORDA_DESKTOP.unlockAchievement` con el id de Steam. Falta cargarlos en Steamworks (`docs/steam/achievements.csv` / `.json`, guía en `docs/steam/STEAMWORKS_GUIA.md`). |
 | Rich presence, nombre desde Steam | **FALTA** | Puente listo, sin uso. |
 | `steamworks.js` | NO VERIFICADO | Dependencia opcional, nunca instalada. Sin ella el juego corre igual. |
 
