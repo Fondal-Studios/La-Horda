@@ -1,8 +1,8 @@
 {
  "subject": {
-  "pr": 288,
+  "pr": 289,
   "branch": "claude/la-horda-beta-audit-exec-mwv8x0",
-  "head": "32777ca60b0b2fc335005e5a9b53e73d7722aebb",
+  "head": "1f9aea9bbeefb5a36c33a4060b47835943699667",
   "authorAgent": "claude-sesion-principal",
   "authorId": "claude-sesion-principal"
  },
@@ -11,57 +11,57 @@
    "stage": "produccion",
    "by": "claude-sesion-principal",
    "role": "agent",
-   "commit": "32777ca60b0b2fc335005e5a9b53e73d7722aebb",
-   "at": "2026-11-10T17:00:00Z"
+   "commit": "1f9aea9bbeefb5a36c33a4060b47835943699667",
+   "at": "2026-11-10T22:00:00Z"
   },
   {
    "stage": "qa",
-   "by": "claude-qa-292",
+   "by": "claude-qa-289",
    "role": "qa",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "32777ca60b0b2fc335005e5a9b53e73d7722aebb",
-    "tests": 30,
+    "sha": "1f9aea9bbeefb5a36c33a4060b47835943699667",
+    "tests": 5,
     "failed": 0,
-    "report": "30 ejecuciones sobre 32777ca6, 0 fallos de la rama. Flake: t_identity (INF.el_campeon_no_sale_por_la_fisura) falló 1 de 3 y pasó 2/2 al repetir; tools/net-test/accounts.js falla en el sandbox del revisor (entorno). Sin BLOCKER ni IMPORTANT. No se probó a mano en táctil ni con un segundo cliente cooperativo (lo cubren t_camera, three-ui-contracts y test-scar-ranks)."
+    "report": "QA ejecutó t_identity 5 veces en serie sobre d22872d8 (BOS.contener_runa 5/5, BOS.raices 5/5, 0 FAIL). El delta d22872d8..1f9aea9b es solo docs (el código de la prueba no cambió, verificado con git diff --stat). No reprodujo el 3/8 previo al arreglo (lo toma de la descripción) ni corrió otras suites."
    },
-   "at": "2026-11-10T17:30:00Z"
+   "at": "2026-11-10T22:10:00Z"
   },
   {
    "stage": "arquitectura",
-   "by": "claude-arq-292",
+   "by": "claude-arq-289",
    "role": "arquitecto",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "32777ca60b0b2fc335005e5a9b53e73d7722aebb",
-    "report": "Revisión previa reparó el BLOQUEANTE B1 (sobrescritura de la nube por perfil de fábrica tras guardado ilegible) y el hueco del beacon pagehide, con pruebas que fallan sin el arreglo. Revisión del delta sobre 32777ca6: aprobado, 0 bloqueantes, 0 importantes, 1 menor."
+    "sha": "1f9aea9bbeefb5a36c33a4060b47835943699667",
+    "report": "Aprobado sobre d22872d8 con 2 IMPORTANT y 2 MINOR (emisor del golpe sin identificar, cifra 10/10 sin log, párrafo histórico contradictorio, aclarar que la causa es de la prueba); atendidos en 1f9aea9b y reconfirmados por el mismo revisor sobre ese SHA. Sin BLOCKER; sin debilitar aserciones; producción ya limpia bossStrikes en los límites de partida."
    },
-   "at": "2026-11-10T17:40:00Z"
+   "at": "2026-11-10T22:20:00Z"
   },
   {
    "stage": "staging",
-   "by": "claude-integrador-292",
+   "by": "claude-integrador-289",
    "role": "integrador",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "32777ca60b0b2fc335005e5a9b53e73d7722aebb",
+    "sha": "1f9aea9bbeefb5a36c33a4060b47835943699667",
     "branch": "beta/integracion-20261110",
     "tests": 38,
     "failed": 0,
-    "run": "https://github.com/Fondal-Studios/La-Horda/pull/288"
+    "run": "https://github.com/Fondal-Studios/La-Horda/pull/289"
    },
-   "at": "2026-11-10T18:35:00Z"
+   "at": "2026-11-10T22:50:00Z"
   },
   {
    "stage": "aprobacion",
-   "by": "claude-integrador-292",
+   "by": "claude-integrador-289",
    "role": "director",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "32777ca60b0b2fc335005e5a9b53e73d7722aebb",
-    "report": "Aprobado con reservas de proceso. Verificado por el integrador: beta/integracion-20261110 == 32777ca6; CI 38 de 39 en success, 'Regresion del juego (completa)' pasó al reintento sin commit nuevo; solo 'Clasificacion' quedaba en rojo por el registro viejo. Flake t_identity preexistente (en origin/main limpio falló 3/8 en la medición del autor; el integrador no lo reprodujo en 6 corridas). Riesgos: sin prueba táctil manual ni segundo cliente cooperativo; informe de arquitectura 292 no verificado directamente por el integrador; balance de reliquias solo con piloto automático; 6 íconos VFX sin ojo de arte; claves 'claimed' viejas y farmeo en servidor. Aprobación dada por un agente conforme a reviews/POLITICA.json (decisión del propietario); no la dio ninguna persona."
+    "sha": "1f9aea9bbeefb5a36c33a4060b47835943699667",
+    "report": "El integrador dio 'aprobado condicionado' a (a) que 'Regresion del juego (completa)' y la rápida terminen en success y (b) que exista este registro; ambas se cumplieron antes del merge ('completa' pasó en success sobre 1f9aea9b; 'Clasificacion' queda en rojo solo hasta este registro). Riesgos: el arreglo está en la prueba, no se identificó qué emisor deja un golpe pendiente en bosque nivel 1; la firma INF.el_campeon_no_sale_por_la_fisura sigue abierta; la evidencia 10/10 es local sin log. Aprobación dada por un agente conforme a reviews/POLITICA.json (decisión del propietario); no la dio ninguna persona."
    },
-   "at": "2026-11-10T18:40:00Z"
+   "at": "2026-11-10T22:55:00Z"
   }
  ]
 }

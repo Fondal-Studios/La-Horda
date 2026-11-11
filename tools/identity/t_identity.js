@@ -236,6 +236,8 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
       const r = BOS.runes[0]; for (const x of BOS.runes) if (x !== r) bosSetState(x, 'sealed'); bosSetState(r, 'active'); r.spawnT = 1e12; BOS.armT = 1e12;
       // (variantes por semilla: según qué menhires tengan runa, el paso anterior puede dejar al guardián aturdido)
       player.x = r.x; player.y = r.y + 10; player.stunTimer = 0;
+      // (golpes de jefe que quedaron en el aire del paso anterior caían sobre el guardián y lo aturdían a mitad de la contención: flake medido 3/8 en main)
+      if(typeof bossStrikes !== 'undefined') bossStrikes.length = 0;
       const foes = []; for (let i = 0; i < 6; i++){ const e = spawnEnemy('duende_bosque', false); e.x = r.x + (Math.random()-0.5)*300; e.y = r.y + (Math.random()-0.5)*200; e.speed = 0; e.dmg = 0; foes.push(e); }
       const far = spawnEnemy('duende_bosque', false); far.x = r.x + 700; far.y = r.y; far.speed = 0; far.dmg = 0;
       const hp0 = foes.map(e => e.hp);
