@@ -43,7 +43,10 @@ async function call(method, path, params){
 async function authenticateTicket(ticketHex){
   if(!identityEnabled()) throw new SteamError("STEAM_DISABLED", 501, "El inicio de sesión con Steam no está activo.");
   if(typeof ticketHex !== "string" || !/^[0-9a-fA-F]{16,4096}$/.test(ticketHex)) throw new SteamError("BAD_TICKET", 400, "Ticket de Steam inválido.");
-  const r = await call("GET", "/ISteamUserAuth/AuthenticateUserTicket/v1/", { key: key(), appid: appId(), ticket: ticketHex });
+  const q = { key: key(), appid: appId(), ticket: ticketHex };
+  // tickets de GetAuthTicketForWebApi llevan una "identidad" (texto que acuerdan cliente y servidor); los de GetAuthSessionTicket no
+  if(env("STEAM_TICKET_IDENTITY")) q.identity = env("STEAM_TICKET_IDENTITY");
+  const r = await call("GET", "/ISteamUserAuth/AuthenticateUserTicket/v1/", q);
   const p = r.j.response && r.j.response.params;
   if(!r.ok || !p || p.result !== "OK" || !isSteamId(String(p.steamid))) throw new SteamError("BAD_TICKET", 401, "Steam no validó la sesión. Abrí Steam e intentá de nuevo.");
   if(p.vacbanned === true || p.publisherbanned === true) throw new SteamError("STEAM_BANNED", 403, "Esta cuenta de Steam no puede jugar online.");

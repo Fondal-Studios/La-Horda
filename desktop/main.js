@@ -126,6 +126,20 @@ app.whenReady().then(() => {
   ipcMain.on('lahorda:achievement', (ev, id) => { try { if (steam && fromGame(ev) && /^[a-z0-9_]{1,40}$/.test(id)) steam.achievement.activate(id); } catch (e) {} });
   ipcMain.on('lahorda:presence', (ev, k, v) => { try { if (steam && fromGame(ev)) steam.localplayer.setRichPresence(String(k).slice(0, 32), String(v).slice(0, 120)); } catch (e) {} });
   ipcMain.handle('lahorda:steam-info', ev => { try { return steam && fromGame(ev) ? {name: steam.localplayer.getName(), lang: steam.apps.currentGameLanguage()} : null; } catch (e) { return null; } });
+  // Ticket de sesión de Steam (hex) para que el SERVIDOR valide quién es el jugador. NO VERIFICADO con Steam real: los nombres de la API de
+  // steamworks.js (getAuthTicketForWebApi / getSessionTicketWithSteamId) hay que confirmarlos en la primera prueba (docs/steam/PRUEBAS_ELECTRON.md).
+  // Si el servidor usa STEAM_TICKET_IDENTITY, poné la MISMA cadena en LAHORDA_STEAM_IDENTITY (variable de entorno del build).
+  ipcMain.handle('lahorda:steam-ticket', async ev => {
+    try {
+      if (!steam || !fromGame(ev)) return null;
+      const identity = process.env.LAHORDA_STEAM_IDENTITY || '';
+      let t;
+      if (identity && steam.auth && typeof steam.auth.getAuthTicketForWebApi === 'function') t = await steam.auth.getAuthTicketForWebApi(identity, 10);
+      else if (steam.auth && typeof steam.auth.getSessionTicketWithSteamId === 'function') t = await steam.auth.getSessionTicketWithSteamId(steam.localplayer.getSteamId().steamId64, 10);
+      if (!t || typeof t.getBytes !== 'function') return null;
+      return Buffer.from(t.getBytes()).toString('hex');
+    } catch (e) { return null; }
+  });
   ipcMain.on('lahorda:quit', ev => { if (fromGame(ev)) app.quit(); });
   ipcMain.on('lahorda:fullscreen', (ev, on) => { if (!fromGame(ev)) return; const w = BrowserWindow.fromWebContents(ev.sender); if (w) w.setFullScreen(on == null ? !w.isFullScreen() : !!on); });
 

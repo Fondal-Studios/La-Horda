@@ -595,12 +595,30 @@ function renderShopBrasas(panel){
   if(lg) lg.addEventListener("click", ()=>{ if(typeof window.accountOpen==="function") window.accountOpen(); });
   panel.querySelectorAll("[data-brasas-buy]").forEach(b=> b.addEventListener("click", async ()=>{
     const id = b.getAttribute("data-brasas-buy"), p = packs.find(x=>x.id===id); if(!p) return;
-    const ok = await gameConfirm(`¿Comprar ${(p.premium + (p.bonus||0)).toLocaleString("es-AR")} Brasas por ${premiumPriceLabel(p.price)}? Vas a ir a la página de pago. ${typeof premiumRuleText==="function" ? premiumRuleText() : ""}`, {okText:"Ir a pagar"});
+    const viaSteam = !!(PREMIUM.payments && PREMIUM.payments.provider === "steam");
+    const ok = await gameConfirm(`¿Comprar ${(p.premium + (p.bonus||0)).toLocaleString("es-AR")} Brasas por ${premiumPriceLabel(p.price)}? ${viaSteam ? "Steam te va a pedir que apruebes la compra en su ventana." : "Vas a ir a la página de pago."} ${typeof premiumRuleText==="function" ? premiumRuleText() : ""}`, {okText: viaSteam ? "Comprar con Steam" : "Ir a pagar"});
     if(!ok) return;
     b.disabled = true;
     const r = await premiumCheckout(id, p.price);
+    if(!r.ok){
+      b.disabled = false;
+      if(r.needsSteamLink && typeof accountSteamLink === "function" && accountSteamAvailable() && await gameConfirm("Tu cuenta todavía no está vinculada a Steam. ¿Vincularla ahora?", {okText:"Vincular"})){
+        const l = await accountSteamLink(); if(!l.ok) gameAlert(l.msg); else { await premiumRefresh(true); gameAlert("Cuenta vinculada. Tocá Comprar otra vez."); }
+        return;
+      }
+      gameAlert(r.reason); return;
+    }
+    if(r.steam){
+      // el overlay de Steam muestra la compra; se espera la aprobación (hasta 5 minutos) preguntando al servidor
+      if(typeof showNetToast === "function") showNetToast("Steam: aprobá la compra en su ventana…");
+      const w = await premiumSteamWait(r.orderId, 300000);
+      b.disabled = false;
+      if(w.state === "credited") gameAlert(`¡Listo! Las Brasas ya están en tu cuenta.${w.duplicate ? " (esta compra ya estaba acreditada)" : ""}`);
+      else if(w.state === "rejected") gameAlert("Steam no confirmó la compra. No se cobró nada.");
+      else gameAlert("Todavía no vimos la aprobación. Si ya pagaste, las Brasas llegan solas: volvé a abrir la Tienda en unos minutos.");
+      return;
+    }
     b.disabled = false;
-    if(!r.ok){ gameAlert(r.reason); return; }
     window.location.assign(r.redirect);
   }));
   panel.querySelectorAll("[data-brasas-skin]").forEach(b=> b.addEventListener("click", ()=> shopOpen("skins", {champ: b.getAttribute("data-brasas-champ")})));

@@ -63,8 +63,13 @@ Qué hay que construir (todo es trabajo de servidor y cuentas; hoy NO existe nad
 (`QueryTxn` + `FinalizeTxn` + acreditación idempotente, reversa por reembolso). Variables del servidor: `PAYMENTS_PROVIDER=steam`,
 `STEAM_ENABLED=1`, `STEAM_APP_ID`, `STEAM_PUBLISHER_KEY`, `STEAM_MODE=sandbox|live`. Cada pack tiene su `steamItemId` en `server/premium-packs.json`
 (1001 = 500, 1002 = 1000, 1003 = 2500, 1004 = 5000, 1005 = 10000, 1006 = bienvenida v2): **crear esos artículos en Steamworks con esos IDs**.
-**Falta:** el cliente (botón «Comprar con Steam», pedir el ticket, sondear `/steam/confirm`), el puente de Electron, un proceso que detecte
-reembolsos sin que el jugador consulte (`GetReport`), y probar en sandbox con tu AppID.
+**Cliente HECHO y probado con un contenedor y un Steam falsos** (`tools/collection/steam-client.js`, 24 comprobaciones): botón «Entrar con Steam» en la pantalla de
+cuenta, compra con aviso legal y sondeo cada 2,5 s hasta 5 minutos (el pedido pendiente se guarda y se retoma al volver), y vinculación
+de una cuenta clásica al comprar. El puente de Electron expone `HORDA_DESKTOP.steamTicket()` (`desktop/main.js`, `preload.js`):
+**NO VERIFICADO** con `steamworks.js` real (los nombres `getAuthTicketForWebApi` / `getSessionTicketWithSteamId` hay que confirmarlos; si usás
+`getAuthTicketForWebApi`, la misma cadena va en `STEAM_TICKET_IDENTITY` del servidor y `LAHORDA_STEAM_IDENTITY` del build).
+**Falta:** un proceso que detecte reembolsos sin que el jugador consulte (`GetReport`), actualizar los textos legales (hoy mencionan
+Mercado Pago como medio de pago) y probar todo en sandbox con tu AppID.
 
 **Lo que se puede construir y probar sin credenciales:** el servidor completo contra un Steam falso (como ya se hace con Mercado Pago
 en `server/test-payments-mp.js`). **Lo que solo se puede validar con tus credenciales:** que Steam real acepte los pedidos

@@ -76,7 +76,7 @@ async function publicInfo(bought){
       available: once && bought ? !(await bought(p.id)) : true,
       price: displayPrice(p) });
   }
-  return { enabled: enabled(), currency: PACKS.currency, packs: out };
+  return { enabled: enabled(), provider: steam.enabled() ? "steam" : (mpEnabled() ? "mercadopago" : (hmacEnabled() ? "hmac" : null)), currency: PACKS.currency, packs: out };
 }
 function fail(code, status, human){ const e = new Error(code); e.status = status || 400; if(human) e.human = human; throw e; }
 const NOT_CONNECTED = "Los pagos todavía no están conectados. Muy pronto vas a poder comprar Brasas.";
