@@ -81,7 +81,7 @@ async function publicInfo(bought){
 function fail(code, status, human){ const e = new Error(code); e.status = status || 400; if(human) e.human = human; throw e; }
 const NOT_CONNECTED = "Los pagos todavía no están conectados. Muy pronto vas a poder comprar Brasas.";
 
-async function checkout({ user, pack, bought, expectedPrice, onOrder }){
+async function checkout({ user, pack, bought, expectedPrice, onOrder, onOrderFailed }){
   if(!enabled()) fail("PAYMENTS_DISABLED", 501, NOT_CONNECTED);
   const p = offered().find(p => p.id === pack); if(!p) fail("BAD_PACK", 400, "Ese paquete no está a la venta.");
   if(p.once && bought && await bought(p.id)) fail("ALREADY_BOUGHT", 409, "El Pack de bienvenida ya es tuyo: se compra una sola vez.");
@@ -96,9 +96,14 @@ async function checkout({ user, pack, bought, expectedPrice, onOrder }){
     // pedidos aunque el jugador nunca vuelva a consultar (reembolsos, cierre del juego, caída entre el cobro y el crédito).
     const orderId = steam.newOrderId();
     if(typeof onOrder !== "function") fail("PAYMENTS_UNAVAILABLE", 503, "No se pudo abrir el pago. Probá de nuevo en un rato.");
-    try{ await onOrder({ orderId, pack: p.id }); }catch(e){ fail("PAYMENTS_UNAVAILABLE", 503, "No se pudo abrir el pago. Probá de nuevo en un rato."); }
+    try{ await onOrder({ orderId, pack: p.id }); }catch(e){ if(e && e.status === 429) throw e; fail("PAYMENTS_UNAVAILABLE", 503, "No se pudo abrir el pago. Probá de nuevo en un rato."); }
     let r; try{ r = await steam.initTxn({ orderId, steamId: user.steamId, itemId: p.steamItemId, cents: Math.round(price.amount * 100), description: (p.name || (p.premium + " Brasas")) + " · La Horda" }); }
-    catch(e){ if(e instanceof steam.SteamError) fail(e.message, e.status, e.human); throw e; }
+    catch(e){
+      // Solo un RECHAZO DEFINITIVO de Steam (respuesta entendida con result != OK, o 4xx) anula el pedido. Un timeout, error de red, 429 o 5xx es AMBIGUO:
+      // Steam pudo crearlo y el jugador verlo en el overlay, así que queda abierto para que el barrido lo acredite si lo aprueba.
+      if(e instanceof steam.SteamError && e.message === "STEAM_INIT_FAILED" && typeof onOrderFailed === "function") await onOrderFailed({ orderId, pack: p.id }).catch(() => {});
+      if(e instanceof steam.SteamError) fail(e.message, e.status, e.human); throw e;
+    }
     return { ok: true, steam: true, orderId: r.orderId, pack: p.id, price };
   }
   if(mpEnabled()) {

@@ -2,7 +2,7 @@
 // STEAM (servidor): inicio de sesión por ticket, vinculación de cuentas y microtransacciones (InitTxn / QueryTxn / FinalizeTxn)
 // contra un Steam FALSO. NO prueba Steam real: hay que repetirlo en sandbox con un AppID real (docs/steam/STEAMWORKS_GUIA.md §4).
 process.env.DATA_PERSISTENT = '1'; // directorio temporal aislado: solo simula la compuerta de almacenamiento persistente
-process.env.PORT = '8826'; process.env.DATABASE_URL = ''; process.env.ALLOWED_ORIGINS = 'http://127.0.0.1:8803';
+process.env.ADMIN_USERS = 'Director'; process.env.REGISTER_MAX_IP = '500'; process.env.PORT = '8826'; process.env.DATABASE_URL = ''; process.env.ALLOWED_ORIGINS = 'http://127.0.0.1:8803';
 process.env.PAYMENTS_PROVIDER = 'steam'; process.env.STEAM_ENABLED = '1'; process.env.STEAM_APP_ID = '480';
 process.env.STEAM_PUBLISHER_KEY = 'ABCDEF0123456789ABCDEF0123456789'; process.env.STEAM_MODE = 'sandbox'; process.env.STEAM_SWEEP_MS = '0'; process.env.PAYMENTS_CHECKOUT_MAX = '200'; process.env.STEAM_RECHECK_MS = '0';   // el barrido se invoca a mano
 const fs = require('fs'), os = require('os'), path = require('path');
@@ -33,6 +33,8 @@ steam._setFetch(async (url, opts) => {
     return ok({ error: { errorcode: 3, errordesc: 'Invalid ticket' } });
   }
   if(u.pathname.endsWith('/InitTxn/v3/')){
+    if(body.steamid === '76561190000000097'){ orders[body.orderid] = { status: 'Init', steamid: body.steamid, currency: body.currency, items: [{ itemid: Number(body['itemid[0]']), qty: Number(body['qty[0]']), amount: Number(body['amount[0]']) }] }; return { ok: false, status: 503, json: async () => ({}) }; }   // Steam creó el pedido pero la respuesta falló (ambiguo)
+    if(body.steamid === '76561190000000098') return ok({ result: 'Failure', error: { errorcode: 8, errordesc: 'caída simulada' } });
     if(!u.pathname.includes('ISteamMicroTxnSandbox')) return { ok: false, status: 400, json: async () => ({}) };
     orders[body.orderid] = { status: 'Init', steamid: body.steamid, currency: body.currency, items: [{ itemid: Number(body['itemid[0]']), qty: Number(body['qty[0]']), amount: Number(body['amount[0]']) }] };
     return ok({ result: 'OK', params: { orderid: body.orderid, transid: 'T' + body.orderid } });
@@ -51,6 +53,7 @@ const app_store = () => accounts.store;
 const premium = async (T) => (await api('GET', '/api/wallet', undefined, T)).j.premium;
 (async () => {
   await accounts.ready;
+  const AT = (await api('POST', '/api/register', { user: 'Director', pass: 'espada123' })).j.token;
   // ---- identidad ----
   const bad = await api('POST', '/api/steam/login', { ticket: 'ee112233445566778899' });
   check('login: ticket que Steam rechaza -> 401', bad.status === 401, bad);
@@ -167,6 +170,35 @@ const premium = async (T) => (await api('GET', '/api/wallet', undefined, T)).j.p
     if(holders.length !== 1) dup++;
   }
   check('carrera: un steamid nunca queda en dos cuentas (login y link a la vez, 20 rondas)', dup === 0, { rondasConDuplicado: dup });
+  // ---- historial sin asientos internos, tope de pedidos pendientes y aviso del barrido ----
+  const hist = (await api('GET', '/api/wallet', undefined, TA)).j.ledger;
+  check('historial: los asientos internos steam_order no se muestran al jugador', hist.length > 0 && hist.every(e => !/^steam_order:/.test(e.reason)), hist.map(e => e.reason));
+  const gmu = (await api('GET', '/api/gm/user?id=' + uidA, undefined, AT)).j;
+  check('historial del Game Master: tampoco', !gmu.premiumLedger || gmu.premiumLedger.every(e => !/^steam_order:/.test(e.reason)), gmu.premiumLedger && gmu.premiumLedger.map(e => e.reason));
+  const regP = await api('POST', '/api/register', { user: 'Pendientes', pass: 'espada123' }); const TP = regP.j.token;
+  await api('POST', '/api/steam/link', { ticket: '770000000099abcdef0123' }, TP);
+  let lastCk; let opened = 0;
+  for(let i = 0; i < 14; i++){ lastCk = await api('POST', '/api/wallet/checkout', { pack: 'brasas_500', expectedPrice: { currency: 'USD', amount: 4.99 } }, TP); if(lastCk.status === 200) opened++; else break; }
+  check('tope: tras 12 pedidos sin terminar en 24 h se rechaza un nuevo checkout (429)', opened === 12 && lastCk.status === 429 && lastCk.j.error === 'TOO_MANY_PENDING', { opened, last: lastCk && lastCk.status });
+  check('tope: el rechazo trae el mensaje legible para el jugador (no solo el código)', lastCk.j.msg && lastCk.j.msg !== lastCk.j.error && /sin terminar/.test(lastCk.j.msg), lastCk.j);
+  // un pedido que Steam NO aceptó se anula: no cuenta para el tope aunque se repita muchas veces
+  const regF = await api('POST', '/api/register', { user: 'SteamCaido', pass: 'espada123' }); const TF = regF.j.token;
+  await api('POST', '/api/steam/link', { ticket: '770000000098abcdef0123' }, TF);
+  let falloUlt, cuenta429 = 0;
+  for(let i = 0; i < 16; i++){ falloUlt = await api('POST', '/api/wallet/checkout', { pack: 'brasas_500', expectedPrice: { currency: 'USD', amount: 4.99 } }, TF); if(falloUlt.status === 429) cuenta429++; }
+  check('pedidos que Steam rechazó (InitTxn falló) no bloquean al comprador: nunca 429 por el tope (16 intentos)', cuenta429 === 0 && falloUlt.status === 502, { cuenta429, last: falloUlt.status });
+  // timeout/5xx tras crear el pedido en Steam (AMBIGUO): NO se anula; si el jugador lo aprobó en el overlay, el barrido lo acredita
+  const regA = await api('POST', '/api/register', { user: 'Ambiguo', pass: 'espada123' }); const TAm = regA.j.token;
+  await api('POST', '/api/steam/link', { ticket: '770000000097abcdef0123' }, TAm);
+  const amb = await api('POST', '/api/wallet/checkout', { pack: 'brasas_1000', expectedPrice: { currency: 'USD', amount: 9.99 } }, TAm);
+  const ambOrder = Object.keys(orders).find(k => orders[k].steamid === '76561190000000097');
+  check('ambiguo: el checkout devuelve error al cliente pero el pedido existe en Steam', amb.status >= 500 && !!ambOrder, { status: amb.status, ambOrder });
+  const pAmb0 = await premium(TAm);
+  orders[ambOrder].status = 'Approved';
+  await walletMod.steamSweepOnce();
+  check('ambiguo: el barrido acredita el pedido aprobado aunque el cliente vio un error (no estaba anulado)', await premium(TAm) === pAmb0 + 1100 && orders[ambOrder].status === 'Succeeded', { premium: await premium(TAm), pAmb0 });
+  const pm = calls.filter(c => c.path.endsWith('/InitTxn/v3/') && c.body.steamid === '7656119' + '0000000099').length;
+  check('tope: el pedido rechazado NO llegó a Steam', pm === 12, pm);
   // ---- sin configuración nada funciona ----
   const keep = process.env.STEAM_ENABLED; process.env.STEAM_ENABLED = '0';
   check('apagado: login 501 y confirmar 501', (await api('POST', '/api/steam/login', { ticket: 'aa112233445566778899' })).status === 501 && (await api('POST', '/api/wallet/steam/confirm', { orderId: o1 }, TA)).status === 501);

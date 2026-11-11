@@ -1,8 +1,8 @@
 {
  "subject": {
-  "pr": 294,
+  "pr": 295,
   "branch": "claude/la-horda-beta-audit-exec-mwv8x0",
-  "head": "2bdd90859647814f0490f653d4cbe6298d321c4b",
+  "head": "df3804f47191794fef49cdec459c5268d3058311",
   "authorAgent": "claude-sesion-principal",
   "authorId": "claude-sesion-principal"
  },
@@ -11,57 +11,57 @@
    "stage": "produccion",
    "by": "claude-sesion-principal",
    "role": "agent",
-   "commit": "2bdd90859647814f0490f653d4cbe6298d321c4b",
-   "at": "2026-11-11T22:20:00Z"
+   "commit": "df3804f47191794fef49cdec459c5268d3058311",
+   "at": "2026-11-12T00:00:00Z"
   },
   {
    "stage": "qa",
-   "by": "claude-qa-294",
+   "by": "claude-qa-295",
    "role": "qa",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "2bdd90859647814f0490f653d4cbe6298d321c4b",
-    "tests": 14,
+    "sha": "df3804f47191794fef49cdec459c5268d3058311",
+    "tests": 9,
     "failed": 0,
-    "report": "Primera pasada sobre 80e719a0 (14 suites, 0 fallos) con ataques propios al servidor: encontró doble cobro del pack de una sola vez y steamid duplicado en el almacén de archivo (carrera login+link). Corregidos en 26aad63e y reverificados con los mismos ataques más ataques nuevos al barrido (cierre/crédito sin cliente, barrido y confirmar simultáneos, reembolso concurrente, pedidos alterados o ajenos): sin hallazgos bloqueantes; test-steam 45 comprobaciones. Sobre a5da4048 detectó que steam-client.js era intermitente (6 de 11); la causa (el diálogo ignora clics en sus primeros 250 ms) se corrigió en 2bdd9085 y QA la reverificó: 12 de 12 corridas, sin debilitar aserciones. No cubrió: Steam real, Postgres en ejecución, steamworks.js/Electron real, GitHub Actions."
+    "report": "Sobre df3804f4, 9 suites en serie sin fallos (test-steam 53, test-wallet 67/67, test-payments-mp 41, test-wallet-pieces 35/35, test-founders 158, test-game-master 127, test-accounts 0 fallos, test-battlepass 64, steam-client 24). Rondas previas encontraron: el mensaje del 429 no llegaba al cliente, y pedidos que Steam no aceptó contaban para el tope (falso bloqueo); corregidos. Marcó además el riesgo de anular pedidos ante errores ambiguos de Steam (cobro sin crédito), corregido en df3804f4 (solo un rechazo definitivo anula) y reverificado. MINOR abiertos: el barrido no espacia las consultas de pedidos que Steam no conoce (hasta 7 días), un 200 con cuerpo inesperado cuenta como rechazo, ventana de 80 del historial, tope no atómico. No cubrió Steam real, Postgres, concurrencia del tope ni navegador."
    },
-   "at": "2026-11-11T22:25:00Z"
+   "at": "2026-11-12T00:10:00Z"
   },
   {
    "stage": "arquitectura",
-   "by": "claude-arq-294",
+   "by": "claude-arq-295",
    "role": "arquitecto",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "2bdd90859647814f0490f653d4cbe6298d321c4b",
-    "report": "Rechazó 80e719a0 por tres huecos de dinero: reembolsos solo al consultar el jugador, cobro cerrado sin crédito sin reintento del servidor, y pack de una sola vez cobrado dos veces. Corregidos en 26aad63e (pedidos anotados en el libro antes de InitTxn, barrido periódico que cierra, acredita y revierte, no cerrar el duplicado, candado por cuenta) y aprobó. Aprobó también el delta 4110822f (solo guía) y a5da4048 (solo workflow). Seguimientos documentados antes de activar live: instancia única (candados en memoria), costo O(cuentas) del barrido, PartialRefund sin revertir y sin anotar en el barrido, asientos steam_order visibles en el historial, prueba en sandbox de Steam con AppID real. El delta 2bdd9085 (solo la prueba steam-client.js) lo verificó QA; arquitectura no lo reviso por separado."
+    "sha": "df3804f47191794fef49cdec459c5268d3058311",
+    "report": "Aprobó daf7873f con observaciones; RECHAZÓ 2be19abd porque anulaba el pedido ante cualquier error de InitTxn, incluidos timeout/5xx donde Steam pudo crearlo y el jugador aprobarlo (cobro sin crédito, reabría el hueco que cerraba el barrido). Corregido en df3804f4: solo STEAM_INIT_FAILED anula; los ambiguos quedan abiertos y el barrido los acredita; test nuevo (Steam crea el pedido y responde 503; el barrido acredita 1100). Aprobó df3804f4 sin BLOCKER ni IMPORTANT. MINOR: !r.ok incluye 3xx como rechazo."
    },
-   "at": "2026-11-11T22:30:00Z"
+   "at": "2026-11-12T00:20:00Z"
   },
   {
    "stage": "staging",
-   "by": "claude-integrador-294",
+   "by": "claude-integrador-295",
    "role": "integrador",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "2bdd90859647814f0490f653d4cbe6298d321c4b",
+    "sha": "df3804f47191794fef49cdec459c5268d3058311",
     "branch": "beta/integracion-20261110",
-    "tests": 28,
+    "tests": 26,
     "failed": 0,
-    "run": "https://github.com/Fondal-Studios/La-Horda/pull/294"
+    "run": "https://github.com/Fondal-Studios/La-Horda/pull/295"
    },
-   "at": "2026-11-11T22:35:00Z"
+   "at": "2026-11-12T00:30:00Z"
   },
   {
    "stage": "aprobacion",
-   "by": "claude-integrador-294",
+   "by": "claude-integrador-295",
    "role": "director",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "2bdd90859647814f0490f653d4cbe6298d321c4b",
-    "report": "Aprobado técnicamente sobre 2bdd9085 con la condición de este registro. Primera revisión sobre 4110822f: CONDICIONADO por un fallo real de CI causado por la PR (steam-client.js sin NODE_PATH de Playwright en el workflow); corregido en a5da4048; los runs de ese SHA quedaron en cola por un incidente de GitHub Actions y se sustituyeron por 2bdd9085. CI de 2bdd9085 verificado por el integrador: 28 check-runs, todos success salvo 'Clasificacion, contratos y servidor' (R4 con el registro viejo de la PR 292; esperado hasta este registro). Incluye entry-reference con 'test-steam: 45 comprobaciones OK' y 'steam-client: 24 checks PASS' y los pasos posteriores, y las regresiones rápida y completa en success. Riesgos: NADA se probó contra Steam real ni Electron real (Steam y contenedor falsos; PRUEBAS_ELECTRON.md); es una PR de dinero: se recomienda una prueba en sandbox de Steam (STEAM_MODE=sandbox, app 480) antes de abrir ventas y no activar live hasta entonces; el integrador no hizo revisión línea a línea del código de pagos y tomó de QA y arquitectura los resultados de 26aad63e. Aprobación dada por un agente conforme a reviews/POLITICA.json (decisión del propietario); no la dio ninguna persona."
+    "sha": "df3804f47191794fef49cdec459c5268d3058311",
+    "report": "Aprobado sobre df3804f4. Verificado por el integrador: beta/integracion-20261110 == df3804f4; diff de 5 archivos (wallet.js, payments.js, admin-users.js, test-steam.js, guía); CI completo en success (regresión rápida y completa, entry-reference con 'test-steam: 53 comprobaciones OK' y 'steam-client: 24 checks PASS', CodeQL y el resto) salvo 'Clasificacion, contratos y servidor' por R4 con el registro viejo de la PR 294 (esperado hasta este registro). Tomado del relato: aprobaciones de QA y arquitectura. Riesgos: nada probado contra Steam real (falta sandbox con AppID real; no activar live); los pedidos cancelados en el overlay cuentan 24 h para el tope; candados en memoria (una sola instancia); el barrido consulta pedidos terminales hasta 7 días. Aprobación dada por un agente conforme a reviews/POLITICA.json (decisión del propietario); no la dio ninguna persona."
    },
-   "at": "2026-11-11T22:40:00Z"
+   "at": "2026-11-12T00:35:00Z"
   }
  ]
 }

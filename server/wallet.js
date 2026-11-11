@@ -47,7 +47,7 @@ function rotationKeys(day){
 const brasasOf = (sku) => pricing().pricingBrasas(sku.tier);
 const goldOf = (sku) => pricing().pricingCosmeticGold(sku.tier, sku.goldBase);
 
-function fail(code, status){ const e = new Error(code); e.status = status || 400; throw e; }
+function fail(code, status, human){ const e = new Error(code); e.status = status || 400; if(human) e.human = human; throw e; }
 function text(s, n){ if(typeof s !== "string") return ""; return s.normalize("NFC").replace(/[<>\u0000-\u001f\u007f]/g, "").trim().slice(0, n || 120); }
 function refOf(s){ return typeof s === "string" && /^[a-zA-Z0-9_.:-]{8,80}$/.test(s) ? s : ""; }
 
@@ -181,7 +181,7 @@ function routes(ctx){
       pieces: { enabled: !!flags().PIECES_FOR_BRASAS, price: P.brasas.pieza, mode: flags().SHOP_MODE },
       prices: { brasas: P.brasas, goldCosmetic: P.gold.cosmetic, collection: P.collection, skinPremium: P.brasas.set, skinGold: P.gold.cosmetic.set },
       welcome: { pack: P.welcome.pack, champions: P.welcome.champions, entitled: welcome.entitled, claimed: welcome.claimed, remaining: welcome.remaining, eligible: welcome.eligible },
-      ledger: (await store().walletLedger(user.id, 20)).map(e => ({ delta: e.delta, balanceAfter: e.balanceAfter, reason: e.reason, at: e.at })),
+      ledger: (await store().walletLedger(user.id, 80)).filter(e => !(typeof e.reason === "string" && /^steam_order(_void)?:/.test(e.reason))).slice(0, 20).map(e => ({ delta: e.delta, balanceAfter: e.balanceAfter, reason: e.reason, at: e.at })),   // los asientos de pedido (monto 0) son internos
       payments: { ...(await payments.publicInfo(bought(user.id))), enabled: !!store().persistent && payments.enabled() } };
   });
 
@@ -374,7 +374,7 @@ function routes(ctx){
   // Pagos con dinero real (apagado hasta configurar un proveedor: server/payments.js)
   route("POST", "/api/wallet/checkout", "user", async ({ user, body }) => {
     if(payments.enabled() && !store().persistent) fail("PAYMENTS_STORAGE_UNSAFE", 503);
-    return payments.checkout({ user, pack: body.pack, bought: bought(user.id), expectedPrice: body.expectedPrice, onOrder: steamOrderEntry(user.id) });
+    return payments.checkout({ user, pack: body.pack, bought: bought(user.id), expectedPrice: body.expectedPrice, onOrder: steamOrderEntry(user.id), onOrderFailed: steamOrderVoid(user.id) });
   });
   // Reembolso total o contracargo de un pago ya acreditado: se descuentan las Brasas de ESE pago, una sola vez (ref rev:<pago>).
   // Si la cuenta ya gastó parte, se descuenta lo que queda (el saldo nunca es negativo) y la diferencia queda anotada en el libro
@@ -423,13 +423,21 @@ function routes(ctx){
     });
   });
   // El pedido queda anotado en el servidor (asiento de monto 0, referencia única) ANTES de pedirlo a Steam (ver payments.checkout).
+  // Si Steam no aceptó el pedido (InitTxn falló), se ANULA el asiento: no cuenta para el tope ni lo consulta el barrido.
+  const steamOrderVoid = (userId) => async ({ orderId, pack }) => {
+    await store().walletApply({ userId, delta: 0, reason: "steam_order_void:" + pack + ":" + orderId, ref: "steamvoid:" + orderId, actor: null, at: now() });
+  };
+  const STEAM_PENDING_MAX = parseInt(process.env.STEAM_PENDING_MAX || "12", 10) || 12;   // pedidos sin acreditar en 24 h por cuenta (evita llenar el libro y el barrido)
   const steamOrderEntry = (userId) => async ({ orderId, pack }) => {
+    const recent = (await store().walletLedger(userId, 400)).filter(e => now() - e.at < 86400000);
+    const open = recent.filter(e => typeof e.reason === "string" && /^steam_order:/.test(e.reason) && !recent.some(x => x.reason === "purchase:" + e.reason.split(":")[1] + ":steam" + e.reason.split(":")[2] || x.ref === "steamvoid:" + e.reason.split(":")[2]));   // no cuentan los acreditados ni los anulados (InitTxn fallido)
+    if(open.length >= STEAM_PENDING_MAX) fail("TOO_MANY_PENDING", 429, "Tenés varios pedidos de Steam sin terminar. Aprobalos o esperá un rato antes de abrir otro.");
     await store().walletApply({ userId, delta: 0, reason: "steam_order:" + pack + ":" + orderId, ref: "steamord:" + orderId, actor: null, at: now() });
   };
   // BARRIDO: cada pocos minutos recorre los pedidos anotados de las cuentas con Steam y los lleva a su estado final aunque el jugador no vuelva:
   //   aprobado y sin cerrar -> se cierra y acredita; cerrado sin crédito (caída entre cobro y crédito) -> se acredita; reembolsado -> se revierte.
   // Los pedidos con crédito se vuelven a mirar como máximo cada 6 h durante 30 días (reembolsos tardíos). Cuesta O(cuentas con Steam).
-  const _swept = new Map();
+  const _swept = new Map(), _loggedIgnored = new Set();
   const RECHECK_MS = process.env.STEAM_RECHECK_MS !== undefined ? Math.max(0, parseInt(process.env.STEAM_RECHECK_MS, 10) || 0) : 6 * 3600000;
   async function steamSweepOnce(){
     if(!payments.steamEnabled() || !store().persistent || !store().listUsers) return { checked: 0 };
@@ -442,6 +450,7 @@ function routes(ctx){
         if(!m || t - e.at > 30 * 86400000) continue;
         const [, pack, orderId] = m;
         if(ledger.some(x => x.ref === "rev:steam" + orderId)) continue;   // ya revertido
+        if(ledger.some(x => x.ref === "steamvoid:" + orderId)) continue;   // anulado (Steam no aceptó el pedido)
         const credited = ledger.some(x => x.reason === "purchase:" + pack + ":steam" + orderId);
         if(credited ? t - (_swept.get(orderId) || 0) < RECHECK_MS : t - e.at > 7 * 86400000) continue;
         checked++; _swept.set(orderId, t);
@@ -449,7 +458,7 @@ function routes(ctx){
           await withLock("steam:" + u.id, async () => {
             const c = await payments.steamEvaluate({ user: u, orderId, bought: bought(u.id) });
             if(!c || c.pending) return;
-            if(c.ignored) return;
+            if(c.ignored){ if(!_loggedIgnored.has(orderId)){ _loggedIgnored.add(orderId); log("PAYMENT_STATUS_REVIEW", { paymentId: c.paymentId, status: c.status, via: "sweep" }); } return; }   // una vez por pedido
             if(credited && !c.reverse) return;   // ya acreditado y sin novedades
             await steamSettle(c, u.id); acted++;
           });
