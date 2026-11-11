@@ -519,12 +519,15 @@ function _brasasPackCard(p, welcome){
   const title = welcome ? (p.name || "Pack de bienvenida") : `${p.premium.toLocaleString("es-AR")} Brasas`;
   const btn = on ? `<button class="shop-btn hot" type="button" data-brasas-buy="${p.id}">Comprar</button>`
     : `<button class="shop-btn" type="button" disabled aria-disabled="true" data-brasas-soon="${p.id}">Muy pronto</button>`;
-  if(welcome) return `<div class="brasas-pack welcome" data-brasas-pack="${p.id}">
+  if(welcome){
+    const gifts = p.championGifts || 0;   // el pack vigente ya no regala campeones (solo Brasas para apariencias); el retirado sí
+    return `<div class="brasas-pack welcome" data-brasas-pack="${p.id}">
     <div class="brasas-welcome-main"><div class="brasas-pack-top"><span class="ui-tag hot">UNA SOLA VEZ</span>${p.bonus ? `<span class="ui-tag sale brasas-bonus">+${p.bonus.toLocaleString("es-AR")} de regalo</span>` : ""}</div>
-      <div class="brasas-pack-amt">✦ ${total.toLocaleString("es-AR")}</div><div class="brasas-pack-name">+ ${p.championGifts||PRICING.welcome.champions} campeones</div></div>
-    <div class="brasas-welcome-note"><b>${p.championGifts||PRICING.welcome.champions} campeones de regalo, a tu elección</b> (en la Tienda valen 🪙 ${fmtGold((p.championGifts||PRICING.welcome.champions)*PRICING.gold.champion)} de oro) + ${(p.premium+(p.bonus||0)).toLocaleString("es-AR")} Brasas (${p.premium.toLocaleString("es-AR")} + ${(p.bonus||0).toLocaleString("es-AR")} de regalo), todo por ${price}. Se compra una sola vez por cuenta. Los campeones también se consiguen jugando, con oro.</div>
+      <div class="brasas-pack-amt">✦ ${total.toLocaleString("es-AR")}</div><div class="brasas-pack-name">${gifts ? `+ ${gifts} campeones` : "para apariencias"}</div></div>
+    <div class="brasas-welcome-note"><b>${total.toLocaleString("es-AR")} Brasas</b> (${p.premium.toLocaleString("es-AR")} + ${(p.bonus||0).toLocaleString("es-AR")} de regalo) para apariencias, todo por ${price}. Se compra una sola vez por cuenta. Las Brasas solo compran apariencias (nunca poder); los campeones se consiguen jugando, con oro.</div>
     <div class="brasas-welcome-buy"><div class="brasas-pack-price">${price}</div>${btn}</div>
   </div>`;
+  }
   return `<div class="brasas-pack" data-brasas-pack="${p.id}">
     <div class="brasas-pack-top">${p.bonus ? `<span class="ui-tag sale brasas-bonus">+${p.bonus.toLocaleString("es-AR")} de regalo</span>` : ""}</div>
     <div class="brasas-pack-amt">✦ ${total.toLocaleString("es-AR")}</div>

@@ -76,13 +76,16 @@ Valor por dólar **creciente** entre packs (anclaje: el pack más caro es la mej
 | `brasas_2500` | 2.500 + 300 | 24,99 | 112 | 2 skins con diseño propio + 1 skin de colección |
 | `brasas_5000` | 5.000 + 1.000 | 49,99 | 120 | una colección completa grande + varias sueltas |
 | `brasas_10000` | 10.000 + 3.000 | 99,99 | 130 | colecciones de varios campeones |
-| `brasas_bienvenida` (una vez) | 500 + 200 | 6,99 | 100 + 3 campeones | ver §4 |
+| `brasas_bienvenida_v2` (una vez) | 500 + 400 | 6,99 | 129 (900 ✦, sin campeones) | ver §4 |
+| `brasas_bienvenida` (RETIRADO de la venta) | 500 + 200 | 6,99 | 100 + 3 campeones (solo quien ya lo compró) | ver §4 |
 
 Antes: 1.000+200 por US$ 4,99 (240 ✦/US$) y packs de 100 a 115 ✦/US$. El pack de bienvenida regalaba 2,4 veces el valor del pack base y no había pack alto.
 
 Cifras de mercado: no se citan. Los US$ son una propuesta a validar con el proveedor y con datos reales de conversión; la tabla solo garantiza coherencia interna (valor creciente, ahorro real).
 
-## 4. Pack de bienvenida = 3 campeones
+## 4. Pack de bienvenida
+
+> **Cambio 2026-11-11 (decisión del dueño):** el dinero real no compra campeones. El pack vigente es `brasas_bienvenida_v2`: **900 ✦ (500 + 400 de regalo) por US$ 6,99, solo Brasas para apariencias, sin campeones** (~129 ✦ por US$, por debajo del pack más grande). El pack original `brasas_bienvenida` queda `retired` en `server/premium-packs.json`: no se ofrece ni se puede iniciar su checkout (400), pero **sigue acreditándose si llega un pago pendiente y quien ya lo compró conserva sus 3 elecciones** (`POST /api/wallet/welcome/claim` no cambia). Pruebas: `server/test-wallet.js`. Lo que sigue describe el pack retirado (derechos heredados).
 
 - **Qué recibe el jugador:** 700 ✦ (500 + 200 de regalo) y **3 campeones a elección** entre los STANDARD publicados que todavía no tiene (no Ascensión, no Fundadores, no Evento, no Familia: Familia y Ascensión tienen reglas propias y se compran con oro). Valor en oro de los 3: 3 × 2.500 = **7.500**, unas 9 partidas de jugador sostenido (el pack no promete poder: son campeones que se consiguen jugando).
 - **Dónde se ve:** la tarjeta del pack dice "3 campeones de regalo, a tu elección (en la Tienda valen 7.500 de oro)". Tras el pago, la Tienda abre sola la pantalla "Elegí tus 3 campeones de regalo" (una vez por sesión) y deja un cartel permanente "Reclamar mis 3 campeones" en todas las pestañas mientras queden elecciones.

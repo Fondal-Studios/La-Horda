@@ -41,8 +41,9 @@ const ref = () => crypto.randomUUID();
     && byId.brasas_500.price.amount === 4.99 && byId.brasas_1000.price.amount === 9.99 && byId.brasas_2500.bonus === 300 && byId.brasas_5000.price.amount === 49.99 && byId.brasas_10000.price.amount === 99.99, pk);
   const perUsd = ['brasas_500', 'brasas_1000', 'brasas_2500', 'brasas_5000', 'brasas_10000'].map(id => (byId[id].premium + byId[id].bonus) / byId[id].price.amount);
   check('valor por dólar creciente entre packs', perUsd.every((v, i) => i === 0 || v > perUsd[i - 1]), perUsd);
-  check('pack de bienvenida: una vez, 500+200 y 3 campeones, disponible', byId.brasas_bienvenida && byId.brasas_bienvenida.once === true && byId.brasas_bienvenida.premium === 500
-    && byId.brasas_bienvenida.bonus === 200 && byId.brasas_bienvenida.championGifts === wallet.pricing().PRICING.welcome.champions && byId.brasas_bienvenida.championGifts === 3 && byId.brasas_bienvenida.price.amount === 6.99 && byId.brasas_bienvenida.available === true, byId.brasas_bienvenida);
+  check('pack de bienvenida vigente: una vez, 500+400, solo Brasas (sin campeones), disponible', byId.brasas_bienvenida_v2 && byId.brasas_bienvenida_v2.once === true && byId.brasas_bienvenida_v2.premium === 500
+    && byId.brasas_bienvenida_v2.bonus === 400 && !byId.brasas_bienvenida_v2.championGifts && byId.brasas_bienvenida_v2.price.amount === 6.99 && byId.brasas_bienvenida_v2.available === true, byId.brasas_bienvenida_v2);
+  check('el pack de bienvenida con campeones está retirado de la venta (el dinero real no compra campeones)', !byId.brasas_bienvenida, byId.brasas_bienvenida);
   check('sin compra no hay derecho a campeones', w0.j.welcome.entitled === 0 && w0.j.welcome.remaining === 0 && w0.j.welcome.eligible.length === 0, w0.j.welcome);
   check('comprar sin saldo: 402', (await api('POST', '/api/wallet/buy', { sku, ref: ref(), expectedPrice: 800 }, UT)).status === 402);
   check('comprar sin cotización: 409', (await api('POST', '/api/wallet/buy', { sku, ref: ref() }, UT)).status === 409);
@@ -115,9 +116,9 @@ const ref = () => crypto.randomUUID();
   const o2 = await hook({ pack: 'brasas_bienvenida', userId: uid, paymentId: 'pay_welcome_2' });
   const wo = (await api('GET', '/api/wallet', undefined, UT)).j;
   check('pack de bienvenida acreditado una sola vez', o1.status === 200 && !o1.j.duplicate && o2.status === 200 && o2.j.alreadyBought === true && wo.premium === 2800 + 700, { o1: o1.j, o2: o2.j, premium: wo.premium });
-  check('el servidor marca el pack de bienvenida como comprado', wo.payments.enabled === true && wo.payments.packs.find(p => p.id === 'brasas_bienvenida').available === false);
+  check('el pack retirado sigue acreditando (pago pendiente) pero ya no se ofrece, ni a quien lo compró', wo.payments.enabled === true && !wo.payments.packs.find(p => p.id === 'brasas_bienvenida'));
   const other = (await api('GET', '/api/wallet', undefined, NT)).j;
-  check('otra cuenta sigue viendo el pack de bienvenida', other.payments.packs.find(p => p.id === 'brasas_bienvenida').available === true);
+  check('otra cuenta sigue viendo el pack de bienvenida vigente', other.payments.packs.find(p => p.id === 'brasas_bienvenida_v2').available === true);
   // ---- Pack de bienvenida: 3 campeones de regalo (el servidor decide, registra y no deja pasar de 3) ----
   const nrm = (await api('GET', '/api/wallet', undefined, NT)).j.welcome;
   check('sin compra no se puede reclamar ni hay candidatos', nrm.entitled === 0 && nrm.remaining === 0 && nrm.eligible.length === 0
@@ -160,6 +161,13 @@ const ref = () => crypto.randomUUID();
   check('un campeón que ya tenés no es candidato ni se puede elegir', xs.entitled === 3 && !xs.eligible.includes('tanque') && (await api('POST', '/api/wallet/welcome/claim', { champion: 'tanque' }, XT)).status === 409, xs);
   const xc = await api('POST', '/api/wallet/welcome/claim', { champion: xs.eligible[0] }, XT);
   check('otra cuenta elige con su propio derecho', xc.status === 200 && xc.j.remaining === 2);
+  // Pack de bienvenida vigente: solo Brasas, sin derecho a campeones
+  const nid2 = (await api('GET', '/api/gm/users', undefined, AT)).j.users.find(u => u.user === 'SinNube').id;
+  const nb = (await api('GET', '/api/wallet', undefined, NT)).j.premium;
+  const v2 = await hook({ pack: 'brasas_bienvenida_v2', userId: nid2, paymentId: 'pay_welcome_v2' });
+  const nw = (await api('GET', '/api/wallet', undefined, NT)).j;
+  check('Pack de bienvenida vigente: acredita 900 Brasas una vez y NO da derecho a campeones', v2.status === 200 && nw.premium === nb + 900 && nw.welcome.entitled === 0 && nw.welcome.remaining === 0
+    && nw.payments.packs.find(p => p.id === 'brasas_bienvenida_v2').available === false && (await api('POST', '/api/wallet/welcome/claim', { champion: 'mago' }, NT)).status === 403, { v2: v2.j, premium: nw.premium, was: nb, welcome: nw.welcome });
   const xsave = (await api('GET', '/api/save', undefined, XT)).j.data;
   check('el oro del guardado no cambia al elegir (es un regalo, no una compra)', xsave.gold === 0);
 
@@ -202,7 +210,7 @@ const ref = () => crypto.randomUUID();
   }
 
   process.env.PAYMENTS_CHECKOUT_URL = 'https://pagos.example/checkout';
-  check('checkout del pack de bienvenida ya comprado: 409', (await api('POST', '/api/wallet/checkout', { pack: 'brasas_bienvenida' }, UT)).status === 409);
+  check('checkout del pack retirado: 400 (no está a la venta)', (await api('POST', '/api/wallet/checkout', { pack: 'brasas_bienvenida' }, UT)).status === 400);
   const c2 = await api('POST', '/api/wallet/checkout', { pack: 'brasas_2500' }, UT);
   check('checkout con proveedor: redirige con precio USD', c2.status === 200 && /pack=brasas_2500/.test(c2.j.redirect) && c2.j.price.currency === 'USD', c2);
   delete process.env.PAYMENTS_CHECKOUT_URL;

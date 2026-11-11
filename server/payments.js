@@ -34,7 +34,7 @@ const sellable = () => PACKS.packs.filter(priced);
 // Optional launch shortlist only affects NEW checkouts, never fulfillment of already paid orders.
 const offered = () => {
   const ids = (process.env.PAYMENTS_PACK_IDS || "").split(",").map(s => s.trim()).filter(Boolean);
-  return sellable().filter(p => ids.length ? ids.includes(p.id) : !p.launchOnly);
+  return sellable().filter(p => !p.retired && (ids.length ? ids.includes(p.id) : !p.launchOnly));   // 'retired': ya no se vende, pero sigue acreditando pagos pendientes (sellable)
 };
 const displayPrice = p => provider() === "mercadopago" && Number.isFinite(mpRate()) && mpRate() > 0
   ? { currency: "ARS", amount: mpAmount(p) } : { ...p.price };

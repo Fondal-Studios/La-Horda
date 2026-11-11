@@ -16,7 +16,8 @@
 ## Paquetes (precios sugeridos, `server/premium-packs.json`)
 | Paquete | Brasas | Precio sugerido |
 |---|---|---|
-| `brasas_bienvenida` — Pack de bienvenida (`once: true`, una vez por cuenta, `championGifts: 3`) | 500 + 200 y 3 campeones a elección | US$ 6,99 |
+| `brasas_bienvenida_v2` — Pack de bienvenida (`once: true`, una vez por cuenta) | 500 + 400, solo Brasas (sin campeones) | US$ 6,99 |
+| `brasas_bienvenida` — RETIRADO (`retired`, `championGifts: 3`; solo derechos heredados) | 500 + 200 y 3 campeones | — |
 | `brasas_500` | 500 | US$ 4,99 |
 | `brasas_1000` | 1000 + 100 | US$ 9,99 |
 | `brasas_2500` | 2500 + 300 | US$ 24,99 |
