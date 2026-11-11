@@ -67,9 +67,14 @@ a este servicio). Cada pack tiene su `steamItemId` en `server/premium-packs.json
 Seguridad ya cubierta por pruebas: cada pedido se anota en el libro del servidor ANTES de pedirlo a Steam; un **barrido** (cada 5 min, `STEAM_SWEEP_MS`)
 cierra y acredita pedidos aprobados aunque el jugador no vuelva, acredita los cerrados sin crédito (caída entre cobro y crédito) y **revierte reembolsos**
 (`Refunded` / `Chargedback`) de los últimos 30 días; el pack de una sola vez no se cierra dos veces; un steamid no puede quedar en dos cuentas.
-**Límites conocidos:** `PartialRefund` no se revierte (queda anotado para revisión manual); el barrido cuesta O(cuentas con Steam) y mira cada pedido acreditado cada 6 h;
-no hay nonce de un solo uso del ticket (con `STEAM_TICKET_IDENTITY` queda atado al servicio); no se verifica la propiedad del juego (el juego es gratis);
-las cuentas creadas solo con Steam no tienen recuperación por correo.
+**Límites conocidos (revisión independiente, seguimientos antes de activar `live`):**
+- **Una sola instancia del servidor:** los candados (por cuenta) viven en memoria; con dos instancias el barrido y las consultas podrían pisarse (p. ej. cerrar dos veces un pack de una sola vez). Si se escala, hace falta un candado en la base de datos.
+- **Costo del barrido:** O(cuentas con Steam) lecturas del libro cada 5 min y una consulta a Steam por cada pedido sin acreditar de los últimos 7 días (los acreditados, cada 6 h durante 30 días). Un jugador puede acumular pedidos abandonados (hasta 8 cada 10 min) y el barrido lee solo los últimos 3.000 asientos de cada cuenta: conviene un tope de pedidos pendientes por cuenta y cerrar los terminales. Aceptable para el beta; no para miles de cuentas.
+- **`PartialRefund` no se revierte.** La consulta del jugador lo anota como `PAYMENT_STATUS_REVIEW` en el registro del servidor; **el barrido NO lo anota** (ignora los estados sin acción). Revisión manual = mirar el panel de Steam.
+- **Historial:** los asientos `steam_order:…` (monto 0) aparecen con su texto crudo en el historial del jugador y en la ficha del Game Master. Es ruido visual, sin efecto en saldos.
+- No hay nonce de un solo uso del ticket (con `STEAM_TICKET_IDENTITY` queda atado al servicio); no se verifica la propiedad del juego (el juego es gratis).
+- Las cuentas creadas solo con Steam no tienen recuperación por correo ni se unen a una cuenta previa de usuario/contraseña salvo con «vincular».
+- El nombre de usuario de las cuentas de Steam (`steam` + 8 dígitos) no es único; la unicidad real es la clave interna (`steam` + steamid).
 
 **Cliente HECHO y probado con un contenedor y un Steam falsos** (`tools/collection/steam-client.js`, 24 comprobaciones): botón «Entrar con Steam» en la pantalla de
 cuenta, compra con aviso legal y sondeo cada 2,5 s hasta 5 minutos (el pedido pendiente se guarda y se retoma al volver), y vinculación
