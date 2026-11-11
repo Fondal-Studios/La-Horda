@@ -71,12 +71,13 @@ const SECRET='secreto-de-prueba-brasas-0123';
   fs.mkdirSync(SHOTS,{recursive:true});await page.addStyleTag({content:'#qs-toasts{display:none!important}'});await page.screenshot({path:path.join(SHOTS,'hub-brasas-chip.png')});
   await page.locator('#hub-premium-btn').click();
   await page.locator('.shop-tab[data-shop-tab="brasas"].on').waitFor();checks++;
-  await page.locator('[data-brasas-pack="brasas_bienvenida"]').waitFor();checks++;
+  await page.locator('[data-brasas-pack="brasas_bienvenida_v2"]').waitFor();checks++;
+  ok(await page.locator('[data-brasas-pack="brasas_bienvenida"]').count()===0,'el pack de bienvenida con campeones (retirado) no se ofrece');
   const prices=await page.$$eval('.brasas-packs .brasas-pack',ns=>ns.map(n=>({id:n.dataset.brasasPack,price:n.querySelector('.brasas-pack-price').textContent.trim(),amt:n.querySelector('.brasas-pack-amt').textContent.trim(),bonus:(n.querySelector('.brasas-bonus')||{}).textContent||''})));
   assert.deepEqual(prices.map(p=>p.price),['US$ 4,99','US$ 9,99','US$ 24,99','US$ 49,99','US$ 99,99'],JSON.stringify(prices));checks++;
   ok(prices[1].bonus.includes('+100')&&prices[2].bonus.includes('+300')&&prices[3].bonus.includes('+1.000')&&prices[4].bonus.includes('+3.000')&&prices[2].amt.includes('2.800'),'bonus visible '+JSON.stringify(prices));
   const perUsd=await page.evaluate(()=>premiumPacks().filter(p=>!p.once).map(p=>(p.premium+p.bonus)/p.price.amount));ok(perUsd.every((v,i)=>!i||v>perUsd[i-1]),'valor por dólar creciente '+perUsd);
-  const wtxt=await page.locator('[data-brasas-pack="brasas_bienvenida"]').innerText();ok(/US\$ 6,99/.test(wtxt)&&/700/.test(wtxt)&&/\+200/.test(wtxt)&&/UNA SOLA VEZ/i.test(wtxt)&&/3 campeones de regalo/.test(wtxt)&&/7\.500/.test(wtxt),'bienvenida '+wtxt);
+  const wtxt=await page.locator('[data-brasas-pack="brasas_bienvenida_v2"]').innerText();ok(/US\$ 6,99/.test(wtxt)&&/900/.test(wtxt)&&/\+400/.test(wtxt)&&/UNA SOLA VEZ/i.test(wtxt)&&/apariencias/.test(wtxt)&&!/campeones? de regalo/.test(wtxt)&&!/7\.500/.test(wtxt),'bienvenida (solo Brasas, sin campeones) '+wtxt);
   // pagos sin pasarela: "Muy pronto", deshabilitado, sin compras simuladas
   ok(await page.locator('[data-brasas-buy]').count()===0,'sin botón de compra activo');
   const soon=page.locator('[data-brasas-soon]');ok(await soon.count()===6&&await soon.first().isDisabled()&&(await soon.first().innerText()).includes('Muy pronto'),'Muy pronto deshabilitado');
@@ -88,18 +89,18 @@ const SECRET='secreto-de-prueba-brasas-0123';
   await page.setViewportSize({width:844,height:390});
   // un webhook firmado acredita el Pack de bienvenida: el servidor deja de ofrecerlo
   process.env.PAYMENTS_PROVIDER='hmac';process.env.PAYMENTS_WEBHOOK_SECRET=SECRET;
-  const raw=JSON.stringify({pack:'brasas_bienvenida',userId,paymentId:'pay_browser_welcome'});
+  const raw=JSON.stringify({pack:'brasas_bienvenida_v2',userId,paymentId:'pay_browser_welcome'});
   const sig=crypto.createHmac('sha256',SECRET).update(raw).digest('hex');
   const hook=await request('POST','/api/payments/webhook',raw,undefined,{'x-horda-signature':sig});ok(hook.status===200&&!hook.j.duplicate,'webhook '+JSON.stringify(hook));
-  const again=await request('POST','/api/payments/webhook',JSON.stringify({pack:'brasas_bienvenida',userId,paymentId:'pay_browser_welcome_2'}),undefined,{'x-horda-signature':crypto.createHmac('sha256',SECRET).update(JSON.stringify({pack:'brasas_bienvenida',userId,paymentId:'pay_browser_welcome_2'})).digest('hex')});
+  const again=await request('POST','/api/payments/webhook',JSON.stringify({pack:'brasas_bienvenida_v2',userId,paymentId:'pay_browser_welcome_2'}),undefined,{'x-horda-signature':crypto.createHmac('sha256',SECRET).update(JSON.stringify({pack:'brasas_bienvenida_v2',userId,paymentId:'pay_browser_welcome_2'})).digest('hex')});
   ok(again.status===200&&again.j.alreadyBought===true,'segundo pago de bienvenida no acredita');
   await page.evaluate(()=>premiumRefresh(true));
-  await page.locator('[data-brasas-pack="brasas_bienvenida"]').waitFor({state:'detached'});checks++;
-  ok(/\b700\b/.test(await page.locator('.brasas-bal').innerText()),'saldo 700');
+  await page.locator('[data-brasas-pack="brasas_bienvenida_v2"]').waitFor({state:'detached'});checks++;
+  ok(/\b900\b/.test(await page.locator('.brasas-bal').innerText()),'saldo 900');
   ok(await page.locator('[data-brasas-buy]').count()===5,'con pasarela: botones Comprar');
-  // el pago ya está acreditado y quedan 3 elecciones: la Tienda ofrece reclamarlos (y abre la pantalla una vez)
-  await page.locator('#welcome-picks .wp-panel').waitFor();checks++;await page.locator('#welcome-picks [data-wp-close]').click();
-  await page.locator('.wp-banner [data-wp-open]').waitFor();ok(/Reclamar mis 3 campeones/i.test(await page.locator(".wp-banner").innerText()),'cartel de reclamo '+await page.locator('.wp-banner').innerText());
+  // el pack vigente NO da campeones: la Tienda no abre la pantalla de elección ni deja el cartel de reclamo (eso es solo del pack retirado: tools/collection/welcome-picks.js)
+  await page.waitForTimeout(600);
+  ok(await page.locator('#welcome-picks').count()===0&&await page.locator('.wp-banner').count()===0,'sin elección de campeones tras comprar el pack vigente');
   delete process.env.PAYMENTS_PROVIDER;delete process.env.PAYMENTS_WEBHOOK_SECRET;
   await page.evaluate(()=>premiumRefresh(true));await page.locator('[data-brasas-soon]').first().waitFor();checks++;
   // otras pestañas siguen andando
