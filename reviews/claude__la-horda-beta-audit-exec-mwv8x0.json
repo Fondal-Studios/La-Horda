@@ -1,8 +1,8 @@
 {
  "subject": {
-  "pr": 290,
+  "pr": 292,
   "branch": "claude/la-horda-beta-audit-exec-mwv8x0",
-  "head": "03a03e4ca0270e314da2ed16acbaddb3b9d6ad47",
+  "head": "60108c8dc7dbd9cae18fc5b5d54ee456b38c9c4f",
   "authorAgent": "claude-sesion-principal",
   "authorId": "claude-sesion-principal"
  },
@@ -11,57 +11,57 @@
    "stage": "produccion",
    "by": "claude-sesion-principal",
    "role": "agent",
-   "commit": "03a03e4ca0270e314da2ed16acbaddb3b9d6ad47",
-   "at": "2026-11-11T04:00:00Z"
+   "commit": "60108c8dc7dbd9cae18fc5b5d54ee456b38c9c4f",
+   "at": "2026-11-11T12:00:00Z"
   },
   {
    "stage": "qa",
-   "by": "claude-qa-290",
+   "by": "claude-qa-292b",
    "role": "qa",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "03a03e4ca0270e314da2ed16acbaddb3b9d6ad47",
-    "tests": 14,
+    "sha": "60108c8dc7dbd9cae18fc5b5d54ee456b38c9c4f",
+    "tests": 5,
     "failed": 0,
-    "report": "Sobre 03a03e4c, 14 comandos en serie, 0 fallos y 0 flakes: brasas-store 56, welcome-picks 42, test-i18n, validate-tr, server/test-wallet 67/67, check-collection, t_shop_rotation, check-entry-reference, test-wallet-pieces 35/35, test-payments-mp 41, test-game-master 127, test-founders 158, test-competitive-entitlements, test-legacy-champion-ids 26. Revisiones previas sobre 6211e334 y 0f550c18 (t_save_resilience [G], desktop/test-stage). No cubrió: pruebas de navegador/UI de los workflows (tools/ux/*, gm-ui, crystal-wars), simulaciones de balance, postgres/admin, dispositivos reales, pagos reales."
+    "report": "Sobre 60108c8d, en serie: build.py (diccionarios commiteados coinciden con la fuente, árbol limpio), validate-tr, test-i18n (TODO OK, 3 casos de talentos con el formato real de saltos de línea), t_identity x2 sin FAIL (INF.el_campeon_no_sale_por_la_fisura con champMoved 0 y normalMoved 28/20) y una MUTACIÓN propia (quitar `champion ||` de infPlaceSpawn) que hace FALLAR la prueba (champMoved 19). Primera pasada sobre f17c9381 aprobó con la prueba INF todavía ciega; la corrección se revalidó. No cubrió: calidad lingüística EN/PT, tooltip en navegador real."
    },
-   "at": "2026-11-11T04:10:00Z"
+   "at": "2026-11-11T12:10:00Z"
   },
   {
    "stage": "arquitectura",
-   "by": "claude-arq-290",
+   "by": "claude-arq-292b",
    "role": "arquitecto",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "03a03e4ca0270e314da2ed16acbaddb3b9d6ad47",
-    "report": "Tres pasadas (6211e334, 0f550c18, 03a03e4c). Sin BLOCKER. Hallazgos IMPORTANT atendidos: aviso falso al elegir la nube cuando la aplicación falla, docs históricos del pack retirado, cifras de Steam. Verificó que el pack v2 no da derecho a campeones, que el retirado sigue acreditando pagos pendientes y conserva derechos heredados, y que brasas-store.js refleja la regla sin debilitar chequeos. Residuales MINOR: 129 Brasas/US$ queda sobre el pack de US$ 49,99 (excluido de la escalera por nota); un comprador del pack viejo puede comprar también el vigente."
+    "sha": "60108c8dc7dbd9cae18fc5b5d54ee456b38c9c4f",
+    "report": "Primera pasada sobre f17c9381: i18n aprobado; t_identity RECHAZADO (prueba vacua: spawnEnemy fuerza rank subjefe y infPlaceSpawn exime dos veces; causa documentada incorrecta). Corregido en 60108c8d (prueba directa con control, mutación detectada) y se encontró además que el tooltip real usa saltos de línea (patrones pasaron a \\s+ / [\\s\\S]). Revisión del delta: aprobado, sin BLOCKER ni IMPORTANT. MINOR abiertos: patrón de patterns.py línea 94 sombreado (código muerto), saltos de línea de la cabeza se normalizan a espacio en EN/PT, formas 'por punto en A y B' quizá sin uso. No ejecutó pruebas de navegador."
    },
-   "at": "2026-11-11T04:20:00Z"
+   "at": "2026-11-11T12:20:00Z"
   },
   {
    "stage": "staging",
-   "by": "claude-integrador-290b",
+   "by": "claude-integrador-292b",
    "role": "integrador",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "03a03e4ca0270e314da2ed16acbaddb3b9d6ad47",
+    "sha": "60108c8dc7dbd9cae18fc5b5d54ee456b38c9c4f",
     "branch": "beta/integracion-20261110",
-    "tests": 38,
+    "tests": 26,
     "failed": 0,
-    "run": "https://github.com/Fondal-Studios/La-Horda/pull/290"
+    "run": "https://github.com/Fondal-Studios/La-Horda/pull/292"
    },
-   "at": "2026-11-11T05:00:00Z"
+   "at": "2026-11-11T12:30:00Z"
   },
   {
    "stage": "aprobacion",
-   "by": "claude-integrador-290b",
+   "by": "claude-integrador-292b",
    "role": "director",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "03a03e4ca0270e314da2ed16acbaddb3b9d6ad47",
-    "report": "Una primera revisión del integrador (sobre 0f550c18) RECHAZÓ por una regresión real (brasas-store.js esperaba el pack retirado; contract y entry-reference en rojo); se corrigió en 03a03e4c. Sobre 03a03e4c: 'Regresion del juego (completa)' y '(rapida)', 'contract' y 'entry-reference' en success. Quedan 2 jobs no verdes: 'Clasificacion, contratos y servidor' (esperado hasta este registro: R4 con el registro de la PR 289) y 'Objetos, economía y tienda (pruebas que hoy fallan en la base)', con continue-on-error, que falla CARCELERO.cadenas_ancladas_y_se_rompen_por_fase de t_abismo; el diff no toca esa zona; es inferencia de flake, no probado por rerun. Riesgos: la base de main tiene 3 de 5 runs recientes de integracion-pruebas en failure sin inspeccionar; sin pruebas reales de multiplayer, performance, pagos reales ni Electron. Aprobación dada por un agente conforme a reviews/POLITICA.json (decisión del propietario); no la dio ninguna persona."
+    "sha": "60108c8dc7dbd9cae18fc5b5d54ee456b38c9c4f",
+    "report": "El integrador dio 'condicionado' a que 'Regresion del juego (completa)' terminara en success sobre 60108c8d y a que existiera este registro con 'Clasificacion' en verde después. La completa terminó en success (la rápida también; 'Objetos, economía y tienda' sin repetir la falla de CARCELERO) antes de este registro. Único check no verde: 'Clasificacion, contratos y servidor' por R4 con el registro viejo de la PR 290 (esperado hasta este registro). Verificado por el integrador: beta/integracion-20261110 == 60108c8d, diff de 8 archivos sin código de juego. Tomado del relato: resultados de QA y arquitectura. Riesgos: sin pruebas de navegador real de los tooltips traducidos; MINOR de arquitectura abiertos. Aprobación dada por un agente conforme a reviews/POLITICA.json (decisión del propietario); no la dio ninguna persona."
    },
-   "at": "2026-11-11T05:05:00Z"
+   "at": "2026-11-11T12:35:00Z"
   }
  ]
 }

@@ -64,8 +64,25 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
     // aparición por la fisura
     const sp = await E(() => { const f = INF.fis[0]; let near = 0; for (let i = 0; i < 80; i++) { const e = spawnEnemy('esqueleto', false); if (Math.hypot(e.x-f.x, e.y-f.y) < 80) near++; } enemies.length = 0; return { near, share: near/80 }; });
     check('INF.parte_de_la_horda_sale_de_la_fisura', sp.share > 0.15 && sp.share < 0.5, sp);
-    const ch = await E(() => { enemies.length = 0; const e = spawnEnemy('golem', false, true); const f = INF.fis[0]; const d = Math.hypot(e.x-f.x, e.y-f.y); enemies.length = 0; activeChampion = null; return d|0; });
-    check('INF.el_campeon_no_sale_por_la_fisura', ch > 80, ch);
+    // El campeón NO sale por la fisura. OJO: spawnEnemy convierte a TODO campeón en rango "subjefe", y infPlaceSpawn (inf-fissures.js) lo exceptúa DOS veces
+    // (por `champion` y por rango jefe/subjefe), así que mirar dónde aparece un campeón de verdad no distingue nada (la versión anterior de esta prueba era
+    // vacua por eso y además, con una sola muestra al azar, fallaba ~1 de cada 15 corridas). Se prueba la regla directa: la MISMA criatura (rango normal, no
+    // exenta por rango) puesta lejos de la fisura NO se mueve cuando se la trata como campeón, y SÍ se mueve a veces cuando no lo es (control: demuestra que
+    // la fisura está abierta y que la prueba puede fallar).
+    const ch = await E(() => {
+      const f = INF.fis[0]; let guard = 0; while (f && f.warn > 0 && guard++ < 40) __step(500);
+      let champMoved = 0, normalMoved = 0;
+      for (let i = 0; i < 80; i++) {
+        enemies.length = 0; const e = spawnEnemy('esqueleto', false); e.rank = 'normal';
+        const x0 = e.x, y0 = e.y;
+        infPlaceSpawn(e, false, true);  if (e.x !== x0 || e.y !== y0) champMoved++;
+        e.x = x0; e.y = y0;
+        infPlaceSpawn(e, false, false); if (e.x !== x0 || e.y !== y0) normalMoved++;
+      }
+      enemies.length = 0; activeChampion = null;
+      return { open: !!f && f.warn <= 0, champMoved, normalMoved };
+    });
+    check('INF.el_campeon_no_sale_por_la_fisura', ch.open && ch.champMoved === 0 && ch.normalMoved >= 5, ch);
     // crecimiento y escupida
     const gr = await E(() => { const f = INF.fis[0]; const st = [f.stage]; let spit = 0; for (let i = 0; i < 70; i++) { const n0 = enemies.length; __step(500); if (enemies.length > n0) spit += enemies.length - n0; if (st[st.length-1] !== f.stage) st.push(f.stage); if (enemies.length > 10) enemies.length = 0; } return { st, spit, dur:f.dur, r:f.r }; });
     check('INF.crece_en_3_etapas', JSON.stringify(gr.st.slice(0, 3)) === '[1,2,3]', gr);
