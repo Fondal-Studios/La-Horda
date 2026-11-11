@@ -1,8 +1,8 @@
 {
  "subject": {
-  "pr": 289,
+  "pr": 290,
   "branch": "claude/la-horda-beta-audit-exec-mwv8x0",
-  "head": "1f9aea9bbeefb5a36c33a4060b47835943699667",
+  "head": "03a03e4ca0270e314da2ed16acbaddb3b9d6ad47",
   "authorAgent": "claude-sesion-principal",
   "authorId": "claude-sesion-principal"
  },
@@ -11,57 +11,57 @@
    "stage": "produccion",
    "by": "claude-sesion-principal",
    "role": "agent",
-   "commit": "1f9aea9bbeefb5a36c33a4060b47835943699667",
-   "at": "2026-11-10T22:00:00Z"
+   "commit": "03a03e4ca0270e314da2ed16acbaddb3b9d6ad47",
+   "at": "2026-11-11T04:00:00Z"
   },
   {
    "stage": "qa",
-   "by": "claude-qa-289",
+   "by": "claude-qa-290",
    "role": "qa",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "1f9aea9bbeefb5a36c33a4060b47835943699667",
-    "tests": 5,
+    "sha": "03a03e4ca0270e314da2ed16acbaddb3b9d6ad47",
+    "tests": 14,
     "failed": 0,
-    "report": "QA ejecutó t_identity 5 veces en serie sobre d22872d8 (BOS.contener_runa 5/5, BOS.raices 5/5, 0 FAIL). El delta d22872d8..1f9aea9b es solo docs (el código de la prueba no cambió, verificado con git diff --stat). No reprodujo el 3/8 previo al arreglo (lo toma de la descripción) ni corrió otras suites."
+    "report": "Sobre 03a03e4c, 14 comandos en serie, 0 fallos y 0 flakes: brasas-store 56, welcome-picks 42, test-i18n, validate-tr, server/test-wallet 67/67, check-collection, t_shop_rotation, check-entry-reference, test-wallet-pieces 35/35, test-payments-mp 41, test-game-master 127, test-founders 158, test-competitive-entitlements, test-legacy-champion-ids 26. Revisiones previas sobre 6211e334 y 0f550c18 (t_save_resilience [G], desktop/test-stage). No cubrió: pruebas de navegador/UI de los workflows (tools/ux/*, gm-ui, crystal-wars), simulaciones de balance, postgres/admin, dispositivos reales, pagos reales."
    },
-   "at": "2026-11-10T22:10:00Z"
+   "at": "2026-11-11T04:10:00Z"
   },
   {
    "stage": "arquitectura",
-   "by": "claude-arq-289",
+   "by": "claude-arq-290",
    "role": "arquitecto",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "1f9aea9bbeefb5a36c33a4060b47835943699667",
-    "report": "Aprobado sobre d22872d8 con 2 IMPORTANT y 2 MINOR (emisor del golpe sin identificar, cifra 10/10 sin log, párrafo histórico contradictorio, aclarar que la causa es de la prueba); atendidos en 1f9aea9b y reconfirmados por el mismo revisor sobre ese SHA. Sin BLOCKER; sin debilitar aserciones; producción ya limpia bossStrikes en los límites de partida."
+    "sha": "03a03e4ca0270e314da2ed16acbaddb3b9d6ad47",
+    "report": "Tres pasadas (6211e334, 0f550c18, 03a03e4c). Sin BLOCKER. Hallazgos IMPORTANT atendidos: aviso falso al elegir la nube cuando la aplicación falla, docs históricos del pack retirado, cifras de Steam. Verificó que el pack v2 no da derecho a campeones, que el retirado sigue acreditando pagos pendientes y conserva derechos heredados, y que brasas-store.js refleja la regla sin debilitar chequeos. Residuales MINOR: 129 Brasas/US$ queda sobre el pack de US$ 49,99 (excluido de la escalera por nota); un comprador del pack viejo puede comprar también el vigente."
    },
-   "at": "2026-11-10T22:20:00Z"
+   "at": "2026-11-11T04:20:00Z"
   },
   {
    "stage": "staging",
-   "by": "claude-integrador-289",
+   "by": "claude-integrador-290b",
    "role": "integrador",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "1f9aea9bbeefb5a36c33a4060b47835943699667",
+    "sha": "03a03e4ca0270e314da2ed16acbaddb3b9d6ad47",
     "branch": "beta/integracion-20261110",
     "tests": 38,
     "failed": 0,
-    "run": "https://github.com/Fondal-Studios/La-Horda/pull/289"
+    "run": "https://github.com/Fondal-Studios/La-Horda/pull/290"
    },
-   "at": "2026-11-10T22:50:00Z"
+   "at": "2026-11-11T05:00:00Z"
   },
   {
    "stage": "aprobacion",
-   "by": "claude-integrador-289",
+   "by": "claude-integrador-290b",
    "role": "director",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "1f9aea9bbeefb5a36c33a4060b47835943699667",
-    "report": "El integrador dio 'aprobado condicionado' a (a) que 'Regresion del juego (completa)' y la rápida terminen en success y (b) que exista este registro; ambas se cumplieron antes del merge ('completa' pasó en success sobre 1f9aea9b; 'Clasificacion' queda en rojo solo hasta este registro). Riesgos: el arreglo está en la prueba, no se identificó qué emisor deja un golpe pendiente en bosque nivel 1; la firma INF.el_campeon_no_sale_por_la_fisura sigue abierta; la evidencia 10/10 es local sin log. Aprobación dada por un agente conforme a reviews/POLITICA.json (decisión del propietario); no la dio ninguna persona."
+    "sha": "03a03e4ca0270e314da2ed16acbaddb3b9d6ad47",
+    "report": "Una primera revisión del integrador (sobre 0f550c18) RECHAZÓ por una regresión real (brasas-store.js esperaba el pack retirado; contract y entry-reference en rojo); se corrigió en 03a03e4c. Sobre 03a03e4c: 'Regresion del juego (completa)' y '(rapida)', 'contract' y 'entry-reference' en success. Quedan 2 jobs no verdes: 'Clasificacion, contratos y servidor' (esperado hasta este registro: R4 con el registro de la PR 289) y 'Objetos, economía y tienda (pruebas que hoy fallan en la base)', con continue-on-error, que falla CARCELERO.cadenas_ancladas_y_se_rompen_por_fase de t_abismo; el diff no toca esa zona; es inferencia de flake, no probado por rerun. Riesgos: la base de main tiene 3 de 5 runs recientes de integracion-pruebas en failure sin inspeccionar; sin pruebas reales de multiplayer, performance, pagos reales ni Electron. Aprobación dada por un agente conforme a reviews/POLITICA.json (decisión del propietario); no la dio ninguna persona."
    },
-   "at": "2026-11-10T22:55:00Z"
+   "at": "2026-11-11T05:05:00Z"
   }
  ]
 }
