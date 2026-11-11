@@ -39,3 +39,5 @@
 - **Pack de bienvenida sin campeones** (decisión del dueño): `brasas_bienvenida_v2` = 500 + 400 Brasas por US$ 6,99, solo apariencias; el pack original queda `retired` (no se vende; los pagos pendientes se acreditan y quien ya lo compró conserva sus 3 elecciones). `server/test-wallet.js` 67/67.
 - **Guardado en la nube**: si `accountApplyCloud` falla al aplicar, ya no adelanta la versión: conserva lo local, marca `acct.needPull` y reintenta con espera creciente (`tools/regression/t_save_resilience.js` [G]).
 - Runway: `creditBalance` = 2 (no alcanza para generar; 1 imagen = 8). Sin gasto.
+
+- i18n lote 377 (2026-11-11): tooltips de talentos con «Sinergias» (cabeza «Nombre — descripción» + líneas de sinergia, formas «cada punto da» y «por punto en A, B y C») por patrones recursivos + 16 nombres de talentos; prueba en `tools/i18n/test-i18n.js`. Quedan nombres de piezas generadas y claves internas de enemigos sin traducir.
