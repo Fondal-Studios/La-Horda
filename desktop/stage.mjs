@@ -28,7 +28,7 @@ import {fileURLToPath} from 'node:url';
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 export const ROOTS = ['index.html', 'css', 'js', 'assets', 'legal'];
 export const NEVER = ['art-source', 'docs', 'tools', 'server', 'tests', 'reviews', '.github', '.git', '.claude', 'deploy', 'contracts', 'desktop', 'node_modules'];
-const SKIP = [/^assets\/og(\/|$)/, /(^|\/)\.DS_Store$/, /\.map$/, /(^|\/)Thumbs\.db$/i, /(^|\/)node_modules(\/|$)/];
+const SKIP = [/^assets\/og(\/|$)/, /^assets\/ui\/codex\/champions\/[^/]+\.png$/, /(^|\/)\.DS_Store$/, /\.map$/, /(^|\/)Thumbs\.db$/i, /(^|\/)node_modules(\/|$)/];
 
 // Referencias locales (src/href) de un HTML: sin esquema, sin "#", sin data:.
 export function localRefs(html) {
