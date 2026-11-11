@@ -70,6 +70,13 @@ export async function stage({repo = path.resolve(HERE, '..'), out = path.join(HE
   await rm(out, {recursive: true, force: true}); await mkdir(out, {recursive: true});
   const keep = src => { const r = path.relative(repo, src).split(path.sep).join('/'); return !SKIP.some(re => re.test(r)); };
   for (const name of ROOTS) await cp(path.join(repo, name), path.join(out, name), {recursive: true, filter: keep, dereference: false});
+  // PNG con gemelo WebP idéntico (js/assets/asset-webp.js, la lista que usa lazy-images.js): en Electron el WebP siempre carga, así que el PNG
+  // sobra. Se conservan los `preview.png` (miniaturas que tienda y Códice escriben como <img src> en HTML, sin pasar por el selector de WebP).
+  const webpSrc = await readFile(path.join(repo, 'js', 'assets', 'asset-webp.js'), 'utf8'), dropped = [];
+  for (const m of webpSrc.matchAll(/"(assets\/[^"]+\.png)"/g)) {
+    const png = m[1]; if (path.posix.basename(png) === 'preview.png') continue;
+    if (existsSync(path.join(out, png.slice(0, -4) + '.webp')) && existsSync(path.join(out, png))) { await rm(path.join(out, png)); dropped.push(png); }
+  }
   // index.html de escritorio + lo que siga referenciando
   const r = rewriteIndex(await readFile(path.join(repo, 'index.html'), 'utf8'), {betaPublic});
   await writeFile(path.join(out, 'index.html'), r.html);
@@ -90,7 +97,7 @@ export async function stage({repo = path.resolve(HERE, '..'), out = path.join(HE
     if (f.endsWith('.png')) { png++; pngBytes += s; if (set.has(f.slice(0, -4) + '.webp')) { twins++; twinBytes += s; } }
   }
   const info = {out, files: files.length, bytes, mb: +(bytes / 1048576).toFixed(1), png, pngMb: +(pngBytes / 1048576).toFixed(1),
-    pngConGemeloWebp: twins, pngConGemeloWebpMb: +(twinBytes / 1048576).toFixed(1), extra, indexNotes: r.notes, betaPublic};
+    pngConGemeloWebp: twins, pngConGemeloWebpMb: +(twinBytes / 1048576).toFixed(1), pngQuitados: dropped.length, extra, indexNotes: r.notes, betaPublic};
   if (!quiet) console.log('staging listo:', JSON.stringify(info, null, 1));
   return info;
 }
