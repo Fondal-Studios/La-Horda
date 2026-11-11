@@ -171,7 +171,7 @@ try {
   // recorrido de pantallas que escriben <img src> como HTML (tienda y Códice): con los PNG gemelos quitados del paquete, un PNG que
   // sobreviva en esas rutas aparecería como 404.
   const recorrido = await page.evaluate(async () => {
-    const out = {shop: [], codex: 0}, sl = ms => new Promise(r => setTimeout(r, ms));
+    const out = {shop: [], codex: 0, total: Object.keys(CLASSES).length}, sl = ms => new Promise(r => setTimeout(r, ms));
     for (const tab of ['destacados', 'campeones', 'objetos', 'skins', 'sets', 'cromas', 'brasas']) {
       try { shopOpen(tab); await sl(500); out.shop.push(tab + ':' + document.querySelectorAll('#shop-panel img').length); } catch (e) { out.shop.push(tab + ':ERR ' + e.message); }
     }
@@ -181,7 +181,7 @@ try {
   });
   await H.sleep(1500);
   console.log('     recorrido tienda/Códice: ' + JSON.stringify(recorrido));
-  check('recorrido: tienda (7 pestañas) y hoja del Códice de cada campeón sin excepción', recorrido.shop.length === 7 && !recorrido.shop.some(x => x.includes('ERR')) && recorrido.codex > 20 && !recorrido.codexErr, recorrido);
+  check('recorrido: tienda (7 pestañas) y hoja del Códice de cada campeón sin excepción', recorrido.shop.length === 7 && !recorrido.shop.some(x => x.includes('ERR')) && recorrido.codex === recorrido.total && recorrido.total > 20 && !recorrido.codexErr, recorrido);
   check('carga: sin errores de página', errors.length === 0, errors.slice(0, 5));
   check('carga: sin 404 ni pedidos fallidos', notFound.length === 0 && failed.length === 0, {notFound: notFound.slice(0, 10), failed: failed.slice(0, 10)});
   console.log('\nTAMAÑO DEL STAGING: ' + info.mb + ' MB en ' + info.files + ' archivos');

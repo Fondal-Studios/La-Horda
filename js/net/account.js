@@ -232,11 +232,12 @@ function accountApplyCloud(cloud){
   if(!loaded){
     // No se pudo aplicar: no se da la nube por aplicada (no se adelanta la versión ni el hash: sería creer que este dispositivo ya la tiene).
     // Se deja el guardado local como estaba y se reintenta más tarde (con espera creciente), en vez de quedarse mirando un perfil a medias.
-    try{ if(raw){ localStorage.setItem(SAVE_KEY, raw); acct.applying = true; try{ loadSave(); }finally{ acct.applying = false; } } }catch(e){}
+    try{ if(raw){ localStorage.setItem(SAVE_KEY, raw); acct.applying = true; try{ loadSave(); }finally{ acct.applying = false; } } else localStorage.removeItem(SAVE_KEY); }catch(e){}
     acct.needPull = true; _acctRetryLater(); _acctEmit();
     return false;
   }
   if(loaded && typeof saveRecoveredClear==="function") saveRecoveredClear();   // ya es el de la nube: deja de ser un perfil recuperado (si la carga falló, la marca sigue protegiendo la nube)
+  acct.retryMs = 0; acct.needPull = false;   // se aplicó bien: la espera de reintentos vuelve a empezar de cero
   const y = acct.sync;
   y.version = cloud.version | 0; y.hash = _acctHash(cloudRaw); y.updatedAt = cloud.updatedAt || 0; y.lastOk = Date.now(); y.beacon = null;
   y.dirty = _acctHash(_acctLocalRaw()) !== y.hash; // si una migración lo tocó al cargar, queda para subir
@@ -499,7 +500,8 @@ async function accountResolveConflict(choice){
   const y = acct.sync, key = _acctKey(acct.session.user);
   if(choice === "cloud"){
     acct.conflict = null; y.user = key;
-    accountApplyCloud(c.cloud);   // (también limpia la marca de perfil recuperado)
+    const applied = accountApplyCloud(c.cloud);   // (también limpia la marca de perfil recuperado)
+    if(!applied){ if(typeof showNetToast === "function") showNetToast("⚠ No se pudo cargar el progreso de la nube. Tu progreso local sigue intacto y se reintenta solo."); return true; }
     if(typeof showNetToast === "function") showNetToast("☁ Usando el progreso de la nube (el de este dispositivo quedó respaldado).");
     return true;
   }
