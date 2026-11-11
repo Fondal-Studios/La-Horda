@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 # (regex ES, plantilla EN, plantilla PT). $1.. = grupo traducido con el diccionario si existe.
 P=[
+# --- Lote 378: compra con Steam (confirmación) y cuenta creada con Steam
+(r"^¿Comprar (.+) Brasas por (.+)\? Steam te va a pedir que apruebes la compra en su ventana\. (.*)$","Buy $1 Embers for $2? Steam will ask you to approve the purchase in its window. $3","Comprar $1 Brasas por $2? A Steam vai pedir que você aprove a compra na janela dela. $3"),
+(r"^¡Cuenta creada con Steam! Bienvenido, (.+)\.$","Account created with Steam! Welcome, $1.","Conta criada com a Steam! Bem-vindo, $1."),
+(r"^Las Brasas se pagan con dinero real a través de Steam \(Steam te pide aprobar la compra y aplica su política de reembolsos\)\. (.*)$","Embers are paid for with real money through Steam (Steam asks you to approve the purchase and applies its refund policy). $1","As Brasas são pagas com dinheiro real pela Steam (a Steam pede que você aprove a compra e aplica a política de reembolso dela). $1"),
 # --- Lote 377: tooltips de talentos con «Sinergias» (cabeza «Nombre — descripción» + líneas de sinergia)
 (r"^(.+?) — (.+?)\s+Sinergias:\s+([\s\S]+)$","$1 — $2 Synergies: $3","$1 — $2 Sinergias: $3"),
 (r"^· cada punto da \+(\d+)% daño a (.+?) \(ahora \+(\d+)%\)(\s+· [\s\S]+)?$","· each point gives +$1% damage to $2 (now +$3%)$4","· cada ponto dá +$1% de dano a $2 (agora +$3%)$4"),
