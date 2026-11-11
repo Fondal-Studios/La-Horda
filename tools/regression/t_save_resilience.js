@@ -218,6 +218,22 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
         return { puts: window.__calls.filter(c => c.method === 'PUT').length, rec: saveRecoveredIs() };
       });
       ok(g4.puts === 1 && g4.rec === false, '[G] control: sin perfil recuperado, los cambios locales siguen subiendo como siempre', g4);
+      // 3a) la nube no se puede aplicar (la carga falla): se deja el guardado local, NO se adelanta la versión y se reintenta más tarde
+      const g5x = await page.evaluate(async () => {
+        acct.conflict = null; acct.session = { token: 't', user: 'tester' }; acct.retryMs = 0;
+        const mine = window.__mk(555, { ciudad: true }); localStorage.setItem(SAVE_KEY, JSON.stringify(mine)); loadSave();
+        acct.sync = { user: _acctKey('tester'), version: 3, hash: 'otro', dirty: false };
+        const realLoad = loadSave; let boom = 1; loadSave = function(){ if(boom-- > 0) throw new Error('carga rota'); return realLoad.apply(this, arguments); };
+        const r = accountApplyCloud({ data: window.__mk(99999, { ciudad: true, fortaleza: true }), version: 7, updatedAt: 9 });
+        const first = { r, version: acct.sync.version, needPull: acct.needPull, retry: acct.retryMs > 0, goldLocal: JSON.parse(localStorage.getItem(SAVE_KEY)).gold };
+        window.__cloud = window.__mk(88888, { ciudad: true, fortaleza: true }); window.__calls = [];
+        const prevFetch = accountFetch; accountFetch = async (method, path, body) => { window.__calls.push({ method, path }); return method === 'GET' ? { status: 200, j: { version: 7, updatedAt: 9, data: window.__cloud } } : { status: 200, j: { version: 8, updatedAt: 10 } }; }; acct.timer && clearTimeout(acct.timer); _acctTick();
+        for (let i = 0; i < 40 && window.__calls.length < 1; i++) await new Promise(r => setTimeout(r, 100));
+        await new Promise(r => setTimeout(r, 500)); loadSave = realLoad; accountFetch = prevFetch;
+        return { first, gets: window.__calls.filter(c => c.method === 'GET').length, gold: save.gold, needPull: acct.needPull };
+      });
+      ok(g5x.first.r === false && g5x.first.version === 3 && g5x.first.needPull === true && g5x.first.retry && g5x.first.goldLocal >= 555 && g5x.first.goldLocal < 5000, '[G] si la nube no se puede aplicar: no se adelanta la versión, se conserva lo local y se agenda reintento', g5x.first);
+      ok(g5x.gets >= 1 && g5x.gold >= 88888 && g5x.gold < 100000 && g5x.needPull === false, '[G] el reintento vuelve a bajar la nube y esta vez se aplica', g5x);
       // 3b) cerrar la pestaña: el beacon TAMBIÉN es una subida y no sale con la marca puesta (y sin marca sí sale)
       const g6 = await page.evaluate(() => {
         let beacons = 0; Object.defineProperty(navigator, 'sendBeacon', { configurable: true, value: () => { beacons++; return true; } });

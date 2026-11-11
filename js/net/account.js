@@ -229,6 +229,13 @@ function accountApplyCloud(cloud){
     loaded = true;
   }catch(e){ console.error("No se pudo aplicar el guardado de la nube", e); }
   finally{ acct.applying = false; }
+  if(!loaded){
+    // No se pudo aplicar: no se da la nube por aplicada (no se adelanta la versión ni el hash: sería creer que este dispositivo ya la tiene).
+    // Se deja el guardado local como estaba y se reintenta más tarde (con espera creciente), en vez de quedarse mirando un perfil a medias.
+    try{ if(raw){ localStorage.setItem(SAVE_KEY, raw); acct.applying = true; try{ loadSave(); }finally{ acct.applying = false; } } }catch(e){}
+    acct.needPull = true; _acctRetryLater(); _acctEmit();
+    return false;
+  }
   if(loaded && typeof saveRecoveredClear==="function") saveRecoveredClear();   // ya es el de la nube: deja de ser un perfil recuperado (si la carga falló, la marca sigue protegiendo la nube)
   const y = acct.sync;
   y.version = cloud.version | 0; y.hash = _acctHash(cloudRaw); y.updatedAt = cloud.updatedAt || 0; y.lastOk = Date.now(); y.beacon = null;
@@ -236,6 +243,7 @@ function accountApplyCloud(cloud){
   _acctSaveSync();
   if(y.dirty) _acctSchedule(ACCOUNT_DEBOUNCE_MS);
   _acctEmit();
+  return true;
 }
 function _acctSchedule(ms){
   if(acct.timer) clearTimeout(acct.timer);
@@ -246,6 +254,7 @@ function _acctSchedule(ms){
 function _acctTick(){
   const s = acct.session, y = acct.sync;
   if(!s || acct.conflict) return;
+  if(acct.needPull){ acct.needPull = false; accountPull("reintento"); return; }   // la nube no se pudo aplicar la vez anterior
   if(!y || y.user !== _acctKey(s.user)) accountPull("reintento");
   else if(y.dirty) accountUpload("demora");
 }
