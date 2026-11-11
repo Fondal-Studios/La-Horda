@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "checks": 6638,
+  "failed": 0,
+  "errors": [],
+  "skins": [
+    {
+      "id": "libertador_escarcha",
+      "name": "Casaca de los Andes",
+      "theme": "Poncho andino, bicornio de piel, polainas y caballo con alforjas",
+      "packs": {
+        "libertador": "croma_libertador_escarcha",
+        "libertador_horse": "croma_libertador_escarcha_libertador_horse"
+      }
+    },
+    {
+      "id": "libertador_ancestral",
+      "name": "Guardia del Monte",
+      "theme": "Sombrero de campaña, capa exploradora, bandoleras y montura de monte",
+      "packs": {
+        "libertador": "croma_libertador_ancestral",
+        "libertador_horse": "croma_libertador_ancestral_libertador_horse"
+      }
+    }
+  ],
+  "rosterRows": [
+    4,
+    5
+  ]
+}

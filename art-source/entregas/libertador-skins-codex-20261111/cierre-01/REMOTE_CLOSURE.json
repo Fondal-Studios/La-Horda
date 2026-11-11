@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "date": "2026-11-11",
+  "state": "VALIDADO_LOCAL_PENDING_CI",
+  "integration": "NO_INTEGRADO",
+  "publication": "NOT_CHECKED",
+  "repository": "Fondal-Studios/La-Horda",
+  "pr": 293,
+  "branch": "art/libertador-skins-codex-20261111",
+  "parentHead": "6101f9ab32c58b6e986c6ba80a5414d821009c88",
+  "mainAudited": "43eff1fac17af59355d11bb5cf6925994e3ef81b",
+  "reference": "assets/ui/codex/champions/libertador.png",
+  "components": [
+    "libertador_escarcha authored 36-pose body",
+    "libertador_ancestral authored 36-pose body"
+  ],
+  "evidence": {
+    "staticContract": "PASS 2 skins/72 frames",
+    "motion": "PASS 261/0/0",
+    "uniqueSkins": "PASS 6638/0/0",
+    "gameplayPaired": "PASS 8 pairs/0 errors",
+    "visualReview": "PASS_COMPONENT"
+  },
+  "interruption": {
+    "detected": true,
+    "detail": "First closure scratch pruned before upload; two generated sources survived. Current bytes were rebuilt and all affected gates rerun."
+  },
+  "next": "Upload closure commit; keep draft/FIX until every applicable exact-head check succeeds."
+}

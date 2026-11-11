@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "component": "libertador.codex.authored-skins",
+  "reference": "assets/ui/codex/champions/libertador.png",
+  "sourceGrid": {"columns": 4, "rows": 9, "cell": [209, 208]},
+  "outputGrid": {"columns": 4, "rows": 9, "cell": [112, 112], "atlas": [448, 1008]},
+  "sources": {
+    "libertador_escarcha": "sources/casaca-andes-36-source-corrected.png",
+    "libertador_ancestral": "sources/guardia-monte-36-source-corrected.png"
+  },
+  "build": "python3 art-source/entregas/libertador-skins-codex-20261111/cierre-01/build_candidates.py",
+  "staticContract": "python3 tools/art/libertador-skins-contract.py",
+  "browserGates": [
+    "node tools/art/check-libertador-motion.js",
+    "node tools/art/unique_skins/check.js",
+    "node tools/art/capture-libertador-skins-close.js",
+    "node tools/art/capture-libertador-skins-paired.js"
+  ],
+  "preserved": [
+    "assets/sprites/champions/libertador/skins/libertador_escarcha/horse.png",
+    "assets/sprites/champions/libertador/skins/libertador_ancestral/horse.png",
+    "Granadero, cuerpo base, balance, habilidades y red"
+  ]
+}
