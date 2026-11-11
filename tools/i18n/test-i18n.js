@@ -30,7 +30,7 @@ const fail=[];const ok=(c,m)=>{if(!c){fail.push(m);console.log('FAIL',m);}else c
   // persistencia y ?lang=
   { // tooltips de talentos (cabeza + «Sinergias»): una línea de sinergia, varias y la forma «por punto en A, B y C»
     await page.evaluate(()=>I18N.setLang('en'));await page.waitForFunction(()=>I18N.lang==='en',null,{timeout:20000});
-    const syn=await page.evaluate(()=>[I18N.t('Acero Calado — La Bayoneta hace más daño. Sinergias: · cada punto da +5% daño a Carga de San Lorenzo (ahora +10%)'),I18N.t('Cadena de Relámpago — Salta entre enemigos Sinergias: +3% daño por punto en Combustión y Terreno Ardiente (ahora +9%)'),I18N.t('Aguante — x. Sinergias: · cada punto da +5% daño a A (ahora +10%) · cada punto da +2% escudo a B (ahora +4%)')]);
+    const syn=await page.evaluate(()=>[I18N.t('Acero Calado — La Bayoneta hace más daño.\nSinergias:\n· cada punto da +5% daño a Carga de San Lorenzo (ahora +10%)'),I18N.t('Cadena de Relámpago — Salta entre enemigos\nSinergias:\n+3% daño por punto en Combustión y Terreno Ardiente (ahora +9%)'),I18N.t('Aguante — x.\nSinergias:\n· cada punto da +5% daño a A (ahora +10%)\n· cada punto da +2% escudo a B (ahora +4%)')]);
     ok(/Synergies/.test(syn[0])&&/each point gives \+5% damage to/.test(syn[0])&&/now \+10%/.test(syn[0])&&!/cada punto|Sinergias/.test(syn[0]),'talento: sinergia simple '+syn[0]);
     ok(/per point in/.test(syn[1])&&/and/.test(syn[1])&&!/por punto/.test(syn[1]),'talento: «por punto en A y B» '+syn[1]);
     ok(/shield to B/.test(syn[2])&&/damage to A/.test(syn[2])&&!/cada punto/.test(syn[2]),'talento: dos sinergias encadenadas '+syn[2]);
