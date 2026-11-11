@@ -124,7 +124,7 @@ try {
     const rel = path.posix.normalize(path.posix.join(path.posix.dirname(f), u.replace(/[?#].*$/, ''))); if (!fs.existsSync(path.join(OUT, rel))) cssMiss.push(f + ' -> ' + u);
   }
   check('staging: los url() de las hojas de estilo existen (' + cssRefs + ')', cssMiss.length === 0, cssMiss.slice(0, 10));
-  check('staging: cada PNG de ASSET_WEBP viaja con su .webp y su .png', (() => { const list = [...fs.readFileSync(path.join(OUT, 'js/assets/asset-webp.js'), 'utf8').matchAll(/"(assets\/[^"]+\.png)"/g)].map(m => m[1]); return list.length > 1000 && list.every(p => fs.existsSync(path.join(OUT, p)) && fs.existsSync(path.join(OUT, p.slice(0, -4) + '.webp'))); })());
+  check('staging: cada PNG de ASSET_WEBP viaja solo como .webp (se conservan los preview.png, que tienda y Códice piden como <img src>)', (() => { const list = [...fs.readFileSync(path.join(OUT, 'js/assets/asset-webp.js'), 'utf8').matchAll(/"(assets\/[^"]+\.png)"/g)].map(m => m[1]); return list.length > 1000 && list.every(p => fs.existsSync(path.join(OUT, p.slice(0, -4) + '.webp')) && (path.posix.basename(p) === 'preview.png' ? fs.existsSync(path.join(OUT, p)) : !fs.existsSync(path.join(OUT, p)))); })());
 
   // servidor estático local SOLO del staging; anota cada 404
   const TYPES = {'.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.png': 'image/png', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.mp3': 'audio/mpeg', '.woff2': 'font/woff2', '.md': 'text/plain; charset=utf-8'};
@@ -168,6 +168,20 @@ try {
   const after = await page.evaluate(() => state);
   console.log('     carga: ' + st.scripts + ' scripts, arte pedido ' + (art.core + art.rest) + ' imágenes del manifiesto; tras tocar el botón del título: state="' + after + '"');
   check('carga: tocar el botón del título avanza de pantalla', after !== 'title', {after});
+  // recorrido de pantallas que escriben <img src> como HTML (tienda y Códice): con los PNG gemelos quitados del paquete, un PNG que
+  // sobreviva en esas rutas aparecería como 404.
+  const recorrido = await page.evaluate(async () => {
+    const out = {shop: [], codex: 0, total: Object.keys(CLASSES).length}, sl = ms => new Promise(r => setTimeout(r, ms));
+    for (const tab of ['destacados', 'campeones', 'objetos', 'skins', 'sets', 'cromas', 'brasas']) {
+      try { shopOpen(tab); await sl(500); out.shop.push(tab + ':' + document.querySelectorAll('#shop-panel img').length); } catch (e) { out.shop.push(tab + ':ERR ' + e.message); }
+    }
+    try { const keys = Object.keys(CLASSES); const box = document.createElement('div'); box.id = 'walk-codex'; document.body.appendChild(box);
+      for (const k of keys) { try { box.innerHTML = codexChampHtml(k); out.codex++; await sl(120); } catch (e) { out.codexErr = k + ' ' + e.message; } } } catch (e) { out.codexErr = e.message; }
+    return out;
+  });
+  await H.sleep(1500);
+  console.log('     recorrido tienda/Códice: ' + JSON.stringify(recorrido));
+  check('recorrido: tienda (7 pestañas) y hoja del Códice de cada campeón sin excepción', recorrido.shop.length === 7 && !recorrido.shop.some(x => x.includes('ERR')) && recorrido.codex === recorrido.total && recorrido.total > 20 && !recorrido.codexErr, recorrido);
   check('carga: sin errores de página', errors.length === 0, errors.slice(0, 5));
   check('carga: sin 404 ni pedidos fallidos', notFound.length === 0 && failed.length === 0, {notFound: notFound.slice(0, 10), failed: failed.slice(0, 10)});
   console.log('\nTAMAÑO DEL STAGING: ' + info.mb + ' MB en ' + info.files + ' archivos');

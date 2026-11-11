@@ -28,7 +28,11 @@
     "ok": true
   },
   {
-    "name": "pack de bienvenida: una vez, 500+200 y 3 campeones, disponible",
+    "name": "pack de bienvenida vigente: una vez, 500+400, solo Brasas (sin campeones), disponible",
+    "ok": true
+  },
+  {
+    "name": "el pack de bienvenida con campeones está retirado de la venta (el dinero real no compra campeones)",
     "ok": true
   },
   {
@@ -152,11 +156,11 @@
     "ok": true
   },
   {
-    "name": "el servidor marca el pack de bienvenida como comprado",
+    "name": "el pack retirado sigue acreditando (pago pendiente) pero ya no se ofrece, ni a quien lo compró",
     "ok": true
   },
   {
-    "name": "otra cuenta sigue viendo el pack de bienvenida",
+    "name": "otra cuenta sigue viendo el pack de bienvenida vigente",
     "ok": true
   },
   {
@@ -208,6 +212,10 @@
     "ok": true
   },
   {
+    "name": "Pack de bienvenida vigente: acredita 900 Brasas una vez y NO da derecho a campeones",
+    "ok": true
+  },
+  {
     "name": "el oro del guardado no cambia al elegir (es un regalo, no una compra)",
     "ok": true
   },
@@ -252,7 +260,7 @@
     "ok": true
   },
   {
-    "name": "checkout del pack de bienvenida ya comprado: 409",
+    "name": "checkout del pack retirado: 400 (no está a la venta)",
     "ok": true
   },
   {

@@ -4,7 +4,7 @@
     "name": "Brasas",
     "icon": "✦"
   },
-  "note": "Paquetes de Brasas para la venta con dinero real. 'price' es el precio SUGERIDO ({currency ISO, amount}); el dueño lo confirma en su proveedor. Sin precio, el paquete no se ofrece. 'once': se acredita una sola vez por cuenta. 'championGifts': elecciones de campeón de regalo (el servidor entrega 3, ver js/data/pricing.js). Las Brasas solo compran apariencia (skins, cromas, colecciones): nunca poder. Valor por dólar creciente: 100, 110, 112, 120 y 130 Brasas por US$ (sin contar el Pack de bienvenida).",
+  "note": "Paquetes de Brasas para la venta con dinero real. 'price' es el precio SUGERIDO ({currency ISO, amount}); el dueño lo confirma en su proveedor. Sin precio, el paquete no se ofrece. 'once': se acredita una sola vez por cuenta. 'championGifts': elecciones de campeón de regalo; SOLO el pack retirado 'brasas_bienvenida' las trae (quien ya lo compró conserva sus 3 elecciones; ver js/data/pricing.js). 'retired': ya no se ofrece a la venta, pero sigue acreditándose si llega un pago pendiente. El Pack de bienvenida vigente (brasas_bienvenida_v2) da solo Brasas (900) para apariencias: el dinero real no compra campeones. Las Brasas solo compran apariencia (skins, cromas, colecciones): nunca poder. Valor por dólar creciente: 100, 110, 112, 120 y 130 Brasas por US$ (sin contar el Pack de bienvenida).",
   "packs": [
     {
       "id": "brasas_bienvenida",
@@ -13,6 +13,18 @@
       "bonus": 200,
       "once": true,
       "championGifts": 3,
+      "price": {
+        "currency": "USD",
+        "amount": 6.99
+      },
+      "retired": true
+    },
+    {
+      "id": "brasas_bienvenida_v2",
+      "name": "Pack de bienvenida",
+      "premium": 500,
+      "bonus": 400,
+      "once": true,
       "price": {
         "currency": "USD",
         "amount": 6.99

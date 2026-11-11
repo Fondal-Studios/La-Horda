@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 # (regex ES, plantilla EN, plantilla PT). $1.. = grupo traducido con el diccionario si existe.
 P=[
+# --- Lote 376: botones de compra con Brasas y el nombre de la apariencia/pieza como $1
+(r"^Comprar (.+) por (\d+) Brasas$","Buy $1 for $2 Embers","Comprar $1 por $2 Brasas"),
+(r"^(\d+) apariencias? sin comprar$","$1 look(s) not bought yet","$1 aparência(s) sem comprar"),
 # --- UX simplify A (t330): castigo de la derrota, renovación de la Tienda, ofertas y apariencias
 (r"^No terminaste la arena: perdiste el (\d+)% de lo ganado (en esta partida|desde el punto de control) \((.+)\)\.$","You didn't finish the arena: you lost $1% of what you earned $2 ($3).","Você não terminou a arena: perdeu $1% do que ganhou $2 ($3)."),
 (r"^No terminaste la arena: no perdiste nada de lo ganado (en esta partida|desde el punto de control)\.$","You didn't finish the arena: you lost nothing of what you earned $1.","Você não terminou a arena: não perdeu nada do que ganhou $1."),

@@ -32,3 +32,10 @@
 ### Ejecución programada 20:23 UTC (2026-11-10)
 - PR #288 fusionada en `main` (eb0d0578) con revisión independiente (QA, arquitectura, integrador; reservas en `reviews/`). Rama de trabajo rehecha desde `main`.
 - Flake `t_identity` BOS corregido en la prueba (causa dentro del test: `bossStrikes` pendientes; no se vio bug de juego; 10/10 corridas locales, sin log archivado); queda la firma INF y falta nombrar el emisor del golpe. Runway sin gasto (saldo <250).
+
+### Ronda 2026-11-11 (autorizada por el dueño)
+- Códice a WebP (−79 MB), paquete de escritorio sin PNG con gemelo WebP (210 → 152 MB), recorrido de tienda/Códice sin 404 (`desktop/test-stage.mjs`).
+- i18n lote 376 (botones de compra con Brasas por patrón y restos visibles).
+- **Pack de bienvenida sin campeones** (decisión del dueño): `brasas_bienvenida_v2` = 500 + 400 Brasas por US$ 6,99, solo apariencias; el pack original queda `retired` (no se vende; los pagos pendientes se acreditan y quien ya lo compró conserva sus 3 elecciones). `server/test-wallet.js` 67/67.
+- **Guardado en la nube**: si `accountApplyCloud` falla al aplicar, ya no adelanta la versión: conserva lo local, marca `acct.needPull` y reintenta con espera creciente (`tools/regression/t_save_resilience.js` [G]).
+- Runway: `creditBalance` = 2 (no alcanza para generar; 1 imagen = 8). Sin gasto.
