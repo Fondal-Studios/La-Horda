@@ -58,6 +58,14 @@ Qué hay que construir (todo es trabajo de servidor y cuentas; hoy NO existe nad
 | Inicio de sesión con Apple | *Sign in with Apple*: el servidor valida el token de Apple (JWKS de Apple) y vincula el `sub` a la cuenta. | Cuenta de **Apple Developer** (de pago), Service ID y dominio verificado |
 | Reembolsos | Steam notifica reembolsos por la Web API; hay que revertir las Brasas como ya se hace con Mercado Pago (`reversePurchase`). | Proveedor `steam` hecho |
 
+**Estado (2026-11-11): servidor HECHO y probado contra un Steam falso** (`server/steam.js`, `server/test-steam.js`, 33 comprobaciones):
+`POST /api/steam/login` (ticket → cuenta), `POST /api/steam/link` (vincular), checkout con `InitTxn` y `POST /api/wallet/steam/confirm`
+(`QueryTxn` + `FinalizeTxn` + acreditación idempotente, reversa por reembolso). Variables del servidor: `PAYMENTS_PROVIDER=steam`,
+`STEAM_ENABLED=1`, `STEAM_APP_ID`, `STEAM_PUBLISHER_KEY`, `STEAM_MODE=sandbox|live`. Cada pack tiene su `steamItemId` en `server/premium-packs.json`
+(1001 = 500, 1002 = 1000, 1003 = 2500, 1004 = 5000, 1005 = 10000, 1006 = bienvenida v2): **crear esos artículos en Steamworks con esos IDs**.
+**Falta:** el cliente (botón «Comprar con Steam», pedir el ticket, sondear `/steam/confirm`), el puente de Electron, un proceso que detecte
+reembolsos sin que el jugador consulte (`GetReport`), y probar en sandbox con tu AppID.
+
 **Lo que se puede construir y probar sin credenciales:** el servidor completo contra un Steam falso (como ya se hace con Mercado Pago
 en `server/test-payments-mp.js`). **Lo que solo se puede validar con tus credenciales:** que Steam real acepte los pedidos
 (sandbox), que el ticket de sesión sea válido y que el overlay de aprobación funcione dentro de Electron.

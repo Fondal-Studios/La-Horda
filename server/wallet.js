@@ -396,6 +396,24 @@ function routes(ctx){
     log("WALLET_REVERSAL", { user: credit.userId, pack: credit.pack, paymentId: credit.paymentId, status: credit.status, reversed: took, shortfall: short });
     return { ok: true, reversed: took, shortfall: short };
   });
+  // Acredita una compra verificada. Paquete de una sola vez: la referencia es por cuenta (once:<pack>:<userId>), así un segundo pago nunca acredita.
+  const applyCredit = async (credit) => {
+    const r = await store().walletApply({ userId: credit.userId, delta: credit.premium, reason: "purchase:" + credit.pack + ":" + credit.paymentId, ref: payments.creditRef(credit), actor: null, at: now() });
+    const alreadyBought = !!(r.duplicate && credit.once);
+    log(alreadyBought ? "WALLET_ONCE_REPEATED" : "WALLET_PURCHASE", { user: credit.userId, pack: credit.pack, paymentId: credit.paymentId, duplicate: !!r.duplicate });
+    return { ok: true, duplicate: !!r.duplicate, alreadyBought };
+  };
+  // Steam: el juego consulta el pedido que el jugador aprobó en el overlay (payments.steamConfirm lo verifica contra Steam).
+  route("POST", "/api/wallet/steam/confirm", "user", async ({ user, body }) => {
+    if(!store().persistent) fail("PAYMENTS_STORAGE_UNSAFE", 503);
+    const u = await store().getUser(user.id);
+    const c = await payments.steamConfirm({ user: u || user, orderId: typeof body.orderId === "string" ? body.orderId : "" });
+    if(c.pending) return { ok: true, pending: true };
+    if(c.ignored){ log("PAYMENT_STATUS_REVIEW", { paymentId: c.paymentId, status: c.status }); return { ok: true, credited: false, status: c.status }; }
+    if(c.reverse) return { ok: true, credited: false, reversed: await reversePurchase(c) };
+    const r = await applyCredit(c);
+    return { ok: true, credited: !r.duplicate, duplicate: r.duplicate, alreadyBought: r.alreadyBought, premium: (await store().walletGet(user.id)).premium };
+  });
   result["POST /api/payments/webhook"] = async (req, res) => {
     try{
       const raw = await new Promise((ok, ko) => { let b = ""; req.on("data", c => { b += c; if(b.length > 65536){ ko(Object.assign(new Error("TOO_BIG"), { code: "TOO_BIG" })); req.destroy(); } }); req.on("end", () => ok(b)); req.on("error", ko); });
@@ -405,11 +423,7 @@ function routes(ctx){
       if(!store().persistent) return err(req, res, 503, "PAYMENTS_STORAGE_UNSAFE", "Almacenamiento no persistente.");
       if(credit.reverse) return send(req, res, 200, await reversePurchase(credit));
       if(!(await store().getUser(credit.userId))) return err(req, res, 404, "UNKNOWN_USER", "Cuenta inexistente.");
-      // paquete de una sola vez: la referencia es por cuenta (once:<pack>:<userId>), así un segundo pago nunca acredita
-      const r = await store().walletApply({ userId: credit.userId, delta: credit.premium, reason: "purchase:" + credit.pack + ":" + credit.paymentId, ref: payments.creditRef(credit), actor: null, at: now() });
-      const alreadyBought = !!(r.duplicate && credit.once);
-      log(alreadyBought ? "WALLET_ONCE_REPEATED" : "WALLET_PURCHASE", { user: credit.userId, pack: credit.pack, paymentId: credit.paymentId, duplicate: !!r.duplicate });
-      send(req, res, 200, { ok: true, duplicate: !!r.duplicate, alreadyBought });
+      send(req, res, 200, await applyCredit(credit));
     }catch(e){ if(e.status) return err(req, res, e.status, e.message, e.message); throw e; }
   };
   return result;

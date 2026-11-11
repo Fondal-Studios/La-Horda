@@ -4,6 +4,7 @@
 // See docs/commercial/LAUNCH.md and launch.env.example for activation and remaining operational gates.
 const crypto = require("crypto");
 const PACKS = require("./premium-packs.json");
+const steam = require("./steam");
 
 const provider = () => (process.env.PAYMENTS_PROVIDER || "").trim().toLowerCase();
 const secret = () => process.env.PAYMENTS_WEBHOOK_SECRET || "";
@@ -27,14 +28,14 @@ const MP_API = "https://api.mercadopago.com";
 const mpApi = () => { const b = (process.env.MP_API_BASE || "").trim().replace(/\/+$/, ""); return !mpLive() && /^http:\/\/(127\.0\.0\.1|localhost)(:\d+)?$/.test(b) ? b : MP_API; };
 const mpEnabled = () => mpSwitch() && mpWebhookSecret().length >= 32 && orderSecret().length >= 32 && /^\d+$/.test(process.env.MP_COLLECTOR_ID || "") && mpModeValid() && provider() === "mercadopago" && mpToken().length >= 16 && Number.isFinite(mpRate()) && mpRate() > 0 && /^https:\/\//.test(process.env.PAYMENTS_NOTIFY_URL || "");
 const hmacEnabled = () => provider() === "hmac" && secret().length >= 16;
-const enabled = () => hmacEnabled() || mpEnabled();
+const enabled = () => hmacEnabled() || mpEnabled() || steam.enabled();
 const mpAmount = p => Math.ceil(Math.round(p.price.amount * 100) * mpRate() / 100);
 const priced = p => !!(p && p.price && typeof p.price.currency === "string" && /^[A-Z]{3}$/.test(p.price.currency) && Number.isFinite(p.price.amount) && p.price.amount > 0);
 const sellable = () => PACKS.packs.filter(priced);
 // Optional launch shortlist only affects NEW checkouts, never fulfillment of already paid orders.
 const offered = () => {
   const ids = (process.env.PAYMENTS_PACK_IDS || "").split(",").map(s => s.trim()).filter(Boolean);
-  return sellable().filter(p => !p.retired && (ids.length ? ids.includes(p.id) : !p.launchOnly));   // 'retired': ya no se vende, pero sigue acreditando pagos pendientes (sellable)
+  return sellable().filter(p => !p.retired && (!steam.enabled() || Number.isSafeInteger(p.steamItemId)) && (ids.length ? ids.includes(p.id) : !p.launchOnly));   // con Steam solo se ofrece lo que tiene artículo (steamItemId)   // 'retired': ya no se vende, pero sigue acreditando pagos pendientes (sellable)
 };
 const displayPrice = p => provider() === "mercadopago" && Number.isFinite(mpRate()) && mpRate() > 0
   ? { currency: "ARS", amount: mpAmount(p) } : { ...p.price };
@@ -84,6 +85,17 @@ async function checkout({ user, pack, bought, expectedPrice }){
   if(!enabled()) fail("PAYMENTS_DISABLED", 501, NOT_CONNECTED);
   const p = offered().find(p => p.id === pack); if(!p) fail("BAD_PACK", 400, "Ese paquete no está a la venta.");
   if(p.once && bought && await bought(p.id)) fail("ALREADY_BOUGHT", 409, "El Pack de bienvenida ya es tuyo: se compra una sola vez.");
+  if(steam.enabled()){
+    if(!steam.isSteamId(user && user.steamId)) fail("STEAM_NOT_LINKED", 403, "Para comprar con Steam tenés que entrar con tu cuenta de Steam (o vincularla).");
+    if(!checkoutAllowed(user.id)) fail("CHECKOUT_RATE_LIMIT", 429, "Hiciste muchos intentos de pago seguidos. Esperá unos minutos y probá de nuevo.");
+    const price = displayPrice(p);
+    if(price.currency !== "USD") fail("BAD_PACK", 400, "Ese paquete no está a la venta.");
+    if(!expectedPrice || expectedPrice.currency !== price.currency || expectedPrice.amount !== price.amount)
+      fail("PRICE_CHANGED", 409, "El precio cambió. Actualizá la tienda y confirmá el nuevo importe.");
+    let r; try{ r = await steam.initTxn({ steamId: user.steamId, itemId: p.steamItemId, cents: Math.round(price.amount * 100), description: (p.name || (p.premium + " Brasas")) + " · La Horda" }); }
+    catch(e){ if(e instanceof steam.SteamError) fail(e.message, e.status, e.human); throw e; }
+    return { ok: true, steam: true, orderId: r.orderId, pack: p.id, price };
+  }
   if(mpEnabled()) {
     if(!/^(0|false)$/i.test((process.env.MP_REQUIRE_EMAIL || "").trim()) && !(user && user.email)) fail("NEEDS_EMAIL", 403, "Para comprar necesitás un correo cargado en tu cuenta. Lo usamos para el comprobante y el soporte.");
     if(!checkoutAllowed(user.id)) fail("CHECKOUT_RATE_LIMIT", 429, "Hiciste muchos intentos de pago seguidos. Esperá unos minutos y probá de nuevo.");
@@ -151,6 +163,37 @@ async function mpVerify(req, raw){
   if(Number(pay.transaction_amount_refunded || 0) !== 0) return { ignored: true, status: "partial_refund", paymentId: "mp" + id };
   return { userId: order.userId, pack: p.id, once: !!p.once, premium: order.premium, paymentId: "mp" + id };
 }
+// STEAM: el jugador aprueba el pedido en el overlay de Steam y el juego pregunta acá (cada pocos segundos) cómo va. Nada se acredita por lo
+// que diga el cliente: se consulta el pedido a Steam (QueryTxn) y solo se acredita si es de ESTE steamid, un artículo conocido, 1 unidad y
+// el monto exacto; recién ahí se cierra con FinalizeTxn y se devuelve el crédito (el libro lo hace idempotente por pedido).
+const _fin = new Map();
+function finalizeAllowed(userId){   // 60 consultas cada 10 minutos por cuenta (el cliente consulta cada pocos segundos mientras espera)
+  const t = Date.now(), a = (_fin.get(userId) || []).filter(x => t - x < 600000);
+  if(a.length >= 60){ _fin.set(userId, a); return false; }
+  a.push(t); _fin.set(userId, a);
+  if(_fin.size > 5000) for(const [k, v] of _fin) if(!v.some(x => t - x < 600000)) _fin.delete(k);
+  return true;
+}
+async function steamConfirm({ user, orderId }){
+  if(!steam.enabled()) fail("PAYMENTS_DISABLED", 501, NOT_CONNECTED);
+  if(typeof orderId !== "string" || !/^\d{10,18}$/.test(orderId)) fail("BAD_ORDER", 400, "Pedido inválido.");
+  if(!steam.isSteamId(user && user.steamId)) fail("STEAM_NOT_LINKED", 403, "Tu cuenta no está vinculada a Steam.");
+  if(!finalizeAllowed(user.id)) fail("CHECKOUT_RATE_LIMIT", 429, "Demasiadas consultas seguidas. Esperá un momento.");
+  let t; try{ t = await steam.queryTxn(orderId); }catch(e){ if(e instanceof steam.SteamError) fail(e.message, e.status, e.human); throw e; }
+  if(!t || t.steamId !== user.steamId) fail("BAD_ORDER", 404, "No encontramos ese pedido.");   // pedido ajeno o inexistente: no se distingue
+  const it = t.items.length === 1 ? t.items[0] : null;
+  const p = it && it.qty === 1 ? sellable().find(x => x.steamItemId === it.itemId) : null;
+  if(!p || t.currency !== "USD" || it.amount !== Math.round(p.price.amount * 100)) return { ignored: true, status: "mismatch", paymentId: "steam" + orderId };
+  const credit = { userId: user.id, pack: p.id, once: !!p.once, premium: p.premium + (p.bonus || 0), paymentId: "steam" + orderId };
+  if(t.status === "Init") return { pending: true, status: t.status, paymentId: credit.paymentId };
+  if(t.status === "Refunded" || t.status === "Chargedback") return { reverse: true, status: t.status === "Refunded" ? "refunded" : "charged_back", ...credit };
+  if(t.status === "Approved"){
+    try{ await steam.finalizeTxn(orderId); }catch(e){ if(e instanceof steam.SteamError) fail(e.message, e.status, e.human); throw e; }
+    return credit;
+  }
+  if(t.status === "Succeeded") return credit;   // ya cerrado en Steam: acreditar de nuevo es seguro (idempotente por pedido)
+  return { ignored: true, status: t.status || "unknown", paymentId: credit.paymentId };   // Failed, PartialRefund, etc.: no se acredita
+}
 // Punto de entrada del webhook: devuelve el crédito a acreditar o null. (async: Mercado Pago consulta su API)
 async function verifyWebhookRequest(req, raw){
   if(mpEnabled()) return mpVerify(req, raw);
@@ -168,4 +211,4 @@ function verifyWebhook(headers, raw){
   return { userId: b.userId, pack: p.id, once: !!p.once, premium: p.premium + (p.bonus || 0), paymentId: b.paymentId };
 }
 
-module.exports = { mpLive, mpSwitch, _mpApi: mpApi, publicInfo, checkout, verifyWebhook, verifyWebhookRequest, enabled, onceRef, creditRef, PACKS, _setFetch: f => { _fetch = f || ((...a) => fetch(...a)); } };
+module.exports = { steamConfirm, mpLive, mpSwitch, _mpApi: mpApi, publicInfo, checkout, verifyWebhook, verifyWebhookRequest, enabled, onceRef, creditRef, PACKS, _setFetch: f => { _fetch = f || ((...a) => fetch(...a)); } };

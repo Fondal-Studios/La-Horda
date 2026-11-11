@@ -51,6 +51,7 @@
    - La semana es la ISO en UTC, la MISMA de los mutadores semanales (js/systems/endless.js).
    ============================================================ */
 const crypto = require("crypto");
+const steam = require("./steam");
 const adminLevels=require("./admin-levels");
 const gameMaster = require("./game-master");
 const entitlements = require("./entitlements");
@@ -298,6 +299,7 @@ function fileStore(dir){
     },
     async getUserByKey(k){ const id = byKey.get(k); return id ? db.users[id] : null; },
     async getUser(id){ return db.users[id] || null; },
+    async getUserBySteamId(sid){ if(!sid) return null; for(const id in db.users) if(db.users[id].steamId === sid) return db.users[id]; return null; },
     async updateUser(id, fields){ if(!db.users[id]) return null; Object.assign(db.users[id], fields); await flush(); return db.users[id]; },
     async createSession(s){ db.sessions[s.tokenHash] = s; await flush(); },
     async getSession(h){ return db.sessions[h] || null; },
@@ -396,7 +398,7 @@ function pgStore(url){
   pool.on("error", () => {}); // una conexión inactiva que se corta no tumba el servidor
   const q = (text, params) => pool.query(text, params);
   const rowUser = r => r && { id: Number(r.id), userKey: r.user_key, user: r.username, name: r.display_name, email: r.email,
-    passHash: r.pass_hash, createdAt: Number(r.created_at), lastLogin: Number(r.last_login || 0) };
+    passHash: r.pass_hash, createdAt: Number(r.created_at), lastLogin: Number(r.last_login || 0), steamId: r.steam_id || null };
   const rowMeta = r => r && { version: r.version | 0, updatedAt: Number(r.updated_at), summary: r.summary ? JSON.parse(r.summary) : null };
   return {
     kind: "postgres", persistent: true,
@@ -439,6 +441,8 @@ function pgStore(url){
       await q(`CREATE TABLE IF NOT EXISTS horda_users (
         id BIGSERIAL PRIMARY KEY, user_key TEXT UNIQUE NOT NULL, username TEXT NOT NULL, display_name TEXT,
         email TEXT, pass_hash TEXT NOT NULL, created_at BIGINT NOT NULL, last_login BIGINT)`);
+      await q(`ALTER TABLE horda_users ADD COLUMN IF NOT EXISTS steam_id TEXT`);
+      await q(`CREATE UNIQUE INDEX IF NOT EXISTS horda_users_steam ON horda_users (steam_id) WHERE steam_id IS NOT NULL`);
       await q(`CREATE TABLE IF NOT EXISTS horda_sessions (
         token_hash TEXT PRIMARY KEY, user_id BIGINT NOT NULL REFERENCES horda_users(id) ON DELETE CASCADE,
         created_at BIGINT NOT NULL, expires_at BIGINT NOT NULL)`);
@@ -463,15 +467,16 @@ function pgStore(url){
     },
     async createUser(u){
       try{
-        const r = await q(`INSERT INTO horda_users (user_key, username, display_name, email, pass_hash, created_at, last_login)
-          VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *`, [u.userKey, u.user, u.name, u.email || null, u.passHash, u.createdAt, u.lastLogin || null]);
+        const r = await q(`INSERT INTO horda_users (user_key, username, display_name, email, pass_hash, created_at, last_login, steam_id)
+          VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`, [u.userKey, u.user, u.name, u.email || null, u.passHash, u.createdAt, u.lastLogin || null, u.steamId || null]);
         return rowUser(r.rows[0]);
       }catch(e){ if(e.code === "23505"){ const x = new Error("EXISTS"); x.code = "EXISTS"; throw x; } throw e; }
     },
     async getUserByKey(k){ return rowUser((await q(`SELECT * FROM horda_users WHERE user_key=$1`, [k])).rows[0]); },
     async getUser(id){ return rowUser((await q(`SELECT * FROM horda_users WHERE id=$1`, [id])).rows[0]); },
+    async getUserBySteamId(sid){ return sid ? rowUser((await q(`SELECT * FROM horda_users WHERE steam_id=$1`, [sid])).rows[0]) : null; },
     async updateUser(id, f){
-      const map = { name: "display_name", email: "email", lastLogin: "last_login", passHash: "pass_hash" };
+      const map = { name: "display_name", email: "email", lastLogin: "last_login", passHash: "pass_hash", steamId: "steam_id" };
       const sets = [], vals = [id];
       for(const k in f) if(map[k]){ vals.push(f[k]); sets.push(`${map[k]}=$${vals.length}`); }
       if(!sets.length) return this.getUser(id);
@@ -708,7 +713,7 @@ function create(opts){
     });
   }
 
-  function publicUser(u){ return { user: u.user, name: u.name || u.user, email: u.email || null, createdAt: u.createdAt }; }
+  function publicUser(u){ return { user: u.user, name: u.name || u.user, email: u.email || null, createdAt: u.createdAt, steam: !!u.steamId }; }
   async function newSession(u){
     const token = newToken(), now = Date.now();
     const s = { tokenHash: sha256(token), userId: u.id, createdAt: now, expiresAt: now + SESSION_TTL_MS };
@@ -841,6 +846,44 @@ function create(opts){
       const a = await auth(req);
       if(a.tokenHash) await store.deleteSession(a.tokenHash);
       return send(req, res, 200, { ok: true });
+    },
+    // STEAM: inicio de sesión por ticket de sesión (el servidor lo valida con Steam; la identidad es el steamid, nunca lo que diga el cliente).
+    // Crea la cuenta la primera vez (sin contraseña usable) y abre sesión las siguientes.
+    "POST /api/steam/login": async (req, res, ip) => {
+      const body = await readBody(req, SMALL_BODY_BYTES);
+      if(!steam.identityEnabled()) return err(req, res, 501, "STEAM_DISABLED", "El inicio de sesión con Steam no está activo.");
+      if(registers.count("ip:" + ip) >= MAX_REGISTER_IP * 3) return tooMany(req, res, registers.retryAfter("ip:" + ip));
+      registers.hit("ip:" + ip, REGISTER_WINDOW_MS);
+      let sid; try{ sid = (await steam.authenticateTicket(body.ticket)).steamId; }catch(e){ if(e instanceof steam.SteamError) return err(req, res, e.status, e.message, e.human || e.message); throw e; }
+      let u = await store.getUserBySteamId(sid), created = false;
+      const now = Date.now();
+      if(!u){
+        try{
+          u = await store.createUser({ userKey: "steam" + sid, user: "steam" + sid.slice(-8), name: cleanName(body.name, 16) || "Jugador", email: null,
+            passHash: await hashPassword(crypto.randomBytes(24).toString("hex")), createdAt: now, lastLogin: now, steamId: sid });
+          created = true;
+        }catch(e){ if(e.code === "EXISTS" || e.code === "23505"){ u = await store.getUserBySteamId(sid); } else throw e; }
+        if(!u) return err(req, res, 409, "STEAM_TAKEN", "No se pudo crear la cuenta. Probá de nuevo.");
+        if(created) log("ACCOUNT_CREATED", { user: u.id, via: "steam" });
+      }else await store.updateUser(u.id, { lastLogin: now });
+      const s = await newSession(u);
+      return send(req, res, created ? 201 : 200, Object.assign({ user: publicUser(u), created }, s));
+    },
+    // Vincula el steamid a la cuenta con la que ya entraste (usuario/contraseña). Un steamid pertenece a una sola cuenta.
+    "POST /api/steam/link": async (req, res, ip) => {
+      const a = await auth(req); if(!a.user) return authFail(req, res, a);
+      const body = await readBody(req, SMALL_BODY_BYTES);
+      if(!steam.identityEnabled()) return err(req, res, 501, "STEAM_DISABLED", "El inicio de sesión con Steam no está activo.");
+      if(registers.count("ip:" + ip) >= MAX_REGISTER_IP * 3) return tooMany(req, res, registers.retryAfter("ip:" + ip));
+      registers.hit("ip:" + ip, REGISTER_WINDOW_MS);
+      let sid; try{ sid = (await steam.authenticateTicket(body.ticket)).steamId; }catch(e){ if(e instanceof steam.SteamError) return err(req, res, e.status, e.message, e.human || e.message); throw e; }
+      if(a.user.steamId === sid) return send(req, res, 200, { user: publicUser(a.user), linked: true, already: true });
+      if(a.user.steamId) return err(req, res, 409, "STEAM_ALREADY_LINKED", "Esta cuenta ya está vinculada a otra cuenta de Steam.");
+      const other = await store.getUserBySteamId(sid);
+      if(other && other.id !== a.user.id) return err(req, res, 409, "STEAM_TAKEN", "Esa cuenta de Steam ya está vinculada a otra cuenta del juego.");
+      let u; try{ u = await store.updateUser(a.user.id, { steamId: sid }); }catch(e){ if(e.code === "23505") return err(req, res, 409, "STEAM_TAKEN", "Esa cuenta de Steam ya está vinculada a otra cuenta del juego."); throw e; }
+      log("STEAM_LINKED", { user: a.user.id });
+      return send(req, res, 200, { user: publicUser(u || a.user), linked: true });
     },
     "GET /api/me": async (req, res) => {
       const a = await auth(req); if(!a.user) return authFail(req, res, a);
