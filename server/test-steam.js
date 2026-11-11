@@ -33,6 +33,7 @@ steam._setFetch(async (url, opts) => {
     return ok({ error: { errorcode: 3, errordesc: 'Invalid ticket' } });
   }
   if(u.pathname.endsWith('/InitTxn/v3/')){
+    if(body.steamid === '76561190000000098') return ok({ result: 'Failure', error: { errorcode: 8, errordesc: 'caída simulada' } });
     if(!u.pathname.includes('ISteamMicroTxnSandbox')) return { ok: false, status: 400, json: async () => ({}) };
     orders[body.orderid] = { status: 'Init', steamid: body.steamid, currency: body.currency, items: [{ itemid: Number(body['itemid[0]']), qty: Number(body['qty[0]']), amount: Number(body['amount[0]']) }] };
     return ok({ result: 'OK', params: { orderid: body.orderid, transid: 'T' + body.orderid } });
@@ -178,6 +179,13 @@ const premium = async (T) => (await api('GET', '/api/wallet', undefined, T)).j.p
   let lastCk; let opened = 0;
   for(let i = 0; i < 14; i++){ lastCk = await api('POST', '/api/wallet/checkout', { pack: 'brasas_500', expectedPrice: { currency: 'USD', amount: 4.99 } }, TP); if(lastCk.status === 200) opened++; else break; }
   check('tope: tras 12 pedidos sin terminar en 24 h se rechaza un nuevo checkout (429)', opened === 12 && lastCk.status === 429 && lastCk.j.error === 'TOO_MANY_PENDING', { opened, last: lastCk && lastCk.status });
+  check('tope: el rechazo trae el mensaje legible para el jugador (no solo el código)', lastCk.j.msg && lastCk.j.msg !== lastCk.j.error && /sin terminar/.test(lastCk.j.msg), lastCk.j);
+  // un pedido que Steam NO aceptó se anula: no cuenta para el tope aunque se repita muchas veces
+  const regF = await api('POST', '/api/register', { user: 'SteamCaido', pass: 'espada123' }); const TF = regF.j.token;
+  await api('POST', '/api/steam/link', { ticket: '770000000098abcdef0123' }, TF);
+  let falloUlt, cuenta429 = 0;
+  for(let i = 0; i < 16; i++){ falloUlt = await api('POST', '/api/wallet/checkout', { pack: 'brasas_500', expectedPrice: { currency: 'USD', amount: 4.99 } }, TF); if(falloUlt.status === 429) cuenta429++; }
+  check('pedidos que Steam rechazó (InitTxn falló) no bloquean al comprador: nunca 429 por el tope (16 intentos)', cuenta429 === 0 && falloUlt.status === 502, { cuenta429, last: falloUlt.status });
   const pm = calls.filter(c => c.path.endsWith('/InitTxn/v3/') && c.body.steamid === '7656119' + '0000000099').length;
   check('tope: el pedido rechazado NO llegó a Steam', pm === 12, pm);
   // ---- sin configuración nada funciona ----
