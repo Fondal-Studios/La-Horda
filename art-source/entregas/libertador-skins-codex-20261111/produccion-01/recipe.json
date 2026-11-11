@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "date": "2026-11-11",
+  "state": "EN_CORRECCION",
+  "install": false,
+  "reference": {
+    "path": "assets/ui/codex/champions/libertador.png",
+    "sha256": "a373b98ba51fd002bd55ee828516bf79f4df7ea3384808ba0b77aafcc0dd6ea7",
+    "identity": "San Martín · el Libertador"
+  },
+  "components": [
+    {
+      "id": "libertador_escarcha.body-36",
+      "source": "sources/casaca-andes-36-source.png",
+      "candidate": "candidates/libertador_escarcha/atlas.png",
+      "grid": [
+        4,
+        9
+      ],
+      "cell": [
+        112,
+        112
+      ]
+    },
+    {
+      "id": "libertador_ancestral.body-36",
+      "source": "sources/guardia-monte-36-source.png",
+      "candidate": "candidates/libertador_ancestral/atlas.png",
+      "grid": [
+        4,
+        9
+      ],
+      "cell": [
+        112,
+        112
+      ]
+    }
+  ],
+  "method": {
+    "generator": "image_gen with exact Codex and installed skin references",
+    "background": "flat magenta chroma",
+    "extraction": "remove magenta-dominant background only; nearest-neighbour resize; no recolour, quantization or smoothing",
+    "groundY": 106,
+    "targetMaxHeight": 78
+  },
+  "runtimeBaseline": {
+    "main": "7a2ffd8c04161faf46963d4d9ee60c716047ed8a",
+    "consumer": "js/champions/libertador.js",
+    "consumerSha256": "8eb7938101626eb1fcc79d5d9cda921469ad363772dab3f6e530060681a54df7",
+    "skinMetadata": "js/assets/unique-skins-meta.js",
+    "skinMetadataSha256": "162bbeb9996698506752715fdaf7422f9bc6dc4b7b1e583b7e7fdc6e4f8543b6"
+  },
+  "preserved": [
+    {
+      "path": "assets/sprites/champions/libertador/skins/libertador_escarcha/atlas.png",
+      "sha256": "0a8203754e0131f3e34748efbbfa17596c5bfb2166a0e2140b6afe4125444fab"
+    },
+    {
+      "path": "assets/sprites/champions/libertador/skins/libertador_escarcha/horse.png",
+      "sha256": "c50d580e54b1093c2f7af2c3695c4b0c6a6cc8b0bcd4aa19cbee3f7a19e1c71e"
+    },
+    {
+      "path": "assets/sprites/champions/libertador/skins/libertador_ancestral/atlas.png",
+      "sha256": "2f44c4df632e7794a1355c1b88c5864e6cbee090ae20cb3cfe80864b8902a2cb"
+    },
+    {
+      "path": "assets/sprites/champions/libertador/skins/libertador_ancestral/horse.png",
+      "sha256": "55ae981e3e1eaacd494162c4301d383f750b6efc0a01b2b22d687b9adf6e7894"
+    }
+  ],
+  "reproduce": [
+    "python3 art-source/entregas/libertador-skins-codex-20261111/produccion-01/build_candidates.py",
+    "python3 art-source/entregas/libertador-skins-codex-20261111/produccion-01/make_preview.py"
+  ]
+}
