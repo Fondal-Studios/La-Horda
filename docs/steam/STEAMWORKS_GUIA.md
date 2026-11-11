@@ -58,18 +58,26 @@ Qué hay que construir (todo es trabajo de servidor y cuentas; hoy NO existe nad
 | Inicio de sesión con Apple | *Sign in with Apple*: el servidor valida el token de Apple (JWKS de Apple) y vincula el `sub` a la cuenta. | Cuenta de **Apple Developer** (de pago), Service ID y dominio verificado |
 | Reembolsos | Steam notifica reembolsos por la Web API; hay que revertir las Brasas como ya se hace con Mercado Pago (`reversePurchase`). | Proveedor `steam` hecho |
 
-**Estado (2026-11-11): servidor HECHO y probado contra un Steam falso** (`server/steam.js`, `server/test-steam.js`, 33 comprobaciones):
+**Estado (2026-11-11): servidor ESCRITO y probado SOLO contra un Steam falso (pendiente de sandbox con tu AppID)** (`server/steam.js`, `server/test-steam.js`, 45 comprobaciones):
 `POST /api/steam/login` (ticket → cuenta), `POST /api/steam/link` (vincular), checkout con `InitTxn` y `POST /api/wallet/steam/confirm`
-(`QueryTxn` + `FinalizeTxn` + acreditación idempotente, reversa por reembolso). Variables del servidor: `PAYMENTS_PROVIDER=steam`,
-`STEAM_ENABLED=1`, `STEAM_APP_ID`, `STEAM_PUBLISHER_KEY`, `STEAM_MODE=sandbox|live`. Cada pack tiene su `steamItemId` en `server/premium-packs.json`
+(`QueryTxn` + `FinalizeTxn` + acreditación idempotente por pedido). Variables del servidor: `PAYMENTS_PROVIDER=steam`,
+`STEAM_ENABLED=1`, `STEAM_APP_ID`, `STEAM_PUBLISHER_KEY`, `STEAM_MODE=sandbox|live`; en `live` además `STEAM_TICKET_IDENTITY` (obligatoria: ata el ticket
+a este servicio). Cada pack tiene su `steamItemId` en `server/premium-packs.json`
 (1001 = 500, 1002 = 1000, 1003 = 2500, 1004 = 5000, 1005 = 10000, 1006 = bienvenida v2): **crear esos artículos en Steamworks con esos IDs**.
+Seguridad ya cubierta por pruebas: cada pedido se anota en el libro del servidor ANTES de pedirlo a Steam; un **barrido** (cada 5 min, `STEAM_SWEEP_MS`)
+cierra y acredita pedidos aprobados aunque el jugador no vuelva, acredita los cerrados sin crédito (caída entre cobro y crédito) y **revierte reembolsos**
+(`Refunded` / `Chargedback`) de los últimos 30 días; el pack de una sola vez no se cierra dos veces; un steamid no puede quedar en dos cuentas.
+**Límites conocidos:** `PartialRefund` no se revierte (queda anotado para revisión manual); el barrido cuesta O(cuentas con Steam) y mira cada pedido acreditado cada 6 h;
+no hay nonce de un solo uso del ticket (con `STEAM_TICKET_IDENTITY` queda atado al servicio); no se verifica la propiedad del juego (el juego es gratis);
+las cuentas creadas solo con Steam no tienen recuperación por correo.
+
 **Cliente HECHO y probado con un contenedor y un Steam falsos** (`tools/collection/steam-client.js`, 24 comprobaciones): botón «Entrar con Steam» en la pantalla de
 cuenta, compra con aviso legal y sondeo cada 2,5 s hasta 5 minutos (el pedido pendiente se guarda y se retoma al volver), y vinculación
 de una cuenta clásica al comprar. El puente de Electron expone `HORDA_DESKTOP.steamTicket()` (`desktop/main.js`, `preload.js`):
 **NO VERIFICADO** con `steamworks.js` real (los nombres `getAuthTicketForWebApi` / `getSessionTicketWithSteamId` hay que confirmarlos; si usás
 `getAuthTicketForWebApi`, la misma cadena va en `STEAM_TICKET_IDENTITY` del servidor y `LAHORDA_STEAM_IDENTITY` del build).
-**Falta:** un proceso que detecte reembolsos sin que el jugador consulte (`GetReport`), actualizar los textos legales (hoy mencionan
-Mercado Pago como medio de pago) y probar todo en sandbox con tu AppID.
+**Falta:** actualizar los textos legales (hoy mencionan Mercado Pago como medio de pago) y probar todo en sandbox con tu AppID (nombres de campos,
+estados reales de `QueryTxn`, comportamiento de `FinalizeTxn`).
 
 **Lo que se puede construir y probar sin credenciales:** el servidor completo contra un Steam falso (como ya se hace con Mercado Pago
 en `server/test-payments-mp.js`). **Lo que solo se puede validar con tus credenciales:** que Steam real acepte los pedidos

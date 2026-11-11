@@ -16,7 +16,7 @@ const live = () => mode() === "live";
 const switchOn = () => /^(1|true)$/i.test(env("STEAM_ENABLED"));
 const enabled = () => switchOn() && /^\d{1,10}$/.test(appId()) && key().length >= 16 && /^(sandbox|live)$/.test(mode()) && env("PAYMENTS_PROVIDER").toLowerCase() === "steam";
 // la identidad por ticket no exige el proveedor de pagos: solo AppID + clave + modo
-const identityEnabled = () => switchOn() && /^\d{1,10}$/.test(appId()) && key().length >= 16 && /^(sandbox|live)$/.test(mode());
+const identityEnabled = () => switchOn() && /^\d{1,10}$/.test(appId()) && key().length >= 16 && /^(sandbox|live)$/.test(mode()) && (!live() || env("STEAM_TICKET_IDENTITY").length >= 8);   // en live el ticket debe atarse a este servicio (STEAM_TICKET_IDENTITY)
 const apiBase = () => { const b = env("STEAM_API_BASE").replace(/\/+$/, ""); return !live() && /^http:\/\/(127\.0\.0\.1|localhost)(:\d+)?$/.test(b) ? b : STEAM_API; };
 const txnIface = () => live() ? "ISteamMicroTxn" : "ISteamMicroTxnSandbox";
 
@@ -49,7 +49,8 @@ async function authenticateTicket(ticketHex){
   const r = await call("GET", "/ISteamUserAuth/AuthenticateUserTicket/v1/", q);
   const p = r.j.response && r.j.response.params;
   if(!r.ok || !p || p.result !== "OK" || !isSteamId(String(p.steamid))) throw new SteamError("BAD_TICKET", 401, "Steam no validó la sesión. Abrí Steam e intentá de nuevo.");
-  if(p.vacbanned === true || p.publisherbanned === true) throw new SteamError("STEAM_BANNED", 403, "Esta cuenta de Steam no puede jugar online.");
+  // solo el baneo de ESTE juego (publisherbanned): el VAC viene de otros juegos y dejaría afuera a gente legítima
+  if(p.publisherbanned === true) throw new SteamError("STEAM_BANNED", 403, "Esta cuenta de Steam no puede jugar online.");
   // con Family Sharing el dueño del juego (ownersteamid) puede ser otro: se identifica a quien juega (steamid)
   return { steamId: String(p.steamid) };
 }
@@ -57,9 +58,9 @@ async function authenticateTicket(ticketHex){
 // Pedido de compra: el jugador lo aprueba en el overlay de Steam. orderid lo elegimos nosotros (único por AppID).
 let _orderSeq = 0;
 function newOrderId(){ _orderSeq = (_orderSeq + 1) % 1000; return String(Date.now() * 1000 + _orderSeq); }   // < 2^53: 1,7e15
-async function initTxn({ steamId, itemId, cents, description, language = "es" }){
+async function initTxn({ steamId, itemId, cents, description, language = "es", orderId }){
   if(!enabled()) throw new SteamError("STEAM_DISABLED", 501, "Las compras con Steam no están activas.");
-  const orderid = newOrderId();
+  const orderid = orderId || newOrderId();
   const r = await call("POST", "/" + txnIface() + "/InitTxn/v3/", {
     key: key(), orderid, steamid: steamId, appid: appId(), itemcount: "1", language, currency: "USD",
     "itemid[0]": String(itemId), "qty[0]": "1", "amount[0]": String(cents), "description[0]": String(description).slice(0, 120) });
@@ -84,4 +85,4 @@ async function finalizeTxn(orderId){
   return true;
 }
 
-module.exports = { enabled, identityEnabled, live, mode, isSteamId, authenticateTicket, initTxn, queryTxn, finalizeTxn, SteamError, _setFetch: f => { _fetch = f || ((...a) => fetch(...a)); }, _apiBase: apiBase };
+module.exports = { newOrderId, enabled, identityEnabled, live, mode, isSteamId, authenticateTicket, initTxn, queryTxn, finalizeTxn, SteamError, _setFetch: f => { _fetch = f || ((...a) => fetch(...a)); }, _apiBase: apiBase };

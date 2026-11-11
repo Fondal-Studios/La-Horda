@@ -306,7 +306,7 @@ async function premiumSteamWait(orderId, maxMs, onTick){
     last = await premiumSteamConfirm(orderId);
     if(onTick) try{ onTick(last); }catch(e){}
     if(last.state !== "pending" && last.state !== "error") return last;
-    await new Promise(r => setTimeout(r, 2500));
+    await new Promise(r => setTimeout(r, Date.now() - t0 < 120000 ? 2500 : 5000));   // espera creciente: no martillar al servidor si el jugador tarda
   }
   return last;
 }

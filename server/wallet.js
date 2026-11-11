@@ -74,6 +74,7 @@ function skinCatalog(){
   return (SKINS = out);
 }
 
+let _sweepFn = null;
 function routes(ctx){
   const { getStore, auth, send, err, readBody, summarize, now, isOwner, log } = ctx;
   const result = {};
@@ -373,7 +374,7 @@ function routes(ctx){
   // Pagos con dinero real (apagado hasta configurar un proveedor: server/payments.js)
   route("POST", "/api/wallet/checkout", "user", async ({ user, body }) => {
     if(payments.enabled() && !store().persistent) fail("PAYMENTS_STORAGE_UNSAFE", 503);
-    return payments.checkout({ user, pack: body.pack, bought: bought(user.id), expectedPrice: body.expectedPrice });
+    return payments.checkout({ user, pack: body.pack, bought: bought(user.id), expectedPrice: body.expectedPrice, onOrder: steamOrderEntry(user.id) });
   });
   // Reembolso total o contracargo de un pago ya acreditado: se descuentan las Brasas de ESE pago, una sola vez (ref rev:<pago>).
   // Si la cuenta ya gastó parte, se descuenta lo que queda (el saldo nunca es negativo) y la diferencia queda anotada en el libro
@@ -403,17 +404,66 @@ function routes(ctx){
     log(alreadyBought ? "WALLET_ONCE_REPEATED" : "WALLET_PURCHASE", { user: credit.userId, pack: credit.pack, paymentId: credit.paymentId, duplicate: !!r.duplicate });
     return { ok: true, duplicate: !!r.duplicate, alreadyBought };
   };
-  // Steam: el juego consulta el pedido que el jugador aprobó en el overlay (payments.steamConfirm lo verifica contra Steam).
-  route("POST", "/api/wallet/steam/confirm", "user", async ({ user, body }) => {
-    if(!store().persistent) fail("PAYMENTS_STORAGE_UNSAFE", 503);
-    const u = await store().getUser(user.id);
-    const c = await payments.steamConfirm({ user: u || user, orderId: typeof body.orderId === "string" ? body.orderId : "" });
+  // Resultado de evaluar un pedido de Steam -> efecto en el libro (acreditar, revertir o nada). Compartido por la consulta del jugador y el barrido.
+  const steamSettle = async (c, userId) => {
     if(c.pending) return { ok: true, pending: true };
     if(c.ignored){ log("PAYMENT_STATUS_REVIEW", { paymentId: c.paymentId, status: c.status }); return { ok: true, credited: false, status: c.status }; }
     if(c.reverse) return { ok: true, credited: false, reversed: await reversePurchase(c) };
     const r = await applyCredit(c);
-    return { ok: true, credited: !r.duplicate, duplicate: r.duplicate, alreadyBought: r.alreadyBought, premium: (await store().walletGet(user.id)).premium };
+    return { ok: true, credited: !r.duplicate, duplicate: r.duplicate, alreadyBought: r.alreadyBought, premium: (await store().walletGet(userId)).premium };
+  };
+  // Steam: el juego consulta el pedido que el jugador aprobó (payments.steamConfirm lo verifica contra Steam). Un candado por cuenta
+  // serializa consultas y barrido: así un pack de una sola vez nunca se cierra dos veces ni se acredita dos veces.
+  route("POST", "/api/wallet/steam/confirm", "user", async ({ user, body }) => {
+    if(!store().persistent) fail("PAYMENTS_STORAGE_UNSAFE", 503);
+    return withLock("steam:" + user.id, async () => {
+      const u = await store().getUser(user.id);
+      const c = await payments.steamConfirm({ user: u || user, orderId: typeof body.orderId === "string" ? body.orderId : "", bought: bought(user.id) });
+      return steamSettle(c, user.id);
+    });
   });
+  // El pedido queda anotado en el servidor (asiento de monto 0, referencia única) ANTES de pedirlo a Steam (ver payments.checkout).
+  const steamOrderEntry = (userId) => async ({ orderId, pack }) => {
+    await store().walletApply({ userId, delta: 0, reason: "steam_order:" + pack + ":" + orderId, ref: "steamord:" + orderId, actor: null, at: now() });
+  };
+  // BARRIDO: cada pocos minutos recorre los pedidos anotados de las cuentas con Steam y los lleva a su estado final aunque el jugador no vuelva:
+  //   aprobado y sin cerrar -> se cierra y acredita; cerrado sin crédito (caída entre cobro y crédito) -> se acredita; reembolsado -> se revierte.
+  // Los pedidos con crédito se vuelven a mirar como máximo cada 6 h durante 30 días (reembolsos tardíos). Cuesta O(cuentas con Steam).
+  const _swept = new Map();
+  const RECHECK_MS = process.env.STEAM_RECHECK_MS !== undefined ? Math.max(0, parseInt(process.env.STEAM_RECHECK_MS, 10) || 0) : 6 * 3600000;
+  async function steamSweepOnce(){
+    if(!payments.steamEnabled() || !store().persistent || !store().listUsers) return { checked: 0 };
+    const t = now(); let checked = 0, acted = 0;
+    for(const u of await store().listUsers()){
+      if(!u || typeof u.steamId !== "string" || !u.steamId) continue;
+      const ledger = await store().walletLedger(u.id, 3000);
+      for(const e of ledger){
+        const m = typeof e.reason === "string" && /^steam_order:([a-z0-9_]+):(\d{10,18})$/.exec(e.reason);
+        if(!m || t - e.at > 30 * 86400000) continue;
+        const [, pack, orderId] = m;
+        if(ledger.some(x => x.ref === "rev:steam" + orderId)) continue;   // ya revertido
+        const credited = ledger.some(x => x.reason === "purchase:" + pack + ":steam" + orderId);
+        if(credited ? t - (_swept.get(orderId) || 0) < RECHECK_MS : t - e.at > 7 * 86400000) continue;
+        checked++; _swept.set(orderId, t);
+        try{
+          await withLock("steam:" + u.id, async () => {
+            const c = await payments.steamEvaluate({ user: u, orderId, bought: bought(u.id) });
+            if(!c || c.pending) return;
+            if(c.ignored) return;
+            if(credited && !c.reverse) return;   // ya acreditado y sin novedades
+            await steamSettle(c, u.id); acted++;
+          });
+        }catch(err){ log("STEAM_SWEEP_ERROR", { user: u.id, error: String(err && err.message || err).slice(0, 80) }); }
+      }
+    }
+    return { checked, acted };
+  }
+  _sweepFn = steamSweepOnce;   // lo usa la prueba (module.exports.steamSweepOnce)
+  if(process.env.STEAM_SWEEP_MS !== "0"){
+    const every = Math.max(30000, parseInt(process.env.STEAM_SWEEP_MS || "300000", 10) || 300000);
+    const tm = setInterval(() => { steamSweepOnce().catch(err => log("STEAM_SWEEP_ERROR", { error: String(err && err.message || err).slice(0, 80) })); }, every);
+    if(tm.unref) tm.unref();
+  }
   result["POST /api/payments/webhook"] = async (req, res) => {
     try{
       const raw = await new Promise((ok, ko) => { let b = ""; req.on("data", c => { b += c; if(b.length > 65536){ ko(Object.assign(new Error("TOO_BIG"), { code: "TOO_BIG" })); req.destroy(); } }); req.on("end", () => ok(b)); req.on("error", ko); });
@@ -429,4 +479,4 @@ function routes(ctx){
   return result;
 }
 
-module.exports = { routes, CURRENCY, skinCatalog, pricing, pieceDb, rotationKeys, setTestFlags };
+module.exports = { steamSweepOnce: () => (_sweepFn ? _sweepFn() : Promise.resolve({ checked: 0 })), routes, CURRENCY, skinCatalog, pricing, pieceDb, rotationKeys, setTestFlags };

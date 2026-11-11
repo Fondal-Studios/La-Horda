@@ -77,6 +77,7 @@ const MAX_FAILS_USER = parseInt(process.env.AUTH_MAX_FAILS || "8", 10);
 const MAX_FAILS_IP = parseInt(process.env.AUTH_MAX_FAILS_IP || "30", 10);
 const REGISTER_WINDOW_MS = 60 * 60 * 1000;
 const MAX_REGISTER_IP = parseInt(process.env.REGISTER_MAX_IP || "10", 10);
+const STEAM_MAX_IP = parseInt(process.env.STEAM_MAX_IP || "60", 10);   // inicios/vinculaciones con Steam por IP y hora (contador propio, no el del registro)
 // freno general contra inundaciones. OJO en un evento (Comic Con): todos los celulares del wifi del lugar
 // salen a Internet con la MISMA IP pública y comparten este cupo: API_MAX_IP lo sube (ver la guía del dueño).
 const API_WINDOW_MS = 60 * 1000, MAX_API_IP = Math.max(30, parseInt(process.env.API_MAX_IP || "300", 10) || 300);
@@ -291,6 +292,7 @@ function fileStore(dir){
     },
     async createUser(u){
       if(byKey.has(u.userKey)) { const e = new Error("EXISTS"); e.code = "EXISTS"; throw e; }
+      if(u.steamId && Object.values(db.users).some(x => x.steamId === u.steamId)){ const e = new Error("EXISTS"); e.code = "23505"; throw e; }   // un steamid, una cuenta (igual que el índice único de Postgres)
       const id = db.nextId++;
       db.users[id] = Object.assign({ id }, u);
       byKey.set(u.userKey, id);
@@ -300,7 +302,11 @@ function fileStore(dir){
     async getUserByKey(k){ const id = byKey.get(k); return id ? db.users[id] : null; },
     async getUser(id){ return db.users[id] || null; },
     async getUserBySteamId(sid){ if(!sid) return null; for(const id in db.users) if(db.users[id].steamId === sid) return db.users[id]; return null; },
-    async updateUser(id, fields){ if(!db.users[id]) return null; Object.assign(db.users[id], fields); await flush(); return db.users[id]; },
+    async updateUser(id, fields){
+      if(!db.users[id]) return null;
+      if(fields.steamId && Object.values(db.users).some(x => x.steamId === fields.steamId && x.id !== id)){ const e = new Error("EXISTS"); e.code = "23505"; throw e; }   // comprobar y asignar sin await en el medio: atómico
+      Object.assign(db.users[id], fields); await flush(); return db.users[id];
+    },
     async createSession(s){ db.sessions[s.tokenHash] = s; await flush(); },
     async getSession(h){ return db.sessions[h] || null; },
     async touchSession(h, expiresAt){ if(db.sessions[h]){ db.sessions[h].expiresAt = expiresAt; await flush(); } },
@@ -852,8 +858,8 @@ function create(opts){
     "POST /api/steam/login": async (req, res, ip) => {
       const body = await readBody(req, SMALL_BODY_BYTES);
       if(!steam.identityEnabled()) return err(req, res, 501, "STEAM_DISABLED", "El inicio de sesión con Steam no está activo.");
-      if(registers.count("ip:" + ip) >= MAX_REGISTER_IP * 3) return tooMany(req, res, registers.retryAfter("ip:" + ip));
-      registers.hit("ip:" + ip, REGISTER_WINDOW_MS);
+      if(registers.count("steam:" + ip) >= STEAM_MAX_IP) return tooMany(req, res, registers.retryAfter("steam:" + ip));
+      registers.hit("steam:" + ip, REGISTER_WINDOW_MS);
       let sid; try{ sid = (await steam.authenticateTicket(body.ticket)).steamId; }catch(e){ if(e instanceof steam.SteamError) return err(req, res, e.status, e.message, e.human || e.message); throw e; }
       let u = await store.getUserBySteamId(sid), created = false;
       const now = Date.now();
@@ -874,8 +880,8 @@ function create(opts){
       const a = await auth(req); if(!a.user) return authFail(req, res, a);
       const body = await readBody(req, SMALL_BODY_BYTES);
       if(!steam.identityEnabled()) return err(req, res, 501, "STEAM_DISABLED", "El inicio de sesión con Steam no está activo.");
-      if(registers.count("ip:" + ip) >= MAX_REGISTER_IP * 3) return tooMany(req, res, registers.retryAfter("ip:" + ip));
-      registers.hit("ip:" + ip, REGISTER_WINDOW_MS);
+      if(registers.count("steam:" + ip) >= STEAM_MAX_IP) return tooMany(req, res, registers.retryAfter("steam:" + ip));
+      registers.hit("steam:" + ip, REGISTER_WINDOW_MS);
       let sid; try{ sid = (await steam.authenticateTicket(body.ticket)).steamId; }catch(e){ if(e instanceof steam.SteamError) return err(req, res, e.status, e.message, e.human || e.message); throw e; }
       if(a.user.steamId === sid) return send(req, res, 200, { user: publicUser(a.user), linked: true, already: true });
       if(a.user.steamId) return err(req, res, 409, "STEAM_ALREADY_LINKED", "Esta cuenta ya está vinculada a otra cuenta de Steam.");

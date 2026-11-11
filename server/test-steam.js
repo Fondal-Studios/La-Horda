@@ -4,17 +4,17 @@
 process.env.DATA_PERSISTENT = '1'; // directorio temporal aislado: solo simula la compuerta de almacenamiento persistente
 process.env.PORT = '8826'; process.env.DATABASE_URL = ''; process.env.ALLOWED_ORIGINS = 'http://127.0.0.1:8803';
 process.env.PAYMENTS_PROVIDER = 'steam'; process.env.STEAM_ENABLED = '1'; process.env.STEAM_APP_ID = '480';
-process.env.STEAM_PUBLISHER_KEY = 'ABCDEF0123456789ABCDEF0123456789'; process.env.STEAM_MODE = 'sandbox';
+process.env.STEAM_PUBLISHER_KEY = 'ABCDEF0123456789ABCDEF0123456789'; process.env.STEAM_MODE = 'sandbox'; process.env.STEAM_SWEEP_MS = '0'; process.env.PAYMENTS_CHECKOUT_MAX = '200'; process.env.STEAM_RECHECK_MS = '0';   // el barrido se invoca a mano
 const fs = require('fs'), os = require('os'), path = require('path');
 process.env.DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), 'horda-steam-'));
 const { server, accounts } = require('./relay');
-const steam = require('./steam'), payments = require('./payments');
+const steam = require('./steam'), payments = require('./payments'), walletMod = require('./wallet');
 let fails = 0, n = 0; const check = (name, ok, x) => { n++; if(!ok){ fails++; console.log('FAIL', name, x !== undefined ? JSON.stringify(x).slice(0, 400) : ''); } };
 async function api(method, p, body, token){
   const r = await fetch('http://127.0.0.1:8826' + p, { method, headers: { origin: 'http://127.0.0.1:8803', 'content-type': 'application/json', ...(token ? { authorization: 'Bearer ' + token } : {}) }, body: body === undefined ? undefined : JSON.stringify(body) });
   let j = null; try{ j = await r.json(); }catch(e){} return { status: r.status, j };
 }
-const SID_A = '76561197960265729', SID_B = '76561197960265730', SID_BAN = '76561197960265731', SID_C = '76561197960265732';
+const SID_A = '76561197960265729', SID_B = '76561197960265730', SID_BAN = '76561197960265731', SID_C = '76561197960265732', SID_VAC = '76561197960265733';
 // Steam falso: tickets "aa…" -> SID_A, "bb…" -> SID_B, "cc…" -> baneado; pedidos en memoria
 const orders = {}, calls = [];
 steam._setFetch(async (url, opts) => {
@@ -26,8 +26,10 @@ steam._setFetch(async (url, opts) => {
     const t = body.ticket || '';
     if(t.startsWith('aa')) return ok({ params: { result: 'OK', steamid: SID_A, ownersteamid: SID_A, vacbanned: false, publisherbanned: false } });
     if(t.startsWith('bb')) return ok({ params: { result: 'OK', steamid: SID_B, ownersteamid: SID_B, vacbanned: false, publisherbanned: false } });
+    if(t.startsWith('77') && /^\d{10}/.test(t.slice(2, 12))) { const sid = '7656119' + t.slice(2, 12); return ok({ params: { result: 'OK', steamid: sid, ownersteamid: sid, vacbanned: false, publisherbanned: false } }); }
     if(t.startsWith('dd')) return ok({ params: { result: 'OK', steamid: SID_C, ownersteamid: SID_C, vacbanned: false, publisherbanned: false } });
-    if(t.startsWith('cc')) return ok({ params: { result: 'OK', steamid: SID_BAN, ownersteamid: SID_BAN, vacbanned: true, publisherbanned: false } });
+    if(t.startsWith('cc')) return ok({ params: { result: 'OK', steamid: SID_BAN, ownersteamid: SID_BAN, vacbanned: false, publisherbanned: true } });
+    if(t.startsWith('ff')) return ok({ params: { result: 'OK', steamid: SID_VAC, ownersteamid: SID_VAC, vacbanned: true, publisherbanned: false } });
     return ok({ error: { errorcode: 3, errordesc: 'Invalid ticket' } });
   }
   if(u.pathname.endsWith('/InitTxn/v3/')){
@@ -45,6 +47,7 @@ steam._setFetch(async (url, opts) => {
   }
   return { ok: false, status: 404, json: async () => ({}) };
 });
+const app_store = () => accounts.store;
 const premium = async (T) => (await api('GET', '/api/wallet', undefined, T)).j.premium;
 (async () => {
   await accounts.ready;
@@ -53,7 +56,8 @@ const premium = async (T) => (await api('GET', '/api/wallet', undefined, T)).j.p
   check('login: ticket que Steam rechaza -> 401', bad.status === 401, bad);
   check('login: ticket que no es hexadecimal -> 400', (await api('POST', '/api/steam/login', { ticket: 'no-es-hex!' })).status === 400);
   const ban = await api('POST', '/api/steam/login', { ticket: 'cc112233445566778899' });
-  check('login: cuenta de Steam con baneo -> 403', ban.status === 403, ban);
+  check('login: cuenta baneada en ESTE juego -> 403', ban.status === 403, ban);
+  check('login: un baneo VAC (de otros juegos) NO bloquea', (await api('POST', '/api/steam/login', { ticket: 'ff112233445566778899' })).status === 201);
   const l1 = await api('POST', '/api/steam/login', { ticket: 'aa112233445566778899', name: 'Cazadora' });
   check('login: la primera vez crea la cuenta (201) y devuelve sesión', l1.status === 201 && l1.j.created === true && l1.j.token && l1.j.user.steam === true, l1);
   const TA = l1.j.token;
@@ -121,12 +125,57 @@ const premium = async (T) => (await api('GET', '/api/wallet', undefined, T)).j.p
   const wl = (await api('GET', '/api/wallet', undefined, TA)).j;
   check('bienvenida v2: NO da derecho a campeones y deja de ofrecerse', wl.welcome.entitled === 0 && wl.payments.packs.find(p => p.id === 'brasas_bienvenida_v2').available === false, wl.welcome);
   check('bienvenida v2: un segundo checkout se rechaza (409)', (await wv()).status === 409);
+  // ---- el pedido queda anotado en el servidor y el BARRIDO lo lleva a su estado final aunque el jugador no vuelva ----
+  const uidA = (await app_store().getUserBySteamId(SID_A)).id;
+  const led = await app_store().walletLedger(uidA, 3000);
+  check('pedido anotado: cada checkout dejó un asiento steam_order con referencia única', led.filter(e => /^steam_order:/.test(e.reason) && /^steamord:\d+$/.test(e.ref) && e.delta === 0).length >= 6, led.length);
+  const q1 = await api('POST', '/api/wallet/checkout', { pack: 'brasas_2500', expectedPrice: { currency: 'USD', amount: 24.99 } }, TA);
+  const s0 = await premium(TA);
+  orders[q1.j.orderId].status = 'Approved';           // el jugador aprobó y cerró el juego: nadie consulta
+  const sw1 = await walletMod.steamSweepOnce();
+  check('barrido: un pedido aprobado sin consulta del jugador se cierra y se acredita solo', sw1.acted >= 1 && await premium(TA) === s0 + 2800 && orders[q1.j.orderId].status === 'Succeeded', { sw1, premium: await premium(TA), s0 });
+  orders[q1.j.orderId].status = 'Refunded';           // reembolso: el jugador nunca vuelve a consultar
+  const before2 = await premium(TA);
+  await walletMod.steamSweepOnce();
+  check('barrido: el reembolso de un pedido ya acreditado se revierte aunque el jugador no consulte', await premium(TA) === before2 - 2800, { premium: await premium(TA), before2 });
+  await walletMod.steamSweepOnce();
+  check('barrido: repetirlo no vuelve a descontar', await premium(TA) === before2 - 2800);
+  // caída entre el cobro y el crédito: Steam ya dice Succeeded pero el libro no tiene la compra
+  const q2 = await api('POST', '/api/wallet/checkout', { pack: 'brasas_500', expectedPrice: { currency: 'USD', amount: 4.99 } }, TA);
+  orders[q2.j.orderId].status = 'Succeeded';
+  const s1 = await premium(TA);
+  await walletMod.steamSweepOnce();
+  check('barrido: un pedido cerrado en Steam sin crédito en el libro se acredita (caída entre cobro y crédito)', await premium(TA) === s1 + 500, { premium: await premium(TA), s1 });
+  // pack de una sola vez: el segundo pedido aprobado NO se cierra (no se cobra) y no acredita
+  const wa = await api('POST', '/api/wallet/checkout', { pack: 'brasas_bienvenida_v2', expectedPrice: { currency: 'USD', amount: 6.99 } }, TC2);
+  const T2 = TC2; const pb0 = await premium(T2);
+  // TC2 ya está vinculada con SID_C: el pedido sale a nombre de SID_C
+  check('once: el primer checkout abre pedido', wa.status === 200 && wa.j.steam === true, wa);
+  const wb = await api('POST', '/api/wallet/checkout', { pack: 'brasas_bienvenida_v2', expectedPrice: { currency: 'USD', amount: 6.99 } }, T2);
+  check('once: un segundo checkout simultáneo también abre pedido (se cuida al confirmar)', wb.status === 200, wb);
+  orders[wa.j.orderId].status = 'Approved'; orders[wb.j.orderId].status = 'Approved';
+  const [ra, rb] = await Promise.all([api('POST', '/api/wallet/steam/confirm', { orderId: wa.j.orderId }, T2), api('POST', '/api/wallet/steam/confirm', { orderId: wb.j.orderId }, T2)]);
+  const fin = [wa.j.orderId, wb.j.orderId].filter(o => orders[o].status === 'Succeeded').length;
+  check('once: confirmaciones en paralelo -> se cierra y acredita UNO solo; el otro queda sin cobrar', fin === 1 && await premium(T2) === pb0 + 900 && [ra, rb].filter(x => x.j.credited).length === 1, { fin, ra: ra.j, rb: rb.j, premium: await premium(T2), pb0 });
+  // carrera por el steamid: login y link simultáneos con el mismo ticket nunca dejan el steamid en dos cuentas (20 rondas con steamids nuevos)
+  let dup = 0;
+  for(let i = 0; i < 20; i++){
+    const tk = '77' + String(1000000000 + i) + 'abcdef0123';
+    const rg = await api('POST', '/api/register', { user: 'Carrera' + i, pass: 'espada123' });
+    await Promise.all([api('POST', '/api/steam/login', { ticket: tk }), api('POST', '/api/steam/link', { ticket: tk }, rg.j.token)]);
+    const holders = (await app_store().listUsers()).filter(u => u.steamId === '7656119' + String(1000000000 + i));
+    if(holders.length !== 1) dup++;
+  }
+  check('carrera: un steamid nunca queda en dos cuentas (login y link a la vez, 20 rondas)', dup === 0, { rondasConDuplicado: dup });
   // ---- sin configuración nada funciona ----
   const keep = process.env.STEAM_ENABLED; process.env.STEAM_ENABLED = '0';
   check('apagado: login 501 y confirmar 501', (await api('POST', '/api/steam/login', { ticket: 'aa112233445566778899' })).status === 501 && (await api('POST', '/api/wallet/steam/confirm', { orderId: o1 }, TA)).status === 501);
   process.env.STEAM_ENABLED = keep;
   // el modo live no acepta STEAM_API_BASE ajeno y usa la interfaz real
-  process.env.STEAM_MODE = 'live'; process.env.STEAM_API_BASE = 'http://127.0.0.1:9';
+  process.env.STEAM_MODE = 'live'; delete process.env.STEAM_TICKET_IDENTITY;
+  check('live: sin STEAM_TICKET_IDENTITY el inicio de sesión por ticket no se activa', steam.identityEnabled() === false);
+  process.env.STEAM_TICKET_IDENTITY = 'la-horda-servidor'; check('live: con identidad sí', steam.identityEnabled() === true); delete process.env.STEAM_TICKET_IDENTITY;
+  process.env.STEAM_API_BASE = 'http://127.0.0.1:9';
   check('live: STEAM_API_BASE se ignora y se usa partner.steam-api.com', steam._apiBase() === 'https://partner.steam-api.com');
   process.env.STEAM_MODE = 'sandbox'; process.env.STEAM_API_BASE = 'https://evil.example';
   check('sandbox: STEAM_API_BASE que no es esta máquina se ignora', steam._apiBase() === 'https://partner.steam-api.com');

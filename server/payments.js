@@ -81,7 +81,7 @@ async function publicInfo(bought){
 function fail(code, status, human){ const e = new Error(code); e.status = status || 400; if(human) e.human = human; throw e; }
 const NOT_CONNECTED = "Los pagos todavía no están conectados. Muy pronto vas a poder comprar Brasas.";
 
-async function checkout({ user, pack, bought, expectedPrice }){
+async function checkout({ user, pack, bought, expectedPrice, onOrder }){
   if(!enabled()) fail("PAYMENTS_DISABLED", 501, NOT_CONNECTED);
   const p = offered().find(p => p.id === pack); if(!p) fail("BAD_PACK", 400, "Ese paquete no está a la venta.");
   if(p.once && bought && await bought(p.id)) fail("ALREADY_BOUGHT", 409, "El Pack de bienvenida ya es tuyo: se compra una sola vez.");
@@ -92,7 +92,12 @@ async function checkout({ user, pack, bought, expectedPrice }){
     if(price.currency !== "USD") fail("BAD_PACK", 400, "Ese paquete no está a la venta.");
     if(!expectedPrice || expectedPrice.currency !== price.currency || expectedPrice.amount !== price.amount)
       fail("PRICE_CHANGED", 409, "El precio cambió. Actualizá la tienda y confirmá el nuevo importe.");
-    let r; try{ r = await steam.initTxn({ steamId: user.steamId, itemId: p.steamItemId, cents: Math.round(price.amount * 100), description: (p.name || (p.premium + " Brasas")) + " · La Horda" }); }
+    // El pedido se ANOTA en el servidor (libro de la billetera) ANTES de pedirlo a Steam: así el barrido periódico puede cerrar, acreditar o revertir
+    // pedidos aunque el jugador nunca vuelva a consultar (reembolsos, cierre del juego, caída entre el cobro y el crédito).
+    const orderId = steam.newOrderId();
+    if(typeof onOrder !== "function") fail("PAYMENTS_UNAVAILABLE", 503, "No se pudo abrir el pago. Probá de nuevo en un rato.");
+    try{ await onOrder({ orderId, pack: p.id }); }catch(e){ fail("PAYMENTS_UNAVAILABLE", 503, "No se pudo abrir el pago. Probá de nuevo en un rato."); }
+    let r; try{ r = await steam.initTxn({ orderId, steamId: user.steamId, itemId: p.steamItemId, cents: Math.round(price.amount * 100), description: (p.name || (p.premium + " Brasas")) + " · La Horda" }); }
     catch(e){ if(e instanceof steam.SteamError) fail(e.message, e.status, e.human); throw e; }
     return { ok: true, steam: true, orderId: r.orderId, pack: p.id, price };
   }
@@ -113,7 +118,7 @@ async function checkout({ user, pack, bought, expectedPrice }){
 const _ck = new Map();
 function checkoutAllowed(userId){
   const t = Date.now(), a = (_ck.get(userId) || []).filter(x => t - x < 600000);
-  if(a.length >= 8){ _ck.set(userId, a); return false; }
+  if(a.length >= (parseInt(process.env.PAYMENTS_CHECKOUT_MAX || "8", 10) || 8)){ _ck.set(userId, a); return false; }
   a.push(t); _ck.set(userId, a);
   if(_ck.size > 5000) for(const [k, v] of _ck) if(!v.some(x => t - x < 600000)) _ck.delete(k);
   return true;
@@ -167,20 +172,27 @@ async function mpVerify(req, raw){
 // que diga el cliente: se consulta el pedido a Steam (QueryTxn) y solo se acredita si es de ESTE steamid, un artículo conocido, 1 unidad y
 // el monto exacto; recién ahí se cierra con FinalizeTxn y se devuelve el crédito (el libro lo hace idempotente por pedido).
 const _fin = new Map();
-function finalizeAllowed(userId){   // 60 consultas cada 10 minutos por cuenta (el cliente consulta cada pocos segundos mientras espera)
+function finalizeAllowed(userId){   // 400 consultas cada 10 minutos por cuenta (el cliente consulta cada 2,5 a 5 s mientras espera)
   const t = Date.now(), a = (_fin.get(userId) || []).filter(x => t - x < 600000);
-  if(a.length >= 60){ _fin.set(userId, a); return false; }
+  if(a.length >= 400){ _fin.set(userId, a); return false; }
   a.push(t); _fin.set(userId, a);
   if(_fin.size > 5000) for(const [k, v] of _fin) if(!v.some(x => t - x < 600000)) _fin.delete(k);
   return true;
 }
-async function steamConfirm({ user, orderId }){
+async function steamConfirm({ user, orderId, bought }){
   if(!steam.enabled()) fail("PAYMENTS_DISABLED", 501, NOT_CONNECTED);
   if(typeof orderId !== "string" || !/^\d{10,18}$/.test(orderId)) fail("BAD_ORDER", 400, "Pedido inválido.");
   if(!steam.isSteamId(user && user.steamId)) fail("STEAM_NOT_LINKED", 403, "Tu cuenta no está vinculada a Steam.");
   if(!finalizeAllowed(user.id)) fail("CHECKOUT_RATE_LIMIT", 429, "Demasiadas consultas seguidas. Esperá un momento.");
+  const r = await steamEvaluate({ user, orderId, bought });
+  if(!r) fail("BAD_ORDER", 404, "No encontramos ese pedido.");   // pedido ajeno o inexistente: no se distingue
+  return r;
+}
+// Evalúa un pedido SIN límite de tasa (lo usa también el barrido del servidor). Devuelve null si el pedido no existe o es de otro steamid.
+// `bought(packId)` -> ¿ya se acreditó este pack de una sola vez a la cuenta? Si sí, el duplicado NO se cierra (Steam no lo cobra y lo deja vencer).
+async function steamEvaluate({ user, orderId, bought }){
   let t; try{ t = await steam.queryTxn(orderId); }catch(e){ if(e instanceof steam.SteamError) fail(e.message, e.status, e.human); throw e; }
-  if(!t || t.steamId !== user.steamId) fail("BAD_ORDER", 404, "No encontramos ese pedido.");   // pedido ajeno o inexistente: no se distingue
+  if(!t || t.steamId !== user.steamId) return null;
   const it = t.items.length === 1 ? t.items[0] : null;
   const p = it && it.qty === 1 ? sellable().find(x => x.steamItemId === it.itemId) : null;
   if(!p || t.currency !== "USD" || it.amount !== Math.round(p.price.amount * 100)) return { ignored: true, status: "mismatch", paymentId: "steam" + orderId };
@@ -188,6 +200,7 @@ async function steamConfirm({ user, orderId }){
   if(t.status === "Init") return { pending: true, status: t.status, paymentId: credit.paymentId };
   if(t.status === "Refunded" || t.status === "Chargedback") return { reverse: true, status: t.status === "Refunded" ? "refunded" : "charged_back", ...credit };
   if(t.status === "Approved"){
+    if(p.once && typeof bought === "function" && await bought(p.id)) return { ignored: true, status: "duplicate_once", paymentId: credit.paymentId };   // ya lo tiene: no se cobra el segundo
     try{ await steam.finalizeTxn(orderId); }catch(e){ if(e instanceof steam.SteamError) fail(e.message, e.status, e.human); throw e; }
     return credit;
   }
@@ -211,4 +224,4 @@ function verifyWebhook(headers, raw){
   return { userId: b.userId, pack: p.id, once: !!p.once, premium: p.premium + (p.bonus || 0), paymentId: b.paymentId };
 }
 
-module.exports = { steamConfirm, mpLive, mpSwitch, _mpApi: mpApi, publicInfo, checkout, verifyWebhook, verifyWebhookRequest, enabled, onceRef, creditRef, PACKS, _setFetch: f => { _fetch = f || ((...a) => fetch(...a)); } };
+module.exports = { steamEvaluate, steamEnabled: () => steam.enabled(), steamConfirm, mpLive, mpSwitch, _mpApi: mpApi, publicInfo, checkout, verifyWebhook, verifyWebhookRequest, enabled, onceRef, creditRef, PACKS, _setFetch: f => { _fetch = f || ((...a) => fetch(...a)); } };
