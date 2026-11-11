@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "date": "2026-11-11",
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "publication": "NOT_CHECKED_NOT_APPLICABLE",
+  "repository": "Fondal-Studios/La-Horda",
+  "pr": {
+    "number": 293,
+    "url": "https://github.com/Fondal-Studios/La-Horda/pull/293",
+    "draft": true,
+    "productionHead": "8824423741a98b3c16707264ebb7492472db25c9"
+  },
+  "freshness": {
+    "auditedMain": "7a2ffd8c04161faf46963d4d9ee60c716047ed8a",
+    "mainBeforeClosure": "43eff1fac17af59355d11bb5cf6925994e3ef81b",
+    "concurrentPaths": [
+      "docs/beta-release/NEXT_SESSION.md",
+      "docs/beta-release/STATUS.md",
+      "js/i18n/en.js",
+      "js/i18n/pt.js",
+      "reviews/claude__la-horda-beta-audit-exec-mwv8x0.json",
+      "tools/i18n/test-i18n.js",
+      "tools/i18n/tr/patterns.py",
+      "tools/i18n/tr/t376.py",
+      "tools/identity/t_identity.js"
+    ],
+    "intersectionWithProduction": []
+  },
+  "newEvidence": {
+    "sources": 2,
+    "candidateAtlases": 2,
+    "frames": 72,
+    "uniqueFrames": 72,
+    "partialAlphaPixels": 0,
+    "borderOpaquePixels": 0,
+    "runtimeFilesChanged": 0,
+    "installedAssetsChanged": 0
+  },
+  "ciObserved": [
+    {
+      "id": 43025630745,
+      "name": "Art production evidence",
+      "status": "in_progress"
+    },
+    {
+      "id": 43025627861,
+      "name": "Emoji lint (arte pixel)",
+      "status": "in_progress"
+    },
+    {
+      "id": 43025627946,
+      "name": "QA regresion central",
+      "status": "in_progress"
+    }
+  ],
+  "interruption": {
+    "detected": true,
+    "detail": "Scratch anterior reciclado antes de publicar commit local; un blob huérfano no alcanzaba para reconstruir la entrega. Se regeneró desde Códice y atlas instalados y se verificó el lote completo."
+  },
+  "pending": [
+    "No instalar hasta cerrar contrato de estados y montura.",
+    "Renderer real y capturas Ruinas/Bosque y Gélida/Hielo, seis arenas, looks, desktop/móvil.",
+    "Roster Art Gate, relay, rendimiento, Art Gate y CI del head exacto."
+  ],
+  "next": "CIERRE Libertador en rama separada desde main fresco; instalar sólo ambos candidatos completos y conservar horse/originales como fallback. Si Art Gate falla, mantener assets actuales."
+}
