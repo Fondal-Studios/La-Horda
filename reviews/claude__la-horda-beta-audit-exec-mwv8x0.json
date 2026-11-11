@@ -1,8 +1,8 @@
 {
  "subject": {
-  "pr": 292,
+  "pr": 294,
   "branch": "claude/la-horda-beta-audit-exec-mwv8x0",
-  "head": "60108c8dc7dbd9cae18fc5b5d54ee456b38c9c4f",
+  "head": "2bdd90859647814f0490f653d4cbe6298d321c4b",
   "authorAgent": "claude-sesion-principal",
   "authorId": "claude-sesion-principal"
  },
@@ -11,57 +11,57 @@
    "stage": "produccion",
    "by": "claude-sesion-principal",
    "role": "agent",
-   "commit": "60108c8dc7dbd9cae18fc5b5d54ee456b38c9c4f",
-   "at": "2026-11-11T12:00:00Z"
+   "commit": "2bdd90859647814f0490f653d4cbe6298d321c4b",
+   "at": "2026-11-11T22:20:00Z"
   },
   {
    "stage": "qa",
-   "by": "claude-qa-292b",
+   "by": "claude-qa-294",
    "role": "qa",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "60108c8dc7dbd9cae18fc5b5d54ee456b38c9c4f",
-    "tests": 5,
+    "sha": "2bdd90859647814f0490f653d4cbe6298d321c4b",
+    "tests": 14,
     "failed": 0,
-    "report": "Sobre 60108c8d, en serie: build.py (diccionarios commiteados coinciden con la fuente, árbol limpio), validate-tr, test-i18n (TODO OK, 3 casos de talentos con el formato real de saltos de línea), t_identity x2 sin FAIL (INF.el_campeon_no_sale_por_la_fisura con champMoved 0 y normalMoved 28/20) y una MUTACIÓN propia (quitar `champion ||` de infPlaceSpawn) que hace FALLAR la prueba (champMoved 19). Primera pasada sobre f17c9381 aprobó con la prueba INF todavía ciega; la corrección se revalidó. No cubrió: calidad lingüística EN/PT, tooltip en navegador real."
+    "report": "Primera pasada sobre 80e719a0 (14 suites, 0 fallos) con ataques propios al servidor: encontró doble cobro del pack de una sola vez y steamid duplicado en el almacén de archivo (carrera login+link). Corregidos en 26aad63e y reverificados con los mismos ataques más ataques nuevos al barrido (cierre/crédito sin cliente, barrido y confirmar simultáneos, reembolso concurrente, pedidos alterados o ajenos): sin hallazgos bloqueantes; test-steam 45 comprobaciones. Sobre a5da4048 detectó que steam-client.js era intermitente (6 de 11); la causa (el diálogo ignora clics en sus primeros 250 ms) se corrigió en 2bdd9085 y QA la reverificó: 12 de 12 corridas, sin debilitar aserciones. No cubrió: Steam real, Postgres en ejecución, steamworks.js/Electron real, GitHub Actions."
    },
-   "at": "2026-11-11T12:10:00Z"
+   "at": "2026-11-11T22:25:00Z"
   },
   {
    "stage": "arquitectura",
-   "by": "claude-arq-292b",
+   "by": "claude-arq-294",
    "role": "arquitecto",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "60108c8dc7dbd9cae18fc5b5d54ee456b38c9c4f",
-    "report": "Primera pasada sobre f17c9381: i18n aprobado; t_identity RECHAZADO (prueba vacua: spawnEnemy fuerza rank subjefe y infPlaceSpawn exime dos veces; causa documentada incorrecta). Corregido en 60108c8d (prueba directa con control, mutación detectada) y se encontró además que el tooltip real usa saltos de línea (patrones pasaron a \\s+ / [\\s\\S]). Revisión del delta: aprobado, sin BLOCKER ni IMPORTANT. MINOR abiertos: patrón de patterns.py línea 94 sombreado (código muerto), saltos de línea de la cabeza se normalizan a espacio en EN/PT, formas 'por punto en A y B' quizá sin uso. No ejecutó pruebas de navegador."
+    "sha": "2bdd90859647814f0490f653d4cbe6298d321c4b",
+    "report": "Rechazó 80e719a0 por tres huecos de dinero: reembolsos solo al consultar el jugador, cobro cerrado sin crédito sin reintento del servidor, y pack de una sola vez cobrado dos veces. Corregidos en 26aad63e (pedidos anotados en el libro antes de InitTxn, barrido periódico que cierra, acredita y revierte, no cerrar el duplicado, candado por cuenta) y aprobó. Aprobó también el delta 4110822f (solo guía) y a5da4048 (solo workflow). Seguimientos documentados antes de activar live: instancia única (candados en memoria), costo O(cuentas) del barrido, PartialRefund sin revertir y sin anotar en el barrido, asientos steam_order visibles en el historial, prueba en sandbox de Steam con AppID real. El delta 2bdd9085 (solo la prueba steam-client.js) lo verificó QA; arquitectura no lo reviso por separado."
    },
-   "at": "2026-11-11T12:20:00Z"
+   "at": "2026-11-11T22:30:00Z"
   },
   {
    "stage": "staging",
-   "by": "claude-integrador-292b",
+   "by": "claude-integrador-294",
    "role": "integrador",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "60108c8dc7dbd9cae18fc5b5d54ee456b38c9c4f",
+    "sha": "2bdd90859647814f0490f653d4cbe6298d321c4b",
     "branch": "beta/integracion-20261110",
-    "tests": 26,
+    "tests": 28,
     "failed": 0,
-    "run": "https://github.com/Fondal-Studios/La-Horda/pull/292"
+    "run": "https://github.com/Fondal-Studios/La-Horda/pull/294"
    },
-   "at": "2026-11-11T12:30:00Z"
+   "at": "2026-11-11T22:35:00Z"
   },
   {
    "stage": "aprobacion",
-   "by": "claude-integrador-292b",
+   "by": "claude-integrador-294",
    "role": "director",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "60108c8dc7dbd9cae18fc5b5d54ee456b38c9c4f",
-    "report": "El integrador dio 'condicionado' a que 'Regresion del juego (completa)' terminara en success sobre 60108c8d y a que existiera este registro con 'Clasificacion' en verde después. La completa terminó en success (la rápida también; 'Objetos, economía y tienda' sin repetir la falla de CARCELERO) antes de este registro. Único check no verde: 'Clasificacion, contratos y servidor' por R4 con el registro viejo de la PR 290 (esperado hasta este registro). Verificado por el integrador: beta/integracion-20261110 == 60108c8d, diff de 8 archivos sin código de juego. Tomado del relato: resultados de QA y arquitectura. Riesgos: sin pruebas de navegador real de los tooltips traducidos; MINOR de arquitectura abiertos. Aprobación dada por un agente conforme a reviews/POLITICA.json (decisión del propietario); no la dio ninguna persona."
+    "sha": "2bdd90859647814f0490f653d4cbe6298d321c4b",
+    "report": "Aprobado técnicamente sobre 2bdd9085 con la condición de este registro. Primera revisión sobre 4110822f: CONDICIONADO por un fallo real de CI causado por la PR (steam-client.js sin NODE_PATH de Playwright en el workflow); corregido en a5da4048; los runs de ese SHA quedaron en cola por un incidente de GitHub Actions y se sustituyeron por 2bdd9085. CI de 2bdd9085 verificado por el integrador: 28 check-runs, todos success salvo 'Clasificacion, contratos y servidor' (R4 con el registro viejo de la PR 292; esperado hasta este registro). Incluye entry-reference con 'test-steam: 45 comprobaciones OK' y 'steam-client: 24 checks PASS' y los pasos posteriores, y las regresiones rápida y completa en success. Riesgos: NADA se probó contra Steam real ni Electron real (Steam y contenedor falsos; PRUEBAS_ELECTRON.md); es una PR de dinero: se recomienda una prueba en sandbox de Steam (STEAM_MODE=sandbox, app 480) antes de abrir ventas y no activar live hasta entonces; el integrador no hizo revisión línea a línea del código de pagos y tomó de QA y arquitectura los resultados de 26aad63e. Aprobación dada por un agente conforme a reviews/POLITICA.json (decisión del propietario); no la dio ninguna persona."
    },
-   "at": "2026-11-11T12:35:00Z"
+   "at": "2026-11-11T22:40:00Z"
   }
  ]
 }
