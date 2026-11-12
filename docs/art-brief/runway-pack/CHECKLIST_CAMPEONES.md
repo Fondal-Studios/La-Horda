@@ -15,7 +15,7 @@
 | **myla** | sí | 112×112, 8 col | layout estándar de 36 (sin sets declarados: no se puede medir acá) | lanzar (P1); definitiva (P1); golpe (P1); muerte (P0) | forma:falta | no probado |
 | **soporte** | sí | 112×112, 4 col | completo | lanzar (P1); golpe (P1); muerte (P0) | skin:falta | no probado |
 | **tanque** | sí | 112×112, 4 col | layout estándar de 36 (sin sets declarados: no se puede medir acá) | lanzar (P1); muerte (P0); golpe (P1) | — | lamina limpia=hecho; clip walk down=aprobado; clip walk side=aprobado; clip walk up=generado; clip attack down=aprobado; clip attack side=aprobado; clip attack up=generado; clip cast=generado; clip ult=rechazado; clip death=generado; cuadros aprobados=rechazado; atlas armado=hecho; gates=rechazado; instalado motor=rechazado; captura antes despues=hecho |
-| **ynara** | sí | 96×96, 4 col | repetidos: cast_down=attack_down, ultimate_down=attack_down | lanzar (P1); definitiva (P1); muerte (P0) | — | no probado |
+| **ynara** | sí | 96×96, 4 col | completo | lanzar (P1); definitiva (P1); muerte (P0) | — | no probado |
 | **aurelia** | sí | 112×112, 4 col | completo | — | skin:recolor, skin:recolor | no probado |
 | **axiom** | sí | 112×112, 4 col | completo | ataque_abajo (P1); ataque_arriba (P1) | skin:falta | no probado |
 | **cazadora** | sí | 192×160, 4 col | faltan: ultimate_down | ataque_abajo (P1); ataque_arriba (P1) | forma:falta | no probado |

@@ -6,7 +6,7 @@
 
 > Auditado el 2026-11-12 en la rama `wip/runway-video` contra el repo (archivos con `ls`, carga con `grep` en `js/`). Costo medido: 8 cr por imagen gen4_image 1024; hoja de enemigo 1280x720 observada a 5 cr; video gen4_turbo 2 s = 10 cr. Los créditos son los registrados por recibo/ART_CREDITS (hay gasto sin recibo: ver notas); el saldo de la cuenta es compartido.
 
-**Entradas: 86** · ✔ integrado 51 · ◐ sin integrar 6 · ✘ rechazado 13 · · pendiente 15 · ⛔ bloqueado 1 · créditos registrados: 1233
+**Entradas: 88** · ✔ integrado 53 · ◐ sin integrar 6 · ✘ rechazado 13 · · pendiente 15 · ⛔ bloqueado 1 · créditos registrados: 1273
 
 ## lamina_campeon (4)
 
@@ -113,7 +113,7 @@
 | `hoja_minotauro` | ✘ rechazado | 2026-11-06 | 5 | `art-source/runway-enemies/laberinto/minotauro` | Hoja peor que el retrato de campo de batalla; retirada (RUNWAY_ENEMIES.md). |
 | `leviatan_imagenes_15` | ✔ integrado | 2026-11-06 |  | `assets/sprites/bosses/acuatica/leviatan/head_01.png`<br>`art-source/runway-redraw/sprites/bosses/acuatica/leviatan/orig/head_01.png` | Solo se usan si el retrato de campo de batalla no carga (el retrato manda). Sin recibos: 15 imágenes gen4_image, créditos no registrados (sin_verificar). |
 
-## campeon_cuerpo (11)
+## campeon_cuerpo (13)
 
 | id | estado | fecha | cr | dónde está | nota |
 |---|---|---|---:|---|---|
@@ -128,6 +128,8 @@
 | `tanque_f24_diseno` | ◐ sin integrar | 2026-11-12 | 24 | `art-source/runway-guardians/tanque/f24_a5/master.png`<br>`tools/art/codex-clean.py` | a1 rechazada (texto del título en la imagen, sin espada); a2 descartada (prompt «test»); a3/a4 BAD_OUTPUT (el saldo bajó ~5 y ~20, no atribuible). Solo a5 sirve como DISEÑO; no demuestra poses. |
 | `tanque_lote_cuadros` | ✘ rechazado | 2026-11-12 | 86 | `art-source/runway-guardians/tanque/f12_a1/master.png`<br>`art-source/runway-guardians/tanque/f27_a1/master.png` | gen4_image ignora la pose pedida y devuelve siempre un personaje de pie (golpe y recuperar salieron idénticos a una pose de pie); las poses agachadas o tendidas dan BAD_OUTPUT (el saldo bajó 86 cr por saldo 856→770 para 2 imágenes y 6 fallos; sin recibo). Medido: 0 aprobados. |
 | `regla_campeon_cuerpo_imagenes_sueltas` | ✘ rechazado | 2026-11-12 |  | `docs/beta-release/ART_CREDITS.md`<br>`docs/art-brief/runway-pack/RECETA.md` | Medido: 0 aprobados como POSE en 13+ imágenes del Tanque (f24_a5 quedó aceptada solo como diseño); mismo límite visto en Profeta pf_up y Myla d3. Solo sirvió con @pose de una imagen aceptada de la misma serie y poses de pie (Libertador/Profeta/Coloso). |
+| `ynara_ult_poses_gpt2` | ✔ integrado | 2026-11-12 | 20 | `art-source/runway-designs/ynara/u1/master.png`<br>`art-source/ynara-runway/ult` | Respeta poses y diseno (gen4_image las ignora). Convertida con tools/art/sheet-to-cells.py. Instalada 2026-11-12. |
+| `ynara_cast_poses_gpt2` | ✔ integrado | 2026-11-12 | 20 | `art-source/runway-designs/ynara/c1/master.png`<br>`art-source/ynara-runway/cast` | Primer intento aceptado (saldo 225 -> 205). Sombra de suelo del modelo recortada con --trim-feet 9. Instalada 2026-11-12. |
 
 ## campeon_video (2)
 
