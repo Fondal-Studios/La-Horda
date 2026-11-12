@@ -47,3 +47,10 @@
 - Generado por `python3 tools/art/build-runway-pack.py` desde `node tools/art/dump-game-data.js`; cobertura y sincronía verificadas por `python3 tools/art/test-runway-pack.py` (CI: `art-production-evidence.yml`). Nuevo `tools/art/pose-ref.py` recorta el cuadro actual de un atlas como `@pose`.
 - NO verificado: que Runway devuelva cada pose con la calidad pedida (hay descartes registrados); el paquete ordena el método y el gasto, no garantiza el resultado.
 - **Mergeado en `main` (PR #296, a27c48b7)** con revisión independiente sellada a 878f57ed y 15/15 checks en verde. Unificación del 2026-11-12: cada enemigo/jefe sin atlas propio tiene un «Paso 0» (diseño con Runway, `tools/art-world/runway-design.js`) y la cadena `gen_sheet` → `install` → `walk_batch`; ilsa, kora y vorn tienen Paso 0 para crear su lámina del Códice; sin tope de créditos por decisión del dueño (2026-11-12). Costos recalculados (8 cr/imagen, 5 cr/hoja de enemigo; ×2,5 es supuesto). Saldo de Runway al 2026-11-12: 0–2 créditos: no se generó nada.
+
+### Primer ciclo real de dibujo con Runway (2026-11-12, saldo 950 → 710)
+- **Campeón (Tanque):** 9 imágenes; el diseño se conserva (recorte limpio de la lámina: `tools/art/codex-clean.py`), pero Runway ignora la pose y devuelve siempre un personaje de pie; las poses agachadas o tendidas dan BAD_OUTPUT cobrado. Ningún cuadro entra al juego.
+- **Enemigos (4 con hoja completa: tiburon_joven, cm_acechante, demonio_menor, esfinge):** 8 hojas, 0 aprobadas (caminatas casi idénticas, muertes fundidas o con cristales ajenos, orientación mezclada). Nada instalado; los atlas actuales no cambiaron. demonio_menor v3 es rescatable con un `spec` manual sin gastar más.
+- Detalle por task id en `docs/beta-release/ART_CREDITS.md`. La cuenta de Runway es compartida (el saldo baja también por consumo ajeno).
+- Conclusión: con este método Runway sirve para diseño/ilustración, no para animación; el movimiento de campeones y enemigos queda al pintor determinista.
+
