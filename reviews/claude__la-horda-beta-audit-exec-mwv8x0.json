@@ -1,8 +1,8 @@
 {
  "subject": {
-  "pr": 295,
+  "pr": 296,
   "branch": "claude/la-horda-beta-audit-exec-mwv8x0",
-  "head": "df3804f47191794fef49cdec459c5268d3058311",
+  "head": "878f57eda1342b10352f95e80c6e87ed8437625b",
   "authorAgent": "claude-sesion-principal",
   "authorId": "claude-sesion-principal"
  },
@@ -11,57 +11,57 @@
    "stage": "produccion",
    "by": "claude-sesion-principal",
    "role": "agent",
-   "commit": "df3804f47191794fef49cdec459c5268d3058311",
-   "at": "2026-11-12T00:00:00Z"
+   "commit": "878f57eda1342b10352f95e80c6e87ed8437625b",
+   "at": "2026-11-12T03:20:00Z"
   },
   {
    "stage": "qa",
-   "by": "claude-qa-295",
+   "by": "claude-qa-296",
    "role": "qa",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "df3804f47191794fef49cdec459c5268d3058311",
-    "tests": 9,
+    "sha": "878f57eda1342b10352f95e80c6e87ed8437625b",
+    "tests": 3,
     "failed": 0,
-    "report": "Sobre df3804f4, 9 suites en serie sin fallos (test-steam 53, test-wallet 67/67, test-payments-mp 41, test-wallet-pieces 35/35, test-founders 158, test-game-master 127, test-accounts 0 fallos, test-battlepass 64, steam-client 24). Rondas previas encontraron: el mensaje del 429 no llegaba al cliente, y pedidos que Steam no aceptó contaban para el tope (falso bloqueo); corregidos. Marcó además el riesgo de anular pedidos ante errores ambiguos de Steam (cobro sin crédito), corregido en df3804f4 (solo un rechazo definitivo anula) y reverificado. MINOR abiertos: el barrido no espacia las consultas de pedidos que Steam no conoce (hasta 7 días), un 200 con cuerpo inesperado cuenta como rechazo, ventana de 80 del historial, tope no atómico. No cubrió Steam real, Postgres, concurrencia del tope ni navegador."
+    "report": "Sobre 878f57ed: test-runway-pack 9941 comprobaciones OK; 53 comandos runway-design.js del paquete con --dry-run sin fallos ni API ni escritura; pose-ref (cristal_servo, nano_gm de 8 columnas) y rutas entre pasos coherentes; manejo de errores de runway-design.js probado con curl falso (error de API corta, id/intento y rutas validados, receipt PENDING con taskId). Ronda previa sobre 1a0d6dda: NO APROBADO por 6 hallazgos IMPORTANT (21 criaturas con hoja instalada marcadas sin atlas, walk_batch sin --kind bosses y promesa falsa de espaldas, scan_sprites con ruta equivocada, prompts de apoyo sin referencias, cifras contradictorias, bucle de 6 min ante error de API); todos corregidos y reverificados. No llamó a la API real de Runway; no cubre generación real ni calidad visual."
    },
-   "at": "2026-11-12T00:10:00Z"
+   "at": "2026-11-12T03:25:00Z"
   },
   {
    "stage": "arquitectura",
-   "by": "claude-arq-295",
+   "by": "claude-arq-296",
    "role": "arquitecto",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "df3804f47191794fef49cdec459c5268d3058311",
-    "report": "Aprobó daf7873f con observaciones; RECHAZÓ 2be19abd porque anulaba el pedido ante cualquier error de InitTxn, incluidos timeout/5xx donde Steam pudo crearlo y el jugador aprobarlo (cobro sin crédito, reabría el hueco que cerraba el barrido). Corregido en df3804f4: solo STEAM_INIT_FAILED anula; los ambiguos quedan abiertos y el barrido los acredita; test nuevo (Steam crea el pedido y responde 503; el barrido acredita 1100). Aprobó df3804f4 sin BLOCKER ni IMPORTANT. MINOR: !r.ok incluye 3xx como rechazo."
+    "sha": "878f57eda1342b10352f95e80c6e87ed8437625b",
+    "report": "Aprobó 1a0d6dda sin CRITICAL/IMPORTANT (5 MINOR en runway-design.js) y 878f57ed tras verificar que quedaron resueltos (validación de id/intento, referencias dentro del repo, api() revisa error, mkdir tras POST OK, receipt PENDING). Diff contra main: solo documentación y herramientas de arte (79 archivos), ningún archivo de js/, index.html, server/, gates ni balance. Quedan MINOR: symlink dentro del repo, --force vs FORCE=1. No ejecutó tests (los cubre QA)."
    },
-   "at": "2026-11-12T00:20:00Z"
+   "at": "2026-11-12T03:27:00Z"
   },
   {
    "stage": "staging",
-   "by": "claude-integrador-295",
+   "by": "claude-integrador-296",
    "role": "integrador",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "df3804f47191794fef49cdec459c5268d3058311",
+    "sha": "878f57eda1342b10352f95e80c6e87ed8437625b",
     "branch": "beta/integracion-20261110",
-    "tests": 26,
+    "tests": 14,
     "failed": 0,
-    "run": "https://github.com/Fondal-Studios/La-Horda/pull/295"
+    "run": "https://github.com/Fondal-Studios/La-Horda/pull/296"
    },
-   "at": "2026-11-12T00:30:00Z"
+   "at": "2026-11-12T03:30:00Z"
   },
   {
    "stage": "aprobacion",
-   "by": "claude-integrador-295",
+   "by": "claude-integrador-296",
    "role": "director",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "df3804f47191794fef49cdec459c5268d3058311",
-    "report": "Aprobado sobre df3804f4. Verificado por el integrador: beta/integracion-20261110 == df3804f4; diff de 5 archivos (wallet.js, payments.js, admin-users.js, test-steam.js, guía); CI completo en success (regresión rápida y completa, entry-reference con 'test-steam: 53 comprobaciones OK' y 'steam-client: 24 checks PASS', CodeQL y el resto) salvo 'Clasificacion, contratos y servidor' por R4 con el registro viejo de la PR 294 (esperado hasta este registro). Tomado del relato: aprobaciones de QA y arquitectura. Riesgos: nada probado contra Steam real (falta sandbox con AppID real; no activar live); los pedidos cancelados en el overlay cuentan 24 h para el tope; candados en memoria (una sola instancia); el barrido consulta pedidos terminales hasta 7 días. Aprobación dada por un agente conforme a reviews/POLITICA.json (decisión del propietario); no la dio ninguna persona."
+    "sha": "878f57eda1342b10352f95e80c6e87ed8437625b",
+    "report": "Aprobado sobre 878f57ed. PR 296 head == 878f57ed; 15 checks: 14 success (regresión rápida y UX, objetos/economía/tienda, identidad de arenas, VFX, Art production evidence, CodeQL, emoji-lint) y 1 failure ('Clasificacion, contratos y servidor') solo por R4 con el registro viejo. Diff solo docs/art-brief/runway-pack, tools/art*, workflow de evidencia, .gitignore y STATUS. Salvedad: los pasos posteriores de ese job se saltaron por R4 y se verifican al re-correrlo con este registro. No se generó arte con Runway (saldo 0–2); el paquete es instrucciones, no arte aprobado."
    },
-   "at": "2026-11-12T00:35:00Z"
+   "at": "2026-11-12T03:32:00Z"
   }
  ]
 }

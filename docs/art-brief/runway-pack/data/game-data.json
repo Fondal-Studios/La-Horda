@@ -1,0 +1,4541 @@
+{
+ "generado": "node tools/art/dump-game-data.js",
+ "champions": {
+  "tanque": {
+   "id": "tanque",
+   "name": "Aldric, el Último Bastión",
+   "hudName": "Aldric",
+   "color": "#5f8fc4",
+   "glow": "#a9cdf0",
+   "role": "Resistencia, protección y control de área.",
+   "roleCategory": "tanque",
+   "basicRange": 78,
+   "basicArc": true,
+   "ranged": false,
+   "skills": [
+    {
+     "name": "Torbellino",
+     "desc": "Gira sin parar dañando a su alrededor",
+     "kind": "spin_channel",
+     "radius": 115,
+     "range": null,
+     "duration": 2400
+    },
+    {
+     "name": "Embestida",
+     "desc": "Carga, arrastra y golpea a un enemigo",
+     "kind": "charge_drag",
+     "radius": null,
+     "range": 230,
+     "duration": null
+    },
+    {
+     "name": "Grito de Guerra",
+     "desc": "Grito que aumenta armadura, vida máxima y su tamaño",
+     "kind": "war_cry",
+     "radius": null,
+     "range": null,
+     "duration": 5000
+    }
+   ],
+   "ultimate": {
+    "name": "Grito Provocador",
+    "desc": "Provoca a los enemigos, se agiganta y gana armadura y vida máxima",
+    "kind": "taunt_provoke"
+   },
+   "catalogLore": "Aldric sostiene la primera línea: atrae a la Horda, protege al equipo y arrasa con su torbellino.",
+   "origin": "Muralla de la Ciudad Maldita",
+   "history": "Aldric era capitán de la guardia cuando la Horda volvió a la Ciudad Maldita. Sostuvo la puerta norte tres noches seguidas, hasta que el escudo le quedó soldado al brazo. Nadie sabe cómo sigue en pie. Desde entonces camina delante de todos: dice que ya tiene la costumbre de recibir los golpes y que prefiere que sean suyos.",
+   "atlasActual": "assets/sprites/champions/tanque/atlas.png"
+  },
+  "guerrero": {
+   "id": "guerrero",
+   "name": "Kael, la Daga Carmesí",
+   "hudName": "Kael",
+   "color": "#c4544a",
+   "glow": "#f0a89a",
+   "role": "Daño físico cuerpo a cuerpo contra objetivos y jefes.",
+   "roleCategory": "asesino",
+   "basicRange": 64,
+   "basicArc": false,
+   "ranged": false,
+   "skills": [
+    {
+     "name": "Corte Sangrante",
+     "desc": "Aplica un sangrado profundo",
+     "kind": "bleed_hit",
+     "radius": null,
+     "range": null,
+     "duration": null
+    },
+    {
+     "name": "Triple Golpe",
+     "desc": "Tres golpes veloces; el último causa +300% de daño",
+     "kind": "triple_hit",
+     "radius": null,
+     "range": null,
+     "duration": null
+    },
+    {
+     "name": "Trampa de Área",
+     "desc": "Coloca una trampa que explota y encadena daño",
+     "kind": "area_trap",
+     "radius": 65,
+     "range": 170,
+     "duration": 12000
+    }
+   ],
+   "ultimate": {
+    "name": "Pestilencia Sombría",
+    "desc": "Sigilo total y un triple golpe que envenena y encadena sangrado",
+    "kind": "shadow_stealth"
+   },
+   "catalogLore": "Kael encadena cortes y sangrados, y prepara trampas que castigan a toda una oleada.",
+   "origin": "Los callejones de la Ciudad Maldita",
+   "history": "Kael cobraba por desaparecer a la gente equivocada. Cuando la ciudad cayó descubrió que los monstruos también sangran, y que él sabe exactamente dónde cortar. No pelea por los Guardianes ni por la gloria: pelea porque nadie le paga mejor que la venganza, y porque la Horda se llevó lo único que no estaba en venta.",
+   "atlasActual": "assets/sprites/champions/guerrero/atlas.png"
+  },
+  "mago": {
+   "id": "mago",
+   "name": "Thalen, el Tejedor Elemental",
+   "hudName": "Thalen",
+   "color": "#a15fc7",
+   "glow": "#d9a9f0",
+   "role": "Daño mágico, área y control elemental.",
+   "roleCategory": "mago",
+   "basicRange": 340,
+   "basicArc": false,
+   "ranged": true,
+   "skills": [
+    {
+     "name": "Muro de Fuego",
+     "desc": "Crea un anillo de fuego que quema al pisarlo",
+     "kind": "fire_wall",
+     "radius": null,
+     "range": 190,
+     "duration": 4500
+    },
+    {
+     "name": "Nova de Escarcha",
+     "desc": "Congela a los enemigos cercanos",
+     "kind": "frost_nova",
+     "radius": 125,
+     "range": null,
+     "duration": null
+    },
+    {
+     "name": "Cadena de Relámpago",
+     "desc": "Salta entre enemigos",
+     "kind": "chain",
+     "radius": null,
+     "range": null,
+     "duration": null
+    }
+   ],
+   "ultimate": {
+    "name": "Cataclismo Elemental",
+    "desc": "3 novas de hielo, lluvia de rayos por 5s y armadura de fuego",
+    "kind": "elemental_storm"
+   },
+   "catalogLore": "Thalen combina fuego, escarcha y relámpagos para controlar y devastar grupos de enemigos.",
+   "origin": "La Torre de las Dos Llamas",
+   "history": "Thalen estudió el fuego y el hielo como opuestos hasta entender que son el mismo idioma. Leyó sobre los Cuatro Guardianes en libros que el Hechicero Supremo había prohibido, y es de los pocos que sospecha que la historia oficial está incompleta. Cada hechizo que lanza es también una pregunta que todavía nadie le responde.",
+   "atlasActual": null
+  },
+  "soporte": {
+   "id": "soporte",
+   "name": "Elyra, la Guardiana del Alba",
+   "hudName": "Elyra",
+   "color": "#5fc48c",
+   "glow": "#a9f0c9",
+   "role": "Sanadora a distancia: restaura a sus aliados y purifica las oleadas con luz en área.",
+   "roleCategory": "soporte",
+   "basicRange": 320,
+   "basicArc": false,
+   "ranged": true,
+   "skills": [
+    {
+     "name": "Alba Purificadora",
+     "desc": "Un pulso de luz cura a los aliados en 260 u y daña a todos los enemigos en 160 u por el 120% de su daño. Ambos radios crecen con la maestría.",
+     "kind": "team_heal_aoe",
+     "radius": 260,
+     "range": null,
+     "duration": null
+    },
+    {
+     "name": "Bendición de Guerra",
+     "desc": "Aumenta el daño de los aliados cercanos",
+     "kind": "team_atk_buff",
+     "radius": 260,
+     "range": null,
+     "duration": 5500
+    },
+    {
+     "name": "Escudo Sagrado",
+     "desc": "Aumenta la defensa de los aliados cercanos",
+     "kind": "team_shield_buff",
+     "radius": 260,
+     "range": null,
+     "duration": 5500
+    }
+   ],
+   "ultimate": {
+    "name": "Bendición Suprema",
+    "desc": "Cura y bendice a todo el equipo con ataque y defensa",
+    "kind": "team_grand_buff"
+   },
+   "catalogLore": "Elyra cura y protege a su equipo; la misma luz que los salva purifica a la Horda.",
+   "origin": "El Santuario del Alba",
+   "history": "Elyra era la sanadora del último santuario que resistió en la ciudad. Aprendió que una bendición a tiempo salva más vidas que cualquier espada, y que la luz que cierra heridas también quema a lo que la Horda corrompió. Su juramento es sencillo y obstinado: que ninguna vida se pierda sin que alguien haya luchado por ella.",
+   "atlasActual": "assets/sprites/champions/soporte/atlas.png"
+  },
+  "segador": {
+   "id": "segador",
+   "name": "Segador, el Olvidado",
+   "hudName": "Segador",
+   "color": "#c62828",
+   "glow": "#ff8a7a",
+   "role": "Berserker / tanque ofensivo. Cuanto más daño recibe, más peligroso se vuelve.",
+   "roleCategory": "tanque",
+   "basicRange": 88,
+   "basicArc": true,
+   "ranged": false,
+   "skills": [
+    {
+     "name": "Tajo del Segador",
+     "desc": "Corte horizontal amplio; golpea a varios enemigos frente a él",
+     "kind": "cone_slash",
+     "radius": null,
+     "range": 130,
+     "duration": null
+    },
+    {
+     "name": "Armadura de la Furia",
+     "desc": "Recibe menos daño; cada golpe recibido genera más Furia",
+     "kind": "fury_armor",
+     "radius": null,
+     "range": null,
+     "duration": 5000
+    },
+    {
+     "name": "Último Aliento",
+     "desc": "Intensifica su furor: más daño mientras dura, cura una porción al lanzarlo",
+     "kind": "last_stand_burst",
+     "radius": null,
+     "range": null,
+     "duration": 3500
+    }
+   ],
+   "ultimate": {
+    "name": "Segador de Almas",
+    "desc": "Furia máxima: daño e impacto enormes, resiste el control y roba vida. Cada baja alarga la duración",
+    "kind": "berserker_ult"
+   },
+   "catalogLore": "El Segador se vuelve más peligroso cuanto más cerca está de la muerte.",
+   "origin": "Un campo de batalla que nadie recuerda",
+   "history": "Nadie sabe su nombre, ni siquiera él. Despertó entre los muertos de una guerra olvidada con una guadaña en las manos y una furia que no se apaga. La Horda lo reconoce como algo propio y lo teme por eso mismo. Cuanto más cerca está de volver a morir, más se parece a lo que los monstruos sueñan cuando sueñan con un cazador.",
+   "atlasActual": null
+  },
+  "axiom": {
+   "id": "axiom",
+   "name": "Axiom, el Reescritor",
+   "hudName": "Axiom",
+   "color": "#3ad6c4",
+   "glow": "#9df5ea",
+   "role": "Manipula directamente las reglas de la realidad. Daño de área y control.",
+   "roleCategory": "mago",
+   "basicRange": 340,
+   "basicArc": false,
+   "ranged": true,
+   "skills": [
+    {
+     "name": "Error 404",
+     "desc": "Marca una zona; tras una breve demora, colapsa y daña/ralentiza en un área",
+     "kind": "glitch_delay_nova",
+     "radius": 130,
+     "range": 200,
+     "duration": null
+    },
+    {
+     "name": "Sobrescribir",
+     "desc": "Infecta al enemigo más cercano con código corrupto: se contagia de enemigo en enemigo y sigue dañando con el tiempo (más saltos y más daño al mejorarla)",
+     "kind": "overwrite_nova",
+     "radius": null,
+     "range": 300,
+     "duration": null
+    },
+    {
+     "name": "Teletransporte",
+     "desc": "Axiom se desplaza al instante en la dirección en la que mira; casi sin enfriamiento al llevarla al máximo",
+     "kind": "teleport_blink",
+     "radius": null,
+     "range": 280,
+     "duration": null
+    }
+   ],
+   "ultimate": {
+    "name": "Force Quit",
+    "desc": "Fuerza el cierre de la realidad: 4 segundos de colores invertidos donde nadie más se mueve — al terminar, todo el daño cae de golpe sobre los enemigos cercanos",
+    "kind": "force_quit_ult"
+   },
+   "catalogLore": "Axiom descubrió que la realidad tiene reglas: no lanza hechizos, las reescribe.",
+   "origin": "Más allá de la realidad conocida",
+   "history": "Axiom descubrió que el mundo está construido con reglas, y que las reglas se pueden reescribir. Para él la Horda es un error en el sistema: una línea de código que alguien dejó abierta a propósito. Cada vez que corrige una zona del mapa encuentra otra firma del mismo autor. Quiere encontrar a quien la escribió antes de que termine el programa.",
+   "atlasActual": null
+  },
+  "profeta": {
+   "id": "profeta",
+   "name": "Ismara, la Profeta Ciega",
+   "hudName": "Ismara",
+   "color": "#4fd8c4",
+   "glow": "#bffff0",
+   "role": "Sanadora de apoyo cuerpo a cuerpo. Cura, protege y potencia a un aliado elegido.",
+   "roleCategory": "soporte",
+   "basicRange": 82,
+   "basicArc": false,
+   "ranged": false,
+   "skills": [
+    {
+     "name": "Destino Restaurado",
+     "desc": "Cura al instante al aliado más herido. Si está gravemente herido, además revierte parte del daño reciente que recibió",
+     "kind": "retro_heal",
+     "radius": null,
+     "range": null,
+     "duration": null
+    },
+    {
+     "name": "Visión del Inmortal",
+     "desc": "Un aliado cercano se vuelve inmune a todo daño y a efectos negativos por unos segundos; al terminar, recibe una pequeña regeneración",
+     "kind": "brief_immunity",
+     "radius": null,
+     "range": 260,
+     "duration": 2400
+    },
+    {
+     "name": "Danza del Augurio",
+     "desc": "Gira con su hoja y genera daño de área a su alrededor; si un enemigo está muy cerca, lo aturde brevemente",
+     "kind": "self_spin_stun",
+     "radius": 112,
+     "range": null,
+     "duration": null
+    }
+   ],
+   "ultimate": {
+    "name": "Ascensión del Elegido",
+    "desc": "Se fusiona con un aliado: él recibe una gran curación, mucho más daño, velocidad de ataque y resistencia, y recarga sus habilidades casi al instante mientras dura",
+    "kind": "ascension_fusion"
+   },
+   "catalogLore": "Ismara ve el destino de sus aliados antes de que ocurra, y a veces alcanza para cambiarlo.",
+   "origin": "El Oráculo sin ojos",
+   "history": "Ismara entregó los ojos al Oráculo a cambio de ver unos segundos más adelante. A veces le alcanza para cambiar el destino de un aliado, y a veces solo para verlo venir. Pelea cuerpo a cuerpo porque nadie más está tan cerca del golpe que va a llegar. Sus visiones sobre los cristales la despiertan de noche: siempre terminan en el mismo lugar, en llamas.",
+   "atlasActual": "assets/sprites/champions/profeta/atlas.png"
+  },
+  "musashi": {
+   "id": "musashi",
+   "name": "Musashi, el Rōnin del Bokken",
+   "hudName": "Musashi",
+   "color": "#5aa8d8",
+   "glow": "#bfe4ff",
+   "role": "Duelista. Daño físico a un solo objetivo y ejecución: elige un rival y se vuelve cada vez más peligroso contra él.",
+   "roleCategory": "asesino",
+   "basicRange": 60,
+   "basicArc": false,
+   "ranged": false,
+   "skills": [
+    {
+     "name": "Corte del Rōnin",
+     "desc": "Avanza y ejecuta un corte horizontal único y extremadamente rápido",
+     "kind": "ronin_slash",
+     "radius": null,
+     "range": 120,
+     "duration": null
+    },
+    {
+     "name": "Paso Fantasma",
+     "desc": "Atraviesa a un enemigo y aparece detrás suyo; el siguiente básico gana probabilidad de crítico. Si se activa justo antes de recibir un golpe, es un Paso Perfecto: lo evita por completo",
+     "kind": "ghost_step",
+     "radius": null,
+     "range": 190,
+     "duration": null
+    },
+    {
+     "name": "Mil Cortes",
+     "desc": "Ráfaga de cortes alrededor suyo que prioriza a su objetivo de duelo; cuantos menos enemigos haya, más cortes recibe cada uno",
+     "kind": "thousand_cuts",
+     "radius": 150,
+     "range": null,
+     "duration": null
+    }
+   ],
+   "ultimate": {
+    "name": "Último Duelo",
+    "desc": "Se transporta con su objetivo de duelo a una arena privada: 1 contra 1 hasta que uno de los dos caiga o se acabe el tiempo",
+    "kind": "last_duel_ult"
+   },
+   "catalogLore": "Musashi carga un bokken en vez de una katana: elige un rival, lo estudia y lo termina.",
+   "origin": "Un camino sin señor",
+   "history": "Musashi cruzó cien duelos para llegar a la Ciudad Maldita y ganó todos sin desenvainar una hoja de verdad. Cree que cualquier arma alcanza contra un rival al que se entiende por completo. Elige uno, lo estudia y lo termina de un solo corte. Ahora busca al único adversario que todavía no entiende: la Horda, que nunca pelea dos veces igual.",
+   "atlasActual": null
+  },
+  "cazadora": {
+   "id": "cazadora",
+   "name": "Sylva, la Cazadora del Bosque",
+   "hudName": "Sylva",
+   "color": "#5c9a4a",
+   "glow": "#c8f0a8",
+   "role": "Tiradora extremadamente móvil que gana velocidad mientras persigue a su presa.",
+   "roleCategory": "asesino",
+   "basicRange": 300,
+   "basicArc": false,
+   "ranged": true,
+   "skills": [
+    {
+     "name": "Flecha Perforante",
+     "desc": "Mantené pulsado para cargar: más carga = más daño, velocidad, alcance y penetración. A carga máxima atraviesa varios enemigos",
+     "kind": "piercing_shot",
+     "radius": null,
+     "range": 420,
+     "duration": null
+    },
+    {
+     "name": "Trampa del Bosque",
+     "desc": "Coloca una trampa de raíces; inmoviliza (o ralentiza mucho a bosses) al primer enemigo que la pise",
+     "kind": "forest_trap",
+     "radius": 70,
+     "range": 220,
+     "duration": null
+    },
+    {
+     "name": "Lluvia de la Cazadora",
+     "desc": "Tras un breve retraso, una lluvia de flechas cae sobre la zona; prioriza a su Presa si está cerca",
+     "kind": "hunter_rain",
+     "radius": 180,
+     "range": null,
+     "duration": null
+    }
+   ],
+   "ultimate": {
+    "name": "Cacería Salvaje",
+    "desc": "Impulso al máximo fijo, puede correr y disparar a la vez, invoca a un Lobo Espectral que persigue a su Presa",
+    "kind": "wild_hunt_ult"
+   },
+   "catalogLore": "Sylva es una tiradora muy móvil que gana velocidad mientras persigue a su presa.",
+   "origin": "Los bosques de las Ruinas",
+   "history": "Sylva creció entre los menhires de las Ruinas Célticas, antes de que se pudrieran. Conoce cada sendero, cada rastro y cada presa del bosque viejo. Volvió persiguiendo a la Horda y encontró al Guardián Ancestral convertido en otra cosa. Todavía no se lo perdona, y por eso nunca deja de moverse: quedarse quieta sería empezar a llorarlo.",
+   "atlasActual": null
+  },
+  "nigromante": {
+   "id": "nigromante",
+   "name": "Ilvar, el Señor de las Criptas",
+   "hudName": "Ilvar",
+   "color": "#4ab88a",
+   "glow": "#8ef0c8",
+   "role": "Señor de un ejército y cosechador de almas: los caídos se levantan a su lado, las almas alimentan su poder y maldice a la horda.",
+   "roleCategory": "mago",
+   "basicRange": 320,
+   "basicArc": false,
+   "ranged": true,
+   "skills": [
+    {
+     "name": "Cosecha de Almas",
+     "desc": "Arranca almas en un cono: daña, ralentiza y suelta almas. PASIVA: tus esqueletos se levantan solos de los cadáveres cercanos (hasta 6 al mejorarla)",
+     "kind": "soul_harvest",
+     "radius": null,
+     "range": 210,
+     "duration": null
+    },
+    {
+     "name": "Gólem de Carne",
+     "desc": "Arma un gólem con los cadáveres cercanos (más cuerpos, más vida). Si ya tenés uno: salta al punto apuntado y APLASTA (daño y aturdimiento)",
+     "kind": "summon_golem",
+     "radius": null,
+     "range": 240,
+     "duration": null
+    },
+    {
+     "name": "Plaga de los Condenados",
+     "desc": "Maldice un área: daño continuo y más daño recibido; si un maldito muere, contagia a los cercanos",
+     "kind": "condemned_plague",
+     "radius": 150,
+     "range": 300,
+     "duration": 6000
+    }
+   ],
+   "ultimate": {
+    "name": "Encarnación del Abismo",
+    "desc": "Absorbe temporalmente a todo tu ejército y te transforma en un Demonio Nigromántico; tu poder escala con cuántos absorbiste",
+    "kind": "abyss_incarnation_ult"
+   },
+   "catalogLore": "Ilvar levanta a los caídos, arma un coloso de carne y, si hace falta, se vuelve un demonio.",
+   "origin": "Las criptas bajo la ciudad",
+   "history": "Ilvar creció cuidando las criptas bajo la ciudad. Los vivos le tienen miedo; los muertos le obedecen. Levanta a los caídos, cose gólems con lo que queda y, si hace falta, deja que el Abismo lo use de puerta. Dice que la Horda y él hacen exactamente lo mismo, con una única diferencia: él les pide permiso a los muertos.",
+   "atlasActual": null
+  },
+  "libertador": {
+   "id": "libertador",
+   "name": "San Martín, el Libertador",
+   "hudName": "San Martín",
+   "color": "#2f4f9a",
+   "glow": "#9fc4ff",
+   "role": "Tirador / Guerrero / Soporte ofensivo: disparos lentos y devastadores, bayoneta, mando y caballería.",
+   "roleCategory": "asesino",
+   "basicRange": 380,
+   "basicArc": false,
+   "ranged": true,
+   "skills": [
+    {
+     "name": "Bayoneta",
+     "desc": "Mantené para apuntar y soltá: embestida corta con la bayoneta. Mucho daño, sangrado y un pequeño tambaleo; se detiene al conectar",
+     "kind": "sm_bayonet",
+     "radius": null,
+     "range": 190,
+     "duration": null
+    },
+    {
+     "name": "¡Granaderos, a la carga!",
+     "desc": "Levanta el sable, suena el clarín y aparecen Granaderos espectrales: +velocidad, +velocidad de ataque, +daño y resistencia al control para vos y tus aliados cercanos",
+     "kind": "sm_granaderos",
+     "radius": 430,
+     "range": null,
+     "duration": 8000
+    },
+    {
+     "name": "Carga de San Lorenzo",
+     "desc": "Monta su caballo blanco y carga en línea: atraviesa y empuja a los comunes, aturde a los élite y baja la defensa de los jefes",
+     "kind": "sm_san_lorenzo",
+     "radius": null,
+     "range": 430,
+     "duration": null
+    }
+   ],
+   "ultimate": {
+    "name": "Cruce de los Andes",
+    "desc": "Carga con Granaderos espectrales entre nieve y escarcha y queda 10 s a caballo: sable corvo, más velocidad y daño, menos daño recibido",
+    "kind": "sm_andes_ult"
+   },
+   "catalogLore": "San Martín castiga con disparos devastadores, bayoneta y cargas que quiebran ejércitos.",
+   "origin": "Del otro lado de la Cordillera",
+   "history": "José de San Martín ya cruzó una cordillera entera para liberar a medio continente. Ahora cruza otra, más extraña, para llegar a la Ciudad Maldita. Castiga con disparos lentos y devastadores, y lidera cargas capaces de quebrar ejércitos. Frente a la Horda repite lo mismo que dijo siempre: seamos libres, que lo demás no importa nada.",
+   "atlasActual": null
+  },
+  "ilkan": {
+   "id": "ilkan",
+   "name": "Ilkan, el Caminante de Dunas",
+   "hudName": "Ilkan",
+   "color": "#b8793a",
+   "glow": "#4fe3cf",
+   "role": "Guerrero / Berserker: movilidad extrema con lanzas de pendón, gana Tormenta con el riesgo y se transforma en el Coloso de Arena.",
+   "roleCategory": "asesino",
+   "basicRange": 84,
+   "basicArc": true,
+   "ranged": false,
+   "skills": [
+    {
+     "name": "Lanza-Pendón",
+     "desc": "Mantené para apuntar y soltá: arroja la lanza y sale disparado tras su pendón de arena. Durante el vuelo, volvé a usarla para una SEGUNDA lanza con cambio de dirección. Corta a los que pasan cerca",
+     "kind": "ilkan_lance",
+     "radius": null,
+     "range": 360,
+     "duration": null
+    },
+    {
+     "name": "Piel de Duna",
+     "desc": "Por un momento recibís menos daño y cada golpe que te dan carga MUCHA más Tormenta. No es invulnerabilidad: es exponerse para transformarse antes",
+     "kind": "ilkan_temple",
+     "radius": null,
+     "range": null,
+     "duration": 3500
+    },
+    {
+     "name": "Grito de Caravana",
+     "desc": "Grito de caravana: más velocidad, daño y Tormenta (más fuerte con poca vida). Los aliados cercanos reciben una parte",
+     "kind": "ilkan_caravan",
+     "radius": null,
+     "range": null,
+     "duration": 7000
+    }
+   ],
+   "ultimate": {
+    "name": "Coloso de Arena",
+    "desc": "Con la Tormenta llena se transforma en el Coloso de Arena: golpes en área, Alud, Hundimiento, Marcha de Dunas y regeneración. Llenar la Tormenta de nuevo desbloquea algo más",
+    "kind": "ilkan_colossus_ult"
+   },
+   "catalogLore": "Ilkan convierte el riesgo en tormenta hasta alzar un coloso de arena capaz de hacer temblar el campo.",
+   "origin": "Las Dunas Quebradas",
+   "history": "Ilkan nació en las Dunas Quebradas, donde el viento borra los caminos y una caravana solo sobrevive si nunca deja de andar. Aprendió a leer el simún en la piel: cada golpe que recibe lo vuelve tormenta, y la tormenta lo hace correr más rápido. Cuando no alcanza, llama a algo que duerme bajo la arena: el Coloso. No busca un reino ni heredar a los Cuatro; busca el último pozo que no esté maldito, y no piensa cruzar el desierto solo.",
+   "atlasActual": null
+  },
+  "ynara": {
+   "id": "ynara",
+   "name": "Ynara, la Médica de los Refugios",
+   "hudName": "Ynara",
+   "color": "#ed8db5",
+   "glow": "#fff0f7",
+   "role": "Sanadora de área: estrogonof, agua y santa paciencia.",
+   "roleCategory": "soporte",
+   "basicRange": 300,
+   "basicArc": false,
+   "ranged": true,
+   "skills": [
+    {
+     "name": "Mirada fulminante",
+     "desc": "Un abanico de luz daña y ralentiza 30% durante 1,5 s. Empuja comunes cercanos; jefes resisten el empuje y limitan el freno al 12%.",
+     "kind": "yn_gaze",
+     "radius": 100,
+     "range": 190,
+     "duration": null
+    },
+    {
+     "name": "Estrogonof reparador",
+     "desc": "Sirve estrogonof de pollo: cada 600 ms cura 1% de vida y su vapor daña. Dentro reduce daño 8%. Máximo una fuente por Ynara.",
+     "kind": "yn_stroganoff",
+     "radius": 115,
+     "range": 180,
+     "duration": 4800
+    },
+    {
+     "name": "No quiero seguir esta conversación",
+     "desc": "Se desliza por terreno seguro y limpia ralentización. Deja una cortina de agua que daña y frena. No cruza muros ni vacíos.",
+     "kind": "yn_leave",
+     "radius": 32,
+     "range": 130,
+     "duration": 2400
+    }
+   ],
+   "ultimate": {
+    "name": "Santa Paciencia",
+    "desc": "Santuario móvil: cura 0,8% por pulso y daña cada 0,6 s. Cada golpe que reciben los aliados adentro carga paciencia (máx. 8); al final estalla una onda.",
+    "kind": "yn_patience"
+   },
+   "catalogLore": "Ynara es una médica silenciosa: cura, protege y nunca pide perdón.",
+   "origin": "Los refugios de la Ciudad Maldita",
+   "history": "Médica silenciosa y cuidadosa, Ynara sostiene los refugios con luz, agua limpia y estrogonof de pollo. Bajo su halo blanco guarda una paciencia finita y una bondad obstinada. Cura incluso a quien la hizo enojar. Nunca pide perdón: escucha, se queda callada y sigue cuidando. Cuando la paciencia se le termina, el halo se abre y los refugios entienden por qué la llaman santa.",
+   "atlasActual": "assets/sprites/champions/ynara/atlas.png"
+  },
+  "myla": {
+   "id": "myla",
+   "name": "Myla, la Niña de la Cuchara",
+   "hudName": "Myla",
+   "color": "#e99abb",
+   "glow": "#fff1e1",
+   "role": "Maga de control: yogur, torres y ondas de llanto.",
+   "roleCategory": "mago",
+   "basicRange": 320,
+   "basicArc": false,
+   "ranged": true,
+   "skills": [
+    {
+     "name": "Torre de Yogur",
+     "desc": "Invoca una torre de yogur que dispara y ralentiza. Máximo dos; la tercera reemplaza la más antigua.",
+     "kind": "my_tower",
+     "radius": 40,
+     "range": 200,
+     "duration": 12000
+    },
+    {
+     "name": "Yogurazo",
+     "desc": "Lanza yogur al punto elegido: salpica y deja un charco pegajoso que daña y ralentiza.",
+     "kind": "my_splash",
+     "radius": 95,
+     "range": 280,
+     "duration": 3600
+    },
+    {
+     "name": "Burbuja Cremosa",
+     "desc": "Se envuelve en yogur protector: obtiene un escudo y limpia su ralentización.",
+     "kind": "my_bubble",
+     "radius": null,
+     "range": null,
+     "duration": 4500
+    }
+   ],
+   "ultimate": {
+    "name": "BERRINCHE",
+    "desc": "En pañales y más grande, llora durante 6,5 segundos: cada onda de llanto daña y salpica yogur a su alrededor. Puede moverse; los jefes resisten parte de la ralentización.",
+    "kind": "my_tantrum"
+   },
+   "catalogLore": "Myla controla el campo con torres de yogur, charcos pegajosos y un berrinche que sacude la arena.",
+   "origin": "La Ciudad de los Primeros Pasos",
+   "history": "Myla descubrió que su merienda podía convertirse en magia. Con una cuchara encantada y una sonrisa desafiante levanta torres de yogur y cubre de crema los caminos de la Horda. Los adultos de los refugios dicen que es demasiado chica para pelear; ella responde que los monstruos también le tienen miedo a un berrinche. Donde otros ven oscuridad, ve una aventura por compartir.",
+   "atlasActual": "assets/sprites/champions/myla/atlas.png"
+  },
+  "brasa": {
+   "id": "brasa",
+   "name": "Brasa, la Mecánica Fugitiva",
+   "hudName": "Brasa",
+   "color": "#c58543",
+   "glow": "#ffd28a",
+   "role": "Ingeniera de posición: torretas, presión y vapor.",
+   "roleCategory": "mago",
+   "basicRange": 310,
+   "basicArc": false,
+   "ranged": true,
+   "skills": [
+    {
+     "name": "Centinela de Latón",
+     "desc": "Monta una torreta fija con vida propia. Máximo dos; una tercera retira la más antigua.",
+     "kind": "br_turret",
+     "radius": 40,
+     "range": 190,
+     "duration": 15000
+    },
+    {
+     "name": "Purga de Vapor",
+     "desc": "Cono de vapor: descarga la presión y empuja comunes; ralentiza a jefes sin moverlos.",
+     "kind": "br_purge",
+     "radius": 110,
+     "range": 170,
+     "duration": null
+    },
+    {
+     "name": "Desmontaje Rápido",
+     "desc": "Retira la torreta más cercana, recupera parte de su recarga y acelera. Sin torreta también acelera.",
+     "kind": "br_dismantle",
+     "radius": null,
+     "range": null,
+     "duration": 2200
+    }
+   ],
+   "ultimate": {
+    "name": "Turno de Emergencia",
+    "desc": "Sobrecarga sus torretas. Sin ninguna, monta una temporal. Después deben enfriarse.",
+    "kind": "br_overclock"
+   },
+   "catalogLore": "Brasa vuelve contra la Horda la maquinaria de la Fábrica: torretas, purgas y desarmes.",
+   "origin": "La Fábrica Sin Fin",
+   "history": "Brasa mantenía las máquinas de la Fábrica Sin Fin. Un día descubrió que una de sus cadenas no estaba hecha para un monstruo, sino para alguien que se había negado a obedecer. Escapó con los planos bajo el brazo y una llave inglesa que nunca suelta. Todavía no sabe quién estaba del otro lado de esa cadena, y desarma cada máquina de la Horda buscando la respuesta.",
+   "atlasActual": "assets/sprites/champions/brasa/atlas.png"
+  },
+  "eslabon": {
+   "id": "eslabon",
+   "name": "Garren, el Eslabón",
+   "hudName": "Garren",
+   "color": "#9195a1",
+   "glow": "#e4dfc8",
+   "role": "Tanque protector: cadenas, custodia y separación.",
+   "roleCategory": "tanque",
+   "basicRange": 85,
+   "basicArc": true,
+   "ranged": false,
+   "skills": [
+    {
+     "name": "Cadena de Retorno",
+     "desc": "Engancha y acerca un enemigo. Los jefes reciben daño y ralentización, pero nunca se desplazan.",
+     "kind": "es_hook",
+     "radius": null,
+     "range": 290,
+     "duration": null
+    },
+    {
+     "name": "Línea Infranqueable",
+     "desc": "Tiende una cadena que frena a quienes la cruzan. No bloquea el movimiento aliado.",
+     "kind": "es_line",
+     "radius": 22,
+     "range": 180,
+     "duration": 6000
+    },
+    {
+     "name": "Custodia",
+     "desc": "Absorbe parte del daño del aliado elegido, con presupuesto limitado. Solo, obtiene una guardia menor.",
+     "kind": "es_guard",
+     "radius": null,
+     "range": 250,
+     "duration": 5000
+    }
+   ],
+   "ultimate": {
+    "name": "Nadie Queda Atrás",
+    "desc": "Un anillo móvil empuja comunes hacia afuera y protege aliados dentro. Reduce su velocidad mientras dura.",
+    "kind": "es_ring"
+   },
+   "catalogLore": "Garren abrió las celdas que custodiaba: ganchos, líneas y un grillete que protege al equipo.",
+   "origin": "Las celdas de los portadores",
+   "history": "Garren custodió una prisión de portadores mucho después de los Cuatro. Lo llamaban el Eslabón porque nada salía de las celdas sin pasar por él. Una noche rompió su juramento y abrió todas las puertas. Conserva un grillete atado al brazo: el peso le recuerda que proteger también puede empezar por abrir una puerta.",
+   "atlasActual": "assets/sprites/champions/eslabon/atlas.png"
+  },
+  "morwen": {
+   "id": "morwen",
+   "name": "Morwen, la Destiladora de Ecos",
+   "hudName": "Morwen",
+   "color": "#a46191",
+   "glow": "#edd0a5",
+   "role": "Alquimista: resina, catalizador y reacciones controladas.",
+   "roleCategory": "mago",
+   "basicRange": 300,
+   "basicArc": false,
+   "ranged": true,
+   "skills": [
+    {
+     "name": "Resina Amarga",
+     "desc": "Un frasco marca y ralentiza. Combinar Resina y Catalizador detona una sola reacción y consume ambos.",
+     "kind": "mo_resin",
+     "radius": 100,
+     "range": 280,
+     "duration": 5000
+    },
+    {
+     "name": "Sal de Ruptura",
+     "desc": "Cono de catalizador. Reacciona con Resina, causa daño inmediato y debilita brevemente.",
+     "kind": "mo_salt",
+     "radius": 120,
+     "range": 200,
+     "duration": 5000
+    },
+    {
+     "name": "Destilación",
+     "desc": "Consume residuos para ganar escudo y limpiar ralentización o quemadura. Sin residuos da una cubierta menor.",
+     "kind": "mo_distill",
+     "radius": null,
+     "range": null,
+     "duration": 4000
+    }
+   ],
+   "ultimate": {
+    "name": "Alambique del Silencio",
+    "desc": "Área que prolonga reactivos y permite una onda secundaria por reacción. Sin propagación infinita.",
+    "kind": "mo_alembic"
+   },
+   "catalogLore": "Morwen destila reactivos de resina, sal y ecos que reaccionan entre sí.",
+   "origin": "El Reino Fúngico",
+   "history": "Morwen estudiaba las voces que el micelio repite cuando nadie escucha. Aprendió a destilar sus ecos en frascos sin entregarse a la Madre Espora, y descubrió que cada reactivo recuerda a quien lo pronunció. Viaja con un alambique a la espalda y etiqueta cada frasco con un nombre. En algunos todavía hay una voz que dice: váyanse, yo me quedo.",
+   "atlasActual": "assets/sprites/champions/morwen/atlas.png"
+  },
+  "farolero": {
+   "id": "farolero",
+   "name": "Tobías, el Farolero",
+   "hudName": "Tobías",
+   "color": "#bba56e",
+   "glow": "#ffe7a5",
+   "role": "Escolta: luz local, sendas y escudos por pulsos.",
+   "roleCategory": "soporte",
+   "basicRange": 90,
+   "basicArc": true,
+   "ranged": false,
+   "skills": [
+    {
+     "name": "Farol de Guardia",
+     "desc": "Coloca un farol, máximo uno, que protege cerca y da luz débil local. No enciende braseros ni elimina oscuridad especial.",
+     "kind": "fa_lantern",
+     "radius": 120,
+     "range": 170,
+     "duration": 9000
+    },
+    {
+     "name": "Destello",
+     "desc": "Cono que desorienta comunes; contra jefes solo aplica ralentización reducida.",
+     "kind": "fa_flash",
+     "radius": 120,
+     "range": 180,
+     "duration": null
+    },
+    {
+     "name": "Paso Seguro",
+     "desc": "Senda que amortigua daño ambiental y ralentizaciones. No atraviesa vacíos ni evita peligros letales.",
+     "kind": "fa_path",
+     "radius": 42,
+     "range": 250,
+     "duration": 4500
+    }
+   ],
+   "ultimate": {
+    "name": "Vigilia",
+    "desc": "Círculo móvil de luz y pequeños escudos periódicos. No concede inmunidad ni borra mecánicas de arena.",
+    "kind": "fa_vigil"
+   },
+   "catalogLore": "Tobías sostiene la luz para el equipo: linternas, destellos y caminos seguros en la oscuridad.",
+   "origin": "Las Minas Profundas",
+   "history": "Tobías encendía los faroles de las Minas Profundas. Volvió de otra expedición siguiendo el ruido de un yunque y no volvió con todos. Ahora baja otra vez con la misma lámpara. No promete que la oscuridad desaparezca: promete sostener la luz hasta que pase el último, y quedarse un rato más por si alguien vuelve.",
+   "atlasActual": "assets/sprites/champions/farolero/atlas.png"
+  },
+  "iria": {
+   "id": "iria",
+   "name": "Iria, la Tejedora de Límites",
+   "hudName": "Iria",
+   "color": "#8889c1",
+   "glow": "#e3e0ff",
+   "role": "Control geométrico: anclas, hilos y triángulos.",
+   "roleCategory": "mago",
+   "basicRange": 320,
+   "basicArc": false,
+   "ranged": true,
+   "skills": [
+    {
+     "name": "Ancla",
+     "desc": "Coloca un sello, máximo tres. Las anclas cercanas se unen en orden; sus hilos no son paredes.",
+     "kind": "ir_anchor",
+     "radius": 30,
+     "range": 250,
+     "duration": 16000
+    },
+    {
+     "name": "Tensión",
+     "desc": "Activa los hilos: ralentizan y marcan a quien cruza. Con menos de dos anclas funciona cerca de Iria.",
+     "kind": "ir_tension",
+     "radius": 80,
+     "range": null,
+     "duration": 4500
+    },
+    {
+     "name": "Corte de Hilo",
+     "desc": "Consume el ancla más cercana al punto elegido y descarga sus hilos. Cada enemigo recibe un solo golpe.",
+     "kind": "ir_cut",
+     "radius": 75,
+     "range": 300,
+     "duration": null
+    }
+   ],
+   "ultimate": {
+    "name": "Sello de los Tres Caminos",
+    "desc": "Activa un triángulo de daño y control. Sin tres anclas válidas crea uno pequeño propio; no encierra ni desplaza jugadores.",
+    "kind": "ir_triangle"
+   },
+   "catalogLore": "Iria ancla, tensa y corta hilos entre puntos del mapa que castigan a quien los cruza.",
+   "origin": "Los límites del Laberinto",
+   "history": "Iria reparaba límites pequeños bajo la sombra del Guardián del Laberinto: umbrales, cerrojos, costuras entre un pasillo y otro. Un día encontró puertas que nadie había roto, abiertas desde adentro. Aprendió a anclar hilos entre tres puntos y a sostener una fisura el tiempo justo para que alguien cruce. Sabe que el Sello de los Cuatro pesa más que toda su orden, y lo sostiene igual.",
+   "atlasActual": "assets/sprites/champions/iria/atlas.png"
+  },
+  "vesper": {
+   "id": "vesper",
+   "name": "Vesper, la Costurera de Sombras",
+   "hudName": "Vesper",
+   "color": "#aa75bd",
+   "glow": "#aa75bd",
+   "role": "Asesina de preparación: marca grupos, cose una salida y consume los hilos.",
+   "roleCategory": "asesino",
+   "basicRange": 72,
+   "basicArc": true,
+   "ranged": false,
+   "skills": [
+    {
+     "name": "Agujas de penumbra",
+     "desc": "Abanico de agujas: daño y una puntada por enemigo.",
+     "kind": "expedition",
+     "radius": 85,
+     "range": 235,
+     "duration": null
+    },
+    {
+     "name": "Costura de fuga",
+     "desc": "Avanza por terreno seguro y deja una costura que daña en 4 pulsos.",
+     "kind": "expedition",
+     "radius": 24,
+     "range": 120,
+     "duration": 2200
+    },
+    {
+     "name": "Deshilachar",
+     "desc": "Consume las puntadas cercanas: +20% de daño por puntada. Después queda afilada: +15% de daño 3 s.",
+     "kind": "expedition",
+     "radius": 150,
+     "range": 200,
+     "duration": null
+    }
+   ],
+   "ultimate": {
+    "name": "La última puntada",
+    "desc": "Cuatro cortes circulares; el último consume las marcas para amplificarse. Los aliados cercanos ganan +15% de velocidad mientras dura.",
+    "kind": "expedition"
+   },
+   "catalogLore": "Vesper marca grupos con hilos de sombra, cose una salida y consume las puntadas.",
+   "origin": "El teatro de la Ciudad Maldita",
+   "history": "Vesper remendaba los trajes del teatro de la Ciudad. La noche del regreso encontró a su hermana frente a un espejo: el cuerpo seguía allí, pero la sombra ya se movía sola. Intentó sujetarla con el hilo con el que cosía nombres dentro de los abrigos. Desde entonces hilvana las sombras de los corrompidos, y sigue cada Cicatriz preguntándose cuánto queda de una persona.",
+   "atlasActual": "assets/sprites/champions/vesper/atlas.png"
+  },
+  "nahir": {
+   "id": "nahir",
+   "name": "Nahir, el Restaurador de Espejos",
+   "hudName": "Nahir",
+   "color": "#68c6c2",
+   "glow": "#68c6c2",
+   "role": "Flanqueador que usa reflejos breves para cubrir ángulos distintos.",
+   "roleCategory": "asesino",
+   "basicRange": 72,
+   "basicArc": true,
+   "ranged": false,
+   "skills": [
+    {
+     "name": "Astillas errantes",
+     "desc": "Proyecta astillas en abanico contra la horda.",
+     "kind": "expedition",
+     "radius": 90,
+     "range": 240,
+     "duration": null
+    },
+    {
+     "name": "Reflejo fugitivo",
+     "desc": "Paso seguro que deja un reflejo inmóvil; máximo 3. Al dejarlo gana ventaja: +15% de daño 3 s.",
+     "kind": "expedition",
+     "radius": 25,
+     "range": 110,
+     "duration": 5000
+    },
+    {
+     "name": "Corte cruzado",
+     "desc": "Corte lineal propio y ecos al 25% desde los reflejos; un eco por reflejo y objetivo.",
+     "kind": "expedition",
+     "radius": 24,
+     "range": 240,
+     "duration": null
+    }
+   ],
+   "ultimate": {
+    "name": "Galería de nadie",
+    "desc": "Coloca 3 reflejos por 6 s. No son aliados adicionales ni copias autónomas. Cada reflejo estalla en área y frena; Nahir gana +15% de daño mientras dura.",
+    "kind": "expedition"
+   },
+   "catalogLore": "Nahir pelea con fragmentos de espejo que repiten cada uno de sus golpes.",
+   "origin": "Las galerías del Laberinto",
+   "history": "Nahir restauraba espejos antes de entrar al Laberinto. En una galería encontró su propia imagen varios pasos por delante, arrodillada ante una figura que no aparecía en el cristal. Rompió el espejo, pero tres fragmentos conservaron aquel gesto: los lleva en las muñecas y cada uno repite lo que él hace. Busca una salida que su reflejo todavía no conozca.",
+   "atlasActual": "assets/sprites/champions/nahir/atlas.png"
+  },
+  "baltra": {
+   "id": "baltra",
+   "name": "Baltra, la Campana Sumergida",
+   "hudName": "Baltra",
+   "color": "#8bb4bd",
+   "glow": "#8bb4bd",
+   "role": "Tanque frontal que transforma golpes recibidos en ondas de campana.",
+   "roleCategory": "tanque",
+   "basicRange": 88,
+   "basicArc": true,
+   "ranged": false,
+   "skills": [
+    {
+     "name": "Bronce vivo",
+     "desc": "Onda circular que consume vibración: +12% de daño por carga.",
+     "kind": "expedition",
+     "radius": 125,
+     "range": 150,
+     "duration": null
+    },
+    {
+     "name": "Bajo la campana",
+     "desc": "Guardia frontal de 25%; velocidad −20% mientras dura.",
+     "kind": "expedition",
+     "radius": 70,
+     "range": 90,
+     "duration": 3500
+    },
+    {
+     "name": "Badajo de retorno",
+     "desc": "Golpe en cono: consume vibración y frena enemigos; jefes máximo 12%.",
+     "kind": "expedition",
+     "radius": 100,
+     "range": 180,
+     "duration": null
+    }
+   ],
+   "ultimate": {
+    "name": "Que todos la escuchen",
+    "desc": "Tres tañidos; el último empuja comunes. No desplaza jefes. Escuda 6% a los aliados cercanos y frena a los enemigos.",
+    "kind": "expedition"
+   },
+   "catalogLore": "Baltra sostiene al equipo bajo presión con una campana convertida en escafandra.",
+   "origin": "La costa de la Arena Acuática",
+   "history": "Baltra cuidaba la campana de aviso de un poblado de la costa. Cuando el agua apareció donde antes había calles, se ató al badajo para seguir tocando mientras los demás subían. La encontraron dentro de la campana, respirando una bolsa de aire que nadie supo explicar. Convirtió el bronce en escafandra: su señal no promete victoria, promete que alguien sostiene la otra punta.",
+   "atlasActual": "assets/sprites/champions/baltra/atlas.png"
+  },
+  "maura": {
+   "id": "maura",
+   "name": "Maura, la Pastora de Espinas",
+   "hudName": "Maura",
+   "color": "#879c60",
+   "glow": "#879c60",
+   "role": "Protectora de avance: recibe el choque, recoge semillas y abre un corredor.",
+   "roleCategory": "tanque",
+   "basicRange": 86,
+   "basicArc": true,
+   "ranged": false,
+   "skills": [
+    {
+     "name": "Raíces de paso",
+     "desc": "Una línea de raíces daña, frena y deja un suelo de espinas temporal.",
+     "kind": "expedition",
+     "radius": 26,
+     "range": 245,
+     "duration": null
+    },
+    {
+     "name": "Corteza prestada",
+     "desc": "Escudo de 10% de vida; al expirar libera una sola descarga si sigue viva.",
+     "kind": "expedition",
+     "radius": 95,
+     "range": 100,
+     "duration": 4000
+    },
+    {
+     "name": "Poda necesaria",
+     "desc": "Corte circular que consume semillas; cura 1% por semilla, máximo 5%.",
+     "kind": "expedition",
+     "radius": 110,
+     "range": 110,
+     "duration": null
+    }
+   ],
+   "ultimate": {
+    "name": "El bosque camina",
+    "desc": "Seis pulsos móviles de espinas. No aumenta la hitbox ni crea un ejército.",
+    "kind": "expedition"
+   },
+   "catalogLore": "Maura abre veredas de zarzas y protege lo vivo sin dejar que lo ocupe todo.",
+   "origin": "Las Ruinas Célticas",
+   "history": "Maura guiaba rebaños por senderos que ya no figuran en los mapas. Al volver a las Ruinas encontró las cercas convertidas en espinas y un camino que parecía respirar. No intentó dominar el bosque: cortó una vereda tan estrecha que solo se pasaba de a uno, y por ella salieron todos. Desde esa noche las zarzas crecen en su cayado, y ella las poda cada mañana.",
+   "atlasActual": "assets/sprites/champions/maura/atlas.png"
+  },
+  "dariel": {
+   "id": "dariel",
+   "name": "Dáriel, el Último Compás",
+   "hudName": "Dáriel",
+   "color": "#d6af77",
+   "glow": "#d6af77",
+   "role": "Músico de ritmo alternado: daño moderado, protección y recuperación acotada.",
+   "roleCategory": "soporte",
+   "basicRange": 300,
+   "basicArc": false,
+   "ranged": true,
+   "skills": [
+    {
+     "name": "Nota discordante",
+     "desc": "Cono sonoro: daño y −8% de daño enemigo durante 1,5 s; jefes −4%.",
+     "kind": "expedition",
+     "radius": 95,
+     "range": 205,
+     "duration": null
+    },
+    {
+     "name": "Marcha de salida",
+     "desc": "Aliados cercanos: escudo 4% sin acumular y velocidad +8%.",
+     "kind": "expedition",
+     "radius": 150,
+     "range": 150,
+     "duration": 2400
+    },
+    {
+     "name": "Volver al estribillo",
+     "desc": "Daño circular y cura 1% +0,6% por nota consumida; máximo 2,8%.",
+     "kind": "expedition",
+     "radius": 130,
+     "range": 150,
+     "duration": null
+    }
+   ],
+   "ultimate": {
+    "name": "Todavía hay una salida",
+    "desc": "Seis pulsos alternan daño y cura de 1% con escudo de 2%, sin acumulación.",
+    "kind": "expedition"
+   },
+   "catalogLore": "Dáriel marca el compás que coordina al equipo y lo saca del peligro.",
+   "origin": "El teatro de la Ciudad Maldita",
+   "history": "Dáriel dirigía la música entre escenas. Cuando el Presentador dejó de permitir que el público se levantara, cambió el final de una melodía por la señal de evacuación de los tramoyistas, y unos pocos siguieron el ritmo hasta las puertas de servicio. Él salió último, marcando el compás. Ahora viaja con los portadores tocando una canción que sabe callarse cuando todos cruzaron.",
+   "atlasActual": "assets/sprites/champions/dariel/atlas.png"
+  },
+  "orsa": {
+   "id": "orsa",
+   "name": "Orsa, la Guardacables",
+   "hudName": "Orsa",
+   "color": "#dfa352",
+   "glow": "#dfa352",
+   "role": "Tiradora que distribuye cargas y decide cuándo descargar la horda.",
+   "roleCategory": "asesino",
+   "basicRange": 335,
+   "basicArc": false,
+   "ranged": true,
+   "skills": [
+    {
+     "name": "Perno conductor",
+     "desc": "Perno lineal que atraviesa varios enemigos y añade una carga.",
+     "kind": "expedition",
+     "radius": 22,
+     "range": 340,
+     "duration": null
+    },
+    {
+     "name": "Apoyar la culata",
+     "desc": "Los próximos 3 básicos causan +25%; velocidad −25% mientras dure la postura. Además gana +20% de daño mientras dura la postura.",
+     "kind": "expedition",
+     "radius": 50,
+     "range": 100,
+     "duration": 3500
+    },
+    {
+     "name": "Cerrar el circuito",
+     "desc": "Consume cargas cercanas para aumentar daño; la descarga salta a 2 vecinos como máximo, con presupuesto total de 12 blancos. Siempre da un golpe en área a su alrededor; las cargas suman daño extra.",
+     "kind": "expedition",
+     "radius": 175,
+     "range": 190,
+     "duration": null
+    }
+   ],
+   "ultimate": {
+    "name": "Tormenta de rescate",
+    "desc": "Tres barridos cargan objetivos; una descarga final consume las marcas cercanas. Frena a los enemigos y da +15% de velocidad a los aliados.",
+    "kind": "expedition"
+   },
+   "catalogLore": "Orsa guarda descargas en el metal de su ballesta y responde a quien golpee desde abajo.",
+   "origin": "Las Minas Profundas",
+   "history": "Orsa revisaba los cables que llevaban señales entre los niveles de las Minas. Durante un apagón oyó tres golpes en una línea cortada hacía años, bajó con una bobina a la espalda y encontró una cuadrilla que repetía el mismo turno sin recordar cómo había empezado. Solo uno siguió el cable hasta la luz. Hoy su ballesta guarda descargas para que siempre quede una respuesta.",
+   "atlasActual": "assets/sprites/champions/orsa/atlas.png"
+  },
+  "tibor": {
+   "id": "tibor",
+   "name": "Tibor, el Rey sin Corona",
+   "hudName": "Tibor",
+   "color": "#c9b365",
+   "glow": "#c9b365",
+   "role": "Mago territorial con una sola nube que debe conservar y recolocar.",
+   "roleCategory": "mago",
+   "basicRange": 300,
+   "basicArc": false,
+   "ranged": true,
+   "skills": [
+    {
+     "name": "Nube obrera",
+     "desc": "Coloca una nube que daña cada 600 ms hasta agotarse o expirar.",
+     "kind": "expedition",
+     "radius": 110,
+     "range": 260,
+     "duration": 4800
+    },
+    {
+     "name": "Volvé a casa",
+     "desc": "Retira la nube, daña su recorrido y recupera 20 de fuerza. Escudo 7%; sin nube, 3%.",
+     "kind": "expedition",
+     "radius": 30,
+     "range": 260,
+     "duration": null
+    },
+    {
+     "name": "Polen de aviso",
+     "desc": "Salpicadura que daña, frena y mueve la nube al punto elegido.",
+     "kind": "expedition",
+     "radius": 90,
+     "range": 260,
+     "duration": 4000
+    }
+   ],
+   "ultimate": {
+    "name": "El cielo zumba",
+    "desc": "Rellena la fuerza y reemplaza la nube por otra mayor durante 6 s.",
+    "kind": "expedition"
+   },
+   "catalogLore": "Tibor guía un enjambre que marca enemigos, protege el aire limpio y castiga a la colonia.",
+   "origin": "Los apiarios del Reino Fúngico",
+   "history": "A Tibor lo llamaban rey porque era incapaz de dar una orden a sus abejas: les abría las cajas y esperaba. Cuando el micelio empezó a repetir voces humanas, una colonia se instaló en su carro y las demás quedaron cubiertas de cera gris. Las conduce por donde el aire todavía deja pasar la luz. Si encuentra un lugar seguro, piensa dejar allí la colmena y marcharse sin corona.",
+   "atlasActual": "assets/sprites/champions/tibor/atlas.png"
+  },
+  "zahra": {
+   "id": "zahra",
+   "name": "Zahra, la Mano de la Válvula",
+   "hudName": "Zahra",
+   "color": "#ed8858",
+   "glow": "#ed8858",
+   "role": "Maga de calor: gana potencia arriesgando sobrecalentarse y debe purgar.",
+   "roleCategory": "mago",
+   "basicRange": 220,
+   "basicArc": false,
+   "ranged": true,
+   "skills": [
+    {
+     "name": "Boca de horno",
+     "desc": "Cono ardiente. Genera 30 de calor.",
+     "kind": "expedition",
+     "radius": 100,
+     "range": 190,
+     "duration": null
+    },
+    {
+     "name": "Enfriar",
+     "desc": "Consume el calor y extingue sus líneas cercanas; escudo de 4% a 12% según calor.",
+     "kind": "expedition",
+     "radius": 140,
+     "range": 160,
+     "duration": null
+    },
+    {
+     "name": "Paso de ceniza",
+     "desc": "Avanza por suelo seguro y deja 4 pulsos de ceniza. Genera 25 de calor.",
+     "kind": "expedition",
+     "radius": 28,
+     "range": 120,
+     "duration": 2400
+    }
+   ],
+   "ultimate": {
+    "name": "Abrir todas las válvulas",
+    "desc": "Consume el calor en 4 pulsos; +0,4% de daño por punto consumido. El vapor escuda 5% a los aliados cercanos.",
+    "kind": "expedition"
+   },
+   "catalogLore": "Zahra descarga un calor contenido en ráfagas cortas y cuenta antes de volver a abrir el puño.",
+   "origin": "Los hornos de la Fábrica Sin Fin",
+   "history": "Zahra abría las compuertas de los hornos de la Fábrica al final de cada turno. Una noche los indicadores dejaron de bajar y los capataces ordenaron mantener la línea. Ella arrancó el cierre de una válvula y sostuvo la salida mientras sus compañeros escapaban. Su guante absorbió un calor que vuelve cada vez que una Cicatriz está cerca, y aprendió a soltarlo de a poco.",
+   "atlasActual": "assets/sprites/champions/zahra/atlas.png"
+  },
+  "renko": {
+   "id": "renko",
+   "name": "Renko, el Jardinero de Nombres",
+   "hudName": "Renko",
+   "color": "#a99a83",
+   "glow": "#a99a83",
+   "role": "Tanque de preparación del terreno, sin obstáculos sólidos ni encierros.",
+   "roleCategory": "tanque",
+   "basicRange": 90,
+   "basicArc": true,
+   "ranged": false,
+   "skills": [
+    {
+     "name": "Surco de contención",
+     "desc": "Traza una línea que daña, frena y deja tierra removida; máximo 3.",
+     "kind": "expedition",
+     "radius": 30,
+     "range": 235,
+     "duration": 5000
+    },
+    {
+     "name": "Montículo",
+     "desc": "Zona no sólida: reduce 8% el daño a aliados dentro. No se acumula con otros montículos. Renko queda cubierto: −20% de daño recibido 3 s.",
+     "kind": "expedition",
+     "radius": 100,
+     "range": 160,
+     "duration": 4200
+    },
+    {
+     "name": "Devolver a la tierra",
+     "desc": "Consume hasta 3 surcos para aumentar el daño circular un 20% por surco.",
+     "kind": "expedition",
+     "radius": 120,
+     "range": 140,
+     "duration": null
+    }
+   ],
+   "ultimate": {
+    "name": "Aquí siguen los nombres",
+    "desc": "Tres sacudidas. La última aturde comunes 300 ms; los jefes no se aturden. Escuda 5% a los aliados cercanos.",
+    "kind": "expedition"
+   },
+   "catalogLore": "Renko traza surcos que contienen el avance enemigo sin cerrar nunca una salida.",
+   "origin": "El cementerio de la Ciudad Maldita",
+   "history": "Renko anotaba nombres para quienes ya no podían hacerlo. Cuando el cementerio empezó a devolver las lápidas al camino, dejó de cavar: no iba a entregar más recuerdos a una tierra que los repetía mal. Cargó las placas pequeñas en un carro y llevó a los vivos hasta la puerta norte. Busca un lugar donde dejar esos nombres y volver a llamarse, simplemente, jardinero.",
+   "atlasActual": "assets/sprites/champions/renko/atlas.png"
+  },
+  "sira": {
+   "id": "sira",
+   "name": "Sira, la Cartógrafa del Regreso",
+   "hudName": "Sira",
+   "color": "#8aa7da",
+   "glow": "#8aa7da",
+   "role": "Maga que dibuja con su recorrido y convierte trayectos recientes en ataques.",
+   "roleCategory": "mago",
+   "basicRange": 310,
+   "basicArc": false,
+   "ranged": true,
+   "skills": [
+    {
+     "name": "Línea de tinta",
+     "desc": "Trazo recto que atraviesa hasta 12 enemigos.",
+     "kind": "expedition",
+     "radius": 24,
+     "range": 290,
+     "duration": null
+    },
+    {
+     "name": "Volver sobre los pasos",
+     "desc": "Recorre hacia atrás hasta 170 unidades del trazo válido. Comprueba cada paso contra muros y vacíos. Sin trazo, retrocede un tramo corto; siempre gana +20% de velocidad 2,5 s.",
+     "kind": "expedition",
+     "radius": 24,
+     "range": 170,
+     "duration": null
+    },
+    {
+     "name": "Borrar el camino",
+     "desc": "Consume el trazo e impacta una sola vez por objetivo; sin ruta usa un círculo de radio 80.",
+     "kind": "expedition",
+     "radius": 28,
+     "range": 200,
+     "duration": null
+    }
+   ],
+   "ultimate": {
+    "name": "Atlas de los ausentes",
+    "desc": "Tres pulsos sobre una copia de la ruta; sin ruta dibuja un rombo local. No altera el mapa. Frena a los enemigos cercanos y da +15% de velocidad a los aliados.",
+    "kind": "expedition"
+   },
+   "catalogLore": "Sira marca el camino de vuelta y borra las rutas que dejaron de ser seguras.",
+   "origin": "Las entradas del Laberinto",
+   "history": "El padre de Sira volvió del Laberinto con un mapa en blanco, señaló caminos que nadie más veía y un día salió sin abrigo. Sira siguió su última marca y encontró otras en muros, telas y huesos: no indicaban adónde ir, sino dónde alguien había conseguido regresar. Desde entonces registra sus propios pasos y borra las rutas que ya no son seguras.",
+   "atlasActual": "assets/sprites/champions/sira/atlas.png"
+  },
+  "nano_gm": {
+   "id": "nano_gm",
+   "name": "Nano GM, el Regente del Umbral",
+   "hudName": "Nano GM",
+   "color": "#e8c56a",
+   "glow": "#fff4d6",
+   "role": "Regente que reescribe las reglas locales de la arena: la Luz decide quién resiste y la Oscuridad, quién cae.",
+   "roleCategory": "mago",
+   "basicRange": 270,
+   "basicArc": false,
+   "ranged": true,
+   "skills": [
+    {
+     "name": "Sentencia Umbría",
+     "desc": "Decreto de sombra en línea: daña y SENTENCIA (+15% de daño recibido, 4 s). Comunes sentenciados con menos de 22% de vida son ejecutados. La línea termina en una explosión que también sentencia.",
+     "kind": "ascension",
+     "radius": 30,
+     "range": 330,
+     "duration": null
+    },
+    {
+     "name": "Edicto de Luz",
+     "desc": "Ley de refugio en el suelo: aliados dentro reciben escudo, −15% de daño y regeneración; enemigos dentro se frenan.",
+     "kind": "ascension",
+     "radius": 135,
+     "range": 300,
+     "duration": 5000
+    },
+    {
+     "name": "Inversión",
+     "desc": "Se traslada al punto elegido. Deja una runa opuesta a su última afinidad: Sombra estalla en daño; Luz cura al llegar. Al llegar estalla en área.",
+     "kind": "ascension",
+     "radius": 110,
+     "range": 260,
+     "duration": null
+    }
+   ],
+   "ultimate": {
+    "name": "Juicio del GM",
+    "desc": "La arena se divide: restaura a los aliados, ejecuta o devasta a los comunes y golpea fuerte a élites y jefes. Luego Nano es 8 s un monstruo en blanco y negro: +40% de área en todo y Forma del Regente.",
+    "kind": "ascension"
+   },
+   "catalogLore": "Nano GM alterna Luz y Oscuridad, reescribe las reglas de la Arena y la parte en dos con su Juicio.",
+   "origin": "El umbral sobre la Arena Infernal",
+   "history": "Antes de que el Forjador partiera el Sello, alguien escribió las reglas de las Arenas: cuánto pesa un golpe, qué cuenta como victoria. Los Regentes no pelearon contra la Horda; la observaron desde el umbral donde la luz y la sombra aún no se separaban. Nano es el primero que decidió cruzar. Sus tatuajes no son adorno: son las cláusulas del pacto, grabadas en la piel para que ninguna regla se le olvide. Cuando entra en combate, la arena lo reconoce antes que los campeones.",
+   "atlasActual": null
+  },
+  "facu_gm": {
+   "id": "facu_gm",
+   "name": "Facu GM, el Soberano de las Mareas",
+   "hudName": "Facu GM",
+   "color": "#5aa8e4",
+   "glow": "#d4ecff",
+   "role": "No usa el agua: el océano le responde. Encadena corrientes, presión y oleadas para ordenar el campo antes de que el enemigo entienda el patrón.",
+   "roleCategory": "asesino",
+   "basicRange": 92,
+   "basicArc": true,
+   "ranged": false,
+   "skills": [
+    {
+     "name": "Corriente de Resaca",
+     "desc": "Abre una corriente en línea durante 3,5 s: arrastra a los comunes en su dirección y acelera a los aliados que la pisan. (Flujo: Corriente)",
+     "kind": "ascension",
+     "radius": 34,
+     "range": 300,
+     "duration": 3500
+    },
+    {
+     "name": "Presión Abisal",
+     "desc": "Implosión en el punto elegido: atrae a los comunes al centro, daña y frena. Los jefes solo reciben daño y lentitud. (Flujo: Presión)",
+     "kind": "ascension",
+     "radius": 120,
+     "range": 280,
+     "duration": null
+    },
+    {
+     "name": "Cabalgar la Ola",
+     "desc": "Facu cabalga una ola a través de los enemigos: los aparta, deja espuma que frena y protege a los aliados que cruza. Se detiene ante muros y bordes. (Flujo: Oleada)",
+     "kind": "ascension",
+     "radius": 46,
+     "range": 320,
+     "duration": 520
+    }
+   ],
+   "ultimate": {
+    "name": "El Océano Reclama la Arena",
+    "desc": "La arena se inunda: Facu se eleva sobre una ola, el remolino arrastra a la horda al centro, siluetas abisales cruzan bajo el agua y la ola final atraviesa el escenario. Nadie termina fuera de los límites.",
+    "kind": "ascension"
+   },
+   "catalogLore": "Facu GM encadena corriente, presión y oleada: el océano responde antes que sus órdenes.",
+   "origin": "La fosa bajo la Arena Acuática",
+   "history": "Las Arenas tienen fondo. Debajo del Acuático, más allá de donde el Leviatán dejó de bajar, hay una marea que no responde a ninguna luna. Facu fue el segundo Regente en cruzar el umbral y el único que volvió con el mar detrás. No lo domó: lo entendió. Sabe cuándo una corriente va a girar y cuándo una ola ya decidió romper. Por eso el agua llega antes que sus órdenes. Los guardianes del Acuático lo nombran en voz baja, como se nombra a la marea alta.",
+   "atlasActual": "assets/sprites/champions/facu_gm/atlas.png"
+  },
+  "aurelia": {
+   "id": "aurelia",
+   "name": "Aurelia, la Arquitecta Solar",
+   "hudName": "Aurelia",
+   "color": "#f2c14e",
+   "glow": "#fff1b8",
+   "role": "Maga constructora: levanta geometría de luz sólida y convierte el terreno en un plano que castiga a quien lo cruza.",
+   "roleCategory": "mago",
+   "basicRange": 310,
+   "basicArc": false,
+   "ranged": true,
+   "skills": [
+    {
+     "name": "Prisma",
+     "desc": "Cristaliza un Nodo Solar en el punto elegido (máx. 3) con un pequeño estallido.",
+     "kind": "ascension",
+     "radius": 40,
+     "range": 280,
+     "duration": 9000
+    },
+    {
+     "name": "Refracción",
+     "desc": "Rayo en línea; cada nodo que toca lo refracta hacia el enemigo más cercano.",
+     "kind": "ascension",
+     "radius": 24,
+     "range": 340,
+     "duration": null
+    },
+    {
+     "name": "Paso Luminal",
+     "desc": "Se traslada al nodo más lejano (o al punto elegido) y crea un nodo donde estaba. Ella y los aliados cercanos ganan +15% de daño 4 s (Luz Sólida).",
+     "kind": "ascension",
+     "radius": 90,
+     "range": 320,
+     "duration": null
+    }
+   ],
+   "ultimate": {
+    "name": "Catedral del Sol",
+    "desc": "Los nodos se elevan en una catedral geométrica de luz: pulsos de daño dentro y regeneración para aliados.",
+    "kind": "ascension"
+   },
+   "catalogLore": "Aurelia levanta nodos de luz sólida que se unen en triángulos y culmina en una catedral.",
+   "origin": "El templo solar del Laberinto",
+   "history": "Aurelia trazaba los planos del Laberinto cuando todavía era un templo al sol. Vio cómo la Horda torció los pasillos para que nadie encontrara la salida. No intentó romper las paredes: aprendió a dibujar otras encima, de luz sólida, que duran lo suficiente para que alguien pase. Lleva el compás de su maestra y una regla: toda estructura que levanta debe tener una puerta.",
+   "atlasActual": "assets/sprites/champions/aurelia/atlas.png"
+  },
+  "khepri": {
+   "id": "khepri",
+   "name": "Khepri, el Portador del Enjambre",
+   "hudName": "Khepri",
+   "color": "#3fae8a",
+   "glow": "#c8f27a",
+   "role": "Asesino que comanda un enjambre visible: lo lanza, lo recoge y lo convierte en armadura.",
+   "roleCategory": "asesino",
+   "basicRange": 78,
+   "basicArc": true,
+   "ranged": false,
+   "skills": [
+    {
+     "name": "Enjambre",
+     "desc": "Envía el enjambre al punto elegido: atraviesa el campo, envuelve a los enemigos y vuelve.",
+     "kind": "ascension",
+     "radius": 85,
+     "range": 320,
+     "duration": 3000
+    },
+    {
+     "name": "Caparazón Vivo",
+     "desc": "Los escarabajos forman una armadura: escudo según el enjambre (consume 15).",
+     "kind": "ascension",
+     "radius": null,
+     "range": null,
+     "duration": 4000
+    },
+    {
+     "name": "Vuelo de Élitros",
+     "desc": "Salto rasante: los escarabajos muerden todo lo que cruza.",
+     "kind": "ascension",
+     "radius": 40,
+     "range": 220,
+     "duration": null
+    }
+   ],
+   "ultimate": {
+    "name": "Eclipse de Escarabajos",
+    "desc": "Khepri se descompone en enjambre y cubre una región: daño continuo y −60% de daño recibido mientras dura.",
+    "kind": "ascension"
+   },
+   "catalogLore": "Khepri lanza, recoge y viste a su enjambre de escarabajos; cada muerte cercana lo alimenta.",
+   "origin": "Las tumbas del Abismo",
+   "history": "En el Abismo, los escarabajos son lo único que la Horda no logró corromper: se comen lo que ella deja. Khepri fue sacerdote de un culto que los alimentaba para mantener limpias las tumbas. Cuando la Horda llegó, el enjambre lo eligió a él. No lo obedece por miedo: lo sigue porque Khepri siempre sabe dónde hay carroña.",
+   "atlasActual": "assets/sprites/champions/khepri/atlas.png"
+  },
+  "velmira": {
+   "id": "velmira",
+   "name": "Velmira, la Reina de las Máscaras",
+   "hudName": "Velmira",
+   "color": "#c06bd8",
+   "glow": "#f3d1ff",
+   "role": "Soporte de control: cada máscara es un estado mágico, y cambiar de rostro reescribe la próxima habilidad.",
+   "roleCategory": "soporte",
+   "basicRange": 270,
+   "basicArc": false,
+   "ranged": true,
+   "skills": [
+    {
+     "name": "Máscara Arrojada",
+     "desc": "Lanza la máscara activa en línea: daña y aplica su efecto a enemigos y aliados que toca.",
+     "kind": "ascension",
+     "radius": 30,
+     "range": 320,
+     "duration": null
+    },
+    {
+     "name": "Coro de Rostros",
+     "desc": "Las máscaras giran a su alrededor: aliados reciben el beneficio y enemigos el castigo de la máscara activa.",
+     "kind": "ascension",
+     "radius": 170,
+     "range": null,
+     "duration": null
+    },
+    {
+     "name": "Cambio de Rostro",
+     "desc": "Cambia a la siguiente máscara con un pequeño salto: la próxima habilidad se potencia un 30%.",
+     "kind": "ascension",
+     "radius": 90,
+     "range": 140,
+     "duration": null
+    }
+   ],
+   "ultimate": {
+    "name": "El Gran Teatro",
+    "desc": "Cuatro máscaras espectrales gigantes actúan en secuencia: Inspiración, Terror, Silencio y Protección.",
+    "kind": "ascension"
+   },
+   "catalogLore": "Velmira cambia entre cuatro máscaras: cada rostro es un estado y el cambio potencia el siguiente acto.",
+   "origin": "El viejo teatro de la Ciudad Maldita",
+   "history": "El teatro de la Ciudad cerró la noche del regreso, pero Velmira siguió dando funciones para los que se refugiaron en el escenario. Cuando el miedo era demasiado, les prestaba una máscara: quien se ponía la de la Valentía dejaba de temblar. Las máscaras aprendieron. Ahora flotan a su alrededor y cada una guarda la emoción de alguien que sobrevivió esa noche.",
+   "atlasActual": "assets/sprites/champions/velmira/atlas.png"
+  },
+  "vhal": {
+   "id": "vhal",
+   "name": "Vhal, el Astrónomo Caído",
+   "hudName": "Vhal",
+   "color": "#6f7cf2",
+   "glow": "#d9e1ff",
+   "role": "Mago gravitatorio: acumula Masa sobre la horda hasta que los enemigos se atraen entre sí y colapsan.",
+   "roleCategory": "mago",
+   "basicRange": 320,
+   "basicArc": false,
+   "ranged": true,
+   "skills": [
+    {
+     "name": "Estrella Errante",
+     "desc": "Proyectil estelar en línea: daña y añade 1 de Masa.",
+     "kind": "ascension",
+     "radius": 26,
+     "range": 360,
+     "duration": null
+    },
+    {
+     "name": "Pozo Gravitatorio",
+     "desc": "Pozo en el punto elegido: atrae comunes al centro y daña; la Masa aumenta la atracción.",
+     "kind": "ascension",
+     "radius": 130,
+     "range": 300,
+     "duration": 3500
+    },
+    {
+     "name": "Órbita",
+     "desc": "Se desplaza en arco alrededor del punto elegido dejando una estela que añade Masa. Al cerrar la órbita gana +15% de daño 4 s.",
+     "kind": "ascension",
+     "radius": 60,
+     "range": 220,
+     "duration": null
+    }
+   ],
+   "ultimate": {
+    "name": "Colapso",
+    "desc": "Una estrella crece, se vuelve singularidad y colapsa: el estallido final escala con la Masa consumida. Mientras atrae, frena; los aliados cercanos ganan +10% de daño.",
+    "kind": "ascension"
+   },
+   "catalogLore": "Vhal acumula Masa sobre la Horda hasta que los enemigos se atraen entre sí y colapsan.",
+   "origin": "La torre de la Arena Gélida",
+   "history": "Vhal medía estrellas desde la torre más alta de la Gélida. La noche del regreso vio una caer hacia la arena y corrió a buscarla. La encontró viva. Desde entonces una parte de su cuerpo es cielo: se le ven las constelaciones debajo de la piel. Calcula órbitas para que la Horda se estrelle contra sí misma.",
+   "atlasActual": "assets/sprites/champions/vhal/atlas.png"
+  },
+  "bront": {
+   "id": "bront",
+   "name": "Bront, la Fortaleza Viviente",
+   "hudName": "Bront",
+   "color": "#8aa4b8",
+   "glow": "#bfe8ff",
+   "role": "Tanque que se desarma en placas defensivas y termina convertido en fortificación.",
+   "roleCategory": "tanque",
+   "basicRange": 90,
+   "basicArc": true,
+   "ranged": false,
+   "skills": [
+    {
+     "name": "Placa Arrojada",
+     "desc": "Lanza una placa que daña en línea y queda en el suelo como placa defensiva.",
+     "kind": "ascension",
+     "radius": 32,
+     "range": 280,
+     "duration": null
+    },
+    {
+     "name": "Muro de Placas",
+     "desc": "Levanta una muralla de placas frente a él: los enemigos que la cruzan reciben daño y se frenan mucho.",
+     "kind": "ascension",
+     "radius": 26,
+     "range": 160,
+     "duration": 5000
+    },
+    {
+     "name": "Pulso del Cristal",
+     "desc": "El cristal del pecho late: daña a su alrededor, aparta a los comunes y aturde un instante a los élites. Él y los aliados cercanos ganan 20% de armadura 3 s.",
+     "kind": "ascension",
+     "radius": 120,
+     "range": null,
+     "duration": null
+    }
+   ],
+   "ultimate": {
+    "name": "Ciudadela",
+    "desc": "Se ancla y se transforma en fortificación: +40% de reducción de daño, murallas alrededor y refugio para aliados.",
+    "kind": "ascension"
+   },
+   "catalogLore": "Bront se desprende de placas protectoras, levanta murallas y se ancla como una ciudadela.",
+   "origin": "Las murallas de la Fortaleza",
+   "history": "Nadie recuerda quién vestía a Bront. En la Fábrica encontraron la armadura vacía, de pie, sosteniendo una puerta mientras los últimos obreros escapaban. El cristal de su pecho es un fragmento del Sello que el Forjador escondió allí. Bront no habla de sí mismo; habla de las puertas que todavía tiene que sostener.",
+   "atlasActual": "assets/sprites/champions/bront/atlas.png"
+  },
+  "oriel": {
+   "id": "oriel",
+   "name": "Oriel, la Portera de las Cicatrices",
+   "hudName": "Oriel",
+   "color": "#e05a7a",
+   "glow": "#ffd0dc",
+   "role": "Soporte de reposicionamiento: abre pares de portales a través de las Cicatrices de la Horda y convierte el mapa en un atajo para su equipo.",
+   "roleCategory": "soporte",
+   "basicRange": 270,
+   "basicArc": false,
+   "ranged": true,
+   "skills": [
+    {
+     "name": "Abrir Cicatriz",
+     "desc": "Abre un portal donde está y otro en el punto elegido. Aliados que entran salen por el otro; enemigos son rechazados.",
+     "kind": "ascension",
+     "radius": 38,
+     "range": 320,
+     "duration": 6500
+    },
+    {
+     "name": "Eco de la Cicatriz",
+     "desc": "Cada portal abierto pulsa: daña enemigos y cura un poco a los aliados cercanos.",
+     "kind": "ascension",
+     "radius": 120,
+     "range": null,
+     "duration": null
+    },
+    {
+     "name": "Paso entre Mundos",
+     "desc": "Oriel aparece en su otro portal (o en el punto elegido) y deja una grieta que daña.",
+     "kind": "ascension",
+     "radius": 70,
+     "range": 300,
+     "duration": null
+    }
+   ],
+   "ultimate": {
+    "name": "La Gran Cicatriz",
+    "desc": "Abre una Cicatriz gigante: enemigos dentro se frenan y reciben daño; ecos de campeones caídos salen a golpear y los aliados dentro reciben −20% de daño.",
+    "kind": "ascension"
+   },
+   "catalogLore": "Oriel abre pares de portales que sacan a su equipo del cerco de la Horda.",
+   "origin": "Las grietas del Reino Fúngico",
+   "history": "Las Cicatrices de la Horda unen arenas que no deberían tocarse. Oriel trabajaba en la Fábrica marcando las grietas para que nadie cayera. Un día una se abrió bajo sus pies y salió del otro lado del Fúngico, viva. Desde entonces sabe dónde se puede pasar. No cierra las Cicatrices: las usa para llevar a los suyos lejos de la Horda antes de que la Horda llegue.",
+   "atlasActual": "assets/sprites/champions/oriel/atlas.png"
+  },
+  "saelis": {
+   "id": "saelis",
+   "name": "Saelis, la Heraldo del Plumaje",
+   "hudName": "Saelis",
+   "color": "#9cd0f0",
+   "glow": "#fff4cc",
+   "role": "Soporte de bendiciones: deja Plumas en el suelo que aceleran y fortalecen a quien las recoge, y las convierte en proyectiles cuando la Horda se acerca.",
+   "roleCategory": "soporte",
+   "basicRange": 280,
+   "basicArc": false,
+   "ranged": true,
+   "skills": [
+    {
+     "name": "Abanico de Plumas",
+     "desc": "Lanza cinco plumas en abanico: cada una daña a los dos primeros enemigos que cruza y queda clavada en el suelo como Pluma.",
+     "kind": "ascension",
+     "radius": 22,
+     "range": 300,
+     "duration": 8000
+    },
+    {
+     "name": "Ráfaga Ascendente",
+     "desc": "Bate las alas: aparta a los comunes, frena a los élites, bendice a los aliados cercanos y dispara cada Pluma cercana contra el enemigo más próximo.",
+     "kind": "ascension",
+     "radius": 150,
+     "range": null,
+     "duration": null
+    },
+    {
+     "name": "Llamado del Plumaje",
+     "desc": "Todas sus Plumas vuelan de regreso: dañan a los enemigos del camino y cada una le acorta 0,2 s las recargas. Aunque no haya plumas, gana +20% de velocidad y bendice a los aliados que estén a su lado.",
+     "kind": "ascension",
+     "radius": 26,
+     "range": null,
+     "duration": null
+    }
+   ],
+   "ultimate": {
+    "name": "Cielo de Plumas",
+    "desc": "Abre un cielo sobre la zona: caen plumas sobre los enemigos de adentro, los aliados quedan bendecidos y al final seis Plumas quedan en el suelo.",
+    "kind": "ascension"
+   },
+   "catalogLore": "Saelis siembra Plumas que bendicen a su equipo y las hace volar de vuelta contra la Horda.",
+   "origin": "Las copas altas del Bosque",
+   "history": "Saelis cuidaba los nidos de las copas altas del Bosque cuando la Horda subió por los troncos. Las aves se fueron todas juntas, en una sola bandada, y le dejaron las plumas que perdieron al huir. Desde entonces las siembra en cada campo de batalla. Dice que una pluma en el suelo es una promesa: alguien va a volver a levantar vuelo.",
+   "atlasActual": "assets/sprites/champions/saelis/atlas.png"
+  },
+  "ilsa": {
+   "id": "ilsa",
+   "name": "Ilsa, la Esgrimista de Réplica",
+   "hudName": "Ilsa",
+   "color": "#d94f6a",
+   "glow": "#ffd0da",
+   "role": "Duelista de contraataque: desvía los golpes enemigos, responde a cada atacante y gasta Réplicas en estocadas.",
+   "roleCategory": "asesino",
+   "basicRange": 70,
+   "basicArc": true,
+   "ranged": false,
+   "skills": [
+    {
+     "name": "Postura de Réplica",
+     "desc": "Durante 0,9 s desvía todos los golpes que recibas y contraataca a cada atacante. Cada golpe desviado suma una Réplica (máx. 3) y acorta 2 s esta recarga.",
+     "kind": "ascension",
+     "radius": 110,
+     "range": null,
+     "duration": 900
+    },
+    {
+     "name": "Estocada de Réplica",
+     "desc": "Se lanza en línea y atraviesa a cuantos haya en el camino; cada Réplica gastada suma +35% de daño.",
+     "kind": "ascension",
+     "radius": 26,
+     "range": 200,
+     "duration": null
+    },
+    {
+     "name": "Giro de Acero",
+     "desc": "Gira con el acero: daña, frena y aparta a los comunes que la rodean. Cada Réplica gastada suma +25% de daño y empuja más lejos.",
+     "kind": "ascension",
+     "radius": 105,
+     "range": null,
+     "duration": null
+    }
+   ],
+   "ultimate": {
+    "name": "Duelo de Mil Réplicas",
+    "desc": "Estallido que frena alrededor y, durante 4 s, desvía hasta seis golpes con una onda de respuesta. Recibe 40% menos de daño mientras dura.",
+    "kind": "ascension"
+   },
+   "catalogLore": "Ilsa desvía los golpes, los devuelve con interés y convierte cada Réplica en una estocada.",
+   "origin": "Los salones de la Ciudad",
+   "history": "Ilsa Corvo enseñaba esgrima en los salones de la Ciudad con una sola regla: jamás atacar primero. Perdió a su mejor alumno por un golpe que nadie desvió y decidió que a nadie más le tocaría pagar por no responder. Ahora espera el golpe con el florete bajo y la cinta carmesí en la muñeca, y devuelve cada uno con intereses. No se jacta: cuenta las respuestas, porque la tercera siempre es la que cierra el duelo.",
+   "atlasActual": "assets/sprites/champions/ilsa/atlas.png"
+  },
+  "vorn": {
+   "id": "vorn",
+   "name": "Vorn, el Cambiapiel",
+   "hudName": "Vorn",
+   "color": "#7fa88c",
+   "glow": "#d8f0e0",
+   "role": "Tanque transformista: alterna una piel de piedra que resiste y una de tormenta que persigue, y cada skill cambia con la forma.",
+   "roleCategory": "tanque",
+   "basicRange": 84,
+   "basicArc": true,
+   "ranged": false,
+   "skills": [
+    {
+     "name": "Mudar",
+     "desc": "Cambia de piel. A Piedra: onda que frena y una coraza propia. A Tormenta: onda que debilita y +velocidad y +daño. Dura hasta que mudes de nuevo.",
+     "kind": "ascension",
+     "radius": 115,
+     "range": null,
+     "duration": 3000
+    },
+    {
+     "name": "Zarpa",
+     "desc": "Piedra: golpe en abanico que aparta y frena. Tormenta: se lanza en línea y deja sangrado.",
+     "kind": "ascension",
+     "radius": 70,
+     "range": 160,
+     "duration": null
+    },
+    {
+     "name": "Instinto",
+     "desc": "Piedra: Roca Viva, coraza y armadura para el grupo. Tormenta: Aullido, +velocidad y +daño para el grupo.",
+     "kind": "ascension",
+     "radius": 170,
+     "range": null,
+     "duration": 3500
+    }
+   ],
+   "ultimate": {
+    "name": "Bestia Primordial",
+    "desc": "Funde ambas pieles 6 s: −22% de daño recibido, +velocidad y un pisotón cada 0,7 s que frena y aparta.",
+    "kind": "ascension"
+   },
+   "catalogLore": "Vorn alterna dos pieles, Piedra y Tormenta, y las funde en una Bestia que nadie quiere frenar.",
+   "origin": "El santuario del Laberinto",
+   "history": "El santuario del Laberinto exigía que alguien guardara la puerta con dos pieles: una de piedra, para resistir, y una de tormenta, para avisar. Vorn aceptó el pacto sin preguntar cuánto duraba. Ya no recuerda cuál de las dos fue la suya primero, y cada muda le cuesta un poco de nombre. Cuando entra en la Bestia deja de elegir, y dice que es el único momento en que se siente entero.",
+   "atlasActual": "assets/sprites/champions/vorn/atlas.png"
+  },
+  "kora": {
+   "id": "kora",
+   "name": "Kora, la Ariete",
+   "hudName": "Kora",
+   "color": "#c9794a",
+   "glow": "#ffe0c2",
+   "role": "Tanque de impulso: correr acumula Impulso que potencia sus golpes; arrastra y estrella a la Horda contra sí misma.",
+   "roleCategory": "tanque",
+   "basicRange": 86,
+   "basicArc": true,
+   "ranged": false,
+   "skills": [
+    {
+     "name": "Arremetida de Ariete",
+     "desc": "Arremete en línea arrastrando hasta seis comunes y estrellándolos contra los vecinos. Gasta Impulso para pegar más.",
+     "kind": "ascension",
+     "radius": 48,
+     "range": 230,
+     "duration": null
+    },
+    {
+     "name": "Pisotón de Impulso",
+     "desc": "Golpea el suelo: daña, frena y empuja a los comunes; gasta la mitad del Impulso para pegar más fuerte.",
+     "kind": "ascension",
+     "radius": 115,
+     "range": null,
+     "duration": null
+    },
+    {
+     "name": "Cabeza Gacha",
+     "desc": "3,5 s de armadura y coraza: ningún freno ni aturdimiento te detiene, y ganas Impulso al doble.",
+     "kind": "ascension",
+     "radius": null,
+     "range": null,
+     "duration": 3500
+    }
+   ],
+   "ultimate": {
+    "name": "Estampida",
+    "desc": "Carrera guiada de 1,6 s que arrolla a todos los que cruzas y termina en un pisotón enorme.",
+    "kind": "ascension"
+   },
+   "catalogLore": "Kora gana Impulso corriendo, arrastra a la Horda en su Arremetida y la arrolla en una Estampida.",
+   "origin": "Las galerías de las Minas",
+   "history": "Kora era la capataz de las carretas de mineral de las Minas cuando el derrumbe cerró la galería con cuarenta personas dentro. Empujó la carreta más pesada con el hombro hasta que la roca cedió. No fue fuerza: fue no parar. Desde entonces corre hacia cualquier cosa que cierre una salida, y descubrió que lo que se mueve rápido pesa más de lo que parece. No se detiene a mirar atrás; todos los que salieron ya la siguen.",
+   "atlasActual": "assets/sprites/champions/kora/atlas.png"
+  },
+  "solciju": {
+   "id": "solciju",
+   "name": "Solciju, la Enóloga",
+   "hudName": "Solciju",
+   "color": "#923951",
+   "glow": "#923951",
+   "role": "Maga de control",
+   "roleCategory": "mago",
+   "basicRange": 300,
+   "basicArc": false,
+   "ranged": true,
+   "skills": [
+    {
+     "name": "Vino maldito",
+     "desc": "Salpica vino en un área y añade una marca de fermentación.",
+     "kind": "expedition",
+     "radius": 85,
+     "range": 300,
+     "duration": 1800
+    },
+    {
+     "name": "Barrica añeja",
+     "desc": "Coloca una barrica que estalla tras 2,4 s. Máximo dos; reemplazar una no la detona.",
+     "kind": "expedition",
+     "radius": 100,
+     "range": 240,
+     "duration": 2400
+    },
+    {
+     "name": "Brindis a solas",
+     "desc": "Obtiene 15% de armadura durante 3 s y recupera 4% de vida máxima.",
+     "kind": "expedition",
+     "radius": 120,
+     "range": null,
+     "duration": 3000
+    }
+   ],
+   "ultimate": {
+    "name": "Gran Reserva",
+    "desc": "Cuatro pulsos de vino dañan y ralentizan enemigos. Protege a aliados dentro del área.",
+    "kind": "expedition"
+   },
+   "catalogLore": "Solciju salpica vino maldito, fermenta marcas en la Horda y la hace estallar con barricas.",
+   "origin": "Las bodegas de la Ciudad Maldita",
+   "history": "Solciju conservaba las últimas cosechas de una ciudad que ya nadie recordaba. Cuando la peste alcanzó sus bodegas, descubrió que el vino retenía algo más que años: atrapaba las maldiciones de quienes lo bebían. Ahora recorre las ruinas con una reserva que jamás ofrece por cortesía. Dice detestar la compañía, pero siempre guarda una copa para quien sobreviva a su lado.",
+   "atlasActual": "assets/sprites/champions/solciju/atlas.png"
+  },
+  "veyra": {
+   "id": "veyra",
+   "name": "Veyra, la Última Herida",
+   "hudName": "Veyra",
+   "color": "#ab3459",
+   "glow": "#ab3459",
+   "role": "Asesina de riesgo",
+   "roleCategory": "asesino",
+   "basicRange": 70,
+   "basicArc": false,
+   "ranged": false,
+   "skills": [
+    {
+     "name": "Abrir la herida",
+     "desc": "Corta en abanico y provoca tres pulsos de sangrado.",
+     "kind": "expedition",
+     "radius": 35,
+     "range": 130,
+     "duration": 3000
+    },
+    {
+     "name": "Paso escarlata",
+     "desc": "Se desplaza sin atravesar muros y hiere a quienes cruza.",
+     "kind": "expedition",
+     "radius": 28,
+     "range": 145,
+     "duration": 3000
+    },
+    {
+     "name": "Pacto de dolor",
+     "desc": "Sacrifica 8% de su vida actual para ganar 25% de velocidad y 10% de armadura durante 3 s.",
+     "kind": "expedition",
+     "radius": 80,
+     "range": null,
+     "duration": 3000
+    }
+   ],
+   "ultimate": {
+    "name": "La última herida",
+    "desc": "Daña y ralentiza a enemigos cercanos. Recupera 2% de vida y consume sangrados para sanar 1% adicional por herida, hasta 6% total.",
+    "kind": "expedition"
+   },
+   "catalogLore": "Veyra corta con sangrado, se mueve entre latidos y consume heridas con su pacto de sangre.",
+   "origin": "El campo de batalla de la Ciudad Maldita",
+   "history": "Veyra regresó del campo de batalla con una herida que ningún sanador logró cerrar. Aprendió a escuchar su pulso y a moverse en el silencio entre dos latidos. No busca una muerte gloriosa: persigue a quienes comercian con la vida de otros. Cada pacto con su propia sangre le concede un instante de ventaja y le recuerda que sobrevivir también puede ser una forma de venganza.",
+   "atlasActual": null
+  },
+  "brakk": {
+   "id": "brakk",
+   "name": "Brakk, el Arquitecto del Fin",
+   "hudName": "Brakk",
+   "color": "#cead7a",
+   "glow": "#cead7a",
+   "role": "Tanque constructor",
+   "roleCategory": "tanque",
+   "basicRange": 75,
+   "basicArc": true,
+   "ranged": false,
+   "skills": [
+    {
+     "name": "Muro de asedio",
+     "desc": "Levanta un muro destructible que daña al aparecer y bloquea enemigos durante 4,5 s. Máximo dos.",
+     "kind": "expedition",
+     "radius": 65,
+     "range": 180,
+     "duration": 4500
+    },
+    {
+     "name": "Torreta de clavos",
+     "desc": "Construye una torreta destructible. Dispara seis ráfagas que dañan hasta tres enemigos cercanos. Máximo dos.",
+     "kind": "expedition",
+     "radius": 45,
+     "range": 180,
+     "duration": 6000
+    },
+    {
+     "name": "Apuntalar",
+     "desc": "Repara sus construcciones cercanas y obtiene 15% de armadura durante 3 s.",
+     "kind": "expedition",
+     "radius": 160,
+     "range": null,
+     "duration": 3000
+    }
+   ],
+   "ultimate": {
+    "name": "Demolición final",
+    "desc": "Sacrifica construcciones cercanas, golpea y ralentiza enemigos y obtiene un escudo. No acumula daño por cada construcción.",
+    "kind": "expedition"
+   },
+   "catalogLore": "Brakk levanta muros y torretas, repara el refugio y lo demuele sobre la Horda cuando hace falta.",
+   "origin": "Las murallas abandonadas de la ciudad",
+   "history": "Brakk calculó durante años las murallas de una ciudad que sus gobernantes decidieron abandonar. Cuando llegó la Horda, convirtió los planos de evacuación en fortificaciones y abrió rutas entre los derrumbes. Desde entonces construye refugios que sabe temporales: cada torre compra segundos y cada muro guarda una salida. Carga los nombres de quienes no logró salvar grabados en su martillo.",
+   "atlasActual": "assets/sprites/champions/brakk/atlas.png"
+  },
+  "morveth": {
+   "id": "morveth",
+   "name": "Morveth, el Jardinero de la Peste",
+   "hudName": "Morveth",
+   "color": "#a4c56a",
+   "glow": "#a4c56a",
+   "role": "Mago invocador",
+   "roleCategory": "mago",
+   "basicRange": 300,
+   "basicArc": false,
+   "ranged": true,
+   "skills": [
+    {
+     "name": "Huerto maldito",
+     "desc": "Planta un hongo destructible que libera seis pulsos de esporas. Máximo tres hongos.",
+     "kind": "expedition",
+     "radius": 85,
+     "range": 260,
+     "duration": 6000
+    },
+    {
+     "name": "Exhalación de peste",
+     "desc": "Daña un abanico e infecta a sus víctimas durante tres pulsos.",
+     "kind": "expedition",
+     "radius": 35,
+     "range": 210,
+     "duration": 3000
+    },
+    {
+     "name": "Simbiosis",
+     "desc": "Obtiene 15% de armadura y sana 2% de vida. Consume un hongo cercano para sanar 4% en total.",
+     "kind": "expedition",
+     "radius": 150,
+     "range": null,
+     "duration": 3000
+    }
+   ],
+   "ultimate": {
+    "name": "Jardín de la peste",
+    "desc": "Cuatro pulsos infectan, dañan y ralentizan. Los aliados dentro del jardín reciben protección.",
+    "kind": "expedition"
+   },
+   "catalogLore": "Morveth infecta, contagia a los vecinos y cultiva hongos que estallan cuando él los consume.",
+   "origin": "El jardín de un hospital sitiado",
+   "history": "Morveth cuidaba el jardín de un hospital sitiado. Cuando las medicinas se agotaron, descubrió un micelio capaz de retener la infección en sus raíces. Ahora transporta aquel cultivo en una urna agrietada. Sus hongos necesitan tiempo y terreno para extenderse; arrancarlos deja al jardinero expuesto. No busca una cura perfecta, sino impedir que la próxima cosecha sean los vivos.",
+   "atlasActual": "assets/sprites/champions/morveth/atlas.png"
+  },
+  "aelith": {
+   "id": "aelith",
+   "name": "Aelith, la Ladrona de Segundos",
+   "hudName": "Aelith",
+   "color": "#bfa7dc",
+   "glow": "#bfa7dc",
+   "role": "Maga temporal",
+   "roleCategory": "mago",
+   "basicRange": 300,
+   "basicArc": false,
+   "ranged": true,
+   "skills": [
+    {
+     "name": "Instante roto",
+     "desc": "Daña un área y deja un eco que repite 30% del daño tras 0,8 s. Máximo dos ecos.",
+     "kind": "expedition",
+     "radius": 75,
+     "range": 290,
+     "duration": 800
+    },
+    {
+     "name": "Fractura de segundos",
+     "desc": "Abre una línea que daña y ralentiza a sus enemigos durante 1,8 s.",
+     "kind": "expedition",
+     "radius": 26,
+     "range": 260,
+     "duration": 1800
+    },
+    {
+     "name": "Tiempo prestado",
+     "desc": "Gana 25% de velocidad y 10% de armadura durante 3 s. Después sufre 15% de lentitud durante 0,8 s.",
+     "kind": "expedition",
+     "radius": 140,
+     "range": null,
+     "duration": 3000
+    }
+   ],
+   "ultimate": {
+    "name": "La hora imposible",
+    "desc": "Tres pulsos dañan y ralentizan enemigos. Escuda a aliados dentro del círculo.",
+    "kind": "expedition"
+   },
+   "catalogLore": "Aelith deja ecos de tiempo, fractura líneas de segundos y acelera pagando su deuda temporal.",
+   "origin": "Una estación de relojes sin trenes",
+   "history": "Aelith reparaba relojes en una estación donde ningún tren volvía a tiempo. Tras la llegada de la Horda descubrió que los instantes perdidos seguían allí, suspendidos entre los dientes de los engranajes. Aprendió a soltarlos en ecos breves, incapaz de cambiar lo ocurrido. Cada aceleración exige una pausa después: roba segundos a su propio futuro, nunca una vida entera al pasado.",
+   "atlasActual": "assets/sprites/champions/aelith/atlas.png"
+  }
+ },
+ "enemies": {
+  "esqueleto": {
+   "id": "esqueleto",
+   "name": "Esqueleto",
+   "rank": "normal",
+   "hp": 26,
+   "dmg": 7,
+   "speed": 84,
+   "radius": 22,
+   "scale": 3.2,
+   "color": "#ece4cc",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "infernal",
+   "family": "No-muerto",
+   "lore": "Los primeros soldados de la Horda: huesos de todos los que cayeron en su dimensión.",
+   "origin": "La dimensión de la Horda.",
+   "behavior": "Chusma que llega en masa.",
+   "attacks": [
+    "Espadazo"
+   ],
+   "mech": "Sale también por las Fisuras del piso: cerralas.",
+   "atlasActual": "assets/sprites/enemies/infernal/esqueleto/atlas.png"
+  },
+  "zombie": {
+   "id": "zombie",
+   "name": "Zombi",
+   "rank": "normal",
+   "hp": 52,
+   "dmg": 9,
+   "speed": 58,
+   "radius": 24,
+   "scale": 3.4,
+   "color": "#6d7d55",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "infernal",
+   "family": "No-muerto",
+   "lore": "Cuerpos que la Horda no terminó de vaciar. Lentos, pero no paran.",
+   "origin": "La dimensión de la Horda.",
+   "behavior": "Lento, te rodea.",
+   "attacks": [
+    "Golpe"
+   ],
+   "mech": "Aguanta más que el esqueleto.",
+   "atlasActual": null
+  },
+  "esqueleto_h": {
+   "id": "esqueleto_h",
+   "name": "Esqueleto Cornudo",
+   "rank": "subelite",
+   "hp": 88,
+   "dmg": 12,
+   "speed": 76,
+   "radius": 28,
+   "scale": 3.8,
+   "color": "#ded4b4",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "infernal",
+   "family": "No-muerto",
+   "lore": "Esqueletos cornudos: guerreros que la Horda premió con más huesos.",
+   "origin": "La dimensión de la Horda.",
+   "behavior": "Gira su arma cuando estás cerca.",
+   "attacks": [
+    "Giro de arma",
+    "Embestida en línea recta"
+   ],
+   "mech": "En el nivel 4 aparece como GUARDIÁN de la Horda (subjefe).",
+   "atlasActual": null
+  },
+  "demonio_menor": {
+   "id": "demonio_menor",
+   "name": "Demonio Menor",
+   "rank": "subelite",
+   "hp": 110,
+   "dmg": 15,
+   "speed": 98,
+   "radius": 28,
+   "scale": 3.8,
+   "color": "#d94a1e",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "infernal",
+   "family": "Demonio",
+   "lore": "Demonios menores de la Horda: pequeños, crueles y siempre en llamas.",
+   "origin": "La dimensión de la Horda.",
+   "behavior": "Hace llover fuego sobre tu posición.",
+   "attacks": [
+    "Lluvia de fuego"
+   ],
+   "mech": "En el nivel 7 aparece como GUARDIÁN de la Horda (subjefe).",
+   "atlasActual": "assets/sprites/enemies/infernal/demonio_menor/atlas.png"
+  },
+  "golem": {
+   "id": "golem",
+   "name": "Gólem",
+   "rank": "elite",
+   "hp": 320,
+   "dmg": 22,
+   "speed": 46,
+   "radius": 38,
+   "scale": 5,
+   "color": "#6b6f52",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "infernal",
+   "family": "Constructo",
+   "lore": "Gólems de roca fundida que sostienen las paredes de la dimensión de la Horda.",
+   "origin": "La dimensión de la Horda.",
+   "behavior": "Lento y pesado.",
+   "attacks": [
+    "Pisotón que aturde",
+    "Roca a distancia"
+   ],
+   "mech": "Su Pisotón aturde: salí del círculo antes de que caiga.",
+   "atlasActual": "assets/sprites/enemies/infernal/golem/atlas.png"
+  },
+  "demonio_mago": {
+   "id": "demonio_mago",
+   "name": "Demonio Hechicero",
+   "rank": "elite",
+   "hp": 140,
+   "dmg": 16,
+   "speed": 58,
+   "radius": 28,
+   "scale": 4,
+   "color": "#8a63ad",
+   "ranged": true,
+   "visualAlias": null,
+   "arena": "infernal",
+   "family": "Demonio",
+   "lore": "Hechiceros de la Horda. Aprendieron magia de los que corrompieron.",
+   "origin": "La dimensión de la Horda.",
+   "behavior": "Mantiene distancia y lanza fuego.",
+   "attacks": [
+    "Proyectil de fuego"
+   ],
+   "mech": "Élite: prioridad alta.",
+   "atlasActual": "assets/sprites/enemies/infernal/demonio_mago/atlas.png"
+  },
+  "demonio_mayor": {
+   "id": "demonio_mayor",
+   "name": "Demonio Mayor",
+   "rank": "jefe",
+   "hp": 3200,
+   "dmg": 30,
+   "speed": 54,
+   "radius": 70,
+   "scale": 9,
+   "color": "#b02a20",
+   "ranged": true,
+   "visualAlias": null,
+   "arena": "infernal",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": "assets/sprites/bosses/infernal/demonio_mayor/atlas.png"
+  },
+  "lobo_artico": {
+   "id": "lobo_artico",
+   "name": "Lobo Ártico",
+   "rank": "normal",
+   "hp": 16,
+   "dmg": 5,
+   "speed": 112,
+   "radius": 18,
+   "scale": 2.8,
+   "color": "#cfe4ee",
+   "ranged": false,
+   "visualAlias": "esqueleto",
+   "arena": "hielo",
+   "family": "Bestia",
+   "lore": "Manadas que cruzaban la tundra antes del invierno eterno. El frío del Mago Gélido les congeló la mirada.",
+   "origin": "La tundra alrededor de la Arena Gélida.",
+   "behavior": "Rápido, llega en manada.",
+   "attacks": [
+    "Mordida"
+   ],
+   "mech": "Quedarte quieto en la Gélida te congela: pelealos en movimiento.",
+   "atlasActual": "assets/sprites/enemies/hielo/lobo_artico/atlas.png"
+  },
+  "hada_escarcha": {
+   "id": "hada_escarcha",
+   "name": "Hada de Escarcha",
+   "rank": "normal",
+   "hp": 9,
+   "dmg": 3,
+   "speed": 98,
+   "radius": 14,
+   "scale": 2.4,
+   "color": "#bfe4ff",
+   "ranged": false,
+   "visualAlias": "esqueleto",
+   "arena": "hielo",
+   "family": "Feérico helado",
+   "lore": "Hadas que se quedaron dormidas en la nieve cuando el Mago Gélido cerró el paso. Despertaron frías por dentro y con hambre de calor.",
+   "origin": "Las grietas de hielo de la Arena Gélida.",
+   "behavior": "Esbirro. Llegan de a tres; si hay un brasero encendido cerca, lo rodean y le roban el calor. Si no, revolotean alrededor del guardián y pican de a una.",
+   "attacks": [
+    "Picotazo helado",
+    "Robar el calor: el brasero se apaga mucho antes"
+   ],
+   "mech": "Un golpe las deshace: espantalas del brasero antes de que te deje sin fuego (se ve el hilo de luz fría).",
+   "atlasActual": "assets/sprites/enemies/hielo/hada_escarcha/atlas.png"
+  },
+  "golem_hielo": {
+   "id": "golem_hielo",
+   "name": "Gólem de Hielo",
+   "rank": "normal",
+   "hp": 62,
+   "dmg": 9,
+   "speed": 44,
+   "radius": 24,
+   "scale": 3.4,
+   "color": "#8fc4e0",
+   "ranged": false,
+   "visualAlias": "zombie",
+   "arena": "hielo",
+   "family": "Elemental de hielo",
+   "lore": "Hielo que aprendió a caminar. El Mago Gélido los levantaba para custodiar el paso de la montaña.",
+   "origin": "Los glaciares de la Arena Gélida.",
+   "behavior": "Tanque lento.",
+   "attacks": [
+    "Golpe helado"
+   ],
+   "mech": "El fuego lo derrite más rápido.",
+   "atlasActual": null
+  },
+  "dragoncito_hielo": {
+   "id": "dragoncito_hielo",
+   "name": "Dragoncito de Hielo",
+   "rank": "elite",
+   "hp": 100,
+   "dmg": 10,
+   "speed": 96,
+   "radius": 23,
+   "scale": 3.4,
+   "color": "#a8dcff",
+   "ranged": true,
+   "visualAlias": "esqueleto_h",
+   "arena": "hielo",
+   "family": "Dracónido",
+   "lore": "Crías de los dragones de la montaña. Todavía no saben volar bien, pero su aliento ya congela.",
+   "origin": "Los nidos bajo el trono de Tundraverx.",
+   "behavior": "Élite. Dispara bolas de escarcha en arco y cada tanto se planta para soplar un cono helado.",
+   "attacks": [
+    "Disparo de escarcha (en arco)",
+    "Aliento de Escarcha: cono con aviso, daño + 1 carga de escarcha"
+   ],
+   "mech": "Cuando marca el cono, salí de costado: la escarcha se acumula y 4 cargas te congelan.",
+   "atlasActual": null
+  },
+  "angel_hielo": {
+   "id": "angel_hielo",
+   "name": "Ángel de Hielo y Cristal",
+   "rank": "elite",
+   "hp": 110,
+   "dmg": 13,
+   "speed": 66,
+   "radius": 26,
+   "scale": 3.8,
+   "color": "#9ec8e8",
+   "ranged": true,
+   "visualAlias": "demonio_menor",
+   "arena": "hielo",
+   "family": "Constructo de cristal",
+   "lore": "Ángeles tallados en cristal por el Mago Gélido, cuando todavía cuidaba el sello. Guardan la forma de un rezo que ya nadie dice.",
+   "origin": "La catedral de hielo de la Arena Gélida.",
+   "behavior": "Élite. Mantiene distancia, lanza cristal y canaliza el Prisma Helado bajo los pies de hasta dos guardianes.",
+   "attacks": [
+    "Disparo de cristal",
+    "Prisma Helado: círculo con aviso, daño + 2 cargas de escarcha"
+   ],
+   "mech": "Moverse es sobrevivir: el que sigue parado en el círculo cuando se cierra queda al borde de congelarse.",
+   "atlasActual": null
+  },
+  "demonio_hielo_fuego": {
+   "id": "demonio_hielo_fuego",
+   "name": "Demonio de Hielo y Fuego",
+   "rank": "elite",
+   "hp": 150,
+   "dmg": 15,
+   "speed": 96,
+   "radius": 28,
+   "scale": 4,
+   "color": "#4a6ea8",
+   "ranged": false,
+   "visualAlias": "demonio_mago",
+   "arena": "hielo",
+   "family": "Demonio",
+   "lore": "Un demonio de la Horda que se quedó demasiado tiempo en la Gélida. Arde por dentro y se congela por fuera.",
+   "origin": "Una grieta del sello en la montaña.",
+   "behavior": "Pelea a media distancia.",
+   "attacks": [
+    "Lanzallamas de Hielo (canalizado, escarcha acumulable)",
+    "Muro de Hielo (colisión real)"
+   ],
+   "mech": "Su muro bloquea el paso: rodealo.",
+   "atlasActual": null
+  },
+  "dragon_hielo": {
+   "id": "dragon_hielo",
+   "name": "Tundraverx, Soberano de Hielo",
+   "rank": "elite",
+   "hp": 420,
+   "dmg": 20,
+   "speed": 50,
+   "radius": 44,
+   "scale": 6,
+   "color": "#7fc0f0",
+   "ranged": true,
+   "visualAlias": "golem",
+   "arena": "hielo",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": null
+  },
+  "mago_hielo_cristal": {
+   "id": "mago_hielo_cristal",
+   "name": "El Mago Gélido",
+   "rank": "jefe",
+   "hp": 1500,
+   "dmg": 20,
+   "speed": 56,
+   "radius": 40,
+   "scale": 4.2,
+   "color": "#c9e6ff",
+   "ranged": true,
+   "visualAlias": "demonio_mago",
+   "arena": "hielo",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": null
+  },
+  "golem_cristal": {
+   "id": "golem_cristal",
+   "name": "Gólem de Cristal",
+   "rank": "normal",
+   "hp": 62,
+   "dmg": 9,
+   "speed": 44,
+   "radius": 24,
+   "scale": 3.4,
+   "color": "#6fa8e8",
+   "ranged": false,
+   "visualAlias": "zombie",
+   "arena": "hielo",
+   "family": "Invocación de cristal",
+   "lore": "Guardianes que el Mago Gélido invoca para blindarse.",
+   "origin": "Los invoca el Mago Gélido en su segunda fase.",
+   "behavior": "Protege al Mago.",
+   "attacks": [
+    "Pisotón",
+    "Lanzar cristal",
+    "Embestida"
+   ],
+   "mech": "Rompelos: mientras vivan, el Mago está blindado.",
+   "atlasActual": "assets/sprites/enemies/hielo/golem_cristal/atlas.png"
+  },
+  "cristal_servo": {
+   "id": "cristal_servo",
+   "name": "Servo de Cristal",
+   "rank": "normal",
+   "hp": 26,
+   "dmg": 6,
+   "speed": 92,
+   "radius": 16,
+   "scale": 2.6,
+   "color": "#9ec8ff",
+   "ranged": false,
+   "visualAlias": "esqueleto",
+   "arena": "hielo",
+   "family": "Invocación de cristal",
+   "lore": "Esquirlas del poder del Mago que toman forma por unos segundos.",
+   "origin": "Los invoca el Mago Gélido.",
+   "behavior": "Chusma que te rodea.",
+   "attacks": [
+    "Golpe de cristal"
+   ],
+   "mech": "Frágiles: un área los deshace.",
+   "atlasActual": "assets/sprites/enemies/hielo/cristal_servo/atlas.png"
+  },
+  "cristal_volador": {
+   "id": "cristal_volador",
+   "name": "Cristal Volador",
+   "rank": "normal",
+   "hp": 20,
+   "dmg": 6,
+   "speed": 84,
+   "radius": 15,
+   "scale": 2.6,
+   "color": "#bfe8ff",
+   "ranged": true,
+   "visualAlias": "esqueleto_h",
+   "arena": "hielo",
+   "family": "Invocación de cristal",
+   "lore": "Cristales que flotan alrededor del Mago y disparan su frío.",
+   "origin": "Los invoca el Mago Gélido.",
+   "behavior": "Vuela y dispara desde lejos.",
+   "attacks": [
+    "Proyectil de escarcha"
+   ],
+   "mech": "Suman escarcha: no dejes que se acumulen.",
+   "atlasActual": "assets/sprites/enemies/hielo/cristal_volador/atlas.png"
+  },
+  "angel_caido_hielo": {
+   "id": "angel_caido_hielo",
+   "name": "Ángel Caído de Hielo",
+   "rank": "jefe",
+   "hp": 2600,
+   "dmg": 26,
+   "speed": 48,
+   "radius": 68,
+   "scale": 8.5,
+   "color": "#bfe0f5",
+   "ranged": true,
+   "visualAlias": "demonio_mayor",
+   "arena": "hielo",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": null
+  },
+  "duende_bosque": {
+   "id": "duende_bosque",
+   "name": "Duende del Bosque",
+   "rank": "normal",
+   "hp": 18,
+   "dmg": 5,
+   "speed": 88,
+   "radius": 18,
+   "scale": 2.8,
+   "color": "#7a9a4a",
+   "ranged": false,
+   "visualAlias": "esqueleto",
+   "arena": "bosque",
+   "family": "Feérico",
+   "lore": "Los duendes cuidaban los menhires de las Ruinas. Cuando el Guardián Ancestral se pudrió, ellos se pudrieron con él, pero todavía defienden las piedras: de vos.",
+   "origin": "Los círculos de piedra del bosque sagrado.",
+   "behavior": "Chusma rápida que llega en grupo.",
+   "attacks": [
+    "Cuchillada"
+   ],
+   "mech": "Como toda la horda de las Ruinas, se regenera si la dejás tranquila.",
+   "atlasActual": null
+  },
+  "enjambre_hadas": {
+   "id": "enjambre_hadas",
+   "name": "Enjambre de Hadas",
+   "rank": "normal",
+   "hp": 14,
+   "dmg": 4,
+   "speed": 78,
+   "radius": 16,
+   "scale": 2.6,
+   "color": "#d68ce0",
+   "ranged": true,
+   "visualAlias": "esqueleto_h",
+   "arena": "bosque",
+   "family": "Feérico",
+   "lore": "Un enjambre de hadas que antes iluminaba los senderos. Ahora su luz quema.",
+   "origin": "La niebla entre los árboles de las Ruinas.",
+   "behavior": "Revolotea y ataca desde lejos. Cada una brilla de un color: verde, rosa u oro.",
+   "attacks": [
+    "Chispa de luz a distancia"
+   ],
+   "mech": "Frágil: un área la deshace entera.",
+   "atlasActual": null
+  },
+  "bestia_bosque": {
+   "id": "bestia_bosque",
+   "name": "Bestia del Bosque",
+   "rank": "subelite",
+   "hp": 46,
+   "dmg": 9,
+   "speed": 118,
+   "radius": 22,
+   "scale": 3.2,
+   "color": "#8a6a42",
+   "ranged": false,
+   "visualAlias": "zombie",
+   "arena": "bosque",
+   "family": "Bestia",
+   "lore": "Las bestias del bosque fueron las primeras en oler la corrupción. Crecieron, se volvieron más fieras y aprendieron a cazar en manada.",
+   "origin": "La maleza profunda de las Ruinas.",
+   "behavior": "Carga de frente y salta desde las emboscadas.",
+   "attacks": [
+    "Zarpazo",
+    "Embestida"
+   ],
+   "mech": "Sale de la maleza que se sacude: alejate de las emboscadas.",
+   "atlasActual": null
+  },
+  "cu_sith": {
+   "id": "cu_sith",
+   "name": "Cù-Sìth",
+   "rank": "elite",
+   "hp": 150,
+   "dmg": 13,
+   "speed": 112,
+   "radius": 27,
+   "scale": 3.8,
+   "color": "#3e6b3e",
+   "ranged": false,
+   "visualAlias": "demonio_menor",
+   "arena": "bosque",
+   "family": "Bestia feérica",
+   "lore": "El Cù-Sìth era el perro de los elfos, el que avisaba la muerte con tres aullidos. Hoy la trae él mismo.",
+   "origin": "Leyendas élficas de las Ruinas.",
+   "behavior": "Élite. Muy rápido; elige al guardián más separado del grupo, le aúlla tres veces y al tercer aullido salta en línea recta.",
+   "attacks": [
+    "Mordida",
+    "Tres Aullidos: salto en línea marcada"
+   ],
+   "mech": "Cuando aúlla, el marcado tiene un anillo verde: volvé con el grupo o salí de la línea antes del salto. Como mucho uno por emboscada.",
+   "atlasActual": null
+  },
+  "ent": {
+   "id": "ent",
+   "name": "Ent",
+   "rank": "elite",
+   "hp": 340,
+   "dmg": 19,
+   "speed": 38,
+   "radius": 38,
+   "scale": 5.2,
+   "color": "#5a4a2e",
+   "ranged": false,
+   "visualAlias": "golem",
+   "arena": "bosque",
+   "family": "Árbol vivo",
+   "lore": "Árboles tan viejos como las Ruinas que despertaron con la corrupción. Lentos como las estaciones, duros como la piedra.",
+   "origin": "El corazón del bosque sagrado.",
+   "behavior": "Tanque lento que avanza y aplasta.",
+   "attacks": [
+    "Golpe de rama",
+    "Pisotón"
+   ],
+   "mech": "El fuego le hace más daño.",
+   "atlasActual": null
+  },
+  "dama_bosque": {
+   "id": "dama_bosque",
+   "name": "Dama del Bosque",
+   "rank": "elite",
+   "hp": 150,
+   "dmg": 16,
+   "speed": 60,
+   "radius": 27,
+   "scale": 4,
+   "color": "#2e3a2e",
+   "ranged": true,
+   "visualAlias": "demonio_mago",
+   "arena": "bosque",
+   "family": "Espíritu feérico",
+   "lore": "Las Damas del Bosque cantaban para que los árboles crecieran. Ahora cantan para que las raíces aprieten.",
+   "origin": "Los claros sagrados de las Ruinas.",
+   "behavior": "Mantiene distancia y lanza magia de la naturaleza.",
+   "attacks": [
+    "Proyectil de espinas",
+    "Hechizo de raíces"
+   ],
+   "mech": "Élite: prioridad alta, pero protegida por la chusma.",
+   "atlasActual": null
+  },
+  "doblador_guerrero": {
+   "id": "doblador_guerrero",
+   "name": "Doppelgänger — Guerrero",
+   "rank": "subjefe",
+   "hp": 260,
+   "dmg": 16,
+   "speed": 80,
+   "radius": 26,
+   "scale": 3.8,
+   "color": "#8a8a8a",
+   "ranged": false,
+   "visualAlias": "esqueleto_h",
+   "arena": "bosque",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": null
+  },
+  "doblador_arquera": {
+   "id": "doblador_arquera",
+   "name": "Doppelgänger — Arquera",
+   "rank": "subjefe",
+   "hp": 190,
+   "dmg": 14,
+   "speed": 74,
+   "radius": 24,
+   "scale": 3.8,
+   "color": "#9a9a9a",
+   "ranged": true,
+   "visualAlias": "demonio_menor",
+   "arena": "bosque",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": null
+  },
+  "doblador_picaro": {
+   "id": "doblador_picaro",
+   "name": "Doppelgänger — Pícaro",
+   "rank": "subjefe",
+   "hp": 170,
+   "dmg": 15,
+   "speed": 128,
+   "radius": 23,
+   "scale": 3.7,
+   "color": "#707070",
+   "ranged": false,
+   "visualAlias": "demonio_mago",
+   "arena": "bosque",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": null
+  },
+  "doblador_clerigo": {
+   "id": "doblador_clerigo",
+   "name": "Doppelgänger — Clérigo",
+   "rank": "subjefe",
+   "hp": 200,
+   "dmg": 12,
+   "speed": 70,
+   "radius": 24,
+   "scale": 3.8,
+   "color": "#b0b0b0",
+   "ranged": true,
+   "visualAlias": "golem",
+   "arena": "bosque",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": null
+  },
+  "guardian_ancestral": {
+   "id": "guardian_ancestral",
+   "name": "Guardián Ancestral Corrompido",
+   "rank": "jefe",
+   "hp": 3600,
+   "dmg": 32,
+   "speed": 54,
+   "radius": 74,
+   "scale": 9.5,
+   "color": "#3f6a3a",
+   "ranged": true,
+   "visualAlias": "dama_bosque",
+   "arena": "bosque",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": "assets/sprites/bosses/bosque/guardian_ancestral/atlas.png"
+  },
+  "jinete_sin_cabeza": {
+   "id": "jinete_sin_cabeza",
+   "name": "Jinete Sin Cabeza",
+   "rank": "jefe",
+   "hp": 3400,
+   "dmg": 32,
+   "speed": 58,
+   "radius": 74,
+   "scale": 9.5,
+   "color": "#5a5a62",
+   "ranged": true,
+   "visualAlias": "demonio_mayor",
+   "arena": "divina",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": null
+  },
+  "escorpion_gigante": {
+   "id": "escorpion_gigante",
+   "name": "Escorpión Gigante",
+   "rank": "normal",
+   "hp": 22,
+   "dmg": 6,
+   "speed": 100,
+   "radius": 20,
+   "scale": 2.8,
+   "color": "#c99a4a",
+   "ranged": false,
+   "visualAlias": "esqueleto",
+   "arena": "laberinto",
+   "family": "Bestia del desierto",
+   "lore": "Los escorpiones del Laberinto se alimentan de los que se pierden. Nunca pasan hambre.",
+   "origin": "Los pasillos de arena del Laberinto.",
+   "behavior": "Rápido y en grupo.",
+   "attacks": [
+    "Aguijón",
+    "Tenazas"
+   ],
+   "mech": "Los muros del Laberinto te pueden encerrar con ellos.",
+   "atlasActual": null
+  },
+  "golem_piedra": {
+   "id": "golem_piedra",
+   "name": "Gólem de Piedra",
+   "rank": "normal",
+   "hp": 74,
+   "dmg": 11,
+   "speed": 40,
+   "radius": 30,
+   "scale": 3.6,
+   "color": "#8a8a82",
+   "ranged": false,
+   "visualAlias": "golem",
+   "arena": "laberinto",
+   "family": "Constructo de piedra",
+   "lore": "Piedras del propio Laberinto que el Guardián levantaba para cerrar caminos. Ahora cierran el tuyo.",
+   "origin": "Los muros vivos del Laberinto.",
+   "behavior": "Tanque lento.",
+   "attacks": [
+    "Golpe de piedra",
+    "Lanzar roca"
+   ],
+   "mech": "Lento: no te quedes entre él y un muro.",
+   "atlasActual": null
+  },
+  "medusa": {
+   "id": "medusa",
+   "name": "Medusa",
+   "rank": "subelite",
+   "hp": 52,
+   "dmg": 10,
+   "speed": 86,
+   "radius": 24,
+   "scale": 3.4,
+   "color": "#5a8a5e",
+   "ranged": true,
+   "visualAlias": "demonio_menor",
+   "arena": "laberinto",
+   "family": "Monstruo mitológico",
+   "lore": "La Medusa del Laberinto convertía en piedra a los ladrones de tumbas. Los que ves en las paredes no son estatuas.",
+   "origin": "Las cámaras del Laberinto.",
+   "behavior": "Aparece a partir del nivel 5.",
+   "attacks": [
+    "Mirada petrificante",
+    "Serpientes"
+   ],
+   "mech": "No la mires de frente mucho tiempo: movete.",
+   "atlasActual": null
+  },
+  "druida_arena": {
+   "id": "druida_arena",
+   "name": "Druida de Arena",
+   "rank": "elite",
+   "hp": 120,
+   "dmg": 14,
+   "speed": 56,
+   "radius": 26,
+   "scale": 3.8,
+   "color": "#c2a05a",
+   "ranged": true,
+   "visualAlias": "demonio_mago",
+   "arena": "laberinto",
+   "family": "Hechicero del desierto",
+   "lore": "Druidas que hablaban con la arena del desierto y la usaban para ocultar el Laberinto. Ahora lo usan para que no salgas.",
+   "origin": "Los oasis alrededor del Laberinto.",
+   "behavior": "Mantiene distancia y lanza magia.",
+   "attacks": [
+    "Proyectil de arena",
+    "Tormenta"
+   ],
+   "mech": "Élite: prioridad alta.",
+   "atlasActual": null
+  },
+  "esfinge": {
+   "id": "esfinge",
+   "name": "Esfinge",
+   "rank": "elite",
+   "hp": 170,
+   "dmg": 17,
+   "speed": 92,
+   "radius": 34,
+   "scale": 4.4,
+   "color": "#b3923f",
+   "ranged": true,
+   "visualAlias": "golem",
+   "arena": "laberinto",
+   "family": "Monstruo mitológico",
+   "lore": "La Esfinge del Laberinto: cuerpo de león de arena y melena que arde como las antorchas del Guardián. Custodiaba los caminos; ahora los cierra.",
+   "origin": "La entrada del Laberinto.",
+   "behavior": "Élite pesado que llega en los niveles altos.",
+   "attacks": [
+    "Zarpazo",
+    "Embestida"
+   ],
+   "mech": "Mucha vida: usá los Sellos para aturdir a la horda.",
+   "atlasActual": null
+  },
+  "guardian_laberinto": {
+   "id": "guardian_laberinto",
+   "name": "Guardián del Laberinto",
+   "rank": "subjefe",
+   "hp": 820,
+   "dmg": 22,
+   "speed": 52,
+   "radius": 40,
+   "scale": 5.4,
+   "color": "#8a7a5a",
+   "ranged": false,
+   "visualAlias": "golem",
+   "arena": "laberinto",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": null
+  },
+  "minotauro": {
+   "id": "minotauro",
+   "name": "Minotauro",
+   "rank": "jefe",
+   "hp": 3800,
+   "dmg": 34,
+   "speed": 64,
+   "radius": 72,
+   "scale": 9,
+   "color": "#7a4a2e",
+   "ranged": false,
+   "visualAlias": "demonio_mayor",
+   "arena": "laberinto",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": null
+  },
+  "tiburon_joven": {
+   "id": "tiburon_joven",
+   "name": "Tiburón Joven",
+   "rank": "normal",
+   "hp": 24,
+   "dmg": 7,
+   "speed": 132,
+   "radius": 22,
+   "scale": 3,
+   "color": "#4a78a8",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "acuatica",
+   "family": "Bestia marina",
+   "lore": "Tiburones de las ruinas hundidas. Desde que el agua se volvió inestable nadan en círculos que no terminan.",
+   "origin": "Las ruinas sumergidas de la Arena Acuática.",
+   "behavior": "Rápido, ataca de frente.",
+   "attacks": [
+    "Mordida"
+   ],
+   "mech": "Las corrientes lo empujan igual que a vos.",
+   "atlasActual": "assets/sprites/enemies/acuatica/tiburon_joven/atlas.png"
+  },
+  "medusa_electrica": {
+   "id": "medusa_electrica",
+   "name": "Medusa Eléctrica",
+   "rank": "normal",
+   "hp": 34,
+   "dmg": 6,
+   "speed": 50,
+   "radius": 22,
+   "scale": 3,
+   "color": "#8a6fd8",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "acuatica",
+   "family": "Bestia marina",
+   "lore": "Medusas que absorbieron la energía de los cristales perdidos en el fondo. Brillan porque están cargadas.",
+   "origin": "Las aguas profundas de la Arena Acuática.",
+   "behavior": "Flota y descarga al contacto.",
+   "attacks": [
+    "Descarga eléctrica"
+   ],
+   "mech": "Mojado + rayo: cuidado con los charcos conductores.",
+   "atlasActual": null
+  },
+  "cangrejo_acorazado": {
+   "id": "cangrejo_acorazado",
+   "name": "Cangrejo Araña",
+   "rank": "normal",
+   "hp": 74,
+   "dmg": 10,
+   "speed": 42,
+   "radius": 26,
+   "scale": 3.4,
+   "color": "#b0402c",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "acuatica",
+   "family": "Bestia marina",
+   "lore": "Cangrejos de patas larguísimas que crecieron dentro de las armaduras de los soldados ahogados: el caparazón es de hierro oxidado y los ojos, brasas bajo el agua.",
+   "origin": "El lecho de la Arena Acuática.",
+   "behavior": "Lento y duro; se clava en el lugar y pincha.",
+   "attacks": [
+    "Tenaza"
+   ],
+   "mech": "Caparazón resistente: usá habilidades.",
+   "atlasActual": null
+  },
+  "sirena_abisal": {
+   "id": "sirena_abisal",
+   "name": "Sirena Abisal",
+   "rank": "normal",
+   "hp": 30,
+   "dmg": 8,
+   "speed": 70,
+   "radius": 22,
+   "scale": 3,
+   "color": "#3a5a8a",
+   "ranged": true,
+   "visualAlias": null,
+   "arena": "acuatica",
+   "family": "Criatura abisal",
+   "lore": "Sirenas que cantaban para guiar a los barcos. Ahora cantan para que los barcos se hundan.",
+   "origin": "Las fosas bajo las ruinas.",
+   "behavior": "Ataca a distancia.",
+   "attacks": [
+    "Canto / proyectil de agua"
+   ],
+   "mech": "Prioridad: pega desde atrás de la horda.",
+   "atlasActual": null
+  },
+  "anguila_electrica": {
+   "id": "anguila_electrica",
+   "name": "Anguila Eléctrica",
+   "rank": "normal",
+   "hp": 26,
+   "dmg": 8,
+   "speed": 150,
+   "radius": 20,
+   "scale": 2.8,
+   "color": "#3a7a8a",
+   "ranged": false,
+   "visualAlias": "esqueleto_h",
+   "arena": "acuatica",
+   "family": "Bestia marina",
+   "lore": "Anguilas que atraviesan las corrientes como relámpagos vivos.",
+   "origin": "Los canales de las ruinas hundidas.",
+   "behavior": "Se mueve rápido y encadena descargas.",
+   "attacks": [
+    "Cadena Eléctrica"
+   ],
+   "mech": "Su cadena salta más lejos si el primer golpeado está en un charco.",
+   "atlasActual": null
+  },
+  "tiburon_blanco": {
+   "id": "tiburon_blanco",
+   "name": "Tiburón Blanco",
+   "rank": "elite",
+   "hp": 190,
+   "dmg": 16,
+   "speed": 112,
+   "radius": 34,
+   "scale": 4.2,
+   "color": "#dfe6ec",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "acuatica",
+   "family": "Bestia marina",
+   "lore": "El más grande de los tiburones de las ruinas. Dicen que el Leviatán lo dejó vivir para que cace por él.",
+   "origin": "Las fosas más profundas.",
+   "behavior": "Élite: embiste y muerde fuerte.",
+   "attacks": [
+    "Embestida",
+    "Mordida"
+   ],
+   "mech": "Llega en los niveles altos: concentrá el daño.",
+   "atlasActual": "assets/sprites/enemies/acuatica/tiburon_blanco/atlas.png"
+  },
+  "kraken_joven": {
+   "id": "kraken_joven",
+   "name": "Kraken Joven",
+   "rank": "subjefe",
+   "hp": 1150,
+   "dmg": 20,
+   "speed": 22,
+   "radius": 60,
+   "scale": 6.4,
+   "color": "#6a3a6e",
+   "ranged": false,
+   "visualAlias": "golem",
+   "arena": "acuatica",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": null
+  },
+  "leviatan": {
+   "id": "leviatan",
+   "name": "Leviatán",
+   "rank": "jefe",
+   "hp": 5200,
+   "dmg": 30,
+   "speed": 34,
+   "radius": 90,
+   "scale": 10,
+   "color": "#2a5a6e",
+   "ranged": false,
+   "visualAlias": "demonio_mayor",
+   "arena": "acuatica",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": null
+  },
+  "carcelero": {
+   "id": "carcelero",
+   "name": "Carcelero Deforme",
+   "rank": "normal",
+   "hp": 40,
+   "dmg": 8,
+   "speed": 74,
+   "radius": 26,
+   "scale": 3.6,
+   "color": "#8a4a3a",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "fortaleza",
+   "family": "Humano deformado",
+   "lore": "Los antiguos carceleros de la Fábrica nunca dejaron sus puestos. La Horda les soldó las cadenas a la carne y les dejó una sola orden: que nadie salga.",
+   "origin": "La prisión de la Fábrica Sin Fin, antes de que las máquinas enloquecieran.",
+   "behavior": "Avanza de frente y castiga a quien se aleje del grupo.",
+   "attacks": [
+    "Golpe de maza",
+    "Tirón de Cadena: aviso en línea, te arrastra hasta 200 u (esquivable)"
+   ],
+   "mech": "Nunca te tira hacia una trampa activa; después de un tirón no puede volver a agarrarte por 4,5 s.",
+   "atlasActual": "assets/sprites/arenas/fortaleza/carcelero/atlas.png"
+  },
+  "dragon_bronce": {
+   "id": "dragon_bronce",
+   "name": "Dragón de Bronce",
+   "rank": "normal",
+   "hp": 18,
+   "dmg": 5,
+   "speed": 112,
+   "radius": 21,
+   "scale": 3,
+   "color": "#c07a3a",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "fortaleza",
+   "family": "Constructo volador",
+   "lore": "Juguetes de guerra de una civilización que ya no existe: dragones de bronce que volaban sobre sus fundiciones. La Horda los despertó sin apagarles el fuego.",
+   "origin": "Los hangares de la Fábrica, nido de los Dragones de la Forja.",
+   "behavior": "Acosa en órbita y baja en picada.",
+   "attacks": [
+    "Mordida en picada",
+    "Aliento de Vapor (cono que ralentiza)"
+   ],
+   "mech": "Al morir ESTALLA: el aviso aparece 0,65 s antes del daño.",
+   "atlasActual": "assets/sprites/arenas/fortaleza/dragon_bronce/atlas.png"
+  },
+  "automata": {
+   "id": "automata",
+   "name": "Autómata de Hierro",
+   "rank": "elite",
+   "hp": 240,
+   "dmg": 18,
+   "speed": 36,
+   "radius": 31,
+   "scale": 4.6,
+   "color": "#5a5a5a",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "fortaleza",
+   "family": "Constructo blindado",
+   "lore": "Obreros de hierro programados para no detenerse nunca. La Horda solo cambió una línea de su protocolo: \"obedecer\" por \"aplastar\".",
+   "origin": "Las cadenas de montaje de la Fábrica.",
+   "behavior": "Lento, blindado (recibe menos daño) y de frente.",
+   "attacks": [
+    "Golpe frontal en cono",
+    "Protocolo de Embestida (línea con 1 s de aviso)"
+   ],
+   "mech": "Si choca contra un borde queda ATURDIDO 2,5 s y vulnerable: hacelo chocar.",
+   "atlasActual": "assets/sprites/arenas/fortaleza/automata/atlas.png"
+  },
+  "prisionero": {
+   "id": "prisionero",
+   "name": "Prisionero Ensamblado",
+   "rank": "normal",
+   "hp": 28,
+   "dmg": 7,
+   "speed": 96,
+   "radius": 25,
+   "scale": 3.4,
+   "color": "#a07a6a",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "fortaleza",
+   "family": "Humano ensamblado",
+   "lore": "Lo que queda de los presos que la Fábrica nunca liberó, cosidos con engranajes y tubos. Ya no recuerdan su nombre; recuerdan el hambre.",
+   "origin": "Las celdas del sector de La Prisión.",
+   "behavior": "Enjambre en zigzag que busca rodearte.",
+   "attacks": [
+    "Garras"
+   ],
+   "mech": "Al morir se PARTE en 2 Engendros (que ya no se parten).",
+   "atlasActual": "assets/sprites/arenas/fortaleza/prisionero/atlas.png"
+  },
+  "engendro": {
+   "id": "engendro",
+   "name": "Engendro Encadenado",
+   "rank": "normal",
+   "hp": 9,
+   "dmg": 4,
+   "speed": 138,
+   "radius": 15,
+   "scale": 2.4,
+   "color": "#b08a7a",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "fortaleza",
+   "family": "Humano ensamblado",
+   "lore": "Mitades de un Prisionero que siguen moviéndose por pura costumbre. Rápidas, torpes y ciegas.",
+   "origin": "Nace de un Prisionero Ensamblado al morir.",
+   "behavior": "Corre en zigzag, más rápido que el Prisionero.",
+   "attacks": [
+    "Arañazo"
+   ],
+   "mech": "No se divide otra vez. No aparece en la Arena Divina.",
+   "atlasActual": "assets/sprites/arenas/fortaleza/engendro/atlas.png"
+  },
+  "verdugo": {
+   "id": "verdugo",
+   "name": "Verdugo de Vapor",
+   "rank": "elite",
+   "hp": 200,
+   "dmg": 19,
+   "speed": 50,
+   "radius": 33,
+   "scale": 4.8,
+   "color": "#6a3a2a",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "fortaleza",
+   "family": "Humano con vapor",
+   "lore": "Verdugos de la Fábrica con calderas en la espalda. Cuando abren las válvulas ya no sienten el dolor… ni el propio.",
+   "origin": "La sala de ejecuciones junto a La Forja.",
+   "behavior": "Hacha en cono; se acelera cuando entra en Sobrepresión.",
+   "attacks": [
+    "Hachazo en cono",
+    "Sobrepresión: +60% velocidad y +40% daño"
+   ],
+   "mech": "En Sobrepresión recibe +35% de daño: es el momento de pegarle.",
+   "atlasActual": "assets/sprites/arenas/fortaleza/verdugo/atlas.png"
+  },
+  "arana": {
+   "id": "arana",
+   "name": "Araña Mecánica",
+   "rank": "subelite",
+   "hp": 44,
+   "dmg": 8,
+   "speed": 84,
+   "radius": 19,
+   "scale": 3,
+   "color": "#8a5a2a",
+   "ranged": true,
+   "visualAlias": null,
+   "arena": "fortaleza",
+   "family": "Constructo",
+   "lore": "Arañas de mantenimiento que reparaban las máquinas de la Fábrica. Siguen reparando: ahora a los monstruos.",
+   "origin": "Los conductos del Interior Industrial.",
+   "behavior": "Mantiene distancia y dispara pernos.",
+   "attacks": [
+    "Pernos a distancia",
+    "Red de Cadenas (zona que ralentiza, con aviso)"
+   ],
+   "mech": "REPARA a los enemigos mecánicos con un rayo visible: interrumpila primero.",
+   "atlasActual": "assets/sprites/arenas/fortaleza/arana/atlas.png"
+  },
+  "dragon_forja": {
+   "id": "dragon_forja",
+   "name": "Dragón de la Forja",
+   "rank": "subjefe",
+   "hp": 1300,
+   "dmg": 22,
+   "speed": 62,
+   "radius": 78,
+   "scale": 9,
+   "color": "#c0401a",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "fortaleza",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": "assets/sprites/arenas/fortaleza/dragon_forja/atlas.png"
+  },
+  "caballero": {
+   "id": "caballero",
+   "name": "Caballero de la Armadura Oxidada",
+   "rank": "jefe",
+   "hp": 4200,
+   "dmg": 32,
+   "speed": 60,
+   "radius": 52,
+   "scale": 8,
+   "color": "#7a3a2a",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "fortaleza",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": "assets/sprites/arenas/fortaleza/caballero/atlas.png"
+  },
+  "infectado": {
+   "id": "infectado",
+   "name": "Infectado Micelial",
+   "rank": "normal",
+   "hp": 30,
+   "dmg": 8,
+   "speed": 80,
+   "radius": 23,
+   "scale": 3.4,
+   "color": "#b050c0",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "micelial",
+   "family": "Hongo / humano",
+   "lore": "Viajeros que durmieron donde no debían. El micelio los encontró y ahora camina con sus cuerpos.",
+   "origin": "Las cavernas del Reino Fúngico.",
+   "behavior": "Masa cuerpo a cuerpo.",
+   "attacks": [
+    "Golpe"
+   ],
+   "mech": "Al morir, 30% deja una nube de esporas que frena y lastima.",
+   "atlasActual": "assets/sprites/arenas/micelial/infectado/atlas.png"
+  },
+  "acechador": {
+   "id": "acechador",
+   "name": "Acechador de Esporas",
+   "rank": "subelite",
+   "hp": 36,
+   "dmg": 10,
+   "speed": 128,
+   "radius": 21,
+   "scale": 3.2,
+   "color": "#6a5ad0",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "micelial",
+   "family": "Hongo",
+   "lore": "Un depredador que el micelio fabricó a propósito: vive bajo tierra y sale cuando late algo cerca.",
+   "origin": "El subsuelo vivo del Reino.",
+   "behavior": "Se entierra, avanza, avisa y salta.",
+   "attacks": [
+    "Salto desde abajo (círculo + línea + siseo)",
+    "Zarpazo"
+   ],
+   "mech": "Nunca es invisible sin aviso: tierra removida y brillo tenue. Al caer queda expuesto.",
+   "atlasActual": "assets/sprites/arenas/micelial/acechador/atlas.png"
+  },
+  "hinchado": {
+   "id": "hinchado",
+   "name": "Hinchado",
+   "rank": "elite",
+   "hp": 230,
+   "dmg": 16,
+   "speed": 38,
+   "radius": 34,
+   "scale": 4.8,
+   "color": "#e06a30",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "micelial",
+   "family": "Hongo",
+   "lore": "Un cuerpo que el micelio llenó hasta reventar. Camina despacio porque sabe que no hace falta correr.",
+   "origin": "Los sacos de esporas del Reino.",
+   "behavior": "Tanque lento.",
+   "attacks": [
+    "Puñetazo en cono",
+    "Explosión preparada (1,6 s de aviso)"
+   ],
+   "mech": "Al morir revienta con aviso: no lo remates cuerpo a cuerpo.",
+   "atlasActual": "assets/sprites/arenas/micelial/hinchado/atlas.png"
+  },
+  "peregrino": {
+   "id": "peregrino",
+   "name": "Peregrino Enraizado",
+   "rank": "subelite",
+   "hp": 40,
+   "dmg": 9,
+   "speed": 58,
+   "radius": 22,
+   "scale": 3.4,
+   "color": "#80c040",
+   "ranged": true,
+   "visualAlias": null,
+   "arena": "micelial",
+   "family": "Hongo / humano",
+   "lore": "Peregrinos que buscaban un santuario en las cavernas. Echaron raíces en el camino, literalmente.",
+   "origin": "La ruta de peregrinación bajo el Reino.",
+   "behavior": "Camina disparando poco… hasta que se planta.",
+   "attacks": [
+    "Disparo de esporas",
+    "Plantado: dispara más lejos, más seguido y más fuerte"
+   ],
+   "mech": "Se desentierra si lo encarás de cerca.",
+   "atlasActual": "assets/sprites/arenas/micelial/peregrino/atlas.png"
+  },
+  "sabueso": {
+   "id": "sabueso",
+   "name": "Sabueso Cordyceps",
+   "rank": "normal",
+   "hp": 13,
+   "dmg": 5,
+   "speed": 150,
+   "radius": 18,
+   "scale": 2.8,
+   "color": "#e0304a",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "micelial",
+   "family": "Hongo / bestia",
+   "lore": "Perros tomados por el cordyceps. Siguen el rastro de los vivos por el brillo que dejan en las esporas.",
+   "origin": "Las madrigueras del Reino.",
+   "behavior": "Llega de a 2-3 y rodea.",
+   "attacks": [
+    "Salto corto con aviso",
+    "Mordida"
+   ],
+   "mech": "Deja un rastro bioluminiscente.",
+   "atlasActual": "assets/sprites/arenas/micelial/sabueso/atlas.png"
+  },
+  "chaman": {
+   "id": "chaman",
+   "name": "Chamán de la Colonia",
+   "rank": "elite",
+   "hp": 140,
+   "dmg": 10,
+   "speed": 56,
+   "radius": 24,
+   "scale": 4.2,
+   "color": "#9050e0",
+   "ranged": true,
+   "visualAlias": null,
+   "arena": "micelial",
+   "family": "Hongo / humano",
+   "lore": "Los chamanes hablan con la Madre Espora. Ella les contesta con esporas, y ellos las reparten.",
+   "origin": "Los santuarios de la colonia.",
+   "behavior": "Apoyo prioritario: se queda atrás y potencia a los demás.",
+   "attacks": [
+    "Bolas de esporas",
+    "Regeneración canalizada",
+    "Aura que potencia"
+   ],
+   "mech": "Aturdilo para cortar la regeneración. Acelera la germinación de los Núcleos.",
+   "atlasActual": "assets/sprites/arenas/micelial/chaman/atlas.png"
+  },
+  "nucleo_micelial": {
+   "id": "nucleo_micelial",
+   "name": "Núcleo Micelial",
+   "rank": "subelite",
+   "hp": 120,
+   "dmg": 0,
+   "speed": 0,
+   "radius": 30,
+   "scale": 3,
+   "color": "#c060ff",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "micelial",
+   "family": "Estructura fúngica",
+   "lore": "Corazones de la colonia que brotan del suelo. Cada uno es un pedazo de la Madre intentando crecer.",
+   "origin": "Germinan en el suelo del Reino a partir del nivel 3.",
+   "behavior": "No se mueve: crece en 4 etapas.",
+   "attacks": [
+    "Infecta el piso",
+    "Al madurar escupe enemigos"
+   ],
+   "mech": "Rompelo ANTES de que madure: cada núcleo que cae limpia la infección de su zona.",
+   "atlasActual": null
+  },
+  "raiz_absorcion": {
+   "id": "raiz_absorcion",
+   "name": "Raíz de Absorción",
+   "rank": "subelite",
+   "hp": 70,
+   "dmg": 0,
+   "speed": 0,
+   "radius": 22,
+   "scale": 2.4,
+   "color": "#e070ff",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "micelial",
+   "family": "Estructura fúngica",
+   "lore": "Las raíces con las que el Micelio Primigenio se alimenta de los caídos.",
+   "origin": "Nacen del Micelio Primigenio durante la pelea.",
+   "behavior": "Se estira desde un cadáver hasta el Micelio.",
+   "attacks": [
+    "Cura al Micelio mientras vive"
+   ],
+   "mech": "Romperlas corta la Absorción.",
+   "atlasActual": null
+  },
+  "micelio": {
+   "id": "micelio",
+   "name": "Micelio Primigenio",
+   "rank": "subjefe",
+   "hp": 1350,
+   "dmg": 22,
+   "speed": 56,
+   "radius": 70,
+   "scale": 8,
+   "color": "#c040c0",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "micelial",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": "assets/sprites/arenas/micelial/micelio/atlas.png"
+  },
+  "madre_espora": {
+   "id": "madre_espora",
+   "name": "La Madre Espora",
+   "rank": "jefe",
+   "hp": 4600,
+   "dmg": 32,
+   "speed": 0,
+   "radius": 140,
+   "scale": 9,
+   "color": "#ff60d0",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "micelial",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": "assets/sprites/arenas/micelial/madre_espora/atlas.png"
+  },
+  "ab_errante": {
+   "id": "ab_errante",
+   "name": "Errante del Vacío",
+   "rank": "normal",
+   "hp": 40,
+   "dmg": 10,
+   "speed": 76,
+   "radius": 22,
+   "scale": 3.4,
+   "color": "#8a4a6a",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "abismo",
+   "family": "Engendro del Vacío",
+   "lore": "Lo que queda de los que cayeron al Abismo antes que vos. Siguen caminando por el borde, buscando algo que perdieron.",
+   "origin": "Las ruinas suspendidas sobre el vacío.",
+   "behavior": "Cuerpo a cuerpo.",
+   "attacks": [
+    "Golpe fuerte con aviso (cono) que EMPUJA"
+   ],
+   "mech": "Te empuja hacia el borde: si caés quedás colgado.",
+   "atlasActual": "assets/sprites/arenas/abismo/ab_errante/atlas.png"
+  },
+  "ab_acechador": {
+   "id": "ab_acechador",
+   "name": "Acechador del Borde",
+   "rank": "subelite",
+   "hp": 34,
+   "dmg": 11,
+   "speed": 148,
+   "radius": 20,
+   "scale": 3,
+   "color": "#7a4ad0",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "abismo",
+   "family": "Engendro del Vacío",
+   "lore": "Criaturas que viven colgadas bajo las plataformas. Suben por el borde que da al vacío.",
+   "origin": "La cara inferior de las ruinas.",
+   "behavior": "Rápido, busca tu flanco del lado del vacío.",
+   "attacks": [
+    "Salto con aviso (círculo + línea) que empuja"
+   ],
+   "mech": "Pegate al centro de la plataforma.",
+   "atlasActual": "assets/sprites/arenas/abismo/ab_acechador/atlas.png"
+  },
+  "ab_heraldo": {
+   "id": "ab_heraldo",
+   "name": "Heraldo del Ojo",
+   "rank": "subelite",
+   "hp": 42,
+   "dmg": 9,
+   "speed": 60,
+   "radius": 22,
+   "scale": 3.4,
+   "color": "#b050ff",
+   "ranged": true,
+   "visualAlias": null,
+   "arena": "abismo",
+   "family": "Engendro del Vacío",
+   "lore": "Los heraldos anuncian al Ojo. Donde flotan, la gravedad se tuerce.",
+   "origin": "El pozo central del Abismo.",
+   "behavior": "A distancia.",
+   "attacks": [
+    "Orbe lento con marca en el piso",
+    "Zona gravitatoria que atrae a héroes Y horda"
+   ],
+   "mech": "Usá su zona para juntar a la horda.",
+   "atlasActual": "assets/sprites/arenas/abismo/ab_heraldo/atlas.png"
+  },
+  "ab_devorador": {
+   "id": "ab_devorador",
+   "name": "Devorador de Piedra",
+   "rank": "elite",
+   "hp": 300,
+   "dmg": 18,
+   "speed": 36,
+   "radius": 38,
+   "scale": 5,
+   "color": "#8a6a5a",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "abismo",
+   "family": "Engendro del Vacío",
+   "lore": "Una bestia que come piedra. Cada paso que da agrieta el mundo un poco más.",
+   "origin": "Las canteras del Abismo.",
+   "behavior": "Pesado.",
+   "attacks": [
+    "Pisotón que agrieta"
+   ],
+   "mech": "Como mucho deja una plataforma CRÍTICA: llevalo a la horda y rompé el piso bajo ellos.",
+   "atlasActual": "assets/sprites/arenas/abismo/ab_devorador/atlas.png"
+  },
+  "ab_tejedor": {
+   "id": "ab_tejedor",
+   "name": "Tejedor del Vacío",
+   "rank": "subelite",
+   "hp": 48,
+   "dmg": 8,
+   "speed": 70,
+   "radius": 24,
+   "scale": 3.4,
+   "color": "#c060e0",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "abismo",
+   "family": "Engendro del Vacío",
+   "lore": "Teje hilos de vacío entre las ruinas, como una araña que sostiene lo que no debería flotar.",
+   "origin": "Los puentes del Abismo.",
+   "behavior": "Tiende filamentos entre dos puntos.",
+   "attacks": [
+    "Filamentos: cruzarlos frena y tira un poco"
+   ],
+   "mech": "Los filamentos se cortan si muere.",
+   "atlasActual": "assets/sprites/arenas/abismo/ab_tejedor/atlas.png"
+  },
+  "ab_jinete": {
+   "id": "ab_jinete",
+   "name": "Jinete Sin Cabeza",
+   "rank": "elite",
+   "hp": 260,
+   "dmg": 20,
+   "speed": 92,
+   "radius": 34,
+   "scale": 4.8,
+   "color": "#6040a0",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "abismo",
+   "family": "Jinete maldito",
+   "lore": "El Jinete Sin Cabeza de las viejas leyendas. En el Abismo carga sin mirar, porque no tiene con qué.",
+   "origin": "Leyenda de los caminos, arrastrada al Abismo.",
+   "behavior": "Marca la trayectoria (flechas) y carga.",
+   "attacks": [
+    "Carga que empuja fuerte a TODO lo que toque"
+   ],
+   "mech": "Ponelo a embestir a la horda.",
+   "atlasActual": "assets/sprites/arenas/abismo/ab_jinete/atlas.png"
+  },
+  "ab_carcelero": {
+   "id": "ab_carcelero",
+   "name": "El Carcelero del Vacío",
+   "rank": "subjefe",
+   "hp": 1650,
+   "dmg": 26,
+   "speed": 48,
+   "radius": 62,
+   "scale": 8,
+   "color": "#7a2a4a",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "abismo",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": "assets/sprites/arenas/abismo/ab_carcelero/atlas.png"
+  },
+  "ab_morador": {
+   "id": "ab_morador",
+   "name": "El Que Mora Debajo",
+   "rank": "jefe",
+   "hp": 5400,
+   "dmg": 34,
+   "speed": 0,
+   "radius": 180,
+   "scale": 9,
+   "color": "#a030ff",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "abismo",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": null
+  },
+  "ab_tentaculo": {
+   "id": "ab_tentaculo",
+   "name": "Tentáculo del Abismo",
+   "rank": "subelite",
+   "hp": 160,
+   "dmg": 0,
+   "speed": 0,
+   "radius": 30,
+   "scale": 3,
+   "color": "#8a3ad0",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "abismo",
+   "family": "Apéndice",
+   "lore": "Uno de los brazos de El Que Mora Debajo. Asoma por los bordes cuando el Ojo está despierto.",
+   "origin": "Sale del vacío durante la pelea final del Abismo.",
+   "behavior": "Aplasta y agrieta los bordes.",
+   "attacks": [
+    "Aplastar"
+   ],
+   "mech": "Romperlo le saca 4% de vida al jefe y le abre el ojo 3 s.",
+   "atlasActual": null
+  },
+  "cm_saqueador": {
+   "id": "cm_saqueador",
+   "name": "Saqueador Maldito",
+   "rank": "normal",
+   "hp": 38,
+   "dmg": 10,
+   "speed": 92,
+   "radius": 20,
+   "scale": 3.2,
+   "color": "#8a3030",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "ciudad",
+   "family": "Ciudadano corrompido",
+   "lore": "Antiguos habitantes de la ciudad. La Horda les dejó las manos y les sacó todo lo demás: ahora saquean las casas de sus vecinos.",
+   "origin": "Los barrios de la Ciudad Maldita.",
+   "behavior": "Cuerpo a cuerpo y en grupo. Si no hay guardianes cerca, va por los civiles.",
+   "attacks": [
+    "Corte",
+    "Embestida con aviso (cono)",
+    "Golpe a un civil con aviso (!)"
+   ],
+   "mech": "Quedate cerca de los civiles que escoltás: el Saqueador solo los ataca cuando están solos.",
+   "atlasActual": "assets/sprites/arenas/ciudad/cm_saqueador/atlas.png"
+  },
+  "cm_perro": {
+   "id": "cm_perro",
+   "name": "Perro del Albañal",
+   "rank": "normal",
+   "hp": 22,
+   "dmg": 7,
+   "speed": 170,
+   "radius": 18,
+   "scale": 2.8,
+   "color": "#6a3a3a",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "ciudad",
+   "family": "Bestia de las cloacas",
+   "lore": "Perros deformes que viven en los desagües. Se mueven en manada y huelen el miedo.",
+   "origin": "Las cloacas bajo la ciudad.",
+   "behavior": "Sale por las rejillas. Rápido y frágil.",
+   "attacks": [
+    "Mordida",
+    "Salto con aviso"
+   ],
+   "mech": "Muerde a los civiles que corren solos o van últimos en la fila.",
+   "atlasActual": "assets/sprites/arenas/ciudad/cm_perro/atlas.png"
+  },
+  "cm_raptor": {
+   "id": "cm_raptor",
+   "name": "Raptor",
+   "rank": "subelite",
+   "hp": 70,
+   "dmg": 9,
+   "speed": 128,
+   "radius": 21,
+   "scale": 3.2,
+   "color": "#a04040",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "ciudad",
+   "family": "Secuestrador",
+   "lore": "Busca a los vivos, los agarra y trata de llevárselos hacia un portal o una salida. Nadie sabe adónde.",
+   "origin": "Los callejones de la Ciudad Maldita.",
+   "behavior": "Busca civiles (no prioriza a los guardianes). Estados: busca, persigue, agarra, escapa, interrumpido.",
+   "attacks": [
+    "Agarrar civil (aviso)",
+    "Huida con el civil hacia un borde"
+   ],
+   "mech": "Pegale fuerte, aturdilo o matalo: SUELTA al civil. Si llega al borde, el civil se pierde.",
+   "atlasActual": "assets/sprites/arenas/ciudad/cm_raptor/atlas.png"
+  },
+  "cm_verdugo": {
+   "id": "cm_verdugo",
+   "name": "Verdugo",
+   "rank": "elite",
+   "hp": 320,
+   "dmg": 20,
+   "speed": 44,
+   "radius": 36,
+   "scale": 5,
+   "color": "#7a2a2a",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "ciudad",
+   "family": "Monstruo de asedio",
+   "lore": "Un monstruo colosal que derriba puertas, muros y refugios. Sus golpes son lentos pero devastadores.",
+   "origin": "Las murallas caídas de la ciudad.",
+   "behavior": "Va por los EDIFICIOS (refugios, capilla, puerta de evacuación). Si te le plantás, te pelea a vos.",
+   "attacks": [
+    "Golpe vertical con aviso (cono)",
+    "Destruye estructura"
+   ],
+   "mech": "Las estructuras no se reparan: frenalo antes de que llegue.",
+   "atlasActual": "assets/sprites/arenas/ciudad/cm_verdugo/atlas.png"
+  },
+  "cm_planidera": {
+   "id": "cm_planidera",
+   "name": "Plañidera",
+   "rank": "subelite",
+   "hp": 52,
+   "dmg": 9,
+   "speed": 66,
+   "radius": 21,
+   "scale": 3.3,
+   "color": "#c05060",
+   "ranged": true,
+   "visualAlias": null,
+   "arena": "ciudad",
+   "family": "Espíritu",
+   "lore": "El espíritu de una antigua habitante de la ciudad. Su lamento enloquece a los vivos.",
+   "origin": "Las casas vacías.",
+   "behavior": "A distancia; mantiene la distancia.",
+   "attacks": [
+    "Lágrima (proyectil)",
+    "Grito de Pánico con aviso (círculo)"
+   ],
+   "mech": "Su grito hace entrar en PÁNICO a los civiles cercanos: se dispersan.",
+   "atlasActual": "assets/sprites/arenas/ciudad/cm_planidera/atlas.png"
+  },
+  "cm_acechante": {
+   "id": "cm_acechante",
+   "name": "Acechante de los Tejados",
+   "rank": "subelite",
+   "hp": 58,
+   "dmg": 12,
+   "speed": 150,
+   "radius": 20,
+   "scale": 3,
+   "color": "#9a3040",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "ciudad",
+   "family": "Asesino de los tejados",
+   "lore": "Una criatura que se mueve entre los tejados y las cornisas. Cae sobre sus objetivos.",
+   "origin": "Los techos de la Ciudad Maldita.",
+   "behavior": "Salta entre tejados (no se lo puede herir arriba), cae con aviso, pelea y vuelve a subir.",
+   "attacks": [
+    "Caída desde el tejado (círculo rojo en el piso)"
+   ],
+   "mech": "Salí del círculo rojo. A veces elige al último civil de una fila.",
+   "atlasActual": "assets/sprites/arenas/ciudad/cm_acechante/atlas.png"
+  },
+  "cm_campanero": {
+   "id": "cm_campanero",
+   "name": "Campanero",
+   "rank": "elite",
+   "hp": 240,
+   "dmg": 14,
+   "speed": 60,
+   "radius": 30,
+   "scale": 4.4,
+   "color": "#b06030",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "ciudad",
+   "family": "Soporte",
+   "lore": "Pervierte las campanas de la ciudad. Si completa su ritual, atrae refuerzos de la Horda.",
+   "origin": "El Campanario, la Capilla y la plaza.",
+   "behavior": "Camina hasta una campana y CANALIZA. Si termina, llegan refuerzos (y se revelan civiles cerca).",
+   "attacks": [
+    "Campanazo que empuja",
+    "Canalizar la campana"
+   ],
+   "mech": "Prioridad: cortale la campana con daño fuerte o control.",
+   "atlasActual": "assets/sprites/arenas/ciudad/cm_campanero/atlas.png"
+  },
+  "cm_sectario": {
+   "id": "cm_sectario",
+   "name": "Sectario Fanático",
+   "rank": "normal",
+   "hp": 34,
+   "dmg": 10,
+   "speed": 98,
+   "radius": 20,
+   "scale": 3.2,
+   "color": "#b02020",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "ciudad",
+   "family": "Fanático",
+   "lore": "Fanáticos que todavía adoran al Presentador. Atacan en grupo y se sacrifican para explotar.",
+   "origin": "La catedral maldita.",
+   "behavior": "Cuerpo a cuerpo; herido o pegado a vos, se prepara para ESTALLAR.",
+   "attacks": [
+    "Golpe",
+    "Explosión con aviso (daña guardianes, civiles y edificios)"
+   ],
+   "mech": "Alejate del círculo naranja o terminalo antes.",
+   "atlasActual": "assets/sprites/arenas/ciudad/cm_sectario/atlas.png"
+  },
+  "cm_espectro": {
+   "id": "cm_espectro",
+   "name": "Espectro Ciudadano",
+   "rank": "normal",
+   "hp": 26,
+   "dmg": 8,
+   "speed": 84,
+   "radius": 19,
+   "scale": 3,
+   "color": "#7ab0e0",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "ciudad",
+   "family": "Fantasma",
+   "lore": "Almas atrapadas en la maldición de la ciudad. Frágiles pero numerosas.",
+   "origin": "Las calles de la Ciudad Maldita.",
+   "behavior": "Atraviesa paredes. Drena a un guardián o asusta a un civil.",
+   "attacks": [
+    "Drenado (se cura)",
+    "Posesión: el civil entra en pánico"
+   ],
+   "mech": "Frágil: un golpe fuerte lo disuelve.",
+   "atlasActual": "assets/sprites/arenas/ciudad/cm_espectro/atlas.png"
+  },
+  "cm_maestro": {
+   "id": "cm_maestro",
+   "name": "Maestro de Ceremonias",
+   "rank": "subjefe",
+   "hp": 850,
+   "dmg": 22,
+   "speed": 70,
+   "radius": 32,
+   "scale": 6,
+   "color": "#a02030",
+   "ranged": true,
+   "visualAlias": null,
+   "arena": "ciudad",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": "assets/sprites/arenas/ciudad/cm_maestro/atlas.png"
+  },
+  "cm_tramoyista": {
+   "id": "cm_tramoyista",
+   "name": "El Tramoyista",
+   "rank": "subjefe",
+   "hp": 1150,
+   "dmg": 26,
+   "speed": 52,
+   "radius": 48,
+   "scale": 7,
+   "color": "#8a5030",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "ciudad",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": "assets/sprites/arenas/ciudad/cm_tramoyista/atlas.png"
+  },
+  "cm_dama": {
+   "id": "cm_dama",
+   "name": "La Dama del Telón",
+   "rank": "subjefe",
+   "hp": 1300,
+   "dmg": 24,
+   "speed": 62,
+   "radius": 36,
+   "scale": 7,
+   "color": "#c02040",
+   "ranged": true,
+   "visualAlias": null,
+   "arena": "ciudad",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": "assets/sprites/arenas/ciudad/cm_dama/atlas.png"
+  },
+  "cm_cometa": {
+   "id": "cm_cometa",
+   "name": "Gran Número",
+   "rank": "normal",
+   "hp": 60,
+   "dmg": 0,
+   "speed": 150,
+   "radius": 26,
+   "scale": 3,
+   "color": "#ff8030",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": null,
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": null
+  },
+  "cm_espejismo": {
+   "id": "cm_espejismo",
+   "name": "Espejismo de la Dama",
+   "rank": "normal",
+   "hp": 1,
+   "dmg": 0,
+   "speed": 62,
+   "radius": 36,
+   "scale": 7,
+   "color": "#c02040",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": null,
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": null
+  },
+  "cm_presentador": {
+   "id": "cm_presentador",
+   "name": "El Presentador",
+   "rank": "jefe",
+   "hp": 5200,
+   "dmg": 32,
+   "speed": 58,
+   "radius": 40,
+   "scale": 8,
+   "color": "#c01030",
+   "ranged": true,
+   "visualAlias": null,
+   "arena": "ciudad",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": "assets/sprites/arenas/ciudad/cm_presentador/atlas.png"
+  },
+  "mn_esclavo": {
+   "id": "mn_esclavo",
+   "name": "Esclavo Enlazado",
+   "rank": "normal",
+   "hp": 40,
+   "dmg": 10,
+   "speed": 88,
+   "radius": 20,
+   "scale": 3.2,
+   "color": "#8a5040",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "minas",
+   "family": "Minero esclavizado",
+   "lore": "Antiguos mineros esclavizados por la oscuridad. Siguen encadenados a sus herramientas y a la mina que los tragó.",
+   "origin": "La Mina Superior y las Galerías.",
+   "behavior": "Numerosos y persistentes. En la oscuridad se vuelven más agresivos.",
+   "attacks": [
+    "Golpe con la bola de cadena",
+    "Tirón de cadena en línea (con aviso)"
+   ],
+   "mech": "Salí de la línea del tirón. Son el relleno que te bloquea mientras los demás van por las luces.",
+   "atlasActual": "assets/sprites/arenas/minas/mn_esclavo/atlas.png"
+  },
+  "mn_insecto": {
+   "id": "mn_insecto",
+   "name": "Insecto de Cristal",
+   "rank": "normal",
+   "hp": 20,
+   "dmg": 7,
+   "speed": 175,
+   "radius": 17,
+   "scale": 2.8,
+   "color": "#c02030",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "minas",
+   "family": "Criatura de las vetas",
+   "lore": "Criaturas que habitan en las vetas de cristal rojo. Salen de las paredes y los techos en enjambre.",
+   "origin": "Las vetas de la roca.",
+   "behavior": "Rápidos y frágiles; salen de a tres de las paredes y columnas.",
+   "attacks": [
+    "Mordida",
+    "Estallido de esquirlas al morir (aviso corto)"
+   ],
+   "mech": "No te quedes pegado al que acabás de matar: estalla en esquirlas.",
+   "atlasActual": "assets/sprites/arenas/minas/mn_insecto/atlas.png"
+  },
+  "mn_acechador": {
+   "id": "mn_acechador",
+   "name": "Acechador Ciego",
+   "rank": "subelite",
+   "hp": 62,
+   "dmg": 12,
+   "speed": 150,
+   "radius": 20,
+   "scale": 3.2,
+   "color": "#c0a8a0",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "minas",
+   "family": "Cazador ciego",
+   "lore": "Una criatura adaptada por completo a la oscuridad. No tiene ojos: no le hacen falta.",
+   "origin": "Los rincones sin luz de las minas.",
+   "behavior": "A OSCURAS se oculta (solo se le ven los ojos) y caza al guardián que quedó aislado en la sombra. En la luz se lo ve y busca volver a la oscuridad.",
+   "attacks": [
+    "Emboscada: marca el lugar (círculo violeta con !) y salta",
+    "Garras"
+   ],
+   "mech": "Mantenete en la luz o cerca de tus compañeros: solo embosca a los que están solos en la oscuridad.",
+   "atlasActual": "assets/sprites/arenas/minas/mn_acechador/atlas.png"
+  },
+  "mn_minero": {
+   "id": "mn_minero",
+   "name": "Minero Corrompido",
+   "rank": "elite",
+   "hp": 300,
+   "dmg": 19,
+   "speed": 50,
+   "radius": 32,
+   "scale": 4.8,
+   "color": "#8a5a30",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "minas",
+   "family": "Minero fusionado",
+   "lore": "Un antiguo minero fusionado con el mineral. Sus golpes son lentos, pero rompen barricadas… y apagan la luz.",
+   "origin": "Las Galerías y la Mina Corrompida.",
+   "behavior": "Pesado. Si el equipo está lejos, camina hasta una luz y la rompe.",
+   "attacks": [
+    "Golpe pesado en cono (aviso): apaga las fuentes cercanas",
+    "Roca lanzada (círculo)"
+   ],
+   "mech": "Frenalo antes de que llegue a una fuente: su golpe la apaga.",
+   "atlasActual": "assets/sprites/arenas/minas/mn_minero/atlas.png"
+  },
+  "mn_escupidor": {
+   "id": "mn_escupidor",
+   "name": "Escupidor de Oscuridad",
+   "rank": "subelite",
+   "hp": 58,
+   "dmg": 10,
+   "speed": 72,
+   "radius": 22,
+   "scale": 3.4,
+   "color": "#8030c0",
+   "ranged": true,
+   "visualAlias": null,
+   "arena": "minas",
+   "family": "Engendro de la oscuridad",
+   "lore": "Expulsa masa de oscuridad. Donde cae, la luz se muere un rato.",
+   "origin": "Las Vetas Profundas.",
+   "behavior": "A distancia; mantiene la distancia.",
+   "attacks": [
+    "Bola oscura (aviso de línea): crea una ZONA DE OSCURIDAD donde cae",
+    "Apaga la antorcha del guardián que golpea"
+   ],
+   "mech": "Las zonas oscuras duran poco pero le dan terreno a los Acechadores. Rompé su línea de tiro.",
+   "atlasActual": "assets/sprites/arenas/minas/mn_escupidor/atlas.png"
+  },
+  "mn_consumidor": {
+   "id": "mn_consumidor",
+   "name": "Consumidor Luminoso",
+   "rank": "elite",
+   "hp": 220,
+   "dmg": 12,
+   "speed": 66,
+   "radius": 24,
+   "scale": 4,
+   "color": "#3a70c0",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "minas",
+   "family": "Parásito de luz",
+   "lore": "Una criatura parasitaria que se alimenta de la energía de los cristales y las lámparas.",
+   "origin": "Las Vetas Profundas y la Mina Corrompida.",
+   "behavior": "Se prende a una fuente y le absorbe la energía (parpadea, se apaga). Potencia a los enemigos cercanos.",
+   "attacks": [
+    "Absorción (la luz parpadea y se apaga)",
+    "Aura de potenciación",
+    "Golpe si lo encarás"
+   ],
+   "mech": "Prioridad: al morir libera la luz absorbida, reenciende fuentes cercanas y cura un poco.",
+   "atlasActual": "assets/sprites/arenas/minas/mn_consumidor/atlas.png"
+  },
+  "mn_devoraluz": {
+   "id": "mn_devoraluz",
+   "name": "Devoraluz",
+   "rank": "elite",
+   "hp": 640,
+   "dmg": 18,
+   "speed": 96,
+   "radius": 34,
+   "scale": 5.4,
+   "color": "#a020c0",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "minas",
+   "family": "Depredador de la luz",
+   "lore": "Un depredador que no viene por los guardianes: viene por la luz. Recorre la mina apagando cada fuente que encuentra.",
+   "origin": "Lo más hondo de la Mina Corrompida.",
+   "behavior": "Élite especial (evento): elige una luz, viaja hasta ella, la devora con un aviso largo y busca la siguiente.",
+   "attacks": [
+    "Devorar luz (se interrumpe con un golpe fuerte)",
+    "Aliento de oscuridad en cono: apaga antorchas"
+   ],
+   "mech": "Interceptalo: mientras come, un golpe fuerte lo aturde. Al morir devuelve la luz que robó.",
+   "atlasActual": "assets/sprites/arenas/minas/mn_devoraluz/atlas.png"
+  },
+  "mn_titan": {
+   "id": "mn_titan",
+   "name": "Titán de Piedra",
+   "rank": "subjefe",
+   "hp": 2600,
+   "dmg": 28,
+   "speed": 46,
+   "radius": 54,
+   "scale": 8,
+   "color": "#8a5a2a",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "minas",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": "assets/sprites/arenas/minas/mn_titan/atlas.png"
+  },
+  "mn_cerbero": {
+   "id": "mn_cerbero",
+   "name": "Cerbero",
+   "rank": "jefe",
+   "hp": 6200,
+   "dmg": 34,
+   "speed": 74,
+   "radius": 58,
+   "scale": 9,
+   "color": "#c02010",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": "minas",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": "assets/sprites/arenas/minas/mn_cerbero/atlas.png"
+  },
+  "hechicero_supremo": {
+   "id": "hechicero_supremo",
+   "name": "Hechicero Supremo",
+   "rank": "subjefe",
+   "hp": 1500,
+   "dmg": 24,
+   "speed": 60,
+   "radius": 40,
+   "scale": 5.6,
+   "color": "#e8c27a",
+   "ranged": true,
+   "visualAlias": "mago_hielo_cristal",
+   "arena": "infernal",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": null
+  },
+  "golem_cuerpos": {
+   "id": "golem_cuerpos",
+   "name": "Golem de Cuerpos",
+   "rank": "jefe",
+   "hp": 2200,
+   "dmg": 32,
+   "speed": 38,
+   "radius": 78,
+   "scale": 9.5,
+   "color": "#8a2a2a",
+   "ranged": false,
+   "visualAlias": "demonio_mayor",
+   "arena": "infernal",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": null
+  },
+  "angel_corrompido": {
+   "id": "angel_corrompido",
+   "name": "Ángel Corrompido",
+   "rank": "jefe",
+   "hp": 2000,
+   "dmg": 30,
+   "speed": 58,
+   "radius": 46,
+   "scale": 6.4,
+   "color": "#8a1a2a",
+   "ranged": true,
+   "visualAlias": "mago_hielo_cristal",
+   "arena": "infernal",
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": null
+  },
+  "foco_convergencia": {
+   "id": "foco_convergencia",
+   "name": "Foco de Convergencia",
+   "rank": "subelite",
+   "hp": 80,
+   "dmg": 0,
+   "speed": 0,
+   "radius": 26,
+   "scale": 2.2,
+   "color": "#ffd27a",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": null,
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": null
+  },
+  "foco_hielo": {
+   "id": "foco_hielo",
+   "name": "Foco de Hielo",
+   "rank": "subelite",
+   "hp": 60,
+   "dmg": 0,
+   "speed": 0,
+   "radius": 26,
+   "scale": 2.2,
+   "color": "#bfe8ff",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": null,
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": null
+  },
+  "lev_tentaculo": {
+   "id": "lev_tentaculo",
+   "name": "Tentáculo del Leviatán",
+   "rank": "subelite",
+   "hp": 80,
+   "dmg": 0,
+   "speed": 0,
+   "radius": 30,
+   "scale": 2.4,
+   "color": "#9a4ac0",
+   "ranged": false,
+   "visualAlias": null,
+   "arena": null,
+   "family": null,
+   "lore": null,
+   "origin": null,
+   "behavior": null,
+   "attacks": [],
+   "mech": null,
+   "atlasActual": null
+  }
+ }
+}

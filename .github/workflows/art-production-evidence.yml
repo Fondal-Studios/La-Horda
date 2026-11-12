@@ -1,7 +1,7 @@
 name: Art production evidence
 on:
   pull_request:
-    paths: ['tools/factory/**', 'tools/release/**', 'tools/art/check-authored-density.js', 'docs/production/art-integrations.json', 'docs/production/authored-candidates.json', 'art-source/entregas/**', '.github/workflows/art-production-evidence.yml']
+    paths: ['tools/factory/**', 'tools/release/**', 'tools/art/check-authored-density.js', 'docs/production/art-integrations.json', 'docs/production/asset-blocks.json', 'docs/art-brief/runway-pack/**', 'tools/art/build-runway-pack.py', 'tools/art/test-runway-pack.py', 'docs/production/authored-candidates.json', 'art-source/entregas/**', '.github/workflows/art-production-evidence.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -34,6 +34,7 @@ jobs:
           node -e "const r=require('/tmp/art-contract/libertador-negative.json'),a=require('node:assert/strict');a.equal(r.status,'REJECT');for(const n of ['fire','reload','bayo_emb','ult_cast'])a(r.issues.some(x=>x.code==='MISSING_RUNTIME_CLIP'&&x.clip===n));a.equal(r.approvalClaimed,false);"
       - run: python tools/factory/reconcile-art-production.py
       - run: python tools/factory/production-blocks.py
+      - run: python tools/art/test-runway-pack.py
       - run: node tools/factory/export-runtime-icons.js
       - run: node tools/art/check-pixel-icons.js
       - run: node tools/art/emoji-lint.js --strict
