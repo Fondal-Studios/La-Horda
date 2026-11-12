@@ -130,9 +130,12 @@
   },
   "libertador": {
    "nombre": "San Martín, el Libertador",
-   "etapas": {},
+   "etapas": {
+    "lamina_limpia": "hecho",
+    "captura_antes_despues": "pendiente"
+   },
    "intentos_descartados": [],
-   "notas": ""
+   "notas": "2026-11-12: no se generaron hojas: la muerte ya tiene 4 cuadros propios (libertador_death), la definitiva usa un unico cuadro 44 que el motor dibuja fijo (prog 0) y el ataque usa el set 'fire' en todas las direcciones; ver ART_CREDITS"
   },
   "ilkan": {
    "nombre": "Ilkan, el Caminante de Dunas",

@@ -178,3 +178,11 @@ Medidas: alto de los cuadros nuevos 73 / 86 / 87 / 80 px (reposo 84; cuerpo de p
 | `python3 tools/art/scan_sprites.py --dir champions/musashi` | `codex-v1/atlas.png` no aparece marcado (las marcas son de otros archivos sin tocar) |
 | `roster-loading-test.js`, `champion-validator.js --strict`, `competitive-signatures.test.js`, `test-runway-pack.py` | PASS |
 | `style_gate.py` | **NO aplica** (solo atlas 448x1008). Revision de arte humana **pendiente**. `docs/art-factory/inventory.json` y `art-source/entregas/...` conservan el sha anterior (historicos) |
+
+## Libertador: revision de lo que falta de verdad - 2026-11-12 (0 creditos gastados, nada instalado)
+El checklist decia «faltan: attack_down, attack_up, ultimate_down, hit_down, death_down» porque lee solo los `sets` del atlas `v2/atlas.png`. Verificado contra el motor (`js/champions/libertador.js` `drawLibertador`, `js/assets/champion-sprites.js`, captura `art-source/captures/libertador/estados_antes.png`):
+- **Muerte: NO falta.** `libertador_death` (`v2/death.png`, 4 cuadros, ya integrada con su gate `tools/art/check-libertador-death.js`) se dibuja en `death_down`; la captura muestra la caida real (de pie, hincado, cayendo, tendido).
+- **Definitiva: ya tiene pose propia.** El estado `ultcast` dibuja `ult_cast` = cuadro 44 (sable en alto, de frente). El motor lo dibuja con `prog` fijo en 0 (`_smFrame(P,"ult_cast",0,...)`), o sea SOLO el primer cuadro del set durante los 950 ms de `castMs`: una hoja de 4 poses no se veria (animarla exige cambiar `libertador.js`, fuera del alcance de este encargo). Despues viene el caballo (`libertador_horse`, ya con su atlas).
+- **Ataque de frente/arriba:** el Libertador no usa `attack_down/up`: dibuja el set `fire` ([30..33], perfil con el fusil) en toda direccion, y no hay clave de registro que lo redirija sin tocar codigo.
+- `hit_down`: cae en el cuadro de reposo/`libertador_motion` sin pose propia; sin set nuevo no hay donde apuntarlo (`hurtTimer` solo desactiva `libertador_motion`).
+Decision: no se generaron hojas (ahorro de 60 creditos del tope: saldo 125). Si el dueno quiere animar la definitiva o dar ataque frontal, hace falta primero un cambio de codigo (`prog` de `ult_cast` y despacho por direccion de `fire`) y luego se pide la hoja con la receta de Ynara.

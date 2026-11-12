@@ -11,7 +11,7 @@
 | Campeón | Lámina | Atlas actual | Estados que faltan o están repetidos (del atlas ACTUAL) | Auditoría 18-oct (puede estar vieja) | Skins/formas | Runway |
 |---|---|---|---|---|---|---|
 | **guerrero** | sí | 144×144, 4 col | layout estándar de 36 (sin sets declarados: no se puede medir acá) | lanzar (P1); muerte (P0); golpe (P1) | skin:falta | no probado |
-| **libertador** | sí | 103×98, 8 col | faltan: attack_down, attack_up, ultimate_down, hit_down, death_down | ataque_abajo (P1); ataque_arriba (P1); golpe (P1); muerte (P0) | forma:falta | no probado |
+| **libertador** | sí | 103×98, 8 col | faltan: attack_down, attack_up, ultimate_down, hit_down, death_down | ataque_abajo (P1); ataque_arriba (P1); golpe (P1); muerte (P0) | forma:falta | lamina limpia=hecho; captura antes despues=pendiente |
 | **myla** | sí | 112×112, 8 col | layout estándar de 36 (sin sets declarados: no se puede medir acá) | lanzar (P1); definitiva (P1); golpe (P1); muerte (P0) | forma:falta | no probado |
 | **soporte** | sí | 112×112, 4 col | completo | lanzar (P1); golpe (P1); muerte (P0) | skin:falta | no probado |
 | **tanque** | sí | 112×112, 4 col | layout estándar de 36 (sin sets declarados: no se puede medir acá) | lanzar (P1); muerte (P0); golpe (P1) | — | lamina limpia=hecho; clip walk down=aprobado; clip walk side=aprobado; clip walk up=generado; clip attack down=aprobado; clip attack side=aprobado; clip attack up=generado; clip cast=generado; clip ult=rechazado; clip death=generado; cuadros aprobados=rechazado; atlas armado=hecho; gates=rechazado; instalado motor=rechazado; captura antes despues=hecho |
@@ -58,6 +58,9 @@
 | **vorn** | **NO** | 112×112, 4 col | completo | — | — | no probado |
 
 ## Intentos descartados y notas (no repetir)
+
+### libertador — San Martín, el Libertador
+- 2026-11-12: no se generaron hojas: la muerte ya tiene 4 cuadros propios (libertador_death), la definitiva usa un unico cuadro 44 que el motor dibuja fijo (prog 0) y el ataque usa el set 'fire' en todas las direcciones; ver ART_CREDITS
 
 ### tanque — Aldric, el Último Bastión
 - ✘ 13 imágenes sueltas (gen4_image) para lanzar/muerte/golpe: ignora la pose o BAD_OUTPUT. NO repetir (ver ART_CREDITS.md)
