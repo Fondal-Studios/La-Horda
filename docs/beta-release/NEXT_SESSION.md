@@ -1,5 +1,12 @@
 # NEXT_SESSION — cómo seguir con la beta (actualizado 2026-11-07)
 
+## Actualización 2026-11-12 (leer primero)
+- **Mergeado:** #288–#290, #292, #294–#296. `main` = a27c48b7 al escribir esto.
+- **Arte con Runway:** el paquete `docs/art-brief/runway-pack/` está en `main` (empezar por `README_PROMPT_MAESTRO.md`). **Bloqueo real: saldo 0–2 créditos**; no se puede generar nada hasta recargar. Sin tope de gasto por decisión del dueño (2026-11-12). Registrar cada generación en `docs/beta-release/ART_CREDITS.md`.
+- **Steam (del dueño, no automatizable):** cuenta Steamworks/AppID/clave de editor; crear ítems 1001–1006 y logros; prueba en sandbox; build de Electron y `docs/steam/PRUEBAS_ELECTRON.md` en PC; textos legales y correo de soporte; página de tienda, precio y clasificación; confirmar declaración de IA; íconos del exe y OFL.txt. Login con Apple ID NO está construido (recomendación: Steam como principal).
+- **Pendientes técnicos documentados:** candados en memoria (una sola instancia), barrido O(cuentas), PartialRefund no se revierte, nonce del ticket, migración Postgres sin probar, GetReport sin implementar, páginas legales aún mencionan Mercado Pago.
+- **No se puede declarar «listo para Steam y generar ganancias»**: faltan las verificaciones del dueño de arriba.
+
 ## Qué quedó integrado en esta tanda
 - Arte nuevo de campeones + `.webp` sincronizados (CI `webp-sync`) + `ASSET_VER` (rompe caché). (#282)
 - **Mago/Thalen**: clave canónica `CHAMP_PACK.mago`, muerte animada (1→4 cuadros), metadata real (42 cuadros). Skins de Ascensión animan ataque/cast. Ult de Myla.
