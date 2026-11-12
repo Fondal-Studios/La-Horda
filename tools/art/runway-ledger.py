@@ -35,14 +35,14 @@ def render(st):
     L.append('## NO REPETIR (rechazados y su motivo)\n')
     for e in [e for e in E if e['estado'] == 'rechazado']:
         L.append('- ✘ **`%s`** (%s, %s, %s cr): %s%s' % (e['id'], e['categoria'], e['ultima_fecha'] or 's/f', e.get('creditos') or 0, e['por_que'], (' **Siguiente:** ' + e['siguiente_paso']) if e['siguiente_paso'] else ''))
-    L.append('\nTambién medido (sin entrada propia): Runway ignora la pose pedida y cobra los `BAD_OUTPUT` (~8 cr c/u); los prompts largos con anatomía rara fallan sin `@pose`; un prompt con texto genera texto dentro de la imagen; los ciclos de caminata salen con cuadros casi idénticos. Un fallo seguido de otro igual = parar.\n')
+    L.append('\nTambién medido (sin entrada propia): Runway ignora la pose pedida en la muestra del Tanque; los `BAD_OUTPUT` pueden cobrarse (la API informa 0 pero el saldo bajó igual; cuenta compartida, no atribuible); los prompts largos con anatomía rara fallan sin `@pose`; un prompt con texto genera texto dentro de la imagen; los ciclos de caminata salen con cuadros casi idénticos. Un fallo seguido de otro igual = parar.\n')
     sv = [e for e in E if e['estado'] == 'sin_verificar' or 'sin_verificar' in (e['verificacion'] or '') or 'sin_verificar' in (e['por_que'] or '')]
     if sv:
         L.append('## Sin verificar (lo que NO se pudo comprobar)\n')
         for e in sv: L.append('- ? `%s`: %s' % (e['id'], esc(e['verificacion'] if 'sin_verificar' in (e['verificacion'] or '') else e['por_que'])))
         L.append('')
     L.append('## PRÓXIMOS TRABAJOS (ordenados por valor/costo; solo donde Runway ya funcionó)\n')
-    L.append('Excluido a propósito: `campeon_cuerpo` por imágenes sueltas y animación de campeones/enemigos con hojas o video (medido: 0 aprobados). Valor 1-5; costo en créditos a 8 por imagen (reservar un 2.º intento si dice «reserva»).\n')
+    L.append('Excluido a propósito: `campeon_cuerpo` por imágenes sueltas y animación de campeones/enemigos con hojas o video (medido: 0 aprobados para instalar; 4 clips aceptados a ojo: ws1, wd3, ad1, as1, solo como material). Valor 1-5; costo en créditos a 8 por imagen (reservar un 2.º intento si dice «reserva»).\n')
     P = [e for e in E if e['estado'] == 'pendiente' and 'costo_estimado' in e]
     P.sort(key=lambda e: -(e.get('valor', 0) / max(e['costo_estimado'], 4)))
     L.append('| # | id | categoría | valor | costo (cr) | por qué falta de verdad | siguiente paso |'); L.append('|---:|---|---|---:|---:|---|---|')

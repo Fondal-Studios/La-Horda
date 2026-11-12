@@ -57,8 +57,8 @@
 
 ### Runway: video, registro y bloqueo diario (2026-11-12, tarde)
 - **#298 mergeada** (a main 352d09eb): recorte limpio de la lámina (`tools/art/codex-clean.py`) y resultados medidos.
-- **Piloto de video (Tanque):** conversor `tools/art/video-to-atlas.py` + 11 clips de 2 s (gen4_turbo, 10 créditos c/u). El diseño se conserva, pero el atlas candidato queda por debajo del actual (poses rígidas, definitiva igual a lanzar, muerte sin caída) y falla el `roster_gate`: **no se instaló**. Capturas antes/después en `art-source/captures/tanque/`. Con una sola muestra de campeón.
+- **Piloto de video (Tanque):** conversor `tools/art/video-to-atlas.py` + 11 clips de 2 s (gen4_turbo, 10 créditos c/u). El diseño se conserva, pero el atlas candidato queda por debajo del actual (poses rígidas, definitiva igual a lanzar; la muerte se arrodilla y se tiende, pero el último cuadro mide solo 23 px) y falla el `roster_gate`: **no se instaló**. Capturas antes/después en `art-source/captures/tanque/`. Con una sola muestra de campeón.
 - **Registro único** de trabajo con Runway: `docs/art-brief/runway-pack/REGISTRO_RUNWAY.md` (+ `estado-runway.json`, `tools/art/runway-ledger.py`) y checklist de campeones `CHECKLIST_CAMPEONES.md`. `runway-world.js list` no es fiable (marca «pendiente» 12 de 17 trabajos ya hechos): manda el registro. Listos hoy: 0 de 5 campeones.
-- **Bloqueo:** Runway rechaza todo con «daily task limit reached» (tope diario de la cuenta compartida; saldo ~295). Pisos y centros de Bosque y Hielo preparados (JOBS, referencias, capturas «antes») y sin generar. Reintento programado.
+- **Bloqueo:** Runway rechaza todo con «daily task limit reached» (tope diario de la cuenta compartida; saldo ~295; entre 530 y 295 el saldo bajó ~235 sin generaciones nuestras: consumo ajeno, no atribuible). Pisos y centros de Bosque y Hielo preparados (JOBS, referencias, capturas «antes») y sin generar. Reintento: recordatorio de la sesión para las 00:30 UTC del 2026-11-13 (no está en el repo).
 - `docs/steam/DECLARACION_IA.md` actualizado con los recuentos reales (159 recibos, 12 clips de video sin instalar).
 

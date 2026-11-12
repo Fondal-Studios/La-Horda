@@ -82,6 +82,9 @@ for p in ['tools/art-world/runway-guardian.js', 'tools/art-world/runway-world.js
           'tools/art/roster_gate.js', 'tools/art/pixel-density.js', 'tools/art/enemy_coverage.js', 'tools/factory/import-authored-sheet.py', 'tools/art/webp_convert.py', 'tools/art/build-art-atlas.js',
           'docs/art-brief/plantillas/champion_atlas_448x1008_PLANTILLA.png', 'tools/art/painter/donors.json', 'docs/beta-release/ART_CREDITS.md']:
     ok(os.path.exists(os.path.join(ROOT, p)), 'la receta cita %s y no existe' % p)
+# checklist de campeones: el .md debe estar sincronizado con estado-campeones.json (python3 tools/art/champ-checklist.py)
+r = subprocess.run([sys.executable, os.path.join(ROOT, 'tools/art/champ-checklist.py'), '--check'], capture_output=True, text=True)
+ok(r.returncode == 0, 'CHECKLIST_CAMPEONES.md desincronizado: ' + (r.stdout + r.stderr).strip())
 # registro único de lo hecho con Runway: el .md debe estar sincronizado con estado-runway.json (python3 tools/art/runway-ledger.py)
 r = subprocess.run([sys.executable, os.path.join(ROOT, 'tools/art/runway-ledger.py'), '--check'], capture_output=True, text=True)
 ok(r.returncode == 0, 'REGISTRO_RUNWAY.md desincronizado o estado-runway.json inválido: ' + (r.stdout + r.stderr).strip())

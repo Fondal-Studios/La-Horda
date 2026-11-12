@@ -542,8 +542,8 @@
    "donde_esta": [
     "art-source/runway-guardians/ilkan_coloso/c_frente/master.png"
    ],
-   "por_que": "Rechazada por el dueño («parece con esteroides»). Además 6 tareas fallaron BAD_OUTPUT (cobradas, ≈8 cr c/u, sin recibo) cuando el prompt pedía «skull-like/hollow ribcage» sin @pose.",
-   "siguiente_paso": "NO repetir. Regla: sin @pose de una imagen aceptada de la misma serie, las poses raras dan BAD_OUTPUT cobrado.",
+   "por_que": "Rechazada por el dueño («parece con esteroides»). Además 6 tareas fallaron BAD_OUTPUT (sin imagen ni recibo; el cobro no es verificable: la API informa 0 y el saldo bajó igual, cuenta compartida) cuando el prompt pedía «skull-like/hollow ribcage» sin @pose.",
+   "siguiente_paso": "NO repetir. Regla: sin @pose de una imagen aceptada de la misma serie, las poses raras dan BAD_OUTPUT (puede cobrarse; no verificable).",
    "verificacion": "masters+recibos existen"
   },
   {
@@ -594,7 +594,7 @@
     "assets/sprites/champions/myla/v2/death.png",
     "art-source/runway-guardians/myla/death-candidato/death.png"
    ],
-   "por_que": "d3 FALLÓ 3 veces con BAD_OUTPUT (cobradas, sin recibo): no volver a intentarla; se usan d1/d2 + el maestro inclinado.",
+   "por_que": "d3 FALLÓ 3 veces con BAD_OUTPUT (sin imagen ni recibo; cobro no verificable): no volver a intentarla; se usan d1/d2 + el maestro inclinado.",
    "siguiente_paso": "NO pedir d3 otra vez.",
    "verificacion": "myla/v2/death.png byte-igual a death-candidato; cargado por js/assets/portadores-meta.js:28"
   },
@@ -659,7 +659,7 @@
     "art-source/runway-guardians/tanque/f12_a1/master.png",
     "art-source/runway-guardians/tanque/f27_a1/master.png"
    ],
-   "por_que": "gen4_image ignora la pose pedida y devuelve siempre un personaje de pie (golpe y recuperar salieron idénticos a una pose de pie); las poses agachadas o tendidas dan BAD_OUTPUT con cobro (86 cr por saldo 856→770 para 2 imágenes y 6 fallos; sin recibo). Medido: 0 aprobados.",
+   "por_que": "gen4_image ignora la pose pedida y devuelve siempre un personaje de pie (golpe y recuperar salieron idénticos a una pose de pie); las poses agachadas o tendidas dan BAD_OUTPUT (el saldo bajó 86 cr por saldo 856→770 para 2 imágenes y 6 fallos; sin recibo). Medido: 0 aprobados.",
    "siguiente_paso": "NO repetir: no pedir poses de campeón con imágenes sueltas.",
    "verificacion": "masters de f12 y f27 existen; las otras 6 tareas no dejaron imagen"
   },
@@ -683,7 +683,7 @@
     "art-source/runway-video/tanque/candidate/atlas.png",
     "tools/art/video-to-atlas.py"
    ],
-   "por_que": "Aceptados a ojo: ws1 y wd3. Rechazados: w1 y wd2 (cuadros casi iguales); wu1 débil. El atlas candidato NO está instalado: el atlas dibujado actual tiene más pose y roster_gate con el candidato da scaleFailures 4 (base 0). Muestra de 1 campeón.",
+   "por_que": "Aceptados a ojo: ws1 y wd3. Sin aprobar: w1 («prometedor», cuadros muy parecidos) y wd2 rechazado (cuadros casi iguales); wu1 débil. El atlas candidato NO está instalado: el atlas dibujado actual tiene más pose y roster_gate con el candidato da scaleFailures 4 (base 0). Muestra de 1 campeón.",
    "siguiente_paso": "No animar más campeones por video. Si se retoma: solo variación de caminata.",
    "verificacion": "clips y candidate/atlas.png existen; ningún js/ referencia runway-video/"
   },
@@ -723,7 +723,7 @@
     "docs/beta-release/ART_CREDITS.md",
     "docs/art-brief/runway-pack/RECETA.md"
    ],
-   "por_que": "Medido: 0 aprobados en 13+ imágenes del Tanque; mismo límite visto en Profeta pf_up y Myla d3. Solo sirvió con @pose de una imagen aceptada de la misma serie y poses de pie (Libertador/Profeta/Coloso).",
+   "por_que": "Medido: 0 aprobados como POSE en 13+ imágenes del Tanque (f24_a5 quedó aceptada solo como diseño); mismo límite visto en Profeta pf_up y Myla d3. Solo sirvió con @pose de una imagen aceptada de la misma serie y poses de pie (Libertador/Profeta/Coloso).",
    "siguiente_paso": "NO invertir créditos en campeon_cuerpo por imágenes sueltas ni en animación de campeones con hojas.",
    "verificacion": "tomado de ART_CREDITS.md + estado-campeones.json"
   },
@@ -1480,7 +1480,7 @@
     "docs/beta-release/ART_CREDITS.md",
     "docs/art-brief/runway-pack/COSTOS.md"
    ],
-   "por_que": "sin_verificar: no se llamó a la API en esta auditoría. Último dato en ART_CREDITS: 530 al terminar el piloto de video (2026-11-12), con 2 el 2026-11-11 antes de recargar. Cuenta compartida: baja sin que se genere nada.",
+   "por_que": "sin_verificar: no se llamó a la API en esta auditoría. Último dato en ART_CREDITS: 530 al terminar el piloto de video (2026-11-12), con 2 el 2026-11-11 antes de recargar. Entre 530 (fin del piloto) y ~295 (al bloquearse por el límite diario) el saldo bajó ~235 sin generaciones nuestras: consumo ajeno de la cuenta compartida, no atribuible. Cuenta compartida: baja sin que se genere nada.",
    "siguiente_paso": "Antes de cualquier trabajo: node tools/art-world/runway-world.js status (no gasta).",
    "verificacion": "sin_verificar"
   },
@@ -1512,7 +1512,7 @@
    "donde_esta": [
     "js/rendering/arena.js"
    ],
-   "por_que": "Sigue siendo el piso procedural (FLOOR_THEME). Runway funcionó en 5 de 6 pisos (falló solo abismo por marco/diagonal). [2026-11-12] 2026-11-12: intento bloqueado, 0 creditos: la API respondio 'Your daily task limit has been reached.' (saldo 295, sin cobro). JOB listo en runway-world.js (id ), ref en art-source/runway-world/<arena>/ref_crop.png; capturas ANTES en art-source/captures/. Reintentar cuando se libere el limite diario.",
+   "por_que": "Sigue siendo el piso procedural (FLOOR_THEME). Runway funcionó en 5 de 6 pisos (falló solo abismo por marco/diagonal). [2026-11-12] 2026-11-12: intento bloqueado, 0 creditos: la API respondio 'Your daily task limit has been reached.' (saldo 295, sin cobro). JOB listo en runway-world.js (ver el id de esta entrada), ref en art-source/runway-world/<arena>/ref_crop.png; capturas ANTES en art-source/captures/. Reintentar cuando se libere el limite diario.",
    "siguiente_paso": "Copiar el prompt de laberinto_piso/infernal_piso (TEX) y añadir la clave a FLOOR_PAINTED en js/rendering/arena.js. Reserva 16 (reintento).",
    "verificacion": "FLOOR_PAINTED solo tiene laberinto/infernal/acuatica (grep)",
    "valor": 4,
@@ -1529,7 +1529,7 @@
    "donde_esta": [
     "tools/art-world/build-centro-arena.py"
    ],
-   "por_que": "Los 4 centros intentados (infernal, acuática, laberinto, rejilla de fortaleza) salieron aceptados. [2026-11-12] 2026-11-12: intento bloqueado, 0 creditos: la API respondio 'Your daily task limit has been reached.' (saldo 295, sin cobro). JOB listo en runway-world.js (id ), ref en art-source/runway-world/<arena>/ref_crop.png; capturas ANTES en art-source/captures/. Reintentar cuando se libere el limite diario.",
+   "por_que": "Los 4 centros intentados (infernal, acuática, laberinto, rejilla de fortaleza) salieron aceptados. [2026-11-12] 2026-11-12: intento bloqueado, 0 creditos: la API respondio 'Your daily task limit has been reached.' (saldo 295, sin cobro). JOB listo en runway-world.js (ver el id de esta entrada), ref en art-source/runway-world/<arena>/ref_crop.png; capturas ANTES en art-source/captures/. Reintentar cuando se libere el limite diario.",
    "siguiente_paso": "Prompt DECAL de runway-world.js sobre croma verde; build-centro-arena.py; agregar clave a DECAL_PAINTED.",
    "verificacion": "procedural (arena-props.js)",
    "valor": 3,
@@ -1546,7 +1546,7 @@
    "donde_esta": [
     "js/rendering/arena.js"
    ],
-   "por_que": "Sigue siendo el piso procedural (FLOOR_THEME). Runway funcionó en 5 de 6 pisos (falló solo abismo por marco/diagonal). [2026-11-12] 2026-11-12: intento bloqueado, 0 creditos: la API respondio 'Your daily task limit has been reached.' (saldo 295, sin cobro). JOB listo en runway-world.js (id ), ref en art-source/runway-world/<arena>/ref_crop.png; capturas ANTES en art-source/captures/. Reintentar cuando se libere el limite diario.",
+   "por_que": "Sigue siendo el piso procedural (FLOOR_THEME). Runway funcionó en 5 de 6 pisos (falló solo abismo por marco/diagonal). [2026-11-12] 2026-11-12: intento bloqueado, 0 creditos: la API respondio 'Your daily task limit has been reached.' (saldo 295, sin cobro). JOB listo en runway-world.js (ver el id de esta entrada), ref en art-source/runway-world/<arena>/ref_crop.png; capturas ANTES en art-source/captures/. Reintentar cuando se libere el limite diario.",
    "siguiente_paso": "Copiar el prompt de laberinto_piso/infernal_piso (TEX) y añadir la clave a FLOOR_PAINTED en js/rendering/arena.js. Reserva 16 (reintento).",
    "verificacion": "FLOOR_PAINTED solo tiene laberinto/infernal/acuatica (grep)",
    "valor": 4,
@@ -1563,7 +1563,7 @@
    "donde_esta": [
     "tools/art-world/build-centro-arena.py"
    ],
-   "por_que": "Los 4 centros intentados (infernal, acuática, laberinto, rejilla de fortaleza) salieron aceptados. [2026-11-12] 2026-11-12: intento bloqueado, 0 creditos: la API respondio 'Your daily task limit has been reached.' (saldo 295, sin cobro). JOB listo en runway-world.js (id ), ref en art-source/runway-world/<arena>/ref_crop.png; capturas ANTES en art-source/captures/. Reintentar cuando se libere el limite diario.",
+   "por_que": "Los 4 centros intentados (infernal, acuática, laberinto, rejilla de fortaleza) salieron aceptados. [2026-11-12] 2026-11-12: intento bloqueado, 0 creditos: la API respondio 'Your daily task limit has been reached.' (saldo 295, sin cobro). JOB listo en runway-world.js (ver el id de esta entrada), ref en art-source/runway-world/<arena>/ref_crop.png; capturas ANTES en art-source/captures/. Reintentar cuando se libere el limite diario.",
    "siguiente_paso": "Prompt DECAL de runway-world.js sobre croma verde; build-centro-arena.py; agregar clave a DECAL_PAINTED.",
    "verificacion": "procedural (arena-props.js)",
    "valor": 3,
