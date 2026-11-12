@@ -16,7 +16,7 @@ Todo lo de esta receta sale de lo que ya se hizo y de las herramientas que exist
 node tools/art-world/runway-world.js status     # {"creditBalance": N}
 ```
 - **Sin tope de créditos** (decisión del dueño, 2026-11-12): se gasta hasta agotar el saldo; el saldo cambia (al 2026-11-12 era 0–2): sin recarga no se puede generar nada. Los scripts de campeón y mundo traen un tope por omisión (`GUARDIAN_RUNWAY_BUDGET` 24, `WORLD_RUNWAY_BUDGET` 40) que es un seguro contra errores: para una tanda grande se sube con la variable de entorno (p. ej. `GUARDIAN_RUNWAY_BUDGET=100000`), a propósito. `runway-design.js` y `gen_sheet.py` no tienen tope propio.
-- Costo medido: **8 créditos por imagen** (los BAD_OUTPUT: la API informa `cost.credits` = 0, pero en la tanda del Tanque el saldo bajó igual tras fallos; como la cuenta es compartida no se pudo atribuir con certeza. Contrastar `status` antes y después y no contar con que un fallo sea gratis) (campeón, mundo, diseño) y **5 por hoja de enemigo 1280:720** (`gen4_image`, 1024:1024, con 1 referencia). Un `BAD_OUTPUT` también se cobra: tras dos fallos seguidos en la misma pose, parar y cambiar el planteo en vez de reintentar.
+- Costo medido: **8 créditos por imagen** (`gen4_image`, 1024:1024, con 1 a 2 referencias; campeón, mundo y diseño) y **5 por hoja de enemigo 1280:720**. Los `BAD_OUTPUT`: la API informa `cost.credits` = 0, pero en la tanda del Tanque el saldo bajó igual tras los fallos; como la cuenta es compartida no se pudo atribuir con certeza. Contrastar `status` antes y después y **no contar con que un fallo sea gratis**: tras dos fallos seguidos en la misma pose, parar y cambiar el planteo en vez de reintentar.
 
 ## 3. Preparar las referencias
 
