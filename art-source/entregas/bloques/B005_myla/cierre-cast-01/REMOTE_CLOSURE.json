@@ -1,0 +1,24 @@
+{
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "publication": "NOT_CHECKED",
+  "component": "B005/cast/base-supplement",
+  "pr": 297,
+  "branch": "art/myla-cast-back-frame11-20261112",
+  "base": "a27c48b74344a090047deeaa77f2363243ef1d8c",
+  "previousHead": "8d1b9c1c71b95641f643c3efa068fa9aaa1d8f6d",
+  "productionCommit": "dd4da334254c47dd6b26809d46fc180978eee89b",
+  "productionTree": "d7bf9936d9603689181d807e731c3f8356d93147",
+  "candidateSha256": "1069b0085e3bae9854357869aaae4ebd875074623ccd6d0af4bd061a15d41110",
+  "candidateGitBlob": "a459709ad8a35570a1f5a98191d9ababd7a83980",
+  "newTests": [
+    {"name":"runtime syntax", "result":"PASS"},
+    {"name":"deterministic routing contract", "result":"PASS", "scope":"7/7"},
+    {"name":"native frame technical", "result":"PASS", "scope":"12/12 non-empty, binary alpha"},
+    {"name":"browser gameplay gate", "result":"BLOCKED_BEFORE_PAGE", "reason":"Chromium process singleton socket Operation not permitted"}
+  ],
+  "historicalNotRerun": ["revision-cast-back-03 native detector", "PR190 death", "PR229 bubble-state"],
+  "preserved": ["Merienda Magica", "Yogur de Arandanos", "Berrinche", "PR231 Nano workshop"],
+  "pending": ["real gameplay before/after", "six arenas desktop/mobile", "multiplayer if applicable", "performance if applicable", "Art Gate", "all exact-head CI"],
+  "next": "Keep PR297 draft/FIX. Run tools/art/check-myla-cast.js in a browser-capable executor, review captures and complete gates before any merge."
+}
