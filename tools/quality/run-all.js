@@ -112,6 +112,7 @@ const TESTS = [
   T('tools/art/roster-loading-test.js', 'own', 900),
   T('tools/art/t_pixrig_bosses.js', 'site', 600),
   T('tools/art/check-presentation-browser.js', 'fixed', 600),
+  T('tools/art/test-champion-draw-dispatch.js', 'site', 300),
   // ---- carriles, Coliseo, Cristales, colección, balance ----
   T('tools/lanes/test-sides.js', 'site', 900),
   T('tools/lanes/postgame-test.js', 'own', 900),
