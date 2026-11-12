@@ -18,7 +18,7 @@
 | **ynara** | sí | 96×96, 4 col | completo | lanzar (P1); definitiva (P1); muerte (P0) | — | lamina limpia=hecho; clip cast=hecho; clip ult=hecho; cuadros aprobados=generado; atlas armado=hecho; gates=generado; instalado motor=hecho; captura antes despues=hecho |
 | **aurelia** | sí | 112×112, 4 col | completo | — | skin:recolor, skin:recolor | no probado |
 | **axiom** | sí | 112×112, 4 col | completo | ataque_abajo (P1); ataque_arriba (P1) | skin:falta | no probado |
-| **cazadora** | sí | 192×160, 4 col | faltan: ultimate_down | ataque_abajo (P1); ataque_arriba (P1) | forma:falta | no probado |
+| **cazadora** | sí | 192×160, 4 col | completo | ataque_abajo (P1); ataque_arriba (P1) | forma:falta | lamina limpia=hecho; clip ult=hecho; cuadros aprobados=generado; atlas armado=hecho; gates=generado; instalado motor=hecho; captura antes despues=hecho |
 | **facu_gm** | sí | 112×112, 4 col | completo | — | skin:recolor, skin:falta | no probado |
 | **ilkan** | sí | 192×128, 8 col | faltan: attack_down, attack_up, ultimate_down | ataque_abajo (P1); ataque_arriba (P1) | skin:falta, skin:falta, forma:falta, forma:falta | no probado |
 | **khepri** | sí | 112×112, 4 col | completo | — | skin:recolor | no probado |
@@ -66,4 +66,7 @@
 
 ### ynara — Ynara, la Médica de los Refugios
 - lanzar y definitiva con gpt_image_2 (hojas c1 y u1, 40 cr), instalados en el atlas (filas 10-11, cuadros 36-43). roster_gate 0 fallos; style_gate no aplica (celda 96); revisión de arte humana pendiente. gates=generado: solo pasó roster_gate (style_gate no aplica a celdas de 96); cuadros_aprobados=generado: sin revisión de arte humana.
+
+### cazadora — Sylva, la Cazadora del Bosque
+- solo pasaron los gates aplicables; style_gate no aplica (celda 192x160); sin revision de arte humana art-source/captures/cazadora/estados_{antes,despues}.png
 

@@ -1732,6 +1732,26 @@
    "por_que": "",
    "siguiente_paso": "Convertir con tools/art/sheet-to-cells.py y armar el atlas; probar también muerte y definitiva con gpt_image_2.",
    "verificacion": ""
+  },
+  {
+   "id": "cazadora_ult_poses_gpt2",
+   "categoria": "campeon_cuerpo",
+   "descripcion": "Cazadora: hoja de 4 poses de la DEFINITIVA (Cacería Salvaje, gpt_image_2, croma verde) -> cuadros 52-55 (fila nueva) del atlas codex-v1, sets ultimate_down/side/up",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-12",
+   "task_ids": [
+    "8f31e68e-fe05-4b2f-92b2-d2af81ae74ba",
+    "257072f9-5c71-480d-971a-f1002409ff9b"
+   ],
+   "creditos": 40,
+   "donde_esta": [
+    "art-source/runway-designs/cazadora/u1/master.png",
+    "art-source/runway-designs/cazadora/u2/master.png",
+    "art-source/cazadora-runway/atlas.png"
+   ],
+   "por_que": "u1 (20 cr) bien de diseno y poses pero el arco en alto vertical obligaba a reducir la escala comun un 10 % (cuerpo 74 px vs 83 de reposo, fuera de +-4 %): descartada como candidato. u2 (20 cr, arco horizontal) aceptada: cuerpo 85 px (+2 %). Instalada 2026-11-12; aprobacion de arte humana pendiente.",
+   "siguiente_paso": "",
+   "verificacion": ""
   }
  ]
 }

@@ -102,9 +102,17 @@
   },
   "cazadora": {
    "nombre": "Sylva, la Cazadora del Bosque",
-   "etapas": {},
+   "etapas": {
+    "lamina_limpia": "hecho",
+    "clip_ult": "hecho",
+    "cuadros_aprobados": "generado",
+    "atlas_armado": "hecho",
+    "gates": "generado",
+    "instalado_motor": "hecho",
+    "captura_antes_despues": "hecho"
+   },
    "intentos_descartados": [],
-   "notas": ""
+   "notas": "solo pasaron los gates aplicables; style_gate no aplica (celda 192x160); sin revision de arte humana art-source/captures/cazadora/estados_{antes,despues}.png"
   },
   "nigromante": {
    "nombre": "Ilvar, el Señor de las Criptas",

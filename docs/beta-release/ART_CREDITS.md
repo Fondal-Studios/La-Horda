@@ -131,3 +131,28 @@ Notas de escala: la hoja de la definitiva se redujo un 7 % (escala común por no
 | tanque g1 (gpt_image_2, hoja de 4 poses de lanzar, referencia limpia) | 7afade28-59bd-4958-9c24-2fe24e10c5ab | 20 (saldo 205 → 185) | ACEPTADA como candidato: 4 poses distintas (agachado juntando fuerzas, espada en alto, estocada gritando, vuelta a guardia) con el diseño fiel. **Contrafactual:** con gen4_image el mismo Tanque dio siempre una pose de pie. No integrada todavía. |
 Conclusión acotada: con `gpt_image_2`, 2 campeones (Ynara, Tanque), 3 hojas, todas aceptadas al primer intento; con `gen4_image` y video, 1 campeón (Tanque), sin mejora. Es una muestra chica pero con el contrafactual en el mismo personaje; falta confirmar con más campeones y con poses extremas (muerte).
 
+
+## Cazadora: definitiva propia (gpt_image_2) - 2026-11-12
+| Fecha | Task | Creditos reales (saldo antes -> despues) | Resultado |
+|---|---|---|---|
+| 2026-11-12 | 8f31e68e-fe05-4b2f-92b2-d2af81ae74ba (u1, definitiva, 4 poses) | 20 (185 -> 165) | RECHAZADA como candidato (no por diseno ni poses, que eran fieles y distintas): el arco alzado en vertical sobre la cabeza hacia 617 px de hoja frente a 420 del cuerpo; para caber en la celda 192x160 (pies en la fila 113) la escala comun bajaba a 0,179 y el cuerpo quedaba en 74 px frente a 83 del reposo (-10 %, fuera de +-4 %). |
+| 2026-11-12 | 257072f9-5c71-480d-971a-f1002409ff9b (u2, mismo planteo con el arco sostenido en horizontal cerca de la cabeza) | 20 (165 -> 145) | ACEPTADA al segundo intento: agachada reuniendo energia / se alza con grito y arco horizontal al pecho / pico con el arco horizontal sobre la cabeza y brazos abiertos / guardia de tiro con flecha apuntada. Mismo diseno que la lamina (capucha con hoja, capa de hojas, carcaj). |
+
+Total del encargo para Cazadora: 40 creditos. Pipeline: `tools/art/sheet-to-cells.py --scale 0.2 --link 8 --trim-feet 6 --cell 192` (celdas cuadradas de 192, luego recortadas a 192x160 por `tools/art/atlas-append-cells.py`, que ademas verifica byte a byte que los cuadros 0-51 no cambian) -> `art-source/cazadora-runway/atlas.png` (768x2240, 14 filas; cuadros 52-55 nuevos). Instalado en `assets/sprites/champions/cazadora/codex-v1/atlas.png` y en `js/assets/champion-sprites.js` (`ultimate_down/side/up` -> [52,53,54,55]; el motor usa `ultimate_*` solo si existe `sets.ultimate_down`, antes caia en el lanzar). sha256 anterior del atlas: 66ab0cfef533f169cc7a7e0459fa5e0a4ed52cf3c3336379e6caa0830446f933. Capturas del motor: `art-source/captures/cazadora/estados_antes.png` y `estados_despues.png` (la fila 8, definitiva, era identica a la de lanzar).
+Medidas: alto de cada cuadro nuevo 67 / 85 / 92 / 79 px (el reposo mide 83; cuerpo de pie 85 = +2 %); el cuadro 54 (arco horizontal sobre la cabeza) sobresale 92 px por el arma alzada; pies en la fila 113 en los cuatro; una sola silueta por cuadro, sin halo verde ni cuadros cortados en la captura a tamano de juego. Sombra de suelo del modelo recortada con --trim-feet 6.
+
+### Gates de Cazadora (atlas instalado, 2026-11-12)
+| Gate / revision | Resultado |
+|---|---|
+| `node tools/visual-package/cli.js build --write` + `check` + `node tools/visual-package/test.js` | manifiesto regenerado (alto del atlas 2240, sha256 nuevo); check: 117 paquetes, 0 candidatos, 0 errores; test: fail 0 |
+| `node tools/art/build-art-atlas.js` y `--check` | regenerado `docs/art/ATLAS_ARTE.*` (cazadora 768x2240); --check OK |
+| `node tests/competitive-roster.test.js` | PASS (38 campeones competitivos y todos los cuadros de atlas) |
+| `node tools/crystal-wars/test-competitive.js` | PASS (8 pruebas). Crystal Wars usa `cazadora/v2/atlas.png`, otro atlas: `js/modes/crystal-wars/atlas.js` no tiene `imageSize` de este y no cambia |
+| `node tests/art-runtime-clips.test.js` | PASS (46 campeones, lazy=0 y lazy=1) |
+| `node tools/art/roster_gate.js` | scaleFailures 0, presentationFailures 0, errores 0 (150 apariencias); `docs/art-gate/roster-sheet.png` restaurado |
+| `python3 tools/art/webp_convert.py --check` | webp desactualizados: 0 (el atlas codex-v1 de Cazadora no tiene .webp) |
+| `python3 tools/art/scan_sprites.py --dir champions/cazadora` | `codex-v1/atlas.png` no aparece marcado; las marcas restantes son de archivos que no se tocaron (cromas, skins, v2, chargeAim) |
+| `node tools/art/roster-loading-test.js`, `node tools/bible/champion-validator.js --strict`, `node tests/competitive-signatures.test.js`, `python3 tools/art/test-runway-pack.py` | todos PASS |
+| Otros derivados | `assets/visual-packages/manifest.v1.json` (regenerado). `docs/art-factory/inventory.json` y `art-source/entregas/...` conservan el sha anterior: son salidas historicas (el inventario no se regenero en la PR de Ynara tampoco) y ningun gate las lee |
+| `python3 tools/art/painter/style_gate.py` | **NO aplica**: solo acepta atlas 448x1008; este es de celdas de 192x160. Sin evidencia de ese gate para este atlas; las celdas nuevas tienen 32-33 colores (paleta cuantizada a la del propio atlas) |
+| Revision de arte humana | **pendiente** (recibos `GENERATED_NOT_APPROVED`): entrada de Cazadora = «instalado, aprobacion de arte pendiente» |
