@@ -60,6 +60,7 @@ const TEXT={cardLore:[STD.taglineMin,STD.taglineMax],history:[STD.loreMin,STD.lo
   const target=refBody.front,targetFoot=refFoot.front;
   if(WRITE){
    const rows={};
+   // Las remediaciones pueden actualizar solo las filas fallidas; las demás conservan el baseline generado.
    for(const [key,views] of Object.entries(data.metrics)){const r={};for(const [v,m] of Object.entries(views)){if(!m.body)continue;const s=+(target/m.body).toFixed(4),dy=+(targetFoot-m.foot*s).toFixed(2);r[v]=[s,dy];}rows[key]=r;}
    // Refinamiento: la medición de masa no escala linealmente (re-muestreo de píxeles); se re-mide con los
    // factores aplicados y se corrige hasta converger.
