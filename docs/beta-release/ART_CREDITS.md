@@ -114,3 +114,20 @@ Imágenes de partida (recortes de la lámina `art-source/runway-codex-clean/tanq
 
 Total del encargo: 20 creditos (c1) + 20 de u1 ya gastados antes; saldo final 205. Pipeline: `tools/art/sheet-to-cells.py` (croma -> alfa 0/255, escala comun, promedio de area, paleta del atlas propio <=32 colores + contorno 1 px, una silueta por cuadro, pies en la fila 89). Atlas: `art-source/ynara-runway/atlas.png` (11 filas, cuadros 0-35 identicos byte a byte al anterior); se instalo en `assets/sprites/champions/ynara/atlas.png` y `js/assets/ynara-meta.js` (cast_* -> [36..39], ultimate_* -> [40..43] en down/side/up, como el resto del roster). Capturas del motor: `art-source/captures/ynara/runway_antes.png`, `runway_despues.png`, `runway_tira_cast_ult.png` (izq. antes, der. despues).
 Medidas: grounded (lanzar 78/88/79/78 px de alto, definitiva 46/81/90/74): el cuerpo de pie queda en 74-78 px frente a 76 del reposo (+-3 %); los cuadros con baculo alzado miden hasta 90 porque la escala es comun (no se achica por cuadro) y el baculo suma altura; pies en la fila 89 en todos (en los saltos de la definitiva el cuadro queda apoyado en la misma linea: no se eleva).
+
+### Gates de Ynara (atlas instalado, 2026-11-12) y contrafactual del Tanque
+| Gate / revisión | Resultado |
+|---|---|
+| `node tools/art/roster_gate.js` | scaleFailures 0, presentationFailures 0, errores 0 (150 apariencias) |
+| `python3 tools/art/scan_sprites.py --dir champions/ynara` | halo 117 px, igual que el atlas anterior (el aro del personaje); cromas 87 y 16 sin cambio |
+| `python3 tools/art/painter/style_gate.py` | **NO aplica**: solo acepta atlas 448×1008 y el de Ynara es de celdas de 96 px; sin evidencia de ese gate para este atlas. Las celdas nuevas tienen 33 colores (cuantizadas a la paleta propia del atlas, 32 + contorno): no se midió contra el criterio de colores del gate |
+| `node tools/art/build-art-atlas.js --check` | OK (regenerado `docs/art/ATLAS_ARTE.*`) |
+| `tests/competitive-roster.test.js` | falló en la primera versión de la PR (Crystal Wars guardaba `imageSize` [384,864]); corregido a [384,1056] en `js/modes/crystal-wars/atlas.js`; PASS |
+| Revisión de arte humana | **pendiente** (todos los recibos `GENERATED_NOT_APPROVED`): la entrada de Ynara es «instalado, aprobación de arte pendiente» |
+Notas de escala: la hoja de la definitiva se redujo un 7 % (escala común por no caber el cuadro más alto); el cuadro 42 toca la fila 0 de la celda y el 37 llega a la fila 2, sin recorte visible en la captura. Camino VIGENTE de lanzar/definitiva: el atlas de Runway (`art-source/ynara-runway/`); `tools/art/painter/retouch/ynara_cast_ult.py` y `art-source/ynara-cast-ult/` son el intento determinista DESCARTADO, versionados solo como evidencia.
+
+| Intento | Task | Créditos | Resultado |
+|---|---|---|---|
+| tanque g1 (gpt_image_2, hoja de 4 poses de lanzar, referencia limpia) | 7afade28-59bd-4958-9c24-2fe24e10c5ab | 20 (saldo 205 → 185) | ACEPTADA como candidato: 4 poses distintas (agachado juntando fuerzas, espada en alto, estocada gritando, vuelta a guardia) con el diseño fiel. **Contrafactual:** con gen4_image el mismo Tanque dio siempre una pose de pie. No integrada todavía. |
+Conclusión acotada: con `gpt_image_2`, 2 campeones (Ynara, Tanque), 3 hojas, todas aceptadas al primer intento; con `gen4_image` y video, 1 campeón (Tanque), sin mejora. Es una muestra chica pero con el contrafactual en el mismo personaje; falta confirmar con más campeones y con poses extremas (muerte).
+

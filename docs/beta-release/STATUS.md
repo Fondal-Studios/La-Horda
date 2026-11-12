@@ -68,3 +68,8 @@
 - Medido: imágenes sueltas y video de Runway no superan los atlas actuales de los campeones (Tanque) ni las hojas de enemigos probadas; sí rindieron pisos, centros y fachadas de arenas.
 - `docs/steam/DECLARACION_IA.md` ya tiene los recuentos reales (159 recibos de Runway); el dueño debe confirmar el resto.
 
+### Ynara y gpt_image_2 (2026-11-12, noche)
+- **Ynara: lanzar y definitiva propios instalados** (atlas 384×1056, cuadros 36–43 hechos con `gpt_image_2`; `js/assets/ynara-meta.js` y `imageSize` de Crystal Wars actualizados). Antes eran copias del ataque. Capturas antes/después en `art-source/captures/ynara/`. Gates: roster_gate 0 fallos; style_gate no aplica (celda de 96); aprobación de arte humana pendiente. Skins de Ynara conservan cast/ultimate = ataque (no se rehicieron).
+- **Corrige la conclusión anterior:** el límite era `gen4_image`/video, no Runway. Con `gpt_image_2` en hoja de 4 poses el Tanque dio 4 poses de lanzar distintas (candidato, sin integrar) donde `gen4_image` daba una pose de pie. Muestra: 2 campeones; falta probar la muerte. Detalle en `ART_CREDITS.md` y `RECETA.md` §1.
+- `docs/steam/DECLARACION_IA.md`: sumar el modelo `gpt_image_2` (pendiente del dueño confirmar términos de uso comercial).
+
