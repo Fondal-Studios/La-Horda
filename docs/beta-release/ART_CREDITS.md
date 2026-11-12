@@ -45,3 +45,13 @@ Gasto de esta ejecución programada: 40 créditos (de 60 permitidos).
 Se pintaron 28 enemigos (Fortaleza, Abismo, Micelial, Minas, Hielo, Ciudad) con arquetipos deterministas (bruto, cuadrupedo, volador, flotante, aranha). Comparados en partida con arena_lineup.js (antes: docs/beta-release/art-repair/lineup_antes/, con candidatos: docs/beta-release/art-repair/lineup/), el arte actual derivado del Codice es mas detallado y coherente con Titan/Cerbero/Micelio/Dragon de la Forja; los candidatos geometricos quedaron visiblemente mas toscos (torsos poligonales, sin texturas). No se instalo ninguno: el estado de main queda intacto. Lo que falta a esos enemigos es cantidad de cuadros (2-3 de caminata), no fidelidad: la via valida es Runway/arte a mano con hoja completa y referencia del Codice, no el pintor generico.
 
 | 2026-11-11 | 2 (API) | Sin gasto. El dueño autorizó gastar hasta agotar el saldo, pero la API de Runway informa `creditBalance` = 2 (una imagen cuesta 8): no alcanza para generar. Cuando se recargue, seguir con las arenas pendientes. Los retratos del Códice son de ChatGPT (dato del dueño; declararlo en la ficha de Steam). |
+
+## Tanda de cuerpos de campeón P0 (B002 Tanque/Aldric) — 2026-11-12 (saldo recargado a 950)
+Cuenta de Runway compartida: el saldo también bajó mientras no se generaba nada (879 → 874), así que no todo el descenso es de esta sesión.
+| Intento | Task | Créditos | Resultado |
+|---|---|---|---|
+| tanque f24_a1 (lámina completa + @pose) | df604ed3-ec32-4718-94e7-88bc389a83f3 | 8 | RECHAZADA: texto copiado del título dentro de la imagen, sin espada, tierra en los pies |
+| tanque f24_a2 (recorte limpio, prompt «test» por error mío) | 13062390-0017-4… | 8 | DESCARTADA: prompt de prueba lanzado sin querer; sin texto pero sin espada |
+| tanque f24_a3 y f24_a4 (recorte limpio + prompt largo) | 58c7e1cf-6bbd-4993-a07d-3c373dd0aeb2 · 56df95df-e283-43db-9b4e-79fe5eb3c755 | 0 informados (el saldo bajó ~5 y ~20 en esos momentos, no atribuible con certeza) | BAD_OUTPUT los dos: se cambió el planteo (prompt corto) |
+| tanque f24_a5 (recorte limpio + prompt corto) | 3145e6e1-7628-48ed-959b-89c4ccb8ae9c | 8 | ACEPTADA con notas: sin texto, diseño y paleta fieles (espada, escudo, capa), una silueta; quitar la franja de tierra al reducir |
+Aprendizajes aplicados al paquete: `tools/art/codex-clean.py` (referencia sin texto, proporción ≤ 2,2) y prompt corto por pose.
