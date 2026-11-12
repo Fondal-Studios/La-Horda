@@ -1,8 +1,8 @@
 {
  "subject": {
-  "pr": 300,
+  "pr": 301,
   "branch": "claude/la-horda-beta-audit-exec-mwv8x0",
-  "head": "1560edd852d43fd5178a34f9d439188f7ab2a43a",
+  "head": "15aab122ae3a58f2e1b59da281f9586e6a846949",
   "authorAgent": "claude-sesion-principal",
   "authorId": "claude-sesion-principal"
  },
@@ -11,57 +11,57 @@
    "stage": "produccion",
    "by": "claude-sesion-principal",
    "role": "agent",
-   "commit": "1560edd852d43fd5178a34f9d439188f7ab2a43a",
-   "at": "2026-11-12T18:50:00Z"
+   "commit": "15aab122ae3a58f2e1b59da281f9586e6a846949",
+   "at": "2026-11-12T20:45:00Z"
   },
   {
    "stage": "qa",
-   "by": "claude-qa-300",
+   "by": "claude-qa-301",
    "role": "qa",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "1560edd852d43fd5178a34f9d439188f7ab2a43a",
-    "tests": 9,
+    "sha": "15aab122ae3a58f2e1b59da281f9586e6a846949",
+    "tests": 14,
     "failed": 0,
-    "report": "Sobre 1560edd8 (tras NO APROBADO sobre 74c504ea por tests/competitive-roster.test.js: js/modes/crystal-wars/atlas.js guardaba imageSize [384,864] para Ynara; corregido a [384,1056]). Verificado: atlas nuevo 384×1056 con 11 filas, cuadros 0–35 idénticos píxel a píxel al de main, alfa 0/255; ynara-meta.js solo cambia cast_*/ultimate_* a [36–39]/[40–43]; competitive-roster PASS, crystal-wars test-competitive 8 OK, check-nano-competitive PASS, art-runtime-clips PASS (46 campeones), roster_gate scaleFailures 0 / presentationFailures 0 (150 apariencias), build-art-atlas --check OK, webp_convert --check 0 desactualizados, test-runway-pack 9944 OK, collection PASS, visual-package cli check 0 errores y test.js 6/6 en 21 de 22 corridas, hash sha256 del manifiesto = sha256 real del atlas. Capturas revisadas a ojo: lanzar y definitiva se distinguen del ataque, entre sí y del reposo, sin halos ni cortes. MINOR abiertos: tools/lanes/test-sides.js es intermitente por Math.random preexistente que la PR no toca (en 5 corridas locales 2 PASS, 2 FAIL por brillo 0,21–0,24 contra mínimo 0,25, 1 colgada); tools/visual-package/test.js falló una vez en una corrida local no reproducida. No llamó a Runway."
+    "report": "Sobre 15aab122 (tras NO APROBADO sobre 870b8dd1 solo por un recuento erróneo en DECLARACION_IA: 3 generaciones de gpt_image_2 declaradas y eran 6; corregido a 165 recibos en total). Verificado: atlas de cazadora y musashi 768×2240 (14 filas), cuadros 0–51 idénticos píxel a píxel a los de main, alfa 0/255, cuadros 52–55 con pies en la fila 113 y una sola silueta; champion-sprites.js solo agrega ultimate_down/side/up=[52..55] (el motor usa ultimate_* solo si existe sets.ultimate_down); visual-package check 0 errores y test.js 6/6; build-art-atlas --check OK; competitive-roster PASS; crystal-wars test-competitive 8 OK; art-runtime-clips PASS; roster_gate scaleFailures 0 / presentationFailures 0; webp_convert --check 0; check-collection PASS; check-cazadora-loading 56 checks, check-cazadora-same-frame 144 comparaciones, competitive-signatures y test-rng-isolation PASS; test-runway-pack 9944 OK; atlas-append-cells.py no sobrescribe cuadros existentes; recibos cazadora u1/u2 y musashi u1 cotejados (gpt_image_2, 20 cr c/u). Capturas revisadas a ojo: la definitiva se distingue del lanzar, del ataque y del reposo; sin halo verde ni cortes. MINOR abiertos: línea oscura de 1 px bajo los pies de Musashi (declarada) y set algo más oscuro y macizo que el resto; pies en la fila 113 vs 115 de los cuadros viejos; tools/vfx/musashi-afterimage-check.js falla 9 checks también en main (preexistente); tools/lanes/test-sides.js intermitente por Math.random (preexistente). No llamó a Runway."
    },
-   "at": "2026-11-12T18:52:00Z"
+   "at": "2026-11-12T20:47:00Z"
   },
   {
    "stage": "arquitectura",
-   "by": "claude-arq-300",
+   "by": "claude-arq-301",
    "role": "arquitecto",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "1560edd852d43fd5178a34f9d439188f7ab2a43a",
-    "report": "Aprobó 1560edd8 tras dos rondas: NO APROBADO sobre 74c504ea (gates no registrados, conclusión generalizada desde 1 campeón, documentos desalineados, build_ynara.py que pisaría el arte nuevo, DECLARACION_IA sin gpt_image_2) corregido en abe27734 con el contrafactual del Tanque con gpt_image_2 (hoja g1, task 7afade28…, 20 cr). El último cambio (manifest.v1.json de paquetes visuales) es derivado y acotado a Ynara; sha256 coincide con el atlas instalado; el hash viejo no queda en assets/js/docs/tools. MINOR abiertos para la próxima PR: gates=aprobado ambiguo en estado-campeones/checklist de Ynara (solo pasó roster_gate; style_gate no aplica a celdas de 96), falta entrada del Tanque g1 en estado-runway.json, «ya integrada» en RECETA §1, DECLARACION_IA «159» vs 162 con las 3 de gpt_image_2, inventarios docs/art-audit/combat-inventory/ de Ynara ya desactualizados antes de la PR."
+    "sha": "15aab122ae3a58f2e1b59da281f9586e6a846949",
+    "report": "Aprobó 15aab122 tras NO APROBADO sobre 870b8dd1 por DECLARACION_IA (6 generaciones de gpt_image_2 y 165 en total, Cazadora y Musashi nombradas como instaladas), STATUS/README/RECETA desactualizados («2 campeones, 3 hojas») y la línea de STATUS sobre gpt_image_2: todo resuelto. Riesgo de regresión bajo: 4 archivos de juego (dos atlas, champion-sprites.js, manifest.v1.json) más ATLAS_ARTE; cuadros 0–51 sin tocar y verificados byte a byte por atlas-append-cells.py; Crystal Wars usa otros atlas (v2) para esos campeones. Nota de Libertador verificada contra js/champions/libertador.js:286 (ult_cast con prog=0). MINOR abiertos: sha256 viejos de los atlas en docs/art-factory/inventory.json y art-source/entregas (históricos); entradas fechadas de STATUS con «159 recibos» (superadas por la línea de 165); «pies en la fila 113» sin verificar contra el atlas."
    },
-   "at": "2026-11-12T18:54:00Z"
+   "at": "2026-11-12T20:49:00Z"
   },
   {
    "stage": "staging",
-   "by": "claude-integrador-300",
+   "by": "claude-integrador-301",
    "role": "integrador",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "1560edd852d43fd5178a34f9d439188f7ab2a43a",
+    "sha": "15aab122ae3a58f2e1b59da281f9586e6a846949",
     "branch": "beta/integracion-20261110",
-    "tests": 27,
+    "tests": 34,
     "failed": 0,
-    "run": "https://github.com/Fondal-Studios/La-Horda/pull/300"
+    "run": "https://github.com/Fondal-Studios/La-Horda/pull/301"
    },
-   "at": "2026-11-12T18:56:00Z"
+   "at": "2026-11-12T20:51:00Z"
   },
   {
    "stage": "aprobacion",
-   "by": "claude-integrador-300",
+   "by": "claude-integrador-301",
    "role": "director",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "1560edd852d43fd5178a34f9d439188f7ab2a43a",
-    "report": "Aprobado sobre 1560edd8. PR: 27 check runs, 26 success y 1 failure ('Clasificacion, contratos y servidor' del PR, solo por R4). La regresión rápida pasó (incluye visual-package y lanes/test-sides) y la regresión completa, disparada a pedido del integrador (workflow_dispatch sobre beta/integracion-20261110, run 43273608904), terminó en success a las 18:38Z, incluido test-sides; el job de Clasificación de ese run pasó con la revisión saltada. Las dos fallas anteriores del CI sobre abe27734 eran: manifest.v1.json desactualizado (error de la PR, corregido) y test-sides intermitente (no atribuible a la PR). Diff: atlas de Ynara, manifest.v1.json, ynara-meta.js, crystal-wars/atlas.js (solo imageSize), docs, tools/art*, art-source. Arte instalado: lanzar y definitiva de Ynara hechos con gpt_image_2; aprobación de arte humana pendiente."
+    "sha": "15aab122ae3a58f2e1b59da281f9586e6a846949",
+    "report": "Aprobado sobre 15aab122. 35 check runs: 34 success y 1 failure ('Clasificacion, contratos y servidor' del PR, solo por R4 con el registro de la PR 300). Regresión rápida y regresión completa (push a beta/integracion-20261110 sobre el mismo SHA) en success, sin reintentos; tools/lanes/test-sides.js y CARCELERO no fallaron en este SHA. Diff 41 archivos: solo los atlas de cazadora y musashi (codex-v1), js/assets/champion-sprites.js, assets/visual-packages/manifest.v1.json, docs, tools/art y art-source. Arte instalado: definitiva propia de Cazadora y Musashi con gpt_image_2; aprobación de arte humana pendiente."
    },
-   "at": "2026-11-12T18:58:00Z"
+   "at": "2026-11-12T20:53:00Z"
   }
  ]
 }
