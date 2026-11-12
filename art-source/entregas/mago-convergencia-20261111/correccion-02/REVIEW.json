@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "component": "skin_convergencia",
+  "state": "EN_CORRECCION",
+  "decision": "FIX_NOT_APPROVED",
+  "attempt03": {
+    "scope": "front row, eight phases, exact Codex/canonical/Angel references",
+    "identity": "PASS_PRELIMINARY",
+    "decision": "REJECT",
+    "reason": "448678 partial-alpha pixels, chroma contamination, conceptual cell-edge contact and scale drift"
+  },
+  "runtimeChanged": false,
+  "installedAssetsChanged": false,
+  "next": "do not repeat same prompt; require native binary-alpha and safe gutters before remaining rows"
+}
