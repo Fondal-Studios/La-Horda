@@ -6,10 +6,9 @@ marca **lo que solo el dueño puede confirmar**. No es asesoría legal: la decla
 
 ## Lo que está documentado en el repo
 
-### 1. Runway (modelo `gen4_image`)
-- **90 generaciones registradas** con recibo (`receipt.json`) en `art-source/`: 69 de guardianes (`runway-guardians`), 17 de mundo
-  (`runway-world`: texturas y fachadas de arenas), 2 de HUD (`runway-hud`), 1 de enemigos (`runway-enemies`) y 1 de entrega
-  de íconos de objetos (`entregas`).
+### 1. Runway (modelos `gen4_image` y `gen4_turbo`)
+- **159 generaciones registradas** con recibo (`*receipt*.json`) en `art-source/` (cuenta al 2026-11-12): 74 de guardianes/campeones (`runway-guardians`), 17 de mundo (`runway-world`: texturas y fachadas de arenas), 2 de HUD (`runway-hud`), 54 de enemigos (`runway-enemies`, hojas de 5 créditos; muchas rechazadas) y 12 clips de video (`runway-video`, `gen4_turbo`, pruebas de movimiento del Tanque, **ninguno instalado en el juego**). Hay además 1 recibo en `entregas` que NO es de Runway (pasada de íconos generados por código). Varios intentos fallidos (BAD_OUTPUT) no dejaron recibo: constan solo en `ART_CREDITS.md`.
+- El inventario por activo (qué está integrado en el juego, qué se rechazó y qué quedó solo como referencia) está en `docs/art-brief/runway-pack/REGISTRO_RUNWAY.md`: es la fuente para decidir qué declarar.
 - Cada recibo trae el prompt, el modelo, la relación de aspecto y un estado. Los recibos están en `GENERATED_NOT_APPROVED`
   (generado, no aprobado como arte final): **muchas generaciones son intentos descartados o referencias**, no arte del juego.
 - El gasto está en `docs/beta-release/ART_CREDITS.md` (tasks de Runway por fecha).
