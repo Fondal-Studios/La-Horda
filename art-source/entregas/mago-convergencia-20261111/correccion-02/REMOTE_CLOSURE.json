@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "date": "2026-11-12T07:24:00Z",
+  "repository": "Fondal-Studios/La-Horda",
+  "branch": "art/mago-convergencia-codex-20261111",
+  "parentHead": "6bc207894f7245daa06d34d822cbde2376dbd21f",
+  "pullRequest": 291,
+  "state": "EN_CORRECCION",
+  "decision": "FIX_NOT_APPROVED",
+  "mergeAllowed": false,
+  "runtimeChanged": false,
+  "installedAssetsChanged": false,
+  "interruptionRecovered": {
+    "detected": true,
+    "detail": "two binary blobs in correction-02 were truncated by transfer cap; deleted and replaced by hashed 196608-byte fragments",
+    "originalByteEquivalenceRecoverable": true
+  },
+  "sourceSha256": "064a3ad02e451f537cdc4a103c5eb4b9ecc9549d4ac7bbedbaf9f593c5a83b99",
+  "previewSha256": "f529bcf157d19563292c87a4cb1254ec63840f99a939f5afc59b90ebbfcffd83",
+  "pending": [
+    "native binary-alpha source capability",
+    "complete source rows and atlas",
+    "consumer/gameplay/relay/performance/Art Gate/exact CI"
+  ],
+  "nextAction": "do not integrate or repeat same prompt; advance independent component while preserving this source"
+}
