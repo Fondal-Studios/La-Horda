@@ -40,6 +40,8 @@ const ROOT = path.resolve(__dirname, '../..'), CAP = process.env.CAPTURE_DIR ? p
       // ---------- ILKAN ----------
       const IP = CHAMP_PACK.ilkan, atkI = h => { h.attackAnim = 190; h.ilkanAtkTotal = 380; h.ilkanAtkStep = 0; };
       const sideSet = IP.sets.attack_side.slice();
+      // el atlas real ya trae attack_down/up: para probar el camino "sin set" se quitan en memoria y se restauran al final
+      const realI = {attack_down: IP.sets.attack_down, attack_up: IP.sets.attack_up}; delete IP.sets.attack_down; delete IP.sets.attack_up;
       for (const view of ['front', 'up', 'side']) {
         const r = draw('ilkan', atkI, view);
         check('ilkan sin attack_' + view + ': dibuja attack_side como siempre', r.calls.length === 1 && sideSet.includes(r.calls[0].v) && r.calls[0].flip === false, JSON.stringify(r.calls));
@@ -53,17 +55,19 @@ const ROOT = path.resolve(__dirname, '../..'), CAP = process.env.CAPTURE_DIR ? p
         check('ilkan con sets nuevos: de perfil sigue usando attack_side', s.calls.length === 1 && sideSet.includes(s.calls[0].v) && l.calls.length === 1 && sideSet.includes(l.calls[0].v) && l.calls[0].flip === true, JSON.stringify([s.calls, l.calls]));
         const seen = new Set(); for (const a of [20, 80, 140, 190, 260, 320, 370]) seen.add(draw('ilkan', h => { h.attackAnim = a; h.ilkanAtkTotal = 380; h.ilkanAtkStep = 1; }, 'front').calls[0].v);
         check('ilkan: el golpe recorre varios cuadros del set de frente', seen.size >= 3 && [...seen].every(v => injI.attack_down.includes(v)), JSON.stringify([...seen]));
-      } finally { delete IP.sets.attack_down; delete IP.sets.attack_up; }
+      } finally { delete IP.sets.attack_down; delete IP.sets.attack_up; if (realI.attack_down) IP.sets.attack_down = realI.attack_down; if (realI.attack_up) IP.sets.attack_up = realI.attack_up; }
+      { const rf = draw('ilkan', atkI, 'front'), ru = draw('ilkan', atkI, 'up'); check('ilkan con el atlas real: frente/espalda usan sus hojas propias (cuadros 64-67 / 68-71)', !!realI.attack_down && rf.calls.length === 1 && realI.attack_down.includes(rf.calls[0].v) && !!realI.attack_up && ru.calls.length === 1 && realI.attack_up.includes(ru.calls[0].v), JSON.stringify([rf.calls, ru.calls])); }
       // ---------- LIBERTADOR ----------
       const LP = CHAMP_PACK.libertador, CAST = SM_CFG.andes.castMs;
       const ult = p => h => { h.smPhase = 'ultcast'; h.smPhaseTimer = CAST * (1 - p); };
+      const realUlt = LP.sets.ult_cast; LP.sets.ult_cast = [44];
       const base = [0.05, 0.4, 0.6, 0.95].map(p => frames(draw('libertador', ult(p), 'front'))[0]);
       check('libertador ult_cast de 1 cuadro: todos los progresos dibujan el mismo cuadro (44)', base.every(v => v === 44), JSON.stringify(base));
-      const origUlt = LP.sets.ult_cast; LP.sets.ult_cast = [44, 45, 46, 47];
+      const origUlt = [44]; LP.sets.ult_cast = [44, 45, 46, 47];
       try {
         const adv = [0.05, 0.3, 0.55, 0.95].map(p => frames(draw('libertador', ult(p), 'front'))[0]);
         check('libertador ult_cast de 4 cuadros avanza con el progreso de la fase ultcast', JSON.stringify(adv) === '[44,45,46,47]', JSON.stringify(adv));
-      } finally { LP.sets.ult_cast = origUlt; }
+      } finally { LP.sets.ult_cast = realUlt; }
       const atkL = h => { h.attackAnim = 120; h.smAtkTotal = 240; };
       const fire = LP.sets.fire.slice();
       for (const view of ['front', 'up']) { const r = draw('libertador', atkL, view); check('libertador sin attack_' + view + ': dispara con el set fire como siempre', r.calls.length === 1 && fire.includes(r.calls[0].v), JSON.stringify(r.calls)); }

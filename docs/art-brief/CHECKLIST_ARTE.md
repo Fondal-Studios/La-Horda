@@ -24,7 +24,7 @@
 
 **Campeones por clasificación de cuerpo (sección B):** estados propios completos 11 · completo salvo idle 1 cuadro 24 · arte_viejo 8 · depende de código (en curso) 3.
 
-**Trabajo con Runway (todas las categorías):** 91 entradas · hecho 55 · falta 15 · rechazado 13 · hecho_sin_integrar 7 · bloqueado 1 · créditos registrados: 1353.
+**Trabajo con Runway (todas las categorías):** 93 entradas · hecho 57 · falta 15 · rechazado 13 · hecho_sin_integrar 7 · bloqueado 1 · créditos registrados: 1393.
 
 **Categorías o datos `sin_verificar` (y por qué):**
 
@@ -36,7 +36,7 @@
 | Aprobación de arte humana de lo instalado | Ningún archivo registra una aprobación humana; STATUS.md la declara «pendiente» (Ynara lanzar/definitiva, Cazadora y Musashi definitiva). |
 | Saldo de créditos de Runway actual | Solo hay la cifra escrita en STATUS.md (no se llamó a Runway); la cuenta es compartida y baja por consumo ajeno. Correr `node tools/art-world/runway-world.js status` (no gasta) antes de planificar. |
 
-**Fuentes leídas:** `docs/art/ATLAS_ARTE.json` (huella `42c3e6d9bc90`, 51 archivos), `runway-pack/estado-campeones.json`, `runway-pack/estado-runway.json` (auditado 2026-11-12), `docs/production/asset-blocks.json`, `docs/art-brief/enemy-coverage.json` (medido contra el atlas `42c3e6d9bc90`), `docs/beta-release/STATUS.md`, `ART_CREDITS.md`, `docs/steam/DECLARACION_IA.md`.
+**Fuentes leídas:** `docs/art/ATLAS_ARTE.json` (huella `1965e2120f62`, 51 archivos), `runway-pack/estado-campeones.json`, `runway-pack/estado-runway.json` (auditado 2026-11-12), `docs/production/asset-blocks.json`, `docs/art-brief/enemy-coverage.json` (medido contra el atlas `42c3e6d9bc90` — **DESACTUALIZADO respecto de ATLAS_ARTE: regenerar con `python3 tools/art/art-checklist.py enemigos`**), `docs/beta-release/STATUS.md`, `ART_CREDITS.md`, `docs/steam/DECLARACION_IA.md`.
 
 ## B) Campeones (cuerpo base)
 
@@ -69,7 +69,7 @@ Costo de las hojas = 20 c por hoja de 4 poses (`gpt_image_2`). Fuente: `ART_CRED
 | cazadora | parcial | completo salvo idle de 1 cuadro | idle 1 · walk 4 · atk 4 · cast 4 · ult 4 · hit 4 · death 6 | completo |
 | nigromante | parcial | depende de código (en curso) | idle 1 · walk 4 · atk 3 · cast 4 · ult 4 · hit 4 · death 6 | faltan ultimate_down |
 | libertador | arte_viejo | depende de código (en curso) | idle 1 · walk 4 · atk 4 · cast 4 · ult 4 · hit 1 · death 4 | faltan attack_down,attack_up,ultimate_down,hit_down,death_down |
-| ilkan | hecho | depende de código (en curso) | idle 4 · walk 3 · atk 3 · cast 3 · ult 3 · hit 2 · death 2 | faltan attack_down,attack_up,ultimate_down |
+| ilkan | hecho | depende de código (en curso) | idle 4 · walk 3 · atk 3 · cast 3 · ult 3 · hit 2 · death 2 | faltan ultimate_down |
 | ynara | arte_viejo | cuerpo pre-Códice | idle 3 · walk 4 · atk 4 · cast 4 · ult 4 · hit 1 · death 4 | completo |
 | myla | arte_viejo | cuerpo pre-Códice | idle 2 · walk 3 · atk 3 · cast 3 · ult 3 · hit 1 · death 4 | sin sets declarados (layout estándar; solo vale lo medido) |
 | brasa | hecho | estados propios completos | idle 2 · walk 4 · atk 3 · cast 3 · ult 2 · hit 1 · death 3 | completo |

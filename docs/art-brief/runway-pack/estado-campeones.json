@@ -139,9 +139,17 @@
   },
   "ilkan": {
    "nombre": "Ilkan, el Caminante de Dunas",
-   "etapas": {},
+   "etapas": {
+    "lamina_limpia": "hecho",
+    "clip_ult": "pendiente",
+    "cuadros_aprobados": "generado",
+    "atlas_armado": "hecho",
+    "instalado_motor": "hecho",
+    "gates": "generado",
+    "captura_antes_despues": "hecho"
+   },
    "intentos_descartados": [],
-   "notas": "2026-11-12: no se generaron hojas (0 cr): drawIlkan (js/champions/ilkan.js) dibuja el ataque con attack_side en las 3 direcciones (secuencia ILKAN_ATK_SEQ, espejado por _pleft) y la definitiva como invoke (cuadros 58-61, ya propios) -> Coloso (atlas ilkan_colossus); attack_down, attack_up y ultimate_down no se leen nunca. Pedirlas exige cambiar js/champions/ilkan.js (despacho por direccion), fuera de alcance. Captura: art-source/captures/ilkan/estados_antes.png. Detalle en ART_CREDITS.md."
+   "notas": "2026-11-12: ataque de frente (attack_down, cuadros 64-67) y de espaldas (attack_up, 68-71) con gpt_image_2 (2 hojas, 40 cr), instalados en el atlas codex-v1 (fila nueva, 1536x1152; cuadros 0-63 identicos); drawIlkan los despacha por direccion. Solo pasaron los gates aplicables; style_gate no aplica (celda 192x128); sin revision de arte humana. La definitiva sigue siendo invoke -> Coloso (no se generó hoja). Capturas art-source/captures/ilkan/estados_antes.png y runway_despues.png."
   },
   "ynara": {
    "nombre": "Ynara, la Médica de los Refugios",

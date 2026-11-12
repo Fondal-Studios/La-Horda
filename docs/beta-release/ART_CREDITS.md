@@ -199,3 +199,28 @@ Cambios solo de que sprite se dibuja (sin tocar logica, dano, duraciones, cooldo
 - **Ilkan** (`js/champions/ilkan.js`, rama `attackAnim` de `drawIlkan`): usa `attack_down` / `attack_up` segun el apuntado (via `champPackSet`, como el resto) si el atlas los trae; sin ellos, `attack_side` espejado como hoy. Habilita: 2 hojas de ataque (frente y espalda), 4 cuadros cada una (`ILKAN_ATK_SEQ` indexa 4 poses).
 - **Libertador** (`js/champions/libertador.js`): `ult_cast` avanza su cuadro con el progreso de `smPhaseTimer`/`SM_CFG.andes.castMs` (con el set actual de 1 cuadro es el mismo cuadro 44); el disparo de frente/espalda usa `attack_down`/`attack_up` si existen, si no `fire`. Habilita: definitiva de 4 cuadros = 1 hoja (+ opcionalmente ataque frente/espalda).
 - **Nigromante** (`js/rendering/entities.js`, `champion-sprites.js` `nigroUltPoseActive`, `champion-art-normalize.js`): durante `nigroTransformTimer` (900 ms) se dibuja la pose propia `sets.ult` (cuadros 32-35, avanzando con el progreso) y luego el Demonio. Habilita: nada, los cuadros ya existian; ESTE cambio SI es visible hoy. Efecto colateral visual: el Demonio ya no hace su crecimiento 0,78 -> 1 dentro de la ventana (entra a escala 1); la duracion de la forma, vida, dano y habilidades no cambian.
+
+## Ilkan: ataque de frente y de espaldas (gpt_image_2) - 2026-11-12
+| Fecha | Task | Creditos reales (saldo antes -> despues) | Resultado |
+|---|---|---|---|
+| 2026-11-12 | 3b351cd5-7990-4b3f-85bc-774852352556 (af1, ataque de frente, 4 poses) | 20 (99 -> 79) | ACEPTADA al primer intento: anticipacion con las hoces atras / tajo cruzado hacia la camara / seguimiento con brazos abiertos / recuperacion. Mismo diseno que la lamina (capucha con orejas y gema, banda dentada, hombrera, vendas, dos hoces de hueso). |
+| 2026-11-12 | bdf364c2-1d97-47ae-beac-adaa354a86c8 (ab1, ataque de espaldas, 4 poses) | 20 (79 -> 59) | ACEPTADA al primer intento: de espaldas sin cara en las 4 poses (capucha lisa, lanza a la espalda, cola de capa), anticipacion / avance cruzado / brazos abiertos / recuperacion. |
+
+Total: 40 creditos (saldo final 59; el saldo de arranque del encargo era 99, no 125: la cuenta es compartida). Pipeline: `tools/art/sheet-to-cells.py --scale 0.19 --link 8 --trim-feet 10 --cell 192 --feet-row 115 --palette-from <atlas>` (escala comun 0,19 en las dos hojas; la escala medida por hoja daba 0,1909 y 0,1865) + `tools/art/atlas-append-cells.py --cell 192x128 --cols 8` (cuadros 0-63 identicos byte a byte; atlas 1536x1152, cuadros nuevos 64-71) -> `art-source/ilkan-runway/atlas.png`; instalado en `assets/sprites/champions/ilkan/codex-v1/atlas.png` y `js/assets/champion-sprites.js` (`frameCount` 62 -> 72; `attack_down` [64..67], `attack_up` [68..71]). `drawIlkan` ya despacha esos sets (commit 9fa0e9ae): `ILKAN_ATK_SEQ` indexa los 4 cuadros. sha256 anterior del atlas: 69ca3240195ca37f53bf46156756ccb6f127d63292f9eb94fa05811227e968d1; nuevo: f5dffd883abc0cced188dfcba34906fe25f0eef37ddd8e361d222144036591ce. Capturas del motor: `art-source/captures/ilkan/estados_antes.png` (filas de ataque de frente/espalda = el perfil) y `runway_despues.png` (mismas filas con los cuadros propios, de cara a la camara y de espaldas; se distinguen del perfil).
+Medidas: alto de los cuadros nuevos de frente 79 / 85 / 77 / 82 px y de espaldas 84 / 81 / 84 / 84 (reposo 82-86, attack_side 78); pies en la fila 115 como el atlas; una silueta por cuadro; 27-30 colores. La sombra de suelo del modelo se recorto con --trim-feet 10. Notas honestas: el golpe de frente solo se lee bien en el tercer cuarto del ataque (los tres primeros cuadros de la captura son la anticipacion por la secuencia de `ILKAN_ATK_SEQ`); el cuadro 4 de frente (recuperacion) se parece al reposo.
+
+### Gates de Ilkan (atlas instalado, 2026-11-12)
+| Gate / revision | Resultado |
+|---|---|
+| `node tools/visual-package/cli.js build --write` + `check` + `node tools/visual-package/test.js` | manifiesto regenerado; check: 117 paquetes, 0 candidatos, 0 errores; test: fail 0 |
+| `node tools/art/build-art-atlas.js` y `--check` | regenerado `docs/art/ATLAS_ARTE.*`; --check OK |
+| `node tests/competitive-roster.test.js` | PASS (38 campeones competitivos y todos los cuadros de atlas) |
+| `node tools/crystal-wars/test-competitive.js` | PASS (8 pruebas). Crystal Wars usa `ilkan/v2/atlas.png` (1024x888, otro atlas): `js/modes/crystal-wars/atlas.js` sin cambios |
+| `node tests/art-runtime-clips.test.js` | PASS (46 campeones, lazy=0 y 1) |
+| `node tools/art/roster_gate.js` | scaleFailures 0, presentationFailures 0, errores 0 (150 apariencias); `docs/art-gate/*` restaurado |
+| `python3 tools/art/webp_convert.py --check` | 0 desactualizados (`codex-v1/atlas.png` de Ilkan no tiene .webp) |
+| `python3 tools/art/scan_sprites.py --dir champions/ilkan` | `codex-v1/atlas.png` marcado `halo=18px`, IGUAL que antes de este cambio (medido sobre el atlas anterior); el resto son fx/skins sin tocar |
+| `node tools/collection/check-collection.js` | PASS |
+| `node tools/art/test-champion-draw-dispatch.js` | 19/19: la prueba ahora quita en memoria los sets reales `attack_down/up` para probar el camino «sin set» y agrega un chequeo con el atlas real (frente 64-67, espalda 68-71) |
+| `node tools/art/check-ilkan-codex.js`, `node tools/vfx/check-ilkan-buffs.js`, `node tools/vfx/check-ilkan-preview.js` | PASS (sin errores; buffs 18 checks, 0 fallos). `art-source/entregas/ilkan-codex-20261029/produccion-01/RENDER_NATIVE.json` se modifica al correr check-ilkan-codex: restaurado |
+| `python3 tools/art/painter/style_gate.py` | **NO aplica** (solo atlas 448x1008; este es de celdas 192x128). Revision de arte humana **pendiente** (recibos `GENERATED_NOT_APPROVED`) |

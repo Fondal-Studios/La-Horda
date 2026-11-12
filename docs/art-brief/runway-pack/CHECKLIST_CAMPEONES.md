@@ -20,7 +20,7 @@
 | **axiom** | sí | 112×112, 4 col | completo | ataque_abajo (P1); ataque_arriba (P1) | skin:falta | no probado |
 | **cazadora** | sí | 192×160, 4 col | completo | ataque_abajo (P1); ataque_arriba (P1) | forma:falta | lamina limpia=hecho; clip ult=hecho; cuadros aprobados=generado; atlas armado=hecho; gates=generado; instalado motor=hecho; captura antes despues=hecho |
 | **facu_gm** | sí | 112×112, 4 col | completo | — | skin:recolor, skin:falta | no probado |
-| **ilkan** | sí | 192×128, 8 col | faltan: attack_down, attack_up, ultimate_down | ataque_abajo (P1); ataque_arriba (P1) | skin:falta, skin:falta, forma:falta, forma:falta | no probado |
+| **ilkan** | sí | 192×128, 8 col | faltan: ultimate_down | ataque_abajo (P1); ataque_arriba (P1) | skin:falta, skin:falta, forma:falta, forma:falta | lamina limpia=hecho; clip ult=pendiente; cuadros aprobados=generado; atlas armado=hecho; instalado motor=hecho; gates=generado; captura antes despues=hecho |
 | **khepri** | sí | 112×112, 4 col | completo | — | skin:recolor | no probado |
 | **mago** | sí | 112×112, 4 col | completo | caminar_abajo (P1); caminar_arriba (P1); ataque_abajo (P1); ataque_perfil (P1); ataque_arriba (P1) | skin:falta | no probado |
 | **musashi** | sí | 192×160, 4 col | completo | ataque_abajo (P1); ataque_arriba (P1) | — | lamina limpia=hecho; clip ult=hecho; cuadros aprobados=generado; atlas armado=hecho; instalado motor=hecho; gates=generado; captura antes despues=hecho |
@@ -74,7 +74,7 @@
 - solo pasaron los gates aplicables; style_gate no aplica (celda 192x160); sin revision de arte humana art-source/captures/cazadora/estados_{antes,despues}.png
 
 ### ilkan — Ilkan, el Caminante de Dunas
-- 2026-11-12: no se generaron hojas (0 cr): drawIlkan (js/champions/ilkan.js) dibuja el ataque con attack_side en las 3 direcciones (secuencia ILKAN_ATK_SEQ, espejado por _pleft) y la definitiva como invoke (cuadros 58-61, ya propios) -> Coloso (atlas ilkan_colossus); attack_down, attack_up y ultimate_down no se leen nunca. Pedirlas exige cambiar js/champions/ilkan.js (despacho por direccion), fuera de alcance. Captura: art-source/captures/ilkan/estados_antes.png. Detalle en ART_CREDITS.md.
+- 2026-11-12: ataque de frente (attack_down, cuadros 64-67) y de espaldas (attack_up, 68-71) con gpt_image_2 (2 hojas, 40 cr), instalados en el atlas codex-v1 (fila nueva, 1536x1152; cuadros 0-63 identicos); drawIlkan los despacha por direccion. Solo pasaron los gates aplicables; style_gate no aplica (celda 192x128); sin revision de arte humana. La definitiva sigue siendo invoke -> Coloso (no se generó hoja). Capturas art-source/captures/ilkan/estados_antes.png y runway_despues.png.
 
 ### musashi — Musashi, el Rōnin del Bokken
 - solo pasaron los gates aplicables; style_gate no aplica (celda 192x160); sin revision de arte humana art-source/captures/musashi/estados_{antes,despues}.png

@@ -1770,6 +1770,42 @@
    "por_que": "Primer intento aceptado (saldo 145 -> 125). Se pidio el bokken en diagonal/horizontal para no pasar de la celda. Proporciones algo mas macizas que el atlas vigente; instalada 2026-11-12, aprobacion de arte humana pendiente.",
    "siguiente_paso": "",
    "verificacion": ""
+  },
+  {
+   "id": "ilkan_ataque_frente_gpt2",
+   "categoria": "campeon_cuerpo",
+   "descripcion": "Ilkan: hoja de 4 poses del ATAQUE DE FRENTE (gpt_image_2, croma verde) -> cuadros 64-67 (fila nueva) del atlas codex-v1, set attack_down",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-12",
+   "task_ids": [
+    "3b351cd5-7990-4b3f-85bc-774852352556"
+   ],
+   "creditos": 20,
+   "donde_esta": [
+    "art-source/runway-designs/ilkan/af1/master.png",
+    "art-source/ilkan-runway/atlas.png"
+   ],
+   "por_que": "Primer intento aceptado (saldo 99 -> 79): anticipacion / tajo cruzado hacia la camara / seguimiento con brazos abiertos / recuperacion; mismo diseno que la lamina. Instalada 2026-11-12 (drawIlkan ya despacha attack_down); aprobacion de arte humana pendiente.",
+   "siguiente_paso": "",
+   "verificacion": ""
+  },
+  {
+   "id": "ilkan_ataque_espalda_gpt2",
+   "categoria": "campeon_cuerpo",
+   "descripcion": "Ilkan: hoja de 4 poses del ATAQUE DE ESPALDAS (gpt_image_2, croma verde) -> cuadros 68-71 del atlas codex-v1, set attack_up",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-12",
+   "task_ids": [
+    "bdf364c2-1d97-47ae-beac-adaa354a86c8"
+   ],
+   "creditos": 20,
+   "donde_esta": [
+    "art-source/runway-designs/ilkan/ab1/master.png",
+    "art-source/ilkan-runway/atlas.png"
+   ],
+   "por_que": "Primer intento aceptado (saldo 79 -> 59): de espaldas sin cara en las 4 poses, lanza al hombro y cola de capa. Instalada 2026-11-12; aprobacion de arte humana pendiente.",
+   "siguiente_paso": "",
+   "verificacion": ""
   }
  ]
 }

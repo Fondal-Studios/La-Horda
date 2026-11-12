@@ -3392,14 +3392,14 @@
     "path": "assets/sprites/champions/ilkan/codex-v1/atlas.png",
     "format": "png",
     "width": 1536,
-    "height": 1024,
-    "sha256": "69ca3240195ca37f53bf46156756ccb6f127d63292f9eb94fa05811227e968d1"
+    "height": 1152,
+    "sha256": "f5dffd883abc0cced188dfcba34906fe25f0eef37ddd8e361d222144036591ce"
    },
    "grid": {
     "frameWidth": 192,
     "frameHeight": 128,
     "cols": 8,
-    "rows": 8
+    "rows": 9
    },
    "states": {
     "idle_down": [
@@ -3455,6 +3455,18 @@
      32,
      33,
      34
+    ],
+    "attack_down": [
+     64,
+     65,
+     66,
+     67
+    ],
+    "attack_up": [
+     68,
+     69,
+     70,
+     71
     ],
     "hit_down": [
      35,
