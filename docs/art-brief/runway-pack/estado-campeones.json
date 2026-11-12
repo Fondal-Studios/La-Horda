@@ -1,0 +1,332 @@
+{
+ "_leyenda": {
+  "pendiente": "no empezado",
+  "generado": "generado, sin aprobar",
+  "aprobado": "aprobado a ojo",
+  "hecho": "terminado y verificado",
+  "rechazado": "probado y descartado (NO repetir igual)"
+ },
+ "_etapas": [
+  "lamina_limpia",
+  "clip_walk_down",
+  "clip_walk_side",
+  "clip_walk_up",
+  "clip_attack_down",
+  "clip_attack_side",
+  "clip_attack_up",
+  "clip_cast",
+  "clip_ult",
+  "clip_death",
+  "cuadros_aprobados",
+  "atlas_armado",
+  "gates",
+  "instalado_motor",
+  "captura_antes_despues",
+  "revision_independiente",
+  "mergeado"
+ ],
+ "_prioridad_5": [
+  "tanque",
+  "guerrero",
+  "libertador",
+  "myla",
+  "ynara"
+ ],
+ "campeones": {
+  "tanque": {
+   "nombre": "Aldric, el Último Bastión",
+   "etapas": {
+    "lamina_limpia": "hecho",
+    "clip_walk_down": "aprobado",
+    "clip_walk_side": "aprobado",
+    "clip_walk_up": "generado",
+    "clip_attack_down": "aprobado",
+    "clip_attack_side": "aprobado",
+    "clip_attack_up": "generado",
+    "clip_cast": "generado",
+    "clip_ult": "rechazado",
+    "clip_death": "generado",
+    "cuadros_aprobados": "rechazado",
+    "atlas_armado": "hecho",
+    "gates": "rechazado",
+    "instalado_motor": "rechazado",
+    "captura_antes_despues": "hecho"
+   },
+   "intentos_descartados": [
+    "13 imágenes sueltas (gen4_image) para lanzar/muerte/golpe: ignora la pose o BAD_OUTPUT. NO repetir (ver ART_CREDITS.md)",
+    "Atlas por video (gen4_turbo 2 s, 9 clips): conserva el diseño pero da menos pose que el atlas dibujado actual; ultimate indistinguible de lanzar. Usar video solo para caminatas, no para ataques/muerte."
+   ],
+   "notas": "clip walk_down w1: art-source/runway-video/tanque/w1 (task 231bc178…, 25 cr). Diseño estable. wd3 (marcha, rodillas arriba) aprobado a ojo; wd2 y w1 rechazados: cuadros casi iguales ws1: zancada visible, cuadros distintos; menos vida de capa que el atlas actual wu1: cuadros casi idénticos, movimiento débil; sin reintento ad1: levanta y baja la espada, 4 cuadros distintos as1: espada atrás/adelante; menos dramático que el atlas actual au1: ok pero la espada cruza fuera de silueta ca1: levanta espada y escudo; pierde la guardia del atlas actual ul1 y ul2 (reintento con salto): no se distingue de lanzar, sin pico heroico de1: arrodilla y tiende; último cuadro de solo 23 px, menos digno que el actual el conjunto no supera al atlas actual (ver captura) candidato 448x1008 en art-source/runway-video/tanque/candidate/atlas.png style_gate PASS, pero roster_gate con el candidato: scaleFailures 4 (base 0) no instalado: no es claramente mejor art-source/captures/tanque/"
+  },
+  "guerrero": {
+   "nombre": "Kael, la Daga Carmesí",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "mago": {
+   "nombre": "Thalen, el Tejedor Elemental",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "soporte": {
+   "nombre": "Elyra, la Guardiana del Alba",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "segador": {
+   "nombre": "Segador, el Olvidado",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "axiom": {
+   "nombre": "Axiom, el Reescritor",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "profeta": {
+   "nombre": "Ismara, la Profeta Ciega",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "musashi": {
+   "nombre": "Musashi, el Rōnin del Bokken",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "cazadora": {
+   "nombre": "Sylva, la Cazadora del Bosque",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "nigromante": {
+   "nombre": "Ilvar, el Señor de las Criptas",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "libertador": {
+   "nombre": "San Martín, el Libertador",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "ilkan": {
+   "nombre": "Ilkan, el Caminante de Dunas",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "ynara": {
+   "nombre": "Ynara, la Médica de los Refugios",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "myla": {
+   "nombre": "Myla, la Niña de la Cuchara",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "brasa": {
+   "nombre": "Brasa, la Mecánica Fugitiva",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "eslabon": {
+   "nombre": "Garren, el Eslabón",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "morwen": {
+   "nombre": "Morwen, la Destiladora de Ecos",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "farolero": {
+   "nombre": "Tobías, el Farolero",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "iria": {
+   "nombre": "Iria, la Tejedora de Límites",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "vesper": {
+   "nombre": "Vesper, la Costurera de Sombras",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "nahir": {
+   "nombre": "Nahir, el Restaurador de Espejos",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "baltra": {
+   "nombre": "Baltra, la Campana Sumergida",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "maura": {
+   "nombre": "Maura, la Pastora de Espinas",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "dariel": {
+   "nombre": "Dáriel, el Último Compás",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "orsa": {
+   "nombre": "Orsa, la Guardacables",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "tibor": {
+   "nombre": "Tibor, el Rey sin Corona",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "zahra": {
+   "nombre": "Zahra, la Mano de la Válvula",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "renko": {
+   "nombre": "Renko, el Jardinero de Nombres",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "sira": {
+   "nombre": "Sira, la Cartógrafa del Regreso",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "nano_gm": {
+   "nombre": "Nano GM, el Regente del Umbral",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "facu_gm": {
+   "nombre": "Facu GM, el Soberano de las Mareas",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "aurelia": {
+   "nombre": "Aurelia, la Arquitecta Solar",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "khepri": {
+   "nombre": "Khepri, el Portador del Enjambre",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "velmira": {
+   "nombre": "Velmira, la Reina de las Máscaras",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "vhal": {
+   "nombre": "Vhal, el Astrónomo Caído",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "bront": {
+   "nombre": "Bront, la Fortaleza Viviente",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "oriel": {
+   "nombre": "Oriel, la Portera de las Cicatrices",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "saelis": {
+   "nombre": "Saelis, la Heraldo del Plumaje",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "ilsa": {
+   "nombre": "Ilsa, la Esgrimista de Réplica",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "vorn": {
+   "nombre": "Vorn, el Cambiapiel",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "kora": {
+   "nombre": "Kora, la Ariete",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "solciju": {
+   "nombre": "Solciju, la Enóloga",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "veyra": {
+   "nombre": "Veyra, la Última Herida",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "brakk": {
+   "nombre": "Brakk, el Arquitecto del Fin",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "morveth": {
+   "nombre": "Morveth, el Jardinero de la Peste",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  },
+  "aelith": {
+   "nombre": "Aelith, la Ladrona de Segundos",
+   "etapas": {},
+   "intentos_descartados": [],
+   "notas": ""
+  }
+ }
+}
