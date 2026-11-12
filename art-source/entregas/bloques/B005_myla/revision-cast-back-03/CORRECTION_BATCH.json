@@ -1,0 +1,20 @@
+{
+  "parent": "docs/production/CORRECTION_BATCH.json",
+  "parentEntries": 71,
+  "entries": [
+    {
+      "component": "myla.cuerpo.lanzar.back.frame11",
+      "frames": [
+        11
+      ],
+      "source": "art-source/entregas/bloques/B005_myla/revision-cast-back-03/source-frame11.png",
+      "sourceSha256": "9af8a48cd480d89c817e26655b0d939efc7595b9acfd6e21e8991656c73b4436",
+      "state": "EN_CORRECCION",
+      "diagnosis": "Historical frame11 failed illustration smoothness/noise; new Codex-based source passes the native numerical screen and local continuity review but is not installed or renderer-validated.",
+      "action": "Connect only after gameplay-scale body/skins/Berrinche captures and applicable gates; preserve frames0-10 exact.",
+      "failedAttempts": [
+        "revision-cast-back-02 frame11 ILUSTRACION suave0.429 ruido75"
+      ]
+    }
+  ]
+}
