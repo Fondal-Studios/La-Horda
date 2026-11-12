@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "component": "skin_convergencia",
+  "state": "EN_CORRECCION",
+  "decision": "FIX_NOT_APPROVED",
+  "sourceRecovery": "REGENERATED_NOT_BYTE_EQUIVALENT",
+  "runtimeChanged": false,
+  "installedAssetsChanged": false,
+  "attempt01": {
+    "scope": "full sheet grouped edit",
+    "decision": "REJECT",
+    "reason": "alpha and chroma contamination worsened"
+  },
+  "attempt02": {
+    "scope": "front row, eight phases",
+    "identity": "PASS_PRELIMINARY",
+    "continuity": "PASS_PRELIMINARY",
+    "decision": "REJECT",
+    "reason": "partial alpha remains nonzero"
+  },
+  "next": "require native binary alpha before producing remaining rows"
+}
+

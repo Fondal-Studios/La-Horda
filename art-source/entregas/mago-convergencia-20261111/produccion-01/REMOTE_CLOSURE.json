@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "date": "2026-11-11T07:58:28Z",
+  "repository": "Fondal-Studios/La-Horda",
+  "baseMain": "1981677d4a8bcab8c8864500a0f1eb0bb3e12953",
+  "branch": "art/mago-convergencia-codex-20261111",
+  "productionCommit": "b88988a53fa6f668b0cb07f071b984453b2a7bf5",
+  "pullRequest": 291,
+  "pullRequestUrl": "https://github.com/Fondal-Studios/La-Horda/pull/291",
+  "state": "EN_CORRECCION",
+  "decision": "FIX_NOT_APPROVED",
+  "mergeAllowed": false,
+  "runtimeChanged": false,
+  "installedAssetsChanged": false,
+  "newEvidence": [
+    "reference hashes recorded",
+    "source alpha/grid/chroma diagnostic",
+    "checkerboard preview",
+    "fresh main/PR/branch audit"
+  ],
+  "historicalEvidenceNotRepeated": [
+    "Thalen body gameplay gates",
+    "existing Convergencia consumer and VFX tests"
+  ],
+  "pending": [
+    "grouped source cleanup without filters or threshold relaxation",
+    "exact 8x5 grid and authored direction/continuity",
+    "candidate atlas extraction",
+    "gameplay-scale desktop/mobile, looks, arenas and multiplayer",
+    "Art Gate and exact-head CI"
+  ],
+  "nextCommand": "resume PR291 from source-generated-01.png; do not modify the installed atlas until an extracted candidate passes visual review"
+}

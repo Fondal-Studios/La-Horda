@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "tool": "built-in image generation",
+  "mode": "reference-guided generation",
+  "transparentBackgroundRequested": true,
+  "references": [
+    "assets/ui/codex/champions/mago.png",
+    "assets/sprites/champions/mago/codex-v1/atlas.png",
+    "art-source/skins_sets/mago_angel_arcano.png"
+  ],
+  "output": "source-generated-01.png",
+  "promptSummary": "Exact Thalen Códice identity plus existing Ángel Arcano costume; complete 8x5, 40-cell nominal animation source; front/side/left/back/death progression; native crisp pixel art; transparent background; no text, grid, scenery or loose VFX.",
+  "constraints": [
+    "preserve youthful face, huge asymmetric hat, scarf/cape mass and staff identity",
+    "preserve white/navy/gold robe, wing mantle and circular halo staff",
+    "distinct animation phases with stable feet baseline",
+    "binary alpha and no red background"
+  ],
+  "result": "FIX_NOT_APPROVED"
+}
+

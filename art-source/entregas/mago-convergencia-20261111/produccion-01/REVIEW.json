@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "component": "skin_convergencia",
+  "champion": "mago",
+  "state": "EN_CORRECCION",
+  "decision": "FIX_NOT_APPROVED",
+  "integrated": false,
+  "runtimeChanged": false,
+  "sourceIdentity": {
+    "codex": "PASS_PRELIMINARY",
+    "baseAtlas": "PASS_PRELIMINARY",
+    "skinDesign": "PASS_PRELIMINARY"
+  },
+  "failures": [
+    "source dimensions are not divisible by the requested 8x5 grid",
+    "partial alpha dominates the source",
+    "saturated red/yellow edge contamination",
+    "direction, feet baseline and sequence continuity need correction"
+  ],
+  "preservedRuntimeAtlas": "assets/sprites/champions/mago/skins/convergencia/atlas.png",
+  "next": "grouped source cleanup and continuity correction before any atlas extraction"
+}
+

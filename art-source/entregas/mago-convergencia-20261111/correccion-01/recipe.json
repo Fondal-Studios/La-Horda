@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "tool": "built-in image generation",
+  "references": [
+    "assets/ui/codex/champions/mago.png",
+    "assets/sprites/champions/mago/codex-v1/atlas.png",
+    "art-source/skins_sets/mago_angel_arcano.png"
+  ],
+  "attempts": [
+    {
+      "output": "source-candidate-01.png",
+      "mode": "edit recovered full sheet",
+      "request": "remove red/yellow contamination, require binary alpha, exact 8x5 grid and coherent directions"
+    },
+    {
+      "output": "source-front-row-02.png",
+      "mode": "generate isolated sequence",
+      "request": "eight front-facing phases: four idle plus four walk; exact Códice and Ángel Arcano identity; binary transparent background"
+    }
+  ],
+  "decision": "FIX_NOT_APPROVED"
+}
+

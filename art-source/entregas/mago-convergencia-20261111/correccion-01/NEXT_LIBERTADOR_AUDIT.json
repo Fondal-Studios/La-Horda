@@ -1,0 +1,70 @@
+{
+  "schema": "la-horda-art-audit/v1",
+  "recordedAt": "2026-11-11T10:00:00Z",
+  "status": "AUDIT_ONLY_NO_RUNTIME_CHANGE",
+  "auditedMain": "7a2ffd8c04161faf46963d4d9ee60c716047ed8a",
+  "openPrSearch": {
+    "query": "Libertador",
+    "result": []
+  },
+  "exactCodexReference": "assets/ui/codex/champions/libertador.png",
+  "finding": {
+    "baseBodyInstalled": true,
+    "registryLabel": "viejo",
+    "registryInterpretation": "The label reflects animation/coverage debt and is not evidence that the Codex candidate is absent.",
+    "installedEqualsCandidateSource": {
+      "atlas": {
+        "path": "assets/sprites/champions/libertador/v2/atlas.png",
+        "source": "art-source/runway-guardians/libertador/atlas-candidato/atlas.png",
+        "sha256": "3c993355968f3d43b0247b18230509e131beab485e2702991accc003a7ec5512"
+      },
+      "horse": {
+        "path": "assets/sprites/champions/libertador/v2/horse.png",
+        "source": "art-source/runway-guardians/libertador/atlas-candidato/horse.png",
+        "sha256": "9979b371f9452bfb93c3702b947fd5fcbd2fa8819e5f16424453a79da53578ce"
+      }
+    },
+    "history": [
+      {
+        "sha": "69b8e13e6eee92746bcc3ab51235c614188784b7",
+        "state": "candidate withdrawn from PR277 pending guard decision"
+      },
+      {
+        "sha": "9e0b208536588abdf549aa8f494178fe7b86169d",
+        "state": "Codex body reinstalled with updated guards"
+      },
+      {
+        "sha": "1fa7ccc8622fd6495657b52547f3a0eec514cc54",
+        "state": "later art repair; ancestor of current main"
+      }
+    ],
+    "currentGaps": [
+      "Base atlas remains procedural/limited for several action states according to docs/beta-release/RESULTADOS_PR.md.",
+      "libertador_escarcha and libertador_ancestral unique skin atlases are 896x336 and currently report one-frame attack/cast/ultimate coverage.",
+      "Granadero set atlas is a separate complete authored pack and must be preserved."
+    ]
+  },
+  "reviewEvidence": [
+    "docs/beta-release/evidence/guardianes/libertador_antes_despues.png",
+    "docs/beta-release/art-repair/libertador-facu-saelis-despues.png",
+    "docs/beta-release/RESULTADOS_PR.md",
+    "docs/art/ATLAS_ARTE.md",
+    "docs/art/ATLAS_VIGENTE.json"
+  ],
+  "testsNew": [
+    "git merge-base --is-ancestor for 69b8e13, 9e0b208 and 1fa7ccc against audited main: PASS",
+    "SHA-256 installed atlas versus candidate source: exact",
+    "SHA-256 installed horse versus candidate source: exact",
+    "Fresh open-PR search for Libertador: zero"
+  ],
+  "testsHistorical": [
+    "PR277 visual/runtime evidence and fidelity guards; not rerun and not claimed for current global main."
+  ],
+  "changes": {
+    "runtime": 0,
+    "installedAssets": 0,
+    "balance": 0,
+    "mechanics": 0
+  },
+  "nextAction": "Do not regenerate or reinstall the base body. Reconcile and close the two incomplete authored skins from their existing atlases against the exact Libertador Codex template; preserve Granadero and all historical sources. Produce complete motion/action/death/horse coverage, then run gameplay desktop/mobile, looks, arenas, relay, Art Gate and exact-head CI before any integration."
+}

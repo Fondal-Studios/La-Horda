@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "date": "2026-11-11",
+  "preservesHistoricalQueue": true,
+  "component": "skin_convergencia",
+  "state": "EN_CORRECCION",
+  "newDiagnosis": [
+    "production-01 remote PNG blobs are corrupt while its text closure is intact",
+    "full-sheet edit worsens chroma and alpha",
+    "row-split strategy reduces chroma but does not produce binary alpha"
+  ],
+  "action": "do not extract or install; require native binary-alpha source before remaining rows",
+  "doNotIntegrate": true
+}

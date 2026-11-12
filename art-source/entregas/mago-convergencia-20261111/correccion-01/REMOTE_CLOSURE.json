@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "date": "2026-11-11T09:06:17Z",
+  "repository": "Fondal-Studios/La-Horda",
+  "baseMain": "1981677d4a8bcab8c8864500a0f1eb0bb3e12953",
+  "branch": "art/mago-convergencia-codex-20261111",
+  "parentHead": "16aafeb841727690f1521d3f7eb4e4d472831792",
+  "productionCommit": "4a0f2eed2013c5abf3862ca03038440d2b0be08d",
+  "pullRequest": 291,
+  "pullRequestUrl": "https://github.com/Fondal-Studios/La-Horda/pull/291",
+  "state": "EN_CORRECCION",
+  "decision": "FIX_NOT_APPROVED",
+  "mergeAllowed": false,
+  "runtimeChanged": false,
+  "installedAssetsChanged": false,
+  "interruptionRecovered": {
+    "detected": true,
+    "detail": "production-01 binary blobs were truncated; its text closure remained intact",
+    "originalByteEquivalenceRecovered": false
+  },
+  "remoteBinaryVerification": [
+    {
+      "path": "art-source/entregas/mago-convergencia-20261111/correccion-01/source-candidate-01.png",
+      "sha256": "0738a6b0fdf74b260208337ed45158f1aee660eb18901cab5ea9ae044fb5ffd0",
+      "decoded": true,
+      "size": [1585, 992]
+    },
+    {
+      "path": "art-source/entregas/mago-convergencia-20261111/correccion-01/source-front-row-02.png",
+      "sha256": "58dd8417f6923aae05595fe8fb43938237635d644f19426a6dce381e79265a33",
+      "decoded": true,
+      "size": [2172, 724]
+    }
+  ],
+  "newResult": "split-row generation reduces red/yellow contamination by more than 99 percent but still fails binary alpha",
+  "pending": [
+    "native binary-alpha source capability",
+    "remaining four animation rows",
+    "complete source continuity and exact grid",
+    "candidate atlas, gameplay, looks, arenas, multiplayer and exact-head CI"
+  ],
+  "nextAction": "do not integrate; require binary alpha before continuing rows, otherwise audit the next independent old-body component"
+}

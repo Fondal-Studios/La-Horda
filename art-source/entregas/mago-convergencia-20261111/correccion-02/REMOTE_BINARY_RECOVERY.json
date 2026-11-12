@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "state": "REMOTE_FRAGMENT_RECOVERY",
+  "parentCommit": "6bc207894f7245daa06d34d822cbde2376dbd21f",
+  "chunkBytes": 196608,
+  "files": [
+    {
+      "original": "art-source/entregas/mago-convergencia-20261111/correccion-02/source-front-row-03.png",
+      "sha256": "064a3ad02e451f537cdc4a103c5eb4b9ecc9549d4ac7bbedbaf9f593c5a83b99",
+      "bytes": 1309966,
+      "parts": [
+        {
+          "path": "art-source/entregas/mago-convergencia-20261111/correccion-02/fragments/source-front-row-03.png.part000",
+          "sha256": "432eac56fbc4bc4b0dc32a1bb79f6685505909c4a09fc0750d692122889e7c16",
+          "bytes": 196608
+        },
+        {
+          "path": "art-source/entregas/mago-convergencia-20261111/correccion-02/fragments/source-front-row-03.png.part001",
+          "sha256": "4a0d6533952829ab70e81ca0ddf720fdd2f83839ec229c2f6007529ec3e0e0e2",
+          "bytes": 196608
+        },
+        {
+          "path": "art-source/entregas/mago-convergencia-20261111/correccion-02/fragments/source-front-row-03.png.part002",
+          "sha256": "4d1fe9a9e60ffdea8eed0496450a99ce122a0193fa829f31a32ba25c6456d96d",
+          "bytes": 196608
+        },
+        {
+          "path": "art-source/entregas/mago-convergencia-20261111/correccion-02/fragments/source-front-row-03.png.part003",
+          "sha256": "2ab5799c1ba5eb3bc70c8856054f73dc6c99d62752ae29ebb1c304749cd61a46",
+          "bytes": 196608
+        },
+        {
+          "path": "art-source/entregas/mago-convergencia-20261111/correccion-02/fragments/source-front-row-03.png.part004",
+          "sha256": "8ed52f19f79271f6362ba3a8cb1b5e4edc729bca19a68b667085e9a80bafebb1",
+          "bytes": 196608
+        },
+        {
+          "path": "art-source/entregas/mago-convergencia-20261111/correccion-02/fragments/source-front-row-03.png.part005",
+          "sha256": "18d90869f3cc3093b953158c3841ea81348158b5816325058050716a40dd341b",
+          "bytes": 196608
+        },
+        {
+          "path": "art-source/entregas/mago-convergencia-20261111/correccion-02/fragments/source-front-row-03.png.part006",
+          "sha256": "c90d109e2a02d4e1e8aa6cd1f9f32705c68278703dbb924e26bde7df1148d2ba",
+          "bytes": 130318
+        }
+      ],
+      "reconstruct": "cat fragments/source-front-row-03.png.part* > source-front-row-03.png"
+    },
+    {
+      "original": "art-source/entregas/mago-convergencia-20261111/correccion-02/PREVIEW.png",
+      "sha256": "f529bcf157d19563292c87a4cb1254ec63840f99a939f5afc59b90ebbfcffd83",
+      "bytes": 912002,
+      "parts": [
+        {
+          "path": "art-source/entregas/mago-convergencia-20261111/correccion-02/fragments/PREVIEW.png.part000",
+          "sha256": "1fbb4a18b346fa9b1535193a57d696a8aa77797a8bfcadcb1fa6c46d74fef33c",
+          "bytes": 196608
+        },
+        {
+          "path": "art-source/entregas/mago-convergencia-20261111/correccion-02/fragments/PREVIEW.png.part001",
+          "sha256": "29fb05e69bff84297a5bc790e7fdb50753edbb4f4d678261c4186ceb81c9c65a",
+          "bytes": 196608
+        },
+        {
+          "path": "art-source/entregas/mago-convergencia-20261111/correccion-02/fragments/PREVIEW.png.part002",
+          "sha256": "5011f8e92b183cb83db139d1648e96e5800859d7bf081acefa7d24d80806a2fc",
+          "bytes": 196608
+        },
+        {
+          "path": "art-source/entregas/mago-convergencia-20261111/correccion-02/fragments/PREVIEW.png.part003",
+          "sha256": "2403d79003ddeb8947ba799645c556a077d3920315f8a13e7d4014acfa2073a3",
+          "bytes": 196608
+        },
+        {
+          "path": "art-source/entregas/mago-convergencia-20261111/correccion-02/fragments/PREVIEW.png.part004",
+          "sha256": "90a39dd99179f2b8d0adb3584aef62d45a749c74f784c07c429a419000246897",
+          "bytes": 125570
+        }
+      ],
+      "reconstruct": "cat fragments/PREVIEW.png.part* > PREVIEW.png"
+    }
+  ],
+  "note": "The prior remote PNG paths were truncated at 786444 bytes and are deleted in the recovery commit. Concatenate parts in numeric order to reproduce exact originals."
+}
