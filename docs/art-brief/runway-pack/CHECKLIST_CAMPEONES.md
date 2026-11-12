@@ -73,6 +73,12 @@
 ### cazadora — Sylva, la Cazadora del Bosque
 - solo pasaron los gates aplicables; style_gate no aplica (celda 192x160); sin revision de arte humana art-source/captures/cazadora/estados_{antes,despues}.png
 
+### ilkan — Ilkan, el Caminante de Dunas
+- 2026-11-12: no se generaron hojas (0 cr): drawIlkan (js/champions/ilkan.js) dibuja el ataque con attack_side en las 3 direcciones (secuencia ILKAN_ATK_SEQ, espejado por _pleft) y la definitiva como invoke (cuadros 58-61, ya propios) -> Coloso (atlas ilkan_colossus); attack_down, attack_up y ultimate_down no se leen nunca. Pedirlas exige cambiar js/champions/ilkan.js (despacho por direccion), fuera de alcance. Captura: art-source/captures/ilkan/estados_antes.png. Detalle en ART_CREDITS.md.
+
 ### musashi — Musashi, el Rōnin del Bokken
 - solo pasaron los gates aplicables; style_gate no aplica (celda 192x160); sin revision de arte humana art-source/captures/musashi/estados_{antes,despues}.png
+
+### nigromante — Ilvar, el Señor de las Criptas
+- 2026-11-12: no se generaron hojas (0 cr): el checklist dice 'falta ultimate_down' pero el motor NO dibuja ese estado para Nigromante. Su definitiva (Encarnacion del Abismo) pone nigroDemonForm=true al lanzarse y drawHeroBody/entities.js llaman primero a drawNigromanteDemon, que dibuja el Coloso/Demonio (NIGRO_COLOSSUS) desde el primer cuadro; los cuadros 32-35 del atlas (set 'ult', ya con pose propia) solo se verian si ese dibujo devolviera false. Una hoja nueva de definitiva no se veria nunca. Cambiarlo exige tocar js/rendering/champion-sprites.js y js/rendering/entities.js (fuera de alcance). Capturas: art-source/captures/nigromante/. Detalle en ART_CREDITS.md.
 
