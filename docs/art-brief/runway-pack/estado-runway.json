@@ -1506,13 +1506,13 @@
    "categoria": "piso_arena",
    "descripcion": "Piso pintado de Bosque (textura repetible 96-128 px) con @ref recorte de la portada del Códice.",
    "estado": "pendiente",
-   "ultima_fecha": "",
+   "ultima_fecha": "2026-11-12",
    "task_ids": [],
    "creditos": 0,
    "donde_esta": [
     "js/rendering/arena.js"
    ],
-   "por_que": "Sigue siendo el piso procedural (FLOOR_THEME). Runway funcionó en 5 de 6 pisos (falló solo abismo por marco/diagonal).",
+   "por_que": "Sigue siendo el piso procedural (FLOOR_THEME). Runway funcionó en 5 de 6 pisos (falló solo abismo por marco/diagonal). [2026-11-12] 2026-11-12: intento bloqueado, 0 creditos: la API respondio 'Your daily task limit has been reached.' (saldo 295, sin cobro). JOB listo en runway-world.js (id ), ref en art-source/runway-world/<arena>/ref_crop.png; capturas ANTES en art-source/captures/. Reintentar cuando se libere el limite diario.",
    "siguiente_paso": "Copiar el prompt de laberinto_piso/infernal_piso (TEX) y añadir la clave a FLOOR_PAINTED en js/rendering/arena.js. Reserva 16 (reintento).",
    "verificacion": "FLOOR_PAINTED solo tiene laberinto/infernal/acuatica (grep)",
    "valor": 4,
@@ -1523,13 +1523,13 @@
    "categoria": "centro_arena",
    "descripcion": "Decorado central de Bosque (ritualCircle 300x210) pintado, mismo mecanismo DECAL_PAINTED.",
    "estado": "pendiente",
-   "ultima_fecha": "",
+   "ultima_fecha": "2026-11-12",
    "task_ids": [],
    "creditos": 0,
    "donde_esta": [
     "tools/art-world/build-centro-arena.py"
    ],
-   "por_que": "Los 4 centros intentados (infernal, acuática, laberinto, rejilla de fortaleza) salieron aceptados.",
+   "por_que": "Los 4 centros intentados (infernal, acuática, laberinto, rejilla de fortaleza) salieron aceptados. [2026-11-12] 2026-11-12: intento bloqueado, 0 creditos: la API respondio 'Your daily task limit has been reached.' (saldo 295, sin cobro). JOB listo en runway-world.js (id ), ref en art-source/runway-world/<arena>/ref_crop.png; capturas ANTES en art-source/captures/. Reintentar cuando se libere el limite diario.",
    "siguiente_paso": "Prompt DECAL de runway-world.js sobre croma verde; build-centro-arena.py; agregar clave a DECAL_PAINTED.",
    "verificacion": "procedural (arena-props.js)",
    "valor": 3,
@@ -1540,13 +1540,13 @@
    "categoria": "piso_arena",
    "descripcion": "Piso pintado de Hielo (textura repetible 96-128 px) con @ref recorte de la portada del Códice.",
    "estado": "pendiente",
-   "ultima_fecha": "",
+   "ultima_fecha": "2026-11-12",
    "task_ids": [],
    "creditos": 0,
    "donde_esta": [
     "js/rendering/arena.js"
    ],
-   "por_que": "Sigue siendo el piso procedural (FLOOR_THEME). Runway funcionó en 5 de 6 pisos (falló solo abismo por marco/diagonal).",
+   "por_que": "Sigue siendo el piso procedural (FLOOR_THEME). Runway funcionó en 5 de 6 pisos (falló solo abismo por marco/diagonal). [2026-11-12] 2026-11-12: intento bloqueado, 0 creditos: la API respondio 'Your daily task limit has been reached.' (saldo 295, sin cobro). JOB listo en runway-world.js (id ), ref en art-source/runway-world/<arena>/ref_crop.png; capturas ANTES en art-source/captures/. Reintentar cuando se libere el limite diario.",
    "siguiente_paso": "Copiar el prompt de laberinto_piso/infernal_piso (TEX) y añadir la clave a FLOOR_PAINTED en js/rendering/arena.js. Reserva 16 (reintento).",
    "verificacion": "FLOOR_PAINTED solo tiene laberinto/infernal/acuatica (grep)",
    "valor": 4,
@@ -1557,13 +1557,13 @@
    "categoria": "centro_arena",
    "descripcion": "Decorado central de Hielo (frozenLake 300x200) pintado, mismo mecanismo DECAL_PAINTED.",
    "estado": "pendiente",
-   "ultima_fecha": "",
+   "ultima_fecha": "2026-11-12",
    "task_ids": [],
    "creditos": 0,
    "donde_esta": [
     "tools/art-world/build-centro-arena.py"
    ],
-   "por_que": "Los 4 centros intentados (infernal, acuática, laberinto, rejilla de fortaleza) salieron aceptados.",
+   "por_que": "Los 4 centros intentados (infernal, acuática, laberinto, rejilla de fortaleza) salieron aceptados. [2026-11-12] 2026-11-12: intento bloqueado, 0 creditos: la API respondio 'Your daily task limit has been reached.' (saldo 295, sin cobro). JOB listo en runway-world.js (id ), ref en art-source/runway-world/<arena>/ref_crop.png; capturas ANTES en art-source/captures/. Reintentar cuando se libere el limite diario.",
    "siguiente_paso": "Prompt DECAL de runway-world.js sobre croma verde; build-centro-arena.py; agregar clave a DECAL_PAINTED.",
    "verificacion": "procedural (arena-props.js)",
    "valor": 3,
