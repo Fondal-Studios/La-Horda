@@ -139,7 +139,11 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   const ca = await E(() => { __run(9); levelDuration = 60000; levelTimer = levelDuration*0.46; __tick(200);
     const rise = abS.ca.st; __tick(3800); const e = enemies.find(o => o.alive && o.type === 'ab_carcelero');
     const hold = !!arenaHook('holdLevel'); const chains = abS.chains.filter(c => !c.hook).length;
-    e.hp = e.maxHp*0.6; __tick(300); const broken1 = abS.ca.broken & 1;
+    e.hp = e.maxHp*0.6;
+    // se espera a la condición (la IA rompe la cadena al 66 %), no 300 ms fijos: un aliado aturde al subjefe al azar (medido 3 de 120 corridas, stun 160-304 ms)
+    // y mientras `stunTimer>0` update.js salta su IA, así que broken1 quedaba en 0. Tope 4 s: sin el cambio de fase la prueba sigue fallando.
+    for (let g = 0; g < 4000 && !(abS.ca.broken & 1); g += 16) __tick(16);
+    const broken1 = abS.ca.broken & 1;
     e.hp = 1; damageEnemy(e, 999999, {src:player}); __tick(300);
     return { rise, fight: !!e, hold, chains, broken1, dead: abS.ca.st, holdAfter: !!arenaHook('holdLevel') }; });
   check('CARCELERO.aparece_a_mitad_del_nivel_9_y_retiene_el_nivel', ca.rise === 'rise' && ca.fight && ca.hold, ca);
