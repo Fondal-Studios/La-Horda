@@ -80,3 +80,28 @@ Saldo 750 -> 715 (35 cr según `status`; 8 hojas x 5 cr = 40 esperados: una lect
 Aprendizajes: (1) `pose-ref.py <id> 0` toma el atlas sin `v2` y para cm_acechante da un fragmento: usar el cuadro quieto del atlas instalado (`v2/atlas.png`). (2) Runway no deja el cuadro de muerte limpio: casi siempre fusiona dos cuerpos o agrega cristales del estilo. (3) `build_sheet.py` auto descarta cuadros más anchos que 1,7x la mediana, que es justo el cuerpo caído. (4) Parada por regla de 2 fallos seguidos en los 4.
 
 Sin recibo en el repo (la API no devolvió imagen): f24_a3, f24_a4, f25, f26, f32, f33, f34, f35; sus task ids constan solo en esta tabla. Reconciliación de saldo: documentados con recibo 80 créditos (5 imágenes × 8 + 8 hojas × 5); el saldo bajó 240 (950 → 710); los ~160 restantes no se pueden atribuir a fallos propios o a consumo ajeno de la cuenta compartida.
+
+### Prueba de video (image_to_video, gen4_turbo) — 2026-11-12
+| Clip | Task | Créditos | Resultado |
+|---|---|---|---|
+| tanque w1 (caminar, 5 s, imagen de partida = vista frontal recortada de la lámina) | 231bc178-30cd-43a4-bb87-617133044e91 | 25 (receipt; saldo 685 → 660) | Diseño idéntico en los 12 cuadros muestreados; cuerpo sube/baja y piernas alternan (movimiento sutil). Prometedor, NO aprobado: falta reducir a escala nativa, quitar fondo, gates y verlo en el motor. Muestra de 1 clip. |
+
+### Piloto Tanque por video: 9 estados (image_to_video gen4_turbo, 2 s = 10 cr c/u) — 2026-11-12
+Imágenes de partida (recortes de la lámina `art-source/runway-codex-clean/tanque.png` sobre fondo cuadrado 960x960): `art-source/runway-video-src/tanque_{front,side,back}.png`. Conversión con `tools/art/video-to-atlas.py`. Saldo: 655 al empezar; 645 antes de ws1 (-10 ajenos, cuenta compartida) y 530 al terminar; créditos propios del piloto = 110 (11 clips x 10), más 5 de diferencia no atribuible (cuenta compartida). El clip w1 de 5 s (25 cr) es de la prueba anterior.
+| Clip | Task | Cr | Resultado |
+|---|---|---|---|
+| ws1 caminar perfil | 15aa0594-64b4-42cf-9c59-a6420da262e9 | 10 | ACEPTADA a ojo: zancada visible, diseño idéntico. 2 s alcanzan para un ciclo |
+| wd2 caminar frente | 55fff18e-91fe-4981-ad3e-447ec1ebd81e | 10 | RECHAZADA: 4 cuadros casi iguales (como w1) |
+| wu1 caminar espalda | 56ad32a6-cf4e-4d02-8cb7-c10ca9efaf34 | 10 | DÉBIL (generado, sin aprobar): cuadros casi idénticos |
+| ad1 ataque frente | 288e82f9-d879-4ad0-8823-b24a60b9e14a | 10 | ACEPTADA a ojo (levanta y baja la espada) |
+| as1 ataque perfil | e4d84a03-aaf7-4fe4-bc1c-f125d5126bd2 | 10 | ACEPTADA a ojo, menos dramática que el atlas actual |
+| au1 ataque espalda | 288e6b62-f87c-441c-9222-a53b9d2fb045 | 10 | usable, sin aprobar (la espada sale de la silueta) |
+| ca1 lanzar | a219b0cd-6622-4cb9-aa70-c2dd0239c357 | 10 | usable, sin aprobar |
+| ul1 definitiva | ccc9f825-4fe9-4b0d-a8a7-d15b45fa4fb0 | 10 | RECHAZADA: casi igual a lanzar |
+| de1 muerte | 965ad5de-16c4-433c-8b78-ff2f4a628299 | 10 | usable: arrodilla y tiende; último cuadro de 23 px |
+| wd3 caminar frente (reintento, otro planteo: marcha con rodillas altas) | eeed9a96-8cab-4175-9964-b0e6bc9c061b | 10 | ACEPTADA a ojo: rodillas se levantan |
+| ul2 definitiva (reintento: salto y aterrizaje) | 17b67438-524d-4d6a-a9c4-47ef97a2c4c7 | 10 | RECHAZADA: no salta, igual que ul1 |
+**Atlas candidato** `art-source/runway-video/tanque/candidate/atlas.png` (filas: wd3, ws1, wu1, ad1, as1, au1, ca1, ul1, de1). Gates: `style_gate` PASS; `roster_gate` con el candidato instalado en prueba: scaleFailures 4 (base 0, el Tanque es la referencia y cambia su cuerpo medido); `pixel-density` sin cambio (no mide campeones); `scan_sprites` del candidato 0/1 marcados. **NO instalado** (revertido): comparado a tamaño de juego (`art-source/captures/tanque/`) el atlas actual tiene más pose (anticipación y golpe, capa, muerte con escudo), y el candidato tiene la definitiva igual al lanzar, espalda casi quieta y detalle más blando. Hallazgo: el video sirve para variación de caminata y diseño estable, no para ataque/definitiva/muerte. Muestra de 1 campeón.
+
+## Pisos y centros de Bosque y Hielo - 2026-11-12: BLOQUEADO por limite diario (0 creditos gastados)
+| 2026-11-12 | 295 (sin cambio) | prox_piso_bosque, prox_piso_hielo, prox_centro_bosque, prox_centro_hielo: `gen bosque_piso` y `gen hielo_piso` devolvieron `Runway: {"error":"Your daily task limit has been reached."}` (limite diario de tareas de la cuenta compartida, no de creditos; saldo 295 antes y despues). Ninguna tarea creada, ninguna imagen. Preparado para reintentar: JOBS `bosque_piso`, `hielo_piso`, `bosque_centro`, `hielo_centro` en `tools/art-world/runway-world.js` (referencia = lamina del Codice `art-source/codex-covers/arena_{bosque,hielo}.jpg` en `art-source/runway-world/{bosque,hielo}/ref_crop.png`) y capturas ANTES del motor real en `art-source/captures/{bosque,hielo}_{piso,centro}/antes_*.png` (960x540). Nada integrado; arena.js sin cambios |

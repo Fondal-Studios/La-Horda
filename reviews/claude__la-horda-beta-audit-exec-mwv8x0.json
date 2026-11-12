@@ -1,8 +1,8 @@
 {
  "subject": {
-  "pr": 298,
+  "pr": 299,
   "branch": "claude/la-horda-beta-audit-exec-mwv8x0",
-  "head": "1f0d22bf9fdd7fd931bfb1e2bb22b62bb82ab37e",
+  "head": "261903b6407a19dcc61097a409fcdcf4968f49c0",
   "authorAgent": "claude-sesion-principal",
   "authorId": "claude-sesion-principal"
  },
@@ -11,57 +11,57 @@
    "stage": "produccion",
    "by": "claude-sesion-principal",
    "role": "agent",
-   "commit": "1f0d22bf9fdd7fd931bfb1e2bb22b62bb82ab37e",
-   "at": "2026-11-12T13:00:00Z"
+   "commit": "261903b6407a19dcc61097a409fcdcf4968f49c0",
+   "at": "2026-11-12T14:20:00Z"
   },
   {
    "stage": "qa",
-   "by": "claude-qa-298",
+   "by": "claude-qa-299",
    "role": "qa",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "1f0d22bf9fdd7fd931bfb1e2bb22b62bb82ab37e",
+    "sha": "261903b6407a19dcc61097a409fcdcf4968f49c0",
     "tests": 4,
     "failed": 0,
-    "report": "Sobre 1f0d22bf: test-runway-pack 9941 OK; codex-clean.py --all recorta las 43 láminas sin fallos de línea de tierra y 16 recortes revisados a ojo sin rótulos/texto ni pies cortados; comandos de las fichas coherentes con pose-ref/runway-guardian (índice correcto en nano_gm de 8 columnas); task ids y créditos de ART_CREDITS cotejados con los recibos; diff sin js/, server/, index.html, gates ni atlas. Ronda previa sobre cf852d73: NO APROBADO (recorte de codex-clean dejaba pasar rótulos en varias láminas; cifra de 9 imágenes inconsistente con 13 intentos): corregidos y reverificados. MINOR abiertos: marcador diminuto en el borde izquierdo de nano_gm y mago; 8 intentos sin recibo en el repo. No llamó a la API de Runway."
+    "report": "Sobre 261903b6: test-runway-pack 9944 OK (incluye runway-ledger.py --check y champ-checklist.py --check); muestra de 15 entradas de estado-runway.json verificada con ls/grep en js/ (7 integradas cargadas por el juego, casa_a y tanque_video no cargados, abismo_piso rechazado); video-to-atlas.py frames produce celdas 112×112 RGBA con alfa 0/255 y pies en la fila 105; runway-video.js y runway-design.js con --dry-run sin API y rechazo de id con '..' e imágenes fuera del repo; DECLARACION_IA: 159 recibos de Runway (74/17/2/54/12) + 1 de entregas que no es de Runway coinciden con find por carpeta; 12 task ids de video cotejados con recibos; diff sin js/, server/, index.html, gates ni atlas. MINOR abiertos: --seconds sin validar de rango; 3 frases heredadas de main que aún dicen BAD_OUTPUT «cobrado» (STATUS.md:17, POSES_CAMPEON.md:78, README_PROMPT_MAESTRO.md:10). No llamó a Runway."
    },
-   "at": "2026-11-12T13:05:00Z"
+   "at": "2026-11-12T14:25:00Z"
   },
   {
    "stage": "arquitectura",
-   "by": "claude-arq-298",
+   "by": "claude-arq-299",
    "role": "arquitecto",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "1f0d22bf9fdd7fd931bfb1e2bb22b62bb82ab37e",
-    "report": "Aprobó 1f0d22bf tras NO APROBADO sobre cf852d73 por sobre-generalización (conclusiones desde 1 campeón y 4 enemigos), contradicciones sobre el cobro de BAD_OUTPUT, contabilidad de créditos no cuadrada y defectos de formato; los 7 cambios pedidos quedaron resueltos. Alcance solo docs, herramientas de arte y art-source (nada de js/, server/, gates). MINOR abiertos: nota de farolero en RECETA posiblemente obsoleta con el corte nuevo; los recibos de 8 intentos fallidos no están en el repo."
+    "sha": "261903b6407a19dcc61097a409fcdcf4968f49c0",
+    "report": "Aprobó 261903b6 tras NO APROBADO sobre f3add7a0 por 6 incoherencias de texto (cobro de BAD_OUTPUT afirmado como hecho, saldo 530 vs 295 sin explicar, «0 aprobados» vs 4 clips aceptados a ojo, «muerte sin caída» vs ART_CREDITS, reintento sin respaldo, checklist no cableado al test): todas resueltas. Alcance solo docs, herramientas de arte y art-source (nada de js/, server/, gates); herramientas validan rutas y no instalan nada. MINOR abiertos: ~12 MB de clips mp4 y capturas como evidencia (aceptable por precedente), video-to-atlas.py sin prueba propia ni comprobación de dependencias, id redundante «(ver el id de esta entrada)»."
    },
-   "at": "2026-11-12T13:07:00Z"
+   "at": "2026-11-12T14:27:00Z"
   },
   {
    "stage": "staging",
-   "by": "claude-integrador-298",
+   "by": "claude-integrador-299",
    "role": "integrador",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "1f0d22bf9fdd7fd931bfb1e2bb22b62bb82ab37e",
+    "sha": "261903b6407a19dcc61097a409fcdcf4968f49c0",
     "branch": "beta/integracion-20261110",
-    "tests": 17,
+    "tests": 18,
     "failed": 0,
-    "run": "https://github.com/Fondal-Studios/La-Horda/pull/298"
+    "run": "https://github.com/Fondal-Studios/La-Horda/pull/299"
    },
-   "at": "2026-11-12T13:09:00Z"
+   "at": "2026-11-12T14:29:00Z"
   },
   {
    "stage": "aprobacion",
-   "by": "claude-integrador-298",
+   "by": "claude-integrador-299",
    "role": "director",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "1f0d22bf9fdd7fd931bfb1e2bb22b62bb82ab37e",
-    "report": "Aprobado sobre 1f0d22bf. 18 check runs: 17 success y 1 failure ('Clasificacion, contratos y servidor' del PR, solo por R4 con el registro de la PR 296). El push a beta/integracion-20261110 en el mismo SHA pasó los pasos que R4 había saltado (Art Factory, falsos verdes, contratos, servidor, relay). Diff 82 archivos solo docs/, tools/art*, art-source/ y .gitignore. No se instaló ningún arte: 0 hojas de enemigos y 0 cuadros de campeón aprobados; el PR documenta resultados medidos y una herramienta de recorte."
+    "sha": "261903b6407a19dcc61097a409fcdcf4968f49c0",
+    "report": "Aprobado sobre 261903b6. 19 check runs: 18 success (regresión rápida y completa, UX, objetos/economía, identidad de arenas, VFX, steam-pc, evidence, CodeQL, emoji-lint) y 1 failure ('Clasificacion, contratos y servidor' del PR, solo por R4). El push a beta/integracion-20261110 en el mismo SHA pasó los pasos que R4 había saltado. Diff 56 archivos solo docs/, tools/art*, art-source/ y .gitignore. No se instaló arte: el piloto de video del Tanque quedó como candidato (peor que el atlas actual) y los pisos/centros de Bosque y Hielo no se generaron por el límite diario de Runway."
    },
-   "at": "2026-11-12T13:10:00Z"
+   "at": "2026-11-12T14:30:00Z"
   }
  ]
 }

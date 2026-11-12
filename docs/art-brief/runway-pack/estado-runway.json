@@ -1,0 +1,1684 @@
+{
+ "_leyenda": {
+  "estado": {
+   "hecho_integrado": "archivo en assets/ y cargado por js/ (verificado con grep)",
+   "hecho_sin_integrar": "generado y aceptado pero ningún js/ lo carga",
+   "rechazado": "probado y descartado: NO repetir igual",
+   "pendiente": "no hecho",
+   "bloqueado": "no se puede avanzar sin algo externo",
+   "sin_verificar": "no se pudo comprobar: ver verificacion"
+  },
+  "categoria": "lamina_campeon | prop_mundo | piso_arena | centro_arena | fachada | enemigo_hoja | jefe | campeon_cuerpo | campeon_video | retrato | otro",
+  "nota": "Fuente de verdad. Manda sobre `runway-world.js list` (su «pendiente» mira solo art-source/runway-world/ciudad/: no es fiable) y sobre ART_CREDITS.md. Se edita con tools/art/runway-ledger.py (set/add); no a mano el .md.",
+  "costo": "8 créditos por imagen gen4_image 1024:1024 (medido); hoja de enemigo 1280x720 observada a 5 cr; video gen4_turbo 2 s = 10 cr.",
+  "campos_extra_pendientes": "valor (1-5) y costo_estimado (créditos) ordenan PRÓXIMOS TRABAJOS por valor/costo"
+ },
+ "auditado": "2026-11-12",
+ "rama": "wip/runway-video",
+ "entradas": [
+  {
+   "id": "casa_a",
+   "categoria": "fachada",
+   "descripcion": "Casa de dos plantas de Ciudad Maldita (tejado de pizarra, chimenea, ventana encendida), vista oblicua del juego.",
+   "estado": "hecho_sin_integrar",
+   "ultima_fecha": "2026-11-06",
+   "task_ids": [
+    "312cc081-dfaa-43fa-9c6c-c30c4ab22922"
+   ],
+   "creditos": 8,
+   "donde_esta": [
+    "art-source/runway-world/ciudad/casa_a/master.png",
+    "art-source/runway-world/ciudad/casa_a/receipt.json"
+   ],
+   "por_que": "Dirección válida (GENERATED_NOT_APPROVED) pero ningún archivo de assets/ ni código la usa: solo se integraron las texturas de techo y pared, no la fachada completa.",
+   "siguiente_paso": "Integrar como fachada con el pintor determinista (0 créditos): recorte croma, BOX a escala nativa, cargarla en cm-render.js con respaldo.",
+   "verificacion": "master+receipt existen; grep casa_a/fachada en js/ = 0 resultados"
+  },
+  {
+   "id": "casa_b",
+   "categoria": "fachada",
+   "descripcion": "Cabaña de un piso con tejado rojo y buhardilla (Ciudad Maldita).",
+   "estado": "rechazado",
+   "ultima_fecha": "2026-11-06",
+   "task_ids": [
+    "1d95c72c-b11f-4d50-94a6-ce71f2443ad9"
+   ],
+   "creditos": 8,
+   "donde_esta": [
+    "art-source/runway-world/ciudad/casa_b/master.png",
+    "art-source/runway-world/ciudad/casa_b/receipt.json"
+   ],
+   "por_que": "Salió en vista isométrica: no coincide con la vista oblicua frontal del juego. Queda solo como referencia (ART_CREDITS, 2026-11-06).",
+   "siguiente_paso": "NO repetir con el mismo prompt. Si se necesita otra casa: pedir «front-on oblique view, no isometric» y usar casa_a como @ref.",
+   "verificacion": "master+receipt existen; grep casa_b en js/ = 0 resultados"
+  },
+  {
+   "id": "tex_techo_pizarra",
+   "categoria": "fachada",
+   "descripcion": "Textura de techo de pizarra azulada (tile 96 px) → tex_techo.png. Ciudad Maldita.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-06",
+   "task_ids": [
+    "0a5a7d62-2c56-45ed-a1e0-b82e411ddf09"
+   ],
+   "creditos": 8,
+   "donde_esta": [
+    "art-source/runway-world/ciudad/tex_techo_pizarra/master.png",
+    "art-source/runway-world/ciudad/tex_techo_pizarra/receipt.json",
+    "assets/vfx/ciudad/tex_techo.png"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "archivo existe; cargado por js/arenas/ciudad/cm-render.js:361 (_cmFillPat \"tex_techo\"); commit 6cf90786 (2026-11-06)"
+  },
+  {
+   "id": "tex_techo_roja",
+   "categoria": "fachada",
+   "descripcion": "Textura de teja roja → tex_techo_roja.png. Ciudad Maldita.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-06",
+   "task_ids": [
+    "f6ac09f8-4695-4561-a83c-56c3ad25282f"
+   ],
+   "creditos": 8,
+   "donde_esta": [
+    "art-source/runway-world/ciudad/tex_techo_roja/master.png",
+    "art-source/runway-world/ciudad/tex_techo_roja/receipt.json",
+    "assets/vfx/ciudad/tex_techo_roja.png"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "archivo existe; cargado por js/arenas/ciudad/cm-render.js:372 (techos alternados por id de edificio); commit 6cf90786 (2026-11-06)"
+  },
+  {
+   "id": "tex_pared_madera_piedra",
+   "categoria": "fachada",
+   "descripcion": "Pared de entramado de madera y piedra → tex_pared_ext.png. Ciudad Maldita.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-06",
+   "task_ids": [
+    "cf35449b-4322-45dd-bde4-e9b3d9e12570"
+   ],
+   "creditos": 8,
+   "donde_esta": [
+    "art-source/runway-world/ciudad/tex_pared_madera_piedra/master.png",
+    "art-source/runway-world/ciudad/tex_pared_madera_piedra/receipt.json",
+    "assets/vfx/ciudad/tex_pared_ext.png"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "archivo existe; cargado por js/arenas/ciudad/cm-render.js:335 (_cmFillPat \"tex_pared_ext\"); commit 6cf90786 (2026-11-06)"
+  },
+  {
+   "id": "fort_planchas_hierro",
+   "categoria": "piso_arena",
+   "descripcion": "Piso de planchas de hierro remachadas de la Fábrica Sin Fin (128 px).",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-06",
+   "task_ids": [
+    "33a63322-b9c0-46b3-8d8b-ca381cf36f5f"
+   ],
+   "creditos": 8,
+   "donde_esta": [
+    "art-source/runway-world/fortaleza/fort_planchas_hierro/master.png",
+    "art-source/runway-world/fortaleza/fort_planchas_hierro/receipt.json",
+    "assets/vfx/fortaleza/tex_planchas_hierro.png"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "archivo existe; cargado por js/arenas/fortaleza/fort-art.js:33,78 (fortTex + _fortTexFill); commit 7a1ac86c. OJO: `runway-world.js list` dice «pendiente» y es FALSO"
+  },
+  {
+   "id": "fort_adoquin_patio",
+   "categoria": "piso_arena",
+   "descripcion": "Piso de adoquines del patio/puente/hub de la Fortaleza (96 px).",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-06",
+   "task_ids": [
+    "61567fa2-40f9-4bf4-bb22-fec82a30cb2a"
+   ],
+   "creditos": 8,
+   "donde_esta": [
+    "art-source/runway-world/fortaleza/fort_adoquin_patio/master.png",
+    "art-source/runway-world/fortaleza/fort_adoquin_patio/receipt.json",
+    "assets/vfx/fortaleza/tex_adoquin_patio.png"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "archivo existe; cargado por js/arenas/fortaleza/fort-art.js:33,50; commit 7a1ac86c. OJO: `runway-world.js list` dice «pendiente» y es FALSO"
+  },
+  {
+   "id": "laberinto_piso",
+   "categoria": "piso_arena",
+   "descripcion": "Piso de losas doradas con jeroglíficos de Laberinto (se recortó el centro del maestro por viñeta).",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-06",
+   "task_ids": [
+    "3ad574b2-bbf2-43c1-b85b-e8ec3562a1ae"
+   ],
+   "creditos": 8,
+   "donde_esta": [
+    "art-source/runway-world/laberinto/laberinto_piso/master.png",
+    "art-source/runway-world/laberinto/laberinto_piso/receipt.json",
+    "assets/vfx/laberinto/tex_piso.png"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "archivo existe; cargado por js/rendering/arena.js:27-32 (FLOOR_PAINTED.laberinto); commit 6ed5a504. `list` dice «pendiente» y es FALSO"
+  },
+  {
+   "id": "infernal_piso",
+   "categoria": "piso_arena",
+   "descripcion": "Piso de obsidiana agrietada con vetas de lava de Infernal.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-06",
+   "task_ids": [
+    "2ffcc0a4-30ad-4ad0-bfe7-c5fc52e6afc0"
+   ],
+   "creditos": 8,
+   "donde_esta": [
+    "art-source/runway-world/infernal/infernal_piso/master.png",
+    "art-source/runway-world/infernal/infernal_piso/receipt.json",
+    "assets/vfx/infernal/tex_piso.png"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "archivo existe; cargado por js/rendering/arena.js:27-32 (FLOOR_PAINTED.infernal); commit 6ed5a504. `list` dice «pendiente» y es FALSO"
+  },
+  {
+   "id": "acuatica_piso",
+   "categoria": "piso_arena",
+   "descripcion": "Lecho marino de arena verdeazulada de Acuática.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-06",
+   "task_ids": [
+    "92e95af3-3d91-4692-ab5d-6b7f0e66e68a"
+   ],
+   "creditos": 8,
+   "donde_esta": [
+    "art-source/runway-world/acuatica/acuatica_piso/master.png",
+    "art-source/runway-world/acuatica/acuatica_piso/receipt.json",
+    "assets/vfx/acuatica/tex_piso.png"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "archivo existe; cargado por js/rendering/arena.js:27-32 (FLOOR_PAINTED.acuatica); commit 6ed5a504. `list` dice «pendiente» y es FALSO"
+  },
+  {
+   "id": "abismo_piso",
+   "categoria": "piso_arena",
+   "descripcion": "Losas violeta con runas azules para el piso del Abismo.",
+   "estado": "rechazado",
+   "ultima_fecha": "2026-11-06",
+   "task_ids": [
+    "d2367459-fdcf-4726-aa02-3312d7208102"
+   ],
+   "creditos": 8,
+   "donde_esta": [
+    "art-source/runway-world/abismo/abismo_piso/master.png",
+    "art-source/runway-world/abismo/abismo_piso/receipt.json",
+    "assets/vfx/abismo/tex_piso.png"
+   ],
+   "por_que": "El maestro salió como UNA losa enmarcada con borde negro y una diagonal; recortando 2x2 losas y repitiendo, la diagonal forma un papel tapiz evidente (intento 1 de 3, ART_CREDITS 2026-11-06). El Abismo conserva su tex_piso del Códice (no es de Runway: sin cambios desde 34ac2852).",
+   "siguiente_paso": "NO repetir el prompt. Solo si el dueño lo pide: prompt sin marco, sin diagonales, losas uniformes. No hay faltante real: el Abismo ya tiene piso.",
+   "verificacion": "master+receipt existen; assets/vfx/abismo/tex_piso.png existe y la carga js/arenas/abismo/ab-render.js:102 pero su historial no incluye ningún commit Runway"
+  },
+  {
+   "id": "infernal_centro",
+   "categoria": "centro_arena",
+   "descripcion": "Pentagrama ritual de Infernal (266x190).",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "d8d83201-f647-4ad4-aead-eefb81770cc3"
+   ],
+   "creditos": 8,
+   "donde_esta": [
+    "art-source/runway-world/infernal/infernal_centro/master.png",
+    "art-source/runway-world/infernal/infernal_centro/receipt.json",
+    "assets/vfx/infernal/centro_pentagrama.png"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "archivo existe; cargado por js/rendering/arena.js:35-38 (DECAL_PAINTED.infPentagram); commits 2282df7b/2727486c. `list` dice «pendiente» y es FALSO"
+  },
+  {
+   "id": "acuatica_centro",
+   "categoria": "centro_arena",
+   "descripcion": "Mosaico circular del templo hundido de Acuática (306x207).",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "009052a4-4af6-4161-9cf0-fe40b711933d"
+   ],
+   "creditos": 8,
+   "donde_esta": [
+    "art-source/runway-world/acuatica/acuatica_centro/master.png",
+    "art-source/runway-world/acuatica/acuatica_centro/receipt.json",
+    "assets/vfx/acuatica/centro_templo.png"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "archivo existe; cargado por js/rendering/arena.js:35-38 (DECAL_PAINTED.sunkTemple); commits 2282df7b/2727486c. `list` dice «pendiente» y es FALSO"
+  },
+  {
+   "id": "laberinto_centro",
+   "categoria": "centro_arena",
+   "descripcion": "Medallón solar con sello de minotauro de Laberinto (357x246).",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "99911fb7-5bd3-4bb9-bd82-472c9b629843"
+   ],
+   "creditos": 8,
+   "donde_esta": [
+    "art-source/runway-world/laberinto/laberinto_centro/master.png",
+    "art-source/runway-world/laberinto/laberinto_centro/receipt.json",
+    "assets/vfx/laberinto/centro_medallon.png"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "archivo existe; cargado por js/rendering/arena.js:35-38 (DECAL_PAINTED.minoChamber); commits 2282df7b/2727486c. `list` dice «pendiente» y es FALSO"
+  },
+  {
+   "id": "fort_rejilla_lava",
+   "categoria": "centro_arena",
+   "descripcion": "Rejilla de barras de hierro sobre lava (72x72 nativos) para el patio y el centro de la forja.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "7d9ad40a-9ca8-4f7c-8509-355f42789155"
+   ],
+   "creditos": 8,
+   "donde_esta": [
+    "art-source/runway-world/fortaleza/fort_rejilla_lava/master.png",
+    "art-source/runway-world/fortaleza/fort_rejilla_lava/receipt.json",
+    "assets/vfx/fortaleza/rejilla_lava.png"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "archivo existe; cargado por js/arenas/fortaleza/fort-art.js:33,112 (_fortBigGrate); commit 2727486c. `list` dice «pendiente» y es FALSO"
+  },
+  {
+   "id": "ciudad_estatua",
+   "categoria": "prop_mundo",
+   "descripcion": "Estatua encapuchada sobre pedestal octogonal en estanque turquesa del centro de Ciudad (81x106, x2).",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "f43c5719-c6af-493e-a345-1ed9b6e36168"
+   ],
+   "creditos": 8,
+   "donde_esta": [
+    "art-source/runway-world/ciudad/ciudad_estatua/master.png",
+    "art-source/runway-world/ciudad/ciudad_estatua/receipt.json",
+    "assets/vfx/ciudad/estatua_1.png"
+   ],
+   "por_que": "Defecto menor aceptado: dos brazos en alto (el Códice tiene uno). Un primer intento con «armoured knight» (task 5401a6bd-2025-4b29-83fa-e10b5e0c39df) falló BAD_OUTPUT sin cobro.",
+   "siguiente_paso": "",
+   "verificacion": "archivo existe; cargado como estatua_cx_0 por js/assets/ciudad-meta.js + js/arenas/ciudad/cm-render.js:289-294; commit 5896182a"
+  },
+  {
+   "id": "ciudad_farol",
+   "categoria": "prop_mundo",
+   "descripcion": "Farol de hierro forjado con linterna naranja (22x46, x2) de Ciudad.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "809e7037-9433-4948-b517-177d9d4b8849"
+   ],
+   "creditos": 8,
+   "donde_esta": [
+    "art-source/runway-world/ciudad/ciudad_farol/master.png",
+    "art-source/runway-world/ciudad/ciudad_farol/receipt.json",
+    "assets/vfx/ciudad/farol_1.png"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "archivo existe; cargado como farol_cx_0 (cm-render.js:320); commit 5896182a"
+  },
+  {
+   "id": "lamina_ilsa",
+   "categoria": "lamina_campeon",
+   "descripcion": "Lámina del Códice de ilsa (no existe assets/ui/codex/champions/ilsa.png).",
+   "estado": "pendiente",
+   "ultima_fecha": "",
+   "task_ids": [],
+   "creditos": 0,
+   "donde_esta": [
+    "docs/art-brief/runway-pack/campeones/ilsa.md",
+    "tools/art-world/runway-design.js"
+   ],
+   "por_que": "Único faltante del Códice (43 de 46). 1 intento; si sale con texto o mal, reservar un 2.º (16). El Códice existente es de ChatGPT: esta lámina sería la excepción Runway.",
+   "siguiente_paso": "Paso 0 de la ficha: node tools/art-world/runway-design.js ilsa codex1 \"<prompt>\" (--dry-run primero). Sin recibo en art-source/runway-designs/ (esa carpeta ni existe: nunca se corrió).",
+   "verificacion": "ls assets/ui/codex/champions/ilsa.png = no existe; art-source/runway-designs ausente; ficha del pack lo pide (test-runway-pack lo exige)",
+   "valor": 5,
+   "costo_estimado": 8
+  },
+  {
+   "id": "lamina_kora",
+   "categoria": "lamina_campeon",
+   "descripcion": "Lámina del Códice de kora (no existe assets/ui/codex/champions/kora.png).",
+   "estado": "pendiente",
+   "ultima_fecha": "",
+   "task_ids": [],
+   "creditos": 0,
+   "donde_esta": [
+    "docs/art-brief/runway-pack/campeones/kora.md",
+    "tools/art-world/runway-design.js"
+   ],
+   "por_que": "Único faltante del Códice (43 de 46). 1 intento; si sale con texto o mal, reservar un 2.º (16). El Códice existente es de ChatGPT: esta lámina sería la excepción Runway.",
+   "siguiente_paso": "Paso 0 de la ficha: node tools/art-world/runway-design.js kora codex1 \"<prompt>\" (--dry-run primero). Sin recibo en art-source/runway-designs/ (esa carpeta ni existe: nunca se corrió).",
+   "verificacion": "ls assets/ui/codex/champions/kora.png = no existe; art-source/runway-designs ausente; ficha del pack lo pide (test-runway-pack lo exige)",
+   "valor": 5,
+   "costo_estimado": 8
+  },
+  {
+   "id": "lamina_vorn",
+   "categoria": "lamina_campeon",
+   "descripcion": "Lámina del Códice de vorn (no existe assets/ui/codex/champions/vorn.png).",
+   "estado": "pendiente",
+   "ultima_fecha": "",
+   "task_ids": [],
+   "creditos": 0,
+   "donde_esta": [
+    "docs/art-brief/runway-pack/campeones/vorn.md",
+    "tools/art-world/runway-design.js"
+   ],
+   "por_que": "Único faltante del Códice (43 de 46). 1 intento; si sale con texto o mal, reservar un 2.º (16). El Códice existente es de ChatGPT: esta lámina sería la excepción Runway.",
+   "siguiente_paso": "Paso 0 de la ficha: node tools/art-world/runway-design.js vorn codex1 \"<prompt>\" (--dry-run primero). Sin recibo en art-source/runway-designs/ (esa carpeta ni existe: nunca se corrió).",
+   "verificacion": "ls assets/ui/codex/champions/vorn.png = no existe; art-source/runway-designs ausente; ficha del pack lo pide (test-runway-pack lo exige)",
+   "valor": 5,
+   "costo_estimado": 8
+  },
+  {
+   "id": "laminas_codex_existentes",
+   "categoria": "lamina_campeon",
+   "descripcion": "Las 43 láminas del Códice ya existentes (PNG+WEBP).",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "",
+   "task_ids": [],
+   "creditos": 0,
+   "donde_esta": [
+    "assets/ui/codex/champions/tanque.png",
+    "js/ui/codex/codex.js"
+   ],
+   "por_que": "Origen: ChatGPT según el dueño (ART_CREDITS 2026-11-11), NO Runway: declarar en la ficha de Steam.",
+   "siguiente_paso": "",
+   "verificacion": "43 PNG en assets/ui/codex/champions/; 43 entradas en el mapa de js/ui/codex/codex.js"
+  },
+  {
+   "id": "libertador_hoja_ref",
+   "categoria": "campeon_cuerpo",
+   "descripcion": "Hoja de referencia del Libertador (frente, lado, espalda) a partir del Códice.",
+   "estado": "hecho_sin_integrar",
+   "ultima_fecha": "2026-11-06",
+   "task_ids": [
+    "650ed895-3935-4a4a-b600-c9297aacab51",
+    "7d1a4e58-c5db-489c-ac9a-81ceaea839e8",
+    "049b258f-4e1a-425c-b5f9-2802a001e4b5"
+   ],
+   "creditos": 24,
+   "donde_esta": [
+    "art-source/runway-guardians/libertador/ref_frente/master.png",
+    "art-source/runway-guardians/libertador/codex-v1-candidato/atlas.png"
+   ],
+   "por_que": "Es referencia para animar: un cuadro por vista. El candidato derivado (build-libertador-codex.py) NO está cargado por el motor.",
+   "siguiente_paso": "",
+   "verificacion": "codex-v1-candidato/atlas.png difiere (cmp) del atlas instalado libertador/v2/atlas.png; ningún js/ lo referencia"
+  },
+  {
+   "id": "libertador_poses_caminata_caida_caballo",
+   "categoria": "campeon_cuerpo",
+   "descripcion": "25 poses del Libertador (disparo, bayoneta, mando, ultimate, caminatas, caída, caballo) repintadas con pose vieja como @pose + Códice como @codex.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "97298d8f-360c-4985-b163-e4232f735dfd",
+    "8a909b17-dc24-43c2-ad9a-3f2d4599a4ef",
+    "d2c2028c-a854-422d-b13e-d9535ad20ce0",
+    "11f9180e-f589-4043-be8f-18db0960cddb",
+    "120d82f4-01ef-4c82-9e36-9c229ef5a092",
+    "27e2d24c-39a1-40b1-a73b-95e77f409e11",
+    "e22dbf11-255f-45d6-a64b-6a1f61377def",
+    "39e3687d-7059-49b4-9fcb-492a303421bb",
+    "e8d73cef-8fb5-4911-ac0e-26d7841f1251",
+    "55600742-3554-4877-9106-c7cd399e16a5",
+    "b9a3cbc6-e752-44d2-a524-b2cc2d9e1c50",
+    "6ad8042a-8a37-416a-b42e-02d36526984c",
+    "e17c90d9-461d-453a-ad7d-4f0824db3043",
+    "2973f4f6-91e0-4916-992f-7e9988e01541",
+    "875884ae-072a-47e0-97c3-7e7faeee8e36",
+    "5c06855d-5c4d-4ba6-a3f1-c94ec40ab0ed",
+    "6b6475a3-e2c5-43c2-b0a6-89ecafa3f86c",
+    "a83f14b5-d667-49e6-af24-6ed4bb728526",
+    "35a4dbdb-0be3-4f51-b02a-30b1c2f69a1d",
+    "9e71fe98-1f99-4b32-9aaa-3584fb7fcd39",
+    "43413e7d-6c7e-4e51-99a6-4fe4f89426b7",
+    "b1c55edd-f579-4b74-8cc2-cb8b49ec8004",
+    "7dc44fff-9511-453e-a3b7-09250908b904",
+    "ba294dbd-96d4-48da-91e9-81a88a7e9102",
+    "b2ec756d-f3af-4140-81ff-82c1894a3cde"
+   ],
+   "creditos": 200,
+   "donde_esta": [
+    "assets/sprites/champions/libertador/v2/atlas.png",
+    "assets/sprites/champions/libertador/v3/motion.png",
+    "assets/sprites/champions/libertador/v2/death.png",
+    "assets/sprites/champions/libertador/v2/horse.png",
+    "art-source/runway-guardians/libertador/atlas-candidato/atlas.png"
+   ],
+   "por_que": "Descartadas: q_fire (fusil hacia el lado contrario) y q_rem2; q_reload2 duplica reload. El gasto incluye 3 duplicadas.",
+   "siguiente_paso": "",
+   "verificacion": "v2/atlas.png, v3/motion.png, v2/death.png y v2/horse.png son BYTE-IGUALES (cmp) a art-source/.../atlas-candidato/*; cargados por js/assets/champion-sprites.js:422-432"
+  },
+  {
+   "id": "profeta_poses",
+   "categoria": "campeon_cuerpo",
+   "descripcion": "16 poses de la Profeta (idle, caminata, ataque, conjuro, golpe, caída) repintadas con Runway.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-06",
+   "task_ids": [
+    "b71e034d-79ba-40f4-85e2-d0c6093a6885",
+    "2323b02b-6175-484a-9e09-f444303b763a",
+    "266e0079-0b15-4e17-baa2-34e20de5f304",
+    "9c6f30e8-c077-4f78-a4b2-f7c899f9ef83",
+    "bc21387f-54c9-4ff0-820f-c3e0ba86718f",
+    "ac330104-a791-4e51-8ef3-4dc0b20b7bac",
+    "a7d4dc47-faf1-424e-a71f-6520e1b60e14",
+    "a922febb-4b94-43ab-a813-9c9eea2500a0",
+    "ef114c45-a405-4e68-9c3b-09fb151ff0cd",
+    "1e8328fd-1e41-409d-912f-bb6259ed0404",
+    "4f704106-9100-49af-bb32-9c8bf7d3e795",
+    "e595412c-161e-410a-8d01-28df0afef0ba",
+    "de0c3931-a916-4682-8227-1f265b307607",
+    "4ca2de11-931c-4d89-ad25-7e14f814f5b6",
+    "dc821bca-4831-48e5-9305-ca42901e0c8c",
+    "f951ac64-32d4-450f-8897-1bb567a48537"
+   ],
+   "creditos": 128,
+   "donde_esta": [
+    "assets/sprites/champions/profeta/v2/atlas.png",
+    "art-source/runway-guardians/profeta/atlas-candidato/atlas.png",
+    "assets/sprites/champions/profeta/codex-v1/atlas.png"
+   ],
+   "por_que": "PARCIAL: el juego principal carga codex-v1 (pintor determinista, js/assets/champion-sprites.js:406), no este atlas. El atlas Runway (profeta/v2) solo lo usa Crystal Wars (js/modes/crystal-wars/atlas.js). Descartadas pf_up y pg_wu2 (salen de frente, no de espaldas).",
+   "siguiente_paso": "",
+   "verificacion": "profeta/v2/atlas.png byte-igual a atlas-candidato; grep: champion-sprites.js usa codex-v1; crystal-wars/atlas.js usa profeta/v2"
+  },
+  {
+   "id": "ilkan_idle_prueba",
+   "categoria": "campeon_cuerpo",
+   "descripcion": "Un cuadro idle frente de Ilkan (prueba de método).",
+   "estado": "hecho_sin_integrar",
+   "ultima_fecha": "2026-11-06",
+   "task_ids": [
+    "9725b969-dc72-4410-b800-24d142c5383f"
+   ],
+   "creditos": 8,
+   "donde_esta": [
+    "art-source/runway-guardians/ilkan/intento1_idle_frente/master.png"
+   ],
+   "por_que": "Aceptado solo como prueba; el atlas humano de Ilkan ya es fiel al Códice.",
+   "siguiente_paso": "",
+   "verificacion": "master+receipt existen"
+  },
+  {
+   "id": "ilkan_coloso_ronda1_golem",
+   "categoria": "campeon_cuerpo",
+   "descripcion": "Coloso de Ilkan, ronda 1 «golem» (7 imágenes).",
+   "estado": "rechazado",
+   "ultima_fecha": "2026-11-06",
+   "task_ids": [
+    "88de11dc-df58-4cfb-97f2-f3c504e9d506",
+    "8be9e21c-d86c-4da2-802f-fed0753b900f",
+    "38140eb3-4fb1-4c39-88f4-b783f4928064",
+    "22c9989d-e917-4094-a9f5-3f8db986f3b2",
+    "92fb13e4-8a09-40e6-8b09-634186b9f879",
+    "623752db-b0b4-49a7-a4dd-a5485b90ab3d",
+    "4dfa18d8-6da2-4260-88a0-f896ae908469"
+   ],
+   "creditos": 56,
+   "donde_esta": [
+    "art-source/runway-guardians/ilkan_coloso/c_frente/master.png"
+   ],
+   "por_que": "Rechazada por el dueño («parece con esteroides»). Además 6 tareas fallaron BAD_OUTPUT (sin imagen ni recibo; el cobro no es verificable: la API informa 0 y el saldo bajó igual, cuenta compartida) cuando el prompt pedía «skull-like/hollow ribcage» sin @pose.",
+   "siguiente_paso": "NO repetir. Regla: sin @pose de una imagen aceptada de la misma serie, las poses raras dan BAD_OUTPUT (puede cobrarse; no verificable).",
+   "verificacion": "masters+recibos existen"
+  },
+  {
+   "id": "ilkan_coloso_espiritu",
+   "categoria": "campeon_cuerpo",
+   "descripcion": "Coloso de Arena como espíritu estilo Susanoo (13 imágenes: frente, lado, espalda, golpe, ataque, rugido, emerge).",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-06",
+   "task_ids": [
+    "f6a627ad-96e5-44ca-ab01-5217f0d7f54a",
+    "58049190-b2a7-4f24-a43c-464964360e07",
+    "e39362d7-4d42-4a1a-ad3f-5d8f052a33d5",
+    "0d871a34-160d-4a17-aec3-3b33a82a57e9",
+    "0c197e70-5c0b-4b18-bac1-fb3cec96742d",
+    "590d950a-738d-4848-8705-474a45f086f4",
+    "55e82f84-c207-4e72-858e-08a8eb0c1e8b",
+    "2e06e32c-dad4-43a1-9837-51adb8594de1",
+    "0379ba5d-8ac9-43d9-aba6-ab7c5dc2eee4",
+    "e871b763-ed94-40dc-93e4-82a3a5d39e6b",
+    "cbb0891c-cbf9-4738-b874-3319a7dc07b9",
+    "98528d15-e408-46c8-9ddc-fb232cc1abf4",
+    "eb73805e-a679-4481-88f5-8f2e25a3f07f"
+   ],
+   "creditos": 104,
+   "donde_esta": [
+    "assets/sprites/champions/ilkan/v2/colossus.png",
+    "assets/sprites/champions/ilkan/skins/legion/colossus.png",
+    "art-source/runway-guardians/ilkan_coloso/atlas-candidato/colossus.png"
+   ],
+   "por_que": "Descartada s_ataque (texto en la imagen). El atlas instalado es el candidato reducido a ≤48 colores (difiere por bytes del candidato).",
+   "siguiente_paso": "",
+   "verificacion": "cargado por js/assets/champion-sprites.js:434 (ilkan_colossus) y js/assets/set-skins-meta.js:9; commit 7b4b9571"
+  },
+  {
+   "id": "myla_caida",
+   "categoria": "campeon_cuerpo",
+   "descripcion": "Caída de Myla (d1, d2 aceptadas; d0 descartada por texto «Myla» en la imagen).",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-06",
+   "task_ids": [
+    "c694a17e-38b0-4345-a90b-5c3272a4689c",
+    "11128714-0526-4036-b647-19181e937607",
+    "bd5049bf-6d8f-4d10-a370-1c48dc3a2015",
+    "9a15658c (d3, fallo, sin recibo completo)"
+   ],
+   "creditos": 24,
+   "donde_esta": [
+    "assets/sprites/champions/myla/v2/death.png",
+    "art-source/runway-guardians/myla/death-candidato/death.png"
+   ],
+   "por_que": "d3 FALLÓ 3 veces con BAD_OUTPUT (sin imagen ni recibo; cobro no verificable): no volver a intentarla; se usan d1/d2 + el maestro inclinado.",
+   "siguiente_paso": "NO pedir d3 otra vez.",
+   "verificacion": "myla/v2/death.png byte-igual a death-candidato; cargado por js/assets/portadores-meta.js:28"
+  },
+  {
+   "id": "saelis_caida",
+   "categoria": "campeon_cuerpo",
+   "descripcion": "Caída de Saelis (s_death1) con @pose + recorte del Códice.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "996ac877-b342-4752-a52d-86a54d0bb439"
+   ],
+   "creditos": 8,
+   "donde_esta": [
+    "art-source/runway-guardians/saelis/s_death1/master.png",
+    "assets/sprites/champions/saelis/atlas.png"
+   ],
+   "por_que": "Evidencia indirecta: el master y assets/sprites/champions/saelis/atlas.png entran en el mismo commit 843353a0 y ART_CREDITS lo declara integrado; no comparé píxel a píxel (el atlas se reescaló después en 1fa7ccc8).",
+   "siguiente_paso": "",
+   "verificacion": "sin_verificar a nivel de píxel; atlas cargado por js/champions/ascension/art.js:27"
+  },
+  {
+   "id": "tanque_f24_diseno",
+   "categoria": "campeon_cuerpo",
+   "descripcion": "Diseño del Tanque (Aldric) con gen4_image: a1 (lámina + @pose), a2 (prompt de prueba por error), a3/a4 (BAD_OUTPUT), a5 (recorte limpio + prompt corto).",
+   "estado": "hecho_sin_integrar",
+   "ultima_fecha": "2026-11-12",
+   "task_ids": [
+    "df604ed3-ec32-4718-94e7-88bc389a83f3",
+    "13062390-0017-4334-b917-523c908948ff",
+    "3145e6e1-7628-48ed-959b-89c4ccb8ae9c",
+    "58c7e1cf-6bbd-4993-a07d-3c373dd0aeb2",
+    "56df95df-e283-43db-9b4e-79fe5eb3c755"
+   ],
+   "creditos": 24,
+   "donde_esta": [
+    "art-source/runway-guardians/tanque/f24_a5/master.png",
+    "tools/art/codex-clean.py"
+   ],
+   "por_que": "a1 rechazada (texto del título en la imagen, sin espada); a2 descartada (prompt «test»); a3/a4 BAD_OUTPUT (el saldo bajó ~5 y ~20, no atribuible). Solo a5 sirve como DISEÑO; no demuestra poses.",
+   "siguiente_paso": "",
+   "verificacion": "masters a1,a2,a5 + recibos existen; a3/a4 sin recibo (ids solo en ART_CREDITS)"
+  },
+  {
+   "id": "tanque_lote_cuadros",
+   "categoria": "campeon_cuerpo",
+   "descripcion": "Lote de 8 cuadros sueltos del Tanque (golpe 12, recuperar 27, alzar 25, liberar 26, muerte 32-35).",
+   "estado": "rechazado",
+   "ultima_fecha": "2026-11-12",
+   "task_ids": [
+    "926c414b-e347-4bfa-9b62-d6970f926956",
+    "511df6f2-7288-48ee-b925-367554ff1b20",
+    "adf767f2-9b82-4859-a4f8-f4265a844b33",
+    "87f223d3-926c-42e4-8fb6-964d29b4bcc0",
+    "8e7a343c-b8ff-4b39-bcd0-30aab97418fc",
+    "1dbb37f1-ca42-4e40-8819-5b518c255b5a",
+    "3ef18948-d06a-4232-9191-47dfbeecb679",
+    "1a7f2c0b-c22f-4e7b-af72-6c067525bea1"
+   ],
+   "creditos": 86,
+   "donde_esta": [
+    "art-source/runway-guardians/tanque/f12_a1/master.png",
+    "art-source/runway-guardians/tanque/f27_a1/master.png"
+   ],
+   "por_que": "gen4_image ignora la pose pedida y devuelve siempre un personaje de pie (golpe y recuperar salieron idénticos a una pose de pie); las poses agachadas o tendidas dan BAD_OUTPUT (el saldo bajó 86 cr por saldo 856→770 para 2 imágenes y 6 fallos; sin recibo). Medido: 0 aprobados.",
+   "siguiente_paso": "NO repetir: no pedir poses de campeón con imágenes sueltas.",
+   "verificacion": "masters de f12 y f27 existen; las otras 6 tareas no dejaron imagen"
+  },
+  {
+   "id": "tanque_video_caminatas",
+   "categoria": "campeon_video",
+   "descripcion": "Clips image_to_video (gen4_turbo) de caminata del Tanque: w1 (5 s), wd2, wd3, ws1, wu1.",
+   "estado": "hecho_sin_integrar",
+   "ultima_fecha": "2026-11-12",
+   "task_ids": [
+    "231bc178-30cd-43a4-bb87-617133044e91",
+    "55fff18e-91fe-4981-ad3e-447ec1ebd81e",
+    "eeed9a96-8cab-4175-9964-b0e6bc9c061b",
+    "15aa0594-64b4-42cf-9c59-a6420da262e9",
+    "56ad32a6-cf4e-4d02-8cb7-c10ca9efaf34"
+   ],
+   "creditos": 65,
+   "donde_esta": [
+    "art-source/runway-video/tanque/ws1/clip.mp4",
+    "art-source/runway-video/tanque/wd3/clip.mp4",
+    "art-source/runway-video/tanque/candidate/atlas.png",
+    "tools/art/video-to-atlas.py"
+   ],
+   "por_que": "Aceptados a ojo: ws1 y wd3. Sin aprobar: w1 («prometedor», cuadros muy parecidos) y wd2 rechazado (cuadros casi iguales); wu1 débil. El atlas candidato NO está instalado: el atlas dibujado actual tiene más pose y roster_gate con el candidato da scaleFailures 4 (base 0). Muestra de 1 campeón.",
+   "siguiente_paso": "No animar más campeones por video. Si se retoma: solo variación de caminata.",
+   "verificacion": "clips y candidate/atlas.png existen; ningún js/ referencia runway-video/"
+  },
+  {
+   "id": "tanque_video_combate",
+   "categoria": "campeon_video",
+   "descripcion": "Clips de ataque, lanzar, definitiva y muerte del Tanque (ad1, as1, au1, ca1, ul1, ul2, de1).",
+   "estado": "rechazado",
+   "ultima_fecha": "2026-11-12",
+   "task_ids": [
+    "288e82f9-d879-4ad0-8823-b24a60b9e14a",
+    "e4d84a03-aaf7-4fe4-bc1c-f125d5126bd2",
+    "288e6b62-f87c-441c-9222-a53b9d2fb045",
+    "a219b0cd-6622-4cb9-aa70-c2dd0239c357",
+    "ccc9f825-4fe9-4b0d-a8a7-d15b45fa4fb0",
+    "17b67438-524d-4d6a-a9c4-47ef97a2c4c7",
+    "965ad5de-16c4-433c-8b78-ff2f4a628299"
+   ],
+   "creditos": 70,
+   "donde_esta": [
+    "art-source/runway-video/tanque/ad1/clip.mp4",
+    "art-source/runway-video/tanque/ul1/clip.mp4"
+   ],
+   "por_que": "La definitiva (ul1, ul2 con salto) sale igual a lanzar; ataque/lanzar/muerte dan menos pose que el atlas actual; el último cuadro de la muerte mide 23 px. Hallazgo: el video sirve para variar caminata, no para ataque/definitiva/muerte.",
+   "siguiente_paso": "NO repetir.",
+   "verificacion": "clips existen; estado de checklist en estado-campeones.json (tanque)"
+  },
+  {
+   "id": "regla_campeon_cuerpo_imagenes_sueltas",
+   "categoria": "campeon_cuerpo",
+   "descripcion": "Regla medida: cuerpos de campeón por imágenes sueltas gen4_image para poses de acción/suelo.",
+   "estado": "rechazado",
+   "ultima_fecha": "2026-11-12",
+   "task_ids": [],
+   "creditos": 0,
+   "donde_esta": [
+    "docs/beta-release/ART_CREDITS.md",
+    "docs/art-brief/runway-pack/RECETA.md"
+   ],
+   "por_que": "Medido: 0 aprobados como POSE en 13+ imágenes del Tanque (f24_a5 quedó aceptada solo como diseño); mismo límite visto en Profeta pf_up y Myla d3. Solo sirvió con @pose de una imagen aceptada de la misma serie y poses de pie (Libertador/Profeta/Coloso).",
+   "siguiente_paso": "NO invertir créditos en campeon_cuerpo por imágenes sueltas ni en animación de campeones con hojas.",
+   "verificacion": "tomado de ART_CREDITS.md + estado-campeones.json"
+  },
+  {
+   "id": "hoja_anguila_electrica",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja completa Runway de anguila_electrica (acuatica) instalada como atlas v2.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "b80b51e3-4924-4f00-a49e-6b2a77d85b7b"
+   ],
+   "creditos": 5,
+   "donde_esta": [
+    "assets/sprites/enemies/acuatica/anguila_electrica/v2/atlas.png",
+    "art-source/runway-enemies/acuatica/anguila_electrica/out/atlas.png",
+    "art-source/runway-enemies/acuatica/anguila_electrica/spec.json"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; registrado en js/assets/enemy-runway-sheets.js (ENEMY_RUNWAY_SHEETS.anguila_electrica)"
+  },
+  {
+   "id": "hoja_cangrejo_acorazado",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja completa Runway de cangrejo_acorazado (acuatica) instalada como atlas v2.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "aca71785-6751-4146-943f-544482268855",
+    "5f2e57c6-3171-404b-857e-d47c526405e7"
+   ],
+   "creditos": 10,
+   "donde_esta": [
+    "assets/sprites/enemies/acuatica/cangrejo_acorazado/v2/atlas.png",
+    "art-source/runway-enemies/acuatica/cangrejo_acorazado/out/atlas.png",
+    "art-source/runway-enemies/acuatica/cangrejo_acorazado/spec.json"
+   ],
+   "por_que": "Hay una hoja rejected_v1 además de la instalada.",
+   "siguiente_paso": "",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; registrado en js/assets/enemy-runway-sheets.js (ENEMY_RUNWAY_SHEETS.cangrejo_acorazado)"
+  },
+  {
+   "id": "hoja_leviatan",
+   "categoria": "jefe",
+   "descripcion": "Hoja Runway de leviatan (acuatica).",
+   "estado": "rechazado",
+   "ultima_fecha": "2026-11-06",
+   "task_ids": [
+    "eb46e4db-c368-4b41-b3c7-cc45aac9f4a5"
+   ],
+   "creditos": 5,
+   "donde_esta": [
+    "art-source/runway-enemies/acuatica/leviatan"
+   ],
+   "por_que": "La hoja salió plana y casi sin variación, peor que el arte vigente (RUNWAY_ENEMIES.md).",
+   "siguiente_paso": "NO repetir tal cual (hoja/animación de enemigos con Runway: medido, ver regla).",
+   "verificacion": "no figura en ENEMY_RUNWAY_SHEETS; existe rejected/ o rejected_*"
+  },
+  {
+   "id": "hoja_medusa_electrica",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja completa Runway de medusa_electrica (acuatica) instalada como atlas v2.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "3c569cff-58d1-4d8d-9d58-02852813edaf",
+    "244df35d-dc98-4abd-ac8b-fed30277b3d0"
+   ],
+   "creditos": 10,
+   "donde_esta": [
+    "assets/sprites/enemies/acuatica/medusa_electrica/v2/atlas.png",
+    "art-source/runway-enemies/acuatica/medusa_electrica/out/atlas.png",
+    "art-source/runway-enemies/acuatica/medusa_electrica/spec.json"
+   ],
+   "por_que": "Hay una hoja rejected_v1 además de la instalada.",
+   "siguiente_paso": "",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; registrado en js/assets/enemy-runway-sheets.js (ENEMY_RUNWAY_SHEETS.medusa_electrica)"
+  },
+  {
+   "id": "hoja_sirena_abisal",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja completa Runway de sirena_abisal (acuatica) instalada como atlas v2.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "442a0abe-d40b-41ed-a567-6273e10c54bd",
+    "e4ad8542-623d-44e1-86e7-11f08b8b0553"
+   ],
+   "creditos": 10,
+   "donde_esta": [
+    "assets/sprites/enemies/acuatica/sirena_abisal/v2/atlas.png",
+    "art-source/runway-enemies/acuatica/sirena_abisal/out/atlas.png",
+    "art-source/runway-enemies/acuatica/sirena_abisal/spec.json"
+   ],
+   "por_que": "Dos hojas.",
+   "siguiente_paso": "",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; registrado en js/assets/enemy-runway-sheets.js (ENEMY_RUNWAY_SHEETS.sirena_abisal)"
+  },
+  {
+   "id": "hoja_tiburon_blanco",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja completa Runway de tiburon_blanco (acuatica) instalada como atlas v2.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "a9f16cf0-fd47-45a9-8916-5f7b06956cb7",
+    "45199ca9-cd97-46be-ae8c-5499e5d1d153"
+   ],
+   "creditos": 10,
+   "donde_esta": [
+    "assets/sprites/enemies/acuatica/tiburon_blanco/v2/atlas.png",
+    "art-source/runway-enemies/acuatica/tiburon_blanco/out/atlas.png",
+    "art-source/runway-enemies/acuatica/tiburon_blanco/spec.json"
+   ],
+   "por_que": "Dos hojas.",
+   "siguiente_paso": "",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; registrado en js/assets/enemy-runway-sheets.js (ENEMY_RUNWAY_SHEETS.tiburon_blanco)"
+  },
+  {
+   "id": "hoja_tiburon_joven",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja completa Runway de tiburon_joven (acuatica) instalada como atlas v2.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-12",
+   "task_ids": [
+    "9b82d98a-a7aa-4146-94db-efc48910cba1",
+    "c506eacc-b669-40d2-b505-ff022d4e679a",
+    "413587be-854e-4cec-ab5e-270bbc978739",
+    "143385a3-6413-4aa1-8047-4f2170c84d3e"
+   ],
+   "creditos": 20,
+   "donde_esta": [
+    "assets/sprites/enemies/acuatica/tiburon_joven/v2/atlas.png",
+    "art-source/runway-enemies/acuatica/tiburon_joven/out/atlas.png",
+    "art-source/runway-enemies/acuatica/tiburon_joven/spec.json"
+   ],
+   "por_que": "Rehechos 2026-11-12: v2 (patas de zapato), v3 (3 cuadros idénticos, ataque fundido): rechazados, revertidos.",
+   "siguiente_paso": "NO volver a rehacer esta hoja: 2 reintentos medidos y rechazados.",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; registrado en js/assets/enemy-runway-sheets.js (ENEMY_RUNWAY_SHEETS.tiburon_joven)"
+  },
+  {
+   "id": "hoja_bestia_bosque",
+   "categoria": "jefe",
+   "descripcion": "Hoja Runway de bestia_bosque (bosque).",
+   "estado": "rechazado",
+   "ultima_fecha": "2026-11-06",
+   "task_ids": [
+    "161d9904-4a55-490e-80d9-c0f6fedafd8c"
+   ],
+   "creditos": 5,
+   "donde_esta": [
+    "art-source/runway-enemies/bosque/bestia_bosque"
+   ],
+   "por_que": "La hoja Runway era otra criatura: peor que el retrato de campo de batalla; se retiró (docs/art-gate/RUNWAY_ENEMIES.md).",
+   "siguiente_paso": "NO repetir tal cual (hoja/animación de enemigos con Runway: medido, ver regla).",
+   "verificacion": "no figura en ENEMY_RUNWAY_SHEETS; existe rejected/ o rejected_*"
+  },
+  {
+   "id": "hoja_duende_bosque",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja completa Runway de duende_bosque (bosque) instalada como atlas v2.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "af848583-fed3-4f04-966b-1c365124e2d1"
+   ],
+   "creditos": 5,
+   "donde_esta": [
+    "assets/sprites/enemies/bosque/duende_bosque/v2/atlas.png",
+    "art-source/runway-enemies/bosque/duende_bosque/out/atlas.png",
+    "art-source/runway-enemies/bosque/duende_bosque/spec.json"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; registrado en js/assets/enemy-runway-sheets.js (ENEMY_RUNWAY_SHEETS.duende_bosque)"
+  },
+  {
+   "id": "hoja_ent",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja completa Runway de ent (bosque) instalada como atlas v2.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "3dba48ee-e37b-476c-8e1a-dca5dd439cc5"
+   ],
+   "creditos": 5,
+   "donde_esta": [
+    "assets/sprites/enemies/bosque/ent/v2/atlas.png",
+    "art-source/runway-enemies/bosque/ent/out/atlas.png",
+    "art-source/runway-enemies/bosque/ent/spec.json"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; registrado en js/assets/enemy-runway-sheets.js (ENEMY_RUNWAY_SHEETS.ent)"
+  },
+  {
+   "id": "hoja_cm_acechante",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja completa Runway de cm_acechante (ciudad) instalada como atlas v2.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-12",
+   "task_ids": [
+    "aa6da6a8-6bfa-4e16-98e3-8886266dcb14",
+    "f28128ed-1b87-46d0-bef4-b20a71e3e20d",
+    "cb484f83-c5bd-40d5-a0f1-b19608e68490",
+    "1b56cf1c-2e1f-44a9-bd56-71b78b7a1f1e"
+   ],
+   "creditos": 20,
+   "donde_esta": [
+    "assets/sprites/enemies/ciudad/cm_acechante/v2/atlas.png",
+    "art-source/runway-enemies/ciudad/cm_acechante/out/atlas.png",
+    "art-source/runway-enemies/ciudad/cm_acechante/spec.json"
+   ],
+   "por_que": "Rehechos 2026-11-12: v2 (otra criatura, ref fragmento) y v3 (3 puños, proporción distinta): rechazados.",
+   "siguiente_paso": "NO volver a rehacer esta hoja: 2 reintentos medidos y rechazados.",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; registrado en js/assets/enemy-runway-sheets.js (ENEMY_RUNWAY_SHEETS.cm_acechante)"
+  },
+  {
+   "id": "hoja_cm_campanero",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja completa Runway de cm_campanero (ciudad) instalada como atlas v2.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "e59f6037-79ee-4404-8a25-f559a80d6c8a"
+   ],
+   "creditos": 5,
+   "donde_esta": [
+    "assets/sprites/enemies/ciudad/cm_campanero/v2/atlas.png",
+    "art-source/runway-enemies/ciudad/cm_campanero/out/atlas.png",
+    "art-source/runway-enemies/ciudad/cm_campanero/spec.json"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; registrado en js/assets/enemy-runway-sheets.js (ENEMY_RUNWAY_SHEETS.cm_campanero)"
+  },
+  {
+   "id": "hoja_cm_perro",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja completa Runway de cm_perro (ciudad) instalada como atlas v2.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "52649151-3605-49bf-92d9-8ec80c785b33"
+   ],
+   "creditos": 5,
+   "donde_esta": [
+    "assets/sprites/enemies/ciudad/cm_perro/v2/atlas.png",
+    "art-source/runway-enemies/ciudad/cm_perro/out/atlas.png",
+    "art-source/runway-enemies/ciudad/cm_perro/spec.json"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; registrado en js/assets/enemy-runway-sheets.js (ENEMY_RUNWAY_SHEETS.cm_perro)"
+  },
+  {
+   "id": "hoja_dragon_forja",
+   "categoria": "jefe",
+   "descripcion": "Hoja Runway de dragon_forja (fortaleza).",
+   "estado": "rechazado",
+   "ultima_fecha": "2026-11-06",
+   "task_ids": [
+    "7adb9a75-27b9-4e3c-bd1c-3469debce6e3"
+   ],
+   "creditos": 5,
+   "donde_esta": [
+    "art-source/runway-enemies/fortaleza/dragon_forja"
+   ],
+   "por_que": "Hoja peor que el retrato de campo de batalla; retirada (RUNWAY_ENEMIES.md); imágenes en rejected/.",
+   "siguiente_paso": "NO repetir tal cual (hoja/animación de enemigos con Runway: medido, ver regla).",
+   "verificacion": "no figura en ENEMY_RUNWAY_SHEETS; existe rejected/ o rejected_*"
+  },
+  {
+   "id": "hoja_cristal_servo",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja completa Runway de cristal_servo (hielo) instalada como atlas v2.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "119b9262-9474-47c0-b6dc-d3c995c8c8be"
+   ],
+   "creditos": 5,
+   "donde_esta": [
+    "assets/sprites/enemies/hielo/cristal_servo/v2/atlas.png",
+    "art-source/runway-enemies/hielo/cristal_servo/out/atlas.png",
+    "art-source/runway-enemies/hielo/cristal_servo/spec.json"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; registrado en js/assets/enemy-runway-sheets.js (ENEMY_RUNWAY_SHEETS.cristal_servo)"
+  },
+  {
+   "id": "hoja_cristal_volador",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja completa Runway de cristal_volador (hielo) instalada como atlas v2.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "d78c424f-2e21-4a01-b9e3-54e89df9344f"
+   ],
+   "creditos": 5,
+   "donde_esta": [
+    "assets/sprites/enemies/hielo/cristal_volador/v2/atlas.png",
+    "art-source/runway-enemies/hielo/cristal_volador/out/atlas.png",
+    "art-source/runway-enemies/hielo/cristal_volador/spec.json"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; registrado en js/assets/enemy-runway-sheets.js (ENEMY_RUNWAY_SHEETS.cristal_volador)"
+  },
+  {
+   "id": "hoja_demonio_hielo_fuego",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja completa Runway de demonio_hielo_fuego (hielo) instalada como atlas v2.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "0cdeda2d-52ad-44d8-819b-cd30b585392e"
+   ],
+   "creditos": 5,
+   "donde_esta": [
+    "assets/sprites/enemies/hielo/demonio_hielo_fuego/v2/atlas.png",
+    "art-source/runway-enemies/hielo/demonio_hielo_fuego/out/atlas.png",
+    "art-source/runway-enemies/hielo/demonio_hielo_fuego/spec.json"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; registrado en js/assets/enemy-runway-sheets.js (ENEMY_RUNWAY_SHEETS.demonio_hielo_fuego)"
+  },
+  {
+   "id": "hoja_golem_hielo",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja completa Runway de golem_hielo (hielo) instalada como atlas v2.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "9d793fb5-8bc7-4e92-bb37-fe07eb6491dd",
+    "26ec75b7-a5a5-49f5-aa3a-002006e1c3a8"
+   ],
+   "creditos": 10,
+   "donde_esta": [
+    "assets/sprites/enemies/hielo/golem_hielo/v2/atlas.png",
+    "art-source/runway-enemies/hielo/golem_hielo/out/atlas.png",
+    "art-source/runway-enemies/hielo/golem_hielo/spec.json"
+   ],
+   "por_que": "Segunda pasada de caminata (walk_v1) devolvió cuadros casi idénticos: se reemplazó por ciclo procedural.",
+   "siguiente_paso": "",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; registrado en js/assets/enemy-runway-sheets.js (ENEMY_RUNWAY_SHEETS.golem_hielo)"
+  },
+  {
+   "id": "hoja_hada_escarcha",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja completa Runway de hada_escarcha (hielo) instalada como atlas v2.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "78efc1cf-8da0-437a-b61f-d78aa7d2f3f4"
+   ],
+   "creditos": 5,
+   "donde_esta": [
+    "assets/sprites/enemies/hielo/hada_escarcha/v2/atlas.png",
+    "art-source/runway-enemies/hielo/hada_escarcha/out/atlas.png",
+    "art-source/runway-enemies/hielo/hada_escarcha/spec.json"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; registrado en js/assets/enemy-runway-sheets.js (ENEMY_RUNWAY_SHEETS.hada_escarcha)"
+  },
+  {
+   "id": "hoja_demonio_mago",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja completa Runway de demonio_mago (infernal) instalada como atlas v2.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "54036b4c-aed5-4bb8-8f64-3b9380824dd2"
+   ],
+   "creditos": 5,
+   "donde_esta": [
+    "assets/sprites/enemies/infernal/demonio_mago/v2/atlas.png",
+    "art-source/runway-enemies/infernal/demonio_mago/out/atlas.png",
+    "art-source/runway-enemies/infernal/demonio_mago/spec.json"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; registrado en js/assets/enemy-runway-sheets.js (ENEMY_RUNWAY_SHEETS.demonio_mago)"
+  },
+  {
+   "id": "hoja_demonio_menor",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja completa Runway de demonio_menor (infernal) instalada como atlas v2.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-12",
+   "task_ids": [
+    "9d4cee04-b44b-4d57-8fef-6b9a1bfb3356",
+    "6bbf789b-35ed-4974-bc55-ede07af36ffe",
+    "4f9b07ce-55a7-47d9-ae8e-65aabc7704bc"
+   ],
+   "creditos": 15,
+   "donde_esta": [
+    "assets/sprites/enemies/infernal/demonio_menor/v2/atlas.png",
+    "art-source/runway-enemies/infernal/demonio_menor/out/atlas.png",
+    "art-source/runway-enemies/infernal/demonio_menor/spec.json"
+   ],
+   "por_que": "Rehechos 2026-11-12: v2 (restos pegados, muerte de dos cuerpos) y v3 (la muerte regresa): rechazados.",
+   "siguiente_paso": "NO volver a rehacer esta hoja: 2 reintentos medidos y rechazados.",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; registrado en js/assets/enemy-runway-sheets.js (ENEMY_RUNWAY_SHEETS.demonio_menor)"
+  },
+  {
+   "id": "hoja_esqueleto",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja completa Runway de esqueleto (infernal) instalada como atlas v2.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "2119e882-ded8-4f57-b9d2-1e81c573b22d"
+   ],
+   "creditos": 5,
+   "donde_esta": [
+    "assets/sprites/enemies/infernal/esqueleto/v2/atlas.png",
+    "art-source/runway-enemies/infernal/esqueleto/out/atlas.png",
+    "art-source/runway-enemies/infernal/esqueleto/spec.json"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; registrado en js/assets/enemy-runway-sheets.js (ENEMY_RUNWAY_SHEETS.esqueleto)"
+  },
+  {
+   "id": "hoja_esqueleto_h",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja completa Runway de esqueleto_h (infernal) instalada como atlas v2.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "7a1c0d4e-37e8-4064-b1d1-e79c09ddf8c2"
+   ],
+   "creditos": 5,
+   "donde_esta": [
+    "assets/sprites/enemies/infernal/esqueleto_h/v2/atlas.png",
+    "art-source/runway-enemies/infernal/esqueleto_h/out/atlas.png",
+    "art-source/runway-enemies/infernal/esqueleto_h/spec.json"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; registrado en js/assets/enemy-runway-sheets.js (ENEMY_RUNWAY_SHEETS.esqueleto_h)"
+  },
+  {
+   "id": "hoja_zombie",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja completa Runway de zombie (infernal) instalada como atlas v2.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "1208eba6-9271-4282-976a-0c86c49973d2"
+   ],
+   "creditos": 5,
+   "donde_esta": [
+    "assets/sprites/enemies/infernal/zombie/v2/atlas.png",
+    "art-source/runway-enemies/infernal/zombie/out/atlas.png",
+    "art-source/runway-enemies/infernal/zombie/spec.json"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; registrado en js/assets/enemy-runway-sheets.js (ENEMY_RUNWAY_SHEETS.zombie)"
+  },
+  {
+   "id": "hoja_druida_arena",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja completa Runway de druida_arena (laberinto) instalada como atlas v2.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "a32b3567-9d8f-4d58-8e1e-0da008341aa3"
+   ],
+   "creditos": 5,
+   "donde_esta": [
+    "assets/sprites/enemies/laberinto/druida_arena/v2/atlas.png",
+    "art-source/runway-enemies/laberinto/druida_arena/out/atlas.png",
+    "art-source/runway-enemies/laberinto/druida_arena/spec.json"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; registrado en js/assets/enemy-runway-sheets.js (ENEMY_RUNWAY_SHEETS.druida_arena)"
+  },
+  {
+   "id": "hoja_escorpion_gigante",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja completa Runway de escorpion_gigante (laberinto) instalada como atlas v2.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "12be0776-7995-43c4-ba20-cd35c2c0afd2",
+    "90fbb90f-ea7f-42a2-9407-bd8cecb4db5a"
+   ],
+   "creditos": 10,
+   "donde_esta": [
+    "assets/sprites/enemies/laberinto/escorpion_gigante/v2/atlas.png",
+    "art-source/runway-enemies/laberinto/escorpion_gigante/out/atlas.png",
+    "art-source/runway-enemies/laberinto/escorpion_gigante/spec.json"
+   ],
+   "por_que": "Dos hojas (v1, v2).",
+   "siguiente_paso": "",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; registrado en js/assets/enemy-runway-sheets.js (ENEMY_RUNWAY_SHEETS.escorpion_gigante)"
+  },
+  {
+   "id": "hoja_esfinge",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja completa Runway de esfinge (laberinto) instalada como atlas v2.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-12",
+   "task_ids": [
+    "c4ff8d4b-da04-437e-a568-4630e3f71047",
+    "69d4fd37-746b-4bfe-b597-dc58d784ad8c",
+    "e953d242-6bba-412c-8dc3-542ca1d65ec1",
+    "14e04bb6-8e8d-437b-a53f-3be40230e9f1"
+   ],
+   "creditos": 20,
+   "donde_esta": [
+    "assets/sprites/enemies/laberinto/esfinge/v2/atlas.png",
+    "art-source/runway-enemies/laberinto/esfinge/out/atlas.png",
+    "art-source/runway-enemies/laberinto/esfinge/spec.json"
+   ],
+   "por_que": "Rehechos 2026-11-12: v3 (orientación mezclada) y v4 (cuadros casi idénticos, muerte fundida): rechazados.",
+   "siguiente_paso": "NO volver a rehacer esta hoja: 2 reintentos medidos y rechazados.",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; registrado en js/assets/enemy-runway-sheets.js (ENEMY_RUNWAY_SHEETS.esfinge)"
+  },
+  {
+   "id": "hoja_golem_piedra",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja Runway de golem_piedra (laberinto).",
+   "estado": "rechazado",
+   "ultima_fecha": "2026-11-06",
+   "task_ids": [
+    "f81d9562-7c61-43cd-a73e-5ba3fcaae4b2"
+   ],
+   "creditos": 5,
+   "donde_esta": [
+    "art-source/runway-enemies/laberinto/golem_piedra"
+   ],
+   "por_que": "Rechazada; el MOTIVO no está documentado en el repo (solo el recibo con nota genérica).",
+   "siguiente_paso": "NO repetir tal cual (hoja/animación de enemigos con Runway: medido, ver regla).",
+   "verificacion": "no figura en ENEMY_RUNWAY_SHEETS; existe rejected/ o rejected_*"
+  },
+  {
+   "id": "hoja_medusa",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja completa Runway de medusa (laberinto) instalada como atlas v2.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "5e9eaf38-d6c2-46a5-96a6-7e1a3cfd44ab",
+    "b9b10c2f-6cd3-4c22-bb85-6a9cb09fe25f",
+    "09ab2f5c-4059-4465-a211-d745b73978ad"
+   ],
+   "creditos": 15,
+   "donde_esta": [
+    "assets/sprites/enemies/laberinto/medusa/v2/atlas.png",
+    "art-source/runway-enemies/laberinto/medusa/out/atlas.png",
+    "art-source/runway-enemies/laberinto/medusa/spec.json"
+   ],
+   "por_que": "Tres hojas (v1-v3); la instalada es la vigente.",
+   "siguiente_paso": "",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; registrado en js/assets/enemy-runway-sheets.js (ENEMY_RUNWAY_SHEETS.medusa)"
+  },
+  {
+   "id": "hoja_minotauro",
+   "categoria": "jefe",
+   "descripcion": "Hoja Runway de minotauro (laberinto).",
+   "estado": "rechazado",
+   "ultima_fecha": "2026-11-06",
+   "task_ids": [
+    "a7fa8000-46e6-44c5-94d2-53027ea1817c"
+   ],
+   "creditos": 5,
+   "donde_esta": [
+    "art-source/runway-enemies/laberinto/minotauro"
+   ],
+   "por_que": "Hoja peor que el retrato de campo de batalla; retirada (RUNWAY_ENEMIES.md).",
+   "siguiente_paso": "NO repetir tal cual (hoja/animación de enemigos con Runway: medido, ver regla).",
+   "verificacion": "no figura en ENEMY_RUNWAY_SHEETS; existe rejected/ o rejected_*"
+  },
+  {
+   "id": "hoja_acechador",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja Runway de acechador (micelial), concepto + hoja a píxel nativo (5 cr).",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "ba4d07ea-2728-403d-8bc9-5c929f7b9ee1"
+   ],
+   "creditos": 5,
+   "donde_esta": [
+    "assets/sprites/arenas/micelial/acechador/atlas.png",
+    "art-source/runway-enemies/micelial/acechador/out/atlas.png",
+    "art-source/runway-enemies/micelial/acechador/spec.json"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; cargado por js/arenas/micelial/mic-arena.js:44 (enemyAtlasPackLoad); commit aacb2bd6. OJO: las fichas del pack dicen «SIN ATLAS PROPIO» y es viejo"
+  },
+  {
+   "id": "hoja_chaman",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja Runway de chaman (micelial).",
+   "estado": "rechazado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "ff0fc926-942f-4f5e-999e-49b889a2c93d"
+   ],
+   "creditos": 5,
+   "donde_esta": [
+    "art-source/runway-enemies/micelial/chaman"
+   ],
+   "por_que": "La hoja salió con texto dentro de la imagen (docs/art-gate/MICELIAL_RUNWAY_20261107.md); sigue el atlas viejo.",
+   "siguiente_paso": "NO repetir tal cual (hoja/animación de enemigos con Runway: medido, ver regla).",
+   "verificacion": "no figura en ENEMY_RUNWAY_SHEETS; existe rejected/ o rejected_*"
+  },
+  {
+   "id": "hoja_infectado",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja Runway de infectado (micelial), concepto + hoja a píxel nativo (5 cr).",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "2d9876e3-b894-4776-9a2d-6d8361cda7fd"
+   ],
+   "creditos": 5,
+   "donde_esta": [
+    "assets/sprites/arenas/micelial/infectado/atlas.png",
+    "art-source/runway-enemies/micelial/infectado/out/atlas.png",
+    "art-source/runway-enemies/micelial/infectado/spec.json"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; cargado por js/arenas/micelial/mic-arena.js:44 (enemyAtlasPackLoad); commit aacb2bd6. OJO: las fichas del pack dicen «SIN ATLAS PROPIO» y es viejo"
+  },
+  {
+   "id": "hoja_sabueso",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja Runway de sabueso (micelial), concepto + hoja a píxel nativo (5 cr).",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "f1f48d6e-b99b-43ed-abc4-7413234f7de5"
+   ],
+   "creditos": 5,
+   "donde_esta": [
+    "assets/sprites/arenas/micelial/sabueso/atlas.png",
+    "art-source/runway-enemies/micelial/sabueso/out/atlas.png",
+    "art-source/runway-enemies/micelial/sabueso/spec.json"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; cargado por js/arenas/micelial/mic-arena.js:44 (enemyAtlasPackLoad); commit aacb2bd6. OJO: las fichas del pack dicen «SIN ATLAS PROPIO» y es viejo"
+  },
+  {
+   "id": "hoja_mn_devoraluz",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hoja completa Runway de mn_devoraluz (minas) instalada como atlas v2.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-07",
+   "task_ids": [
+    "d688e33a-43f9-44f7-b3c8-88351b0c1612"
+   ],
+   "creditos": 5,
+   "donde_esta": [
+    "assets/sprites/enemies/minas/mn_devoraluz/v2/atlas.png",
+    "art-source/runway-enemies/minas/mn_devoraluz/out/atlas.png",
+    "art-source/runway-enemies/minas/mn_devoraluz/spec.json"
+   ],
+   "por_que": "",
+   "siguiente_paso": "",
+   "verificacion": "atlas instalado byte-igual a out/atlas.png; registrado en js/assets/enemy-runway-sheets.js (ENEMY_RUNWAY_SHEETS.mn_devoraluz)"
+  },
+  {
+   "id": "leviatan_imagenes_15",
+   "categoria": "jefe",
+   "descripcion": "15 imágenes sueltas del Leviatán (cabeza, anillos, mordida, fases, muerte) rehechas a doble resolución con tools/art/runway/redraw_images.py.",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-06",
+   "task_ids": [],
+   "creditos": 0,
+   "donde_esta": [
+    "assets/sprites/bosses/acuatica/leviatan/head_01.png",
+    "art-source/runway-redraw/sprites/bosses/acuatica/leviatan/orig/head_01.png"
+   ],
+   "por_que": "Solo se usan si el retrato de campo de batalla no carga (el retrato manda). Sin recibos: 15 imágenes gen4_image, créditos no registrados (sin_verificar).",
+   "siguiente_paso": "",
+   "verificacion": "15 *.gen.png existen en orig/; cargadas por js/assets/enemy-sprites.js:752-754"
+  },
+  {
+   "id": "regla_animacion_hojas_enemigos",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Regla medida: rehacer o animar con hojas Runway enemigos que ya tienen atlas.",
+   "estado": "rechazado",
+   "ultima_fecha": "2026-11-12",
+   "task_ids": [],
+   "creditos": 0,
+   "donde_esta": [
+    "docs/beta-release/ART_CREDITS.md",
+    "docs/art-gate/RUNWAY_ENEMIES.md"
+   ],
+   "por_que": "Los 4 rehechos del 2026-11-12 (8 hojas, 40 cr): 0 mejoran el atlas vigente. Runway no da ciclos de caminata distintos (cuadros casi idénticos) ni muerte limpia (funde dos cuerpos o agrega cristales). El camino válido fue SOLO enemigos sin hoja o con hoja pobre.",
+   "siguiente_paso": "NO rehacer hojas de enemigos ya instaladas; NO pedir ciclos de caminata a Runway (usar proc_walk).",
+   "verificacion": "tomado de ART_CREDITS.md + 4 enemigos con rejected_* verificados en art-source/runway-enemies"
+  },
+  {
+   "id": "hud_marcos_arcano",
+   "categoria": "otro",
+   "descripcion": "Anillo fino y anillo de definitiva grises (arcano_ring, arcano_ult) para los marcos de botones por héroe (43 héroes, color por héroe).",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-02",
+   "task_ids": [
+    "b0cbcab9-ec96-46a5-9a02-5e83ba38fc41",
+    "5cf73220-e5bb-4f5d-a6c2-b38e62880a11"
+   ],
+   "creditos": 30,
+   "donde_esta": [
+    "art-source/runway-hud/arcano_ring/master.png",
+    "art-source/runway-hud/arcano_ult/master.png",
+    "css/ui-factory/fx/hero/atlas.json",
+    "tools/ui-factory/build-hero-frames.py"
+   ],
+   "por_que": "Gasto real 30 cr (6 imágenes a 5 cr); solo 2 tienen recibo (10 cr). Las otras 4 imágenes y sus task ids NO están en el repo (sin_verificar).",
+   "siguiente_paso": "",
+   "verificacion": "cargado por js/ui-factory/hud-feedback.js:196 (css/ui-factory/fx/hero/<héroe>.png); build-hero-frames.py lee art-source/runway-hud; commit cd33a6dc"
+  },
+  {
+   "id": "referencias_codex_limpias",
+   "categoria": "otro",
+   "descripcion": "Recortes @codex sin texto (43 láminas) y refs de pose usadas como entrada de Runway (codex-clean.py, pose-ref.py).",
+   "estado": "hecho_sin_integrar",
+   "ultima_fecha": "2026-11-12",
+   "task_ids": [],
+   "creditos": 0,
+   "donde_esta": [
+    "tools/art/codex-clean.py",
+    "art-source/runway-pose-refs/tanque"
+   ],
+   "por_que": "0 créditos. art-source/runway-codex-clean/ está en .gitignore (se regenera con tools/art/codex-clean.py): no esperar que exista en un checkout limpio.",
+   "siguiente_paso": "",
+   "verificacion": ".gitignore:32 ignora art-source/runway-codex-clean/"
+  },
+  {
+   "id": "saldo_runway",
+   "categoria": "otro",
+   "descripcion": "Saldo de créditos de la cuenta compartida de Runway.",
+   "estado": "bloqueado",
+   "ultima_fecha": "2026-11-12",
+   "task_ids": [],
+   "creditos": 0,
+   "donde_esta": [
+    "docs/beta-release/ART_CREDITS.md",
+    "docs/art-brief/runway-pack/COSTOS.md"
+   ],
+   "por_que": "sin_verificar: no se llamó a la API en esta auditoría. Último dato en ART_CREDITS: 530 al terminar el piloto de video (2026-11-12), con 2 el 2026-11-11 antes de recargar. Entre 530 (fin del piloto) y ~295 (al bloquearse por el límite diario) el saldo bajó ~235 sin generaciones nuestras: consumo ajeno de la cuenta compartida, no atribuible. Cuenta compartida: baja sin que se genere nada.",
+   "siguiente_paso": "Antes de cualquier trabajo: node tools/art-world/runway-world.js status (no gasta).",
+   "verificacion": "sin_verificar"
+  },
+  {
+   "id": "prox_integrar_casa_a",
+   "categoria": "fachada",
+   "descripcion": "Integrar la fachada casa_a ya generada (sin gasto): recorte croma, escala nativa, cargar en cm-render.js con respaldo.",
+   "estado": "pendiente",
+   "ultima_fecha": "",
+   "task_ids": [],
+   "creditos": 0,
+   "donde_esta": [
+    "art-source/runway-world/ciudad/casa_a/master.png"
+   ],
+   "por_que": "Ya está pagada (8 cr) y aceptada como dirección; solo falta el pintor determinista.",
+   "siguiente_paso": "Seguir el patrón de tools/art-world/build-ciudad-estatua.py.",
+   "verificacion": "master existe; sin uso en js/",
+   "valor": 4,
+   "costo_estimado": 0
+  },
+  {
+   "id": "prox_piso_bosque",
+   "categoria": "piso_arena",
+   "descripcion": "Piso pintado de Bosque (textura repetible 96-128 px) con @ref recorte de la portada del Códice.",
+   "estado": "pendiente",
+   "ultima_fecha": "2026-11-12",
+   "task_ids": [],
+   "creditos": 0,
+   "donde_esta": [
+    "js/rendering/arena.js"
+   ],
+   "por_que": "Sigue siendo el piso procedural (FLOOR_THEME). Runway funcionó en 5 de 6 pisos (falló solo abismo por marco/diagonal). [2026-11-12] 2026-11-12: intento bloqueado, 0 creditos: la API respondio 'Your daily task limit has been reached.' (saldo 295, sin cobro). JOB listo en runway-world.js (ver el id de esta entrada), ref en art-source/runway-world/<arena>/ref_crop.png; capturas ANTES en art-source/captures/. Reintentar cuando se libere el limite diario.",
+   "siguiente_paso": "Copiar el prompt de laberinto_piso/infernal_piso (TEX) y añadir la clave a FLOOR_PAINTED en js/rendering/arena.js. Reserva 16 (reintento).",
+   "verificacion": "FLOOR_PAINTED solo tiene laberinto/infernal/acuatica (grep)",
+   "valor": 4,
+   "costo_estimado": 8
+  },
+  {
+   "id": "prox_centro_bosque",
+   "categoria": "centro_arena",
+   "descripcion": "Decorado central de Bosque (ritualCircle 300x210) pintado, mismo mecanismo DECAL_PAINTED.",
+   "estado": "pendiente",
+   "ultima_fecha": "2026-11-12",
+   "task_ids": [],
+   "creditos": 0,
+   "donde_esta": [
+    "tools/art-world/build-centro-arena.py"
+   ],
+   "por_que": "Los 4 centros intentados (infernal, acuática, laberinto, rejilla de fortaleza) salieron aceptados. [2026-11-12] 2026-11-12: intento bloqueado, 0 creditos: la API respondio 'Your daily task limit has been reached.' (saldo 295, sin cobro). JOB listo en runway-world.js (ver el id de esta entrada), ref en art-source/runway-world/<arena>/ref_crop.png; capturas ANTES en art-source/captures/. Reintentar cuando se libere el limite diario.",
+   "siguiente_paso": "Prompt DECAL de runway-world.js sobre croma verde; build-centro-arena.py; agregar clave a DECAL_PAINTED.",
+   "verificacion": "procedural (arena-props.js)",
+   "valor": 3,
+   "costo_estimado": 8
+  },
+  {
+   "id": "prox_piso_hielo",
+   "categoria": "piso_arena",
+   "descripcion": "Piso pintado de Hielo (textura repetible 96-128 px) con @ref recorte de la portada del Códice.",
+   "estado": "pendiente",
+   "ultima_fecha": "2026-11-12",
+   "task_ids": [],
+   "creditos": 0,
+   "donde_esta": [
+    "js/rendering/arena.js"
+   ],
+   "por_que": "Sigue siendo el piso procedural (FLOOR_THEME). Runway funcionó en 5 de 6 pisos (falló solo abismo por marco/diagonal). [2026-11-12] 2026-11-12: intento bloqueado, 0 creditos: la API respondio 'Your daily task limit has been reached.' (saldo 295, sin cobro). JOB listo en runway-world.js (ver el id de esta entrada), ref en art-source/runway-world/<arena>/ref_crop.png; capturas ANTES en art-source/captures/. Reintentar cuando se libere el limite diario.",
+   "siguiente_paso": "Copiar el prompt de laberinto_piso/infernal_piso (TEX) y añadir la clave a FLOOR_PAINTED en js/rendering/arena.js. Reserva 16 (reintento).",
+   "verificacion": "FLOOR_PAINTED solo tiene laberinto/infernal/acuatica (grep)",
+   "valor": 4,
+   "costo_estimado": 8
+  },
+  {
+   "id": "prox_centro_hielo",
+   "categoria": "centro_arena",
+   "descripcion": "Decorado central de Hielo (frozenLake 300x200) pintado, mismo mecanismo DECAL_PAINTED.",
+   "estado": "pendiente",
+   "ultima_fecha": "2026-11-12",
+   "task_ids": [],
+   "creditos": 0,
+   "donde_esta": [
+    "tools/art-world/build-centro-arena.py"
+   ],
+   "por_que": "Los 4 centros intentados (infernal, acuática, laberinto, rejilla de fortaleza) salieron aceptados. [2026-11-12] 2026-11-12: intento bloqueado, 0 creditos: la API respondio 'Your daily task limit has been reached.' (saldo 295, sin cobro). JOB listo en runway-world.js (ver el id de esta entrada), ref en art-source/runway-world/<arena>/ref_crop.png; capturas ANTES en art-source/captures/. Reintentar cuando se libere el limite diario.",
+   "siguiente_paso": "Prompt DECAL de runway-world.js sobre croma verde; build-centro-arena.py; agregar clave a DECAL_PAINTED.",
+   "verificacion": "procedural (arena-props.js)",
+   "valor": 3,
+   "costo_estimado": 8
+  },
+  {
+   "id": "prox_fachadas_ciudad_t06",
+   "categoria": "fachada",
+   "descripcion": "Edificios propios de Ciudad: Refugio, Capilla, Torre de Vigía y Campanario (CM-T06) + puertas CM-T07.",
+   "estado": "pendiente",
+   "ultima_fecha": "",
+   "task_ids": [],
+   "creditos": 0,
+   "donde_esta": [
+    "docs/art-brief/runway-pack/bloques"
+   ],
+   "por_que": "Bloque P0 B062 (se nota en una partida). casa_a demostró la dirección (vista oblicua frontal); casa_b falló por isométrica: pedir oblicuo explícito.",
+   "siguiente_paso": "Una imagen por edificio con @ref = casa_a; integrar como fachada.",
+   "verificacion": "B062 PENDIENTE en bloques.json",
+   "valor": 5,
+   "costo_estimado": 32
+  },
+  {
+   "id": "prox_props_infernal",
+   "categoria": "prop_mundo",
+   "descripcion": "Props de Infernal: columna, altar, estatua y brasero (B314).",
+   "estado": "pendiente",
+   "ultima_fecha": "",
+   "task_ids": [],
+   "creditos": 0,
+   "donde_esta": [],
+   "por_que": "Mismo método que ciudad_estatua/farol (croma + BOX + alfa binario), 2 de 2 aceptados.",
+   "siguiente_paso": "Un prop por imagen con @ref recorte del Códice de Infernal.",
+   "verificacion": "D-PROP-* procedural en manifiesto",
+   "valor": 4,
+   "costo_estimado": 32
+  },
+  {
+   "id": "prox_props_hielo",
+   "categoria": "prop_mundo",
+   "descripcion": "Props de Hielo: pilar, racimo, arco y estatua de hielo (B315-B316).",
+   "estado": "pendiente",
+   "ultima_fecha": "",
+   "task_ids": [],
+   "creditos": 0,
+   "donde_esta": [],
+   "por_que": "Idem.",
+   "siguiente_paso": "Idem con la portada de Hielo.",
+   "verificacion": "procedural",
+   "valor": 4,
+   "costo_estimado": 32
+  },
+  {
+   "id": "prox_props_bosque",
+   "categoria": "prop_mundo",
+   "descripcion": "Props de Bosque: menhir, árbol ancestral, estatua celta y arco en ruinas (B317).",
+   "estado": "pendiente",
+   "ultima_fecha": "",
+   "task_ids": [],
+   "creditos": 0,
+   "donde_esta": [],
+   "por_que": "Idem.",
+   "siguiente_paso": "Idem con la portada de Bosque.",
+   "verificacion": "procedural",
+   "valor": 4,
+   "costo_estimado": 32
+  },
+  {
+   "id": "prox_props_laberinto",
+   "categoria": "prop_mundo",
+   "descripcion": "Props de Laberinto: obelisco, dunas, losas rotas (B318-B319).",
+   "estado": "pendiente",
+   "ultima_fecha": "",
+   "task_ids": [],
+   "creditos": 0,
+   "donde_esta": [],
+   "por_que": "Idem.",
+   "siguiente_paso": "Idem con la portada de Laberinto.",
+   "verificacion": "procedural",
+   "valor": 3,
+   "costo_estimado": 24
+  },
+  {
+   "id": "prox_piso_divina",
+   "categoria": "piso_arena",
+   "descripcion": "Piso pintado de Divina (P2, B547).",
+   "estado": "pendiente",
+   "ultima_fecha": "",
+   "task_ids": [],
+   "creditos": 0,
+   "donde_esta": [
+    "js/rendering/arena.js"
+   ],
+   "por_que": "Último piso procedural sin pintar.",
+   "siguiente_paso": "Prompt TEX violeta con vetas doradas; clave en FLOOR_PAINTED.",
+   "verificacion": "FLOOR_THEME.divina procedural",
+   "valor": 2,
+   "costo_estimado": 8
+  },
+  {
+   "id": "prox_hojas_fortaleza",
+   "categoria": "enemigo_hoja",
+   "descripcion": "Hojas completas de Fortaleza (carcelero, dragon_bronce, prisionero): la arena no tiene ninguna hoja Runway.",
+   "estado": "pendiente",
+   "ultima_fecha": "",
+   "task_ids": [],
+   "creditos": 0,
+   "donde_esta": [
+    "docs/art-brief/runway-pack/enemigos/fortaleza.md"
+   ],
+   "por_que": "En enemigos SIN hoja Runway el método rindió: 29 de 35 criaturas con hoja Runway instaladas (las 6 restantes: jefes/bestia retirados, golem_piedra, chamán). NO aplica a rehacer hojas existentes.",
+   "siguiente_paso": "gen_sheet.py <arena> <id> según su ficha enemigos/fortaleza.md; 1 hoja = 1 imagen 1280x720 (observado 5 cr; se presupuesta 8).",
+   "verificacion": "ninguna carpeta runway-enemies/fortaleza salvo dragon_forja rechazado",
+   "valor": 3,
+   "costo_estimado": 24
+  }
+ ]
+}
