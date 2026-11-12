@@ -1715,6 +1715,23 @@
    "por_que": "Primer intento aceptado (saldo 225 -> 205). Sombra de suelo del modelo recortada con --trim-feet 9. Instalada 2026-11-12.",
    "siguiente_paso": "",
    "verificacion": ""
+  },
+  {
+   "id": "tanque_lanzar_gpt2",
+   "categoria": "campeon_cuerpo",
+   "descripcion": "Tanque: hoja de 4 poses de lanzar con gpt_image_2 (g1). Candidato aceptado, sin integrar a un atlas todavía.",
+   "estado": "hecho_sin_integrar",
+   "ultima_fecha": "2026-11-12",
+   "task_ids": [
+    "7afade28-59bd-4958-9c24-2fe24e10c5ab"
+   ],
+   "creditos": 20,
+   "donde_esta": [
+    "art-source/runway-designs/tanque/g1/master.png"
+   ],
+   "por_que": "",
+   "siguiente_paso": "Convertir con tools/art/sheet-to-cells.py y armar el atlas; probar también muerte y definitiva con gpt_image_2.",
+   "verificacion": ""
   }
  ]
 }
