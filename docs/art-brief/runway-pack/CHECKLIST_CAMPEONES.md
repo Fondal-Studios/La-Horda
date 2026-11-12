@@ -60,7 +60,7 @@
 ## Intentos descartados y notas (no repetir)
 
 ### libertador — San Martín, el Libertador
-- 2026-11-12: no se generaron hojas: la muerte ya tiene 4 cuadros propios (libertador_death), la definitiva usa un unico cuadro 44 que el motor dibuja fijo (prog 0) y el ataque usa el set 'fire' en todas las direcciones; ver ART_CREDITS
+- 2026-11-12: no se generaron hojas: la muerte ya tiene 4 cuadros propios (libertador_death), la definitiva usa un unico cuadro 44 que el motor dibuja fijo (prog 0) y el ataque usa el set 'fire' en todas las direcciones; ver ART_CREDITS 2026-11-12: la columna «estados que faltan» del checklist mide los `sets` del registro y NO ve lo que el motor dibuja por otro camino: la muerte (`libertador_death`, 4 cuadros) ya está integrada; la definitiva ya tiene su cuadro propio (pero el motor dibuja `ult_cast` con prog=0, solo se vería el primer cuadro); el ataque en las 3 direcciones usa el set `fire` de perfil. Animar la definitiva o dar ataque frontal requiere antes cambiar js/champions/libertador.js. Detalle en ART_CREDITS.md.
 
 ### tanque — Aldric, el Último Bastión
 - ✘ 13 imágenes sueltas (gen4_image) para lanzar/muerte/golpe: ignora la pose o BAD_OUTPUT. NO repetir (ver ART_CREDITS.md)
