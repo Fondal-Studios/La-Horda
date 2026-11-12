@@ -55,3 +55,12 @@ Cuenta de Runway compartida: el saldo también bajó mientras no se generaba nad
 | tanque f24_a3 y f24_a4 (recorte limpio + prompt largo) | 58c7e1cf-6bbd-4993-a07d-3c373dd0aeb2 · 56df95df-e283-43db-9b4e-79fe5eb3c755 | 0 informados (el saldo bajó ~5 y ~20 en esos momentos, no atribuible con certeza) | BAD_OUTPUT los dos: se cambió el planteo (prompt corto) |
 | tanque f24_a5 (recorte limpio + prompt corto) | 3145e6e1-7628-48ed-959b-89c4ccb8ae9c | 8 | ACEPTADA con notas: sin texto, diseño y paleta fieles (espada, escudo, capa), una silueta; quitar la franja de tierra al reducir |
 Aprendizajes aplicados al paquete: `tools/art/codex-clean.py` (referencia sin texto, proporción ≤ 2,2) y prompt corto por pose.
+
+### B002 Tanque, lote de 8 cuadros (2026-11-12, saldo 856 → 770 = 86 créditos para 2 imágenes y 6 fallos)
+| Cuadro | Task | Resultado |
+|---|---|---|
+| 27 (recuperar) | 511df6f2-7288-48ee-b925-367554ff1b20 | Imagen limpia y fiel al diseño, pero **idéntica a una pose de pie** (no hay «recuperar»): RECHAZADA por pose (RECETA §5.2) |
+| 12 (golpe recibido) | 926c414b-e347-4bfa-9b62-d6970f926956 | Idem: de pie con espada y escudo, sin retroceso ni ojo cerrado: RECHAZADA por pose |
+| 25, 26 (alzar, liberar) | adf767f2-9b82-4859-a4f8-f4265a844b33 · 87f223d3-926c-42e4-8fb6-964d29b4bcc0 | BAD_OUTPUT (cobrado) |
+| 32, 33, 34, 35 (muerte) | 8e7a343c-b8ff-4b39-bcd0-30aab97418fc · 1dbb37f1-ca42-4e40-8819-5b518c255b5a · 3ef18948-d06a-4232-9191-47dfbeecb679 · 1a7f2c0b-c22f-4e7b-af72-6c067525bea1 | BAD_OUTPUT (cobrado) |
+**Conclusión medida:** `gen4_image` con la referencia limpia conserva el diseño, pero ignora la pose pedida y devuelve siempre un personaje de pie; las poses agachadas o tendidas (alzar, liberar, muerte) dan BAD_OUTPUT y el fallo se cobra (~12 créditos c/u en este lote). Es el mismo límite que ya registraba la receta (Profeta `pf_up`, Myla `d3`). Ningún cuadro de este lote entra al juego. Los atlas actuales del tanque ya tienen esas poses dibujadas (vista de contacto: lanzar, arrodillado, tendido); no se ve ganancia en rehacerlas con Runway. No se sigue gastando en cuerpos de campeón con este método.
