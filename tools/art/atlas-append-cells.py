@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Amplia un atlas con filas nuevas SIN tocar los cuadros existentes (verifica byte a byte).
-  python3 tools/art/atlas-append-cells.py <atlas_in.png> <atlas_out.png> --cell WxH --cols N <celda.png> [<celda.png> ...]
+  python3 tools/art/atlas-append-cells.py --cell WxH --cols N <atlas_in.png> <atlas_out.png> <celda.png> [<celda.png> ...]   (--cell es WxH, p. ej. 192x160)
 Las celdas nuevas se agregan a partir del primer cuadro libre tras la ultima fila (filas completas de N columnas). Imprime los indices."""
 import argparse, sys
 import numpy as np

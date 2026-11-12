@@ -71,5 +71,10 @@
 ### Ynara y gpt_image_2 (2026-11-12, noche)
 - **Ynara: lanzar y definitiva propios instalados** (atlas 384×1056, cuadros 36–43 hechos con `gpt_image_2`; `js/assets/ynara-meta.js` y `imageSize` de Crystal Wars actualizados). Antes eran copias del ataque. Capturas antes/después en `art-source/captures/ynara/`. Gates: roster_gate 0 fallos; style_gate no aplica (celda de 96); aprobación de arte humana pendiente. Skins de Ynara conservan cast/ultimate = ataque (no se rehicieron).
 - **Corrige la conclusión anterior:** el límite era `gen4_image`/video, no Runway. Con `gpt_image_2` en hoja de 4 poses el Tanque dio 4 poses de lanzar distintas (candidato, sin integrar) donde `gen4_image` daba una pose de pie. Muestra: 2 campeones; falta probar la muerte. Detalle en `ART_CREDITS.md` y `RECETA.md` §1.
-- `docs/steam/DECLARACION_IA.md`: sumar el modelo `gpt_image_2` (pendiente del dueño confirmar términos de uso comercial).
+- `docs/steam/DECLARACION_IA.md` ya declara `gpt_image_2` (6 generaciones, 165 recibos de Runway en total); **pendiente del dueño: confirmar los términos de uso comercial de ese modelo**.
+
+### Cazadora y Musashi (2026-11-12, noche)
+- **Definitiva propia instalada** en Cazadora y Musashi (`ultimate_*` → cuadros 52–55 de su atlas `codex-v1`; antes caían en el lanzar), con `gpt_image_2` (hojas de 4 poses). Aprobación de arte humana pendiente; `style_gate` no aplica (celdas 192×160). Musashi: proporciones algo más macizas y línea de 1 px bajo los pies; pies en la fila 113 (2 px sobre los cuadros viejos, fila 115). Muestra acumulada con `gpt_image_2`: 4 campeones, 6 hojas (5 aceptadas, 1 rechazada por escala).
+- **Libertador sin cambios de arte:** su muerte ya existe y su definitiva/ataque frontal dependen de código (`js/champions/libertador.js`: `ult_cast` con prog=0; ataque por set `fire`), no de arte. Decisión del dueño pendiente.
+- Preexistente (no de esta PR): `tools/vfx/musashi-afterimage-check.js` falla 9 checks también en `main`; `tools/lanes/test-sides.js` es intermitente (`Math.random`).
 
