@@ -411,6 +411,14 @@ function drawMusashiAfterimages(){
 // por pose), con estados extra para las 3 animaciones de invocacion/plaga (h.nigroCastKind, se
 // fija en cada case del switch de castAbility junto al attackAnim generico) y la secuencia de
 // transformacion de la ultimate (h.nigroTransformTimer, ver enterAbyssForm).
+// ¿Se está mostrando la pose propia de la transformación (cuadros "ult" del atlas) en vez del Demonio?
+// Solo cambia qué sprite se dibuja: la ventana es nigroTransformTimer (NIGRO_TRANSFORM_MS), ya existente.
+// Si el atlas (o el de la skin equipada) no trae el set "ult", devuelve false y todo se dibuja como antes.
+function nigroUltPoseActive(h){
+  if(!h || h.classKey!=="nigromante" || !(h.nigroTransformTimer>0)) return false;
+  const P = CHAMP_PACK[typeof setSkinPackKey==="function" ? setSkinPackKey(h, "nigromante") : "nigromante"];
+  return !!(P && P.ready && P.sets.ult);
+}
 function drawNigromanteReal(h, drawScale, alpha){
   const P = CHAMP_PACK[typeof setSkinPackKey==="function" ? setSkinPackKey(h, "nigromante") : "nigromante"]; // (croma: otra paleta)
   if(P && P.ready){

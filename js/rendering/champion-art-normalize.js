@@ -35,7 +35,7 @@ function champArtNorm(h){
   const original = drawHeroBody;
   drawHeroBody = function(h, drawScale){
     // The transformation has its own giant body scale and foot anchor.
-    if(h.classKey === "nigromante" && h.nigroDemonForm) return original.apply(this, arguments);
+    if(h.classKey === "nigromante" && h.nigroDemonForm && !(typeof nigroUltPoseActive === "function" && nigroUltPoseActive(h))) return original.apply(this, arguments);
     const n = (typeof window !== "undefined" && window.ART_GATE_RAW) ? null : champArtNorm(h);
     if(!n || (Math.abs(n[0] - 1) < 0.005 && Math.abs(n[1]) < 0.5)) return original.apply(this, arguments);
     // escala alrededor del punto de apoyo (h.x, h.y) y corrige la línea de pies; drawScale ya incluye
