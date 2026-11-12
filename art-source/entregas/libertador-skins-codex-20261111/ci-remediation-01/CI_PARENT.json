@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "head": "089063056c0287001c6d516dd668b9f9da43da3d",
+  "workflowRun": 43085060983,
+  "workflow": "Champion entry balance",
+  "conclusion": "failure",
+  "deterministicComponentFailure": {
+    "job": 130747150716,
+    "step": "node tools/art/build-art-atlas.js --check",
+    "cause": "ATLAS_ARTE.json no reflejaba los atlas y previews nuevos ni la huella actual de los registros de arte"
+  },
+  "independentFailure": {
+    "job": 130747150860,
+    "step": "node tools/lanes/flow.js",
+    "assertion": "compra.objeto_del_invitado_en_la_base",
+    "observed": [0,0],
+    "scopeIntersection": false
+  },
+  "otherCurrentWorkflows": {"success": 10},
+  "supersededRun": {"id": 43085060732, "conclusion": "cancelled", "replacement": 43085132908, "replacementConclusion": "success"}
+}
