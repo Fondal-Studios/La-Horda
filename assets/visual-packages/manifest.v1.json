@@ -6651,6 +6651,68 @@
    "fallback": null
   },
   {
+   "id": "myla_cast",
+   "champion": "myla",
+   "skin": null,
+   "kind": "body",
+   "packageVersion": "1.0.0-legacy",
+   "legacy": true,
+   "declaredIn": "js/assets/portadores-meta.js",
+   "atlas": {
+    "path": "assets/sprites/champions/myla/v2/cast.png",
+    "format": "png",
+    "width": 1344,
+    "height": 112,
+    "sha256": "1069b0085e3bae9854357869aaae4ebd875074623ccd6d0af4bd061a15d41110"
+   },
+   "grid": {
+    "frameWidth": 112,
+    "frameHeight": 112,
+    "cols": 12,
+    "rows": 1
+   },
+   "states": {
+    "cast_down": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "cast_side": [
+     4,
+     5,
+     6,
+     7
+    ],
+    "cast_up": [
+     8,
+     9,
+     10,
+     11
+    ]
+   },
+   "pivot": {
+    "anchor": 0.9464285714285714,
+    "footX": null
+   },
+   "scale": {
+    "referenceHeight": 82
+   },
+   "mirror": {
+    "left": "mirror"
+   },
+   "timings": null,
+   "attachmentPoints": null,
+   "lifecycle": {
+    "generated": "not_recorded",
+    "technicalValidation": "not_recorded",
+    "visualApproval": "not_recorded",
+    "integrated": "pass",
+    "inGameVerification": "not_recorded"
+   },
+   "fallback": null
+  },
+  {
    "id": "myla_death",
    "champion": "myla",
    "skin": null,

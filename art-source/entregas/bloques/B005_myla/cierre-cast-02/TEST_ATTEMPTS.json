@@ -1,0 +1,59 @@
+{
+  "new": [
+    {
+      "command": "node tools/art/check-myla-cast-contract.js",
+      "result": "PASS 8/8"
+    },
+    {
+      "command": "node --check js/rendering/portadores.js && node --check js/assets/portadores-meta.js",
+      "result": "PASS"
+    },
+    {
+      "command": "node tools/visual-package/cli.js check",
+      "result": "PASS 118 packages, 0 errors"
+    },
+    {
+      "command": "node tools/visual-package/test.js",
+      "result": "PASS 6/6"
+    },
+    {
+      "command": "node tools/art/build-art-atlas.js --check",
+      "result": "PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS"
+    }
+  ],
+  "historicalCI": {
+    "head": "97bda1b5d23e7757e6d8dbe82cd86592c2535f2d",
+    "success": 12,
+    "failures": [
+      {
+        "workflow": "QA regresion central",
+        "run": 43211364403,
+        "job": 131159524385,
+        "cause": "visual package manifest stale for new Myla package"
+      },
+      {
+        "workflow": "Champion entry balance",
+        "run": 43211327840,
+        "job": 131159390700,
+        "cause": "ATLAS_ARTE stale and cast.png unlisted"
+      },
+      {
+        "workflow": "VFX readability and combat parity",
+        "run": 43211328557,
+        "job": 131159391816,
+        "cause": "DIFF myla null arr during cast/idle boundary"
+      }
+    ]
+  },
+  "blocked": [
+    {
+      "command": "CHROMIUM_PATH=/usr/bin/chromium node tools/art/build-art-atlas.js",
+      "result": "BLOCKED_ENVIRONMENT",
+      "detail": "Chromium process singleton socket() failed: Operation not permitted; no gameplay capture claim"
+    }
+  ]
+}

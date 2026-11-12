@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "scope": "deterministic routing contract; browser/gameplay gate is separate",
+  "checks": [
+    {
+      "name": "base cast",
+      "expected": "myla_cast",
+      "calls": [
+        "myla_cast"
+      ],
+      "ok": true
+    },
+    {
+      "name": "base idle",
+      "expected": "myla",
+      "calls": [
+        "myla"
+      ],
+      "ok": true
+    },
+    {
+      "name": "Merienda cast",
+      "expected": "myla",
+      "calls": [
+        "myla"
+      ],
+      "ok": true
+    },
+    {
+      "name": "Arandanos cast",
+      "expected": "myla",
+      "calls": [
+        "myla"
+      ],
+      "ok": true
+    },
+    {
+      "name": "Berrinche priority",
+      "expected": "myla_berrinche",
+      "calls": [
+        "myla_berrinche"
+      ],
+      "ok": true
+    },
+    {
+      "name": "other champion",
+      "expected": "tanque",
+      "calls": [
+        "tanque"
+      ],
+      "ok": true
+    },
+    {
+      "name": "supplement metadata",
+      "ok": true
+    }
+  ]
+}

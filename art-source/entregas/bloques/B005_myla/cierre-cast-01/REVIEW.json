@@ -1,0 +1,29 @@
+{
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "component": "B005/cast/base-supplement",
+  "codexReference": "assets/ui/codex/champions/myla.png",
+  "source": "art-source/entregas/bloques/B005_myla/revision-cast-back-03/cast.png",
+  "installedCandidate": "assets/sprites/champions/myla/v2/cast.png",
+  "visualReview": {
+    "nativeContactSheet": "FAVORABLE_LOCAL",
+    "identity": [
+      "Myla base retains pink dress, bow, spoon and chibi proportions",
+      "front, side and back directions are unambiguous",
+      "frame 11 continues the authored back-cast sequence"
+    ],
+    "preserved": [
+      "Merienda Magica authored pack",
+      "Yogur de Arandanos authored pack",
+      "Berrinche authored pack and priority",
+      "PR190 death and PR229 bubble-state"
+    ],
+    "blocked": [
+      "real gameplay before/after",
+      "six arenas desktop/mobile",
+      "multiplayer relay",
+      "final Art Gate and exact-head CI"
+    ]
+  },
+  "decision": "Keep installed only on draft PR297 as a connected candidate; do not merge."
+}

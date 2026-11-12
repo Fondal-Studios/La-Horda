@@ -3,12 +3,12 @@
  "generator": "tools/art/build-art-atlas.js",
  "reference": "Códice (docs/LA_HORDA_CODEX.md); decisión curada en docs/art/ATLAS_VIGENTE.json",
  "sources": {
-  "hash": "86dcb027c8940e05b1ab5325fc800e0a94d8c779",
+  "hash": "f65f6854e74ea68323e2832b77113e4045fa714f",
   "files": 51
  },
  "runtime": {
   "url": "index.html?dev=1&lazy=1 (producción: carga por grupos, webp activo)",
-  "loadedImages": 1589,
+  "loadedImages": 1590,
   "sampling": "24 muestras por estado y dirección (down/side/left/up)"
  },
  "summary": {
@@ -35,7 +35,7 @@
   "files": {
    "CODEX_OK": 871,
    "HUERFANO": 104,
-   "ARTE_VIEJO": 30
+   "ARTE_VIEJO": 31
   }
  },
  "champions": {
@@ -3049,7 +3049,8 @@
    "auditScore": 58,
    "vigente": [
     "assets/sprites/champions/myla/atlas.png",
-    "assets/sprites/champions/myla/v2/death.png"
+    "assets/sprites/champions/myla/v2/death.png",
+    "assets/sprites/champions/myla/v2/cast.png"
    ],
    "atlases": [
     {
@@ -3069,6 +3070,15 @@
       112
      ],
      "bytes": 20241
+    },
+    {
+     "file": "assets/sprites/champions/myla/v2/cast.png",
+     "loadedAs": "png",
+     "size": [
+      1344,
+      112
+     ],
+     "bytes": 119927
     }
    ],
    "packs": [
@@ -3086,10 +3096,15 @@
      "key": "myla_death",
      "file": "assets/sprites/champions/myla/v2/death.png",
      "ready": true
+    },
+    {
+     "key": "myla_cast",
+     "file": "assets/sprites/champions/myla/v2/cast.png",
+     "ready": true
     }
    ],
    "usedBy": [
-    "CHAMP_PACK.myla / CHAMP_PACK.myla_berrinche / CHAMP_PACK.myla_death",
+    "CHAMP_PACK.myla / CHAMP_PACK.myla_berrinche / CHAMP_PACK.myla_death / CHAMP_PACK.myla_cast",
     "drawHeroBody (js/rendering/entities.js)"
    ],
    "clips": {
@@ -3112,10 +3127,10 @@
      "left": 3
     },
     "cast": {
-     "down": 3,
-     "side": 3,
-     "up": 3,
-     "left": 3
+     "down": 4,
+     "side": 4,
+     "up": 4,
+     "left": 4
     },
     "ultimate": {
      "down": 3,
@@ -3140,7 +3155,7 @@
     "idle": 2,
     "walk": 3,
     "attack": 3,
-    "cast": 3,
+    "cast": 4,
     "ultimate": 3,
     "hit": 1,
     "death": 4
@@ -15062,6 +15077,7 @@
   {"file":"assets/sprites/champions/myla/skins/myla_arandanos/atlas.png","category":"champions","size":[896,336],"bytes":222017,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/unique-skins-meta.js"],"status":"ARTE_VIEJO"},
   {"file":"assets/sprites/champions/myla/skins/myla_arandanos/berrinche.png","category":"champions","size":[448,336],"bytes":112176,"webp":false,"loaded":true,"usedBy":["js/assets/unique-skins-meta.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/myla/skins/myla_arandanos/preview.png","category":"champions","size":[112,112],"bytes":9882,"webp":false,"loaded":false,"usedBy":["js/assets/unique-skins-meta.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/champions/myla/v2/cast.png","category":"champions","size":[1344,112],"bytes":119927,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/portadores-meta.js"],"status":"ARTE_VIEJO"},
   {"file":"assets/sprites/champions/myla/v2/death.png","category":"champions","size":[448,112],"bytes":20241,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/portadores-meta.js"],"status":"ARTE_VIEJO"},
   {"file":"assets/sprites/champions/nahir/atlas.png","category":"champions","size":[448,1008],"bytes":259218,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/champions/expedition/art.js","js/modes/crystal-wars/atlas.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/nahir/croma-preview.png","category":"champions","size":[112,112],"bytes":6037,"webp":false,"loaded":false,"usedBy":[],"status":"HUERFANO"},

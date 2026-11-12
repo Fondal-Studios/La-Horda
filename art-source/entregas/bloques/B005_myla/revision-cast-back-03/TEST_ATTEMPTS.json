@@ -1,0 +1,26 @@
+{
+  "newTests": [
+    {
+      "command": "python3 art-source/entregas/bloques/B005_myla/revision-cast-back-03/build.py",
+      "result": "PASS",
+      "scope": "one alpha component; binary extraction; frames 0-10 byte-exact; deterministic output"
+    },
+    {
+      "command": "node art-source/entregas/bloques/B005_myla/revision-cast-back-03/check-native.js",
+      "result": "PASS",
+      "scope": "12/12 cells canonical numerical screen; binary alpha"
+    }
+  ],
+  "historicalNotRerun": [
+    "revision-cast-back-02 detector 11/12 PASS with old frame11 FAIL",
+    "PR190 death integration",
+    "PR229 bubble-state gates"
+  ],
+  "missing": [
+    "real gameplay renderer before/after",
+    "base plus both skins and Berrinche regression",
+    "desktop/mobile",
+    "multiplayer if consumer changes",
+    "exact-head GitHub CI"
+  ]
+}
