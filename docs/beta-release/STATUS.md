@@ -41,3 +41,8 @@
 - Runway: `creditBalance` = 2 (no alcanza para generar; 1 imagen = 8). Sin gasto.
 
 - i18n lote 377 (2026-11-11): tooltips de talentos con «Sinergias» (cabeza «Nombre — descripción» + líneas de sinergia, formas «cada punto da» y «por punto en A, B y C») por patrones recursivos + 16 nombres de talentos; prueba en `tools/i18n/test-i18n.js`. Quedan nombres de piezas generadas y claves internas de enemigos sin traducir.
+
+### Paquete de instrucciones de Runway (2026-11-12)
+- `docs/art-brief/runway-pack/`: README con el prompt maestro, `RECETA.md` (método con referencias @codex/@pose, criterio de aceptación, reducción determinista, gates), `POSES_CAMPEON.md` (36 poses y movimiento), `ENEMIGOS_GUIA.md`, 46 fichas de campeón con sus 36 prompts, 104 criaturas en 12 arenas con 9 estados cada una, los 731 bloques / 1.244 items de la cola con descripción, método y prompt, y `COSTOS.md` (≈ 959 imágenes: ≈ 7.700 créditos si todo sale a la primera, ≈ 19.000 con reintentos razonables; saldo actual 2).
+- Generado por `python3 tools/art/build-runway-pack.py` desde `node tools/art/dump-game-data.js`; cobertura y sincronía verificadas por `python3 tools/art/test-runway-pack.py` (CI: `art-production-evidence.yml`). Nuevo `tools/art/pose-ref.py` recorta el cuadro actual de un atlas como `@pose`.
+- NO verificado: que Runway devuelva cada pose con la calidad pedida (hay descartes registrados); el paquete ordena el método y el gasto, no garantiza el resultado.
