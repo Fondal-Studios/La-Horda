@@ -24,7 +24,7 @@
 
 **Campeones por clasificación de cuerpo (sección B):** estados propios completos 11 · completo salvo idle 1 cuadro 24 · arte_viejo 8 · depende de código (en curso) 3.
 
-**Trabajo con Runway (todas las categorías):** 93 entradas · hecho 57 · falta 15 · rechazado 13 · hecho_sin_integrar 7 · bloqueado 1 · créditos registrados: 1393.
+**Trabajo con Runway (todas las categorías):** 94 entradas · hecho 57 · falta 15 · rechazado 13 · hecho_sin_integrar 8 · bloqueado 1 · créditos registrados: 1413.
 
 **Categorías o datos `sin_verificar` (y por qué):**
 

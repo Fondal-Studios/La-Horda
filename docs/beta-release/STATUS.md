@@ -71,7 +71,7 @@
 ### Ynara y gpt_image_2 (2026-11-12, noche)
 - **Ynara: lanzar y definitiva propios instalados** (atlas 384×1056, cuadros 36–43 hechos con `gpt_image_2`; `js/assets/ynara-meta.js` y `imageSize` de Crystal Wars actualizados). Antes eran copias del ataque. Capturas antes/después en `art-source/captures/ynara/`. Gates: roster_gate 0 fallos; style_gate no aplica (celda de 96); aprobación de arte humana pendiente. Skins de Ynara conservan cast/ultimate = ataque (no se rehicieron).
 - **Corrige la conclusión anterior:** el límite era `gen4_image`/video, no Runway. Con `gpt_image_2` en hoja de 4 poses el Tanque dio 4 poses de lanzar distintas (candidato, sin integrar) donde `gen4_image` daba una pose de pie. Muestra: 2 campeones; falta probar la muerte. Detalle en `ART_CREDITS.md` y `RECETA.md` §1.
-- `docs/steam/DECLARACION_IA.md` ya declara `gpt_image_2` (8 generaciones, 167 recibos de Runway en total); **pendiente del dueño: confirmar los términos de uso comercial de ese modelo**.
+- `docs/steam/DECLARACION_IA.md` ya declara `gpt_image_2` (9 generaciones, 168 recibos de Runway en total); **pendiente del dueño: confirmar los términos de uso comercial de ese modelo**.
 
 ### Cazadora y Musashi (2026-11-12, noche)
 - **Definitiva propia instalada** en Cazadora y Musashi (`ultimate_*` → cuadros 52–55 de su atlas `codex-v1`; antes caían en el lanzar), con `gpt_image_2` (hojas de 4 poses). Aprobación de arte humana pendiente; `style_gate` no aplica (celdas 192×160). Musashi: proporciones algo más macizas y línea de 1 px bajo los pies; pies en la fila 113 (2 px sobre los cuadros viejos, fila 115). Muestra acumulada con `gpt_image_2`: 4 campeones, 6 hojas (5 aceptadas, 1 rechazada por escala).
@@ -80,6 +80,9 @@
 
 ### Ilkan: ataques de frente y de espaldas (2026-11-12, local)
 - **Instalados** `attack_down` (cuadros 64-67) y `attack_up` (68-71) en el atlas `codex-v1` de Ilkan, con `gpt_image_2` (2 hojas, 40 cr; saldo 99 -> 59). `drawIlkan` ya los despacha. Aprobacion de arte humana pendiente; `style_gate` no aplica. Gates y capturas en `ART_CREDITS.md` y `art-source/captures/ilkan/`.
+
+### Libertador: definitiva generada, NO instalada (2026-11-12, local)
+- Hoja de 4 poses de `ult_cast` aceptada (`gpt_image_2`, 20 cr; saldo 59 -> 39); candidato `art-source/libertador-runway/atlas.png` (824x882, cuadros 64-67). **Bloqueado por gates**: `tools/art/check-libertador-motion.js` y `check-libertador-death.js` fijan el sha256 del atlas v2 aprobado y fallan con el ampliado (probado y revertido). Decision del dueno: re-aprobar y actualizar el sha, o cargarla como paquete aparte. Captura: `art-source/captures/libertador/runway_ult_antes_despues.png`.
 
 ### Mergeado: PRs #300 y #301 (2026-11-12, noche) — campeones con gpt_image_2
 - `main` = 88710d18. **Instalados** (aprobación de arte humana pendiente en todos): lanzar y definitiva de Ynara (#300); definitiva de Cazadora y de Musashi (#301). Candidato sin integrar: lanzar del Tanque (`art-source/runway-designs/tanque/g1`). Libertador: sin cambios de arte (su definitiva y su ataque de frente dependen de código: `js/champions/libertador.js`, `ult_cast` con prog=0; decisión del dueño pendiente).
