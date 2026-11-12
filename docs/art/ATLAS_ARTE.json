@@ -3,7 +3,7 @@
  "generator": "tools/art/build-art-atlas.js",
  "reference": "Códice (docs/LA_HORDA_CODEX.md); decisión curada en docs/art/ATLAS_VIGENTE.json",
  "sources": {
-  "hash": "86dcb027c8940e05b1ab5325fc800e0a94d8c779",
+  "hash": "359738d2f17d6b3943213d354f4047aa23a8ca5f",
   "files": 51
  },
  "runtime": {
@@ -18,9 +18,9 @@
    "ARTE_VIEJO": 9
   },
   "championSkins": {
-   "CODEX_OK": 9,
+   "CODEX_OK": 11,
    "FALTA_ANIMACION": 90,
-   "ARTE_VIEJO": 5
+   "ARTE_VIEJO": 3
   },
   "enemies": {
    "CODEX_OK": 63,
@@ -2496,49 +2496,48 @@
     {
      "id": "libertador_escarcha",
      "kind": "croma",
-     "status": "ARTE_VIEJO",
-     "why": "recolor del atlas v2 del Libertador, sin el motion v3: ataque de 1 cuadro",
+     "status": "CODEX_OK",
      "atlases": [
       {
        "file": "assets/sprites/champions/libertador/skins/libertador_escarcha/atlas.png",
        "loadedAs": "png",
        "size": [
-        896,
-        336
+        448,
+        1008
        ],
-       "bytes": 185749
+       "bytes": 244629
       }
      ],
      "clips": {
       "idle": {
-       "down": 1,
-       "side": 1,
-       "up": 1,
-       "left": 1
+       "down": 2,
+       "side": 2,
+       "up": 2,
+       "left": 2
       },
       "walk": {
-       "down": 3,
-       "side": 3,
-       "up": 3,
-       "left": 3
+       "down": 4,
+       "side": 4,
+       "up": 4,
+       "left": 4
       },
       "attack": {
-       "down": 1,
-       "side": 1,
-       "up": 1,
-       "left": 1
+       "down": 4,
+       "side": 4,
+       "up": 4,
+       "left": 4
       },
       "cast": {
-       "down": 1,
-       "side": 1,
-       "up": 1,
-       "left": 1
+       "down": 4,
+       "side": 4,
+       "up": 4,
+       "left": 4
       },
       "ultimate": {
-       "down": 1,
-       "side": 1,
-       "up": 1,
-       "left": 1
+       "down": 4,
+       "side": 4,
+       "up": 4,
+       "left": 4
       },
       "hit": {
        "down": 1,
@@ -2547,74 +2546,68 @@
        "left": 1
       },
       "death": {
-       "down": 2,
-       "side": 2,
-       "up": 2,
-       "left": 2
+       "down": 4,
+       "side": 4,
+       "up": 4,
+       "left": 4
       }
      },
      "minFrames": {
-      "idle": 1,
-      "walk": 3,
-      "attack": 1,
-      "cast": 1,
-      "ultimate": 1,
+      "idle": 2,
+      "walk": 4,
+      "attack": 4,
+      "cast": 4,
+      "ultimate": 4,
       "hit": 1,
-      "death": 2
+      "death": 4
      },
-     "gaps": [
-      "idle",
-      "attack",
-      "cast",
-      "ultimate"
-     ]
+     "gaps": []
     },
     {
      "id": "libertador_ancestral",
      "kind": "croma",
-     "status": "ARTE_VIEJO",
-     "why": "recolor del atlas v2 del Libertador, sin el motion v3: ataque de 1 cuadro",
+     "status": "CODEX_OK",
      "atlases": [
       {
        "file": "assets/sprites/champions/libertador/skins/libertador_ancestral/atlas.png",
        "loadedAs": "png",
        "size": [
-        896,
-        336
+        448,
+        1008
        ],
-       "bytes": 176240
+       "bytes": 263409
       }
      ],
      "clips": {
       "idle": {
-       "down": 1,
-       "side": 1,
-       "up": 1,
-       "left": 1
+       "down": 2,
+       "side": 2,
+       "up": 2,
+       "left": 2
       },
       "walk": {
-       "down": 3,
-       "side": 3,
-       "up": 3,
-       "left": 3
+       "down": 4,
+       "side": 4,
+       "up": 4,
+       "left": 4
       },
       "attack": {
-       "down": 1,
-       "side": 1,
-       "up": 1,
-       "left": 1
+       "down": 4,
+       "side": 4,
+       "up": 4,
+       "left": 4
       },
       "cast": {
-       "down": 1,
-       "side": 1,
-       "up": 1,
-       "left": 1
+       "down": 4,
+       "side": 4,
+       "up": 4,
+       "left": 4
       },
       "ultimate": {
-       "down": 1,
-       "side": 1,
-       "up": 1,
-       "left": 1
+       "down": 4,
+       "side": 4,
+       "up": 4,
+       "left": 4
       },
       "hit": {
        "down": 1,
@@ -2623,27 +2616,22 @@
        "left": 1
       },
       "death": {
-       "down": 2,
-       "side": 2,
-       "up": 2,
-       "left": 2
+       "down": 4,
+       "side": 4,
+       "up": 4,
+       "left": 4
       }
      },
      "minFrames": {
-      "idle": 1,
-      "walk": 3,
-      "attack": 1,
-      "cast": 1,
-      "ultimate": 1,
+      "idle": 2,
+      "walk": 4,
+      "attack": 4,
+      "cast": 4,
+      "ultimate": 4,
       "hit": 1,
-      "death": 2
+      "death": 4
      },
-     "gaps": [
-      "idle",
-      "attack",
-      "cast",
-      "ultimate"
-     ]
+     "gaps": []
     }
    ]
   },
@@ -14963,12 +14951,12 @@
   {"file":"assets/sprites/champions/libertador/skins/granadero/atlas.png","category":"champions","size":[576,864],"bytes":346797,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/complete-set-skins-meta.js","ASSET_MANIFEST"],"status":"ARTE_VIEJO"},
   {"file":"assets/sprites/champions/libertador/skins/granadero/horse.png","category":"champions","size":[1024,336],"bytes":228906,"webp":true,"loaded":true,"usedBy":["js/assets/complete-set-skins-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/libertador/skins/granadero/preview.png","category":"champions","size":[96,96],"bytes":7397,"webp":true,"loaded":true,"usedBy":["js/assets/complete-set-skins-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/champions/libertador/skins/libertador_ancestral/atlas.png","category":"champions","size":[896,336],"bytes":176240,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/unique-skins-meta.js"],"status":"ARTE_VIEJO"},
+  {"file":"assets/sprites/champions/libertador/skins/libertador_ancestral/atlas.png","category":"champions","size":[448,1008],"bytes":263409,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/unique-skins-meta.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/libertador/skins/libertador_ancestral/horse.png","category":"champions","size":[576,384],"bytes":169256,"webp":false,"loaded":true,"usedBy":["js/assets/unique-skins-meta.js"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/champions/libertador/skins/libertador_ancestral/preview.png","category":"champions","size":[112,112],"bytes":8908,"webp":false,"loaded":false,"usedBy":["js/assets/unique-skins-meta.js"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/champions/libertador/skins/libertador_escarcha/atlas.png","category":"champions","size":[896,336],"bytes":185749,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/unique-skins-meta.js"],"status":"ARTE_VIEJO"},
+  {"file":"assets/sprites/champions/libertador/skins/libertador_ancestral/preview.png","category":"champions","size":[50,73],"bytes":7624,"webp":false,"loaded":false,"usedBy":["js/assets/unique-skins-meta.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/champions/libertador/skins/libertador_escarcha/atlas.png","category":"champions","size":[448,1008],"bytes":244629,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/unique-skins-meta.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/libertador/skins/libertador_escarcha/horse.png","category":"champions","size":[576,384],"bytes":166565,"webp":false,"loaded":true,"usedBy":["js/assets/unique-skins-meta.js"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/champions/libertador/skins/libertador_escarcha/preview.png","category":"champions","size":[112,112],"bytes":8660,"webp":false,"loaded":false,"usedBy":["js/assets/unique-skins-meta.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/champions/libertador/skins/libertador_escarcha/preview.png","category":"champions","size":[56,66],"bytes":7410,"webp":false,"loaded":false,"usedBy":["js/assets/unique-skins-meta.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/libertador/v2/atlas.png","category":"champions","size":[824,784],"bytes":232142,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/champion-sprites.js","js/modes/crystal-wars/atlas.js","ASSET_MANIFEST"],"status":"ARTE_VIEJO"},
   {"file":"assets/sprites/champions/libertador/v2/death.png","category":"champions","size":[448,112],"bytes":35793,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/champion-sprites.js"],"status":"ARTE_VIEJO"},
   {"file":"assets/sprites/champions/libertador/v2/fx/blood_01.png","category":"champions","size":[64,57],"bytes":4090,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"HUERFANO"},

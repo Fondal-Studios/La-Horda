@@ -548,6 +548,33 @@ async function accountRegister(user, pass, email){
   await accountPull("login");
   return { ok: true };
 }
+/* ---------------- Steam (solo en la app de escritorio): entrar o vincular con el ticket de sesión ---------------- */
+// El juego NUNCA decide quién es el jugador: pide el ticket a Steam (vía el contenedor) y el SERVIDOR lo valida (server/steam.js).
+function accountSteamAvailable(){ const D = typeof window !== "undefined" ? window.HORDA_DESKTOP : null; return !!(D && typeof D.steamTicket === "function"); }
+async function _acctSteamTicket(){
+  if(!accountSteamAvailable()) return null;
+  try{ const t = await window.HORDA_DESKTOP.steamTicket(); return typeof t === "string" && t.length >= 16 ? t : null; }catch(e){ return null; }
+}
+async function accountSteamLogin(){
+  const ticket = await _acctSteamTicket();
+  if(!ticket) return { ok: false, error: "NO_STEAM", msg: "No se pudo hablar con Steam. Abrí el juego desde Steam e intentá de nuevo." };
+  let name; try{ const i = await window.HORDA_DESKTOP.steamInfo(); name = i && i.name; }catch(e){}
+  const r = await accountFetch("POST", "/api/steam/login", { ticket, name: name || undefined }, { auth: false, timeout: 90000 });
+  if(r.status !== 200 && r.status !== 201) return { ok: false, status: r.status, error: r.j.error, msg: r.j.msg || "No se pudo entrar con Steam." };
+  _acctSetSession(r.j);
+  await accountPull("login");
+  accountRefreshIdentity();
+  return { ok: true, created: !!r.j.created };
+}
+async function accountSteamLink(){
+  if(!acct.session) return { ok: false, error: "NO_SESSION", msg: "Primero entrá con tu cuenta." };
+  const ticket = await _acctSteamTicket();
+  if(!ticket) return { ok: false, error: "NO_STEAM", msg: "No se pudo hablar con Steam. Abrí el juego desde Steam e intentá de nuevo." };
+  const r = await accountFetch("POST", "/api/steam/link", { ticket }, { timeout: 60000 });
+  if(r.status !== 200) return { ok: false, status: r.status, error: r.j.error, msg: r.j.msg || "No se pudo vincular Steam." };
+  _acctEmit();
+  return { ok: true };
+}
 async function accountLogout(){
   if(!acct.session) return;
   if(acct.sync && acct.sync.dirty && !acct.conflict) await accountUpload("salir");
@@ -633,6 +660,7 @@ function _acctRenderAuth(mode){
       <div class="acc-status" role="status" aria-live="polite"></div>
     </form>
     <div class="acc-or"><span>o</span></div>
+    ${accountSteamAvailable() ? '<button type="button" class="btn wide acc-steam" id="acc-steam-btn">Entrar con Steam</button>' : ""}
     <button type="button" class="btn secondary wide acc-guest" id="acc-guest-btn">Jugar como invitado</button>
     <div class="acc-note">${reg
       ? "Tu progreso (guardianes, objetos, oro y campaña) queda guardado en la nube y lo seguís en cualquier dispositivo."
@@ -640,6 +668,7 @@ function _acctRenderAuth(mode){
   body.querySelectorAll("[data-acc-tab]").forEach(b => b.addEventListener("click", () => { if(!acct.busy){ _acctRenderAuth(b.dataset.accTab); const u = document.getElementById("acc-user"); if(u) u.focus(); } }));
   body.querySelector(".acc-form").addEventListener("submit", ev => { ev.preventDefault(); _acctSubmit(reg); });
   body.querySelector("#acc-guest-btn").addEventListener("click", _acctGuest);
+  const stBtn = body.querySelector("#acc-steam-btn"); if(stBtn) stBtn.addEventListener("click", _acctSteamSubmit);
   if(noServer){
     body.querySelectorAll(".acc-form input, .acc-form button").forEach(x => { x.disabled = true; });
     _acctStatus("Las cuentas necesitan el servidor online (no configurado en esta versión). Jugá como invitado.", "warn");
@@ -720,6 +749,19 @@ async function _acctSubmit(reg){
     return;
   }
   _acctFinish(reg ? `¡Cuenta creada! Bienvenido, ${acct.session.name}.` : `Hola, ${acct.session.name}. Progreso sincronizado.`);
+}
+async function _acctSteamSubmit(){
+  if(acct.busy) return;
+  acct.busy = true;
+  const btns = acct.el.querySelectorAll(".acc-form input, .acc-tab, #acc-steam-btn, #acc-guest-btn, #acc-submit"); btns.forEach(x => { x.disabled = true; });
+  _acctStatus("Entrando con Steam…");
+  let res; try{ res = await accountSteamLogin(); }catch(e){ res = { ok: false, msg: "Sin conexión con el servidor. Podés jugar como invitado y entrar después." }; }
+  acct.busy = false;
+  if(!acct.el || acct.view === "conflict") return;
+  btns.forEach(x => { x.disabled = false; });
+  if(!res.ok){ _acctStatus(res.msg, "err"); return; }
+  if(acct.conflict){ _acctShowConflict(); return; }
+  _acctFinish(res.created ? `¡Cuenta creada con Steam! Bienvenido, ${acct.session.name}.` : `Hola, ${acct.session.name}. Progreso sincronizado.`);
 }
 function _acctGuest(){
   _acctGuestSet(true);

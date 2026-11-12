@@ -74,7 +74,7 @@ function routes(ctx){
     const u = await target(new URL(req.url, "http://x").searchParams.get("id"));
     const out = sheet(u, await store().getSave(u.id), await read());
     // moneda premium (Brasas): vive en la billetera del servidor, no en el guardado (server/wallet.js)
-    if(store().walletGet){ out.premium = (await store().walletGet(u.id)).premium; out.premiumLedger = await store().walletLedger(u.id, 25); }
+    if(store().walletGet){ out.premium = (await store().walletGet(u.id)).premium; out.premiumLedger = (await store().walletLedger(u.id, 80)).filter(e => !(typeof e.reason === "string" && /^steam_order(_void)?:/.test(e.reason))).slice(0, 25); }   // sin los asientos internos de pedidos de Steam
     return out;
   });
   route("GET", "/api/gm/user/save", "EDIT_USER_PROGRESS", async({req, user}) => {

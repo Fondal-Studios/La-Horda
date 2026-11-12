@@ -59,6 +59,7 @@ if (isGame) {
     unlockAchievement: id => ipcRenderer.send('lahorda:achievement', String(id)),
     setPresence: (k, v) => ipcRenderer.send('lahorda:presence', String(k), String(v)),
     steamInfo: () => ipcRenderer.invoke('lahorda:steam-info'),
+    steamTicket: () => ipcRenderer.invoke('lahorda:steam-ticket'),
     flushSave: () => safe()
   });
   ipcRenderer.on('lahorda:focus', (e, on) => { if (!on) safe(); window.dispatchEvent(new CustomEvent(on ? 'lahorda-focus' : 'lahorda-blur')); });

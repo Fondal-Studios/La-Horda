@@ -1,8 +1,8 @@
 {
  "subject": {
-  "pr": 290,
+  "pr": 295,
   "branch": "claude/la-horda-beta-audit-exec-mwv8x0",
-  "head": "03a03e4ca0270e314da2ed16acbaddb3b9d6ad47",
+  "head": "df3804f47191794fef49cdec459c5268d3058311",
   "authorAgent": "claude-sesion-principal",
   "authorId": "claude-sesion-principal"
  },
@@ -11,57 +11,57 @@
    "stage": "produccion",
    "by": "claude-sesion-principal",
    "role": "agent",
-   "commit": "03a03e4ca0270e314da2ed16acbaddb3b9d6ad47",
-   "at": "2026-11-11T04:00:00Z"
+   "commit": "df3804f47191794fef49cdec459c5268d3058311",
+   "at": "2026-11-12T00:00:00Z"
   },
   {
    "stage": "qa",
-   "by": "claude-qa-290",
+   "by": "claude-qa-295",
    "role": "qa",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "03a03e4ca0270e314da2ed16acbaddb3b9d6ad47",
-    "tests": 14,
+    "sha": "df3804f47191794fef49cdec459c5268d3058311",
+    "tests": 9,
     "failed": 0,
-    "report": "Sobre 03a03e4c, 14 comandos en serie, 0 fallos y 0 flakes: brasas-store 56, welcome-picks 42, test-i18n, validate-tr, server/test-wallet 67/67, check-collection, t_shop_rotation, check-entry-reference, test-wallet-pieces 35/35, test-payments-mp 41, test-game-master 127, test-founders 158, test-competitive-entitlements, test-legacy-champion-ids 26. Revisiones previas sobre 6211e334 y 0f550c18 (t_save_resilience [G], desktop/test-stage). No cubrió: pruebas de navegador/UI de los workflows (tools/ux/*, gm-ui, crystal-wars), simulaciones de balance, postgres/admin, dispositivos reales, pagos reales."
+    "report": "Sobre df3804f4, 9 suites en serie sin fallos (test-steam 53, test-wallet 67/67, test-payments-mp 41, test-wallet-pieces 35/35, test-founders 158, test-game-master 127, test-accounts 0 fallos, test-battlepass 64, steam-client 24). Rondas previas encontraron: el mensaje del 429 no llegaba al cliente, y pedidos que Steam no aceptó contaban para el tope (falso bloqueo); corregidos. Marcó además el riesgo de anular pedidos ante errores ambiguos de Steam (cobro sin crédito), corregido en df3804f4 (solo un rechazo definitivo anula) y reverificado. MINOR abiertos: el barrido no espacia las consultas de pedidos que Steam no conoce (hasta 7 días), un 200 con cuerpo inesperado cuenta como rechazo, ventana de 80 del historial, tope no atómico. No cubrió Steam real, Postgres, concurrencia del tope ni navegador."
    },
-   "at": "2026-11-11T04:10:00Z"
+   "at": "2026-11-12T00:10:00Z"
   },
   {
    "stage": "arquitectura",
-   "by": "claude-arq-290",
+   "by": "claude-arq-295",
    "role": "arquitecto",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "03a03e4ca0270e314da2ed16acbaddb3b9d6ad47",
-    "report": "Tres pasadas (6211e334, 0f550c18, 03a03e4c). Sin BLOCKER. Hallazgos IMPORTANT atendidos: aviso falso al elegir la nube cuando la aplicación falla, docs históricos del pack retirado, cifras de Steam. Verificó que el pack v2 no da derecho a campeones, que el retirado sigue acreditando pagos pendientes y conserva derechos heredados, y que brasas-store.js refleja la regla sin debilitar chequeos. Residuales MINOR: 129 Brasas/US$ queda sobre el pack de US$ 49,99 (excluido de la escalera por nota); un comprador del pack viejo puede comprar también el vigente."
+    "sha": "df3804f47191794fef49cdec459c5268d3058311",
+    "report": "Aprobó daf7873f con observaciones; RECHAZÓ 2be19abd porque anulaba el pedido ante cualquier error de InitTxn, incluidos timeout/5xx donde Steam pudo crearlo y el jugador aprobarlo (cobro sin crédito, reabría el hueco que cerraba el barrido). Corregido en df3804f4: solo STEAM_INIT_FAILED anula; los ambiguos quedan abiertos y el barrido los acredita; test nuevo (Steam crea el pedido y responde 503; el barrido acredita 1100). Aprobó df3804f4 sin BLOCKER ni IMPORTANT. MINOR: !r.ok incluye 3xx como rechazo."
    },
-   "at": "2026-11-11T04:20:00Z"
+   "at": "2026-11-12T00:20:00Z"
   },
   {
    "stage": "staging",
-   "by": "claude-integrador-290b",
+   "by": "claude-integrador-295",
    "role": "integrador",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "03a03e4ca0270e314da2ed16acbaddb3b9d6ad47",
+    "sha": "df3804f47191794fef49cdec459c5268d3058311",
     "branch": "beta/integracion-20261110",
-    "tests": 38,
+    "tests": 26,
     "failed": 0,
-    "run": "https://github.com/Fondal-Studios/La-Horda/pull/290"
+    "run": "https://github.com/Fondal-Studios/La-Horda/pull/295"
    },
-   "at": "2026-11-11T05:00:00Z"
+   "at": "2026-11-12T00:30:00Z"
   },
   {
    "stage": "aprobacion",
-   "by": "claude-integrador-290b",
+   "by": "claude-integrador-295",
    "role": "director",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "03a03e4ca0270e314da2ed16acbaddb3b9d6ad47",
-    "report": "Una primera revisión del integrador (sobre 0f550c18) RECHAZÓ por una regresión real (brasas-store.js esperaba el pack retirado; contract y entry-reference en rojo); se corrigió en 03a03e4c. Sobre 03a03e4c: 'Regresion del juego (completa)' y '(rapida)', 'contract' y 'entry-reference' en success. Quedan 2 jobs no verdes: 'Clasificacion, contratos y servidor' (esperado hasta este registro: R4 con el registro de la PR 289) y 'Objetos, economía y tienda (pruebas que hoy fallan en la base)', con continue-on-error, que falla CARCELERO.cadenas_ancladas_y_se_rompen_por_fase de t_abismo; el diff no toca esa zona; es inferencia de flake, no probado por rerun. Riesgos: la base de main tiene 3 de 5 runs recientes de integracion-pruebas en failure sin inspeccionar; sin pruebas reales de multiplayer, performance, pagos reales ni Electron. Aprobación dada por un agente conforme a reviews/POLITICA.json (decisión del propietario); no la dio ninguna persona."
+    "sha": "df3804f47191794fef49cdec459c5268d3058311",
+    "report": "Aprobado sobre df3804f4. Verificado por el integrador: beta/integracion-20261110 == df3804f4; diff de 5 archivos (wallet.js, payments.js, admin-users.js, test-steam.js, guía); CI completo en success (regresión rápida y completa, entry-reference con 'test-steam: 53 comprobaciones OK' y 'steam-client: 24 checks PASS', CodeQL y el resto) salvo 'Clasificacion, contratos y servidor' por R4 con el registro viejo de la PR 294 (esperado hasta este registro). Tomado del relato: aprobaciones de QA y arquitectura. Riesgos: nada probado contra Steam real (falta sandbox con AppID real; no activar live); los pedidos cancelados en el overlay cuentan 24 h para el tope; candados en memoria (una sola instancia); el barrido consulta pedidos terminales hasta 7 días. Aprobación dada por un agente conforme a reviews/POLITICA.json (decisión del propietario); no la dio ninguna persona."
    },
-   "at": "2026-11-11T05:05:00Z"
+   "at": "2026-11-12T00:35:00Z"
   }
  ]
 }

@@ -274,10 +274,50 @@ async function premiumCheckout(packId, expectedPrice){
   try{ r = await accountFetch("POST", "/api/wallet/checkout", { pack: packId, expectedPrice }); }
   catch(e){ return { ok: false, reason: "Sin conexión con el servidor. No se cobró nada." }; }
   if(r.status === 200 && r.j && r.j.redirect) return { ok: true, redirect: r.j.redirect };
+  if(r.status === 200 && r.j && r.j.steam && typeof r.j.orderId === "string"){ premiumSteamPendingSet(r.j.orderId, packId); return { ok: true, steam: true, orderId: r.j.orderId }; }
+  if(r.status === 403 && r.j && r.j.error === "STEAM_NOT_LINKED") return { ok: false, needsSteamLink: true, reason: (r.j.msg) || "Para comprar con Steam tenés que vincular tu cuenta de Steam." };
   if(r.status === 501) return { ok: false, soon: true, reason: (r.j && r.j.msg) || "Muy pronto: los pagos todavía no están conectados." };
   await premiumRefresh(true);
   return { ok: false, reason: (r.j && r.j.msg && r.j.msg !== r.j.error ? r.j.msg : "No se pudo iniciar el pago. No se cobró nada.") };
 }
+/* ---------- Steam: el jugador aprueba la compra en el overlay de Steam; el juego pregunta al servidor cómo va ----------
+   Nada se acredita por lo que diga el cliente: /api/wallet/steam/confirm consulta el pedido a Steam. El pedido queda anotado en este
+   dispositivo (localStorage) para retomarlo si se cierra el juego antes de aprobar o de que llegue la confirmación. */
+const STEAM_PENDING_KEY = "laHordaSteamPending_v1";
+function premiumSteamPending(){ try{ const j = JSON.parse(localStorage.getItem(STEAM_PENDING_KEY) || "null"); return j && typeof j.orderId === "string" && /^\d{10,18}$/.test(j.orderId) && Date.now() - (j.at || 0) < 86400000 ? j : null; }catch(e){ return null; } }
+function premiumSteamPendingSet(orderId, pack){ try{ localStorage.setItem(STEAM_PENDING_KEY, JSON.stringify({ orderId, pack, at: Date.now() })); }catch(e){} }
+function premiumSteamPendingClear(){ try{ localStorage.removeItem(STEAM_PENDING_KEY); }catch(e){} }
+// Una consulta: { state: "pending" | "credited" | "reversed" | "rejected" | "error", ... }
+async function premiumSteamConfirm(orderId){
+  let r; try{ r = await accountFetch("POST", "/api/wallet/steam/confirm", { orderId }); }catch(e){ return { state: "error", reason: "Sin conexión con el servidor. La compra, si la aprobaste, se confirma sola más tarde." }; }
+  if(r.status === 200 && r.j){
+    if(r.j.pending) return { state: "pending" };
+    if(r.j.credited || r.j.duplicate){ premiumSteamPendingClear(); await premiumRefresh(true); return { state: "credited", premium: r.j.premium, duplicate: !!r.j.duplicate }; }
+    if(r.j.reversed){ premiumSteamPendingClear(); await premiumRefresh(true); return { state: "reversed" }; }
+    premiumSteamPendingClear(); return { state: "rejected", status: r.j.status };
+  }
+  if(r.status === 404 || r.status === 400){ premiumSteamPendingClear(); return { state: "rejected" }; }
+  return { state: "error", reason: (r.j && r.j.msg) || "No se pudo confirmar la compra. Se reintenta." };
+}
+// Espera hasta `maxMs` a que el jugador apruebe; devuelve el último estado. `onTick` (opcional) se llama en cada consulta.
+async function premiumSteamWait(orderId, maxMs, onTick){
+  const t0 = Date.now(); let last = { state: "pending" };
+  while(Date.now() - t0 < (maxMs || 300000)){
+    last = await premiumSteamConfirm(orderId);
+    if(onTick) try{ onTick(last); }catch(e){}
+    if(last.state !== "pending" && last.state !== "error") return last;
+    await new Promise(r => setTimeout(r, Date.now() - t0 < 120000 ? 2500 : 5000));   // espera creciente: no martillar al servidor si el jugador tarda
+  }
+  return last;
+}
+// Al abrir la tienda o volver a iniciar sesión: si quedó un pedido sin confirmar, se consulta UNA vez (sin molestar si no hay nada).
+async function premiumSteamResume(){
+  const p = premiumSteamPending(); if(!p || !premiumAvailable()) return null;
+  const r = await premiumSteamConfirm(p.orderId);
+  if(r.state === "credited" && typeof showNetToast === "function") showNetToast("✦ Tu compra de Steam llegó: Brasas acreditadas.");
+  return r;
+}
+
 // Apariencias (skins y cromas, se pagan con Brasas) de un guardián que todavía no tenés
 function premiumChampSkinIds(k){
   const out = [];
@@ -292,7 +332,7 @@ function premiumSkinPreview(id){
   return typeof CROMA_SKINS !== "undefined" && CROMA_SKINS[id] ? CROMA_SKINS[id].preview || "" : "";
 }
 if(typeof window !== "undefined"){
-  window.addEventListener("account-change", () => premiumRefresh(true));
+  window.addEventListener("account-change", () => { premiumRefresh(true).then(() => premiumSteamResume()); });
   setTimeout(() => premiumRefresh(true), 1500);
 }
 

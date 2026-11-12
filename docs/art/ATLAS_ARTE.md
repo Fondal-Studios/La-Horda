@@ -14,11 +14,11 @@ Generado por `node tools/art/build-art-atlas.js` (no editar a mano). Fuente de v
 ## Resumen
 
 - Campeones: FALTA_ANIMACION 25 · CODEX_OK 12 · ARTE_VIEJO 9
-- Skins/cromas/formas de Ascensión: CODEX_OK 9 · FALTA_ANIMACION 90 · ARTE_VIEJO 5
+- Skins/cromas/formas de Ascensión: CODEX_OK 11 · FALTA_ANIMACION 90 · ARTE_VIEJO 3
 - Enemigos: CODEX_OK 63 · FALTA_ANIMACION 12 · ARTE_VIEJO 1
 - Jefes y subjefes: CODEX_OK 14 · FALTA_ANIMACION 13 · ARTE_VIEJO 1
 - Archivos (arenas, props, battlefield, enemigos, jefes, campeones): CODEX_OK 871 · HUERFANO 104 · ARTE_VIEJO 30
-- Fuentes del registro: 51 archivos, huella `86dcb027c894`
+- Fuentes del registro: 51 archivos, huella `359738d2f17d`
 
 ## Campeones (cuerpo base)
 
@@ -97,8 +97,8 @@ Cuadros DISTINTOS medidos al dibujar el cuerpo real, mínimo entre las 4 direcci
 | nigromante | nigromante_escarcha | croma | FALTA_ANIMACION | `nigromante/skins/nigromante_escarcha/atlas.png` 896x336 | 3 | 2 | 2 | idle |
 | nigromante | nigromante_piedra | croma | FALTA_ANIMACION | `nigromante/skins/nigromante_piedra/atlas.png` 896x336 | 3 | 2 | 2 | idle |
 | libertador | granadero | set | CODEX_OK | `libertador/skins/granadero/atlas.png` 576x864 | 4 | 3 | 3 | - |
-| libertador | libertador_escarcha | croma | ARTE_VIEJO | `libertador/skins/libertador_escarcha/atlas.png` 896x336 | 3 | 1 | 2 | idle, attack, cast, ultimate — recolor del atlas v2 del Libertador, sin el motion v3: ataque de 1 cuadro |
-| libertador | libertador_ancestral | croma | ARTE_VIEJO | `libertador/skins/libertador_ancestral/atlas.png` 896x336 | 3 | 1 | 2 | idle, attack, cast, ultimate — recolor del atlas v2 del Libertador, sin el motion v3: ataque de 1 cuadro |
+| libertador | libertador_escarcha | croma | CODEX_OK | `libertador/skins/libertador_escarcha/atlas.png` 448x1008 | 4 | 4 | 4 | - |
+| libertador | libertador_ancestral | croma | CODEX_OK | `libertador/skins/libertador_ancestral/atlas.png` 448x1008 | 4 | 4 | 4 | - |
 | ilkan | legion | set | ARTE_VIEJO | `ilkan/skins/legion/atlas.png` 1536x1024 | 3 | 3 | 2 | - — skin Legión de Ilkan: atlas procedural violeta de 128x111 (tools/art/ilkan/build.py), sin repintar desde codex-v1 (AUDITORIA_ARTE_CAMPEONES.md) |
 | ynara | santa_paciencia | set | FALTA_ANIMACION | `ynara/skins/santa_paciencia/atlas.png` 384x576 | 3 | 4 | 1 | idle, death |
 | ynara | ynara_celeste | croma | FALTA_ANIMACION | `ynara/skins/ynara_celeste/atlas.png` 896x336 | 3 | 2 | 2 | idle |
@@ -302,7 +302,7 @@ Un registro por imagen (PNG; el `.webp` es su copia sin pérdida) en `ATLAS_ARTE
 | arenas | 185 | 23.2 | 0 | 2 |
 | battlefield | 32 | 4.0 | 0 | 0 |
 | bosses | 94 | 5.5 | 0 | 0 |
-| champions | 488 | 71.1 | 30 | 102 |
+| champions | 488 | 71.2 | 28 | 102 |
 | enemies | 206 | 9.4 | 0 | 0 |
 
 ### Huérfanos (no los carga ni los referencia el juego; candidatos a limpieza, NO se borran acá)
@@ -451,7 +451,5 @@ Un registro por imagen (PNG; el `.webp` es su copia sin pérdida) en `ATLAS_ARTE
 - **brakk**: sin ciclo propio en idle (1 cuadro); falta animación nueva.
 - **morveth**: sin ciclo propio en idle (1 cuadro); falta animación nueva.
 - **aelith**: sin ciclo propio en idle (1 cuadro); falta animación nueva.
-- **libertador** / libertador_escarcha (croma): attack, cast, ultimate con 1 cuadro.
-- **libertador** / libertador_ancestral (croma): attack, cast, ultimate con 1 cuadro.
 - **ynara** / santa_paciencia (set): death con 1 cuadro.
 - **myla** / merienda_magica (set): death con 1 cuadro.
