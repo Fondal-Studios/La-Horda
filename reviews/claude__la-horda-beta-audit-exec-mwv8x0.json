@@ -1,8 +1,8 @@
 {
  "subject": {
-  "pr": 296,
+  "pr": 298,
   "branch": "claude/la-horda-beta-audit-exec-mwv8x0",
-  "head": "878f57eda1342b10352f95e80c6e87ed8437625b",
+  "head": "1f0d22bf9fdd7fd931bfb1e2bb22b62bb82ab37e",
   "authorAgent": "claude-sesion-principal",
   "authorId": "claude-sesion-principal"
  },
@@ -11,57 +11,57 @@
    "stage": "produccion",
    "by": "claude-sesion-principal",
    "role": "agent",
-   "commit": "878f57eda1342b10352f95e80c6e87ed8437625b",
-   "at": "2026-11-12T03:20:00Z"
+   "commit": "1f0d22bf9fdd7fd931bfb1e2bb22b62bb82ab37e",
+   "at": "2026-11-12T13:00:00Z"
   },
   {
    "stage": "qa",
-   "by": "claude-qa-296",
+   "by": "claude-qa-298",
    "role": "qa",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "878f57eda1342b10352f95e80c6e87ed8437625b",
-    "tests": 3,
+    "sha": "1f0d22bf9fdd7fd931bfb1e2bb22b62bb82ab37e",
+    "tests": 4,
     "failed": 0,
-    "report": "Sobre 878f57ed: test-runway-pack 9941 comprobaciones OK; 53 comandos runway-design.js del paquete con --dry-run sin fallos ni API ni escritura; pose-ref (cristal_servo, nano_gm de 8 columnas) y rutas entre pasos coherentes; manejo de errores de runway-design.js probado con curl falso (error de API corta, id/intento y rutas validados, receipt PENDING con taskId). Ronda previa sobre 1a0d6dda: NO APROBADO por 6 hallazgos IMPORTANT (21 criaturas con hoja instalada marcadas sin atlas, walk_batch sin --kind bosses y promesa falsa de espaldas, scan_sprites con ruta equivocada, prompts de apoyo sin referencias, cifras contradictorias, bucle de 6 min ante error de API); todos corregidos y reverificados. No llamó a la API real de Runway; no cubre generación real ni calidad visual."
+    "report": "Sobre 1f0d22bf: test-runway-pack 9941 OK; codex-clean.py --all recorta las 43 láminas sin fallos de línea de tierra y 16 recortes revisados a ojo sin rótulos/texto ni pies cortados; comandos de las fichas coherentes con pose-ref/runway-guardian (índice correcto en nano_gm de 8 columnas); task ids y créditos de ART_CREDITS cotejados con los recibos; diff sin js/, server/, index.html, gates ni atlas. Ronda previa sobre cf852d73: NO APROBADO (recorte de codex-clean dejaba pasar rótulos en varias láminas; cifra de 9 imágenes inconsistente con 13 intentos): corregidos y reverificados. MINOR abiertos: marcador diminuto en el borde izquierdo de nano_gm y mago; 8 intentos sin recibo en el repo. No llamó a la API de Runway."
    },
-   "at": "2026-11-12T03:25:00Z"
+   "at": "2026-11-12T13:05:00Z"
   },
   {
    "stage": "arquitectura",
-   "by": "claude-arq-296",
+   "by": "claude-arq-298",
    "role": "arquitecto",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "878f57eda1342b10352f95e80c6e87ed8437625b",
-    "report": "Aprobó 1a0d6dda sin CRITICAL/IMPORTANT (5 MINOR en runway-design.js) y 878f57ed tras verificar que quedaron resueltos (validación de id/intento, referencias dentro del repo, api() revisa error, mkdir tras POST OK, receipt PENDING). Diff contra main: solo documentación y herramientas de arte (79 archivos), ningún archivo de js/, index.html, server/, gates ni balance. Quedan MINOR: symlink dentro del repo, --force vs FORCE=1. No ejecutó tests (los cubre QA)."
+    "sha": "1f0d22bf9fdd7fd931bfb1e2bb22b62bb82ab37e",
+    "report": "Aprobó 1f0d22bf tras NO APROBADO sobre cf852d73 por sobre-generalización (conclusiones desde 1 campeón y 4 enemigos), contradicciones sobre el cobro de BAD_OUTPUT, contabilidad de créditos no cuadrada y defectos de formato; los 7 cambios pedidos quedaron resueltos. Alcance solo docs, herramientas de arte y art-source (nada de js/, server/, gates). MINOR abiertos: nota de farolero en RECETA posiblemente obsoleta con el corte nuevo; los recibos de 8 intentos fallidos no están en el repo."
    },
-   "at": "2026-11-12T03:27:00Z"
+   "at": "2026-11-12T13:07:00Z"
   },
   {
    "stage": "staging",
-   "by": "claude-integrador-296",
+   "by": "claude-integrador-298",
    "role": "integrador",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "878f57eda1342b10352f95e80c6e87ed8437625b",
+    "sha": "1f0d22bf9fdd7fd931bfb1e2bb22b62bb82ab37e",
     "branch": "beta/integracion-20261110",
-    "tests": 14,
+    "tests": 17,
     "failed": 0,
-    "run": "https://github.com/Fondal-Studios/La-Horda/pull/296"
+    "run": "https://github.com/Fondal-Studios/La-Horda/pull/298"
    },
-   "at": "2026-11-12T03:30:00Z"
+   "at": "2026-11-12T13:09:00Z"
   },
   {
    "stage": "aprobacion",
-   "by": "claude-integrador-296",
+   "by": "claude-integrador-298",
    "role": "director",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "878f57eda1342b10352f95e80c6e87ed8437625b",
-    "report": "Aprobado sobre 878f57ed. PR 296 head == 878f57ed; 15 checks: 14 success (regresión rápida y UX, objetos/economía/tienda, identidad de arenas, VFX, Art production evidence, CodeQL, emoji-lint) y 1 failure ('Clasificacion, contratos y servidor') solo por R4 con el registro viejo. Diff solo docs/art-brief/runway-pack, tools/art*, workflow de evidencia, .gitignore y STATUS. Salvedad: los pasos posteriores de ese job se saltaron por R4 y se verifican al re-correrlo con este registro. No se generó arte con Runway (saldo 0–2); el paquete es instrucciones, no arte aprobado."
+    "sha": "1f0d22bf9fdd7fd931bfb1e2bb22b62bb82ab37e",
+    "report": "Aprobado sobre 1f0d22bf. 18 check runs: 17 success y 1 failure ('Clasificacion, contratos y servidor' del PR, solo por R4 con el registro de la PR 296). El push a beta/integracion-20261110 en el mismo SHA pasó los pasos que R4 había saltado (Art Factory, falsos verdes, contratos, servidor, relay). Diff 82 archivos solo docs/, tools/art*, art-source/ y .gitignore. No se instaló ningún arte: 0 hojas de enemigos y 0 cuadros de campeón aprobados; el PR documenta resultados medidos y una herramienta de recorte."
    },
-   "at": "2026-11-12T03:32:00Z"
+   "at": "2026-11-12T13:10:00Z"
   }
  ]
 }
