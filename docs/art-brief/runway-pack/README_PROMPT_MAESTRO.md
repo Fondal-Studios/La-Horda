@@ -11,6 +11,8 @@ Está generado de los datos reales del juego (`node tools/art/dump-game-data.js`
 | «Todo terminado» | Depende de créditos, no de instrucciones. Con el supuesto explícito de `COSTOS.md` (imágenes y hojas Runway abiertas): **ver `COSTOS.md`: ≈ 7.400 créditos si todo sale a la primera, ≈ 18.500 con reintentos razonables (supuesto declarado)**. El saldo cambia: consultalo siempre (al 2026-11-12 era 0–2 créditos). |
 | «Calidad perfecta» | Se verifica, no se declara: ningún arte entra a `main` sin pasar los chequeos de `RECETA.md` §5 y la revisión independiente del repo. Ojo humano de arte sigue siendo necesario (lo dice `AGENTS.md`). |
 
+**Medido el 2026-11-12 (`ART_CREDITS.md`), con `gen4_image`, estos prompts y estas referencias, y SOLO en un campeón (Tanque) y 4 enemigos:** (a) para el Tanque, Runway conservó el diseño pero devolvió siempre un personaje de pie en los 2 cuadros que salieron, y las poses agachadas o tendidas dieron BAD_OUTPUT; (b) de 8 hojas de enemigos (`gen_sheet.py`) ninguna pasó el criterio de aceptación (caminatas casi idénticas, muertes fundidas). Es una muestra chica: **trátalo como hipótesis a confirmar en la primera tanda de cada campeón/criatura, no como regla**. Antes de gastar en lote, probá UNA pose o UNA hoja y mirá el resultado.
+
 Lo que SÍ garantiza este paquete: que cada bloque tenga su descripción, su prompt, su formato, su ruta de entrega y su criterio de aceptación; que el gasto sea ordenado (P0 → P1 → P2) y registrado; y que cada intento fallido deje recibo para no repetir el mismo error.
 
 ## 1. Contenido

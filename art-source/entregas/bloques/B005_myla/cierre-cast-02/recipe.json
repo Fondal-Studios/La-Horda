@@ -1,0 +1,17 @@
+{
+  "component": "B005 Myla base cast supplement",
+  "source": "art-source/entregas/bloques/B005_myla/revision-cast-back-03/cast.png",
+  "installed": "assets/sprites/champions/myla/v2/cast.png",
+  "reference": "assets/ui/codex/champions/myla.png",
+  "runtime": [
+    "js/assets/portadores-meta.js",
+    "js/rendering/portadores.js"
+  ],
+  "commands": [
+    "node tools/art/check-myla-cast-contract.js",
+    "node tools/visual-package/cli.js check",
+    "node tools/visual-package/test.js",
+    "node tools/art/build-art-atlas.js --check"
+  ],
+  "browserGate": "node tools/art/check-myla-cast.js (pending environment with Chromium)"
+}

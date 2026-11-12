@@ -6,7 +6,7 @@ function drawPortador(h,scale,alpha){
  if(h.classKey==="myla" && portadorOwned(h,"tantrum").length)return drawChampPack("myla_berrinche",h,scale*1.35,alpha);
  // B005 uses the corrected Codex cast only for the base appearance. Set and croma
  // skins retain their authored packs, and Berrinche remains the higher-priority body.
- if(h.classKey==="myla" && champPackCasting(h) &&
+ if(h.classKey==="myla" && (h.attackAnim||0)>0 && champPackCasting(h) &&
     (typeof setSkinPackKey!=="function" || setSkinPackKey(h,"myla")==="myla") &&
     drawChampPack("myla_cast",h,scale,alpha))return true;
  return drawChampPack(h.classKey,h,scale,alpha);

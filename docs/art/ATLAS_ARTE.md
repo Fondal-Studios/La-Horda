@@ -17,8 +17,8 @@ Generado por `node tools/art/build-art-atlas.js` (no editar a mano). Fuente de v
 - Skins/cromas/formas de Ascensión: CODEX_OK 9 · FALTA_ANIMACION 90 · ARTE_VIEJO 5
 - Enemigos: CODEX_OK 63 · FALTA_ANIMACION 12 · ARTE_VIEJO 1
 - Jefes y subjefes: CODEX_OK 14 · FALTA_ANIMACION 13 · ARTE_VIEJO 1
-- Archivos (arenas, props, battlefield, enemigos, jefes, campeones): CODEX_OK 871 · HUERFANO 104 · ARTE_VIEJO 30
-- Fuentes del registro: 51 archivos, huella `86dcb027c894`
+- Archivos (arenas, props, battlefield, enemigos, jefes, campeones): CODEX_OK 871 · HUERFANO 104 · ARTE_VIEJO 31
+- Fuentes del registro: 51 archivos, huella `f65f6854e74e`
 
 ## Campeones (cuerpo base)
 
@@ -39,7 +39,7 @@ Cuadros DISTINTOS medidos al dibujar el cuerpo real, mínimo entre las 4 direcci
 | libertador | ARTE_VIEJO | viejo (60) | `libertador/v2/atlas.png` (webp) 824x784<br>`libertador/v2/death.png` 448x112<br>`libertador/v3/motion.png` 1344x112 | 1 | 4 | 4 | 4 | 4 | 1 | 4 | idle |
 | ilkan | CODEX_OK | codex (62) | `ilkan/codex-v1/atlas.png` 1536x1024 | 4 | 3 | 3 | 3 | 3 | 2 | 2 | - |
 | ynara | ARTE_VIEJO | viejo (70) | `ynara/atlas.png` 384x864 | 3 | 4 | 4 | 4 | 4 | 1 | 4 | - |
-| myla | ARTE_VIEJO | viejo (58) | `myla/atlas.png` 384x576<br>`myla/v2/death.png` 448x112 | 2 | 3 | 3 | 3 | 3 | 1 | 4 | - |
+| myla | ARTE_VIEJO | viejo (58) | `myla/atlas.png` 384x576<br>`myla/v2/death.png` 448x112<br>`myla/v2/cast.png` 1344x112 | 2 | 3 | 3 | 4 | 3 | 1 | 4 | - |
 | brasa | CODEX_OK | audit-fiel (88) | `brasa/atlas.png` (webp) 576x864 | 2 | 4 | 3 | 3 | 2 | 1 | 3 | - |
 | eslabon | CODEX_OK | audit-fiel (88) | `eslabon/atlas.png` (webp) 576x864 | 2 | 4 | 3 | 3 | 2 | 1 | 3 | - |
 | morwen | CODEX_OK | audit-fiel (88) | `morwen/atlas.png` (webp) 576x864 | 2 | 4 | 3 | 3 | 2 | 1 | 3 | - |
@@ -302,7 +302,7 @@ Un registro por imagen (PNG; el `.webp` es su copia sin pérdida) en `ATLAS_ARTE
 | arenas | 185 | 23.2 | 0 | 2 |
 | battlefield | 32 | 4.0 | 0 | 0 |
 | bosses | 94 | 5.5 | 0 | 0 |
-| champions | 488 | 71.1 | 30 | 102 |
+| champions | 489 | 71.2 | 31 | 102 |
 | enemies | 206 | 9.4 | 0 | 0 |
 
 ### Huérfanos (no los carga ni los referencia el juego; candidatos a limpieza, NO se borran acá)

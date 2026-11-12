@@ -1,0 +1,15 @@
+{
+  "status": "FIX_NO_INTEGRAR",
+  "component": "B005 Myla base cast supplement",
+  "codexReference": "assets/ui/codex/champions/myla.png",
+  "mainAudited": "2e51ebdb13a101a574a43089809a0c10c788a6fb",
+  "previousHead": "97bda1b5d23e7757e6d8dbe82cd86592c2535f2d",
+  "finding": "champPackCasting could remain true with attackAnim=0; generic drawChampPack then selected missing idle state and dereferenced null pick.arr",
+  "correction": "require attackAnim>0 before selecting myla_cast; authored skins and Berrinche keep priority and original packs",
+  "artReview": "historical contact sheet remains favorable; no new pixel change in cierre02",
+  "runtimeScope": [
+    "js/rendering/portadores.js"
+  ],
+  "mechanicsChanged": false,
+  "integration": "not approved; browser gameplay evidence and exact-head CI pending"
+}

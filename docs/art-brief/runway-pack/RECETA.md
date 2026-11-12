@@ -16,11 +16,12 @@ Todo lo de esta receta sale de lo que ya se hizo y de las herramientas que exist
 node tools/art-world/runway-world.js status     # {"creditBalance": N}
 ```
 - **Sin tope de créditos** (decisión del dueño, 2026-11-12): se gasta hasta agotar el saldo; el saldo cambia (al 2026-11-12 era 0–2): sin recarga no se puede generar nada. Los scripts de campeón y mundo traen un tope por omisión (`GUARDIAN_RUNWAY_BUDGET` 24, `WORLD_RUNWAY_BUDGET` 40) que es un seguro contra errores: para una tanda grande se sube con la variable de entorno (p. ej. `GUARDIAN_RUNWAY_BUDGET=100000`), a propósito. `runway-design.js` y `gen_sheet.py` no tienen tope propio.
-- Costo medido: **8 créditos por imagen** (campeón, mundo, diseño) y **5 por hoja de enemigo 1280:720** (`gen4_image`, 1024:1024, con 1 referencia). Un `BAD_OUTPUT` también se cobra: tras dos fallos seguidos en la misma pose, parar y cambiar el planteo en vez de reintentar.
+- Costo medido: **8 créditos por imagen** (`gen4_image`, 1024:1024, con 1 a 2 referencias; campeón, mundo y diseño) y **5 por hoja de enemigo 1280:720**. Los `BAD_OUTPUT`: la API informa `cost.credits` = 0, pero en la tanda del Tanque el saldo bajó igual tras los fallos; como la cuenta es compartida no se pudo atribuir con certeza. Contrastar `status` antes y después y **no contar con que un fallo sea gratis**: tras dos fallos seguidos en la misma pose, parar y cambiar el planteo en vez de reintentar.
 
 ## 3. Preparar las referencias
 
-**`@codex`** — `assets/ui/codex/champions/<id>.png` (campeones). Para enemigos y jefes no hay lámina: se usa el cuadro quieto de su atlas (`pose-ref.py <id> 0`) o, si no tiene atlas, el diseño creado con `runway-design.js` (Paso 0 de su ficha).
+**`@codex`** — para campeones, NO la lámina completa sino su recorte limpio: `python3 tools/art/codex-clean.py <id>` → `art-source/runway-codex-clean/<id>.png` (solo las vistas frente/lado/espalda). Motivo, probado con tanque (2026-11-12): con la lámina completa Runway copió el título («ALDRIC…») dentro de la imagen (rechazada por §5.6) y la lámina entera supera la proporción máxima 2,355 que acepta la API. Láminas de otro tamaño que 1774×887: la herramienta avisa y no recorta. En la de farolero queda un rótulo chico abajo: revisar el resultado.
+- La lámina original sigue en `assets/ui/codex/champions/<id>.png`. Para enemigos y jefes no hay lámina: se usa el cuadro quieto de su atlas (`pose-ref.py <id> 0`) o, si no tiene atlas, el diseño creado con `runway-design.js` (Paso 0 de su ficha).
 
 **`@pose`** — recorte del cuadro N del atlas actual (la celda NO siempre es 112×112: hay atlas de 192×128, 103×98, 52×52…; el script lee la medida del registro del atlas en el juego). **gen4_image trabaja a 1024×1024: una referencia de 52–112 px llega borrosa**, por eso el script guarda también `fNN_1024.png` (ampliado con vecino más cercano en múltiplo entero, centrado sobre lienzo oscuro) y es ESA la que se pasa como `@pose`:
 

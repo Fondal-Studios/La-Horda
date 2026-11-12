@@ -45,3 +45,63 @@ Gasto de esta ejecución programada: 40 créditos (de 60 permitidos).
 Se pintaron 28 enemigos (Fortaleza, Abismo, Micelial, Minas, Hielo, Ciudad) con arquetipos deterministas (bruto, cuadrupedo, volador, flotante, aranha). Comparados en partida con arena_lineup.js (antes: docs/beta-release/art-repair/lineup_antes/, con candidatos: docs/beta-release/art-repair/lineup/), el arte actual derivado del Codice es mas detallado y coherente con Titan/Cerbero/Micelio/Dragon de la Forja; los candidatos geometricos quedaron visiblemente mas toscos (torsos poligonales, sin texturas). No se instalo ninguno: el estado de main queda intacto. Lo que falta a esos enemigos es cantidad de cuadros (2-3 de caminata), no fidelidad: la via valida es Runway/arte a mano con hoja completa y referencia del Codice, no el pintor generico.
 
 | 2026-11-11 | 2 (API) | Sin gasto. El dueño autorizó gastar hasta agotar el saldo, pero la API de Runway informa `creditBalance` = 2 (una imagen cuesta 8): no alcanza para generar. Cuando se recargue, seguir con las arenas pendientes. Los retratos del Códice son de ChatGPT (dato del dueño; declararlo en la ficha de Steam). |
+
+## Tanda de cuerpos de campeón P0 (B002 Tanque/Aldric) — 2026-11-12 (saldo recargado a 950)
+Cuenta de Runway compartida: el saldo también bajó mientras no se generaba nada (879 → 874), así que no todo el descenso es de esta sesión.
+| Intento | Task | Créditos | Resultado |
+|---|---|---|---|
+| tanque f24_a1 (lámina completa + @pose) | df604ed3-ec32-4718-94e7-88bc389a83f3 | 8 | RECHAZADA: texto copiado del título dentro de la imagen, sin espada, tierra en los pies |
+| tanque f24_a2 (recorte limpio, prompt «test» por error mío) | 13062390-0017-4334-b917-523c908948ff | 8 | DESCARTADA: prompt de prueba lanzado sin querer; sin texto pero sin espada |
+| tanque f24_a3 y f24_a4 (recorte limpio + prompt largo) | 58c7e1cf-6bbd-4993-a07d-3c373dd0aeb2 · 56df95df-e283-43db-9b4e-79fe5eb3c755 | 0 informados (el saldo bajó ~5 y ~20 en esos momentos, no atribuible con certeza) | BAD_OUTPUT los dos: se cambió el planteo (prompt corto) |
+| tanque f24_a5 (recorte limpio + prompt corto) | 3145e6e1-7628-48ed-959b-89c4ccb8ae9c | 8 | ACEPTADA solo como DISEÑO (no instalada): sin texto, diseño y paleta fieles (espada, escudo, capa), una silueta; no demuestra la pose de «reunir»; quitar la franja de tierra al reducir |
+Aprendizajes aplicados al paquete: `tools/art/codex-clean.py` (referencia sin texto, proporción ≤ 2,2) y prompt corto por pose.
+
+### B002 Tanque, lote de 8 cuadros (2026-11-12, saldo 856 → 770 = 86 créditos para 2 imágenes y 6 fallos)
+| Cuadro | Task | Resultado |
+|---|---|---|
+| 27 (recuperar) | 511df6f2-7288-48ee-b925-367554ff1b20 | Imagen limpia y fiel al diseño, pero **idéntica a una pose de pie** (no hay «recuperar»): RECHAZADA por pose (RECETA §5.2) |
+| 12 (golpe recibido) | 926c414b-e347-4bfa-9b62-d6970f926956 | Idem: de pie con espada y escudo, sin retroceso ni ojo cerrado: RECHAZADA por pose |
+| 25, 26 (alzar, liberar) | adf767f2-9b82-4859-a4f8-f4265a844b33 · 87f223d3-926c-42e4-8fb6-964d29b4bcc0 | BAD_OUTPUT (sin imagen; el cobro NO está respaldado por recibo: solo por el cambio de saldo) |
+| 32, 33, 34, 35 (muerte) | 8e7a343c-b8ff-4b39-bcd0-30aab97418fc · 1dbb37f1-ca42-4e40-8819-5b518c255b5a · 3ef18948-d06a-4232-9191-47dfbeecb679 · 1a7f2c0b-c22f-4e7b-af72-6c067525bea1 | BAD_OUTPUT (sin imagen; el cobro NO está respaldado por recibo: solo por el cambio de saldo) |
+**Qué se midió (muestra de 1 campeón):** `gen4_image` con la referencia limpia conserva el diseño, pero ignora la pose pedida y devuelve siempre un personaje de pie; las poses agachadas o tendidas (alzar, liberar, muerte) dan BAD_OUTPUT y el saldo bajó en esos momentos (~11 créditos por fallo en promedio, atribución no verificable). Es el mismo límite que ya registraba la receta (Profeta `pf_up`, Myla `d3`). Ningún cuadro de este lote entra al juego. Los atlas actuales del tanque ya tienen esas poses dibujadas (vista de contacto: lanzar, arrodillado, tendido); no se ve ganancia en rehacerlas con Runway. Con esta muestra no se justifica seguir gastando en cuerpos de campeón con este método; falta probar otros campeones antes de dar la regla por cerrada.
+
+## Rehacer 4 enemigos con hoja completa (`gen_sheet.py`) - 2026-11-12 (tope propio del lote: 150 cr)
+Saldo 750 -> 715 (35 cr según `status`; 8 hojas x 5 cr = 40 esperados: una lectura de saldo no bajó tras la hoja cm_acechante v2, la cuenta es compartida). Un intento interno de `gen_sheet.py` (cm_acechante v2, 1.º) devolvió FAILED "An unexpected error occurred" con 0 créditos y reintentó solo. **Ninguna hoja se instaló: los 4 enemigos conservan su atlas vigente** (hojas en `art-source/runway-enemies/<arena>/<id>/rejected_sheet_vN.png`).
+| Enemigo | Hoja / task | Cr | Resultado |
+|---|---|---|---|
+| tiburon_joven | v2 `c506eacc-b669-40d2-b505-ff022d4e679a` (con estilo, ref f00 del atlas) | 5 | RECHAZADA: el tiburón salió con patas y pies de zapato (anatomía), 5 columnas por fila, la muerte es un montón de cristales ajeno a la criatura |
+| tiburon_joven | v3 `413587be-854e-4cec-ab5e-270bbc978739` (`--nostyle --mode fly`) | 5 | RECHAZADA tras instalarla en prueba y compararla (revertida): misma criatura y sin texto, pero 3 cuadros de caminata idénticos, el ataque es un estallido de espinas fundido y se pierde la variedad del atlas actual; no mejora |
+| cm_acechante | v2 `f28128ed-1b87-46d0-bef4-b20a71e3e20d` | 5 | RECHAZADA: la ref `f00` del atlas viejo (celda 30x41) era un fragmento ilegible y salió OTRA criatura (bruto encapuchado). Ref corregida a mano con el cuadro quieto del atlas v2 |
+| cm_acechante | v3 `cb484f83-c5bd-40d5-a0f1-b19608e68490` (`--nostyle`, ref v2) | 5 | RECHAZADA: misma criatura y limpia, pero el ataque muestra 3 puños (extremidades de más), caminata casi idéntica y cuadros de otra proporción; el atlas vigente ya es 190x133, la celda chica de la ficha está obsoleta |
+| demonio_menor | v2 `6bbf789b-35ed-4974-bc55-ede07af36ffe` (`--nostyle`) | 5 | RECHAZADA: caminata casi idéntica, restos/escombros pegados al cuerpo en 2 cuadros, muerte de dos cuerpos fusionados |
+| demonio_menor | v3 `4f9b07ce-55a7-47d9-ae8e-65aabc7704bc` (con estilo) | 5 | RECHAZADA tras instalarla en prueba y compararla (revertida): misma criatura, caminata de 6 y ataque con anticipación mejores, PERO `build_sheet` auto descarta el montoncito final (ancho > 1,7x) y la "muerte" queda con cuadros de pie; además el montoncito son dos demonios fusionados. Regresa la muerte, no hay mejora clara. Podría salvarse con spec manual (`frames`/`sets`) sin gastar más |
+| esfinge | v3 `e953d242-6bba-412c-8dc3-542ca1d65ec1` (`--nostyle`, ref espejada: la ref del atlas mira a la IZQUIERDA) | 5 | RECHAZADA: orientación mezclada (cuadros a izquierda y derecha), primer cuadro corrupto |
+| esfinge | v4 `14e04bb6-8e8d-437b-a53f-3be40230e9f1` | 5 | RECHAZADA: dos cuadros miran a la izquierda, cuadros casi idénticos, la muerte es una masa fundida con cristal azul ajeno |
+Aprendizajes: (1) `pose-ref.py <id> 0` toma el atlas sin `v2` y para cm_acechante da un fragmento: usar el cuadro quieto del atlas instalado (`v2/atlas.png`). (2) Runway no deja el cuadro de muerte limpio: casi siempre fusiona dos cuerpos o agrega cristales del estilo. (3) `build_sheet.py` auto descarta cuadros más anchos que 1,7x la mediana, que es justo el cuerpo caído. (4) Parada por regla de 2 fallos seguidos en los 4.
+
+Sin recibo en el repo (la API no devolvió imagen): f24_a3, f24_a4, f25, f26, f32, f33, f34, f35; sus task ids constan solo en esta tabla. Reconciliación de saldo: documentados con recibo 80 créditos (5 imágenes × 8 + 8 hojas × 5); el saldo bajó 240 (950 → 710); los ~160 restantes no se pueden atribuir a fallos propios o a consumo ajeno de la cuenta compartida.
+
+### Prueba de video (image_to_video, gen4_turbo) — 2026-11-12
+| Clip | Task | Créditos | Resultado |
+|---|---|---|---|
+| tanque w1 (caminar, 5 s, imagen de partida = vista frontal recortada de la lámina) | 231bc178-30cd-43a4-bb87-617133044e91 | 25 (receipt; saldo 685 → 660) | Diseño idéntico en los 12 cuadros muestreados; cuerpo sube/baja y piernas alternan (movimiento sutil). Prometedor, NO aprobado: falta reducir a escala nativa, quitar fondo, gates y verlo en el motor. Muestra de 1 clip. |
+
+### Piloto Tanque por video: 9 estados (image_to_video gen4_turbo, 2 s = 10 cr c/u) — 2026-11-12
+Imágenes de partida (recortes de la lámina `art-source/runway-codex-clean/tanque.png` sobre fondo cuadrado 960x960): `art-source/runway-video-src/tanque_{front,side,back}.png`. Conversión con `tools/art/video-to-atlas.py`. Saldo: 655 al empezar; 645 antes de ws1 (-10 ajenos, cuenta compartida) y 530 al terminar; créditos propios del piloto = 110 (11 clips x 10), más 5 de diferencia no atribuible (cuenta compartida). El clip w1 de 5 s (25 cr) es de la prueba anterior.
+| Clip | Task | Cr | Resultado |
+|---|---|---|---|
+| ws1 caminar perfil | 15aa0594-64b4-42cf-9c59-a6420da262e9 | 10 | ACEPTADA a ojo: zancada visible, diseño idéntico. 2 s alcanzan para un ciclo |
+| wd2 caminar frente | 55fff18e-91fe-4981-ad3e-447ec1ebd81e | 10 | RECHAZADA: 4 cuadros casi iguales (como w1) |
+| wu1 caminar espalda | 56ad32a6-cf4e-4d02-8cb7-c10ca9efaf34 | 10 | DÉBIL (generado, sin aprobar): cuadros casi idénticos |
+| ad1 ataque frente | 288e82f9-d879-4ad0-8823-b24a60b9e14a | 10 | ACEPTADA a ojo (levanta y baja la espada) |
+| as1 ataque perfil | e4d84a03-aaf7-4fe4-bc1c-f125d5126bd2 | 10 | ACEPTADA a ojo, menos dramática que el atlas actual |
+| au1 ataque espalda | 288e6b62-f87c-441c-9222-a53b9d2fb045 | 10 | usable, sin aprobar (la espada sale de la silueta) |
+| ca1 lanzar | a219b0cd-6622-4cb9-aa70-c2dd0239c357 | 10 | usable, sin aprobar |
+| ul1 definitiva | ccc9f825-4fe9-4b0d-a8a7-d15b45fa4fb0 | 10 | RECHAZADA: casi igual a lanzar |
+| de1 muerte | 965ad5de-16c4-433c-8b78-ff2f4a628299 | 10 | usable: arrodilla y tiende; último cuadro de 23 px |
+| wd3 caminar frente (reintento, otro planteo: marcha con rodillas altas) | eeed9a96-8cab-4175-9964-b0e6bc9c061b | 10 | ACEPTADA a ojo: rodillas se levantan |
+| ul2 definitiva (reintento: salto y aterrizaje) | 17b67438-524d-4d6a-a9c4-47ef97a2c4c7 | 10 | RECHAZADA: no salta, igual que ul1 |
+**Atlas candidato** `art-source/runway-video/tanque/candidate/atlas.png` (filas: wd3, ws1, wu1, ad1, as1, au1, ca1, ul1, de1). Gates: `style_gate` PASS; `roster_gate` con el candidato instalado en prueba: scaleFailures 4 (base 0, el Tanque es la referencia y cambia su cuerpo medido); `pixel-density` sin cambio (no mide campeones); `scan_sprites` del candidato 0/1 marcados. **NO instalado** (revertido): comparado a tamaño de juego (`art-source/captures/tanque/`) el atlas actual tiene más pose (anticipación y golpe, capa, muerte con escudo), y el candidato tiene la definitiva igual al lanzar, espalda casi quieta y detalle más blando. Hallazgo: el video sirve para variación de caminata y diseño estable, no para ataque/definitiva/muerte. Muestra de 1 campeón.
+
+## Pisos y centros de Bosque y Hielo - 2026-11-12: BLOQUEADO por limite diario (0 creditos gastados)
+| 2026-11-12 | 295 (sin cambio) | prox_piso_bosque, prox_piso_hielo, prox_centro_bosque, prox_centro_hielo: `gen bosque_piso` y `gen hielo_piso` devolvieron `Runway: {"error":"Your daily task limit has been reached."}` (limite diario de tareas de la cuenta compartida, no de creditos; saldo 295 antes y despues). Ninguna tarea creada, ninguna imagen. Preparado para reintentar: JOBS `bosque_piso`, `hielo_piso`, `bosque_centro`, `hielo_centro` en `tools/art-world/runway-world.js` (referencia = lamina del Codice `art-source/codex-covers/arena_{bosque,hielo}.jpg` en `art-source/runway-world/{bosque,hielo}/ref_crop.png`) y capturas ANTES del motor real en `art-source/captures/{bosque,hielo}_{piso,centro}/antes_*.png` (960x540). Nada integrado; arena.js sin cambios |

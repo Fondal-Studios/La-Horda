@@ -66,15 +66,15 @@ STYLE = ('Full body, centered, feet at the bottom of the frame, ONE connected si
 def champ_sum(c):
     return f"{c['name']}, {ROLE_EN.get(c['roleCategory'], c['roleCategory'])}, class color {c['color']}"
 
+SHORT_STYLE = 'Keep the @codex design and colors exactly. Full body, feet at the bottom, one connected silhouette, crisp pixel art, 1px dark outline, flat shading, plain dark background, no text.'
+
 def pose_prompt(c, p):
-    face = {'abajo': 'facing the camera', 'perfil': 'facing right in side profile', 'arriba': 'seen from behind (back to the camera)'}[p['dir']]
-    return (f"Pixel art game sprite of the character in @codex ({champ_sum(c)}), redrawn in exactly the pose of @pose "
-            f"({p['beat_en']}): same body pose, same framing, same facing ({face}). Keep the @codex design, outfit and palette exactly; "
-            f"do not copy the face style or colors of the pose reference. {STYLE}")
+    """Prompt CORTO. Probado con tanque (2026-11-12): el largo (con "do not copy the face style…", "no gradients, no glow…") devolvió BAD_OUTPUT dos veces con la referencia limpia; el corto salió bien."""
+    face = {'abajo': 'facing the camera', 'perfil': 'facing right in side profile', 'arriba': 'seen from behind, back to the camera'}[p['dir']]
+    return (f"Pixel art game sprite of the character in @codex ({champ_sum(c)}), drawn in the pose of @pose ({p['beat_en']}), {face}. {SHORT_STYLE}")
 
 def golpe_prompt(c):
-    return (f"Pixel art game sprite of the character in @codex ({champ_sum(c)}), redrawn in exactly the pose of @pose (hurt reaction: flinches backward, one eye shut, weapon lowered), "
-            f"same framing, facing the camera. Keep the @codex design and palette exactly. {STYLE}")
+    return (f"Pixel art game sprite of the character in @codex ({champ_sum(c)}), drawn in the pose of @pose (hurt reaction: flinches backward, one eye shut, weapon lowered), facing the camera. {SHORT_STYLE}")
 
 # ---------------------------------------------------------------- identidad visual (extracto del brief del campeón)
 def brief_identity(cid):
@@ -149,12 +149,12 @@ def champion_md(cid, c, pend):
         L.append(f"### Cuadro {p['idx']} — fila {p['fila']}, columna {p['col']}: {p['estado']} · {p['dir_txt']}\n")
         L.append(f"- **Qué es:** {p['beat']}.")
         L.append(f"- **Prompt Runway:** `{pose_prompt(c, p)}`")
-        codex = f"assets/ui/codex/champions/{cid}.png" if has_lam else f"art-source/runway-designs/{cid}/codex1/master.png"
+        codex = f"art-source/runway-codex-clean/{cid}.png" if has_lam else f"art-source/runway-designs/{cid}/codex1/master.png"
         src = cid if ai else DONOR
         ri = p['idx']
         if ai and ai['cols'] != 4: ri = (p['fila'] - 1) * ai['cols'] + (p['col'] - 1)   # rejilla propia: índice = fila × columnas + columna
         pose = f"art-source/runway-pose-refs/{src}/f{ri:02d}_1024.png"
-        pre = f"python3 tools/art/pose-ref.py {src} {ri} && "
+        pre = (f"python3 tools/art/codex-clean.py {cid} && " if has_lam else '') + f"python3 tools/art/pose-ref.py {src} {ri} && "
         L.append(f"- **Comando:** `{pre}node tools/art-world/runway-guardian.js {cid} f{p['idx']:02d}_a1 \"<prompt>\" {codex} {pose}`\n")
     L.append('### Golpe recibido (un cuadro; el motor lo toma de la fila de ataque, cuadros 12, 16 y 20)\n')
     L.append(f"- **Prompt Runway:** `{golpe_prompt(c)}`\n")
