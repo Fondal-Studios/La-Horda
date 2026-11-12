@@ -80,3 +80,8 @@ Saldo 750 -> 715 (35 cr según `status`; 8 hojas x 5 cr = 40 esperados: una lect
 Aprendizajes: (1) `pose-ref.py <id> 0` toma el atlas sin `v2` y para cm_acechante da un fragmento: usar el cuadro quieto del atlas instalado (`v2/atlas.png`). (2) Runway no deja el cuadro de muerte limpio: casi siempre fusiona dos cuerpos o agrega cristales del estilo. (3) `build_sheet.py` auto descarta cuadros más anchos que 1,7x la mediana, que es justo el cuerpo caído. (4) Parada por regla de 2 fallos seguidos en los 4.
 
 Sin recibo en el repo (la API no devolvió imagen): f24_a3, f24_a4, f25, f26, f32, f33, f34, f35; sus task ids constan solo en esta tabla. Reconciliación de saldo: documentados con recibo 80 créditos (5 imágenes × 8 + 8 hojas × 5); el saldo bajó 240 (950 → 710); los ~160 restantes no se pueden atribuir a fallos propios o a consumo ajeno de la cuenta compartida.
+
+### Prueba de video (image_to_video, gen4_turbo) — 2026-11-12
+| Clip | Task | Créditos | Resultado |
+|---|---|---|---|
+| tanque w1 (caminar, 5 s, imagen de partida = vista frontal recortada de la lámina) | 231bc178-30cd-43a4-bb87-617133044e91 | 25 (receipt; saldo 685 → 660) | Diseño idéntico en los 12 cuadros muestreados; cuerpo sube/baja y piernas alternan (movimiento sutil). Prometedor, NO aprobado: falta reducir a escala nativa, quitar fondo, gates y verlo en el motor. Muestra de 1 clip. |
