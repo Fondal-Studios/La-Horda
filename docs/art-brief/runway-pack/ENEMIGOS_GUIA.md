@@ -5,7 +5,7 @@ Fuente: manifiesto `docs/art-brief/manifiestos/mundo_faltantes.json` (filas `C-E
 ## 1. Formato de la hoja
 
 - **Hoja COMPLETA**, no cuadros sueltos: celdas iguales, **8 columnas**, PNG RGBA, alfa 0/255, contorno de 1 px, flat shading.
-- **Pies en la fila `anchor × alto de celda`** (el atlas actual de cada criatura trae su `anchor`, típicamente ≈ 0,95).
+- **Pies en la fila `anchor × alto de celda`** (el atlas de cada criatura trae su `anchor`, típicamente ≈ 0,95).
 - **Perfil mirando a la DERECHA** (la izquierda la espeja el juego).
 - Escala canon ≈ **1,0 unidad de mundo por píxel** (banda 0,45–2,4). El tamaño en pantalla sale del radio y la escala del enemigo (ver su ficha en `enemigos/<arena>.md`).
 - La celda de cada criatura es la de su atlas actual (p. ej. 52×52, 61×41): se conserva al rehacer.
@@ -26,9 +26,17 @@ Fuente: manifiesto `docs/art-brief/manifiestos/mundo_faltantes.json` (filas `C-E
 
 `node tools/art/enemy_coverage.js <salida>` mide, para las 104 criaturas, cuáles de esos estados tienen arte real, cuáles el motor los rellena clonando o espejando, y cuáles se dibujan por código. El manifiesto marca cuántos de los 11 estados «rellena el motor en vez de dibujar»: esos son los que faltan pintar.
 
-## 3. Qué pedirle a Runway (y qué no)
+## 3. Cómo se hace (el método que ya usa el repo)
 
-Runway hace **3 imágenes clave** por criatura: `idle`, `walk_side` y `atk_side` (cada una con `@codex` = el cuadro actual de su atlas como diseño y `@pose` = el cuadro equivalente). El resto (caminar de frente y de espaldas, ataque de frente/espaldas, golpe, muerte) lo deriva el pintor determinista a partir del cuerpo aceptado (`tools/art/painter/enemy_paint.py`, `tools/art-world/build-*.py`), porque pagar los 9 estados por criatura multiplica el costo por 3 sin mejorar el diseño. Si un estado derivado se ve mal, ESE estado se pide a Runway.
+Es el flujo de `docs/art-gate/RUNWAY_ENEMIES.md`, no uno inventado: **hoja completa por criatura**, no cuadros sueltos.
+
+0. **Si la criatura no tiene atlas propio, el atlas se crea:** `node tools/art-world/runway-design.js <id> d1 "<prompt de su ficha>" assets/sprites/enemies/hielo/golem_cristal/atlas.png` genera su imagen de diseño (reposo, perfil derecha) con el estilo de una hoja ya aprobada. Se aprueba (`RECETA.md` §5); ese PNG es el diseño de partida de los pasos siguientes. (Si ya tiene atlas: `python3 tools/art/pose-ref.py <id> 0` recorta su cuadro quieto.)
+1. **Hoja de combate:** `python3 tools/art/runway/gen_sheet.py <arena> <id> "<descripción en inglés>" <diseño.png> [--mode fly] [--nostyle]` → 3 filas × 6 cuadros sobre croma verde (caminar/volar, ataque, quieto+golpe+muerte), ~5 créditos.
+2. **Armar e instalar:** `python3 tools/art/runway/install.py <arena> <id> <hMul> <altoNativo> [--kind bosses]` (croma → alfa, recorte, escala común, pies alineados, paleta, contorno de 1 px, atlas de 8 columnas, registro en `js/assets/enemy-runway-sheets.js`).
+3. **Caminatas de frente y de espaldas:** `python3 tools/art/runway/walk_batch.py <arena> <id> <hMul> <altoNativo> front|side [fly]`. Aviso del repo: Runway devuelve ciclos de caminata casi idénticos entre cuadros; si la métrica de movimiento queda < 0,20 se usa el ciclo procedural (`procWalk` del spec, `build_sheet.py`).
+4. **Chequeos:** `scan_sprites.py`, `enemy_coverage.js`, `pixel-density.js` y verlo en el motor (8 estados) antes de aprobar.
+
+Reglas aprendidas (de ese mismo documento): sin palabras de combate violento en el prompt (Runway las rechaza); referencias chicas necesitan `--nostyle`; las hojas con texto o filas faltantes se rechazan, no se esconden. **Los jefes con retrato de campo de batalla** (`js/rendering/battlefield-art.js`: golem_cuerpos, mn_titan, mn_cerbero, ab_carcelero, minotauro, leviatán, dragón de la forja, micelio, bestia del bosque…) se ven con ese retrato, no con la hoja: rehacer su hoja no cambia lo que ve el jugador; el retrato es otro trabajo (`bloques/03-mundo.md`).
 
 ## 4. Cómo se diferencia cada rango (para el diseño)
 
@@ -43,4 +51,4 @@ El color dominante de cada criatura (`color` en su ficha) tiene que dominar la s
 
 ## 5. Criterio de aceptación
 
-El de `RECETA.md` §5 más: (a) **misma criatura** que el atlas actual (no un rediseño, salvo que el bloque lo pida); (b) los 3 cuadros clave tienen **el mismo tamaño de cuerpo** (tolerancia ±4 % de altura); (c) el ataque muestra el ataque propio de la criatura (su ficha lo lista en «Ataques»); (d) se lee a tamaño real de juego.
+El de `RECETA.md` §5 más: (a) **misma criatura** que el atlas actual (no un rediseño, salvo que el bloque lo pida); (b) los 3 cuadros clave tienen **el mismo tamaño de cuerpo** (tolerancia ±4 % de altura); (c) el ataque muestra el ataque propio de la criatura (su ficha lo lista en «Ataques»; si el Códice no la tiene, el de su atlas actual); (d) se lee a tamaño real de juego.

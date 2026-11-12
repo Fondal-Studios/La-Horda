@@ -16,6 +16,12 @@ blocks = J('docs/production/asset-blocks.json')
 mundo = {r['id']: r for r in J('docs/art-brief/manifiestos/mundo_faltantes.json')['filas']}
 camp_m = J('docs/art-brief/manifiestos/campeones_faltantes.json')['campeones']
 CH, EN = game['champions'], game['enemies']
+import importlib.util
+_sp = importlib.util.spec_from_file_location('pose_ref', os.path.join(ROOT, 'tools/art/pose-ref.py')); pose_ref = importlib.util.module_from_spec(_sp); _sp.loader.exec_module(pose_ref)
+ENEMY_ARENA_OVERRIDE = {'jinete_sin_cabeza': 'bosque'}   # el dump lo deja en 'divina'; el código lo usa también en bosque y Abismo (boss-hud.js, codex-content.js)
+def atlas_info(cid):
+    r = pose_ref.find(cid)
+    return None if not r else {'path': r[0], 'w': r[1]['w'], 'h': r[1]['h'], 'cols': r[1]['cols']}
 
 # ---------------------------------------------------------------- poses de campeón (atlas 4 columnas x 9 filas, 112x112)
 DIRS = {'abajo': ('frente (de cara a la cámara)', 'down'), 'perfil': ('perfil mirando a la DERECHA', 'side'), 'arriba': ('de espaldas a la cámara', 'up')}
@@ -80,6 +86,11 @@ def brief_identity(cid):
     return m.group(1).strip() if m else None
 
 # ---------------------------------------------------------------- campeones
+DONOR = 'aelith'   # atlas de campeón completo 448×1008 (factory) usado como @pose cuando el campeón no tiene atlas
+def lamina_prompt(c):
+    return (f"Character concept art for a retro 2D action RPG codex, {c['name']}, {ROLE_EN.get(c['roleCategory'], c['roleCategory'])} champion, full body, standing, three-quarter front view, centered on a plain dark background. "
+            f"Class color {c['color']}. Design faithful to the kit and lore: {(c.get('catalogLore') or c.get('history') or c['name'])[:200].replace(chr(34), chr(39))}. Painterly dark fantasy pixel-art look like the style reference, no text, no frame.")
+
 def champion_md(cid, c, pend):
     L = []
     L.append(f"# {c['name']} (`{cid}`) — instrucciones de Runway\n")
@@ -91,11 +102,22 @@ def champion_md(cid, c, pend):
         L.append(f"- **Origen:** {c.get('origin') or '—'}. {c.get('history') or ''}")
     elif c.get('catalogLore'):
         L.append(f"- **Lore:** {c['catalogLore']}")
-    L.append(f"- **Lámina del Códice (referencia `@codex`):** `assets/ui/codex/champions/{cid}.png` (original) — es la fuente de verdad del diseño: ropa, pelo, colores y proporciones.")
-    L.append(f"- **Atlas actual en el juego:** {('`' + c['atlasActual'] + '`') if c['atlasActual'] else '**no tiene atlas propio** (se arma desde cero o desde un donante: ver `../RECETA.md` §7)'}.\n")
+    lam = os.path.join(ROOT, 'assets/ui/codex/champions', cid + '.png'); has_lam = os.path.exists(lam)
+    if has_lam:
+        L.append(f"- **Lámina del Códice (referencia `@codex`):** `assets/ui/codex/champions/{cid}.png` (original) — es la fuente de verdad del diseño: ropa, pelo, colores y proporciones.")
+    else:
+        L.append(f"- **SIN LÁMINA DEL CÓDICE:** `assets/ui/codex/champions/{cid}.png` NO existe. **Paso 0 (Runway crea la lámina, ~8 créditos por intento):** `node tools/art-world/runway-design.js {cid} codex1 \"{lamina_prompt(c)}\" assets/ui/codex/champions/aelith.png` → `art-source/runway-designs/{cid}/codex1/master.png`. Aprobarla (diseño coherente con el kit y el atlas actual, ver §5 de `../RECETA.md`); esa imagen es el `@codex` de las 36 poses (ruta en los comandos de abajo). El dueño usa ChatGPT para el Códice definitivo: esta lámina es la referencia de trabajo hasta que llegue la oficial.")
+    ai = atlas_info(cid)
+    if ai:
+        L.append(f"- **Atlas registrado en el juego:** `{ai['path']}` (celda {ai['w']}×{ai['h']}, {ai['cols']} columnas). Es el que se usa como `@pose` (`python3 tools/art/pose-ref.py {cid} --info`).")
+    else:
+        L.append(f"- **Atlas registrado en el juego:** **ninguno** (no hay `champPackLoadAtlas` para `{cid}`): el atlas se crea desde cero. `@pose` sale de un donante completo (`{DONOR}`, 448×1008) y el prompt de cada cuadro define el diseño; se arma con `import-authored-sheet.py` (`../RECETA.md` §7).")
+    if c.get('atlasActual') and ai and ai['path'] != c['atlasActual']:
+        L.append(f"- Ojo: existe también `{c['atlasActual']}` pero NO es el registrado; manda el de arriba.")
+    L.append('')
     ident = brief_identity(cid)
     if ident:
-        L.append('### Identidad visual (extracto de `docs/art-brief/campeones/%s.md`, sección A)\n' % cid)
+        L.append('### Identidad visual (extracto LITERAL de `docs/art-brief/campeones/%s.md`, sección A; puede citar rutas o estados históricos: manda la sección 1)\n' % cid)
         L.append(ident + '\n')
     L.append('## 2. Kit (qué hace, para que el cuerpo lo exprese)\n')
     L.append('| Habilidad | Qué hace | Tipo | Alcance / radio |\n|---|---|---|---|')
@@ -120,12 +142,15 @@ def champion_md(cid, c, pend):
             L.append('- Skins de ascensión pendientes: ' + ', '.join(str(x) for x in cm['skins_pendientes_ascension']) + '.')
     L.append('\n## 4. Las 36 poses con su instrucción de Runway\n')
     L.append('Cada fila es un cuadro del atlas `448×1008` (4 columnas × 9 filas de 112 px). `@codex` = la lámina de arriba. `@pose` = el cuadro equivalente del atlas actual de este campeón '
-             '(recorte de 112×112; receta en `../RECETA.md` §3) o, si no tiene atlas, el cuadro de un donante de la misma complexión. El prompt va tal cual a `tools/art-world/runway-guardian.js`.\n')
+             '(recorte del atlas registrado, ampliado a 1024 con vecino más cercano por `tools/art/pose-ref.py`; receta en `../RECETA.md` §3) o, si no tiene atlas, el cuadro de un donante de la misma complexión. El prompt va tal cual a `tools/art-world/runway-guardian.js`.\n')
     for p in POSES:
         L.append(f"### Cuadro {p['idx']} — fila {p['fila']}, columna {p['col']}: {p['estado']} · {p['dir_txt']}\n")
         L.append(f"- **Qué es:** {p['beat']}.")
         L.append(f"- **Prompt Runway:** `{pose_prompt(c, p)}`")
-        L.append(f"- **Comando:** `node tools/art-world/runway-guardian.js {cid} f{p['idx']:02d}_a1 \"<prompt>\" assets/ui/codex/champions/{cid}.png art-source/runway-pose-refs/{cid}/f{p['idx']:02d}.png`\n")
+        codex = f"assets/ui/codex/champions/{cid}.png" if has_lam else f"art-source/runway-designs/{cid}/codex1/master.png"
+        pose = f"art-source/runway-pose-refs/{cid}/f{p['idx']:02d}_1024.png" if ai else f"art-source/runway-pose-refs/{DONOR}/f{p['idx']:02d}_1024.png"
+        pre = f"python3 tools/art/pose-ref.py {cid if ai else DONOR} {p['idx']} && "
+        L.append(f"- **Comando:** `{pre}node tools/art-world/runway-guardian.js {cid} f{p['idx']:02d}_a1 \"<prompt>\" {codex} {pose}`\n")
     L.append('### Golpe recibido (un cuadro; el motor lo toma de la fila de ataque, cuadros 12, 16 y 20)\n')
     L.append(f"- **Prompt Runway:** `{golpe_prompt(c)}`\n")
     L.append('## 5. Aceptación (antes de dar un cuadro por bueno)\n')
@@ -152,20 +177,55 @@ def enemy_prompt(e, st, desc):
             f"Keep the @codex design and palette exactly. Dominant color {e['color']}. Crisp pixel art, 1px dark outline, flat shading, ONE connected silhouette, feet on the bottom line, "
             f"no text, no effects, plain dark background.")
 
+RUNWAY_STATES = ('idle', 'walk_side', 'atk_side')   # los 3 cuadros clave que se piden a Runway; el resto lo deriva el pintor determinista
+
+def is_fly(e):
+    t = ' '.join([e['id'], e['name'], e.get('behavior') or '', e.get('family') or '']).lower()
+    return bool(re.search(r'vuel|volad|alad|murci|hada|medusa|espectro|fantasma|dragon|dragón|cuervo|mosca|abeja|flota', t))
+
+def design_prompt(e):
+    lore = (e.get('lore') or '').replace('"', "'").replace('\n', ' ')[:220]
+    return (f"Pixel art game creature design, {e['name']} ({RANK_EN[e['rank']]}), single character, full body, side profile facing right, standing idle, centered on a plain dark background. "
+            f"Dominant color {e['color']}. Concept: {lore or e['name']}. Crisp pixel art, rich dark shading like the style reference, 1px dark outline, ONE connected silhouette, no text, no frame, no effects.")
+
 def enemy_md(arena, items):
     L = [f"# Enemigos y jefes de la arena `{arena}` — instrucciones de Runway\n",
          '> Generado por `tools/art/build-runway-pack.py`. Método: `../RECETA.md`. Cómo es una hoja de enemigo: `../ENEMIGOS_GUIA.md`.\n']
+    if arena == 'otras':
+        L.append('> **Criaturas sin arena asignada en el juego** (invocaciones, focos y entidades de escenario que no pertenecen a una sola arena): se agrupan acá solo para no perderlas.\n')
     for e in sorted(items, key=lambda x: (['normal', 'subelite', 'elite', 'subjefe', 'jefe'].index(x['rank']), x['id'])):
         L.append(f"## {e['name']} (`{e['id']}`) — {RANK_TXT[e['rank']]}\n")
-        L.append(f"- **Qué es:** {e['lore'] or '—'} · familia {e['family'] or '—'} · origen {e['origin'] or '—'}.")
-        L.append(f"- **Cómo se comporta:** {e['behavior'] or '—'} Ataques: {', '.join(e['attacks']) or '—'}." + (f" Mecánica: {e['mech']}" if e['mech'] else ''))
+        if e['lore'] or e['behavior'] or e['attacks']:
+            L.append(f"- **Qué es:** {e['lore'] or '—'} · familia {e['family'] or '—'} · origen {e['origin'] or '—'}.")
+            L.append(f"- **Cómo se comporta:** {e['behavior'] or '—'} Ataques: {', '.join(e['attacks']) or '—'}." + (f" Mecánica: {e['mech']}" if e['mech'] else ''))
+        else:
+            L.append("- **Qué es / cómo se comporta:** el Códice no tiene ficha de esta criatura. Tomar el diseño y el ataque del atlas actual y del nombre; completar la ficha en el bloque.")
+        if e['id'] == 'jinete_sin_cabeza':
+            L.append('- Nota: también cabalga en el Abismo (`ab_jinete`) y en el bosque; esta ficha es la del bosque.')
         L.append(f"- **Tamaño en el mundo:** radio {e['radius']} u, escala {e['scale']}; color dominante `{e['color']}`; {'ataca a distancia' if e['ranged'] else 'ataca cuerpo a cuerpo'}; velocidad {e['speed']}.")
-        alias = f" (usa el de `{e['visualAlias']}`)" if e['visualAlias'] else ' (se hereda de otro tipo o se dibuja por código)'
-        L.append(f"- **Arte actual:** {('`' + e['atlasActual'] + '`') if e['atlasActual'] else 'sin atlas propio' + alias}.")
+        ai = atlas_info(e['id'])
+        alias = f" (usa el de `{e['visualAlias']}`)" if e['visualAlias'] else ''
+        eid = e['id']; arena_dir = ENEMY_ARENA_OVERRIDE.get(eid) or e['arena'] or 'otras'
+        kind = ' --kind bosses' if e['rank'] == 'jefe' else ''
+        mode = ' --mode fly' if is_fly(e) else ''
+        desc_en = f"{e['name']}, {RANK_EN[e['rank']]}, dominant color {e['color']}"
+        if ai:
+            L.append(f"- **Atlas registrado:** `{ai['path']}` (celda {ai['w']}×{ai['h']}, {ai['cols']} columnas).")
+            design = f"art-source/runway-pose-refs/{eid}/f00.png"
+            L.append(f"- **Paso 1 — diseño de partida (ya existe el atlas):** `python3 tools/art/pose-ref.py {eid} 0` → `{design}` (primer cuadro = quieto; si en `--info` el quieto es otro cuadro, usar ese número).")
+        else:
+            L.append(f"- **SIN ATLAS PROPIO{alias}: hay que crearlo desde cero.** Se hace en dos tiempos: (a) crear el diseño con Runway, (b) con ese diseño correr la misma cadena que las demás criaturas." + (f" (Hay un arte viejo en `{e['atlasActual']}` sin registro de celda: sirve de referencia visual, no como atlas.)" if e['atlasActual'] else ''))
+            design = f"art-source/runway-designs/{eid}/d1/master.png"
+            L.append(f"- **Paso 0 — crear el diseño (Runway, ~8 créditos):** `node tools/art-world/runway-design.js {eid} d1 \"{design_prompt(e)}\" assets/sprites/enemies/hielo/golem_cristal/atlas.png`  (el 4.º argumento es una hoja ya aprobada que fija el estilo; `--dry-run` muestra el pedido sin gastar). Aprobar con el criterio de `../RECETA.md` §5 antes de seguir; si no pasa, `d2`, `d3`… con otro planteo.")
+            L.append(f"- **Paso 1 — diseño de partida:** `{design}` (la imagen aprobada del Paso 0).")
+        L.append(f"- **Paso 2 — hoja de combate** (3 filas × 6 cuadros sobre croma verde: caminar/ataque/quieto+golpe+muerte; ~5 créditos): `python3 tools/art/runway/gen_sheet.py {arena_dir} {eid} \"{desc_en}\" {design}{mode}` → `art-source/runway-enemies/{arena_dir}/{eid}/sheet_v1.png`. Si la referencia es chica o sale mal el estilo: agregar `--nostyle`. Sin palabras de combate violento en la descripción (Runway las rechaza).")
+        L.append(f"- **Paso 3 — armar e instalar** (croma → alfa, recorte, escala común, pies alineados, paleta, contorno 1 px, atlas de 8 columnas; registra en `js/assets/enemy-runway-sheets.js`): `python3 tools/art/runway/install.py {arena_dir} {eid} 1.0 64{kind}` (`hMul` y alto nativo se ajustan mirando la criatura en el motor; el boss usa `--kind bosses`).")
+        L.append(f"- **Paso 4 — caminatas de frente y de espaldas** (Runway no varía bien las piernas: la caminata de la hoja puede salir casi igual entre cuadros; si la métrica de movimiento queda < 0,20 se usa el ciclo procedural `procWalk` del spec, ver `docs/art-gate/RUNWAY_ENEMIES.md`): `python3 tools/art/runway/walk_batch.py {arena_dir} {eid} 1.0 64 front{' fly' if is_fly(e) else ''}` y luego `... side`.")
+        L.append(f"- **Paso 5 — chequeos:** `python3 tools/art/scan_sprites.py --dir assets/sprites/{'bosses' if e['rank']=='jefe' else 'enemies'}/{arena_dir}/{eid}` · `node tools/art/enemy_coverage.js` · `node tools/art/pixel-density.js` · ver la criatura en el motor (8 estados) antes de aprobar.")
         row = mundo.get('C-ENEMY-' + e['id'])
         if row:
             L.append(f"- **Estado en la cola:** {row['estado']} · prioridad {row['prioridad']} · entrega en `{row['ruta_entrega']}`.")
-        L.append('- **Los 9 estados con su prompt** (un cuadro-clave por estado se pide a Runway; el pintor determinista arma los demás cuadros: `../RECETA.md` §4):')
+        L.append('- **Qué tiene que mostrar cada estado** (la hoja del Paso 2 pide los 3 primeros en sus filas; el resto se completa con los pasos 3–4 o, si se ve mal, se rehace ese estado). Prompt de apoyo por estado, para rehacer UN estado suelto con `runway-design.js` + referencia de la hoja:')
         for st, desc, _ in ENEMY_STATES:
             L.append(f"  - `{st}` — {desc}. Prompt: `{enemy_prompt(e, st, desc)}`")
         L.append('')
@@ -214,7 +274,7 @@ def describe_item(item):
             e = EN[m.group(1)]
             out['metodo'] = 'runway + pintor'
             out['prompt_runway'] = [f"{st}: " + enemy_prompt(e, st, d) for st, d, _ in ENEMY_STATES]
-            out['descripcion'] += f" Criatura: {e['lore'] or '—'} Comportamiento: {e['behavior'] or '—'} Ataques: {', '.join(e['attacks']) or '—'}. Detalle y prompts por estado en enemigos/{e['arena'] or 'otras'}.md."
+            out['descripcion'] += (f" Criatura: {e['lore']} Comportamiento: {e['behavior'] or '—'} Ataques: {', '.join(e['attacks']) or '—'}." if (e['lore'] or e['behavior']) else ' Sin ficha en el Códice: tomar diseño y ataque del atlas actual.') + f" Detalle y prompts por estado en enemigos/{ENEMY_ARENA_OVERRIDE.get(e['id']) or e['arena'] or 'otras'}.md."
         elif sub in GENERIC:
             meto, tpl, que = GENERIC[sub]
             out['metodo'] = meto
@@ -260,24 +320,33 @@ CRED = 8
 def n_images(it):
     pr = it.get('prompt_runway')
     if 'runway' not in it.get('metodo', ''): return 0
-    if isinstance(pr, list): return 3 if it['id'].startswith('C-ENEMY-') else len(pr)   # enemigo: 3 cuadros clave (idle, caminar, ataque); el resto lo deriva el pintor
+    if it['id'].startswith('C-ENEMY-'): return 0          # enemigos: se cuentan aparte (hojas), ver costs_md
+    if isinstance(pr, list): return len(pr)
     return 1 if pr else 0
+SHEET = 5            # créditos por hoja 1280:720 (medido: receipts de art-source/runway-enemies)
+ENEMY_SHEETS = 3     # hoja de combate + caminata de frente + caminata de perfil
 def costs_md(out_blocks):
-    rows = collections.defaultdict(lambda: [0, 0, 0]); tot = [0, 0]
+    rows = collections.defaultdict(lambda: [0, 0, 0]); tot = [0, 0]; en_atlas = en_sin = 0
     for b in out_blocks:
         if b['estado'] in ('INTEGRADO_MAIN', 'SEGUIMIENTO'): continue
         n = sum(n_images(i) for i in b['items'])
         pr = b['prioridad']; rows[(b['grupo'], pr)][0] += 1; rows[(b['grupo'], pr)][1] += n
-    L = ['# Costos de Runway del paquete (créditos)\n', '> Generado por `tools/art/build-runway-pack.py`. **Supuestos explícitos:** 1 imagen `gen4_image` 1024:1024 con referencias = **8 créditos** (medido en `docs/beta-release/ART_CREDITS.md`); '
-         'un enemigo pide **3 imágenes clave** (reposo, caminar, ataque) y el pintor determinista deriva el resto; FX, íconos 16×16, proyectiles y auras NO usan Runway. '
-         'Se cuentan solo bloques abiertos (no `INTEGRADO_MAIN` ni seguimientos). El factor de reintento es una SUPOSICIÓN (×1,0 = todo sale a la primera; ×2,5 = lo razonable según los descartes registrados): '
-         'el repo no mide la tasa real de aceptación.\n',
-         '| Grupo | Prioridad | Bloques abiertos | Imágenes Runway | Créditos ×1,0 | Créditos ×2,5 |', '|---|---|---:|---:|---:|---:|']
-    g1 = g2 = 0
+        for i in b['items']:
+            if i['id'].startswith('C-ENEMY-') and 'runway' in i.get('metodo', ''):
+                if atlas_info(i['id'][len('C-ENEMY-'):]): en_atlas += 1
+                else: en_sin += 1
+    L = ['# Costos de Runway del paquete (créditos)\n', '> Generado por `tools/art/build-runway-pack.py`. **Sin tope de créditos por decisión del dueño (2026-11-12): se gasta hasta agotar el saldo; el saldo real hoy es 2, así que nada se puede generar hasta recargar.** '
+         '**Supuestos explícitos:** 1 imagen `gen4_image` 1024:1024 = **8 créditos** (campeones, mundo, diseños); 1 hoja de enemigo 1280:720 = **5 créditos** (medido en `art-source/runway-enemies/*/receipt.json`). '
+         f'Un enemigo cuesta {ENEMY_SHEETS} hojas ({ENEMY_SHEETS * SHEET} créditos) si ya tiene atlas, y {ENEMY_SHEETS * SHEET + CRED} si hay que crear primero su diseño. FX, íconos 16×16, proyectiles y auras NO usan Runway. '
+         'Se cuentan solo bloques abiertos (no `INTEGRADO_MAIN` ni seguimientos). El factor de reintento es una SUPOSICIÓN (×1,0 = todo sale a la primera; ×2,5 = razonable según los descartes registrados): el repo no mide la tasa real de aceptación.\n',
+         '| Grupo | Prioridad | Bloques abiertos | Imágenes de 8 créditos | Créditos ×1,0 | Créditos ×2,5 |', '|---|---|---:|---:|---:|---:|']
+    g1 = 0
     for (g, pr), (nb, ni, _) in sorted(rows.items()):
         L.append(f"| {g} | {pr} | {nb} | {ni} | {ni * CRED:,} | {int(ni * CRED * 2.5):,} |".replace(',', '.')); g1 += ni
-    L.append(f"| **Total** | | | **{g1}** | **{g1 * CRED:,}** | **{int(g1 * CRED * 2.5):,}** |".replace(',', '.'))
-    L.append('\nSaldo conocido al escribir esto: **2 créditos** (consulta `GET /v1/organization` → `creditBalance`; `node tools/art-world/runway-world.js status`). Por eso la regla es: **no empezar nada nuevo sin saldo**, y gastar siempre en el orden P0 → P1 → P2 de la cola, un bloque completo por vez.')
+    ec = en_atlas * ENEMY_SHEETS * SHEET + en_sin * (ENEMY_SHEETS * SHEET + CRED)
+    L.append(f"| Enemigos (hojas) | todas | {en_atlas + en_sin} criaturas ({en_sin} sin atlas) | {ENEMY_SHEETS} hojas c/u | {ec:,} | {int(ec * 2.5):,} |".replace(',', '.'))
+    L.append(f"| **Total** | | | | **{g1 * CRED + ec:,}** | **{int((g1 * CRED + ec) * 2.5):,}** |".replace(',', '.'))
+    L.append('\nSaldo conocido al escribir esto: **2 créditos** (`node tools/art-world/runway-world.js status`). Orden de gasto: P0 → P1 → P2 de la cola, un bloque completo por vez, registrando cada gasto en `docs/beta-release/ART_CREDITS.md`.')
     return '\n'.join(L) + '\n'
 
 # ---------------------------------------------------------------- main
@@ -315,7 +384,7 @@ def main():
     for cid, c in CH.items():
         open(os.path.join(PK, 'campeones', cid + '.md'), 'w', encoding='utf-8').write(champion_md(cid, c, by_champ.get(cid, [])))
     arenas = collections.defaultdict(list)
-    for e in EN.values(): arenas[e['arena'] or 'otras'].append(e)
+    for e in EN.values(): arenas[ENEMY_ARENA_OVERRIDE.get(e['id']) or e['arena'] or 'otras'].append(e)
     for a, its in arenas.items():
         open(os.path.join(PK, 'enemigos', a + '.md'), 'w', encoding='utf-8').write(enemy_md(a, its))
     print('bloques', len(out_blocks), '| items', sum(len(b['items']) for b in out_blocks), '| campeones', len(CH), '| enemigos', len(EN), 'en', len(arenas), 'arenas')

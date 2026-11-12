@@ -35,6 +35,8 @@ Fuente del formato: `docs/art-brief/00_ESPECIFICACION_TECNICA.md` §2.1 (verific
 
 Cada animación es un ciclo corto: **cada cuadro tiene un trabajo distinto** y la diferencia entre cuadros contiguos tiene que verse en 130 ms.
 
+**Cuadro 0 es dos cosas a la vez:** el primer cuadro del caminar de frente Y el reposo de frente (el motor no tiene un cuadro de reposo propio). Pedirlo con la pose de contacto pero **bien quieta y legible**: si se pausa ahí, el personaje tiene que verse en guardia, no a mitad de un paso. Lo mismo vale para los cuadros 4 y 8.
+
 **Caminar (4 cuadros, bucle)**
 1. *Contacto*: un pie apoyado adelante, cuerpo en su punto más bajo, brazos opuestos a las piernas.
 2. *Paso*: la pierna de atrás pasa al frente, cuerpo en su punto MÁS ALTO (rebote de 1–2 px), ropa y pelo suben un poco.

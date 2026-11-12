@@ -15,20 +15,22 @@ Todo lo de esta receta sale de lo que ya se hizo y de las herramientas que exist
 ```bash
 node tools/art-world/runway-world.js status     # {"creditBalance": N}
 ```
-- Regla del repo: no empezar una tanda con saldo < 250; tope de 60 créditos por ejecución salvo que el dueño diga otra cosa (el dueño autorizó gastar hasta agotar el saldo el 2026-11-11, pero hoy el saldo es 2).
-- Costo medido: **8 créditos por imagen** (`gen4_image`, 1024:1024, con 1 referencia). Un `BAD_OUTPUT` también se cobra: tras dos fallos seguidos en la misma pose, parar y cambiar el planteo en vez de reintentar.
+- **Sin tope de créditos** (decisión del dueño, 2026-11-12): se gasta hasta agotar el saldo; hoy el saldo real es **2**, así que nada se puede generar hasta recargar. Los scripts de campeón y mundo traen un tope por omisión (`GUARDIAN_RUNWAY_BUDGET` 24, `WORLD_RUNWAY_BUDGET` 40) que es un seguro contra errores: para una tanda grande se sube con la variable de entorno (p. ej. `GUARDIAN_RUNWAY_BUDGET=100000`), a propósito. `runway-design.js` y `gen_sheet.py` no tienen tope propio.
+- Costo medido: **8 créditos por imagen** (campeón, mundo, diseño) y **5 por hoja de enemigo 1280:720** (`gen4_image`, 1024:1024, con 1 referencia). Un `BAD_OUTPUT` también se cobra: tras dos fallos seguidos en la misma pose, parar y cambiar el planteo en vez de reintentar.
 
 ## 3. Preparar las referencias
 
-**`@codex`** — `assets/ui/codex/champions/<id>.png` (campeones). Para enemigos y jefes no hay lámina: usar el cuadro actual de su atlas como diseño, o la portada de su arena (`art-source/codex-covers/`).
+**`@codex`** — `assets/ui/codex/champions/<id>.png` (campeones). Para enemigos y jefes no hay lámina: se usa el cuadro quieto de su atlas (`pose-ref.py <id> 0`) o, si no tiene atlas, el diseño creado con `runway-design.js` (Paso 0 de su ficha).
 
-**`@pose`** — recorte del cuadro N del atlas actual (la celda NO siempre es 112×112: hay atlas de 192×128 y otros; el script lee la medida de `champPackLoadAtlas`):
+**`@pose`** — recorte del cuadro N del atlas actual (la celda NO siempre es 112×112: hay atlas de 192×128, 103×98, 52×52…; el script lee la medida del registro del atlas en el juego). **gen4_image trabaja a 1024×1024: una referencia de 52–112 px llega borrosa**, por eso el script guarda también `fNN_1024.png` (ampliado con vecino más cercano en múltiplo entero, centrado sobre lienzo oscuro) y es ESA la que se pasa como `@pose`:
 
 ```bash
 python3 tools/art/pose-ref.py <campeon> 12 16 24        # -> art-source/runway-pose-refs/<campeon>/f12.png ...
-python3 tools/art/pose-ref.py <campeon> --all           # todos los cuadros
+python3 tools/art/pose-ref.py <campeon> --all           # todas las celdas de la rejilla
+python3 tools/art/pose-ref.py <enemigo> 3 --cell 52x52  # enemigo cuya celda no está en un *-meta.js: la medís vos
 ```
-Si el campeón no tiene atlas registrado, el script avisa: usar un **donante** de la misma complexión (`tools/art/painter/donors.json`) o la plantilla `docs/art-brief/plantillas/champion_atlas_448x1008_PLANTILLA.png` (§7).
+**Ojo con el atlas de partida:** si el cuadro actual tiene el defecto que se quiere arreglar (los atlas marcados `siluetas_partidas` o `cuadros_repetidos` en la cola), usarlo como `@pose` hereda el defecto: en ese caso usar de `@pose` un cuadro vecino sano o el donante, y dejar que el prompt (`beat`) defina la pose. Con DOS referencias (`@codex` + `@pose`) el costo medido por imagen sigue siendo 8 créditos solo para 1 referencia en las pruebas de mundo; **no está medido con 2**: revisar `receipt.json` en la primera generación.
+Si el campeón (o enemigo) no tiene atlas registrado, el script avisa: usar un **donante** de la misma complexión (`tools/art/painter/donors.json`) o la plantilla `docs/art-brief/plantillas/champion_atlas_448x1008_PLANTILLA.png` (§7).
 
 ## 4. Generar
 
@@ -42,7 +44,9 @@ Tope por ejecución: `GUARDIAN_RUNWAY_BUDGET` (24 por omisión = 3 imágenes). N
 
 Mundo (props, texturas, fachadas): `node tools/art-world/runway-world.js gen <id>`. Los trabajos están en el objeto `JOBS` de ese archivo: para un asset nuevo se **agrega una entrada** con el prompt del paquete (`bloques/03-mundo.md`) y la referencia del Códice (`@ref`). Tope: `WORLD_RUNWAY_BUDGET` (40 por omisión).
 
-Enemigos: 3 imágenes clave por criatura (reposo, caminar de perfil, ataque de perfil). Los demás cuadros (caminar de frente/espaldas, golpe, muerte) los deriva el pintor determinista (`tools/art/painter/enemy_paint.py` y los `tools/art-world/build-*.py`), que reutiliza el cuerpo aceptado: así no se paga cada cuadro.
+Enemigos: hoja completa por criatura con `gen_sheet.py` → `install.py` → `walk_batch.py` (cadena exacta por criatura en `enemigos/<arena>.md`; explicación en `ENEMIGOS_GUIA.md` §3).
+
+Diseño o lámina que falta (campeón sin lámina del Códice, criatura sin atlas): `node tools/art-world/runway-design.js <id> <intento> "<prompt>" [estilo.png] [--dry-run]` → `art-source/runway-designs/<id>/<intento>/master.png` + `receipt.json`. Los prompts salen en cada ficha (`campeones/<id>.md` Paso 0, `enemigos/<arena>.md` Paso 0).
 
 **Anatomía de un buen prompt** (los del paquete ya la siguen): (a) qué es y de qué referencia sale (`@codex`); (b) la pose exacta (`@pose` + su descripción); (c) «keep the @codex design and palette exactly»; (d) orientación explícita (perfil a la derecha / de frente / **de espaldas**); (e) estilo: pixel art nítido, contorno de 1 px, sombreado plano, 4–6 colores, una sola silueta conectada; (f) lo que NO debe haber: texto, marco, efectos pegados al cuerpo, degradé, brillo; (g) fondo oscuro liso (o verde croma para recortar).
 
@@ -53,6 +57,7 @@ Rechazar si falla CUALQUIERA:
 2. **Pose**: es la pedida (la del `@pose` con el movimiento de `POSES_CAMPEON.md`), no otra.
 3. **Orientación**: la pedida. Error típico registrado: pedir espaldas y recibir frente (Profeta `pf_up`, descartada).
 4. **Vista**: cenital 3/4 como el juego. Error registrado: vista isométrica (`casa_b`, rechazada).
+   *(Sobre un evaluador automático: el encabezado de `tools/art-world/runway-guardian.js` cita `guardian-eval.py`, que NO existe en el repo. Hoy el criterio es este, a ojo, más los gates de §6.)*
 5. **Silueta**: una sola pieza conectada; nada flotando (espada separada, chispas, sombra proyectada).
 6. **Limpieza**: sin texto, marco, rejilla, halo, degradé ni efectos dentro del cuerpo.
 7. **Anatomía**: manos, pies y arma completos y coherentes (extremidades de más o de menos = rechazo).
