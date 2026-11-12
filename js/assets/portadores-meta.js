@@ -26,3 +26,5 @@ SET_SKINS.merienda_magica.packs.myla_berrinche="skin_merienda_magica_berrinche";
 
 // B005: independent base death; authored skins and Berrinche retain their packs.
 champPackLoadAtlas("myla_death","assets/sprites/champions/myla/v2/death.png",{w:112,h:112,cols:4,refH:82,anchor:106/112,sets:{death_down:[0,1,2,3]}});
+// B005: supplemental base cast. Authored skins keep their own cast rows.
+champPackLoadAtlas("myla_cast","assets/sprites/champions/myla/v2/cast.png",{w:112,h:112,cols:12,refH:82,anchor:106/112,fix:{left:"mirror"},sets:{cast_down:[0,1,2,3],cast_side:[4,5,6,7],cast_up:[8,9,10,11]}});
