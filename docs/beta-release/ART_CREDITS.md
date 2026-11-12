@@ -51,9 +51,9 @@ Cuenta de Runway compartida: el saldo también bajó mientras no se generaba nad
 | Intento | Task | Créditos | Resultado |
 |---|---|---|---|
 | tanque f24_a1 (lámina completa + @pose) | df604ed3-ec32-4718-94e7-88bc389a83f3 | 8 | RECHAZADA: texto copiado del título dentro de la imagen, sin espada, tierra en los pies |
-| tanque f24_a2 (recorte limpio, prompt «test» por error mío) | 13062390-0017-4… | 8 | DESCARTADA: prompt de prueba lanzado sin querer; sin texto pero sin espada |
+| tanque f24_a2 (recorte limpio, prompt «test» por error mío) | 13062390-0017-4334-b917-523c908948ff | 8 | DESCARTADA: prompt de prueba lanzado sin querer; sin texto pero sin espada |
 | tanque f24_a3 y f24_a4 (recorte limpio + prompt largo) | 58c7e1cf-6bbd-4993-a07d-3c373dd0aeb2 · 56df95df-e283-43db-9b4e-79fe5eb3c755 | 0 informados (el saldo bajó ~5 y ~20 en esos momentos, no atribuible con certeza) | BAD_OUTPUT los dos: se cambió el planteo (prompt corto) |
-| tanque f24_a5 (recorte limpio + prompt corto) | 3145e6e1-7628-48ed-959b-89c4ccb8ae9c | 8 | ACEPTADA con notas: sin texto, diseño y paleta fieles (espada, escudo, capa), una silueta; quitar la franja de tierra al reducir |
+| tanque f24_a5 (recorte limpio + prompt corto) | 3145e6e1-7628-48ed-959b-89c4ccb8ae9c | 8 | ACEPTADA solo como DISEÑO (no instalada): sin texto, diseño y paleta fieles (espada, escudo, capa), una silueta; no demuestra la pose de «reunir»; quitar la franja de tierra al reducir |
 Aprendizajes aplicados al paquete: `tools/art/codex-clean.py` (referencia sin texto, proporción ≤ 2,2) y prompt corto por pose.
 
 ### B002 Tanque, lote de 8 cuadros (2026-11-12, saldo 856 → 770 = 86 créditos para 2 imágenes y 6 fallos)
@@ -61,9 +61,9 @@ Aprendizajes aplicados al paquete: `tools/art/codex-clean.py` (referencia sin te
 |---|---|---|
 | 27 (recuperar) | 511df6f2-7288-48ee-b925-367554ff1b20 | Imagen limpia y fiel al diseño, pero **idéntica a una pose de pie** (no hay «recuperar»): RECHAZADA por pose (RECETA §5.2) |
 | 12 (golpe recibido) | 926c414b-e347-4bfa-9b62-d6970f926956 | Idem: de pie con espada y escudo, sin retroceso ni ojo cerrado: RECHAZADA por pose |
-| 25, 26 (alzar, liberar) | adf767f2-9b82-4859-a4f8-f4265a844b33 · 87f223d3-926c-42e4-8fb6-964d29b4bcc0 | BAD_OUTPUT (cobrado) |
-| 32, 33, 34, 35 (muerte) | 8e7a343c-b8ff-4b39-bcd0-30aab97418fc · 1dbb37f1-ca42-4e40-8819-5b518c255b5a · 3ef18948-d06a-4232-9191-47dfbeecb679 · 1a7f2c0b-c22f-4e7b-af72-6c067525bea1 | BAD_OUTPUT (cobrado) |
-**Conclusión medida:** `gen4_image` con la referencia limpia conserva el diseño, pero ignora la pose pedida y devuelve siempre un personaje de pie; las poses agachadas o tendidas (alzar, liberar, muerte) dan BAD_OUTPUT y el fallo se cobra (~12 créditos c/u en este lote). Es el mismo límite que ya registraba la receta (Profeta `pf_up`, Myla `d3`). Ningún cuadro de este lote entra al juego. Los atlas actuales del tanque ya tienen esas poses dibujadas (vista de contacto: lanzar, arrodillado, tendido); no se ve ganancia en rehacerlas con Runway. No se sigue gastando en cuerpos de campeón con este método.
+| 25, 26 (alzar, liberar) | adf767f2-9b82-4859-a4f8-f4265a844b33 · 87f223d3-926c-42e4-8fb6-964d29b4bcc0 | BAD_OUTPUT (sin imagen; el cobro NO está respaldado por recibo: solo por el cambio de saldo) |
+| 32, 33, 34, 35 (muerte) | 8e7a343c-b8ff-4b39-bcd0-30aab97418fc · 1dbb37f1-ca42-4e40-8819-5b518c255b5a · 3ef18948-d06a-4232-9191-47dfbeecb679 · 1a7f2c0b-c22f-4e7b-af72-6c067525bea1 | BAD_OUTPUT (sin imagen; el cobro NO está respaldado por recibo: solo por el cambio de saldo) |
+**Qué se midió (muestra de 1 campeón):** `gen4_image` con la referencia limpia conserva el diseño, pero ignora la pose pedida y devuelve siempre un personaje de pie; las poses agachadas o tendidas (alzar, liberar, muerte) dan BAD_OUTPUT y el saldo bajó en esos momentos (~11 créditos por fallo en promedio, atribución no verificable). Es el mismo límite que ya registraba la receta (Profeta `pf_up`, Myla `d3`). Ningún cuadro de este lote entra al juego. Los atlas actuales del tanque ya tienen esas poses dibujadas (vista de contacto: lanzar, arrodillado, tendido); no se ve ganancia en rehacerlas con Runway. Con esta muestra no se justifica seguir gastando en cuerpos de campeón con este método; falta probar otros campeones antes de dar la regla por cerrada.
 
 ## Rehacer 4 enemigos con hoja completa (`gen_sheet.py`) - 2026-11-12 (tope propio del lote: 150 cr)
 Saldo 750 -> 715 (35 cr según `status`; 8 hojas x 5 cr = 40 esperados: una lectura de saldo no bajó tras la hoja cm_acechante v2, la cuenta es compartida). Un intento interno de `gen_sheet.py` (cm_acechante v2, 1.º) devolvió FAILED "An unexpected error occurred" con 0 créditos y reintentó solo. **Ninguna hoja se instaló: los 4 enemigos conservan su atlas vigente** (hojas en `art-source/runway-enemies/<arena>/<id>/rejected_sheet_vN.png`).
@@ -78,3 +78,5 @@ Saldo 750 -> 715 (35 cr según `status`; 8 hojas x 5 cr = 40 esperados: una lect
 | esfinge | v3 `e953d242-6bba-412c-8dc3-542ca1d65ec1` (`--nostyle`, ref espejada: la ref del atlas mira a la IZQUIERDA) | 5 | RECHAZADA: orientación mezclada (cuadros a izquierda y derecha), primer cuadro corrupto |
 | esfinge | v4 `14e04bb6-8e8d-437b-a53f-3be40230e9f1` | 5 | RECHAZADA: dos cuadros miran a la izquierda, cuadros casi idénticos, la muerte es una masa fundida con cristal azul ajeno |
 Aprendizajes: (1) `pose-ref.py <id> 0` toma el atlas sin `v2` y para cm_acechante da un fragmento: usar el cuadro quieto del atlas instalado (`v2/atlas.png`). (2) Runway no deja el cuadro de muerte limpio: casi siempre fusiona dos cuerpos o agrega cristales del estilo. (3) `build_sheet.py` auto descarta cuadros más anchos que 1,7x la mediana, que es justo el cuerpo caído. (4) Parada por regla de 2 fallos seguidos en los 4.
+
+Sin recibo en el repo (la API no devolvió imagen): f24_a3, f24_a4, f25, f26, f32, f33, f34, f35; sus task ids constan solo en esta tabla. Reconciliación de saldo: documentados con recibo 80 créditos (5 imágenes × 8 + 8 hojas × 5); el saldo bajó 240 (950 → 710); los ~160 restantes no se pueden atribuir a fallos propios o a consumo ajeno de la cuenta compartida.
