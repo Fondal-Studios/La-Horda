@@ -62,3 +62,9 @@
 - **Bloqueo:** Runway rechaza todo con «daily task limit reached» (tope diario de la cuenta compartida; saldo ~295; entre 530 y 295 el saldo bajó ~235 sin generaciones nuestras: consumo ajeno, no atribuible). Pisos y centros de Bosque y Hielo preparados (JOBS, referencias, capturas «antes») y sin generar. Reintento: recordatorio de la sesión para las 00:30 UTC del 2026-11-13 (no está en el repo).
 - `docs/steam/DECLARACION_IA.md` actualizado con los recuentos reales (159 recibos, 12 clips de video sin instalar).
 
+### Mergeado: PRs #298 y #299 (2026-11-12) — estado de Runway para la próxima sesión
+- `main` = 2e51ebdb. Registro único de trabajo con Runway en `docs/art-brief/runway-pack/REGISTRO_RUNWAY.md` y checklist de campeones `CHECKLIST_CAMPEONES.md`: **leerlos antes de generar nada** (evitan repetir trabajo; `runway-world.js list` no es fiable).
+- Pendiente de generar (bloqueado por el límite diario de tareas de la cuenta de Runway, saldo ~295): pisos y centros de Bosque y Hielo (JOBS ya definidos en `runway-world.js`, referencias y capturas «antes» en `art-source/`). Para los pisos falta escribir el script de reducción; para los centros, agregar bosque/hielo a `tools/art-world/build-centro-arena.py` y las claves `ritualCircle`/`frozenLake` a `DECAL_PAINTED`.
+- Medido: imágenes sueltas y video de Runway no superan los atlas actuales de los campeones (Tanque) ni las hojas de enemigos probadas; sí rindieron pisos, centros y fachadas de arenas.
+- `docs/steam/DECLARACION_IA.md` ya tiene los recuentos reales (159 recibos de Runway); el dueño debe confirmar el resto.
+
