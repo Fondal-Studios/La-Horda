@@ -67,7 +67,9 @@ for eid, e in game['enemies'].items():
         ok('runway-design.js %s d1 ' % eid in sec and 'Paso 0' in sec, 'enemigo %s: sin atlas pero sin Paso 0' % eid)
     else:
         ok('pose-ref.py %s 0' % eid in sec, 'enemigo %s: con atlas pero sin recorte de partida' % eid)
-    ok(not re.search(r'<[A-Za-zÁÉ@][^>]*>', sec), 'enemigo %s: marcador sin resolver' % eid)
+    ok(not re.search(r'<[A-Za-zÁÉ@][^>]*>', '\n'.join(l for l in sec.split('\n') if 'Qué tiene que mostrar cada estado' not in l)), 'enemigo %s: marcador sin resolver' % eid)
+    ok(('--kind bosses' in re.search(r'`(python3 tools/art/runway/install.py[^`]*)`', sec).group(1)) == ('--kind bosses' in re.search(r'`(python3 tools/art/runway/walk_batch.py[^`]*)`', sec).group(1)), 'enemigo %s: --kind bosses debe ir en install y walk_batch' % eid)
+    ok('assets/sprites/--' not in sec and 'scan_sprites.py --dir assets/' not in sec, 'enemigo %s: scan_sprites con ruta absoluta al repo' % eid)
 # la herramienta que crea lo que falta existe y su --dry-run funciona sin gastar ni llamar a la API
 r = subprocess.run(['node', os.path.join(ROOT, 'tools/art-world/runway-design.js'), 'x_test', 'd1', 'prompt', '--dry-run'], capture_output=True, text=True)
 ok(r.returncode == 0 and '"dryRun": true' in r.stdout and not os.path.exists(os.path.join(ROOT, 'art-source/runway-designs/x_test')), 'runway-design.js --dry-run no funciona o escribió/gastó')

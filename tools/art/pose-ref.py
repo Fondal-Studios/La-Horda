@@ -30,6 +30,13 @@ def find(cid):
         m = pe.search(open(f, encoding='utf-8', errors='ignore').read())
         if m and os.path.exists(os.path.join(ROOT, m.group(1))):
             return m.group(1), {'w': int(m.group(2)), 'h': int(m.group(3)), 'cols': int(m.group(4))}
+    # registro de hojas Runway de enemigos: `  id: {src:"...", hMul:1.3, meta:{"w":194,"h":187,"cols":8,...}}`
+    pr = re.compile(r'^\s*"?%s"?\s*:\s*\{\s*src\s*:\s*"([^"]+)".*?meta\s*:\s*\{\s*"w"\s*:\s*(\d+)\s*,\s*"h"\s*:\s*(\d+)\s*,\s*"cols"\s*:\s*(\d+)' % re.escape(cid), re.M)
+    f = os.path.join(ROOT, 'js/assets/enemy-runway-sheets.js')
+    if os.path.exists(f):
+        m = pr.search(open(f, encoding='utf-8', errors='ignore').read())
+        if m and os.path.exists(os.path.join(ROOT, m.group(1))):
+            return m.group(1), {'w': int(m.group(2)), 'h': int(m.group(3)), 'cols': int(m.group(4))}
     return None
 def main():
     from PIL import Image

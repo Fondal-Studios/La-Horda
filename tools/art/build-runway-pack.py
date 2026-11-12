@@ -143,13 +143,18 @@ def champion_md(cid, c, pend):
     L.append('\n## 4. Las 36 poses con su instrucción de Runway\n')
     L.append('Cada fila es un cuadro del atlas `448×1008` (4 columnas × 9 filas de 112 px). `@codex` = la lámina de arriba. `@pose` = el cuadro equivalente del atlas actual de este campeón '
              '(recorte del atlas registrado, ampliado a 1024 con vecino más cercano por `tools/art/pose-ref.py`; receta en `../RECETA.md` §3) o, si no tiene atlas, el cuadro de un donante de la misma complexión. El prompt va tal cual a `tools/art-world/runway-guardian.js`.\n')
+    if ai and ai['cols'] != 4:
+        L.append(f"> **Atlas con rejilla propia ({ai['cols']} columnas, celda {ai['w']}×{ai['h']}):** la pose N de abajo está en la celda `fila × {ai['cols']} + columna` de ESTE atlas; los comandos ya traen ese índice. La numeración de los cuadros del título es la del atlas estándar 4×9.\n")
     for p in POSES:
         L.append(f"### Cuadro {p['idx']} — fila {p['fila']}, columna {p['col']}: {p['estado']} · {p['dir_txt']}\n")
         L.append(f"- **Qué es:** {p['beat']}.")
         L.append(f"- **Prompt Runway:** `{pose_prompt(c, p)}`")
         codex = f"assets/ui/codex/champions/{cid}.png" if has_lam else f"art-source/runway-designs/{cid}/codex1/master.png"
-        pose = f"art-source/runway-pose-refs/{cid}/f{p['idx']:02d}_1024.png" if ai else f"art-source/runway-pose-refs/{DONOR}/f{p['idx']:02d}_1024.png"
-        pre = f"python3 tools/art/pose-ref.py {cid if ai else DONOR} {p['idx']} && "
+        src = cid if ai else DONOR
+        ri = p['idx']
+        if ai and ai['cols'] != 4: ri = (p['fila'] - 1) * ai['cols'] + (p['col'] - 1)   # rejilla propia: índice = fila × columnas + columna
+        pose = f"art-source/runway-pose-refs/{src}/f{ri:02d}_1024.png"
+        pre = f"python3 tools/art/pose-ref.py {src} {ri} && "
         L.append(f"- **Comando:** `{pre}node tools/art-world/runway-guardian.js {cid} f{p['idx']:02d}_a1 \"<prompt>\" {codex} {pose}`\n")
     L.append('### Golpe recibido (un cuadro; el motor lo toma de la fila de ataque, cuadros 12, 16 y 20)\n')
     L.append(f"- **Prompt Runway:** `{golpe_prompt(c)}`\n")
@@ -181,7 +186,7 @@ RUNWAY_STATES = ('idle', 'walk_side', 'atk_side')   # los 3 cuadros clave que se
 
 def is_fly(e):
     t = ' '.join([e['id'], e['name'], e.get('behavior') or '', e.get('family') or '']).lower()
-    return bool(re.search(r'vuel|volad|alad|murci|hada|medusa|espectro|fantasma|dragon|dragón|cuervo|mosca|abeja|flota', t))
+    return bool(re.search(r'vuela|volador|voladora|alad|murci|hada|medusa|espectro|fantasma|dragon|dragón|cuervo|mosca|abeja|flota', t))
 
 def design_prompt(e):
     lore = (e.get('lore') or '').replace('"', "'").replace('\n', ' ')[:220]
@@ -218,14 +223,14 @@ def enemy_md(arena, items):
             design = f"art-source/runway-designs/{eid}/d1/master.png"
             L.append(f"- **Paso 0 — crear el diseño (Runway, ~8 créditos):** `node tools/art-world/runway-design.js {eid} d1 \"{design_prompt(e)}\" assets/sprites/enemies/hielo/golem_cristal/atlas.png`  (el 4.º argumento es una hoja ya aprobada que fija el estilo; `--dry-run` muestra el pedido sin gastar). Aprobar con el criterio de `../RECETA.md` §5 antes de seguir; si no pasa, `d2`, `d3`… con otro planteo.")
             L.append(f"- **Paso 1 — diseño de partida:** `{design}` (la imagen aprobada del Paso 0).")
-        L.append(f"- **Paso 2 — hoja de combate** (3 filas × 6 cuadros sobre croma verde: caminar/ataque/quieto+golpe+muerte; ~5 créditos): `python3 tools/art/runway/gen_sheet.py {arena_dir} {eid} \"{desc_en}\" {design}{mode}` → `art-source/runway-enemies/{arena_dir}/{eid}/sheet_v1.png`. Si la referencia es chica o sale mal el estilo: agregar `--nostyle`. Sin palabras de combate violento en la descripción (Runway las rechaza).")
-        L.append(f"- **Paso 3 — armar e instalar** (croma → alfa, recorte, escala común, pies alineados, paleta, contorno 1 px, atlas de 8 columnas; registra en `js/assets/enemy-runway-sheets.js`): `python3 tools/art/runway/install.py {arena_dir} {eid} 1.0 64{kind}` (`hMul` y alto nativo se ajustan mirando la criatura en el motor; el boss usa `--kind bosses`).")
-        L.append(f"- **Paso 4 — caminatas de frente y de espaldas** (Runway no varía bien las piernas: la caminata de la hoja puede salir casi igual entre cuadros; si la métrica de movimiento queda < 0,20 se usa el ciclo procedural `procWalk` del spec, ver `docs/art-gate/RUNWAY_ENEMIES.md`): `python3 tools/art/runway/walk_batch.py {arena_dir} {eid} 1.0 64 front{' fly' if is_fly(e) else ''}` y luego `... side`.")
-        L.append(f"- **Paso 5 — chequeos:** `python3 tools/art/scan_sprites.py --dir assets/sprites/{'bosses' if e['rank']=='jefe' else 'enemies'}/{arena_dir}/{eid}` · `node tools/art/enemy_coverage.js` · `node tools/art/pixel-density.js` · ver la criatura en el motor (8 estados) antes de aprobar.")
+        L.append(f"- **Paso 2 — hoja de combate** (3 filas × 6 cuadros sobre croma verde: caminar/ataque/quieto+golpe+muerte; ~5 créditos): `python3 tools/art/runway/gen_sheet.py {arena_dir} {eid} \"{desc_en}\" {design}{mode}` → `art-source/runway-enemies/{arena_dir}/{eid}/sheet_vN.png` (N = la primera versión libre; el script la imprime). Avisos del repo: reintenta hasta 3 veces por llamada y cada intento puede cobrar; tras dos fallos seguidos, parar y cambiar el planteo. Si la referencia es chica o sale mal el estilo: agregar `--nostyle`. Sin palabras de combate violento en la descripción (Runway las rechaza).")
+        L.append(f"- **Paso 3 — armar e instalar** (croma → alfa, recorte, escala común, pies alineados, paleta, contorno 1 px, atlas de 8 columnas; registra en `js/assets/enemy-runway-sheets.js`): `python3 tools/art/runway/install.py {arena_dir} {eid} 1.0 64{kind}` (`hMul` y alto nativo se ajustan mirando la criatura en el motor; el boss usa `--kind bosses`). Si la criatura YA tiene hoja instalada con `spec.json` de cuadros manuales, `install.py` no lo pisa: para rehacerla, mover ese `spec.json` y pasar `--sheet sheet_vN.png`.")
+        L.append(f"- **Paso 4 — caminata dedicada** (opcional, una sola vista; `walk_batch.py` acepta `front` o `side`, NO existe modo de espaldas, y una segunda corrida reemplaza a la primera): `python3 tools/art/runway/walk_batch.py {arena_dir} {eid} 1.0 64 side{' fly' if is_fly(e) else ''}{kind}` (usar `front` solo si la criatura se ve de frente). Los otros sentidos los completa el motor (`enemy_coverage.js` dice cuáles). Aviso del repo: Runway devuelve ciclos casi idénticos entre cuadros; si la métrica de movimiento queda < 0,20 se usa el ciclo procedural (`procWalk` del spec, ver `docs/art-gate/RUNWAY_ENEMIES.md`).")
+        L.append(f"- **Paso 5 — chequeos:** `python3 tools/art/scan_sprites.py --dir {'bosses' if e['rank']=='jefe' else 'enemies'}/{arena_dir}/{eid}` · `node tools/art/enemy_coverage.js` · `node tools/art/pixel-density.js` · ver la criatura en el motor (8 estados) antes de aprobar.")
         row = mundo.get('C-ENEMY-' + e['id'])
         if row:
             L.append(f"- **Estado en la cola:** {row['estado']} · prioridad {row['prioridad']} · entrega en `{row['ruta_entrega']}`.")
-        L.append('- **Qué tiene que mostrar cada estado** (la hoja del Paso 2 pide los 3 primeros en sus filas; el resto se completa con los pasos 3–4 o, si se ve mal, se rehace ese estado). Prompt de apoyo por estado, para rehacer UN estado suelto con `runway-design.js` + referencia de la hoja:')
+        L.append(f'- **Qué tiene que mostrar cada estado** (la hoja del Paso 2 pide los 3 primeros en sus filas; el resto se completa con los pasos 3–4 o, si se ve mal, se rehace ese estado). Prompt de apoyo por estado, para rehacer UN estado suelto: `node tools/art-world/runway-design.js {eid} <estado>1 "<prompt>" --ref codex=<diseño aprobado> --ref pose=<cuadro de referencia 1024>` (las etiquetas `codex` y `pose` son las que usan estos prompts):')
         for st, desc, _ in ENEMY_STATES:
             L.append(f"  - `{st}` — {desc}. Prompt: `{enemy_prompt(e, st, desc)}`")
         L.append('')
@@ -335,7 +340,7 @@ def costs_md(out_blocks):
             if i['id'].startswith('C-ENEMY-') and 'runway' in i.get('metodo', ''):
                 if atlas_info(i['id'][len('C-ENEMY-'):]): en_atlas += 1
                 else: en_sin += 1
-    L = ['# Costos de Runway del paquete (créditos)\n', '> Generado por `tools/art/build-runway-pack.py`. **Sin tope de créditos por decisión del dueño (2026-11-12): se gasta hasta agotar el saldo; el saldo real hoy es 2, así que nada se puede generar hasta recargar.** '
+    L = ['# Costos de Runway del paquete (créditos)\n', '> Generado por `tools/art/build-runway-pack.py`. **Sin tope de créditos por decisión del dueño (2026-11-12): se gasta hasta agotar el saldo; el saldo cambia (al 2026-11-12 era 0–2), así que nada se puede generar hasta recargar.** '
          '**Supuestos explícitos:** 1 imagen `gen4_image` 1024:1024 = **8 créditos** (campeones, mundo, diseños); 1 hoja de enemigo 1280:720 = **5 créditos** (medido en `art-source/runway-enemies/*/receipt.json`). '
          f'Un enemigo cuesta {ENEMY_SHEETS} hojas ({ENEMY_SHEETS * SHEET} créditos) si ya tiene atlas, y {ENEMY_SHEETS * SHEET + CRED} si hay que crear primero su diseño. FX, íconos 16×16, proyectiles y auras NO usan Runway. '
          'Se cuentan solo bloques abiertos (no `INTEGRADO_MAIN` ni seguimientos). El factor de reintento es una SUPOSICIÓN (×1,0 = todo sale a la primera; ×2,5 = razonable según los descartes registrados): el repo no mide la tasa real de aceptación.\n',
@@ -346,7 +351,7 @@ def costs_md(out_blocks):
     ec = en_atlas * ENEMY_SHEETS * SHEET + en_sin * (ENEMY_SHEETS * SHEET + CRED)
     L.append(f"| Enemigos (hojas) | todas | {en_atlas + en_sin} criaturas ({en_sin} sin atlas) | {ENEMY_SHEETS} hojas c/u | {ec:,} | {int(ec * 2.5):,} |".replace(',', '.'))
     L.append(f"| **Total** | | | | **{g1 * CRED + ec:,}** | **{int((g1 * CRED + ec) * 2.5):,}** |".replace(',', '.'))
-    L.append('\nSaldo conocido al escribir esto: **2 créditos** (`node tools/art-world/runway-world.js status`). Orden de gasto: P0 → P1 → P2 de la cola, un bloque completo por vez, registrando cada gasto en `docs/beta-release/ART_CREDITS.md`.')
+    L.append('\nSaldo al 2026-11-12: **0–2 créditos** (`node tools/art-world/runway-world.js status`). Orden de gasto: P0 → P1 → P2 de la cola, un bloque completo por vez, registrando cada gasto en `docs/beta-release/ART_CREDITS.md`.')
     return '\n'.join(L) + '\n'
 
 # ---------------------------------------------------------------- main
