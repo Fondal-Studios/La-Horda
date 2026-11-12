@@ -723,7 +723,7 @@
     "docs/beta-release/ART_CREDITS.md",
     "docs/art-brief/runway-pack/RECETA.md"
    ],
-   "por_que": "Medido: 0 aprobados como POSE en 13+ imágenes del Tanque (f24_a5 quedó aceptada solo como diseño); mismo límite visto en Profeta pf_up y Myla d3. Solo sirvió con @pose de una imagen aceptada de la misma serie y poses de pie (Libertador/Profeta/Coloso).",
+   "por_que": "Medido con gen4_image (NO con gpt_image_2, que sí funcionó para Ynara el 2026-11-12): 0 aprobados como POSE en 13+ imágenes del Tanque (f24_a5 quedó aceptada solo como diseño); mismo límite visto en Profeta pf_up y Myla d3. Solo sirvió con @pose de una imagen aceptada de la misma serie y poses de pie (Libertador/Profeta/Coloso).",
    "siguiente_paso": "NO invertir créditos en campeon_cuerpo por imágenes sueltas ni en animación de campeones con hojas.",
    "verificacion": "tomado de ART_CREDITS.md + estado-campeones.json"
   },
@@ -1679,6 +1679,42 @@
    "verificacion": "ninguna carpeta runway-enemies/fortaleza salvo dragon_forja rechazado",
    "valor": 3,
    "costo_estimado": 24
+  },
+  {
+   "id": "ynara_ult_poses_gpt2",
+   "categoria": "campeon_cuerpo",
+   "descripcion": "Ynara: hoja de 4 poses de la DEFINITIVA (gpt_image_2, croma verde) -> cuadros 40-43 del atlas",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-12",
+   "task_ids": [
+    "78351189-a6b6-4491-b858-efd2ed9cdf5a"
+   ],
+   "creditos": 20,
+   "donde_esta": [
+    "art-source/runway-designs/ynara/u1/master.png",
+    "art-source/ynara-runway/ult"
+   ],
+   "por_que": "Respeta poses y diseno (gen4_image las ignora). Convertida con tools/art/sheet-to-cells.py. Instalada 2026-11-12.",
+   "siguiente_paso": "",
+   "verificacion": ""
+  },
+  {
+   "id": "ynara_cast_poses_gpt2",
+   "categoria": "campeon_cuerpo",
+   "descripcion": "Ynara: hoja de 4 poses de LANZAR (gpt_image_2, croma verde) -> cuadros 36-39 del atlas",
+   "estado": "hecho_integrado",
+   "ultima_fecha": "2026-11-12",
+   "task_ids": [
+    "919dfa5e-d5c5-41fd-bc41-0f2306e71758"
+   ],
+   "creditos": 20,
+   "donde_esta": [
+    "art-source/runway-designs/ynara/c1/master.png",
+    "art-source/ynara-runway/cast"
+   ],
+   "por_que": "Primer intento aceptado (saldo 225 -> 205). Sombra de suelo del modelo recortada con --trim-feet 9. Instalada 2026-11-12.",
+   "siguiente_paso": "",
+   "verificacion": ""
   }
  ]
 }

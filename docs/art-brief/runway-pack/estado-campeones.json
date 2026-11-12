@@ -56,7 +56,7 @@
     "13 imágenes sueltas (gen4_image) para lanzar/muerte/golpe: ignora la pose o BAD_OUTPUT. NO repetir (ver ART_CREDITS.md)",
     "Atlas por video (gen4_turbo 2 s, 9 clips): conserva el diseño pero da menos pose que el atlas dibujado actual; ultimate indistinguible de lanzar. Usar video solo para caminatas, no para ataques/muerte."
    ],
-   "notas": "clip walk_down w1: art-source/runway-video/tanque/w1 (task 231bc178…, 25 cr). Diseño estable. wd3 (marcha, rodillas arriba) aprobado a ojo; wd2 y w1 rechazados: cuadros casi iguales ws1: zancada visible, cuadros distintos; menos vida de capa que el atlas actual wu1: cuadros casi idénticos, movimiento débil; sin reintento ad1: levanta y baja la espada, 4 cuadros distintos as1: espada atrás/adelante; menos dramático que el atlas actual au1: ok pero la espada cruza fuera de silueta ca1: levanta espada y escudo; pierde la guardia del atlas actual ul1 y ul2 (reintento con salto): no se distingue de lanzar, sin pico heroico de1: arrodilla y tiende; último cuadro de solo 23 px, menos digno que el actual el conjunto no supera al atlas actual (ver captura) candidato 448x1008 en art-source/runway-video/tanque/candidate/atlas.png style_gate PASS, pero roster_gate con el candidato: scaleFailures 4 (base 0) no instalado: no es claramente mejor art-source/captures/tanque/"
+   "notas": "clip walk_down w1: art-source/runway-video/tanque/w1 (task 231bc178…, 25 cr). Diseño estable. wd3 (marcha, rodillas arriba) aprobado a ojo; wd2 y w1 rechazados: cuadros casi iguales ws1: zancada visible, cuadros distintos; menos vida de capa que el atlas actual wu1: cuadros casi idénticos, movimiento débil; sin reintento ad1: levanta y baja la espada, 4 cuadros distintos as1: espada atrás/adelante; menos dramático que el atlas actual au1: ok pero la espada cruza fuera de silueta ca1: levanta espada y escudo; pierde la guardia del atlas actual ul1 y ul2 (reintento con salto): no se distingue de lanzar, sin pico heroico de1: arrodilla y tiende; último cuadro de solo 23 px, menos digno que el actual el conjunto no supera al atlas actual (ver captura) candidato 448x1008 en art-source/runway-video/tanque/candidate/atlas.png style_gate PASS, pero roster_gate con el candidato: scaleFailures 4 (base 0) no instalado: no es claramente mejor art-source/captures/tanque/ | 2026-11-12: con gpt_image_2 el lanzar sale bien (hoja g1, task 7afade28…, 20 cr): candidato aceptado, sin integrar; falta probar muerte/definitiva con este modelo."
   },
   "guerrero": {
    "nombre": "Kael, la Daga Carmesí",
@@ -126,9 +126,18 @@
   },
   "ynara": {
    "nombre": "Ynara, la Médica de los Refugios",
-   "etapas": {},
+   "etapas": {
+    "lamina_limpia": "hecho",
+    "clip_cast": "hecho",
+    "clip_ult": "hecho",
+    "cuadros_aprobados": "aprobado",
+    "atlas_armado": "hecho",
+    "gates": "aprobado",
+    "instalado_motor": "hecho",
+    "captura_antes_despues": "hecho"
+   },
    "intentos_descartados": [],
-   "notas": ""
+   "notas": "lanzar y definitiva con gpt_image_2 (hojas c1 y u1, 40 cr), instalados en el atlas (filas 10-11, cuadros 36-43). roster_gate 0 fallos; style_gate no aplica (celda 96); revisión de arte humana pendiente."
   },
   "myla": {
    "nombre": "Myla, la Niña de la Cuchara",

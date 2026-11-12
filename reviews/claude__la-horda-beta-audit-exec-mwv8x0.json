@@ -1,8 +1,8 @@
 {
  "subject": {
-  "pr": 299,
+  "pr": 300,
   "branch": "claude/la-horda-beta-audit-exec-mwv8x0",
-  "head": "261903b6407a19dcc61097a409fcdcf4968f49c0",
+  "head": "1560edd852d43fd5178a34f9d439188f7ab2a43a",
   "authorAgent": "claude-sesion-principal",
   "authorId": "claude-sesion-principal"
  },
@@ -11,57 +11,57 @@
    "stage": "produccion",
    "by": "claude-sesion-principal",
    "role": "agent",
-   "commit": "261903b6407a19dcc61097a409fcdcf4968f49c0",
-   "at": "2026-11-12T14:20:00Z"
+   "commit": "1560edd852d43fd5178a34f9d439188f7ab2a43a",
+   "at": "2026-11-12T18:50:00Z"
   },
   {
    "stage": "qa",
-   "by": "claude-qa-299",
+   "by": "claude-qa-300",
    "role": "qa",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "261903b6407a19dcc61097a409fcdcf4968f49c0",
-    "tests": 4,
+    "sha": "1560edd852d43fd5178a34f9d439188f7ab2a43a",
+    "tests": 9,
     "failed": 0,
-    "report": "Sobre 261903b6: test-runway-pack 9944 OK (incluye runway-ledger.py --check y champ-checklist.py --check); muestra de 15 entradas de estado-runway.json verificada con ls/grep en js/ (7 integradas cargadas por el juego, casa_a y tanque_video no cargados, abismo_piso rechazado); video-to-atlas.py frames produce celdas 112×112 RGBA con alfa 0/255 y pies en la fila 105; runway-video.js y runway-design.js con --dry-run sin API y rechazo de id con '..' e imágenes fuera del repo; DECLARACION_IA: 159 recibos de Runway (74/17/2/54/12) + 1 de entregas que no es de Runway coinciden con find por carpeta; 12 task ids de video cotejados con recibos; diff sin js/, server/, index.html, gates ni atlas. MINOR abiertos: --seconds sin validar de rango; 3 frases heredadas de main que aún dicen BAD_OUTPUT «cobrado» (STATUS.md:17, POSES_CAMPEON.md:78, README_PROMPT_MAESTRO.md:10). No llamó a Runway."
+    "report": "Sobre 1560edd8 (tras NO APROBADO sobre 74c504ea por tests/competitive-roster.test.js: js/modes/crystal-wars/atlas.js guardaba imageSize [384,864] para Ynara; corregido a [384,1056]). Verificado: atlas nuevo 384×1056 con 11 filas, cuadros 0–35 idénticos píxel a píxel al de main, alfa 0/255; ynara-meta.js solo cambia cast_*/ultimate_* a [36–39]/[40–43]; competitive-roster PASS, crystal-wars test-competitive 8 OK, check-nano-competitive PASS, art-runtime-clips PASS (46 campeones), roster_gate scaleFailures 0 / presentationFailures 0 (150 apariencias), build-art-atlas --check OK, webp_convert --check 0 desactualizados, test-runway-pack 9944 OK, collection PASS, visual-package cli check 0 errores y test.js 6/6 en 21 de 22 corridas, hash sha256 del manifiesto = sha256 real del atlas. Capturas revisadas a ojo: lanzar y definitiva se distinguen del ataque, entre sí y del reposo, sin halos ni cortes. MINOR abiertos: tools/lanes/test-sides.js es intermitente por Math.random preexistente que la PR no toca (en 5 corridas locales 2 PASS, 2 FAIL por brillo 0,21–0,24 contra mínimo 0,25, 1 colgada); tools/visual-package/test.js falló una vez en una corrida local no reproducida. No llamó a Runway."
    },
-   "at": "2026-11-12T14:25:00Z"
+   "at": "2026-11-12T18:52:00Z"
   },
   {
    "stage": "arquitectura",
-   "by": "claude-arq-299",
+   "by": "claude-arq-300",
    "role": "arquitecto",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "261903b6407a19dcc61097a409fcdcf4968f49c0",
-    "report": "Aprobó 261903b6 tras NO APROBADO sobre f3add7a0 por 6 incoherencias de texto (cobro de BAD_OUTPUT afirmado como hecho, saldo 530 vs 295 sin explicar, «0 aprobados» vs 4 clips aceptados a ojo, «muerte sin caída» vs ART_CREDITS, reintento sin respaldo, checklist no cableado al test): todas resueltas. Alcance solo docs, herramientas de arte y art-source (nada de js/, server/, gates); herramientas validan rutas y no instalan nada. MINOR abiertos: ~12 MB de clips mp4 y capturas como evidencia (aceptable por precedente), video-to-atlas.py sin prueba propia ni comprobación de dependencias, id redundante «(ver el id de esta entrada)»."
+    "sha": "1560edd852d43fd5178a34f9d439188f7ab2a43a",
+    "report": "Aprobó 1560edd8 tras dos rondas: NO APROBADO sobre 74c504ea (gates no registrados, conclusión generalizada desde 1 campeón, documentos desalineados, build_ynara.py que pisaría el arte nuevo, DECLARACION_IA sin gpt_image_2) corregido en abe27734 con el contrafactual del Tanque con gpt_image_2 (hoja g1, task 7afade28…, 20 cr). El último cambio (manifest.v1.json de paquetes visuales) es derivado y acotado a Ynara; sha256 coincide con el atlas instalado; el hash viejo no queda en assets/js/docs/tools. MINOR abiertos para la próxima PR: gates=aprobado ambiguo en estado-campeones/checklist de Ynara (solo pasó roster_gate; style_gate no aplica a celdas de 96), falta entrada del Tanque g1 en estado-runway.json, «ya integrada» en RECETA §1, DECLARACION_IA «159» vs 162 con las 3 de gpt_image_2, inventarios docs/art-audit/combat-inventory/ de Ynara ya desactualizados antes de la PR."
    },
-   "at": "2026-11-12T14:27:00Z"
+   "at": "2026-11-12T18:54:00Z"
   },
   {
    "stage": "staging",
-   "by": "claude-integrador-299",
+   "by": "claude-integrador-300",
    "role": "integrador",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "261903b6407a19dcc61097a409fcdcf4968f49c0",
+    "sha": "1560edd852d43fd5178a34f9d439188f7ab2a43a",
     "branch": "beta/integracion-20261110",
-    "tests": 18,
+    "tests": 27,
     "failed": 0,
-    "run": "https://github.com/Fondal-Studios/La-Horda/pull/299"
+    "run": "https://github.com/Fondal-Studios/La-Horda/pull/300"
    },
-   "at": "2026-11-12T14:29:00Z"
+   "at": "2026-11-12T18:56:00Z"
   },
   {
    "stage": "aprobacion",
-   "by": "claude-integrador-299",
+   "by": "claude-integrador-300",
    "role": "director",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "261903b6407a19dcc61097a409fcdcf4968f49c0",
-    "report": "Aprobado sobre 261903b6. 19 check runs: 18 success (regresión rápida y completa, UX, objetos/economía, identidad de arenas, VFX, steam-pc, evidence, CodeQL, emoji-lint) y 1 failure ('Clasificacion, contratos y servidor' del PR, solo por R4). El push a beta/integracion-20261110 en el mismo SHA pasó los pasos que R4 había saltado. Diff 56 archivos solo docs/, tools/art*, art-source/ y .gitignore. No se instaló arte: el piloto de video del Tanque quedó como candidato (peor que el atlas actual) y los pisos/centros de Bosque y Hielo no se generaron por el límite diario de Runway."
+    "sha": "1560edd852d43fd5178a34f9d439188f7ab2a43a",
+    "report": "Aprobado sobre 1560edd8. PR: 27 check runs, 26 success y 1 failure ('Clasificacion, contratos y servidor' del PR, solo por R4). La regresión rápida pasó (incluye visual-package y lanes/test-sides) y la regresión completa, disparada a pedido del integrador (workflow_dispatch sobre beta/integracion-20261110, run 43273608904), terminó en success a las 18:38Z, incluido test-sides; el job de Clasificación de ese run pasó con la revisión saltada. Las dos fallas anteriores del CI sobre abe27734 eran: manifest.v1.json desactualizado (error de la PR, corregido) y test-sides intermitente (no atribuible a la PR). Diff: atlas de Ynara, manifest.v1.json, ynara-meta.js, crystal-wars/atlas.js (solo imageSize), docs, tools/art*, art-source. Arte instalado: lanzar y definitiva de Ynara hechos con gpt_image_2; aprobación de arte humana pendiente."
    },
-   "at": "2026-11-12T14:30:00Z"
+   "at": "2026-11-12T18:58:00Z"
   }
  ]
 }

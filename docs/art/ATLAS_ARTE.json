@@ -3,12 +3,12 @@
  "generator": "tools/art/build-art-atlas.js",
  "reference": "Códice (docs/LA_HORDA_CODEX.md); decisión curada en docs/art/ATLAS_VIGENTE.json",
  "sources": {
-  "hash": "86dcb027c8940e05b1ab5325fc800e0a94d8c779",
+  "hash": "2d46658008ed720d492386ba07145d904fcc4273",
   "files": 51
  },
  "runtime": {
   "url": "index.html?dev=1&lazy=1 (producción: carga por grupos, webp activo)",
-  "loadedImages": 1589,
+  "loadedImages": 1581,
   "sampling": "24 muestras por estado y dirección (down/side/left/up)"
  },
  "summary": {
@@ -2824,9 +2824,9 @@
      "loadedAs": "png",
      "size": [
       384,
-      864
+      1056
      ],
-     "bytes": 216219
+     "bytes": 262617
     }
    ],
    "packs": [
@@ -15265,7 +15265,7 @@
   {"file":"assets/sprites/champions/vorn/skins/vorn_alt1/preview.png","category":"champions","size":[112,112],"bytes":7864,"webp":false,"loaded":false,"usedBy":[],"status":"HUERFANO"},
   {"file":"assets/sprites/champions/vorn/skins/vorn_alt2/atlas.png","category":"champions","size":[448,1008],"bytes":278093,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/champions/ascension/art.js"],"status":"ARTE_VIEJO"},
   {"file":"assets/sprites/champions/vorn/skins/vorn_alt2/preview.png","category":"champions","size":[112,112],"bytes":7757,"webp":false,"loaded":false,"usedBy":[],"status":"HUERFANO"},
-  {"file":"assets/sprites/champions/ynara/atlas.png","category":"champions","size":[384,864],"bytes":216219,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/ynara-meta.js","js/modes/crystal-wars/atlas.js"],"status":"ARTE_VIEJO"},
+  {"file":"assets/sprites/champions/ynara/atlas.png","category":"champions","size":[384,1056],"bytes":262617,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/ynara-meta.js","js/modes/crystal-wars/atlas.js"],"status":"ARTE_VIEJO"},
   {"file":"assets/sprites/champions/ynara/cromas/ynara_celeste/atlas.png","category":"champions","size":[384,576],"bytes":127931,"webp":false,"loaded":false,"usedBy":["js/assets/alpha-set-skins-meta.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/ynara/cromas/ynara_celeste/preview.png","category":"champions","size":[96,96],"bytes":5782,"webp":false,"loaded":false,"usedBy":["js/assets/alpha-set-skins-meta.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/ynara/preview.png","category":"champions","size":[96,96],"bytes":7445,"webp":false,"loaded":false,"usedBy":["js/assets/ynara-meta.js"],"status":"CODEX_OK"},
