@@ -1,0 +1,38 @@
+{
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "publication": "NOT_CHECKED",
+  "component": "B005/cast/back/frame11",
+  "pr": 297,
+  "branch": "art/myla-cast-back-frame11-20261112",
+  "base": "a27c48b74344a090047deeaa77f2363243ef1d8c",
+  "productionCommit": "ccfc77a2dc40a2b8e174bf50573ff76df3328f3a",
+  "productionTree": "7f9d4fe2c0841b53acbefcc2d0be3f7f463c196a",
+  "sourceSha256": "9af8a48cd480d89c817e26655b0d939efc7595b9acfd6e21e8991656c73b4436",
+  "candidateCastSha256": "1069b0085e3bae9854357869aaae4ebd875074623ccd6d0af4bd061a15d41110",
+  "remoteSourceBlob": "f4e60ba22f514f252b3a59aaebcab7380c6bb2a9",
+  "newTests": [
+    {
+      "name": "deterministic build",
+      "result": "PASS",
+      "scope": "frame11 only; frames0-10 byte-exact"
+    },
+    {
+      "name": "canonical numerical detector",
+      "result": "PASS",
+      "scope": "12/12 cells; binary alpha"
+    }
+  ],
+  "historicalNotRerun": [
+    "PR190 death",
+    "PR229 bubble-state"
+  ],
+  "pending": [
+    "real gameplay consumer and before/after capture",
+    "base+Merienda Mágica+Arándanos+Berrinche",
+    "desktop/mobile",
+    "multiplayer if consumer changes",
+    "Art Gate and exact-head CI"
+  ],
+  "next": "Keep draft/FIX. Connect only after gameplay-scale visual approval; do not close B005 or merge this workshop."
+}
