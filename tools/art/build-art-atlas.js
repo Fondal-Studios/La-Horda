@@ -36,6 +36,7 @@ function imageSize(file) {
   return null;
 }
 // Fuentes cuyo contenido define qué arte registra/elige el juego: si cambian, el atlas committeado queda viejo.
+// La normalización también integra esta huella: corregir escala exige actualizar el registro aunque clips y archivos no cambien.
 function sourceFiles() {
   const list = [...walk(path.join(root, 'js/assets')), ...walk(path.join(root, 'js/champions/ascension')),
     'js/rendering/champion-sprites.js', 'js/rendering/codex-champions.js', 'js/rendering/champion-art-normalize.js', 'js/rendering/enemy-sprites.js', 'js/systems/set-effects.js', 'js/data/champion-art-normalize.js', 'js/data/codex-content.js', 'docs/art/ATLAS_VIGENTE.json']
