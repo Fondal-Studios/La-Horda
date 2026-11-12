@@ -156,3 +156,25 @@ Medidas: alto de cada cuadro nuevo 67 / 85 / 92 / 79 px (el reposo mide 83; cuer
 | Otros derivados | `assets/visual-packages/manifest.v1.json` (regenerado). `docs/art-factory/inventory.json` y `art-source/entregas/...` conservan el sha anterior: son salidas historicas (el inventario no se regenero en la PR de Ynara tampoco) y ningun gate las lee |
 | `python3 tools/art/painter/style_gate.py` | **NO aplica**: solo acepta atlas 448x1008; este es de celdas de 192x160. Sin evidencia de ese gate para este atlas; las celdas nuevas tienen 32-33 colores (paleta cuantizada a la del propio atlas) |
 | Revision de arte humana | **pendiente** (recibos `GENERATED_NOT_APPROVED`): entrada de Cazadora = «instalado, aprobacion de arte pendiente» |
+
+## Musashi: definitiva propia (gpt_image_2) - 2026-11-12
+| Fecha | Task | Creditos reales (saldo antes -> despues) | Resultado |
+|---|---|---|---|
+| 2026-11-12 | 489fab66-f8d0-4d0d-b462-669037b1c765 (u1, definitiva Ultimo Duelo, 4 poses; prompt con el bokken en diagonal/horizontal para no pasar la celda) | 20 (145 -> 125) | ACEPTADA al primer intento: agachado con el bokken a la cadera / se alza con el bokken cruzado al pecho / pico con el bokken horizontal sobre la cabeza y kimono abierto / estocada con el bokken al frente. Mismo diseno (mono, barba, kimono azul gastado, faja blanca, hakama, sandalias); proporciones algo mas macizas que el atlas vigente (anotado: aprobacion de arte humana pendiente). |
+
+Pipeline igual que Cazadora: `sheet-to-cells.py --scale 0.172 --link 8 --trim-feet 11 --cell 192` + `atlas-append-cells.py` (cuadros 0-51 identicos byte a byte; atlas 768x2240, cuadros nuevos 52-55) -> `art-source/musashi-runway/atlas.png`; instalado en `assets/sprites/champions/musashi/codex-v1/atlas.png` y `js/assets/champion-sprites.js` (`ultimate_down/side/up` -> [52..55]). sha256 anterior del atlas: 14ffbe96ee8e83eb6eb4381f5dfc318a002998a967bf2382dd5b285560f68993. Capturas: `art-source/captures/musashi/estados_antes.png` y `estados_despues.png` (la fila de definitiva era identica a la de lanzar).
+Medidas: alto de los cuadros nuevos 73 / 86 / 87 / 80 px (reposo 84; cuerpo de pie +2 a +3 %); el 54 (bokken horizontal sobre la cabeza) sobresale por el arma; pies en la fila 113. Queda una linea oscura fina de 1 px bajo los pies (resto de la mancha de tierra del modelo tras recortar 11 filas; recortar mas cortaba las sandalias): anotada, no se retoco a mano.
+
+### Gates de Musashi (atlas instalado, 2026-11-12)
+| Gate / revision | Resultado |
+|---|---|
+| `node tools/visual-package/cli.js build --write` + `check` + `test.js` | manifiesto regenerado; check: 117 paquetes, 0 candidatos, 0 errores; test: fail 0 |
+| `node tools/art/build-art-atlas.js` y `--check` | regenerado `docs/art/ATLAS_ARTE.*` (musashi 768x2240); --check OK |
+| `node tests/competitive-roster.test.js` | PASS |
+| `node tools/crystal-wars/test-competitive.js` | PASS (8 pruebas). Crystal Wars usa `musashi/v2/atlas.png` (otro atlas): `js/modes/crystal-wars/atlas.js` sin cambios |
+| `node tests/art-runtime-clips.test.js` | PASS (46 campeones, lazy=0 y 1) |
+| `node tools/art/roster_gate.js` | scaleFailures 0, presentationFailures 0, errores 0 (150 apariencias); `docs/art-gate/*` restaurado |
+| `python3 tools/art/webp_convert.py --check` | 0 desactualizados (el atlas codex-v1 de Musashi no tiene .webp) |
+| `python3 tools/art/scan_sprites.py --dir champions/musashi` | `codex-v1/atlas.png` no aparece marcado (las marcas son de otros archivos sin tocar) |
+| `roster-loading-test.js`, `champion-validator.js --strict`, `competitive-signatures.test.js`, `test-runway-pack.py` | PASS |
+| `style_gate.py` | **NO aplica** (solo atlas 448x1008). Revision de arte humana **pendiente**. `docs/art-factory/inventory.json` y `art-source/entregas/...` conservan el sha anterior (historicos) |

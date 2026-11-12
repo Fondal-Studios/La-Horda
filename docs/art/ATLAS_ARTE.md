@@ -18,7 +18,7 @@ Generado por `node tools/art/build-art-atlas.js` (no editar a mano). Fuente de v
 - Enemigos: CODEX_OK 63 · FALTA_ANIMACION 12 · ARTE_VIEJO 1
 - Jefes y subjefes: CODEX_OK 14 · FALTA_ANIMACION 13 · ARTE_VIEJO 1
 - Archivos (arenas, props, battlefield, enemigos, jefes, campeones): CODEX_OK 871 · HUERFANO 104 · ARTE_VIEJO 30
-- Fuentes del registro: 51 archivos, huella `e3aca48c3b43`
+- Fuentes del registro: 51 archivos, huella `42c3e6d9bc90`
 
 ## Campeones (cuerpo base)
 
@@ -33,7 +33,7 @@ Cuadros DISTINTOS medidos al dibujar el cuerpo real, mínimo entre las 4 direcci
 | segador | CODEX_OK | codex (64) | `segador/codex-v1/atlas.png` (webp) 448x1456 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | - |
 | axiom | FALTA_ANIMACION | codex (88) | `axiom/codex-v1/atlas.png` 448x1008 | 1 | 4 | 4 | 4 | 4 | 1 | 4 | idle |
 | profeta | CODEX_OK | codex (66) | `profeta/codex-v1/atlas.png` (webp) 448x1456 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | - |
-| musashi | FALTA_ANIMACION | codex (90) | `musashi/codex-v1/atlas.png` 768x2080 | 1 | 4 | 4 | 4 | 4 | 4 | 6 | idle |
+| musashi | FALTA_ANIMACION | codex (90) | `musashi/codex-v1/atlas.png` 768x2240 | 1 | 4 | 4 | 4 | 4 | 4 | 6 | idle |
 | cazadora | FALTA_ANIMACION | codex (90) | `cazadora/codex-v1/atlas.png` 768x2240 | 1 | 4 | 4 | 4 | 4 | 4 | 6 | idle |
 | nigromante | FALTA_ANIMACION | codex (90) | `nigromante/codex-v1/atlas.png` 768x2080 | 1 | 4 | 3 | 4 | 4 | 4 | 6 | idle |
 | libertador | ARTE_VIEJO | viejo (60) | `libertador/v2/atlas.png` (webp) 824x784<br>`libertador/v2/death.png` 448x112<br>`libertador/v3/motion.png` 1344x112 | 1 | 4 | 4 | 4 | 4 | 1 | 4 | idle |

@@ -96,9 +96,17 @@
   },
   "musashi": {
    "nombre": "Musashi, el Rōnin del Bokken",
-   "etapas": {},
+   "etapas": {
+    "lamina_limpia": "hecho",
+    "clip_ult": "hecho",
+    "cuadros_aprobados": "generado",
+    "atlas_armado": "hecho",
+    "instalado_motor": "hecho",
+    "gates": "generado",
+    "captura_antes_despues": "hecho"
+   },
    "intentos_descartados": [],
-   "notas": ""
+   "notas": "solo pasaron los gates aplicables; style_gate no aplica (celda 192x160); sin revision de arte humana art-source/captures/musashi/estados_{antes,despues}.png"
   },
   "cazadora": {
    "nombre": "Sylva, la Cazadora del Bosque",

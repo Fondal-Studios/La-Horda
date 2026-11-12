@@ -23,7 +23,7 @@
 | **ilkan** | sí | 192×128, 8 col | faltan: attack_down, attack_up, ultimate_down | ataque_abajo (P1); ataque_arriba (P1) | skin:falta, skin:falta, forma:falta, forma:falta | no probado |
 | **khepri** | sí | 112×112, 4 col | completo | — | skin:recolor | no probado |
 | **mago** | sí | 112×112, 4 col | completo | caminar_abajo (P1); caminar_arriba (P1); ataque_abajo (P1); ataque_perfil (P1); ataque_arriba (P1) | skin:falta | no probado |
-| **musashi** | sí | 192×160, 4 col | faltan: ultimate_down | ataque_abajo (P1); ataque_arriba (P1) | — | no probado |
+| **musashi** | sí | 192×160, 4 col | completo | ataque_abajo (P1); ataque_arriba (P1) | — | lamina limpia=hecho; clip ult=hecho; cuadros aprobados=generado; atlas armado=hecho; instalado motor=hecho; gates=generado; captura antes despues=hecho |
 | **nano_gm** | sí | 192×128, 8 col | completo | — | skin:recolor, skin:falta | no probado |
 | **nigromante** | sí | 192×160, 4 col | faltan: ultimate_down | ataque_abajo (P1); ataque_arriba (P1) | forma:revisar, forma:falta | no probado |
 | **oriel** | sí | 112×112, 4 col | completo | — | skin:recolor, skin:recolor | no probado |
@@ -69,4 +69,7 @@
 
 ### cazadora — Sylva, la Cazadora del Bosque
 - solo pasaron los gates aplicables; style_gate no aplica (celda 192x160); sin revision de arte humana art-source/captures/cazadora/estados_{antes,despues}.png
+
+### musashi — Musashi, el Rōnin del Bokken
+- solo pasaron los gates aplicables; style_gate no aplica (celda 192x160); sin revision de arte humana art-source/captures/musashi/estados_{antes,despues}.png
 

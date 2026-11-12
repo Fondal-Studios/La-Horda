@@ -6278,14 +6278,14 @@
     "path": "assets/sprites/champions/musashi/codex-v1/atlas.png",
     "format": "png",
     "width": 768,
-    "height": 2080,
-    "sha256": "14ffbe96ee8e83eb6eb4381f5dfc318a002998a967bf2382dd5b285560f68993"
+    "height": 2240,
+    "sha256": "5f343555d67a4e9c806090576eb0fc01b068e010f175d5943f388d587341fcab"
    },
    "grid": {
     "frameWidth": 192,
     "frameHeight": 160,
     "cols": 4,
-    "rows": 13
+    "rows": 14
    },
    "states": {
     "idle_down": [
@@ -6383,6 +6383,24 @@
      25,
      26,
      27
+    ],
+    "ultimate_down": [
+     52,
+     53,
+     54,
+     55
+    ],
+    "ultimate_side": [
+     52,
+     53,
+     54,
+     55
+    ],
+    "ultimate_up": [
+     52,
+     53,
+     54,
+     55
     ],
     "run": [
      4,
