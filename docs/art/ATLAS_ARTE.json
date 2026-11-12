@@ -3,12 +3,12 @@
  "generator": "tools/art/build-art-atlas.js",
  "reference": "Códice (docs/LA_HORDA_CODEX.md); decisión curada en docs/art/ATLAS_VIGENTE.json",
  "sources": {
-  "hash": "2d46658008ed720d492386ba07145d904fcc4273",
+  "hash": "42c3e6d9bc9066c4c839fa19edc72811d6aca28d",
   "files": 51
  },
  "runtime": {
   "url": "index.html?dev=1&lazy=1 (producción: carga por grupos, webp activo)",
-  "loadedImages": 1581,
+  "loadedImages": 1569,
   "sampling": "24 muestras por estado y dirección (down/side/left/up)"
  },
  "summary": {
@@ -1546,9 +1546,9 @@
      "loadedAs": "png",
      "size": [
       768,
-      2080
+      2240
      ],
-     "bytes": 461906
+     "bytes": 486745
     }
    ],
    "packs": [
@@ -1779,9 +1779,9 @@
      "loadedAs": "png",
      "size": [
       768,
-      2080
+      2240
      ],
-     "bytes": 572029
+     "bytes": 612406
     }
    ],
    "packs": [
@@ -14856,7 +14856,7 @@
   {"file":"assets/sprites/champions/cazadora/atk5.png","category":"champions","size":[71,74],"bytes":5536,"webp":true,"loaded":true,"usedBy":["js/assets/champion-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/cazadora/atk6.png","category":"champions","size":[71,75],"bytes":5745,"webp":true,"loaded":true,"usedBy":["js/assets/champion-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/cazadora/chargeAim.png","category":"champions","size":[63,77],"bytes":6219,"webp":true,"loaded":true,"usedBy":["js/assets/champion-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/champions/cazadora/codex-v1/atlas.png","category":"champions","size":[768,2080],"bytes":572029,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/champion-sprites.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/champions/cazadora/codex-v1/atlas.png","category":"champions","size":[768,2240],"bytes":612406,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/champion-sprites.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/cazadora/codex-v1/preview.png","category":"champions","size":[192,160],"bytes":13399,"webp":false,"loaded":false,"usedBy":[],"status":"HUERFANO"},
   {"file":"assets/sprites/champions/cazadora/cromas/escarcha/atlas.png","category":"champions","size":[720,470],"bytes":351311,"webp":false,"loaded":false,"usedBy":["js/assets/croma-skins-meta.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/cazadora/cromas/escarcha/preview.png","category":"champions","size":[210,225],"bytes":13441,"webp":false,"loaded":false,"usedBy":["js/assets/croma-skins-meta.js"],"status":"CODEX_OK"},
@@ -15024,7 +15024,7 @@
   {"file":"assets/sprites/champions/musashi/basic3.png","category":"champions","size":[110,100],"bytes":7433,"webp":true,"loaded":true,"usedBy":["js/assets/champion-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/musashi/basic4.png","category":"champions","size":[115,100],"bytes":11350,"webp":true,"loaded":true,"usedBy":["js/assets/champion-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/musashi/basic5.png","category":"champions","size":[115,98],"bytes":11185,"webp":true,"loaded":true,"usedBy":["js/assets/champion-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/champions/musashi/codex-v1/atlas.png","category":"champions","size":[768,2080],"bytes":461906,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/champion-sprites.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/champions/musashi/codex-v1/atlas.png","category":"champions","size":[768,2240],"bytes":486745,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/champion-sprites.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/musashi/codex-v1/preview.png","category":"champions","size":[192,160],"bytes":10028,"webp":false,"loaded":false,"usedBy":[],"status":"HUERFANO"},
   {"file":"assets/sprites/champions/musashi/cromas/ancestral/atlas.png","category":"champions","size":[728,455],"bytes":313835,"webp":false,"loaded":false,"usedBy":["js/assets/croma-skins-meta.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/musashi/cromas/ancestral/preview.png","category":"champions","size":[237,252],"bytes":14190,"webp":false,"loaded":false,"usedBy":["js/assets/croma-skins-meta.js"],"status":"CODEX_OK"},

@@ -96,15 +96,31 @@
   },
   "musashi": {
    "nombre": "Musashi, el Rōnin del Bokken",
-   "etapas": {},
+   "etapas": {
+    "lamina_limpia": "hecho",
+    "clip_ult": "hecho",
+    "cuadros_aprobados": "generado",
+    "atlas_armado": "hecho",
+    "instalado_motor": "hecho",
+    "gates": "generado",
+    "captura_antes_despues": "hecho"
+   },
    "intentos_descartados": [],
-   "notas": ""
+   "notas": "solo pasaron los gates aplicables; style_gate no aplica (celda 192x160); sin revision de arte humana art-source/captures/musashi/estados_{antes,despues}.png"
   },
   "cazadora": {
    "nombre": "Sylva, la Cazadora del Bosque",
-   "etapas": {},
+   "etapas": {
+    "lamina_limpia": "hecho",
+    "clip_ult": "hecho",
+    "cuadros_aprobados": "generado",
+    "atlas_armado": "hecho",
+    "gates": "generado",
+    "instalado_motor": "hecho",
+    "captura_antes_despues": "hecho"
+   },
    "intentos_descartados": [],
-   "notas": ""
+   "notas": "solo pasaron los gates aplicables; style_gate no aplica (celda 192x160); sin revision de arte humana art-source/captures/cazadora/estados_{antes,despues}.png"
   },
   "nigromante": {
    "nombre": "Ilvar, el Señor de las Criptas",
@@ -114,9 +130,12 @@
   },
   "libertador": {
    "nombre": "San Martín, el Libertador",
-   "etapas": {},
+   "etapas": {
+    "lamina_limpia": "hecho",
+    "captura_antes_despues": "pendiente"
+   },
    "intentos_descartados": [],
-   "notas": ""
+   "notas": "2026-11-12: no se generaron hojas: la muerte ya tiene 4 cuadros propios (libertador_death), la definitiva usa un unico cuadro 44 que el motor dibuja fijo (prog 0) y el ataque usa el set 'fire' en todas las direcciones; ver ART_CREDITS 2026-11-12: la columna «estados que faltan» del checklist mide los `sets` del registro y NO ve lo que el motor dibuja por otro camino: la muerte (`libertador_death`, 4 cuadros) ya está integrada; la definitiva ya tiene su cuadro propio (pero el motor dibuja `ult_cast` con prog=0, solo se vería el primer cuadro); el ataque en las 3 direcciones usa el set `fire` de perfil. Animar la definitiva o dar ataque frontal requiere antes cambiar js/champions/libertador.js. Detalle en ART_CREDITS.md."
   },
   "ilkan": {
    "nombre": "Ilkan, el Caminante de Dunas",
@@ -130,14 +149,14 @@
     "lamina_limpia": "hecho",
     "clip_cast": "hecho",
     "clip_ult": "hecho",
-    "cuadros_aprobados": "aprobado",
+    "cuadros_aprobados": "generado",
     "atlas_armado": "hecho",
-    "gates": "aprobado",
+    "gates": "generado",
     "instalado_motor": "hecho",
     "captura_antes_despues": "hecho"
    },
    "intentos_descartados": [],
-   "notas": "lanzar y definitiva con gpt_image_2 (hojas c1 y u1, 40 cr), instalados en el atlas (filas 10-11, cuadros 36-43). roster_gate 0 fallos; style_gate no aplica (celda 96); revisión de arte humana pendiente."
+   "notas": "lanzar y definitiva con gpt_image_2 (hojas c1 y u1, 40 cr), instalados en el atlas (filas 10-11, cuadros 36-43). roster_gate 0 fallos; style_gate no aplica (celda 96); revisión de arte humana pendiente. gates=generado: solo pasó roster_gate (style_gate no aplica a celdas de 96); cuadros_aprobados=generado: sin revisión de arte humana."
   },
   "myla": {
    "nombre": "Myla, la Niña de la Cuchara",
