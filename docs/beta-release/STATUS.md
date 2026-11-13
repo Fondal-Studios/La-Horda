@@ -108,3 +108,7 @@
 ### Aprobación del dueño (2026-11-13)
 - El dueño aprobó a ojo el arte instalado con `gpt_image_2` (Ynara, Cazadora, Musashi, Ilkan y la transición del Nigromante) y pidió instalar la definitiva del Libertador (re-aprobación del atlas ampliado y del sha fijado en `check-libertador-motion/death`). Los términos comerciales de `gpt_image_2` para la declaración de IA de Steam siguen sin confirmar.
 - Auditoría de diseño y monetización: `docs/beta-release/AUDITORIA_EQUIPO_DISENO.md`.
+
+### Libertador y Musashi (2026-11-13, tarde)
+- **Libertador:** definitiva de 4 cuadros instalada (atlas 824x882, cuadros 64-67). Re-aprobada por el dueño: sha fijado actualizado y `check-libertador-death.js` limita `ult_cast`/`ultimate` a exactamente 64-67 (el resto sigue `<61`). `check-libertador-motion` 261/261, `check-libertador-death` 127/127, checklists sincronizados, `test-runway-pack` 9945 OK. Captura: `art-source/captures/libertador/ult_instalada_antes_despues.png`. Multijugador y rendimiento no probados.
+- **Musashi:** el check ya no falla: las estelas de Paso Fantasma guardan `packKey` (atlas del emisor) y el check deriva su línea base del árbol (commit 03c9c0d4; reemplaza la nota anterior de «packKey no integrado»). `musashi-afterimage-online.js` sigue con timeout (requiere relay real; no corre en CI).

@@ -36,7 +36,7 @@
 | Aprobación de arte humana de lo instalado | Ningún archivo registra una aprobación humana; STATUS.md la declara «pendiente» (Ynara lanzar/definitiva, Cazadora y Musashi definitiva). |
 | Saldo de créditos de Runway actual | Solo hay la cifra escrita en STATUS.md (no se llamó a Runway); la cuenta es compartida y baja por consumo ajeno. Correr `node tools/art-world/runway-world.js status` (no gasta) antes de planificar. |
 
-**Fuentes leídas:** `docs/art/ATLAS_ARTE.json` (huella `1965e2120f62`, 51 archivos), `runway-pack/estado-campeones.json`, `runway-pack/estado-runway.json` (auditado 2026-11-12), `docs/production/asset-blocks.json`, `docs/art-brief/enemy-coverage.json` (medido contra el atlas `42c3e6d9bc90` — **DESACTUALIZADO respecto de ATLAS_ARTE: regenerar con `python3 tools/art/art-checklist.py enemigos`**), `docs/beta-release/STATUS.md`, `ART_CREDITS.md`, `docs/steam/DECLARACION_IA.md`.
+**Fuentes leídas:** `docs/art/ATLAS_ARTE.json` (huella `20fe0c78244a`, 51 archivos), `runway-pack/estado-campeones.json`, `runway-pack/estado-runway.json` (auditado 2026-11-12), `docs/production/asset-blocks.json`, `docs/art-brief/enemy-coverage.json` (medido contra el atlas `42c3e6d9bc90` — **DESACTUALIZADO respecto de ATLAS_ARTE: regenerar con `python3 tools/art/art-checklist.py enemigos`**), `docs/beta-release/STATUS.md`, `ART_CREDITS.md`, `docs/steam/DECLARACION_IA.md`.
 
 ## B) Campeones (cuerpo base)
 

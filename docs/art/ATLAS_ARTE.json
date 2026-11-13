@@ -3,12 +3,12 @@
  "generator": "tools/art/build-art-atlas.js",
  "reference": "Códice (docs/LA_HORDA_CODEX.md); decisión curada en docs/art/ATLAS_VIGENTE.json",
  "sources": {
-  "hash": "1965e2120f629e3b799ab28712f19e46bafbc516",
+  "hash": "20fe0c78244a118e7530be6625da2c831245c688",
   "files": 51
  },
  "runtime": {
   "url": "index.html?dev=1&lazy=1 (producción: carga por grupos, webp activo)",
-  "loadedImages": 1589,
+  "loadedImages": 1582,
   "sampling": "24 muestras por estado y dirección (down/side/left/up)"
  },
  "summary": {
@@ -2317,9 +2317,9 @@
      "loadedAs": "webp",
      "size": [
       824,
-      784
+      882
      ],
-     "bytes": 48852
+     "bytes": 57368
     },
     {
      "file": "assets/sprites/champions/libertador/v2/death.png",
@@ -14969,7 +14969,7 @@
   {"file":"assets/sprites/champions/libertador/skins/libertador_escarcha/atlas.png","category":"champions","size":[896,336],"bytes":185749,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/unique-skins-meta.js"],"status":"ARTE_VIEJO"},
   {"file":"assets/sprites/champions/libertador/skins/libertador_escarcha/horse.png","category":"champions","size":[576,384],"bytes":166565,"webp":false,"loaded":true,"usedBy":["js/assets/unique-skins-meta.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/libertador/skins/libertador_escarcha/preview.png","category":"champions","size":[112,112],"bytes":8660,"webp":false,"loaded":false,"usedBy":["js/assets/unique-skins-meta.js"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/champions/libertador/v2/atlas.png","category":"champions","size":[824,784],"bytes":232142,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/champion-sprites.js","js/modes/crystal-wars/atlas.js","ASSET_MANIFEST"],"status":"ARTE_VIEJO"},
+  {"file":"assets/sprites/champions/libertador/v2/atlas.png","category":"champions","size":[824,882],"bytes":261515,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/champion-sprites.js","js/modes/crystal-wars/atlas.js","ASSET_MANIFEST"],"status":"ARTE_VIEJO"},
   {"file":"assets/sprites/champions/libertador/v2/death.png","category":"champions","size":[448,112],"bytes":35793,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/champion-sprites.js"],"status":"ARTE_VIEJO"},
   {"file":"assets/sprites/champions/libertador/v2/fx/blood_01.png","category":"champions","size":[64,57],"bytes":4090,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"HUERFANO"},
   {"file":"assets/sprites/champions/libertador/v2/fx/blood_02.png","category":"champions","size":[62,60],"bytes":4309,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"HUERFANO"},
