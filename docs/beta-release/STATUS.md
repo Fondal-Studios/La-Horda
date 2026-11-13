@@ -104,3 +104,7 @@
 - **Nombre «La Horda»:** la búsqueda de Steam devuelve 0 resultados exactos; itch.io y App Store tampoco muestran un juego con ese título. No se pudieron consultar las bases de marcas (TMview/WIPO/EUIPO bloquean consultas automáticas): chequeo de marcas pendiente del dueño (clases 9 y 41).
 - **Economía (verificada):** `PIECES_FOR_BRASAS=false`; `server/test-wallet-pieces.js` 35/35, `test-wallet.js` 67/67, `test-battlepass.js` PASS.
 - **Runway:** saldo 37 créditos, por debajo del umbral de 250 de la rutina: no se generó nada.
+
+### Aprobación del dueño (2026-11-13)
+- El dueño aprobó a ojo el arte instalado con `gpt_image_2` (Ynara, Cazadora, Musashi, Ilkan y la transición del Nigromante) y pidió instalar la definitiva del Libertador (re-aprobación del atlas ampliado y del sha fijado en `check-libertador-motion/death`). Los términos comerciales de `gpt_image_2` para la declaración de IA de Steam siguen sin confirmar.
+- Auditoría de diseño y monetización: `docs/beta-release/AUDITORIA_EQUIPO_DISENO.md`.
