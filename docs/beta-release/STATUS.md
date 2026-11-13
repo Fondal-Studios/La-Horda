@@ -98,3 +98,9 @@
 - **Runway:** saldo 37 (la cuenta es compartida y baja también por consumo ajeno). `gen4_image` 200/200 (tope móvil de 24 h, sin reiniciar al 2026-11-13 00:30 UTC); `gen4_image_turbo` cuesta 2 cr pero copia la composición de la referencia (piso de Bosque: rejilla, rechazado); `gpt_image_2` 20 cr por hoja de 4 poses. Pendiente de arte con créditos: pisos y centros de Bosque y Hielo (`runway-world.js`), definitiva y ataque de frente de Libertador (tras decidir), láminas de ilsa/kora/vorn, skins de Ynara. Detalle y costos en `CHECKLIST_ARTE.md`.
 - **Intermitencias aún sin cerrar:** `LAB.los_bots_resuelven_en_orden` (t_identity, ~2/27 sin investigar) y cuelgues ocasionales de `test-sides` hasta el timeout.
 
+
+### Ronda 2026-11-13 (mañana)
+- **Nigromante, Plaga de los Condenados** (commit 1ffae190): marca visible del maldito (aro, calavera, pulso por tic), hilo de contagio y alma como orbe verde; solo dibujo, sin tocar balance. Captura: `art-source/captures/nigromante/plaga_antes_despues.png`. Sin revisión independiente ni merge todavía; el hilo y el orbe no se replican por red.
+- **Nombre «La Horda»:** la búsqueda de Steam devuelve 0 resultados exactos; itch.io y App Store tampoco muestran un juego con ese título. No se pudieron consultar las bases de marcas (TMview/WIPO/EUIPO bloquean consultas automáticas): chequeo de marcas pendiente del dueño (clases 9 y 41).
+- **Economía (verificada):** `PIECES_FOR_BRASAS=false`; `server/test-wallet-pieces.js` 35/35, `test-wallet.js` 67/67, `test-battlepass.js` PASS.
+- **Runway:** saldo 37 créditos, por debajo del umbral de 250 de la rutina: no se generó nada.

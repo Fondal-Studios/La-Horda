@@ -105,3 +105,6 @@ Informes completos (auditoría y correcciones por área) en `docs/beta-release/a
 - **Sets = poder** (se ganan jugando, nunca Brasas) y **Apariencias = identidad** (Brasas/pase/logro/ascensión): pestañas separadas (`tools/collection/sets-vs-looks.js`).
 - **Rachas**: sin plantillas por tiempo jugado; racha diaria con hitos 3/7/14 (cofre/título/marco) y congelador semanal ganado jugando (`tools/items/t_quests_streak.js`). El reloj del cliente solo se frena con "último día visto"; **la validación fuerte (día contado por el servidor) falta y va al servidor**.
 - Pendiente: precios/ofertas y `server/premium-packs.json` (decisión del dueño); arte propio para las manifestaciones (hoy solo tiñen el efecto); pase de batalla (`bp:*`) aún sin cosméticos del catálogo por guardián.
+
+## Actualización 2026-11-13 (mañana)
+- Pendiente: revisión independiente y merge del commit 1ffae190 (Plaga del Nigromante); chequeo de marcas de «La Horda» (dueño); recarga de Runway (37 créditos).
