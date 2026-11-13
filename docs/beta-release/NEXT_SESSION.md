@@ -1,5 +1,8 @@
 # NEXT_SESSION — cómo seguir con la beta (actualizado 2026-11-07)
 
+## REGLA DEL DUEÑO (2026-11-13): antes y después SIEMPRE en una captura
+Cada cambio de arte se entrega al dueño con **UNA imagen que muestre el ANTES y el DESPUÉS juntos** (barra «ANTES» arriba y «DESPUÉS» abajo, tomadas del motor real a tamaño de juego), una por campeón/asset, enviadas con SendUserFile en el momento de terminar. No alcanza con mandar solo el «después» ni dos archivos sueltos. Los agentes de arte deben dejar el par en `art-source/captures/<id>/antes_despues.png` además de las capturas por separado.
+
 ## Actualización 2026-11-12 (leer primero)
 - **Mergeado:** #288–#290, #292, #294–#296. `main` = a27c48b7 al escribir esto.
 - **Arte con Runway:** el paquete `docs/art-brief/runway-pack/` está en `main` (empezar por `README_PROMPT_MAESTRO.md`). Saldo de Runway recargado a 950 el 2026-11-12 y 710 tras el primer ciclo de dibujo (cuenta compartida: baja también por consumo ajeno). El primer ciclo real dio 0 imágenes ni hojas aprobadas (ver `ART_CREDITS.md`). Sin tope de gasto por decisión del dueño (2026-11-12). Registrar cada generación en `docs/beta-release/ART_CREDITS.md`.
