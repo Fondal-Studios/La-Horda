@@ -14,7 +14,7 @@
 | Skins, cromas y formas de Ascensión | 104 | parcial 90 · hecho 9 · arte_viejo 5 | ATLAS_ARTE.json |
 | Jefes y subjefes | 28 | hecho 14 · parcial 13 · arte_viejo 1 | ATLAS_ARTE.json |
 | Enemigos (normales, subélites, élites) | 76 | hecho 63 · parcial 12 · arte_viejo 1 | ATLAS_ARTE.json + enemy-coverage.json |
-| Mundo: pisos, centros, fachadas, props (trabajos Runway) | 28 | hecho 14 · falta 11 · rechazado 2 · hecho_sin_integrar 1 | estado-runway.json |
+| Mundo: pisos, centros, fachadas, props (trabajos Runway) | 29 | hecho 14 · falta 11 · rechazado 3 · hecho_sin_integrar 1 | estado-runway.json |
 | Mundo: archivos de arenas cargados por el motor | 185 | hecho 183 · huerfano 2 | ATLAS_ARTE.json (files) |
 | Mundo: cola de producción (bloques 03-mundo) | 227 | falta 227 | asset-blocks.json |
 | Efectos y habilidades (bloques 02-combate) | 252 | falta 252 | asset-blocks.json (cola); lo integrado: sin_verificar |
@@ -24,7 +24,7 @@
 
 **Campeones por clasificación de cuerpo (sección B):** estados propios completos 11 · completo salvo idle 1 cuadro 24 · arte_viejo 8 · depende de código (en curso) 3.
 
-**Trabajo con Runway (todas las categorías):** 94 entradas · hecho 57 · falta 15 · rechazado 13 · hecho_sin_integrar 8 · bloqueado 1 · créditos registrados: 1413.
+**Trabajo con Runway (todas las categorías):** 95 entradas · hecho 57 · falta 15 · rechazado 14 · hecho_sin_integrar 8 · bloqueado 1 · créditos registrados: 1415.
 
 **Categorías o datos `sin_verificar` (y por qué):**
 
@@ -334,7 +334,7 @@ Fuentes: `estado-runway.json` (lo hecho/probado, manda sobre `runway-world.js li
 
 | Categoría Runway | Entradas | Estados |
 |---|---|---|
-| piso_arena | 9 | hecho 5 · falta 3 · rechazado 1 |
+| piso_arena | 10 | hecho 5 · falta 3 · rechazado 2 |
 | centro_arena | 6 | hecho 4 · falta 2 |
 | fachada | 7 | hecho 3 · falta 2 · hecho_sin_integrar 1 · rechazado 1 |
 | prop_mundo | 6 | falta 4 · hecho 2 |
@@ -370,6 +370,7 @@ Fuentes: `estado-runway.json` (lo hecho/probado, manda sobre `runway-world.js li
 | prox_props_bosque | prop_mundo | falta | — | Idem con la portada de Bosque. |
 | prox_props_laberinto | prop_mundo | falta | — | Idem con la portada de Laberinto. |
 | prox_piso_divina | piso_arena | falta | — | Prompt TEX violeta con vetas doradas; clave en FLOOR_PAINTED. |
+| prox_bosque_piso_turbo | piso_arena | rechazado | 2 | Probar con una referencia que sea solo textura (recorte de piedra sin paneles) o esperar el reinicio del tope de gen4_image (200/día) y repetir el tra |
 
 **Archivos de arte por arena que carga el motor** (`assets/sprites/arenas/<arena>/…`; atlas de criaturas/props de la arena):
 

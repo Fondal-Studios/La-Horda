@@ -1824,6 +1824,23 @@
    "por_que": "Primer intento aceptado (saldo 59 -> 39): carga con el sable a la cadera / alza el sable en diagonal / pico con el sable extendido y grito / liberacion en estocada. Captura del motor (ult_cast avanzando con el progreso, antes vs despues) claramente mejor. NO instalada: v2/atlas.png esta fijado por sha256 como atlas aprobado en tools/art/check-libertador-motion.js (linea 69) y tools/art/check-libertador-death.js; instalarla los pone en rojo.",
    "siguiente_paso": "El dueno decide: (a) re-aprobar el atlas ampliado y actualizar el sha en esos dos gates (+ imageSize de crystal-wars/atlas.js a [824,882] y el .webp), o (b) cargarla como paquete aparte (libertador_ult) con un cambio minimo en libertador.js.",
    "verificacion": ""
+  },
+  {
+   "id": "prox_bosque_piso_turbo",
+   "categoria": "piso_arena",
+   "descripcion": "Piso de Bosque con gen4_image_turbo (piso_t1, 2 créditos): rejilla regular con vigas y rombos copiada de la referencia; no es un piso de piedras irregulares. Rechazado.",
+   "estado": "rechazado",
+   "ultima_fecha": "2026-11-13",
+   "task_ids": [
+    "5a14b4e1-e210-4e43-aab8-792769507b03"
+   ],
+   "creditos": 2,
+   "donde_esta": [
+    "art-source/runway-designs/bosque/piso_t1/master.png"
+   ],
+   "por_que": "gen4_image_turbo es barato (2 cr) pero imita la composición del @ref en vez del estilo: sale una rejilla; mismo defecto que abismo_piso.",
+   "siguiente_paso": "Probar con una referencia que sea solo textura (recorte de piedra sin paneles) o esperar el reinicio del tope de gen4_image (200/día) y repetir el trabajo bosque_piso de runway-world.js.",
+   "verificacion": ""
   }
  ]
 }
