@@ -1,12 +1,25 @@
 'use strict';
 const fs=require('fs'),path=require('path'),H=require('../lib/serve');
-const D=process.env.OUT||'art-source/entregas/musashi-kit-20261026/integracion-01';
+// Salida en un directorio temporal (antes escribía OWNERSHIP.json dentro del repo en cada corrida).
+const D=process.env.OUT||fs.mkdtempSync(path.join(require('os').tmpdir(),'musashi-afterimage-'));
 fs.mkdirSync(D,{recursive:true});
+// Línea base "parent": el código actual SIN la apariencia por estela (packKey), derivado del propio árbol.
+// Antes leía instantáneas congeladas (before-*.js) que quedaron obsoletas (MAGO_IMG ya no existe) y rompían la
+// corrida con errores de página. Si el código cambia y el parche inverso no aplica, la prueba falla en voz alta.
+const rd=f=>fs.readFileSync(path.join(__dirname,'..','..',f),'utf8');
+const rev=(src,pairs)=>pairs.reduce((t,[a,b])=>{if(!t.includes(a))throw new Error('línea base: parche inverso no aplica; actualizar musashi-afterimage-check.js');return t.replace(a,b);},src);
+const BASELINE={
+ 'js/champions/musashi.js':rev(rd('js/champions/musashi.js'),[
+  ['const packKey = typeof setSkinPackKey === "function" ? setSkinPackKey(h, "musashi") : "musashi";\n  ',''],
+  ['classKey:h.classKey, packKey, life','classKey:h.classKey, life']]),
+ 'js/rendering/champion-sprites.js':rev(rd('js/rendering/champion-sprites.js'),[
+  ['    for(const a of musashiAfterimages){\n      // Cada estela conserva su emisor (a.packKey), incluso tras reordenar héroes o recibirla por red;\n      // sin clave (estela previa) o con atlas no listo, cae al Musashi base.\n      const SK = a.packKey && CHAMP_PACK[a.packKey];\n      const Q = SK && SK.ready && SK.sets.walk_side ? SK : P;\n      const s = 78/Q.refH;\n',
+   '    const owner = typeof heroes!=="undefined" && heroes ? heroes.find(h=>h.classKey==="musashi") : null;\n    const SK = owner && typeof setSkinPackKey==="function" ? CHAMP_PACK[setSkinPackKey(owner, "musashi")] : null;\n    const Q = SK && SK.ready && SK.sets.walk_side ? SK : P;\n    const s = 78/Q.refH;\n    for(const a of musashiAfterimages){\n']])};
 (async()=>{const site=await H.startSite(),b=await H.launch(),rows=[],errors=[];try{
  for(const parent of [true,false])for(const mobile of [false,true]){
   const p=await b.newPage({viewport:mobile?{width:844,height:390}:{width:1280,height:720}});
   p.on('pageerror',e=>errors.push(e.message));
-  if(parent)for(const [url,file]of [['js/champions/musashi.js','before-musashi.js'],['js/rendering/champion-sprites.js','before-champion-sprites.js']])await p.route('**/'+url+'*',r=>r.fulfill({contentType:'text/javascript',body:fs.readFileSync(D+'/'+file,'utf8')}));
+  if(parent)for(const url of Object.keys(BASELINE))await p.route('**/'+url+'*',r=>r.fulfill({contentType:'text/javascript',body:BASELINE[url]}));
   await p.addInitScript(()=>{requestAnimationFrame=()=>0;performance.now=()=>1000;});
   await p.goto(site.url+'/?lazy=0');await p.waitForFunction(()=>assetsAllReady(),null,{polling:100});
   await p.evaluate(()=>{for(const id of cromaIdsFor('musashi'))cromaEnsureLoaded(id);});

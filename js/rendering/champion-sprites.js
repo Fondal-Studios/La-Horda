@@ -383,12 +383,12 @@ function drawMusashiReal(h, drawScale, alpha){
 function drawMusashiAfterimages(){
   const P = CHAMP_PACK.musashi;
   if(P && P.ready){
-    // la estela usa el atlas de la skin de set del Musashi que la dejó (antes: siempre el Musashi base)
-    const owner = typeof heroes!=="undefined" && heroes ? heroes.find(h=>h.classKey==="musashi") : null;
-    const SK = owner && typeof setSkinPackKey==="function" ? CHAMP_PACK[setSkinPackKey(owner, "musashi")] : null;
-    const Q = SK && SK.ready && SK.sets.walk_side ? SK : P;
-    const s = 78/Q.refH;
     for(const a of musashiAfterimages){
+      // Cada estela conserva su emisor (a.packKey), incluso tras reordenar héroes o recibirla por red;
+      // sin clave (estela previa) o con atlas no listo, cae al Musashi base.
+      const SK = a.packKey && CHAMP_PACK[a.packKey];
+      const Q = SK && SK.ready && SK.sets.walk_side ? SK : P;
+      const s = 78/Q.refH;
       const alpha = Math.max(0, a.life/a.maxLife) * 0.45;
       if(alpha<=0.02) continue;
       champPackDrawFrame(Q, Q.sets.walk_side[1] !== undefined ? Q.sets.walk_side[1] : Q.sets.walk_side[0], a.x, a.y, s, a.fx<-0.12, alpha);
