@@ -373,6 +373,72 @@ function drawEnemyBody(e){
   }
 }
 // Estados, nombre y barra de vida: fuera de la transformación, para que no bailen con la pose.
+// Nigromante — marca de la maldición de la Plaga de los Condenados (SOLO dibujo: no toca daño, duración ni contagio).
+// Antes era una elipse verde fina bajo el enemigo y un punto de 3 px, casi igual al aro verde común de un enemigo y casi invisible
+// con la cámara alejada: tras el primer segundo no se distinguía quién seguía maldito ni cuándo hacía daño. Ahora: aro punteado con contorno oscuro
+// (legible sobre suelo claro y oscuro), pulso hacia afuera en cada tic de daño (cada 1000 ms de la propia maldición), calavera pixel art
+// flotante con halo (la misma silueta de los motivos de los efectos del Nigromante) que parpadea el último segundo, y chispas que suben.
+// Determinista: solo usa el reloj de dibujo y el estado de la maldición. Los contagiados (curseGen>0) llevan la calavera con acento violeta.
+const NIGRO_CURSE_SKULL_SRC = ['..oooo..', '.obbbbo.', 'obbbbbbo', 'obkbbkbo', 'obbbbbbo', '.obbbbo.', '..oaoao.', '...oo...'];
+const NIGRO_CURSE_SKULL_PAL = {
+  g: {o:'#06140c', b:'#d8ffe8', k:'#06140c', a:'#3fe08a'},
+  v: {o:'#140a22', b:'#e6d8ff', k:'#140a22', a:'#9a6ad8'}
+};
+const nigroCurseSkullCache = {};
+function nigroCurseSkull(kind){
+  let c = nigroCurseSkullCache[kind]; if(c) return c;
+  const pal = NIGRO_CURSE_SKULL_PAL[kind];
+  c = nigroCurseSkullCache[kind] = document.createElement("canvas"); c.width = 8; c.height = 8;
+  const g = c.getContext("2d");
+  NIGRO_CURSE_SKULL_SRC.forEach((row, y) => { for(let x = 0; x < 8; x++){ const col = pal[row[x]]; if(col){ g.fillStyle = col; g.fillRect(x, y, 1, 1); } } });
+  return c;
+}
+function drawNigroCurseMark(e){
+  const now = performance.now(), life = e.curseTimer, calm = typeof JUICE !== "undefined" && JUICE.reduceFx;
+  const pulse = 0.5+0.5*Math.sin(now/220), tick = 1-(life%1000)/1000;   // tick: 0 justo después del daño -> 1 antes del siguiente
+  const blink = life < 1200 ? (Math.sin(now/70) > 0 ? 1 : 0.35) : 1;      // último segundo y medio: parpadea (la maldición se acaba)
+  const spread = (e.curseGen||0) > 0, rx = e.radius*1.15, ry = e.radius*0.55, cy = e.y+2;
+  ctx.save();
+  ctx.beginPath(); ctx.ellipse(e.x, cy, rx, ry, 0, 0, Math.PI*2);
+  ctx.strokeStyle = "rgba(6,20,12,0.85)"; ctx.lineWidth = 4.5; ctx.stroke();
+  ctx.setLineDash([7, 4]); ctx.lineDashOffset = -now/70;
+  ctx.strokeStyle = spread ? `rgba(180,130,255,${(0.75+0.25*pulse)*blink})` : `rgba(80,230,140,${(0.75+0.25*pulse)*blink})`; ctx.lineWidth = 2.5; ctx.stroke();
+  ctx.setLineDash([]);
+  if(!calm && tick > 0.02 && tick < 0.6){   // pulso del tic de daño: sale del aro y se desvanece
+    const k = tick/0.6;
+    ctx.beginPath(); ctx.ellipse(e.x, cy, rx*(1+0.8*k), ry*(1+0.8*k), 0, 0, Math.PI*2);
+    ctx.strokeStyle = `rgba(168,255,200,${0.7*(1-k)})`; ctx.lineWidth = 2; ctx.stroke();
+  }
+  const bob = Math.round(2*Math.sin(now/300+e.x*0.07)), sx = Math.round(e.x-8), sy = Math.round(e.y-e.radius*1.9-18+bob);
+  ctx.globalCompositeOperation = "lighter";
+  const hg = ctx.createRadialGradient(e.x, sy+8, 2, e.x, sy+8, 16);
+  hg.addColorStop(0, spread ? `rgba(154,106,216,${0.5*blink})` : `rgba(80,230,140,${0.5*blink})`); hg.addColorStop(1, "rgba(80,230,140,0)");
+  ctx.fillStyle = hg; ctx.fillRect(e.x-16, sy-8, 32, 32);
+  ctx.globalCompositeOperation = "source-over"; ctx.imageSmoothingEnabled = false; ctx.globalAlpha = blink;
+  ctx.drawImage(nigroCurseSkull(spread ? "v" : "g"), sx, sy, 16, 16);
+  if(!calm){
+    ctx.globalCompositeOperation = "lighter"; ctx.fillStyle = spread ? "#c9a8ff" : "#a8ffc8";
+    for(let i = 0; i < 3; i++){ const u = ((now/900)+i/3)%1; ctx.globalAlpha = (1-u)*0.9*blink; ctx.fillRect(Math.round(e.x-9+i*9+Math.sin(u*6+i*2)*2), Math.round(e.y-e.radius*0.3-u*e.radius*1.5), 2, 2); }
+  }
+  const lk = e._linkFx;   // contagio: hilo de alma desde el maldito que murió (500 ms) y onda de llegada violeta
+  if(lk){
+    const k = (now-lk.t0)/500;
+    if(k >= 1 || k < 0) e._linkFx = null;
+    else {
+      const dx = e.x-lk.x, dy = e.y-lk.y, L = Math.hypot(dx, dy) || 1;
+      ctx.globalCompositeOperation = "source-over"; ctx.globalAlpha = 1-k;
+      ctx.strokeStyle = "rgba(6,20,12,0.8)"; ctx.lineWidth = 4; ctx.setLineDash([]);
+      ctx.beginPath(); ctx.moveTo(lk.x, lk.y-8); ctx.lineTo(e.x, e.y-8); ctx.stroke();
+      ctx.strokeStyle = "#7affb0"; ctx.lineWidth = 2; ctx.setLineDash([5, 4]); ctx.lineDashOffset = -now/40;
+      ctx.beginPath(); ctx.moveTo(lk.x, lk.y-8); ctx.lineTo(e.x, e.y-8); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = "#f0fff4";
+      for(let i = 0; i < 4; i++){ const u = Math.min(1, k*1.6+i*0.0)*(1-i*0.18); ctx.fillRect(Math.round(lk.x+dx*u-2), Math.round(lk.y-8+dy*u-2), 4, 4); }
+      ctx.globalCompositeOperation = "lighter"; ctx.globalAlpha = 1-k;
+      ctx.strokeStyle = "#b48cff"; ctx.lineWidth = 2; ctx.beginPath(); ctx.ellipse(e.x, cy, rx*(0.6+1.4*k), ry*(0.6+1.4*k), 0, 0, Math.PI*2); ctx.stroke();
+    }
+  }
+  ctx.restore();
+}
 function drawEnemyOverlays(e){
   if(e.role) drawEnemyRoleMarks(e); // insignia + anillo del rol enemigo (enemy-roles.js)
   if(e.eliteName) drawEliteMarks(e); // élite con nombre: anillo y nombre dorados (elite-affixes.js)
@@ -394,18 +460,7 @@ function drawEnemyOverlays(e){
       ctx.fillRect(e.x-8+i*8, e.y-e.radius-18-((performance.now()/90+i*7)%10), 4, 5);
     }
   }
-  if(e.cursed && e.curseTimer>0){
-    // Nigromante — Plaga de los Condenados: aura verdosa pulsante mientras dure la maldición
-    // (mismo criterio visual que burn/poison de arriba, propio para no confundirla con ellos).
-    const pulseC = 0.5+0.5*Math.sin(performance.now()/220);
-    ctx.save();
-    ctx.globalCompositeOperation = "lighter";
-    ctx.strokeStyle = `rgba(80,230,140,${0.35+0.3*pulseC})`; ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.ellipse(e.x, e.y+2, e.radius*1.05, e.radius*0.5, 0, 0, Math.PI*2); ctx.stroke();
-    ctx.fillStyle = `rgba(80,230,140,${0.18+0.14*pulseC})`;
-    ctx.beginPath(); ctx.arc(e.x, e.y-e.radius*0.5, 3, 0, Math.PI*2); ctx.fill();
-    ctx.restore();
-  }
+  if(e.cursed && e.curseTimer>0) drawNigroCurseMark(e);
   // mojado (Conducción con el rayo): gotas que caen
   if((e.wetTimer>0 || (e.innateWet && currentArena!=="acuatica")) && inView(e.x, e.y, 0)){
     const t = animNow/140;
