@@ -1,8 +1,8 @@
 {
  "subject": {
-  "pr": 301,
+  "pr": 302,
   "branch": "claude/la-horda-beta-audit-exec-mwv8x0",
-  "head": "15aab122ae3a58f2e1b59da281f9586e6a846949",
+  "head": "fcf68fdf4f601e52a82ed613d39a12de21c16be9",
   "authorAgent": "claude-sesion-principal",
   "authorId": "claude-sesion-principal"
  },
@@ -11,57 +11,57 @@
    "stage": "produccion",
    "by": "claude-sesion-principal",
    "role": "agent",
-   "commit": "15aab122ae3a58f2e1b59da281f9586e6a846949",
-   "at": "2026-11-12T20:45:00Z"
+   "commit": "fcf68fdf4f601e52a82ed613d39a12de21c16be9",
+   "at": "2026-11-13T01:00:00Z"
   },
   {
    "stage": "qa",
-   "by": "claude-qa-301",
+   "by": "claude-qa-302",
    "role": "qa",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "15aab122ae3a58f2e1b59da281f9586e6a846949",
-    "tests": 14,
+    "sha": "fcf68fdf4f601e52a82ed613d39a12de21c16be9",
+    "tests": 27,
     "failed": 0,
-    "report": "Sobre 15aab122 (tras NO APROBADO sobre 870b8dd1 solo por un recuento erróneo en DECLARACION_IA: 3 generaciones de gpt_image_2 declaradas y eran 6; corregido a 165 recibos en total). Verificado: atlas de cazadora y musashi 768×2240 (14 filas), cuadros 0–51 idénticos píxel a píxel a los de main, alfa 0/255, cuadros 52–55 con pies en la fila 113 y una sola silueta; champion-sprites.js solo agrega ultimate_down/side/up=[52..55] (el motor usa ultimate_* solo si existe sets.ultimate_down); visual-package check 0 errores y test.js 6/6; build-art-atlas --check OK; competitive-roster PASS; crystal-wars test-competitive 8 OK; art-runtime-clips PASS; roster_gate scaleFailures 0 / presentationFailures 0; webp_convert --check 0; check-collection PASS; check-cazadora-loading 56 checks, check-cazadora-same-frame 144 comparaciones, competitive-signatures y test-rng-isolation PASS; test-runway-pack 9944 OK; atlas-append-cells.py no sobrescribe cuadros existentes; recibos cazadora u1/u2 y musashi u1 cotejados (gpt_image_2, 20 cr c/u). Capturas revisadas a ojo: la definitiva se distingue del lanzar, del ataque y del reposo; sin halo verde ni cortes. MINOR abiertos: línea oscura de 1 px bajo los pies de Musashi (declarada) y set algo más oscuro y macizo que el resto; pies en la fila 113 vs 115 de los cuadros viejos; tools/vfx/musashi-afterimage-check.js falla 9 checks también en main (preexistente); tools/lanes/test-sides.js intermitente por Math.random (preexistente). No llamó a Runway."
+    "report": "Sobre fcf68fdf: lista de cambios solo la prevista (js/champions/ilkan.js y libertador.js, js/rendering/{champion-art-normalize,champion-sprites,entities}.js, js/assets/champion-sprites.js, atlas de Ilkan, manifest.v1.json, pruebas tools/{identity,items,lanes,quality,art}, docs, art-source; sin server/, balance, gates ni nigromante.js). Retrocompatibilidad de los despachos verificada leyendo el diff y con test-champion-draw-dispatch 19/19 (con set ausente se dibuja lo mismo que antes; Libertador con su set de 1 cuadro da floor(prog*1)=0). Único cambio visible sin arte nuevo: Nigromante (pose sets.ult durante nigroTransformTimer>0, luego el Demonio); la lógica (timers, daño, forma) no cambia. Atlas de Ilkan 1536×1152 con los 64 cuadros previos idénticos píxel a píxel a main, alfa 0/255, pies en la fila 115 y registro frameCount 72, attack_down [64..67], attack_up [68..71]. Pasaron: visual-package check y test 6/6, build-art-atlas --check, competitive-roster, crystal-wars test-competitive 8, art-runtime-clips 46 campeones, roster_gate 0/0/0 (150 apariencias), webp_convert --check 0, test-runway-pack 9945, art-checklist --check, qa-manifest-check, check-collection, check-ilkan-codex/preservation/equipment/buffs/preview, check-libertador-motion 261 y death 127; scan_sprites halo 18 px igual que main. Pruebas deterministas: t_abismo, t_identity (88 PASS) y test-sides 3 corridas cada una, 9/9; en los diffs no se bajó ningún umbral ni se quitó ninguna aserción (semilla, esperas por condición, muestreo, arenaRuleTimer apagado durante la contención). Recibos ilkan af1 y ab1 y libertador u1 cotejados (gpt_image_2, 20 cr c/u) y 168 recibos de Runway coinciden con DECLARACION_IA. MINOR abiertos: variación modesta entre cuadros del ataque frontal de Ilkan; Libertador definitiva aceptada pero NO instalada (check-libertador-motion y death fijan el sha256 del atlas aprobado: decisión del dueño), con el despacho adelantado respecto al arte instalado; t_abismo espera hasta 4 s y test-sides cambió el radio de muestreo del aro aliado de 5,5 a 4,5 (algo menos de cobertura, umbrales intactos); 3 corridas por prueba no permiten afirmar una tasa. No llamó a Runway."
    },
-   "at": "2026-11-12T20:47:00Z"
+   "at": "2026-11-13T01:02:00Z"
   },
   {
    "stage": "arquitectura",
-   "by": "claude-arq-301",
+   "by": "claude-arq-302",
    "role": "arquitecto",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "15aab122ae3a58f2e1b59da281f9586e6a846949",
-    "report": "Aprobó 15aab122 tras NO APROBADO sobre 870b8dd1 por DECLARACION_IA (6 generaciones de gpt_image_2 y 165 en total, Cazadora y Musashi nombradas como instaladas), STATUS/README/RECETA desactualizados («2 campeones, 3 hojas») y la línea de STATUS sobre gpt_image_2: todo resuelto. Riesgo de regresión bajo: 4 archivos de juego (dos atlas, champion-sprites.js, manifest.v1.json) más ATLAS_ARTE; cuadros 0–51 sin tocar y verificados byte a byte por atlas-append-cells.py; Crystal Wars usa otros atlas (v2) para esos campeones. Nota de Libertador verificada contra js/champions/libertador.js:286 (ult_cast con prog=0). MINOR abiertos: sha256 viejos de los atlas en docs/art-factory/inventory.json y art-source/entregas (históricos); entradas fechadas de STATUS con «159 recibos» (superadas por la línea de 165); «pies en la fila 113» sin verificar contra el atlas."
+    "sha": "fcf68fdf4f601e52a82ed613d39a12de21c16be9",
+    "report": "Aprobó fcf68fdf. Despachos retrocompatibles y solo de dibujo: nigromante.js no está en el diff; nigroUltPoseActive es de solo lectura y el resto de usos de nigroDemonForm (HUD, IA, habilidades, VFX, red, NET_COLLS, replays, Crystal Wars/Coliseo) no dependen de qué sprite se dibuja. Pruebas del CI: apagar arenaRuleTimer durante la contención es un aislamiento legítimo (mide la contención de las runas, no el evento ambiental); sin umbrales relajados; la prueba de despacho está en run-all.js y qa-manifest.json, es determinista y restaura el estado global. Checklist de arte honesto (vocabulario fijo, sin_verificar con motivo, --check sin navegador). Libertador candidato no instalado correctamente explicado sin tocar los gates. Recibos y recuentos coherentes (9 generaciones gpt_image_2, 168 recibos). OBSERVACIÓN MEDIA DE PROCESO: el cambio visible de Nigromante (pose propia durante 900 ms y el Demonio entrando a escala 1 en vez de crecer 0,78→1) no tiene aprobación de arte humana; el dueño fue informado con capturas y debe validarlo; queda anotado como pendiente. MINOR abiertos: contradicción cronológica en ART_CREDITS (sección que dice «nada generado» antes de las que instalan Ilkan), falta una coma en DECLARACION_IA, hash de etiqueta atlas_hash de enemy-coverage.json desfasado (datos de enemigos que la PR no toca), STATUS conserva «main = 88710d18», restitución de arenaRuleTimer sin try/finally."
    },
-   "at": "2026-11-12T20:49:00Z"
+   "at": "2026-11-13T01:04:00Z"
   },
   {
    "stage": "staging",
-   "by": "claude-integrador-301",
+   "by": "claude-integrador-302",
    "role": "integrador",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "15aab122ae3a58f2e1b59da281f9586e6a846949",
+    "sha": "fcf68fdf4f601e52a82ed613d39a12de21c16be9",
     "branch": "beta/integracion-20261110",
-    "tests": 34,
+    "tests": 36,
     "failed": 0,
-    "run": "https://github.com/Fondal-Studios/La-Horda/pull/301"
+    "run": "https://github.com/Fondal-Studios/La-Horda/pull/302"
    },
-   "at": "2026-11-12T20:51:00Z"
+   "at": "2026-11-13T01:06:00Z"
   },
   {
    "stage": "aprobacion",
-   "by": "claude-integrador-301",
+   "by": "claude-integrador-302",
    "role": "director",
    "verdict": "aprobado",
    "evidence": {
-    "sha": "15aab122ae3a58f2e1b59da281f9586e6a846949",
-    "report": "Aprobado sobre 15aab122. 35 check runs: 34 success y 1 failure ('Clasificacion, contratos y servidor' del PR, solo por R4 con el registro de la PR 300). Regresión rápida y regresión completa (push a beta/integracion-20261110 sobre el mismo SHA) en success, sin reintentos; tools/lanes/test-sides.js y CARCELERO no fallaron en este SHA. Diff 41 archivos: solo los atlas de cazadora y musashi (codex-v1), js/assets/champion-sprites.js, assets/visual-packages/manifest.v1.json, docs, tools/art y art-source. Arte instalado: definitiva propia de Cazadora y Musashi con gpt_image_2; aprobación de arte humana pendiente."
+    "sha": "fcf68fdf4f601e52a82ed613d39a12de21c16be9",
+    "report": "Aprobado sobre fcf68fdf. 37 check runs: 36 success y 1 failure ('Clasificacion, contratos y servidor' del PR, solo por R4). Regresión rápida y regresión completa (push a beta/integracion-20261110 sobre el mismo SHA) en success; Objetos/economía/tienda (ambos), Identidad de arenas (t_identity), lanes (test-sides), entry-reference y steam-pc en success. Ninguna prueba falló en la primera pasada, por lo que no se reintentó nada; es una sola muestra por prueba y no demuestra estabilidad (la tasa de ~2/27 de LAB.los_bots_resuelven_en_orden, no arreglada, sigue sin descartarse). Diff 69 archivos: archivos de juego solo los previstos; resto docs, tools y art-source. Arte instalado: ataque de frente y de espaldas de Ilkan con gpt_image_2; aprobación de arte humana pendiente; Libertador definitiva sin instalar."
    },
-   "at": "2026-11-12T20:53:00Z"
+   "at": "2026-11-13T01:08:00Z"
   }
  ]
 }
