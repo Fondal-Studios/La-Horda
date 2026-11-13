@@ -537,8 +537,11 @@ function drawIlkan(h, drawScale, alpha){
   if(h.attackAnim>0){
     const prog = 1 - h.attackAnim/(h.ilkanAtkTotal||200), st = h.ilkanAtkStep||0;
     // cada golpe muestra 3-4 poses distintas de attack_side [anticipo, estocada, tajo, recuperación] (antes 1-2 por golpe)
-    const seq = ILKAN_ATK_SEQ[st % 3], arr = P.sets.attack_side;
-    if(arr) champPackDrawFrame(P, arr[Math.min(arr.length-1, seq[Math.max(0, Math.min(seq.length-1, Math.floor(prog*seq.length)))])], h.x, h.y, sHuman, left, alpha);
+    // Vista propia: si el atlas trae attack_down / attack_up (frente / espalda) se usan según el apuntado, con la misma
+    // resolución que los demás campeones (champPackSet: variante "_l" al mirar a la izquierda). Sin esos sets, perfil espejado como siempre.
+    const seq = ILKAN_ATK_SEQ[st % 3], own = dir!=="side" && P.sets["attack_"+dir] ? champPackSet(P, "attack", dir, h) : null;
+    const arr = own ? own.arr : P.sets.attack_side, fl = own ? own.flip : left;
+    if(arr) champPackDrawFrame(P, arr[Math.min(arr.length-1, seq[Math.max(0, Math.min(seq.length-1, Math.floor(prog*seq.length)))])], h.x, h.y, sHuman, fl, alpha);
     return !!arr;
   }
   if(h.moving && (h.ilkanAdvanceTimer>0 || ilkanLowHp(h))) return _ilkanFrame(P, "run", ((h.animT||0)/100 % 4)/4, left, h, sHuman, alpha);

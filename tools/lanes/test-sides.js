@@ -13,6 +13,8 @@ const hex=h=>{h=h.trim().replace('#','');if(h.length===3)h=[...h].map(c=>c+c).jo
 // Se instala dentro de la página: cada barra de vida que se dibuja queda registrada con el píxel REAL del canvas y la entidad (rel esperado calculado aparte).
 const INSTALL=()=>{
  window.__rec=[];window.__icons=new Set();
+ // azar con semilla fija SOLO para colocar a los luchadores de la prueba (antes Math.random: cada corrida muestreaba sub-píxeles distintos)
+ {let a=0x9e3779b9;window.__rnd=()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
  const oSidesOf=window.sidesOf;let last=null;
  window.sidesOf=function(e){const r=oSidesOf(e);last={e,r};return r;};
  const oBar=window.sidesBar,oIcon=window.sidesIcon;
@@ -20,12 +22,17 @@ const INSTALL=()=>{
  window.sidesBar=function(g,rel,x,y,w,h,f,o){
   oBar.apply(this,arguments);
   const ent=last&&last.r===rel?last.e:null;const fr=Math.max(0,Math.min(1,f));if(fr<0.2)return;
-  const t=g.getTransform(),pt=t.transformPoint(new DOMPoint(x+w*fr*0.5,y+h*0.62));
-  // 3x3 alrededor del centro del relleno (con el canvas reducido la barra mide pocos píxeles): se toma el más claro = relleno puro, sin marco ni mezcla
-  const im=g.getImageData(Math.round(pt.x)-1,Math.round(pt.y)-1,3,3).data;const cv=document.createElement('canvas').getContext('2d');cv.fillStyle=getComputedStyle(document.documentElement).getPropertyValue('--'+rel).trim();const tc=cv.fillStyle,T=[1,3,5].map(i=>parseInt(tc.slice(i,i+2),16));
-  let bi=0,bs=-1;for(let i=0;i<9;i++){const a=[im[i*4],im[i*4+1],im[i*4+2]],sc=(a[0]*T[0]+a[1]*T[1]+a[2]*T[2])/((Math.hypot(...a)*Math.hypot(...T))||1);if(im[i*4+3]>=250&&sc>bs){bs=sc;bi=i;}}
-  if(bs<0)return; // fuera de pantalla: nada que muestrear
-  const d=[im[bi*4],im[bi*4+1],im[bi*4+2]];
+  // Se muestrean solo píxeles que quedan ENTEROS dentro del relleno (debajo de la franja de brillo de arriba): un píxel a medio cubrir se mezcla con el
+  // marco oscuro y el fondo según el sub-píxel (con el canvas reducido la barra mide 2-3 px y la posición cambia) y daba «brillo=0,21–0,24» contra el mínimo
+  // 0,25 (4 de 28 corridas). Se toma el más claro de tono puro (coseno ≥ 0,99: descarta muescas del enemigo); los umbrales de checkRecords no se tocan.
+  // Si la barra no tiene ni un píxel entero visible, no hay nada que muestrear (igual que fuera de pantalla).
+  const t=g.getTransform(),cv=document.createElement('canvas').getContext('2d');cv.fillStyle=getComputedStyle(document.documentElement).getPropertyValue('--'+rel).trim();const tc=cv.fillStyle,T=[1,3,5].map(i=>parseInt(tc.slice(i,i+2),16));
+  const hl=Math.max(1,Math.round(h/3)),P0=t.transformPoint(new DOMPoint(x,y+hl)),P1=t.transformPoint(new DOMPoint(x+w*fr,y+h));
+  const ix0=Math.ceil(Math.min(P0.x,P1.x)),ix1=Math.floor(Math.max(P0.x,P1.x)),iy0=Math.ceil(Math.min(P0.y,P1.y)),iy1=Math.floor(Math.max(P0.y,P1.y));
+  let d=null,bs=-1,pk=-1,pd=null,n=0;
+  for(let iy=iy0;iy<iy1&&n<80;iy++)for(let ix=ix0;ix<ix1&&n<80;ix++){n++;const q=g.getImageData(ix,iy,1,1).data;if(q[3]<250)continue;const a=[q[0],q[1],q[2]],br=Math.hypot(...a),sc=(a[0]*T[0]+a[1]*T[1]+a[2]*T[2])/((br*Math.hypot(...T))||1);if(sc>bs){bs=sc;d=a;}if(sc>=0.99&&br>pk){pk=br;pd=a;}}
+  if(pd)d=pd;
+  if(!d)return; // sin píxel entero visible (fuera de pantalla o barra de menos de 1 px): nada que muestrear
   const kind=!ent?'?':ent===player?'self':ent.isStruct?ent.kind:(ent.classKey?'hero':(ent.epicId!=null?'epic':'minion'));
   let expect=null;if(ent){expect=ent===player?'self':(ent.team===2&&LN.mode!=='coliseo')?'neutral':(ent.team===((typeof CAM_SUBJECT!=='undefined'&&CAM_SUBJECT&&CAM_SUBJECT.team!=null)?CAM_SUBJECT.team:player.team)?'ally':'enemy');}
   window.__rec.push({rel,expect,kind,dim:!!(o&&o.dim),rgb:[d[0],d[1],d[2]],ga:g.globalAlpha,f:fr,inv:ent&&ent.invulnTimer,dead:ent&&ent.alive});
@@ -80,7 +87,7 @@ const dominant=([r,g,b])=>r>g+60&&r>b+60?'red':g>r+40&&g>b+40?'green':r>b+60&&g>
     await p.evaluate(()=>{LN.team.forEach(T=>{T.nextWave=0;});});await p.waitForFunction(()=>enemies.some(e=>e.alive&&!e.lanesProxy&&e.team===0)&&enemies.some(e=>e.alive&&!e.lanesProxy&&e.team===1),null,{timeout:30000}); // sale la primera horda ya
     // 1) héroes y súbditos en el carril medio
     await p.evaluate(()=>{const m=LANES_PATHS[1].pts[Math.floor(LANES_PATHS[1].pts.length/2)];heroes.forEach((h,i)=>{h.x=m[0]+(h.team===player.team?-90:90)+(i%3)*20;h.y=m[1]+(i%5)*24-50;});
-     for(const e of enemies)if(e.alive&&!e.lanesProxy&&e.team!=null&&e.team!==2){e.x=m[0]+(e.team===player.team?-70:70)+(Math.random()-.5)*180;e.y=m[1]+(Math.random()-.5)*100;e.hp=e.maxHp*0.6;}});
+     for(const e of enemies)if(e.alive&&!e.lanesProxy&&e.team!=null&&e.team!==2){e.x=m[0]+(e.team===player.team?-70:70)+(window.__rnd()-.5)*180;e.y=m[1]+(window.__rnd()-.5)*100;e.hp=e.maxHp*0.6;}});
     await near(p,...(await p.evaluate(()=>{const m=LANES_PATHS[1].pts[Math.floor(LANES_PATHS[1].pts.length/2)];return [m[0],m[1]];})));
     await p.evaluate(()=>{for(const e of enemies)if(e.alive&&!e.lanesProxy&&e.team!=null&&e.team!==2)e.hp=e.maxHp*0.6;});await p.waitForTimeout(500);
     // 2) torres propias y rivales, cristales
@@ -122,7 +129,7 @@ const dominant=([r,g,b])=>r>g+60&&r>b+60?'red':g>r+40&&g>b+40?'green':r>b+60&&g>
     await p.evaluate(()=>colStart({champ:'guerrero'}));
     await p.waitForFunction(()=>state==='playing'&&lanesOn()&&LN.mode==='coliseo'&&LN.col.phase==='fight',null,{timeout:150000});
     await p.evaluate(INSTALL);const tokens=await p.evaluate(TOKENS);
-    await p.evaluate(()=>{player.invulnTimer=1e9;const c=colPitCenter(0);heroes.forEach(h=>{if(h.pit===0){h.x=c.x+(h.team===0?-70:70)+(Math.random()-.5)*40;h.y=c.y+(Math.random()-.5)*160;}});});
+    await p.evaluate(()=>{player.invulnTimer=1e9;const c=colPitCenter(0);heroes.forEach(h=>{if(h.pit===0){h.x=c.x+(h.team===0?-70:70)+(window.__rnd()-.5)*40;h.y=c.y+(window.__rnd()-.5)*160;}});});
     let view=0;
     if(spectate){ // caés en plena pelea y la cámara sigue a un luchador del equipo 1: para ese punto de vista, el equipo 1 es el aliado (verde)
      await p.evaluate(()=>{player.invulnTimer=0;damageHero(player,99999,{isPvp:true,from:null});});
@@ -139,10 +146,13 @@ const dominant=([r,g,b])=>r>g+60&&r>b+60?'red':g>r+40&&g>b+40?'green':r>b+60&&g>
     assert.equal(hud.filter(x=>x==='ally').length,1,'marcador: un solo equipo aliado '+hud);assert.equal(hud.filter(x=>x==='enemy').length,3,'marcador: tres rivales '+hud);assert.equal(hud[view],'ally','el aliado del marcador es el equipo del punto de vista');
     const sw=await p.evaluate(()=>{const c=document.querySelector('.col-team[data-side="ally"] .ln-side'),e=document.querySelector('.col-team[data-side="enemy"] .ln-side');const cs=x=>getComputedStyle(x);return {a:cs(c).backgroundColor,e:cs(e).backgroundColor,ea:cs(e).maskImage||cs(e).webkitMaskImage,aa:cs(c).maskImage||cs(c).webkitMaskImage};});
     assert.notEqual(sw.ea,sw.aa,'ícono distinto (escudo / espada) además del color');assert.equal(dominant(sw.a.match(/\d+/g).slice(0,3).map(Number)),'green');assert.equal(dominant(sw.e.match(/\d+/g).slice(0,3).map(Number)),'red');
+    // Minimapa: los luchadores quedaron en posiciones al azar y a esta escala se pisan los marcadores (aro verde de un aliado cubriendo el rombo rojo del rival o al revés:
+    // 2 fallos en 32 corridas, «aro rojo del rival» con píxeles verdes). Se los reparte sobre una circunferencia del foso, determinista y bien separada, antes de dibujarlo.
+    await p.evaluate(()=>{const c=colPitCenter(0),pit=heroes.filter(h=>h.pit===0);pit.forEach((h,i)=>{const a=i*Math.PI*2/pit.length+0.3;h.x=c.x+Math.cos(a)*COL.PIT_R*0.7;h.y=c.y+Math.sin(a)*COL.PIT_R*0.7;});});
     const mm=await p.evaluate(()=>{colDrawMap();const cv=document.querySelector('.col-map canvas'),g=cv.getContext('2d'),sx=cv.width/COL.W,sy=cv.height/COL.H;const view=(CAM_SUBJECT&&CAM_SUBJECT.team!=null)?CAM_SUBJECT.team:player.team;
      const out={};for(const rel of ['ally','enemy']){const hh=heroes.find(x=>x!==player&&x.alive&&(rel==='ally'?x.team===view:x.team!==view));
        // el aro del héroe: 6 px a la izquierda/arriba del centro cae sobre el trazo de 2 px; se busca el color más frecuente del trazo
-       const px=[];for(let a=0;a<12;a++){const r=(rel==='enemy'?7:5.5);const q=g.getImageData(Math.round(hh.x*sx+Math.cos(a/12*6.283)*r*(rel==='enemy'?0.78:1)),Math.round(hh.y*sy+Math.sin(a/12*6.283)*r*(rel==='enemy'?0.78:1)),1,1).data;px.push([q[0],q[1],q[2]]);}
+       const px=[];for(let a=0;a<12;a++){const r=(rel==='enemy'?7:4.5);const q=g.getImageData(Math.round(hh.x*sx+Math.cos(a/12*6.283)*r*(rel==='enemy'?0.78:1)),Math.round(hh.y*sy+Math.sin(a/12*6.283)*r*(rel==='enemy'?0.78:1)),1,1).data;px.push([q[0],q[1],q[2]]);}
        out[rel]=px;}return out;});
     const countDom=(px,k)=>px.filter(c=>dominant(c)===k).length;
     assert(countDom(mm.ally,'green')>=3,'minimapa del Coliseo: aro verde del aliado '+JSON.stringify(mm.ally));assert(countDom(mm.enemy,'red')>=3,'minimapa del Coliseo: aro rojo del rival '+JSON.stringify(mm.enemy));

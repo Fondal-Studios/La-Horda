@@ -6,7 +6,7 @@
 
 > Auditado el 2026-11-12 en la rama `wip/runway-video` contra el repo (archivos con `ls`, carga con `grep` en `js/`). Costo medido: 8 cr por imagen gen4_image 1024; hoja de enemigo 1280x720 observada a 5 cr; video gen4_turbo 2 s = 10 cr. Los créditos son los registrados por recibo/ART_CREDITS (hay gasto sin recibo: ver notas); el saldo de la cuenta es compartido.
 
-**Entradas: 91** · ✔ integrado 55 · ◐ sin integrar 7 · ✘ rechazado 13 · · pendiente 15 · ⛔ bloqueado 1 · créditos registrados: 1353
+**Entradas: 94** · ✔ integrado 57 · ◐ sin integrar 8 · ✘ rechazado 13 · · pendiente 15 · ⛔ bloqueado 1 · créditos registrados: 1413
 
 ## lamina_campeon (4)
 
@@ -113,7 +113,7 @@
 | `hoja_minotauro` | ✘ rechazado | 2026-11-06 | 5 | `art-source/runway-enemies/laberinto/minotauro` | Hoja peor que el retrato de campo de batalla; retirada (RUNWAY_ENEMIES.md). |
 | `leviatan_imagenes_15` | ✔ integrado | 2026-11-06 |  | `assets/sprites/bosses/acuatica/leviatan/head_01.png`<br>`art-source/runway-redraw/sprites/bosses/acuatica/leviatan/orig/head_01.png` | Solo se usan si el retrato de campo de batalla no carga (el retrato manda). Sin recibos: 15 imágenes gen4_image, créditos no registrados (sin_verificar). |
 
-## campeon_cuerpo (16)
+## campeon_cuerpo (19)
 
 | id | estado | fecha | cr | dónde está | nota |
 |---|---|---|---:|---|---|
@@ -133,6 +133,9 @@
 | `tanque_lanzar_gpt2` | ◐ sin integrar | 2026-11-12 | 20 | `art-source/runway-designs/tanque/g1/master.png` |  |
 | `cazadora_ult_poses_gpt2` | ✔ integrado | 2026-11-12 | 40 | `art-source/runway-designs/cazadora/u1/master.png`<br>`art-source/runway-designs/cazadora/u2/master.png`<br>`art-source/cazadora-runway/atlas.png` | u1 (20 cr) bien de diseno y poses pero el arco en alto vertical obligaba a reducir la escala comun un 10 % (cuerpo 74 px vs 83 de reposo, fuera de +-4 %): descartada como candidato. u2 (20 cr, arco horizontal) aceptada: cuerpo 85 px (+2 %). Instalada 2026-11-12; aprobacion de arte humana pendiente. |
 | `musashi_ult_poses_gpt2` | ✔ integrado | 2026-11-12 | 20 | `art-source/runway-designs/musashi/u1/master.png`<br>`art-source/musashi-runway/atlas.png` | Primer intento aceptado (saldo 145 -> 125). Se pidio el bokken en diagonal/horizontal para no pasar de la celda. Proporciones algo mas macizas que el atlas vigente; instalada 2026-11-12, aprobacion de arte humana pendiente. |
+| `ilkan_ataque_frente_gpt2` | ✔ integrado | 2026-11-12 | 20 | `art-source/runway-designs/ilkan/af1/master.png`<br>`art-source/ilkan-runway/atlas.png` | Primer intento aceptado (saldo 99 -> 79): anticipacion / tajo cruzado hacia la camara / seguimiento con brazos abiertos / recuperacion; mismo diseno que la lamina. Instalada 2026-11-12 (drawIlkan ya despacha attack_down); aprobacion de arte humana pendiente. |
+| `ilkan_ataque_espalda_gpt2` | ✔ integrado | 2026-11-12 | 20 | `art-source/runway-designs/ilkan/ab1/master.png`<br>`art-source/ilkan-runway/atlas.png` | Primer intento aceptado (saldo 79 -> 59): de espaldas sin cara en las 4 poses, lanza al hombro y cola de capa. Instalada 2026-11-12; aprobacion de arte humana pendiente. |
+| `libertador_ult_poses_gpt2` | ◐ sin integrar | 2026-11-12 | 20 | `art-source/runway-designs/libertador/u1/master.png`<br>`art-source/libertador-runway/atlas.png` | Primer intento aceptado (saldo 59 -> 39): carga con el sable a la cadera / alza el sable en diagonal / pico con el sable extendido y grito / liberacion en estocada. Captura del motor (ult_cast avanzando con el progreso, antes vs despues) claramente mejor. NO instalada: v2/atlas.png esta fijado por sha256 como atlas aprobado en tools/art/check-libertador-motion.js (linea 69) y tools/art/check-libertador-death.js; instalarla los pone en rojo. |
 
 ## campeon_video (2)
 

@@ -3,12 +3,12 @@
  "generator": "tools/art/build-art-atlas.js",
  "reference": "Códice (docs/LA_HORDA_CODEX.md); decisión curada en docs/art/ATLAS_VIGENTE.json",
  "sources": {
-  "hash": "42c3e6d9bc9066c4c839fa19edc72811d6aca28d",
+  "hash": "1965e2120f629e3b799ab28712f19e46bafbc516",
   "files": 51
  },
  "runtime": {
   "url": "index.html?dev=1&lazy=1 (producción: carga por grupos, webp activo)",
-  "loadedImages": 1569,
+  "loadedImages": 1589,
   "sampling": "24 muestras por estado y dirección (down/side/left/up)"
  },
  "summary": {
@@ -2523,21 +2523,21 @@
        "left": 3
       },
       "attack": {
-       "down": 1,
+       "down": 2,
        "side": 1,
-       "up": 1,
+       "up": 2,
        "left": 1
       },
       "cast": {
-       "down": 1,
+       "down": 2,
        "side": 1,
-       "up": 1,
+       "up": 2,
        "left": 1
       },
       "ultimate": {
-       "down": 1,
+       "down": 2,
        "side": 1,
-       "up": 1,
+       "up": 2,
        "left": 1
       },
       "hit": {
@@ -2599,21 +2599,21 @@
        "left": 3
       },
       "attack": {
-       "down": 1,
+       "down": 2,
        "side": 1,
-       "up": 1,
+       "up": 2,
        "left": 1
       },
       "cast": {
-       "down": 1,
+       "down": 2,
        "side": 1,
-       "up": 1,
+       "up": 2,
        "left": 1
       },
       "ultimate": {
-       "down": 1,
+       "down": 2,
        "side": 1,
-       "up": 1,
+       "up": 2,
        "left": 1
       },
       "hit": {
@@ -2661,9 +2661,9 @@
      "loadedAs": "png",
      "size": [
       1536,
-      1024
+      1152
      ],
-     "bytes": 406652
+     "bytes": 455055
     }
    ],
    "packs": [
@@ -14910,7 +14910,7 @@
   {"file":"assets/sprites/champions/guerrero/skins/nocturno/atlas.png","category":"champions","size":[448,342],"bytes":183906,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/set-skins-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/guerrero/skins/nocturno/preview.png","category":"champions","size":[220,309],"bytes":152133,"webp":true,"loaded":true,"usedBy":["js/assets/set-skins-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/guerrero/v3/death.png","category":"champions","size":[448,112],"bytes":23205,"webp":false,"loaded":true,"usedBy":["js/assets/champion-sprites.js"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/champions/ilkan/codex-v1/atlas.png","category":"champions","size":[1536,1024],"bytes":406652,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/champion-sprites.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/champions/ilkan/codex-v1/atlas.png","category":"champions","size":[1536,1152],"bytes":455055,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/champion-sprites.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/ilkan/skins/legion/atlas.png","category":"champions","size":[1536,1024],"bytes":397651,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/set-skins-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/ilkan/skins/legion/colossus.png","category":"champions","size":[1184,544],"bytes":245954,"webp":true,"loaded":true,"usedBy":["js/assets/set-skins-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/ilkan/skins/legion/preview.png","category":"champions","size":[220,316],"bytes":9581,"webp":true,"loaded":true,"usedBy":["js/assets/set-skins-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},

@@ -126,22 +126,34 @@
    "nombre": "Ilvar, el Señor de las Criptas",
    "etapas": {},
    "intentos_descartados": [],
-   "notas": ""
+   "notas": "2026-11-12: no se generaron hojas (0 cr): el checklist dice 'falta ultimate_down' pero el motor NO dibuja ese estado para Nigromante. Su definitiva (Encarnacion del Abismo) pone nigroDemonForm=true al lanzarse y drawHeroBody/entities.js llaman primero a drawNigromanteDemon, que dibuja el Coloso/Demonio (NIGRO_COLOSSUS) desde el primer cuadro; los cuadros 32-35 del atlas (set 'ult', ya con pose propia) solo se verian si ese dibujo devolviera false. Una hoja nueva de definitiva no se veria nunca. Cambiarlo exige tocar js/rendering/champion-sprites.js y js/rendering/entities.js (fuera de alcance). Capturas: art-source/captures/nigromante/. Detalle en ART_CREDITS.md."
   },
   "libertador": {
    "nombre": "San Martín, el Libertador",
    "etapas": {
     "lamina_limpia": "hecho",
-    "captura_antes_despues": "pendiente"
+    "captura_antes_despues": "hecho",
+    "cuadros_aprobados": "generado",
+    "atlas_armado": "hecho",
+    "instalado_motor": "pendiente",
+    "gates": "pendiente"
    },
    "intentos_descartados": [],
-   "notas": "2026-11-12: no se generaron hojas: la muerte ya tiene 4 cuadros propios (libertador_death), la definitiva usa un unico cuadro 44 que el motor dibuja fijo (prog 0) y el ataque usa el set 'fire' en todas las direcciones; ver ART_CREDITS 2026-11-12: la columna «estados que faltan» del checklist mide los `sets` del registro y NO ve lo que el motor dibuja por otro camino: la muerte (`libertador_death`, 4 cuadros) ya está integrada; la definitiva ya tiene su cuadro propio (pero el motor dibuja `ult_cast` con prog=0, solo se vería el primer cuadro); el ataque en las 3 direcciones usa el set `fire` de perfil. Animar la definitiva o dar ataque frontal requiere antes cambiar js/champions/libertador.js. Detalle en ART_CREDITS.md."
+   "notas": "2026-11-12: no se generaron hojas: la muerte ya tiene 4 cuadros propios (libertador_death), la definitiva usa un unico cuadro 44 que el motor dibuja fijo (prog 0) y el ataque usa el set 'fire' en todas las direcciones; ver ART_CREDITS 2026-11-12: la columna «estados que faltan» del checklist mide los `sets` del registro y NO ve lo que el motor dibuja por otro camino: la muerte (`libertador_death`, 4 cuadros) ya está integrada; la definitiva ya tiene su cuadro propio (pero el motor dibuja `ult_cast` con prog=0, solo se vería el primer cuadro); el ataque en las 3 direcciones usa el set `fire` de perfil. Animar la definitiva o dar ataque frontal requiere antes cambiar js/champions/libertador.js. Detalle en ART_CREDITS.md. 2026-11-12 (despues del despacho de dibujo): se genero la hoja de la definitiva (ult_cast, 4 poses, gpt_image_2, 20 cr, task 0179f97b) y se armo el atlas candidato art-source/libertador-runway/atlas.png (824x882, cuadros 64-67; 0-60 identicos). NO instalado: check-libertador-motion.js y check-libertador-death.js fijan el sha256 del atlas v2 aprobado y fallan con el atlas ampliado (se probo y se revirtio). Captura antes/despues: art-source/captures/libertador/runway_ult_antes_despues.png. Decision del dueno pendiente (re-aprobar y actualizar el sha de esos gates, o paquete aparte)."
   },
   "ilkan": {
    "nombre": "Ilkan, el Caminante de Dunas",
-   "etapas": {},
+   "etapas": {
+    "lamina_limpia": "hecho",
+    "clip_ult": "pendiente",
+    "cuadros_aprobados": "generado",
+    "atlas_armado": "hecho",
+    "instalado_motor": "hecho",
+    "gates": "generado",
+    "captura_antes_despues": "hecho"
+   },
    "intentos_descartados": [],
-   "notas": ""
+   "notas": "2026-11-12: ataque de frente (attack_down, cuadros 64-67) y de espaldas (attack_up, 68-71) con gpt_image_2 (2 hojas, 40 cr), instalados en el atlas codex-v1 (fila nueva, 1536x1152; cuadros 0-63 identicos); drawIlkan los despacha por direccion. Solo pasaron los gates aplicables; style_gate no aplica (celda 192x128); sin revision de arte humana. La definitiva sigue siendo invoke -> Coloso (no se generó hoja). Capturas art-source/captures/ilkan/estados_antes.png y runway_despues.png."
   },
   "ynara": {
    "nombre": "Ynara, la Médica de los Refugios",
