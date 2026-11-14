@@ -88,6 +88,21 @@ function wrapAnimImage(img, readyGetter, def){ return { img, ready:readyGetter, 
 // Mismo animFrameIndex/animFireEvents de siempre por debajo: es el mismo reloj de animación.
 function drawAnimFrameSized(img, clip, n, x, y, w, h, anchorXRatio, anchorYRatio, flip, alpha, rotation){
   const f = clip.frames[n];
+  if(!rotation && !FX_GLOW.on){
+    // Camino rápido (la gran mayoría de los enemigos de una horda): sin save/restore. Mismo dibujo; el espejo se deshace con las
+    // operaciones inversas exactas (scale(-1,1) y translate(-x,-y)) y alfa/suavizado vuelven a su valor. ~90 save()/cuadro menos con 70 enemigos.
+    const a0 = ctx.globalAlpha, sm0 = ctx.imageSmoothingEnabled;
+    if(alpha!==undefined) ctx.globalAlpha = alpha*ANIM_ALPHA_MUL;
+    ctx.imageSmoothingEnabled = false;
+    let dx = x - w*anchorXRatio, dy = y - h*anchorYRatio;
+    if(flip){ ctx.translate(x, y); ctx.scale(-1,1); dx = -w*anchorXRatio; dy = -h*anchorYRatio; }
+    const wc = ANIM_WHITE ? whiteFrame(img, f.x, f.y, f.w, f.h) : null; // destello de golpe (juice.js)
+    if(wc) ctx.drawImage(wc, 0, 0, wc.width, wc.height, dx, dy, w, h);
+    else artMipDraw(img, f.x, f.y, f.w, f.h, dx, dy, w, h);
+    if(flip){ ctx.scale(-1,1); ctx.translate(-x, -y); }
+    ctx.globalAlpha = a0; ctx.imageSmoothingEnabled = sm0;
+    return;
+  }
   ctx.save();
   if(alpha!==undefined) ctx.globalAlpha = alpha*ANIM_ALPHA_MUL;
   ctx.imageSmoothingEnabled = false;
