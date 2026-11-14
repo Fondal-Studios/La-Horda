@@ -37,8 +37,8 @@ const ARENA_MODS = {
               // Segunda pasada (PESADILLA_PAREJA.md): x0,5/0,4/0,7 todavía dejaba 16% (5/32); x0,35/0,3/0,55 -> 70% (28/40).
               // DIFICULTAD_GRUPO2.md: con equipo real (lootPath+equipBest) y nivel de llegada, x0,35/0,3/0,55 daba ~94% (era un ajuste hecho con un guardián casi desnudo): x0,75/0,75/0,85 -> ~50%.
               // Infierno (nunca medido): sin ajuste 0-13%; x0,55/0,55/0,7 -> ~40%.
-              // BALANCE_DIFICULTAD_20261113.md: Infierno 13% (1/8) -> x0,45/0,45/0,6.
-              tierMods:{ pesadilla:{ hp:0.7, dmg:0.7, bossDmg:0.8 }, infierno:{ hp:0.45, dmg:0.45, bossDmg:0.6 } } },
+              // BALANCE_DIFICULTAD_20261113.md: Infierno 13% (1/8) -> x0,45/0,45/0,7 (bossDmg se queda en 0,7: con 0,6 el golpe de jefe de Infierno quedaba por debajo del de Pesadilla, t_difficulty GRUPO2).
+              tierMods:{ pesadilla:{ hp:0.7, dmg:0.7, bossDmg:0.8 }, infierno:{ hp:0.45, dmg:0.45, bossDmg:0.7 } } },
   laberinto:{ label:"Laberinto", icon:"🗿", desc:"Arena 07. Muros, sismos y maná escaso. Acá espera el tercer Guardián.", hazardName:"Maldición del Minotauro",
               fireDmgMult:1.0,  iceDmgMult:1.0, enemyDmgPerWave:0.16, unlockLevel:0,
               heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:0.50, abilityDmgMult:1.0, heroDmgMult:0.85, enemyRegenPct:0, hazard:"sismo", hasWalls:true,
