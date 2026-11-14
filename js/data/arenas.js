@@ -27,8 +27,9 @@ const ARENA_MODS = {
               heroSpeedMult:1.0,  heroCdMult:1.0,  heroEnergyRegenMult:1.0,  abilityDmgMult:1.0, heroDmgMult:0.90, enemyRegenPct:0.012, hazard:null, hasWalls:false,
               // Pesadilla pareja (docs/economy/PESADILLA_PAREJA.md): con el botín de 16 victorias la tasa era 3% (1/32); con este ajuste (solo Pesadilla) da 42% (17/40).
               // DIFICULTAD_GRUPO1.md (equipo real de lootPath + equipBest): con ese equipo x0,6/0,5/0,8 era 100% (8/8): se sube a x0,85/0,8/0,9 (63%, 5/8). Infierno x0,7/0,6/0,85.
-              // BALANCE_DIFICULTAD_20261113.md: Normal 100% (5/5) -> normal x1,05/1,1/1,05; Pesadilla 20% (1/5) -> x0,9/0,8/0,9.
-              tierMods:{ normal:{ hp:1.05, dmg:1.1, bossDmg:1.05 }, pesadilla:{ hp:0.9, dmg:0.8, bossDmg:0.9 }, infierno:{ hp:0.8, dmg:0.7, bossDmg:0.9 } } },
+              // BALANCE_DIFICULTAD_20261113.md: Pesadilla 20% (1/5) -> x0,9/0,8/0,9. Normal NO se toca: el endurecimiento de Normal (x1,05/1,1/1,05) hacia que
+              // boss-validator --strict fallara el gancho guardian_ancestral.runa_rota (la pelea simulada ya no lo cumplia).
+              tierMods:{ pesadilla:{ hp:0.9, dmg:0.8, bossDmg:0.9 }, infierno:{ hp:0.8, dmg:0.7, bossDmg:0.9 } } },
   hielo:    { label:"Arena Gélida",      icon:"❄", desc:"Arena 05. El frío es el enemigo. Acá espera el segundo Guardián.", hazardName:"Furia del Vendaval Helado",
               fireDmgMult:1.0,  iceDmgMult:1.0, enemyDmgPerWave:0.148, unlockLevel:0,
               heroSpeedMult:0.90, heroCdMult:1.10, heroEnergyRegenMult:0.85, abilityDmgMult:1.0, heroDmgMult:0.85, enemyRegenPct:0, hazard:"nova_gelida", hasWalls:false,
@@ -120,8 +121,9 @@ Object.assign(ARENA_MODS, {
               // más pociones.
               potionMult:1.6, enemyHpMult:0.88,
               // DIFICULTAD_GRUPO1.md: Normal 83% agrupado -> x0,85/0,8/0,9 (88%); Pesadilla e Infierno no tenian ajuste y daban 100% / 88% con el equipo real.
-              // BALANCE_DIFICULTAD_20261113.md: Normal 100% (7/7) -> x0,85/0,8/0,85 (riesgo real desde el inicio); Infierno 0/5 -> x2,0/1,9/1,15.
-              tierMods:{ normal:{ hp:0.85, dmg:0.8, bossDmg:0.85 }, pesadilla:{ hp:2.5, dmg:2.4, bossDmg:1.3 }, infierno:{ hp:2.0, dmg:1.9, bossDmg:1.15 } } },
+              // BALANCE_DIFICULTAD_20261113.md: Infierno 0/5 -> x2,0/1,9/1,15. Normal se queda en x0,75/0,7/0,75: con x0,85/0,8/0,85 boss-validator --strict
+              // fallaba el gancho cm_tramoyista.estructura (la pelea simulada ya no lo cumplia).
+              tierMods:{ normal:{ hp:0.75, dmg:0.7, bossDmg:0.75 }, pesadilla:{ hp:2.5, dmg:2.4, bossDmg:1.3 }, infierno:{ hp:2.0, dmg:1.9, bossDmg:1.15 } } },
   // MINAS PROFUNDAS (Arena 09, la última antes de la Infernal): "LA LUZ ES TERRITORIO". Descenso por seis
   // sectores; los enemigos apagan las luces y el equipo las reenciende; Devoraluz, Titán de Piedra y
   // Cerbero. Matar a Cerbero NO termina la partida: hay que ATRAVESAR EL UMBRAL (js/arenas/minas/).
