@@ -97,6 +97,7 @@ const TESTS = [
   T('tools/ux/test-text-overflow.js', 'own', 900),
   T('tools/ux/test-touch-targets.js', 'own', 600),
   T('tools/ux/test-first-minute-taps.js', 'site', 600),
+  T('tools/ux/test-starter-skin-layout.js', 'site', 600),
   T('tools/ux/functional.js', 'fixed', 900),
   // ---- calidad, VFX, arte ----
   T('tools/quality/test-ability-resources.js', 'own', 900),

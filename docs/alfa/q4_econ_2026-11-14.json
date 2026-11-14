@@ -1,0 +1,825 @@
+{
+ "tieneNivelDeObjeto": true,
+ "porArena": {
+  "ciudad": {
+   "n": 1,
+   "objetosPorPartida": 12.71,
+   "pct": {
+    "comun": 38.9,
+    "raro": 46.6,
+    "muyraro": 14,
+    "set": 0.1,
+    "legendario": 0.4,
+    "mitico": 0
+   },
+   "muyRaroOMasPorPartida": 1.85,
+   "legendarioOMasPorPartida": 0.07,
+   "partidasConMuyRaroOMasPct": 100,
+   "statMedioArmaMuyRaro": "34.9%",
+   "nivelObjetoMedio": 1,
+   "porFuente": {
+    "normal": {
+     "porPartida": 2.56,
+     "comunPct": 71.7,
+     "rarosOMasPct": 28.3
+    },
+    "named": {
+     "porPartida": 2.19,
+     "comunPct": 22.6,
+     "rarosOMasPct": 77.4
+    },
+    "subjefe": {
+     "porPartida": 3,
+     "comunPct": 21.3,
+     "rarosOMasPct": 78.8
+    },
+    "jefe": {
+     "porPartida": 2.49,
+     "comunPct": 39.8,
+     "rarosOMasPct": 60.2
+    },
+    "cofre": {
+     "porPartida": 1.98,
+     "comunPct": 31.9,
+     "rarosOMasPct": 68.1
+    },
+    "elite": {
+     "porPartida": 0.31,
+     "comunPct": 72.6,
+     "rarosOMasPct": 27.4
+    },
+    "subelite": {
+     "porPartida": 0.19,
+     "comunPct": 69.3,
+     "rarosOMasPct": 30.7
+    }
+   }
+  },
+  "fortaleza": {
+   "n": 2,
+   "objetosPorPartida": 12.48,
+   "pct": {
+    "raro": 49.6,
+    "muyraro": 16.9,
+    "comun": 32.4,
+    "legendario": 0.9,
+    "set": 0.1,
+    "mitico": 0.1
+   },
+   "muyRaroOMasPorPartida": 2.24,
+   "legendarioOMasPorPartida": 0.14,
+   "partidasConMuyRaroOMasPct": 100,
+   "statMedioArmaMuyRaro": "36.7%",
+   "nivelObjetoMedio": 2,
+   "porFuente": {
+    "named": {
+     "porPartida": 2.17,
+     "comunPct": 20.2,
+     "rarosOMasPct": 79.8
+    },
+    "subjefe": {
+     "porPartida": 2.97,
+     "comunPct": 18.1,
+     "rarosOMasPct": 81.9
+    },
+    "jefe": {
+     "porPartida": 2.51,
+     "comunPct": 31.7,
+     "rarosOMasPct": 68.3
+    },
+    "cofre": {
+     "porPartida": 1.95,
+     "comunPct": 25.4,
+     "rarosOMasPct": 74.6
+    },
+    "normal": {
+     "porPartida": 2.38,
+     "comunPct": 61.7,
+     "rarosOMasPct": 38.3
+    },
+    "subelite": {
+     "porPartida": 0.2,
+     "comunPct": 62,
+     "rarosOMasPct": 38
+    },
+    "elite": {
+     "porPartida": 0.31,
+     "comunPct": 61.8,
+     "rarosOMasPct": 38.2
+    }
+   }
+  },
+  "bosque": {
+   "n": 3,
+   "objetosPorPartida": 12.93,
+   "pct": {
+    "comun": 26.8,
+    "raro": 49.5,
+    "muyraro": 20.4,
+    "legendario": 3,
+    "set": 0.2,
+    "mitico": 0
+   },
+   "muyRaroOMasPorPartida": 3.07,
+   "legendarioOMasPorPartida": 0.43,
+   "partidasConMuyRaroOMasPct": 100,
+   "statMedioArmaMuyRaro": "38.6%",
+   "nivelObjetoMedio": 3,
+   "porFuente": {
+    "normal": {
+     "porPartida": 2.47,
+     "comunPct": 55.2,
+     "rarosOMasPct": 44.8
+    },
+    "named": {
+     "porPartida": 2.35,
+     "comunPct": 14.6,
+     "rarosOMasPct": 85.4
+    },
+    "subjefe": {
+     "porPartida": 3.11,
+     "comunPct": 14.7,
+     "rarosOMasPct": 85.3
+    },
+    "jefe": {
+     "porPartida": 2.6,
+     "comunPct": 24,
+     "rarosOMasPct": 76
+    },
+    "cofre": {
+     "porPartida": 1.95,
+     "comunPct": 22.2,
+     "rarosOMasPct": 77.8
+    },
+    "subelite": {
+     "porPartida": 0.19,
+     "comunPct": 47.3,
+     "rarosOMasPct": 52.7
+    },
+    "elite": {
+     "porPartida": 0.28,
+     "comunPct": 55.9,
+     "rarosOMasPct": 44.1
+    }
+   }
+  },
+  "micelial": {
+   "n": 4,
+   "objetosPorPartida": 12.78,
+   "pct": {
+    "muyraro": 21.5,
+    "comun": 25.4,
+    "raro": 49.5,
+    "legendario": 3.4,
+    "set": 0.2,
+    "mitico": 0.1
+   },
+   "muyRaroOMasPorPartida": 3.21,
+   "legendarioOMasPorPartida": 0.47,
+   "partidasConMuyRaroOMasPct": 100,
+   "statMedioArmaMuyRaro": "40.3%",
+   "nivelObjetoMedio": 4,
+   "porFuente": {
+    "normal": {
+     "porPartida": 2.42,
+     "comunPct": 53.2,
+     "rarosOMasPct": 46.8
+    },
+    "named": {
+     "porPartida": 2.32,
+     "comunPct": 14,
+     "rarosOMasPct": 86
+    },
+    "subjefe": {
+     "porPartida": 3.05,
+     "comunPct": 13,
+     "rarosOMasPct": 87
+    },
+    "jefe": {
+     "porPartida": 2.62,
+     "comunPct": 21.3,
+     "rarosOMasPct": 78.7
+    },
+    "cofre": {
+     "porPartida": 1.93,
+     "comunPct": 22.1,
+     "rarosOMasPct": 77.9
+    },
+    "subelite": {
+     "porPartida": 0.18,
+     "comunPct": 62.5,
+     "rarosOMasPct": 37.5
+    },
+    "elite": {
+     "porPartida": 0.26,
+     "comunPct": 52.4,
+     "rarosOMasPct": 47.6
+    }
+   }
+  },
+  "hielo": {
+   "n": 5,
+   "objetosPorPartida": 12.75,
+   "pct": {
+    "raro": 50.2,
+    "muyraro": 21.8,
+    "comun": 23.9,
+    "legendario": 3.7,
+    "set": 0.3,
+    "mitico": 0
+   },
+   "muyRaroOMasPorPartida": 3.3,
+   "legendarioOMasPorPartida": 0.52,
+   "partidasConMuyRaroOMasPct": 100,
+   "statMedioArmaMuyRaro": "42%",
+   "nivelObjetoMedio": 5,
+   "porFuente": {
+    "normal": {
+     "porPartida": 2.4,
+     "comunPct": 50.8,
+     "rarosOMasPct": 49.2
+    },
+    "named": {
+     "porPartida": 2.25,
+     "comunPct": 11.9,
+     "rarosOMasPct": 88.1
+    },
+    "subjefe": {
+     "porPartida": 3.17,
+     "comunPct": 13.9,
+     "rarosOMasPct": 86.1
+    },
+    "jefe": {
+     "porPartida": 2.53,
+     "comunPct": 21.6,
+     "rarosOMasPct": 78.4
+    },
+    "cofre": {
+     "porPartida": 1.93,
+     "comunPct": 18.9,
+     "rarosOMasPct": 81.1
+    },
+    "elite": {
+     "porPartida": 0.3,
+     "comunPct": 46.7,
+     "rarosOMasPct": 53.3
+    },
+    "subelite": {
+     "porPartida": 0.17,
+     "comunPct": 39.1,
+     "rarosOMasPct": 60.9
+    }
+   }
+  },
+  "acuatica": {
+   "n": 6,
+   "objetosPorPartida": 12.82,
+   "pct": {
+    "raro": 48,
+    "muyraro": 25.8,
+    "legendario": 4.2,
+    "comun": 21.2,
+    "set": 0.7,
+    "mitico": 0.1,
+    "unico": 0
+   },
+   "muyRaroOMasPorPartida": 3.95,
+   "legendarioOMasPorPartida": 0.65,
+   "partidasConMuyRaroOMasPct": 100,
+   "statMedioArmaMuyRaro": "43.6%",
+   "nivelObjetoMedio": 6,
+   "porFuente": {
+    "normal": {
+     "porPartida": 2.43,
+     "comunPct": 46.9,
+     "rarosOMasPct": 53.1
+    },
+    "named": {
+     "porPartida": 2.33,
+     "comunPct": 9.6,
+     "rarosOMasPct": 90.4
+    },
+    "subjefe": {
+     "porPartida": 3.06,
+     "comunPct": 12.5,
+     "rarosOMasPct": 87.5
+    },
+    "jefe": {
+     "porPartida": 2.58,
+     "comunPct": 18,
+     "rarosOMasPct": 82
+    },
+    "cofre": {
+     "porPartida": 1.96,
+     "comunPct": 15.9,
+     "rarosOMasPct": 84.1
+    },
+    "subelite": {
+     "porPartida": 0.2,
+     "comunPct": 44.4,
+     "rarosOMasPct": 55.6
+    },
+    "elite": {
+     "porPartida": 0.25,
+     "comunPct": 40.4,
+     "rarosOMasPct": 59.6
+    }
+   }
+  },
+  "laberinto": {
+   "n": 7,
+   "objetosPorPartida": 12.84,
+   "pct": {
+    "comun": 18.3,
+    "raro": 45,
+    "muyraro": 31.1,
+    "mitico": 0.1,
+    "legendario": 4.3,
+    "set": 1.1,
+    "unico": 0
+   },
+   "muyRaroOMasPorPartida": 4.7,
+   "legendarioOMasPorPartida": 0.71,
+   "partidasConMuyRaroOMasPct": 100,
+   "statMedioArmaMuyRaro": "45.8%",
+   "nivelObjetoMedio": 7,
+   "porFuente": {
+    "subelite": {
+     "porPartida": 0.22,
+     "comunPct": 40.9,
+     "rarosOMasPct": 59.1
+    },
+    "elite": {
+     "porPartida": 0.29,
+     "comunPct": 35,
+     "rarosOMasPct": 65
+    },
+    "named": {
+     "porPartida": 2.25,
+     "comunPct": 9.2,
+     "rarosOMasPct": 90.8
+    },
+    "subjefe": {
+     "porPartida": 3.04,
+     "comunPct": 9.1,
+     "rarosOMasPct": 90.9
+    },
+    "jefe": {
+     "porPartida": 2.57,
+     "comunPct": 15.3,
+     "rarosOMasPct": 84.7
+    },
+    "cofre": {
+     "porPartida": 1.98,
+     "comunPct": 15.7,
+     "rarosOMasPct": 84.3
+    },
+    "normal": {
+     "porPartida": 2.49,
+     "comunPct": 39.1,
+     "rarosOMasPct": 60.9
+    }
+   }
+  },
+  "abismo": {
+   "n": 8,
+   "objetosPorPartida": 13.01,
+   "pct": {
+    "comun": 16.4,
+    "raro": 45.2,
+    "muyraro": 32.8,
+    "legendario": 4.7,
+    "set": 0.9,
+    "unico": 0,
+    "mitico": 0.1
+   },
+   "muyRaroOMasPorPartida": 5,
+   "legendarioOMasPorPartida": 0.74,
+   "partidasConMuyRaroOMasPct": 100,
+   "statMedioArmaMuyRaro": "47.4%",
+   "nivelObjetoMedio": 8,
+   "porFuente": {
+    "normal": {
+     "porPartida": 2.64,
+     "comunPct": 34.4,
+     "rarosOMasPct": 65.6
+    },
+    "elite": {
+     "porPartida": 0.28,
+     "comunPct": 34.5,
+     "rarosOMasPct": 65.5
+    },
+    "named": {
+     "porPartida": 2.33,
+     "comunPct": 7.9,
+     "rarosOMasPct": 92.1
+    },
+    "subjefe": {
+     "porPartida": 3.04,
+     "comunPct": 10,
+     "rarosOMasPct": 90
+    },
+    "jefe": {
+     "porPartida": 2.61,
+     "comunPct": 13.9,
+     "rarosOMasPct": 86.1
+    },
+    "cofre": {
+     "porPartida": 1.94,
+     "comunPct": 10.8,
+     "rarosOMasPct": 89.2
+    },
+    "subelite": {
+     "porPartida": 0.18,
+     "comunPct": 33.3,
+     "rarosOMasPct": 66.7
+    }
+   }
+  },
+  "minas": {
+   "n": 9,
+   "objetosPorPartida": 12.74,
+   "pct": {
+    "comun": 14.3,
+    "raro": 43.1,
+    "muyraro": 36.2,
+    "legendario": 5.1,
+    "mitico": 0.2,
+    "set": 1.1,
+    "unico": 0
+   },
+   "muyRaroOMasPorPartida": 5.44,
+   "legendarioOMasPorPartida": 0.82,
+   "partidasConMuyRaroOMasPct": 100,
+   "statMedioArmaMuyRaro": "48.7%",
+   "nivelObjetoMedio": 9,
+   "porFuente": {
+    "normal": {
+     "porPartida": 2.38,
+     "comunPct": 33.3,
+     "rarosOMasPct": 66.7
+    },
+    "elite": {
+     "porPartida": 0.31,
+     "comunPct": 30.6,
+     "rarosOMasPct": 69.4
+    },
+    "named": {
+     "porPartida": 2.3,
+     "comunPct": 7,
+     "rarosOMasPct": 93
+    },
+    "subjefe": {
+     "porPartida": 3.05,
+     "comunPct": 7.4,
+     "rarosOMasPct": 92.6
+    },
+    "jefe": {
+     "porPartida": 2.58,
+     "comunPct": 10.9,
+     "rarosOMasPct": 89.1
+    },
+    "cofre": {
+     "porPartida": 1.95,
+     "comunPct": 11.7,
+     "rarosOMasPct": 88.3
+    },
+    "subelite": {
+     "porPartida": 0.16,
+     "comunPct": 21.5,
+     "rarosOMasPct": 78.5
+    }
+   }
+  },
+  "infernal": {
+   "n": 10,
+   "objetosPorPartida": 12.92,
+   "pct": {
+    "raro": 39.8,
+    "muyraro": 40.9,
+    "legendario": 6.3,
+    "comun": 11.2,
+    "set": 1.4,
+    "mitico": 0.4,
+    "unico": 0
+   },
+   "muyRaroOMasPorPartida": 6.34,
+   "legendarioOMasPorPartida": 1.05,
+   "partidasConMuyRaroOMasPct": 100,
+   "statMedioArmaMuyRaro": "50.8%",
+   "nivelObjetoMedio": 10,
+   "porFuente": {
+    "normal": {
+     "porPartida": 2.5,
+     "comunPct": 24.1,
+     "rarosOMasPct": 75.9
+    },
+    "elite": {
+     "porPartida": 0.34,
+     "comunPct": 22.4,
+     "rarosOMasPct": 77.6
+    },
+    "named": {
+     "porPartida": 2.31,
+     "comunPct": 5.9,
+     "rarosOMasPct": 94.1
+    },
+    "subjefe": {
+     "porPartida": 3.06,
+     "comunPct": 6.3,
+     "rarosOMasPct": 93.7
+    },
+    "jefe": {
+     "porPartida": 2.64,
+     "comunPct": 8.6,
+     "rarosOMasPct": 91.4
+    },
+    "cofre": {
+     "porPartida": 1.92,
+     "comunPct": 8.2,
+     "rarosOMasPct": 91.8
+    },
+    "subelite": {
+     "porPartida": 0.16,
+     "comunPct": 32.3,
+     "rarosOMasPct": 67.7
+    }
+   }
+  }
+ },
+ "primeraMejora": {
+  "sinSet": {
+   "tanque": {
+    "setRegalado": "-",
+    "primeraMejoraPartida": 1,
+    "primeraMejoraMuyRaroOMas": 1,
+    "pctConMejoraMuyRaroEnPartida1": "100%",
+    "mejorasEnPartidas1a3": 16.75
+   },
+   "guerrero": {
+    "setRegalado": "-",
+    "primeraMejoraPartida": 1,
+    "primeraMejoraMuyRaroOMas": 1,
+    "pctConMejoraMuyRaroEnPartida1": "100%",
+    "mejorasEnPartidas1a3": 16.38
+   },
+   "mago": {
+    "setRegalado": "-",
+    "primeraMejoraPartida": 1,
+    "primeraMejoraMuyRaroOMas": 1,
+    "pctConMejoraMuyRaroEnPartida1": "100%",
+    "mejorasEnPartidas1a3": 16.93
+   },
+   "soporte": {
+    "setRegalado": "-",
+    "primeraMejoraPartida": 1,
+    "primeraMejoraMuyRaroOMas": 1,
+    "pctConMejoraMuyRaroEnPartida1": "100%",
+    "mejorasEnPartidas1a3": 17.02
+   },
+   "segador": {
+    "setRegalado": "-",
+    "primeraMejoraPartida": 1,
+    "primeraMejoraMuyRaroOMas": 1,
+    "pctConMejoraMuyRaroEnPartida1": "100%",
+    "mejorasEnPartidas1a3": 16.88
+   },
+   "axiom": {
+    "setRegalado": "-",
+    "primeraMejoraPartida": 1,
+    "primeraMejoraMuyRaroOMas": 1,
+    "pctConMejoraMuyRaroEnPartida1": "100%",
+    "mejorasEnPartidas1a3": 17.73
+   },
+   "profeta": {
+    "setRegalado": "-",
+    "primeraMejoraPartida": 1,
+    "primeraMejoraMuyRaroOMas": 1,
+    "pctConMejoraMuyRaroEnPartida1": "100%",
+    "mejorasEnPartidas1a3": 17
+   },
+   "musashi": {
+    "setRegalado": "-",
+    "primeraMejoraPartida": 1,
+    "primeraMejoraMuyRaroOMas": 1,
+    "pctConMejoraMuyRaroEnPartida1": "100%",
+    "mejorasEnPartidas1a3": 16.23
+   },
+   "cazadora": {
+    "setRegalado": "-",
+    "primeraMejoraPartida": 1,
+    "primeraMejoraMuyRaroOMas": 1,
+    "pctConMejoraMuyRaroEnPartida1": "100%",
+    "mejorasEnPartidas1a3": 16.73
+   },
+   "nigromante": {
+    "setRegalado": "-",
+    "primeraMejoraPartida": 1,
+    "primeraMejoraMuyRaroOMas": 1,
+    "pctConMejoraMuyRaroEnPartida1": "100%",
+    "mejorasEnPartidas1a3": 18.18
+   },
+   "libertador": {
+    "setRegalado": "-",
+    "primeraMejoraPartida": 1,
+    "primeraMejoraMuyRaroOMas": 1,
+    "pctConMejoraMuyRaroEnPartida1": "100%",
+    "mejorasEnPartidas1a3": 16.77
+   },
+   "ilkan": {
+    "setRegalado": "-",
+    "primeraMejoraPartida": 1,
+    "primeraMejoraMuyRaroOMas": 1,
+    "pctConMejoraMuyRaroEnPartida1": "100%",
+    "mejorasEnPartidas1a3": 16.83
+   }
+  },
+  "conRegaloDeSet": {
+   "tanque": {
+    "setRegalado": "baluarte",
+    "primeraMejoraPartida": 1,
+    "primeraMejoraMuyRaroOMas": 1,
+    "pctConMejoraMuyRaroEnPartida1": "100%",
+    "mejorasEnPartidas1a3": 4.45,
+    "primeraVezQueAlgoLeGanaAUnaPiezaDelSet": 4
+   },
+   "guerrero": {
+    "setRegalado": "nocturno",
+    "primeraMejoraPartida": 1,
+    "primeraMejoraMuyRaroOMas": 1,
+    "pctConMejoraMuyRaroEnPartida1": "100%",
+    "mejorasEnPartidas1a3": 4.25,
+    "primeraVezQueAlgoLeGanaAUnaPiezaDelSet": 5
+   },
+   "mago": {
+    "setRegalado": "convergencia",
+    "primeraMejoraPartida": 1,
+    "primeraMejoraMuyRaroOMas": 1,
+    "pctConMejoraMuyRaroEnPartida1": "100%",
+    "mejorasEnPartidas1a3": 4.85,
+    "primeraVezQueAlgoLeGanaAUnaPiezaDelSet": 5
+   },
+   "soporte": {
+    "setRegalado": "custodio",
+    "primeraMejoraPartida": 1,
+    "primeraMejoraMuyRaroOMas": 1,
+    "pctConMejoraMuyRaroEnPartida1": "100%",
+    "mejorasEnPartidas1a3": 5.75,
+    "primeraVezQueAlgoLeGanaAUnaPiezaDelSet": 4
+   },
+   "segador": {
+    "setRegalado": "marea",
+    "primeraMejoraPartida": 1,
+    "primeraMejoraMuyRaroOMas": 1,
+    "pctConMejoraMuyRaroEnPartida1": "100%",
+    "mejorasEnPartidas1a3": 5.03,
+    "primeraVezQueAlgoLeGanaAUnaPiezaDelSet": 5
+   },
+   "axiom": {
+    "setRegalado": "sistema",
+    "primeraMejoraPartida": 1,
+    "primeraMejoraMuyRaroOMas": 1,
+    "pctConMejoraMuyRaroEnPartida1": "100%",
+    "mejorasEnPartidas1a3": 4.93,
+    "primeraVezQueAlgoLeGanaAUnaPiezaDelSet": 5
+   },
+   "profeta": {
+    "setRegalado": "profecia",
+    "primeraMejoraPartida": 1,
+    "primeraMejoraMuyRaroOMas": 1,
+    "pctConMejoraMuyRaroEnPartida1": "100%",
+    "mejorasEnPartidas1a3": 5.25,
+    "primeraVezQueAlgoLeGanaAUnaPiezaDelSet": 4
+   },
+   "musashi": {
+    "setRegalado": "errante",
+    "primeraMejoraPartida": 1,
+    "primeraMejoraMuyRaroOMas": 1,
+    "pctConMejoraMuyRaroEnPartida1": "100%",
+    "mejorasEnPartidas1a3": 4,
+    "primeraVezQueAlgoLeGanaAUnaPiezaDelSet": 5
+   },
+   "cazadora": {
+    "setRegalado": "manada",
+    "primeraMejoraPartida": 1,
+    "primeraMejoraMuyRaroOMas": 1,
+    "pctConMejoraMuyRaroEnPartida1": "100%",
+    "mejorasEnPartidas1a3": 4.22,
+    "primeraVezQueAlgoLeGanaAUnaPiezaDelSet": 4
+   },
+   "nigromante": {
+    "setRegalado": "requiem",
+    "primeraMejoraPartida": 1,
+    "primeraMejoraMuyRaroOMas": 1,
+    "pctConMejoraMuyRaroEnPartida1": "100%",
+    "mejorasEnPartidas1a3": 5.68,
+    "primeraVezQueAlgoLeGanaAUnaPiezaDelSet": 5
+   },
+   "libertador": {
+    "setRegalado": "granadero",
+    "primeraMejoraPartida": 1,
+    "primeraMejoraMuyRaroOMas": 1,
+    "pctConMejoraMuyRaroEnPartida1": "100%",
+    "mejorasEnPartidas1a3": 4.78,
+    "primeraVezQueAlgoLeGanaAUnaPiezaDelSet": 5
+   },
+   "ilkan": {
+    "setRegalado": "legion",
+    "primeraMejoraPartida": 1,
+    "primeraMejoraMuyRaroOMas": 1,
+    "pctConMejoraMuyRaroEnPartida1": "100%",
+    "mejorasEnPartidas1a3": 3.85,
+    "primeraVezQueAlgoLeGanaAUnaPiezaDelSet": 5
+   }
+  }
+ },
+ "setRegaladoVsBotin": {
+  "tanque": {
+   "set": "baluarte",
+   "sinNada": {
+    "dmg": 9,
+    "hp": 150
+   },
+   "conSetRegalado": {
+    "dmg": 9,
+    "hp": 275,
+    "dmgPct": "+0%",
+    "hpPct": "+83%"
+   },
+   "conBotin3Arenas": {
+    "dmg": 12,
+    "hp": 260,
+    "dmgPct": "+38%",
+    "hpPct": "+73%"
+   }
+  }
+ },
+ "oro": {
+  "primeraPartida": {
+   "peleando": 658,
+   "logros": 710,
+   "desafios": 340,
+   "pase": 150,
+   "total": 1858,
+   "gemasDeRetencion": 2,
+   "detalle": [
+    "pase:150",
+    "c_first_win:80",
+    "c_civ25:130",
+    "j_ciudad:60",
+    "pase:0+2g",
+    "m_gradeA:60",
+    "m_deathless:100",
+    "m_runkills:150",
+    "s_fast:130",
+    "desafios:120",
+    "pase:0",
+    "desafios:110",
+    "desafios:110",
+    "pase:0",
+    "bonus:0"
+   ],
+   "pctPeleando": "35%"
+  },
+  "crucero": {
+   "peleando": 550,
+   "desafiosDiarios": 93,
+   "desafiosSemanales": 93,
+   "pase": 102,
+   "total": 838,
+   "paseOroTotal": 2250,
+   "paseGemasTotal": 20,
+   "xpCuentaPorPartida": 603,
+   "partidasParaTerminarElPase": 22
+  }
+ },
+ "tienda": {
+  "oroTras3Partidas": 3534,
+  "guardian": {
+   "precio": 2500,
+   "partidasDesdeCero": 1.77
+  },
+  "legendarioConNombre": {
+   "precio": 4000,
+   "partidasDesdeCero": 3.56
+  },
+  "piezaDeSet": {
+   "precio": 1200,
+   "partidasDesdeCero": 0.65
+  },
+  "skinDeSet4Piezas": {
+   "precio": 4800,
+   "partidasDesdeCero": 4.51
+  },
+  "muyRaroBasico": {
+   "precio": 1100,
+   "partidasDesdeCero": 0.59
+  },
+  "legendarioBasico": {
+   "precio": 3200,
+   "partidasDesdeCero": 2.6
+  }
+ },
+ "errores": [],
+ "_nota": "q4_econ.js N=400 corrido de a un guardián por proceso (Q4_CHAMPS=<k>), 2026-11-14; porArena/oro/tienda no dependen del guardián de la corrida."
+}

@@ -59,6 +59,21 @@ también: prólogo → Ciudad (autopiloto hasta la victoria contra El Presentado
 Recompensas → XP → Campamento → menú → Tienda (Destacados, Guardianes, Objetos, Skins; compra de un
 objeto) → Guardianes/Códice. Sin errores de página en el camino.
 
+## Actualización (primera sesión re-verificada, base integrada)
+
+- **`q1_first_session.js` estaba desactualizado, no la UI.** El paso «Tu skin de regalo» arranca sin carta marcada: el botón
+  principal es «Seguir sin skin ›» y «¡La quiero!» (`#starter-skin-yes-btn`) se oculta hasta tocar una carta (`renderStarterSkinStep`,
+  `js/ui/starter-select.js`). Además, después del regalo aparece sobre el menú la historia «La noche en que volvió la Horda»
+  (`#first-story`: «Empezar la práctica ›» / «Saltar la práctica»). La prueba esperaba el botón oculto y no conocía la historia, y todo lo
+  posterior fallaba en cascada. Ahora toca una carta, confirma «¡La quiero!» (verifica que la skin quede guardada), salta la práctica y
+  además comprueba que ganar la Ciudad deje la primera recompensa en el guardado. El error de CORS contra `fondalstudios.com/.../health`
+  (ruido de correr desde 127.0.0.1) se filtra.
+- **Solape real de 8 px (844×390):** la barra de confirmar es `position:sticky` y, si cartas + barra no entran en la altura, flota sobre
+  las cartas (barra en y=306, cartas hasta y=314). Arreglo en `css/onboarding.css`: arte 88 px, reseña en 2 renglones (1 renglón y arte
+  de 72 px bajo 380 px de alto). Ahora hay 10 px de aire (barra en y=299, cartas hasta y=289). Prueba nueva
+  `tools/ux/test-starter-skin-layout.js` (en `run-all`, mide 844×390, 667×375, 932×430, 740×360 y 1280×720, con y sin carta elegida; antes
+  del segundo ajuste detectó 13 px de solape en 740×360). Captura: `art-source/captures/primera-sesion/solape_antes_despues.png`.
+
 ## Pendiente / no arreglado (y por qué)
 
 - **Carga del juego bajo prueba automática:** con webdriver el juego pide las ~1.400 imágenes juntas; el

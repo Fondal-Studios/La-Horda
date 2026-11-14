@@ -30,7 +30,7 @@ const check = (name, ok, extra) => { console.log((ok ? 'PASS ' : 'FAIL ') + name
   const errors = [];
   const origin = new URL(GAME).origin;
   page.on('pageerror', e => errors.push('pageerror: ' + (e.message || e)));
-  page.on('console', m => { if (m.type() === 'error' && !/Failed to load resource|ERR_|fonts\.g|WebSocket/.test(m.text())) errors.push('console: ' + m.text().slice(0, 300)); });
+  page.on('console', m => { if (m.type() === 'error' && !/Failed to load resource|ERR_|fonts\.g|WebSocket|fondalstudios\.com/.test(m.text())) errors.push('console: ' + m.text().slice(0, 300)); });
   page.on('response', r => { if (r.status() >= 400 && r.url().startsWith(origin)) errors.push('http ' + r.status() + ' ' + r.url()); });
   const E = (fn, a) => page.evaluate(fn, a);
   let lastErr = 0;
@@ -141,6 +141,13 @@ const check = (name, ok, extra) => { console.log((ok ? 'PASS ' : 'FAIL ') + name
     const sk = await E(() => { const c = document.getElementById('starter-skin-confirm').getBoundingClientRect(); const cards = [...document.querySelectorAll('.starter-skin-card')].map(e => e.getBoundingClientRect().bottom); const sub = document.getElementById('starter-skin-sub').getBoundingClientRect(); const ts = document.getElementById('toast-stack'); const t = ts && ts.innerText.trim() ? ts.getBoundingClientRect() : null; return { conf: c.top, cards: Math.max(...cards), toastOverSub: !!(t && t.left < sub.right && t.bottom > sub.top && t.top < sub.bottom) }; });
     check('SKIN.la_barra_no_tapa_las_cartas', sk.conf >= sk.cards - 1, sk);
     check('SKIN.ningún_aviso_tapa_el_subtítulo', !sk.toastOverSub, sk);
+    // flujo real: la skin es opcional y arranca sin carta marcada (el botón principal es «Seguir sin skin ›» y «¡La quiero!»
+    // está oculto hasta elegir). Un jugador que la quiere toca una carta y confirma; el guardado tiene que dejar la skin puesta.
+    check('SKIN.sin_carta_marcada_el_botón_principal_es_seguir_sin_skin', await E(() => { const y = document.getElementById('starter-skin-yes-btn'), l = document.getElementById('starter-skin-later-btn'); return y.getBoundingClientRect().width === 0 && /Seguir sin skin/.test(l.innerText) && l.getBoundingClientRect().width > 0; }));
+    await tap('.starter-skin-card[data-skin-gift]');
+    check('SKIN.al_elegir_una_carta_aparece_la_quiero', await E(() => { const y = document.getElementById('starter-skin-yes-btn'); return y.getBoundingClientRect().width > 0 && /¡La quiero!/.test(y.innerText); }));
+    const sk2 = await E(() => { const c = document.getElementById('starter-skin-confirm').getBoundingClientRect(); const cards = [...document.querySelectorAll('.starter-skin-card')].map(e => e.getBoundingClientRect().bottom); return { conf: c.top, cards: Math.max(...cards) }; });
+    check('SKIN.con_carta_elegida_la_barra_tampoco_tapa_las_cartas', sk2.conf >= sk2.cards - 1, sk2);
     await tap('#starter-skin-yes-btn');
     await sleep(1600);
   }
@@ -157,6 +164,15 @@ const check = (name, ok, extra) => { console.log((ok ? 'PASS ' : 'FAIL ') + name
     if (skipBtn) await tapEl(skipBtn); else await skipTraining();
   }
   check('MENU.se_llega_al_menú', (await waitState('mainmenu')) === 'mainmenu');
+  // flujo real: sobre el menú aparece la historia «La noche en que volvió la Horda» con «Empezar la práctica ›» /
+  // «Saltar la práctica» (#first-story): el menú de atrás no responde hasta decidir. Un jugador nuevo que salta la práctica toca ese botón.
+  const storyVisible = async (ms) => { const t0 = Date.now(); while (Date.now() - t0 < ms) { if (await E(() => { const e = document.getElementById('first-story'); return !!e && !e.classList.contains('hidden') && e.getBoundingClientRect().width > 0; })) return true; await sleep(150); } return false; };
+  if (s4 !== 'playing') {
+    const story = await storyVisible(6000);
+    check('HISTORIA.aparece_la_historia_con_Empezar_o_Saltar_la_práctica', story && await E(() => !!document.getElementById('first-story-skip') && /Empezar la práctica/.test(document.getElementById('first-story').innerText)));
+    if (story) { await shot('historia'); await noDeadEnd('HISTORIA'); await tap('#first-story-skip'); }
+    check('HISTORIA.saltar_la_práctica_cierra_la_historia', !(await storyVisible(1500)));
+  }
   await shot('menu'); await noDeadEnd('MENU');
   noNewErrors('ENTRENAMIENTO');
 
@@ -192,6 +208,8 @@ const check = (name, ok, extra) => { console.log((ok ? 'PASS ' : 'FAIL ') + name
     return check('ARENA.empieza_la_partida', (await waitState('playing', 30000)) === 'playing', await state());
   };
   await page.addScriptTag({ path: path.join(__dirname, '..', 'playtest', 'autopilot.js') });
+  const PROG = () => E(() => ({ gold: save.gold | 0, stash: (save.stash || []).length, cleared: !!(save.arenasCleared && save.arenasCleared.ciudad), xp: save.champions ? Object.values(save.champions).reduce((a, c) => a + (c.xp | 0) + (c.level | 0) * 1000, 0) : 0 }));
+  const before = await PROG();
   if (!process.env.SKIP_WIN && await play()) {
     await shot('ciudad');
     // piloto automático con el motor real; el guardián no cae (se cura bajo 30 %): se mide el camino, no la puntería
@@ -207,6 +225,9 @@ const check = (name, ok, extra) => { console.log((ok ? 'PASS ' : 'FAIL ') + name
     await E(() => { window.__AP.on = false; });
     check('CIUDAD.se_gana', res && res.st === 'victory', res);
     await shot('victoria');
+    // primera recompensa: ganar la Ciudad tiene que dejar algo en el guardado (arena cumplida + oro/objetos/experiencia)
+    const after = await PROG();
+    check('CIUDAD.primera_recompensa_guardada', after.cleared && (after.gold > before.gold || after.stash > before.stash || after.xp > before.xp), { before, after });
     for (let i = 0; i < 10 && (await state()) === 'victory'; i++) {
       const camp = await E(() => { const c = document.getElementById('camp'); return !!c && !c.classList.contains('hidden'); });
       if (camp) break;
