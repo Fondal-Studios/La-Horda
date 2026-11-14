@@ -102,7 +102,7 @@ function abAICarcelero(e, dt, tgt, dist){
   if(frac <= 0.33 && !(M.broken & 2)) abCarceleroBreakChain(e, 1);
   if(e.abAct){
     const A = e.abAct; A.t += dt;
-    if(A.t < A.wind){ if(A.k!=="sweep" && A.k!=="slam") _abFace(e, A.x1, A.y1); return true; }
+    if(A.t < A.wind){ if(A.k!=="sweep" && A.k!=="slam" && A.k!=="leap") _abFace(e, A.x1, A.y1); return true; }
     abCarceleroRelease(e, A); e.abAct = null; e.abBusy = false;
     return true;
   }
@@ -110,6 +110,17 @@ function abAICarcelero(e, dt, tgt, dist){
   if(dist > 200) abStep(e, tgt, dist, dt); else if(dist < 110) abStepTo(e, e.x - (tgt.x - e.x), e.y - (tgt.y - e.y), dt, 0.6);
   const aim = (len)=>{ const d = Math.hypot(tgt.x - e.x, tgt.y - e.y)||1; return {x1:e.x + (tgt.x - e.x)/d*len, y1:e.y + (tgt.y - e.y)/d*len, ux:(tgt.x - e.x)/d, uy:(tgt.y - e.y)/d}; };
   const start = (k, wind, extra)=>{ e.abAct = Object.assign({k, t:0, wind}, extra); e.abBusy = true; };
+  // Tope de espera: si lleva C.stuckMs lejos de todos y sin acercarse (puente cortado, cuello de navegación), SALTA junto al equipo
+  // en lugar de dejar el nivel 9 esperando para siempre (informe SIMULACION_ALFA_30, crítica 2).
+  if(dist <= 260 || e._stuckBest === undefined || dist < e._stuckBest - 30){ e._stuckBest = dist; e._stuckT = 0; } else e._stuckT = (e._stuckT||0) + dt;
+  if(e._stuckT > C.stuckMs){
+    e._stuckT = 0; e._stuckBest = undefined;
+    const g = abNearestGround(tgt.x - (tgt.x - e.x)/dist*150, tgt.y - (tgt.y - e.y)/dist*150, 70);
+    start("leap", C.leapWind, {x1:g.x, y1:g.y});
+    vfxTelegraph({shape:0, r:C.slamR, x:g.x, y:g.y, dur:C.leapWind, rgb:"230,70,120"});
+    _abBossPack(e, "slam", C.leapWind + 400); playSfx("abChainWarn"); bossSkillLabel(e, "SALTO"); showBanner("¡El Carcelero salta hacia vosotros!");
+    return true;
+  }
   if(e.hookCd <= 0 && dist < C.hookLen && !tgt.abHang){
     e.hookCd = abRand(C.hookCd[0], C.hookCd[1]);
     const A = aim(C.hookLen);
@@ -163,6 +174,10 @@ function abCarceleroRelease(e, A){
     const h0 = _abPlatHp(); abDamageArea(A.x1, A.y1, C.slamR, C.slamStruct); _abPlatEv("ab_carcelero.plataformas", e, h0);
     if(typeof ABISMO_FX!=="undefined") bossSheetFx("abChainTerrain", A.x1, A.y1, 110, 600, {anchorY:0.5});
     vfxShock(A.x1, A.y1, 10, C.slamR, "230,70,120", 420, 2); playSfx("abStomp"); vfxShake(5);
+  } else if(A.k==="leap"){
+    e.x = A.x1; e.y = A.y1; e._navT = 0;
+    abHeroesNear(A.x1, A.y1, C.slamR, h=>bossHitHero(h, e.dmg, {from:e, slow:0.3, slowDur:900}));
+    vfxShock(A.x1, A.y1, 10, C.slamR, "230,70,120", 420, 2); playSfx("abStomp"); vfxShake(6);
   } else if(A.k==="hook"){
     let best = null, bd = Infinity;
     for(const h of heroes){ if(!h.alive || h.abHang || !inLine(h, 30)) continue; const d = Math.hypot(h.x - e.x, h.y - e.y); if(d < bd){ bd = d; best = h; } }

@@ -150,6 +150,52 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
   check('CARCELERO.cadenas_ancladas_y_se_rompen_por_fase', ca.chains === 4 && ca.broken1 === 1, ca);
   check('CARCELERO.al_morir_libera_el_nivel', ca.dead === 'dead' && !ca.holdAfter, ca);
 
+  // ---------- Carcelero atascado (informe SIMULACION_ALFA_30, crítica 2) ----------
+  // Causa: la grilla de navegación (celdas de 40 u, borde de 16 u) pierde los cuellos de 30 u donde se tocan los hubs
+  // con los puentes: el Carcelero parado en un puente del NO veía distancia infinita a los héroes, iba derecho al vacío,
+  // abClamp lo devolvía al borde y el nivel 9 esperaba para siempre. Estado real capturado en la partida atascada:
+  const STALL = 'h0:0 h1:0 h2:1 h3:2 h4:4 h5:1 h6:0 h7:0 s0:0 s1:0 s2:0 s3:1 s4:4 s5:1 s6:4 s7:0 o0:4 o1:2 o2:2 o3:4 o4:4 o5:2 o6:0 o7:4 r0:0 r1:0 r2:0 r3:4 r4:4 r5:4 r6:1 r7:0';
+  const nv = await E((st) => { __run(9);
+    st.split(' ').forEach((q, i) => { abS.p[i].st = +q.split(':')[1]; }); abNavMaybe();
+    for (const h of heroes) { h.x = -526; h.y = 415; h.hp = h.maxHp; }
+    AID_NAV.t = 0; aidNavUpdate(1);
+    // toda plataforma en pie y conectada (grafo de plataformas) debe ser alcanzable por la grilla desde un héroe
+    const seen = abComponentOf(AB_ENTRY), miss = [];
+    AB_PLATS.forEach((p, i) => { if (!seen[i] || abS.p[i].st > 2) return; const c = abPlatCenter(p), k = aidNavCell(c.x, c.y);
+      if (AID_NAV.dist[k] === 65535) miss.push(p.id); });
+    // y lo mismo con 150 derrumbes al azar (la regla de seguridad deja siempre un grafo conectado)
+    let bad = 0, n = 0; let seed = 12345; const rnd = () => (seed = (seed*1664525 + 1013904223) >>> 0) / 4294967296;
+    for (let t = 0; t < 150; t++) {
+      for (let i = 0; i < AB_PLATS.length; i++) abS.p[i].st = 0;
+      for (let k = 0; k < 14; k++) { const i = Math.floor(rnd()*AB_PLATS.length); if (i === AB_ENTRY) continue; abS.p[i].st = 4; if (!abConnectedWithout(-1).ok) abS.p[i].st = 0; }
+      abNavMaybe(); const hc = abPlatCenter(AB_PLATS[AB_ENTRY]); for (const h of heroes) { h.x = hc.x; h.y = hc.y; } AID_NAV.t = 0; aidNavUpdate(1);
+      const sn = abComponentOf(AB_ENTRY);
+      AB_PLATS.forEach((p, i) => { if (abS.p[i].st > 2 || !sn[i]) return; n++; const c = abPlatCenter(p); if (AID_NAV.dist[aidNavCell(c.x, c.y)] === 65535) bad++; });
+    }
+    return { miss, bad, n }; }, STALL);
+  check('CARCELERO.grilla_de_navegacion_conecta_lo_que_el_mapa_conecta', nv.miss.length === 0 && nv.bad === 0, nv);
+  const st2 = await E((st) => { __run(9);
+    st.split(' ').forEach((q, i) => { abS.p[i].st = +q.split(':')[1]; }); abNavMaybe();
+    levelDuration = 9e9; levelTimer = 1; abCarceleroRise(); abS.ca.t = 3700; __tick(200);
+    const e = enemies.find(o => o.alive && o.type === 'ab_carcelero'); const c = abPlatCenter(AB_PLATS[__idx('s5')]);
+    e.x = c.x + 110; e.y = c.y - 20; e.hp = e.maxHp*0.9;
+    for (const h of heroes) { h.x = -526 + Math.random()*30; h.y = 415; }
+    let best = Infinity, tt = 0;
+    for (; tt < 150000; tt += 16) { __tick(16); if (!e.alive) break;
+      for (const h of heroes) if (h.alive) best = Math.min(best, Math.hypot(h.x - e.x, h.y - e.y)); if (best < 240) break; }
+    const cl = aidNavCell(e.x, e.y), d = aidNavDir(e);
+    return { best: Math.round(best), t: tt, st: abS.ca.st, x: Math.round(e.x), y: Math.round(e.y), dist: AID_NAV.dist[cl], blk: AID_NAV.blocked[cl], dir: d && [+d.x.toFixed(2), +d.y.toFixed(2)], nb: e._navBlocked, plat: abPlatAt(e.x, e.y, 0) >= 0 && AB_PLATS[abPlatAt(e.x, e.y, 0)].id, w16: abWalkable(e.x, e.y, 16), act: e.abAct && e.abAct.k, busy: e.abBusy, spd: abSpd(e), heroes: heroes.map(h => [Math.round(h.x), Math.round(h.y), h.alive, !!h.abHang]) }; }, STALL);
+  check('CARCELERO.alcanza_a_los_heroes_aunque_los_puentes_esten_cortados', st2.best < 240, st2);
+
+  // Tope de espera: aunque algo lo clave (aquí, velocidad 0), a los stuckMs salta junto al equipo en vez de retener el nivel para siempre
+  const lp = await E(() => { __run(9); levelDuration = 9e9; levelTimer = 1; abCarceleroRise(); abS.ca.t = 3700; __tick(200);
+    const e = enemies.find(o => o.alive && o.type === 'ab_carcelero'); e.speed = 0;
+    const hc = abPlatCenter(AB_PLATS[__idx('h2')]); for (const h of heroes) { h.x = hc.x; h.y = hc.y; }
+    e.x = -380; e.y = -300; let t = 0, d0 = Math.hypot(player.x - e.x, player.y - e.y), banner = false;
+    for (; t < AB_CFG.carcelero.stuckMs + 6000; t += 16) { __tick(16); if (Math.hypot(player.x - e.x, player.y - e.y) < 260) break; }
+    return { d0: Math.round(d0), d1: Math.round(Math.hypot(player.x - e.x, player.y - e.y)), t, stuckMs: AB_CFG.carcelero.stuckMs }; });
+  check('CARCELERO.tope_de_espera_salta_junto_al_equipo', lp.d1 < 260 && lp.t <= lp.stuckMs + 4000, lp);
+
   // ---------- El Que Mora Debajo (nivel 10) ----------
   const mo = await E(() => { __run(10); __tick(10200); const b = boss;
     const r = { st: abS.mo.st, boss: b && b.type, ph1: abS.mo.ph };
