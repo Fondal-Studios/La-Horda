@@ -883,6 +883,7 @@ function castAbility(caster, sk, isUlt, idx){
         damageEnemy(t, dmg, {src:caster, bleed:true, bleedDur:(sk.bleedDur*DUR)});
         tieredBurstVFX(t.x, t.y, 30, allocLevel(mastery), "#c62828", "#ff6a5a");
         pushAsesinoFx("corte_sangrante", "corte", t.x, t.y, 90, 1000, caster.fx<0);
+        kaelSustain(caster, sk, POWER);
       }
       break;
     }
@@ -1246,6 +1247,7 @@ function castAbility(caster, sk, isUlt, idx){
         particles.push({x:t.x+4,y:t.y, life:280, slash:true, color:"#ff3b3b"});
         tieredBurstVFX(t.x, t.y, 42, allocLevel(mastery), "#ff3b3b", "#ffb08a");
         pushAsesinoFx("triple_golpe", "combo", t.x, t.y, 95, 1200, caster.fx<0);
+        kaelSustain(caster, sk, POWER);
       }
       break;
     }
@@ -1497,4 +1499,14 @@ function castAbility(caster, sk, isUlt, idx){
     }
   }
   } finally { _castCtx = _prevCastCtx; caster._castUlt = _prevUlt; if(_boonR) boonCastEnd(_boonR, POWER, AREA); runCastOwner=priorOwner; }
+}
+
+// Kael (guerrero): curación propia al conectar Corte Sangrante / Triple Golpe (sk.healPct = fracción de la vida máxima).
+// BALANCE_DIFICULTAD_20261113.md: el guerrero era el único rol sin sustain (healDone 0) y perdía el desgaste cuerpo a cuerpo.
+function kaelSustain(caster, sk, power){
+  if(!sk.healPct || !caster.alive) return;
+  const amt = caster.maxHp*sk.healPct*(power||1)*(1 + passiveSum(caster.classKey,"heal_mult"));
+  trackHeal(caster, caster, amt);
+  applyHealOverheal(caster, caster, amt);
+  floatText(caster.x, caster.y-30, "+"+Math.round(amt), "heal");
 }

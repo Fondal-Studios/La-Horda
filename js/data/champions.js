@@ -46,11 +46,11 @@ const CLASSES = {
   guerrero:{
     name:"Kael, la Daga Carmesí", hudName:"Kael", icon:"🗡", color:"#c4544a", glow:"#f0a89a",
     role:"Daño físico cuerpo a cuerpo contra objetivos y jefes.", roleCategory:"asesino",
-    baseHP:120, baseDmg:13, baseDef:0.10, baseSpeed:175, energyMax:100, energyRegen:10.5, hpGrowthMult:0.9, dmgGrowthMult:1.3,
+    baseHP:120, baseDmg:13, baseDef:0.10, baseSpeed:175, energyMax:100, energyRegen:10.5, hpGrowthMult:1.15, dmgGrowthMult:1.3,
     basicRange:64, basicCd:420, basicArc:false,
     skills:[
-      {name:"Corte Sangrante", ico:"🩸", cost:32, cd:5000, kind:"bleed_hit", dmgMult:1.25, bleedDur:3400, desc:"Aplica un sangrado profundo"},
-      {name:"Triple Golpe", ico:"⚔", cost:40, cd:6800, kind:"triple_hit", dmgMult:0.6, finalMult:3.0, desc:"Tres golpes veloces; el último causa +300% de daño"},
+      {name:"Corte Sangrante", ico:"🩸", cost:32, cd:5000, kind:"bleed_hit", dmgMult:1.25, bleedDur:3400, healPct:0.04, desc:"Aplica un sangrado profundo"},
+      {name:"Triple Golpe", ico:"⚔", cost:40, cd:6800, kind:"triple_hit", dmgMult:0.6, finalMult:3.0, healPct:0.07, desc:"Tres golpes veloces; el último causa +300% de daño"},
       {name:"Trampa de Área", ico:"💠", cost:38, cd:9500, kind:"area_trap", range:170, radius:65, chainRadius:135, dmgMult:1.5, duration:12000, desc:"Coloca una trampa que explota y encadena daño"}
     ],
     ultimate:{name:"Pestilencia Sombría", ico:"★", cd:32000, kind:"shadow_stealth", stealthDuration:2000, dmgMult:1.15, finalMult:1.4, poisonDmgMult:0.16, bleedDmgMult:0.14, duration:3000, chainRadius:150, desc:"Sigilo total y un triple golpe que envenena y encadena sangrado"}
