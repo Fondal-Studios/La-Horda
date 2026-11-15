@@ -1,8 +1,8 @@
 {
   "subject": {
-    "pr": 304,
+    "pr": 305,
     "branch": "claude/la-horda-beta-audit-exec-mwv8x0",
-    "head": "ce3818ce64e2a8d7bce88238116f618545a16e12",
+    "head": "76437c9a288bb0edc6f9d9af5867f9e01a293b06",
     "authorAgent": "claude-sesion-principal",
     "authorId": "claude-sesion-principal"
   },
@@ -11,57 +11,57 @@
       "stage": "produccion",
       "by": "claude-sesion-principal",
       "role": "agent",
-      "commit": "ce3818ce64e2a8d7bce88238116f618545a16e12",
-      "at": "2026-11-15T12:30:00Z"
+      "commit": "76437c9a288bb0edc6f9d9af5867f9e01a293b06",
+      "at": "2026-11-15T16:42:00Z"
     },
     {
       "stage": "qa",
-      "by": "qa-revisor-304",
+      "by": "qa-revisor-305",
       "role": "qa",
       "verdict": "aprobado",
       "evidence": {
-        "sha": "ce3818ce64e2a8d7bce88238116f618545a16e12",
-        "tests": 9,
+        "sha": "76437c9a288bb0edc6f9d9af5867f9e01a293b06",
+        "tests": 10,
         "failed": 0,
-        "report": "Revisor QA independiente (distinto del autor y de arquitectura). Aprobado con observaciones sobre ce3818ce (antes sobre 888047f7). Verificado: el PR no cambia código de juego (git diff --stat origin/main..ce3818ce -- js css server assets tests vacío); las 53 eliminaciones de docs/beta-release/ son duplicados byte a byte (53 de 53 blobs idénticos a archivos conservados, cero referencias por nombre en código, tests, workflows, manifiestos ni reviews); no se tocó ningún archivo pinned por gate; sha256 de la definitiva del Libertador igual en art-source y assets (791cb61a…); prioridad-assets.json con 706 ítems (508 activos: 44 críticos, 127 importantes, 337 secundarios; 198 duplicados) con duplicado_de válidos. Corrió con salida real: test-runway-pack 9946 OK, prioridad-assets --check OK, art-checklist --check, visual-package check 117 paquetes 0 errores, build-art-atlas --check; webp_convert --check 0, check-collection PASS, art-runtime-clips 46 campeones y qa-manifest-check OK sobre 888047f7. Observaciones menores abiertas: 6 ítems con deriva entre prioridad-assets.json y estado-runway.json (aviso, no fallo), criterio de 'hecho' en enemigos con hit clonado sin documentar, 2.064 vs 2.072 recursos en la auditoría, párrafos viejos del 12-nov en STATUS sin marcar. Informe transcrito por el integrador, no reverificado."
+        "report": "Revisor QA independiente (distinto del autor y de arquitectura). Aprobado con observaciones sobre 909f5a34 y reconfirmado sobre 76437c9a (único cambio posterior: 5 documentos, sin código). Verificado: las perillas del guerrero (kaelBurstGuard, kaelHitGuard en js/skills/abilities.js; gancho en damageHero de js/systems/combat.js solo para la clase guerrero; opción job.champ de tools/playtest/campaign.js) no cambian ningún comportamiento con los valores ausentes; js/data/champions.js solo cambia el texto de dos descripciones; traducciones consistentes (tools/i18n/build.py --check, test-i18n TODO OK); cifras de BALANCE_GUERRERO recalculadas (Wilson, signos, razones) coinciden; ningún gate ni referencia relajados (git diff de docs/balance, tools/balance y tests vacío). Corrió con salida real: check-entry-reference PASS, entry-gate PASS (46 registrados, 84 simulaciones), ability-gate --strict 0 fallos, boss-validator --strict exit 0, t_difficulty, t_identity, t_objectives, t_synergies, t_sets, t_campaign, t_mage_kit, t_collision PASS, test-i18n TODO OK, test-runway-pack 9946 OK, prioridad-assets --check OK, test-champion-draw-dispatch 19/19, art-runtime-clips 46 campeones. Su hallazgo importante (aprobación de arte sin registro) se cerró citando la frase del propietario en ART_CREDITS.md. Observaciones menores abiertas: cita del propietario no verificable por el revisor, sin red/cooperativo real, sin A/B del guerrero base contra main, datos crudos de las 485 partidas no versionados. Informe transcrito por el integrador, no reverificado."
       },
-      "at": "2026-11-15T12:31:00Z"
+      "at": "2026-11-15T16:43:00Z"
     },
     {
       "stage": "arquitectura",
-      "by": "arquitectura-revisor-304",
+      "by": "arquitectura-revisor-305",
       "role": "arquitecto",
       "verdict": "aprobado",
       "evidence": {
-        "sha": "ce3818ce64e2a8d7bce88238116f618545a16e12",
-        "report": "Revisor de arquitectura independiente (distinto del autor y de QA). Aprobado con observaciones sobre 888047f7 y confirmado sobre ce3818ce: sus 3 importantes (deriva del Libertador en PRIORIDAD_ASSETS.md y aviso de deriva en --check; gates con sha fijado del Tanque no advertidos; hash 2baa2837 inexistente en la reversión) quedaron cerrados en ce3818ce, que solo cambia 12 archivos de docs, JSON de registro y tools/art/{art-checklist,prioridad-assets}.py (sin código de juego). Corrió: test-runway-pack 9946 OK, prioridad-assets --check OK (706 ítems, 731 bloques / 1244 entradas), --next respeta saldo < 250 (solo ítems de 0 créditos). Observaciones menores: 6 ítems pendientes con fila de runway integrada (aviso), duplicación de estado entre prioridad-assets.json y estado-runway.json. Informe transcrito por el integrador, no reverificado."
+        "sha": "76437c9a288bb0edc6f9d9af5867f9e01a293b06",
+        "report": "Revisor de arquitectura independiente (distinto del autor y de QA). Aprobado con observaciones sobre 909f5a34 y confirmado sobre 76437c9a (solo documentos). Perillas apagadas por defecto: costo de una comparación de string en el camino caliente de damageHero, sin Math.random ni reloj local, retrocompatibles; observaciones: código muerto hasta que haya datos que las activen (declarado infraestructura de experimento), un punto de extensión genérico sería mejor si aparece una segunda clase con mitigación, sin verificación de que damageHero corra solo en el anfitrión. AGENTS.md respetado: Kael solo cambia texto de descripciones; sin cambios a la referencia por rol ni a knownChampions. Resultado del guerrero presentado con honestidad como no concluyente. Corrió: check-entry-reference PASS, ability-gate --strict 0 fallos, test-runway-pack 9946 OK, prioridad-assets --check OK, qa-manifest-check OK. Informe transcrito por el integrador, no reverificado."
       },
-      "at": "2026-11-15T12:32:00Z"
+      "at": "2026-11-15T16:44:00Z"
     },
     {
       "stage": "staging",
-      "by": "claude-integrador-304",
+      "by": "claude-integrador-305",
       "role": "integrador",
       "verdict": "aprobado",
       "evidence": {
-        "sha": "ce3818ce64e2a8d7bce88238116f618545a16e12",
+        "sha": "76437c9a288bb0edc6f9d9af5867f9e01a293b06",
         "branch": "beta/integracion-20261110",
         "tests": 141,
         "failed": 0,
-        "run": "https://github.com/Fondal-Studios/La-Horda/actions/runs/43703862783"
+        "run": "https://github.com/Fondal-Studios/La-Horda/actions/runs/43731606518"
       },
-      "at": "2026-11-15T12:33:00Z"
+      "at": "2026-11-15T16:45:00Z"
     },
     {
       "stage": "aprobacion",
-      "by": "claude-integrador-304",
+      "by": "claude-integrador-305",
       "role": "director",
       "verdict": "aprobado",
       "evidence": {
-        "sha": "ce3818ce64e2a8d7bce88238116f618545a16e12",
-        "report": "Aprobado sobre ce3818ce por orden expresa del propietario (drmarianojimenez94-sudo): pidió hacer los PR y mergearlos cuando el CI dé verde, y autorizó expresamente que la sesión escriba y suba el registro de revisión y agregó la regla de permiso de Bash para hacerlo (mensaje del 2026-11-15: 'Sí te doy la regla del permiso para bash... Seguí'). Evidencia leída de la API de GitHub: run 43703862783 'QA regresion central' en beta/integracion-20261110, head_sha ce3818ce, job 'Regresion del juego (completa)' success (10:23Z-11:01Z, run-all PASS 141 FLAKY 0 FAIL 0 de 141, código 0); CI del PR #304 sobre ce3818ce: 18 check runs, 17 success y 1 failure ('Clasificacion, contratos y servidor' del PR, solo por R4 mientras faltaba este registro; en la rama beta ese job dio success). Límites: informes de QA y arquitectura transcritos, no reverificados; el PR no cambia código de juego; sin pruebas de multijugador real ni de rendimiento."
+        "sha": "76437c9a288bb0edc6f9d9af5867f9e01a293b06",
+        "report": "Aprobado sobre 76437c9a por orden expresa del propietario (drmarianojimenez94-sudo): pidió hacer los PR y mergearlos cuando el CI dé verde, autorizó que la sesión escriba y suba el registro de revisión y agregó la regla de permiso de Bash para hacerlo (mensaje del 2026-11-15), y en el plan de cierre confirmó 'integrar y chao' para la etapa de aprobación. Evidencia leída de la API de GitHub: run 43731606518 'QA regresion central' (workflow_dispatch) en beta/integracion-20261110, head_sha 76437c9a, job 'Regresion del juego (completa)' success (15:45Z-16:33Z), resumen del log 'PASS 141 FLAKY 0 FAIL 0 (de 141)', run-all código 0; job 'Clasificacion, contratos y servidor' success en esa rama; CI del PR #305 sobre 76437c9a: 25 check runs, 24 success y 1 failure ('Clasificacion, contratos y servidor' del PR, solo por R4 mientras faltaba este registro). Límites: informes de QA y arquitectura transcritos, no reverificados; solo bots (sin jugadores humanos); sin pruebas de multijugador real ni de rendimiento en dispositivo."
       },
-      "at": "2026-11-15T12:34:00Z"
+      "at": "2026-11-15T16:46:00Z"
     }
   ]
 }
