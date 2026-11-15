@@ -334,6 +334,7 @@ function damageHero(h, amount, src, portTransferred){
   let dmg = amount * (1 - h.def) * (1 - defBonus) * (1-(h.buffDefMult?(1-h.buffDefMult):0)) * (1-passiveDef);
   dmg *= portadorTakenMult(h, src);
   if(!portTransferred) dmg = portadorShareDamage(h, dmg, src);
+  if(h.classKey==="guerrero") dmg = kaelHitGuard(h, dmg, src); // Kael: tope por golpe con enfriamiento (cls.guard; apagado si capPct=0)
   if(!(dmg > 0)) dmg = 0; // el daño recibido nunca es negativo (un golpe no cura), pase lo que pase con los multiplicadores
   const mitigated = Math.max(0, amount - dmg), dmgBeforeShields = dmg;
   if(h.shield>0){

@@ -38,6 +38,8 @@ async function runOne(page, job) {
     if (job.skill !== undefined) __AP.skill = job.skill; if (job.reaction !== undefined) __AP.reaction = job.reaction;
     if (job.lvl > 0) for (const k in save.champions) { save.champions[k].level = job.lvl; const al = Math.min(10, Math.floor(job.lvl / 3)); save.champions[k].skillMastery.forEach(m => m.alloc = al); save.champions[k].ultMastery.alloc = al; }
     if (job.diff) Object.assign(DIFF, job.diff);
+    // job.champ = {guard:{..}, skills:{"0":{..}}, ult:{..}}: variante de un campeón sin tocar los datos (BALANCE_GUERRERO_20261115.md); se aplica a CLASSES[job.cls]
+    if (job.champ) { const C = CLASSES[job.cls]; for (const k of Object.keys(job.champ)) { if (k === 'skills') for (const i of Object.keys(job.champ.skills)) Object.assign(C.skills[+i], job.champ.skills[i]); else if (k === 'ult') Object.assign(C.ultimate, job.champ.ult); else C[k] = Object.assign(C[k] || {}, job.champ[k]); } }
     // job.seed: Math.random determinista (mulberry32) para repetir una partida; el host sigue metiendo ruido de tiempo
     if (job.seed) { let s = job.seed >>> 0; Math.random = () => { s = (s + 0x6D2B79F5) >>> 0; let t = s; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
     // job.tier ("pesadilla"|"infierno"): abre esa dificultad y las arenas anteriores a job.arena en ella, y la elige

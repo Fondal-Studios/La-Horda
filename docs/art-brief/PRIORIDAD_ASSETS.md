@@ -24,10 +24,10 @@ Esta tarea no gasta créditos.
 
 | Prioridad | Ítems | hecho | instalado sin aprobar | pendiente | en curso | bloqueado (decisión) | créditos estimados pendientes |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| CRÍTICOS | 44 | 30 | 1 | 13 | 0 | 0 | 126 |
-| IMPORTANTES | 127 | 46 | 5 | 70 | 1 | 5 | 1983 |
-| SECUNDARIOS | 337 | 40 | 0 | 243 | 3 | 51 | 1717 |
-| **Total** | **508** | 116 | 6 | 326 | 4 | 56 | 3826 |
+| CRÍTICOS | 44 | 31 | 0 | 13 | 0 | 0 | 126 |
+| IMPORTANTES | 127 | 52 | 3 | 66 | 1 | 5 | 1558 |
+| SECUNDARIOS | 337 | 41 | 1 | 241 | 3 | 51 | 1677 |
+| **Total** | **508** | 124 | 4 | 320 | 4 | 56 | 3361 |
 
 **Duplicados (no regenerar): 198 ítems** (sección final). Créditos: solo los ítems con `gen4_image` o `gpt_image_2_codice_limpio` gastan Runway; el resto es 0 (pintor determinista / humano). Los costos son estimaciones del repo (hoja de 4 poses gpt_image_2 = 20, imagen gen4_image = 8, hoja de enemigo = 5), no medidas.
 
@@ -41,7 +41,7 @@ Esta tarea no gasta créditos.
 
 ## CRÍTICOS
 
-14 ítems abiertos y 30 hechos. Orden = orden de trabajo.
+13 ítems abiertos y 31 hechos. Orden = orden de trabajo.
 
 - [ ] **1. `campeon-poses-tanque_lanzar_gpt2`** · campeon · `pendiente` · `pintor_determinista` · 0 cr
   - Tanque (Aldric): integrar la hoja de 4 poses de LANZAR ya generada y aceptada con gpt_image_2 (sheet-to-cells.py + atlas-append-cells.py + comprobaciones derivadas).
@@ -91,18 +91,14 @@ Esta tarea no gasta créditos.
   - Evidencia: enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 2/10 (fortaleza); altura 2.42× el campeón típico
   - Nota: Intento Runway rechazado (hoja_dragon_forja): NO repetir igual; leer REGISTRO_RUNWAY «NO REPETIR».
   - Refs: runway hoja_dragon_forja
-- [ ] **13. `campeon-poses-cazadora_ult_poses_gpt2`** · campeon · `instalado_sin_aprobar` · `humano` · 0 cr
-  - Cazadora (Sylva): definitiva (Cacería Salvaje) con 4 poses gpt_image_2, instalada en el motor sin aprobación humana.
-  - Evidencia: estado-runway.json cazadora_ult_poses_gpt2 = hecho_integrado (40 cr ya gastados)
-  - Nota: Revisión humana (el pintor no puede aprobarla).
-  - Refs: runway cazadora_ult_poses_gpt2
 - [ ] **14. `arena-ciudad-ovacion-final`** · arena · `pendiente` · `pintor_determinista` · 0 cr
   - CM-P02 Ovación final (canalización 3 s)
   - Evidencia: asset-blocks.json B063 P0 PENDIENTE; arena ciudad (1/10 del recorrido)
   - Refs: bloques B063
 
-<details><summary>Hechos (30): no repetir</summary>
+<details><summary>Hechos (31): no repetir</summary>
 
+- [x] `campeon-poses-cazadora_ult_poses_gpt2` — Cazadora (Sylva): definitiva (Cacería Salvaje) con 4 poses gpt_image_2, instalada en el motor sin aprobación humana. — NOTA: Instalado; arte aprobado a ojo por el dueño el 2026-11-14 (ver ART_CREDITS.md «Aprobación de arte del dueño»).
 - [x] `ui-titulo` — Pantalla de título (logo, escena de guardianes y jefe, botón JUGAR AHORA).
 - [x] `ui-hud-combate` — HUD de partida (vida/energía, botones de habilidad con ícono, definitiva, minimapa, tarjetas de aliados).
 - [x] `ui-arenas-seleccion` — Pantalla de selección de campaña con miniaturas de arena.
@@ -138,7 +134,7 @@ Esta tarea no gasta créditos.
 
 ## IMPORTANTES
 
-81 ítems abiertos y 46 hechos. Orden = orden de trabajo.
+75 ítems abiertos y 52 hechos. Orden = orden de trabajo.
 
 - [ ] **1. `campeon-tanque`** · campeon · `pendiente` · `gpt_image_2_codice_limpio` · 40 cr
   - Campeón tanque (Aldric, el Último Bastión): idle y hit de 1 cuadro; bloques abiertos B002 (auditoría 18-oct: puede estar vieja; medir con capture-champion-states.js antes de gastar)
@@ -148,10 +144,6 @@ Esta tarea no gasta créditos.
   - Campeón mago (Thalen, el Tejedor Elemental): hit de 1 cuadro; bloques abiertos B100 (auditoría 18-oct: puede estar vieja; medir con capture-champion-states.js antes de gastar)
   - Evidencia: ATLAS_ARTE: hecho; medido en el motor: idle 3 · walk 4 · atk 4 · cast 4 · ult 4 · hit 1 · death 4; guardián recomendado al empezar (starter-select.js)
   - Refs: bloques B100
-- [ ] **3. `campeon-cazadora`** · campeon · `pendiente` · `gpt_image_2_codice_limpio` · 20 cr
-  - Campeón cazadora (Sylva, la Cazadora del Bosque): idle de 1 cuadro; bloques abiertos B098 (auditoría 18-oct: puede estar vieja; medir con capture-champion-states.js antes de gastar)
-  - Evidencia: ATLAS_ARTE: parcial; medido en el motor: idle 1 · walk 4 · atk 4 · cast 4 · ult 4 · hit 4 · death 6; guardián recomendado al empezar (starter-select.js)
-  - Refs: bloques B098 · runway cazadora_ult_poses_gpt2
 - [ ] **4. `b057-icono-de-objeto-corona-del`** · otro · `pendiente` · `pintor_determinista` · 0 cr
   - Ícono de objeto "Corona del Invierno Sin Fin" (Mítico, Casco (casco)) / Ícono de objeto "Corazón del Averno" (Mítico, Pechera (pechera)) / Ícono de objeto "Martillo de la Tormenta Primigenia" (Mítico, Arma (arma)) / Ícono de objeto "Égida d
   - Evidencia: asset-blocks.json B057 P0 PENDIENTE; transversal (todas las partidas)
@@ -250,35 +242,11 @@ Esta tarea no gasta créditos.
   - Campeón ynara (Ynara, la Médica de los Refugios): cuerpo pre-Códice (estilo anterior al Códice); hit de 1 cuadro; bloques abiertos B006 (auditoría 18-oct: puede estar vieja; medir con capture-champion-states.js antes de gastar)
   - Evidencia: ATLAS_ARTE: arte_viejo; medido en el motor: idle 3 · walk 4 · atk 4 · cast 4 · ult 4 · hit 1 · death 4; en la lista de prioridad de estado-campeones.json (_prioridad_5)
   - Refs: bloques B006 · runway ynara_ult_poses_gpt2, ynara_cast_poses_gpt2
-- [ ] **26. `campeon-myla`** · campeon · `pendiente` · `gpt_image_2_codice_limpio` · 200 cr
+- [ ] **26. `campeon-myla`** · campeon · `instalado_sin_aprobar` · `gpt_image_2_codice_limpio` · 200 cr
   - Campeón myla (Myla, la Niña de la Cuchara): cuerpo pre-Códice (estilo anterior al Códice); hit de 1 cuadro; bloques abiertos B005 (auditoría 18-oct: puede estar vieja; medir con capture-champion-states.js antes de gastar)
   - Evidencia: ATLAS_ARTE: arte_viejo; medido en el motor: idle 2 · walk 3 · atk 3 · cast 3 · ult 3 · hit 1 · death 4; en la lista de prioridad de estado-campeones.json (_prioridad_5)
+  - Nota: Caída instalada (estado-runway: hecho_integrado); falta la aprobación de arte del dueño.
   - Refs: bloques B005 · runway myla_caida
-- [ ] **27. `campeon-poses-ilkan_ataque_espalda_gpt2`** · campeon · `instalado_sin_aprobar` · `humano` · 0 cr
-  - Ilkan: ATAQUE DE ESPALDAS con 4 poses gpt_image_2, instalado sin aprobación humana.
-  - Evidencia: estado-runway.json ilkan_ataque_espalda_gpt2 = hecho_integrado (20 cr ya gastados)
-  - Nota: Revisión humana de arte (AGENTS.md: ningún gate la reemplaza).
-  - Refs: runway ilkan_ataque_espalda_gpt2
-- [ ] **28. `campeon-poses-ilkan_ataque_frente_gpt2`** · campeon · `instalado_sin_aprobar` · `humano` · 0 cr
-  - Ilkan: ATAQUE DE FRENTE con 4 poses gpt_image_2, instalado sin aprobación humana.
-  - Evidencia: estado-runway.json ilkan_ataque_frente_gpt2 = hecho_integrado (20 cr ya gastados)
-  - Nota: Revisión humana de arte (AGENTS.md: ningún gate la reemplaza).
-  - Refs: runway ilkan_ataque_frente_gpt2
-- [ ] **29. `campeon-poses-musashi_ult_poses_gpt2`** · campeon · `instalado_sin_aprobar` · `humano` · 0 cr
-  - Musashi: DEFINITIVA (Último Duelo) con 4 poses gpt_image_2, instalado sin aprobación humana.
-  - Evidencia: estado-runway.json musashi_ult_poses_gpt2 = hecho_integrado (20 cr ya gastados)
-  - Nota: Revisión humana de arte (AGENTS.md: ningún gate la reemplaza).
-  - Refs: runway musashi_ult_poses_gpt2
-- [ ] **30. `campeon-poses-ynara_cast_poses_gpt2`** · campeon · `instalado_sin_aprobar` · `humano` · 0 cr
-  - Ynara: LANZAR con 4 poses gpt_image_2, instalado sin aprobación humana.
-  - Evidencia: estado-runway.json ynara_cast_poses_gpt2 = hecho_integrado (20 cr ya gastados)
-  - Nota: Revisión humana de arte (AGENTS.md: ningún gate la reemplaza).
-  - Refs: runway ynara_cast_poses_gpt2
-- [ ] **31. `campeon-poses-ynara_ult_poses_gpt2`** · campeon · `instalado_sin_aprobar` · `humano` · 0 cr
-  - Ynara: DEFINITIVA con 4 poses gpt_image_2, instalado sin aprobación humana.
-  - Evidencia: estado-runway.json ynara_ult_poses_gpt2 = hecho_integrado (20 cr ya gastados)
-  - Nota: Revisión humana de arte (AGENTS.md: ningún gate la reemplaza).
-  - Refs: runway ynara_ult_poses_gpt2
 - [ ] **33. `ui-starter-retratos`** · ui · `pendiente` · `humano` · 0 cr
   - Selección del primer guardián: tarjetas con el sprite sobre cuadrado plano y la mitad superior de la pantalla vacía; existen láminas del Códice (assets/ui/codex/champions) que podrían usarse.
   - Evidencia: captura docs/art-brief/prioridad-capturas/03_starter.webp (primera pantalla tras JUGAR AHORA); es de layout/código más que de arte
@@ -340,9 +308,10 @@ Esta tarea no gasta créditos.
   - Campeón aurelia (Aurelia, la Arquitecta Solar): cuerpo pre-Códice (estilo anterior al Códice); hit de 1 cuadro; bloques abiertos B406 (auditoría 18-oct: puede estar vieja; medir con capture-champion-states.js antes de gastar)
   - Evidencia: ATLAS_ARTE: arte_viejo; medido en el motor: idle 3 · walk 4 · atk 4 · cast 4 · ult 4 · hit 1 · death 4
   - Refs: bloques B406
-- [ ] **48. `campeon-saelis`** · campeon · `pendiente` · `gpt_image_2_codice_limpio` · 200 cr
+- [ ] **48. `campeon-saelis`** · campeon · `instalado_sin_aprobar` · `gpt_image_2_codice_limpio` · 200 cr
   - Campeón saelis (Saelis, la Heraldo del Plumaje): cuerpo pre-Códice (estilo anterior al Códice); idle y hit de 1 cuadro; bloques abiertos B421 (auditoría 18-oct: puede estar vieja; medir con capture-champion-states.js antes de gastar)
   - Evidencia: ATLAS_ARTE: arte_viejo; medido en el motor: idle 1 · walk 4 · atk 4 · cast 4 · ult 4 · hit 1 · death 4
+  - Nota: Caída instalada (estado-runway: hecho_integrado); falta la aprobación de arte del dueño.
   - Refs: bloques B421 · runway saelis_caida
 - [ ] **49. `campeon-ilsa`** · campeon · `pendiente` · `gpt_image_2_codice_limpio` · 200 cr · depende de `lamina-ilsa`
   - Campeón ilsa (Ilsa, la Esgrimista de Réplica): cuerpo pre-Códice (estilo anterior al Códice); hit de 1 cuadro
@@ -411,9 +380,10 @@ Esta tarea no gasta créditos.
   - Raíz de Absorción (raiz_absorcion, subelite, arena micelial): falta arte propio de attack y death
   - Evidencia: enemy-coverage.json: attack=real+clon(caminar), death=propio(arena), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 4/10 (micelial); altura 3.18× el campeón típico
   - Refs: bloques B287 · también madre_espora, ab_tentaculo, cm_cometa
-- [ ] **67. `enemigo-sabueso`** · enemigo · `pendiente` · `gen4_image` · 5 cr
+- [ ] **67. `enemigo-sabueso`** · enemigo · `instalado_sin_aprobar` · `gen4_image` · 5 cr
   - Sabueso Cordyceps (sabueso, normal, arena micelial): falta arte propio de attack
   - Evidencia: enemy-coverage.json: attack=real+clon(caminar), death=real, hit=real+clon(quieto); ATLAS_ARTE=CODEX_OK; arena 4/10 (micelial); altura 1.33× el campeón típico
+  - Nota: Hoja instalada (estado-runway: hecho_integrado); falta la aprobación de arte del dueño.
   - Refs: bloques B590 · runway hoja_sabueso
 - [ ] **68. `b367-red-micelial-raiz-tendon-t`** · arena · `pendiente` · `pintor_determinista` · 0 cr
   - A-08 Red micelial: raíz-tendón (tileable) y Corazón abierto
@@ -477,8 +447,14 @@ Esta tarea no gasta créditos.
   - Evidencia: asset-blocks.json B370 P1 PENDIENTE; arena laberinto (7/10 del recorrido)
   - Refs: bloques B370
 
-<details><summary>Hechos (46): no repetir</summary>
+<details><summary>Hechos (52): no repetir</summary>
 
+- [x] `campeon-cazadora` — Campeón cazadora (Sylva, la Cazadora del Bosque): idle de 1 cuadro; bloques abiertos B098 (auditoría 18-oct: puede estar vieja; medir con capture-cham — NOTA: Definitiva instalada (gpt_image_2); arte aprobado a ojo por el dueño el 2026-11-14.
+- [x] `campeon-poses-ilkan_ataque_espalda_gpt2` — Ilkan: ATAQUE DE ESPALDAS con 4 poses gpt_image_2, instalado sin aprobación humana. — NOTA: Instalado; arte aprobado a ojo por el dueño el 2026-11-14 (ver ART_CREDITS.md «Aprobación de arte del dueño»).
+- [x] `campeon-poses-ilkan_ataque_frente_gpt2` — Ilkan: ATAQUE DE FRENTE con 4 poses gpt_image_2, instalado sin aprobación humana. — NOTA: Instalado; arte aprobado a ojo por el dueño el 2026-11-14 (ver ART_CREDITS.md «Aprobación de arte del dueño»).
+- [x] `campeon-poses-musashi_ult_poses_gpt2` — Musashi: DEFINITIVA (Último Duelo) con 4 poses gpt_image_2, instalado sin aprobación humana. — NOTA: Instalado; arte aprobado a ojo por el dueño el 2026-11-14 (ver ART_CREDITS.md «Aprobación de arte del dueño»).
+- [x] `campeon-poses-ynara_cast_poses_gpt2` — Ynara: LANZAR con 4 poses gpt_image_2, instalado sin aprobación humana. — NOTA: Instalado; arte aprobado a ojo por el dueño el 2026-11-14 (ver ART_CREDITS.md «Aprobación de arte del dueño»).
+- [x] `campeon-poses-ynara_ult_poses_gpt2` — Ynara: DEFINITIVA con 4 poses gpt_image_2, instalado sin aprobación humana. — NOTA: Instalado; arte aprobado a ojo por el dueño el 2026-11-14 (ver ART_CREDITS.md «Aprobación de arte del dueño»).
 - [x] `campeon-poses-libertador_ult_poses_gpt2` — Libertador: hoja de 4 poses de la DEFINITIVA (ult_cast) generada, aceptada e INSTALADA el 2026-11-13. — NOTA: Instalada el 2026-11-13 (atlas ampliado 824x882, sha re-aprobado por el dueño en check-libertador-motion/death; cuadros 64-67 de ult_cast/ultimate). No regenera
 - [x] `campeon-soporte` — Campeón soporte (Elyra, la Guardiana del Alba): todos los estados propios (sin faltantes medidos)
 - [x] `b324-icono-ui-16-16-idolo-emoji` — Ícono UI 16×16 "idolo" (emoji 🗿) / Ícono UI 16×16 "figura" (emoji 🧍) / Ícono UI 16×16 "antena" (emoji 📡) / Ícono UI 16×16 "cuerno" (emoji 📯)
@@ -530,7 +506,7 @@ Esta tarea no gasta créditos.
 
 ## SECUNDARIOS
 
-297 ítems abiertos y 40 hechos. Orden = orden de trabajo.
+296 ítems abiertos y 41 hechos. Orden = orden de trabajo.
 
 - [ ] **1. `b086-angel-corrompido-forma-1-d`** · jefe · `pendiente` · `gen4_image` · 8 cr
   - A-03 Ángel Corrompido (forma 1 del jefe final)
@@ -1068,14 +1044,11 @@ Esta tarea no gasta créditos.
   - Campeón axiom (Axiom, el Reescritor): idle y hit de 1 cuadro; bloques abiertos B097 (auditoría 18-oct: puede estar vieja; medir con capture-champion-states.js antes de gastar)
   - Evidencia: ATLAS_ARTE: parcial; medido en el motor: idle 1 · walk 4 · atk 4 · cast 4 · ult 4 · hit 1 · death 4
   - Refs: bloques B097
-- [ ] **135. `campeon-profeta`** · campeon · `pendiente` · `gpt_image_2_codice_limpio` · 20 cr
+- [ ] **135. `campeon-profeta`** · campeon · `instalado_sin_aprobar` · `gpt_image_2_codice_limpio` · 20 cr
   - Campeón profeta (Ismara, la Profeta Ciega): bloques abiertos B103 (auditoría 18-oct: puede estar vieja; medir con capture-champion-states.js antes de gastar)
   - Evidencia: ATLAS_ARTE: hecho; medido en el motor: idle 4 · walk 4 · atk 4 · cast 4 · ult 4 · hit 4 · death 4
+  - Nota: Poses instaladas (estado-runway: hecho_integrado); falta la aprobación de arte del dueño.
   - Refs: bloques B103 · runway profeta_poses
-- [ ] **136. `campeon-musashi`** · campeon · `pendiente` · `gpt_image_2_codice_limpio` · 20 cr
-  - Campeón musashi (Musashi, el Rōnin del Bokken): idle de 1 cuadro; bloques abiertos B101 (auditoría 18-oct: puede estar vieja; medir con capture-champion-states.js antes de gastar)
-  - Evidencia: ATLAS_ARTE: parcial; medido en el motor: idle 1 · walk 4 · atk 4 · cast 4 · ult 4 · hit 4 · death 6
-  - Refs: bloques B101 · runway musashi_ult_poses_gpt2
 - [ ] **137. `campeon-nigromante`** · campeon · `en_curso` · `gpt_image_2_codice_limpio` · 0 cr
   - Campeón nigromante (Ilvar, el Señor de las Criptas): idle de 1 cuadro; despacho de dibujo en js/champions/nigromante.js (el arte no es el hueco); bloques abiertos B102 (auditoría 18-oct: puede estar vieja; medir con capture-champion-states.
   - Evidencia: ATLAS_ARTE: parcial; medido en el motor: idle 1 · walk 4 · atk 3 · cast 4 · ult 4 · hit 4 · death 6
@@ -1795,8 +1768,9 @@ Esta tarea no gasta créditos.
   - Evidencia: asset-blocks.json B611 P2 PENDIENTE; arena infernal (10/10 del recorrido)
   - Refs: bloques B611
 
-<details><summary>Hechos (40): no repetir</summary>
+<details><summary>Hechos (41): no repetir</summary>
 
+- [x] `campeon-musashi` — Campeón musashi (Musashi, el Rōnin del Bokken): idle de 1 cuadro; bloques abiertos B101 (auditoría 18-oct: puede estar vieja; medir con capture-champi — NOTA: Definitiva instalada (gpt_image_2); arte aprobado a ojo por el dueño el 2026-11-14.
 - [x] `b554-icono-ui-16-16-enlace-emoj` — Ícono UI 16×16 "enlace" (emoji 🔗) / Ícono UI 16×16 "cadena" (emoji ⛓ 🕸) / Ícono UI 16×16 "chispa" (emoji 🌸 ✨) / Ícono UI 16×16 "estrella" (emoji ★)
 - [x] `b555-icono-ui-16-16-murcielago` — Ícono UI 16×16 "murcielago" (emoji 🦇) / Ícono UI 16×16 "orbe" (emoji 🔮) / Ícono UI 16×16 "carrito" (emoji 🛒) / Ícono UI 16×16 "pechera" (emoji 🎽)
 - [x] `b556-icono-ui-16-16-vapor-emoji` — Ícono UI 16×16 "vapor" (emoji ♨) / Ícono UI 16×16 "intercambio" (emoji 🤝)
