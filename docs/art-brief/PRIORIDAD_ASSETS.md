@@ -15,7 +15,7 @@ campeon-poses-tanque_lanzar_gpt2  [campeon · prioridad critico · orden 1]
   Registro Runway (estado-runway.json): tanque_lanzar_gpt2
   Docs: docs/beta-release/ART_CREDITS.md, docs/art-brief/runway-pack/REGISTRO_RUNWAY.md
   Evidencia: estado-runway.json tanque_lanzar_gpt2 = hecho_sin_integrar (20 cr ya gastados)
-  Nota: Ya pagada (20 cr): NO regenerar. Falta integrarla (0 créditos) y la aprobación humana. Tanque es el guardián #1 recomendado al empezar.
+  Nota: Ya pagada (20 cr): NO regenerar. Falta integrarla (0 créditos) y la aprobación humana. Tanque es el guardián #1 recomendado al empezar. ATENCIÓN: assets/sprites/champions/tanque/atlas.png tiene el sha256 fijado en tools/art/check-tanque-death.js:51 y check-tanque-hurt.js:58; si el ítem anexa a ESE atlas, correr los check-tanque-* y NO editar un sha fijado sin decisión del dueño (cargar la hoja como paquete aparte o pedir la re-aprobación).
 ```
 
 Esta tarea no gasta créditos.
@@ -25,9 +25,9 @@ Esta tarea no gasta créditos.
 | Prioridad | Ítems | hecho | instalado sin aprobar | pendiente | en curso | bloqueado (decisión) | créditos estimados pendientes |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | CRÍTICOS | 44 | 30 | 1 | 13 | 0 | 0 | 126 |
-| IMPORTANTES | 127 | 45 | 5 | 70 | 2 | 5 | 1983 |
+| IMPORTANTES | 127 | 46 | 5 | 70 | 1 | 5 | 1983 |
 | SECUNDARIOS | 337 | 40 | 0 | 243 | 3 | 51 | 1717 |
-| **Total** | **508** | 115 | 6 | 326 | 5 | 56 | 3826 |
+| **Total** | **508** | 116 | 6 | 326 | 4 | 56 | 3826 |
 
 **Duplicados (no regenerar): 198 ítems** (sección final). Créditos: solo los ítems con `gen4_image` o `gpt_image_2_codice_limpio` gastan Runway; el resto es 0 (pintor determinista / humano). Los costos son estimaciones del repo (hoja de 4 poses gpt_image_2 = 20, imagen gen4_image = 8, hoja de enemigo = 5), no medidas.
 
@@ -46,7 +46,7 @@ Esta tarea no gasta créditos.
 - [ ] **1. `campeon-poses-tanque_lanzar_gpt2`** · campeon · `pendiente` · `pintor_determinista` · 0 cr
   - Tanque (Aldric): integrar la hoja de 4 poses de LANZAR ya generada y aceptada con gpt_image_2 (sheet-to-cells.py + atlas-append-cells.py + comprobaciones derivadas).
   - Evidencia: estado-runway.json tanque_lanzar_gpt2 = hecho_sin_integrar (20 cr ya gastados)
-  - Nota: Ya pagada (20 cr): NO regenerar. Falta integrarla (0 créditos) y la aprobación humana. Tanque es el guardián #1 recomendado al empezar.
+  - Nota: Ya pagada (20 cr): NO regenerar. Falta integrarla (0 créditos) y la aprobación humana. Tanque es el guardián #1 recomendado al empezar. ATENCIÓN: assets/sprites/champions/tanque/atlas.png tiene el sha256 fijado en tools/art/check-tanque-death.js:51 y check-tanque-hurt.js:58; si el ítem anexa a ESE atlas, correr los check-tanque-* y NO editar un sha fijado sin decisión del dueño (cargar la hoja como paquete aparte o pedir la re-aprobación).
   - Refs: runway tanque_lanzar_gpt2
 - [ ] **2. `arena-ciudad-casa_a-integrar`** · arena · `pendiente` · `pintor_determinista` · 0 cr
   - Ciudad Maldita: integrar la fachada casa_a (ya generada y aceptada): recorte croma, caja a escala nativa y carga en cm-render.js con respaldo.
@@ -138,7 +138,7 @@ Esta tarea no gasta créditos.
 
 ## IMPORTANTES
 
-82 ítems abiertos y 45 hechos. Orden = orden de trabajo.
+81 ítems abiertos y 46 hechos. Orden = orden de trabajo.
 
 - [ ] **1. `campeon-tanque`** · campeon · `pendiente` · `gpt_image_2_codice_limpio` · 40 cr
   - Campeón tanque (Aldric, el Último Bastión): idle y hit de 1 cuadro; bloques abiertos B002 (auditoría 18-oct: puede estar vieja; medir con capture-champion-states.js antes de gastar)
@@ -279,11 +279,6 @@ Esta tarea no gasta créditos.
   - Evidencia: estado-runway.json ynara_ult_poses_gpt2 = hecho_integrado (20 cr ya gastados)
   - Nota: Revisión humana de arte (AGENTS.md: ningún gate la reemplaza).
   - Refs: runway ynara_ult_poses_gpt2
-- [ ] **32. `campeon-poses-libertador_ult_poses_gpt2`** · campeon · `en_curso` · `pintor_determinista` · 0 cr
-  - Libertador: hoja de 4 poses de la DEFINITIVA (ult_cast) generada y aceptada, no instalada.
-  - Evidencia: estado-runway.json libertador_ult_poses_gpt2 = hecho_sin_integrar (20 cr ya gastados)
-  - Nota: No se instala hasta que js/champions/libertador.js deje de fijar prog=0 (agente de código en curso). No regenerar.
-  - Refs: runway libertador_ult_poses_gpt2
 - [ ] **33. `ui-starter-retratos`** · ui · `pendiente` · `humano` · 0 cr
   - Selección del primer guardián: tarjetas con el sprite sobre cuadrado plano y la mitad superior de la pantalla vacía; existen láminas del Códice (assets/ui/codex/champions) que podrían usarse.
   - Evidencia: captura docs/art-brief/prioridad-capturas/03_starter.webp (primera pantalla tras JUGAR AHORA); es de layout/código más que de arte
@@ -482,8 +477,9 @@ Esta tarea no gasta créditos.
   - Evidencia: asset-blocks.json B370 P1 PENDIENTE; arena laberinto (7/10 del recorrido)
   - Refs: bloques B370
 
-<details><summary>Hechos (45): no repetir</summary>
+<details><summary>Hechos (46): no repetir</summary>
 
+- [x] `campeon-poses-libertador_ult_poses_gpt2` — Libertador: hoja de 4 poses de la DEFINITIVA (ult_cast) generada, aceptada e INSTALADA el 2026-11-13. — NOTA: Instalada el 2026-11-13 (atlas ampliado 824x882, sha re-aprobado por el dueño en check-libertador-motion/death; cuadros 64-67 de ult_cast/ultimate). No regenera
 - [x] `campeon-soporte` — Campeón soporte (Elyra, la Guardiana del Alba): todos los estados propios (sin faltantes medidos)
 - [x] `b324-icono-ui-16-16-idolo-emoji` — Ícono UI 16×16 "idolo" (emoji 🗿) / Ícono UI 16×16 "figura" (emoji 🧍) / Ícono UI 16×16 "antena" (emoji 📡) / Ícono UI 16×16 "cuerno" (emoji 📯)
 - [x] `b325-icono-ui-16-16-caballo-emo` — Ícono UI 16×16 "caballo" (emoji 🐎) / Ícono UI 16×16 "huellas" (emoji 👣) / Ícono UI 16×16 "silencio" (emoji 🔇) / Ícono UI 16×16 "ticket" (emoji 🎟)

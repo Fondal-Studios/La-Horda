@@ -2,7 +2,7 @@
 
 Encargo del dueño: ver si quedaron assets en el juego que no sirven o que sirven pero no están conectados; clasificarlos,
 avisar (el dueño decide qué se integra) y eliminar solo lo claramente basura. Hay mucho arte repetido.
-Rama local `claude/la-horda-beta-audit-exec-mwv8x0`. Nada de esto se subió. Máquina: `docs/art-brief/candidatos-assets.json`.
+Rama local `claude/la-horda-beta-audit-exec-mwv8x0`. Entra en el PR #304 (antes de ese PR todo estaba solo en local). Máquina: `docs/art-brief/candidatos-assets.json`.
 
 ## Resumen en una línea
 
@@ -56,7 +56,7 @@ Miniaturas en `docs/art-brief/auditoria-assets-miniaturas/` (360 px). «Esfuerzo
 
 **Dato importante (corrección de lo que parecía B):** la definitiva de 4 cuadros del Libertador (`art-source/libertador-runway/atlas.png`) **ya está
 instalada**: es byte a byte `assets/sprites/champions/libertador/v2/atlas.png` (sha 791cb61a…, commit 647a8b6b, re-aprobada el 2026-11-13).
-`docs/art-brief/runway-pack/REGISTRO_RUNWAY.md` (fila `libertador_ult_poses_gpt2`) y `CHECKLIST_CAMPEONES.md:63` siguen diciendo «sin integrar / NO instalada»: están desactualizados.
+(Corregido en el PR #304: `REGISTRO_RUNWAY.md`, `estado-runway.json`, `CHECKLIST_CAMPEONES.md` y `PRIORIDAD_ASSETS.md` ya muestran la definitiva del Libertador como instalada.)
 No lo toqué (lo está trabajando otro agente en ese directorio); conviene sincronizarlo.
 
 No hay en el repo skins, íconos ni efectos «huérfanos» listos: se revisó que las skins de `unique-skins`, `alpha-set-skins`, `skins_sets` y
@@ -65,7 +65,7 @@ No hay en el repo skins, íconos ni efectos «huérfanos» listos: se revisó qu
 (guerrero, libertador 24 poses, soporte, tanque rev.02, campeones-faltantes, Bront cierre-03 «no integrable», brakk-kit, veyra-kit,
 habilidades-recientes, bloques B002): son trabajo rechazado o en corrección, no candidatos aprobables; van a D.
 
-## C — eliminado (commit `2baa2837`, `git revert 2baa2837` lo deshace)
+## C — eliminado (commit `8128c7bd` en la rama del PR #304; si el PR se mergea con squash, restaurar con `git checkout <commit anterior al merge> -- <ruta>` o `git revert` del merge)
 
 53 archivos de `docs/beta-release/` (`eval-captures/`, `eval2-captures/`, `eval3-captures/`, `menu-polish/`, `ui-beta/consejos/`,
 `ux-arq-captures/`): **18,65 MB** (el peso en git es algo menor por la compresión). Evidencia por archivo:

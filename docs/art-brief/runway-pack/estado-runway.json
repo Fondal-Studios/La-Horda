@@ -1821,7 +1821,7 @@
     "art-source/runway-designs/libertador/u1/master.png",
     "art-source/libertador-runway/atlas.png"
    ],
-   "por_que": "Primer intento aceptado (saldo 59 -> 39): carga con el sable a la cadera / alza el sable en diagonal / pico con el sable extendido y grito / liberacion en estocada. Captura del motor (ult_cast avanzando con el progreso, antes vs despues) claramente mejor. NO instalada: v2/atlas.png esta fijado por sha256 como atlas aprobado en tools/art/check-libertador-motion.js (linea 69) y tools/art/check-libertador-death.js; instalarla los pone en rojo.",
+   "por_que": "Primer intento aceptado (saldo 59 -> 39): carga con el sable a la cadera / alza el sable en diagonal / pico con el sable extendido y grito / liberacion en estocada. Captura del motor (ult_cast avanzando con el progreso, antes vs despues) claramente mejor. INSTALADA el 2026-11-13: el dueño re-aprobó el atlas ampliado y se actualizó el sha256 fijado en check-libertador-motion.js y check-libertador-death.js.",
    "siguiente_paso": "Instalada el 2026-11-13: atlas ampliado 824x882, sha re-aprobado en check-libertador-motion/death (límite de cuadros 64-67 solo para ult_cast/ultimate), imageSize [824,882]. Aprobación de arte humana: dada por el dueño.",
    "verificacion": ""
   },

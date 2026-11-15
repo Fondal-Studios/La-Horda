@@ -56,8 +56,8 @@ CODIGO = {
                    'js/champions/nigromante.js', 0, 'Nada: el arte ya existe (cuadros 32-35); basta con que el despacho lo muestre.'),
     'ilkan': ('El ataque se dibuja SIEMPRE con `attack_side` espejado (`drawIlkan`); `attack_down`/`attack_up` no se leen nunca. La definitiva es `invoke` (cuadros 58-61, propios) y luego el Coloso.',
               'js/champions/ilkan.js', 2 * HOJA_GPT, '2 hojas de 4 poses: ataque de frente y ataque de espaldas (%d c).' % (2 * HOJA_GPT)),
-    'libertador': ('`ult_cast` se dibuja con `prog` fijo en 0 (un solo cuadro durante `castMs`) y el ataque usa el set `fire` de perfil en toda dirección; la muerte NO falta (`v2/death.png`).',
-                   'js/champions/libertador.js', HOJA_GPT, '1 hoja de 4 poses: definitiva (%d c).' % HOJA_GPT),
+    'libertador': ('Actualizado 2026-11-13: la definitiva (`ult_cast`, 4 cuadros 64-67) YA está instalada y animada (`prog` avanza con `castMs`); queda solo el ataque de frente (el set `fire` se usa en toda dirección); la muerte NO falta (`v2/death.png`).',
+                   'js/champions/libertador.js', HOJA_GPT, 'solo el ataque de frente (la definitiva ya está instalada).'),
 }
 
 # ---------------------------------------------------------------- datos de enemigos (JSON versionado)
@@ -321,7 +321,7 @@ def render():
         ('laminas-codex', 'Láminas del Códice que faltan (%s): referencia previa para sus cuerpos Códice.' % ', '.join(laminas_faltan), 'arte (Runway)', suma(['lamina_' + x for x in laminas_faltan]), max([g('lamina_' + x, 'valor') for x in laminas_faltan] or [3]), '', 'gen4_image, 1 intento cada una (+reserva); entradas `lamina_*`'),
         ('fachadas-ciudad', 'Fachadas de Ciudad Maldita (bloque P0 B062): pedir vista oblicua explícita (casa_b salió isométrica y se rechazó).', 'arte (Runway)', suma(fach), g('prox_fachadas_ciudad_t06', 'valor', 5), '', '`prox_fachadas_ciudad_t06`'),
         ('ilkan-ataques', 'Ilkan: 2 hojas de ataque (frente y espaldas) para cuando el despacho por dirección aterrice.', 'requiere cambio de código (en curso)', 2 * HOJA_GPT, 3, 'a', 'js/champions/ilkan.js; después arte (Runway)'),
-        ('libertador-definitiva', 'Libertador: 1 hoja de definitiva (`ult_cast` animada) cuando `prog` deje de ser fijo; el ataque de frente exige además despacho por dirección del set `fire`.', 'requiere cambio de código (en curso)', HOJA_GPT, 3, 'a', 'js/champions/libertador.js; después arte (Runway)'),
+        ('libertador-definitiva', 'Libertador: la definitiva (`ult_cast`, 4 cuadros) YA está instalada (2026-11-13); queda el ataque de frente, que exige despacho por dirección del set `fire`.', 'requiere cambio de código (en curso)', HOJA_GPT, 3, 'a', 'js/champions/libertador.js; después arte (Runway)'),
         ('pisos-centros-bosque-hielo', 'Pisos y centros de Bosque y Hielo (JOBS ya definidos en `runway-world.js`); intento anterior BLOQUEADO por límite diario de tareas de la cuenta.', 'arte (Runway)', suma(bk), max(g(i, 'valor') for i in bk), '', 'entradas `prox_piso_*`/`prox_centro_*`'),
         ('props-arenas', 'Props pintados de Infernal, Hielo, Bosque y Laberinto (mismo método que estatua/farol, 2 de 2 aceptados).', 'arte (Runway)', suma(props), max(g(i, 'valor') for i in props), '', 'entradas `prox_props_*`'),
         ('hojas-fortaleza', 'Hojas de enemigos de Fortaleza (`gen_sheet.py`, 1 hoja por enemigo).', 'arte (Runway)', g('prox_hojas_fortaleza', 'costo_estimado'), g('prox_hojas_fortaleza', 'valor', 3), '', '`prox_hojas_fortaleza`'),
@@ -345,7 +345,7 @@ def render():
     # ================= J
     add('## J) Decisiones abiertas del dueño\n')
     add(tabla(['Decisión', 'Qué se necesita', 'Dónde consta'], [
-        ('Libertador: definitiva animada y ataque de frente', 'Aprobar/priorizar el cambio de código en `js/champions/libertador.js` (`ult_cast` con `prog` fijo en 0; ataque por set `fire`). Hay un agente implementándolo (retrocompatible); después se piden %d c de arte (1 hoja).' % HOJA_GPT, 'ART_CREDITS.md «Libertador: revision…», STATUS.md'),
+        ('Libertador: definitiva animada y ataque de frente', 'La definitiva ya está instalada (2026-11-13). Queda decidir el ataque de frente: cambio de código en `js/champions/libertador.js` (ataque por set `fire` en toda dirección) y, después, %d c de arte (1 hoja).' % HOJA_GPT, 'ART_CREDITS.md «Libertador: revision…», STATUS.md'),
         ('Ilkan y Nigromante: despacho de dibujo', 'Aprobar los cambios en `ilkan.js` (ataque por dirección) y `nigromante.js` (mostrar la definitiva propia antes de la forma Demonio). Ilkan después pide %d c (2 hojas); Nigromante 0.' % (2 * HOJA_GPT), 'ART_CREDITS.md «Nigromante e Ilkan: revision…»'),
         ('Aprobación de arte humana de lo instalado', 'Revisar y aprobar (o rechazar) lo instalado: Ynara lanzar y definitiva, Cazadora y Musashi definitiva; y el candidato del Tanque antes de integrarlo.', 'STATUS.md'),
         ('Términos comerciales de `gpt_image_2`', 'Confirmar que permiten uso comercial y completar la declaración de IA en Steamworks; las láminas del Códice existentes son de ChatGPT y también se declaran.', 'docs/steam/DECLARACION_IA.md'),

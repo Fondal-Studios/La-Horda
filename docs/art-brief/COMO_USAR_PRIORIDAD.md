@@ -13,3 +13,11 @@ Fuente de verdad: `docs/art-brief/prioridad-assets.json` (esquema en su `_leyend
 7. Si cambia `asset-blocks.json` (bloque nuevo), `--check` falla con «bloque … sin dueño»: correr `python3 tools/art/prioridad-seed.py --merge` y reclasificar el ítem nuevo.
 
 Comandos: `--check` (sincronía y cobertura: 731 bloques / 1244 entradas, 95 filas de Runway, 104 criaturas, 46 campeones), `--id`, `--next`, `--set`.
+
+
+## Reglas de seguridad (agregadas tras la revisión del PR #304)
+- **Siempre** pasar `--saldo <creditBalance>` a `--next`; sin ese flag (o `--gratis`) el comando ofrece ítems de pago.
+- **Archivos con sha256 fijado por un gate**: antes de anexar celdas a un atlas de campeón, correr los `check-<campeón>-*` (p. ej. Tanque: `tools/art/check-tanque-death.js:51` y `check-tanque-hurt.js:58` fijan el sha de `assets/sprites/champions/tanque/atlas.png`). Nunca editar un sha fijado ni el límite de cuadros de un gate sin una decisión expresa del dueño; alternativa: cargar la hoja como paquete aparte.
+- `--set` sobre un ítem `duplicado_de:` se rechaza salvo `--forzar` (reactivaría arte duplicado).
+- `--check` imprime `AVISO deriva` cuando un ítem de una sola fila de `estado-runway.json` figura pendiente aunque la fila sea `hecho_integrado`: revisarlo con `--set`.
+- `prioridad-seed.py --merge` conserva estados y notas; **`--force` los pierde** (no usarlo sobre un JSON con trabajo hecho).

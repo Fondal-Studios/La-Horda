@@ -166,9 +166,15 @@ def main(a):
         if errs:
             print('FALLA prioridad-assets (%d problemas):' % len(errs)); [print(' -', e) for e in errs[:40]]; sys.exit(1)
         act = [i for i in items if not is_dup(i)]
+        rw = {e['id']: e['estado'] for e in load('docs/art-brief/runway-pack/estado-runway.json')['entradas']}
+        for i in act:
+            r1 = i['refs'].get('runway', [])
+            if len(r1) == 1 and rw.get(r1[0]) == 'hecho_integrado' and est0(i) in ('pendiente', 'en_curso', 'bloqueado_decision'):
+                print('AVISO deriva: %s está %s pero estado-runway.json %s = hecho_integrado (revisar con --set)' % (i['id'], est0(i), r1[0]))
         print('OK prioridad-assets: %d ítems (%d activos, %d duplicados) cubren %d bloques / %d entradas de asset-blocks.json; .md sincronizado' % (len(items), len(act), len(items) - len(act), nb, ni)); return
     if '--next' in a:
-        saldo = int(a[a.index('--saldo') + 1]) if '--saldo' in a else None
+        try: saldo = int(a[a.index('--saldo') + 1]) if '--saldo' in a else None
+        except (ValueError, IndexError): sys.exit('--saldo necesita un entero (créditos): --next --saldo 37')
         gratis = '--gratis' in a or (saldo is not None and saldo < SALDO_MINIMO)
         c = candidatos(items, gratis)
         if not c: print('SIN TAREA' + (' sin gasto de créditos' if gratis else '') + ': no hay ítems pendientes y desbloqueados.'); return
@@ -181,6 +187,8 @@ def main(a):
         k, est = a[a.index('--set') + 1], a[a.index('--set') + 2]; I = {i['id']: i for i in items}
         if k not in I: sys.exit('id inexistente: ' + k)
         if not (est in ESTADOS or (est.startswith('duplicado_de:') and est.split(':', 1)[1] in I and est.split(':', 1)[1] != k)): sys.exit('estado inválido: %s (válidos: %s, duplicado_de:<id>)' % (est, ', '.join(ESTADOS)))
+        if is_dup(I[k]) and not est.startswith('duplicado_de:') and '--forzar' not in a:
+            sys.exit('%s es %s: marcarlo con otro estado lo reactivaría y duplicaría arte; si es a propósito, agregar --forzar' % (k, I[k]['estado']))
         I[k]['estado'] = est
         if '--nota' in a: I[k]['nota'] = a[a.index('--nota') + 1]
         errs = validar(doc)

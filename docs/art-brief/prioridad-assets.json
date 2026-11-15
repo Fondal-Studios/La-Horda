@@ -101,7 +101,7 @@
    },
    "dependencias": [],
    "evidencia": "estado-runway.json tanque_lanzar_gpt2 = hecho_sin_integrar (20 cr ya gastados)",
-   "nota": "Ya pagada (20 cr): NO regenerar. Falta integrarla (0 créditos) y la aprobación humana. Tanque es el guardián #1 recomendado al empezar."
+   "nota": "Ya pagada (20 cr): NO regenerar. Falta integrarla (0 créditos) y la aprobación humana. Tanque es el guardián #1 recomendado al empezar. ATENCIÓN: assets/sprites/champions/tanque/atlas.png tiene el sha256 fijado en tools/art/check-tanque-death.js:51 y check-tanque-hurt.js:58; si el ítem anexa a ESE atlas, correr los check-tanque-* y NO editar un sha fijado sin decisión del dueño (cargar la hoja como paquete aparte o pedir la re-aprobación)."
   },
   {
    "id": "arena-ciudad-casa_a-integrar",
@@ -2009,10 +2009,10 @@
   {
    "id": "campeon-poses-libertador_ult_poses_gpt2",
    "categoria": "campeon",
-   "descripcion": "Libertador: hoja de 4 poses de la DEFINITIVA (ult_cast) generada y aceptada, no instalada.",
+   "descripcion": "Libertador: hoja de 4 poses de la DEFINITIVA (ult_cast) generada, aceptada e INSTALADA el 2026-11-13.",
    "prioridad": "importante",
    "orden": 32,
-   "estado": "en_curso",
+   "estado": "hecho",
    "metodo": "pintor_determinista",
    "costo_creditos": 0,
    "refs": {
@@ -2026,8 +2026,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "estado-runway.json libertador_ult_poses_gpt2 = hecho_sin_integrar (20 cr ya gastados)",
-   "nota": "No se instala hasta que js/champions/libertador.js deje de fijar prog=0 (agente de código en curso). No regenerar."
+   "evidencia": "estado-runway.json libertador_ult_poses_gpt2 = hecho_integrado (20 cr gastados; instalada 2026-11-13)",
+   "nota": "Instalada el 2026-11-13 (atlas ampliado 824x882, sha re-aprobado por el dueño en check-libertador-motion/death; cuadros 64-67 de ult_cast/ultimate). No regenerar."
   },
   {
    "id": "ui-starter-retratos",
