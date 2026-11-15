@@ -9,25 +9,23 @@
 Primer ítem crítico no terminado ni bloqueado (`python3 tools/art/prioridad-assets.py --next`):
 
 ```
-campeon-poses-tanque_lanzar_gpt2  [campeon · prioridad critico · orden 1]
-  Qué: Tanque (Aldric): integrar la hoja de 4 poses de LANZAR ya generada y aceptada con gpt_image_2 (sheet-to-cells.py + atlas-append-cells.py + comprobaciones derivadas).
-  Estado: pendiente · método: pintor_determinista · costo estimado: 0 cr
-  Registro Runway (estado-runway.json): tanque_lanzar_gpt2
-  Docs: docs/beta-release/ART_CREDITS.md, docs/art-brief/runway-pack/REGISTRO_RUNWAY.md
-  Evidencia: estado-runway.json tanque_lanzar_gpt2 = hecho_sin_integrar (20 cr ya gastados)
-  Nota: Ya pagada (20 cr): NO regenerar. Falta integrarla (0 créditos) y la aprobación humana. Tanque es el guardián #1 recomendado al empezar. ATENCIÓN: assets/sprites/champions/tanque/atlas.png tiene el sha256 fijado en tools/art/check-tanque-death.js:51 y check-tanque-hurt.js:58; si el ítem anexa a ESE atlas, correr los check-tanque-* y NO editar un sha fijado sin decisión del dueño (cargar la hoja como paquete aparte o pedir la re-aprobación).
+enemigo-cm_cometa  [enemigo · prioridad critico · orden 3]
+  Qué: Gran Número (cm_cometa, normal, arena ciudad): falta arte propio de attack y death y sin atlas propio (dibujado por formas)
+  Estado: pendiente · método: gen4_image · costo estimado: 13 cr
+  Docs: docs/art-brief/runway-pack/enemigos/ciudad.md, docs/art-brief/runway-pack/ENEMIGOS_GUIA.md
+  Evidencia: enemy-coverage.json: attack=formas+clon(caminar), death=formas+clon(caminar), hit=formas+clon(caminar); ATLAS_ARTE=ARTE_VIEJO; arena 1/10 (ciudad); altura 3.27× el campeón típico
 ```
 
-Esta tarea no gasta créditos.
+Próxima SIN gastar créditos (si el saldo de Runway es < 250: `--next --gratis`): **b057-icono-de-objeto-corona-del** (importante).
 
 ## Resumen
 
 | Prioridad | Ítems | hecho | instalado sin aprobar | pendiente | en curso | bloqueado (decisión) | créditos estimados pendientes |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| CRÍTICOS | 44 | 31 | 0 | 13 | 0 | 0 | 126 |
+| CRÍTICOS | 44 | 31 | 3 | 9 | 0 | 1 | 126 |
 | IMPORTANTES | 127 | 52 | 3 | 66 | 1 | 5 | 1558 |
 | SECUNDARIOS | 337 | 41 | 1 | 241 | 3 | 51 | 1677 |
-| **Total** | **508** | 124 | 4 | 320 | 4 | 56 | 3361 |
+| **Total** | **508** | 124 | 7 | 316 | 4 | 57 | 3361 |
 
 **Duplicados (no regenerar): 198 ítems** (sección final). Créditos: solo los ítems con `gen4_image` o `gpt_image_2_codice_limpio` gastan Runway; el resto es 0 (pintor determinista / humano). Los costos son estimaciones del repo (hoja de 4 poses gpt_image_2 = 20, imagen gen4_image = 8, hoja de enemigo = 5), no medidas.
 
@@ -43,15 +41,15 @@ Esta tarea no gasta créditos.
 
 13 ítems abiertos y 31 hechos. Orden = orden de trabajo.
 
-- [ ] **1. `campeon-poses-tanque_lanzar_gpt2`** · campeon · `pendiente` · `pintor_determinista` · 0 cr
+- [ ] **1. `campeon-poses-tanque_lanzar_gpt2`** · campeon · `instalado_sin_aprobar` · `pintor_determinista` · 0 cr
   - Tanque (Aldric): integrar la hoja de 4 poses de LANZAR ya generada y aceptada con gpt_image_2 (sheet-to-cells.py + atlas-append-cells.py + comprobaciones derivadas).
   - Evidencia: estado-runway.json tanque_lanzar_gpt2 = hecho_sin_integrar (20 cr ya gastados)
-  - Nota: Ya pagada (20 cr): NO regenerar. Falta integrarla (0 créditos) y la aprobación humana. Tanque es el guardián #1 recomendado al empezar. ATENCIÓN: assets/sprites/champions/tanque/atlas.png tiene el sha256 fijado en tools/art/check-tanque-death.js:51 y check-tanque-hurt.js:58; si el ítem anexa a ESE atlas, correr los check-tanque-* y NO editar un sha fijado sin decisión del dueño (cargar la hoja como paquete aparte o pedir la re-aprobación).
+  - Nota: Fase 3 (0 cr): hoja g1 -> sheet-to-cells.py (celda 144, escala del Códice, paleta del atlas codex-v1) -> assets/sprites/champions/tanque/v3/cast.png como PAQUETE APARTE CHAMP_PACK.tanque_cast; se ve al arrancar el Grito de Guerra (0,76 s; cuerpo base sin croma/skin) en js/rendering/codex-champions.js. Atlas maestro y codex-v1 intactos (sha fijados sin tocar); check-tanque-death/hurt PASS. Captura art-source/captures/campeon-poses-tanque_lanzar_gpt2/antes_despues.png. Falta aprobación del dueño.
   - Refs: runway tanque_lanzar_gpt2
-- [ ] **2. `arena-ciudad-casa_a-integrar`** · arena · `pendiente` · `pintor_determinista` · 0 cr
+- [ ] **2. `arena-ciudad-casa_a-integrar`** · arena · `instalado_sin_aprobar` · `pintor_determinista` · 0 cr
   - Ciudad Maldita: integrar la fachada casa_a (ya generada y aceptada): recorte croma, caja a escala nativa y carga en cm-render.js con respaldo.
   - Evidencia: estado-runway.json casa_a = hecho_sin_integrar (8 cr gastados); ningún js/ la carga; arena 1 del recorrido
-  - Nota: Ya pagada: NO regenerar. Seguir el patrón de tools/art-world/build-ciudad-estatua.py.
+  - Nota: Fase 3 (0 cr): build-ciudad-estatua.py casa_a -> assets/vfx/ciudad/casa_a_1.png (112 px nativos, x2). Integrada como casas vecinas TRAS la muralla del borde (norte/oeste/este), oscurecidas como la ciudad lejana; respaldo = patrón procedural. NO reemplaza las fachadas de los edificios jugables (puertas, techos que se desvanecen y colisiones dependen del rectángulo): eso queda como decisión del dueño. Captura art-source/captures/arena-ciudad-casa_a-integrar/antes_despues.png.
   - Refs: runway casa_a, prox_integrar_casa_a
 - [ ] **3. `enemigo-cm_cometa`** · enemigo · `pendiente` · `gen4_image` · 13 cr
   - Gran Número (cm_cometa, normal, arena ciudad): falta arte propio de attack y death y sin atlas propio (dibujado por formas)
@@ -77,9 +75,10 @@ Esta tarea no gasta créditos.
   - CM-C01 Aldeano / mujer / niño · caminata frente y espalda / CM-C02 Escondido (agachado, temblando)
   - Evidencia: asset-blocks.json B060 P0 PENDIENTE; arena ciudad (1/10 del recorrido)
   - Refs: bloques B060
-- [ ] **10. `efecto-ciudad-cometa-gran-numero`** · arena · `pendiente` · `pintor_determinista` · 0 cr
+- [ ] **10. `efecto-ciudad-cometa-gran-numero`** · arena · `instalado_sin_aprobar` · `pintor_determinista` · 0 cr
   - A-09 Cometa del Gran Número (vuelo 6, impacto 5; + versión "reflejado" dorada)
   - Evidencia: asset-blocks.json B368 P1 PENDIENTE; arena ciudad (1/10 del recorrido)
+  - Nota: Fase 3 (0 cr): tools/art-world/paint-ciudad-cometa.py -> cometa_vuelo_0..5 + cometa_oro_0..5 (48x48, x2, rotado hacia donde vuela) en cm-render.js con respaldo a cmFire/cmPreBolt. Impacto: se reutiliza el estallido existente cmBoom (no se pintaron los 5 cuadros de impacto propios). Captura art-source/captures/efecto-ciudad-cometa-gran-numero/antes_despues.png.
   - Refs: bloques B368
 - [ ] **11. `arena-ciudad-techos-t03-t04`** · arena · `pendiente` · `gen4_image` · 16 cr
   - CM-T01 Techos de tejas: tile + bordes + cumbrera + chimenea / CM-T02 Cara de pared exterior con ventanas y puerta abierta / CM-T03 Techo dañado / con agujeros / en llamas (3 estados) / CM-T04 Ruinas de edificio derrumbado
@@ -91,9 +90,10 @@ Esta tarea no gasta créditos.
   - Evidencia: enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 2/10 (fortaleza); altura 2.42× el campeón típico
   - Nota: Intento Runway rechazado (hoja_dragon_forja): NO repetir igual; leer REGISTRO_RUNWAY «NO REPETIR».
   - Refs: runway hoja_dragon_forja
-- [ ] **14. `arena-ciudad-ovacion-final`** · arena · `pendiente` · `pintor_determinista` · 0 cr
+- [ ] **14. `arena-ciudad-ovacion-final`** · arena · `bloqueado_decision` · `pintor_determinista` · 0 cr
   - CM-P02 Ovación final (canalización 3 s)
   - Evidencia: asset-blocks.json B063 P0 PENDIENTE; arena ciudad (1/10 del recorrido)
+  - Nota: Fase 3: no hay arte existente de una pose de Ovación del Presentador (el set cast de cm_presentador3 es un ataque apuntando). Una forma de jefe nueva de 8 cuadros no se puede pintar con el pintor determinista sin degradar el personaje: requiere generación (Runway/gpt_image_2) o un artista. Sin créditos en esta fase.
   - Refs: bloques B063
 
 <details><summary>Hechos (31): no repetir</summary>

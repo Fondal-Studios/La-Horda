@@ -15,10 +15,10 @@ Generado por `node tools/art/build-art-atlas.js` (no editar a mano). Fuente de v
 
 - Campeones: FALTA_ANIMACION 25 · CODEX_OK 12 · ARTE_VIEJO 9
 - Skins/cromas/formas de Ascensión: CODEX_OK 11 · FALTA_ANIMACION 90 · ARTE_VIEJO 3
-- Enemigos: CODEX_OK 63 · FALTA_ANIMACION 12 · ARTE_VIEJO 1
+- Enemigos: CODEX_OK 63 · FALTA_ANIMACION 13
 - Jefes y subjefes: CODEX_OK 14 · FALTA_ANIMACION 13 · ARTE_VIEJO 1
-- Archivos (arenas, props, battlefield, enemigos, jefes, campeones): CODEX_OK 871 · HUERFANO 104 · ARTE_VIEJO 30
-- Fuentes del registro: 51 archivos, huella `ab648431171f`
+- Archivos (arenas, props, battlefield, enemigos, jefes, campeones): CODEX_OK 872 · HUERFANO 104 · ARTE_VIEJO 30
+- Fuentes del registro: 51 archivos, huella `3731a5f552e1`
 
 ## Campeones (cuerpo base)
 
@@ -280,7 +280,7 @@ Cuadros distintos de idle / caminata (perfil) / ataque / muerte medidos con `dra
 | cm_maestro | subjefe | ciudad | FALTA_ANIMACION | real | 1 | 2 | 1 | 1 | `battlefield/cm_maestro.png` 1792x384 |
 | cm_tramoyista | subjefe | ciudad | FALTA_ANIMACION | real | 1 | 2 | 1 | 1 | `battlefield/cm_tramoyista.png` 1792x384 |
 | cm_dama | subjefe | ciudad | FALTA_ANIMACION | real | 1 | 2 | 1 | 1 | `battlefield/cm_dama.png` 1792x384 |
-| cm_cometa | normal | ciudad | ARTE_VIEJO | shapes | 1 | 1 | 1 | 1 | - |
+| cm_cometa | normal | ciudad | FALTA_ANIMACION | real | 1 | 1 | 1 | 1 | `assets/vfx/ciudad/cometa_vuelo_0.png` 48x48 |
 | cm_espejismo | normal | ciudad | CODEX_OK | real | 1 | 6 | 6 | 6 | `arenas/ciudad/cm_dama/atlas.png` 768x768 |
 | cm_presentador | jefe | ciudad | FALTA_ANIMACION | real | 1 | 2 | 1 | 1 | `battlefield/cm_presentador.png` 1792x384 |
 | mn_esclavo | normal | minas | CODEX_OK | real | 1 | 8 | 8 | 4 | `arenas/minas/mn_esclavo/atlas.png` 392x210 |
@@ -302,7 +302,7 @@ Un registro por imagen (PNG; el `.webp` es su copia sin pérdida) en `ATLAS_ARTE
 | arenas | 185 | 23.2 | 0 | 2 |
 | battlefield | 32 | 4.0 | 0 | 0 |
 | bosses | 94 | 5.5 | 0 | 0 |
-| champions | 488 | 71.4 | 30 | 102 |
+| champions | 489 | 71.4 | 30 | 102 |
 | enemies | 206 | 9.4 | 0 | 0 |
 
 ### Huérfanos (no los carga ni los referencia el juego; candidatos a limpieza, NO se borran acá)

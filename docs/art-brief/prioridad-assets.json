@@ -86,7 +86,7 @@
    "descripcion": "Tanque (Aldric): integrar la hoja de 4 poses de LANZAR ya generada y aceptada con gpt_image_2 (sheet-to-cells.py + atlas-append-cells.py + comprobaciones derivadas).",
    "prioridad": "critico",
    "orden": 1,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "pintor_determinista",
    "costo_creditos": 0,
    "refs": {
@@ -101,7 +101,7 @@
    },
    "dependencias": [],
    "evidencia": "estado-runway.json tanque_lanzar_gpt2 = hecho_sin_integrar (20 cr ya gastados)",
-   "nota": "Ya pagada (20 cr): NO regenerar. Falta integrarla (0 créditos) y la aprobación humana. Tanque es el guardián #1 recomendado al empezar. ATENCIÓN: assets/sprites/champions/tanque/atlas.png tiene el sha256 fijado en tools/art/check-tanque-death.js:51 y check-tanque-hurt.js:58; si el ítem anexa a ESE atlas, correr los check-tanque-* y NO editar un sha fijado sin decisión del dueño (cargar la hoja como paquete aparte o pedir la re-aprobación)."
+   "nota": "Fase 3 (0 cr): hoja g1 -> sheet-to-cells.py (celda 144, escala del Códice, paleta del atlas codex-v1) -> assets/sprites/champions/tanque/v3/cast.png como PAQUETE APARTE CHAMP_PACK.tanque_cast; se ve al arrancar el Grito de Guerra (0,76 s; cuerpo base sin croma/skin) en js/rendering/codex-champions.js. Atlas maestro y codex-v1 intactos (sha fijados sin tocar); check-tanque-death/hurt PASS. Captura art-source/captures/campeon-poses-tanque_lanzar_gpt2/antes_despues.png. Falta aprobación del dueño."
   },
   {
    "id": "arena-ciudad-casa_a-integrar",
@@ -109,7 +109,7 @@
    "descripcion": "Ciudad Maldita: integrar la fachada casa_a (ya generada y aceptada): recorte croma, caja a escala nativa y carga en cm-render.js con respaldo.",
    "prioridad": "critico",
    "orden": 2,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "pintor_determinista",
    "costo_creditos": 0,
    "refs": {
@@ -124,7 +124,7 @@
    },
    "dependencias": [],
    "evidencia": "estado-runway.json casa_a = hecho_sin_integrar (8 cr gastados); ningún js/ la carga; arena 1 del recorrido",
-   "nota": "Ya pagada: NO regenerar. Seguir el patrón de tools/art-world/build-ciudad-estatua.py."
+   "nota": "Fase 3 (0 cr): build-ciudad-estatua.py casa_a -> assets/vfx/ciudad/casa_a_1.png (112 px nativos, x2). Integrada como casas vecinas TRAS la muralla del borde (norte/oeste/este), oscurecidas como la ciudad lejana; respaldo = patrón procedural. NO reemplaza las fachadas de los edificios jugables (puertas, techos que se desvanecen y colisiones dependen del rectángulo): eso queda como decisión del dueño. Captura art-source/captures/arena-ciudad-casa_a-integrar/antes_despues.png."
   },
   {
    "id": "enemigo-cm_cometa",
@@ -268,7 +268,7 @@
    "descripcion": "A-09 Cometa del Gran Número (vuelo 6, impacto 5; + versión \"reflejado\" dorada)",
    "prioridad": "critico",
    "orden": 10,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "pintor_determinista",
    "costo_creditos": 0,
    "refs": {
@@ -280,7 +280,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "asset-blocks.json B368 P1 PENDIENTE; arena ciudad (1/10 del recorrido)"
+   "evidencia": "asset-blocks.json B368 P1 PENDIENTE; arena ciudad (1/10 del recorrido)",
+   "nota": "Fase 3 (0 cr): tools/art-world/paint-ciudad-cometa.py -> cometa_vuelo_0..5 + cometa_oro_0..5 (48x48, x2, rotado hacia donde vuela) en cm-render.js con respaldo a cmFire/cmPreBolt. Impacto: se reutiliza el estallido existente cmBoom (no se pintaron los 5 cuadros de impacto propios). Captura art-source/captures/efecto-ciudad-cometa-gran-numero/antes_despues.png."
   },
   {
    "id": "arena-ciudad-techos-t03-t04",
@@ -355,7 +356,7 @@
    "descripcion": "CM-P02 Ovación final (canalización 3 s)",
    "prioridad": "critico",
    "orden": 14,
-   "estado": "pendiente",
+   "estado": "bloqueado_decision",
    "metodo": "pintor_determinista",
    "costo_creditos": 0,
    "refs": {
@@ -367,7 +368,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "asset-blocks.json B063 P0 PENDIENTE; arena ciudad (1/10 del recorrido)"
+   "evidencia": "asset-blocks.json B063 P0 PENDIENTE; arena ciudad (1/10 del recorrido)",
+   "nota": "Fase 3: no hay arte existente de una pose de Ovación del Presentador (el set cast de cm_presentador3 es un ataque apuntando). Una forma de jefe nueva de 8 cuadros no se puede pintar con el pintor determinista sin degradar el personaje: requiere generación (Runway/gpt_image_2) o un artista. Sin créditos en esta fase."
   },
   {
    "id": "ui-titulo",
