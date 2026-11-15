@@ -76,7 +76,7 @@ const TESTS = [
   T('tools/bible/arena-validator.js', 'node', 300, {args: ['--strict']}),
   T('tools/bible/boss-validator.js', 'node', 300, {args: ['--strict']}),
   // ---- objetos, economía, dificultad (navegador, servidor compartido) ----
-  ...['t_abismo', 't_boons', 't_breakables', 't_build_uniques', 't_camp', 't_campaign', 't_codex', 't_codex_book', 't_collision', 't_cromas', 't_crystals',
+  ...['t_abismo', 't_boss_dormant', 't_boons', 't_breakables', 't_build_uniques', 't_camp', 't_campaign', 't_codex', 't_codex_book', 't_collision', 't_cromas', 't_crystals',
     't_difficulty', 't_endless', 't_evolution', 't_ground_loot', 't_hechicero', 't_hpbonus', 't_itemization', 't_items', 't_mage_kit', 't_nigro_elements',
     't_nigro_golems', 't_nigromante', 't_pacing', 't_perf_exploits', 't_q4_economia', 't_quests', 't_reactions', 't_resonance', 't_roles', 't_sets',
     't_skins_brasas', 't_starter_gift', 't_story', 't_synergies'].map(n => T(`tools/items/${n}.js`, 'site', n === 't_campaign' ? 1800 : 900, n === 't_campaign' || n === 't_difficulty' ? {slow: 1} : {})),

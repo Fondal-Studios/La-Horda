@@ -140,3 +140,6 @@
 
 ### Fase 3 (2026-11-15): arte crítico de 0 créditos (rama local `cierre-fase3-arte`)
 Sin Runway (saldo 7). Instalados sin aprobar: el LANZAR del Tanque como paquete aparte (`tanque_cast`, Grito de Guerra), la fachada `casa_a` como casas vecinas tras la muralla de la Ciudad y el Cometa del Gran Número (vuelo y versión dorada). Bloqueado: la Ovación final (B063), que necesita una pose nueva. Ya no quedan críticos de 0 créditos en `--next --gratis`. Detalle y capturas en `ART_CREDITS.md` («Fase 3 del cierre»).
+
+### Fase 1b: partidas que no terminan (2026-11-15)
+- Dos bugs del juego arreglados sin tocar el balance (`docs/beta-release/FASE1B_PARTIDAS_SIN_TERMINAR.md`). (1) `dmgTakenMult = 0` valía 1 en `damageEnemy` (`js/systems/combat.js`), así que el Caballero sentado, la Madre Espora latente y el Carcelero surgiendo se podían matar antes de ser `boss` y no había victoria (Fortaleza P 5144). (2) Con la puerta de la cámara cerrada, un empujón dejaba al Caballero o a un héroe del lado de afuera (Fortaleza N 5015/5029); ahora vuelven a la cámara (`fortKnightKeepInside`, `fort-map.js`). Prueba nueva `tools/items/t_boss_dormant.js` (falla sin los arreglos). De los 18 topes repetidos: 9 victorias, 1 derrota y 8 topes con avance continuo (dificultad o límite del piloto, sin cambios).
