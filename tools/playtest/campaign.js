@@ -109,7 +109,7 @@ async function runOne(page, job) {
     const lvl0 = save.champions[job.cls].level, xp0 = save.champions[job.cls].xp, gold0 = save.gold;
     __AP.start(job.cls, job.arena, 1);
     let t = 0, lastLv = 0;
-    while (t < 22 * 60000) {
+    while (t < (job.maxMin || 22) * 60000) { // job.maxMin: tope de la partida en minutos de juego (por omisión 22; mas largo solo para distinguir «sin terminar» de «trabada»)
       const o = __AP.sim(1000); t += 1000;
       if (runLevel !== lastLv) { __CP.levelAt[runLevel] = Math.round(t / 1000); lastLv = runLevel; }
       const alive = enemies.filter(e => e.alive).length; if (alive === 0 && state === 'playing') __CP.idleMs += 1000;
@@ -117,6 +117,7 @@ async function runOne(page, job) {
       if (player.alive) __CP.minHpPct = Math.min(__CP.minHpPct, Math.round(100 * player.hp / player.maxHp));
       if (boss && __CP.bossAt === null && runLevel === LEVEL_COUNT) __CP.bossAt = Math.round(t / 1000);
       if (boss && !boss.alive && __CP.bossDeadAt === null && __CP.bossAt !== null) __CP.bossDeadAt = Math.round(t / 1000);
+      if (job.trace && t % (job.trace * 1000) === 0 && boss && boss.alive) { (__CP.trace = __CP.trace || []).push([Math.round(t / 1000), Math.round(boss.hp), Math.round(player.hp), player.alive ? 1 : 0, Math.round(Math.hypot(player.x - boss.x, player.y - boss.y))]); } // job.trace=S: cada S s de juego [t, vidaJefe, vidaJugador, vivo, distancia al jefe]
       if (state !== 'playing' && state !== 'buff') break;
     }
     const st = player.stats || {};
@@ -126,7 +127,7 @@ async function runOne(page, job) {
       bossSecs: __CP.bossAt !== null ? ((__CP.bossDeadAt || Math.round(t / 1000)) - __CP.bossAt) : null, bossType: boss ? boss.type : null, bossHpLeftPct: boss && boss.alive ? Math.round(100 * boss.hp / boss.maxHp) : 0,
       dmgShare: Math.round(100 * (st.dmgDealt || 0) / Math.max(1, (st.dmgDealt || 0) + allyDmg)), casts: st.skillCasts || 0, dmgTaken: Math.round(st.dmgTaken || 0), healDone: Math.round(st.healDone || 0),
       minHpPct: __CP.minHpPct, idleSecs: Math.round(__CP.idleMs / 1000), peakEnemies: __CP.peakEnemies, allyDowns: __CP.allyDowns,
-      items: __CP.items, bigHits: __CP.bigHits, killer: __CP.killer || null, falls: __CP.falls, hangs: __CP.hangs, fallInfo: __CP.fallInfo || null, buffs: __CP.buffs, levelAt: __CP.levelAt, top,
+      trace: __CP.trace || null, items: __CP.items, bigHits: __CP.bigHits, killer: __CP.killer || null, falls: __CP.falls, hangs: __CP.hangs, fallInfo: __CP.fallInfo || null, buffs: __CP.buffs, levelAt: __CP.levelAt, top,
       xpGain: (save.champions[job.cls].level - lvl0) + ' lv / ' + Math.round(save.champions[job.cls].xp - xp0) + ' xp', goldGain: save.gold - gold0, apErr: __AP.err || null,
       exit: __AP.exit ? { seenS: Math.round(__AP.exit.seenAt / 1000), reachedS: __AP.exit.reachedAt === null ? null : Math.round(__AP.exit.reachedAt / 1000), holds: __AP.exit.holds } : null,
       after: { lv: save.champions[job.cls].level, totXp: totalXpForChamp(job.cls), gold: save.gold, cleared: Object.keys(save.arenasCleared || {}).length } };

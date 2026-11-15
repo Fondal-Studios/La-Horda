@@ -84,7 +84,7 @@ const TESTS = [
   T('tools/identity/t_identity.js', 'site', 1200),
   T('tools/identity/t_objectives.js', 'site', 600),
   ...['t_bestias', 't_boss_assist', 't_champs_se', 't_checkpoint', 't_defeat_clear', 't_drag_aim', 't_hit_react', 't_ilkan_migration', 't_juice',
-    't_run_end', 't_save_sanitize'].map(n => T(`tools/regression/${n}.js`, 'site', 900, n === 't_run_end' ? {kind: 'fixed'} : n === 't_ilkan_migration' ? {args: site => [site.url]} : {})),
+    't_run_end', 't_save_sanitize', 't_reload_midrun'].map(n => T(`tools/regression/${n}.js`, 'site', 900, n === 't_run_end' ? {kind: 'fixed'} : n === 't_ilkan_migration' ? {args: site => [site.url]} : {})),
   // cámara/resolución sobre el sitio servido tal cual (el resto de la carpeta regression compara dos versiones instrumentadas: ver su README)
   T('tools/regression/t_camera.js', 'site', 600, {args: (site, out) => ['.', out]}),
   T('tools/ux/test-accessibility-prefs.js', 'site', 600),
@@ -97,6 +97,7 @@ const TESTS = [
   T('tools/ux/test-text-overflow.js', 'own', 900),
   T('tools/ux/test-touch-targets.js', 'own', 600),
   T('tools/ux/test-first-minute-taps.js', 'site', 600),
+  T('tools/ux/test-start-button-viewports.js', 'site', 900),   // FASE 1: botón de comenzar visible/usable en 844x390, 667x375, 932x430, 1280x720 y 390x844
   T('tools/ux/test-starter-skin-layout.js', 'site', 600),
   T('tools/ux/functional.js', 'fixed', 900),
   // ---- calidad, VFX, arte ----
