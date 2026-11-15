@@ -1504,9 +1504,33 @@ function castAbility(caster, sk, isUlt, idx){
 // Kael (guerrero): curación propia al conectar Corte Sangrante / Triple Golpe (sk.healPct = fracción de la vida máxima).
 // BALANCE_DIFICULTAD_20261113.md: el guerrero era el único rol sin sustain (healDone 0) y perdía el desgaste cuerpo a cuerpo.
 function kaelSustain(caster, sk, power){
+  kaelBurstGuard(caster, sk);
   if(!sk.healPct || !caster.alive) return;
   const amt = caster.maxHp*sk.healPct*(power||1)*(1 + passiveSum(caster.classKey,"heal_mult"));
   trackHeal(caster, caster, amt);
   applyHealOverheal(caster, caster, amt);
   floatText(caster.x, caster.y-30, "+"+Math.round(amt), "heal");
+}
+
+// Kael: mitigación y esquiva (docs/beta-release/BALANCE_GUERRERO_20261115.md). Todo es dato: cls.guard.{capPct,capCdMs} y
+// sk.{iframeMs,burstArmor,burstArmorMs}; en 0 o ausente no hace nada.
+// Al conectar la ráfaga (Corte Sangrante / Triple Golpe): invulnerabilidad breve (esquiva) y armadura temporal, ambas con efecto visible.
+function kaelBurstGuard(caster, sk){
+  if(!caster.alive) return;
+  if(sk.iframeMs > 0){
+    caster.invulnTimer = Math.max(caster.invulnTimer||0, sk.iframeMs);
+    if(typeof kitFx === "function") kitFx("wind", caster.x, caster.y, 46);
+    floatText(caster.x, caster.y-46, "ESQUIVA", null);
+  }
+  if(sk.burstArmor > 0 && typeof kitBuff === "function") kitBuff(caster, caster, sk.burstArmorMs||2500, {armor:sk.burstArmor, label:"+ARMADURA"});
+}
+// Tope por golpe: con enfriamiento interno, un golpe (ya mitigado) no saca más de cls.guard.capPct de la vida máxima de Kael.
+// No lo vuelve inmortal: si la vida restante es menor que el tope sigue muriendo, y tras activarse no vuelve a proteger hasta pasar capCdMs.
+function kaelHitGuard(h, dmg, src){
+  const g = h.cls && h.cls.guard; if(!g || !(g.capPct > 0) || !(dmg > 0) || !h.maxHp) return dmg;
+  const lim = h.maxHp*g.capPct; if(dmg <= lim || runElapsedMs < (h._kaelCapAt||0)) return dmg;
+  h._kaelCapAt = runElapsedMs + (g.capCdMs||5000);
+  if(typeof kitFx === "function") kitFx("shield", h.x, h.y, 52);
+  floatText(h.x, h.y-46, "TEMPLE", null);
+  return lim;
 }
