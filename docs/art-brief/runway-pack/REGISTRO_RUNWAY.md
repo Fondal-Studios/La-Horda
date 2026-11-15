@@ -6,7 +6,7 @@
 
 > Auditado el 2026-11-12 en la rama `wip/runway-video` contra el repo (archivos con `ls`, carga con `grep` en `js/`). Costo medido: 8 cr por imagen gen4_image 1024; hoja de enemigo 1280x720 observada a 5 cr; video gen4_turbo 2 s = 10 cr. Los créditos son los registrados por recibo/ART_CREDITS (hay gasto sin recibo: ver notas); el saldo de la cuenta es compartido.
 
-**Entradas: 94** · ✔ integrado 57 · ◐ sin integrar 8 · ✘ rechazado 13 · · pendiente 15 · ⛔ bloqueado 1 · créditos registrados: 1413
+**Entradas: 95** · ✔ integrado 57 · ◐ sin integrar 8 · ✘ rechazado 14 · · pendiente 15 · ⛔ bloqueado 1 · créditos registrados: 1415
 
 ## lamina_campeon (4)
 
@@ -28,7 +28,7 @@
 | `prox_props_bosque` | · pendiente |  |  |  | Idem. |
 | `prox_props_laberinto` | · pendiente |  |  |  | Idem. |
 
-## piso_arena (9)
+## piso_arena (10)
 
 | id | estado | fecha | cr | dónde está | nota |
 |---|---|---|---:|---|---|
@@ -41,6 +41,7 @@
 | `prox_piso_bosque` | · pendiente | 2026-11-12 |  | `js/rendering/arena.js` | Sigue siendo el piso procedural (FLOOR_THEME). Runway funcionó en 5 de 6 pisos (falló solo abismo por marco/diagonal). [2026-11-12] 2026-11-12: intento bloqueado, 0 creditos: la API respondio 'Your daily task limit has been reached.' (saldo 295, sin cobro). JOB listo en runway-world.js (ver el id de esta entrada), ref en art-source/runway-world/<arena>/ref_crop.png; capturas ANTES en art-source/captures/. Reintentar cuando se libere el limite diario. |
 | `prox_piso_hielo` | · pendiente | 2026-11-12 |  | `js/rendering/arena.js` | Sigue siendo el piso procedural (FLOOR_THEME). Runway funcionó en 5 de 6 pisos (falló solo abismo por marco/diagonal). [2026-11-12] 2026-11-12: intento bloqueado, 0 creditos: la API respondio 'Your daily task limit has been reached.' (saldo 295, sin cobro). JOB listo en runway-world.js (ver el id de esta entrada), ref en art-source/runway-world/<arena>/ref_crop.png; capturas ANTES en art-source/captures/. Reintentar cuando se libere el limite diario. |
 | `prox_piso_divina` | · pendiente |  |  | `js/rendering/arena.js` | Último piso procedural sin pintar. |
+| `prox_bosque_piso_turbo` | ✘ rechazado | 2026-11-13 | 2 | `art-source/runway-designs/bosque/piso_t1/master.png` | gen4_image_turbo es barato (2 cr) pero imita la composición del @ref en vez del estilo: sale una rejilla; mismo defecto que abismo_piso. |
 
 ## centro_arena (6)
 
@@ -167,6 +168,7 @@
 - ✘ **`hoja_minotauro`** (jefe, 2026-11-06, 5 cr): Hoja peor que el retrato de campo de batalla; retirada (RUNWAY_ENEMIES.md). **Siguiente:** NO repetir tal cual (hoja/animación de enemigos con Runway: medido, ver regla).
 - ✘ **`hoja_chaman`** (enemigo_hoja, 2026-11-07, 5 cr): La hoja salió con texto dentro de la imagen (docs/art-gate/MICELIAL_RUNWAY_20261107.md); sigue el atlas viejo. **Siguiente:** NO repetir tal cual (hoja/animación de enemigos con Runway: medido, ver regla).
 - ✘ **`regla_animacion_hojas_enemigos`** (enemigo_hoja, 2026-11-12, 0 cr): Los 4 rehechos del 2026-11-12 (8 hojas, 40 cr): 0 mejoran el atlas vigente. Runway no da ciclos de caminata distintos (cuadros casi idénticos) ni muerte limpia (funde dos cuerpos o agrega cristales). El camino válido fue SOLO enemigos sin hoja o con hoja pobre. **Siguiente:** NO rehacer hojas de enemigos ya instaladas; NO pedir ciclos de caminata a Runway (usar proc_walk).
+- ✘ **`prox_bosque_piso_turbo`** (piso_arena, 2026-11-13, 2 cr): gen4_image_turbo es barato (2 cr) pero imita la composición del @ref en vez del estilo: sale una rejilla; mismo defecto que abismo_piso. **Siguiente:** Probar con una referencia que sea solo textura (recorte de piedra sin paneles) o esperar el reinicio del tope de gen4_image (200/día) y repetir el trabajo bosque_piso de runway-world.js.
 
 También medido (sin entrada propia): Runway ignora la pose pedida en la muestra del Tanque; los `BAD_OUTPUT` pueden cobrarse (la API informa 0 pero el saldo bajó igual; cuenta compartida, no atribuible); los prompts largos con anatomía rara fallan sin `@pose`; un prompt con texto genera texto dentro de la imagen; los ciclos de caminata salen con cuadros casi idénticos. Un fallo seguido de otro igual = parar.
 

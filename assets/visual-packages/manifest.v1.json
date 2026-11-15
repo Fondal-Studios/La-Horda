@@ -5186,14 +5186,14 @@
     "path": "assets/sprites/champions/libertador/v2/atlas.png",
     "format": "png",
     "width": 824,
-    "height": 784,
-    "sha256": "3c993355968f3d43b0247b18230509e131beab485e2702991accc003a7ec5512"
+    "height": 882,
+    "sha256": "791cb61a7140a3bddfd111d5b73f9b3ef71d8f1fdcf4ed279a3b09170d34273d"
    },
    "grid": {
     "frameWidth": 103,
     "frameHeight": 98,
     "cols": 8,
-    "rows": 8
+    "rows": 9
    },
    "states": {
     "idle_down": [
@@ -5305,7 +5305,16 @@
      24
     ],
     "ult_cast": [
-     44
+     64,
+     65,
+     66,
+     67
+    ],
+    "ultimate": [
+     64,
+     65,
+     66,
+     67
     ]
    },
    "pivot": {

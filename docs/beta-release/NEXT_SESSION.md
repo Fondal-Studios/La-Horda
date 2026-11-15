@@ -1,5 +1,8 @@
 # NEXT_SESSION — cómo seguir con la beta (actualizado 2026-11-07)
 
+## REGLA DEL DUEÑO (2026-11-13): antes y después SIEMPRE en una captura
+Cada cambio de arte se entrega al dueño con **UNA imagen que muestre el ANTES y el DESPUÉS juntos** (barra «ANTES» arriba y «DESPUÉS» abajo, tomadas del motor real a tamaño de juego), una por campeón/asset, enviadas con SendUserFile en el momento de terminar. No alcanza con mandar solo el «después» ni dos archivos sueltos. Los agentes de arte deben dejar el par en `art-source/captures/<id>/antes_despues.png` además de las capturas por separado.
+
 ## Actualización 2026-11-12 (leer primero)
 - **Mergeado:** #288–#290, #292, #294–#296. `main` = a27c48b7 al escribir esto.
 - **Arte con Runway:** el paquete `docs/art-brief/runway-pack/` está en `main` (empezar por `README_PROMPT_MAESTRO.md`). Saldo de Runway recargado a 950 el 2026-11-12 y 710 tras el primer ciclo de dibujo (cuenta compartida: baja también por consumo ajeno). El primer ciclo real dio 0 imágenes ni hojas aprobadas (ver `ART_CREDITS.md`). Sin tope de gasto por decisión del dueño (2026-11-12). Registrar cada generación en `docs/beta-release/ART_CREDITS.md`.
@@ -102,3 +105,6 @@ Informes completos (auditoría y correcciones por área) en `docs/beta-release/a
 - **Sets = poder** (se ganan jugando, nunca Brasas) y **Apariencias = identidad** (Brasas/pase/logro/ascensión): pestañas separadas (`tools/collection/sets-vs-looks.js`).
 - **Rachas**: sin plantillas por tiempo jugado; racha diaria con hitos 3/7/14 (cofre/título/marco) y congelador semanal ganado jugando (`tools/items/t_quests_streak.js`). El reloj del cliente solo se frena con "último día visto"; **la validación fuerte (día contado por el servidor) falta y va al servidor**.
 - Pendiente: precios/ofertas y `server/premium-packs.json` (decisión del dueño); arte propio para las manifestaciones (hoy solo tiñen el efecto); pase de batalla (`bp:*`) aún sin cosméticos del catálogo por guardián.
+
+## Actualización 2026-11-13 (mañana)
+- Pendiente: revisión independiente y merge del commit 1ffae190 (Plaga del Nigromante); chequeo de marcas de «La Horda» (dueño); recarga de Runway (37 créditos).

@@ -44,7 +44,7 @@ const sha=file=>crypto.createHash('sha256').update(fs.readFileSync(path.join(ROO
    }
    check('component metadata',D.fw===112&&D.fh===112&&D.cols===4&&D.refH===71&&D.anchor===106/112);
    check('Códice exposes actual death clip',CODEX_CHAMP_EXTRA_ANIMS.libertador.some(a=>a.set==='death_down'&&a.pack==='libertador_death'));
-   check('all original foot frames retained',B.atlas.naturalWidth===824&&Object.values(B.rawSets).flat().every(v=>v>=0&&v<61));
+   check('all original foot frames retained',B.atlas.naturalWidth===824&&Object.entries(B.rawSets).every(([k,a])=>(k==='ult_cast'||k==='ultimate')?(a.length===4&&[64,65,66,67].every((v,i)=>a[i]===v)):a.every(v=>v>=0&&v<61)));/* ult_cast/ultimate = cuadros 64-67 re-aprobados por el dueño 2026-11-13; el resto sigue limitado a v<61 */
    const referenceShots=[];
    for(const key of ['tanque','libertador']){const h=makeHero(key,true,0,0);h._codexSkin=null;h.fx=0;h.fy=1;h.moving=false;h.attackAnim=0;animNow=0;draw(h,'body');referenceShots.push(cv.toDataURL('image/png'));}
    for(const level of [1,39,40,60,90,99]){
@@ -95,7 +95,8 @@ const sha=file=>crypto.createHash('sha256').update(fs.readFileSync(path.join(ROO
   report.checks.push(...guest);
   for(let i=0;i<result.shots.length;i++)fs.writeFileSync(path.join(OUT,'runtime-'+i+'.png'),Buffer.from(result.shots[i].split(',')[1],'base64'));
   for(let i=0;i<result.referenceShots.length;i++)fs.writeFileSync(path.join(OUT,'reference-'+i+'.png'),Buffer.from(result.referenceShots[i].split(',')[1],'base64'));
-  for(const [file,expected] of [['assets/sprites/champions/libertador/v2/atlas.png','3c993355968f3d43b0247b18230509e131beab485e2702991accc003a7ec5512'],['assets/sprites/champions/libertador/v2/horse.png','9979b371f9452bfb93c3702b947fd5fcbd2fa8819e5f16424453a79da53578ce']])report.checks.push({name:'atlas aprobado Códice (revision-codex-v1) '+file,ok:sha(file)===expected});
+// Pin del atlas v2 del Libertador: re-aprobado por el dueño 2026-11-13 (atlas ampliado con ult_cast, cuadros 64-67; cuadros 0-63 idénticos al v2 anterior, sha 3c993355...5512).
+  for(const [file,expected] of [['assets/sprites/champions/libertador/v2/atlas.png','791cb61a7140a3bddfd111d5b73f9b3ef71d8f1fdcf4ed279a3b09170d34273d'],['assets/sprites/champions/libertador/v2/horse.png','9979b371f9452bfb93c3702b947fd5fcbd2fa8819e5f16424453a79da53578ce']])report.checks.push({name:'atlas aprobado Códice (revision-codex-v1) '+file,ok:sha(file)===expected});
   report.provenance={atlasSha256:sha('assets/sprites/champions/libertador/v2/death.png'),rendererSha256:sha('js/rendering/champion-sprites.js')};
   report.status=report.errors.length||report.checks.some(c=>!c.ok)?'FAIL':'PASS';
   console.log(JSON.stringify({status:report.status,checks:report.checks.length,failed:report.checks.filter(c=>!c.ok),errors:report.errors}));assert.equal(report.status,'PASS');

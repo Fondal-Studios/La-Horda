@@ -1,67 +1,67 @@
 {
- "subject": {
-  "pr": 302,
-  "branch": "claude/la-horda-beta-audit-exec-mwv8x0",
-  "head": "fcf68fdf4f601e52a82ed613d39a12de21c16be9",
-  "authorAgent": "claude-sesion-principal",
-  "authorId": "claude-sesion-principal"
- },
- "stages": [
-  {
-   "stage": "produccion",
-   "by": "claude-sesion-principal",
-   "role": "agent",
-   "commit": "fcf68fdf4f601e52a82ed613d39a12de21c16be9",
-   "at": "2026-11-13T01:00:00Z"
+  "subject": {
+    "pr": 303,
+    "branch": "claude/la-horda-beta-audit-exec-mwv8x0",
+    "head": "b67be35684d3a9066e1cf3cf4c46074130707dc2",
+    "authorAgent": "claude-sesion-principal",
+    "authorId": "claude-sesion-principal"
   },
-  {
-   "stage": "qa",
-   "by": "claude-qa-302",
-   "role": "qa",
-   "verdict": "aprobado",
-   "evidence": {
-    "sha": "fcf68fdf4f601e52a82ed613d39a12de21c16be9",
-    "tests": 27,
-    "failed": 0,
-    "report": "Sobre fcf68fdf: lista de cambios solo la prevista (js/champions/ilkan.js y libertador.js, js/rendering/{champion-art-normalize,champion-sprites,entities}.js, js/assets/champion-sprites.js, atlas de Ilkan, manifest.v1.json, pruebas tools/{identity,items,lanes,quality,art}, docs, art-source; sin server/, balance, gates ni nigromante.js). Retrocompatibilidad de los despachos verificada leyendo el diff y con test-champion-draw-dispatch 19/19 (con set ausente se dibuja lo mismo que antes; Libertador con su set de 1 cuadro da floor(prog*1)=0). Único cambio visible sin arte nuevo: Nigromante (pose sets.ult durante nigroTransformTimer>0, luego el Demonio); la lógica (timers, daño, forma) no cambia. Atlas de Ilkan 1536×1152 con los 64 cuadros previos idénticos píxel a píxel a main, alfa 0/255, pies en la fila 115 y registro frameCount 72, attack_down [64..67], attack_up [68..71]. Pasaron: visual-package check y test 6/6, build-art-atlas --check, competitive-roster, crystal-wars test-competitive 8, art-runtime-clips 46 campeones, roster_gate 0/0/0 (150 apariencias), webp_convert --check 0, test-runway-pack 9945, art-checklist --check, qa-manifest-check, check-collection, check-ilkan-codex/preservation/equipment/buffs/preview, check-libertador-motion 261 y death 127; scan_sprites halo 18 px igual que main. Pruebas deterministas: t_abismo, t_identity (88 PASS) y test-sides 3 corridas cada una, 9/9; en los diffs no se bajó ningún umbral ni se quitó ninguna aserción (semilla, esperas por condición, muestreo, arenaRuleTimer apagado durante la contención). Recibos ilkan af1 y ab1 y libertador u1 cotejados (gpt_image_2, 20 cr c/u) y 168 recibos de Runway coinciden con DECLARACION_IA. MINOR abiertos: variación modesta entre cuadros del ataque frontal de Ilkan; Libertador definitiva aceptada pero NO instalada (check-libertador-motion y death fijan el sha256 del atlas aprobado: decisión del dueño), con el despacho adelantado respecto al arte instalado; t_abismo espera hasta 4 s y test-sides cambió el radio de muestreo del aro aliado de 5,5 a 4,5 (algo menos de cobertura, umbrales intactos); 3 corridas por prueba no permiten afirmar una tasa. No llamó a Runway."
-   },
-   "at": "2026-11-13T01:02:00Z"
-  },
-  {
-   "stage": "arquitectura",
-   "by": "claude-arq-302",
-   "role": "arquitecto",
-   "verdict": "aprobado",
-   "evidence": {
-    "sha": "fcf68fdf4f601e52a82ed613d39a12de21c16be9",
-    "report": "Aprobó fcf68fdf. Despachos retrocompatibles y solo de dibujo: nigromante.js no está en el diff; nigroUltPoseActive es de solo lectura y el resto de usos de nigroDemonForm (HUD, IA, habilidades, VFX, red, NET_COLLS, replays, Crystal Wars/Coliseo) no dependen de qué sprite se dibuja. Pruebas del CI: apagar arenaRuleTimer durante la contención es un aislamiento legítimo (mide la contención de las runas, no el evento ambiental); sin umbrales relajados; la prueba de despacho está en run-all.js y qa-manifest.json, es determinista y restaura el estado global. Checklist de arte honesto (vocabulario fijo, sin_verificar con motivo, --check sin navegador). Libertador candidato no instalado correctamente explicado sin tocar los gates. Recibos y recuentos coherentes (9 generaciones gpt_image_2, 168 recibos). OBSERVACIÓN MEDIA DE PROCESO: el cambio visible de Nigromante (pose propia durante 900 ms y el Demonio entrando a escala 1 en vez de crecer 0,78→1) no tiene aprobación de arte humana; el dueño fue informado con capturas y debe validarlo; queda anotado como pendiente. MINOR abiertos: contradicción cronológica en ART_CREDITS (sección que dice «nada generado» antes de las que instalan Ilkan), falta una coma en DECLARACION_IA, hash de etiqueta atlas_hash de enemy-coverage.json desfasado (datos de enemigos que la PR no toca), STATUS conserva «main = 88710d18», restitución de arenaRuleTimer sin try/finally."
-   },
-   "at": "2026-11-13T01:04:00Z"
-  },
-  {
-   "stage": "staging",
-   "by": "claude-integrador-302",
-   "role": "integrador",
-   "verdict": "aprobado",
-   "evidence": {
-    "sha": "fcf68fdf4f601e52a82ed613d39a12de21c16be9",
-    "branch": "beta/integracion-20261110",
-    "tests": 36,
-    "failed": 0,
-    "run": "https://github.com/Fondal-Studios/La-Horda/pull/302"
-   },
-   "at": "2026-11-13T01:06:00Z"
-  },
-  {
-   "stage": "aprobacion",
-   "by": "claude-integrador-302",
-   "role": "director",
-   "verdict": "aprobado",
-   "evidence": {
-    "sha": "fcf68fdf4f601e52a82ed613d39a12de21c16be9",
-    "report": "Aprobado sobre fcf68fdf. 37 check runs: 36 success y 1 failure ('Clasificacion, contratos y servidor' del PR, solo por R4). Regresión rápida y regresión completa (push a beta/integracion-20261110 sobre el mismo SHA) en success; Objetos/economía/tienda (ambos), Identidad de arenas (t_identity), lanes (test-sides), entry-reference y steam-pc en success. Ninguna prueba falló en la primera pasada, por lo que no se reintentó nada; es una sola muestra por prueba y no demuestra estabilidad (la tasa de ~2/27 de LAB.los_bots_resuelven_en_orden, no arreglada, sigue sin descartarse). Diff 69 archivos: archivos de juego solo los previstos; resto docs, tools y art-source. Arte instalado: ataque de frente y de espaldas de Ilkan con gpt_image_2; aprobación de arte humana pendiente; Libertador definitiva sin instalar."
-   },
-   "at": "2026-11-13T01:08:00Z"
-  }
- ]
+  "stages": [
+    {
+      "stage": "produccion",
+      "by": "claude-sesion-principal",
+      "role": "agent",
+      "commit": "b67be35684d3a9066e1cf3cf4c46074130707dc2",
+      "at": "2026-11-15T09:30:00Z"
+    },
+    {
+      "stage": "qa",
+      "by": "qa-revisor-1113",
+      "role": "qa",
+      "verdict": "aprobado",
+      "evidence": {
+        "sha": "b67be35684d3a9066e1cf3cf4c46074130707dc2",
+        "tests": 4,
+        "failed": 0,
+        "report": "Revisor QA independiente (distinto del autor). Aprobado con observaciones sobre b67be356 (antes sobre 6108e0f1 y 6917a575). Sobre b67be356 corrió: node tools/bible/boss-validator.js --strict (exit 0, page errors 0), node tools/ux/test-starter-skin-layout.js (TODO OK, 15 PASS en 5 viewports, dos corridas), run-all --only t_difficulty (PASS) y --only test-text-overflow (PASS). El diff 6917a575..b67be356 son 3 archivos (css/onboarding.css, js/data/arenas.js, BALANCE_DIFICULTAD_20261113.md) y no toca gates ni tests. En rondas previas sobre el mismo PR: t_abismo PASS, check-libertador-death 127/127 y motion 261/261, test-champion-draw-dispatch 19/19, art-runtime-clips 46 campeones, check-entry-reference, ability-gate --strict 0 fallos, server/test-wallet 67/67, test-runway-pack 9945, art-checklist --check. Observaciones menores abiertas: arte de 56 px en 360 px de alto sin probar en dispositivo real; comentario CSS desactualizado; el efecto del hilo/orbes del Nigromante no respeta JUICE.reduceFx; costo por cuadro de drawNigroCurseMark sin medir; curación de Kael (4%/7%) sin validar por simulación; salto del Carcelero sin probar con abHang ni en cooperativo guest; Normal en Ciudad/Bosque sigue sin riesgo real (deuda documentada en BALANCE_DIFICULTAD_20261113.md). Informe transcrito por el integrador desde el mensaje del revisor, no reverificado."
+      },
+      "at": "2026-11-15T09:31:00Z"
+    },
+    {
+      "stage": "arquitectura",
+      "by": "arquitectura-revisor-1113",
+      "role": "arquitecto",
+      "verdict": "aprobado",
+      "evidence": {
+        "sha": "b67be35684d3a9066e1cf3cf4c46074130707dc2",
+        "report": "Revisor de arquitectura independiente (distinto del autor y de QA). Rechazó 6108e0f1 (hash de ATLAS_ARTE desactualizado, ABILITY_GATE derivado sin regenerar, ajuste de Kael sin registrar en BALANCE_CAMPEONES.md); aprobó con observaciones 9bc41a48 y 6917a575 tras corregirlo, y aprobó con observaciones b67be356: git diff --stat 6917a575..b67be356 = css/onboarding.css, js/data/arenas.js y BALANCE_DIFICULTAD_20261113.md (+14/-8). El revert de tierMods de Normal (Bosque, Ciudad) es de datos, no contradice AGENTS.md ni BALANCE_CAMPEONES.md; el CSS es un parche frágil (propone barra sin position:sticky como solución estructural, pendiente para el siguiente PR). Observaciones abiertas: costo de drawNigroCurseMark, no replicación en red del hilo/orbe del Nigromante, camino rápido de anim-atlas.js sin restaurar estado ante excepción, master.png de piso rechazado (1,05 MB) y q4_econ json versionados. Informe transcrito por el integrador, no reverificado."
+      },
+      "at": "2026-11-15T09:32:00Z"
+    },
+    {
+      "stage": "staging",
+      "by": "claude-integrador-303",
+      "role": "integrador",
+      "verdict": "aprobado",
+      "evidence": {
+        "sha": "b67be35684d3a9066e1cf3cf4c46074130707dc2",
+        "branch": "beta/integracion-20261110",
+        "tests": 141,
+        "failed": 0,
+        "run": "https://github.com/Fondal-Studios/La-Horda/actions/runs/43649043428"
+      },
+      "at": "2026-11-15T09:33:00Z"
+    },
+    {
+      "stage": "aprobacion",
+      "by": "claude-integrador-303",
+      "role": "director",
+      "verdict": "aprobado",
+      "evidence": {
+        "sha": "b67be35684d3a9066e1cf3cf4c46074130707dc2",
+        "report": "Aprobado sobre b67be356 por orden expresa del propietario (drmarianojimenez94-sudo): pidió el PR y el merge 'cuando el CI de verde' y, tras el bloqueo del permiso por firmar la aprobación un agente, respondió 'Si' a '¿Autorizás expresamente que escriba y suba el registro de revisión del PR #303?' (2026-11-15). Evidencia verificada en la API de GitHub: run 43649043428 en beta/integracion-20261110, head_sha b67be356, job 'Regresion del juego (completa)' success (22:37Z-23:05Z, PASS 141 FLAKY 0 FAIL 0); CI del PR #303 sobre b67be356: 39 check runs, 38 success y 1 failure ('Clasificacion, contratos y servidor' del PR, solo por R4 mientras faltaba este registro). Incluye la re-aprobación expresa del propietario del atlas del Libertador (sha256 791cb61a... y límite de cuadros 64-67 de ult_cast/ultimate en check-libertador-death.js). Límites: informes de QA y arquitectura transcritos, no reverificados; sin pruebas de multijugador real ni de rendimiento en dispositivo."
+      },
+      "at": "2026-11-15T09:34:00Z"
+    }
+  ]
 }
