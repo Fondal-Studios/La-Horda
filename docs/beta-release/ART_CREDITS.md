@@ -270,3 +270,9 @@ Todo quedó `instalado_sin_aprobar` (la aprobación de arte es del dueño). Capt
 - `libertador_escarcha` y `libertador_ancestral`: atlas 448x1008 con 36 poses nativas que siguen la barra artística del cuerpo base (mismas celdas, guardia y estados). Reemplazan la propuesta del PR #293, que se cerró. Metadatos en `js/assets/unique-skins-meta.js`, normalización en `js/data/champion-art-normalize.js` y `docs/art/ATLAS_VIGENTE.json`.
 - Antes/después: `docs/art-brief/captures/libertador/skins_antes_despues*.png` (scripts `tools/art/capture-libertador-skins-paired.js` y `capture-libertador-skins-close.js`).
 - Estado: **instalado, sin aprobación del dueño** (la aprobación del 2026-11-14 no cubre estas skins). Son cosméticas: no cambian estadísticas.
+
+## Pantalla de título con el Demonio Mayor - 2026-11-15 (aprobado por el dueño)
+
+- `js/beta/beta-ui.js`: la escena del título enfrenta a los cinco guardianes con el Demonio Mayor (forma final del Rey de la Horda) y tres bichos de la arena infernal, en lugar del Ángel Caído de Hielo. Usa el arte real del juego (`_cxDrawEnemy`, grupo `ar:infernal`). Solo cosmético.
+- **Aprobación del dueño (2026-11-15, textual):** a la pregunta «¿Lo ponemos igual, aunque muestre al jefe final?» respondió «Si. Ponelo». Acepta que el título revele al jefe final.
+- Captura del motor real: `docs/art-brief/captures/titulo/demonio_mayor_1280x720.png` (0 errores de página).

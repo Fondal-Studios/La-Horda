@@ -13,7 +13,7 @@ Estados: **IMPL** implementado · **AUTO** probado automáticamente · **HW** pr
 | 3 | Arte crítico de 0 créditos (Tanque, cometa, casa_a) | IMPL + AUTO | `ART_CREDITS.md` «Fase 3 del cierre» | DUEÑO: aprobar a ojo |
 | 3 | Skins del Libertador | IMPL + AUTO | PR #306 | DUEÑO: aprobar a ojo |
 | 3 | Ovación final del Presentador | BLOQ | Necesita Runway (saldo 7) o un artista | Dueño: recargar Runway |
-| 3 | Pantalla de título con el Demonio Mayor | PEND (decisión) | Variante local `cierre-fase3-titulo` | Dueño: confirmar aunque revele al jefe final |
+| 3 | Pantalla de título con el Demonio Mayor | IMPL + DUEÑO | `ART_CREDITS.md`, captura en `docs/art-brief/captures/titulo/` | — |
 | 4 | UX: aviso de núcleos en Micelial, barra de skins del inicio | PEND | — | Siguiente fase |
 | 5 | Multijugador real (latencia, reconexión) | PEND | Solo LAN automática | Pruebas en hardware y red reales |
 | 6 | Seguridad y dependencias | PEND | Triaje en Fase 0 | — |
