@@ -65,7 +65,7 @@ Efectos visibles (regla del filtro de habilidades): la esquiva dispara `kitFx("w
 Lectura honesta:
 
 - **A (tope)**: en Normal y Pesadilla las 30 partidas dan el mismo resultado que la base (el tope casi nunca se activa); en Infierno 0 mejoras y 2 empeoramientos. **Sin efecto**, coherente con la sección 2.
-- **C (armadura + esquiva corta)**: 6 pares a favor y 5 en contra (todas las dificultades, p = 0,77). **Sin efecto distinguible**; empeora Normal (−3, sin significancia).
+- **C (armadura + esquiva corta)**: 7 pares a favor y 5 en contra (todas las dificultades, p = 0,77). **Sin efecto distinguible**; empeora Normal (−3, sin significancia).
 - **B (esquiva)**: es el único con señal. Pesadilla 7/50 → 14/50 (pares +10/−3, p = 0,09); Infierno 4/50 → 8/50 (+5/−1); Normal sin cambio (+3/−4). Agrupando difíciles: 11/100 → 22/100, pares +15/−4, p = 0,019 sin corregir. **No se declara mejora**: (i) con 3 variantes y 3 dificultades p = 0,019 no pasa el umbral corregido (0,017); (ii) la tanda de confirmación con semillas nuevas (semillas 6-9 de Pesadilla e Infierno, 40 partidas por brazo) da 4/40 → 7/40, pares +5/−2, p = 0,45: la dirección se repite, la magnitud no es distinguible del ruido; (iii) los intervalos se solapan (difíciles: 6-19 % frente a 15-31 %).
 
 ### 4.1 Contra los otros roles (base, 10 partidas por casilla, IC grosero)
@@ -128,3 +128,9 @@ La cifra se escala por maestría y `heal_mult` (ver `kaelSustain`), así que «4
 - Mago (Pesadilla 80 %) sigue por encima de la banda; no se tocó.
 - El arnés no registra el rango del atacante letal: no se puede separar élite de horda.
 - `bigHits` y el golpe letal medido se toman del jugador; las partidas sin muerte (tope de 22 min) cuentan como no ganadas.
+
+
+## Aclaraciones tras la revisión del PR #305
+- **La «confirmación con semillas nuevas» (semillas 6-9, 4/40 → 7/40) es un subconjunto de las 100 partidas difíciles agrupadas (11/100 → 22/100)**; no es una réplica independiente. No cambia la conclusión (no concluyente).
+- **Las perillas (`kaelBurstGuard`, `kaelHitGuard`, `job.champ`) están apagadas y ningún dato del juego las activa: son infraestructura de experimento**, para repetir la variante B con ≈150-180 partidas por brazo; si no se repite, se pueden quitar.
+- Los datos crudos de las ≈485 partidas viven en el scratchpad de la sesión y no están versionados.

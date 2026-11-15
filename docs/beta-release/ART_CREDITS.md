@@ -251,3 +251,7 @@ Queja del dueno: «el Nigromante tiene una habilidad, pestilencia, que se ve bas
 - Atlas ampliado (824x882) con 4 poses de `ult_cast`/`ultimate` (cuadros 64-67, generadas antes con `gpt_image_2` y aceptadas) instalado en `assets/sprites/champions/libertador/v2/`; cuadros 0-63 idénticos al atlas anterior. El motor ya avanzaba `prog` con el tiempo de la definitiva (950 ms), sin cambios de código de juego.
 - Re-aprobado por el dueño el 2026-11-13: sha256 fijado en `check-libertador-motion.js` y `check-libertador-death.js` actualizado (791cb61a…); en `check-libertador-death.js` el límite `v<61` ahora exceptúa solo `ult_cast`/`ultimate` (exactamente 64-67), autorizado expresamente por el dueño.
 - Captura única antes/después: `art-source/captures/libertador/ult_instalada_antes_despues.png`.
+
+## Aprobación de arte del dueño (2026-11-14)
+- El propietario (drmarianojimenez94-sudo) escribió en la sesión de trabajo del 2026-11-14: «Sí apruebo el arte a ojo que instalaste». Alcance: lo instalado con `gpt_image_2` hasta ese momento (lanzar y definitiva de Ynara, definitivas de Cazadora y Musashi, ataques de frente y espaldas de Ilkan) y la transición del Nigromante; ese mismo día pidió además instalar la definitiva del Libertador (atlas re-aprobado, ver sección del 2026-11-13).
+- No alcanza a Myla, Saelis, Profeta ni al Sabueso (siguen «instalado sin aprobar») ni a los términos comerciales de `gpt_image_2` para la declaración de IA de Steam (pendientes del dueño).
