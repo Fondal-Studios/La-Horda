@@ -11,7 +11,7 @@
 | Categoría | Total | Estados | Fuente |
 |---|---|---|---|
 | Campeones (cuerpo base) | 46 | parcial 25 · hecho 12 · arte_viejo 9 | ATLAS_ARTE.json (medido en el motor) |
-| Skins, cromas y formas de Ascensión | 104 | parcial 90 · hecho 9 · arte_viejo 5 | ATLAS_ARTE.json |
+| Skins, cromas y formas de Ascensión | 104 | parcial 90 · hecho 11 · arte_viejo 3 | ATLAS_ARTE.json |
 | Jefes y subjefes | 28 | hecho 14 · parcial 13 · arte_viejo 1 | ATLAS_ARTE.json |
 | Enemigos (normales, subélites, élites) | 76 | hecho 63 · parcial 12 · arte_viejo 1 | ATLAS_ARTE.json + enemy-coverage.json |
 | Mundo: pisos, centros, fachadas, props (trabajos Runway) | 29 | hecho 14 · falta 11 · rechazado 3 · hecho_sin_integrar 1 | estado-runway.json |
@@ -36,7 +36,7 @@
 | Aprobación de arte humana de lo instalado | Ningún archivo registra una aprobación humana; STATUS.md la declara «pendiente» (Ynara lanzar/definitiva, Cazadora y Musashi definitiva). |
 | Saldo de créditos de Runway actual | Solo hay la cifra escrita en STATUS.md (no se llamó a Runway); la cuenta es compartida y baja por consumo ajeno. Correr `node tools/art-world/runway-world.js status` (no gasta) antes de planificar. |
 
-**Fuentes leídas:** `docs/art/ATLAS_ARTE.json` (huella `3d6f2763071e`, 51 archivos), `runway-pack/estado-campeones.json`, `runway-pack/estado-runway.json` (auditado 2026-11-12), `docs/production/asset-blocks.json`, `docs/art-brief/enemy-coverage.json` (medido contra el atlas `42c3e6d9bc90` — **DESACTUALIZADO respecto de ATLAS_ARTE: regenerar con `python3 tools/art/art-checklist.py enemigos`**), `docs/beta-release/STATUS.md`, `ART_CREDITS.md`, `docs/steam/DECLARACION_IA.md`.
+**Fuentes leídas:** `docs/art/ATLAS_ARTE.json` (huella `ab648431171f`, 51 archivos), `runway-pack/estado-campeones.json`, `runway-pack/estado-runway.json` (auditado 2026-11-12), `docs/production/asset-blocks.json`, `docs/art-brief/enemy-coverage.json` (medido contra el atlas `42c3e6d9bc90` — **DESACTUALIZADO respecto de ATLAS_ARTE: regenerar con `python3 tools/art/art-checklist.py enemigos`**), `docs/beta-release/STATUS.md`, `ART_CREDITS.md`, `docs/steam/DECLARACION_IA.md`.
 
 ## B) Campeones (cuerpo base)
 
@@ -107,13 +107,13 @@ Costo de las hojas = 20 c por hoja de 4 poses (`gpt_image_2`). Fuente: `ART_CRED
 
 ## C) Skins, cromas y formas de Ascensión
 
-Fuente: `ATLAS_ARTE.json` → `champions.<id>.skins`. `croma` = **recolor** del cuerpo base (el atlas lo declara así: mismo dibujo, otra paleta); `set` = apariencia con **atlas propio**; `asc` = forma de Ascensión (atlas propio). Totales: croma 48 · set 34 · asc 22. Estados: parcial 90 · hecho 9 · arte_viejo 5.
+Fuente: `ATLAS_ARTE.json` → `champions.<id>.skins`. `croma` = **recolor** del cuerpo base (el atlas lo declara así: mismo dibujo, otra paleta); `set` = apariencia con **atlas propio**; `asc` = forma de Ascensión (atlas propio). Totales: croma 48 · set 34 · asc 22. Estados: parcial 90 · hecho 11 · arte_viejo 3.
 
 | Tipo | Origen del arte | Cantidad | Estados | Cast de 1 cuadro | Definitiva de 1 cuadro | Ataque de 1 cuadro |
 |---|---|---|---|---|---|---|
 | set | atlas propio | 34 | parcial 23 · hecho 8 · arte_viejo 3 | 0 | 0 | 0 |
 | asc | atlas propio (forma) | 22 | parcial 22 | 0 | 0 | 0 |
-| croma | recolor | 48 | parcial 45 · arte_viejo 2 · hecho 1 | 2 | 2 | 2 |
+| croma | recolor | 48 | parcial 45 · hecho 3 | 0 | 0 | 0 |
 
 Por campeón (solo se listan las apariencias; entre paréntesis el estado; `!` = algún ciclo de lanzar/definitiva/ataque con 1 cuadro; el detalle de cuadros está en `ATLAS_ARTE.md`):
 
@@ -129,7 +129,7 @@ Por campeón (solo se listan las apariencias; entre paréntesis el estado; `!` =
 | musashi | errante (parcial) | — | musashi_ancestral (parcial) |
 | cazadora | manada (parcial) | — | cazadora_escarcha (parcial) |
 | nigromante | requiem (hecho) | — | nigromante_escarcha (parcial), nigromante_piedra (parcial) |
-| libertador | granadero (hecho) | — | libertador_escarcha (arte_viejo) !, libertador_ancestral (arte_viejo) ! |
+| libertador | granadero (hecho) | — | libertador_escarcha (hecho), libertador_ancestral (hecho) |
 | ilkan | legion (arte_viejo) | — | — |
 | ynara | santa_paciencia (parcial) | — | ynara_celeste (parcial) |
 | myla | merienda_magica (arte_viejo) | — | myla_arandanos (parcial) |
