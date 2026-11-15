@@ -42,6 +42,8 @@ resultados: si algo falla, decilo con el error.
 Tarea de esta sesión: <ELEGÍ UNA: «hacé el bloque B0xx» | «hacé el campeón <id>» | «hacé los enemigos de la arena <arena>» | «mostrame el plan de gasto para el grupo <grupo> prioridad P0»>
 ```
 
+> **Orden de trabajo vigente:** `docs/art-brief/PRIORIDAD_ASSETS.md` (`python3 tools/art/prioridad-assets.py --next`; ver `COMO_USAR_PRIORIDAD.md`). Manda sobre el orden P0/P1/P2 de abajo.
+
 ## 3. Orden recomendado (para que la plata de créditos rinda)
 
 1. **P0 de `01-cuerpos`**: los cuerpos de campeón que faltan (lanzar, golpe, muerte). Se ven en TODAS las partidas. Cifras actuales en `COSTOS.md`.

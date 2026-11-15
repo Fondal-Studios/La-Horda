@@ -6,7 +6,7 @@
 
 > Auditado el 2026-11-12 en la rama `wip/runway-video` contra el repo (archivos con `ls`, carga con `grep` en `js/`). Costo medido: 8 cr por imagen gen4_image 1024; hoja de enemigo 1280x720 observada a 5 cr; video gen4_turbo 2 s = 10 cr. Los créditos son los registrados por recibo/ART_CREDITS (hay gasto sin recibo: ver notas); el saldo de la cuenta es compartido.
 
-**Entradas: 95** · ✔ integrado 57 · ◐ sin integrar 8 · ✘ rechazado 14 · · pendiente 15 · ⛔ bloqueado 1 · créditos registrados: 1415
+**Entradas: 95** · ✔ integrado 58 · ◐ sin integrar 7 · ✘ rechazado 14 · · pendiente 15 · ⛔ bloqueado 1 · créditos registrados: 1415
 
 ## lamina_campeon (4)
 
@@ -136,7 +136,7 @@
 | `musashi_ult_poses_gpt2` | ✔ integrado | 2026-11-12 | 20 | `art-source/runway-designs/musashi/u1/master.png`<br>`art-source/musashi-runway/atlas.png` | Primer intento aceptado (saldo 145 -> 125). Se pidio el bokken en diagonal/horizontal para no pasar de la celda. Proporciones algo mas macizas que el atlas vigente; instalada 2026-11-12, aprobacion de arte humana pendiente. |
 | `ilkan_ataque_frente_gpt2` | ✔ integrado | 2026-11-12 | 20 | `art-source/runway-designs/ilkan/af1/master.png`<br>`art-source/ilkan-runway/atlas.png` | Primer intento aceptado (saldo 99 -> 79): anticipacion / tajo cruzado hacia la camara / seguimiento con brazos abiertos / recuperacion; mismo diseno que la lamina. Instalada 2026-11-12 (drawIlkan ya despacha attack_down); aprobacion de arte humana pendiente. |
 | `ilkan_ataque_espalda_gpt2` | ✔ integrado | 2026-11-12 | 20 | `art-source/runway-designs/ilkan/ab1/master.png`<br>`art-source/ilkan-runway/atlas.png` | Primer intento aceptado (saldo 79 -> 59): de espaldas sin cara en las 4 poses, lanza al hombro y cola de capa. Instalada 2026-11-12; aprobacion de arte humana pendiente. |
-| `libertador_ult_poses_gpt2` | ◐ sin integrar | 2026-11-12 | 20 | `art-source/runway-designs/libertador/u1/master.png`<br>`art-source/libertador-runway/atlas.png` | Primer intento aceptado (saldo 59 -> 39): carga con el sable a la cadera / alza el sable en diagonal / pico con el sable extendido y grito / liberacion en estocada. Captura del motor (ult_cast avanzando con el progreso, antes vs despues) claramente mejor. NO instalada: v2/atlas.png esta fijado por sha256 como atlas aprobado en tools/art/check-libertador-motion.js (linea 69) y tools/art/check-libertador-death.js; instalarla los pone en rojo. |
+| `libertador_ult_poses_gpt2` | ✔ integrado | 2026-11-12 | 20 | `art-source/runway-designs/libertador/u1/master.png`<br>`art-source/libertador-runway/atlas.png` | Primer intento aceptado (saldo 59 -> 39): carga con el sable a la cadera / alza el sable en diagonal / pico con el sable extendido y grito / liberacion en estocada. Captura del motor (ult_cast avanzando con el progreso, antes vs despues) claramente mejor. INSTALADA el 2026-11-13: el dueño re-aprobó el atlas ampliado y se actualizó el sha256 fijado en check-libertador-motion.js y check-libertador-death.js. |
 
 ## campeon_video (2)
 
