@@ -24,3 +24,8 @@ Medido en local (4 núcleos, 3-4 corridas en paralelo, Chromium de Playwright), 
 
 ## 4. `tools/vfx/musashi-afterimage-check.js` (solo investigado)
 Falla 9 checks por fila en `main` y no es flaky: la prueba exige que las estelas de Paso Fantasma lleven `packKey` (atlas de la skin) y que `NET_COLLS` lo serialice; `musashiSpawnAfterimage` (`js/champions/musashi.js:95`) no lo guarda. Esa implementación solo existe en `art-source/entregas/musashi-kit-20261026/integracion-01/rejected-owner-*.js` (entrega rechazada en auditoría). Es una prueba adelantada a una funcionalidad no integrada, no un bug de `main`. Decisión del dueño: integrar `packKey` o retirar/ajustar el check. Nota: cada corrida escribe `OWNERSHIP.json` en esa carpeta (efecto lateral en el repo).
+
+## 5. Intermitencias vistas en el CI del PR #303/#304 (2026-11-14/15)
+- `tools/items/t_hpbonus.js` (parte A de objetos y economía), PR #303: `HPBONUS.no_se_degrada` falló una vez en CI (`trace` [174,150,…,174], `after` 174); pasó 11 de 11 corridas locales y en el reintento. Causa no determinada (el PR no toca `pendingHpBonus` ni `update.js`).
+- `tools/items/t_breakables.js` (parte A), PR #304: `BRK.bot_patea_cuando_la_horda_se_amontona` falló `{goal:true, armed:false}`; el PR no cambia código de juego; pasó en el reintento. Es una prueba con bot (dependiente del tiempo).
+- No se tocó ningún umbral: ambas se reintentaron solo en CI. Si reaparecen, medir la tasa con ≥ 30 corridas del escenario aislado antes de cambiar nada.

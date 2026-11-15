@@ -1367,7 +1367,7 @@
    "descripcion": "Campeón cazadora (Sylva, la Cazadora del Bosque): idle de 1 cuadro; bloques abiertos B098 (auditoría 18-oct: puede estar vieja; medir con capture-champion-states.js antes de gastar)",
    "prioridad": "importante",
    "orden": 3,
-   "estado": "pendiente",
+   "estado": "hecho",
    "metodo": "gpt_image_2_codice_limpio",
    "costo_creditos": 20,
    "refs": {
@@ -1383,7 +1383,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "ATLAS_ARTE: parcial; medido en el motor: idle 1 · walk 4 · atk 4 · cast 4 · ult 4 · hit 4 · death 6; guardián recomendado al empezar (starter-select.js)"
+   "evidencia": "ATLAS_ARTE: parcial; medido en el motor: idle 1 · walk 4 · atk 4 · cast 4 · ult 4 · hit 4 · death 6; guardián recomendado al empezar (starter-select.js)",
+   "nota": "Definitiva instalada (gpt_image_2); arte aprobado a ojo por el dueño el 2026-11-14."
   },
   {
    "id": "b057-icono-de-objeto-corona-del",
@@ -1873,7 +1874,7 @@
    "descripcion": "Campeón myla (Myla, la Niña de la Cuchara): cuerpo pre-Códice (estilo anterior al Códice); hit de 1 cuadro; bloques abiertos B005 (auditoría 18-oct: puede estar vieja; medir con capture-champion-states.js antes de gastar)",
    "prioridad": "importante",
    "orden": 26,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "gpt_image_2_codice_limpio",
    "costo_creditos": 200,
    "refs": {
@@ -1889,7 +1890,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "ATLAS_ARTE: arte_viejo; medido en el motor: idle 2 · walk 3 · atk 3 · cast 3 · ult 3 · hit 1 · death 4; en la lista de prioridad de estado-campeones.json (_prioridad_5)"
+   "evidencia": "ATLAS_ARTE: arte_viejo; medido en el motor: idle 2 · walk 3 · atk 3 · cast 3 · ult 3 · hit 1 · death 4; en la lista de prioridad de estado-campeones.json (_prioridad_5)",
+   "nota": "Caída instalada (estado-runway: hecho_integrado); falta la aprobación de arte del dueño."
   },
   {
    "id": "campeon-poses-ilkan_ataque_espalda_gpt2",
@@ -2344,7 +2346,7 @@
    "descripcion": "Campeón saelis (Saelis, la Heraldo del Plumaje): cuerpo pre-Códice (estilo anterior al Códice); idle y hit de 1 cuadro; bloques abiertos B421 (auditoría 18-oct: puede estar vieja; medir con capture-champion-states.js antes de gastar)",
    "prioridad": "importante",
    "orden": 48,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "gpt_image_2_codice_limpio",
    "costo_creditos": 200,
    "refs": {
@@ -2360,7 +2362,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "ATLAS_ARTE: arte_viejo; medido en el motor: idle 1 · walk 4 · atk 4 · cast 4 · ult 4 · hit 1 · death 4"
+   "evidencia": "ATLAS_ARTE: arte_viejo; medido en el motor: idle 1 · walk 4 · atk 4 · cast 4 · ult 4 · hit 1 · death 4",
+   "nota": "Caída instalada (estado-runway: hecho_integrado); falta la aprobación de arte del dueño."
   },
   {
    "id": "campeon-ilsa",
@@ -2738,7 +2741,7 @@
    "descripcion": "Sabueso Cordyceps (sabueso, normal, arena micelial): falta arte propio de attack",
    "prioridad": "importante",
    "orden": 67,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "gen4_image",
    "costo_creditos": 5,
    "refs": {
@@ -2754,7 +2757,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "enemy-coverage.json: attack=real+clon(caminar), death=real, hit=real+clon(quieto); ATLAS_ARTE=CODEX_OK; arena 4/10 (micelial); altura 1.33× el campeón típico"
+   "evidencia": "enemy-coverage.json: attack=real+clon(caminar), death=real, hit=real+clon(quieto); ATLAS_ARTE=CODEX_OK; arena 4/10 (micelial); altura 1.33× el campeón típico",
+   "nota": "Hoja instalada (estado-runway: hecho_integrado); falta la aprobación de arte del dueño."
   },
   {
    "id": "b367-red-micelial-raiz-tendon-t",
@@ -7589,7 +7593,7 @@
    "descripcion": "Campeón profeta (Ismara, la Profeta Ciega): bloques abiertos B103 (auditoría 18-oct: puede estar vieja; medir con capture-champion-states.js antes de gastar)",
    "prioridad": "secundario",
    "orden": 135,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "gpt_image_2_codice_limpio",
    "costo_creditos": 20,
    "refs": {
@@ -7605,7 +7609,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "ATLAS_ARTE: hecho; medido en el motor: idle 4 · walk 4 · atk 4 · cast 4 · ult 4 · hit 4 · death 4"
+   "evidencia": "ATLAS_ARTE: hecho; medido en el motor: idle 4 · walk 4 · atk 4 · cast 4 · ult 4 · hit 4 · death 4",
+   "nota": "Poses instaladas (estado-runway: hecho_integrado); falta la aprobación de arte del dueño."
   },
   {
    "id": "campeon-musashi",
@@ -7613,7 +7618,7 @@
    "descripcion": "Campeón musashi (Musashi, el Rōnin del Bokken): idle de 1 cuadro; bloques abiertos B101 (auditoría 18-oct: puede estar vieja; medir con capture-champion-states.js antes de gastar)",
    "prioridad": "secundario",
    "orden": 136,
-   "estado": "pendiente",
+   "estado": "hecho",
    "metodo": "gpt_image_2_codice_limpio",
    "costo_creditos": 20,
    "refs": {
@@ -7629,7 +7634,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "ATLAS_ARTE: parcial; medido en el motor: idle 1 · walk 4 · atk 4 · cast 4 · ult 4 · hit 4 · death 6"
+   "evidencia": "ATLAS_ARTE: parcial; medido en el motor: idle 1 · walk 4 · atk 4 · cast 4 · ult 4 · hit 4 · death 6",
+   "nota": "Definitiva instalada (gpt_image_2); arte aprobado a ojo por el dueño el 2026-11-14."
   },
   {
    "id": "campeon-nigromante",
