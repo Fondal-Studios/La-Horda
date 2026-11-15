@@ -146,3 +146,6 @@ Sin Runway (saldo 7). Instalados sin aprobar: el LANZAR del Tanque como paquete 
 
 ### Fase 2b: A/B pareado de dificultad (2026-11-15)
 - 320 partidas de bots con semillas pareadas (Ciudad Pesadilla base y 3 variantes de `tierMods`, Minas Infierno base y 1 variante, Laberinto P/I con semillas nuevas): **sin cambios de balance**. Ciudad: V1/V2 suben de 30 % a 65-68 % (p Holm < 0,001) pero se pasan de la banda 35-55 %; V3 (2,1/2,0/1,25) da 40 % sin distinguirse de la base (p Holm 0,53). Minas Infierno: la variante no supera el ruido (p Holm 0,53); las muertes < 120 s son reales (8/40). Laberinto: la no monotonía era ruido (44 % y 44 % combinados). Detalle: `docs/beta-release/FASE2B_AB_DIFICULTAD.md`.
+
+### Skins del Libertador (2026-11-15, PR #306)
+- Escarcha y Ancestral integradas con 36 poses nativas siguiendo la barra del cuerpo base; instaladas sin aprobación del dueño. Detalle en `ART_CREDITS.md`.

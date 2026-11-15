@@ -264,3 +264,9 @@ Todo quedó `instalado_sin_aprobar` (la aprobación de arte es del dueño). Capt
 - `arena-ciudad-casa_a-integrar`: `python3 tools/art-world/build-ciudad-estatua.py casa_a` (nuevo modo) → `assets/vfx/ciudad/casa_a_1.png`. Se usa como casas vecinas tras la muralla del borde (norte, oeste y este), oscurecidas como la ciudad lejana; respaldo, el patrón procedural. No reemplaza las fachadas de los edificios jugables: eso cambiaría puertas, techos que se desvanecen y la lectura de colisiones, y queda para que lo decida el dueño.
 - `efecto-ciudad-cometa-gran-numero` (B368): `python3 tools/art-world/paint-ciudad-cometa.py` (pintor determinista) → `assets/vfx/ciudad/cometa_vuelo_0..5.png` y `cometa_oro_0..5.png` (el cometa «reflejado»). Se rota hacia donde vuela; respaldo, los efectos prestados de antes (cmFire/cmPreBolt). El impacto sigue usando el estallido existente `cmBoom` (no se pintaron los 5 cuadros de impacto propios).
 - `arena-ciudad-ovacion-final` (B063): **bloqueado_decision**. No existe arte de una pose de Ovación del Presentador (su set `cast` es un ataque apuntando) y una forma de jefe nueva de 8 cuadros no sale del pintor determinista sin degradar el personaje.
+
+## Skins del Libertador: Escarcha y Ancestral - 2026-11-15 (PR #306, integrado en main 339989b0)
+
+- `libertador_escarcha` y `libertador_ancestral`: atlas 448x1008 con 36 poses nativas que siguen la barra artística del cuerpo base (mismas celdas, guardia y estados). Reemplazan la propuesta del PR #293, que se cerró. Metadatos en `js/assets/unique-skins-meta.js`, normalización en `js/data/champion-art-normalize.js` y `docs/art/ATLAS_VIGENTE.json`.
+- Antes/después: `docs/art-brief/captures/libertador/skins_antes_despues*.png` (scripts `tools/art/capture-libertador-skins-paired.js` y `capture-libertador-skins-close.js`).
+- Estado: **instalado, sin aprobación del dueño** (la aprobación del 2026-11-14 no cubre estas skins). Son cosméticas: no cambian estadísticas.
