@@ -1,8 +1,8 @@
 {
   "subject": {
-    "pr": 306,
+    "pr": 307,
     "branch": "claude/la-horda-beta-audit-exec-mwv8x0",
-    "head": "e15999bd007fa18ae6abc772f4f29755e9b5a029",
+    "head": "040e58c2d28df0e0a33253d764e37b74887972c7",
     "authorAgent": "claude-sesion-principal",
     "authorId": "claude-sesion-principal"
   },
@@ -11,57 +11,57 @@
       "stage": "produccion",
       "by": "claude-sesion-principal",
       "role": "agent",
-      "commit": "e15999bd007fa18ae6abc772f4f29755e9b5a029",
-      "at": "2026-11-15T18:30:00Z"
+      "commit": "040e58c2d28df0e0a33253d764e37b74887972c7",
+      "at": "2026-11-15T23:13:00Z"
     },
     {
       "stage": "qa",
-      "by": "qa-revisor-306",
+      "by": "qa-revisor-307",
       "role": "qa",
       "verdict": "aprobado",
       "evidence": {
-        "sha": "e15999bd007fa18ae6abc772f4f29755e9b5a029",
-        "tests": 12,
+        "sha": "040e58c2d28df0e0a33253d764e37b74887972c7",
+        "tests": 6,
         "failed": 0,
-        "report": "Revisor QA independiente (distinto del autor y de arquitectura). Aprobado con observaciones sobre e15999bd, sin bloqueantes ni importantes. Alcance: git diff b82be0d0..e15999bd = 18 archivos (+204/-126), solo las skins libertador_escarcha y libertador_ancestral (atlas 448x1008 con 36 poses, preview, normalización de 2 líneas, authoredPacks de 2 skins) y derivados regenerados; atlas base del Libertador sin cambios (sha256 791cb61a…), sin tocar caballos, Granadero, balance ni red, sin revertir nada de main. Barra artística (atlas leídos a x2 y captura): píxel nativo con alfa binario y borde sin píxeles opacos, contorno oscuro consistente, proporción coherente con el cuerpo base, pies en y=106 en los 32 cuadros medidos de cada skin, 36 poses con contenido. Corrió con salida real: build-art-atlas --check OK, visual-package check (117 paquetes, 0 errores) y test (6/6), webp_convert --check 0, art-runtime-clips PASS (46 campeones), competitive-roster PASS (38), check-libertador-motion 261 y death 127, run-all t_identity PASS, test-runway-pack 9946 OK, prioridad-assets --check OK, roster_gate 150 apariencias 0 fallos de escala y presentación en la segunda corrida (la primera dio 3 fallos en morveth@quality_morveth, ajenos al PR: intermitente). Observaciones menores: la captura antes/después no es comparación controlada; roster_gate intermitente ajeno; all19championsHaveSetSkins:false preexistente (el autor lo confirmó contra main); ART_CREDITS/STATUS no están en el commit. Informe transcrito por el integrador, no reverificado."
+        "report": "Revisor QA independiente (distinto del autor y de arquitectura). Aprobado sobre 040e58c2 (y 23bca313) sin bloqueantes. dmgTakenMult===0 ahora es inmunidad real: revisó los 6 lugares que lo ponen en 0 (fort-map:325, fort-bosses:426, mic-mother:162 y :268, mic-subboss:68, ab-bosses:90); todos se restauran por tiempo, ninguno depende de recibir daño. fortKnightKeepInside determinista, solo en fight, respeta fortCharge, el anfitrión manda la posición (net-game posAuth), la cámara es un rectángulo que contiene los reaparecidos. tanque_cast: respaldo si no cargó, no aplica a skins ni cromas, atlas fijados intactos. Ciudad: respaldos procedurales si faltan imágenes. Corrió con salida real: t_boss_dormant 9 PASS TODO OK, qa-manifest-check OK, ability-gate --strict 46/0, check-entry-reference PASS, entry-gate PASS (84 simulaciones), t_reload_midrun 5/5. Título 040e58c2: solo beta-ui.js, render en 1280x720 y 390x844 sin errores. Menores: comentario 'VARIANTE (sin integrar)' en beta-ui.js:156; FASE1B:5 afirma que un humano quedaba atascado (deducción, no medido). Informe transcrito por el integrador, no reverificado."
       },
-      "at": "2026-11-15T18:31:00Z"
+      "at": "2026-11-15T23:30:00Z"
     },
     {
       "stage": "arquitectura",
-      "by": "arquitectura-revisor-306",
+      "by": "arquitectura-revisor-307",
       "role": "arquitecto",
       "verdict": "aprobado",
       "evidence": {
-        "sha": "e15999bd007fa18ae6abc772f4f29755e9b5a029",
-        "report": "Revisor de arquitectura independiente (distinto del autor y de QA). Aprobado con observaciones sobre e15999bd, sin bloqueantes ni importantes. Las únicas líneas borradas están en derivados y en datos de las dos skins; no se revierte nada de main; derivados regenerados (build-art-atlas --check OK, huella 3d6f2763071e -> ab648431171f consistente); la normalización es una tabla de datos acotada por clave classKey@skinId (champion-art-normalize.js generado por roster_gate --write) que no afecta a otras apariencias; los árboles del atlas base (libertador/v2, v3, cromas) y los hashes de caballos son idénticos a main; no se tocó ningún check-libertador-*, workflow ni reviews/; las skins viajan por la clave de apariencia ya existente (sin cambios de red). Corrió: build-art-atlas --check, visual-package check, test-runway-pack 9946, prioridad-assets --check, qa-manifest-check, check-entry-reference, libertador-skins-contract PASS, roster_gate --check 150/0. Menores: 3 capturas (~1,2 MB) entran en art-source/captures aunque la descripción dice que no entra art-source; API de Pillow reciente en el script de contrato; 2 líneas de unique-skins-meta.js solo cambian de formato. No verificó multijugador, carga en frío ni rendimiento. Informe transcrito por el integrador, no reverificado."
+        "sha": "040e58c2d28df0e0a33253d764e37b74887972c7",
+        "report": "Revisor de arquitectura independiente (distinto del autor y de QA). Aprobado sobre 040e58c2 sin bloqueantes. Cambio de dmgTakenMult coherente (ningún uso de 0 como sin definir; quedan dos atajos 0.0001 en cm-bosses:381 y fort-duo:30, inconsistencia cosmética). fortKnightKeepInside reutiliza _fortOBB/_fortIn y la caja de fort-data:47. tanque_cast sigue el patrón tanque_hurt/death; visual-package check 118 paquetes 0 errores. Assets de Ciudad con respaldo y registrados en asset-manifest/asset-webp. Derivados: build-art-atlas --check OK, art-checklist --check OK, prioridad-assets --check OK; ability-gate 46/0. Nada relajado: no toca tools/balance, docs/balance, BALANCE_CAMPEONES, champion-entry-balance, tools/bible ni .github; knownChampions y economía sin cambios (check-entry-reference PASS, t_contract_economy 27 OK); sin secretos. Pruebas nuevas registradas en run-all y qa-manifest (required). Menores: comentario desactualizado en beta-ui.js:156; t_boss_dormant usa puerto 8771 por omisión. No corrió la batería completa. Informe transcrito por el integrador, no reverificado."
       },
-      "at": "2026-11-15T18:32:00Z"
+      "at": "2026-11-15T23:31:00Z"
     },
     {
       "stage": "staging",
-      "by": "claude-integrador-306",
+      "by": "claude-integrador-307",
       "role": "integrador",
       "verdict": "aprobado",
       "evidence": {
-        "sha": "e15999bd007fa18ae6abc772f4f29755e9b5a029",
+        "sha": "040e58c2d28df0e0a33253d764e37b74887972c7",
         "branch": "beta/integracion-20261110",
-        "tests": 141,
+        "tests": 144,
         "failed": 0,
-        "run": "https://github.com/Fondal-Studios/La-Horda/actions/runs/43741350664"
+        "run": "https://github.com/Fondal-Studios/La-Horda/actions/runs/43773684049"
       },
-      "at": "2026-11-15T18:33:00Z"
+      "at": "2026-11-16T00:01:00Z"
     },
     {
       "stage": "aprobacion",
-      "by": "claude-integrador-306",
+      "by": "claude-integrador-307",
       "role": "director",
       "verdict": "aprobado",
       "evidence": {
-        "sha": "e15999bd007fa18ae6abc772f4f29755e9b5a029",
-        "report": "Aprobado sobre e15999bd por orden expresa del propietario (drmarianojimenez94-sudo): pidió integrar el PR #293 ('el 293 metele nomás') con la condición de que las skins sigan la barra artística existente, hacer los PR y mergearlos con CI verde, autorizó que la sesión escriba y suba el registro de revisión y agregó la regla de permiso de Bash (2026-11-15). Evidencia leída de la API de GitHub: run 43741350664 'QA regresion central' (workflow_dispatch) en beta/integracion-20261110, head_sha e15999bd, job 'Regresion del juego (completa)' success (17:31Z-18:16Z), resumen del log 'PASS 141 FLAKY 0 FAIL 0 (de 141)', run-all código 0; CI del PR #306 sobre e15999bd: 34 check runs, 32 success, 1 failure ('Clasificacion, contratos y servidor' del PR, solo por R4 mientras faltaba este registro) y 1 en curso (la regresión completa del PR, cuya contraparte de staging ya pasó). Límites: informes de QA y arquitectura transcritos, no reverificados; sin multijugador real ni rendimiento en dispositivo; solo bots (sin jugadores humanos); aprobación de arte del propietario dada por su orden de integrar con la barra artística."
+        "sha": "040e58c2d28df0e0a33253d764e37b74887972c7",
+        "report": "Aprobado sobre 040e58c2 por orden expresa del propietario: delegó las decisiones, pidió continuar las fases 1, 2 y 3 y juntar todo en un PR con revisión independiente y merge con CI verde, autorizó que la sesión escriba el registro con la regla de permiso de Bash, y aprobó el título con el Demonio Mayor ('Si. Ponelo', 2026-11-15). Evidencia leída de la API de GitHub: run 43773684049 'QA regresion central' (workflow_dispatch) en beta/integracion-20261110, head_sha 040e58c2, 'Regresion del juego (completa)' success, 'PASS 144 FLAKY 0 FAIL 0 (de 144)', run-all código 0; 'Clasificacion, contratos y servidor' success en staging; en el PR solo falla ese job por R4 mientras faltaba este registro. Límites: informes transcritos, no reverificados; solo bots, sin jugadores humanos, multijugador real ni rendimiento en dispositivo; arte de la Fase 3 y skins del Libertador instalados sin aprobación del dueño."
       },
-      "at": "2026-11-15T18:34:00Z"
+      "at": "2026-11-16T00:02:00Z"
     }
   ]
 }
