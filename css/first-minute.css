@@ -10,7 +10,7 @@
 /* nombres y títulos de guardianes completos (antes "la Guardiana del Al…") */
 #starter-screen .gallery-card-name, #starter-screen .champ-title{ white-space:normal; overflow:visible; text-overflow:clip; overflow-wrap:break-word; }
 #starter-screen .champ-title{ line-height:1.1; }
-/* recomendados: una fila de 4; "Ver todos" muestra la grilla completa */
+/* los 4 fundadores en una fila (el selector :not(.all) se conserva para no cambiar la especificidad de estas reglas) */
 #starter-grid:not(.all){ grid-template-columns:repeat(4,minmax(0,1fr)); width:min(900px, 96vw); }
 #starter-grid:not(.all) .starter-card .starter-lore{ font-size:0.8rem; line-height:1.2; }
 #starter-more-note{ margin:2px auto 6px; opacity:0.85; }

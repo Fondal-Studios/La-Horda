@@ -55,7 +55,7 @@ anterior: pedile a quien instaló el servidor que lo actualice (`docs/ALFA_PASOS
 - No importa si el jugador lo escribe en mayúsculas o minúsculas, ni si deja espacios al principio o al final.
 - Un código por grupo te sirve para saber de dónde vino cada cuenta (el panel muestra cuántas veces se usó cada uno).
 - **Tope de usos** (opcional): agregá `:N` al final. `PRENSA-2026:20` = como mucho 20 cuentas con ese código.
-  Sin `:N` no tiene tope.
+  Sin `:N` no tiene tope. `:0` **no** significa «sin tope»: ese código queda cerrado (nadie lo puede usar). Para cerrar un código, sacalo de la lista o ponele `:0`.
 
 ### 3.2 Cargalos en Fly.io
 

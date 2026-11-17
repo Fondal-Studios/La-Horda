@@ -35,6 +35,10 @@ const reg = (user, inviteCode) => api("POST", "/api/register", { user, pass: "cl
   const hashed = kit.hashCode("Secreto-Hash");
   const parsed = kit.parseInviteCodes(`Amigos-2026, PRENSA:2 ,sha256:${hashed}:1,ab,  `);
   ok(parsed.codes.size === 3 && parsed.invalid === 1, "parse: tres códigos válidos y uno demasiado corto", { size: parsed.codes.size, invalid: parsed.invalid });
+  const zero = kit.parseInviteCodes(`CERRADO:0,sha256:${hashed}:0,ABIERTO:3`);
+  ok(zero.codes.size === 1 && zero.invalid === 2 && [...zero.codes.values()][0].max === 3, "parse: ':0' no es «sin tope»: el código queda cerrado", { size: zero.codes.size, invalid: zero.invalid });
+  const onlyZero = kit.parseInviteCodes("CERRADO:0");
+  ok(onlyZero.codes.size === 0 && onlyZero.invalid === 1, "parse: solo ':0' = ningún código válido (la puerta queda cerrada)", { size: onlyZero.codes.size, invalid: onlyZero.invalid });
   ok(kit.hashCode("  amigos-2026 ") === kit.hashCode("AMIGOS-2026"), "hash: sin mayúsculas ni espacios en los extremos");
   ok(![...parsed.codes.values()].some(c => /amigos|prensa/i.test(c.label + c.hash)), "parse: la etiqueta no expone el código completo");
   ok(kit.scrub("escribime a juan.perez@mail.com ya", 200) === "escribime a [correo] ya", "scrub: tapa correos");

@@ -43,11 +43,11 @@ function parseInviteCodes(raw){
   for(const part of String(raw == null ? "" : raw).split(/[,\n;]/)){
     const s = part.trim(); if(!s) continue;
     let m = /^sha256:([a-f0-9]{64})(?::(\d{1,6}))?$/i.exec(s), hash, max, label;
-    if(m){ hash = m[1].toLowerCase(); max = +(m[2] || 0); label = "sha256:" + hash.slice(0, 8); }
+    if(m){ if(m[2] !== undefined && +m[2] === 0){ invalid++; continue; } hash = m[1].toLowerCase(); max = +(m[2] || 0); label = "sha256:" + hash.slice(0, 8); }
     else {
       m = /^([^:]+?)(?::(\d{1,6}))?$/.exec(s);
       const code = m ? normCode(m[1]) : "";
-      if(code.length < 4 || code.length > 64){ invalid++; continue; }
+      if(code.length < 4 || code.length > 64 || (m && m[2] !== undefined && +m[2] === 0)){ invalid++; continue; } // ":0" no es "sin tope": se ignora (código cerrado)
       hash = hashCode(code); max = +(m[2] || 0); label = code.slice(0, 2).toUpperCase() + "…(" + code.length + ")";
     }
     codes.set(hash, { hash, max, label });

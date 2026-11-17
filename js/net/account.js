@@ -773,7 +773,14 @@ async function _acctSteamSubmit(){
   acct.busy = false;
   if(!acct.el || acct.view === "conflict") return;
   btns.forEach(x => { x.disabled = false; });
-  if(!res.ok){ _acctStatus(res.msg, "err"); return; }
+  if(!res.ok){
+    // beta cerrada: una cuenta nueva de Steam también pide código; el campo vive en "Crear cuenta"
+    if(/^INVITE_/.test(res.error || "") && acct.view !== "register"){
+      _acctRenderAuth("register");
+      const box = _acctShowInvite(true), inv = box && box.querySelector("input"); if(inv) inv.focus();
+    }
+    _acctStatus(res.msg, "err"); return;
+  }
   if(acct.conflict){ _acctShowConflict(); return; }
   _acctFinish(res.created ? `¡Cuenta creada con Steam! Bienvenido, ${acct.session.name}.` : `Hola, ${acct.session.name}. Progreso sincronizado.`);
 }
