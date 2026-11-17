@@ -60,13 +60,13 @@ function active(s,id,now){return Object.values(s.runs).some(r=>r.owner===id&&!r.
 function liveCommand(s,u,op,b,now){
  prepare(s);const id=String(u.id),a=s.accounts[id];
  if(op==='starter'){
-  const tax=require('./entitlements').taxonomy();if(!tax.ids.includes(b.champion)||!tax.meta(b.champion).starterEligible||tax.meta(b.champion).releaseState!=='RELEASED')fail('BAD_CHAMPION');if(a.unlocked?.length)fail('STARTER_ALREADY_CHOSEN',409);a.unlocked=[b.champion];a.starter=b.champion;return {ok:true};
+  const tax=require('./entitlements').taxonomy();if(!tax.ids.includes(b.champion)||!tax.starterEligible(b.champion))fail('BAD_CHAMPION');/* solo los 4 fundadores: championStarterEligible */if(a.unlocked?.length)fail('STARTER_ALREADY_CHOSEN',409);a.unlocked=[b.champion];a.starter=b.champion;return {ok:true};
  }
  if(op==='run.start'){
   if(!ARENAS.includes(b.arena)&&!['divina','coliseum','crystal_wars'].includes(b.arena))fail('BAD_ARENA');
   if(process.env.BETA_PUBLIC==='1'&&['divina','coliseum','crystal_wars'].includes(b.arena))fail('MODE_NOT_IN_BETA',403);   // beta pública: solo Campaña y Horda Infinita (el bloqueo de cliente no basta)
   const tax=require('./entitlements').taxonomy();if(!tax.ids.includes(b.champion))fail('CHAMPION_LOCKED',403);
-  if(!a.unlocked?.length&&tax.meta(b.champion).starterEligible&&tax.meta(b.champion).releaseState==='RELEASED'){a.unlocked=[b.champion];a.starter=b.champion;}
+  if(!a.unlocked?.length&&tax.starterEligible(b.champion)){a.unlocked=[b.champion];a.starter=b.champion;}
   if(!a.unlocked?.includes(b.champion))fail('CHAMPION_LOCKED',403);
   if(!['campaign','endless','multiplayer'].includes(b.mode))fail('BAD_MODE');
   for(const r of Object.values(s.runs))if(r.owner===id&&!r.done){r.done=true;r.abandoned=true;}

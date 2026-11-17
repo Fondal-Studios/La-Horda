@@ -3,7 +3,7 @@
    js/ui/starter-select.js
    MODO CAMPAÑA (prueba): "Tu primer guardián". Al entrar por primera vez (o al abrir un enlace de
    invitación sin guardián propio) cada jugador elige UN guardián de regalo. Los demás quedan
-   bloqueados y se compran en la Tienda (CHAMPION_PRICE_GOLD). Se muestran todos animados,
+   bloqueados y se compran en la Tienda (CHAMPION_PRICE_GOLD). Se ofrecen solo los 4 fundadores (uno por rol), animados,
    quietos y respirando. `onDone` sigue el camino que se había interrumpido (menú o unirse a sala).
    REGALO INICIAL (js/systems/starter-gift.js): después del guardián viene el paso 2, "Tu skin de
    regalo": sus skins (de set y cromas) animadas como en la Tienda, la primera ya marcada (un toque
@@ -13,28 +13,28 @@ let _starterJoins = false; // el camino que sigue es entrar a la sala de otro: e
 let _starterPick = null, _starterDone = null, _starterSkinPick = null, _starterSkinBusy = false, _starterJustGot = null;
 const STARTER_ROLE_LABEL = {tanque:"Tanque", asesino:"Asesino", mago:"Mago", soporte:"Soporte"};
 
-// PRIMER MINUTO: la pantalla muestra 4 guardianes recomendados para quien nunca jugó (uno por rol) y "Ver todos" detrás
-// (antes eran 34 tarjetas en scroll). NADA viene preseleccionado: antes se marcaba el Mago solo (y un toque del botón del
-// título (o un doble toque) que "atravesaba" a la pantalla nueva dejaba una carta marcada sin querer). Por eso, además, las
-// cartas ignoran toques en los primeros STARTER_TAP_GUARD_MS después de abrir la pantalla.
-const STARTER_RECOMMENDED = [
-  {id:"tanque",   why:"Aguanta y protege. Perdona errores: ideal para aprender."},
-  {id:"mago",     why:"Pega de lejos con fuego, escarcha y rayos. Fácil de entender."},
-  {id:"soporte",  why:"Cura y protege al equipo. Juega en segunda línea."},
-  {id:"cazadora", why:"Dispara de lejos y corre rápido. Pega sin acercarse al peligro."}
-];
+// PRIMER GUARDIÁN (decisión del dueño, 2026-11-17): se elige SOLO entre los 4 fundadores, uno por rol (STARTER_CHAMPIONS en
+// js/data/champion-taxonomy.js, la misma lista que valida el servidor). Ya no hay "Ver todos": el resto se compra con oro en la
+// Tienda a medida que se juega. NADA viene preseleccionado: antes se marcaba el Mago solo (y un toque del botón del título (o un
+// doble toque) que "atravesaba" a la pantalla nueva dejaba una carta marcada sin querer). Por eso, además, las cartas ignoran
+// toques en los primeros STARTER_TAP_GUARD_MS después de abrir la pantalla.
+const STARTER_WHY = {
+  tanque:   "Aguanta y protege. Perdona errores: ideal para aprender.",
+  guerrero: "Pelea cuerpo a cuerpo y golpea fuerte. Para ir al frente y bajar jefes.",
+  mago:     "Pega de lejos con fuego, escarcha y rayos. Fácil de entender.",
+  soporte:  "Cura y protege al equipo. Juega en segunda línea."
+};
 const STARTER_TAP_GUARD_MS = 400;
-let _starterOpenedAt = 0, _starterAll = false;
-function _starterOptions(){ return CHAMPION_CATALOG.filter(c=>championMeta(c.id).starterEligible && shopChampionPurchasable(c.id)); }
-// Recomendados primero (en el orden de arriba), después el resto del catálogo.
-function _starterOrdered(){
-  const opts = _starterOptions(), rec = STARTER_RECOMMENDED.map(r=>opts.find(c=>c.id===r.id)).filter(Boolean);
-  return {rec, all: rec.concat(opts.filter(c=>!rec.includes(c)))};
+let _starterOpenedAt = 0;
+// Los 4 del primer guardián, en el orden de STARTER_CHAMPIONS (uno por rol). championStarterEligible = misma regla que el servidor.
+function _starterOptions(){
+  return STARTER_CHAMPIONS.filter(id=>CLASSES[id] && championStarterEligible(id) && shopChampionPurchasable(id))
+    .map(id=>CHAMPION_CATALOG.find(c=>c.id===id)).filter(Boolean);
 }
-function _starterWhy(id){ const r = STARTER_RECOMMENDED.find(x=>x.id===id); return r ? r.why : ""; }
+function _starterWhy(id){ return STARTER_WHY[id] || ""; }
 function openStarterSelect(onDone, opts){
   _starterJoins = !!(opts && opts.joinsRoom);
-  _starterPick = null; _starterDone = onDone || null; _starterAll = false; _starterOpenedAt = performance.now() + 1e6; // se fija al terminar de dibujar (abajo)
+  _starterPick = null; _starterDone = onDone || null; _starterOpenedAt = performance.now() + 1e6; // se fija al terminar de dibujar (abajo)
   setState("starter");
   // ya tiene guardián y le falta la skin de regalo (cerró el juego en el medio): directo al paso 2
   if(!needsStarterChampion() && typeof needsStarterSkin==="function" && needsStarterSkin()){ openStarterSkinStep(); _starterOpenedAt = performance.now(); return; }
@@ -61,20 +61,14 @@ function _starterFinish(){
 function renderStarterSelect(){
   const pr = document.getElementById("starter-price"); if(pr) pr.textContent = fmtGold(CHAMPION_PRICE_GOLD);
   const grid = document.getElementById("starter-grid"); if(!grid) return;
-  const ord = _starterOrdered(), recIds = new Set(ord.rec.map(c=>c.id));
-  grid.classList.toggle("all", _starterAll);
-  const allBtn = document.getElementById("starter-all-btn");
-  if(allBtn){
-    allBtn.classList.toggle("hidden", ord.all.length <= ord.rec.length);
-    allBtn.textContent = _starterAll ? "‹ Solo los recomendados" : `Ver los ${ord.all.length} guardianes para empezar`;
-  }
-  grid.innerHTML = ord.all.map(c=>{
-    const cls = CLASSES[c.id], reco = recIds.has(c.id);
-    return `<button class="gallery-card starter-card ${reco?"reco":"more"} ${_starterPick===c.id?"sel":""}" data-champ="${c.id}">
+  const opts = _starterOptions();
+  grid.innerHTML = opts.map(c=>{
+    const cls = CLASSES[c.id];
+    return `<button class="gallery-card starter-card reco ${_starterPick===c.id?"sel":""}" data-champ="${c.id}">
       <canvas class="champ-anim starter-anim" width="110" height="110" data-class-key="${c.id}" data-idle="1" style="background:${cls.color}1c;"></canvas>
       <div class="gallery-card-name">${championShortName(c.id)}</div><div class="champ-title">${championTitle(c.id)}</div>
       ${(STARTER_ROLE_LABEL[cls.roleCategory]||"") && STARTER_ROLE_LABEL[cls.roleCategory]!==championShortName(c.id) ? `<div class="mychamp-meta">${STARTER_ROLE_LABEL[cls.roleCategory]}</div>` : ""}
-      <div class="starter-lore">${reco ? _starterWhy(c.id) : c.lore}</div>
+      <div class="starter-lore">${_starterWhy(c.id) || c.lore}</div>
     </button>`;
   }).join("");
   grid.querySelectorAll(".starter-card").forEach(card=>{
@@ -105,7 +99,8 @@ function _starterShowConfirm(){
   box.classList.remove("hidden");
 }
 function grantStarterChampion(key){
-  if(!CLASSES[key] || !save.champions[key]) return false;
+  // solo uno de los 4 del primer guardián y solo si todavía no tiene ninguno (el servidor aplica la misma regla)
+  if(!CLASSES[key] || !save.champions[key] || !championStarterEligible(key) || !needsStarterChampion()) return false;
   save.champions[key].unlocked = true;
   save.starterChosen = true;
   selectedClass = key; save.lastChamp = key;
@@ -114,11 +109,6 @@ function grantStarterChampion(key){
   persistNow();
   return true;
 }
-document.getElementById("starter-all-btn").addEventListener("click", ()=>{
-  _starterAll = !_starterAll;
-  renderStarterSelect();
-  const sc = document.getElementById("starter-screen"); if(sc) sc.scrollTop = 0;
-});
 document.getElementById("starter-yes-btn").addEventListener("click", ()=>{
   if(!_starterPick || !grantStarterChampion(_starterPick)) return;
   // el "¡X se une a tu equipo!" (neutro: hay guardianas) va en el subtítulo del paso 2 (antes era un aviso arriba a la derecha que tapaba el final

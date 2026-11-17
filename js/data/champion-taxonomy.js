@@ -105,6 +105,16 @@ function championAvailability(id, now){
 }
 // Can a player use an owned champion outside Test Lab?
 function championPlayable(id){ var s = championMeta(id).releaseState; return s === "RELEASED" || s === "TESTING"; }
+// PRIMER GUARDIÁN (decisión del dueño, 2026-11-17): al empezar se elige SOLO entre los 4 fundadores del roster, uno por
+// rol (Aldric tanque, Kael asesino, Thalen mago, Elyra soporte). El resto se compra con oro en la Tienda. UNA sola fuente:
+// la pantalla del cliente (js/ui/starter-select.js), los contadores y el servidor (server/item-economy-live.js) leen esto.
+// Los guardados que ya eligieron otro guardián de regalo siguen valiendo: esto solo decide qué se OFRECE y se ACEPTA ahora.
+var STARTER_CHAMPIONS = ["tanque", "guerrero", "mago", "soporte"];
+function championStarterEligible(id){
+  if(STARTER_CHAMPIONS.indexOf(id) < 0) return false;
+  var m = championMeta(id);
+  return !!m.starterEligible && m.releaseState === "RELEASED";
+}
 // Ownership must come from the server ledger, never from a client purchase.
 // DISABLED keeps existing ownership untouched (disabling must never wipe progress).
 function championRequiresServerGrant(id){ var m = championMeta(id); return !m.purchasable || m.category === "EVENT" || ["DRAFT","INTERNAL","TESTING"].indexOf(m.releaseState) >= 0; }
@@ -116,7 +126,7 @@ function championCompetitive(id){ var m = championMeta(id); return !!m.competiti
 function championInProgression(id){ var m = championMeta(id); return m.category !== "FOUNDER" && m.category !== "DEV" && m.releaseState === "RELEASED"; }
 // UNA sola fuente para los contadores de guardianes que ve el jugador (starter, Códice, logros). Cada número cuenta algo distinto
 // y los textos lo dicen: total = clases del motor (43), obtainable = las que se pueden llegar a tener (sin Fundadores ni sin
-// publicar: el "N / 41 tuyos" del Códice), starter = las que se ofrecen al elegir el primer guardián (comunes/familia y comprables),
+// publicar: el "N / 41 tuyos" del Códice), starter = las que se ofrecen al elegir el primer guardián (STARTER_CHAMPIONS que sigan comprables),
 // owned = las de obtainable que el jugador ya desbloqueó. Pura (el servidor también carga este archivo): sin DOM ni guardado
 // obligatorio; `unlockedMap` es save.champions si se quiere owned.
 function championCounts(unlockedMap){
@@ -125,7 +135,7 @@ function championCounts(unlockedMap){
   for(var i = 0; i < cat.length; i++){
     var id = cat[i].id, prog = championInProgression(id);
     if(prog){ out.obtainable++; if(um[id] && um[id].unlocked) out.owned++; }
-    if(championMeta(id).starterEligible && championAvailability(id).purchasable) out.starter++;
+    if(championStarterEligible(id) && championAvailability(id).purchasable) out.starter++;
   }
   return out;
 }

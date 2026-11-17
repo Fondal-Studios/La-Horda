@@ -115,7 +115,7 @@ const check = (name, ok, extra) => { console.log((ok ? 'PASS ' : 'FAIL ') + name
   // ================= 2. regalo inicial: guardián =================
   await shot('guardian');
   const nCards = await E(() => document.querySelectorAll('#starter-grid .starter-card').length);
-  check('REGALO.muestra_guardianes', nCards >= 2, nCards);
+  check('REGALO.muestra_los_4_fundadores', nCards === 4, nCards);
   const champ = await E(() => document.querySelector('#starter-grid .starter-card').dataset.champ);
   await tap(`.starter-card[data-champ="${champ}"]`);
   await noDeadEnd('REGALO.confirmar');

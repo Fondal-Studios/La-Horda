@@ -10,7 +10,7 @@ T=[
 ("Usá tu movilidad para reposicionarte","Use your mobility to reposition and save the Sand Colossus for large groups.","Use sua mobilidade para se reposicionar e reserve o Colosso de Areia para grupos grandes."),
 ("VOLVER A LA SALA","BACK TO ROOM","VOLTAR À SALA"),("Velo del Bosque","Forest Veil","Véu da Floresta"),
 ("Vencé héroes rivales para ganar oro.","Defeat rival heroes to earn gold. Eclipse at {n} min; at {n} whoever has more towers and health wins.","Vença heróis rivais para ganhar ouro. Eclipse aos {n} min; aos {n} vence quem tiver mais torres e vida."),
-("Vendimiadora del Asedio","Siege Grape-Harvester","Vindimadora do Cerco"),("Ver todos los guardianes","See all guardians","Ver todos os guardiões"),
+("Vendimiadora del Asedio","Siege Grape-Harvester","Vindimadora do Cerco"),
 ("Verdugo Celestial","Celestial Executioner","Carrasco Celestial"),("Vida {n}/{n}","Health {n}/{n}","Vida {n}/{n}"),("Vidrio Negro","Black Glass","Vidro Negro"),
 ("Vigía de la Última Expedición","Lookout of the Last Expedition","Vigia da Última Expedição"),("Vino maldito","Cursed Wine","Vinho maldito"),
 ("Visión del Inmortal","Vision of the Immortal","Visão do Imortal"),("Vista previa","Preview","Pré-visualização"),("Vitral del Réquiem","Requiem Stained Glass","Vitral do Réquiem"),

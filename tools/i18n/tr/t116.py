@@ -322,13 +322,13 @@ T+=[
 ("Si querés, elegí una skin para {n} (es tuya y la llevás puesta). Si no, seguí: te guardamos un vale para la Tienda.","If you like, pick a skin for {n} (it's yours and you wear it). If not, continue: we'll save you a voucher for the Shop.","Se quiser, escolha uma skin para {n} (é sua e já vem vestida). Se não, continue: guardamos um vale para a Loja."),
 ("Sin apuro: la skin se puede elegir cuando quieras en la Tienda.","No rush: you can pick the skin whenever you like in the Shop.","Sem pressa: a skin pode ser escolhida quando quiser na Loja."),
 ("Tu vale te espera en la Tienda.","Your voucher is waiting for you in the Shop.","Seu vale espera por você na Loja."),
-("Ver los {n} guardianes para empezar","See the {n} Guardians to start","Ver os {n} Guardiões para começar"),
+
 ("recién abierta la pantalla","right after the screen opens","logo após abrir a tela"),
 ("¡Es tuya!","It's yours!","É sua!"),
 ("¡X se une a tu equipo!","X joins your team!","X se une à sua equipe!"),
 ("¿Elegir a <b>{n}</b>? <details><summary>Ver habilidades</summary>{n}</details>","Choose <b>{n}</b>? <details><summary>View abilities</summary>{n}</details>","Escolher <b>{n}</b>? <details><summary>Ver habilidades</summary>{n}</details>"),
 ("¿Te quedás con <b>{n}</b>?","Keep <b>{n}</b>?","Vai ficar com <b>{n}</b>?"),
-("‹ Solo los recomendados","‹ Recommended only","‹ Só os recomendados"),
+
 ("🎁 {n} se une a tu equipo","🎁 {n} joins your team","🎁 {n} se une à sua equipe"),
 ("🎁 ¡{n} se une a tu equipo! Si querés, elegí su skin (es tuya y la llevás puesta). Si no, seguí: te guardamos un vale para la Tienda.","🎁 {n} joins your team! If you like, pick their skin (it's yours and you wear it). If not, continue: we'll save you a voucher for the Shop.","🎁 {n} se une à sua equipe! Se quiser, escolha a skin dele (é sua e já vem vestida). Se não, continue: guardamos um vale para a Loja."),
 ("🎟 Te guardamos un vale de skin: canjealo en la Tienda cuando quieras","🎟 We saved you a skin voucher: redeem it in the Shop whenever you like","🎟 Guardamos um vale de skin para você: resgate-o na Loja quando quiser"),

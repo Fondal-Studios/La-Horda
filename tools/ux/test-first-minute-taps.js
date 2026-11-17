@@ -36,8 +36,7 @@ async function boot(browser, BASE) {
 async function newProfile(B, mode) {
   await B.tap('#title-continue-btn');
   await B.page.waitForSelector('#starter-step-champ', { state: 'visible' });
-  const card = '.starter-card[data-champ="musashi"]';
-  if (!(await B.vis(card))) await B.tap('#starter-all-btn');
+  const card = '.starter-card[data-champ="guerrero"]'; // primer guardián: solo los 4 fundadores (sin "Ver todos")
   await B.tap(card); await B.tap('#starter-yes-btn');
   await sleep(400); if (await B.vis('#starter-skin-later-btn')) await B.tap('#starter-skin-later-btn');
   await sleep(700);

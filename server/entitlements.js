@@ -18,6 +18,7 @@ function taxonomy(){
   TAXONOMY = {
     ids, categories:c.CHAMPION_CATEGORIES, origins:[...c.GRANT_ORIGINS], states:[...c.CHAMPION_RELEASE_STATES],
     meta:id => c.championMeta(id), requiresGrant:id => c.championRequiresServerGrant(id),
+    starterIds:[...c.STARTER_CHAMPIONS], starterEligible:id => c.championStarterEligible(id),   // primer guardián: los 4 fundadores (misma fuente que el cliente)
     founders:Object.keys(c.CHAMPION_TAXONOMY).filter(id => c.championMeta(id).category === "FOUNDER").map(id => ({champion:id, key:c.championMeta(id).founderKey}))
   };
   return TAXONOMY;
