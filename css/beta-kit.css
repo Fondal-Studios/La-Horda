@@ -1,0 +1,18 @@
+/* Kit de beta cerrada: diálogo "Reportar un problema" (js/net/beta-kit.js). Mismo lenguaje que el chat de la Alpha. */
+.beta-report{position:fixed;z-index:95;left:50%;top:50%;transform:translate(-50%,-50%);width:min(520px,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow:auto;box-sizing:border-box;display:flex;flex-direction:column;gap:8px;padding:14px;background:var(--panel,#180f0a);color:var(--text,#f6dfbb);border:3px solid var(--panel-b,#7a4a26);box-shadow:6px 6px #000;font-family:var(--font-retro,monospace)}
+.beta-report header{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.beta-report h2{margin:0;font-size:22px;color:var(--ember3,#ffca78)}
+.beta-report-x{min-width:44px;min-height:44px;background:none;border:2px solid var(--panel-b,#7a4a26);color:inherit;font:inherit;cursor:pointer}
+.beta-report form{display:flex;flex-direction:column;gap:6px}
+.beta-report-field{display:flex;flex-direction:column;gap:4px}
+.beta-report select,.beta-report textarea{font:inherit;font-size:16px;color:inherit;background:#0c0806;border:2px solid var(--panel-b,#7a4a26);padding:6px;box-sizing:border-box;width:100%;min-height:44px}
+.beta-report textarea{resize:vertical;min-height:96px}
+.beta-report p{margin:0;overflow-wrap:anywhere}
+.beta-report-count{text-align:right;opacity:.75;font-size:14px}
+.beta-report-note{font-size:14px;opacity:.8}
+.beta-report-status[data-kind=err]{color:#ff8a7a}.beta-report-status[data-kind=ok]{color:#9be37a}
+.beta-report-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.beta-report-actions .btn{min-height:44px}
+@media (max-height:500px) and (orientation:landscape){.beta-report{padding:8px;gap:4px}.beta-report h2{font-size:18px}.beta-report textarea{min-height:64px}.beta-report-note{font-size:12px}}
+/* Ocultos hasta que el servidor anuncie la beta (las reglas de .acc-field / .opt-row ponen display y le ganarían a [hidden]) */
+.acc-invite[hidden],#beta-report-opt[hidden],#beta-report-pause-btn[hidden]{display:none!important}

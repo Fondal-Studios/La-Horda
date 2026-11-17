@@ -541,8 +541,9 @@ async function accountLogin(user, pass){
   accountRefreshIdentity();
   return { ok: true };
 }
-async function accountRegister(user, pass, email){
-  const r = await accountFetch("POST", "/api/register", { user, pass, email: email || undefined }, { auth: false, timeout: 90000 });
+// inviteCode: solo hace falta si el servidor tiene la beta cerrada (BETA_INVITE_CODES; /api/health beta.invite)
+async function accountRegister(user, pass, email, inviteCode){
+  const r = await accountFetch("POST", "/api/register", { user, pass, email: email || undefined, inviteCode: inviteCode || undefined }, { auth: false, timeout: 90000 });
   if(r.status !== 201) return { ok: false, status: r.status, error: r.j.error, msg: r.j.msg || "No se pudo crear la cuenta." };
   _acctSetSession(r.j);
   await accountPull("login");
@@ -559,7 +560,8 @@ async function accountSteamLogin(){
   const ticket = await _acctSteamTicket();
   if(!ticket) return { ok: false, error: "NO_STEAM", msg: "No se pudo hablar con Steam. Abrí el juego desde Steam e intentá de nuevo." };
   let name; try{ const i = await window.HORDA_DESKTOP.steamInfo(); name = i && i.name; }catch(e){}
-  const r = await accountFetch("POST", "/api/steam/login", { ticket, name: name || undefined }, { auth: false, timeout: 90000 });
+  const inv = document.getElementById("acc-invite"), inviteCode = inv && !inv.closest("[hidden]") ? inv.value.trim() : "";
+  const r = await accountFetch("POST", "/api/steam/login", { ticket, name: name || undefined, inviteCode: inviteCode || undefined }, { auth: false, timeout: 90000 });
   if(r.status !== 200 && r.status !== 201) return { ok: false, status: r.status, error: r.j.error, msg: r.j.msg || "No se pudo entrar con Steam." };
   _acctSetSession(r.j);
   await accountPull("login");
@@ -655,7 +657,9 @@ function _acctRenderAuth(mode){
       ${reg ? `<label class="acc-field"><span>Repetir contraseña</span>
         <input name="pass2" id="acc-pass2" type="password" maxlength="128" autocomplete="new-password" required></label>
       <label class="acc-field"><span>Correo <i>(opcional)</i></span>
-        <input name="email" id="acc-email" type="email" maxlength="170" autocomplete="email" placeholder="por si algún día hace falta"></label>` : ""}
+        <input name="email" id="acc-email" type="email" maxlength="170" autocomplete="email" placeholder="por si algún día hace falta"></label>
+      <label class="acc-field acc-invite" ${acct.health && acct.health.beta && acct.health.beta.invite ? "" : "hidden"}><span>Código de invitación</span>
+        <input name="invite" id="acc-invite" maxlength="64" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="te lo pasó quien te invitó a la beta"></label>` : ""}
       <button type="submit" class="btn wide acc-submit" id="acc-submit">${reg ? "Crear cuenta" : "Entrar"}</button>
       <div class="acc-status" role="status" aria-live="polite"></div>
     </form>
@@ -681,6 +685,7 @@ function _acctRenderAuth(mode){
         return;
       }
       const h = acct.health;
+      _acctShowInvite(); // beta cerrada: el campo aparece solo si el servidor lo pide
       if(!h || h.persistent !== false || acct.view !== mode || !acct.el || acct.el.querySelector(".acc-warn-db")) return;
       const n = document.createElement("div");
       n.className = "acc-note acc-warn-db";
@@ -689,6 +694,11 @@ function _acctRenderAuth(mode){
     });
   }
   _acctShowBack();
+}
+function _acctShowInvite(force){
+  const box = acct.el && acct.el.querySelector(".acc-invite");
+  if(box && (force || (acct.health && acct.health.beta && acct.health.beta.invite))) box.hidden = false;
+  return box;
 }
 function _acctShowBack(){
   // si se abrió desde el menú (no desde el título), también se puede volver sin elegir
@@ -706,12 +716,15 @@ async function _acctSubmit(reg){
   const pass = document.getElementById("acc-pass").value || "";
   if(user.length < 3){ _acctStatus("Escribí tu usuario (3 a 16 letras o números).", "err"); document.getElementById("acc-user").focus(); return; }
   if(!pass){ _acctStatus("Escribí tu contraseña.", "err"); document.getElementById("acc-pass").focus(); return; }
-  let email = "";
+  let email = "", invite = "";
   if(reg){
     if(!/^[\p{L}\p{N}_.-]{3,16}$/u.test(user)){ _acctStatus("El usuario solo puede tener letras, números y _ . - (3 a 16).", "err"); return; }
     if(pass.length < 6){ _acctStatus("La contraseña tiene que tener 6 caracteres o más.", "err"); return; }
     if(pass !== document.getElementById("acc-pass2").value){ _acctStatus("Las contraseñas no coinciden.", "err"); document.getElementById("acc-pass2").focus(); return; }
     email = (document.getElementById("acc-email").value || "").trim();
+    const inv = document.getElementById("acc-invite");
+    invite = inv && !inv.closest("[hidden]") ? inv.value.trim() : "";
+    if(inv && !inv.closest("[hidden]") && !invite){ _acctStatus("La beta es cerrada: escribí tu código de invitación.", "err"); inv.focus(); return; }
   }
   acct.busy = true;
   const btn = document.getElementById("acc-submit");
@@ -725,7 +738,7 @@ async function _acctSubmit(reg){
     if(s >= 3) _acctStatus(`Despertando el servidor… ${s} s (la primera vez puede tardar hasta un minuto)`);
   }, 1000);
   let res;
-  try{ res = reg ? await accountRegister(user, pass, email) : await accountLogin(user, pass); }
+  try{ res = reg ? await accountRegister(user, pass, email, invite) : await accountLogin(user, pass); }
   catch(e){ res = { ok: false, msg: e.code === "NO_API" ? "Las cuentas todavía no están disponibles en el servidor. Jugá como invitado: tu progreso queda en este dispositivo."
     : e.code === "TIMEOUT" ? "El servidor no respondió. Probá de nuevo o jugá como invitado." : "Sin conexión con el servidor. Podés jugar como invitado y entrar después." }; }
   clearInterval(tick);
@@ -737,6 +750,7 @@ async function _acctSubmit(reg){
     if(!reg && res.error === "BAD_CREDENTIALS" && acct.health && acct.health.persistent === false)
       res.msg += " Si ya tenías cuenta: el servidor de prueba se reinició y la borró. Creala de nuevo con el mismo nombre: tu progreso de este dispositivo se sube solo.";
     _acctStatus(res.msg, "err");
+    if(/^INVITE_/.test(res.error || "")){ const box = _acctShowInvite(true), inv = box && box.querySelector("input"); if(inv){ inv.focus(); inv.select(); } return; }
     const f = document.getElementById(res.error === "BAD_PASS" || res.error === "BAD_CREDENTIALS" ? "acc-pass" : "acc-user");
     if(f){ f.focus(); if(res.error === "BAD_CREDENTIALS") f.select(); }
     return;

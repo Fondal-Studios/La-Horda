@@ -129,6 +129,13 @@
     "economia"
    ]
   },
+  "server/test-beta-kit.js": {
+   "tier": "required",
+   "categories": [
+    "guardados"
+   ],
+   "note": "beta cerrada: códigos de invitación (prendido/apagado, topes, carrera), reportes y errores con límites y permisos; también corre en la suite server"
+  },
   "tests/competitive-roster.test.js": {
    "tier": "required",
    "categories": [
@@ -575,6 +582,14 @@
     "inicio",
     "movil"
    ]
+  },
+  "tools/beta/report-dialog-browser.js": {
+   "tier": "required",
+   "categories": [
+    "guardados",
+    "movil"
+   ],
+   "note": "beta cerrada en el navegador contra el servidor de cuentas en proceso: botón oculto por defecto, diálogo, validación, envío, errores agrupados, código de invitación"
   },
   "tools/ux/functional.js": {
    "tier": "required",

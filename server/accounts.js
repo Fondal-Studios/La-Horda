@@ -38,6 +38,9 @@
      REGISTER_MAX_IP     cuentas nuevas por IP por hora (default 10)
      TRUST_PROXY         "1" para leer la IP real de los encabezados del proxy (en Render y Fly.io es automático)
      API_MAX_IP          pedidos a /api por minuto por IP (default 300; en un evento con wifi compartido, más)
+     BETA_INVITE_CODES   beta cerrada: códigos de invitación para crear cuentas ("A,B:20,sha256:<hex>:5"); vacío = registro libre
+     BETA_REPORTS        "1" = botón "Reportar un problema" (se prende solo con BETA_INVITE_CODES; "0" lo apaga)
+     BETA_ERROR_REPORTS  "1" = el juego manda sus errores de JavaScript agrupados. Detalle: server/beta-kit.js
 
    RANKING SEMANAL DE LA HORDA INFINITA (mismo adaptador: Postgres o archivo leaderboard.json):
    - GET  /api/leaderboard[?week=2026-W40&guardian=mago&limit=50]  top 50 de la semana (la actual por
@@ -260,6 +263,13 @@ function fileStore(dir){
   // billetera premium (server/wallet.js): saldo por cuenta + libro de movimientos con referencia única (idempotente)
   const walletFile = path.join(dir, "wallet.json");
   let wallet = { balances: {}, ledger: [], refs: {}, nextId: 1 }, walletChain = Promise.resolve();
+  // kit de beta cerrada (server/beta-kit.js): usos de códigos (solo hash), reportes y errores agrupados
+  const betaFile = path.join(dir, "beta.json");
+  let beta = { invites: {}, reports: [], nextReport: 1, errors: {} }, betaChain = Promise.resolve();
+  function betaJob(fn){
+    const job = betaChain.catch(() => {}).then(async () => { const v = fn(); if(v && v.noWrite) return v.value; await writeAtomic(betaFile, JSON.stringify(beta)); return v && v.value; });
+    betaChain = job; return job;
+  }
   async function loadMeta(id){
     if(saveMeta.has(id)) return saveMeta.get(id);
     let meta = null;
@@ -287,6 +297,9 @@ function fileStore(dir){
       try{ wallet = JSON.parse(await fsp.readFile(walletFile, "utf8")); }
       catch(e){ if(e.code !== "ENOENT") throw new Error("wallet.json ilegible: " + e.message); }
       wallet.balances = wallet.balances || {}; wallet.ledger = wallet.ledger || []; wallet.refs = wallet.refs || {}; wallet.nextId = wallet.nextId || 1;
+      try{ beta = JSON.parse(await fsp.readFile(betaFile, "utf8")); }
+      catch(e){ if(e.code !== "ENOENT") throw new Error("beta.json ilegible: " + e.message); }
+      beta.invites = beta.invites || {}; beta.reports = beta.reports || []; beta.nextReport = beta.nextReport || 1; beta.errors = beta.errors || {};
       // restos de una escritura cortada a la mitad
       for(const d of [dir, savesDir]) for(const f of await fsp.readdir(d)) if(f.endsWith(".tmp")) fsp.unlink(path.join(d, f)).catch(() => {});
     },
@@ -376,7 +389,21 @@ function fileStore(dir){
       });
       walletChain = job; return job;
     },
-    async close(){ await gmChain.catch(()=>{}); await walletChain.catch(()=>{}); if(writing) await writing; if(lbWriting) await lbWriting; }
+    // beta cerrada: un uso de código de invitación (nunca pasa del tope), su devolución, reportes y errores
+    async betaInviteUse(hash, max){ return betaJob(() => { const n = beta.invites[hash] || 0; if(max && n >= max) return { noWrite: true, value: { full: true, uses: n } }; beta.invites[hash] = n + 1; return { value: { ok: true, uses: n + 1 } }; }); },
+    async betaInviteRelease(hash){ return betaJob(() => { if(!beta.invites[hash]) return { noWrite: true }; beta.invites[hash]--; return {}; }); },
+    async betaInviteUses(){ return Object.assign({}, beta.invites); },
+    async betaReportAdd(r, keep){ return betaJob(() => { const id = beta.nextReport++; beta.reports.push(Object.assign({ id }, r)); if(beta.reports.length > keep) beta.reports.splice(0, beta.reports.length - keep); return { value: id }; }); },
+    async betaReportList(limit){ return beta.reports.slice(-limit).reverse().map(r => Object.assign({}, r)); },
+    async betaErrorAdd(e, maxSigs){ return betaJob(() => {
+      const cur = beta.errors[e.sig];
+      if(cur){ cur.count += e.count; cur.lastAt = e.at; return { value: true }; }
+      if(Object.keys(beta.errors).length >= maxSigs) return { noWrite: true, value: false };
+      beta.errors[e.sig] = { sig: e.sig, message: e.message, src: e.src, line: e.line, col: e.col, build: e.build, count: e.count, firstAt: e.at, lastAt: e.at };
+      return { value: true };
+    }); },
+    async betaErrorList(limit){ return Object.values(beta.errors).sort((a, b) => b.lastAt - a.lastAt).slice(0, limit).map(e => Object.assign({}, e)); },
+    async close(){ await gmChain.catch(()=>{}); await walletChain.catch(()=>{}); await betaChain.catch(()=>{}); if(writing) await writing; if(lbWriting) await lbWriting; }
   };
 }
 
@@ -462,6 +489,12 @@ function pgStore(url){
         score BIGINT NOT NULL, round INTEGER NOT NULL, duration_ms BIGINT NOT NULL, created_at BIGINT NOT NULL,
         PRIMARY KEY (week, user_id, guardian))`);
       await q(`CREATE INDEX IF NOT EXISTS horda_leaderboard_week_score ON horda_leaderboard (week, score DESC)`);
+      // beta cerrada (server/beta-kit.js), tablas nuevas y aditivas: usos de códigos (solo hash), reportes y errores agrupados
+      await q(`CREATE TABLE IF NOT EXISTS horda_beta_invites (code_hash TEXT PRIMARY KEY, uses INTEGER NOT NULL DEFAULT 0 CHECK (uses >= 0), updated_at BIGINT NOT NULL)`);
+      await q(`CREATE TABLE IF NOT EXISTS horda_beta_reports (id BIGSERIAL PRIMARY KEY, user_id BIGINT, category TEXT NOT NULL, text TEXT NOT NULL, context JSONB NOT NULL DEFAULT '{}'::jsonb, at BIGINT NOT NULL)`);
+      await q(`CREATE TABLE IF NOT EXISTS horda_beta_errors (sig TEXT PRIMARY KEY, message TEXT NOT NULL, src TEXT NOT NULL, line INTEGER NOT NULL, col INTEGER NOT NULL,
+        build TEXT NOT NULL, count BIGINT NOT NULL, first_at BIGINT NOT NULL, last_at BIGINT NOT NULL)`);
+      await q(`CREATE INDEX IF NOT EXISTS horda_beta_errors_last ON horda_beta_errors (last_at DESC)`);
       // ranking del campeón renombrado (eren -> ilkan): se conserva la mejor fila por semana y cuenta, nunca se pierde un puntaje
       for(const [oldId, newId] of Object.entries(legacyIds.LEGACY_CHAMPION_IDS)){
         await q(`INSERT INTO horda_leaderboard (week, user_id, guardian, score, round, duration_ms, created_at)
@@ -564,6 +597,34 @@ function pgStore(url){
       const r = await q(`SELECT max(created_at) AS t FROM horda_leaderboard WHERE user_id=$1`, [userId]);
       return Number(r.rows[0] && r.rows[0].t || 0);
     },
+    // beta cerrada: el tope de usos se respeta dentro de la misma sentencia (dos registros simultáneos no lo pasan)
+    async betaInviteUse(hash, max, at){
+      const r = await q(`INSERT INTO horda_beta_invites(code_hash, uses, updated_at) VALUES($1, 1, $3) ON CONFLICT (code_hash) DO UPDATE
+        SET uses = horda_beta_invites.uses + 1, updated_at = $3 WHERE $2::int = 0 OR horda_beta_invites.uses < $2::int RETURNING uses`, [hash, max | 0, at]);
+      return r.rows[0] ? { ok: true, uses: Number(r.rows[0].uses) } : { full: true };
+    },
+    async betaInviteRelease(hash){ await q("UPDATE horda_beta_invites SET uses = uses - 1 WHERE code_hash=$1 AND uses > 0", [hash]); },
+    async betaInviteUses(){ const o = {}; for(const r of (await q("SELECT code_hash, uses FROM horda_beta_invites")).rows) o[r.code_hash] = Number(r.uses); return o; },
+    async betaReportAdd(r, keep){
+      const ins = await q("INSERT INTO horda_beta_reports(user_id, category, text, context, at) VALUES($1,$2,$3,$4::jsonb,$5) RETURNING id", [r.userId, r.category, r.text, JSON.stringify(r.context || {}), r.at]);
+      const id = Number(ins.rows[0].id);
+      await q("DELETE FROM horda_beta_reports WHERE id <= $1", [id - keep]);
+      return id;
+    },
+    async betaReportList(limit){
+      return (await q("SELECT * FROM horda_beta_reports ORDER BY id DESC LIMIT $1", [limit])).rows.map(x => ({ id: Number(x.id), userId: x.user_id == null ? null : Number(x.user_id), category: x.category, text: x.text, context: x.context || {}, at: Number(x.at) }));
+    },
+    async betaErrorAdd(e, maxSigs){
+      const u = await q("UPDATE horda_beta_errors SET count = count + $2, last_at = $3 WHERE sig=$1", [e.sig, e.count, e.at]);
+      if(u.rowCount) return true;
+      const ins = await q(`INSERT INTO horda_beta_errors(sig, message, src, line, col, build, count, first_at, last_at)
+        SELECT $1,$2,$3,$4,$5,$6,$7,$8,$8 WHERE (SELECT count(*) FROM horda_beta_errors) < $9
+        ON CONFLICT (sig) DO UPDATE SET count = horda_beta_errors.count + EXCLUDED.count, last_at = EXCLUDED.last_at`, [e.sig, e.message, e.src, e.line, e.col, e.build, e.count, e.at, maxSigs]);
+      return ins.rowCount > 0;
+    },
+    async betaErrorList(limit){
+      return (await q("SELECT * FROM horda_beta_errors ORDER BY last_at DESC LIMIT $1", [limit])).rows.map(x => ({ sig: x.sig, message: x.message, src: x.src, line: x.line, col: x.col, build: x.build, count: Number(x.count), firstAt: Number(x.first_at), lastAt: Number(x.last_at) }));
+    },
     async close(){ await gmChain.catch(()=>{}); await pool.end(); }
   };
 }
@@ -629,6 +690,7 @@ function create(opts){
   }
   catch(e){ status = "error"; lastError = String(e.message || e); }
   const fails = new Limiter(), registers = new Limiter(), apiHits = new Limiter(), lbHits = new Limiter();
+  let beta = null; // kit de beta cerrada (server/beta-kit.js): se arma más abajo, cuando existen auth/send/err
   const lbLast = new Map();   // cuenta -> último envío al ranking (ms), para el "¿entra en el tiempo que pasó?"
   const now0 = () => (opts.now ? opts.now() : Date.now()); // las pruebas mueven el reloj del ranking
 
@@ -657,7 +719,7 @@ function create(opts){
   if(sweeper.unref) sweeper.unref();
 
   function info(){
-    const s = { store: store ? store.kind : "none", persistent: !!(store && store.persistent), status };
+    const s = { store: store ? store.kind : "none", persistent: !!(store && store.persistent), status, beta: beta ? beta.info() : { invite: false, reports: false, errors: false } };
     if(status === "error") s.error = lastError;
     if(store && !store.persistent) s.warning = "Sin base de datos: en el plan gratuito de Render las cuentas se pierden al redeployar, reiniciar o cuando el servidor se duerme. Ver docs/ACCOUNTS_DEPLOY.md";
     return s;
@@ -818,12 +880,16 @@ function create(opts){
       const reserved = reservedNames().has(key);
       if(reserved && !signupCodeOk(body.signupCode)) return err(req, res, 403, "RESERVED_USER", "Ese nombre está reservado.");
       if(await store.getUserByKey(key)) return err(req, res, 409, "USER_TAKEN", "Ese nombre de usuario ya existe. Probá con otro.");
+      // Beta cerrada (BETA_INVITE_CODES): una cuenta nueva necesita un código válido. Las reservadas que el operador crea
+      // con FOUNDER_SIGNUP_CODE ya pasaron su propio control y no gastan un código.
+      const invite = reserved ? { ok: true, hash: null } : await beta.reserveInvite(body.inviteCode);
+      if(!invite.ok) return err(req, res, 403, invite.error, invite.msg);
       const now = Date.now();
       let u;
       try{
         u = await store.createUser({ userKey: key, user, name: cleanName(body.name, 16) || user.slice(0, 16), email: email || null,
           passHash: await hashPassword(pass), createdAt: now, lastLogin: now });
-      }catch(e){ if(e.code === "EXISTS") return err(req, res, 409, "USER_TAKEN", "Ese nombre de usuario ya existe. Probá con otro."); throw e; }
+      }catch(e){ await beta.releaseInvite(invite.hash); if(e.code === "EXISTS") return err(req, res, 409, "USER_TAKEN", "Ese nombre de usuario ya existe. Probá con otro."); throw e; }
       const s = await newSession(u);
       log("ACCOUNT_CREATED", { user: u.id });
       if(reserved) await resolvePolicies();
@@ -864,11 +930,13 @@ function create(opts){
       let u = await store.getUserBySteamId(sid), created = false;
       const now = Date.now();
       if(!u){
+        const invite = await beta.reserveInvite(body.inviteCode); // beta cerrada: también para cuentas nuevas de Steam
+        if(!invite.ok) return err(req, res, 403, invite.error, invite.msg);
         try{
           u = await store.createUser({ userKey: "steam" + sid, user: "steam" + sid.slice(-8), name: cleanName(body.name, 16) || "Jugador", email: null,
             passHash: await hashPassword(crypto.randomBytes(24).toString("hex")), createdAt: now, lastLogin: now, steamId: sid });
           created = true;
-        }catch(e){ if(e.code === "EXISTS" || e.code === "23505"){ u = await store.getUserBySteamId(sid); } else throw e; }
+        }catch(e){ await beta.releaseInvite(invite.hash); if(e.code === "EXISTS" || e.code === "23505"){ u = await store.getUserBySteamId(sid); } else throw e; }
         if(!u) return err(req, res, 409, "STEAM_TAKEN", "No se pudo crear la cuenta. Probá de nuevo.");
         if(created) log("ACCOUNT_CREATED", { user: u.id, via: "steam" });
       }else await store.updateUser(u.id, { lastLogin: now });
@@ -987,6 +1055,8 @@ function create(opts){
   Object.assign(routes, gameMaster.routes({getStore:()=>store,auth,send,err,readBody,summarize,now:now0,isOwner,ownerAccess,founderOf,founders:()=>founderBindings,seenAt}));
   Object.assign(routes, require("./item-economy").routes({getStore:()=>store,auth,send,err,readBody,now:now0,isOwner,fallback:{"GET /api/leaderboard":routes["GET /api/leaderboard"],"POST /api/leaderboard/submit":routes["POST /api/leaderboard/submit"]}}));
   Object.assign(routes, require("./battlepass").routes({getStore:()=>store,auth,send,err,readBody,now:now0}));
+  beta = require("./beta-kit").create({ getStore: () => store, auth, send, err, readBody, tooMany, adminAuth, Limiter, log, now: now0, options: opts.beta || {} });
+  Object.assign(routes, beta.routes);
   Object.assign(routes, walletMod.routes({getStore:()=>store,auth,send,err,readBody,summarize,now:now0,isOwner,log}));
 
   // Devuelve true si atendió el pedido (todo lo que empieza con /api/).
@@ -1021,7 +1091,7 @@ function create(opts){
     return { userId:a.user.id, name: a.user.name || a.user.user, founder: founderOf(a.user), grantOnly: Object.keys(ent) };
   }
   return { handle, healthLine, info, ready, presence, clientIp, get store(){ return store; },
-    async close(){ clearInterval(sweeper); if(store && store.close) await store.close(); } };
+    async close(){ clearInterval(sweeper); if(beta) beta.close(); if(store && store.close) await store.close(); } };
 }
 
 module.exports = { create, summarize, hashPassword, verifyPassword, SAVE_MAX_BYTES, lbWeekKey, lbWeekStart, lbMaxScore, lbCheck };
