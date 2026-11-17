@@ -65,6 +65,7 @@ const TESTS = [
   T('tools/alpha/rooms-unit.js', 'node', 120, {q: 1}),
   T('tools/alpha/services-test.js', 'node', 180, {q: 1}),
   T('tools/alpha/event-receipts-test.js', 'node', 180, {q: 1}),
+  T('server/test-beta-kit.js', 'node', 180, {q: 1}),   // beta cerrada: invitaciones, reportes y errores (también en cd server && npm test)
   T('tests/competitive-roster.test.js', 'node', 120, {q: 1}),
   T('tests/competitive-signatures.test.js', 'node', 120, {q: 1}),
   T('tools/crystal-wars/test-competitive.js', 'node', 300, {q: 1}),
@@ -99,6 +100,7 @@ const TESTS = [
   T('tools/ux/test-first-minute-taps.js', 'site', 600),
   T('tools/ux/test-start-button-viewports.js', 'site', 900),   // FASE 1: botón de comenzar visible/usable en 844x390, 667x375, 932x430, 1280x720 y 390x844
   T('tools/ux/test-starter-skin-layout.js', 'site', 600),
+  T('tools/beta/report-dialog-browser.js', 'site', 600),   // beta cerrada: botón y diálogo de reporte, errores agrupados, código de invitación
   T('tools/ux/functional.js', 'fixed', 900),
   // ---- calidad, VFX, arte ----
   T('tools/quality/test-ability-resources.js', 'own', 900),

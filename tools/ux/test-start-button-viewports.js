@@ -27,7 +27,7 @@ async function profile(browser, BASE, w, h) {
   await page.evaluate(() => { const o = document.getElementById('rotate-overlay'); if (o) o.dataset.sbHide = '1'; });
   await page.addStyleTag({ content: '#rotate-overlay[data-sb-hide]{display:none !important}' });
   await tap('#title-continue-btn'); await page.waitForSelector('#starter-step-champ', { state: 'visible' });
-  const card = '.starter-card[data-champ="musashi"]'; if (!(await vis(card))) await tap('#starter-all-btn');
+  const card = '.starter-card[data-champ="guerrero"]'; // primer guardián: solo los 4 fundadores (sin "Ver todos")
   await tap(card); await tap('#starter-yes-btn'); await sleep(400); if (await vis('#starter-skin-later-btn')) await tap('#starter-skin-later-btn'); await sleep(700);
   await page.waitForSelector('#first-story-skip', { state: 'visible', timeout: 15000 }); await tap('#first-story-skip'); await sleep(400);
   return { ctx, page, errors, vis, rect, tap, orientation: ro };

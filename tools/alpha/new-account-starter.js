@@ -1,7 +1,7 @@
 'use strict';
 /* Regresión: un jugador nuevo (guardado local vacío o cuenta recién creada) nunca queda con un guardián
  * bloqueado elegido (antes: el Asesino, clave "guerrero", el valor inicial de selectedClass). Primero recibe
- * su guardián de regalo (ya NO viene ninguno preseleccionado: hay que tocar uno de los 4 recomendados) y entra al
+ * su guardián de regalo (ya NO viene ninguno preseleccionado: hay que tocar uno de los 4 fundadores) y entra al
  * entrenamiento JUGANDO con el guardián elegido (antes forzaba al Mago).
  * También cubre "Borrar progreso y empezar de cero": vuelve al guardián de regalo, no al menú con uno bloqueado.
  *
@@ -27,12 +27,14 @@ function assertSane(s,label){
 }
 async function pickStarter(p,champ,label){
  await p.locator('#starter-screen').waitFor({state:'visible'});
- // primer minuto: NADA preseleccionado, 4 recomendados visibles y "Ver todos" detrás
+ // primer guardián: NADA preseleccionado y SOLO los 4 fundadores, uno por rol (decisión del dueño 2026-11-17: sin "Ver todos")
  await p.waitForTimeout(600); // las cartas ignoran toques fantasma justo al abrir la pantalla
  assert.equal(await p.locator('.starter-card.sel').count(),0,label+': nothing preselected');
  assert.ok(!(await p.locator('#starter-confirm').isVisible()),label+': no confirm bar before choosing');
- assert.equal(await p.locator('.starter-card:visible').count(),4,label+': 4 recommended guardians visible');
- assert.ok(await p.locator('#starter-all-btn').isVisible(),label+': "ver todos" button');
+ assert.equal(await p.locator('.starter-card:visible').count(),4,label+': 4 founder guardians visible');
+ assert.deepEqual(await p.locator('.starter-card').evaluateAll(cs=>cs.map(c=>c.dataset.champ)),['tanque','guerrero','mago','soporte'],label+': exactly the 4 founders, one per role');
+ assert.equal(await p.locator('#starter-all-btn').count(),0,label+': no "ver todos" path');
+ assert.ok(await p.locator('#starter-more-note').isVisible(),label+': note that the rest is bought in the shop');
  assertSane(await look(p),label+' starter screen');
  await p.locator(`.starter-card[data-champ="${champ}"]`).click();
  await p.locator('#starter-yes-btn').click();

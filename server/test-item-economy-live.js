@@ -46,6 +46,16 @@ const action=(t,op,args={},status=200,id='live_'+(++seq),gm=false)=>api('POST',g
  const relicListing=await action(user.token,'list',{item:prize,price:10});await action(owner.token,'buy',{listing:relicListing.listing.id});const bought=(await api('GET','/api/economy',undefined,owner.token)).items.find(x=>x.uid===prize);assert.equal(bought.name,awarded.name);
  const rookie=await api('POST','/api/register',{user:'livebeginner',pass:'test-long-password'},null,201);await api('GET','/api/economy',undefined,rookie.token);
  await action(rookie.token,'starter',{champion:'no_such_champion'},400);await action(rookie.token,'starter',{champion:'tanque'});await action(rookie.token,'starter',{champion:'mago'},409);
+ // Primer guardián (decisión del dueño 2026-11-17): solo los 4 fundadores (STARTER_CHAMPIONS). Otro guardián comprable se rechaza
+ // también por la puerta de run.start (que regala el primero si la cuenta no tiene ninguno).
+ const founder=await api('POST','/api/register',{user:'livefounder',pass:'test-long-password'},null,201);await api('GET','/api/economy',undefined,founder.token);
+ for(const c of ['cazadora','musashi','myla','aurelia'])assert.equal((await action(founder.token,'starter',{champion:c},400)).error,'BAD_CHAMPION',c);
+ assert.equal((await action(founder.token,'run.start',{arena:'ciudad',champion:'cazadora',mode:'campaign'},403)).error,'CHAMPION_LOCKED');
+ assert.deepEqual((await api('GET','/api/economy',undefined,founder.token)).account.unlocked,[]);
+ await action(founder.token,'starter',{champion:'guerrero'});assert.deepEqual((await api('GET','/api/economy',undefined,founder.token)).account.unlocked,['guerrero']);
+ const viaRun=await api('POST','/api/register',{user:'liverunstarter',pass:'test-long-password'},null,201);await api('GET','/api/economy',undefined,viaRun.token);
+ const firstRun=(await action(viaRun.token,'run.start',{arena:'ciudad',champion:'soporte',mode:'campaign'})).run;assert.deepEqual((await api('GET','/api/economy',undefined,viaRun.token)).account.unlocked,['soporte']);
+ await action(viaRun.token,'run.abandon',{run:firstRun.id});
  const short=(await action(rookie.token,'run.start',{arena:'ciudad',champion:'tanque',mode:'campaign'})).run;now+=5000;const shortEnd=await action(rookie.token,'run.finish',{run:short.id,durationMs:5000,victory:false});assert.equal(shortEnd.gold,0);assert.equal(shortEnd.items.length,0);
  await action(owner.token,'config',{config:{dropTables:{ciudad:{comun:-1}}}},400,undefined,true);
  await action(owner.token,'config',{config:{dropTables:{ciudad:{comun:1,mitico:0,legendario:0}}}},200,undefined,true);
