@@ -3,12 +3,12 @@
  "generator": "tools/art/build-art-atlas.js",
  "reference": "Códice (docs/LA_HORDA_CODEX.md); decisión curada en docs/art/ATLAS_VIGENTE.json",
  "sources": {
-  "hash": "ab648431171f8f5e40d84207a5d4dfc996548747",
+  "hash": "3731a5f552e1abad6204108d059f2eda7e8e4416",
   "files": 51
  },
  "runtime": {
   "url": "index.html?dev=1&lazy=1 (producción: carga por grupos, webp activo)",
-  "loadedImages": 1578,
+  "loadedImages": 1576,
   "sampling": "24 muestras por estado y dirección (down/side/left/up)"
  },
  "summary": {
@@ -24,8 +24,7 @@
   },
   "enemies": {
    "CODEX_OK": 63,
-   "FALTA_ANIMACION": 12,
-   "ARTE_VIEJO": 1
+   "FALTA_ANIMACION": 13
   },
   "bosses": {
    "CODEX_OK": 14,
@@ -33,7 +32,7 @@
    "ARTE_VIEJO": 1
   },
   "files": {
-   "CODEX_OK": 871,
+   "CODEX_OK": 872,
    "HUERFANO": 104,
    "ARTE_VIEJO": 30
   }
@@ -70,13 +69,18 @@
      "ready": true
     },
     {
+     "key": "tanque_cast",
+     "file": "assets/sprites/champions/tanque/v3/cast.png",
+     "ready": true
+    },
+    {
      "key": "codex_tanque",
      "file": "assets/sprites/champions/tanque/codex-v1/atlas.png",
      "ready": true
     }
    ],
    "usedBy": [
-    "CHAMP_PACK.tanque_hurt / CHAMP_PACK.tanque_death / CHAMP_PACK.codex_tanque",
+    "CHAMP_PACK.tanque_hurt / CHAMP_PACK.tanque_death / CHAMP_PACK.tanque_cast / CHAMP_PACK.codex_tanque",
     "drawHeroBody (js/rendering/entities.js)"
    ],
    "clips": {
@@ -14182,9 +14186,19 @@
    "rank": "normal",
    "arena": "ciudad",
    "category": "enemy",
-   "status": "ARTE_VIEJO",
-   "kind": "shapes",
-   "atlases": [],
+   "status": "FALTA_ANIMACION",
+   "kind": "real",
+   "atlases": [
+    {
+     "file": "assets/vfx/ciudad/cometa_vuelo_0.png",
+     "loadedAs": "webp",
+     "size": [
+      48,
+      48
+     ],
+     "bytes": 268
+    }
+   ],
    "frames": {
     "idle": 1,
     "walk": 1,
@@ -15212,6 +15226,7 @@
   {"file":"assets/sprites/champions/tanque/skins/tanque_ancestral/preview.png","category":"champions","size":[112,112],"bytes":10948,"webp":false,"loaded":false,"usedBy":["js/assets/unique-skins-meta.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/tanque/skins/tanque_juicio/atlas.png","category":"champions","size":[896,336],"bytes":232459,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/unique-skins-meta.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/tanque/skins/tanque_juicio/preview.png","category":"champions","size":[112,112],"bytes":11036,"webp":false,"loaded":false,"usedBy":["js/assets/unique-skins-meta.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/champions/tanque/v3/cast.png","category":"champions","size":[576,144],"bytes":29142,"webp":false,"loaded":true,"usedBy":["js/assets/champion-sprites.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/tanque/v3/death.png","category":"champions","size":[448,112],"bytes":24638,"webp":false,"loaded":true,"usedBy":["js/assets/champion-sprites.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/tanque/v3/hurt.png","category":"champions","size":[672,112],"bytes":39595,"webp":false,"loaded":true,"usedBy":["js/assets/champion-sprites.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/tibor/atlas.png","category":"champions","size":[448,1008],"bytes":333151,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/champions/expedition/art.js","js/modes/crystal-wars/atlas.js"],"status":"CODEX_OK"},

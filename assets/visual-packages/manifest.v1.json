@@ -14033,6 +14033,54 @@
    "fallback": null
   },
   {
+   "id": "tanque_cast",
+   "champion": "tanque",
+   "skin": null,
+   "kind": "body",
+   "packageVersion": "1.0.0-legacy",
+   "legacy": true,
+   "declaredIn": "js/assets/champion-sprites.js",
+   "atlas": {
+    "path": "assets/sprites/champions/tanque/v3/cast.png",
+    "format": "png",
+    "width": 576,
+    "height": 144,
+    "sha256": "3afeda3ae6fd86c294eeb2bebb07130e6fb52e27704a76a82ccb21ee6a0852a3"
+   },
+   "grid": {
+    "frameWidth": 144,
+    "frameHeight": 144,
+    "cols": 4,
+    "rows": 1
+   },
+   "states": {
+    "cast_down": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   "pivot": {
+    "anchor": 0.9444444444444444,
+    "footX": null
+   },
+   "scale": {
+    "referenceHeight": 73
+   },
+   "mirror": null,
+   "timings": null,
+   "attachmentPoints": null,
+   "lifecycle": {
+    "generated": "not_recorded",
+    "technicalValidation": "not_recorded",
+    "visualApproval": "not_recorded",
+    "integrated": "pass",
+    "inGameVerification": "not_recorded"
+   },
+   "fallback": null
+  },
+  {
    "id": "tanque_death",
    "champion": "tanque",
    "skin": null,

@@ -197,6 +197,12 @@
     "campana_progresion"
    ]
   },
+  "tools/items/t_boss_dormant.js": {
+   "tier": "required",
+   "categories": [
+    "campana_progresion"
+   ]
+  },
   "tools/items/t_boons.js": {
    "tier": "required",
    "categories": [
@@ -439,6 +445,12 @@
     "campana_progresion"
    ]
   },
+  "tools/regression/t_reload_midrun.js": {
+   "tier": "required",
+   "categories": [
+    "guardados"
+   ]
+  },
   "tools/regression/t_defeat_clear.js": {
    "tier": "required",
    "categories": [
@@ -540,6 +552,13 @@
   "tools/ux/test-touch-targets.js": {
    "tier": "required",
    "categories": [
+    "movil"
+   ]
+  },
+  "tools/ux/test-start-button-viewports.js": {
+   "tier": "required",
+   "categories": [
+    "inicio",
     "movil"
    ]
   },

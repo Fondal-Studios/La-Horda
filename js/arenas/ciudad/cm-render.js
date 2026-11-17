@@ -18,6 +18,18 @@ function _cmImg(key, src){ if(CM_IMG[key]) return CM_IMG[key]; const im = new Im
   if(typeof CIUDAD_TEX!=="undefined") for(const k in CIUDAD_TEX) _cmImg(k, CIUDAD_TEX[k]);
   if(typeof CIUDAD_PIECES!=="undefined") for(const k in CIUDAD_PIECES) CIUDAD_PIECES[k].forEach((s, i)=>_cmImg(k + "_" + i, s));
 })();
+// Fachada casa_a (Runway, tools/art-world/build-ciudad-estatua.py casa_a; 0 créditos): vecinas tras la muralla del borde.
+// Si no carga, queda la ciudad lejana procedural de siempre (_cmFarCityPat).
+_cmImg("casa_cx_0", "assets/vfx/ciudad/casa_a_1.png");
+// Cometa del Gran Número (tools/art-world/paint-ciudad-cometa.py; 0 créditos): vuelo y versión «reflejado» dorada.
+for(let i=0;i<6;i++){ _cmImg("cometa_vuelo_" + i, "assets/vfx/ciudad/cometa_vuelo_" + i + ".png"); _cmImg("cometa_oro_" + i, "assets/vfx/ciudad/cometa_oro_" + i + ".png"); }
+// Dibuja un cuadro del cometa rotado hacia donde vuela (la hoja mira a la derecha). false si el cuadro no cargó (respaldo).
+function _cmComet(key, n, x, y, ang, h){
+  const k = key + "_" + (n % 6), im = CM_IMG[k]; if(!im || !CM_OK[k]) return false;
+  ctx.save(); ctx.imageSmoothingEnabled = false; ctx.translate(Math.round(x), Math.round(y)); ctx.rotate(ang);
+  ctx.drawImage(im, -h*33/48, -h/2, h, h); ctx.restore();   // la cabeza (x=33 de 48) queda sobre el punto
+  return true;
+}
 function _cmPat(key, sc){
   const id = key + "@" + (sc||2);
   if(CM_PAT[id]) return CM_PAT[id];
@@ -108,6 +120,34 @@ function _cmFarCityPat(){
   return _cmFarPat;
 }
 
+// Casas vecinas tras la muralla (norte, oeste y este): la fachada casa_a a 2 u/px (x2), oscurecida como la ciudad lejana (ART_BIBLE §14:
+// fondo que no compite con el héroe). Solo decorado fuera del mapa: no cambia colisiones, puertas ni techos de la arena.
+let _cmFarHouseCv = null;
+function _cmFarHouseImg(){
+  if(_cmFarHouseCv) return _cmFarHouseCv;
+  if(!CM_OK.casa_cx_0 || typeof document === "undefined") return null;
+  const im = CM_IMG.casa_cx_0, c = document.createElement("canvas"); c.width = im.width; c.height = im.height;
+  const g = c.getContext("2d"); g.imageSmoothingEnabled = false; g.drawImage(im, 0, 0);
+  g.globalCompositeOperation = "source-atop"; g.fillStyle = "rgba(9,6,16,0.5)"; g.fillRect(0, 0, c.width, c.height);
+  return (_cmFarHouseCv = c);
+}
+function _cmFarHouses(V, B, WT){
+  const im = _cmFarHouseImg(); if(!im) return;
+  const w = im.width*2, h = im.height*2, step = w + 28;
+  const put = (x, yb, k)=>{
+    const flip = _cmHash(k, 41) > 0.5, x0 = Math.round(x - w/2), y0 = Math.round(yb - h);
+    if(!_cmVis(V, x0, y0, x0 + w, yb)) return;
+    ctx.save(); ctx.imageSmoothingEnabled = false; ctx.translate(Math.round(x), 0); if(flip) ctx.scale(-1, 1);
+    ctx.drawImage(im, -w/2, y0, w, h); ctx.restore();
+    const wx = Math.round(x) + (flip ? -1 : 1)*w*0.25;
+    _cmGlow(wx, y0 + h*0.42, 46, "255,150,70", 0.10);
+  };
+  let k = 0;
+  for(let x = B.x0 - WT + w/2; x <= B.x1 + WT - w/2; x += step){ put(x + (_cmHash(k, 43) - 0.5)*16, B.y0 - WT, k); k++; }   // norte
+  // (al sur no: en la vista oblicua taparían la muralla del borde, que marca el límite)
+  for(let y = B.y0 - WT + h; y <= B.y1 + WT; y += h + 20){ put(B.x0 - WT - w/2 - 12, y, k); k++; put(B.x1 + WT + w/2 + 12, y, k + 7); k++; } // oeste/este
+}
+
 /* ---------------- piso ---------------- */
 function cmDrawWorld(now){
   if(!cmS || !player) return;
@@ -122,6 +162,7 @@ function cmDrawWorld(now){
     if(far){ ctx.fillStyle = far; ctx.fillRect(V.x0 - 50, V.y0 - 50, V.x1 - V.x0 + 100, V.y1 - V.y0 + 100); }
     // muralla de borde: el límite del mapa se ve como un muro, no como un corte
     const WT = 150, bw = B.x1 - B.x0, bh = B.y1 - B.y0;
+    _cmFarHouses(V, B, WT);
     for(const r of [[B.x0 - WT, B.y0 - WT, WT, bh + 2*WT], [B.x1, B.y0 - WT, WT, bh + 2*WT], [B.x0, B.y0 - WT, bw, WT], [B.x0, B.y1, bw, WT]]){
       if(!_cmVis(V, r[0], r[1], r[0] + r[2], r[1] + r[3])) continue;
       _cmFillPat("tex_muralla", 2, "#3a3036", r[0], r[1], r[2], r[3], 0.9);
@@ -433,8 +474,10 @@ function cmDrawEnemyBody(e){
     ctx.beginPath(); ctx.moveTo(e.x, e.y - 20); ctx.lineTo(e.gnTx, e.gnTy); ctx.stroke(); ctx.setLineDash([]); ctx.restore();
     _cmGlow(e.x, e.y - 24, 90, "255,120,40", 0.55 + 0.15*Math.sin(t*14));
     for(let k=1;k<5;k++) _cmGlow(e.x - (e.fx||0)*k*18, e.y - 24 - (e.fy||0)*k*18, 40 - k*6, "255,90,20", 0.35 - k*0.06);
-    _cmFx("cmFire", ((t*12)|0) % 4, e.x, e.y + 6, 70, 1, 1);
-    _cmFx("cmPreBolt", ((t*10)|0) % 3, e.x, e.y - 24, 46, 0.9, 0.5);
+    if(!_cmComet("cometa_vuelo", (t*12)|0, e.x, e.y - 24, Math.atan2(e.fy||0, e.fx||0), 96)){
+      _cmFx("cmFire", ((t*12)|0) % 4, e.x, e.y + 6, 70, 1, 1);
+      _cmFx("cmPreBolt", ((t*10)|0) % 3, e.x, e.y - 24, 46, 0.9, 0.5);
+    }
     return true;
   }
   if(e.type==="cm_espejismo"){ ctx.save(); ctx.globalAlpha = 0.55 + 0.15*Math.sin(animNow/120); const r = drawEnemyAtlasPack(Object.assign({}, e, {type:"cm_dama"})); ctx.restore(); return r; }
@@ -453,7 +496,10 @@ function cmDrawTop(){
   if(!cmS || !player) return;
   const t = animNow/1000, V = _cmView();
   // Gran Número DESVIADO: vuelve volando contra el Presentador
-  for(const R of (cmS.refl||[])){ _cmGlow(R.x, R.y, 70, "255,220,120", 0.7); _cmFx("cmPreBolt", ((t*12)|0) % 3, R.x, R.y, 50, 1, 0.5); }
+  const PR = (cmS.refl && cmS.refl.length && typeof cmPresEntity==="function") ? cmPresEntity() : null;
+  for(const R of (cmS.refl||[])){ _cmGlow(R.x, R.y, 70, "255,220,120", 0.7);
+    const ang = PR ? Math.atan2((PR.y - 50) - R.y, PR.x - R.x) : 0;
+    if(!_cmComet("cometa_oro", (t*14)|0, R.x, R.y, ang, 96)) _cmFx("cmPreBolt", ((t*12)|0) % 3, R.x, R.y, 50, 1, 0.5); }
   // Acechantes en los tejados
   for(const e of enemies){
     if(!e.alive || !e.cmRoof) continue;
