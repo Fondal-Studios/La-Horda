@@ -2,7 +2,7 @@
 
 Origen: informe de la Fase 2 (`FASE2_BALANCE.md` y `FASE2_BALANCE_partidas.tsv`, rama local `cierre-fase2`, commit 3b96dbae). Mismo piloto y parámetros: `tools/playtest/campaign.js`, piloto 0,85 / 260, `lvl:'arena'`, `lootPath=1` + `equipBest`, tope de 22 min de juego.
 
-**Resultado:** dos bugs del juego, los dos arreglados con un cambio de lógica pequeño y sin tocar valores de balance. Un humano también quedaba atascado con cualquiera de los dos. El resto de los topes de 22 min avanza sin parar hasta el final: es el ritmo de daño del tanque o del soporte (dificultad) o un límite del piloto automático, no un atasco.
+**Resultado:** dos bugs del juego, los dos arreglados con un cambio de lógica pequeño y sin tocar valores de balance. Por cómo funcionan, deducimos (sin medirlo con jugadores) que un humano también podía quedar atascado. El resto de los topes de 22 min avanza sin parar hasta el final: es el ritmo de daño del tanque o del soporte (dificultad) o un límite del piloto automático, no un atasco.
 
 ## 1. Bugs del juego
 

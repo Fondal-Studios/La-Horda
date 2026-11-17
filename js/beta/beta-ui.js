@@ -153,7 +153,7 @@
          tres bichos comunes. Mismo arte real que la partida (drawChampFigure / _cxDrawEnemy del Códice). El tiempo
          lo manda t (sin estado): cada actor tiene su ciclo de ataque, con proyectiles y destellos simples.
          Compone a la izquierda del CTA (se mide en pantalla) para no tapar botones, logo, idioma ni pie. ---- */
-  const BOSS = "demonio_mayor", MOBS = ["demonio_menor", "esqueleto_h", "demonio_mago"];   // VARIANTE (sin integrar): pedido del dueño
+  const BOSS = "demonio_mayor", MOBS = ["demonio_menor", "esqueleto_h", "demonio_mago"];   // Demonio Mayor: aprobado por el dueño el 2026-11-15 (revela al jefe final a propósito)
   const HEROES = [ // fx = posición en el campo (0..1 del ancho libre); row 1 = segunda fila (más atrás)
     {k:"tanque",     fx:0.43, row:0, per:3200, off:0,    kind:"melee"},
     {k:"libertador", fx:0.26, row:0, per:3800, off:900,  kind:"melee"},
