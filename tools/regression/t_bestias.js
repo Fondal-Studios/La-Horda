@@ -173,7 +173,9 @@ const HELPERS = () => {
     await killAndShoot(i, t, false);
     await E(() => __hb.clear());
   }
-  check('laberinto_sin_muertes_de_otro_diseno', await E(() => Object.keys(DEATH_PACK).length === 0));
+  // las muertes de la hoja de bestias eran otro diseno que el cuerpo vivo: el Laberinto no las usa. (DEATH_PACK puede tener
+  // otras entradas: las de Anakin parten del cuerpo vivo de cada tipo, tools/art/anakin.)
+  check('laberinto_sin_muertes_de_otro_diseno', await E(() => ['esfinge', 'medusa', 'druida_arena'].every(t => !DEATH_PACK[t])));
 
   check('sin_errores', errors.length === 0, errors.slice(0, 5));
   await browser.close();
