@@ -1,0 +1,43 @@
+{
+  "new": [
+    {
+      "run": 44382568998,
+      "job": 135078500472,
+      "artifactId": 14463249809,
+      "artifactDigest": "sha256:8bf5d66bca5645141446d0adb574217fefb3fac8ac1c06c3e3432dd17f69e9ef",
+      "result": "PASS",
+      "checks": "170/170",
+      "errors": 0,
+      "scope": "real renderer layer correction; desktop/mobile, six arenas, three looks, sparse/dense, phases"
+    },
+    {
+      "run": 44384047812,
+      "job": 135083661830,
+      "artifactId": 14465316911,
+      "artifactDigest": "sha256:27612f2f2f798685c081af03b3beb9c3c96da4b9c4b9cfe0accca99788f80ad0",
+      "result": "PASS",
+      "checks": "194/194",
+      "errors": 0,
+      "scope": "same-seeded-scene exact A/B plus prior matrix"
+    },
+    {
+      "test": "semantic accessor VM probe",
+      "result": "PASS",
+      "scope": "cast/idle/hidden alpha, layer, size and anchor"
+    }
+  ],
+  "historicalNotRerun": [
+    "native atlas technical gate",
+    "routing contract",
+    "PR190 death",
+    "PR229 shield lifecycle outside changed composition"
+  ],
+  "notClaimed": [
+    "Art Gate complete",
+    "multiplayer PASS",
+    "performance PASS",
+    "exact-head final CI PASS",
+    "component integration",
+    "canonical publication"
+  ]
+}

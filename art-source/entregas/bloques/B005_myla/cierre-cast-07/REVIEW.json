@@ -1,0 +1,28 @@
+{
+  "state": "FAVORABLE_CORRECTION_PENDING_FINAL_GATES",
+  "integration": "NO_INTEGRAR",
+  "component": "B005_myla/cast/base-supplement",
+  "reference": "assets/ui/codex/champions/myla.png",
+  "candidate": "my_bubble_idle: outside cast t/68/-12/.8; authored cast g/88/-8/.64",
+  "reviewedEvidence": [
+    "desktop-correction-before-after.png",
+    "mobile-correction-before-after.png",
+    "desktop-body-phases.png",
+    "mobile-body-phases.png",
+    "desktop-six-arenas-skins.png",
+    "mobile-six-arenas-skins.png"
+  ],
+  "favorableFindings": [
+    "same-scene A/B restores readable head and torso",
+    "larger open ring preserves shield boundary without filling the body",
+    "back layer keeps spoon and authored body in front",
+    "base, Merienda Magica and Yogur de Arandanos remain distinct across six arenas",
+    "desktop and mobile sequences retain Codex identity"
+  ],
+  "remainingGates": [
+    "real multiplayer/relay for changed dynamic accessors",
+    "full renderer performance",
+    "all applicable checks/workflows on final non-temporary head"
+  ],
+  "decision": "Visual correction accepted as candidate. Keep PR297 draft FIX_NO_INTEGRAR until remaining gates pass."
+}

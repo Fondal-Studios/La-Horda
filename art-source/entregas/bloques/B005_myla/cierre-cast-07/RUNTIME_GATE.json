@@ -1,0 +1,2162 @@
+{
+  "scope": "Myla B005 base cast supplement through the real renderer; authored skins and Berrinche preserved",
+  "correction": "my_bubble_idle keeps its approved top-layer 68u shell outside casts; during the authored cast it moves behind the body, opens to 88u at y-8 and uses .64 alpha",
+  "checks": [
+    {
+      "name": "desktop legacy bosque base consumer",
+      "ok": true
+    },
+    {
+      "name": "desktop legacy hielo base consumer",
+      "ok": true
+    },
+    {
+      "name": "desktop legacy infernal base consumer",
+      "ok": true
+    },
+    {
+      "name": "desktop legacy laberinto base consumer",
+      "ok": true
+    },
+    {
+      "name": "desktop legacy acuatica base consumer",
+      "ok": true
+    },
+    {
+      "name": "desktop legacy minas base consumer",
+      "ok": true
+    },
+    {
+      "name": "desktop candidate bosque base consumer",
+      "ok": true
+    },
+    {
+      "name": "desktop candidate hielo base consumer",
+      "ok": true
+    },
+    {
+      "name": "desktop candidate infernal base consumer",
+      "ok": true
+    },
+    {
+      "name": "desktop candidate laberinto base consumer",
+      "ok": true
+    },
+    {
+      "name": "desktop candidate acuatica base consumer",
+      "ok": true
+    },
+    {
+      "name": "desktop candidate minas base consumer",
+      "ok": true
+    },
+    {
+      "name": "desktop base bosque sparse",
+      "ok": true
+    },
+    {
+      "name": "desktop base hielo sparse",
+      "ok": true
+    },
+    {
+      "name": "desktop base infernal sparse",
+      "ok": true
+    },
+    {
+      "name": "desktop base laberinto sparse",
+      "ok": true
+    },
+    {
+      "name": "desktop base acuatica sparse",
+      "ok": true
+    },
+    {
+      "name": "desktop base minas sparse",
+      "ok": true
+    },
+    {
+      "name": "desktop merienda bosque sparse",
+      "ok": true
+    },
+    {
+      "name": "desktop merienda hielo sparse",
+      "ok": true
+    },
+    {
+      "name": "desktop merienda infernal sparse",
+      "ok": true
+    },
+    {
+      "name": "desktop merienda laberinto sparse",
+      "ok": true
+    },
+    {
+      "name": "desktop merienda acuatica sparse",
+      "ok": true
+    },
+    {
+      "name": "desktop merienda minas sparse",
+      "ok": true
+    },
+    {
+      "name": "desktop arandanos bosque sparse",
+      "ok": true
+    },
+    {
+      "name": "desktop arandanos hielo sparse",
+      "ok": true
+    },
+    {
+      "name": "desktop arandanos infernal sparse",
+      "ok": true
+    },
+    {
+      "name": "desktop arandanos laberinto sparse",
+      "ok": true
+    },
+    {
+      "name": "desktop arandanos acuatica sparse",
+      "ok": true
+    },
+    {
+      "name": "desktop arandanos minas sparse",
+      "ok": true
+    },
+    {
+      "name": "desktop base bosque dense",
+      "ok": true
+    },
+    {
+      "name": "desktop base hielo dense",
+      "ok": true
+    },
+    {
+      "name": "desktop base infernal dense",
+      "ok": true
+    },
+    {
+      "name": "desktop base laberinto dense",
+      "ok": true
+    },
+    {
+      "name": "desktop base acuatica dense",
+      "ok": true
+    },
+    {
+      "name": "desktop base minas dense",
+      "ok": true
+    },
+    {
+      "name": "desktop merienda bosque dense",
+      "ok": true
+    },
+    {
+      "name": "desktop merienda hielo dense",
+      "ok": true
+    },
+    {
+      "name": "desktop merienda infernal dense",
+      "ok": true
+    },
+    {
+      "name": "desktop merienda laberinto dense",
+      "ok": true
+    },
+    {
+      "name": "desktop merienda acuatica dense",
+      "ok": true
+    },
+    {
+      "name": "desktop merienda minas dense",
+      "ok": true
+    },
+    {
+      "name": "desktop arandanos bosque dense",
+      "ok": true
+    },
+    {
+      "name": "desktop arandanos hielo dense",
+      "ok": true
+    },
+    {
+      "name": "desktop arandanos infernal dense",
+      "ok": true
+    },
+    {
+      "name": "desktop arandanos laberinto dense",
+      "ok": true
+    },
+    {
+      "name": "desktop arandanos acuatica dense",
+      "ok": true
+    },
+    {
+      "name": "desktop arandanos minas dense",
+      "ok": true
+    },
+    {
+      "name": "desktop Berrinche priority",
+      "ok": true
+    },
+    {
+      "name": "desktop isolated down phase 0",
+      "ok": true
+    },
+    {
+      "name": "desktop isolated down phase 1",
+      "ok": true
+    },
+    {
+      "name": "desktop isolated down phase 2",
+      "ok": true
+    },
+    {
+      "name": "desktop isolated down phase 3",
+      "ok": true
+    },
+    {
+      "name": "desktop composited down phase 0",
+      "ok": true
+    },
+    {
+      "name": "desktop composited down phase 1",
+      "ok": true
+    },
+    {
+      "name": "desktop composited down phase 2",
+      "ok": true
+    },
+    {
+      "name": "desktop composited down phase 3",
+      "ok": true
+    },
+    {
+      "name": "desktop isolated side phase 0",
+      "ok": true
+    },
+    {
+      "name": "desktop isolated side phase 1",
+      "ok": true
+    },
+    {
+      "name": "desktop isolated side phase 2",
+      "ok": true
+    },
+    {
+      "name": "desktop isolated side phase 3",
+      "ok": true
+    },
+    {
+      "name": "desktop composited side phase 0",
+      "ok": true
+    },
+    {
+      "name": "desktop composited side phase 1",
+      "ok": true
+    },
+    {
+      "name": "desktop composited side phase 2",
+      "ok": true
+    },
+    {
+      "name": "desktop composited side phase 3",
+      "ok": true
+    },
+    {
+      "name": "desktop isolated up phase 0",
+      "ok": true
+    },
+    {
+      "name": "desktop isolated up phase 1",
+      "ok": true
+    },
+    {
+      "name": "desktop isolated up phase 2",
+      "ok": true
+    },
+    {
+      "name": "desktop isolated up phase 3",
+      "ok": true
+    },
+    {
+      "name": "desktop composited up phase 0",
+      "ok": true
+    },
+    {
+      "name": "desktop composited up phase 1",
+      "ok": true
+    },
+    {
+      "name": "desktop composited up phase 2",
+      "ok": true
+    },
+    {
+      "name": "desktop composited up phase 3",
+      "ok": true
+    },
+    {
+      "name": "desktop down frame 0",
+      "ok": true
+    },
+    {
+      "name": "desktop down frame 1",
+      "ok": true
+    },
+    {
+      "name": "desktop down frame 2",
+      "ok": true
+    },
+    {
+      "name": "desktop down frame 3",
+      "ok": true
+    },
+    {
+      "name": "desktop side frame 0",
+      "ok": true
+    },
+    {
+      "name": "desktop side frame 1",
+      "ok": true
+    },
+    {
+      "name": "desktop side frame 2",
+      "ok": true
+    },
+    {
+      "name": "desktop side frame 3",
+      "ok": true
+    },
+    {
+      "name": "desktop up frame 0",
+      "ok": true
+    },
+    {
+      "name": "desktop up frame 1",
+      "ok": true
+    },
+    {
+      "name": "desktop up frame 2",
+      "ok": true
+    },
+    {
+      "name": "desktop up frame 3",
+      "ok": true
+    },
+    {
+      "name": "desktop correction pair down 0",
+      "ok": true
+    },
+    {
+      "name": "desktop correction pair down 1",
+      "ok": true
+    },
+    {
+      "name": "desktop correction pair down 2",
+      "ok": true
+    },
+    {
+      "name": "desktop correction pair down 3",
+      "ok": true
+    },
+    {
+      "name": "desktop correction pair side 0",
+      "ok": true
+    },
+    {
+      "name": "desktop correction pair side 1",
+      "ok": true
+    },
+    {
+      "name": "desktop correction pair side 2",
+      "ok": true
+    },
+    {
+      "name": "desktop correction pair side 3",
+      "ok": true
+    },
+    {
+      "name": "desktop correction pair up 0",
+      "ok": true
+    },
+    {
+      "name": "desktop correction pair up 1",
+      "ok": true
+    },
+    {
+      "name": "desktop correction pair up 2",
+      "ok": true
+    },
+    {
+      "name": "desktop correction pair up 3",
+      "ok": true
+    },
+    {
+      "name": "mobile legacy bosque base consumer",
+      "ok": true
+    },
+    {
+      "name": "mobile legacy hielo base consumer",
+      "ok": true
+    },
+    {
+      "name": "mobile legacy infernal base consumer",
+      "ok": true
+    },
+    {
+      "name": "mobile legacy laberinto base consumer",
+      "ok": true
+    },
+    {
+      "name": "mobile legacy acuatica base consumer",
+      "ok": true
+    },
+    {
+      "name": "mobile legacy minas base consumer",
+      "ok": true
+    },
+    {
+      "name": "mobile candidate bosque base consumer",
+      "ok": true
+    },
+    {
+      "name": "mobile candidate hielo base consumer",
+      "ok": true
+    },
+    {
+      "name": "mobile candidate infernal base consumer",
+      "ok": true
+    },
+    {
+      "name": "mobile candidate laberinto base consumer",
+      "ok": true
+    },
+    {
+      "name": "mobile candidate acuatica base consumer",
+      "ok": true
+    },
+    {
+      "name": "mobile candidate minas base consumer",
+      "ok": true
+    },
+    {
+      "name": "mobile base bosque sparse",
+      "ok": true
+    },
+    {
+      "name": "mobile base hielo sparse",
+      "ok": true
+    },
+    {
+      "name": "mobile base infernal sparse",
+      "ok": true
+    },
+    {
+      "name": "mobile base laberinto sparse",
+      "ok": true
+    },
+    {
+      "name": "mobile base acuatica sparse",
+      "ok": true
+    },
+    {
+      "name": "mobile base minas sparse",
+      "ok": true
+    },
+    {
+      "name": "mobile merienda bosque sparse",
+      "ok": true
+    },
+    {
+      "name": "mobile merienda hielo sparse",
+      "ok": true
+    },
+    {
+      "name": "mobile merienda infernal sparse",
+      "ok": true
+    },
+    {
+      "name": "mobile merienda laberinto sparse",
+      "ok": true
+    },
+    {
+      "name": "mobile merienda acuatica sparse",
+      "ok": true
+    },
+    {
+      "name": "mobile merienda minas sparse",
+      "ok": true
+    },
+    {
+      "name": "mobile arandanos bosque sparse",
+      "ok": true
+    },
+    {
+      "name": "mobile arandanos hielo sparse",
+      "ok": true
+    },
+    {
+      "name": "mobile arandanos infernal sparse",
+      "ok": true
+    },
+    {
+      "name": "mobile arandanos laberinto sparse",
+      "ok": true
+    },
+    {
+      "name": "mobile arandanos acuatica sparse",
+      "ok": true
+    },
+    {
+      "name": "mobile arandanos minas sparse",
+      "ok": true
+    },
+    {
+      "name": "mobile base bosque dense",
+      "ok": true
+    },
+    {
+      "name": "mobile base hielo dense",
+      "ok": true
+    },
+    {
+      "name": "mobile base infernal dense",
+      "ok": true
+    },
+    {
+      "name": "mobile base laberinto dense",
+      "ok": true
+    },
+    {
+      "name": "mobile base acuatica dense",
+      "ok": true
+    },
+    {
+      "name": "mobile base minas dense",
+      "ok": true
+    },
+    {
+      "name": "mobile merienda bosque dense",
+      "ok": true
+    },
+    {
+      "name": "mobile merienda hielo dense",
+      "ok": true
+    },
+    {
+      "name": "mobile merienda infernal dense",
+      "ok": true
+    },
+    {
+      "name": "mobile merienda laberinto dense",
+      "ok": true
+    },
+    {
+      "name": "mobile merienda acuatica dense",
+      "ok": true
+    },
+    {
+      "name": "mobile merienda minas dense",
+      "ok": true
+    },
+    {
+      "name": "mobile arandanos bosque dense",
+      "ok": true
+    },
+    {
+      "name": "mobile arandanos hielo dense",
+      "ok": true
+    },
+    {
+      "name": "mobile arandanos infernal dense",
+      "ok": true
+    },
+    {
+      "name": "mobile arandanos laberinto dense",
+      "ok": true
+    },
+    {
+      "name": "mobile arandanos acuatica dense",
+      "ok": true
+    },
+    {
+      "name": "mobile arandanos minas dense",
+      "ok": true
+    },
+    {
+      "name": "mobile Berrinche priority",
+      "ok": true
+    },
+    {
+      "name": "mobile isolated down phase 0",
+      "ok": true
+    },
+    {
+      "name": "mobile isolated down phase 1",
+      "ok": true
+    },
+    {
+      "name": "mobile isolated down phase 2",
+      "ok": true
+    },
+    {
+      "name": "mobile isolated down phase 3",
+      "ok": true
+    },
+    {
+      "name": "mobile composited down phase 0",
+      "ok": true
+    },
+    {
+      "name": "mobile composited down phase 1",
+      "ok": true
+    },
+    {
+      "name": "mobile composited down phase 2",
+      "ok": true
+    },
+    {
+      "name": "mobile composited down phase 3",
+      "ok": true
+    },
+    {
+      "name": "mobile isolated side phase 0",
+      "ok": true
+    },
+    {
+      "name": "mobile isolated side phase 1",
+      "ok": true
+    },
+    {
+      "name": "mobile isolated side phase 2",
+      "ok": true
+    },
+    {
+      "name": "mobile isolated side phase 3",
+      "ok": true
+    },
+    {
+      "name": "mobile composited side phase 0",
+      "ok": true
+    },
+    {
+      "name": "mobile composited side phase 1",
+      "ok": true
+    },
+    {
+      "name": "mobile composited side phase 2",
+      "ok": true
+    },
+    {
+      "name": "mobile composited side phase 3",
+      "ok": true
+    },
+    {
+      "name": "mobile isolated up phase 0",
+      "ok": true
+    },
+    {
+      "name": "mobile isolated up phase 1",
+      "ok": true
+    },
+    {
+      "name": "mobile isolated up phase 2",
+      "ok": true
+    },
+    {
+      "name": "mobile isolated up phase 3",
+      "ok": true
+    },
+    {
+      "name": "mobile composited up phase 0",
+      "ok": true
+    },
+    {
+      "name": "mobile composited up phase 1",
+      "ok": true
+    },
+    {
+      "name": "mobile composited up phase 2",
+      "ok": true
+    },
+    {
+      "name": "mobile composited up phase 3",
+      "ok": true
+    },
+    {
+      "name": "mobile down frame 0",
+      "ok": true
+    },
+    {
+      "name": "mobile down frame 1",
+      "ok": true
+    },
+    {
+      "name": "mobile down frame 2",
+      "ok": true
+    },
+    {
+      "name": "mobile down frame 3",
+      "ok": true
+    },
+    {
+      "name": "mobile side frame 0",
+      "ok": true
+    },
+    {
+      "name": "mobile side frame 1",
+      "ok": true
+    },
+    {
+      "name": "mobile side frame 2",
+      "ok": true
+    },
+    {
+      "name": "mobile side frame 3",
+      "ok": true
+    },
+    {
+      "name": "mobile up frame 0",
+      "ok": true
+    },
+    {
+      "name": "mobile up frame 1",
+      "ok": true
+    },
+    {
+      "name": "mobile up frame 2",
+      "ok": true
+    },
+    {
+      "name": "mobile up frame 3",
+      "ok": true
+    },
+    {
+      "name": "mobile correction pair down 0",
+      "ok": true
+    },
+    {
+      "name": "mobile correction pair down 1",
+      "ok": true
+    },
+    {
+      "name": "mobile correction pair down 2",
+      "ok": true
+    },
+    {
+      "name": "mobile correction pair down 3",
+      "ok": true
+    },
+    {
+      "name": "mobile correction pair side 0",
+      "ok": true
+    },
+    {
+      "name": "mobile correction pair side 1",
+      "ok": true
+    },
+    {
+      "name": "mobile correction pair side 2",
+      "ok": true
+    },
+    {
+      "name": "mobile correction pair side 3",
+      "ok": true
+    },
+    {
+      "name": "mobile correction pair up 0",
+      "ok": true
+    },
+    {
+      "name": "mobile correction pair up 1",
+      "ok": true
+    },
+    {
+      "name": "mobile correction pair up 2",
+      "ok": true
+    },
+    {
+      "name": "mobile correction pair up 3",
+      "ok": true
+    }
+  ],
+  "errors": [],
+  "rows": [
+    {
+      "view": "desktop",
+      "mode": "legacy",
+      "arena": "bosque",
+      "look": "base",
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla",
+          "frame": 22
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "legacy",
+      "arena": "hielo",
+      "look": "base",
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla",
+          "frame": 22
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "legacy",
+      "arena": "infernal",
+      "look": "base",
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla",
+          "frame": 22
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "legacy",
+      "arena": "laberinto",
+      "look": "base",
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla",
+          "frame": 22
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "legacy",
+      "arena": "acuatica",
+      "look": "base",
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla",
+          "frame": 22
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "legacy",
+      "arena": "minas",
+      "look": "base",
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla",
+          "frame": 22
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "bosque",
+      "look": "base",
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "hielo",
+      "look": "base",
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "infernal",
+      "look": "base",
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "laberinto",
+      "look": "base",
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "acuatica",
+      "look": "base",
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "minas",
+      "look": "base",
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "bosque",
+      "look": "base",
+      "dense": false,
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "hielo",
+      "look": "base",
+      "dense": false,
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "infernal",
+      "look": "base",
+      "dense": false,
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "laberinto",
+      "look": "base",
+      "dense": false,
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "acuatica",
+      "look": "base",
+      "dense": false,
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "minas",
+      "look": "base",
+      "dense": false,
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "bosque",
+      "look": "merienda",
+      "dense": false,
+      "resolved": "skin_merienda_magica",
+      "calls": [
+        {
+          "key": "skin_merienda_magica",
+          "frame": 34
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "hielo",
+      "look": "merienda",
+      "dense": false,
+      "resolved": "skin_merienda_magica",
+      "calls": [
+        {
+          "key": "skin_merienda_magica",
+          "frame": 34
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "infernal",
+      "look": "merienda",
+      "dense": false,
+      "resolved": "skin_merienda_magica",
+      "calls": [
+        {
+          "key": "skin_merienda_magica",
+          "frame": 34
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "laberinto",
+      "look": "merienda",
+      "dense": false,
+      "resolved": "skin_merienda_magica",
+      "calls": [
+        {
+          "key": "skin_merienda_magica",
+          "frame": 34
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "acuatica",
+      "look": "merienda",
+      "dense": false,
+      "resolved": "skin_merienda_magica",
+      "calls": [
+        {
+          "key": "skin_merienda_magica",
+          "frame": 34
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "minas",
+      "look": "merienda",
+      "dense": false,
+      "resolved": "skin_merienda_magica",
+      "calls": [
+        {
+          "key": "skin_merienda_magica",
+          "frame": 34
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "bosque",
+      "look": "arandanos",
+      "dense": false,
+      "resolved": "croma_myla_arandanos",
+      "calls": [
+        {
+          "key": "croma_myla_arandanos",
+          "frame": 21
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "hielo",
+      "look": "arandanos",
+      "dense": false,
+      "resolved": "croma_myla_arandanos",
+      "calls": [
+        {
+          "key": "croma_myla_arandanos",
+          "frame": 21
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "infernal",
+      "look": "arandanos",
+      "dense": false,
+      "resolved": "croma_myla_arandanos",
+      "calls": [
+        {
+          "key": "croma_myla_arandanos",
+          "frame": 21
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "laberinto",
+      "look": "arandanos",
+      "dense": false,
+      "resolved": "croma_myla_arandanos",
+      "calls": [
+        {
+          "key": "croma_myla_arandanos",
+          "frame": 21
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "acuatica",
+      "look": "arandanos",
+      "dense": false,
+      "resolved": "croma_myla_arandanos",
+      "calls": [
+        {
+          "key": "croma_myla_arandanos",
+          "frame": 21
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "minas",
+      "look": "arandanos",
+      "dense": false,
+      "resolved": "croma_myla_arandanos",
+      "calls": [
+        {
+          "key": "croma_myla_arandanos",
+          "frame": 21
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "bosque",
+      "look": "base",
+      "dense": true,
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "hielo",
+      "look": "base",
+      "dense": true,
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "infernal",
+      "look": "base",
+      "dense": true,
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "laberinto",
+      "look": "base",
+      "dense": true,
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "acuatica",
+      "look": "base",
+      "dense": true,
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "minas",
+      "look": "base",
+      "dense": true,
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "bosque",
+      "look": "merienda",
+      "dense": true,
+      "resolved": "skin_merienda_magica",
+      "calls": [
+        {
+          "key": "skin_merienda_magica",
+          "frame": 34
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "hielo",
+      "look": "merienda",
+      "dense": true,
+      "resolved": "skin_merienda_magica",
+      "calls": [
+        {
+          "key": "skin_merienda_magica",
+          "frame": 34
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "infernal",
+      "look": "merienda",
+      "dense": true,
+      "resolved": "skin_merienda_magica",
+      "calls": [
+        {
+          "key": "skin_merienda_magica",
+          "frame": 34
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "laberinto",
+      "look": "merienda",
+      "dense": true,
+      "resolved": "skin_merienda_magica",
+      "calls": [
+        {
+          "key": "skin_merienda_magica",
+          "frame": 34
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "acuatica",
+      "look": "merienda",
+      "dense": true,
+      "resolved": "skin_merienda_magica",
+      "calls": [
+        {
+          "key": "skin_merienda_magica",
+          "frame": 34
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "minas",
+      "look": "merienda",
+      "dense": true,
+      "resolved": "skin_merienda_magica",
+      "calls": [
+        {
+          "key": "skin_merienda_magica",
+          "frame": 34
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "bosque",
+      "look": "arandanos",
+      "dense": true,
+      "resolved": "croma_myla_arandanos",
+      "calls": [
+        {
+          "key": "croma_myla_arandanos",
+          "frame": 21
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "hielo",
+      "look": "arandanos",
+      "dense": true,
+      "resolved": "croma_myla_arandanos",
+      "calls": [
+        {
+          "key": "croma_myla_arandanos",
+          "frame": 21
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "infernal",
+      "look": "arandanos",
+      "dense": true,
+      "resolved": "croma_myla_arandanos",
+      "calls": [
+        {
+          "key": "croma_myla_arandanos",
+          "frame": 21
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "laberinto",
+      "look": "arandanos",
+      "dense": true,
+      "resolved": "croma_myla_arandanos",
+      "calls": [
+        {
+          "key": "croma_myla_arandanos",
+          "frame": 21
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "acuatica",
+      "look": "arandanos",
+      "dense": true,
+      "resolved": "croma_myla_arandanos",
+      "calls": [
+        {
+          "key": "croma_myla_arandanos",
+          "frame": 21
+        }
+      ]
+    },
+    {
+      "view": "desktop",
+      "mode": "candidate",
+      "arena": "minas",
+      "look": "arandanos",
+      "dense": true,
+      "resolved": "croma_myla_arandanos",
+      "calls": [
+        {
+          "key": "croma_myla_arandanos",
+          "frame": 21
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "legacy",
+      "arena": "bosque",
+      "look": "base",
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla",
+          "frame": 22
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "legacy",
+      "arena": "hielo",
+      "look": "base",
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla",
+          "frame": 22
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "legacy",
+      "arena": "infernal",
+      "look": "base",
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla",
+          "frame": 22
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "legacy",
+      "arena": "laberinto",
+      "look": "base",
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla",
+          "frame": 22
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "legacy",
+      "arena": "acuatica",
+      "look": "base",
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla",
+          "frame": 22
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "legacy",
+      "arena": "minas",
+      "look": "base",
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla",
+          "frame": 22
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "bosque",
+      "look": "base",
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "hielo",
+      "look": "base",
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "infernal",
+      "look": "base",
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "laberinto",
+      "look": "base",
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "acuatica",
+      "look": "base",
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "minas",
+      "look": "base",
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "bosque",
+      "look": "base",
+      "dense": false,
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "hielo",
+      "look": "base",
+      "dense": false,
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "infernal",
+      "look": "base",
+      "dense": false,
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "laberinto",
+      "look": "base",
+      "dense": false,
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "acuatica",
+      "look": "base",
+      "dense": false,
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "minas",
+      "look": "base",
+      "dense": false,
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "bosque",
+      "look": "merienda",
+      "dense": false,
+      "resolved": "skin_merienda_magica",
+      "calls": [
+        {
+          "key": "skin_merienda_magica",
+          "frame": 34
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "hielo",
+      "look": "merienda",
+      "dense": false,
+      "resolved": "skin_merienda_magica",
+      "calls": [
+        {
+          "key": "skin_merienda_magica",
+          "frame": 34
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "infernal",
+      "look": "merienda",
+      "dense": false,
+      "resolved": "skin_merienda_magica",
+      "calls": [
+        {
+          "key": "skin_merienda_magica",
+          "frame": 34
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "laberinto",
+      "look": "merienda",
+      "dense": false,
+      "resolved": "skin_merienda_magica",
+      "calls": [
+        {
+          "key": "skin_merienda_magica",
+          "frame": 34
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "acuatica",
+      "look": "merienda",
+      "dense": false,
+      "resolved": "skin_merienda_magica",
+      "calls": [
+        {
+          "key": "skin_merienda_magica",
+          "frame": 34
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "minas",
+      "look": "merienda",
+      "dense": false,
+      "resolved": "skin_merienda_magica",
+      "calls": [
+        {
+          "key": "skin_merienda_magica",
+          "frame": 34
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "bosque",
+      "look": "arandanos",
+      "dense": false,
+      "resolved": "croma_myla_arandanos",
+      "calls": [
+        {
+          "key": "croma_myla_arandanos",
+          "frame": 21
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "hielo",
+      "look": "arandanos",
+      "dense": false,
+      "resolved": "croma_myla_arandanos",
+      "calls": [
+        {
+          "key": "croma_myla_arandanos",
+          "frame": 21
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "infernal",
+      "look": "arandanos",
+      "dense": false,
+      "resolved": "croma_myla_arandanos",
+      "calls": [
+        {
+          "key": "croma_myla_arandanos",
+          "frame": 21
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "laberinto",
+      "look": "arandanos",
+      "dense": false,
+      "resolved": "croma_myla_arandanos",
+      "calls": [
+        {
+          "key": "croma_myla_arandanos",
+          "frame": 21
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "acuatica",
+      "look": "arandanos",
+      "dense": false,
+      "resolved": "croma_myla_arandanos",
+      "calls": [
+        {
+          "key": "croma_myla_arandanos",
+          "frame": 21
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "minas",
+      "look": "arandanos",
+      "dense": false,
+      "resolved": "croma_myla_arandanos",
+      "calls": [
+        {
+          "key": "croma_myla_arandanos",
+          "frame": 21
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "bosque",
+      "look": "base",
+      "dense": true,
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "hielo",
+      "look": "base",
+      "dense": true,
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "infernal",
+      "look": "base",
+      "dense": true,
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "laberinto",
+      "look": "base",
+      "dense": true,
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "acuatica",
+      "look": "base",
+      "dense": true,
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "minas",
+      "look": "base",
+      "dense": true,
+      "resolved": "myla",
+      "calls": [
+        {
+          "key": "myla_cast",
+          "frame": 11
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "bosque",
+      "look": "merienda",
+      "dense": true,
+      "resolved": "skin_merienda_magica",
+      "calls": [
+        {
+          "key": "skin_merienda_magica",
+          "frame": 34
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "hielo",
+      "look": "merienda",
+      "dense": true,
+      "resolved": "skin_merienda_magica",
+      "calls": [
+        {
+          "key": "skin_merienda_magica",
+          "frame": 34
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "infernal",
+      "look": "merienda",
+      "dense": true,
+      "resolved": "skin_merienda_magica",
+      "calls": [
+        {
+          "key": "skin_merienda_magica",
+          "frame": 34
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "laberinto",
+      "look": "merienda",
+      "dense": true,
+      "resolved": "skin_merienda_magica",
+      "calls": [
+        {
+          "key": "skin_merienda_magica",
+          "frame": 34
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "acuatica",
+      "look": "merienda",
+      "dense": true,
+      "resolved": "skin_merienda_magica",
+      "calls": [
+        {
+          "key": "skin_merienda_magica",
+          "frame": 34
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "minas",
+      "look": "merienda",
+      "dense": true,
+      "resolved": "skin_merienda_magica",
+      "calls": [
+        {
+          "key": "skin_merienda_magica",
+          "frame": 34
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "bosque",
+      "look": "arandanos",
+      "dense": true,
+      "resolved": "croma_myla_arandanos",
+      "calls": [
+        {
+          "key": "croma_myla_arandanos",
+          "frame": 21
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "hielo",
+      "look": "arandanos",
+      "dense": true,
+      "resolved": "croma_myla_arandanos",
+      "calls": [
+        {
+          "key": "croma_myla_arandanos",
+          "frame": 21
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "infernal",
+      "look": "arandanos",
+      "dense": true,
+      "resolved": "croma_myla_arandanos",
+      "calls": [
+        {
+          "key": "croma_myla_arandanos",
+          "frame": 21
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "laberinto",
+      "look": "arandanos",
+      "dense": true,
+      "resolved": "croma_myla_arandanos",
+      "calls": [
+        {
+          "key": "croma_myla_arandanos",
+          "frame": 21
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "acuatica",
+      "look": "arandanos",
+      "dense": true,
+      "resolved": "croma_myla_arandanos",
+      "calls": [
+        {
+          "key": "croma_myla_arandanos",
+          "frame": 21
+        }
+      ]
+    },
+    {
+      "view": "mobile",
+      "mode": "candidate",
+      "arena": "minas",
+      "look": "arandanos",
+      "dense": true,
+      "resolved": "croma_myla_arandanos",
+      "calls": [
+        {
+          "key": "croma_myla_arandanos",
+          "frame": 21
+        }
+      ]
+    }
+  ],
+  "asset": {
+    "path": "assets/sprites/champions/myla/v2/cast.png",
+    "bytes": 119927,
+    "sha256": "1069b0085e3bae9854357869aaae4ebd875074623ccd6d0af4bd061a15d41110"
+  },
+  "reference": {
+    "codex": "assets/ui/codex/champions/myla.png",
+    "source": "art-source/entregas/bloques/B005_myla/revision-cast-back-03/cast.png"
+  },
+  "files": [
+    {
+      "name": "contact-sheet.png",
+      "bytes": 147031,
+      "sha256": "3f2bdefce184b8e87f4d28d89191ba6247653e45b09b87ab534922d5177f4573"
+    },
+    {
+      "name": "desktop-before-after.png",
+      "bytes": 815040,
+      "sha256": "28694a567af83e7b3d9f22e6fbdd353a78e98b0ad6570877dacf0cfef641f2f3"
+    },
+    {
+      "name": "desktop-body-phases.png",
+      "bytes": 1869281,
+      "sha256": "06affc6b1dc0647b98138e706e9d4b90be1bcf1c7d5d88c067501beee2621e9b"
+    },
+    {
+      "name": "desktop-correction-before-after.png",
+      "bytes": 1857044,
+      "sha256": "2df7c961f8e3793127655f465505e345b8fa90fe806c87749cef99cc4bf42772"
+    },
+    {
+      "name": "desktop-six-arenas-skins.png",
+      "bytes": 2498967,
+      "sha256": "df54e6caca3db4aef87d7f49b34e670cce1f553e88807856ea23c604fcb7c788"
+    },
+    {
+      "name": "mobile-before-after.png",
+      "bytes": 1246066,
+      "sha256": "9d99b86592187bc09c605501180c22c86b52da091941df1e93f015b48b0d9ad9"
+    },
+    {
+      "name": "mobile-body-phases.png",
+      "bytes": 1765657,
+      "sha256": "05fb554a5ddf846fdb515606b772c8a81f36cdecef9317bdeb5a03edb4a02565"
+    },
+    {
+      "name": "mobile-correction-before-after.png",
+      "bytes": 1645019,
+      "sha256": "f9e97c6dabc4b75a37d744ebe9d63b9c4a94e339266144fe96d4e25728016754"
+    },
+    {
+      "name": "mobile-six-arenas-skins.png",
+      "bytes": 3734648,
+      "sha256": "1b9db4605cb254f024f81e2790558dfe2ae2f7c1db5bc52593334ab8a97c710a"
+    }
+  ],
+  "status": "PASS"
+}
