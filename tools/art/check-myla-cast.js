@@ -47,3 +47,5 @@ const OUT=path.join(ROOT,'art-source/entregas/bloques/B005_myla/cierre-cast-01')
   if(report.status!=='PASS')process.exitCode=1;
  }finally{await browser.close();await site.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});
+
+// Capture trigger for PR297 layer candidate; removed after artifact collection.
