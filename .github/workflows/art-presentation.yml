@@ -19,17 +19,8 @@ jobs:
       - run: node tools/art/check-environment-inlays.js && node tools/art/check-codex-voice.js && node tools/art/check-presentation-browser.js
         env:
           NODE_PATH: /tmp/horda-art-tools/node_modules
-      - name: Myla B005 gameplay capture (temporary PR gate)
-        if: github.event.pull_request.number == 297
-        run: node tools/art/check-myla-cast.js
-        env:
-          NODE_PATH: /tmp/horda-art-tools/node_modules
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: art-presentation-evidence
-          path: |
-            docs/art-enrichment/
-            art-source/entregas/bloques/B005_myla/cierre-cast-01/RUNTIME_GATE.json
-            art-source/entregas/bloques/B005_myla/cierre-cast-01/*before-after.png
-            art-source/entregas/bloques/B005_myla/cierre-cast-01/*six-arenas-skins.png
+          path: docs/art-enrichment/
