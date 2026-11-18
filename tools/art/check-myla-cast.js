@@ -26,15 +26,28 @@ const OUT=path.join(ROOT,'art-source/entregas/bloques/B005_myla/cierre-cast-01')
     const setup=(arena,look,dense=false)=>{netMatch=null;window.ART_GATE_NO_VFX=true;selectedClass='myla';currentArena=arena;lobbyAllies=[];const rec=save.champions.myla;rec.unlocked=true;rec.level=20;rec.equipment={};rec.croma=null;rec.cosmeticSkin='';startRun(1);state='playing';document.querySelectorAll('.screen').forEach(s=>s.classList.add('hidden'));spawnTimer=arenaHazardTimer=1e9;enemies=[];if(arena==='bosque'){player.x+=260;player.y+=160;}CAM_SUBJECT={x:player.x,y:player.y};CAM_LEAD_X=CAM_LEAD_Y=CAM_LIFT=0;_arenaTitleUntil=0;player.invulnTimer=1e9;player._codexSkin=look.skin;if(dense)for(const [dx,dy] of [[-120,-80],[120,-80],[-145,10],[145,10]]){const e=spawnEnemy('esqueleto');Object.assign(e,{x:player.x+dx,y:player.y+dy,hp:1e8,maxHp:1e8,speed:0,baseSpeed:0,dmg:0});}};
     const cast=(dir,progress=.88,invoke=true)=>{const aim=dir==='up'?{x:player.x,y:player.y-100,dx:0,dy:-1}:dir==='side'?{x:player.x+100,y:player.y,dx:1,dy:0}:{x:player.x,y:player.y+100,dx:0,dy:1};player.fx=aim.dx;player.fy=aim.dy;player._packCastUntil=0;player.attackAnim=0;if(invoke){player.cls.skills[2].cd=0;useSkill(2,aim);}player.fx=aim.dx;player.fy=aim.dy;player._packCastUntil=Infinity;player._aDur=400;player._aPrev=400;player.attackAnim=Math.max(1,400*(1-progress));};
     const drawTracked=()=>{const calls=[],orig=champPackDrawFrame;champPackDrawFrame=function(P,v,...args){calls.push({key:Object.keys(CHAMP_PACK).find(k=>CHAMP_PACK[k]===P)||'?',frame:v<0?~v:v});return orig.call(this,P,v,...args);};try{render();}finally{champPackDrawFrame=orig;}return calls;};
-    const compare=makeSheet(6,2),matrix=makeSheet(6,looks.length*2),phases=makeSheet(4,6);let ci=0,mi=0,pi=0;
+    const compare=makeSheet(6,2),matrix=makeSheet(6,looks.length*2),phases=makeSheet(4,6),correction=makeSheet(4,6);let ci=0,mi=0,pi=0,xi=0;
     for(const mode of ['legacy','candidate'])for(const arena of arenas){setup(arena,looks[0]);CHAMP_PACK.myla_cast.ready=mode==='candidate'&&realReady;cast('up',.88);const calls=drawTracked();stamp(compare,ci++,mode+' · '+arena+' · espalda');const used=calls.filter(c=>['myla','myla_cast'].includes(c.key));rows.push({view:view.id,mode,arena,look:'base',resolved:setSkinPackKey(player,'myla'),calls:used});check.push({name:view.id+' '+mode+' '+arena+' base consumer',ok:mode==='candidate'?used.some(c=>c.key==='myla_cast'&&c.frame===11):used.some(c=>c.key==='myla')&&!used.some(c=>c.key==='myla_cast')});}
     for(const dense of [false,true])for(const look of looks)for(const arena of arenas){setup(arena,look,dense);CHAMP_PACK.myla_cast.ready=realReady;cast('up',.88);const calls=drawTracked(),used=calls.filter(c=>c.key==='myla_cast'||c.key===look.pack);stamp(matrix,mi++,look.id+' · '+(dense?'dense':'sparse')+' · '+arena);rows.push({view:view.id,mode:'candidate',arena,look:look.id,dense,resolved:setSkinPackKey(player,'myla'),calls:used});check.push({name:view.id+' '+look.id+' '+arena+' '+(dense?'dense':'sparse'),ok:look.id==='base'?used.some(c=>c.key==='myla_cast'&&c.frame===11):used.some(c=>c.key===look.pack)&&!used.some(c=>c.key==='myla_cast')});}
     setup('bosque',looks[0]);CHAMP_PACK.myla_cast.ready=realReady;cast('side',.5);const tantrum=portadorAdd(player,'tantrum',player,1000,{}),tantrumCalls=drawTracked();check.push({name:view.id+' Berrinche priority',ok:tantrumCalls.some(c=>c.key==='myla_berrinche')&&!tantrumCalls.some(c=>c.key==='myla_cast')});portadorObjects.splice(portadorObjects.indexOf(tantrum),1);
     for(const dir of ['down','side','up'])for(const [layer,invoke] of [['isolated',false],['composited',true]])for(const [n,progress] of [[0,.05],[1,.3],[2,.55],[3,.88]]){setup('bosque',looks[0]);CHAMP_PACK.myla_cast.ready=realReady;cast(dir,progress,invoke);const calls=drawTracked().filter(c=>c.key==='myla_cast');stamp(phases,pi++,layer+' · '+dir+' · frame '+n);check.push({name:view.id+' '+layer+' '+dir+' phase '+n,ok:calls.length===1&&calls[0].frame===({down:0,side:4,up:8}[dir]+n)});}
     for(const dir of ['down','side','up'])for(const [n,progress] of [[0,.05],[1,.3],[2,.55],[3,.88]]){setup('bosque',looks[0]);CHAMP_PACK.myla_cast.ready=realReady;cast(dir,progress);const calls=drawTracked().filter(c=>c.key==='myla_cast');check.push({name:view.id+' '+dir+' frame '+n,ok:calls.length===1&&calls[0].frame===({down:0,side:4,up:8}[dir]+n)});}
-    CHAMP_PACK.myla_cast.ready=realReady;state='menu';return{check,rows,comparison:compare[0].toDataURL(),matrix:matrix[0].toDataURL(),phases:phases[0].toDataURL()};
+    // Exact A/B of the rejected alpha-only shell and this layer/geometry correction.
+    // Both samples reuse one seeded scene and the same live bubble instance.
+    for(const dir of ['down','side','up'])for(const [n,progress] of [[0,.05],[1,.3],[2,.55],[3,.88]]){
+     setup('bosque',looks[0]);CHAMP_PACK.myla_cast.ready=realReady;cast(dir,progress);
+     const bubble=[...KVB.pool].reverse().find(e=>e.name==='my_bubble_idle'),keys=['alpha','layer','w','h','ofy'];
+     if(!bubble){check.push({name:view.id+' correction pair '+dir+' '+n,ok:false});continue;}
+     const current={};for(const k of keys)current[k]=Object.getOwnPropertyDescriptor(bubble,k);
+     Object.defineProperties(bubble,{alpha:{value:.34,writable:true,configurable:true,enumerable:true},layer:{value:'t',writable:true,configurable:true,enumerable:true},w:{value:68,writable:true,configurable:true,enumerable:true},h:{value:68,writable:true,configurable:true,enumerable:true},ofy:{value:-12,writable:true,configurable:true,enumerable:true}});
+     render();stamp(correction,xi++,'prev alpha-only · '+dir+' · '+n);
+     Object.defineProperties(bubble,current);
+     render();stamp(correction,xi++,'candidate layer+space · '+dir+' · '+n);
+     check.push({name:view.id+' correction pair '+dir+' '+n,ok:bubble.alpha===.64&&bubble.layer==='g'&&bubble.w===88&&bubble.h===88&&bubble.ofy===-8});
+    }
+    CHAMP_PACK.myla_cast.ready=realReady;state='menu';return{check,rows,comparison:compare[0].toDataURL(),matrix:matrix[0].toDataURL(),phases:phases[0].toDataURL(),correction:correction[0].toDataURL()};
    },{view});
-   for(const [name,data] of [['before-after',result.comparison],['six-arenas-skins',result.matrix],['body-phases',result.phases]])fs.writeFileSync(path.join(OUT,view.id+'-'+name+'.png'),Buffer.from(data.split(',')[1],'base64'));
+   for(const [name,data] of [['before-after',result.comparison],['six-arenas-skins',result.matrix],['body-phases',result.phases],['correction-before-after',result.correction]])fs.writeFileSync(path.join(OUT,view.id+'-'+name+'.png'),Buffer.from(data.split(',')[1],'base64'));
    report.checks.push(...result.check);report.rows.push(...result.rows);
   }
   const cast=fs.readFileSync(path.join(ROOT,'assets/sprites/champions/myla/v2/cast.png'));
@@ -49,4 +62,3 @@ const OUT=path.join(ROOT,'art-source/entregas/bloques/B005_myla/cierre-cast-01')
 })().catch(e=>{console.error(e);process.exitCode=1;});
 
 // Capture trigger 02 for PR297 layer candidate; removed after artifact collection.
-
