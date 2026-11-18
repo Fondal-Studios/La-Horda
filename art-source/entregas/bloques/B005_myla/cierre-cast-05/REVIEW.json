@@ -1,0 +1,23 @@
+{
+  "state": "FIX",
+  "component": "B005_myla/cast/base-supplement",
+  "reference": "assets/ui/codex/champions/myla.png",
+  "reviewedEvidence": [
+    "desktop-body-phases.png",
+    "mobile-body-phases.png",
+    "desktop/mobile before-after",
+    "desktop/mobile six-arena skins"
+  ],
+  "identityPass": [
+    "pink dress and bow",
+    "spoon silhouette",
+    "front/side/back directions",
+    "chibi proportions from exact Codex template"
+  ],
+  "blockingFindings": [
+    "composited circular shield fills the body silhouette",
+    "three prongs overlap head/hair in all directions",
+    "effect dominates the body animation at gameplay scale on desktop and mobile"
+  ],
+  "decision": "Do not integrate. Preserve source/atlas and correct composition in the existing PR; no new workshop."
+}

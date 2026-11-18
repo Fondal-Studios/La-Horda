@@ -1,0 +1,36 @@
+{
+  "new": [
+    {
+      "head": "9390c4e52c731ef4ef6afacee4535a474fd3d0ae",
+      "run": 44325704121,
+      "artifact": 14436029344,
+      "result": "PASS_TECHNICAL_FIX_VISUAL",
+      "checks": "170/170",
+      "pageErrors": 0,
+      "scope": "isolated and composited 12 body phases plus prior matrices"
+    }
+  ],
+  "historicalPreserved": [
+    {
+      "head": "da0abf",
+      "result": "TIMEOUT",
+      "cause": "fixture waited for nonexistent skin_myla_arandanos key"
+    },
+    {
+      "head": "9333d381",
+      "result": "FAIL_BEFORE_CAPTURE",
+      "cause": "fixture wrote nonexistent player.skillCd[2]"
+    },
+    {
+      "head": "555f922f4a8e7e5b35ad42812f9dd6a21d576ccc",
+      "run": 44318160024,
+      "result": "PASS_122_CONTROLS",
+      "limitation": "single sampled phase did not isolate body"
+    }
+  ],
+  "notRerun": [
+    "native 12-frame detector; atlas bytes unchanged",
+    "PR190 death",
+    "PR229 bubble-state"
+  ]
+}
