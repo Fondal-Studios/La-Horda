@@ -283,7 +283,8 @@ function drawLibertador(h, drawScale, alpha){
   }
   const side = dir==="side";
   const flip = left;
-  if(ph==="ultcast") return _smFrame(P, "ult_cast", 0, flip, h, s, alpha);
+  // la definitiva avanza su cuadro con el progreso del lanzamiento (con el set de 1 cuadro es el mismo cuadro de siempre)
+  if(ph==="ultcast") return _smFrame(P, "ult_cast", Math.max(0, Math.min(0.999, 1 - Math.max(0,h.smPhaseTimer||0)/SM_CFG.andes.castMs)), flip, h, s, alpha);
   if(ph==="bayo") return _smFrame(P, "bayo_emb", ((h.animT||0)/60 % 4)/4, flip, h, s, alpha);
   if(h.smBayoFinishTimer>0) return _smFrame(P, "bayo_rem", 1 - h.smBayoFinishTimer/SM_CFG.bayonet.finishMs, flip, h, s, alpha);
   if(h.smBayoImpTimer>0) return _smFrame(P, "bayo_imp", 1 - h.smBayoImpTimer/220, flip, h, s, alpha);
@@ -291,6 +292,13 @@ function drawLibertador(h, drawScale, alpha){
   if(h.smCmdTimer>0) return _smFrame(P, "command", 1 - h.smCmdTimer/SM_CFG.granaderos.commandMs, flip, h, s, alpha);
   if(h.attackAnim>0 && !h.moving){
     const rec = h.smRecoilTimer>0 ? -(h._pleft?-1:1)*SM_CFG.musket.recoilPx*(h.smRecoilTimer/140) : 0;
+    // vista propia: attack_down / attack_up si el atlas los trae; si no, el set "fire" de perfil como siempre
+    const own = !side && P.sets["attack_"+dir] ? champPackSet(P, "attack", dir, h) : null;
+    if(own){
+      const pr = Math.max(0, Math.min(0.999, 1 - h.attackAnim/(h.smAtkTotal||240)));
+      champPackDrawFrame(P, own.arr[Math.floor(pr*own.arr.length)], h.x + rec, h.y, s, own.flip, alpha);
+      return true;
+    }
     return _smFrame(P, "fire", 1 - h.attackAnim/(h.smAtkTotal||240), flip, h, s, alpha, rec);
   }
   if(h.basicCd>0 && !h.moving && h.smReloadTotal){

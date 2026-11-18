@@ -59,6 +59,7 @@ function nigromantePlagueDeathSpread(e){
     if(o===e || !o.alive || o.cursed) continue;
     if(distance(e,o) <= r){
       nigromanteApplyCurse(o, e.curseSrc, e.curseDmg, (e.curseDefTakenMult||1)-1, gen+1, e.curseTimer>0?e.curseTimer: 2600, e.curseMaxGen);
+      if(typeof nigroPlagueLinkFx==="function") nigroPlagueLinkFx(e, o); // solo dibujo: hilo de alma del muerto al contagiado
     }
   }
 }
@@ -360,7 +361,7 @@ function nigroGainSouls(h, n, fx, fy){
   if(fx!==undefined && inView(fx, fy, 40)){
     // el alma viaja hasta el Nigromante
     vfxBurst(fx, fy-18, 3, "necro", 40, 380, 3, h===player?1:0, -30, 1);
-    if(h===player || Math.random()<0.4) pushChainBolt(fx, fy-20, h.x, h.y-28, 6, 260);
+    if(h===player || Math.random()<0.4){ if(!(typeof nigroSoulFx==="function" && nigroSoulFx(fx, fy-20, h))) pushChainBolt(fx, fy-20, h.x, h.y-28, 6, 260); } // el alma viaja como orbe verde (skill-fx-a/c/nigromante.js); el rayo queda solo de respaldo
   }
   if(h===player && before < NIGRO_PACT_COST && h.nigroSouls >= NIGRO_PACT_COST) floatText(h.x, h.y-58, "☠ Pacto listo", "heal");
 }

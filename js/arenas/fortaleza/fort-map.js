@@ -328,9 +328,10 @@ function fortKnightLevelStart(){
   runLater(1400, ()=>{ if(state==="playing") showBanner("La puerta del fondo está abierta… el Caballero espera"); });
 }
 function fortKnightUpdate(dt){
-  const K = fortS.knight; if(!K || K.state==="none" || K.state==="fight") return;
+  const K = fortS.knight; if(!K || K.state==="none") return;
   const knight = enemies.find(e=>e.type==="caballero" && e.alive);
   if(!knight) return;
+  if(K.state==="fight"){ fortKnightKeepInside(knight); return; }
   K.t += dt;
   const plat = FORT_MAP.plats.find(p=>p.id==="knight");
   const inside = h=>_fortIn(_fortOBB(plat.cx, plat.cy, plat.hw, plat.hh, 0, plat), h.x, h.y, 0) && h.y < plat.cy + plat.hh - 40;
@@ -366,6 +367,22 @@ function fortKnightUpdate(dt){
       arenaTitleCard("JEFE", "CABALLERO DE LA ARMADURA OXIDADA", "El Carcelero Eterno", 4200);
     }
   }
+}
+
+// Con la puerta cerrada, entre la cámara (y hasta -3530) y el patio core_n (desde -3400) queda un hueco sin piso.
+// Un empujón (carga, barrido, escudo, retroceso de una habilidad) que deja a alguien más cerca del patio lo hacía
+// "aparecer" del lado de afuera (fortClamp va al piso más cercano): el Caballero o el equipo quedaban de los dos lados de
+// una puerta cerrada y la pelea no podía terminar (Fase 1b, Fortaleza Normal tanque, semillas 5015/5029). Quien sale de la
+// cámara durante la pelea vuelve a entrar por la puerta, como la red de seguridad de la espera.
+function fortKnightKeepInside(knight){
+  const plat = FORT_MAP.plats.find(p=>p.id==="knight");
+  const box = _fortOBB(plat.cx, plat.cy, plat.hw, plat.hh, 0, plat);
+  const back = (o, dy)=>{
+    o.x = Math.max(-130, Math.min(130, o.x)); o.y = plat.cy + plat.hh - dy; o._fs = null;
+    vfxBurst(o.x, o.y-20, 10, "ember", 120, 400, 3, 1, -30, 0);
+  };
+  for(const h of heroes){ if(!_fortIn(box, h.x, h.y, 0)) back(h, 100); }
+  if(!knight.fortCharge && !_fortIn(box, knight.x, knight.y, 0)) back(knight, 170);
 }
 
 /* ---------------- aparición de enemigos ---------------- */

@@ -105,3 +105,174 @@ Imágenes de partida (recortes de la lámina `art-source/runway-codex-clean/tanq
 
 ## Pisos y centros de Bosque y Hielo - 2026-11-12: BLOQUEADO por limite diario (0 creditos gastados)
 | 2026-11-12 | 295 (sin cambio) | prox_piso_bosque, prox_piso_hielo, prox_centro_bosque, prox_centro_hielo: `gen bosque_piso` y `gen hielo_piso` devolvieron `Runway: {"error":"Your daily task limit has been reached."}` (limite diario de tareas de la cuenta compartida, no de creditos; saldo 295 antes y despues). Ninguna tarea creada, ninguna imagen. Preparado para reintentar: JOBS `bosque_piso`, `hielo_piso`, `bosque_centro`, `hielo_centro` en `tools/art-world/runway-world.js` (referencia = lamina del Codice `art-source/codex-covers/arena_{bosque,hielo}.jpg` en `art-source/runway-world/{bosque,hielo}/ref_crop.png`) y capturas ANTES del motor real en `art-source/captures/{bosque,hielo}_{piso,centro}/antes_*.png` (960x540). Nada integrado; arena.js sin cambios |
+
+## Ynara: lanzar y definitiva con poses propias (gpt_image_2) - 2026-11-12
+| Fecha | Task | Creditos reales (saldo antes -> despues) | Resultado |
+|---|---|---|---|
+| 2026-11-12 | 78351189-a6b6-4491-b858-efd2ed9cdf5a (u1, definitiva, 4 poses) | 20 (gastada antes de este encargo; saldo al iniciarlo: 225) | ACEPTADA: agachada / salto con baculo en alto / pico con brazos abiertos / aterrizaje; mismo diseno que la lamina. Cuadros 40-43. |
+| 2026-11-12 | 919dfa5e-d5c5-41fd-bc41-0f2306e71758 (c1, lanzar, 4 poses en pie) | 20 (225 -> 205) | ACEPTADA al primer intento (sin reintento): reunir energia / alzar baculo / liberar / recuperar. Cuadros 36-39. |
+
+Total del encargo: 20 creditos (c1) + 20 de u1 ya gastados antes; saldo final 205. Pipeline: `tools/art/sheet-to-cells.py` (croma -> alfa 0/255, escala comun, promedio de area, paleta del atlas propio <=32 colores + contorno 1 px, una silueta por cuadro, pies en la fila 89). Atlas: `art-source/ynara-runway/atlas.png` (11 filas, cuadros 0-35 identicos byte a byte al anterior); se instalo en `assets/sprites/champions/ynara/atlas.png` y `js/assets/ynara-meta.js` (cast_* -> [36..39], ultimate_* -> [40..43] en down/side/up, como el resto del roster). Capturas del motor: `art-source/captures/ynara/runway_antes.png`, `runway_despues.png`, `runway_tira_cast_ult.png` (izq. antes, der. despues).
+Medidas: grounded (lanzar 78/88/79/78 px de alto, definitiva 46/81/90/74): el cuerpo de pie queda en 74-78 px frente a 76 del reposo (+-3 %); los cuadros con baculo alzado miden hasta 90 porque la escala es comun (no se achica por cuadro) y el baculo suma altura; pies en la fila 89 en todos (en los saltos de la definitiva el cuadro queda apoyado en la misma linea: no se eleva).
+
+### Gates de Ynara (atlas instalado, 2026-11-12) y contrafactual del Tanque
+| Gate / revisión | Resultado |
+|---|---|
+| `node tools/art/roster_gate.js` | scaleFailures 0, presentationFailures 0, errores 0 (150 apariencias) |
+| `python3 tools/art/scan_sprites.py --dir champions/ynara` | halo 117 px, igual que el atlas anterior (el aro del personaje); cromas 87 y 16 sin cambio |
+| `python3 tools/art/painter/style_gate.py` | **NO aplica**: solo acepta atlas 448×1008 y el de Ynara es de celdas de 96 px; sin evidencia de ese gate para este atlas. Las celdas nuevas tienen 33 colores (cuantizadas a la paleta propia del atlas, 32 + contorno): no se midió contra el criterio de colores del gate |
+| `node tools/art/build-art-atlas.js --check` | OK (regenerado `docs/art/ATLAS_ARTE.*`) |
+| `tests/competitive-roster.test.js` | falló en la primera versión de la PR (Crystal Wars guardaba `imageSize` [384,864]); corregido a [384,1056] en `js/modes/crystal-wars/atlas.js`; PASS |
+| Revisión de arte humana | **pendiente** (todos los recibos `GENERATED_NOT_APPROVED`): la entrada de Ynara es «instalado, aprobación de arte pendiente» |
+Notas de escala: la hoja de la definitiva se redujo un 7 % (escala común por no caber el cuadro más alto); el cuadro 42 toca la fila 0 de la celda y el 37 llega a la fila 2, sin recorte visible en la captura. Camino VIGENTE de lanzar/definitiva: el atlas de Runway (`art-source/ynara-runway/`); `tools/art/painter/retouch/ynara_cast_ult.py` y `art-source/ynara-cast-ult/` son el intento determinista DESCARTADO, versionados solo como evidencia.
+
+| Intento | Task | Créditos | Resultado |
+|---|---|---|---|
+| tanque g1 (gpt_image_2, hoja de 4 poses de lanzar, referencia limpia) | 7afade28-59bd-4958-9c24-2fe24e10c5ab | 20 (saldo 205 → 185) | ACEPTADA como candidato: 4 poses distintas (agachado juntando fuerzas, espada en alto, estocada gritando, vuelta a guardia) con el diseño fiel. **Contrafactual:** con gen4_image el mismo Tanque dio siempre una pose de pie. No integrada todavía. |
+Conclusión acotada: con `gpt_image_2`, 2 campeones (Ynara, Tanque), 3 hojas, todas aceptadas al primer intento; con `gen4_image` y video, 1 campeón (Tanque), sin mejora. Es una muestra chica pero con el contrafactual en el mismo personaje; falta confirmar con más campeones y con poses extremas (muerte).
+
+
+## Cazadora: definitiva propia (gpt_image_2) - 2026-11-12
+| Fecha | Task | Creditos reales (saldo antes -> despues) | Resultado |
+|---|---|---|---|
+| 2026-11-12 | 8f31e68e-fe05-4b2f-92b2-d2af81ae74ba (u1, definitiva, 4 poses) | 20 (185 -> 165) | RECHAZADA como candidato (no por diseno ni poses, que eran fieles y distintas): el arco alzado en vertical sobre la cabeza hacia 617 px de hoja frente a 420 del cuerpo; para caber en la celda 192x160 (pies en la fila 113) la escala comun bajaba a 0,179 y el cuerpo quedaba en 74 px frente a 83 del reposo (-10 %, fuera de +-4 %). |
+| 2026-11-12 | 257072f9-5c71-480d-971a-f1002409ff9b (u2, mismo planteo con el arco sostenido en horizontal cerca de la cabeza) | 20 (165 -> 145) | ACEPTADA al segundo intento: agachada reuniendo energia / se alza con grito y arco horizontal al pecho / pico con el arco horizontal sobre la cabeza y brazos abiertos / guardia de tiro con flecha apuntada. Mismo diseno que la lamina (capucha con hoja, capa de hojas, carcaj). |
+
+Total del encargo para Cazadora: 40 creditos. Pipeline: `tools/art/sheet-to-cells.py --scale 0.2 --link 8 --trim-feet 6 --cell 192` (celdas cuadradas de 192, luego recortadas a 192x160 por `tools/art/atlas-append-cells.py`, que ademas verifica byte a byte que los cuadros 0-51 no cambian) -> `art-source/cazadora-runway/atlas.png` (768x2240, 14 filas; cuadros 52-55 nuevos). Instalado en `assets/sprites/champions/cazadora/codex-v1/atlas.png` y en `js/assets/champion-sprites.js` (`ultimate_down/side/up` -> [52,53,54,55]; el motor usa `ultimate_*` solo si existe `sets.ultimate_down`, antes caia en el lanzar). sha256 anterior del atlas: 66ab0cfef533f169cc7a7e0459fa5e0a4ed52cf3c3336379e6caa0830446f933. Capturas del motor: `art-source/captures/cazadora/estados_antes.png` y `estados_despues.png` (la fila 8, definitiva, era identica a la de lanzar).
+Medidas: alto de cada cuadro nuevo 67 / 85 / 92 / 79 px (el reposo mide 83; cuerpo de pie 85 = +2 %); el cuadro 54 (arco horizontal sobre la cabeza) sobresale 92 px por el arma alzada; pies en la fila 113 en los cuatro; una sola silueta por cuadro, sin halo verde ni cuadros cortados en la captura a tamano de juego. Sombra de suelo del modelo recortada con --trim-feet 6.
+
+### Gates de Cazadora (atlas instalado, 2026-11-12)
+| Gate / revision | Resultado |
+|---|---|
+| `node tools/visual-package/cli.js build --write` + `check` + `node tools/visual-package/test.js` | manifiesto regenerado (alto del atlas 2240, sha256 nuevo); check: 117 paquetes, 0 candidatos, 0 errores; test: fail 0 |
+| `node tools/art/build-art-atlas.js` y `--check` | regenerado `docs/art/ATLAS_ARTE.*` (cazadora 768x2240); --check OK |
+| `node tests/competitive-roster.test.js` | PASS (38 campeones competitivos y todos los cuadros de atlas) |
+| `node tools/crystal-wars/test-competitive.js` | PASS (8 pruebas). Crystal Wars usa `cazadora/v2/atlas.png`, otro atlas: `js/modes/crystal-wars/atlas.js` no tiene `imageSize` de este y no cambia |
+| `node tests/art-runtime-clips.test.js` | PASS (46 campeones, lazy=0 y lazy=1) |
+| `node tools/art/roster_gate.js` | scaleFailures 0, presentationFailures 0, errores 0 (150 apariencias); `docs/art-gate/roster-sheet.png` restaurado |
+| `python3 tools/art/webp_convert.py --check` | webp desactualizados: 0 (el atlas codex-v1 de Cazadora no tiene .webp) |
+| `python3 tools/art/scan_sprites.py --dir champions/cazadora` | `codex-v1/atlas.png` no aparece marcado; las marcas restantes son de archivos que no se tocaron (cromas, skins, v2, chargeAim) |
+| `node tools/art/roster-loading-test.js`, `node tools/bible/champion-validator.js --strict`, `node tests/competitive-signatures.test.js`, `python3 tools/art/test-runway-pack.py` | todos PASS |
+| Otros derivados | `assets/visual-packages/manifest.v1.json` (regenerado). `docs/art-factory/inventory.json` y `art-source/entregas/...` conservan el sha anterior: son salidas historicas (el inventario no se regenero en la PR de Ynara tampoco) y ningun gate las lee |
+| `python3 tools/art/painter/style_gate.py` | **NO aplica**: solo acepta atlas 448x1008; este es de celdas de 192x160. Sin evidencia de ese gate para este atlas; las celdas nuevas tienen 32-33 colores (paleta cuantizada a la del propio atlas) |
+| Revision de arte humana | **pendiente** (recibos `GENERATED_NOT_APPROVED`): entrada de Cazadora = «instalado, aprobacion de arte pendiente» |
+
+## Musashi: definitiva propia (gpt_image_2) - 2026-11-12
+| Fecha | Task | Creditos reales (saldo antes -> despues) | Resultado |
+|---|---|---|---|
+| 2026-11-12 | 489fab66-f8d0-4d0d-b462-669037b1c765 (u1, definitiva Ultimo Duelo, 4 poses; prompt con el bokken en diagonal/horizontal para no pasar la celda) | 20 (145 -> 125) | ACEPTADA al primer intento: agachado con el bokken a la cadera / se alza con el bokken cruzado al pecho / pico con el bokken horizontal sobre la cabeza y kimono abierto / estocada con el bokken al frente. Mismo diseno (mono, barba, kimono azul gastado, faja blanca, hakama, sandalias); proporciones algo mas macizas que el atlas vigente (anotado: aprobacion de arte humana pendiente). |
+
+Pipeline igual que Cazadora: `sheet-to-cells.py --scale 0.172 --link 8 --trim-feet 11 --cell 192` + `atlas-append-cells.py` (cuadros 0-51 identicos byte a byte; atlas 768x2240, cuadros nuevos 52-55) -> `art-source/musashi-runway/atlas.png`; instalado en `assets/sprites/champions/musashi/codex-v1/atlas.png` y `js/assets/champion-sprites.js` (`ultimate_down/side/up` -> [52..55]). sha256 anterior del atlas: 14ffbe96ee8e83eb6eb4381f5dfc318a002998a967bf2382dd5b285560f68993. Capturas: `art-source/captures/musashi/estados_antes.png` y `estados_despues.png` (la fila de definitiva era identica a la de lanzar).
+Medidas: alto de los cuadros nuevos 73 / 86 / 87 / 80 px (reposo 84; cuerpo de pie +2 a +3 %); el 54 (bokken horizontal sobre la cabeza) sobresale por el arma; pies en la fila 113. Queda una linea oscura fina de 1 px bajo los pies (resto de la mancha de tierra del modelo tras recortar 11 filas; recortar mas cortaba las sandalias): anotada, no se retoco a mano.
+
+### Gates de Musashi (atlas instalado, 2026-11-12)
+| Gate / revision | Resultado |
+|---|---|
+| `node tools/visual-package/cli.js build --write` + `check` + `test.js` | manifiesto regenerado; check: 117 paquetes, 0 candidatos, 0 errores; test: fail 0 |
+| `node tools/art/build-art-atlas.js` y `--check` | regenerado `docs/art/ATLAS_ARTE.*` (musashi 768x2240); --check OK |
+| `node tests/competitive-roster.test.js` | PASS |
+| `node tools/crystal-wars/test-competitive.js` | PASS (8 pruebas). Crystal Wars usa `musashi/v2/atlas.png` (otro atlas): `js/modes/crystal-wars/atlas.js` sin cambios |
+| `node tests/art-runtime-clips.test.js` | PASS (46 campeones, lazy=0 y 1) |
+| `node tools/art/roster_gate.js` | scaleFailures 0, presentationFailures 0, errores 0 (150 apariencias); `docs/art-gate/*` restaurado |
+| `python3 tools/art/webp_convert.py --check` | 0 desactualizados (el atlas codex-v1 de Musashi no tiene .webp) |
+| `python3 tools/art/scan_sprites.py --dir champions/musashi` | `codex-v1/atlas.png` no aparece marcado (las marcas son de otros archivos sin tocar) |
+| `roster-loading-test.js`, `champion-validator.js --strict`, `competitive-signatures.test.js`, `test-runway-pack.py` | PASS |
+| `style_gate.py` | **NO aplica** (solo atlas 448x1008). Revision de arte humana **pendiente**. `docs/art-factory/inventory.json` y `art-source/entregas/...` conservan el sha anterior (historicos) |
+
+## Libertador: revision de lo que falta de verdad - 2026-11-12 (0 creditos gastados, nada instalado)
+El checklist decia «faltan: attack_down, attack_up, ultimate_down, hit_down, death_down» porque lee solo los `sets` del atlas `v2/atlas.png`. Verificado contra el motor (`js/champions/libertador.js` `drawLibertador`, `js/assets/champion-sprites.js`, captura `art-source/captures/libertador/estados_antes.png`):
+- **Muerte: NO falta.** `libertador_death` (`v2/death.png`, 4 cuadros, ya integrada con su gate `tools/art/check-libertador-death.js`) se dibuja en `death_down`; la captura muestra la caida real (de pie, hincado, cayendo, tendido).
+- **Definitiva: ya tiene pose propia.** El estado `ultcast` dibuja `ult_cast` = cuadro 44 (sable en alto, de frente). El motor lo dibuja con `prog` fijo en 0 (`_smFrame(P,"ult_cast",0,...)`), o sea SOLO el primer cuadro del set durante los 950 ms de `castMs`: una hoja de 4 poses no se veria (animarla exige cambiar `libertador.js`, fuera del alcance de este encargo). Despues viene el caballo (`libertador_horse`, ya con su atlas).
+- **Ataque de frente/arriba:** el Libertador no usa `attack_down/up`: dibuja el set `fire` ([30..33], perfil con el fusil) en toda direccion, y no hay clave de registro que lo redirija sin tocar codigo.
+- `hit_down`: cae en el cuadro de reposo/`libertador_motion` sin pose propia; sin set nuevo no hay donde apuntarlo (`hurtTimer` solo desactiva `libertador_motion`).
+Decision: no se generaron hojas (ahorro de 60 creditos del tope: saldo 125). Si el dueno quiere animar la definitiva o dar ataque frontal, hace falta primero un cambio de codigo (`prog` de `ult_cast` y despacho por direccion de `fire`) y luego se pide la hoja con la receta de Ynara.
+
+## Nigromante e Ilkan: revision de lo que el motor dibuja de verdad - 2026-11-12 (0 creditos gastados, nada generado ni instalado)
+Saldo Runway antes y despues: 125 -> 125. El checklist dice «Nigromante: falta ultimate_down» e «Ilkan: faltan attack_down, attack_up, ultimate_down» porque lee los `sets` del registro; se verifico en el codigo y con capturas del motor (`tools/art/capture-champion-states.js`, mas un recorrido propio con `nigroDemonForm=true`) que ninguno de esos estados se dibuja, asi que una hoja nueva no se veria nunca.
+- **Nigromante (definitiva).** Al lanzarla (`abyss_incarnation_ult` -> `enterAbyssForm`, `js/champions/nigromante.js`) se pone `nigroDemonForm=true` y `nigroTransformTimer=900`. `drawHeroBody` y la rama de `entities.js` llaman a `drawNigromanteDemon` ANTES que a `drawNigromanteReal`; con `NIGRO_COLOSSUS_READY` dibuja el Coloso/Demonio desde el primer cuadro (crece de 0,78 a 1 durante los 900 ms). `drawNigromanteReal` (la unica funcion que usa `sets.ult` = cuadros 32-35 del atlas, que ya son una pose propia de transformacion con aura) nunca llega a ejecutarse mientras dure la forma, y el estado generico `ultimate` de `drawChampPack` exige `sets.ultimate_down`, que Nigromante no declara ni necesita. Captura del motor con la forma activa: `art-source/captures/nigromante/ultimate_motor_forma_demonio.png` (4 cuadros del Demonio, ninguno del atlas); los cuadros 32-35 del atlas (con efectos de habilidad pegados al cuerpo) vs lanzar 24-27: `art-source/captures/nigromante/atlas_ult_32-35_vs_cast_24-27.png`; estados con el dibujo normal: `art-source/captures/nigromante/estados_antes.png` (la fila de definitiva = lanzar). Para que la definitiva se vea con cuerpo del Nigromante haria falta cambiar `js/rendering/champion-sprites.js`/`entities.js` (p. ej. mostrar `ult` durante `nigroTransformTimer` antes de pasar al Demonio): no se toco.
+- **Ilkan (ataques y definitiva).** `drawIlkan` (`js/champions/ilkan.js`, l. 496-546): el ataque usa SIEMPRE `P.sets.attack_side` con la secuencia `ILKAN_ATK_SEQ` y espejado (`_pleft`), sea cual sea la direccion; `attack_down`/`attack_up` no existen en el registro ni se leen. La definitiva es `invoke` (cuadros 58-61, propios) y luego el Coloso de Arena (`ilkan_colossus`, otro atlas, ya pintado); `ultimate_down` no se lee. Captura: `art-source/captures/ilkan/estados_antes.png` (las filas de ataque de frente/espalda y definitiva son el perfil). Dar ataque de frente/espalda exige un despacho por direccion en `drawIlkan` (codigo del campeon): no se toco.
+- Gates derivados: no corresponden (no cambio ningun atlas, registro ni meta). Checklist regenerado con la nota en ambos campeones; entradas de etapas sin cambios (sin evidencia nueva).
+- Pendiente del dueno: aprobar los cambios de codigo anteriores; despues se pide la hoja con la receta de Ynara/Cazadora (20 cr por hoja; Ilkan: 2 hojas de ataque + 0 de definitiva; Nigromante: 1 si se quiere pose nueva, o ninguna si basta con mostrar los cuadros 32-35).
+
+## Despacho de dibujo agregado: Ilkan, Libertador, Nigromante - 2026-11-12 (0 creditos, sin arte nuevo)
+Cambios solo de que sprite se dibuja (sin tocar logica, dano, duraciones, cooldowns ni gates), retrocompatibles: si el set nuevo no existe en el registro se dibuja exactamente lo mismo que antes. Prueba: `tools/art/test-champion-draw-dispatch.js` (registrada en `tools/quality/run-all.js` y `qa-manifest.json`); capturas antes/despues en `art-source/captures/{ilkan,libertador,nigromante}/`.
+- **Ilkan** (`js/champions/ilkan.js`, rama `attackAnim` de `drawIlkan`): usa `attack_down` / `attack_up` segun el apuntado (via `champPackSet`, como el resto) si el atlas los trae; sin ellos, `attack_side` espejado como hoy. Habilita: 2 hojas de ataque (frente y espalda), 4 cuadros cada una (`ILKAN_ATK_SEQ` indexa 4 poses).
+- **Libertador** (`js/champions/libertador.js`): `ult_cast` avanza su cuadro con el progreso de `smPhaseTimer`/`SM_CFG.andes.castMs` (con el set actual de 1 cuadro es el mismo cuadro 44); el disparo de frente/espalda usa `attack_down`/`attack_up` si existen, si no `fire`. Habilita: definitiva de 4 cuadros = 1 hoja (+ opcionalmente ataque frente/espalda).
+- **Nigromante** (`js/rendering/entities.js`, `champion-sprites.js` `nigroUltPoseActive`, `champion-art-normalize.js`): durante `nigroTransformTimer` (900 ms) se dibuja la pose propia `sets.ult` (cuadros 32-35, avanzando con el progreso) y luego el Demonio. Habilita: nada, los cuadros ya existian; ESTE cambio SI es visible hoy. Efecto colateral visual: el Demonio ya no hace su crecimiento 0,78 -> 1 dentro de la ventana (entra a escala 1); la duracion de la forma, vida, dano y habilidades no cambian.
+
+## Ilkan: ataque de frente y de espaldas (gpt_image_2) - 2026-11-12
+| Fecha | Task | Creditos reales (saldo antes -> despues) | Resultado |
+|---|---|---|---|
+| 2026-11-12 | 3b351cd5-7990-4b3f-85bc-774852352556 (af1, ataque de frente, 4 poses) | 20 (99 -> 79) | ACEPTADA al primer intento: anticipacion con las hoces atras / tajo cruzado hacia la camara / seguimiento con brazos abiertos / recuperacion. Mismo diseno que la lamina (capucha con orejas y gema, banda dentada, hombrera, vendas, dos hoces de hueso). |
+| 2026-11-12 | bdf364c2-1d97-47ae-beac-adaa354a86c8 (ab1, ataque de espaldas, 4 poses) | 20 (79 -> 59) | ACEPTADA al primer intento: de espaldas sin cara en las 4 poses (capucha lisa, lanza a la espalda, cola de capa), anticipacion / avance cruzado / brazos abiertos / recuperacion. |
+
+Total: 40 creditos (saldo final 59; el saldo de arranque del encargo era 99, no 125: la cuenta es compartida). Pipeline: `tools/art/sheet-to-cells.py --scale 0.19 --link 8 --trim-feet 10 --cell 192 --feet-row 115 --palette-from <atlas>` (escala comun 0,19 en las dos hojas; la escala medida por hoja daba 0,1909 y 0,1865) + `tools/art/atlas-append-cells.py --cell 192x128 --cols 8` (cuadros 0-63 identicos byte a byte; atlas 1536x1152, cuadros nuevos 64-71) -> `art-source/ilkan-runway/atlas.png`; instalado en `assets/sprites/champions/ilkan/codex-v1/atlas.png` y `js/assets/champion-sprites.js` (`frameCount` 62 -> 72; `attack_down` [64..67], `attack_up` [68..71]). `drawIlkan` ya despacha esos sets (commit 9fa0e9ae): `ILKAN_ATK_SEQ` indexa los 4 cuadros. sha256 anterior del atlas: 69ca3240195ca37f53bf46156756ccb6f127d63292f9eb94fa05811227e968d1; nuevo: f5dffd883abc0cced188dfcba34906fe25f0eef37ddd8e361d222144036591ce. Capturas del motor: `art-source/captures/ilkan/estados_antes.png` (filas de ataque de frente/espalda = el perfil) y `runway_despues.png` (mismas filas con los cuadros propios, de cara a la camara y de espaldas; se distinguen del perfil).
+Medidas: alto de los cuadros nuevos de frente 79 / 85 / 77 / 82 px y de espaldas 84 / 81 / 84 / 84 (reposo 82-86, attack_side 78); pies en la fila 115 como el atlas; una silueta por cuadro; 27-30 colores. La sombra de suelo del modelo se recorto con --trim-feet 10. Notas honestas: el golpe de frente solo se lee bien en el tercer cuarto del ataque (los tres primeros cuadros de la captura son la anticipacion por la secuencia de `ILKAN_ATK_SEQ`); el cuadro 4 de frente (recuperacion) se parece al reposo.
+
+### Gates de Ilkan (atlas instalado, 2026-11-12)
+| Gate / revision | Resultado |
+|---|---|
+| `node tools/visual-package/cli.js build --write` + `check` + `node tools/visual-package/test.js` | manifiesto regenerado; check: 117 paquetes, 0 candidatos, 0 errores; test: fail 0 |
+| `node tools/art/build-art-atlas.js` y `--check` | regenerado `docs/art/ATLAS_ARTE.*`; --check OK |
+| `node tests/competitive-roster.test.js` | PASS (38 campeones competitivos y todos los cuadros de atlas) |
+| `node tools/crystal-wars/test-competitive.js` | PASS (8 pruebas). Crystal Wars usa `ilkan/v2/atlas.png` (1024x888, otro atlas): `js/modes/crystal-wars/atlas.js` sin cambios |
+| `node tests/art-runtime-clips.test.js` | PASS (46 campeones, lazy=0 y 1) |
+| `node tools/art/roster_gate.js` | scaleFailures 0, presentationFailures 0, errores 0 (150 apariencias); `docs/art-gate/*` restaurado |
+| `python3 tools/art/webp_convert.py --check` | 0 desactualizados (`codex-v1/atlas.png` de Ilkan no tiene .webp) |
+| `python3 tools/art/scan_sprites.py --dir champions/ilkan` | `codex-v1/atlas.png` marcado `halo=18px`, IGUAL que antes de este cambio (medido sobre el atlas anterior); el resto son fx/skins sin tocar |
+| `node tools/collection/check-collection.js` | PASS |
+| `node tools/art/test-champion-draw-dispatch.js` | 19/19: la prueba ahora quita en memoria los sets reales `attack_down/up` para probar el camino «sin set» y agrega un chequeo con el atlas real (frente 64-67, espalda 68-71) |
+| `node tools/art/check-ilkan-codex.js`, `node tools/vfx/check-ilkan-buffs.js`, `node tools/vfx/check-ilkan-preview.js` | PASS (sin errores; buffs 18 checks, 0 fallos). `art-source/entregas/ilkan-codex-20261029/produccion-01/RENDER_NATIVE.json` se modifica al correr check-ilkan-codex: restaurado |
+| `python3 tools/art/painter/style_gate.py` | **NO aplica** (solo atlas 448x1008; este es de celdas 192x128). Revision de arte humana **pendiente** (recibos `GENERATED_NOT_APPROVED`) |
+
+## Libertador: definitiva (ult_cast) con gpt_image_2 - 2026-11-12: GENERADA Y ACEPTADA, NO INSTALADA
+| Fecha | Task | Creditos reales (saldo antes -> despues) | Resultado |
+|---|---|---|---|
+| 2026-11-12 | 0179f97b-c94b-466b-93b0-c394f02b1295 (u1, definitiva, 4 poses) | 20 (59 -> 39) | ACEPTADA al primer intento: carga con el sable a la cadera / alza el sable en diagonal / pico con el sable extendido y grito / liberacion en estocada. Mismo diseno (pelo castano, casaca azul con charreteras doradas, capa roja con flor de lis, pantalon blanco). Nota: el modelo dibujo un sable (el fusil quedo a la espalda) y un trazo algo mas detallado que el atlas; la paleta se cuantizo a la del atlas. |
+
+Pipeline: `sheet-to-cells.py --ref-index 1 --ref-h 78 --link 3 --trim-feet 10 --cell 103 --feet-row 91 --palette-from <atlas>` (escala 0,1675, ajustada por caber en la celda: cuerpo de pie 79 px frente a 78 del reposo) + `atlas-append-cells.py --cell 103x98 --cols 8` (cuadros 0-63 identicos; 824x882; nuevos 64-67) -> candidato `art-source/libertador-runway/atlas.png`. Alto 79 / 79 / 89 / 71 px; una silueta por cuadro. Captura del motor con la fase `ultcast` avanzando (antes: cuadro 44 fijo; despues: 64-67): `art-source/captures/libertador/runway_ult_antes_despues.png` (arriba antes, abajo despues): claramente mejor, se leen la carga, el alzar, el pico y la liberacion.
+**Por que NO se instalo:** al instalarlo en `assets/sprites/champions/libertador/v2/atlas.png` (con `ult_cast`: [64..67], `imageSize` de Crystal Wars a [824,882] y .webp regenerado) pasaron todas las comprobaciones derivadas (competitive-roster, art-runtime-clips, roster_gate 0/0/0, visual-package, ATLAS_ARTE, webp, dispatch), pero `node tools/art/check-libertador-motion.js` (check «atlas aprobado Códice (revision-codex-v1) atlas.png», l. 69) y `node tools/art/check-libertador-death.js` (el mismo check y «all original foot frames retained») FALLAN porque fijan el sha256 3c993355968f3d43b0247b18230509e131beab485e2702991accc003a7ec5512 del atlas aprobado. Cambiar esos gates queda fuera de este encargo; se revirtio todo (atlas, webp, registro, Crystal Wars) y esos gates vuelven a PASS (261 y 127 checks). Opciones del dueno: (a) re-aprobar el atlas ampliado y actualizar el sha en ambos gates; (b) cargarlo como paquete aparte (`libertador_ult`) con un cambio minimo en `libertador.js`. El ataque de frente/espaldas (`attack_down/up`) no se generó: tope de 60 creditos alcanzado (3 hojas).
+Total del encargo (Ilkan + Libertador): 60 creditos, saldo 99 -> 39.
+
+### Prueba de gen4_image_turbo (piso de Bosque) — 2026-11-13
+| Intento | Task | Créditos | Resultado |
+|---|---|---|---|
+| bosque piso_t1 (gen4_image_turbo, @ref = recorte del Códice de Bosque) | 5a14b4e1-e210-4e43-aab8-792769507b03 | 2 (saldo 39 → 37) | RECHAZADO: rejilla regular con vigas y rombos, no piedras irregulares (mismo defecto que abismo_piso). El modelo cuesta 2 cr pero copia la composición de la referencia. |
+Estado del tope diario de la cuenta (2026-11-13 00:30 UTC): gen4_image 200/200 (no se reinició), gpt_image_2 9/200, gen4_turbo 15/50, gen4_image_turbo 18/200. Los pisos y centros de Bosque y Hielo siguen pendientes.
+
+## Nigromante: Plaga de los Condenados legible (marca de maldicion, contagio y alma) - 2026-11-13 (0 creditos, sin Runway, sin assets nuevos)
+Queja del dueno: «el Nigromante tiene una habilidad, pestilencia, que se ve bastante mal». El Nigromante no tiene una habilidad llamada Pestilencia («Pestilencia Sombria» es la definitiva del Guerrero/Kael, `shadow_stealth`); la candidata es **Plaga de los Condenados** (`condemned_plague`, 3.ª habilidad). Capturas del motor real (844x390, camara a 0,6x) de Cosecha de Almas, Golem, Plaga, definitiva y Pestilencia Sombria; hallazgos y antes/despues en `art-source/captures/nigromante/plaga_antes_despues.png` (barra roja ANTES arriba, verde DESPUES abajo; cuadros a tamano de juego y zoom 3x).
+- **Problema (evidencia):** la zona del cast (nova + zona SFA, borde en el radio real de 150) se ve bien pero dura 1,5 s; los 6 s restantes de dano continuo solo tenian una elipse verde fina y un punto de 3 px bajo cada enemigo, casi igual al aro verde comun del enemigo y ilegible con la camara alejada: no se sabia quien seguia maldito, cuando hacia dano ni que habia contagiado. Ademas cada alma ganada (cada maldito que muere) cruzaba la pantalla como el rayo azul y blanco de la Cadena de Relampago (`pushChainBolt`), fuera de la paleta verde espectral.
+- **Cambio (solo dibujo, sin tocar radio, dano, duracion, contagio ni cooldowns; mismo consumo de `Math.random`, parity `IGUAL`):** `js/rendering/entities.js` (`drawNigroCurseMark`, sustituye al bloque inline): aro punteado giratorio con contorno oscuro, pulso hacia afuera en cada tic de dano (cada 1000 ms de `curseTimer`), calavera pixel art flotante con halo (silueta de los motivos `skull` del Nigromante), chispas que suben y parpadeo el ultimo 1,2 s; los contagiados (`curseGen>0`) llevan acento violeta. `js/champions/skill-fx-a/c/nigromante.js` (`nigroPlagueLinkFx`): hilo verde del maldito muerto a cada contagiado y onda violeta de llegada (maximo 5 por muerte); (`nigroSoulFx` + envoltorio de `drawPortadorTop`): el alma viaja al Nigromante como orbe verde con estela en arco (maximo 14), en vez del rayo azul. `js/champions/nigromante.js`: dos llamadas con `typeof` (en `nigromantePlagueDeathSpread` y `nigroGainSouls`; el rayo queda de respaldo). Respeta `SFA_OFF` y `JUICE.reduceFx`. El hilo del contagio no viaja por red (solo la onda/aro de la marca, que sale del estado `cursed` ya sincronizado): en un invitado el contagio se ve por el aro violeta, sin hilo.
+- **Sin tocar:** zona del cast (ya cumple el borde = radio real y el premarcado `AIM_PROFILES.condemned_plague`), Cosecha de Almas, Golem y definitiva (observaciones en el informe de la sesion). Sin assets ni hashes cambiados (`assets/vfx/**` intacto, no hay inventario que regenerar).
+- **Pendiente del dueno:** confirmar que «pestilencia» era la Plaga y no la definitiva del Guerrero; prueba real de rendimiento con muchos malditos en pantalla y de multiplayer (no se simularon).
+
+## 2026-11-13: definitiva del Libertador instalada (0 créditos)
+- Atlas ampliado (824x882) con 4 poses de `ult_cast`/`ultimate` (cuadros 64-67, generadas antes con `gpt_image_2` y aceptadas) instalado en `assets/sprites/champions/libertador/v2/`; cuadros 0-63 idénticos al atlas anterior. El motor ya avanzaba `prog` con el tiempo de la definitiva (950 ms), sin cambios de código de juego.
+- Re-aprobado por el dueño el 2026-11-13: sha256 fijado en `check-libertador-motion.js` y `check-libertador-death.js` actualizado (791cb61a…); en `check-libertador-death.js` el límite `v<61` ahora exceptúa solo `ult_cast`/`ultimate` (exactamente 64-67), autorizado expresamente por el dueño.
+- Captura única antes/después: `art-source/captures/libertador/ult_instalada_antes_despues.png`.
+
+## Aprobación de arte del dueño (2026-11-14)
+- El propietario (drmarianojimenez94-sudo) escribió en la sesión de trabajo del 2026-11-14: «Sí apruebo el arte a ojo que instalaste». Alcance: lo instalado con `gpt_image_2` hasta ese momento (lanzar y definitiva de Ynara, definitivas de Cazadora y Musashi, ataques de frente y espaldas de Ilkan) y la transición del Nigromante; ese mismo día pidió además instalar la definitiva del Libertador (atlas re-aprobado, ver sección del 2026-11-13).
+- No alcanza a Myla, Saelis, Profeta ni al Sabueso (siguen «instalado sin aprobar») ni a los términos comerciales de `gpt_image_2` para la declaración de IA de Steam (pendientes del dueño).
+
+## Fase 3 del cierre: arte crítico reutilizando recursos - 2026-11-15 (0 créditos Runway; saldo 7, no se generó nada)
+
+Todo quedó `instalado_sin_aprobar` (la aprobación de arte es del dueño). Capturas del motor ANTES/DESPUÉS en `art-source/captures/<id>/antes_despues.png`.
+
+- `campeon-poses-tanque_lanzar_gpt2`: la hoja de LANZAR ya pagada (`art-source/runway-designs/tanque/g1`, 20 cr gastados el 2026-11-12) pasó por `tools/art/sheet-to-cells.py` (celda 144, guardia a 71 px como el cuerpo del Códice, paleta de `tanque/codex-v1/atlas.png`) a `assets/sprites/champions/tanque/v3/cast.png`, cargada como **paquete aparte** `CHAMP_PACK.tanque_cast`. Se dibuja los primeros 0,76 s del Grito de Guerra (recoger, espada arriba, grito, guardia) solo con el cuerpo base; después sigue la pose de siempre; cromas y skins conservan su arte. `tanque/atlas.png` y `tanque/codex-v1/atlas.png` no se tocaron (sha fijados intactos).
+- `arena-ciudad-casa_a-integrar`: `python3 tools/art-world/build-ciudad-estatua.py casa_a` (nuevo modo) → `assets/vfx/ciudad/casa_a_1.png`. Se usa como casas vecinas tras la muralla del borde (norte, oeste y este), oscurecidas como la ciudad lejana; respaldo, el patrón procedural. No reemplaza las fachadas de los edificios jugables: eso cambiaría puertas, techos que se desvanecen y la lectura de colisiones, y queda para que lo decida el dueño.
+- `efecto-ciudad-cometa-gran-numero` (B368): `python3 tools/art-world/paint-ciudad-cometa.py` (pintor determinista) → `assets/vfx/ciudad/cometa_vuelo_0..5.png` y `cometa_oro_0..5.png` (el cometa «reflejado»). Se rota hacia donde vuela; respaldo, los efectos prestados de antes (cmFire/cmPreBolt). El impacto sigue usando el estallido existente `cmBoom` (no se pintaron los 5 cuadros de impacto propios).
+- `arena-ciudad-ovacion-final` (B063): **bloqueado_decision**. No existe arte de una pose de Ovación del Presentador (su set `cast` es un ataque apuntando) y una forma de jefe nueva de 8 cuadros no sale del pintor determinista sin degradar el personaje.
+
+## Skins del Libertador: Escarcha y Ancestral - 2026-11-15 (PR #306, integrado en main 339989b0)
+
+- `libertador_escarcha` y `libertador_ancestral`: atlas 448x1008 con 36 poses nativas que siguen la barra artística del cuerpo base (mismas celdas, guardia y estados). Reemplazan la propuesta del PR #293, que se cerró. Metadatos en `js/assets/unique-skins-meta.js`, normalización en `js/data/champion-art-normalize.js` y `docs/art/ATLAS_VIGENTE.json`.
+- Antes/después: `docs/art-brief/captures/libertador/skins_antes_despues*.png` (scripts `tools/art/capture-libertador-skins-paired.js` y `capture-libertador-skins-close.js`).
+- Estado: **instalado, sin aprobación del dueño** (la aprobación del 2026-11-14 no cubre estas skins). Son cosméticas: no cambian estadísticas.
+
+## Pantalla de título con el Demonio Mayor - 2026-11-15 (aprobado por el dueño)
+
+- `js/beta/beta-ui.js`: la escena del título enfrenta a los cinco guardianes con el Demonio Mayor (forma final del Rey de la Horda) y tres bichos de la arena infernal, en lugar del Ángel Caído de Hielo. Usa el arte real del juego (`_cxDrawEnemy`, grupo `ar:infernal`). Solo cosmético.
+- **Aprobación del dueño (2026-11-15, textual):** a la pregunta «¿Lo ponemos igual, aunque muestre al jefe final?» respondió «Si. Ponelo». Acepta que el título revele al jefe final.
+- Captura del motor real: `docs/art-brief/captures/titulo/demonio_mayor_1280x720.png` (0 errores de página).

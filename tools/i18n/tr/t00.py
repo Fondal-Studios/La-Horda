@@ -44,7 +44,7 @@ T=[
 ("Ampliar rival","Zoom opponent","Ampliar rival"),
 ("Ancla","Anchor","Âncora"),
 ("Apaga sacudidas de cámara, congelados de golpe, cámara lenta y pulsos de pantalla","Turns off camera shake, hit-freeze, slow motion and screen pulses","Desliga tremores de câmera, congelamentos de golpe, câmera lenta e pulsos de tela"),
-("Aplica un sangrado profundo","Applies a deep bleed","Aplica um sangramento profundo"),
+("Aplica un sangrado profundo y cura {n}% de tu vida máxima al conectar","Applies a deep bleed and heals {n}% of your max health on hit","Aplica um sangramento profundo e cura {n}% da sua vida máxima ao acertar"),
 ("Apoyar la culata","Brace the stock","Apoiar a coronha"),
 ("Aprendió a guiar a su columna por senderos que no figuraban en los mapas. Su equipo lleva lo necesario para que el último también llegue.","Learned to guide their column along paths that weren't on any map. Their gear carries what's needed so the last one arrives too.","Aprendeu a guiar sua coluna por trilhas que não estavam nos mapas. Seu equipamento leva o necessário para que o último também chegue."),
 ("Apuntalar","Shore up","Escorar"),

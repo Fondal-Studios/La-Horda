@@ -5,7 +5,7 @@ Categorías medidas en el motor: AREA, MULTIPLE, POTENCIA, CURA, CONTROL, MOVILI
 | Campeón | Estado | Hab. 1 | Hab. 2 | Hab. 3 | Definitiva |
 |---|---|---|---|---|---|
 | tanque | INFO | Torbellino: AREA+MULTIPLE+CONTROL | Embestida: CONTROL+MOVILIDAD ◎ | Grito de Guerra: POTENCIA+CURA | Grito Provocador: AREA+POTENCIA+CURA+CONTROL |
-| guerrero | INFO | Corte Sangrante: CONTROL ◎ | Triple Golpe: CONTROL ◎ | Trampa de Área: AREA+MULTIPLE+CONTROL ◎ | Pestilencia Sombría: AREA+MULTIPLE+POTENCIA+CONTROL |
+| guerrero | INFO | Corte Sangrante: CURA+CONTROL ◎ | Triple Golpe: CURA+CONTROL ◎ | Trampa de Área: AREA+MULTIPLE+CONTROL ◎ | Pestilencia Sombría: AREA+MULTIPLE+POTENCIA+CONTROL |
 | mago | INFO | Muro de Fuego: CONTROL+INVOCA ◎ | Nova de Escarcha: AREA+MULTIPLE+CONTROL | Cadena de Relámpago: AREA+MULTIPLE+CONTROL ◎ | Cataclismo Elemental: AREA+MULTIPLE+POTENCIA+CONTROL |
 | soporte | INFO | Alba Purificadora: AREA+MULTIPLE+CURA+CONTROL | Bendición de Guerra: POTENCIA | Escudo Sagrado: POTENCIA+CURA | Bendición Suprema: POTENCIA+CURA |
 | segador | INFO | Tajo del Segador: AREA+MULTIPLE+CONTROL ◎ | Armadura de la Furia: POTENCIA+CURA | Último Aliento: POTENCIA+CURA | Segador de Almas: POTENCIA+CURA |
@@ -58,7 +58,6 @@ Categorías medidas en el motor: AREA, MULTIPLE, POTENCIA, CURA, CONTROL, MOVILI
 
 ### guerrero (INFO)
 - falta otra habilidad (distinta de la de área) que dañe a varios enemigos
-- ninguna habilidad de POTENCIACIÓN (buff propio o de aliados) ni cura/escudo
 
 ### mago (INFO)
 - ninguna habilidad de POTENCIACIÓN (buff propio o de aliados) ni cura/escudo

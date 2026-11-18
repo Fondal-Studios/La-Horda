@@ -6,7 +6,7 @@
 
 > Auditado el 2026-11-12 en la rama `wip/runway-video` contra el repo (archivos con `ls`, carga con `grep` en `js/`). Costo medido: 8 cr por imagen gen4_image 1024; hoja de enemigo 1280x720 observada a 5 cr; video gen4_turbo 2 s = 10 cr. Los créditos son los registrados por recibo/ART_CREDITS (hay gasto sin recibo: ver notas); el saldo de la cuenta es compartido.
 
-**Entradas: 86** · ✔ integrado 51 · ◐ sin integrar 6 · ✘ rechazado 13 · · pendiente 15 · ⛔ bloqueado 1 · créditos registrados: 1233
+**Entradas: 95** · ✔ integrado 58 · ◐ sin integrar 7 · ✘ rechazado 14 · · pendiente 15 · ⛔ bloqueado 1 · créditos registrados: 1415
 
 ## lamina_campeon (4)
 
@@ -28,7 +28,7 @@
 | `prox_props_bosque` | · pendiente |  |  |  | Idem. |
 | `prox_props_laberinto` | · pendiente |  |  |  | Idem. |
 
-## piso_arena (9)
+## piso_arena (10)
 
 | id | estado | fecha | cr | dónde está | nota |
 |---|---|---|---:|---|---|
@@ -41,6 +41,7 @@
 | `prox_piso_bosque` | · pendiente | 2026-11-12 |  | `js/rendering/arena.js` | Sigue siendo el piso procedural (FLOOR_THEME). Runway funcionó en 5 de 6 pisos (falló solo abismo por marco/diagonal). [2026-11-12] 2026-11-12: intento bloqueado, 0 creditos: la API respondio 'Your daily task limit has been reached.' (saldo 295, sin cobro). JOB listo en runway-world.js (ver el id de esta entrada), ref en art-source/runway-world/<arena>/ref_crop.png; capturas ANTES en art-source/captures/. Reintentar cuando se libere el limite diario. |
 | `prox_piso_hielo` | · pendiente | 2026-11-12 |  | `js/rendering/arena.js` | Sigue siendo el piso procedural (FLOOR_THEME). Runway funcionó en 5 de 6 pisos (falló solo abismo por marco/diagonal). [2026-11-12] 2026-11-12: intento bloqueado, 0 creditos: la API respondio 'Your daily task limit has been reached.' (saldo 295, sin cobro). JOB listo en runway-world.js (ver el id de esta entrada), ref en art-source/runway-world/<arena>/ref_crop.png; capturas ANTES en art-source/captures/. Reintentar cuando se libere el limite diario. |
 | `prox_piso_divina` | · pendiente |  |  | `js/rendering/arena.js` | Último piso procedural sin pintar. |
+| `prox_bosque_piso_turbo` | ✘ rechazado | 2026-11-13 | 2 | `art-source/runway-designs/bosque/piso_t1/master.png` | gen4_image_turbo es barato (2 cr) pero imita la composición del @ref en vez del estilo: sale una rejilla; mismo defecto que abismo_piso. |
 
 ## centro_arena (6)
 
@@ -113,7 +114,7 @@
 | `hoja_minotauro` | ✘ rechazado | 2026-11-06 | 5 | `art-source/runway-enemies/laberinto/minotauro` | Hoja peor que el retrato de campo de batalla; retirada (RUNWAY_ENEMIES.md). |
 | `leviatan_imagenes_15` | ✔ integrado | 2026-11-06 |  | `assets/sprites/bosses/acuatica/leviatan/head_01.png`<br>`art-source/runway-redraw/sprites/bosses/acuatica/leviatan/orig/head_01.png` | Solo se usan si el retrato de campo de batalla no carga (el retrato manda). Sin recibos: 15 imágenes gen4_image, créditos no registrados (sin_verificar). |
 
-## campeon_cuerpo (11)
+## campeon_cuerpo (19)
 
 | id | estado | fecha | cr | dónde está | nota |
 |---|---|---|---:|---|---|
@@ -127,7 +128,15 @@
 | `saelis_caida` | ✔ integrado | 2026-11-07 | 8 | `art-source/runway-guardians/saelis/s_death1/master.png`<br>`assets/sprites/champions/saelis/atlas.png` | Evidencia indirecta: el master y assets/sprites/champions/saelis/atlas.png entran en el mismo commit 843353a0 y ART_CREDITS lo declara integrado; no comparé píxel a píxel (el atlas se reescaló después en 1fa7ccc8). |
 | `tanque_f24_diseno` | ◐ sin integrar | 2026-11-12 | 24 | `art-source/runway-guardians/tanque/f24_a5/master.png`<br>`tools/art/codex-clean.py` | a1 rechazada (texto del título en la imagen, sin espada); a2 descartada (prompt «test»); a3/a4 BAD_OUTPUT (el saldo bajó ~5 y ~20, no atribuible). Solo a5 sirve como DISEÑO; no demuestra poses. |
 | `tanque_lote_cuadros` | ✘ rechazado | 2026-11-12 | 86 | `art-source/runway-guardians/tanque/f12_a1/master.png`<br>`art-source/runway-guardians/tanque/f27_a1/master.png` | gen4_image ignora la pose pedida y devuelve siempre un personaje de pie (golpe y recuperar salieron idénticos a una pose de pie); las poses agachadas o tendidas dan BAD_OUTPUT (el saldo bajó 86 cr por saldo 856→770 para 2 imágenes y 6 fallos; sin recibo). Medido: 0 aprobados. |
-| `regla_campeon_cuerpo_imagenes_sueltas` | ✘ rechazado | 2026-11-12 |  | `docs/beta-release/ART_CREDITS.md`<br>`docs/art-brief/runway-pack/RECETA.md` | Medido: 0 aprobados como POSE en 13+ imágenes del Tanque (f24_a5 quedó aceptada solo como diseño); mismo límite visto en Profeta pf_up y Myla d3. Solo sirvió con @pose de una imagen aceptada de la misma serie y poses de pie (Libertador/Profeta/Coloso). |
+| `regla_campeon_cuerpo_imagenes_sueltas` | ✘ rechazado | 2026-11-12 |  | `docs/beta-release/ART_CREDITS.md`<br>`docs/art-brief/runway-pack/RECETA.md` | Medido con gen4_image (NO con gpt_image_2, que sí funcionó para Ynara el 2026-11-12): 0 aprobados como POSE en 13+ imágenes del Tanque (f24_a5 quedó aceptada solo como diseño); mismo límite visto en Profeta pf_up y Myla d3. Solo sirvió con @pose de una imagen aceptada de la misma serie y poses de pie (Libertador/Profeta/Coloso). |
+| `ynara_ult_poses_gpt2` | ✔ integrado | 2026-11-12 | 20 | `art-source/runway-designs/ynara/u1/master.png`<br>`art-source/ynara-runway/ult` | Respeta poses y diseno (gen4_image las ignora). Convertida con tools/art/sheet-to-cells.py. Instalada 2026-11-12. |
+| `ynara_cast_poses_gpt2` | ✔ integrado | 2026-11-12 | 20 | `art-source/runway-designs/ynara/c1/master.png`<br>`art-source/ynara-runway/cast` | Primer intento aceptado (saldo 225 -> 205). Sombra de suelo del modelo recortada con --trim-feet 9. Instalada 2026-11-12. |
+| `tanque_lanzar_gpt2` | ◐ sin integrar | 2026-11-12 | 20 | `art-source/runway-designs/tanque/g1/master.png` |  |
+| `cazadora_ult_poses_gpt2` | ✔ integrado | 2026-11-12 | 40 | `art-source/runway-designs/cazadora/u1/master.png`<br>`art-source/runway-designs/cazadora/u2/master.png`<br>`art-source/cazadora-runway/atlas.png` | u1 (20 cr) bien de diseno y poses pero el arco en alto vertical obligaba a reducir la escala comun un 10 % (cuerpo 74 px vs 83 de reposo, fuera de +-4 %): descartada como candidato. u2 (20 cr, arco horizontal) aceptada: cuerpo 85 px (+2 %). Instalada 2026-11-12; aprobacion de arte humana pendiente. |
+| `musashi_ult_poses_gpt2` | ✔ integrado | 2026-11-12 | 20 | `art-source/runway-designs/musashi/u1/master.png`<br>`art-source/musashi-runway/atlas.png` | Primer intento aceptado (saldo 145 -> 125). Se pidio el bokken en diagonal/horizontal para no pasar de la celda. Proporciones algo mas macizas que el atlas vigente; instalada 2026-11-12, aprobacion de arte humana pendiente. |
+| `ilkan_ataque_frente_gpt2` | ✔ integrado | 2026-11-12 | 20 | `art-source/runway-designs/ilkan/af1/master.png`<br>`art-source/ilkan-runway/atlas.png` | Primer intento aceptado (saldo 99 -> 79): anticipacion / tajo cruzado hacia la camara / seguimiento con brazos abiertos / recuperacion; mismo diseno que la lamina. Instalada 2026-11-12 (drawIlkan ya despacha attack_down); aprobacion de arte humana pendiente. |
+| `ilkan_ataque_espalda_gpt2` | ✔ integrado | 2026-11-12 | 20 | `art-source/runway-designs/ilkan/ab1/master.png`<br>`art-source/ilkan-runway/atlas.png` | Primer intento aceptado (saldo 79 -> 59): de espaldas sin cara en las 4 poses, lanza al hombro y cola de capa. Instalada 2026-11-12; aprobacion de arte humana pendiente. |
+| `libertador_ult_poses_gpt2` | ✔ integrado | 2026-11-12 | 20 | `art-source/runway-designs/libertador/u1/master.png`<br>`art-source/libertador-runway/atlas.png` | Primer intento aceptado (saldo 59 -> 39): carga con el sable a la cadera / alza el sable en diagonal / pico con el sable extendido y grito / liberacion en estocada. Captura del motor (ult_cast avanzando con el progreso, antes vs despues) claramente mejor. INSTALADA el 2026-11-13: el dueño re-aprobó el atlas ampliado y se actualizó el sha256 fijado en check-libertador-motion.js y check-libertador-death.js. |
 
 ## campeon_video (2)
 
@@ -151,7 +160,7 @@
 - ✘ **`ilkan_coloso_ronda1_golem`** (campeon_cuerpo, 2026-11-06, 56 cr): Rechazada por el dueño («parece con esteroides»). Además 6 tareas fallaron BAD_OUTPUT (sin imagen ni recibo; el cobro no es verificable: la API informa 0 y el saldo bajó igual, cuenta compartida) cuando el prompt pedía «skull-like/hollow ribcage» sin @pose. **Siguiente:** NO repetir. Regla: sin @pose de una imagen aceptada de la misma serie, las poses raras dan BAD_OUTPUT (puede cobrarse; no verificable).
 - ✘ **`tanque_lote_cuadros`** (campeon_cuerpo, 2026-11-12, 86 cr): gen4_image ignora la pose pedida y devuelve siempre un personaje de pie (golpe y recuperar salieron idénticos a una pose de pie); las poses agachadas o tendidas dan BAD_OUTPUT (el saldo bajó 86 cr por saldo 856→770 para 2 imágenes y 6 fallos; sin recibo). Medido: 0 aprobados. **Siguiente:** NO repetir: no pedir poses de campeón con imágenes sueltas.
 - ✘ **`tanque_video_combate`** (campeon_video, 2026-11-12, 70 cr): La definitiva (ul1, ul2 con salto) sale igual a lanzar; ataque/lanzar/muerte dan menos pose que el atlas actual; el último cuadro de la muerte mide 23 px. Hallazgo: el video sirve para variar caminata, no para ataque/definitiva/muerte. **Siguiente:** NO repetir.
-- ✘ **`regla_campeon_cuerpo_imagenes_sueltas`** (campeon_cuerpo, 2026-11-12, 0 cr): Medido: 0 aprobados como POSE en 13+ imágenes del Tanque (f24_a5 quedó aceptada solo como diseño); mismo límite visto en Profeta pf_up y Myla d3. Solo sirvió con @pose de una imagen aceptada de la misma serie y poses de pie (Libertador/Profeta/Coloso). **Siguiente:** NO invertir créditos en campeon_cuerpo por imágenes sueltas ni en animación de campeones con hojas.
+- ✘ **`regla_campeon_cuerpo_imagenes_sueltas`** (campeon_cuerpo, 2026-11-12, 0 cr): Medido con gen4_image (NO con gpt_image_2, que sí funcionó para Ynara el 2026-11-12): 0 aprobados como POSE en 13+ imágenes del Tanque (f24_a5 quedó aceptada solo como diseño); mismo límite visto en Profeta pf_up y Myla d3. Solo sirvió con @pose de una imagen aceptada de la misma serie y poses de pie (Libertador/Profeta/Coloso). **Siguiente:** NO invertir créditos en campeon_cuerpo por imágenes sueltas ni en animación de campeones con hojas.
 - ✘ **`hoja_leviatan`** (jefe, 2026-11-06, 5 cr): La hoja salió plana y casi sin variación, peor que el arte vigente (RUNWAY_ENEMIES.md). **Siguiente:** NO repetir tal cual (hoja/animación de enemigos con Runway: medido, ver regla).
 - ✘ **`hoja_bestia_bosque`** (jefe, 2026-11-06, 5 cr): La hoja Runway era otra criatura: peor que el retrato de campo de batalla; se retiró (docs/art-gate/RUNWAY_ENEMIES.md). **Siguiente:** NO repetir tal cual (hoja/animación de enemigos con Runway: medido, ver regla).
 - ✘ **`hoja_dragon_forja`** (jefe, 2026-11-06, 5 cr): Hoja peor que el retrato de campo de batalla; retirada (RUNWAY_ENEMIES.md); imágenes en rejected/. **Siguiente:** NO repetir tal cual (hoja/animación de enemigos con Runway: medido, ver regla).
@@ -159,6 +168,7 @@
 - ✘ **`hoja_minotauro`** (jefe, 2026-11-06, 5 cr): Hoja peor que el retrato de campo de batalla; retirada (RUNWAY_ENEMIES.md). **Siguiente:** NO repetir tal cual (hoja/animación de enemigos con Runway: medido, ver regla).
 - ✘ **`hoja_chaman`** (enemigo_hoja, 2026-11-07, 5 cr): La hoja salió con texto dentro de la imagen (docs/art-gate/MICELIAL_RUNWAY_20261107.md); sigue el atlas viejo. **Siguiente:** NO repetir tal cual (hoja/animación de enemigos con Runway: medido, ver regla).
 - ✘ **`regla_animacion_hojas_enemigos`** (enemigo_hoja, 2026-11-12, 0 cr): Los 4 rehechos del 2026-11-12 (8 hojas, 40 cr): 0 mejoran el atlas vigente. Runway no da ciclos de caminata distintos (cuadros casi idénticos) ni muerte limpia (funde dos cuerpos o agrega cristales). El camino válido fue SOLO enemigos sin hoja o con hoja pobre. **Siguiente:** NO rehacer hojas de enemigos ya instaladas; NO pedir ciclos de caminata a Runway (usar proc_walk).
+- ✘ **`prox_bosque_piso_turbo`** (piso_arena, 2026-11-13, 2 cr): gen4_image_turbo es barato (2 cr) pero imita la composición del @ref en vez del estilo: sale una rejilla; mismo defecto que abismo_piso. **Siguiente:** Probar con una referencia que sea solo textura (recorte de piedra sin paneles) o esperar el reinicio del tope de gen4_image (200/día) y repetir el trabajo bosque_piso de runway-world.js.
 
 También medido (sin entrada propia): Runway ignora la pose pedida en la muestra del Tanque; los `BAD_OUTPUT` pueden cobrarse (la API informa 0 pero el saldo bajó igual; cuenta compartida, no atribuible); los prompts largos con anatomía rara fallan sin `@pose`; un prompt con texto genera texto dentro de la imagen; los ciclos de caminata salen con cuadros casi idénticos. Un fallo seguido de otro igual = parar.
 

@@ -27,6 +27,7 @@
      HOST             dirección donde escucha (ej. 127.0.0.1 detrás de nginx). Vacío = todas
      MAX_ROOMS        tope de salas simultáneas (default 300)
      DATABASE_URL, DATA_DIR, ...  cuentas de usuario (ver server/accounts.js)
+     BETA_INVITE_CODES, BETA_REPORTS, BETA_ERROR_REPORTS  kit de beta cerrada, todo apagado por defecto (server/beta-kit.js)
      SIM_LATENCY_MS   SOLO PRUEBAS: demora artificial de cada mensaje (default 0)
      LA_HORDA_LAN     "1" = MODO RED LOCAL (tools/lan/host.js): sin cuentas, sin nube, sin recompensas de servidor
                       (el relay solo junta jugadores de la misma red). Ver docs/beta-release/MULTIJUGADOR_LOCAL.md

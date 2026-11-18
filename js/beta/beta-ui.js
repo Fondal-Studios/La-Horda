@@ -149,11 +149,11 @@
   }
 
   /* ---- escena de combate en bucle: cinco guardianes de roles distintos (Aldric tanque, San Martín, Sylva a distancia,
-         Thalen mago, Elyra apoyo) contra un jefe de la arena de hielo (Ángel Caído de Hielo; NO el Rey de la Horda) y
+         Thalen mago, Elyra apoyo) contra el DIABLO FINAL (Demonio Mayor, forma final del Rey de la Horda) y
          tres bichos comunes. Mismo arte real que la partida (drawChampFigure / _cxDrawEnemy del Códice). El tiempo
          lo manda t (sin estado): cada actor tiene su ciclo de ataque, con proyectiles y destellos simples.
          Compone a la izquierda del CTA (se mide en pantalla) para no tapar botones, logo, idioma ni pie. ---- */
-  const BOSS = "angel_caido_hielo", MOBS = ["golem_hielo", "lobo_artico", "hada_escarcha"];
+  const BOSS = "demonio_mayor", MOBS = ["demonio_menor", "esqueleto_h", "demonio_mago"];   // Demonio Mayor: aprobado por el dueño el 2026-11-15 (revela al jefe final a propósito)
   const HEROES = [ // fx = posición en el campo (0..1 del ancho libre); row 1 = segunda fila (más atrás)
     {k:"tanque",     fx:0.43, row:0, per:3200, off:0,    kind:"melee"},
     {k:"libertador", fx:0.26, row:0, per:3800, off:900,  kind:"melee"},
@@ -161,7 +161,7 @@
     {k:"cazadora",   fx:0.18, row:1, per:2600, off:300,  kind:"arrow"},
     {k:"mago",       fx:0.34, row:1, per:3400, off:1500, kind:"bolt"}
   ];
-  const BATTLE_GROUPS = HEROES.map(h => "ch:" + h.k).concat(["ar:hielo"]);
+  const BATTLE_GROUPS = HEROES.map(h => "ch:" + h.k).concat(["ar:infernal"]);
   const STATIC_T = 3460;   // cuadro fijo (Reducir movimiento): flecha y hechizo en vuelo, golpe del tanque
   let raf = 0, last = 0, t = 0, parts = [], groupsAsked = false, lastStatic = -1e9, ents = {}, normAt = 0;
   const mkEnemy = type => (typeof _cxFakeEnemy==="function") ? _cxFakeEnemy(type) : null;
@@ -186,8 +186,8 @@
       g.fillStyle = "#9fd77a"; g.fillRect(x - 8*u, y - 2*u, 3*u, 4*u);
     } else {
       g.globalCompositeOperation = "lighter";
-      for(let i=5;i>=1;i--){ g.globalAlpha = 0.14*(6-i); g.fillStyle = kind==="ice" ? "#8fd8ff" : "#c79bff"; const s = (7 - i)*u; g.fillRect(x - (x1>x0?1:-1)*i*5*u - s/2, y - s/2, s, s); }
-      g.globalAlpha = 1; g.fillStyle = kind==="ice" ? "#eaffff" : "#fff0ff"; g.fillRect(x - 4*u, y - 4*u, 8*u, 8*u);
+      for(let i=5;i>=1;i--){ g.globalAlpha = 0.14*(6-i); g.fillStyle = kind==="ice" ? "#8fd8ff" : kind==="fire" ? "#ff7a2a" : "#c79bff"; const s = (7 - i)*u; g.fillRect(x - (x1>x0?1:-1)*i*5*u - s/2, y - s/2, s, s); }
+      g.globalAlpha = 1; g.fillStyle = kind==="ice" ? "#eaffff" : kind==="fire" ? "#fff0c0" : "#fff0ff"; g.fillRect(x - 4*u, y - 4*u, 8*u, 8*u);
     }
     g.restore();
   }
@@ -237,7 +237,7 @@
     const floor = portrait ? Math.min(H*0.5, (cr.top - sr.top)*k - H*0.03) : H*0.8;
     const Hh = Math.min(portrait ? H*0.16 : H*0.25, Sw*(portrait ? 0.3 : 0.225));
     if(now - normAt > 700){ normAt = now; if(HEROES.some(o => !_titleNorm[o.k] && groupReady("ch:" + o.k)) && typeof _titleMeasure==="function") try{ _titleMeasure(); }catch(_){} }
-    const bossOK = groupReady("ar:hielo") && ENEMY_BASE[BOSS];
+    const bossOK = groupReady("ar:infernal") && ENEMY_BASE[BOSS];
     const mB = bossOK && _cxMeasure(BOSS), mM = bossOK ? MOBS.map(_cxMeasure) : [];
     const rowY = r => floor - r*H*0.07;
     // ---- posiciones ----
@@ -255,7 +255,7 @@
       if(o.kind==="melee") (o.k==="tanque" ? hits.mob[0] : hits.mob[1]).push(c - hitAt);
       else if(o.kind==="arrow" || o.kind==="bolt") hits.boss.push(c - hitAt);
     }
-    // el jefe: carga el ataque y lanza una esquirla de hielo al tanque
+    // el jefe: carga el ataque y lanza una bola de fuego al tanque
     const cB = cyc(T, 4400, 600), bAtk = cB < 620, bossHitTank = cB - (520 + 600);
     hits.tank.push(bossHitTank);
     const mobC = [cyc(T, 2800, 400), cyc(T, 2600, 1300), cyc(T, 3000, 2200)];
@@ -281,9 +281,9 @@
       e.fx = -1; e.animT = T; e.attackAnim = 0; e.stunTimer = 1; // el ataque del jefe se insinúa con retroceso + aura (su hoja de ataque cambia de caja y rompe la composición)
       let hb = 0; for(const a of hits.boss) if(a > 0 && a < 260) hb = Math.max(hb, 1 - a/260);
       items.push({y:bossY, draw(){
-        g.save(); g.globalCompositeOperation = "lighter";   // aura de jefe (hielo)
+        g.save(); g.globalCompositeOperation = "lighter";   // aura de jefe (fuego)
         const ag = g.createRadialGradient(bossX, bossY - Hb*0.5, Hb*0.1, bossX, bossY - Hb*0.5, Hb*0.8);
-        ag.addColorStop(0, `rgba(130,200,255,${0.16 + 0.12*hb + (bAtk ? 0.28*Math.sin(cB/620*Math.PI) : 0)})`); ag.addColorStop(1, "rgba(130,200,255,0)");
+        ag.addColorStop(0, `rgba(255,110,50,${0.16 + 0.12*hb + (bAtk ? 0.28*Math.sin(cB/620*Math.PI) : 0)})`); ag.addColorStop(1, "rgba(255,110,50,0)");
         g.fillStyle = ag; g.fillRect(bossX - Hb, bossY - Hb*1.4, Hb*2, Hb*1.6); g.restore();
         g.fillStyle = "rgba(0,0,0,0.5)"; g.beginPath(); g.ellipse(bossX, bossY + 2*unit, bw*0.4, Hh*0.1, 0, 0, 6.2832); g.fill();
         _cxDrawEnemy(g, e, bossX - mB.cx*kB + hb*4*unit - (bAtk ? Math.sin(cB/620*Math.PI)*5*unit : 0), bossY - mB.bottom*kB, kB);
@@ -326,8 +326,8 @@
     }
     if(mB && bossOK){
       const tgx = tx + Hh*0.2, tgy = rowY(0) - Hh*0.5;
-      bolt(g, bossX - bw*0.35, bossY - Hb*0.55, tgx, tgy, sm((cB - 520)/600), unit*1.3, "ice");
-      spark(g, tgx, tgy, unit*1.2, bossHitTank, "#bfe8ff");
+      bolt(g, bossX - bw*0.35, bossY - Hb*0.55, tgx, tgy, sm((cB - 520)/600), unit*1.3, "fire");
+      spark(g, tgx, tgy, unit*1.2, bossHitTank, "#ffc890");
       for(const a of hits.boss) spark(g, bossC.x + Hb*0.05, bossC.y, unit*1.2, a, "#fff2c0");
       mM.forEach((m, i) => { for(const a of hits.mob[i]) spark(g, left + Sw*mobDef[i].x - 12*unit, rowY(mobDef[i].r) - Hh*mobDef[i].th*0.5, unit*1.1, a, "#ffe9a0"); });
     }

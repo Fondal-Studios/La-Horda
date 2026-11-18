@@ -65,6 +65,7 @@ const TESTS = [
   T('tools/alpha/rooms-unit.js', 'node', 120, {q: 1}),
   T('tools/alpha/services-test.js', 'node', 180, {q: 1}),
   T('tools/alpha/event-receipts-test.js', 'node', 180, {q: 1}),
+  T('server/test-beta-kit.js', 'node', 180, {q: 1}),   // beta cerrada: invitaciones, reportes y errores (también en cd server && npm test)
   T('tests/competitive-roster.test.js', 'node', 120, {q: 1}),
   T('tests/competitive-signatures.test.js', 'node', 120, {q: 1}),
   T('tools/crystal-wars/test-competitive.js', 'node', 300, {q: 1}),
@@ -76,7 +77,7 @@ const TESTS = [
   T('tools/bible/arena-validator.js', 'node', 300, {args: ['--strict']}),
   T('tools/bible/boss-validator.js', 'node', 300, {args: ['--strict']}),
   // ---- objetos, economía, dificultad (navegador, servidor compartido) ----
-  ...['t_abismo', 't_boons', 't_breakables', 't_build_uniques', 't_camp', 't_campaign', 't_codex', 't_codex_book', 't_collision', 't_cromas', 't_crystals',
+  ...['t_abismo', 't_boss_dormant', 't_boons', 't_breakables', 't_build_uniques', 't_camp', 't_campaign', 't_codex', 't_codex_book', 't_collision', 't_cromas', 't_crystals',
     't_difficulty', 't_endless', 't_evolution', 't_ground_loot', 't_hechicero', 't_hpbonus', 't_itemization', 't_items', 't_mage_kit', 't_nigro_elements',
     't_nigro_golems', 't_nigromante', 't_pacing', 't_perf_exploits', 't_q4_economia', 't_quests', 't_reactions', 't_resonance', 't_roles', 't_sets',
     't_skins_brasas', 't_starter_gift', 't_story', 't_synergies'].map(n => T(`tools/items/${n}.js`, 'site', n === 't_campaign' ? 1800 : 900, n === 't_campaign' || n === 't_difficulty' ? {slow: 1} : {})),
@@ -84,7 +85,7 @@ const TESTS = [
   T('tools/identity/t_identity.js', 'site', 1200),
   T('tools/identity/t_objectives.js', 'site', 600),
   ...['t_bestias', 't_boss_assist', 't_champs_se', 't_checkpoint', 't_defeat_clear', 't_drag_aim', 't_hit_react', 't_ilkan_migration', 't_juice',
-    't_run_end', 't_save_sanitize'].map(n => T(`tools/regression/${n}.js`, 'site', 900, n === 't_run_end' ? {kind: 'fixed'} : n === 't_ilkan_migration' ? {args: site => [site.url]} : {})),
+    't_run_end', 't_save_sanitize', 't_reload_midrun'].map(n => T(`tools/regression/${n}.js`, 'site', 900, n === 't_run_end' ? {kind: 'fixed'} : n === 't_ilkan_migration' ? {args: site => [site.url]} : {})),
   // cámara/resolución sobre el sitio servido tal cual (el resto de la carpeta regression compara dos versiones instrumentadas: ver su README)
   T('tools/regression/t_camera.js', 'site', 600, {args: (site, out) => ['.', out]}),
   T('tools/ux/test-accessibility-prefs.js', 'site', 600),
@@ -97,6 +98,9 @@ const TESTS = [
   T('tools/ux/test-text-overflow.js', 'own', 900),
   T('tools/ux/test-touch-targets.js', 'own', 600),
   T('tools/ux/test-first-minute-taps.js', 'site', 600),
+  T('tools/ux/test-start-button-viewports.js', 'site', 900),   // FASE 1: botón de comenzar visible/usable en 844x390, 667x375, 932x430, 1280x720 y 390x844
+  T('tools/ux/test-starter-skin-layout.js', 'site', 600),
+  T('tools/beta/report-dialog-browser.js', 'site', 600),   // beta cerrada: botón y diálogo de reporte, errores agrupados, código de invitación
   T('tools/ux/functional.js', 'fixed', 900),
   // ---- calidad, VFX, arte ----
   T('tools/quality/test-ability-resources.js', 'own', 900),
@@ -112,6 +116,7 @@ const TESTS = [
   T('tools/art/roster-loading-test.js', 'own', 900),
   T('tools/art/t_pixrig_bosses.js', 'site', 600),
   T('tools/art/check-presentation-browser.js', 'fixed', 600),
+  T('tools/art/test-champion-draw-dispatch.js', 'site', 300),
   // ---- carriles, Coliseo, Cristales, colección, balance ----
   T('tools/lanes/test-sides.js', 'site', 900),
   T('tools/lanes/postgame-test.js', 'own', 900),

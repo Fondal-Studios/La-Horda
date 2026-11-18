@@ -5,13 +5,14 @@
    ============================================================ */
 
 function damageEnemy(e, amount, opts){
+  // (dmgTakenMult 0 = intocable de verdad: antes `||1` lo volvia 1 y el Caballero dormido, la Madre Espora latente y el Carcelero surgiendo se podian matar sin ser `boss` -> sin victoria)
   opts = opts || {};
   if(e.cineT > 0) return; // cinemática de un jefe (inf-hechicero.js): intocable mientras habla o se transforma
   const src = opts.src || (typeof lanesOn==="function" && lanesOn() && LN.cur) || player; // (en Guerra de Cristales/Coliseo, sin `src` vale el que está lanzando, no el jugador)
   if(typeof lanesOn==="function" && lanesOn()){ if(lanesBlocksDamage(e, src)) return; amount *= lanesDmgMult(e, src); } // Guerra de Cristales: sin fuego amigo, torres protegidas y PvP escalado
   amount = portadorBasicPower(src, amount, opts);
   if(_boonRec) boonRecHit(e, amount, src, opts); // refuerzos de habilidad: quién recibió ESTE lanzamiento
-  let dmg = amount * (e.dmgTakenMult||1) * (e.curseDefTakenMult||1) * (e.crashVuln ? 1.6 : 1);
+  let dmg = amount * (e.dmgTakenMult===0 ? 0 : (e.dmgTakenMult||1)) * (e.curseDefTakenMult||1) * (e.crashVuln ? 1.6 : 1);
   if(e._protT) dmg *= roleDmgTakenMult(e); // bajo el escudo de un Protector (enemy-roles.js)
   if(e._eliteArmor) dmg *= e._eliteArmor; // élite con nombre "Blindado" (elite-affixes.js)
   if(e._encMult || e._expT > 0) dmg *= bossEncounterDmgMult(e); // regla del jefe: blindaje/escudo propio o ventana EXPUESTO (boss-encounter.js)
@@ -334,6 +335,7 @@ function damageHero(h, amount, src, portTransferred){
   let dmg = amount * (1 - h.def) * (1 - defBonus) * (1-(h.buffDefMult?(1-h.buffDefMult):0)) * (1-passiveDef);
   dmg *= portadorTakenMult(h, src);
   if(!portTransferred) dmg = portadorShareDamage(h, dmg, src);
+  if(h.classKey==="guerrero") dmg = kaelHitGuard(h, dmg, src); // Kael: tope por golpe con enfriamiento (cls.guard; apagado si capPct=0)
   if(!(dmg > 0)) dmg = 0; // el daño recibido nunca es negativo (un golpe no cura), pase lo que pase con los multiplicadores
   const mitigated = Math.max(0, amount - dmg), dmgBeforeShields = dmg;
   if(h.shield>0){

@@ -1,0 +1,2442 @@
+{
+ "schema": 1,
+ "generated": "2026-11-14",
+ "branch": "claude/la-horda-beta-audit-exec-mwv8x0",
+ "note": "Salida del informe docs/art-brief/AUDITORIA_ASSETS_20261113.md. B = arte util no conectado (el duenio decide). D = dudoso (no se eliminan). Nada de esto esta integrado ni aprobado.",
+ "totals": {
+  "A": {
+   "files": 6394,
+   "mb": 1552.79
+  },
+  "B": {
+   "files": 8,
+   "mb": 7.37
+  },
+  "C": {
+   "files": 53,
+   "mb": 18.65
+  },
+  "D": {
+   "files": 5399,
+   "mb": 929.6
+  }
+ },
+ "totals_detail": {
+  "A1 en uso por el juego": {
+   "files": 3401,
+   "mb": 279.26
+  },
+  "A2 fuente/evidencia fijada (gate, manifiesto, receta, clave)": {
+   "files": 2993,
+   "mb": 1273.53
+  },
+  "B": {
+   "files": 8,
+   "mb": 7.37
+  },
+  "C": {
+   "files": 53,
+   "mb": 18.65
+  },
+  "D1 assets/ no pedidos (fijados por ATLAS_ARTE)": {
+   "files": 6,
+   "mb": 0.65
+  },
+  "D2 docs: capturas/evidencia sin cita fuerte": {
+   "files": 5031,
+   "mb": 715.45
+  },
+  "D3 art-source: solo docs/recibos o sin cita": {
+   "files": 362,
+   "mb": 213.5
+  }
+ },
+ "candidates": [
+  {
+   "id": "B01",
+   "cls": "B",
+   "name": "Tanque: grito/lanzar en 4 cuadros (gpt_image_2, intento g1)",
+   "paths": [
+    "art-source/runway-designs/tanque/g1/master.png",
+    "art-source/runway-designs/tanque/g1/receipt.json"
+   ],
+   "thumbs": [
+    "b01_tanque_lanzar_g1.png"
+   ],
+   "what": "Lamina 1920x1088 con 4 poses (reunir, alzar, liberar, recuperar) del Caballero; status GENERATED_NOT_APPROVED.",
+   "value": "medio",
+   "effort": "medio",
+   "risk": "medio: sin aprobacion (RECETA §5), el registro tiene la nota vacia, hay que verificar escala comun y pixel nativo.",
+   "missing": "Aprobacion humana; convertir con tools/art/sheet-to-cells.py, armar atlas y conectar el clip en js/champions/tanque.js; gates de estilo/roster.",
+   "evidence": "REGISTRO_RUNWAY.md fila tanque_lanzar_gpt2 (sin integrar)",
+   "recommendation": "Revisar a ojo; si se aprueba, integrar; si no, archivar."
+  },
+  {
+   "id": "B02",
+   "cls": "B",
+   "name": "Tanque: caminatas por video (ws1, wd3) y atlas candidato",
+   "paths": [
+    "art-source/runway-video/tanque/candidate/atlas.png",
+    "art-source/runway-video/tanque/candidate/preview.png",
+    "art-source/runway-video/tanque/ws1/clip.mp4",
+    "art-source/runway-video/tanque/wd3/clip.mp4"
+   ],
+   "thumbs": [
+    "b02_tanque_caminatas_atlas.png",
+    "b02_tanque_caminatas_preview.png"
+   ],
+   "what": "Atlas candidato 448x1008 armado desde dos clips de video aceptados a ojo (ws1 y wd3); w1 sin aprobar, wd2 rechazado, wu1 debil.",
+   "value": "medio-alto (las caminatas del Tanque son un pendiente conocido)",
+   "effort": "medio",
+   "risk": "medio: cuadros muy parecidos entre si; el atlas candidato NO esta instalado y hay que pasar los gates de movimiento del Tanque.",
+   "missing": "Revision humana de la animacion en reproduccion; instalar en el registro del Tanque y correr check-tanque-*.js.",
+   "evidence": "REGISTRO_RUNWAY.md fila tanque_video_caminatas (sin integrar)",
+   "recommendation": "Decidir junto con B01 (mismo campeon)."
+  },
+  {
+   "id": "B03",
+   "cls": "B",
+   "name": "Ciudad: fachada completa de casa_a",
+   "paths": [
+    "art-source/runway-world/ciudad/casa_a/master.png",
+    "art-source/runway-world/ciudad/casa_a/receipt.json"
+   ],
+   "thumbs": [
+    "b03_ciudad_casa_a.png"
+   ],
+   "what": "Fachada 1024x1024 generada; solo se integraron las texturas de techo y pared, la fachada no.",
+   "value": "medio (props de la arena Ciudad)",
+   "effort": "medio",
+   "risk": "medio: GENERATED_NOT_APPROVED; hay que recortar a escala de props y pasar density/visual gate de arenas.",
+   "missing": "Aprobacion; recorte/pixelado y registro en js/rendering/arena-props.js o arena-world-art.js.",
+   "evidence": "REGISTRO_RUNWAY.md fila casa_a (sin integrar)",
+   "recommendation": "Decidir; bajo riesgo porque es decorado."
+  },
+  {
+   "id": "B04",
+   "cls": "B",
+   "name": "Libertador: atlas candidato del Codice v1",
+   "paths": [
+    "art-source/runway-guardians/libertador/codex-v1-candidato/atlas.png",
+    "art-source/runway-guardians/libertador/ref_frente/master.png"
+   ],
+   "thumbs": [
+    "b04_libertador_codex_v1_atlas.png"
+   ],
+   "what": "Atlas derivado por build-libertador-codex.py; referencia para animar, un cuadro por vista.",
+   "value": "bajo-medio",
+   "effort": "medio",
+   "risk": "medio: el motor no lo carga; compite con el atlas v2 aprobado (mismos gates fijados por sha).",
+   "missing": "Decision de arte; el atlas v2 vigente ya esta instalado y aprobado.",
+   "evidence": "REGISTRO_RUNWAY.md fila libertador_hoja_ref (sin integrar)",
+   "recommendation": "Archivar o decidir por separado; el atlas v2 de Libertador ya incluye la definitiva instalada."
+  },
+  {
+   "id": "B05",
+   "cls": "B",
+   "name": "Tanque: diseno f24 (solo diseno, sin poses)",
+   "paths": [
+    "art-source/runway-guardians/tanque/f24_a5/master.png"
+   ],
+   "thumbs": [
+    "b05_tanque_f24_a5.png"
+   ],
+   "what": "Intento a5 de una hoja de 24 poses; solo sirve como diseno, no demuestra poses.",
+   "value": "bajo",
+   "effort": "alto",
+   "risk": "alto: sin poses",
+   "missing": "Nada concreto: requeriria regenerar poses.",
+   "evidence": "REGISTRO_RUNWAY.md fila tanque_f24_diseno (sin integrar)",
+   "recommendation": "Archivar (queda como referencia)."
+  },
+  {
+   "id": "B06",
+   "cls": "B",
+   "name": "Ilkan: idle frontal de prueba",
+   "paths": [
+    "art-source/runway-guardians/ilkan/intento1_idle_frente/master.png"
+   ],
+   "thumbs": [
+    "b06_ilkan_idle_prueba.png"
+   ],
+   "what": "Prueba aceptada solo como ensayo; el atlas humano de Ilkan ya es fiel al Codice.",
+   "value": "nulo-bajo",
+   "effort": "-",
+   "risk": "-",
+   "missing": "-",
+   "evidence": "REGISTRO_RUNWAY.md fila ilkan_idle_prueba (sin integrar)",
+   "recommendation": "Archivar (no integrar)."
+  }
+ ],
+ "doubtful": [
+  {
+   "id": "D:docs/beta-release/menu-polish",
+   "cls": "D",
+   "path": "docs/beta-release/menu-polish",
+   "files": 232,
+   "mb": 89.75,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/art-gate/ability-art",
+   "cls": "D",
+   "path": "docs/art-gate/ability-art",
+   "files": 2805,
+   "mb": 75.06,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:art-source/entregas/ilkan-codex-20261029",
+   "cls": "D",
+   "path": "art-source/entregas/ilkan-codex-20261029",
+   "files": 63,
+   "mb": 74.41,
+   "doubt": "Entrega de produccion con recibos/estado (varias en FIX_NO_INTEGRAR o EN_CORRECCION): contiene fuentes, antes/despues y capturas de verificacion; sus gates y recibos fijan archivos concretos. No se eliminan.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:docs/beta-release/audit-art-enemigos",
+   "cls": "D",
+   "path": "docs/beta-release/audit-art-enemigos",
+   "files": 165,
+   "mb": 60.97,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/ui-clarity/audit",
+   "cls": "D",
+   "path": "docs/ui-clarity/audit",
+   "files": 45,
+   "mb": 42.36,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/beta-release/ui-beta",
+   "cls": "D",
+   "path": "docs/beta-release/ui-beta",
+   "files": 152,
+   "mb": 39.76,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:art-source/unique-skins",
+   "cls": "D",
+   "path": "art-source/unique-skins",
+   "files": 16,
+   "mb": 35.85,
+   "doubt": "Laminas fuente de las skins unicas ya integradas (js/assets/unique-skins-meta.js las registra por clave, no por nombre de archivo). Son la fuente del arte en uso: no borrar.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:docs/beta-release/evidence",
+   "cls": "D",
+   "path": "docs/beta-release/evidence",
+   "files": 42,
+   "mb": 28.6,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/ui-factory/evidence",
+   "cls": "D",
+   "path": "docs/ui-factory/evidence",
+   "files": 122,
+   "mb": 23.02,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/beta-release/eval3-captures",
+   "cls": "D",
+   "path": "docs/beta-release/eval3-captures",
+   "files": 58,
+   "mb": 21.84,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/art-brief/ejemplos",
+   "cls": "D",
+   "path": "docs/art-brief/ejemplos",
+   "files": 135,
+   "mb": 21.22,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:art-source/entregas/libertador-kit-20261025",
+   "cls": "D",
+   "path": "art-source/entregas/libertador-kit-20261025",
+   "files": 36,
+   "mb": 19.89,
+   "doubt": "Entrega de produccion con recibos/estado (varias en FIX_NO_INTEGRAR o EN_CORRECCION): contiene fuentes, antes/despues y capturas de verificacion; sus gates y recibos fijan archivos concretos. No se eliminan.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:art-source/sprite-rework",
+   "cls": "D",
+   "path": "art-source/sprite-rework",
+   "files": 8,
+   "mb": 18.39,
+   "doubt": "Fuentes del rework de sprites (nano_gm y otros); citadas solo por rutas relativas o docs.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:docs/production/art-unification",
+   "cls": "D",
+   "path": "docs/production/art-unification",
+   "files": 77,
+   "mb": 17.75,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/beta-release/ux-equipo-captures",
+   "cls": "D",
+   "path": "docs/beta-release/ux-equipo-captures",
+   "files": 70,
+   "mb": 17.62,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/beta-release/art-repair",
+   "cls": "D",
+   "path": "docs/beta-release/art-repair",
+   "files": 40,
+   "mb": 16.48,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/beta-release/ux-flujo",
+   "cls": "D",
+   "path": "docs/beta-release/ux-flujo",
+   "files": 37,
+   "mb": 16.25,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/beta-release/ux-arq-captures",
+   "cls": "D",
+   "path": "docs/beta-release/ux-arq-captures",
+   "files": 51,
+   "mb": 16.16,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/beta-release/eval2-captures",
+   "cls": "D",
+   "path": "docs/beta-release/eval2-captures",
+   "files": 46,
+   "mb": 15.93,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:art-source/runway-redraw",
+   "cls": "D",
+   "path": "art-source/runway-redraw",
+   "files": 15,
+   "mb": 14.68,
+   "doubt": "Salidas crudas de IA (*.png.gen.png) del redibujo del Leviatan; la receta tools/art/runway/redraw_images.py conserva los originales en orig/. Nada las cita, pero costaron creditos y son la unica copia de lo generado.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:docs/beta/captures",
+   "cls": "D",
+   "path": "docs/beta/captures",
+   "files": 9,
+   "mb": 12.27,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/ux/hud-movil",
+   "cls": "D",
+   "path": "docs/ux/hud-movil",
+   "files": 16,
+   "mb": 12.09,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:art-source/captures",
+   "cls": "D",
+   "path": "art-source/captures",
+   "files": 27,
+   "mb": 10.9,
+   "doubt": "Antes/despues pedidos por el duenio (regla: no tocar). Hay copias identicas entre hielo_centro/hielo_piso y bosque_centro/bosque_piso.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:docs/beta-release/audit-art",
+   "cls": "D",
+   "path": "docs/beta-release/audit-art",
+   "files": 7,
+   "mb": 10.67,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/ux/iconos-contrato",
+   "cls": "D",
+   "path": "docs/ux/iconos-contrato",
+   "files": 76,
+   "mb": 10.41,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/production/quality-five",
+   "cls": "D",
+   "path": "docs/production/quality-five",
+   "files": 47,
+   "mb": 9.71,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/ux/primer-minuto-limpio",
+   "cls": "D",
+   "path": "docs/ux/primer-minuto-limpio",
+   "files": 34,
+   "mb": 8.95,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/ux/libro-hechicero",
+   "cls": "D",
+   "path": "docs/ux/libro-hechicero",
+   "files": 38,
+   "mb": 8.75,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/vfx/sheets",
+   "cls": "D",
+   "path": "docs/vfx/sheets",
+   "files": 42,
+   "mb": 8.26,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/arena-identity/objetivos",
+   "cls": "D",
+   "path": "docs/arena-identity/objetivos",
+   "files": 17,
+   "mb": 8.11,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:art-source/entregas/bloques",
+   "cls": "D",
+   "path": "art-source/entregas/bloques",
+   "files": 23,
+   "mb": 7.7,
+   "doubt": "Entrega de produccion con recibos/estado (varias en FIX_NO_INTEGRAR o EN_CORRECCION): contiene fuentes, antes/despues y capturas de verificacion; sus gates y recibos fijan archivos concretos. No se eliminan.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:docs/beta-release/eval-captures",
+   "cls": "D",
+   "path": "docs/beta-release/eval-captures",
+   "files": 28,
+   "mb": 7.54,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/vfx/ultis-distintas-2",
+   "cls": "D",
+   "path": "docs/vfx/ultis-distintas-2",
+   "files": 101,
+   "mb": 7.44,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/art-gate/pixel-unificado",
+   "cls": "D",
+   "path": "docs/art-gate/pixel-unificado",
+   "files": 14,
+   "mb": 6.82,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/vfx/compare",
+   "cls": "D",
+   "path": "docs/vfx/compare",
+   "files": 20,
+   "mb": 6.28,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/bosque-selva/antes",
+   "cls": "D",
+   "path": "docs/bosque-selva/antes",
+   "files": 5,
+   "mb": 6.14,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/art-audit/combat-inventory",
+   "cls": "D",
+   "path": "docs/art-audit/combat-inventory",
+   "files": 6,
+   "mb": 5.94,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/bosque-selva/despues",
+   "cls": "D",
+   "path": "docs/bosque-selva/despues",
+   "files": 5,
+   "mb": 5.43,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/ui-clarity/evidence",
+   "cls": "D",
+   "path": "docs/ui-clarity/evidence",
+   "files": 16,
+   "mb": 4.95,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/ux/iconos",
+   "cls": "D",
+   "path": "docs/ux/iconos",
+   "files": 33,
+   "mb": 4.72,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:art-source/alpha-set-skins",
+   "cls": "D",
+   "path": "art-source/alpha-set-skins",
+   "files": 4,
+   "mb": 4.69,
+   "doubt": "Citadas solo desde documentos/recibos historicos o sin cita por ruta; podrian ser fuente de arte aprobado.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:docs/ux/jefes-limpios",
+   "cls": "D",
+   "path": "docs/ux/jefes-limpios",
+   "files": 12,
+   "mb": 4.29,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/ux/hub-primer-minuto",
+   "cls": "D",
+   "path": "docs/ux/hub-primer-minuto",
+   "files": 28,
+   "mb": 4.26,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/ux/emojis-pixel",
+   "cls": "D",
+   "path": "docs/ux/emojis-pixel",
+   "files": 21,
+   "mb": 4.14,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/ux/accesibilidad-cuentas",
+   "cls": "D",
+   "path": "docs/ux/accesibilidad-cuentas",
+   "files": 20,
+   "mb": 4.05,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/founders/qa",
+   "cls": "D",
+   "path": "docs/founders/qa",
+   "files": 12,
+   "mb": 3.76,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/art-gate/audit",
+   "cls": "D",
+   "path": "docs/art-gate/audit",
+   "files": 10,
+   "mb": 3.39,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/art/referencia",
+   "cls": "D",
+   "path": "docs/art/referencia",
+   "files": 16,
+   "mb": 3.28,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:art-source/fortaleza",
+   "cls": "D",
+   "path": "art-source/fortaleza",
+   "files": 1,
+   "mb": 3.22,
+   "doubt": "map_reference.png (3.2 MB): referencia de mapa citada solo desde docs/arena-identity/fortaleza.md.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:art-source/guardian_elfico",
+   "cls": "D",
+   "path": "art-source/guardian_elfico",
+   "files": 1,
+   "mb": 3.17,
+   "doubt": "Original RGBA del guardian elfico ancestral; citado solo desde un informe historico.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:art-source/ciudad",
+   "cls": "D",
+   "path": "art-source/ciudad",
+   "files": 1,
+   "mb": 3.01,
+   "doubt": "Laminas de origen (mapa, enemigos, jefes) de la arena Ciudad; citadas solo desde informes historicos LA_HORDA_CITY_*.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:docs/ux/arreglos-menores",
+   "cls": "D",
+   "path": "docs/ux/arreglos-menores",
+   "files": 20,
+   "mb": 2.96,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/ux/codex-book",
+   "cls": "D",
+   "path": "docs/ux/codex-book",
+   "files": 8,
+   "mb": 2.96,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:art-source/minas",
+   "cls": "D",
+   "path": "art-source/minas",
+   "files": 1,
+   "mb": 2.87,
+   "doubt": "Laminas de origen de la arena Minas; citadas solo desde informes historicos.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:docs/ux/three-ui-contracts",
+   "cls": "D",
+   "path": "docs/ux/three-ui-contracts",
+   "files": 9,
+   "mb": 2.85,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:art-source/portadores",
+   "cls": "D",
+   "path": "art-source/portadores",
+   "files": 1,
+   "mb": 2.76,
+   "doubt": "Laminas de origen de los portadores; solo por nombre desde clasificaciones de entregas.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:art-source/runway-enemies",
+   "cls": "D",
+   "path": "art-source/runway-enemies",
+   "files": 7,
+   "mb": 2.64,
+   "doubt": "Citadas solo desde documentos/recibos historicos o sin cita por ruta; podrian ser fuente de arte aprobado.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:art-source/complete-skins",
+   "cls": "D",
+   "path": "art-source/complete-skins",
+   "files": 1,
+   "mb": 2.56,
+   "doubt": "Laminas de skins completas; solo por nombre desde VISUAL_CLASSIFICATION.json.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:art-source/skins_sets",
+   "cls": "D",
+   "path": "art-source/skins_sets",
+   "files": 1,
+   "mb": 2.53,
+   "doubt": "Fuentes de las skins de Set (tools/art/skins_sets/extract.py las usa por clave, no por nombre de archivo).",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:docs/vfx/decal-legible",
+   "cls": "D",
+   "path": "docs/vfx/decal-legible",
+   "files": 18,
+   "mb": 2.26,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/modes/postgame",
+   "cls": "D",
+   "path": "docs/modes/postgame",
+   "files": 16,
+   "mb": 2.16,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/playtest/evolucion",
+   "cls": "D",
+   "path": "docs/playtest/evolucion",
+   "files": 11,
+   "mb": 1.86,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/art-gate/audit-20261107",
+   "cls": "D",
+   "path": "docs/art-gate/audit-20261107",
+   "files": 5,
+   "mb": 1.85,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/playtest/review",
+   "cls": "D",
+   "path": "docs/playtest/review",
+   "files": 14,
+   "mb": 1.81,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/vfx/ultis-distintas",
+   "cls": "D",
+   "path": "docs/vfx/ultis-distintas",
+   "files": 17,
+   "mb": 1.69,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/alfa/q6",
+   "cls": "D",
+   "path": "docs/alfa/q6",
+   "files": 40,
+   "mb": 1.65,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/ux/tienda-rotacion",
+   "cls": "D",
+   "path": "docs/ux/tienda-rotacion",
+   "files": 14,
+   "mb": 1.58,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/competitive/evidence",
+   "cls": "D",
+   "path": "docs/competitive/evidence",
+   "files": 6,
+   "mb": 1.3,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:art-source/runway-video-src",
+   "cls": "D",
+   "path": "art-source/runway-video-src",
+   "files": 3,
+   "mb": 1.21,
+   "doubt": "Citadas solo desde documentos/recibos historicos o sin cita por ruta; podrian ser fuente de arte aprobado.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:art-source/runway-guardians",
+   "cls": "D",
+   "path": "art-source/runway-guardians",
+   "files": 6,
+   "mb": 1.04,
+   "doubt": "Citadas solo desde documentos/recibos historicos o sin cita por ruta; podrian ser fuente de arte aprobado.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:docs/skins-audit/redesign-roster.png",
+   "cls": "D",
+   "path": "docs/skins-audit/redesign-roster.png",
+   "files": 1,
+   "mb": 1.03,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/quality/health-hud",
+   "cls": "D",
+   "path": "docs/quality/health-hud",
+   "files": 2,
+   "mb": 0.99,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/bible/generated",
+   "cls": "D",
+   "path": "docs/bible/generated",
+   "files": 20,
+   "mb": 0.91,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/vfx/hud-mago-1280.png",
+   "cls": "D",
+   "path": "docs/vfx/hud-mago-1280.png",
+   "files": 1,
+   "mb": 0.85,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/vfx/hud-nigromante-1280.png",
+   "cls": "D",
+   "path": "docs/vfx/hud-nigromante-1280.png",
+   "files": 1,
+   "mb": 0.82,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:art-source/entregas/cazadora-kit-20261023",
+   "cls": "D",
+   "path": "art-source/entregas/cazadora-kit-20261023",
+   "files": 56,
+   "mb": 0.74,
+   "doubt": "Entrega de produccion con recibos/estado (varias en FIX_NO_INTEGRAR o EN_CORRECCION): contiene fuentes, antes/despues y capturas de verificacion; sus gates y recibos fijan archivos concretos. No se eliminan.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:assets/sprites",
+   "cls": "D",
+   "path": "assets/sprites",
+   "files": 3,
+   "mb": 0.65,
+   "doubt": "Citadas solo desde documentos/recibos historicos o sin cita por ruta; podrian ser fuente de arte aprobado.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:docs/ux/jefe-ayuda",
+   "cls": "D",
+   "path": "docs/ux/jefe-ayuda",
+   "files": 3,
+   "mb": 0.64,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/ux/derrota-clara",
+   "cls": "D",
+   "path": "docs/ux/derrota-clara",
+   "files": 4,
+   "mb": 0.61,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/public-alpha/first-run-1366.png",
+   "cls": "D",
+   "path": "docs/public-alpha/first-run-1366.png",
+   "files": 1,
+   "mb": 0.54,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/production/saelis-ingame.png",
+   "cls": "D",
+   "path": "docs/production/saelis-ingame.png",
+   "files": 1,
+   "mb": 0.44,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:art-source/nigromante_golems",
+   "cls": "D",
+   "path": "art-source/nigromante_golems",
+   "files": 46,
+   "mb": 0.43,
+   "doubt": "Citadas solo desde documentos/recibos historicos o sin cita por ruta; podrian ser fuente de arte aprobado.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:docs/vfx/hud-mago-844.png",
+   "cls": "D",
+   "path": "docs/vfx/hud-mago-844.png",
+   "files": 1,
+   "mb": 0.4,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/portadores/ynara-online-iria.png",
+   "cls": "D",
+   "path": "docs/portadores/ynara-online-iria.png",
+   "files": 1,
+   "mb": 0.39,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/portadores/ynara-online-ynara.png",
+   "cls": "D",
+   "path": "docs/portadores/ynara-online-ynara.png",
+   "files": 1,
+   "mb": 0.38,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/vfx/hud-nigromante-844.png",
+   "cls": "D",
+   "path": "docs/vfx/hud-nigromante-844.png",
+   "files": 1,
+   "mb": 0.38,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/expedition/codex-1280.png",
+   "cls": "D",
+   "path": "docs/expedition/codex-1280.png",
+   "files": 1,
+   "mb": 0.35,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/production/nano-juicio.png",
+   "cls": "D",
+   "path": "docs/production/nano-juicio.png",
+   "files": 1,
+   "mb": 0.34,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/art-gate/nano-gm-codex-v2",
+   "cls": "D",
+   "path": "docs/art-gate/nano-gm-codex-v2",
+   "files": 1,
+   "mb": 0.33,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:art-source/entregas/cosmetics-20261019",
+   "cls": "D",
+   "path": "art-source/entregas/cosmetics-20261019",
+   "files": 4,
+   "mb": 0.32,
+   "doubt": "Entrega de produccion con recibos/estado (varias en FIX_NO_INTEGRAR o EN_CORRECCION): contiene fuentes, antes/despues y capturas de verificacion; sus gates y recibos fijan archivos concretos. No se eliminan.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:docs/vfx/hud-mago-667.png",
+   "cls": "D",
+   "path": "docs/vfx/hud-mago-667.png",
+   "files": 1,
+   "mb": 0.32,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/vfx/hud-nigromante-667.png",
+   "cls": "D",
+   "path": "docs/vfx/hud-nigromante-667.png",
+   "files": 1,
+   "mb": 0.3,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/portadores/online-brasa.png",
+   "cls": "D",
+   "path": "docs/portadores/online-brasa.png",
+   "files": 1,
+   "mb": 0.28,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/portadores/online-iria.png",
+   "cls": "D",
+   "path": "docs/portadores/online-iria.png",
+   "files": 1,
+   "mb": 0.28,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/production/alpha-skins-roster.png",
+   "cls": "D",
+   "path": "docs/production/alpha-skins-roster.png",
+   "files": 1,
+   "mb": 0.27,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/ux/duo-1280.png",
+   "cls": "D",
+   "path": "docs/ux/duo-1280.png",
+   "files": 1,
+   "mb": 0.27,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/alfa/q1",
+   "cls": "D",
+   "path": "docs/alfa/q1",
+   "files": 12,
+   "mb": 0.25,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/public-alpha/first-run-844.png",
+   "cls": "D",
+   "path": "docs/public-alpha/first-run-844.png",
+   "files": 1,
+   "mb": 0.25,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/commercial/independent-live.jpg",
+   "cls": "D",
+   "path": "docs/commercial/independent-live.jpg",
+   "files": 1,
+   "mb": 0.22,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/public-alpha/first-run-740.png",
+   "cls": "D",
+   "path": "docs/public-alpha/first-run-740.png",
+   "files": 1,
+   "mb": 0.21,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/art-gate/soporte-v3",
+   "cls": "D",
+   "path": "docs/art-gate/soporte-v3",
+   "files": 1,
+   "mb": 0.2,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/playtest/campamento",
+   "cls": "D",
+   "path": "docs/playtest/campamento",
+   "files": 7,
+   "mb": 0.19,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/expedition/codex-844.png",
+   "cls": "D",
+   "path": "docs/expedition/codex-844.png",
+   "files": 1,
+   "mb": 0.18,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:art-source/retouch-base",
+   "cls": "D",
+   "path": "art-source/retouch-base",
+   "files": 1,
+   "mb": 0.18,
+   "doubt": "Citadas solo desde documentos/recibos historicos o sin cita por ruta; podrian ser fuente de arte aprobado.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:docs/production/painter-forge-demo.png",
+   "cls": "D",
+   "path": "docs/production/painter-forge-demo.png",
+   "files": 1,
+   "mb": 0.17,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/skins-audit/special-forms.png",
+   "cls": "D",
+   "path": "docs/skins-audit/special-forms.png",
+   "files": 1,
+   "mb": 0.16,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/expedition/codex-667.png",
+   "cls": "D",
+   "path": "docs/expedition/codex-667.png",
+   "files": 1,
+   "mb": 0.15,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/art-enrichment/gallery-mobile.png",
+   "cls": "D",
+   "path": "docs/art-enrichment/gallery-mobile.png",
+   "files": 1,
+   "mb": 0.14,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/art-gate/canonical",
+   "cls": "D",
+   "path": "docs/art-gate/canonical",
+   "files": 1,
+   "mb": 0.13,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/ynara/visual-gate.png",
+   "cls": "D",
+   "path": "docs/ynara/visual-gate.png",
+   "files": 1,
+   "mb": 0.12,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/elyra/visual-gate.png",
+   "cls": "D",
+   "path": "docs/elyra/visual-gate.png",
+   "files": 1,
+   "mb": 0.11,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/u4_13_madre_espora_antes_844x390.webp",
+   "cls": "D",
+   "path": "docs/critic/u4_13_madre_espora_antes_844x390.webp",
+   "files": 1,
+   "mb": 0.1,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/13_madre_espora_ruido.webp",
+   "cls": "D",
+   "path": "docs/critic/13_madre_espora_ruido.webp",
+   "files": 1,
+   "mb": 0.1,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/art-gate/libertador-motion",
+   "cls": "D",
+   "path": "docs/art-gate/libertador-motion",
+   "files": 4,
+   "mb": 0.09,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/u4_13_madre_espora_despues_844x390.webp",
+   "cls": "D",
+   "path": "docs/critic/u4_13_madre_espora_despues_844x390.webp",
+   "files": 1,
+   "mb": 0.09,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/ux/duo-844.png",
+   "cls": "D",
+   "path": "docs/ux/duo-844.png",
+   "files": 1,
+   "mb": 0.09,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/u4_04_camara_hechicero_despues_915x412.webp",
+   "cls": "D",
+   "path": "docs/critic/u4_04_camara_hechicero_despues_915x412.webp",
+   "files": 1,
+   "mb": 0.08,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/art-recovery-aelith-20261102/native-contact.png",
+   "cls": "D",
+   "path": "docs/art-recovery-aelith-20261102/native-contact.png",
+   "files": 1,
+   "mb": 0.08,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/u4_04_camara_hechicero_despues_1440x810.webp",
+   "cls": "D",
+   "path": "docs/critic/u4_04_camara_hechicero_despues_1440x810.webp",
+   "files": 1,
+   "mb": 0.08,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/u4_07_golpe_despues_844x390.webp",
+   "cls": "D",
+   "path": "docs/critic/u4_07_golpe_despues_844x390.webp",
+   "files": 1,
+   "mb": 0.08,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/u4_07_golpe_antes_844x390.webp",
+   "cls": "D",
+   "path": "docs/critic/u4_07_golpe_antes_844x390.webp",
+   "files": 1,
+   "mb": 0.08,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/ux/duo-667.png",
+   "cls": "D",
+   "path": "docs/ux/duo-667.png",
+   "files": 1,
+   "mb": 0.08,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/u4_04_camara_hechicero_despues_844x390.webp",
+   "cls": "D",
+   "path": "docs/critic/u4_04_camara_hechicero_despues_844x390.webp",
+   "files": 1,
+   "mb": 0.08,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/u4_04_camara_hechicero_antes_844x390.webp",
+   "cls": "D",
+   "path": "docs/critic/u4_04_camara_hechicero_antes_844x390.webp",
+   "files": 1,
+   "mb": 0.07,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/05_antes_guia_jefe_tapa.webp",
+   "cls": "D",
+   "path": "docs/critic/05_antes_guia_jefe_tapa.webp",
+   "files": 1,
+   "mb": 0.07,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/re4_antes_cartel_sobre_guia.webp",
+   "cls": "D",
+   "path": "docs/critic/re4_antes_cartel_sobre_guia.webp",
+   "files": 1,
+   "mb": 0.07,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/04_primera_pelea_camara.webp",
+   "cls": "D",
+   "path": "docs/critic/04_primera_pelea_camara.webp",
+   "files": 1,
+   "mb": 0.07,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/re3_presentador_ciudad.webp",
+   "cls": "D",
+   "path": "docs/critic/re3_presentador_ciudad.webp",
+   "files": 1,
+   "mb": 0.07,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/16_botin_en_el_piso_haz.webp",
+   "cls": "D",
+   "path": "docs/critic/16_botin_en_el_piso_haz.webp",
+   "files": 1,
+   "mb": 0.07,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/17_levantar_aviso.webp",
+   "cls": "D",
+   "path": "docs/critic/17_levantar_aviso.webp",
+   "files": 1,
+   "mb": 0.06,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/15_juego_integrado_racha.webp",
+   "cls": "D",
+   "path": "docs/critic/15_juego_integrado_racha.webp",
+   "files": 1,
+   "mb": 0.06,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:art-source/ynara-cast-ult",
+   "cls": "D",
+   "path": "art-source/ynara-cast-ult",
+   "files": 8,
+   "mb": 0.06,
+   "doubt": "Citadas solo desde documentos/recibos historicos o sin cita por ruta; podrian ser fuente de arte aprobado.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:docs/art-gate/libertador-death",
+   "cls": "D",
+   "path": "docs/art-gate/libertador-death",
+   "files": 6,
+   "mb": 0.06,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/re2_elites_texto_encimado.webp",
+   "cls": "D",
+   "path": "docs/critic/re2_elites_texto_encimado.webp",
+   "files": 1,
+   "mb": 0.06,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/19_invitado_elite_con_nombre.webp",
+   "cls": "D",
+   "path": "docs/critic/19_invitado_elite_con_nombre.webp",
+   "files": 1,
+   "mb": 0.06,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/14_sala_de_a_dos_invitado.webp",
+   "cls": "D",
+   "path": "docs/critic/14_sala_de_a_dos_invitado.webp",
+   "files": 1,
+   "mb": 0.05,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:art-source/ilkan-runway",
+   "cls": "D",
+   "path": "art-source/ilkan-runway",
+   "files": 8,
+   "mb": 0.05,
+   "doubt": "Citadas solo desde documentos/recibos historicos o sin cita por ruta; podrian ser fuente de arte aprobado.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:art-source/ynara-runway",
+   "cls": "D",
+   "path": "art-source/ynara-runway",
+   "files": 8,
+   "mb": 0.05,
+   "doubt": "Citadas solo desde documentos/recibos historicos o sin cita por ruta; podrian ser fuente de arte aprobado.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:docs/art-gate/painter",
+   "cls": "D",
+   "path": "docs/art-gate/painter",
+   "files": 1,
+   "mb": 0.04,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:art-source/aelith-recovery-20261102",
+   "cls": "D",
+   "path": "art-source/aelith-recovery-20261102",
+   "files": 1,
+   "mb": 0.04,
+   "doubt": "Citadas solo desde documentos/recibos historicos o sin cita por ruta; podrian ser fuente de arte aprobado.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:art-source/cazadora-runway",
+   "cls": "D",
+   "path": "art-source/cazadora-runway",
+   "files": 4,
+   "mb": 0.04,
+   "doubt": "Citadas solo desde documentos/recibos historicos o sin cita por ruta; podrian ser fuente de arte aprobado.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:docs/critic/06_despues_guia_jefe_abajo.webp",
+   "cls": "D",
+   "path": "docs/critic/06_despues_guia_jefe_abajo.webp",
+   "files": 1,
+   "mb": 0.04,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/12_talentos_nivel40.webp",
+   "cls": "D",
+   "path": "docs/critic/12_talentos_nivel40.webp",
+   "files": 1,
+   "mb": 0.03,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/u5_03_despues_prologo_saltar_667.webp",
+   "cls": "D",
+   "path": "docs/critic/u5_03_despues_prologo_saltar_667.webp",
+   "files": 1,
+   "mb": 0.03,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/u5_01_antes_titulo_pie_ingles.webp",
+   "cls": "D",
+   "path": "docs/critic/u5_01_antes_titulo_pie_ingles.webp",
+   "files": 1,
+   "mb": 0.03,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/re1_campamento.webp",
+   "cls": "D",
+   "path": "docs/critic/re1_campamento.webp",
+   "files": 1,
+   "mb": 0.03,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:art-source/libertador-runway",
+   "cls": "D",
+   "path": "art-source/libertador-runway",
+   "files": 4,
+   "mb": 0.03,
+   "doubt": "Citadas solo desde documentos/recibos historicos o sin cita por ruta; podrian ser fuente de arte aprobado.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:docs/critic/u5_02_despues_titulo_pie_alfa.webp",
+   "cls": "D",
+   "path": "docs/critic/u5_02_despues_titulo_pie_alfa.webp",
+   "files": 1,
+   "mb": 0.03,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:art-source/musashi-runway",
+   "cls": "D",
+   "path": "art-source/musashi-runway",
+   "files": 4,
+   "mb": 0.03,
+   "doubt": "Citadas solo desde documentos/recibos historicos o sin cita por ruta; podrian ser fuente de arte aprobado.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:docs/critic/u5_17_despues_guardian_pixel_667.webp",
+   "cls": "D",
+   "path": "docs/critic/u5_17_despues_guardian_pixel_667.webp",
+   "files": 1,
+   "mb": 0.02,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/01_titulo_iphone.webp",
+   "cls": "D",
+   "path": "docs/critic/01_titulo_iphone.webp",
+   "files": 1,
+   "mb": 0.02,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/u5_13_despues_victoria_toasts.webp",
+   "cls": "D",
+   "path": "docs/critic/u5_13_despues_victoria_toasts.webp",
+   "files": 1,
+   "mb": 0.02,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/u5_08_despues_sala_arena.webp",
+   "cls": "D",
+   "path": "docs/critic/u5_08_despues_sala_arena.webp",
+   "files": 1,
+   "mb": 0.02,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/u5_14_despues_victoria_toasts_667.webp",
+   "cls": "D",
+   "path": "docs/critic/u5_14_despues_victoria_toasts_667.webp",
+   "files": 1,
+   "mb": 0.02,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/re5_antes_sala_invitado_arial.webp",
+   "cls": "D",
+   "path": "docs/critic/re5_antes_sala_invitado_arial.webp",
+   "files": 1,
+   "mb": 0.02,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/u5_04_despues_hub_siguiente.webp",
+   "cls": "D",
+   "path": "docs/critic/u5_04_despues_hub_siguiente.webp",
+   "files": 1,
+   "mb": 0.02,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/u5_09_despues_sala_online_667.webp",
+   "cls": "D",
+   "path": "docs/critic/u5_09_despues_sala_online_667.webp",
+   "files": 1,
+   "mb": 0.02,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/u5_12_antes_victoria_toast.webp",
+   "cls": "D",
+   "path": "docs/critic/u5_12_antes_victoria_toast.webp",
+   "files": 1,
+   "mb": 0.02,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/10_desafios_integrado.webp",
+   "cls": "D",
+   "path": "docs/critic/10_desafios_integrado.webp",
+   "files": 1,
+   "mb": 0.02,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/u5_07_despues_sala_equipo.webp",
+   "cls": "D",
+   "path": "docs/critic/u5_07_despues_sala_equipo.webp",
+   "files": 1,
+   "mb": 0.02,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/u5_06_antes_sala.webp",
+   "cls": "D",
+   "path": "docs/critic/u5_06_antes_sala.webp",
+   "files": 1,
+   "mb": 0.02,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/11_despues_codice.webp",
+   "cls": "D",
+   "path": "docs/critic/11_despues_codice.webp",
+   "files": 1,
+   "mb": 0.02,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/u5_05_despues_hub_siguiente_667.webp",
+   "cls": "D",
+   "path": "docs/critic/u5_05_despues_hub_siguiente_667.webp",
+   "files": 1,
+   "mb": 0.02,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/03_sala_primera_vez.webp",
+   "cls": "D",
+   "path": "docs/critic/03_sala_primera_vez.webp",
+   "files": 1,
+   "mb": 0.02,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/07_victoria_ultimas_palabras.webp",
+   "cls": "D",
+   "path": "docs/critic/07_victoria_ultimas_palabras.webp",
+   "files": 1,
+   "mb": 0.02,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/18_afijos_rango_comparacion.webp",
+   "cls": "D",
+   "path": "docs/critic/18_afijos_rango_comparacion.webp",
+   "files": 1,
+   "mb": 0.02,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/02_menu_regalo.webp",
+   "cls": "D",
+   "path": "docs/critic/02_menu_regalo.webp",
+   "files": 1,
+   "mb": 0.02,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/u5_15_antes_coliseo_proximamente.webp",
+   "cls": "D",
+   "path": "docs/critic/u5_15_antes_coliseo_proximamente.webp",
+   "files": 1,
+   "mb": 0.02,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/09_antes_cofre_apretado.webp",
+   "cls": "D",
+   "path": "docs/critic/09_antes_cofre_apretado.webp",
+   "files": 1,
+   "mb": 0.01,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:art-source/entregas/ilkan-kit-20261024",
+   "cls": "D",
+   "path": "art-source/entregas/ilkan-kit-20261024",
+   "files": 2,
+   "mb": 0.01,
+   "doubt": "Entrega de produccion con recibos/estado (varias en FIX_NO_INTEGRAR o EN_CORRECCION): contiene fuentes, antes/despues y capturas de verificacion; sus gates y recibos fijan archivos concretos. No se eliminan.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:docs/critic/u5_10_antes_sala_georgia.webp",
+   "cls": "D",
+   "path": "docs/critic/u5_10_antes_sala_georgia.webp",
+   "files": 1,
+   "mb": 0.01,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/u5_11_despues_sala_pixel.webp",
+   "cls": "D",
+   "path": "docs/critic/u5_11_despues_sala_pixel.webp",
+   "files": 1,
+   "mb": 0.01,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/u5_16_despues_sin_coliseo.webp",
+   "cls": "D",
+   "path": "docs/critic/u5_16_despues_sin_coliseo.webp",
+   "files": 1,
+   "mb": 0.01,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/critic/08_despues_refuerzos.webp",
+   "cls": "D",
+   "path": "docs/critic/08_despues_refuerzos.webp",
+   "files": 1,
+   "mb": 0.01,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:assets/vfx",
+   "cls": "D",
+   "path": "assets/vfx",
+   "files": 3,
+   "mb": 0.01,
+   "doubt": "Citadas solo desde documentos/recibos historicos o sin cita por ruta; podrian ser fuente de arte aprobado.",
+   "recommendation": "No tocar hasta decision del duenio"
+  },
+  {
+   "id": "D:docs/ux/duo-390.png",
+   "cls": "D",
+   "path": "docs/ux/duo-390.png",
+   "files": 1,
+   "mb": 0.01,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:docs/art-brief/plantillas",
+   "cls": "D",
+   "path": "docs/art-brief/plantillas",
+   "files": 1,
+   "mb": 0.01,
+   "doubt": "Evidencia de auditoria/QA en docs: ninguna herramienta ni documento cita estas capturas por ruta; el juego no las carga. Algunas carpetas las regenera una herramienta de captura. No se eliminan por no tener el criterio C (duplicado exacto o cero referencias).",
+   "recommendation": "Si se quiere liberar espacio: mover a un release/artefacto externo en vez de borrar"
+  },
+  {
+   "id": "D:art-source/reference-atlas",
+   "cls": "D",
+   "path": "art-source/reference-atlas",
+   "files": 1,
+   "mb": 0.0,
+   "doubt": "Citadas solo desde documentos/recibos historicos o sin cita por ruta; podrian ser fuente de arte aprobado.",
+   "recommendation": "No tocar hasta decision del duenio"
+  }
+ ],
+ "assets_huerfanos_atlas_no_cargados": [
+  {
+   "path": "assets/sprites/arenas/micelial/mother/mp_body.png",
+   "status": "HUERFANO",
+   "bytes": 178449,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/arenas/micelial/mother/mp_roots.png",
+   "status": "HUERFANO",
+   "bytes": 194744,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/aelith/atlas.png",
+   "status": "HUERFANO",
+   "bytes": 290634,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/aelith/codex-v1/preview.png",
+   "status": "HUERFANO",
+   "bytes": 7749,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/aelith/preview.png",
+   "status": "HUERFANO",
+   "bytes": 7986,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/aurelia/preview.png",
+   "status": "HUERFANO",
+   "bytes": 8617,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/aurelia/skins/aurelia_alt1/preview.png",
+   "status": "HUERFANO",
+   "bytes": 8338,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/aurelia/skins/aurelia_alt2/preview.png",
+   "status": "HUERFANO",
+   "bytes": 7987,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/axiom/codex-v1/preview.png",
+   "status": "HUERFANO",
+   "bytes": 12644,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/baltra/croma-preview.png",
+   "status": "HUERFANO",
+   "bytes": 5690,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/baltra/preview.png",
+   "status": "HUERFANO",
+   "bytes": 6503,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/brakk/preview.png",
+   "status": "HUERFANO",
+   "bytes": 10213,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/bront/preview.png",
+   "status": "HUERFANO",
+   "bytes": 6656,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/bront/skins/bront_alt1/preview.png",
+   "status": "HUERFANO",
+   "bytes": 7671,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/bront/skins/bront_alt2/preview.png",
+   "status": "HUERFANO",
+   "bytes": 6627,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/cazadora/codex-v1/preview.png",
+   "status": "HUERFANO",
+   "bytes": 13399,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/dariel/croma-preview.png",
+   "status": "HUERFANO",
+   "bytes": 5155,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/dariel/preview.png",
+   "status": "HUERFANO",
+   "bytes": 5524,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/facu_gm/preview.png",
+   "status": "HUERFANO",
+   "bytes": 7115,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/facu_gm/skins/facu_gm_alt1/preview.png",
+   "status": "HUERFANO",
+   "bytes": 6795,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/guerrero/codex-v1/preview.png",
+   "status": "HUERFANO",
+   "bytes": 6585,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/ilsa/preview.png",
+   "status": "HUERFANO",
+   "bytes": 5738,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/ilsa/skins/ilsa_alt1/preview.png",
+   "status": "HUERFANO",
+   "bytes": 6906,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/ilsa/skins/ilsa_alt2/preview.png",
+   "status": "HUERFANO",
+   "bytes": 6803,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/khepri/preview.png",
+   "status": "HUERFANO",
+   "bytes": 8561,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/khepri/skins/khepri_alt1/preview.png",
+   "status": "HUERFANO",
+   "bytes": 8806,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/khepri/skins/khepri_alt2/preview.png",
+   "status": "HUERFANO",
+   "bytes": 8986,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/kora/preview.png",
+   "status": "HUERFANO",
+   "bytes": 5749,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/kora/skins/kora_alt1/preview.png",
+   "status": "HUERFANO",
+   "bytes": 7153,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/kora/skins/kora_alt2/preview.png",
+   "status": "HUERFANO",
+   "bytes": 7318,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/mago/codex-v1/preview.png",
+   "status": "HUERFANO",
+   "bytes": 494633,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/maura/croma-preview.png",
+   "status": "HUERFANO",
+   "bytes": 6713,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/maura/preview.png",
+   "status": "HUERFANO",
+   "bytes": 7829,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/morveth/codex-v1/preview.png",
+   "status": "HUERFANO",
+   "bytes": 10381,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/morveth/preview.png",
+   "status": "HUERFANO",
+   "bytes": 9802,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/musashi/codex-v1/preview.png",
+   "status": "HUERFANO",
+   "bytes": 10028,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/nahir/croma-preview.png",
+   "status": "HUERFANO",
+   "bytes": 6037,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/nahir/preview.png",
+   "status": "HUERFANO",
+   "bytes": 6902,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/nano_gm/preview.png",
+   "status": "HUERFANO",
+   "bytes": 8787,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/nano_gm/skins/nano_gm_alt1/preview.png",
+   "status": "HUERFANO",
+   "bytes": 9178,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/nigromante/codex-v1/preview.png",
+   "status": "HUERFANO",
+   "bytes": 12691,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/oriel/preview.png",
+   "status": "HUERFANO",
+   "bytes": 8183,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/oriel/skins/oriel_alt1/preview.png",
+   "status": "HUERFANO",
+   "bytes": 8368,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/oriel/skins/oriel_alt2/preview.png",
+   "status": "HUERFANO",
+   "bytes": 8029,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/orsa/croma-preview.png",
+   "status": "HUERFANO",
+   "bytes": 7088,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/orsa/preview.png",
+   "status": "HUERFANO",
+   "bytes": 7612,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/renko/croma-preview.png",
+   "status": "HUERFANO",
+   "bytes": 4591,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/renko/preview.png",
+   "status": "HUERFANO",
+   "bytes": 5779,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/saelis/preview.png",
+   "status": "HUERFANO",
+   "bytes": 11791,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/saelis/skins/saelis_alt1/preview.png",
+   "status": "HUERFANO",
+   "bytes": 11625,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/saelis/skins/saelis_alt2/preview.png",
+   "status": "HUERFANO",
+   "bytes": 11729,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/sira/croma-preview.png",
+   "status": "HUERFANO",
+   "bytes": 4838,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/sira/preview.png",
+   "status": "HUERFANO",
+   "bytes": 7379,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/solciju/preview.png",
+   "status": "HUERFANO",
+   "bytes": 7676,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/soporte/v3/atlas.png",
+   "status": "HUERFANO",
+   "bytes": 303197,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/tanque/codex-v1/preview.png",
+   "status": "HUERFANO",
+   "bytes": 7074,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/tibor/croma-preview.png",
+   "status": "HUERFANO",
+   "bytes": 7270,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/tibor/preview.png",
+   "status": "HUERFANO",
+   "bytes": 8920,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/velmira/preview.png",
+   "status": "HUERFANO",
+   "bytes": 9345,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/velmira/skins/velmira_alt1/preview.png",
+   "status": "HUERFANO",
+   "bytes": 9114,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/velmira/skins/velmira_alt2/preview.png",
+   "status": "HUERFANO",
+   "bytes": 9610,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/vesper/croma-preview.png",
+   "status": "HUERFANO",
+   "bytes": 5110,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/vesper/preview.png",
+   "status": "HUERFANO",
+   "bytes": 6366,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/veyra/preview.png",
+   "status": "HUERFANO",
+   "bytes": 7816,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/vhal/preview.png",
+   "status": "HUERFANO",
+   "bytes": 7239,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/vhal/skins/vhal_alt1/preview.png",
+   "status": "HUERFANO",
+   "bytes": 8291,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/vhal/skins/vhal_alt2/preview.png",
+   "status": "HUERFANO",
+   "bytes": 7646,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/vorn/preview.png",
+   "status": "HUERFANO",
+   "bytes": 6653,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/vorn/skins/vorn_alt1/preview.png",
+   "status": "HUERFANO",
+   "bytes": 7864,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/vorn/skins/vorn_alt2/preview.png",
+   "status": "HUERFANO",
+   "bytes": 7757,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/zahra/croma-preview.png",
+   "status": "HUERFANO",
+   "bytes": 6392,
+   "loaded": false
+  },
+  {
+   "path": "assets/sprites/champions/zahra/preview.png",
+   "status": "HUERFANO",
+   "bytes": 6675,
+   "loaded": false
+  }
+ ],
+ "missing_runtime_files": [
+  {
+   "path": "css/ui-factory/fx/hero/ilsa.png",
+   "note": "404 pre-existente; js/ui-factory/hud-feedback.js lo tolera (usa marcos genericos)"
+  },
+  {
+   "path": "css/ui-factory/fx/hero/vorn.png",
+   "note": "idem"
+  },
+  {
+   "path": "css/ui-factory/fx/hero/kora.png",
+   "note": "idem"
+  }
+ ],
+ "deleted": {
+  "commit": "ver git log (C1)",
+  "files": 53,
+  "mb": 18.65,
+  "items": [
+   {
+    "path": "docs/beta-release/eval-captures/mv-03-guardianes.png",
+    "identical_to": "docs/beta-release/menu-polish/D-antes-guardianes-mv.png"
+   },
+   {
+    "path": "docs/beta-release/eval2-captures/mv-es-03-guardianes.png",
+    "identical_to": "docs/beta-release/menu-polish/D-antes-guardianes-mv.png"
+   },
+   {
+    "path": "docs/beta-release/eval-captures/mv-04-modos.png",
+    "identical_to": "docs/beta-release/menu-polish/C-antes-modos-mv.png"
+   },
+   {
+    "path": "docs/beta-release/eval-captures/mv-05-arenas.png",
+    "identical_to": "docs/beta-release/menu-polish/B-antes-arenas-mv.png"
+   },
+   {
+    "path": "docs/beta-release/eval-captures/mv-11-pausa.png",
+    "identical_to": "docs/beta-release/menu-polish/C-antes-pausa-mv.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/A-before-pausa-844x390.png",
+    "identical_to": "docs/beta-release/menu-polish/C-antes-pausa-mv.png"
+   },
+   {
+    "path": "docs/beta-release/eval-captures/mv-13-victoria.png",
+    "identical_to": "docs/beta-release/menu-polish/C-antes-victoria-mv.png"
+   },
+   {
+    "path": "docs/beta-release/eval-captures/pc-03-guardianes.png",
+    "identical_to": "docs/beta-release/menu-polish/D-antes-guardianes-pc.png"
+   },
+   {
+    "path": "docs/beta-release/eval2-captures/pc-es-03-guardianes.png",
+    "identical_to": "docs/beta-release/menu-polish/D-antes-guardianes-pc.png"
+   },
+   {
+    "path": "docs/beta-release/eval-captures/pc-04-modos.png",
+    "identical_to": "docs/beta-release/menu-polish/C-antes-modos-pc.png"
+   },
+   {
+    "path": "docs/beta-release/eval-captures/pc-05-arenas.png",
+    "identical_to": "docs/beta-release/menu-polish/B-antes-arenas-pc.png"
+   },
+   {
+    "path": "docs/beta-release/eval-captures/pc-11-pausa.png",
+    "identical_to": "docs/beta-release/menu-polish/C-antes-pausa-pc.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/A-before-pausa-1280x720.png",
+    "identical_to": "docs/beta-release/menu-polish/C-antes-pausa-pc.png"
+   },
+   {
+    "path": "docs/beta-release/eval-captures/pc-13-victoria.png",
+    "identical_to": "docs/beta-release/menu-polish/C-antes-victoria-pc.png"
+   },
+   {
+    "path": "docs/beta-release/eval2-captures/mv-es-04-modos.png",
+    "identical_to": "docs/beta-release/menu-polish/D-antes-modos-mv.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/C-despues-modos-mv.png",
+    "identical_to": "docs/beta-release/menu-polish/D-antes-modos-mv.png"
+   },
+   {
+    "path": "docs/beta-release/eval2-captures/mv-es-05-arenas.png",
+    "identical_to": "docs/beta-release/menu-polish/D-antes-arenas-mv.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/B-despues-arenas-mv.png",
+    "identical_to": "docs/beta-release/menu-polish/D-antes-arenas-mv.png"
+   },
+   {
+    "path": "docs/beta-release/eval2-captures/mv-es-11-pausa.png",
+    "identical_to": "docs/beta-release/menu-polish/D-antes-pausa-mv.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/A-after-pausa-844x390.png",
+    "identical_to": "docs/beta-release/menu-polish/D-antes-pausa-mv.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/C-despues-pausa-mv.png",
+    "identical_to": "docs/beta-release/menu-polish/D-antes-pausa-mv.png"
+   },
+   {
+    "path": "docs/beta-release/eval2-captures/pc-es-04-modos.png",
+    "identical_to": "docs/beta-release/menu-polish/D-antes-modos-pc.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/C-despues-modos-pc.png",
+    "identical_to": "docs/beta-release/menu-polish/D-antes-modos-pc.png"
+   },
+   {
+    "path": "docs/beta-release/eval2-captures/pc-es-05-arenas.png",
+    "identical_to": "docs/beta-release/menu-polish/D-antes-arenas-pc.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/B-despues-arenas-pc.png",
+    "identical_to": "docs/beta-release/menu-polish/D-antes-arenas-pc.png"
+   },
+   {
+    "path": "docs/beta-release/eval2-captures/pc-es-11-pausa.png",
+    "identical_to": "docs/beta-release/menu-polish/D-antes-pausa-pc.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/A-after-pausa-1280x720.png",
+    "identical_to": "docs/beta-release/menu-polish/D-antes-pausa-pc.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/C-despues-pausa-pc.png",
+    "identical_to": "docs/beta-release/menu-polish/D-antes-pausa-pc.png"
+   },
+   {
+    "path": "docs/beta-release/eval3-captures/es-1280-09-tienda-brasas.png",
+    "identical_to": "docs/beta-release/eval3-captures/es-1280-09-tienda-click.png"
+   },
+   {
+    "path": "docs/beta-release/eval3-captures/es-1280-09-tienda-champ.png",
+    "identical_to": "docs/beta-release/eval3-captures/es-1280-09-tienda-items.png"
+   },
+   {
+    "path": "docs/beta-release/eval3-captures/es-1280-15-gameover.png",
+    "identical_to": "docs/beta-release/ux-flujo/A2_1280_5_eval.png"
+   },
+   {
+    "path": "docs/beta-release/eval3-captures/es-1280-16-victoria.png",
+    "identical_to": "docs/beta-release/menu-polish/C-despues-victoria-pc.png"
+   },
+   {
+    "path": "docs/beta-release/eval3-captures/es-844-09-tienda-brasas.png",
+    "identical_to": "docs/beta-release/eval3-captures/es-844-09-tienda-click.png"
+   },
+   {
+    "path": "docs/beta-release/eval3-captures/es-844-09-tienda-champ.png",
+    "identical_to": "docs/beta-release/eval3-captures/es-844-09-tienda-items.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/A-after-opciones-844x390.png",
+    "identical_to": "docs/beta-release/menu-polish/D-antes-opciones-mv.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/A-despues-opciones-844x390.png",
+    "identical_to": "docs/beta-release/menu-polish/D-antes-opciones-mv.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/D-antes-victoria4-mv.png",
+    "identical_to": "docs/beta-release/menu-polish/D-despues-victoria4-mv.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/D-antes-victoria4-pc.png",
+    "identical_to": "docs/beta-release/menu-polish/D-despues-victoria4-pc.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/D-despues-arenas-mv.png",
+    "identical_to": "docs/beta-release/ux-equipo-captures/arenaselect-es-844x390.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/D-despues-guardianes-mv.png",
+    "identical_to": "docs/beta-release/ux-equipo-captures/guardianes-es-844x390.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/D-despues-modos-mv.png",
+    "identical_to": "docs/beta-release/ux-equipo-captures/modeselect-es-844x390.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/U2-antes-modos-844x390.png",
+    "identical_to": "docs/beta-release/ux-equipo-captures/modeselect-es-844x390.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/D-despues-modos-pc.png",
+    "identical_to": "docs/beta-release/menu-polish/U2-antes-modos-1280x720.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/D-despues-pausa-pc.png",
+    "identical_to": "docs/beta-release/ux-arq-captures/18-pausa-1280x720.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/U1-H-derrota-1280x720.png",
+    "identical_to": "docs/beta-release/menu-polish/U1-despues-derrota-1280x720.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/U1-antes-derrota-1280x720.png",
+    "identical_to": "docs/beta-release/menu-polish/U1-despues-derrota-1280x720.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/U1-H-derrota-667x375.png",
+    "identical_to": "docs/beta-release/menu-polish/U1-antes-derrota-667x375.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/U1-H-derrota-844x390.png",
+    "identical_to": "docs/beta-release/menu-polish/U1-antes-derrota-844x390.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/U1-H-opciones-667x375.png",
+    "identical_to": "docs/beta-release/menu-polish/U1-antes-opciones-667x375.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/U1-H-opciones-844x390.png",
+    "identical_to": "docs/beta-release/menu-polish/U1-antes-opciones-844x390.png"
+   },
+   {
+    "path": "docs/beta-release/menu-polish/U1-H-pausa-667x375.png",
+    "identical_to": "docs/beta-release/menu-polish/U1-antes-pausa-667x375.png"
+   },
+   {
+    "path": "docs/beta-release/ui-beta/consejos/14_controles_667x375.png",
+    "identical_to": "docs/beta-release/ui-beta/despues/14_controles_667x375.png"
+   },
+   {
+    "path": "docs/beta-release/ux-arq-captures/18-pausa-844x390.png",
+    "identical_to": "docs/beta-release/ux-equipo-captures/pausa-es-844x390.png"
+   }
+  ]
+ }
+}

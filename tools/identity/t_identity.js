@@ -255,6 +255,10 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
       player.x = r.x; player.y = r.y + 10; player.stunTimer = 0;
       // (golpes de jefe que quedaron en el aire del paso anterior caían sobre el guardián y lo aturdían a mitad de la contención: flake medido 3/8 en main)
       if(typeof bossStrikes !== 'undefined') bossStrikes.length = 0;
+      // Causa raíz del flake restante (medido ~1 de 12 corridas completas): la regla creciente del bosque (`arenaRuleTimer`, js/arenas/hazards.js:29,
+      // «¡Raíces!» cada 9,5–12,5 s) lanza SIEMPRE un golpe con aturdimiento (850 ms) sobre el jugador; si caía dentro de los 2,6 s de contención el
+      // botón se soltaba (ctxCanUse: stunTimer>0) y la runa seguía activa. Esta prueba mide la contención, no el evento ambiental: se lo apaga mientras dura.
+      const ruleT0 = arenaRuleTimer; arenaRuleTimer = 1e12;
       const foes = []; for (let i = 0; i < 6; i++){ const e = spawnEnemy('duende_bosque', false); e.x = r.x + (Math.random()-0.5)*300; e.y = r.y + (Math.random()-0.5)*200; e.speed = 0; e.dmg = 0; foes.push(e); }
       const far = spawnEnemy('duende_bosque', false); far.x = r.x + 700; far.y = r.y; far.speed = 0; far.dmg = 0;
       const hp0 = foes.map(e => e.hp);
@@ -264,6 +268,7 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
       let frames = 0; while (r.st === 'active' && frames < 400){ update(16); frames++; }
       b.dispatchEvent(new PointerEvent('pointerup', { bubbles:true }));
       const stunned = foes.filter(e => e.alive ? e.stunTimer > 1000 : true).length, hurt = foes.filter((e, i) => !e.alive || e.hp < hp0[i]).length;
+      arenaRuleTimer = ruleT0;
       const res = { lbl, st: r.st, ms: frames*16, need: BOS_CFG.containMs.active, stunned, hurt, farStun: far.stunTimer||0, ctxLeft: (ctxTargets() || []).length }; enemies.length = 0; return res;
     });
     check('BOS.contener_runa_manteniendo_el_boton', use.lbl === 'Contener' && use.st === 'sealed' && use.ms >= use.need - 50 && use.ms <= use.need + 400 && use.ctxLeft === 0, use);
@@ -277,7 +282,11 @@ let fails = 0; const check = (n, ok, x) => { console.log((ok ? 'PASS ' : 'FAIL '
     const amb = await E(() => {
       __start('bosque', 3); __calm(); updateAllies = function(){}; BOS.ambT = 10; __step(50);
       const spots = BOS.amb.map(a => ({ x:a.x, y:a.y, t:a.t })); const e0 = enemies.filter(e=>e.alive).length;
-      __step(1500); const mid = enemies.filter(e=>e.alive).length; __step(1400); const after = enemies.filter(e=>e.alive);
+      __step(1500); const mid = enemies.filter(e=>e.alive).length;
+      // se espera a la CONDICIÓN (todas las matas saltaron: ambushWarn 2600 ms) y se mide en ese cuadro; antes eran 1400 ms fijos y las bestias (118 u/s)
+      // ya caminaban hacia el guardián: a los ~330 ms el borde del radio de 60 u quedaba a 1 u de distancia (máx. medido 61) y un solo bicho de más lejos tumbaba la prueba
+      for(let g = 0; g < 2400 && BOS.amb.some(a => !a.sprung); g += 16) __step(16);
+      const after = enemies.filter(e=>e.alive);
       const near = after.filter(e => spots.some(p => Math.hypot(e.x-p.x, e.y-p.y) < 60)).length;
       const minD = spots.length ? Math.min(...spots.map(p => Math.hypot(p.x-player.x, p.y-player.y))) : 0;
       return { spots: spots.length, e0, mid, after: after.length, near, minD: Math.round(minD), types: [...new Set(after.map(e=>e.type))] };

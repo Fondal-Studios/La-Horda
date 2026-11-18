@@ -129,6 +129,13 @@
     "economia"
    ]
   },
+  "server/test-beta-kit.js": {
+   "tier": "required",
+   "categories": [
+    "guardados"
+   ],
+   "note": "beta cerrada: códigos de invitación (prendido/apagado, topes, carrera), reportes y errores con límites y permisos; también corre en la suite server"
+  },
   "tests/competitive-roster.test.js": {
    "tier": "required",
    "categories": [
@@ -192,6 +199,12 @@
    ]
   },
   "tools/items/t_abismo.js": {
+   "tier": "required",
+   "categories": [
+    "campana_progresion"
+   ]
+  },
+  "tools/items/t_boss_dormant.js": {
    "tier": "required",
    "categories": [
     "campana_progresion"
@@ -439,6 +452,12 @@
     "campana_progresion"
    ]
   },
+  "tools/regression/t_reload_midrun.js": {
+   "tier": "required",
+   "categories": [
+    "guardados"
+   ]
+  },
   "tools/regression/t_defeat_clear.js": {
    "tier": "required",
    "categories": [
@@ -543,12 +562,34 @@
     "movil"
    ]
   },
+  "tools/ux/test-start-button-viewports.js": {
+   "tier": "required",
+   "categories": [
+    "inicio",
+    "movil"
+   ]
+  },
   "tools/ux/test-first-minute-taps.js": {
    "tier": "required",
    "categories": [
     "inicio",
     "movil"
    ]
+  },
+  "tools/ux/test-starter-skin-layout.js": {
+   "tier": "required",
+   "categories": [
+    "inicio",
+    "movil"
+   ]
+  },
+  "tools/beta/report-dialog-browser.js": {
+   "tier": "required",
+   "categories": [
+    "guardados",
+    "movil"
+   ],
+   "note": "beta cerrada en el navegador contra el servidor de cuentas en proceso: botón oculto por defecto, diálogo, validación, envío, errores agrupados, código de invitación"
   },
   "tools/ux/functional.js": {
    "tier": "required",
@@ -627,6 +668,13 @@
    "tier": "required",
    "categories": [
     "sprites_atlas"
+   ]
+  },
+  "tools/art/test-champion-draw-dispatch.js": {
+   "tier": "required",
+   "categories": [
+    "sprites_atlas",
+    "campeones_habilidades"
    ]
   },
   "tools/lanes/test-sides.js": {

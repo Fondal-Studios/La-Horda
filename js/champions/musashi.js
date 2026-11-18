@@ -93,7 +93,9 @@ function musashiAddConcentration(h, target, amount){
 }
 function musashiClearMark(h){ h.duelTarget = null; h.concentration = 0; }
 function musashiSpawnAfterimage(h){
-  musashiAfterimages.push({x:h.x, y:h.y, fx:h.fx, fy:h.fy, classKey:h.classKey, life:240, maxLife:240});
+  // Apariencia del emisor al lanzar; la clave viaja en NET_COLLS sin referencias al héroe.
+  const packKey = typeof setSkinPackKey === "function" ? setSkinPackKey(h, "musashi") : "musashi";
+  musashiAfterimages.push({x:h.x, y:h.y, fx:h.fx, fy:h.fy, classKey:h.classKey, packKey, life:240, maxLife:240});
 }
 // Procesa las estelas de Paso Fantasma y el corte demorado de Duelo Perfecto (mismo patrón que
 // ya usa el resto del juego para efectos con demora -ver axiomZones-, nunca setTimeout: todo

@@ -14,11 +14,11 @@ Generado por `node tools/art/build-art-atlas.js` (no editar a mano). Fuente de v
 ## Resumen
 
 - Campeones: FALTA_ANIMACION 25 · CODEX_OK 12 · ARTE_VIEJO 9
-- Skins/cromas/formas de Ascensión: CODEX_OK 9 · FALTA_ANIMACION 90 · ARTE_VIEJO 5
-- Enemigos: CODEX_OK 63 · FALTA_ANIMACION 12 · ARTE_VIEJO 1
+- Skins/cromas/formas de Ascensión: CODEX_OK 11 · FALTA_ANIMACION 90 · ARTE_VIEJO 3
+- Enemigos: CODEX_OK 63 · FALTA_ANIMACION 13
 - Jefes y subjefes: CODEX_OK 14 · FALTA_ANIMACION 13 · ARTE_VIEJO 1
-- Archivos (arenas, props, battlefield, enemigos, jefes, campeones): CODEX_OK 871 · HUERFANO 104 · ARTE_VIEJO 31
-- Fuentes del registro: 51 archivos, huella `f65f6854e74e`
+- Archivos (arenas, props, battlefield, enemigos, jefes, campeones): CODEX_OK 872 · HUERFANO 104 · ARTE_VIEJO 31
+- Fuentes del registro: 51 archivos, huella `4ba95f5a9046`
 
 ## Campeones (cuerpo base)
 
@@ -33,12 +33,12 @@ Cuadros DISTINTOS medidos al dibujar el cuerpo real, mínimo entre las 4 direcci
 | segador | CODEX_OK | codex (64) | `segador/codex-v1/atlas.png` (webp) 448x1456 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | - |
 | axiom | FALTA_ANIMACION | codex (88) | `axiom/codex-v1/atlas.png` 448x1008 | 1 | 4 | 4 | 4 | 4 | 1 | 4 | idle |
 | profeta | CODEX_OK | codex (66) | `profeta/codex-v1/atlas.png` (webp) 448x1456 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | - |
-| musashi | FALTA_ANIMACION | codex (90) | `musashi/codex-v1/atlas.png` 768x2080 | 1 | 4 | 4 | 4 | 4 | 4 | 6 | idle |
-| cazadora | FALTA_ANIMACION | codex (90) | `cazadora/codex-v1/atlas.png` 768x2080 | 1 | 4 | 4 | 4 | 4 | 4 | 6 | idle |
+| musashi | FALTA_ANIMACION | codex (90) | `musashi/codex-v1/atlas.png` 768x2240 | 1 | 4 | 4 | 4 | 4 | 4 | 6 | idle |
+| cazadora | FALTA_ANIMACION | codex (90) | `cazadora/codex-v1/atlas.png` 768x2240 | 1 | 4 | 4 | 4 | 4 | 4 | 6 | idle |
 | nigromante | FALTA_ANIMACION | codex (90) | `nigromante/codex-v1/atlas.png` 768x2080 | 1 | 4 | 3 | 4 | 4 | 4 | 6 | idle |
-| libertador | ARTE_VIEJO | viejo (60) | `libertador/v2/atlas.png` (webp) 824x784<br>`libertador/v2/death.png` 448x112<br>`libertador/v3/motion.png` 1344x112 | 1 | 4 | 4 | 4 | 4 | 1 | 4 | idle |
-| ilkan | CODEX_OK | codex (62) | `ilkan/codex-v1/atlas.png` 1536x1024 | 4 | 3 | 3 | 3 | 3 | 2 | 2 | - |
-| ynara | ARTE_VIEJO | viejo (70) | `ynara/atlas.png` 384x864 | 3 | 4 | 4 | 4 | 4 | 1 | 4 | - |
+| libertador | ARTE_VIEJO | viejo (60) | `libertador/v2/atlas.png` (webp) 824x882<br>`libertador/v2/death.png` 448x112<br>`libertador/v3/motion.png` 1344x112 | 1 | 4 | 4 | 4 | 4 | 1 | 4 | idle |
+| ilkan | CODEX_OK | codex (62) | `ilkan/codex-v1/atlas.png` 1536x1152 | 4 | 3 | 3 | 3 | 3 | 2 | 2 | - |
+| ynara | ARTE_VIEJO | viejo (70) | `ynara/atlas.png` 384x1056 | 3 | 4 | 4 | 4 | 4 | 1 | 4 | - |
 | myla | ARTE_VIEJO | viejo (58) | `myla/atlas.png` 384x576<br>`myla/v2/death.png` 448x112<br>`myla/v2/cast.png` 1344x112 | 2 | 3 | 3 | 4 | 3 | 1 | 4 | - |
 | brasa | CODEX_OK | audit-fiel (88) | `brasa/atlas.png` (webp) 576x864 | 2 | 4 | 3 | 3 | 2 | 1 | 3 | - |
 | eslabon | CODEX_OK | audit-fiel (88) | `eslabon/atlas.png` (webp) 576x864 | 2 | 4 | 3 | 3 | 2 | 1 | 3 | - |
@@ -97,8 +97,8 @@ Cuadros DISTINTOS medidos al dibujar el cuerpo real, mínimo entre las 4 direcci
 | nigromante | nigromante_escarcha | croma | FALTA_ANIMACION | `nigromante/skins/nigromante_escarcha/atlas.png` 896x336 | 3 | 2 | 2 | idle |
 | nigromante | nigromante_piedra | croma | FALTA_ANIMACION | `nigromante/skins/nigromante_piedra/atlas.png` 896x336 | 3 | 2 | 2 | idle |
 | libertador | granadero | set | CODEX_OK | `libertador/skins/granadero/atlas.png` 576x864 | 4 | 3 | 3 | - |
-| libertador | libertador_escarcha | croma | ARTE_VIEJO | `libertador/skins/libertador_escarcha/atlas.png` 896x336 | 3 | 1 | 2 | idle, attack, cast, ultimate — recolor del atlas v2 del Libertador, sin el motion v3: ataque de 1 cuadro |
-| libertador | libertador_ancestral | croma | ARTE_VIEJO | `libertador/skins/libertador_ancestral/atlas.png` 896x336 | 3 | 1 | 2 | idle, attack, cast, ultimate — recolor del atlas v2 del Libertador, sin el motion v3: ataque de 1 cuadro |
+| libertador | libertador_escarcha | croma | CODEX_OK | `libertador/skins/libertador_escarcha/atlas.png` 448x1008 | 4 | 4 | 4 | - |
+| libertador | libertador_ancestral | croma | CODEX_OK | `libertador/skins/libertador_ancestral/atlas.png` 448x1008 | 4 | 4 | 4 | - |
 | ilkan | legion | set | ARTE_VIEJO | `ilkan/skins/legion/atlas.png` 1536x1024 | 3 | 3 | 2 | - — skin Legión de Ilkan: atlas procedural violeta de 128x111 (tools/art/ilkan/build.py), sin repintar desde codex-v1 (AUDITORIA_ARTE_CAMPEONES.md) |
 | ynara | santa_paciencia | set | FALTA_ANIMACION | `ynara/skins/santa_paciencia/atlas.png` 384x576 | 3 | 4 | 1 | idle, death |
 | ynara | ynara_celeste | croma | FALTA_ANIMACION | `ynara/skins/ynara_celeste/atlas.png` 896x336 | 3 | 2 | 2 | idle |
@@ -280,7 +280,7 @@ Cuadros distintos de idle / caminata (perfil) / ataque / muerte medidos con `dra
 | cm_maestro | subjefe | ciudad | FALTA_ANIMACION | real | 1 | 2 | 1 | 1 | `battlefield/cm_maestro.png` 1792x384 |
 | cm_tramoyista | subjefe | ciudad | FALTA_ANIMACION | real | 1 | 2 | 1 | 1 | `battlefield/cm_tramoyista.png` 1792x384 |
 | cm_dama | subjefe | ciudad | FALTA_ANIMACION | real | 1 | 2 | 1 | 1 | `battlefield/cm_dama.png` 1792x384 |
-| cm_cometa | normal | ciudad | ARTE_VIEJO | shapes | 1 | 1 | 1 | 1 | - |
+| cm_cometa | normal | ciudad | FALTA_ANIMACION | real | 1 | 1 | 1 | 1 | `assets/vfx/ciudad/cometa_vuelo_0.png` 48x48 |
 | cm_espejismo | normal | ciudad | CODEX_OK | real | 1 | 6 | 6 | 6 | `arenas/ciudad/cm_dama/atlas.png` 768x768 |
 | cm_presentador | jefe | ciudad | FALTA_ANIMACION | real | 1 | 2 | 1 | 1 | `battlefield/cm_presentador.png` 1792x384 |
 | mn_esclavo | normal | minas | CODEX_OK | real | 1 | 8 | 8 | 4 | `arenas/minas/mn_esclavo/atlas.png` 392x210 |
@@ -302,7 +302,7 @@ Un registro por imagen (PNG; el `.webp` es su copia sin pérdida) en `ATLAS_ARTE
 | arenas | 185 | 23.2 | 0 | 2 |
 | battlefield | 32 | 4.0 | 0 | 0 |
 | bosses | 94 | 5.5 | 0 | 0 |
-| champions | 489 | 71.2 | 31 | 102 |
+| champions | 490 | 71.6 | 31 | 102 |
 | enemies | 206 | 9.4 | 0 | 0 |
 
 ### Huérfanos (no los carga ni los referencia el juego; candidatos a limpieza, NO se borran acá)
@@ -451,7 +451,5 @@ Un registro por imagen (PNG; el `.webp` es su copia sin pérdida) en `ATLAS_ARTE
 - **brakk**: sin ciclo propio en idle (1 cuadro); falta animación nueva.
 - **morveth**: sin ciclo propio en idle (1 cuadro); falta animación nueva.
 - **aelith**: sin ciclo propio en idle (1 cuadro); falta animación nueva.
-- **libertador** / libertador_escarcha (croma): attack, cast, ultimate con 1 cuadro.
-- **libertador** / libertador_ancestral (croma): attack, cast, ultimate con 1 cuadro.
 - **ynara** / santa_paciencia (set): death con 1 cuadro.
 - **myla** / merienda_magica (set): death con 1 cuadro.

@@ -61,7 +61,7 @@ async function economyRetry(){
 }
 // Hook real entry/exit paths; guests entering a match use the same startRun setup.
 const _ecoStartRun=startRun;startRun=function(...args){const r=_ecoStartRun(...args);economyStart();return r;};
-const _ecoStarter=grantStarterChampion;grantStarterChampion=function(k){if(!economyActive())return _ecoStarter(k);if(!ECON.data.account.unlocked.length)economyAction('starter',{champion:k}).catch(e=>economyNotify(e.message));return _ecoStarter(k);};
+const _ecoStarter=grantStarterChampion;grantStarterChampion=function(k){if(!economyActive())return _ecoStarter(k);if(!ECON.data.account.unlocked.length&&championStarterEligible(k))economyAction('starter',{champion:k}).catch(e=>economyNotify(e.message));return _ecoStarter(k);};
 const _ecoLoot=grantEndOfRunLoot;grantEndOfRunLoot=function(champ,perf,win){if(!economyActive())return _ecoLoot(champ,perf,win);if(typeof endlessOn==='function'&&endlessOn())return {items:[],inventoryFull:false,grade:perf.grade,gems:0,pending:true};economyFinish(win).catch(()=>{});return {items:[],inventoryFull:false,grade:perf.grade,gems:0,pending:true};};
 const _ecoLB=lbAfterRun;lbAfterRun=function(L){if(!economyActive())return _ecoLB(L);L.lb={st:'sending'};economyFinish(false,{round:EN.round,score:Math.round(EN.score),durationMs:L.timeMs,survived:L.survived|0,survivedScore:L.survivedScore|0}).then(r=>{L.lb={st:r?.ranking?'ok':'rejected',rank:r?.ranking?.rank,total:r?.ranking?.total,msg:'Solo participan campeones competitivos.'};_lbRenderRunLine();}).catch(e=>{L.lb={st:'offline',msg:e.message};_lbRenderRunLine();});};
 const _ecoAdd=addItemToInventory;addItemToInventory=function(...args){if(economyActive())return null;return _ecoAdd(...args);};

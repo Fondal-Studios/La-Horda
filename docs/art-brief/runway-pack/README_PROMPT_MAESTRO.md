@@ -11,7 +11,7 @@ Está generado de los datos reales del juego (`node tools/art/dump-game-data.js`
 | «Todo terminado» | Depende de créditos, no de instrucciones. Con el supuesto explícito de `COSTOS.md` (imágenes y hojas Runway abiertas): **ver `COSTOS.md`: ≈ 7.400 créditos si todo sale a la primera, ≈ 18.500 con reintentos razonables (supuesto declarado)**. El saldo cambia: consultalo siempre (al 2026-11-12 era 0–2 créditos). |
 | «Calidad perfecta» | Se verifica, no se declara: ningún arte entra a `main` sin pasar los chequeos de `RECETA.md` §5 y la revisión independiente del repo. Ojo humano de arte sigue siendo necesario (lo dice `AGENTS.md`). |
 
-**Medido el 2026-11-12 (`ART_CREDITS.md`), con `gen4_image`, estos prompts y estas referencias, y SOLO en un campeón (Tanque) y 4 enemigos:** (a) para el Tanque, Runway conservó el diseño pero devolvió siempre un personaje de pie en los 2 cuadros que salieron, y las poses agachadas o tendidas dieron BAD_OUTPUT; (b) de 8 hojas de enemigos (`gen_sheet.py`) ninguna pasó el criterio de aceptación (caminatas casi idénticas, muertes fundidas). Es una muestra chica: **trátalo como hipótesis a confirmar en la primera tanda de cada campeón/criatura, no como regla**. Antes de gastar en lote, probá UNA pose o UNA hoja y mirá el resultado.
+**Medido el 2026-11-12 (`ART_CREDITS.md`):** (a) con `gen4_image` (una imagen por pose) y con video `gen4_turbo` NO se logró mejorar los atlas del Tanque ni las hojas de 4 enemigos; (b) con **`gpt_image_2`** pedido como **hoja de 4 poses sobre verde croma** salieron poses dinámicas y fieles al diseño: lanzar y definitiva de Ynara y la definitiva de Cazadora y de Musashi y los ataques de frente y de espaldas de Ilkan quedaron instaladas (aprobación de arte humana pendiente) y el lanzar del Tanque quedó como candidato (captura antes/después en `art-source/captures/ynara/`). Contrafactual en el mismo personaje (Tanque): `gen4_image` dio una pose de pie y `gpt_image_2` dio 4 poses distintas. **Hipótesis fuerte con muestra chica (6 campeones —Ynara, Tanque, Cazadora, Musashi, Ilkan, Libertador—, 9 hojas: 8 aceptadas y 1 rechazada por escala; falta probar la muerte y más campeones):** el límite era el modelo. Antes de gastar en lote, probá UNA hoja con `gpt_image_2` (`RECETA.md` §1) y mirá el resultado.
 
 Lo que SÍ garantiza este paquete: que cada bloque tenga su descripción, su prompt, su formato, su ruta de entrega y su criterio de aceptación; que el gasto sea ordenado (P0 → P1 → P2) y registrado; y que cada intento fallido deje recibo para no repetir el mismo error.
 
@@ -41,6 +41,8 @@ como @codex y el cuadro actual como @pose; si falta la lámina, el atlas o el di
 resultados: si algo falla, decilo con el error.
 Tarea de esta sesión: <ELEGÍ UNA: «hacé el bloque B0xx» | «hacé el campeón <id>» | «hacé los enemigos de la arena <arena>» | «mostrame el plan de gasto para el grupo <grupo> prioridad P0»>
 ```
+
+> **Orden de trabajo vigente:** `docs/art-brief/PRIORIDAD_ASSETS.md` (`python3 tools/art/prioridad-assets.py --next`; ver `COMO_USAR_PRIORIDAD.md`). Manda sobre el orden P0/P1/P2 de abajo.
 
 ## 3. Orden recomendado (para que la plata de créditos rinda)
 

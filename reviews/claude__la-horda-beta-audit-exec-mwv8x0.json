@@ -1,67 +1,67 @@
 {
- "subject": {
-  "pr": 299,
-  "branch": "claude/la-horda-beta-audit-exec-mwv8x0",
-  "head": "261903b6407a19dcc61097a409fcdcf4968f49c0",
-  "authorAgent": "claude-sesion-principal",
-  "authorId": "claude-sesion-principal"
- },
- "stages": [
-  {
-   "stage": "produccion",
-   "by": "claude-sesion-principal",
-   "role": "agent",
-   "commit": "261903b6407a19dcc61097a409fcdcf4968f49c0",
-   "at": "2026-11-12T14:20:00Z"
+  "subject": {
+    "pr": 308,
+    "branch": "claude/la-horda-beta-audit-exec-mwv8x0",
+    "head": "4679112db44cc814db26ab63002afcc43567857a",
+    "authorAgent": "claude-sesion-principal",
+    "authorId": "claude-sesion-principal"
   },
-  {
-   "stage": "qa",
-   "by": "claude-qa-299",
-   "role": "qa",
-   "verdict": "aprobado",
-   "evidence": {
-    "sha": "261903b6407a19dcc61097a409fcdcf4968f49c0",
-    "tests": 4,
-    "failed": 0,
-    "report": "Sobre 261903b6: test-runway-pack 9944 OK (incluye runway-ledger.py --check y champ-checklist.py --check); muestra de 15 entradas de estado-runway.json verificada con ls/grep en js/ (7 integradas cargadas por el juego, casa_a y tanque_video no cargados, abismo_piso rechazado); video-to-atlas.py frames produce celdas 112×112 RGBA con alfa 0/255 y pies en la fila 105; runway-video.js y runway-design.js con --dry-run sin API y rechazo de id con '..' e imágenes fuera del repo; DECLARACION_IA: 159 recibos de Runway (74/17/2/54/12) + 1 de entregas que no es de Runway coinciden con find por carpeta; 12 task ids de video cotejados con recibos; diff sin js/, server/, index.html, gates ni atlas. MINOR abiertos: --seconds sin validar de rango; 3 frases heredadas de main que aún dicen BAD_OUTPUT «cobrado» (STATUS.md:17, POSES_CAMPEON.md:78, README_PROMPT_MAESTRO.md:10). No llamó a Runway."
-   },
-   "at": "2026-11-12T14:25:00Z"
-  },
-  {
-   "stage": "arquitectura",
-   "by": "claude-arq-299",
-   "role": "arquitecto",
-   "verdict": "aprobado",
-   "evidence": {
-    "sha": "261903b6407a19dcc61097a409fcdcf4968f49c0",
-    "report": "Aprobó 261903b6 tras NO APROBADO sobre f3add7a0 por 6 incoherencias de texto (cobro de BAD_OUTPUT afirmado como hecho, saldo 530 vs 295 sin explicar, «0 aprobados» vs 4 clips aceptados a ojo, «muerte sin caída» vs ART_CREDITS, reintento sin respaldo, checklist no cableado al test): todas resueltas. Alcance solo docs, herramientas de arte y art-source (nada de js/, server/, gates); herramientas validan rutas y no instalan nada. MINOR abiertos: ~12 MB de clips mp4 y capturas como evidencia (aceptable por precedente), video-to-atlas.py sin prueba propia ni comprobación de dependencias, id redundante «(ver el id de esta entrada)»."
-   },
-   "at": "2026-11-12T14:27:00Z"
-  },
-  {
-   "stage": "staging",
-   "by": "claude-integrador-299",
-   "role": "integrador",
-   "verdict": "aprobado",
-   "evidence": {
-    "sha": "261903b6407a19dcc61097a409fcdcf4968f49c0",
-    "branch": "beta/integracion-20261110",
-    "tests": 18,
-    "failed": 0,
-    "run": "https://github.com/Fondal-Studios/La-Horda/pull/299"
-   },
-   "at": "2026-11-12T14:29:00Z"
-  },
-  {
-   "stage": "aprobacion",
-   "by": "claude-integrador-299",
-   "role": "director",
-   "verdict": "aprobado",
-   "evidence": {
-    "sha": "261903b6407a19dcc61097a409fcdcf4968f49c0",
-    "report": "Aprobado sobre 261903b6. 19 check runs: 18 success (regresión rápida y completa, UX, objetos/economía, identidad de arenas, VFX, steam-pc, evidence, CodeQL, emoji-lint) y 1 failure ('Clasificacion, contratos y servidor' del PR, solo por R4). El push a beta/integracion-20261110 en el mismo SHA pasó los pasos que R4 había saltado. Diff 56 archivos solo docs/, tools/art*, art-source/ y .gitignore. No se instaló arte: el piloto de video del Tanque quedó como candidato (peor que el atlas actual) y los pisos/centros de Bosque y Hielo no se generaron por el límite diario de Runway."
-   },
-   "at": "2026-11-12T14:30:00Z"
-  }
- ]
+  "stages": [
+    {
+      "stage": "produccion",
+      "by": "claude-sesion-principal",
+      "role": "agent",
+      "commit": "4679112db44cc814db26ab63002afcc43567857a",
+      "at": "2026-11-17T10:17:00Z"
+    },
+    {
+      "stage": "qa",
+      "by": "qa-revisor-308",
+      "role": "qa",
+      "verdict": "aprobado",
+      "evidence": {
+        "sha": "4679112db44cc814db26ab63002afcc43567857a",
+        "tests": 7,
+        "failed": 0,
+        "report": "Revisor QA y de seguridad independiente (distinto del autor y de arquitectura). Aprobó 4535032b y después el delta a 4679112d, sin bloqueantes. Primer guardián: una sola fuente (STARTER_CHAMPIONS/championStarterEligible) aplicada en cliente y servidor (op starter -> BAD_CHAMPION, run.start -> CHAMPION_LOCKED); LAN, salas, hub y cuenta pasan por la misma pantalla; los guardados viejos conservan su guardián; el pack de bienvenida queda como derecho comprado. Kit de beta: códigos por hash con sal, reserva atómica (Postgres ON CONFLICT ... WHERE uses < max; archivo en cola serializada) con devolución si falla la creación, puerta cerrada ante variable inválida, límites de tamaño y frecuencia, rutas GM con VIEW_USERS, panel con textContent (sin XSS), sin IP guardada, correos tapados, SQL parametrizado, apagado por defecto. El delta corrige ':0' (ahora código cerrado, 2 pruebas) y muestra el campo de invitación al entrar con Steam. Corrió: server npm test exit 0 (SUMMARY fails 0), test-beta-kit 51 PASS, test-item-economy-live 83 PASS, run-all (t_starter_gift, new-account-starter, beta, test-first-minute-taps) 6/6, qa-manifest-check OK, test-i18n TODO OK. Observaciones bajas abiertas: grilla vacía si los 4 dejaran de estar publicados (hoy no pasa), healthcheck al cargar la página. Informe transcrito por el integrador, no reverificado."
+      },
+      "at": "2026-11-17T10:40:00Z"
+    },
+    {
+      "stage": "arquitectura",
+      "by": "arquitectura-revisor-308",
+      "role": "arquitecto",
+      "verdict": "aprobado",
+      "evidence": {
+        "sha": "4679112db44cc814db26ab63002afcc43567857a",
+        "report": "Revisor de arquitectura independiente (distinto del autor y de QA). Aprobó 4535032b y el delta a 4679112d. El merge -s ours no cambia archivos y la rama unida tiene el árbol de main. Regla del primer guardián con una sola fuente compartida por el cliente y la vm del servidor (entitlements.js), coherente con CHAMPION_CATEGORIES, sin listas duplicadas en producción; decisión del dueño en PRECIOS.md y STATUS.md, sin cambios de precios; check-entry-reference PASS (known roster unchanged). Kit de beta alineado con el almacén archivo/Postgres (tablas aditivas), registro de rutas, permisos VIEW_USERS, contrato de /api/health, orden de carga en index.html; guía del operador coincide con el código; pruebas registradas en run-all, qa-manifest y npm test (qa-manifest-check OK). test-postgres contra PostgreSQL 16 temporal PASS; i18n regenerado sin diferencias. Sin cambios en workflows, precios, knownChampions ni referencias de balance; sin secretos. No verificado: flujo Steam de punta a punta (requiere ticket real); new-account-starter falla igual en la base por undici en ese entorno. Informe transcrito por el integrador, no reverificado."
+      },
+      "at": "2026-11-17T10:41:00Z"
+    },
+    {
+      "stage": "staging",
+      "by": "claude-integrador-308",
+      "role": "integrador",
+      "verdict": "aprobado",
+      "evidence": {
+        "sha": "4679112db44cc814db26ab63002afcc43567857a",
+        "branch": "beta/integracion-20261110",
+        "tests": 146,
+        "failed": 0,
+        "run": "https://github.com/Fondal-Studios/La-Horda/actions/runs/44063485996"
+      },
+      "at": "2026-11-17T11:12:00Z"
+    },
+    {
+      "stage": "aprobacion",
+      "by": "claude-integrador-308",
+      "role": "director",
+      "verdict": "aprobado",
+      "evidence": {
+        "sha": "4679112db44cc814db26ab63002afcc43567857a",
+        "report": "Aprobado sobre 4679112d por orden expresa del propietario (2026-11-17): pidió que al inicio solo se elija entre los 4 campeones de los 4 roles y el resto se compre, y que lo ayude a preparar una beta cerrada en el navegador; las decisiones quedan delegadas y está vigente su autorización de mergear con revisión independiente y CI verde y de escribir el registro (regla de permiso de Bash). Evidencia leída de la API de GitHub: run 44063485996 'QA regresion central' (workflow_dispatch) en beta/integracion-20261110, head_sha 4679112d, 'Regresion del juego (completa)' success con 'PASS 146 FLAKY 0 FAIL 0 (de 146)' y 'Clasificacion, contratos y servidor' success. Límites: informes transcritos, no reverificados; sin despliegue (Neon y Fly.io son pasos del dueño); sin jugadores humanos; riesgo documentado de que Kael es el rol más débil entre los 4 iniciales."
+      },
+      "at": "2026-11-17T11:13:00Z"
+    }
+  ]
 }

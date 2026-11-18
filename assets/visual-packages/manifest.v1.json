@@ -1836,14 +1836,14 @@
     "path": "assets/sprites/champions/cazadora/codex-v1/atlas.png",
     "format": "png",
     "width": 768,
-    "height": 2080,
-    "sha256": "66ab0cfef533f169cc7a7e0459fa5e0a4ed52cf3c3336379e6caa0830446f933"
+    "height": 2240,
+    "sha256": "ae500cd75279d4e3538bb359f215a13a2dc717e310c8638584d86b8f5f2639be"
    },
    "grid": {
     "frameWidth": 192,
     "frameHeight": 160,
     "cols": 4,
-    "rows": 13
+    "rows": 14
    },
    "states": {
     "idle_down": [
@@ -1941,6 +1941,24 @@
      25,
      26,
      27
+    ],
+    "ultimate_down": [
+     52,
+     53,
+     54,
+     55
+    ],
+    "ultimate_side": [
+     52,
+     53,
+     54,
+     55
+    ],
+    "ultimate_up": [
+     52,
+     53,
+     54,
+     55
     ],
     "run": [
      4,
@@ -3374,14 +3392,14 @@
     "path": "assets/sprites/champions/ilkan/codex-v1/atlas.png",
     "format": "png",
     "width": 1536,
-    "height": 1024,
-    "sha256": "69ca3240195ca37f53bf46156756ccb6f127d63292f9eb94fa05811227e968d1"
+    "height": 1152,
+    "sha256": "f5dffd883abc0cced188dfcba34906fe25f0eef37ddd8e361d222144036591ce"
    },
    "grid": {
     "frameWidth": 192,
     "frameHeight": 128,
     "cols": 8,
-    "rows": 8
+    "rows": 9
    },
    "states": {
     "idle_down": [
@@ -3437,6 +3455,18 @@
      32,
      33,
      34
+    ],
+    "attack_down": [
+     64,
+     65,
+     66,
+     67
+    ],
+    "attack_up": [
+     68,
+     69,
+     70,
+     71
     ],
     "hit_down": [
      35,
@@ -5156,14 +5186,14 @@
     "path": "assets/sprites/champions/libertador/v2/atlas.png",
     "format": "png",
     "width": 824,
-    "height": 784,
-    "sha256": "3c993355968f3d43b0247b18230509e131beab485e2702991accc003a7ec5512"
+    "height": 882,
+    "sha256": "791cb61a7140a3bddfd111d5b73f9b3ef71d8f1fdcf4ed279a3b09170d34273d"
    },
    "grid": {
     "frameWidth": 103,
     "frameHeight": 98,
     "cols": 8,
-    "rows": 8
+    "rows": 9
    },
    "states": {
     "idle_down": [
@@ -5275,7 +5305,16 @@
      24
     ],
     "ult_cast": [
-     44
+     64,
+     65,
+     66,
+     67
+    ],
+    "ultimate": [
+     64,
+     65,
+     66,
+     67
     ]
    },
    "pivot": {
@@ -6260,14 +6299,14 @@
     "path": "assets/sprites/champions/musashi/codex-v1/atlas.png",
     "format": "png",
     "width": 768,
-    "height": 2080,
-    "sha256": "14ffbe96ee8e83eb6eb4381f5dfc318a002998a967bf2382dd5b285560f68993"
+    "height": 2240,
+    "sha256": "5f343555d67a4e9c806090576eb0fc01b068e010f175d5943f388d587341fcab"
    },
    "grid": {
     "frameWidth": 192,
     "frameHeight": 160,
     "cols": 4,
-    "rows": 13
+    "rows": 14
    },
    "states": {
     "idle_down": [
@@ -6365,6 +6404,24 @@
      25,
      26,
      27
+    ],
+    "ultimate_down": [
+     52,
+     53,
+     54,
+     55
+    ],
+    "ultimate_side": [
+     52,
+     53,
+     54,
+     55
+    ],
+    "ultimate_up": [
+     52,
+     53,
+     54,
+     55
     ],
     "run": [
      4,
@@ -14038,6 +14095,54 @@
    "fallback": null
   },
   {
+   "id": "tanque_cast",
+   "champion": "tanque",
+   "skin": null,
+   "kind": "body",
+   "packageVersion": "1.0.0-legacy",
+   "legacy": true,
+   "declaredIn": "js/assets/champion-sprites.js",
+   "atlas": {
+    "path": "assets/sprites/champions/tanque/v3/cast.png",
+    "format": "png",
+    "width": 576,
+    "height": 144,
+    "sha256": "3afeda3ae6fd86c294eeb2bebb07130e6fb52e27704a76a82ccb21ee6a0852a3"
+   },
+   "grid": {
+    "frameWidth": 144,
+    "frameHeight": 144,
+    "cols": 4,
+    "rows": 1
+   },
+   "states": {
+    "cast_down": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   "pivot": {
+    "anchor": 0.9444444444444444,
+    "footX": null
+   },
+   "scale": {
+    "referenceHeight": 73
+   },
+   "mirror": null,
+   "timings": null,
+   "attachmentPoints": null,
+   "lifecycle": {
+    "generated": "not_recorded",
+    "technicalValidation": "not_recorded",
+    "visualApproval": "not_recorded",
+    "integrated": "pass",
+    "inGameVerification": "not_recorded"
+   },
+   "fallback": null
+  },
+  {
    "id": "tanque_death",
    "champion": "tanque",
    "skin": null,
@@ -16346,14 +16451,14 @@
     "path": "assets/sprites/champions/ynara/atlas.png",
     "format": "png",
     "width": 384,
-    "height": 864,
-    "sha256": "4bddb4b3b6ac9faa17a71d99e6546f94179cdd35b1b9020031e347092780f996"
+    "height": 1056,
+    "sha256": "89baef977ced9196bd6d7b5ab25f549cbb2775544ba2cefa3e78b265d3443a2e"
    },
    "grid": {
     "frameWidth": 96,
     "frameHeight": 96,
     "cols": 4,
-    "rows": 9
+    "rows": 11
    },
    "states": {
     "idle_down": [
@@ -16375,16 +16480,16 @@
      15
     ],
     "cast_down": [
-     12,
-     13,
-     14,
-     15
+     36,
+     37,
+     38,
+     39
     ],
     "ultimate_down": [
-     12,
-     13,
-     14,
-     15
+     40,
+     41,
+     42,
+     43
     ],
     "hit_down": [
      12
@@ -16414,16 +16519,16 @@
      19
     ],
     "cast_side": [
-     16,
-     17,
-     18,
-     19
+     36,
+     37,
+     38,
+     39
     ],
     "ultimate_side": [
-     16,
-     17,
-     18,
-     19
+     40,
+     41,
+     42,
+     43
     ],
     "hit_side": [
      16
@@ -16453,16 +16558,16 @@
      23
     ],
     "cast_up": [
-     20,
-     21,
-     22,
-     23
+     36,
+     37,
+     38,
+     39
     ],
     "ultimate_up": [
-     20,
-     21,
-     22,
-     23
+     40,
+     41,
+     42,
+     43
     ],
     "hit_up": [
      20

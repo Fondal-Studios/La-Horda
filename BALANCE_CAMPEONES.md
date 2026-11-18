@@ -272,6 +272,14 @@ Nigromante (1,33-1,38; su fuerza son las invocaciones y en el gate de 150 s est�
 Profeta (0,61 con 40 s, 1,0 con 60 s: ruido), e Ilkan (1,0 en A y B; 1,45 en C porque la mediana de su rol en nivel 4 es baja). **Ilkan no se tocó**: paridad mecánica intacta.
 La varianza entre semillas es alta (rango de Cazadora 26-43 en C), por eso se usan 10 semillas para comparar antes y después.
 
+### Ajuste aplicado: Kael (2026-11-13, ronda de dificultad)
+
+Kael (asesino/guerrero) se mantenía en 0,63-0,70 de su rol. Cambio mínimo: `hpGrowthMult` 0,9 → 1,15 (techo de la banda del rol asesino, 1,155) y curación propia al conectar (`healPct` 0,04 en Corte Sangrante, 0,07 en Triple Golpe; `kaelSustain` en `js/skills/abilities.js`). Resultado medido con bots (pocas semillas): sin cambios 5/23 victorias (22 %), con el cambio 6/19 (32 %); una variante de curación 6 %/10 % dio 10/45 (22 %): las diferencias no se distinguen del ruido, **Kael sigue por debajo de su rol**. Detalle y límites en `docs/beta-release/BALANCE_DIFICULTAD_20261113.md`. La referencia por rol y `knownChampions` no cambian; `check-entry-reference` y `entry-gate` pasan. Pendiente: probar mitigación por golpe o esquiva.
+
+#### Ronda de mitigación y esquiva (2026-11-15): no concluyente, sin cambio de balance
+
+Se probaron con semillas pareadas (130 partidas de base; A 45, B 130, C 90; arenas Ciudad, Bosque, Micelial, Hielo, Infernal; Normal/Pesadilla/Infierno): **A** tope por golpe del 30 % de la vida máxima con enfriamiento de 5 s (sin efecto: el guerrero muere por desgaste, golpe letal medio ~16 % con ~4 % de vida), **B** invulnerabilidad de 250/450 ms al conectar Corte Sangrante/Triple Golpe (Pesadilla 7/50 → 14/50, Infierno 4/50 → 8/50, Normal sin cambio; pares +15/−4 en difíciles, p = 0,019 sin corregir, confirmación con semillas nuevas 4/40 → 7/40, p = 0,45) y **C** armadura 20 % 2,5 s + 300 ms de invulnerabilidad (sin efecto, +7/−5). **Ninguna supera el ruido; no se tocó `hpGrowthMult`, `healPct`, la referencia por rol ni `knownChampions`.** Guerrero base frente a la media de tanque, mago y soporte: 0,92× / 0,30× / 0,22× en Normal / Pesadilla / Infierno (meta 0,6×-1,4×: fuera en las dos difíciles). Las perillas de A/B/C quedan apagadas en `js/skills/abilities.js` (`kaelBurstGuard`, `kaelHitGuard`). Se corrigieron las descripciones de Corte Sangrante y Triple Golpe (cura 4 %/7 % de la vida máxima, que no figuraba). Detalle, tablas y límites (bots, muestras de 15-50 partidas por casilla): `docs/beta-release/BALANCE_GUERRERO_20261115.md`.
+
 ### Ajuste aplicado: La Cazadora
 
 Pasivas escaladas desde `SYLVA_CFG` en `js/data/champion-tuning.js` (antes estaban fijas en `js/champions/cazadora.js`). No se tocan vida, defensa, daño base, recarga, alcance ni habilidades; la referencia por rol (JSON y JS) no cambia.

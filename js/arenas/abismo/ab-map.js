@@ -90,6 +90,14 @@ function abPlatAt(x, y, m){
   return -1;
 }
 function abWalkable(x, y, m){ return abPlatAt(x, y, m) >= 0; }
+// Con margen de borde: la costura entre dos plataformas en pie (anillos contiguos, hub y puente) también es piso. Sin esto la banda
+// de 2*m u de la costura "caía fuera" para cada plataforma por separado y abClamp devolvía atrás a quien la cruzaba despacio (el Carcelero).
+function abWalkableSeam(x, y, m){
+  if(abPlatAt(x, y, m) >= 0) return true;
+  if(!(m > 0) || abPlatAt(x, y, 0) < 0) return false;
+  for(let i=0;i<AB_PLATS.length;i++){ if(abPresent(i) && abPlatContains(AB_PLATS[i], x, y, -m)) return true; }
+  return false;
+}
 function abSafeAt(x, y){ for(let i=0;i<AB_PLATS.length;i++){ if(abS.p[i].st <= AB_ST.CRITICAL && abPlatContains(AB_PLATS[i], x, y, 0)) return true; } return false; }
 const AB_EDGE = 8;
 function abNearestGround(x, y, m){
@@ -103,7 +111,15 @@ function abNearestGround(x, y, m){
   return best ? {x:best.x, y:best.y, i:bi, d:Math.sqrt(bd)} : {x:AB_MAP.start.x, y:AB_MAP.start.y, i:AB_ENTRY, d:0};
 }
 function abInside(x, y, m){ return abWalkable(x, y, m||0); }
-function abNavBlocked(x, y){ return !abWalkable(x, y, 16); }
+// Navegación: la grilla de 40 u con borde de 16 u perdía los cuellos de ~30 u donde se solapan un hub y su puente (h6-o5, r5-r6...):
+// el grafo de plataformas decía "conectado" y el campo de flujo "infinito", y un enemigo grande (el Carcelero) quedaba clavado al
+// borde. Una celda tocada por DOS plataformas en pie (con 12 u de tolerancia) es un cuello: se deja abierta.
+function abNavBlocked(x, y){
+  if(abWalkableSeam(x, y, 16)) return false;
+  let n = 0;
+  for(let i=0;i<AB_PLATS.length;i++){ if(abPresent(i) && abPlatContains(AB_PLATS[i], x, y, -12) && ++n >= 2) return false; }
+  return true;
+}
 
 /* ---------------- conectividad y regla de seguridad ---------------- */
 function abConnectedWithout(skip){
@@ -258,7 +274,7 @@ function abClamp(ent){
   }
   const B = AB_MAP.bounds;
   if(ent.flying || ent.abNoClamp || ent.rank==="jefe"){ ent.x = Math.max(B.x0, Math.min(B.x1, ent.x)); ent.y = Math.max(B.y0, Math.min(B.y1, ent.y)); return; }
-  if(abWalkable(ent.x, ent.y, AB_EDGE)) return;
+  if(abWalkableSeam(ent.x, ent.y, AB_EDGE)) return;
   const n = abNearestGround(ent.x, ent.y, AB_EDGE);
   const guest = typeof netIsGuest==="function" && netIsGuest();
   if(!guest && n.d > (ent.cls ? AB_CFG.kb.heroFallTol : AB_CFG.kb.fallTol) && _abPushed(ent) && !(ent.rank==="subjefe" || ent.structure)){

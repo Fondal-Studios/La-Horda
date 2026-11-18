@@ -42,5 +42,17 @@ const sql=new Client({connectionString:url});
  await a.close();a=create(options);await a.ready;
  assert.equal((await api('GET','/api/gm/config',undefined,token)).config.xp,2,'config and session survive restart');
  assert.equal((await api('GET','/api/save',undefined,player)).data.gold,0,'save survives restart');
- console.log('PASS real PostgreSQL: additive schema, auth, CAS across pools, row locks, transaction rollback, reset snapshot, durable restart');
+ // Beta cerrada (server/beta-kit.js): tablas aditivas, tope de usos atómico entre dos pools, reportes con tope y errores agrupados.
+ {const betaOpts={...options,beta:{inviteCodes:'PG-BETA:1',errors:'1'}},c1=create(betaOpts),c2=create(betaOpts);await c1.ready;await c2.ready;
+  try{const h=require('./beta-kit').hashCode('pg-beta');
+   const uses=await Promise.all([c1.store.betaInviteUse(h,1,1),c2.store.betaInviteUse(h,1,1),c1.store.betaInviteUse(h,1,1),c2.store.betaInviteUse(h,1,1)]);
+   assert.equal(uses.filter(u=>u.ok).length,1,'invite max respected across pools');
+   await c1.store.betaInviteRelease(h);assert.equal((await c2.store.betaInviteUses())[h],0,'release returns the use');
+   for(let i=1;i<=3;i++)await c1.store.betaReportAdd({userId:i===1?null:i,category:'bug',text:'r'+i,context:{level:i},at:i},2);
+   const reps=await c2.store.betaReportList(10);assert.deepEqual(reps.map(r=>r.text),['r3','r2'],'reports keep newest within cap');assert.equal(reps[0].context.level,3);
+   const e={sig:'s1',message:'m',src:'js/a.js',line:1,col:2,build:'b',count:2,at:9};
+   assert.equal(await c1.store.betaErrorAdd(e,1),true);assert.equal(await c2.store.betaErrorAdd({...e,count:1,at:10},1),true);assert.equal(await c1.store.betaErrorAdd({...e,sig:'s2'},1),false,'error signature cap');
+   const errs=await c2.store.betaErrorList(10);assert.equal(errs.length,1);assert.equal(errs[0].count,3);assert.equal(errs[0].lastAt,10);
+  }finally{await c1.close();await c2.close();}}
+ console.log('PASS real PostgreSQL: additive schema, auth, CAS across pools, row locks, transaction rollback, reset snapshot, durable restart, beta kit tables');
 })().catch(e=>{console.error(e);process.exitCode=1}).finally(async()=>{if(server)await new Promise(r=>server.close(r));if(a)await a.close();if(b)await b.close();await sql.end()});

@@ -6,11 +6,13 @@ import os, sys, numpy as np
 from collections import deque
 from PIL import Image
 R = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')) + '/'
-# uso: build-ciudad-estatua.py [estatua|farol]  (farol: ciudad_farol -> assets/vfx/ciudad/farol_1.png, 44 px de alto, se dibuja x2)
+# uso: build-ciudad-estatua.py [estatua|farol|casa_a]  (farol: ciudad_farol -> assets/vfx/ciudad/farol_1.png, 44 px de alto, se dibuja x2)
+# casa_a: fachada completa (casa_a/master.png) -> assets/vfx/ciudad/casa_a_1.png, 112 px de alto, se dibuja x2 (vecinas tras la muralla).
 JOB = sys.argv[1] if len(sys.argv) > 1 else 'estatua'
-H = {'estatua': 104, 'farol': 44}[JOB]
-OUTF = {'estatua': 'estatua_1.png', 'farol': 'farol_1.png'}[JOB]
-im = Image.open(R + 'art-source/runway-world/ciudad/ciudad_%s/master.png' % JOB).convert('RGB')
+H = {'estatua': 104, 'farol': 44, 'casa_a': 112}[JOB]
+OUTF = {'estatua': 'estatua_1.png', 'farol': 'farol_1.png', 'casa_a': 'casa_a_1.png'}[JOB]
+SRC = {'casa_a': 'casa_a'}.get(JOB, 'ciudad_' + JOB)
+im = Image.open(R + 'art-source/runway-world/ciudad/%s/master.png' % SRC).convert('RGB')
 a = np.asarray(im).astype(int); h, w, _ = a.shape
 bg = np.median(np.concatenate([a[:8].reshape(-1, 3), a[-8:].reshape(-1, 3), a[:, :8].reshape(-1, 3), a[:, -8:].reshape(-1, 3)]), axis=0)
 near = (np.abs(a - bg).sum(2) < 60) | ((a[:, :, 1] > a[:, :, 0] + 35) & (a[:, :, 1] > a[:, :, 2] + 35))   # croma y su sombra verde

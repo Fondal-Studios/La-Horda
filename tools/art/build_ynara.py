@@ -1,4 +1,6 @@
-"""Normalize the commissioned 4x6 source sheet into the champion atlas."""
+"""Normalize the commissioned 4x6 source sheet into the champion atlas.
+
+OJO (2026-11-12): el atlas instalado de Ynara tiene 11 filas: las filas 10-11 (cuadros 36-43, lanzar y definitiva propios) se agregaron después con tools/art/sheet-to-cells.py desde art-source/ynara-runway/. Volver a correr ESTE script regenera el atlas de 24 poses y PISA ese arte: no correrlo sin reincorporar esas filas."""
 from pathlib import Path
 from PIL import Image
 import json
