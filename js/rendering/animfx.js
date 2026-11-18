@@ -77,7 +77,7 @@ const ANIM_PROFILES = {
   guardian_ancestral: {speed:0.85, weight:2.2, lunge:14, impact:2.2, material:"wood", particle:"leaf", death:"collapse"},
   jinete_sin_cabeza:  {speed:0.9, weight:2.0, lunge:20, impact:2.2, material:"shadow", particle:"shadow", death:"collapse"},
   escorpion_gigante:  {speed:1.4, weight:0.7, lunge:10, material:"chitin"},
-  golem_piedra:       {speed:0.55,weight:2.2, lunge:12, impact:2.0, material:"rock", death:"crumble"},
+  golem_piedra:       {speed:0.55,weight:2.2, lunge:12, impact:2.0, material:"rock", death:"frames"}, // muerte propia (Anakin, canon-sheets-meta)
   medusa:             {speed:1.0, basic:"ranged", material:"stone"},
   druida_arena:       {basic:"cast", cast:1.4, material:"sand"},
   esfinge:            {speed:0.9, weight:1.6, basic:"ranged", impact:1.6, material:"sand"},

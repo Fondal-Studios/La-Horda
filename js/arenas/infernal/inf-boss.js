@@ -265,8 +265,15 @@ function infBossDrawBody(e){
   const P = VFX_SPR_EXTRA.bsAngelPillar, K = VFX_SPR_EXTRA.bsMagoCrystal, t = animNow/1000, rgb = e.cvRgb || "255,215,120";
   const g = ctx.createRadialGradient(e.x, e.y - 50, 0, e.x, e.y - 50, 90);
   g.addColorStop(0, `rgba(${rgb},0.55)`); g.addColorStop(1, `rgba(${rgb},0)`); ctx.fillStyle = g; ctx.fillRect(e.x - 90, e.y - 140, 180, 180);
+  const filt = e.cvEl==="ancestral" ? "hue-rotate(-100deg)" : e.cvEl==="piedra" ? "hue-rotate(160deg) saturate(0.7)" : e.cvEl==="hechicero" ? "hue-rotate(185deg) brightness(1.2)" : (e.cvRgb==="220,120,255" ? "hue-rotate(60deg)" : "none");
+  const dp = (!e.alive || e._dyingP != null) ? (e._dyingP || 0) : -1; // se quiebra: cuadros 2-5 de la misma aguja (ya existian)
+  if(dp >= 0 && P && P.imgs.length >= 6){
+    const im = P.imgs[2 + Math.min(3, Math.floor(dp*4*1.25))], k = 112/75;
+    if(im.complete && im.naturalWidth){ const h = im.height*k, w = im.width*k; ctx.save(); ctx.filter = filt; ctx.drawImage(im, e.x - w/2, e.y - h*0.95, w, h); ctx.restore(); }
+    return true;
+  }
   const base = P && P.imgs[1], top = K && K.imgs[Math.floor(t*6) % K.imgs.length];
-  if(base && base.complete && base.naturalWidth){ const h = 112, w = base.width*h/base.height; ctx.save(); ctx.filter = e.cvEl==="ancestral" ? "hue-rotate(-100deg)" : e.cvEl==="piedra" ? "hue-rotate(160deg) saturate(0.7)" : e.cvEl==="hechicero" ? "hue-rotate(185deg) brightness(1.2)" : (e.cvRgb==="220,120,255" ? "hue-rotate(60deg)" : "none"); ctx.drawImage(base, e.x - w/2, e.y - h*0.95, w, h); ctx.restore(); }
+  if(base && base.complete && base.naturalWidth){ const h = 112, w = base.width*h/base.height; ctx.save(); ctx.filter = filt; ctx.drawImage(base, e.x - w/2, e.y - h*0.95, w, h); ctx.restore(); }
   if(top && top.complete && top.naturalWidth){ const h = 46, w = top.width*h/top.height; ctx.drawImage(top, e.x - w/2, e.y - 150 + Math.sin(t*3 + e.y)*6 - h/2, w, h); }
   return true;
 }

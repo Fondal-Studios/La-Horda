@@ -326,6 +326,7 @@ function abAIMorador(e, dt, tgt, dist){
     const d = Math.hypot(tgt.x - e.x, tgt.y - e.y)||1, ux = (tgt.x - e.x)/d, uy = (tgt.y - e.y)/d;
     vfxTelegraph({shape:2, r:C.rayW, x:e.x, y:e.y, dx:ux, dy:uy, len:C.rayLen, dur:C.rayWind, rgb:"200,90,255"});
     bossSkillLabel(e, "RAYO GRAVITATORIO"); playSfx("abRayWarn");
+    M.rayGlareUntil = runElapsedMs + C.rayWind + 400; // solo dibujo: el ojo mira fijo mientras carga y dispara (ab-render.js)
     runLater(C.rayWind, ()=>{
       if(!e.alive) return;
       for(const h of heroes){ if(!h.alive || h.abHang) continue; const q = _abSegDist(h.x, h.y, e.x, e.y, e.x + ux*C.rayLen, e.y + uy*C.rayLen); if(q.d <= C.rayW + (h.radius||18)*0.5){ bossHitHero(h, e.dmg*C.rayMult, {from:e, slow:0.45, slowDur:1600}); } }

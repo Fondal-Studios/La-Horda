@@ -14,9 +14,28 @@ function battlefieldMonsterKey(e){
  if(e.type==='bestia_bosque')return 'thornbeast';
  return BATTLEFIELD_HEIGHTS[e.type]?e.type:null;
 }
+// Muerte propia (dibujada con Anakin, ver tools/art/anakin/README.md): hoja de N cuadros del mismo tamaño que la de
+// combate, atada al avance de la muerte (_dyingP) igual que DEATH_PACK. Sin la hoja, el jefe muere como antes.
+const BATTLEFIELD_DEATH_KEYS=['cm_dama','cm_presentador','cm_maestro','cm_tramoyista','dragon_forja','micelio','minotauro','leviatan','golem_cuerpos','mn_titan','ab_carcelero','thornbeast'];
+const BATTLEFIELD_DEATH={};
+for(const key of BATTLEFIELD_DEATH_KEYS){
+ const src='assets/sprites/battlefield/death/'+key+'.png',img=new Image();
+ ASSET_WEBP.add(src);assetsRegisterSource(src);img.src=src;BATTLEFIELD_DEATH[key]=img;
+}
+function battlefieldDeathImg(key){const d=BATTLEFIELD_DEATH[key];return d&&d.complete&&d.naturalWidth?d:null;}
+function battlefieldHasDeath(e){const k=battlefieldMonsterKey(e);return !!(k&&battlefieldDeathImg(k));}
+function battlefieldDeathFrame(e,N){
+ let n;if(e._dyingP!=null)n=Math.floor(e._dyingP*N*1.25);else{if(!e._diedAt)e._diedAt=animNow;n=Math.floor((animNow-e._diedAt)/180);}
+ return Math.max(0,Math.min(N-1,n));
+}
 function battlefieldDrawMonster(e){
  const key=battlefieldMonsterKey(e),m=BATTLEFIELD_META[key],img=BATTLEFIELD_IMAGES[key];
  if(!m||!img||!img.complete||!img.naturalWidth)return false;
+ const di=(!e.alive||e._dyingP!=null)&&battlefieldDeathImg(key);
+ if(di){
+  const N=Math.max(1,Math.round(di.naturalWidth/m.w)),s=BATTLEFIELD_HEIGHTS[key]/m.ref,n=battlefieldDeathFrame(e,N);
+  drawAnimFrameSized(di,{frames:[{x:n*m.w,y:0,w:m.w,h:m.h}]},0,e.x,e.y,m.w*s,m.h*s,.5,376/m.h,e.fx<0,1);return true;
+ }
  const n=e.attackAnim>0?3:e.moving===false?0:1+Math.floor((e.animT||0)/180)%2,s=BATTLEFIELD_HEIGHTS[key]/m.ref;
  drawAnimFrameSized(img,{frames:[{x:n*m.w,y:0,w:m.w,h:m.h}]},0,e.x,e.y,m.w*s,m.h*s,.5,376/m.h,e.fx<0,1);return true;
 }

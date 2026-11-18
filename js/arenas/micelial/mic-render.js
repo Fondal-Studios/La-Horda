@@ -21,6 +21,7 @@ const MIC_FX_NAMES = ["spore_cloud_big","spore_cloud_small","claw_blue_a","claw_
 const MIC_FX = {}, MIC_FX_OK = {};
 function _micImg(src, key, store, ok){ const im = new Image(); im.onload = ()=>{ ok[key] = true; }; im.src = src; store[key] = im; return im; }
 for(const n of MIC_FX_NAMES) _micImg("assets/sprites/arenas/micelial/fx/"+n+".png", n, MIC_FX, MIC_FX_OK);
+for(let i=0;i<5;i++) _micImg("assets/sprites/arenas/micelial/fx/root_curl_muerte_"+i+".png", "root_curl_muerte_"+i, MIC_FX, MIC_FX_OK); // la raiz se marchita (Anakin)
 const MIC_MP = {}, MIC_MP_OK = {};
 for(const n of ["mp_full","mp_cap","mp_arm_l","mp_arm_r"]) _micImg("assets/sprites/arenas/micelial/mother/"+n+".png", n, MIC_MP, MIC_MP_OK);
 // The authored animation sheet already ships with the original boss art.
@@ -418,7 +419,12 @@ function _micDrawNode(i, now){
 function micDrawEnemyBody(e){
   const t = animNow/1000;
   if(e.type==="nucleo_micelial"){
-    if(!e.alive) return true;
+    if(!e.alive || e._dyingP != null){ // se marchita y queda seco (arte _wither/_dead que ya existia), atado al avance de la muerte
+      const p = e._dyingP; if(p == null) return true;
+      const st = e.nuc ? e.nuc.st : 1, k = st===1 ? ["nucleo_3",56,6] : st===2 ? ["nucleo_2",70,6] : st===3 ? ["nucleo_1",84,8] : ["nucleo_4",128,2];
+      _micSpr(k[0] + (p < 0.45 ? "_wither" : "_dead"), e.x, e.y + k[2], k[1]*(p < 0.45 ? 1 - 0.1*p : 0.92 - 0.12*p), false, p < 0.7 ? 1 : Math.max(0, 1 - (p - 0.7)/0.3));
+      return true;
+    }
     const st = e.nuc ? e.nuc.st : 1, pulse = 1 + 0.04*Math.sin(t*5 + e.x*0.01);
     const glowRgb = st >= 4 ? "255,80,200" : "210,110,255";
     _micGlow(e.x, e.y - 30 - st*6, 40 + st*16, glowRgb, 0.25 + st*0.08 + 0.1*Math.sin(t*4));
@@ -429,7 +435,12 @@ function micDrawEnemyBody(e){
     return true;
   }
   if(e.type==="raiz_absorcion"){
-    if(!e.alive) return true;
+    if(!e.alive || e._dyingP != null){
+      const p = e._dyingP; if(p == null) return true;
+      const k = Math.min(4, Math.floor(p*5*1.25)); // mismo tamano de celda que root_curl: misma altura
+      _micSpr("root_curl_muerte_"+k, e.x, e.y + 6, 74, e.x < (e.lk ? e.lk.x : 0), p < 0.75 ? 1 : Math.max(0, 1 - (p - 0.75)/0.25));
+      return true;
+    }
     _micGlow(e.x, e.y - 30, 44, "255,120,240", 0.4 + 0.2*Math.sin(t*9));
     _micSpr("root_curl", e.x, e.y + 6, 74, e.x < (e.lk ? e.lk.x : 0));
     return true;

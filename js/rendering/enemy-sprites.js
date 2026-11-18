@@ -483,6 +483,7 @@ function drawAcua2(e){
     if(!acua2Ready("krIdle")) return false;
     let img;
     if(dying && acua2Ready("krDeath")) img = acua2Pick("krDeath", Math.min(4, Math.floor(dyingP*5)));
+    else if(e.attackAnim>0 && acua2Ready("krAtk")) img = acua2Pick("krAtk", Math.min(ACUA2_IMG.krAtk.length-1, Math.floor((1 - Math.min(1, e.attackAnim/350))*ACUA2_IMG.krAtk.length))); // latigazo (Anakin)
     else if(e.hitFlash>50 && acua2Ready("krHurt")) img = acua2Pick("krHurt", Math.floor(t/110));
     else img = acua2Pick("krIdle", Math.floor(t/240));
     // escala fija tomada del primer idle: los recortes miden entre 47 y 64px de alto y, escalados

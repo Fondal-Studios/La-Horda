@@ -395,7 +395,9 @@ function vfxOnDeath(e, die){
   else if(src){ const ddx = e.x-src.x, ddy = e.y-src.y, dl = Math.hypot(ddx,ddy)||1; dx = ddx/dl; dy = ddy/dl; }
   slot.e = e; slot.t = 0; slot.boss = boss; slot.dx = dx; slot.dy = dy; slot.side = dx<0 ? -1 : 1;
   slot.fly = big ? null : deathFlyStart(e, dx, dy);
-  slot.style = boss && prof.death!=="frames" ? "boss" : prof.death;
+  slot.style = ((typeof battlefieldHasDeath==="function" && battlefieldHasDeath(e))
+      || (typeof DEATH_PACK!=="undefined" && DEATH_PACK[e.type] && DEATH_PACK[e.type].ready)) ? "frames" // muerte propia en cuadros (battlefield-art.js, DEATH_PACK)
+    : boss && prof.death!=="frames" ? "boss" : prof.death;
   slot.kind = e._deathKind || "normal";
   // el cuerpo queda en el suelo (gore.js): la animación de caída no se desvanece
   slot.corpse = !boss && e.rank!=="subjefe" && prof.corpse!==false && !(GORE_MAT[goreMatOf(e)]||{}).noCorpse && slot.style!=="dissolve" && slot.style!=="sink" && (e.radius||20) <= 60;

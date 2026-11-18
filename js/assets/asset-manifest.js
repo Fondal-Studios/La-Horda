@@ -3,6 +3,8 @@
    La usa js/assets/preload.js para saber cuándo terminó de cargar todo. Si agregás una imagen
    nueva al juego, sumala también acá. */
 const ASSET_MANIFEST = [
+  // >>> anakin (tools/art/anakin/install.py)
+  // <<< anakin
   "assets/sprites/champions/guerrero/codex-v1/atlas.png",
   "assets/sprites/champions/morveth/codex-v1/atlas.png",
   "assets/sprites/champions/aelith/codex-v1/atlas.png",
