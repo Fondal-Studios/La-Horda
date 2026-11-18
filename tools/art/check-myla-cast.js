@@ -14,12 +14,12 @@ const OUT=path.join(ROOT,'art-source/entregas/bloques/B005_myla/cierre-cast-01')
   await page.goto(site.url+'/?lazy=1');
   await page.waitForFunction(()=>typeof drawPortador==='function'&&typeof useSkill==='function'&&typeof activeSetSkin==='function');
   await page.evaluate(()=>{loop=function(){};for(const [id,d] of Object.entries({...SET_SKINS,...CROMA_SKINS}))if(d.champ==='myla')skinDefOf(id);assetsStartGroup('ch:myla');});
-  await page.waitForFunction(()=>CHAMP_PACK.myla?.ready&&CHAMP_PACK.myla_cast?.ready&&CHAMP_PACK.myla_berrinche?.ready&&CHAMP_PACK.skin_merienda_magica?.ready&&CHAMP_PACK.skin_myla_arandanos?.ready);
+  await page.waitForFunction(()=>CHAMP_PACK.myla?.ready&&CHAMP_PACK.myla_cast?.ready&&CHAMP_PACK.myla_berrinche?.ready&&CHAMP_PACK.skin_merienda_magica?.ready&&CHAMP_PACK.croma_myla_arandanos?.ready);
   for(const view of [{id:'desktop',width:1280,height:720},{id:'mobile',width:844,height:390}]){
    await page.setViewportSize({width:view.width,height:view.height});
    const result=await page.evaluate(({view})=>{
     const arenas=['bosque','hielo','infernal','laberinto','acuatica','minas'];
-    const looks=[{id:'base',skin:null,pack:'myla'},{id:'merienda',skin:'merienda_magica',pack:'skin_merienda_magica'},{id:'arandanos',skin:'myla_arandanos',pack:'skin_myla_arandanos'}];
+    const looks=[{id:'base',skin:null,pack:'myla'},{id:'merienda',skin:'merienda_magica',pack:'skin_merienda_magica'},{id:'arandanos',skin:'myla_arandanos',pack:'croma_myla_arandanos'}];
     const check=[],rows=[],cv=document.getElementById('game'),realReady=CHAMP_PACK.myla_cast.ready;
     const makeSheet=(cols,rows)=>{const c=document.createElement('canvas');c.width=cols*256;c.height=rows*216;const g=c.getContext('2d');g.imageSmoothingEnabled=false;g.fillStyle='#091018';g.fillRect(0,0,c.width,c.height);return[c,g];};
     const stamp=(sheet,index,label)=>{const [c,g]=sheet,col=index%(c.width/256|0),row=Math.floor(index/(c.width/256));const sw=Math.min(256,cv.width),sh=Math.min(192,cv.height),sx=Math.max(0,(cv.width-sw)/2),sy=Math.max(0,(cv.height-sh)/2);g.drawImage(cv,sx,sy,sw,sh,col*256,row*216,sw,sh);g.fillStyle='#091018';g.fillRect(col*256,row*216+192,256,24);g.fillStyle='#f3ead2';g.font='11px sans-serif';g.fillText(label,col*256+5,row*216+208);};
