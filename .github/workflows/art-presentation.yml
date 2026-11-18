@@ -19,8 +19,8 @@ jobs:
       - run: node tools/art/check-environment-inlays.js && node tools/art/check-codex-voice.js && node tools/art/check-presentation-browser.js
         env:
           NODE_PATH: /tmp/horda-art-tools/node_modules
-      - name: Myla B005 composited correction (temporary PR gate)\n        if: github.event.pull_request.number == 297\n        run: node tools/art/check-myla-cast.js\n        env:\n          NODE_PATH: /tmp/horda-art-tools/node_modules\n      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: art-presentation-evidence
-          path: |\n            docs/art-enrichment/\n            art-source/entregas/bloques/B005_myla/cierre-cast-01/RUNTIME_GATE.json\n            art-source/entregas/bloques/B005_myla/cierre-cast-01/*before-after.png\n            art-source/entregas/bloques/B005_myla/cierre-cast-01/*six-arenas-skins.png\n            art-source/entregas/bloques/B005_myla/cierre-cast-01/*body-phases.png
+          path: docs/art-enrichment/

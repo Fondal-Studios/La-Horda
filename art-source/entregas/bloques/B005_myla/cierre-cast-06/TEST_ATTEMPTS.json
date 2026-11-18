@@ -1,0 +1,36 @@
+{
+  "new": [
+    {
+      "run": 44339061607,
+      "artifactId": 14443371966,
+      "result": "INVALID",
+      "reason": "runtime parser failed: literal \\n sequences were serialized into myla.js; emitted screenshots do not certify the correction"
+    },
+    {
+      "commit": "5c46a8ce54cde60fde1e32b72c74d8a0a4b0e35c",
+      "test": "node --check js/champions/vfx-b/myla.js",
+      "result": "PASS"
+    },
+    {
+      "run": 44340677051,
+      "job": 134929457014,
+      "artifactId": 14443699044,
+      "artifactDigest": "sha256:c5f95b973286f0f761f7f2a6d11de1c37d7ad44f072e75fb4c495d0ab9b98678",
+      "result": "PASS",
+      "checks": "170/170",
+      "errors": 0
+    }
+  ],
+  "historicalNotRerun": [
+    "native atlas technical gate",
+    "routing contract",
+    "PR190 death",
+    "PR229 bubble lifecycle outside changed composition"
+  ],
+  "notClaimed": [
+    "Art Gate PASS",
+    "component integration",
+    "canonical publication",
+    "full multiplayer/performance rerun"
+  ]
+}

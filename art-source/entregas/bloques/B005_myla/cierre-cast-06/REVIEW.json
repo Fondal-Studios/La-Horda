@@ -1,0 +1,25 @@
+{
+  "state": "FIX",
+  "component": "B005_myla/cast/base-supplement",
+  "reference": "assets/ui/codex/champions/myla.png",
+  "candidate": "my_bubble_idle alpha .8 outside cast / .34 during cast",
+  "reviewedEvidence": [
+    "desktop-body-phases.png",
+    "mobile-body-phases.png",
+    "desktop/mobile before-after",
+    "desktop/mobile six-arena skins"
+  ],
+  "identityPass": [
+    "pink dress and bow",
+    "spoon silhouette",
+    "front/side/back authored poses",
+    "chibi proportions from exact Codex template"
+  ],
+  "blockingFindings": [
+    "circular bubble still fills the body silhouette",
+    "three upper prongs still overlap head and hair",
+    "opacity reduction does not restore readable head/torso at gameplay scale",
+    "mobile composition remains dominated by shield visual"
+  ],
+  "decision": "Do not integrate. Preserve candidate and evidence; next correction must change grouped geometry/layer composition rather than only alpha."
+}
