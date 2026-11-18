@@ -28,7 +28,13 @@
     const bubble = kvbDecal('my_bubble_idle', h.x, h.y - 12, 34, ms || 4500, {follow: h, ofy: -12, layer: 't', loop: true, fps: 8, alpha: .8, fadeAt: .88});
     if(bubble){
       myBubbleLatest.set(h, bubble);
-      Object.defineProperty(bubble, 'alpha', {enumerable: true, configurable: true, get: () => {\n        const visible = myBubbleLatest.get(h) === bubble && heroes.includes(h) && h.classKey === 'myla' && h.alive !== false && h.shield > 0;\n        if(!visible) return 0;\n        // Keep the shield readable while opening negative space for the authored body cast.\n        const casting = h._packCastUntil === Infinity || (h._pcuLocal || 0) > animNow;\n        return casting ? .34 : .8;\n      }});
+      Object.defineProperty(bubble, 'alpha', {enumerable: true, configurable: true, get: () => {
+        const visible = myBubbleLatest.get(h) === bubble && heroes.includes(h) && h.classKey === 'myla' && h.alive !== false && h.shield > 0;
+        if(!visible) return 0;
+        // Keep the shield readable while opening negative space for the authored body cast.
+        const casting = h._packCastUntil === Infinity || (h._pcuLocal || 0) > animNow;
+        return casting ? .34 : .8;
+      }});
     }
   } kvbEmit('my_blob', 5, x, y, {ring: 18, v0: 10, v1: 40, up: 60, l0: 420, l1: 700, scale: 1.2, flat: .6}); };
   kvbPortador('myla', 'my_bubble', (h, sk, u, sc) => ['myla.bubble', h.x, h.y, 34, 0, sk.duration * sc.DUR, 0]);
