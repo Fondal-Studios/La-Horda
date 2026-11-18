@@ -1,0 +1,28 @@
+name: Myla B005 layer capture temporal
+on:
+  push:
+    branches: [art/myla-cast-back-frame11-20261112]
+permissions:
+  contents: read
+jobs:
+  capture:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: npm install --prefix /tmp/horda-art-tools playwright@1.58.2 @napi-rs/canvas@0.1.80
+      - run: /tmp/horda-art-tools/node_modules/.bin/playwright install --with-deps chromium
+      - run: node --check js/champions/vfx-b/myla.js && node tools/art/check-myla-cast.js
+        env:
+          NODE_PATH: /tmp/horda-art-tools/node_modules
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: myla-b005-layer-capture
+          path: |
+            art-source/entregas/bloques/B005_myla/cierre-cast-01/RUNTIME_GATE.json
+            art-source/entregas/bloques/B005_myla/cierre-cast-01/*before-after.png
+            art-source/entregas/bloques/B005_myla/cierre-cast-01/*six-arenas-skins.png
+            art-source/entregas/bloques/B005_myla/cierre-cast-01/*body-phases.png

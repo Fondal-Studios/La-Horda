@@ -6,7 +6,7 @@ const OUT=path.join(ROOT,'art-source/entregas/bloques/B005_myla/cierre-cast-01')
 (async()=>{
  fs.mkdirSync(OUT,{recursive:true});
  const site=await H.startSite(),browser=await H.launch();
- const report={scope:'Myla B005 base cast supplement through the real renderer; authored skins and Berrinche preserved',correction:'my_bubble_idle keeps its approved .8 alpha outside casts and opens to .34 only while the authored body cast is active',checks:[],errors:[],rows:[]};
+ const report={scope:'Myla B005 base cast supplement through the real renderer; authored skins and Berrinche preserved',correction:'my_bubble_idle keeps its approved top-layer 68u shell outside casts; during the authored cast it moves behind the body, opens to 88u at y-8 and uses .64 alpha',checks:[],errors:[],rows:[]};
  try{
   const context=await browser.newContext({viewport:{width:1280,height:720},serviceWorkers:'block'});
   await context.route('**/*',r=>new URL(r.request().url()).origin===site.url?r.continue():r.abort());
