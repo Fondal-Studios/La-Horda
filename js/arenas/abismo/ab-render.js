@@ -19,10 +19,8 @@ if(typeof ABISMO_TEX!=="undefined") for(const k in ABISMO_TEX) _abImg(k, ABISMO_
 if(typeof ABISMO_PIECES!=="undefined") for(const k in ABISMO_PIECES) ABISMO_PIECES[k].forEach((src, i)=>_abImg(k+"_"+i, src));
 if(typeof ABISMO_EYE!=="undefined") for(const k in ABISMO_EYE) ABISMO_EYE[k].forEach((src, i)=>_abImg("eye_"+k+"_"+i, src));
 if(typeof ABISMO_JAW!=="undefined") for(const k in ABISMO_JAW) _abImg("jaw_"+k, ABISMO_JAW[k]);
-// tentaculo grande: golpe (4) y muerte (5) dibujados con Anakin desde tent_grande_0 (tools/art/anakin)
-for(let i=0;i<4;i++) _abImg("tent_grande_golpe_"+i, "assets/vfx/abismo/tent_grande_golpe_"+i+".png");
+// tentaculo grande: muerte (5 cuadros) dibujada con Anakin desde tent_grande_0 (tools/art/anakin)
 for(let i=0;i<5;i++) _abImg("tent_grande_muerte_"+i, "assets/vfx/abismo/tent_grande_muerte_"+i+".png");
-for(let i=0;i<4;i++) _abImg("eye_ataque_"+i, "assets/vfx/abismo/ojo_ataque_"+i+".png"); // el Morador carga el rayo (Anakin)
 
 /* ---------------- geometría de dibujo (fija) ---------------- */
 const AB_DEPTH = {hub:62, ring:78, spoke:36, seg:36};
@@ -526,13 +524,11 @@ function abDrawEnemyBody(e){
     _abGlow(e.x, e.y, 40, "200,80,255", 0.35);
     const dying = !e.alive || e._dyingP != null, flip = (e.fx||0) < 0;
     const kd = dying && e._dyingP != null ? Math.min(4, Math.floor(e._dyingP*5*1.25)) : -1;
-    const strike = !dying && (wind > 0 || e.attackAnim > 0) ? Math.min(3, Math.floor((wind > 0 ? wind : 0.5)*4)) : -1;
     if(kd >= 0 && AB_OK["tent_grande_muerte_"+kd]){ _abSpr("tent_grande_muerte_"+kd, e.x, e.y + 8, 200, flip, 1, 0.95, 0); return true; } // se desploma (Anakin)
     const h = 200*(0.2 + 0.8*rise)*(e.alive ? 1 : 0.7), lean = -wind*0.35 + Math.sin(t*2.2 + e.x*0.01)*0.1;
     ctx.save(); if(!e.alive) ctx.globalAlpha *= 0.6;
     ctx.beginPath(); ctx.rect(e.x - 200, e.y - 400, 400, 404); ctx.clip();
-    if(strike >= 0 && rise >= 1 && AB_OK["tent_grande_golpe_"+strike]) _abSpr("tent_grande_golpe_"+strike, e.x, e.y + 8, h, flip, e.hitFlash > 55 ? 0.75 : 1, 0.95, 0); // golpe (Anakin)
-    else _abSpr("tent_grande_0", e.x, e.y + 8, h, flip, e.hitFlash > 55 ? 0.75 : 1, 0.95, lean*(flip ? -1 : 1));
+    _abSpr("tent_grande_0", e.x, e.y + 8, h, flip, e.hitFlash > 55 ? 0.75 : 1, 0.95, lean*(flip ? -1 : 1));
     ctx.restore();
     if(e.hitFlash > 55) _abGlow(e.x, e.y - h*0.5, 60, "255,220,255", 0.4);
     return true;
@@ -564,10 +560,6 @@ function _abDrawMorador(e, t){
   if(dying){ set = "muerte"; f = Math.min(4, Math.floor(((M.t||0)/1600)*5)); }
   else if(e.hitFlash > 55) set = "dano";
   else if(open) set = "abre";
-  else if(((M.rayGlareUntil||0) > runElapsedMs || e.attackAnim > 0) && AB_OK.eye_ataque_0){ // mira fija: carga y dispara el rayo (Anakin)
-    set = "ataque"; const left = (M.rayGlareUntil||0) - runElapsedMs, wind = AB_CFG.morador.rayWind + 400;
-    f = left > 0 ? Math.min(3, Math.floor((1 - left/wind)*4)) : 2;
-  }
   else if((Math.floor(t*10) % 60) < 5) set = "blink";
   const H = (M.ph===3 ? 250 : 210)*(dying ? Math.max(0.3, 1 - (M.t||0)/6000) : 1);
   // masa de carne bajo el ojo (la cabeza asomando desde el pozo): elipse texturada con bordes que se funden en el vacío

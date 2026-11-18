@@ -3,12 +3,12 @@
  "generator": "tools/art/build-art-atlas.js",
  "reference": "Códice (docs/LA_HORDA_CODEX.md); decisión curada en docs/art/ATLAS_VIGENTE.json",
  "sources": {
-  "hash": "3731a5f552e1abad6204108d059f2eda7e8e4416",
-  "files": 51
+  "hash": "ca01ae5bbf0d4e22269336d51fb2feb723c0a93a",
+  "files": 52
  },
  "runtime": {
   "url": "index.html?dev=1&lazy=1 (producción: carga por grupos, webp activo)",
-  "loadedImages": 1576,
+  "loadedImages": 1613,
   "sampling": "24 muestras por estado y dirección (down/side/left/up)"
  },
  "summary": {
@@ -32,7 +32,7 @@
    "ARTE_VIEJO": 1
   },
   "files": {
-   "CODEX_OK": 872,
+   "CODEX_OK": 896,
    "HUERFANO": 104,
    "ARTE_VIEJO": 30
   }
@@ -12021,13 +12021,22 @@
       714
      ],
      "bytes": 180282
+    },
+    {
+     "file": "assets/sprites/bosses/infernal/demonio_mayor/anakin/death.png",
+     "loadedAs": "webp",
+     "size": [
+      595,
+      119
+     ],
+     "bytes": 9952
     }
    ],
    "frames": {
     "idle": 1,
     "walk": 4,
     "attack": 1,
-    "death": 1
+    "death": 5
    }
   },
   "hechicero_supremo": {
@@ -12071,13 +12080,22 @@
       384
      ],
      "bytes": 34262
+    },
+    {
+     "file": "assets/sprites/battlefield/death/golem_cuerpos.png",
+     "loadedAs": "webp",
+     "size": [
+      2240,
+      384
+     ],
+     "bytes": 32486
     }
    ],
    "frames": {
     "idle": 1,
     "walk": 2,
     "attack": 1,
-    "death": 1
+    "death": 5
    }
   },
   "angel_corrompido": {
@@ -12127,7 +12145,7 @@
     "idle": 1,
     "walk": 1,
     "attack": 1,
-    "death": 1
+    "death": 3
    }
   },
   "lobo_artico": {
@@ -12146,13 +12164,22 @@
       630
      ],
      "bytes": 170562
+    },
+    {
+     "file": "assets/sprites/enemies/hielo/lobo_artico/anakin/death.png",
+     "loadedAs": "webp",
+     "size": [
+      384,
+      105
+     ],
+     "bytes": 7526
     }
    ],
    "frames": {
     "idle": 1,
     "walk": 4,
     "attack": 1,
-    "death": 1
+    "death": 4
    }
   },
   "hada_escarcha": {
@@ -12452,7 +12479,7 @@
     "idle": 1,
     "walk": 1,
     "attack": 1,
-    "death": 1
+    "death": 3
    }
   },
   "duende_bosque": {
@@ -12521,13 +12548,22 @@
       384
      ],
      "bytes": 38056
+    },
+    {
+     "file": "assets/sprites/battlefield/death/thornbeast.png",
+     "loadedAs": "webp",
+     "size": [
+      2240,
+      384
+     ],
+     "bytes": 36688
     }
    ],
    "frames": {
     "idle": 1,
     "walk": 2,
     "attack": 1,
-    "death": 1
+    "death": 5
    }
   },
   "cu_sith": {
@@ -12948,13 +12984,22 @@
       384
      ],
      "bytes": 35168
+    },
+    {
+     "file": "assets/sprites/battlefield/death/minotauro.png",
+     "loadedAs": "webp",
+     "size": [
+      2240,
+      384
+     ],
+     "bytes": 40278
     }
    ],
    "frames": {
     "idle": 1,
     "walk": 2,
     "attack": 1,
-    "death": 1
+    "death": 5
    }
   },
   "tiburon_joven": {
@@ -13157,13 +13202,22 @@
       384
      ],
      "bytes": 468102
+    },
+    {
+     "file": "assets/sprites/battlefield/death/leviatan.png",
+     "loadedAs": "webp",
+     "size": [
+      2240,
+      384
+     ],
+     "bytes": 47558
     }
    ],
    "frames": {
     "idle": 1,
     "walk": 2,
     "attack": 1,
-    "death": 1
+    "death": 5
    }
   },
   "lev_tentaculo": {
@@ -13182,13 +13236,31 @@
       72
      ],
      "bytes": 8222
+    },
+    {
+     "file": "assets/sprites/bosses/acuatica/kraken_joven/tent_05.png",
+     "loadedAs": "webp",
+     "size": [
+      94,
+      69
+     ],
+     "bytes": 8846
+    },
+    {
+     "file": "assets/sprites/bosses/acuatica/kraken_joven/tent_death_01.png",
+     "loadedAs": "webp",
+     "size": [
+      103,
+      72
+     ],
+     "bytes": 2248
     }
    ],
    "frames": {
     "idle": 1,
     "walk": 1,
     "attack": 1,
-    "death": 1
+    "death": 5
    }
   },
   "carcelero": {
@@ -13382,13 +13454,22 @@
       384
      ],
      "bytes": 41056
+    },
+    {
+     "file": "assets/sprites/battlefield/death/dragon_forja.png",
+     "loadedAs": "webp",
+     "size": [
+      2240,
+      384
+     ],
+     "bytes": 36536
     }
    ],
    "frames": {
     "idle": 1,
     "walk": 2,
     "attack": 1,
-    "death": 1
+    "death": 5
    }
   },
   "caballero": {
@@ -13531,13 +13612,13 @@
       2176,
       342
      ],
-     "bytes": 50398
+     "bytes": 75244
     }
    ],
    "frames": {
     "idle": 1,
     "walk": 4,
-    "attack": 2,
+    "attack": 4,
     "death": 2
    }
   },
@@ -13582,13 +13663,22 @@
       64
      ],
      "bytes": 450
+    },
+    {
+     "file": "assets/sprites/arenas/micelial/fx/nucleo_3_wither.png",
+     "loadedAs": "webp",
+     "size": [
+      40,
+      64
+     ],
+     "bytes": 440
     }
    ],
    "frames": {
     "idle": 1,
     "walk": 1,
     "attack": 1,
-    "death": 0
+    "death": 2
    }
   },
   "raiz_absorcion": {
@@ -13607,13 +13697,22 @@
       96
      ],
      "bytes": 620
+    },
+    {
+     "file": "assets/sprites/arenas/micelial/fx/root_curl_muerte_0.png",
+     "loadedAs": "webp",
+     "size": [
+      64,
+      96
+     ],
+     "bytes": 764
     }
    ],
    "frames": {
     "idle": 1,
     "walk": 1,
     "attack": 1,
-    "death": 0
+    "death": 5
    }
   },
   "micelio": {
@@ -13632,13 +13731,22 @@
       384
      ],
      "bytes": 49852
+    },
+    {
+     "file": "assets/sprites/battlefield/death/micelio.png",
+     "loadedAs": "webp",
+     "size": [
+      2240,
+      384
+     ],
+     "bytes": 51416
     }
    ],
    "frames": {
     "idle": 1,
     "walk": 2,
     "attack": 1,
-    "death": 1
+    "death": 5
    }
   },
   "madre_espora": {
@@ -13702,7 +13810,7 @@
    "frames": {
     "idle": 1,
     "walk": 2,
-    "attack": 1,
+    "attack": 5,
     "death": 4
    }
   },
@@ -13822,13 +13930,22 @@
       384
      ],
      "bytes": 36996
+    },
+    {
+     "file": "assets/sprites/battlefield/death/ab_carcelero.png",
+     "loadedAs": "webp",
+     "size": [
+      2240,
+      384
+     ],
+     "bytes": 41416
     }
    ],
    "frames": {
     "idle": 1,
     "walk": 2,
     "attack": 1,
-    "death": 1
+    "death": 5
    }
   },
   "ab_morador": {
@@ -13872,13 +13989,22 @@
       143
      ],
      "bytes": 10652
+    },
+    {
+     "file": "assets/vfx/abismo/tent_grande_muerte_0.png",
+     "loadedAs": "webp",
+     "size": [
+      105,
+      143
+     ],
+     "bytes": 3146
     }
    ],
    "frames": {
     "idle": 1,
     "walk": 1,
     "attack": 1,
-    "death": 1
+    "death": 5
    }
   },
   "cm_saqueador": {
@@ -14122,13 +14248,22 @@
       384
      ],
      "bytes": 16934
+    },
+    {
+     "file": "assets/sprites/battlefield/death/cm_maestro.png",
+     "loadedAs": "webp",
+     "size": [
+      2240,
+      384
+     ],
+     "bytes": 15948
     }
    ],
    "frames": {
     "idle": 1,
     "walk": 2,
     "attack": 1,
-    "death": 1
+    "death": 5
    }
   },
   "cm_tramoyista": {
@@ -14147,13 +14282,22 @@
       384
      ],
      "bytes": 38300
+    },
+    {
+     "file": "assets/sprites/battlefield/death/cm_tramoyista.png",
+     "loadedAs": "webp",
+     "size": [
+      2240,
+      384
+     ],
+     "bytes": 40390
     }
    ],
    "frames": {
     "idle": 1,
     "walk": 2,
     "attack": 1,
-    "death": 1
+    "death": 5
    }
   },
   "cm_dama": {
@@ -14172,13 +14316,22 @@
       384
      ],
      "bytes": 22174
+    },
+    {
+     "file": "assets/sprites/battlefield/death/cm_dama.png",
+     "loadedAs": "webp",
+     "size": [
+      2240,
+      384
+     ],
+     "bytes": 23216
     }
    ],
    "frames": {
     "idle": 1,
     "walk": 2,
     "attack": 1,
-    "death": 1
+    "death": 5
    }
   },
   "cm_cometa": {
@@ -14247,13 +14400,22 @@
       384
      ],
      "bytes": 34644
+    },
+    {
+     "file": "assets/sprites/battlefield/death/cm_presentador.png",
+     "loadedAs": "webp",
+     "size": [
+      2240,
+      384
+     ],
+     "bytes": 35698
     }
    ],
    "frames": {
     "idle": 1,
     "walk": 2,
     "attack": 1,
-    "death": 1
+    "death": 5
    }
   },
   "mn_esclavo": {
@@ -14447,13 +14609,22 @@
       384
      ],
      "bytes": 35062
+    },
+    {
+     "file": "assets/sprites/battlefield/death/mn_titan.png",
+     "loadedAs": "webp",
+     "size": [
+      2240,
+      384
+     ],
+     "bytes": 33938
     }
    ],
    "frames": {
     "idle": 1,
     "walk": 2,
     "attack": 1,
-    "death": 1
+    "death": 5
    }
   },
   "mn_cerbero": {
@@ -14607,11 +14778,16 @@
   {"file":"assets/sprites/arenas/micelial/fx/nucleo_2_wither.png","category":"arenas","size":[60,72],"bytes":1863,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/fx/nucleo_3.png","category":"arenas","size":[40,64],"bytes":1055,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/fx/nucleo_3_dead.png","category":"arenas","size":[40,64],"bytes":940,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/arenas/micelial/fx/nucleo_3_wither.png","category":"arenas","size":[40,64],"bytes":1050,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/arenas/micelial/fx/nucleo_3_wither.png","category":"arenas","size":[40,64],"bytes":1050,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/fx/nucleo_4.png","category":"arenas","size":[68,96],"bytes":2043,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/fx/nucleo_4_dead.png","category":"arenas","size":[68,96],"bytes":1854,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/fx/nucleo_4_wither.png","category":"arenas","size":[68,96],"bytes":2061,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/fx/root_curl.png","category":"arenas","size":[64,96],"bytes":1564,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/arenas/micelial/fx/root_curl_muerte_0.png","category":"arenas","size":[64,96],"bytes":2107,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/arenas/micelial/fx/root_curl_muerte_1.png","category":"arenas","size":[64,96],"bytes":1965,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/arenas/micelial/fx/root_curl_muerte_2.png","category":"arenas","size":[64,96],"bytes":1714,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/arenas/micelial/fx/root_curl_muerte_3.png","category":"arenas","size":[64,96],"bytes":1660,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/arenas/micelial/fx/root_curl_muerte_4.png","category":"arenas","size":[64,96],"bytes":1031,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/fx/root_line.png","category":"arenas","size":[199,76],"bytes":29684,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/fx/root_spike_a.png","category":"arenas","size":[45,111],"bytes":9818,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/fx/root_spike_b.png","category":"arenas","size":[41,108],"bytes":9427,"webp":true,"loaded":true,"usedBy":["ASSET_MANIFEST"],"status":"CODEX_OK"},
@@ -14656,7 +14832,7 @@
   {"file":"assets/sprites/arenas/micelial/mother/pilot_heart_key.png","category":"arenas","size":[656,560],"bytes":537918,"webp":false,"loaded":true,"usedBy":["runtime(cargado)"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/mother/pilot_idle.png","category":"arenas","size":[1296,496],"bytes":1185952,"webp":false,"loaded":true,"usedBy":["js/arenas/micelial/mic-render.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/micelial/peregrino/atlas.png","category":"arenas","size":[1712,266],"bytes":112641,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/arenas/micelial/sabueso/atlas.png","category":"arenas","size":[2176,342],"bytes":154028,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/arenas/micelial/sabueso/atlas.png","category":"arenas","size":[2176,342],"bytes":219313,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/minas/mn_acechador/atlas.png","category":"arenas","size":[432,300],"bytes":85286,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/minas-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/minas/mn_cerbero/atlas.png","category":"arenas","size":[1536,2112],"bytes":576239,"webp":true,"loaded":true,"usedBy":["js/arenas/common/boss-blueprints.js","js/assets/minas-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/minas/mn_consumidor/atlas.png","category":"arenas","size":[320,270],"bytes":77684,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/minas-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
@@ -14680,6 +14856,18 @@
   {"file":"assets/sprites/battlefield/cm_tramoyista.png","category":"battlefield","size":[1792,384],"bytes":116343,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)"],"status":"CODEX_OK"},
   {"file":"assets/sprites/battlefield/column.png","category":"battlefield","size":[239,299],"bytes":106763,"webp":true,"loaded":true,"usedBy":["runtime(cargado)"],"status":"CODEX_OK"},
   {"file":"assets/sprites/battlefield/dead-tree.png","category":"battlefield","size":[298,353],"bytes":126154,"webp":true,"loaded":true,"usedBy":["runtime(cargado)"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/battlefield/death/ab_carcelero.png","category":"battlefield","size":[2240,384],"bytes":120436,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/battlefield/death/cm_dama.png","category":"battlefield","size":[2240,384],"bytes":74141,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/battlefield/death/cm_maestro.png","category":"battlefield","size":[2240,384],"bytes":54495,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/battlefield/death/cm_presentador.png","category":"battlefield","size":[2240,384],"bytes":113588,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/battlefield/death/cm_tramoyista.png","category":"battlefield","size":[2240,384],"bytes":120968,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/battlefield/death/dragon_forja.png","category":"battlefield","size":[2240,384],"bytes":109162,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/battlefield/death/golem_cuerpos.png","category":"battlefield","size":[2240,384],"bytes":101084,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/battlefield/death/leviatan.png","category":"battlefield","size":[2240,384],"bytes":150933,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/battlefield/death/micelio.png","category":"battlefield","size":[2240,384],"bytes":154680,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/battlefield/death/minotauro.png","category":"battlefield","size":[2240,384],"bytes":124588,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/battlefield/death/mn_titan.png","category":"battlefield","size":[2240,384],"bytes":98091,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/battlefield/death/thornbeast.png","category":"battlefield","size":[2240,384],"bytes":107135,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)"],"status":"CODEX_OK"},
   {"file":"assets/sprites/battlefield/dragon_forja.png","category":"battlefield","size":[1792,384],"bytes":126577,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)"],"status":"CODEX_OK"},
   {"file":"assets/sprites/battlefield/fallen.png","category":"battlefield","size":[322,169],"bytes":97289,"webp":true,"loaded":true,"usedBy":["runtime(cargado)"],"status":"CODEX_OK"},
   {"file":"assets/sprites/battlefield/fern.png","category":"battlefield","size":[288,238],"bytes":129095,"webp":true,"loaded":true,"usedBy":["runtime(cargado)"],"status":"CODEX_OK"},
@@ -14718,8 +14906,13 @@
   {"file":"assets/sprites/bosses/acuatica/kraken_joven/tent_02.png","category":"bosses","size":[57,56],"bytes":4264,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/bosses/acuatica/kraken_joven/tent_03.png","category":"bosses","size":[80,60],"bytes":6724,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/bosses/acuatica/kraken_joven/tent_04.png","category":"bosses","size":[93,75],"bytes":8574,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/bosses/acuatica/kraken_joven/tent_05.png","category":"bosses","size":[94,69],"bytes":10653,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/bosses/acuatica/kraken_joven/tent_05.png","category":"bosses","size":[94,69],"bytes":10653,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/bosses/acuatica/kraken_joven/tent_06.png","category":"bosses","size":[70,54],"bytes":5280,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/bosses/acuatica/kraken_joven/tent_death_01.png","category":"bosses","size":[103,72],"bytes":6731,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/bosses/acuatica/kraken_joven/tent_death_02.png","category":"bosses","size":[103,72],"bytes":4647,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/bosses/acuatica/kraken_joven/tent_death_03.png","category":"bosses","size":[103,72],"bytes":3664,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/bosses/acuatica/kraken_joven/tent_death_04.png","category":"bosses","size":[103,72],"bytes":3238,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/bosses/acuatica/kraken_joven/tent_death_05.png","category":"bosses","size":[103,72],"bytes":2943,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/bosses/acuatica/leviatan/bite_01.png","category":"bosses","size":[338,114],"bytes":37141,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/bosses/acuatica/leviatan/coil_01.png","category":"bosses","size":[172,108],"bytes":14600,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/bosses/acuatica/leviatan/coil_02.png","category":"bosses","size":[225,114],"bytes":19392,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
@@ -14751,6 +14944,7 @@
   {"file":"assets/sprites/bosses/hielo/angel_caido_hielo/v2/atlas.png","category":"bosses","size":[1272,910],"bytes":814277,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/arenas/common/boss-blueprints.js","js/assets/boss-sheets-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/bosses/hielo/mago_hielo_cristal/static.png","category":"bosses","size":[38,44],"bytes":2134,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/bosses/hielo/mago_hielo_cristal/v2/atlas.png","category":"bosses","size":[960,408],"bytes":308774,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/arenas/common/boss-blueprints.js","js/assets/boss-sheets-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/bosses/infernal/demonio_mayor/anakin/death.png","category":"bosses","size":[595,119],"bytes":30401,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/anakin-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/bosses/infernal/demonio_mayor/atlas.png","category":"bosses","size":[476,714],"bytes":254075,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/arenas/common/boss-blueprints.js","js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/bosses/infernal/hechicero/angel/atlas.png","category":"bosses","size":[1024,640],"bytes":96092,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/arenas/common/boss-blueprints.js","js/assets/pixrig-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/bosses/infernal/hechicero/atlas.png","category":"bosses","size":[816,565],"bytes":508352,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/arenas/common/boss-blueprints.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
@@ -15437,6 +15631,7 @@
   {"file":"assets/sprites/enemies/hielo/golem_hielo/walk3.png","category":"enemies","size":[41,44],"bytes":5316,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/hielo/hada_escarcha/atlas.png","category":"enemies","size":[371,82],"bytes":36101,"webp":true,"loaded":true,"usedBy":["js/assets/bestias-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/hielo/hada_escarcha/v2/atlas.png","category":"enemies","size":[1176,525],"bytes":284381,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/enemies/hielo/lobo_artico/anakin/death.png","category":"enemies","size":[384,105],"bytes":24569,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/anakin-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/hielo/lobo_artico/atlas.png","category":"enemies","size":[384,630],"bytes":265058,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/infernal/demonio_mago/atlas.png","category":"enemies","size":[476,714],"bytes":222119,"webp":true,"loaded":true,"usedBy":["js/assets/enemy-sprites.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/enemies/infernal/demonio_mago/v2/atlas.png","category":"enemies","size":[1992,336],"bytes":152438,"webp":false,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/enemy-runway-sheets.js"],"status":"CODEX_OK"},

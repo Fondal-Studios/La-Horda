@@ -17,8 +17,8 @@ Generado por `node tools/art/build-art-atlas.js` (no editar a mano). Fuente de v
 - Skins/cromas/formas de Ascensión: CODEX_OK 11 · FALTA_ANIMACION 90 · ARTE_VIEJO 3
 - Enemigos: CODEX_OK 63 · FALTA_ANIMACION 13
 - Jefes y subjefes: CODEX_OK 14 · FALTA_ANIMACION 13 · ARTE_VIEJO 1
-- Archivos (arenas, props, battlefield, enemigos, jefes, campeones): CODEX_OK 872 · HUERFANO 104 · ARTE_VIEJO 30
-- Fuentes del registro: 51 archivos, huella `3731a5f552e1`
+- Archivos (arenas, props, battlefield, enemigos, jefes, campeones): CODEX_OK 896 · HUERFANO 104 · ARTE_VIEJO 30
+- Fuentes del registro: 52 archivos, huella `ca01ae5bbf0d`
 
 ## Campeones (cuerpo base)
 
@@ -194,12 +194,12 @@ Cuadros distintos de idle / caminata (perfil) / ataque / muerte medidos con `dra
 | demonio_menor | subelite | infernal | CODEX_OK | real | 1 | 5 | 5 | 3 | `enemies/infernal/demonio_menor/v2/atlas.png` 1496x320 |
 | golem | elite | infernal | CODEX_OK | real | 1 | 4 | 1 | 4 | `enemies/infernal/golem/v2/atlas.png` 688x168 |
 | demonio_mago | elite | infernal | CODEX_OK | real | 1 | 3 | 3 | 3 | `enemies/infernal/demonio_mago/v2/atlas.png` 1992x336 |
-| demonio_mayor | jefe | infernal | CODEX_OK | real | 1 | 4 | 1 | 1 | `bosses/infernal/demonio_mayor/atlas.png` 476x714 |
+| demonio_mayor | jefe | infernal | CODEX_OK | real | 1 | 4 | 1 | 5 | `bosses/infernal/demonio_mayor/atlas.png` 476x714<br>`bosses/infernal/demonio_mayor/anakin/death.png` 595x119 |
 | hechicero_supremo | subjefe | infernal | CODEX_OK | real | 1 | 3 | 4 | 6 | `bosses/infernal/hechicero/atlas.png` 816x565 |
-| golem_cuerpos | jefe | infernal | FALTA_ANIMACION | real | 1 | 2 | 1 | 1 | `battlefield/golem_cuerpos.png` 1792x384 |
+| golem_cuerpos | jefe | infernal | FALTA_ANIMACION | real | 1 | 2 | 1 | 5 | `battlefield/golem_cuerpos.png` 1792x384<br>`battlefield/death/golem_cuerpos.png` 2240x384 |
 | angel_corrompido | jefe | infernal | CODEX_OK | real | 1 | 4 | 4 | 6 | `bosses/infernal/hechicero/angel/atlas.png` 1024x640 |
-| foco_convergencia | subelite | infernal | FALTA_ANIMACION | real | 1 | 1 | 1 | 1 | `assets/vfx/bosses/hielo/bsAngelPillar_1.png` 33x75 |
-| lobo_artico | normal | hielo | CODEX_OK | real | 1 | 4 | 1 | 1 | `enemies/hielo/lobo_artico/atlas.png` 384x630 |
+| foco_convergencia | subelite | infernal | FALTA_ANIMACION | real | 1 | 1 | 1 | 3 | `assets/vfx/bosses/hielo/bsAngelPillar_1.png` 33x75 |
+| lobo_artico | normal | hielo | CODEX_OK | real | 1 | 4 | 1 | 4 | `enemies/hielo/lobo_artico/atlas.png` 384x630<br>`enemies/hielo/lobo_artico/anakin/death.png` 384x105 |
 | hada_escarcha | normal | hielo | CODEX_OK | real | 1 | 6 | 4 | 2 | `enemies/hielo/hada_escarcha/v2/atlas.png` 1176x525 |
 | golem_hielo | normal | hielo | CODEX_OK | real | 1 | 6 | 4 | 3 | `enemies/hielo/golem_hielo/v2/atlas.png` 1552x561 |
 | dragoncito_hielo | elite | hielo | CODEX_OK | real | 1 | 4 | 2 | 4 | `enemies/hielo/dragoncito_hielo/v2/atlas.png` 752x312 |
@@ -211,10 +211,10 @@ Cuadros distintos de idle / caminata (perfil) / ataque / muerte medidos con `dra
 | cristal_servo | normal | hielo | CODEX_OK | real | 1 | 3 | 3 | 2 | `enemies/hielo/cristal_servo/v2/atlas.png` 1440x306 |
 | cristal_volador | normal | hielo | CODEX_OK | real | 1 | 6 | 5 | 3 | `enemies/hielo/cristal_volador/v2/atlas.png` 1480x282 |
 | angel_caido_hielo | jefe | hielo | CODEX_OK | real | 1 | 5 | 3 | 7 | `bosses/hielo/angel_caido_hielo/v2/atlas.png` 1272x910 |
-| foco_hielo | subelite | hielo | FALTA_ANIMACION | real | 1 | 1 | 1 | 1 | `assets/vfx/bosses/hielo/bsAngelPillar_1.png` 33x75 |
+| foco_hielo | subelite | hielo | FALTA_ANIMACION | real | 1 | 1 | 1 | 3 | `assets/vfx/bosses/hielo/bsAngelPillar_1.png` 33x75 |
 | duende_bosque | normal | bosque | CODEX_OK | real | 1 | 6 | 3 | 3 | `enemies/bosque/duende_bosque/v2/atlas.png` 1784x360 |
 | enjambre_hadas | normal | bosque | CODEX_OK | real | 1 | 4 | 2 | 4 | `enemies/bosque/enjambre_hadas/v3/atlas.png` 440x168 |
-| bestia_bosque | subelite | bosque | FALTA_ANIMACION | real | 1 | 2 | 1 | 1 | `battlefield/thornbeast.png` 1792x384 |
+| bestia_bosque | subelite | bosque | FALTA_ANIMACION | real | 1 | 2 | 1 | 5 | `battlefield/thornbeast.png` 1792x384<br>`battlefield/death/thornbeast.png` 2240x384 |
 | cu_sith | elite | bosque | CODEX_OK | real | 1 | 4 | 2 | 4 | `enemies/bosque/cu_sith/v3/atlas.png` 872x120 |
 | ent | elite | bosque | CODEX_OK | real | 1 | 6 | 5 | 3 | `enemies/bosque/ent/v2/atlas.png` 1216x543 |
 | dama_bosque | elite | bosque | CODEX_OK | real | 1 | 4 | 4 | 6 | `enemies/bosque/dama_bosque/v2/atlas.png` 960x336 |
@@ -230,7 +230,7 @@ Cuadros distintos de idle / caminata (perfil) / ataque / muerte medidos con `dra
 | druida_arena | elite | laberinto | CODEX_OK | real | 1 | 6 | 5 | 3 | `enemies/laberinto/druida_arena/v2/atlas.png` 1536x374 |
 | esfinge | elite | laberinto | CODEX_OK | real | 1 | 4 | 3 | 2 | `enemies/laberinto/esfinge/v2/atlas.png` 2056x302 |
 | guardian_laberinto | subjefe | laberinto | CODEX_OK | real | 1 | 4 | 5 | 5 | `bosses/laberinto/guardian_laberinto/idle1.png` 55x53<br>`bosses/laberinto/guardian_laberinto/walk1.png` 63x51<br>`bosses/laberinto/guardian_laberinto/atk1.png` 59x53<br>`bosses/laberinto/guardian_laberinto/death1.png` 55x48 |
-| minotauro | jefe | laberinto | FALTA_ANIMACION | real | 1 | 2 | 1 | 1 | `battlefield/minotauro.png` 1792x384 |
+| minotauro | jefe | laberinto | FALTA_ANIMACION | real | 1 | 2 | 1 | 5 | `battlefield/minotauro.png` 1792x384<br>`battlefield/death/minotauro.png` 2240x384 |
 | tiburon_joven | normal | acuatica | CODEX_OK | real | 1 | 3 | 3 | 3 | `enemies/acuatica/tiburon_joven/v2/atlas.png` 1832x242 |
 | medusa_electrica | normal | acuatica | CODEX_OK | real | 1 | 6 | 2 | 2 | `enemies/acuatica/medusa_electrica/v2/atlas.png` 2072x573 |
 | cangrejo_acorazado | normal | acuatica | CODEX_OK | real | 1 | 3 | 3 | 3 | `enemies/acuatica/cangrejo_acorazado/v2/atlas.png` 1880x276 |
@@ -238,8 +238,8 @@ Cuadros distintos de idle / caminata (perfil) / ataque / muerte medidos con `dra
 | anguila_electrica | normal | acuatica | CODEX_OK | real | 1 | 6 | 3 | 3 | `enemies/acuatica/anguila_electrica/v2/atlas.png` 1816x144 |
 | tiburon_blanco | elite | acuatica | CODEX_OK | real | 1 | 6 | 3 | 3 | `enemies/acuatica/tiburon_blanco/v2/atlas.png` 2048x266 |
 | kraken_joven | subjefe | acuatica | CODEX_OK | real | 1 | 4 | 1 | 5 | `bosses/acuatica/kraken_joven/idle_01.png` 115x60<br>`bosses/acuatica/kraken_joven/death_01.png` 105x61 |
-| leviatan | jefe | acuatica | FALTA_ANIMACION | real | 1 | 2 | 1 | 1 | `battlefield/leviatan.png` 1792x384 |
-| lev_tentaculo | subelite | acuatica | FALTA_ANIMACION | real | 1 | 1 | 1 | 1 | `bosses/acuatica/kraken_joven/tent_01.png` 103x72 |
+| leviatan | jefe | acuatica | FALTA_ANIMACION | real | 1 | 2 | 1 | 5 | `battlefield/leviatan.png` 1792x384<br>`battlefield/death/leviatan.png` 2240x384 |
+| lev_tentaculo | subelite | acuatica | FALTA_ANIMACION | real | 1 | 1 | 1 | 5 | `bosses/acuatica/kraken_joven/tent_01.png` 103x72<br>`bosses/acuatica/kraken_joven/tent_05.png` 94x69<br>`bosses/acuatica/kraken_joven/tent_death_01.png` 103x72 |
 | carcelero | normal | fortaleza | CODEX_OK | real | 1 | 3 | 2 | 2 | `arenas/fortaleza/carcelero/atlas.png` 2160x216 |
 | dragon_bronce | normal | fortaleza | CODEX_OK | real | 1 | 4 | 2 | 2 | `arenas/fortaleza/dragon_bronce/atlas.png` 1696x270 |
 | automata | elite | fortaleza | CODEX_OK | real | 1 | 4 | 3 | 2 | `arenas/fortaleza/automata/atlas.png` 2464x270 |
@@ -247,27 +247,27 @@ Cuadros distintos de idle / caminata (perfil) / ataque / muerte medidos con `dra
 | engendro | normal | fortaleza | CODEX_OK | real | 1 | 6 | 5 | 4 | `enemies/fortaleza/engendro/v2/atlas.png` 960x240 |
 | verdugo | elite | fortaleza | CODEX_OK | real | 1 | 3 | 2 | 2 | `arenas/fortaleza/verdugo/atlas.png` 2016x328 |
 | arana | subelite | fortaleza | CODEX_OK | real | 1 | 3 | 2 | 2 | `arenas/fortaleza/arana/atlas.png` 1424x230 |
-| dragon_forja | subjefe | fortaleza | FALTA_ANIMACION | real | 1 | 2 | 1 | 1 | `battlefield/dragon_forja.png` 1792x384 |
+| dragon_forja | subjefe | fortaleza | FALTA_ANIMACION | real | 1 | 2 | 1 | 5 | `battlefield/dragon_forja.png` 1792x384<br>`battlefield/death/dragon_forja.png` 2240x384 |
 | caballero | jefe | fortaleza | CODEX_OK | real | 1 | 6 | 5 | 2 | `arenas/fortaleza/caballero/atlas.png` 1824x690 |
 | infectado | normal | micelial | CODEX_OK | real | 1 | 6 | 2 | 2 | `arenas/micelial/infectado/atlas.png` 2072x426 |
 | acechador | subelite | micelial | CODEX_OK | real | 1 | 6 | 2 | 2 | `arenas/micelial/acechador/atlas.png` 1688x414 |
 | hinchado | elite | micelial | CODEX_OK | real | 1 | 3 | 2 | 2 | `arenas/micelial/hinchado/atlas.png` 1792x288 |
 | peregrino | subelite | micelial | CODEX_OK | real | 1 | 3 | 2 | 2 | `arenas/micelial/peregrino/atlas.png` 1712x266 |
-| sabueso | normal | micelial | CODEX_OK | real | 1 | 4 | 2 | 2 | `arenas/micelial/sabueso/atlas.png` 2176x342 |
+| sabueso | normal | micelial | CODEX_OK | real | 1 | 4 | 4 | 2 | `arenas/micelial/sabueso/atlas.png` 2176x342 |
 | chaman | elite | micelial | CODEX_OK | real | 1 | 3 | 2 | 2 | `arenas/micelial/chaman/atlas.png` 1328x410 |
-| nucleo_micelial | subelite | micelial | FALTA_ANIMACION | real | 1 | 1 | 1 | 0 | `arenas/micelial/fx/nucleo_3.png` 40x64 |
-| raiz_absorcion | subelite | micelial | FALTA_ANIMACION | real | 1 | 1 | 1 | 0 | `arenas/micelial/fx/root_curl.png` 64x96 |
-| micelio | subjefe | micelial | FALTA_ANIMACION | real | 1 | 2 | 1 | 1 | `battlefield/micelio.png` 1792x384 |
+| nucleo_micelial | subelite | micelial | FALTA_ANIMACION | real | 1 | 1 | 1 | 2 | `arenas/micelial/fx/nucleo_3.png` 40x64<br>`arenas/micelial/fx/nucleo_3_wither.png` 40x64 |
+| raiz_absorcion | subelite | micelial | FALTA_ANIMACION | real | 1 | 1 | 1 | 5 | `arenas/micelial/fx/root_curl.png` 64x96<br>`arenas/micelial/fx/root_curl_muerte_0.png` 64x96 |
+| micelio | subjefe | micelial | FALTA_ANIMACION | real | 1 | 2 | 1 | 5 | `battlefield/micelio.png` 1792x384<br>`battlefield/death/micelio.png` 2240x384 |
 | madre_espora | jefe | micelial | ARTE_VIEJO | - | 0 | 0 | 0 | 0 | - |
 | ab_errante | normal | abismo | FALTA_ANIMACION | real | 1 | 2 | 6 | 4 | `arenas/abismo/ab_errante/atlas.png` 448x300 |
-| ab_acechador | subelite | abismo | FALTA_ANIMACION | real | 1 | 2 | 1 | 4 | `arenas/abismo/ab_acechador/atlas.png` 480x345 |
+| ab_acechador | subelite | abismo | FALTA_ANIMACION | real | 1 | 2 | 5 | 4 | `arenas/abismo/ab_acechador/atlas.png` 480x345 |
 | ab_heraldo | subelite | abismo | FALTA_ANIMACION | real | 1 | 2 | 2 | 4 | `arenas/abismo/ab_heraldo/atlas.png` 432x308 |
 | ab_devorador | elite | abismo | FALTA_ANIMACION | real | 1 | 2 | 6 | 3 | `arenas/abismo/ab_devorador/atlas.png` 480x288 |
 | ab_tejedor | subelite | abismo | FALTA_ANIMACION | real | 1 | 2 | 2 | 4 | `arenas/abismo/ab_tejedor/atlas.png` 400x330 |
 | ab_jinete | elite | abismo | CODEX_OK | real | 1 | 4 | 3 | 5 | `bosses/bosque/jinete_sin_cabeza/v2/atlas.png` 656x148 |
-| ab_carcelero | subjefe | abismo | FALTA_ANIMACION | real | 1 | 2 | 1 | 1 | `battlefield/ab_carcelero.png` 1792x384 |
+| ab_carcelero | subjefe | abismo | FALTA_ANIMACION | real | 1 | 2 | 1 | 5 | `battlefield/ab_carcelero.png` 1792x384<br>`battlefield/death/ab_carcelero.png` 2240x384 |
 | ab_morador | jefe | abismo | FALTA_ANIMACION | real | 1 | 1 | 1 | 1 | `assets/vfx/abismo/tex_carne.png` 56x205 |
-| ab_tentaculo | subelite | abismo | FALTA_ANIMACION | real | 1 | 1 | 1 | 1 | `assets/vfx/abismo/tent_grande_0.png` 105x143 |
+| ab_tentaculo | subelite | abismo | FALTA_ANIMACION | real | 1 | 1 | 1 | 5 | `assets/vfx/abismo/tent_grande_0.png` 105x143<br>`assets/vfx/abismo/tent_grande_muerte_0.png` 105x143 |
 | cm_saqueador | normal | ciudad | CODEX_OK | real | 1 | 6 | 5 | 4 | `enemies/ciudad/cm_saqueador/v2/atlas.png` 640x240 |
 | cm_perro | normal | ciudad | CODEX_OK | real | 1 | 4 | 4 | 3 | `enemies/ciudad/cm_perro/v2/atlas.png` 1640x230 |
 | cm_raptor | subelite | ciudad | CODEX_OK | real | 1 | 6 | 5 | 4 | `enemies/ciudad/cm_raptor/v2/atlas.png` 768x380 |
@@ -277,12 +277,12 @@ Cuadros distintos de idle / caminata (perfil) / ataque / muerte medidos con `dra
 | cm_campanero | elite | ciudad | CODEX_OK | real | 1 | 6 | 5 | 2 | `enemies/ciudad/cm_campanero/v2/atlas.png` 1368x374 |
 | cm_sectario | normal | ciudad | CODEX_OK | real | 1 | 6 | 5 | 4 | `enemies/ciudad/cm_sectario/v2/atlas.png` 576x336 |
 | cm_espectro | normal | ciudad | CODEX_OK | real | 1 | 4 | 4 | 4 | `enemies/ciudad/cm_espectro/v2/atlas.png` 672x304 |
-| cm_maestro | subjefe | ciudad | FALTA_ANIMACION | real | 1 | 2 | 1 | 1 | `battlefield/cm_maestro.png` 1792x384 |
-| cm_tramoyista | subjefe | ciudad | FALTA_ANIMACION | real | 1 | 2 | 1 | 1 | `battlefield/cm_tramoyista.png` 1792x384 |
-| cm_dama | subjefe | ciudad | FALTA_ANIMACION | real | 1 | 2 | 1 | 1 | `battlefield/cm_dama.png` 1792x384 |
+| cm_maestro | subjefe | ciudad | FALTA_ANIMACION | real | 1 | 2 | 1 | 5 | `battlefield/cm_maestro.png` 1792x384<br>`battlefield/death/cm_maestro.png` 2240x384 |
+| cm_tramoyista | subjefe | ciudad | FALTA_ANIMACION | real | 1 | 2 | 1 | 5 | `battlefield/cm_tramoyista.png` 1792x384<br>`battlefield/death/cm_tramoyista.png` 2240x384 |
+| cm_dama | subjefe | ciudad | FALTA_ANIMACION | real | 1 | 2 | 1 | 5 | `battlefield/cm_dama.png` 1792x384<br>`battlefield/death/cm_dama.png` 2240x384 |
 | cm_cometa | normal | ciudad | FALTA_ANIMACION | real | 1 | 1 | 1 | 1 | `assets/vfx/ciudad/cometa_vuelo_0.png` 48x48 |
 | cm_espejismo | normal | ciudad | CODEX_OK | real | 1 | 6 | 6 | 6 | `arenas/ciudad/cm_dama/atlas.png` 768x768 |
-| cm_presentador | jefe | ciudad | FALTA_ANIMACION | real | 1 | 2 | 1 | 1 | `battlefield/cm_presentador.png` 1792x384 |
+| cm_presentador | jefe | ciudad | FALTA_ANIMACION | real | 1 | 2 | 1 | 5 | `battlefield/cm_presentador.png` 1792x384<br>`battlefield/death/cm_presentador.png` 2240x384 |
 | mn_esclavo | normal | minas | CODEX_OK | real | 1 | 8 | 8 | 4 | `arenas/minas/mn_esclavo/atlas.png` 392x210 |
 | mn_insecto | normal | minas | CODEX_OK | real | 1 | 8 | 4 | 8 | `arenas/minas/mn_insecto/atlas.png` 368x285 |
 | mn_acechador | subelite | minas | CODEX_OK | real | 1 | 8 | 8 | 5 | `arenas/minas/mn_acechador/atlas.png` 432x300 |
@@ -290,7 +290,7 @@ Cuadros distintos de idle / caminata (perfil) / ataque / muerte medidos con `dra
 | mn_escupidor | subelite | minas | CODEX_OK | real | 1 | 8 | 6 | 7 | `arenas/minas/mn_escupidor/atlas.png` 304x184 |
 | mn_consumidor | elite | minas | CODEX_OK | real | 1 | 8 | 6 | 6 | `arenas/minas/mn_consumidor/atlas.png` 320x270 |
 | mn_devoraluz | elite | minas | CODEX_OK | real | 1 | 6 | 5 | 3 | `enemies/minas/mn_devoraluz/v2/atlas.png` 1792x484 |
-| mn_titan | subjefe | minas | FALTA_ANIMACION | real | 1 | 2 | 1 | 1 | `battlefield/mn_titan.png` 1792x384 |
+| mn_titan | subjefe | minas | FALTA_ANIMACION | real | 1 | 2 | 1 | 5 | `battlefield/mn_titan.png` 1792x384<br>`battlefield/death/mn_titan.png` 2240x384 |
 | mn_cerbero | jefe | minas | FALTA_ANIMACION | real | 1 | 2 | 1 | 1 | `battlefield/mn_cerbero.png` 1792x384 |
 
 ## Arenas, props y demás archivos
@@ -299,11 +299,11 @@ Un registro por imagen (PNG; el `.webp` es su copia sin pérdida) en `ATLAS_ARTE
 
 | Carpeta | Imágenes | MB | ARTE_VIEJO | HUERFANO |
 |---|--:|--:|--:|--:|
-| arenas | 185 | 23.2 | 0 | 2 |
-| battlefield | 32 | 4.0 | 0 | 0 |
-| bosses | 94 | 5.5 | 0 | 0 |
+| arenas | 190 | 23.3 | 0 | 2 |
+| battlefield | 44 | 5.3 | 0 | 0 |
+| bosses | 100 | 5.6 | 0 | 0 |
 | champions | 489 | 71.4 | 30 | 102 |
-| enemies | 206 | 9.4 | 0 | 0 |
+| enemies | 207 | 9.4 | 0 | 0 |
 
 ### Huérfanos (no los carga ni los referencia el juego; candidatos a limpieza, NO se borran acá)
 

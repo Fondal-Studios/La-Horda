@@ -143,7 +143,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "enemy-coverage.json: attack=formas+clon(caminar), death=formas+clon(caminar), hit=formas+clon(caminar); ATLAS_ARTE=ARTE_VIEJO; arena 1/10 (ciudad); altura 3.27× el campeón típico"
+   "evidencia": "enemy-coverage.json: attack=formas+clon(caminar), death=formas+clon(caminar), hit=formas+clon(caminar); ATLAS_ARTE=ARTE_VIEJO; arena 1/10 (ciudad); altura 3.27× el campeón típico",
+   "nota": "2026-11-18: no apto para Anakin. Es un proyectil (cometa); su \"ataque\" es el estallido cmBoom y su \"muerte\" el desvio dorado (cometa_oro), que ya tienen arte."
   },
   {
    "id": "enemigo-cm_presentador",
@@ -151,7 +152,7 @@
    "descripcion": "El Presentador (cm_presentador, jefe, arena ciudad): falta arte propio de death",
    "prioridad": "critico",
    "orden": 4,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "gen4_image",
    "costo_creditos": 5,
    "refs": {
@@ -162,7 +163,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 1/10 (ciudad); altura 3.33× el campeón típico"
+   "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 1/10 (ciudad); altura 3.33× el campeón típico",
+   "nota": "Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros (hoja battlefield/death); la muerte especial de la Ciudad usa la misma figura."
   },
   {
    "id": "enemigo-cm_dama",
@@ -170,7 +172,7 @@
    "descripcion": "La Dama del Telón (cm_dama, subjefe, arena ciudad): falta arte propio de death",
    "prioridad": "critico",
    "orden": 5,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "gen4_image",
    "costo_creditos": 5,
    "refs": {
@@ -181,7 +183,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 1/10 (ciudad); altura 3.47× el campeón típico"
+   "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 1/10 (ciudad); altura 3.47× el campeón típico",
+   "nota": "Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros."
   },
   {
    "id": "enemigo-cm_maestro",
@@ -189,7 +192,7 @@
    "descripcion": "Maestro de Ceremonias (cm_maestro, subjefe, arena ciudad): falta arte propio de death",
    "prioridad": "critico",
    "orden": 6,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "gen4_image",
    "costo_creditos": 5,
    "refs": {
@@ -200,7 +203,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 1/10 (ciudad); altura 3.56× el campeón típico"
+   "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 1/10 (ciudad); altura 3.56× el campeón típico",
+   "nota": "Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros."
   },
   {
    "id": "enemigo-cm_tramoyista",
@@ -208,7 +212,7 @@
    "descripcion": "El Tramoyista (cm_tramoyista, subjefe, arena ciudad): falta arte propio de death",
    "prioridad": "critico",
    "orden": 7,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "gen4_image",
    "costo_creditos": 5,
    "refs": {
@@ -219,7 +223,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 1/10 (ciudad); altura 2.88× el campeón típico"
+   "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 1/10 (ciudad); altura 2.88× el campeón típico",
+   "nota": "Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros."
   },
   {
    "id": "arena-ciudad-edificios-t06",
@@ -310,7 +315,7 @@
    "descripcion": "Dragón de la Forja (dragon_forja, subjefe, arena fortaleza): falta arte propio de death",
    "prioridad": "critico",
    "orden": 12,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "gen4_image",
    "costo_creditos": 5,
    "refs": {
@@ -325,7 +330,7 @@
    },
    "dependencias": [],
    "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 2/10 (fortaleza); altura 2.42× el campeón típico",
-   "nota": "Intento Runway rechazado (hoja_dragon_forja): NO repetir igual; leer REGISTRO_RUNWAY «NO REPETIR»."
+   "nota": "Intento Runway rechazado (hoja_dragon_forja): NO repetir igual; leer REGISTRO_RUNWAY «NO REPETIR». | Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros (las alas se pierden en el cuadro tendido)."
   },
   {
    "id": "campeon-poses-cazadora_ult_poses_gpt2",
@@ -2533,7 +2538,7 @@
    "descripcion": "Bestia del Bosque (bestia_bosque, subelite, arena bosque): falta arte propio de death",
    "prioridad": "importante",
    "orden": 57,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "gen4_image",
    "costo_creditos": 5,
    "refs": {
@@ -2550,7 +2555,7 @@
    },
    "dependencias": [],
    "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 3/10 (bosque); altura 3.05× el campeón típico",
-   "nota": "Intento Runway rechazado (hoja_bestia_bosque): NO repetir igual; leer REGISTRO_RUNWAY «NO REPETIR»."
+   "nota": "Intento Runway rechazado (hoja_bestia_bosque): NO repetir igual; leer REGISTRO_RUNWAY «NO REPETIR». | Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros (hoja thornbeast)."
   },
   {
    "id": "enemigo-enjambre_hadas",
@@ -2571,7 +2576,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "enemy-coverage.json: attack=real+clon(caminar), death=real, hit=real+clon(caminar); ATLAS_ARTE=CODEX_OK; arena 3/10 (bosque); altura 2.81× el campeón típico"
+   "evidencia": "enemy-coverage.json: attack=real+clon(caminar), death=real, hit=real+clon(caminar); ATLAS_ARTE=CODEX_OK; arena 3/10 (bosque); altura 2.81× el campeón típico",
+   "nota": "Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): descartado (a 43 px el modelo no controla el detalle). Mejor pintor determinista."
   },
   {
    "id": "b317-prop-de-decorado-ancienttr",
@@ -2652,7 +2658,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "enemy-coverage.json: attack=real+clon(caminar), death=real, hit=real; ATLAS_ARTE=CODEX_OK; arena 4/10 (micelial); altura 2.59× el campeón típico"
+   "evidencia": "enemy-coverage.json: attack=real+clon(caminar), death=real, hit=real; ATLAS_ARTE=CODEX_OK; arena 4/10 (micelial); altura 2.59× el campeón típico",
+   "nota": "Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): descartado (pierde los crecimientos naranjas; parece otra criatura)."
   },
   {
    "id": "enemigo-madre_espora",
@@ -2671,7 +2678,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "enemy-coverage.json: attack=escenario(arena), death=escenario(arena), hit=escenario(arena); ATLAS_ARTE=ARTE_VIEJO; arena 4/10 (micelial); altura 0.00× el campeón típico"
+   "evidencia": "enemy-coverage.json: attack=escenario(arena), death=escenario(arena), hit=escenario(arena); ATLAS_ARTE=ARTE_VIEJO; arena 4/10 (micelial); altura 0.00× el campeón típico",
+   "nota": "2026-11-18: probablemente DESACTUALIZADO. En partida normal ya usa pilot_death / pilot_attack (MIC_MOTHER_REWORK_DEFAULT, mic-render.js); la cobertura la marca escenario(arena) por una etiqueta fija (HIDDEN en enemy_coverage.js). Verificar a ojo antes de gastar. Pieza de alto riesgo (hashes y ~10 pruebas)."
   },
   {
    "id": "enemigo-micelio",
@@ -2679,7 +2687,7 @@
    "descripcion": "Micelio Primigenio (micelio, subjefe, arena micelial): falta arte propio de death",
    "prioridad": "importante",
    "orden": 64,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "gen4_image",
    "costo_creditos": 5,
    "refs": {
@@ -2690,7 +2698,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 4/10 (micelial); altura 2.55× el campeón típico"
+   "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 4/10 (micelial); altura 2.55× el campeón típico",
+   "nota": "Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros."
   },
   {
    "id": "enemigo-nucleo_micelial",
@@ -2698,7 +2707,7 @@
    "descripcion": "Núcleo Micelial (nucleo_micelial, subelite, arena micelial): falta arte propio de attack y death",
    "prioridad": "importante",
    "orden": 65,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "gen4_image",
    "costo_creditos": 5,
    "refs": {
@@ -2709,7 +2718,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "enemy-coverage.json: attack=real+clon(caminar), death=propio(arena), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 4/10 (micelial); altura 1.93× el campeón típico"
+   "evidencia": "enemy-coverage.json: attack=real+clon(caminar), death=propio(arena), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 4/10 (micelial); altura 1.93× el campeón típico",
+   "nota": "2026-11-18 sin arte nuevo: la muerte usa los cuadros nucleo_N_wither/_dead que ya existian. Ataque: no aplica (dmg 0, el nucleo no ataca)."
   },
   {
    "id": "enemigo-raiz_absorcion",
@@ -2717,7 +2727,7 @@
    "descripcion": "Raíz de Absorción (raiz_absorcion, subelite, arena micelial): falta arte propio de attack y death",
    "prioridad": "importante",
    "orden": 66,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "gen4_image",
    "costo_creditos": 5,
    "refs": {
@@ -2735,7 +2745,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "enemy-coverage.json: attack=real+clon(caminar), death=propio(arena), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 4/10 (micelial); altura 3.18× el campeón típico"
+   "evidencia": "enemy-coverage.json: attack=real+clon(caminar), death=propio(arena), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 4/10 (micelial); altura 3.18× el campeón típico",
+   "nota": "Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros (root_curl_muerte_*). Ataque: no aplica, la raiz es estatica y no ataca con el cuerpo."
   },
   {
    "id": "enemigo-sabueso",
@@ -2760,7 +2771,7 @@
    },
    "dependencias": [],
    "evidencia": "enemy-coverage.json: attack=real+clon(caminar), death=real, hit=real+clon(quieto); ATLAS_ARTE=CODEX_OK; arena 4/10 (micelial); altura 1.33× el campeón típico",
-   "nota": "Hoja instalada (estado-runway: hecho_integrado); falta la aprobación de arte del dueño."
+   "nota": "Hoja instalada (estado-runway: hecho_integrado); falta la aprobación de arte del dueño. | Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): ataque de 4 cuadros en las celdas libres 10-13 del atlas."
   },
   {
    "id": "b367-red-micelial-raiz-tendon-t",
@@ -2788,7 +2799,7 @@
    "descripcion": "Foco de Hielo (foco_hielo, subelite, arena hielo): falta arte propio de attack y death",
    "prioridad": "importante",
    "orden": 69,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "gen4_image",
    "costo_creditos": 5,
    "refs": {
@@ -2799,7 +2810,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "enemy-coverage.json: attack=real+clon(caminar), death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 5/10 (hielo); altura 7.04× el campeón típico"
+   "evidencia": "enemy-coverage.json: attack=real+clon(caminar), death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 5/10 (hielo); altura 7.04× el campeón típico",
+   "nota": "2026-11-18 sin arte nuevo: se quiebra con los cuadros 4-5 de bsAngelPillar que ya existian. Ataque: no aplica (estructura, dmg 0; su \"ataque\" es el haz)."
   },
   {
    "id": "enemigo-lobo_artico",
@@ -2807,7 +2819,7 @@
    "descripcion": "Lobo Ártico (lobo_artico, normal, arena hielo): falta arte propio de death",
    "prioridad": "importante",
    "orden": 70,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "gen4_image",
    "costo_creditos": 5,
    "refs": {
@@ -2820,7 +2832,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=CODEX_OK; arena 5/10 (hielo); altura 2.11× el campeón típico"
+   "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=CODEX_OK; arena 5/10 (hielo); altura 2.11× el campeón típico",
+   "nota": "Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 4 cuadros (DEATH_PACK); pierde algo del moteado: revisar a ojo."
   },
   {
    "id": "b316-prop-de-decorado-icestatue",
@@ -2901,7 +2914,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "enemy-coverage.json: attack=real+clon(caminar), death=real, hit=real; ATLAS_ARTE=CODEX_OK; arena 6/10 (acuatica); altura 2.20× el campeón típico"
+   "evidencia": "enemy-coverage.json: attack=real+clon(caminar), death=real, hit=real; ATLAS_ARTE=CODEX_OK; arena 6/10 (acuatica); altura 2.20× el campeón típico",
+   "nota": "Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): descartado (el ataque pierde las venas y el detalle del kraken quieto). Codigo del motor listo en el historial de la rama si se rehace."
   },
   {
    "id": "enemigo-lev_tentaculo",
@@ -2909,7 +2923,7 @@
    "descripcion": "Tentáculo del Leviatán (lev_tentaculo, subelite, arena acuatica): falta arte propio de attack y death",
    "prioridad": "importante",
    "orden": 75,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "gen4_image",
    "costo_creditos": 5,
    "refs": {
@@ -2920,7 +2934,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "enemy-coverage.json: attack=real+clon(caminar), death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 6/10 (acuatica); altura 4.10× el campeón típico"
+   "evidencia": "enemy-coverage.json: attack=real+clon(caminar), death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 6/10 (acuatica); altura 4.10× el campeón típico",
+   "nota": "Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros (tent_death_*). Ataque: el golpe tent_05 que ya existia ahora tambien responde a attackAnim."
   },
   {
    "id": "enemigo-leviatan",
@@ -2928,7 +2943,7 @@
    "descripcion": "Leviatán (leviatan, jefe, arena acuatica): falta arte propio de death",
    "prioridad": "importante",
    "orden": 76,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "gen4_image",
    "costo_creditos": 5,
    "refs": {
@@ -2944,7 +2959,7 @@
    },
    "dependencias": [],
    "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 6/10 (acuatica); altura 2.49× el campeón típico",
-   "nota": "Intento Runway rechazado (hoja_leviatan): NO repetir igual; leer REGISTRO_RUNWAY «NO REPETIR»."
+   "nota": "Intento Runway rechazado (hoja_leviatan): NO repetir igual; leer REGISTRO_RUNWAY «NO REPETIR». | Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros."
   },
   {
    "id": "b365-tentaculos-del-leviatan-po",
@@ -3009,7 +3024,7 @@
    },
    "dependencias": [],
    "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=CODEX_OK; arena 7/10 (laberinto); altura 2.47× el campeón típico",
-   "nota": "Intento Runway rechazado (hoja_golem_piedra): NO repetir igual; leer REGISTRO_RUNWAY «NO REPETIR»."
+   "nota": "Intento Runway rechazado (hoja_golem_piedra): NO repetir igual; leer REGISTRO_RUNWAY «NO REPETIR». | Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): descartado (a 64 px el modelo lo vuelve una masa de piedras). Ademas su atlas v2 viene cortado a la derecha en todas las celdas: conviene rehacer el atlas entero."
   },
   {
    "id": "enemigo-minotauro",
@@ -3017,7 +3032,7 @@
    "descripcion": "Minotauro (minotauro, jefe, arena laberinto): falta arte propio de death",
    "prioridad": "importante",
    "orden": 80,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "gen4_image",
    "costo_creditos": 5,
    "refs": {
@@ -3032,7 +3047,7 @@
    },
    "dependencias": [],
    "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 7/10 (laberinto); altura 2.45× el campeón típico",
-   "nota": "Intento Runway rechazado (hoja_minotauro): NO repetir igual; leer REGISTRO_RUNWAY «NO REPETIR»."
+   "nota": "Intento Runway rechazado (hoja_minotauro): NO repetir igual; leer REGISTRO_RUNWAY «NO REPETIR». | Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros."
   },
   {
    "id": "b088-pared-agrietada-del-laberi",
@@ -10398,7 +10413,7 @@
    "descripcion": "Acechador del Borde (ab_acechador, subelite, arena abismo): falta arte propio de attack",
    "prioridad": "secundario",
    "orden": 262,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "gen4_image",
    "costo_creditos": 5,
    "refs": {
@@ -10411,7 +10426,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "enemy-coverage.json: attack=real+clon(caminar), death=real, hit=real; ATLAS_ARTE=FALTA_ANIMACION; arena 8/10 (abismo); altura 2.45× el campeón típico"
+   "evidencia": "enemy-coverage.json: attack=real+clon(caminar), death=real, hit=real; ATLAS_ARTE=FALTA_ANIMACION; arena 8/10 (abismo); altura 2.45× el campeón típico",
+   "nota": "2026-11-18 sin arte nuevo: el ataque basico usa el zarpazo real (celdas 26-30) en vez de un cuadro de quieto (abismo/extract.py y abismo-meta.js)."
   },
   {
    "id": "enemigo-ab_carcelero",
@@ -10419,7 +10435,7 @@
    "descripcion": "El Carcelero del Vacío (ab_carcelero, subjefe, arena abismo): falta arte propio de death",
    "prioridad": "secundario",
    "orden": 263,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "gen4_image",
    "costo_creditos": 5,
    "refs": {
@@ -10430,7 +10446,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 8/10 (abismo); altura 2.47× el campeón típico"
+   "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 8/10 (abismo); altura 2.47× el campeón típico",
+   "nota": "Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros."
   },
   {
    "id": "enemigo-ab_morador",
@@ -10451,7 +10468,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "enemy-coverage.json: attack=real+clon(caminar), death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 8/10 (abismo); altura 1.37× el campeón típico"
+   "evidencia": "enemy-coverage.json: attack=real+clon(caminar), death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 8/10 (abismo); altura 1.37× el campeón típico",
+   "nota": "Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): ojo cargando el rayo descartado (mas plano que el original, 2 pasadas). La muerte ya era real; el analisis de cobertura la marca clon por medir la imagen mas grande (tentaculo), no el ojo."
   },
   {
    "id": "enemigo-ab_tentaculo",
@@ -10470,7 +10488,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "enemy-coverage.json: attack=real+clon(caminar), death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 8/10 (abismo); altura 3.67× el campeón típico"
+   "evidencia": "enemy-coverage.json: attack=real+clon(caminar), death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 8/10 (abismo); altura 3.67× el campeón típico",
+   "nota": "Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros INSTALADA (sin aprobar). Falta el ataque: el golpe de Anakin salio mas chico y con otra forma que el tentaculo grande; descartado."
   },
   {
    "id": "b305-ab-sb-02-pieza-de-cadena-e",
@@ -10650,7 +10669,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 9/10 (minas); altura 2.74× el campeón típico"
+   "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 9/10 (minas); altura 2.74× el campeón típico",
+   "nota": "Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): 3 intentos descartados (sale con UNA cabeza; las tres cabezas son su silueta). No instalar sin una referencia de pose con las tres cabezas."
   },
   {
    "id": "enemigo-mn_titan",
@@ -10658,7 +10678,7 @@
    "descripcion": "Titán de Piedra (mn_titan, subjefe, arena minas): falta arte propio de death",
    "prioridad": "secundario",
    "orden": 275,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "gen4_image",
    "costo_creditos": 5,
    "refs": {
@@ -10669,7 +10689,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 9/10 (minas); altura 3.07× el campeón típico"
+   "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 9/10 (minas); altura 3.07× el campeón típico",
+   "nota": "Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros."
   },
   {
    "id": "arena-ciudad-casa_b-rechazada",
@@ -10909,7 +10930,7 @@
    "descripcion": "Demonio Mayor (demonio_mayor, jefe, arena infernal): falta arte propio de death",
    "prioridad": "secundario",
    "orden": 288,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "gen4_image",
    "costo_creditos": 5,
    "refs": {
@@ -10922,7 +10943,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=CODEX_OK; arena 10/10 (infernal); altura 2.33× el campeón típico"
+   "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=CODEX_OK; arena 10/10 (infernal); altura 2.33× el campeón típico",
+   "nota": "Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros (DEATH_PACK via js/assets/anakin-meta.js)."
   },
   {
    "id": "enemigo-foco_convergencia",
@@ -10930,7 +10952,7 @@
    "descripcion": "Foco de Convergencia (foco_convergencia, subelite, arena infernal): falta arte propio de attack y death",
    "prioridad": "secundario",
    "orden": 289,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "gen4_image",
    "costo_creditos": 5,
    "refs": {
@@ -10948,7 +10970,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "enemy-coverage.json: attack=real+clon(caminar), death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 10/10 (infernal); altura 7.27× el campeón típico"
+   "evidencia": "enemy-coverage.json: attack=real+clon(caminar), death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 10/10 (infernal); altura 7.27× el campeón típico",
+   "nota": "2026-11-18 sin arte nuevo: igual que foco_hielo (cuadros 4-5 de bsAngelPillar con su tinte)."
   },
   {
    "id": "enemigo-golem_cuerpos",
@@ -10956,7 +10979,7 @@
    "descripcion": "Golem de Cuerpos (golem_cuerpos, jefe, arena infernal): falta arte propio de death",
    "prioridad": "secundario",
    "orden": 290,
-   "estado": "pendiente",
+   "estado": "instalado_sin_aprobar",
    "metodo": "gen4_image",
    "costo_creditos": 5,
    "refs": {
@@ -10967,7 +10990,8 @@
     ]
    },
    "dependencias": [],
-   "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 10/10 (infernal); altura 2.82× el campeón típico"
+   "evidencia": "enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 10/10 (infernal); altura 2.82× el campeón típico",
+   "nota": "Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros."
   },
   {
    "id": "b314-prop-de-decorado-infcolumn",

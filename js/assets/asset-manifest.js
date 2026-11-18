@@ -4,6 +4,23 @@
    nueva al juego, sumala también acá. */
 const ASSET_MANIFEST = [
   // >>> anakin (tools/art/anakin/install.py)
+  "assets/sprites/arenas/micelial/fx/root_curl_muerte_0.png",
+  "assets/sprites/arenas/micelial/fx/root_curl_muerte_1.png",
+  "assets/sprites/arenas/micelial/fx/root_curl_muerte_2.png",
+  "assets/sprites/arenas/micelial/fx/root_curl_muerte_3.png",
+  "assets/sprites/arenas/micelial/fx/root_curl_muerte_4.png",
+  "assets/sprites/bosses/acuatica/kraken_joven/tent_death_01.png",
+  "assets/sprites/bosses/acuatica/kraken_joven/tent_death_02.png",
+  "assets/sprites/bosses/acuatica/kraken_joven/tent_death_03.png",
+  "assets/sprites/bosses/acuatica/kraken_joven/tent_death_04.png",
+  "assets/sprites/bosses/acuatica/kraken_joven/tent_death_05.png",
+  "assets/sprites/bosses/infernal/demonio_mayor/anakin/death.png",
+  "assets/sprites/enemies/hielo/lobo_artico/anakin/death.png",
+  "assets/vfx/abismo/tent_grande_muerte_0.png",
+  "assets/vfx/abismo/tent_grande_muerte_1.png",
+  "assets/vfx/abismo/tent_grande_muerte_2.png",
+  "assets/vfx/abismo/tent_grande_muerte_3.png",
+  "assets/vfx/abismo/tent_grande_muerte_4.png",
   // <<< anakin
   "assets/sprites/champions/guerrero/codex-v1/atlas.png",
   "assets/sprites/champions/morveth/codex-v1/atlas.png",

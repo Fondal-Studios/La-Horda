@@ -16,6 +16,19 @@ marca **lo que solo el dueño puede confirmar**. No es asesoría legal: la decla
 - Uso en el flujo: la salida de Runway no se publica tal cual. Se reduce a escala nativa y pasa por herramientas deterministas
   del repo (`tools/art/`, `tools/art-world/`) y por revisión visual antes de integrarse.
 
+### 1b. Anakin (modelo local del dueño: Stable Diffusion 1.5 / DreamShaper 8 LCM + IP-Adapter), desde 2026-11-18
+- Con este modelo, ejecutado en la PC del dueño, se dibujaron **cuadros de animación de enemigos y jefes que ya existían**:
+  muertes y un ataque. Cada cuadro parte de un cuadro real del personaje, y después se reduce a su grilla y paleta con
+  `tools/art/anakin/`.
+- Instalados en el juego (sin aprobación del dueño todavía):
+  - Muertes de 17 enemigos y jefes: los 4 de la Ciudad, Dragón de la Forja, Micelio, Minotauro, Leviatán, Gólem de
+    Cuerpos, Titán, Carcelero, Bestia del Bosque, Demonio Mayor, Lobo Ártico, los dos tentáculos y la Raíz de Absorción.
+  - El ataque del Sabueso.
+- Fuente y registro: `art-source/anakin/`, `tools/art/anakin/targets.json` y `docs/beta-release/ART_CREDITS.md`
+  («Anakin… 2026-11-18»).
+- **El dueño debe confirmar la licencia de uso comercial** del modelo base (DreamShaper 8 / SD 1.5, CreativeML OpenRAIL-M)
+  y de IP-Adapter antes de declararlo en Steam.
+
 ### 2. ChatGPT (láminas del Códice)
 - Según el dueño, las **láminas del Códice** (`assets/ui/codex/champions/*.webp`, una por guardián, 43 imágenes; los originales
   PNG siguen en el repo) vienen de ChatGPT. Eso no figura en ningún recibo: **solo está respaldado por la palabra del dueño**.

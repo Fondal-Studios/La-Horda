@@ -177,9 +177,9 @@ function hieDrawEnemyBody(e){
   const P = VFX_SPR_EXTRA.bsAngelPillar, K = VFX_SPR_EXTRA.bsMagoCrystal, t = animNow/1000;
   const q = e.maxHp ? e.hp/e.maxHp : 1;
   _hieGlow(e.x, e.y - 40, 70 + 10*Math.sin(t*5 + e.x), "150,215,255", 0.45);
-  const dp = (!e.alive || e._dyingP != null) ? (e._dyingP || 0) : -1; // se quiebra: cuadros 2-5 de la misma aguja (ya existian)
+  const dp = (!e.alive || e._dyingP != null) ? (e._dyingP || 0) : -1; // se quiebra: aguja, grieta (4) y derrumbe (5), cuadros que ya existian
   if(dp >= 0 && P && P.imgs.length >= 6){
-    const im = P.imgs[2 + Math.min(3, Math.floor(dp*4*1.25))], k = 118/75;
+    const im = P.imgs[[1, 4, 5][Math.min(2, Math.floor(dp*3*1.25))]], k = 118/75;
     if(im.complete && im.naturalWidth){ const h = im.height*k, w = im.width*k; ctx.drawImage(im, e.x - w/2, e.y - h*0.95, w, h); }
     return true;
   }
