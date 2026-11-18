@@ -1042,3 +1042,4 @@ function codexSpeakVoice(key,event){
  codexVoiceWatch=setInterval(()=>{if(document.hidden||state!=='codex'||(typeof audioEnabled!=='undefined'&&!audioEnabled))codexStopVoice();},150);
  speechSynthesis.speak(u);
 }
+// Temporary PR297 renderer-capture trigger; restored byte-identical after the artifact is collected.\n
