@@ -14,6 +14,7 @@ enemigo-cm_cometa  [enemigo · prioridad critico · orden 3]
   Estado: pendiente · método: gen4_image · costo estimado: 13 cr
   Docs: docs/art-brief/runway-pack/enemigos/ciudad.md, docs/art-brief/runway-pack/ENEMIGOS_GUIA.md
   Evidencia: enemy-coverage.json: attack=formas+clon(caminar), death=formas+clon(caminar), hit=formas+clon(caminar); ATLAS_ARTE=ARTE_VIEJO; arena 1/10 (ciudad); altura 3.27× el campeón típico
+  Nota: 2026-11-18: no apto para Anakin. Es un proyectil (cometa); su "ataque" es el estallido cmBoom y su "muerte" el desvio dorado (cometa_oro), que ya tienen arte.
 ```
 
 Próxima SIN gastar créditos (si el saldo de Runway es < 250: `--next --gratis`): **b057-icono-de-objeto-corona-del** (importante).
@@ -22,10 +23,10 @@ Próxima SIN gastar créditos (si el saldo de Runway es < 250: `--next --gratis`
 
 | Prioridad | Ítems | hecho | instalado sin aprobar | pendiente | en curso | bloqueado (decisión) | créditos estimados pendientes |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| CRÍTICOS | 44 | 31 | 3 | 9 | 0 | 1 | 126 |
-| IMPORTANTES | 127 | 52 | 3 | 66 | 1 | 5 | 1558 |
-| SECUNDARIOS | 337 | 41 | 1 | 241 | 3 | 51 | 1677 |
-| **Total** | **508** | 124 | 7 | 316 | 4 | 57 | 3361 |
+| CRÍTICOS | 44 | 31 | 8 | 4 | 0 | 1 | 101 |
+| IMPORTANTES | 127 | 52 | 12 | 57 | 1 | 5 | 1513 |
+| SECUNDARIOS | 337 | 41 | 7 | 235 | 3 | 51 | 1647 |
+| **Total** | **508** | 124 | 27 | 296 | 4 | 57 | 3261 |
 
 **Duplicados (no regenerar): 198 ítems** (sección final). Créditos: solo los ítems con `gen4_image` o `gpt_image_2_codice_limpio` gastan Runway; el resto es 0 (pintor determinista / humano). Los costos son estimaciones del repo (hoja de 4 poses gpt_image_2 = 20, imagen gen4_image = 8, hoja de enemigo = 5), no medidas.
 
@@ -54,18 +55,23 @@ Próxima SIN gastar créditos (si el saldo de Runway es < 250: `--next --gratis`
 - [ ] **3. `enemigo-cm_cometa`** · enemigo · `pendiente` · `gen4_image` · 13 cr
   - Gran Número (cm_cometa, normal, arena ciudad): falta arte propio de attack y death y sin atlas propio (dibujado por formas)
   - Evidencia: enemy-coverage.json: attack=formas+clon(caminar), death=formas+clon(caminar), hit=formas+clon(caminar); ATLAS_ARTE=ARTE_VIEJO; arena 1/10 (ciudad); altura 3.27× el campeón típico
-- [ ] **4. `enemigo-cm_presentador`** · jefe · `pendiente` · `gen4_image` · 5 cr
+  - Nota: 2026-11-18: no apto para Anakin. Es un proyectil (cometa); su "ataque" es el estallido cmBoom y su "muerte" el desvio dorado (cometa_oro), que ya tienen arte.
+- [ ] **4. `enemigo-cm_presentador`** · jefe · `instalado_sin_aprobar` · `gen4_image` · 5 cr
   - El Presentador (cm_presentador, jefe, arena ciudad): falta arte propio de death
   - Evidencia: enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 1/10 (ciudad); altura 3.33× el campeón típico
-- [ ] **5. `enemigo-cm_dama`** · jefe · `pendiente` · `gen4_image` · 5 cr
+  - Nota: Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros (hoja battlefield/death); la muerte especial de la Ciudad usa la misma figura.
+- [ ] **5. `enemigo-cm_dama`** · jefe · `instalado_sin_aprobar` · `gen4_image` · 5 cr
   - La Dama del Telón (cm_dama, subjefe, arena ciudad): falta arte propio de death
   - Evidencia: enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 1/10 (ciudad); altura 3.47× el campeón típico
-- [ ] **6. `enemigo-cm_maestro`** · jefe · `pendiente` · `gen4_image` · 5 cr
+  - Nota: Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros.
+- [ ] **6. `enemigo-cm_maestro`** · jefe · `instalado_sin_aprobar` · `gen4_image` · 5 cr
   - Maestro de Ceremonias (cm_maestro, subjefe, arena ciudad): falta arte propio de death
   - Evidencia: enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 1/10 (ciudad); altura 3.56× el campeón típico
-- [ ] **7. `enemigo-cm_tramoyista`** · jefe · `pendiente` · `gen4_image` · 5 cr
+  - Nota: Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros.
+- [ ] **7. `enemigo-cm_tramoyista`** · jefe · `instalado_sin_aprobar` · `gen4_image` · 5 cr
   - El Tramoyista (cm_tramoyista, subjefe, arena ciudad): falta arte propio de death
   - Evidencia: enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 1/10 (ciudad); altura 2.88× el campeón típico
+  - Nota: Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros.
 - [ ] **8. `arena-ciudad-edificios-t06`** · arena · `pendiente` · `gen4_image` · 32 cr
   - CM-T06 Refugio / Capilla / Torre de Vigía / Campanario (edificios propios) / CM-T07 Puerta de Evacuación (reja arriba / abajo / rota) / CM-T09 Escenario de la catedral (tablas, telón, reflectores)
   - Evidencia: asset-blocks.json B062 P0 PENDIENTE; arena ciudad (1/10 del recorrido)
@@ -85,10 +91,10 @@ Próxima SIN gastar créditos (si el saldo de Runway es < 250: `--next --gratis`
   - Evidencia: asset-blocks.json B061 P0 PENDIENTE; arena ciudad (1/10 del recorrido)
   - Nota: T01/T02 YA existen (tex_techo_pizarra, tex_techo_roja, tex_pared_madera_piedra: ver arena-tex_*): solo faltan T03 (techo dañado/en llamas) y T04 (ruinas). No regenerar T01/T02.
   - Refs: bloques B061
-- [ ] **12. `enemigo-dragon_forja`** · jefe · `pendiente` · `gen4_image` · 5 cr
+- [ ] **12. `enemigo-dragon_forja`** · jefe · `instalado_sin_aprobar` · `gen4_image` · 5 cr
   - Dragón de la Forja (dragon_forja, subjefe, arena fortaleza): falta arte propio de death
   - Evidencia: enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 2/10 (fortaleza); altura 2.42× el campeón típico
-  - Nota: Intento Runway rechazado (hoja_dragon_forja): NO repetir igual; leer REGISTRO_RUNWAY «NO REPETIR».
+  - Nota: Intento Runway rechazado (hoja_dragon_forja): NO repetir igual; leer REGISTRO_RUNWAY «NO REPETIR». | Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros (las alas se pierden en el cuadro tendido).
   - Refs: runway hoja_dragon_forja
 - [ ] **14. `arena-ciudad-ovacion-final`** · arena · `bloqueado_decision` · `pintor_determinista` · 0 cr
   - CM-P02 Ovación final (canalización 3 s)
@@ -342,14 +348,15 @@ Próxima SIN gastar créditos (si el saldo de Runway es < 250: `--next --gratis`
   - Proyectil "bullet" (libertador) / Proyectil "slug" (tanque) / Proyectil "vial" (Ynara, la Médica) / Proyectil "spoon" (Myla)
   - Evidencia: asset-blocks.json B279 P1
   - Refs: bloques B279
-- [ ] **57. `enemigo-bestia_bosque`** · enemigo · `pendiente` · `gen4_image` · 5 cr
+- [ ] **57. `enemigo-bestia_bosque`** · enemigo · `instalado_sin_aprobar` · `gen4_image` · 5 cr
   - Bestia del Bosque (bestia_bosque, subelite, arena bosque): falta arte propio de death
   - Evidencia: enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 3/10 (bosque); altura 3.05× el campeón típico
-  - Nota: Intento Runway rechazado (hoja_bestia_bosque): NO repetir igual; leer REGISTRO_RUNWAY «NO REPETIR».
+  - Nota: Intento Runway rechazado (hoja_bestia_bosque): NO repetir igual; leer REGISTRO_RUNWAY «NO REPETIR». | Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros (hoja thornbeast).
   - Refs: bloques B351 · runway hoja_bestia_bosque
 - [ ] **58. `enemigo-enjambre_hadas`** · enemigo · `pendiente` · `gen4_image` · 5 cr
   - Enjambre de Hadas (enjambre_hadas, normal, arena bosque): falta arte propio de attack
   - Evidencia: enemy-coverage.json: attack=real+clon(caminar), death=real, hit=real+clon(caminar); ATLAS_ARTE=CODEX_OK; arena 3/10 (bosque); altura 2.81× el campeón típico
+  - Nota: Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): descartado (a 43 px el modelo no controla el detalle). Mejor pintor determinista.
   - Refs: bloques B347
 - [ ] **59. `b317-prop-de-decorado-ancienttr`** · arena · `pendiente` · `gen4_image` · 32 cr
   - Prop de decorado "ancientTree+v" (bosque, canvas 100×130) / Prop de decorado "celticStatue" (bosque, canvas 30×64) / Prop de decorado "ruinArch" (bosque, canvas 96×80) / Prop de decorado "moss+v" (bosque, canvas 100×54)
@@ -366,35 +373,42 @@ Próxima SIN gastar créditos (si el saldo de Runway es < 250: `--next --gratis`
 - [ ] **62. `enemigo-hinchado`** · enemigo · `pendiente` · `gen4_image` · 5 cr
   - Hinchado (hinchado, elite, arena micelial): falta arte propio de attack
   - Evidencia: enemy-coverage.json: attack=real+clon(caminar), death=real, hit=real; ATLAS_ARTE=CODEX_OK; arena 4/10 (micelial); altura 2.59× el campeón típico
+  - Nota: Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): descartado (pierde los crecimientos naranjas; parece otra criatura).
   - Refs: bloques B339
 - [ ] **63. `enemigo-madre_espora`** · jefe · `pendiente` · `gen4_image` · 13 cr
   - La Madre Espora (madre_espora, jefe, arena micelial): falta arte propio de attack y death y sin atlas propio (dibujado por formas)
   - Evidencia: enemy-coverage.json: attack=escenario(arena), death=escenario(arena), hit=escenario(arena); ATLAS_ARTE=ARTE_VIEJO; arena 4/10 (micelial); altura 0.00× el campeón típico
-- [ ] **64. `enemigo-micelio`** · jefe · `pendiente` · `gen4_image` · 5 cr
+  - Nota: 2026-11-18: probablemente DESACTUALIZADO. En partida normal ya usa pilot_death / pilot_attack (MIC_MOTHER_REWORK_DEFAULT, mic-render.js); la cobertura la marca escenario(arena) por una etiqueta fija (HIDDEN en enemy_coverage.js). Verificar a ojo antes de gastar. Pieza de alto riesgo (hashes y ~10 pruebas).
+- [ ] **64. `enemigo-micelio`** · jefe · `instalado_sin_aprobar` · `gen4_image` · 5 cr
   - Micelio Primigenio (micelio, subjefe, arena micelial): falta arte propio de death
   - Evidencia: enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 4/10 (micelial); altura 2.55× el campeón típico
-- [ ] **65. `enemigo-nucleo_micelial`** · enemigo · `pendiente` · `gen4_image` · 5 cr
+  - Nota: Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros.
+- [ ] **65. `enemigo-nucleo_micelial`** · enemigo · `instalado_sin_aprobar` · `gen4_image` · 5 cr
   - Núcleo Micelial (nucleo_micelial, subelite, arena micelial): falta arte propio de attack y death
   - Evidencia: enemy-coverage.json: attack=real+clon(caminar), death=propio(arena), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 4/10 (micelial); altura 1.93× el campeón típico
-- [ ] **66. `enemigo-raiz_absorcion`** · enemigo · `pendiente` · `gen4_image` · 5 cr
+  - Nota: 2026-11-18 sin arte nuevo: la muerte usa los cuadros nucleo_N_wither/_dead que ya existian. Ataque: no aplica (dmg 0, el nucleo no ataca).
+- [ ] **66. `enemigo-raiz_absorcion`** · enemigo · `instalado_sin_aprobar` · `gen4_image` · 5 cr
   - Raíz de Absorción (raiz_absorcion, subelite, arena micelial): falta arte propio de attack y death
   - Evidencia: enemy-coverage.json: attack=real+clon(caminar), death=propio(arena), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 4/10 (micelial); altura 3.18× el campeón típico
+  - Nota: Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros (root_curl_muerte_*). Ataque: no aplica, la raiz es estatica y no ataca con el cuerpo.
   - Refs: bloques B287 · también madre_espora, ab_tentaculo, cm_cometa
 - [ ] **67. `enemigo-sabueso`** · enemigo · `instalado_sin_aprobar` · `gen4_image` · 5 cr
   - Sabueso Cordyceps (sabueso, normal, arena micelial): falta arte propio de attack
   - Evidencia: enemy-coverage.json: attack=real+clon(caminar), death=real, hit=real+clon(quieto); ATLAS_ARTE=CODEX_OK; arena 4/10 (micelial); altura 1.33× el campeón típico
-  - Nota: Hoja instalada (estado-runway: hecho_integrado); falta la aprobación de arte del dueño.
+  - Nota: Hoja instalada (estado-runway: hecho_integrado); falta la aprobación de arte del dueño. | Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): ataque de 4 cuadros en las celdas libres 10-13 del atlas.
   - Refs: bloques B590 · runway hoja_sabueso
 - [ ] **68. `b367-red-micelial-raiz-tendon-t`** · arena · `pendiente` · `pintor_determinista` · 0 cr
   - A-08 Red micelial: raíz-tendón (tileable) y Corazón abierto
   - Evidencia: asset-blocks.json B367 P1 PENDIENTE; arena micelial (4/10 del recorrido)
   - Refs: bloques B367
-- [ ] **69. `enemigo-foco_hielo`** · enemigo · `pendiente` · `gen4_image` · 5 cr
+- [ ] **69. `enemigo-foco_hielo`** · enemigo · `instalado_sin_aprobar` · `gen4_image` · 5 cr
   - Foco de Hielo (foco_hielo, subelite, arena hielo): falta arte propio de attack y death
   - Evidencia: enemy-coverage.json: attack=real+clon(caminar), death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 5/10 (hielo); altura 7.04× el campeón típico
-- [ ] **70. `enemigo-lobo_artico`** · enemigo · `pendiente` · `gen4_image` · 5 cr
+  - Nota: 2026-11-18 sin arte nuevo: se quiebra con los cuadros 4-5 de bsAngelPillar que ya existian. Ataque: no aplica (estructura, dmg 0; su "ataque" es el haz).
+- [ ] **70. `enemigo-lobo_artico`** · enemigo · `instalado_sin_aprobar` · `gen4_image` · 5 cr
   - Lobo Ártico (lobo_artico, normal, arena hielo): falta arte propio de death
   - Evidencia: enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=CODEX_OK; arena 5/10 (hielo); altura 2.11× el campeón típico
+  - Nota: Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 4 cuadros (DEATH_PACK); pierde algo del moteado: revisar a ojo.
   - Refs: bloques B586
 - [ ] **71. `b316-prop-de-decorado-icestatue`** · arena · `pendiente` · `gen4_image` · 32 cr
   - Prop de decorado "iceStatue" (hielo, canvas 32×66) / Prop de decorado "snowDrift+v" (hielo, canvas 110×50) / Prop de decorado "iceCrack+v" (hielo, canvas 120×70) / Prop de decorado "menhir+v" (bosque, canvas 24×60)
@@ -411,14 +425,16 @@ Próxima SIN gastar créditos (si el saldo de Runway es < 250: `--next --gratis`
 - [ ] **74. `enemigo-kraken_joven`** · jefe · `pendiente` · `gen4_image` · 5 cr
   - Kraken Joven (kraken_joven, subjefe, arena acuatica): falta arte propio de attack
   - Evidencia: enemy-coverage.json: attack=real+clon(caminar), death=real, hit=real; ATLAS_ARTE=CODEX_OK; arena 6/10 (acuatica); altura 2.20× el campeón típico
+  - Nota: Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): descartado (el ataque pierde las venas y el detalle del kraken quieto). Codigo del motor listo en el historial de la rama si se rehace.
   - Refs: bloques B357
-- [ ] **75. `enemigo-lev_tentaculo`** · enemigo · `pendiente` · `gen4_image` · 5 cr
+- [ ] **75. `enemigo-lev_tentaculo`** · enemigo · `instalado_sin_aprobar` · `gen4_image` · 5 cr
   - Tentáculo del Leviatán (lev_tentaculo, subelite, arena acuatica): falta arte propio de attack y death
   - Evidencia: enemy-coverage.json: attack=real+clon(caminar), death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 6/10 (acuatica); altura 4.10× el campeón típico
-- [ ] **76. `enemigo-leviatan`** · jefe · `pendiente` · `gen4_image` · 5 cr
+  - Nota: Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros (tent_death_*). Ataque: el golpe tent_05 que ya existia ahora tambien responde a attackAnim.
+- [ ] **76. `enemigo-leviatan`** · jefe · `instalado_sin_aprobar` · `gen4_image` · 5 cr
   - Leviatán (leviatan, jefe, arena acuatica): falta arte propio de death
   - Evidencia: enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 6/10 (acuatica); altura 2.49× el campeón típico
-  - Nota: Intento Runway rechazado (hoja_leviatan): NO repetir igual; leer REGISTRO_RUNWAY «NO REPETIR».
+  - Nota: Intento Runway rechazado (hoja_leviatan): NO repetir igual; leer REGISTRO_RUNWAY «NO REPETIR». | Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros.
   - Refs: runway hoja_leviatan, leviatan_imagenes_15
 - [ ] **77. `b365-tentaculos-del-leviatan-po`** · arena · `pendiente` · `pintor_determinista` · 0 cr
   - A-06 Tentáculos del Leviatán por función (GOLPE/AGARRE/CORRIENTE)
@@ -431,12 +447,12 @@ Próxima SIN gastar créditos (si el saldo de Runway es < 250: `--next --gratis`
 - [ ] **79. `enemigo-golem_piedra`** · enemigo · `pendiente` · `gen4_image` · 5 cr
   - Gólem de Piedra (golem_piedra, normal, arena laberinto): falta arte propio de death
   - Evidencia: enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=CODEX_OK; arena 7/10 (laberinto); altura 2.47× el campeón típico
-  - Nota: Intento Runway rechazado (hoja_golem_piedra): NO repetir igual; leer REGISTRO_RUNWAY «NO REPETIR».
+  - Nota: Intento Runway rechazado (hoja_golem_piedra): NO repetir igual; leer REGISTRO_RUNWAY «NO REPETIR». | Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): descartado (a 64 px el modelo lo vuelve una masa de piedras). Ademas su atlas v2 viene cortado a la derecha en todas las celdas: conviene rehacer el atlas entero.
   - Refs: bloques B349 · runway hoja_golem_piedra
-- [ ] **80. `enemigo-minotauro`** · jefe · `pendiente` · `gen4_image` · 5 cr
+- [ ] **80. `enemigo-minotauro`** · jefe · `instalado_sin_aprobar` · `gen4_image` · 5 cr
   - Minotauro (minotauro, jefe, arena laberinto): falta arte propio de death
   - Evidencia: enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 7/10 (laberinto); altura 2.45× el campeón típico
-  - Nota: Intento Runway rechazado (hoja_minotauro): NO repetir igual; leer REGISTRO_RUNWAY «NO REPETIR».
+  - Nota: Intento Runway rechazado (hoja_minotauro): NO repetir igual; leer REGISTRO_RUNWAY «NO REPETIR». | Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros.
   - Refs: runway hoja_minotauro
 - [ ] **81. `b088-pared-agrietada-del-laberi`** · arena · `pendiente` · `pintor_determinista` · 0 cr
   - A-02 Pared agrietada del Laberinto (intacta, agrietada ×3, derrumbe ×8, escombro)
@@ -1625,20 +1641,24 @@ Próxima SIN gastar créditos (si el saldo de Runway es < 250: `--next --gratis`
   - Evidencia: asset-blocks.json B542 P2 PENDIENTE; arena acuatica (6/10 del recorrido)
   - Nota: Ya instalados y NO repetir: infPentagram (infernal_centro), minoChamber (laberinto_centro), sunkTemple (acuatica_centro). Las filas prox_centro_* de estado-runway repiten ritualCircle/frozenLake.
   - Refs: bloques B542
-- [ ] **262. `enemigo-ab_acechador`** · enemigo · `pendiente` · `gen4_image` · 5 cr
+- [ ] **262. `enemigo-ab_acechador`** · enemigo · `instalado_sin_aprobar` · `gen4_image` · 5 cr
   - Acechador del Borde (ab_acechador, subelite, arena abismo): falta arte propio de attack
   - Evidencia: enemy-coverage.json: attack=real+clon(caminar), death=real, hit=real; ATLAS_ARTE=FALTA_ANIMACION; arena 8/10 (abismo); altura 2.45× el campeón típico
+  - Nota: 2026-11-18 sin arte nuevo: el ataque basico usa el zarpazo real (celdas 26-30) en vez de un cuadro de quieto (abismo/extract.py y abismo-meta.js).
   - Refs: bloques B592
-- [ ] **263. `enemigo-ab_carcelero`** · jefe · `pendiente` · `gen4_image` · 5 cr
+- [ ] **263. `enemigo-ab_carcelero`** · jefe · `instalado_sin_aprobar` · `gen4_image` · 5 cr
   - El Carcelero del Vacío (ab_carcelero, subjefe, arena abismo): falta arte propio de death
   - Evidencia: enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 8/10 (abismo); altura 2.47× el campeón típico
+  - Nota: Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros.
 - [ ] **264. `enemigo-ab_morador`** · jefe · `pendiente` · `gen4_image` · 5 cr
   - El Que Mora Debajo (ab_morador, jefe, arena abismo): falta arte propio de attack y death
   - Evidencia: enemy-coverage.json: attack=real+clon(caminar), death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 8/10 (abismo); altura 1.37× el campeón típico
+  - Nota: Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): ojo cargando el rayo descartado (mas plano que el original, 2 pasadas). La muerte ya era real; el analisis de cobertura la marca clon por medir la imagen mas grande (tentaculo), no el ojo.
   - Refs: bloques B056
 - [ ] **265. `enemigo-ab_tentaculo`** · enemigo · `pendiente` · `gen4_image` · 5 cr
   - Tentáculo del Abismo (ab_tentaculo, subelite, arena abismo): falta arte propio de attack y death
   - Evidencia: enemy-coverage.json: attack=real+clon(caminar), death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 8/10 (abismo); altura 3.67× el campeón típico
+  - Nota: Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros INSTALADA (sin aprobar). Falta el ataque: el golpe de Anakin salio mas chico y con otra forma que el tentaculo grande; descartado.
 - [ ] **266. `b305-ab-sb-02-pieza-de-cadena-e`** · arena · `pendiente` · `gen4_image` · 32 cr
   - AB-SB-02 Pieza de cadena (eslabón, tramo, cadena rota, gancho) / AB-BO-04 Siluetas gigantes para el fondo de la fase 3 (cuerpo, tentáculos lejanos) / AB-FX-01 Derrumbe de plataforma (polvo y piedras que caen, 8 frames) / AB-FX-02 Reconstruc
   - Evidencia: asset-blocks.json B305 P1 PENDIENTE; arena abismo (8/10 del recorrido)
@@ -1675,9 +1695,11 @@ Próxima SIN gastar créditos (si el saldo de Runway es < 250: `--next --gratis`
 - [ ] **274. `enemigo-mn_cerbero`** · jefe · `pendiente` · `gen4_image` · 5 cr
   - Cerbero (mn_cerbero, jefe, arena minas): falta arte propio de death
   - Evidencia: enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 9/10 (minas); altura 2.74× el campeón típico
-- [ ] **275. `enemigo-mn_titan`** · jefe · `pendiente` · `gen4_image` · 5 cr
+  - Nota: Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): 3 intentos descartados (sale con UNA cabeza; las tres cabezas son su silueta). No instalar sin una referencia de pose con las tres cabezas.
+- [ ] **275. `enemigo-mn_titan`** · jefe · `instalado_sin_aprobar` · `gen4_image` · 5 cr
   - Titán de Piedra (mn_titan, subjefe, arena minas): falta arte propio de death
   - Evidencia: enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 9/10 (minas); altura 3.07× el campeón típico
+  - Nota: Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros.
 - [ ] **276. `arena-ciudad-casa_b-rechazada`** · arena · `bloqueado_decision` · `gen4_image` · 8 cr
   - Ciudad Maldita: cabaña casa_b (rechazada: salió isométrica).
   - Evidencia: estado-runway.json casa_b = rechazado
@@ -1726,17 +1748,20 @@ Próxima SIN gastar créditos (si el saldo de Runway es < 250: `--next --gratis`
   - Incrustación de suelo "inlay-minas" (64×40, 3 variantes) / Incrustación de suelo "inlay-infernal" (64×40, 3 variantes) / Incrustación de suelo "inlay-divina" (64×40, 3 variantes) / Incrustación de suelo "inlay-coliseo" (64×40, 3 variantes)
   - Evidencia: asset-blocks.json B545 P2 PENDIENTE; arena minas (9/10 del recorrido)
   - Refs: bloques B545
-- [ ] **288. `enemigo-demonio_mayor`** · jefe · `pendiente` · `gen4_image` · 5 cr
+- [ ] **288. `enemigo-demonio_mayor`** · jefe · `instalado_sin_aprobar` · `gen4_image` · 5 cr
   - Demonio Mayor (demonio_mayor, jefe, arena infernal): falta arte propio de death
   - Evidencia: enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=CODEX_OK; arena 10/10 (infernal); altura 2.33× el campeón típico
+  - Nota: Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros (DEATH_PACK via js/assets/anakin-meta.js).
   - Refs: bloques B077
-- [ ] **289. `enemigo-foco_convergencia`** · enemigo · `pendiente` · `gen4_image` · 5 cr
+- [ ] **289. `enemigo-foco_convergencia`** · enemigo · `instalado_sin_aprobar` · `gen4_image` · 5 cr
   - Foco de Convergencia (foco_convergencia, subelite, arena infernal): falta arte propio de attack y death
   - Evidencia: enemy-coverage.json: attack=real+clon(caminar), death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 10/10 (infernal); altura 7.27× el campeón típico
+  - Nota: 2026-11-18 sin arte nuevo: igual que foco_hielo (cuadros 4-5 de bsAngelPillar con su tinte).
   - Refs: bloques B286 · también foco_hielo, lev_tentaculo, nucleo_micelial
-- [ ] **290. `enemigo-golem_cuerpos`** · jefe · `pendiente` · `gen4_image` · 5 cr
+- [ ] **290. `enemigo-golem_cuerpos`** · jefe · `instalado_sin_aprobar` · `gen4_image` · 5 cr
   - Golem de Cuerpos (golem_cuerpos, jefe, arena infernal): falta arte propio de death
   - Evidencia: enemy-coverage.json: attack=real, death=real+clon(caminar), hit=real+clon(caminar); ATLAS_ARTE=FALTA_ANIMACION; arena 10/10 (infernal); altura 2.82× el campeón típico
+  - Nota: Anakin 2026-11-18 (modelo local, 0 cr; tools/art/anakin, fuente art-source/anakin): muerte de 5 cuadros.
 - [ ] **291. `b314-prop-de-decorado-infcolumn`** · arena · `pendiente` · `gen4_image` · 32 cr
   - Prop de decorado "infColumn+v" (infernal, canvas 30×70) / Prop de decorado "infAltar" (infernal, canvas 64×44) / Prop de decorado "infStatue" (infernal, canvas 34×62) / Prop de decorado "infBrazier" (infernal, canvas 18×26)
   - Evidencia: asset-blocks.json B314 P1 PENDIENTE; arena infernal (10/10 del recorrido)

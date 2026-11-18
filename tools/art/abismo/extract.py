@@ -290,6 +290,8 @@ if __name__ == '__main__':
             elif pset == 'atk': sets['atk'] = ims
             elif pset in ('leap8', 'charge8', 'prep6'): sets[pset[:-1]] = ims
             else: sets[pset] = ims
+            # el ataque basico usa el zarpazo real si el ataque quedo de un solo cuadro (antes: un cuadro de quieto)
+            if pset == 'claw' and len(sets.get('atk', [])) < 2 and ims: sets['atk'] = list(ims)
         sets = {k: v for k, v in sets.items() if v}
         atlas, w, h = pack(frames, 8)
         dest = f'assets/sprites/arenas/abismo/{ent}'

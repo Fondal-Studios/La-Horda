@@ -356,7 +356,11 @@ function cmDrawTall(it, now){
     case "spec": { const s = it.s, a = 0.5 + 0.2*Math.sin(t*2 + s.v);
       _cmFx("cmSpectators", s.v % 4, s.x, s.y, 110, a, 1); _cmGlow(s.x, s.y - 50, 60, "255,80,120", 0.2); break; }
     case "pdeath": { const P = cmS.pr, T = P.t||0, P3 = ENEMY_ATLAS_PACK.cm_presentador3;
-      if(P3 && P3.ready){ const arr = P3.sets.death || P3.sets.idle, n = Math.min(arr.length - 1, Math.floor(T/(CM_CFG.presentador.deathMs*0.7/arr.length))); _cmAtlasFrame("cm_presentador3", "death", n, P.x, P.y, 60*3.2, P.fx < 0, Math.max(0, 1 - Math.max(0, T - 7000)/2500), false); }
+      const BD = typeof battlefieldDeathImg==="function" && battlefieldDeathImg("cm_presentador"), BM = typeof BATTLEFIELD_META!=="undefined" && BATTLEFIELD_META.cm_presentador;
+      if(BD && BM){ // misma figura que en el combate (hoja battlefield): muerte propia
+        const N = Math.max(1, Math.round(BD.naturalWidth/BM.w)), n = Math.min(N - 1, Math.floor(T/(CM_CFG.presentador.deathMs*0.7/N))), s = BATTLEFIELD_HEIGHTS.cm_presentador/BM.ref;
+        drawAnimFrameSized(BD, {frames:[{x:n*BM.w, y:0, w:BM.w, h:BM.h}]}, 0, Math.round(P.x), Math.round(P.y), BM.w*s, BM.h*s, 0.5, 376/BM.h, P.fx < 0, Math.max(0, 1 - Math.max(0, T - 7000)/2500));
+      } else if(P3 && P3.ready){ const arr = P3.sets.death || P3.sets.idle, n = Math.min(arr.length - 1, Math.floor(T/(CM_CFG.presentador.deathMs*0.7/arr.length))); _cmAtlasFrame("cm_presentador3", "death", n, P.x, P.y, 60*3.2, P.fx < 0, Math.max(0, 1 - Math.max(0, T - 7000)/2500), false); }
       break; }
     case "lamp": { const L = it.L; _cmGlow(L.x - (CM_OK.farol_cx_0 ? 14 : 0), L.y - (CM_OK.farol_cx_0 ? 62 : 80), 110, "255,160,70", (CM_OK.farol_cx_0 ? 0.42 : 0.28) + 0.05*Math.sin(t*5 + L.x)); if(!(CM_OK.farol_cx_0 ? _cmPiece("farol_cx_0", L.x, L.y + 4, CM_IMG.farol_cx_0.height*2) : _cmPiece("farol_0", L.x, L.y + 4, 84))){ ctx.fillStyle = "#1a1418"; ctx.fillRect(L.x - 3, L.y - 90, 6, 94); } break; }
   }

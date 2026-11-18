@@ -276,3 +276,40 @@ Todo quedó `instalado_sin_aprobar` (la aprobación de arte es del dueño). Capt
 - `js/beta/beta-ui.js`: la escena del título enfrenta a los cinco guardianes con el Demonio Mayor (forma final del Rey de la Horda) y tres bichos de la arena infernal, en lugar del Ángel Caído de Hielo. Usa el arte real del juego (`_cxDrawEnemy`, grupo `ar:infernal`). Solo cosmético.
 - **Aprobación del dueño (2026-11-15, textual):** a la pregunta «¿Lo ponemos igual, aunque muestre al jefe final?» respondió «Si. Ponelo». Acepta que el título revele al jefe final.
 - Captura del motor real: `docs/art-brief/captures/titulo/demonio_mayor_1280x720.png` (0 errores de página).
+
+## Anakin: muertes y ataques de enemigos dibujados en la PC del dueño - 2026-11-18 (0 créditos, sin Runway)
+
+- **Qué es:** Anakin, el modelo local del dueño (stable-diffusion.cpp + DreamShaper 8 LCM + IP-Adapter Plus, GTX 1660 Ti).
+  Herramienta en `tools/art/anakin/` (README, `anakin_lib.py`, `normalize.py`, `install.py --check`, `targets.json`).
+  Fuente elegida a ojo en `art-source/anakin/<clave>/`.
+- **Método:** prepose determinista desde un cuadro real del personaje → repintado imagen a imagen con el cuadro
+  original como referencia de estilo → vuelta a su grilla nativa y a su paleta, con alfa 0/255 y contorno de 1 px →
+  escala igualada a la del personaje vivo. Hubo dos pasadas por personaje (semilla 7 y otra «de fidelidad») y se
+  eligió cuadro por cuadro.
+- **Generaciones:** 198 imágenes de 512×512 en la GPU local, más unos 25 intentos que fallaron por falta de memoria de video. No se gastó ningún
+  crédito.
+- **Instalado sin aprobar (18 enemigos y jefes):**
+  - Muerte propia de 5 cuadros: Dama del Telón, Presentador (también en su muerte especial), Maestro de Ceremonias,
+    Tramoyista, Dragón de la Forja, Micelio Primigenio, Minotauro, Leviatán, Gólem de Cuerpos, Titán de Piedra,
+    Carcelero del Vacío, Bestia del Bosque y Demonio Mayor.
+  - Muerte de 4 cuadros: Lobo Ártico.
+  - Ataque de 4 cuadros: Sabueso Cordyceps.
+  - Muerte que se hunde o se marchita: Tentáculo del Leviatán, Tentáculo del Abismo y Raíz de Absorción.
+- **Sin arte nuevo (arte que ya existía y no se usaba):**
+  - Zarpazo del Acechador del Borde.
+  - Marchitarse del Núcleo Micelial.
+  - Quiebre de los Focos de Hielo y de Convergencia (cuadros 4–5 de su aguja).
+  - Golpe del Tentáculo del Leviatán con `attackAnim`.
+- **Generado y descartado (no se instaló, por rebajar el arte original):**
+  - Cerbero: sale con una cabeza, en 3 intentos.
+  - Gólem de Piedra: queda como una masa de piedras.
+  - Hinchado: parece otra criatura.
+  - Enjambre de Hadas: con 43 px no hay control del detalle.
+  - Ataque del Kraken Joven: pierde las venas.
+  - Golpe del Tentáculo del Abismo: otra forma y otro tamaño.
+  - Ojo del Morador cargando el rayo: más plano que el original.
+- **Medición del motor** (`enemy-coverage.json`, regenerado): 26 estados pasan de «clon de caminar» a arte propio.
+- **ANTES/DESPUÉS del motor real:** `docs/art-brief/captures/anakin/antes_*.png` (main 2e043628) y `despues_*.png`.
+  En las cuatro capturas hubo 0 errores de página y 0 errores de carga.
+- **Estado:** todo `instalado_sin_aprobar`. Falta la aprobación a ojo del dueño (ART_BIBLE §8). Es IA generativa:
+  declarada en `docs/steam/DECLARACION_IA.md`.

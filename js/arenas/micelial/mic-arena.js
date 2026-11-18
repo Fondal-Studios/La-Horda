@@ -35,7 +35,7 @@ const MIC_ATLAS_META = {
   "acechador":{"w":211,"h":207,"cols":8,"refH":194,"anchor":0.9758,"sets":{"idle":[0,2],"walk":[6,7,8,9,10,11],"hide":[0],"leap":[1,4,3],"atk":[1,4],"hit":[4],"death":[4,5]},"hMul":1.3},
   "hinchado":{"w":224,"h":144,"cols":8,"refH":124,"anchor":0.9375,"sets":{"idle":[5,8],"walk":[8,5,9,5],"atk":[0,9],"prep":[6,7],"boom":[1],"hit":[3,4],"death":[4,2]},"hMul":3.24},
   "peregrino":{"w":214,"h":133,"cols":8,"refH":99,"anchor":0.9398,"sets":{"idle":[3,8],"walk":[7,8,9,8],"plant":[4,5],"atk":[5,6],"hit":[1,2],"death":[2,0]},"hMul":3.4},
-  "sabueso":{"w":272,"h":171,"cols":8,"refH":160,"anchor":0.9708,"sets":{"idle":[4,5],"walk":[0,2,1,3],"run":[0,2,1,3],"atk":[3,0],"leap":[3,2],"hit":[4],"death":[4,9]},"hMul":1.3},
+  "sabueso":{"w":272,"h":171,"cols":8,"refH":160,"anchor":0.9708,"sets":{"idle":[4,5],"walk":[0,2,1,3],"run":[0,2,1,3],"atk":[10,11,12,13],"leap":[3,2],"hit":[4],"death":[4,9]},"hMul":1.3},
   "chaman":{"w":166,"h":205,"cols":8,"refH":163,"anchor":0.9415,"sets":{"idle":[5,6],"walk":[9,10,6,10],"channel":[2,7],"regen":[8],"atk":[0,1],"hit":[4],"death":[4,3]},"hMul":3.8},
   "micelio":{"w":192,"h":100,"cols":8,"refH":82,"anchor":0.93,"sets":{"idle":[16,17,18,19,20],"walk":[33,34,35,36,37],"turn":[30,31,32],"atk":[2,3,4,5,6],"lash":[21,22,23],"rain":[24,18],"germ":[10,11],"absorb":[0,1],"hit":[12,13,14,15],"roar":[25,26,27,28,29],"death":[7,8,9]},"hMul":2.79}
 

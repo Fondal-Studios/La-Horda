@@ -177,6 +177,12 @@ function hieDrawEnemyBody(e){
   const P = VFX_SPR_EXTRA.bsAngelPillar, K = VFX_SPR_EXTRA.bsMagoCrystal, t = animNow/1000;
   const q = e.maxHp ? e.hp/e.maxHp : 1;
   _hieGlow(e.x, e.y - 40, 70 + 10*Math.sin(t*5 + e.x), "150,215,255", 0.45);
+  const dp = (!e.alive || e._dyingP != null) ? (e._dyingP || 0) : -1; // se quiebra: aguja, grieta (4) y derrumbe (5), cuadros que ya existian
+  if(dp >= 0 && P && P.imgs.length >= 6){
+    const im = P.imgs[[1, 4, 5][Math.min(2, Math.floor(dp*3*1.25))]], k = 118/75;
+    if(im.complete && im.naturalWidth){ const h = im.height*k, w = im.width*k; ctx.drawImage(im, e.x - w/2, e.y - h*0.95, w, h); }
+    return true;
+  }
   const base = P && P.imgs[1], top = K && K.imgs[Math.floor(t*6) % K.imgs.length];
   if(base && base.complete && base.naturalWidth){ const h = 118, w = base.width*h/base.height; ctx.drawImage(base, e.x - w/2, e.y - h*0.95, w, h); }
   if(top && top.complete && top.naturalWidth){ const h = 50, w = top.width*h/top.height, y = e.y - 150 + Math.sin(t*3 + e.y)*6; ctx.globalAlpha = 0.6 + 0.4*q; ctx.drawImage(top, e.x - w/2, y - h/2, w, h); ctx.globalAlpha = 1; }

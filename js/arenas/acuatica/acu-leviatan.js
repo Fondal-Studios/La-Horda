@@ -180,9 +180,15 @@ function acuLevDrawBody(e){
   if(e.type!=="lev_tentaculo") return false;
   if(!acua2Ready("krTent")) return true;
   const t = animNow/1000, n = ACUA2_IMG.krTent.length;
-  const i = e.levGrabIdx >= 0 ? 3 : e.levAnim > 0 ? 4 : (Math.floor(t*3 + e.x*0.01) % 3);
+  if((!e.alive || e._dyingP != null) && acua2Ready("levTentDeath")){ // se hunde (Anakin, mismo cuadro de origen que tent_01)
+    const D = ACUA2_IMG.levTentDeath, k = Math.min(D.length - 1, Math.floor((e._dyingP || 0)*D.length*1.25));
+    drawImgSized(D[k], e.x, e.y + 12, 128*D[k].height/ACUA2_IMG.krTent[0].height, 0.5, 0.95, e.x > 0, 1, 0);
+    return true;
+  }
+  const atk = e.levAnim > 0 || e.attackAnim > 0; // el golpe (tent_05) tambien con el ataque generico
+  const i = e.levGrabIdx >= 0 ? 3 : atk ? 4 : (Math.floor(t*3 + e.x*0.01) % 3);
   const sway = Math.sin(t*2 + e.x)*0.06;
-  drawImgSized(acua2Pick("krTent", i % n), e.x, e.y + 12, e.levAnim > 0 ? 150 : 128, 0.5, 0.95, e.x > 0, e.levRecoil > 0 ? 0.7 : 1, sway);
+  drawImgSized(acua2Pick("krTent", i % n), e.x, e.y + 12, atk ? 150 : 128, 0.5, 0.95, e.x > 0, e.levRecoil > 0 ? 0.7 : 1, sway);
   return true;
 }
 function acuLevDrawTop(){

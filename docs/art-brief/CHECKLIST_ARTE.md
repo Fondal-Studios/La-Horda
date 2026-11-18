@@ -15,7 +15,7 @@
 | Jefes y subjefes | 28 | hecho 14 · parcial 13 · arte_viejo 1 | ATLAS_ARTE.json |
 | Enemigos (normales, subélites, élites) | 76 | hecho 63 · parcial 13 | ATLAS_ARTE.json + enemy-coverage.json |
 | Mundo: pisos, centros, fachadas, props (trabajos Runway) | 29 | hecho 14 · falta 11 · rechazado 3 · hecho_sin_integrar 1 | estado-runway.json |
-| Mundo: archivos de arenas cargados por el motor | 185 | hecho 183 · huerfano 2 | ATLAS_ARTE.json (files) |
+| Mundo: archivos de arenas cargados por el motor | 190 | hecho 188 · huerfano 2 | ATLAS_ARTE.json (files) |
 | Mundo: cola de producción (bloques 03-mundo) | 227 | falta 227 | asset-blocks.json |
 | Efectos y habilidades (bloques 02-combate) | 252 | falta 252 | asset-blocks.json (cola); lo integrado: sin_verificar |
 | Interfaz, HUD e íconos (bloques 04-interfaz) | 76 | bloqueado 46 · falta 24 · hecho 6 | asset-blocks.json (cola); lo integrado: sin_verificar |
@@ -36,7 +36,7 @@
 | Aprobación de arte humana de lo instalado | Ningún archivo registra una aprobación humana; STATUS.md la declara «pendiente» (Ynara lanzar/definitiva, Cazadora y Musashi definitiva). |
 | Saldo de créditos de Runway actual | Solo hay la cifra escrita en STATUS.md (no se llamó a Runway); la cuenta es compartida y baja por consumo ajeno. Correr `node tools/art-world/runway-world.js status` (no gasta) antes de planificar. |
 
-**Fuentes leídas:** `docs/art/ATLAS_ARTE.json` (huella `3731a5f552e1`, 51 archivos), `runway-pack/estado-campeones.json`, `runway-pack/estado-runway.json` (auditado 2026-11-12), `docs/production/asset-blocks.json`, `docs/art-brief/enemy-coverage.json` (medido contra el atlas `42c3e6d9bc90` — **DESACTUALIZADO respecto de ATLAS_ARTE: regenerar con `python3 tools/art/art-checklist.py enemigos`**), `docs/beta-release/STATUS.md`, `ART_CREDITS.md`, `docs/steam/DECLARACION_IA.md`.
+**Fuentes leídas:** `docs/art/ATLAS_ARTE.json` (huella `461d08b44696`, 52 archivos), `runway-pack/estado-campeones.json`, `runway-pack/estado-runway.json` (auditado 2026-11-12), `docs/production/asset-blocks.json`, `docs/art-brief/enemy-coverage.json` (medido contra el atlas `461d08b44696`), `docs/beta-release/STATUS.md`, `ART_CREDITS.md`, `docs/steam/DECLARACION_IA.md`.
 
 ## B) Campeones (cuerpo base)
 
@@ -178,30 +178,30 @@ Fuente: `ATLAS_ARTE.json` (`category: boss`) y `enemy-coverage.json`. Cuadros di
 | angel_caido_hielo | jefe | hielo | hecho | 1 | 5 | 3 | 7 | R / R |
 | angel_corrompido | jefe | infernal | hecho | 1 | 4 | 4 | 6 | R / R |
 | caballero | jefe | fortaleza | hecho | 1 | 6 | 5 | 2 | R / R |
-| cm_presentador | jefe | ciudad | parcial | 1 | 2 | 1 | 1 | R / C |
-| demonio_mayor | jefe | infernal | hecho | 1 | 4 | 1 | 1 | R / C |
-| golem_cuerpos | jefe | infernal | parcial | 1 | 2 | 1 | 1 | R / C |
+| cm_presentador | jefe | ciudad | parcial | 1 | 2 | 1 | 5 | R / R |
+| demonio_mayor | jefe | infernal | hecho | 1 | 4 | 1 | 5 | R / R |
+| golem_cuerpos | jefe | infernal | parcial | 1 | 2 | 1 | 5 | R / R |
 | guardian_ancestral | jefe | bosque | hecho | 1 | 3 | 5 | 7 | R / R |
 | jinete_sin_cabeza | jefe | bosque | hecho | 1 | 4 | 3 | 5 | R / R |
-| leviatan | jefe | acuatica | parcial | 1 | 2 | 1 | 1 | R / C |
+| leviatan | jefe | acuatica | parcial | 1 | 2 | 1 | 5 | R / R |
 | madre_espora | jefe | micelial | arte_viejo | 0 | 0 | 0 | 0 | X / X |
 | mago_hielo_cristal | jefe | hielo | hecho | 1 | 5 | 3 | 3 | R / R |
-| minotauro | jefe | laberinto | parcial | 1 | 2 | 1 | 1 | R / C |
+| minotauro | jefe | laberinto | parcial | 1 | 2 | 1 | 5 | R / R |
 | mn_cerbero | jefe | minas | parcial | 1 | 2 | 1 | 1 | R / C |
-| ab_carcelero | subjefe | abismo | parcial | 1 | 2 | 1 | 1 | R / C |
-| cm_dama | subjefe | ciudad | parcial | 1 | 2 | 1 | 1 | R / C |
-| cm_maestro | subjefe | ciudad | parcial | 1 | 2 | 1 | 1 | R / C |
-| cm_tramoyista | subjefe | ciudad | parcial | 1 | 2 | 1 | 1 | R / C |
+| ab_carcelero | subjefe | abismo | parcial | 1 | 2 | 1 | 5 | R / R |
+| cm_dama | subjefe | ciudad | parcial | 1 | 2 | 1 | 5 | R / R |
+| cm_maestro | subjefe | ciudad | parcial | 1 | 2 | 1 | 5 | R / R |
+| cm_tramoyista | subjefe | ciudad | parcial | 1 | 2 | 1 | 5 | R / R |
 | doblador_arquera | subjefe | bosque | hecho | 1 | 4 | 4 | 4 | R / R |
 | doblador_clerigo | subjefe | bosque | hecho | 1 | 4 | 4 | 4 | R / R |
 | doblador_guerrero | subjefe | bosque | hecho | 1 | 4 | 4 | 4 | R / R |
 | doblador_picaro | subjefe | bosque | hecho | 1 | 4 | 4 | 4 | R / R |
-| dragon_forja | subjefe | fortaleza | parcial | 1 | 2 | 1 | 1 | R / C |
+| dragon_forja | subjefe | fortaleza | parcial | 1 | 2 | 1 | 5 | R / R |
 | guardian_laberinto | subjefe | laberinto | hecho | 1 | 4 | 5 | 5 | R / R |
 | hechicero_supremo | subjefe | infernal | hecho | 1 | 3 | 4 | 6 | R / R |
 | kraken_joven | subjefe | acuatica | hecho | 1 | 4 | 1 | 5 | C / R |
-| micelio | subjefe | micelial | parcial | 1 | 2 | 1 | 1 | R / C |
-| mn_titan | subjefe | minas | parcial | 1 | 2 | 1 | 1 | R / C |
+| micelio | subjefe | micelial | parcial | 1 | 2 | 1 | 5 | R / R |
+| mn_titan | subjefe | minas | parcial | 1 | 2 | 1 | 5 | R / R |
 
 Intentos con Runway en jefes (`estado-runway.json`): rechazado 4 · hecho 1. Rechazados (no repetir igual): `hoja_leviatan`, `hoja_bestia_bosque`, `hoja_dragon_forja`, `hoja_minotauro`.
 
@@ -221,7 +221,7 @@ Medición del motor (`tools/art/enemy_coverage.js`: arma la entidad con el códi
 | tiburon_joven | normal | acuatica | hecho | C | RECC | RCC | RC | R | — |
 | duende_bosque | normal | bosque | hecho | R | RECC | RCC | RC | R | — |
 | enjambre_hadas | normal | bosque | hecho | C | RECC | CCC | CC | R | SIN ARTE PROPIO DE ATAQUE |
-| cm_cometa | normal | ciudad | parcial | C | PGCC | CCC | CC | C | SIN ARTE PROPIO DE ATAQUE; SIN ARTE PROPIO DE MUERTE |
+| cm_cometa | normal | ciudad | parcial | C | RECC | CCC | CC | C | SIN ARTE PROPIO DE ATAQUE; SIN ARTE PROPIO DE MUERTE |
 | cm_espectro | normal | ciudad | hecho | R | RECC | RCC | RC | R | — |
 | cm_espejismo | normal | ciudad | hecho | R | RECC | RCC | RC | R | — |
 | cm_perro | normal | ciudad | hecho | C | RECC | RCC | RC | R | — |
@@ -236,34 +236,34 @@ Medición del motor (`tools/art/enemy_coverage.js`: arma la entidad con el códi
 | golem_cristal | normal | hielo | hecho | R | RECC | RCC | RC | R | — |
 | golem_hielo | normal | hielo | hecho | R | RECC | RCC | RC | R | — |
 | hada_escarcha | normal | hielo | hecho | R | RECC | RCC | RC | R | — |
-| lobo_artico | normal | hielo | hecho | C | RERR | RRR | CC | C | SIN ARTE PROPIO DE MUERTE |
+| lobo_artico | normal | hielo | hecho | C | RERR | RRR | CC | R | — |
 | esqueleto | normal | infernal | hecho | C | RECC | RCC | RC | R | — |
 | zombie | normal | infernal | hecho | C | RECC | RCC | RC | R | — |
 | escorpion_gigante | normal | laberinto | hecho | C | RECC | RCC | RC | R | — |
 | golem_piedra | normal | laberinto | hecho | C | RECC | RCC | CC | C | SIN ARTE PROPIO DE MUERTE |
 | infectado | normal | micelial | hecho | R | RECC | RCC | RC | R | — |
-| sabueso | normal | micelial | hecho | R | RECC | CCC | CC | R | SIN ARTE PROPIO DE ATAQUE |
+| sabueso | normal | micelial | hecho | R | RECC | RCC | CC | R | — |
 | mn_esclavo | normal | minas | hecho | R | RECC | RCC | RC | R | — |
 | mn_insecto | normal | minas | hecho | R | RECC | RCC | RC | R | — |
-| ab_acechador | subelite | abismo | parcial | C | RERR | CCC | RR | R | SIN ARTE PROPIO DE ATAQUE |
+| ab_acechador | subelite | abismo | parcial | C | RERR | RCC | RR | R | — |
 | ab_heraldo | subelite | abismo | parcial | C | RERR | RRR | RR | R | — |
 | ab_tejedor | subelite | abismo | parcial | C | RERR | RRR | RR | R | — |
-| ab_tentaculo | subelite | abismo | parcial | C | RECC | CCC | CC | C | SIN ARTE PROPIO DE ATAQUE; SIN ARTE PROPIO DE MUERTE |
-| lev_tentaculo | subelite | acuatica | parcial | C | RGCC | CCC | CC | C | SIN ARTE PROPIO DE ATAQUE; SIN ARTE PROPIO DE MUERTE |
-| bestia_bosque | subelite | bosque | parcial | C | RECC | RCC | CC | C | SIN ARTE PROPIO DE MUERTE |
+| ab_tentaculo | subelite | abismo | parcial | C | RECC | CCC | CC | R | SIN ARTE PROPIO DE ATAQUE |
+| lev_tentaculo | subelite | acuatica | parcial | C | RGCC | RCC | CC | R | — |
+| bestia_bosque | subelite | bosque | parcial | C | RECC | RCC | CC | R | — |
 | cm_acechante | subelite | ciudad | hecho | R | RECC | RCC | RC | R | — |
 | cm_planidera | subelite | ciudad | hecho | R | RECC | RCC | RC | R | — |
 | cm_raptor | subelite | ciudad | hecho | R | RECC | RCC | RC | R | — |
 | arana | subelite | fortaleza | hecho | R | RECC | RCC | RC | R | — |
-| foco_hielo | subelite | hielo | parcial | C | RGCC | CCC | CC | C | SIN ARTE PROPIO DE ATAQUE; SIN ARTE PROPIO DE MUERTE |
+| foco_hielo | subelite | hielo | parcial | C | RGCC | CCC | CC | R | SIN ARTE PROPIO DE ATAQUE |
 | demonio_menor | subelite | infernal | hecho | C | RECC | RCC | RC | R | — |
 | esqueleto_h | subelite | infernal | hecho | C | RECC | RCC | RC | R | — |
-| foco_convergencia | subelite | infernal | parcial | C | RGCC | CCC | CC | C | SIN ARTE PROPIO DE ATAQUE; SIN ARTE PROPIO DE MUERTE |
+| foco_convergencia | subelite | infernal | parcial | C | RGCC | CCC | CC | R | SIN ARTE PROPIO DE ATAQUE |
 | medusa | subelite | laberinto | hecho | C | RECC | RCC | RC | R | — |
 | acechador | subelite | micelial | hecho | R | RECC | RCC | RC | R | — |
-| nucleo_micelial | subelite | micelial | parcial | C | RGCC | CCC | CC | P | SIN ARTE PROPIO DE ATAQUE |
+| nucleo_micelial | subelite | micelial | parcial | C | RGCC | CCC | CC | R | SIN ARTE PROPIO DE ATAQUE |
 | peregrino | subelite | micelial | hecho | R | RECC | RCC | RC | R | — |
-| raiz_absorcion | subelite | micelial | parcial | C | RGCC | CCC | CC | P | SIN ARTE PROPIO DE ATAQUE |
+| raiz_absorcion | subelite | micelial | parcial | C | RGCC | CCC | CC | R | SIN ARTE PROPIO DE ATAQUE |
 | mn_acechador | subelite | minas | hecho | R | RECC | RCC | RC | R | — |
 | mn_escupidor | subelite | minas | hecho | R | RECC | RCC | RC | R | — |
 | ab_devorador | elite | abismo | parcial | C | RERR | RRR | RR | R | — |
@@ -289,42 +289,42 @@ Medición del motor (`tools/art/enemy_coverage.js`: arma la entidad con el códi
 | mn_consumidor | elite | minas | hecho | R | RECC | RCC | RC | R | — |
 | mn_devoraluz | elite | minas | hecho | C | RECC | RCC | RC | R | — |
 | mn_minero | elite | minas | hecho | R | RECC | RCC | RC | R | — |
-| ab_carcelero | subjefe | abismo | parcial | C | RECC | RCC | CC | C | SIN ARTE PROPIO DE MUERTE |
+| ab_carcelero | subjefe | abismo | parcial | C | RECC | RCC | CC | R | — |
 | kraken_joven | subjefe | acuatica | hecho | C | RGCC | CCC | RC | R | SIN ARTE PROPIO DE ATAQUE |
 | doblador_arquera | subjefe | bosque | hecho | R | RECC | RCC | CC | R | — |
 | doblador_clerigo | subjefe | bosque | hecho | R | RECC | RCC | CC | R | — |
 | doblador_guerrero | subjefe | bosque | hecho | R | RECC | RCC | CC | R | — |
 | doblador_picaro | subjefe | bosque | hecho | R | RECC | RCC | CC | R | — |
-| cm_dama | subjefe | ciudad | parcial | C | RECC | RCC | CC | C | SIN ARTE PROPIO DE MUERTE |
-| cm_maestro | subjefe | ciudad | parcial | C | RECC | RCC | CC | C | SIN ARTE PROPIO DE MUERTE |
-| cm_tramoyista | subjefe | ciudad | parcial | C | RECC | RCC | CC | C | SIN ARTE PROPIO DE MUERTE |
-| dragon_forja | subjefe | fortaleza | parcial | C | RECC | RCC | CC | C | SIN ARTE PROPIO DE MUERTE |
+| cm_dama | subjefe | ciudad | parcial | C | RECC | RCC | CC | R | — |
+| cm_maestro | subjefe | ciudad | parcial | C | RECC | RCC | CC | R | — |
+| cm_tramoyista | subjefe | ciudad | parcial | C | RECC | RCC | CC | R | — |
+| dragon_forja | subjefe | fortaleza | parcial | C | RECC | RCC | CC | R | — |
 | hechicero_supremo | subjefe | infernal | hecho | R | RERC | RCC | RC | R | — |
 | guardian_laberinto | subjefe | laberinto | hecho | R | RECC | RCC | RC | R | — |
-| micelio | subjefe | micelial | parcial | C | RECC | RCC | CC | C | SIN ARTE PROPIO DE MUERTE |
-| mn_titan | subjefe | minas | parcial | C | RECC | RCC | CC | C | SIN ARTE PROPIO DE MUERTE |
+| micelio | subjefe | micelial | parcial | C | RECC | RCC | CC | R | — |
+| mn_titan | subjefe | minas | parcial | C | RECC | RCC | CC | R | — |
 | ab_morador | jefe | abismo | parcial | C | RGCC | CCC | CC | C | SIN ARTE PROPIO DE ATAQUE; SIN ARTE PROPIO DE MUERTE |
-| leviatan | jefe | acuatica | parcial | C | RECC | RCC | CC | C | SIN ARTE PROPIO DE MUERTE |
+| leviatan | jefe | acuatica | parcial | C | RECC | RCC | CC | R | — |
 | guardian_ancestral | jefe | bosque | hecho | R | RERR | RCC | RC | R | — |
 | jinete_sin_cabeza | jefe | bosque | hecho | C | RECC | RCC | CC | R | — |
-| cm_presentador | jefe | ciudad | parcial | C | RECC | RCC | CC | C | SIN ARTE PROPIO DE MUERTE |
+| cm_presentador | jefe | ciudad | parcial | C | RECC | RCC | CC | R | — |
 | caballero | jefe | fortaleza | hecho | R | RECC | RCC | RC | R | — |
 | angel_caido_hielo | jefe | hielo | hecho | R | RECC | RCC | RC | R | — |
 | mago_hielo_cristal | jefe | hielo | hecho | R | RECC | RCC | RC | R | — |
 | angel_corrompido | jefe | infernal | hecho | R | RECC | RCC | RC | R | — |
-| demonio_mayor | jefe | infernal | hecho | C | RERR | RRR | CC | C | SIN ARTE PROPIO DE MUERTE |
-| golem_cuerpos | jefe | infernal | parcial | C | RECC | RCC | CC | C | SIN ARTE PROPIO DE MUERTE |
-| minotauro | jefe | laberinto | parcial | C | RECC | RCC | CC | C | SIN ARTE PROPIO DE MUERTE |
+| demonio_mayor | jefe | infernal | hecho | C | RERR | RRR | CC | R | — |
+| golem_cuerpos | jefe | infernal | parcial | C | RECC | RCC | CC | R | — |
+| minotauro | jefe | laberinto | parcial | C | RECC | RCC | CC | R | — |
 | madre_espora | jefe | micelial | arte_viejo | X | XXXX | XXX | XX | X | — |
 | mn_cerbero | jefe | minas | parcial | C | RECC | RCC | CC | C | SIN ARTE PROPIO DE MUERTE |
 
-**Resumen.** Ataque de perfil: R 90 · C 13 · X 1. Muerte: R 79 · C 22 · P 2 · X 1.
+**Resumen.** Ataque de perfil: R 93 · C 10 · X 1. Muerte: R 99 · C 4 · X 1.
 
-**Sin arte propio de ataque (clonan «caminar» o lo arma el código), 13:** `ab_acechador`, `ab_morador`, `ab_tentaculo`, `cm_cometa`, `enjambre_hadas`, `foco_convergencia`, `foco_hielo`, `hinchado`, `kraken_joven`, `lev_tentaculo`, `nucleo_micelial`, `raiz_absorcion`, `sabueso`.
+**Sin arte propio de ataque (clonan «caminar» o lo arma el código), 10:** `ab_morador`, `ab_tentaculo`, `cm_cometa`, `enjambre_hadas`, `foco_convergencia`, `foco_hielo`, `hinchado`, `kraken_joven`, `nucleo_micelial`, `raiz_absorcion`.
 
-**Sin arte propio de muerte (clonan «caminar» o lo arma el código), 22:** `ab_carcelero`, `ab_morador`, `ab_tentaculo`, `bestia_bosque`, `cm_cometa`, `cm_dama`, `cm_maestro`, `cm_presentador`, `cm_tramoyista`, `demonio_mayor`, `dragon_forja`, `foco_convergencia`, `foco_hielo`, `golem_cuerpos`, `golem_piedra`, `lev_tentaculo`, `leviatan`, `lobo_artico`, `micelio`, `minotauro`, `mn_cerbero`, `mn_titan`.
+**Sin arte propio de muerte (clonan «caminar» o lo arma el código), 4:** `ab_morador`, `cm_cometa`, `golem_piedra`, `mn_cerbero`.
 
-**Con ambos huecos (prioridad de hoja nueva), 6:** `ab_morador`, `ab_tentaculo`, `cm_cometa`, `foco_convergencia`, `foco_hielo`, `lev_tentaculo`.
+**Con ambos huecos (prioridad de hoja nueva), 2:** `ab_morador`, `cm_cometa`.
 
 Intentos con Runway en hojas de enemigos (`estado-runway.json`): hecho 29 · rechazado 3 · falta 1. Los rechazados (no repetir igual): `hoja_golem_piedra`, `hoja_chaman`, `regla_animacion_hojas_enemigos`.
 
@@ -380,11 +380,11 @@ Fuentes: `estado-runway.json` (lo hecho/probado, manda sobre `runway-world.js li
 | ciudad | 18 | hecho 18 |
 | divina | 16 | hecho 16 |
 | fortaleza | 35 | hecho 35 |
-| micelial | 98 | hecho 96 · huerfano 2 |
+| micelial | 103 | hecho 101 · huerfano 2 |
 | minas | 9 | hecho 9 |
 | world-v1 | 2 | hecho 2 |
 
-Battlefield (campo de batalla): 32 archivos, hecho 32.
+Battlefield (campo de batalla): 44 archivos, hecho 44.
 
 **Cola de producción del mundo** (`asset-blocks.json`, grupo `03-mundo`): 227 bloques (falta 227), 473 tareas pendientes. La cola cuenta kits y puede solaparse con las entradas de arriba ("Tasks are not individual PNGs"). Bloque activo: `B002`; siguientes: `B003`, `B004`, `B005`.
 
@@ -438,14 +438,14 @@ Para saber qué UI está pintada de verdad hace falta una auditoría del motor (
 | 12 | Pisos y centros de Bosque y Hielo (JOBS ya definidos en `runway-world.js`); intento anterior BLOQUEADO por límite diario de tareas de la cuenta. | arte (Runway) | 32 | 4 | 1.0 | entradas `prox_piso_*`/`prox_centro_*` |
 | 13 | Hojas de enemigos de Fortaleza (`gen_sheet.py`, 1 hoja por enemigo). | arte (Runway) | 24 | 3 | 0.9 | `prox_hojas_fortaleza` |
 | 14 | Ilkan: 2 hojas de ataque (frente y espaldas) para cuando el despacho por dirección aterrice. | requiere cambio de código (en curso) | 40 | 3 a | 0.6 | js/champions/ilkan.js; después arte (Runway) |
-| 15 | Jefes/subjefes con `FALTA_ANIMACION` (13: ab_carcelero, ab_morador, cm_dama, cm_maestro, cm_presentador, cm_tramoyista, dragon_forja, golem_cuerpos, leviatan, micelio, minotauro, mn_cerbero, mn_titan). | arte (Runway) | 65 | 3 a | 0.4 | est. 5 c por hoja (`--kind bosses`) |
+| 15 | Enemigos sin arte propio de ataque o muerte (lista en la sección E): una hoja por criatura (12 con algún hueco). | arte (Runway) | 60 | 3 a | 0.4 | est. 5 c por hoja; medir con enemy_coverage.js antes y después |
+| — | Jefes/subjefes con `FALTA_ANIMACION` (13: ab_carcelero, ab_morador, cm_dama, cm_maestro, cm_presentador, cm_tramoyista, dragon_forja, golem_cuerpos, leviatan, micelio, minotauro, mn_cerbero, mn_titan). | arte (Runway) | 65 | 3 a | 0.4 | est. 5 c por hoja (`--kind bosses`) |
 | — | Props pintados de Infernal, Hielo, Bosque y Laberinto (mismo método que estatua/farol, 2 de 2 aceptados). | arte (Runway) | 120 | 4 | 0.3 | entradas `prox_props_*` |
 | — | Skins de Ynara (2 apariencias) con lanzar y definitiva = ataque (STATUS.md): 1 hoja por estado y apariencia (2 estados). | arte (Runway) | 80 | 2 a | 0.2 | est.: 2 × 2 × 20 c; los cromas son recolor (0 c) si se recolorea el cuerpo base ya hecho |
-| — | Enemigos sin arte propio de ataque o muerte (lista en la sección E): una hoja por criatura (29 con algún hueco). | arte (Runway) | 145 | 3 a | 0.2 | est. 5 c por hoja; medir con enemy_coverage.js antes y después |
 | — | Cuerpo Códice completo para campeones con arte viejo, sin Libertador (8: aurelia, facu_gm, ilsa, kora, myla, saelis, vorn, ynara). | arte (Runway) | 1600 | 4 a | 0.0 | est.: ~10 estados × 20 c por campeón; necesita su lámina del Códice |
 | — | Idle de 1 cuadro en 28 campeones (brecha medida). Verificar primero si el motor ya anima el reposo por código. | arte (Runway) | 560 | 1 a | 0.0 | est.; `sin_verificar` si hace falta |
 
-**Costo de los 15 primeros por clase:** arte (Runway) 185 c · arte sin créditos 0 c · requiere cambio de código (en curso) 60 c · requiere decisión/aprobación humana 0 c. Los pasos 16 en adelante van marcados con «—». El saldo disponible no se verificó (ver A).
+**Costo de los 15 primeros por clase:** arte (Runway) 180 c · arte sin créditos 0 c · requiere cambio de código (en curso) 60 c · requiere decisión/aprobación humana 0 c. Los pasos 16 en adelante van marcados con «—». El saldo disponible no se verificó (ver A).
 
 ## J) Decisiones abiertas del dueño
 

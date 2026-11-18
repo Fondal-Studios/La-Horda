@@ -19,6 +19,8 @@ if(typeof ABISMO_TEX!=="undefined") for(const k in ABISMO_TEX) _abImg(k, ABISMO_
 if(typeof ABISMO_PIECES!=="undefined") for(const k in ABISMO_PIECES) ABISMO_PIECES[k].forEach((src, i)=>_abImg(k+"_"+i, src));
 if(typeof ABISMO_EYE!=="undefined") for(const k in ABISMO_EYE) ABISMO_EYE[k].forEach((src, i)=>_abImg("eye_"+k+"_"+i, src));
 if(typeof ABISMO_JAW!=="undefined") for(const k in ABISMO_JAW) _abImg("jaw_"+k, ABISMO_JAW[k]);
+// tentaculo grande: muerte (5 cuadros) dibujada con Anakin desde tent_grande_0 (tools/art/anakin)
+for(let i=0;i<5;i++) _abImg("tent_grande_muerte_"+i, "assets/vfx/abismo/tent_grande_muerte_"+i+".png");
 
 /* ---------------- geometría de dibujo (fija) ---------------- */
 const AB_DEPTH = {hub:62, ring:78, spoke:36, seg:36};
@@ -520,10 +522,13 @@ function abDrawEnemyBody(e){
     const rise = e.abRise > 0 ? 1 - e.abRise/700 : 1, wind = e.abWind > 0 ? 1 - e.abWind/AB_CFG.morador.slamWind : 0;
     ctx.save(); ctx.fillStyle = "rgba(8,2,14,0.85)"; ctx.beginPath(); ctx.ellipse(e.x, e.y + 2, 38, 14, 0, 0, Math.PI*2); ctx.fill(); ctx.restore();
     _abGlow(e.x, e.y, 40, "200,80,255", 0.35);
+    const dying = !e.alive || e._dyingP != null, flip = (e.fx||0) < 0;
+    const kd = dying && e._dyingP != null ? Math.min(4, Math.floor(e._dyingP*5*1.25)) : -1;
+    if(kd >= 0 && AB_OK["tent_grande_muerte_"+kd]){ _abSpr("tent_grande_muerte_"+kd, e.x, e.y + 8, 200, flip, 1, 0.95, 0); return true; } // se desploma (Anakin)
     const h = 200*(0.2 + 0.8*rise)*(e.alive ? 1 : 0.7), lean = -wind*0.35 + Math.sin(t*2.2 + e.x*0.01)*0.1;
     ctx.save(); if(!e.alive) ctx.globalAlpha *= 0.6;
     ctx.beginPath(); ctx.rect(e.x - 200, e.y - 400, 400, 404); ctx.clip();
-    _abSpr("tent_grande_0", e.x, e.y + 8, h, (e.fx||0) < 0, e.hitFlash > 55 ? 0.75 : 1, 0.95, lean*((e.fx||0) < 0 ? -1 : 1));
+    _abSpr("tent_grande_0", e.x, e.y + 8, h, flip, e.hitFlash > 55 ? 0.75 : 1, 0.95, lean*(flip ? -1 : 1));
     ctx.restore();
     if(e.hitFlash > 55) _abGlow(e.x, e.y - h*0.5, 60, "255,220,255", 0.4);
     return true;
