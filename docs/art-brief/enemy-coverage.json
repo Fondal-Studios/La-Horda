@@ -1,6 +1,6 @@
 {
  "_leyenda": "Salida compacta de `node tools/art/enemy_coverage.js` (la mide el motor con un navegador). Regenerar: `python3 tools/art/art-checklist.py enemigos`. Etiquetas por estado: real = cuadro propio del atlas; real+espejo = el de la otra dirección dado vuelta; real+clon(x) = reutiliza el cuadro de otro estado (x); real+sin-giro = no gira; formas/propio/escenario = lo dibuja el código o la arena.",
- "atlas_hash": "3731a5f552e1abad6204108d059f2eda7e8e4416",
+ "atlas_hash": "461d08b44696ef633d65d6e59150433b9f9f7bac",
  "results": [
   {
    "alias": null,
@@ -465,7 +465,7 @@
   {
    "alias": null,
    "arena": "micelial",
-   "hRatio": 3.61,
+   "hRatio": 3.58,
    "name": "Chamán de la Colonia",
    "rank": "elite",
    "smooth": false,
@@ -810,7 +810,7 @@
   {
    "alias": null,
    "arena": "ciudad",
-   "hRatio": 2.64,
+   "hRatio": 2.65,
    "name": "Verdugo",
    "rank": "elite",
    "smooth": false,
@@ -1454,7 +1454,7 @@
   {
    "alias": null,
    "arena": "infernal",
-   "hRatio": 2.42,
+   "hRatio": 2.43,
    "name": "Gólem",
    "rank": "elite",
    "smooth": false,
@@ -1661,7 +1661,7 @@
   {
    "alias": null,
    "arena": "micelial",
-   "hRatio": 2.59,
+   "hRatio": 2.61,
    "name": "Hinchado",
    "rank": "elite",
    "smooth": false,
@@ -2121,7 +2121,7 @@
   {
    "alias": null,
    "arena": "minas",
-   "hRatio": 2.91,
+   "hRatio": 2.89,
    "name": "Minero Corrompido",
    "rank": "elite",
    "smooth": false,
@@ -2305,7 +2305,7 @@
   {
    "alias": null,
    "arena": "acuatica",
-   "hRatio": 1.37,
+   "hRatio": 1.38,
    "name": "Tiburón Blanco",
    "rank": "elite",
    "smooth": false,
