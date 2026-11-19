@@ -1,0 +1,37 @@
+{
+  "component": "B002-tanque-directional-cast-death",
+  "state": "EN_CORRECCION",
+  "integration": "NOT_INTEGRATED",
+  "publication": "NOT_CHECKED",
+  "base_sha": "b7d92968d3324f298bd64bd9c7cbd33be1ab434e",
+  "production_sha": "78bcb2fe097414f2f54c2655308d1710a29a73e5",
+  "branch": "art/tanque-directional-kit-20261118",
+  "pull_request": 310,
+  "pull_request_url": "https://github.com/Fondal-Studios/La-Horda/pull/310",
+  "files": {
+    "changed": 19,
+    "cast": "assets/sprites/champions/tanque/v3/cast.png",
+    "death": "assets/sprites/champions/tanque/v3/death.png",
+    "codex_reference": "assets/ui/codex/champions/tanque.png"
+  },
+  "new_tests": [
+    "reproduce.py deterministic PASS",
+    "cast/death binary alpha, 12 non-empty islands, zero fragments PASS",
+    "approved front rows preserved PASS",
+    "modified JavaScript syntax PASS"
+  ],
+  "historical_tests": [
+    "Existing front death/hurt gates retained; do not count them as new directional approval."
+  ],
+  "blocked": [
+    "Local Playwright bundled browser missing",
+    "System Chromium process-singleton socket blocked by executor policy"
+  ],
+  "pending": [
+    "exact-head GitHub CI",
+    "real gameplay before/after in six arenas on desktop/mobile",
+    "base-only routing with Baluarte, Bastion Ancestral and Paladin del Juicio",
+    "real multiplayer relay and full renderer performance"
+  ],
+  "next_action": "Inspect CI for the current branch head. Keep draft/FIX/NO_INTEGRAR until every applicable check and the visual matrix pass."
+}
