@@ -1,7 +1,7 @@
 name: Caballero death component gate
 on:
   pull_request:
-    paths: ['assets/sprites/champions/tanque/v3/**', 'js/assets/champion-sprites.js', 'js/rendering/champion-sprites.js', 'js/rendering/codex-champions.js', 'tools/art/check-tanque-death.js', 'tools/art/check-tanque-hurt.js', 'tools/factory/reproduce-authored-component.py', 'art-source/entregas/bloques/B002_tanque/revision-hurt-*/**', 'tools/art/check-authored-clip-density.js', 'tools/factory/extract-authored-clip.py', 'tools/factory/replace-authored-frame.py', 'art-source/entregas/bloques/B002_tanque/revision-death-v3/**', 'art-source/entregas/bloques/B002_tanque/cierre-direccional-01/**', 'docs/art-gate/tanque-death/**', '.github/workflows/tanque-death.yml']
+    paths: ['assets/sprites/champions/tanque/v3/**', 'js/assets/champion-sprites.js', 'js/rendering/champion-sprites.js', 'js/rendering/codex-champions.js', 'tools/art/check-tanque-death.js', 'tools/art/check-tanque-hurt.js', 'tools/art/check-directional-clip-density.js', 'tools/factory/reproduce-authored-component.py', 'art-source/entregas/bloques/B002_tanque/revision-hurt-*/**', 'tools/art/check-authored-clip-density.js', 'tools/factory/extract-authored-clip.py', 'tools/factory/replace-authored-frame.py', 'art-source/entregas/bloques/B002_tanque/revision-death-v3/**', 'art-source/entregas/bloques/B002_tanque/cierre-direccional-01/**', 'docs/art-gate/tanque-death/**', '.github/workflows/tanque-death.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -37,8 +37,8 @@ jobs:
           assert result['semi']==result['fragments']==0 and result['halo']<=15, result
           print(result)
           PY
-      - run: node tools/art/check-authored-clip-density.js assets/sprites/champions/tanque/v3/death.png docs/art-gate/tanque-death/native.json 3 4
-      - run: node tools/art/check-authored-clip-density.js assets/sprites/champions/tanque/v3/cast.png docs/art-gate/tanque-death/cast-native.json 3 4
+      - run: node tools/art/check-directional-clip-density.js assets/sprites/champions/tanque/v3/death.png docs/art-gate/tanque-death/native.json 112 112 4 3 1
+      - run: node tools/art/check-directional-clip-density.js assets/sprites/champions/tanque/v3/cast.png docs/art-gate/tanque-death/cast-native.json 144 144 4 3 1
       - name: Family style only, not approval of unchanged candidate frames
         run: python tools/art/painter/style_gate.py --strict art-source/entregas/bloques/B002_tanque/revision-death-v3/atlas.png
       - name: Reproduce and validate recoil component
