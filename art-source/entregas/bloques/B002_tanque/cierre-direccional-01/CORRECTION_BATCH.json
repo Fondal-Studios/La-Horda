@@ -30,5 +30,18 @@
         "First static JSON print failed on numpy bool; assertion rerun passed."
       ]
     }
+  ],
+  "attempts": [
+    {
+      "attempt": 2,
+      "source": "sources/cast-directional-imagegen-02.webp",
+      "diagnosis": "replace smooth lateral/back cast source with Codex-derived hard 1px clusters and limited palette",
+      "status": "GENERADO_PENDING_EXACT_HEAD_CI",
+      "preserves": [
+        "sources/cast-directional-attempt01.webp",
+        "front approved row",
+        "death atlas"
+      ]
+    }
   ]
 }

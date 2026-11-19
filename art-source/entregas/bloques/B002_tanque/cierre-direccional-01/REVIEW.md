@@ -13,3 +13,6 @@ Referencia obligatoria: `assets/ui/codex/champions/tanque.png` (Aldric, frente/l
 - Los 24 cuadros nuevos tienen alfa binaria, ancla de pies/suelo consistente y ningún recorte de borde.
 
 La hoja de contacto es evidencia diagnóstica. Falta el gate del renderer real a escala de gameplay; por eso las fuentes no se declaran integradas.
+
+## Corrección 02 — densidad canónica
+El CI del head `79ed841b` validó las 12 celdas de muerte y detectó `ILUSTRACION` en lanzamiento lateral 1:2 y las cuatro celdas traseras de la fuente 01. Se conserva esa fuente como intento fallido. La fuente 02 se generó nuevamente desde `assets/ui/codex/champions/tanque.png` con clusters duros de 1 píxel y paleta limitada; queda GENERADA y pendiente del gate exacto. No se modificaron umbrales, mecánicas ni la fila frontal aprobada.

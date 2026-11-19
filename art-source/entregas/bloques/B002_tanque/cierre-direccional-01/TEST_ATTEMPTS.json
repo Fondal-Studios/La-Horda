@@ -35,6 +35,16 @@
       "name": "gameplay/skins/relay/performance",
       "status": "PENDING",
       "detail": "must run on the exact remote head before approval"
+    },
+    {
+      "name": "exact-head CI 79ed841b directional density",
+      "status": "FAIL",
+      "detail": "death 12/12 PASS; cast failed canonical ILUSTRACION at lateral cell 1:2 and all four back cells"
+    },
+    {
+      "name": "cast source correction 02",
+      "status": "GENERATED_PENDING_CI",
+      "detail": "new Codex-derived hard-cluster pixel source replaces no approved asset; attempt01 preserved"
     }
   ],
   "historical": [
@@ -44,6 +54,8 @@
     "Initial isolated worktree disappeared before commit; sources were regenerated and the diff reconstructed from fresh main.",
     "Playwright bundled Chromium missing.",
     "System Chromium /usr/bin/chromium failed: process_singleton_posix socket Operation not permitted.",
-    "First static JSON print failed on numpy bool; assertion rerun passed."
+    "First static JSON print failed on numpy bool; assertion rerun passed.",
+    "Exact-head 236eb1c failed because a horizontal 112px checker was incorrectly used on a 4x3 grid; checker replaced without threshold changes.",
+    "Exact-head 79ed841b exposed a real canonical density failure in cast source 01: ILUSTRACION in five cells."
   ]
 }
