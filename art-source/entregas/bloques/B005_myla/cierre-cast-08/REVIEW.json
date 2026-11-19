@@ -1,0 +1,43 @@
+{
+  "state": "VALIDADO_PENDING_FINAL_CI",
+  "component": "B005_myla/cast/base-supplement",
+  "reference": "assets/ui/codex/champions/myla.png",
+  "visualGate": "PASS",
+  "relayGate": "PASS",
+  "performanceGate": "PASS",
+  "exactAB": {
+    "run": 44384047812,
+    "checks": "194/194",
+    "errors": 0
+  },
+  "relay": {
+    "run": 44437125511,
+    "rows": 4,
+    "hostGuest": true,
+    "errors": 0
+  },
+  "performance": {
+    "runs": 4,
+    "samplesPerRun": 340,
+    "p95Ms": [
+      2.6,
+      2.5,
+      2.2,
+      2.3
+    ],
+    "maxMs": [
+      8.3,
+      10.7,
+      9.0,
+      4.6
+    ],
+    "limitations": [
+      "local JS submission",
+      "not GPU completion",
+      "not isolated GC",
+      "not physical mobile"
+    ]
+  },
+  "scopeAudit": "Myla B005 plus generated art registries only; PR309 enemy/boss work has no overlap.",
+  "decision": "Component validated. Keep draft/FIX only until the cleaned exact head has every applicable workflow successful."
+}

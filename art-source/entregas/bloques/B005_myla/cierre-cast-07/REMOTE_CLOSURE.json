@@ -1,0 +1,109 @@
+{
+  "state": "EN_CORRECCION",
+  "visualCorrection": "FAVORABLE",
+  "integration": "NO_INTEGRAR",
+  "publication": "NOT_CHECKED",
+  "component": "B005_myla/cast/base-supplement",
+  "pr": 297,
+  "branch": "art/myla-cast-back-frame11-20261112",
+  "baseMain": "2e0436282104378b0445dedb358600cd44094d7a",
+  "candidateHead": "ccd7fb34c4e7d34e4275b52be364342ed196afe8",
+  "candidateTree": "1512b3d9c367d8bc54eb92b7bce3a91322304f9f",
+  "validRuns": [
+    {
+      "run": 44382568998,
+      "job": 135078500472,
+      "artifactId": 14463249809,
+      "digest": "sha256:8bf5d66bca5645141446d0adb574217fefb3fac8ac1c06c3e3432dd17f69e9ef"
+    },
+    {
+      "run": 44384047812,
+      "job": 135083661830,
+      "artifactId": 14465316911,
+      "digest": "sha256:27612f2f2f798685c081af03b3beb9c3c96da4b9c4b9cfe0accca99788f80ad0"
+    }
+  ],
+  "codexReference": "assets/ui/codex/champions/myla.png",
+  "source": "art-source/entregas/bloques/B005_myla/revision-cast-back-03/cast.png",
+  "sourceSha256": "1069b0085e3bae9854357869aaae4ebd875074623ccd6d0af4bd061a15d41110",
+  "runtimeChange": {
+    "path": "js/champions/vfx-b/myla.js",
+    "scope": "visual-only dynamic layer/size/anchor/alpha during authored cast; approved idle bubble unchanged"
+  },
+  "newTests": [
+    {
+      "name": "real renderer matrix plus exact same-scene A/B",
+      "result": "PASS",
+      "checks": 194,
+      "failures": 0,
+      "errors": 0
+    }
+  ],
+  "visualGate": {
+    "desktop": "FAVORABLE",
+    "mobile": "FAVORABLE",
+    "identity": "FAVORABLE",
+    "skins": "FAVORABLE",
+    "diagnosis": "Open 88u ring behind the body restores silhouette while preserving shield boundary and Codex identity."
+  },
+  "evidence": [
+    {
+      "name": "desktop-before-after.png",
+      "bytes": 815040,
+      "sha256": "28694a567af83e7b3d9f22e6fbdd353a78e98b0ad6570877dacf0cfef641f2f3"
+    },
+    {
+      "name": "desktop-body-phases.png",
+      "bytes": 1869281,
+      "sha256": "06affc6b1dc0647b98138e706e9d4b90be1bcf1c7d5d88c067501beee2621e9b"
+    },
+    {
+      "name": "desktop-correction-before-after.png",
+      "bytes": 1857044,
+      "sha256": "2df7c961f8e3793127655f465505e345b8fa90fe806c87749cef99cc4bf42772"
+    },
+    {
+      "name": "desktop-six-arenas-skins.png",
+      "bytes": 2498967,
+      "sha256": "df54e6caca3db4aef87d7f49b34e670cce1f553e88807856ea23c604fcb7c788"
+    },
+    {
+      "name": "mobile-before-after.png",
+      "bytes": 1246066,
+      "sha256": "9d99b86592187bc09c605501180c22c86b52da091941df1e93f015b48b0d9ad9"
+    },
+    {
+      "name": "mobile-body-phases.png",
+      "bytes": 1765657,
+      "sha256": "05fb554a5ddf846fdb515606b772c8a81f36cdecef9317bdeb5a03edb4a02565"
+    },
+    {
+      "name": "mobile-correction-before-after.png",
+      "bytes": 1645019,
+      "sha256": "f9e97c6dabc4b75a37d744ebe9d63b9c4a94e339266144fe96d4e25728016754"
+    },
+    {
+      "name": "mobile-six-arenas-skins.png",
+      "bytes": 3734648,
+      "sha256": "1b9db4605cb254f024f81e2790558dfe2ae2f7c1db5bc52593334ab8a97c710a"
+    }
+  ],
+  "preserved": [
+    "Merienda Magica authored pack",
+    "Yogur de Arandanos authored pack",
+    "Berrinche priority",
+    "PR190 death",
+    "PR229 shield mechanics and lifecycle",
+    "PR231 Nano workshop"
+  ],
+  "cleanup": {
+    ".github/workflows/myla-b005-layer-capture.yml": "DELETED",
+    "tools/art/check-myla-cast.js": "exact A/B retained; trigger comment removed"
+  },
+  "pending": [
+    "real multiplayer/relay for changed dynamic accessors",
+    "full renderer performance",
+    "all applicable checks/workflows on final non-temporary head"
+  ],
+  "next": "Keep PR297 draft FIX_NO_INTEGRAR. Run only remaining gates; do not merge or publish before exact-head success."
+}

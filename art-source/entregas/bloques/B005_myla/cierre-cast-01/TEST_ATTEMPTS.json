@@ -1,0 +1,16 @@
+{
+  "new": [
+    {"name":"runtime syntax", "result":"PASS", "scope":"portadores-meta.js and portadores.js"},
+    {"name":"deterministic routing contract", "result":"PASS", "scope":"7/7: base cast/idle, two skins, Berrinche priority, other champion, metadata"},
+    {"name":"native frame technical", "result":"PASS", "scope":"12/12 non-empty; binary alpha; zero partial-alpha pixels"},
+    {"name":"git diff check", "result":"PASS"},
+    {"name":"Playwright default browser", "result":"BLOCKED_BEFORE_PAGE", "detail":"bundled chromium-headless-shell is absent"},
+    {"name":"Playwright system Chromium", "result":"BLOCKED_BEFORE_PAGE", "detail":"process_singleton_posix.cc socket() failed: Operation not permitted"}
+  ],
+  "historicalNotRerun": [
+    "revision-cast-back-03 canonical native detector 12/12 PASS (candidate bytes unchanged)",
+    "PR190 Myla death",
+    "PR229 bubble-state"
+  ],
+  "notClaimed": ["gameplay renderer", "six-arena matrix", "desktop/mobile visual gate", "multiplayer", "performance", "exact-head CI"]
+}

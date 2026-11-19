@@ -1,0 +1,36 @@
+{
+  "status": "EN_CORRECCION",
+  "integration": "FIX_NO_INTEGRAR",
+  "repository": "Fondal-Studios/La-Horda",
+  "pullRequest": 297,
+  "branch": "art/myla-cast-back-frame11-20261112",
+  "productionCommit": "718665b3befadb5fd82d51ebad981f25607c747a",
+  "productionTree": "c884e3fedfbe57cf7e8c22198af2c57cd38a0f72",
+  "freshMain": "2e51ebdb13a101a574a43089809a0c10c788a6fb",
+  "previousHead": "97bda1b5d23e7757e6d8dbe82cd86592c2535f2d",
+  "reconciled": true,
+  "newVerification": {
+    "routingContract": "PASS 8/8",
+    "visualPackage": "PASS 6/6 and 118 packages/0 errors",
+    "artAtlasStatic": "PASS",
+    "syntax": "PASS",
+    "diffCheck": "PASS"
+  },
+  "historicalCI": {
+    "head": "97bda1b5d23e7757e6d8dbe82cd86592c2535f2d",
+    "success": 12,
+    "failures": 3,
+    "supersededCauses": [
+      "visual package manifest stale",
+      "ATLAS_ARTE stale/new cast unlisted",
+      "Myla cast boundary selected missing idle state"
+    ]
+  },
+  "pending": [
+    "all applicable checks/workflows on exact final head",
+    "real gameplay captures desktop/mobile across six arenas and authored skins",
+    "visual Art Gate approval"
+  ],
+  "merge": false,
+  "publication": "NOT_ATTEMPTED"
+}

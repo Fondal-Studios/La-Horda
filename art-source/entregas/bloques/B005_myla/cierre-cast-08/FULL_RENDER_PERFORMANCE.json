@@ -1,0 +1,82 @@
+{
+  "status": "PASS",
+  "scope": "Four independent seeded 360-frame full update/render runs with 12 enemies and two allies; actual clear cycle; first 20 frames excluded. Recasts exercise successive live bubble entries. Measures local JS submission, not GPU completion, GC isolation or physical mobile performance; no new threshold.",
+  "rows": [
+    {
+      "mobile": false,
+      "casting": false,
+      "samples": 340,
+      "p50": 1.599999999976717,
+      "p95": 2.599999999976717,
+      "max": 8.29999999993015,
+      "clears": 361,
+      "bubbles": 4,
+      "last": {
+        "alpha": 0.8,
+        "layer": "t",
+        "w": 68,
+        "h": 68,
+        "ofy": -12
+      },
+      "shield": 3000000,
+      "errors": []
+    },
+    {
+      "mobile": false,
+      "casting": true,
+      "samples": 340,
+      "p50": 1.6000000000931323,
+      "p95": 2.5,
+      "max": 10.70000000006985,
+      "clears": 361,
+      "bubbles": 4,
+      "last": {
+        "alpha": 0.64,
+        "layer": "g",
+        "w": 88,
+        "h": 88,
+        "ofy": -8
+      },
+      "shield": 3000000,
+      "errors": []
+    },
+    {
+      "mobile": true,
+      "casting": false,
+      "samples": 340,
+      "p50": 1.400000000023283,
+      "p95": 2.199999999953434,
+      "max": 9,
+      "clears": 361,
+      "bubbles": 4,
+      "last": {
+        "alpha": 0.8,
+        "layer": "t",
+        "w": 68,
+        "h": 68,
+        "ofy": -12
+      },
+      "shield": 3000000,
+      "errors": []
+    },
+    {
+      "mobile": true,
+      "casting": true,
+      "samples": 340,
+      "p50": 1.3000000000465661,
+      "p95": 2.300000000046566,
+      "max": 4.599999999976717,
+      "clears": 361,
+      "bubbles": 4,
+      "last": {
+        "alpha": 0.64,
+        "layer": "g",
+        "w": 88,
+        "h": 88,
+        "ofy": -8
+      },
+      "shield": 3000000,
+      "errors": []
+    }
+  ]
+}

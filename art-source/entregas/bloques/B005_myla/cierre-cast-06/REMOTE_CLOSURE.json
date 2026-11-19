@@ -1,0 +1,105 @@
+{
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "publication": "NOT_CHECKED",
+  "component": "B005_myla/cast/base-supplement",
+  "pr": 297,
+  "branch": "art/myla-cast-back-frame11-20261112",
+  "baseMain": "2e0436282104378b0445dedb358600cd44094d7a",
+  "candidateHead": "5c46a8ce54cde60fde1e32b72c74d8a0a4b0e35c",
+  "candidateTree": "13590123357ed57e940dc7ac3968928ba38fe2e3",
+  "validCaptureRun": 44340677051,
+  "validJob": 134929457014,
+  "artifactId": 14443699044,
+  "artifactDigest": "sha256:c5f95b973286f0f761f7f2a6d11de1c37d7ad44f072e75fb4c495d0ab9b98678",
+  "codexReference": "assets/ui/codex/champions/myla.png",
+  "source": "art-source/entregas/bloques/B005_myla/revision-cast-back-03/cast.png",
+  "sourceSha256": "1069b0085e3bae9854357869aaae4ebd875074623ccd6d0af4bd061a15d41110",
+  "runtimeChange": {
+    "path": "js/champions/vfx-b/myla.js",
+    "blob": "a213a3f364a5cd311288ec00bb577280b1b0fe7e",
+    "scope": "visual alpha only; .8 outside cast, .34 while authored cast is active"
+  },
+  "newTests": [
+    {
+      "name": "runtime syntax",
+      "result": "PASS"
+    },
+    {
+      "name": "real renderer desktop/mobile, six arenas, base and two authored skins, sparse/dense, Berrinche priority, isolated/composited 12 phases",
+      "result": "PASS",
+      "checks": 170,
+      "failures": 0,
+      "pageErrors": 0
+    }
+  ],
+  "visualGate": {
+    "isolatedBody": "FAVORABLE",
+    "compositedGameplay": "FIX",
+    "desktop": "FIX",
+    "mobile": "FIX",
+    "diagnosis": "The shield circle and three prongs still obscure Myla head and torso; lowering alpha alone did not recover silhouette or hierarchy."
+  },
+  "invalidAttempt": {
+    "run": 44339061607,
+    "artifactId": 14443371966,
+    "reason": "literal \\n syntax corruption; excluded from visual certification"
+  },
+  "preserved": [
+    "Merienda Magica authored pack",
+    "Yogur de Arandanos authored pack",
+    "Berrinche priority",
+    "PR190 death",
+    "PR229 shield mechanics and lifecycle",
+    "PR231 Nano workshop"
+  ],
+  "restored": {
+    ".github/workflows/art-presentation.yml": "5ea0173b36a3e20d1c236592ae88f8c0a912519b",
+    "js/ui/codex/codex.js": "5686bd89c9273b932b2c2472ede90d0bd44804c3",
+    ".github/workflows/myla-b005-capture.yml": "DELETED"
+  },
+  "evidence": [
+    {
+      "bytes": 825283,
+      "sha256": "a093e9f073e0631961a0c77f252399759060fe738a3ed09b6cbe9c885b2d52ee",
+      "name": "desktop-before-after.png"
+    },
+    {
+      "bytes": 1243541,
+      "sha256": "9f2961ef44e9018c0b69bcc4d93ff15cec5bc4c63c9b2f935a838ca552c4269c",
+      "name": "mobile-before-after.png"
+    },
+    {
+      "bytes": 1839675,
+      "sha256": "703798484e31a2b54742928a2189cd343db7f927bb2c7d612e61c8695a414232",
+      "name": "desktop-body-phases.png"
+    },
+    {
+      "bytes": 1753632,
+      "sha256": "4544d87e953541de9aca0d9dc80463049e3cae754004197266c50c62c4496b5d",
+      "name": "mobile-body-phases.png"
+    },
+    {
+      "bytes": 2510839,
+      "sha256": "ac5bb364924b2d2f622107076e5865ff6f326ac364bb3d4fae2cd408d07e4453",
+      "name": "desktop-six-arenas-skins.png"
+    },
+    {
+      "bytes": 3745926,
+      "sha256": "08350604ec994751ffc6bf98d01dedd377c55347b219d9161869a6d95712213c",
+      "name": "mobile-six-arenas-skins.png"
+    },
+    {
+      "name": "RUNTIME_GATE.json",
+      "bytes": 40364,
+      "sha256": "b19defaf77d25d9e77af1cf1bfc763bfcdbf5b9fb5b442795256136ef65f997f"
+    }
+  ],
+  "pending": [
+    "Grouped geometry/layer correction for my_bubble_idle during cast",
+    "Review corrected desktop/mobile sequence and skins",
+    "Rerun only gates affected by the visual correction",
+    "All exact-head workflows on final non-temporary head"
+  ],
+  "next": "Keep PR297 draft FIX_NO_INTEGRAR. Correct shield geometry/layer negative space in the same workshop; do not merge or publish."
+}

@@ -1,0 +1,95 @@
+{
+  "schema": 1,
+  "head_sha": "bd5e3cefb6926cc05179860728298475b4224182",
+  "applicable_workflows": 14,
+  "success": 14,
+  "runs": [
+    {
+      "id": 44275707578,
+      "name": "QA regresion central",
+      "conclusion": "success"
+    },
+    {
+      "id": 44275168658,
+      "name": "Emoji lint (arte pixel)",
+      "conclusion": "success"
+    },
+    {
+      "id": 44275168561,
+      "name": "WebP sincronizado con PNG",
+      "conclusion": "success"
+    },
+    {
+      "id": 44275168550,
+      "name": "Pixel density gate (informativo)",
+      "conclusion": "success"
+    },
+    {
+      "id": 44275168559,
+      "name": "Item economy safety",
+      "conclusion": "success"
+    },
+    {
+      "id": 44275168581,
+      "name": "Myla death component gate",
+      "conclusion": "success"
+    },
+    {
+      "id": 44275168593,
+      "name": "Art presentation verification",
+      "conclusion": "success"
+    },
+    {
+      "id": 44275168692,
+      "name": "Aelith recovered back cast",
+      "conclusion": "success"
+    },
+    {
+      "id": 44275168738,
+      "name": "Expedition champions",
+      "conclusion": "success"
+    },
+    {
+      "id": 44275168998,
+      "name": "Art production evidence",
+      "conclusion": "success"
+    },
+    {
+      "id": 44275169160,
+      "name": "Campaign reward recovery",
+      "conclusion": "success"
+    },
+    {
+      "id": 44275168769,
+      "name": "VFX readability and combat parity",
+      "conclusion": "success"
+    },
+    {
+      "id": 44275168876,
+      "name": "Integracion pruebas",
+      "conclusion": "success"
+    },
+    {
+      "id": 44275169008,
+      "name": "Champion entry balance",
+      "conclusion": "success"
+    }
+  ],
+  "duplicate_cancelled": {
+    "id": 44275168618,
+    "name": "QA regresion central",
+    "conclusion": "cancelled",
+    "superseded_by": 44275707578
+  },
+  "targeted_rerun": {
+    "workflow": 44275169008,
+    "job": "safari-engine",
+    "job_id": 134728839522,
+    "conclusion": "success",
+    "other_jobs": [
+      "postgres success",
+      "lanes success",
+      "entry-reference success"
+    ]
+  }
+}

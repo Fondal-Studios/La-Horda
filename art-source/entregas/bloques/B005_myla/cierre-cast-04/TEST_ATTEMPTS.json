@@ -1,0 +1,31 @@
+{
+  "new": [
+    {
+      "name": "GitHub Actions browser attempt 01",
+      "head": "da0abf0e1f4ebd6976ef03ba47609213cf2db3a1",
+      "run": 44286890584,
+      "result": "FAIL",
+      "detail": "timeout waiting for nonexistent harness key skin_myla_arandanos"
+    },
+    {
+      "name": "GitHub Actions browser attempt 02",
+      "head": "9333d381b497496b72cd3d13794d1749d5571951",
+      "run": 44287813494,
+      "result": "FAIL",
+      "detail": "fixture wrote player.skillCd[2], absent from current runtime state"
+    },
+    {
+      "name": "GitHub Actions browser attempt 03",
+      "head": "555f922f4a8e7e5b35ad42812f9dd6a21d576ccc",
+      "run": 44318160024,
+      "result": "PASS",
+      "scope": "122/122 renderer checks, 0 page errors, four gameplay sheets"
+    }
+  ],
+  "historicalNotRerun": [
+    "native 12-frame technical gate",
+    "deterministic routing contract 8/8",
+    "PR190 Myla death",
+    "PR229 bubble-state"
+  ]
+}

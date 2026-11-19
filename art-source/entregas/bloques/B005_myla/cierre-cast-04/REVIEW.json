@@ -1,0 +1,35 @@
+{
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "component": "B005/cast/base-supplement",
+  "reference": "assets/ui/codex/champions/myla.png",
+  "source": "art-source/entregas/bloques/B005_myla/revision-cast-back-03/cast.png",
+  "runtimeGate": {
+    "result": "PASS",
+    "checks": 122,
+    "failed": 0,
+    "pageErrors": 0,
+    "workflowRun": 44318160024,
+    "artifact": 14432843560
+  },
+  "visualReview": {
+    "reviewed": [
+      "desktop-before-after.png",
+      "mobile-before-after.png",
+      "desktop-six-arenas-skins.png",
+      "mobile-six-arenas-skins.png"
+    ],
+    "confirmed": [
+      "base candidate routes through myla_cast frame 11 in six arenas",
+      "Merienda Magica remains on skin_merienda_magica",
+      "Yogur de Arandanos remains on croma_myla_arandanos",
+      "desktop and mobile sheets render without missing atlases"
+    ],
+    "blocking": [
+      "the live circular cast effect and three upward prongs cover much of Myla's head and torso at the sampled back-cast moment",
+      "the corrected body motion cannot yet receive an independent Art Gate verdict from the composited sheets",
+      "current gate does not constitute a real multiplayer relay or full performance run"
+    ]
+  },
+  "decision": "Preserve the connected candidate on draft PR297; capture the body layer isolated and composited at multiple cast phases before approval."
+}

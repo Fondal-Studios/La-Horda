@@ -1,0 +1,89 @@
+{
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "publication": "NOT_CHECKED",
+  "component": "B005_myla/cast/base-supplement",
+  "pr": 297,
+  "branch": "art/myla-cast-back-frame11-20261112",
+  "baseMain": "2e0436282104378b0445dedb358600cd44094d7a",
+  "captureHead": "9390c4e52c731ef4ef6afacee4535a474fd3d0ae",
+  "captureRun": 44325704121,
+  "artifactId": 14436029344,
+  "artifactDigest": "sha256:ed234c6708631993dfd12f057a0791ac9491e5da7ecbb6fa9450d8805c4c0898",
+  "codexReference": "assets/ui/codex/champions/myla.png",
+  "source": "art-source/entregas/bloques/B005_myla/revision-cast-back-03/cast.png",
+  "sourceSha256": "1069b0085e3bae9854357869aaae4ebd875074623ccd6d0af4bd061a15d41110",
+  "newTests": [
+    {
+      "name": "real renderer desktop/mobile, six arenas, base and two authored skins, sparse/dense, Berrinche priority, isolated/composited 12 phases",
+      "result": "PASS",
+      "checks": 170,
+      "failures": 0,
+      "pageErrors": 0
+    }
+  ],
+  "visualGate": {
+    "isolatedBody": "FAVORABLE",
+    "compositedGameplay": "FIX",
+    "desktop": "FIX",
+    "mobile": "FIX",
+    "diagnosis": "The live circular cast effect and its three upper prongs obscure Myla base head and torso throughout all sampled down/side/up phases. The 12 authored body poses remain readable when isolated and preserve the exact Codex identity."
+  },
+  "preserved": [
+    "Merienda Magica authored pack",
+    "Yogur de Arandanos authored pack",
+    "Berrinche priority",
+    "PR190 death",
+    "PR229 bubble-state",
+    "PR231 Nano workshop"
+  ],
+  "workflowRestoration": {
+    "path": ".github/workflows/art-presentation.yml",
+    "expectedMainBlob": "5ea0173b36a3e20d1c236592ae88f8c0a912519b",
+    "requiredBeforeFinalCheckpoint": true
+  },
+  "evidence": [
+    {
+      "name": "desktop-body-phases.png",
+      "bytes": 1868160,
+      "sha256": "731dbfab4e108f84712908770759b225eb6adbd3db11ee55660bb6c2b77a298e"
+    },
+    {
+      "name": "mobile-body-phases.png",
+      "bytes": 1748536,
+      "sha256": "5e43e3d74eaa2c827c39dca688cc1d93afc6ef928fa109bdb776e89dfc7d1c64"
+    },
+    {
+      "name": "desktop-before-after.png",
+      "bytes": 797304,
+      "sha256": "8e805b08766b33f0d72f8f70f4a1afd77ae6d4f5308d70bb751a59610c0f1845"
+    },
+    {
+      "name": "mobile-before-after.png",
+      "bytes": 1224219,
+      "sha256": "4449cc2ac05285e61c170c070f52a768cfc17f7247df3d404f3fcad0f3ed0c1e"
+    },
+    {
+      "name": "desktop-six-arenas-skins.png",
+      "bytes": 2478194,
+      "sha256": "0f9667728e767c321f2e942840779f627534150452fe10452fc7a96b47856849"
+    },
+    {
+      "name": "mobile-six-arenas-skins.png",
+      "bytes": 3716818,
+      "sha256": "9e94474b6d97cd903e07461a9729f294fbb1789786f1b884b86374334561c976"
+    },
+    {
+      "name": "RUNTIME_GATE.json",
+      "bytes": 40227,
+      "sha256": "2f83f53c74b00507540fe55eae07f31ad3d5316fc3e24b77be0e92b35f1601a8"
+    }
+  ],
+  "pending": [
+    "Correct local composition/layering or effect negative space without changing mechanics",
+    "Review corrected before/after desktop/mobile and skins",
+    "Run applicable multiplayer/performance only after visual change",
+    "All exact-head workflows on final non-temporary head"
+  ],
+  "next": "Keep PR297 draft FIX_NO_INTEGRAR. Correct the cast composition as one grouped kit change; do not merge or publish this candidate."
+}

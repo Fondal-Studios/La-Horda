@@ -1,0 +1,113 @@
+{
+  "state": "VALIDADO",
+  "integration": "PENDING_FINAL_CI",
+  "publication": "NOT_CHECKED",
+  "component": "B005_myla/cast/base-supplement",
+  "pr": 297,
+  "branch": "art/myla-cast-back-frame11-20261112",
+  "baseMain": "2e0436282104378b0445dedb358600cd44094d7a",
+  "validatedHead": "bcc408976518220db8b0c9dbea2cf8fd12cfed0f",
+  "targetedRun": {
+    "run": 44437125511,
+    "job": 135268690217,
+    "artifactId": 14489349009,
+    "digest": "sha256:716b303d410bd77e9a840bcf0749cff9cf8986bd28dd94e7ec21780ac873cabd"
+  },
+  "codexReference": "assets/ui/codex/champions/myla.png",
+  "source": "art-source/entregas/bloques/B005_myla/revision-cast-back-03/cast.png",
+  "sourceSha256": "1069b0085e3bae9854357869aaae4ebd875074623ccd6d0af4bd061a15d41110",
+  "gates": {
+    "visual": "PASS",
+    "desktopMobile": "PASS",
+    "sixArenas": "PASS",
+    "skins": "PASS",
+    "relay": "PASS",
+    "performance": "PASS",
+    "exactHeadGeneralCI": "PENDING_CLEAN_HEAD"
+  },
+  "relaySummary": {
+    "hostCast": {
+      "alpha": 0.64,
+      "layer": "g",
+      "w": 88,
+      "h": 88,
+      "ofy": -8
+    },
+    "guestCast": {
+      "alpha": 0.64,
+      "layer": "g",
+      "w": 88,
+      "h": 88,
+      "ofy": -8
+    },
+    "hostIdle": {
+      "alpha": 0.8,
+      "layer": "t",
+      "w": 68,
+      "h": 68,
+      "ofy": -12
+    },
+    "guestIdle": {
+      "alpha": 0.8,
+      "layer": "t",
+      "w": 68,
+      "h": 68,
+      "ofy": -12
+    },
+    "errors": 0
+  },
+  "performanceSummary": {
+    "desktopP95Ms": [
+      2.6,
+      2.5
+    ],
+    "mobileViewportP95Ms": [
+      2.2,
+      2.3
+    ],
+    "maxMs": [
+      8.3,
+      10.7,
+      9.0,
+      4.6
+    ],
+    "clearsPerRun": 361
+  },
+  "evidence": [
+    {
+      "name": "FULL_RENDER_PERFORMANCE.json",
+      "bytes": 1858,
+      "sha256": "081dd9cd7bf9dfc6604e0821d70c28117d95d11e779796ab1d23e6ea80788ff8"
+    },
+    {
+      "name": "ONLINE.json",
+      "bytes": 1725,
+      "sha256": "937b356289601e3ff3852323ecd21ed164f3ef0f221f8dbe737c31b653f8e1ab"
+    },
+    {
+      "name": "online-guest.png",
+      "bytes": 403488,
+      "sha256": "487f99df658642c34fb1bf345478f0a6a22dc3e7a1fb2b9bd946eb6ac0039f40"
+    },
+    {
+      "name": "online-host.png",
+      "bytes": 880093,
+      "sha256": "15c537936f185aec7df2b17cbbc77caaaf64d213f21d87c8b50ffe9b50cef37f"
+    }
+  ],
+  "preserved": [
+    "Merienda Magica authored pack",
+    "Yogur de Arandanos authored pack",
+    "Berrinche priority",
+    "PR190 death",
+    "PR229 shield mechanics and lifecycle",
+    "PR231 Nano workshop",
+    "PR309 concurrent enemy/boss workshop"
+  ],
+  "cleanup": {
+    ".github/workflows/myla-b005-final-gates.yml": "DELETED",
+    "tools/art/myla-codex-online.js": "PRESERVED_REPRODUCIBLE",
+    "tools/art/myla-codex-full-render-perf.js": "PRESERVED_REPRODUCIBLE"
+  },
+  "next": "Run every applicable workflow on the clean final head; if all succeed, remove FIX/NO_INTEGRAR, mark ready and merge with expected_head_sha."
+}

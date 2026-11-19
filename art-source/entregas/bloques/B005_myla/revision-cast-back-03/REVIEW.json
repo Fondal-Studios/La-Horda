@@ -1,0 +1,23 @@
+{
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "component": "B005/cast/back/frame11",
+  "codexReference": "assets/ui/codex/champions/myla.png",
+  "visualReview": {
+    "source": "PASS_LOCAL_IDENTITY_POSE",
+    "nativePreview": "PASS_LOCAL_CONTINUITY",
+    "notes": [
+      "Back view is unambiguous",
+      "spoon remains screen-left and bow screen-right",
+      "feet and body scale align with frames 8-10",
+      "frames 0-10 preserved byte-exact"
+    ],
+    "limits": [
+      "not connected to installed atlas",
+      "no gameplay renderer capture",
+      "no skins/desktop/mobile/multiplayer matrix",
+      "no exact-head CI"
+    ]
+  },
+  "decision": "Keep as candidate source and native cast output; do not install or merge as an approved component."
+}

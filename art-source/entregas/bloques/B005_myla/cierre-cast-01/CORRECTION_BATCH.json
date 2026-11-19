@@ -1,0 +1,20 @@
+{
+  "parent": "docs/production/CORRECTION_BATCH.json",
+  "parentEntries": 71,
+  "entries": [
+    {
+      "component": "myla.cuerpo.lanzar.base-supplement",
+      "frames": [0,1,2,3,4,5,6,7,8,9,10,11],
+      "source": "art-source/entregas/bloques/B005_myla/revision-cast-back-03/cast.png",
+      "sourceSha256": "1069b0085e3bae9854357869aaae4ebd875074623ccd6d0af4bd061a15d41110",
+      "state": "EN_CORRECCION",
+      "diagnosis": "Connected base-only consumer passes deterministic routing and native technical checks; real browser gameplay gate is blocked by executor Chromium socket policy.",
+      "action": "Run the stored browser gate in a capable environment, review gameplay/skins/Berrinche, then complete applicable relay/performance/CI before integration.",
+      "failedAttempts": [
+        "revision-cast-back-02 frame11 ILUSTRACION suave0.429 ruido75",
+        "Playwright bundled browser missing",
+        "system Chromium process singleton socket Operation not permitted"
+      ]
+    }
+  ]
+}

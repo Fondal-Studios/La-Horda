@@ -1,0 +1,27 @@
+{
+  "state": "EN_CORRECCION",
+  "integration": "NO_INTEGRAR",
+  "publication": "NOT_CHECKED",
+  "component": "B005/cast/base-supplement",
+  "pr": 297,
+  "branch": "art/myla-cast-back-frame11-20261112",
+  "base": "2e0436282104378b0445dedb358600cd44094d7a",
+  "visualHead": "555f922f4a8e7e5b35ad42812f9dd6a21d576ccc",
+  "workflowRun": 44318160024,
+  "artifactId": 14432843560,
+  "newTests": [
+    {
+      "name": "real renderer six arenas/skins desktop+mobile",
+      "result": "PASS",
+      "scope": "122/122, 0 errors"
+    }
+  ],
+  "visualDecision": "FIX",
+  "pending": [
+    "isolated and composited multi-phase body review",
+    "applicable multiplayer relay",
+    "applicable full-render performance",
+    "all workflows on final head after temporary CI removal"
+  ],
+  "next": "Keep PR297 draft/FIX; run a multi-phase isolated+composited capture without changing runtime mechanics, then complete gates before any merge."
+}

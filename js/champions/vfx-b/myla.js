@@ -28,7 +28,18 @@
     const bubble = kvbDecal('my_bubble_idle', h.x, h.y - 12, 34, ms || 4500, {follow: h, ofy: -12, layer: 't', loop: true, fps: 8, alpha: .8, fadeAt: .88});
     if(bubble){
       myBubbleLatest.set(h, bubble);
-      Object.defineProperty(bubble, 'alpha', {enumerable: true, configurable: true, get: () => myBubbleLatest.get(h) === bubble && heroes.includes(h) && h.classKey === 'myla' && h.alive !== false && h.shield > 0 ? .8 : 0});
+      const casting = () => h._packCastUntil === Infinity || (h._pcuLocal || 0) > animNow;
+      const visible = () => myBubbleLatest.get(h) === bubble && heroes.includes(h) && h.classKey === 'myla' && h.alive !== false && h.shield > 0;
+      // During the authored cast the shield moves behind the body and opens its
+      // ring around the silhouette. Outside the cast it keeps the approved top
+      // layer, size and anchor. This is visual only: TTL and shield state stay put.
+      Object.defineProperties(bubble, {
+        alpha: {enumerable: true, configurable: true, get: () => visible() ? (casting() ? .64 : .8) : 0},
+        layer: {enumerable: true, configurable: true, get: () => casting() ? 'g' : 't'},
+        w: {enumerable: true, configurable: true, get: () => casting() ? 88 : 68},
+        h: {enumerable: true, configurable: true, get: () => casting() ? 88 : 68},
+        ofy: {enumerable: true, configurable: true, get: () => casting() ? -8 : -12}
+      });
     }
   } kvbEmit('my_blob', 5, x, y, {ring: 18, v0: 10, v1: 40, up: 60, l0: 420, l1: 700, scale: 1.2, flat: .6}); };
   kvbPortador('myla', 'my_bubble', (h, sk, u, sc) => ['myla.bubble', h.x, h.y, 34, 0, sk.duration * sc.DUR, 0]);

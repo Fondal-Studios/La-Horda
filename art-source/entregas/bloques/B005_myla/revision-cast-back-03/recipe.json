@@ -1,0 +1,26 @@
+{
+  "state": "GENERATED_NOT_APPROVED",
+  "component": "B005/cast/back/frame11",
+  "codexReference": "assets/ui/codex/champions/myla.png",
+  "poseReference": "assets/sprites/champions/myla/skins/myla_arandanos/atlas.png",
+  "historicalSource": "art-source/entregas/bloques/B005_myla/revision-cast-back-02/source.png",
+  "sourceSha256": "9af8a48cd480d89c817e26655b0d939efc7595b9acfd6e21e8991656c73b4436",
+  "baseCastSha256": "f047e6f0bdcc2eb6d9473d80bbf567e985c5aa76a49c7f7dc0a88376f40da670",
+  "replaceFrames": [
+    11
+  ],
+  "preserveFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "extraction": "single alpha>=128 component, binary alpha, nearest-neighbor scale to historical frame11 height, feet y=107"
+}

@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "new": [
+    {
+      "command": "node tools/art/check-myla-cast-contract.js",
+      "result": "PASS 8/8",
+      "scope": "selección determinista; incluye cast flag sin attackAnim"
+    },
+    {
+      "command": "node tools/visual-package/cli.js build --write && node tools/visual-package/cli.js check",
+      "result": "PASS",
+      "scope": "119 paquetes, 0 candidatos, 0 errores"
+    },
+    {
+      "command": "node tools/visual-package/test.js",
+      "result": "PASS 6/6"
+    },
+    {
+      "command": "node tools/art/build-art-atlas.js --check",
+      "result": "PASS",
+      "scope": "46 campeones; 872 CODEX_OK, 104 HUERFANO, 31 ARTE_VIEJO"
+    }
+  ],
+  "historical": [
+    {
+      "source": "cierre-cast-01/02",
+      "scope": "alfa binaria 12/12, build reproducible, contrato y routing previos"
+    },
+    {
+      "source": "CI ce6b234e",
+      "scope": "VFX parity, QA, entry reference y 10 workflows adicionales success"
+    }
+  ],
+  "blocked": [
+    {
+      "command": "node tools/art/build-art-atlas.js",
+      "result": "BLOCKED",
+      "cause": "Chromium Playwright no instalado en /home/agent/.cache/ms-playwright/chromium-1234; se conservó el runtime fresco de main y se aplicó únicamente el delta Myla comprobable, luego --check PASS."
+    },
+    {
+      "scope": "capturas gameplay actuales",
+      "cause": "Chromium local no disponible; no se heredó una aprobación visual inexistente."
+    }
+  ]
+}

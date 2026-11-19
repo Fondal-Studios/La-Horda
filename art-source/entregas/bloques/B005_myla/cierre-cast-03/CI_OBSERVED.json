@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "production_commit": "220dc077568bdb7c8ff59fc938a373144eefdec8",
+  "previous_head": "ce6b234edbe6cb6736fb8f37bbef50ee12e680b9",
+  "previous_exact_head": {
+    "workflows_total": 14,
+    "success": 13,
+    "failure": {
+      "workflow": "Integracion pruebas",
+      "run_id": 43254550756,
+      "job_id": 131309159055,
+      "test": "HIT.destello_blanco_en_todos_los_cuerpos",
+      "detail": "arena acuatica / medusa_electrica: base 0, lit 8",
+      "relation": "fuera del alcance Myla; no toca enemigo, arena ni hit renderer"
+    },
+    "attributable_failures": 0
+  },
+  "fresh_main_reference": {
+    "commit": "2e0436282104378b0445dedb358600cd44094d7a",
+    "source_pr": 308,
+    "head": "de616cc549452afbfdac9d907cdf998313b94f3d",
+    "workflows_total": 18,
+    "success": 18,
+    "integration_tests": "success"
+  },
+  "current_head_observation": {
+    "observed_at_utc": "2026-11-18T00:00:00Z",
+    "workflow_runs": 0,
+    "note": "GitHub todavía no había creado workflows al consultar inmediatamente después de mover la rama."
+  }
+}
