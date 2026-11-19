@@ -1,0 +1,43 @@
+{
+  "checked_at_utc": "2026-11-19T02:06:00Z",
+  "canonical": "https://fondalstudios.com/la-horda/jugar/",
+  "status": "NOT_CONFIRMED",
+  "repository_integration_blocked": false,
+  "assets": [
+    {
+      "path": "assets/sprites/champions/myla/v2/cast.png",
+      "expected_sha256": "1069b0085e3bae9854357869aaae4ebd875074623ccd6d0af4bd061a15d41110",
+      "http": 404,
+      "matches": false
+    },
+    {
+      "path": "assets/visual-packages/manifest.v1.json",
+      "expected_sha256": "ca721e3149494f7b58710d2c0feb3623c8c11a90bdc739252d31e6c975d9e66a",
+      "public_sha256": "855ce713487d72882201d8b5ec9957bb626a0cd76465177232b17ffde29d4122",
+      "http": 200,
+      "matches": false
+    },
+    {
+      "path": "js/assets/portadores-meta.js",
+      "expected_sha256": "7227c2b60549bcdd07ffc85af5c6ab67b18dba81ae76b0ae65f235afe8a82811",
+      "public_sha256": "afff18277e99085b2a5f719f65715d2292381e626bc8557160def2ed4e59aac8",
+      "http": 200,
+      "matches": false
+    },
+    {
+      "path": "js/champions/vfx-b/myla.js",
+      "expected_sha256": "4231f0e8132f5de6fcbbb496b3a59562c7f5244abfe22adf94130f46b2899538",
+      "public_sha256": "98a206fcd423f09ef213a3cf9dccf798d22aecaca37cd8074ea8144b21f583ce",
+      "http": 200,
+      "matches": false
+    },
+    {
+      "path": "js/rendering/portadores.js",
+      "expected_sha256": "f5ac90310b6eaecb911469b5aa3c4474648bb5376644183402921be0039c65ec",
+      "public_sha256": "27d44bda0a0b71038719756237100fec7f61efa5d2fbff726b5ffe67147b2c64",
+      "http": 200,
+      "matches": false
+    }
+  ],
+  "note": "La publicación Fondal se mantiene separada; no se tocaron credenciales ni infraestructura."
+}
