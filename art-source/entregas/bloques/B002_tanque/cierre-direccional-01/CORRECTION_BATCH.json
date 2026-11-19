@@ -1,0 +1,34 @@
+{
+  "parent": "docs/production/CORRECTION_BATCH.json",
+  "parentEntries": "preserved",
+  "entries": [
+    {
+      "component": "tanque.cuerpo.lanzar-muerte.directional-supplement",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "source": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/sources",
+      "sourceSha256": "7602ff4b4682837d5805f28fc3bb7d6e7bfde49208b6605d65516449225c9a82",
+      "state": "EN_CORRECCION",
+      "diagnosis": "Frontal approved supplements existed; real missing states were side/back cast and side/back death. New sources match the exact Aldric Codex identity and preserve front rows.",
+      "action": "Run updated exact-head browser workflow, review real gameplay in six arenas on desktop/mobile and confirm base-only routing with Baluarte/Ancestral/Juicio and relay before integration.",
+      "failedAttempts": [
+        "Initial isolated worktree disappeared before commit; sources were regenerated and the diff reconstructed from fresh main.",
+        "Playwright bundled Chromium missing.",
+        "System Chromium /usr/bin/chromium failed: process_singleton_posix socket Operation not permitted.",
+        "First static JSON print failed on numpy bool; assertion rerun passed."
+      ]
+    }
+  ]
+}

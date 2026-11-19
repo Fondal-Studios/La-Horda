@@ -1,0 +1,73 @@
+{
+  "component": "B002-tanque-directional-cast-death",
+  "state": "EN_CORRECCION",
+  "base": "b7d92968d3324f298bd64bd9c7cbd33be1ab434e",
+  "codexReference": "assets/ui/codex/champions/tanque.png",
+  "files": [
+    {
+      "path": "assets/sprites/champions/tanque/v3/cast.png",
+      "bytes": 125509,
+      "sha256": "8d8421b9b238197298583e08be8114561a1c40d8d719f29fc666f9efbd9373cc"
+    },
+    {
+      "path": "assets/sprites/champions/tanque/v3/death.png",
+      "bytes": 82182,
+      "sha256": "9358896c3b64a64bc97128fee3294dc2dad0ef16d2a82207f61685c50a539106"
+    },
+    {
+      "path": "js/assets/champion-sprites.js",
+      "bytes": 51002,
+      "sha256": "beaeb1ebad15d866a46eba55147edd8bd98a2c1d8de6160e106f1b313350b9d2"
+    },
+    {
+      "path": "js/rendering/champion-sprites.js",
+      "bytes": 54708,
+      "sha256": "1eabaca1b976417d21f2e929e2c829477bc22952ac2a0ed6f5ffcfae160b1e8d"
+    },
+    {
+      "path": "js/rendering/codex-champions.js",
+      "bytes": 2606,
+      "sha256": "7a231e74551bdc7b68390b6d22a4c0f57cef42426f539c79e64346eef9825f2c"
+    },
+    {
+      "path": "tools/art/check-tanque-death.js",
+      "bytes": 8040,
+      "sha256": "272c7b0ab5672947a2e1b24c4bb2dd3dfa71be82684ece15de64e58ae5bf52d5"
+    },
+    {
+      "path": ".github/workflows/tanque-death.yml",
+      "bytes": 5171,
+      "sha256": "bc2e12df28d29eb8b0e09d293dd0ded00b505e6cd021b150c336af8f71a66f1e"
+    },
+    {
+      "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/reproduce.py",
+      "bytes": 2413,
+      "sha256": "883558a3ff77510c12d7c2eb00207718bfd67fb111e4121697a091d1f03e1088"
+    },
+    {
+      "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/contact-sheet.png",
+      "bytes": 205268,
+      "sha256": "b96ec67814463f32dfd01615eefe1b1ad575e81db147caf715d59e58b9475df1"
+    },
+    {
+      "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/sources/cast-directional-imagegen.webp",
+      "bytes": 613204,
+      "sha256": "a556cbc0e718d8d5676b7700fe2b180b11849f650bcfb627d6ba846a9ff13d4d"
+    },
+    {
+      "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/sources/cast-down-approved.png",
+      "bytes": 29142,
+      "sha256": "3afeda3ae6fd86c294eeb2bebb07130e6fb52e27704a76a82ccb21ee6a0852a3"
+    },
+    {
+      "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/sources/death-directional-imagegen.webp",
+      "bytes": 687638,
+      "sha256": "27dc05ea6949ddc28d5d3edf94936bf70acab9b206e50f4f43e09c0c84f5e511"
+    },
+    {
+      "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/sources/death-down-approved.png",
+      "bytes": 24638,
+      "sha256": "8dc632c0afb7d9df1808dfffb873e44584499abed27c84c5f2ddb5e5ad162d78"
+    }
+  ]
+}

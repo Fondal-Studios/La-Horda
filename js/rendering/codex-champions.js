@@ -28,7 +28,8 @@ function drawKnightWarCryCast(h, P, drawScale, alpha){
  while(n<KNIGHT_CRY_STEPS.length && age>=KNIGHT_CRY_STEPS[n]){ age-=KNIGHT_CRY_STEPS[n]; n++; }
  if(n>=KNIGHT_CRY_STEPS.length) return false;
  // misma escala por pixel nativo que el cuerpo del Códice (la hoja se redujo a esa escala)
- champPackDrawFrame(C, C.sets.cast_down[n], h.x, h.y, champPackScale(P,h,drawScale), false, alpha);
+ const pick=champPackSet(C,"cast",champPackDir(h),h) || {arr:C.sets.cast_down,flip:false};
+ champPackDrawFrame(C, pick.arr[n], h.x, h.y, champPackScale(P,h,drawScale), pick.flip, alpha);
  return true;
 }
 function drawCodexChampion(h, drawScale, alpha){

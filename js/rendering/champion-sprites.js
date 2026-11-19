@@ -304,7 +304,7 @@ function drawChampPackDeath(h){
   const P = codex || (supplement && supplement.ready ? supplement : CHAMP_PACK[key]);
   if(!P || !P.ready) return false;
   if(!h._deadAt){ h._deadAt = animNow; vfxBurst(h.x, h.y-20, 12, "blood", 120, 420, 3, 2, -30, 0); }
-  const pick = champPackSet(P, "death", h._pdir || "down", h);
+  const pick = champPackSet(P, "death", h._pdir || champPackDir(h), h);
   if(!pick) return false;
   const arr = pick.arr, t = animNow - h._deadAt, n = Math.min(arr.length-1, Math.floor(t/170));
   const done = t > arr.length*170;

@@ -1,0 +1,49 @@
+{
+  "state": "EN_CORRECCION",
+  "new": [
+    {
+      "name": "reproduction deterministic",
+      "status": "PASS",
+      "detail": "reproduce.py rebuilt both atlases twice with stable hashes"
+    },
+    {
+      "name": "native geometry and alpha",
+      "status": "PASS",
+      "detail": "cast 576x432, death 448x336, 12 non-empty islands each, binary alpha, zero fragments; death halo 6"
+    },
+    {
+      "name": "approved frontal rows preserved",
+      "status": "PASS",
+      "detail": "front four frames copied byte-for-byte from approved supplements"
+    },
+    {
+      "name": "JavaScript syntax",
+      "status": "PASS",
+      "detail": "four modified JS files parse with node --check"
+    },
+    {
+      "name": "contact-sheet review",
+      "status": "PASS_DIAGNOSTIC",
+      "detail": "front/side/back identity, shield, cape, sword, sequence and anchors reviewed against exact Codex reference"
+    },
+    {
+      "name": "real browser renderer",
+      "status": "BLOCKED_LOCAL",
+      "detail": "system Chromium aborted because process-singleton socket is forbidden by executor policy; exact CI workflow updated to run the gate"
+    },
+    {
+      "name": "gameplay/skins/relay/performance",
+      "status": "PENDING",
+      "detail": "must run on the exact remote head before approval"
+    }
+  ],
+  "historical": [
+    "Existing front cast/death and hurt gates are retained; they do not certify the new directions."
+  ],
+  "failedAttempts": [
+    "Initial isolated worktree disappeared before commit; sources were regenerated and the diff reconstructed from fresh main.",
+    "Playwright bundled Chromium missing.",
+    "System Chromium /usr/bin/chromium failed: process_singleton_posix socket Operation not permitted.",
+    "First static JSON print failed on numpy bool; assertion rerun passed."
+  ]
+}

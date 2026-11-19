@@ -1,7 +1,7 @@
 name: Caballero death component gate
 on:
   pull_request:
-    paths: ['assets/sprites/champions/tanque/v3/**', 'js/assets/champion-sprites.js', 'js/rendering/champion-sprites.js', 'tools/art/check-tanque-death.js', 'tools/art/check-tanque-hurt.js', 'tools/factory/reproduce-authored-component.py', 'art-source/entregas/bloques/B002_tanque/revision-hurt-*/**', 'tools/art/check-authored-clip-density.js', 'tools/factory/extract-authored-clip.py', 'tools/factory/replace-authored-frame.py', 'art-source/entregas/bloques/B002_tanque/revision-death-v3/**', 'docs/art-gate/tanque-death/**', '.github/workflows/tanque-death.yml']
+    paths: ['assets/sprites/champions/tanque/v3/**', 'js/assets/champion-sprites.js', 'js/rendering/champion-sprites.js', 'js/rendering/codex-champions.js', 'tools/art/check-tanque-death.js', 'tools/art/check-tanque-hurt.js', 'tools/factory/reproduce-authored-component.py', 'art-source/entregas/bloques/B002_tanque/revision-hurt-*/**', 'tools/art/check-authored-clip-density.js', 'tools/factory/extract-authored-clip.py', 'tools/factory/replace-authored-frame.py', 'art-source/entregas/bloques/B002_tanque/revision-death-v3/**', 'art-source/entregas/bloques/B002_tanque/cierre-direccional-01/**', 'docs/art-gate/tanque-death/**', '.github/workflows/tanque-death.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -20,20 +20,25 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: python -m unittest tools/factory/test_authored_clip.py tools/factory/test_authored_frame.py
       - run: python art-source/entregas/bloques/B002_tanque/revision-death-v3/reproduce.py
+      - run: python art-source/entregas/bloques/B002_tanque/cierre-direccional-01/reproduce.py
       - name: Exact runtime extraction and existing scanner
         run: |
           python - <<'PY'
           import importlib.util
           from PIL import Image
           path='assets/sprites/champions/tanque/v3/death.png'
-          assert Image.open(path).tobytes()==Image.open('art-source/entregas/bloques/B002_tanque/revision-death-v3/death.png').tobytes()
+          actual=Image.open(path).convert('RGBA')
+          approved=Image.open('art-source/entregas/bloques/B002_tanque/revision-death-v3/death.png').convert('RGBA')
+          assert actual.size==(448,336)
+          assert actual.crop((0,0,448,112)).tobytes()==approved.tobytes()
           spec=importlib.util.spec_from_file_location('scan','tools/art/scan_sprites.py')
           scan=importlib.util.module_from_spec(spec);spec.loader.exec_module(scan)
           result=scan.analyze(path)
           assert result['semi']==result['fragments']==0 and result['halo']<=15, result
           print(result)
           PY
-      - run: node tools/art/check-authored-clip-density.js assets/sprites/champions/tanque/v3/death.png docs/art-gate/tanque-death/native.json
+      - run: node tools/art/check-authored-clip-density.js assets/sprites/champions/tanque/v3/death.png docs/art-gate/tanque-death/native.json 3 4
+      - run: node tools/art/check-authored-clip-density.js assets/sprites/champions/tanque/v3/cast.png docs/art-gate/tanque-death/cast-native.json 3 4
       - name: Family style only, not approval of unchanged candidate frames
         run: python tools/art/painter/style_gate.py --strict art-source/entregas/bloques/B002_tanque/revision-death-v3/atlas.png
       - name: Reproduce and validate recoil component
