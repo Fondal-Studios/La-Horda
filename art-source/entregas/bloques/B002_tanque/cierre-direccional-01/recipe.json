@@ -5,7 +5,7 @@
     "codex": "assets/ui/codex/champions/tanque.png",
     "approvedFrontCast": "sources/cast-down-approved.png",
     "approvedFrontDeath": "sources/death-down-approved.png",
-    "directionalCast": "sources/cast-directional-imagegen.webp",
+    "directionalCast": "art-source/entregas/bloques/B002_tanque/campeones/tanque/hoja_36poses.png#frames16-23",
     "directionalDeath": "sources/death-directional-imagegen.webp"
   },
   "output": {
@@ -74,5 +74,5 @@
   },
   "alphaThreshold": 128,
   "resampling": "nearest",
-  "generatedSourceStatus": "SOURCE_ONLY_NOT_INTEGRATED_UNTIL_GATES"
+  "generatedSourceStatus": "IMAGEGEN_ATTEMPTS_PRESERVED_NOT_ACTIVE; NATIVE_EXISTING_SOURCE_ACTIVE_PENDING_GATES"
 }

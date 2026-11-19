@@ -31,6 +31,18 @@ def approved_row(path, cell_size):
     if source.size != (cell_size*4,cell_size): raise RuntimeError(f"unexpected approved geometry {source.size}")
     return [source.crop((i*cell_size,0,(i+1)*cell_size,cell_size)) for i in range(4)]
 
+def approved_attack_rows(path):
+    """Reuse Aldric's integrated native side/back attack rows as directional cast."""
+    source = Image.open(path).convert("RGBA")
+    if source.size != (448,1008): raise RuntimeError(f"unexpected approved body geometry {source.size}")
+    frames = []
+    for index in range(16,24):
+        cell = source.crop(((index%4)*112,(index//4)*112,(index%4+1)*112,(index//4+1)*112))
+        frame = Image.new("RGBA",(144,144))
+        frame.alpha_composite(cell,(16,30))  # source foot 106 -> cast foot 136
+        frames.append(frame)
+    return frames
+
 def write(frames, cell_size, target):
     if len(frames) != 12: raise RuntimeError(f"expected 12 frames, got {len(frames)}")
     atlas = Image.new("RGBA",(cell_size*4,cell_size*3))
@@ -39,7 +51,7 @@ def write(frames, cell_size, target):
 
 def main():
     cast = approved_row(SOURCES/"cast-down-approved.png",144)
-    cast += generated_rows(SOURCES/"cast-directional-imagegen-02.webp",0.32,144,137)
+    cast += approved_attack_rows(ROOT/"art-source/entregas/bloques/B002_tanque/campeones/tanque/hoja_36poses.png")
     write(cast,144,ROOT/"assets/sprites/champions/tanque/v3/cast.png")
     death = approved_row(SOURCES/"death-down-approved.png",112)
     death += generated_rows(SOURCES/"death-directional-imagegen.webp",0.23,112,107)

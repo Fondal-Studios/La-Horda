@@ -6,8 +6,8 @@
   "files": [
     {
       "path": "assets/sprites/champions/tanque/v3/cast.png",
-      "bytes": 132021,
-      "sha256": "33a865ecf264a9ad9e7ee0120999fedff81bc23097569886c9ee77f9d4955057"
+      "bytes": 97188,
+      "sha256": "7c95592faa9a186241878ce3d2cba6eb6d2e496e276b4a2a07c5ebba225c3d39"
     },
     {
       "path": "assets/sprites/champions/tanque/v3/death.png",
@@ -41,13 +41,13 @@
     },
     {
       "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/reproduce.py",
-      "bytes": 2416,
-      "sha256": "5efc00cd3c5bc2aaf3a9b8233db681a70c8219f281afaeab44bd22f5da06b20b"
+      "bytes": 3026,
+      "sha256": "b8be3240c827fa7ffcee4f6f7dbe3b74c760362fb49215a823535473dce76d87"
     },
     {
       "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/contact-sheet.png",
-      "bytes": 225849,
-      "sha256": "c34cc6de8bd7dbaaa39971090e57e89a3c30da8c3e78a62c29ad28613cf7d099"
+      "bytes": 191134,
+      "sha256": "921ff616b2a66843fd961d9198ab9cbae0586fa6da47efb3f568d81eba1d7c7a"
     },
     {
       "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/sources/cast-directional-imagegen.webp",
@@ -79,6 +79,23 @@
       "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/sources/cast-directional-imagegen-02.webp",
       "bytes": 688300,
       "sha256": "16fa030c5584d78d2e2b1bf0a02eaee81cc4c9d66c1ab65bdcc74b2b3fef6835"
+    },
+    {
+      "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/recipe.json",
+      "bytes": 1594,
+      "sha256": "537087eb11592ef89f725440e4cea5242d548c851ffe9448498d8c58077c6c93"
+    },
+    {
+      "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/CORRECTION_BATCH.json",
+      "bytes": 2292,
+      "sha256": "59b700148ff2bb4f9dd31f669daa991b3f87fc76af25c97d46d6e4fdd100c812"
+    },
+    {
+      "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/TEST_ATTEMPTS.json",
+      "bytes": 2728,
+      "sha256": "d5ad4eb2bc69fc46c16b0d2e94c686b53d5c45bbb05b297a2db11bb337a08cd9"
     }
-  ]
+  ],
+  "activeDirectionalCastSource": "art-source/entregas/bloques/B002_tanque/campeones/tanque/hoja_36poses.png#frames16-23",
+  "imagegenCastSourcesStatus": "PRESERVED_REJECTED_NOT_ACTIVE"
 }

@@ -36,11 +36,23 @@
       "attempt": 2,
       "source": "sources/cast-directional-imagegen-02.webp",
       "diagnosis": "replace smooth lateral/back cast source with Codex-derived hard 1px clusters and limited palette",
-      "status": "GENERADO_PENDING_EXACT_HEAD_CI",
+      "status": "REJECTED_CANONICAL_DENSITY",
       "preserves": [
         "sources/cast-directional-attempt01.webp",
         "front approved row",
         "death atlas"
+      ]
+    },
+    {
+      "attempt": 3,
+      "source": "art-source/entregas/bloques/B002_tanque/campeones/tanque/hoja_36poses.png#frames16-23",
+      "diagnosis": "reuse the already integrated native Codex attack rows for directional cast; embed unscaled in 144px cells with source foot 106 mapped to cast foot 136",
+      "status": "CANDIDATE_PENDING_EXACT_HEAD_CI",
+      "preserves": [
+        "both imagegen attempts",
+        "front approved row",
+        "death atlas",
+        "all original body assets"
       ]
     }
   ]
