@@ -1,0 +1,48 @@
+{
+  "component": "B002-tanque-directional-cast-death",
+  "state": "EN_CORRECCION",
+  "integration": "NOT_INTEGRATED",
+  "publication": "NOT_CHECKED",
+  "base_sha": "b7d92968d3324f298bd64bd9c7cbd33be1ab434e",
+  "current_head_before_closure": "aac405ca9c59ab44f3eb2aa5e9b0b8431b1e0d68",
+  "branch": "art/tanque-directional-kit-20261118",
+  "pull_request": 310,
+  "pull_request_url": "https://github.com/Fondal-Studios/La-Horda/pull/310",
+  "codex_reference": "assets/ui/codex/champions/tanque.png",
+  "candidate": {
+    "cast_sha256": "7c95592faa9a186241878ce3d2cba6eb6d2e496e276b4a2a07c5ebba225c3d39",
+    "death_sha256": "9358896c3b64a64bc97128fee3294dc2dad0ef16d2a82207f61685c50a539106",
+    "active_cast_source": "art-source/entregas/bloques/B002_tanque/campeones/tanque/hoja_36poses.png#frames16-23",
+    "generated_sources": "PRESERVED_REJECTED_NOT_ACTIVE"
+  },
+  "new_tests": [
+    "reproduce.py deterministic PASS",
+    "death canonical grid density 12/12 PASS on exact heads 79ed841b, 04d644d0 and aac405ca",
+    "approved front rows preserved PASS",
+    "modified JavaScript and grid checker syntax PASS",
+    "exact-head aac405ca cast canonical density FAIL: side cells 1:1,1:2,1:3 and all back cells 2:0..2:3"
+  ],
+  "attempts": [
+    {
+      "source": "imagegen source 01",
+      "result": "REJECTED_CANONICAL_DENSITY",
+      "failed": "side 1:2 and back 2:0..2:3"
+    },
+    {
+      "source": "imagegen source 02",
+      "result": "REJECTED_CANONICAL_DENSITY",
+      "failed": "same five cells"
+    },
+    {
+      "source": "integrated native body attack frames16-23",
+      "result": "REJECTED_CANONICAL_DENSITY",
+      "failed": "side 1:1..1:3 and back 2:0..2:3"
+    }
+  ],
+  "blocked": [
+    "Cast directional source does not meet canonical pixel-density gate; no threshold reduction allowed.",
+    "Local Playwright unavailable; exact GitHub workflow supplied browser evidence.",
+    "Gameplay six-arena desktop/mobile, appearances, relay and renderer performance remain pending until art source passes."
+  ],
+  "next_action": "Produce a genuinely native hard-cluster lateral/back cast source from the exact Aldric Codex template, preserving all three failed attempts. Rerun canonical grid density first; only then run gameplay matrix and consider integration."
+}

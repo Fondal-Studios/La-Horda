@@ -1,0 +1,15 @@
+'use strict';
+const fs=require('node:fs'),H=require('../lib/serve');
+const OUT=process.env.OUT||'art-source/entregas/bloques/B002_tanque/cierre-direccional-01';
+(async()=>{fs.mkdirSync(OUT,{recursive:true});const site=await H.startSite(),browser=await H.launch(),rows=[];try{
+ for(const mobile of [false,true])for(const enabled of [false,true]){const page=await browser.newPage({viewport:mobile?{width:844,height:390}:{width:1280,height:720}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.addInitScript(()=>{let seed=221;Math.random=()=>((seed=(Math.imul(seed,1664525)+1013904223)>>>0)/4294967296);Date.now=()=>1793222400000;});
+  await H.goto(page,site.url+'/?lazy=0');await page.waitForFunction(()=>assetsAllReady()&&CHAMP_PACK.codex_tanque?.ready&&CHAMP_PACK.tanque_cast?.ready,null,{timeout:120000});
+  const result=await page.evaluate(async enabled=>{loop=()=>{};selectedClass='tanque';currentArena='infernal';lobbyAllies=['soporte','mago'];startRun(1);state='playing';document.querySelectorAll('.screen').forEach(s=>s.classList.add('hidden'));spawnTimer=arenaHazardTimer=1e9;enemies=[];
+   for(let j=0;j<12;j++){const e=spawnEnemy('esqueleto');Object.assign(e,{x:player.x+100*Math.cos(j),y:player.y+100*Math.sin(j),hp:1e8,maxHp:1e8,speed:0,baseSpeed:0,dmg:0});}player.hp=player.maxHp=1e8;player.invulnTimer=1e9;player.fx=-1;player.fy=0;
+   const realNow=performance.now.bind(performance),realDraw=champPackDrawFrame,realClear=ctx.clearRect;let attempts=0,clears=0;champPackDrawFrame=function(P,...args){if(P===CHAMP_PACK.tanque_cast){attempts++;if(!enabled)return true;}return realDraw.apply(this,arguments);};ctx.clearRect=function(...args){clears++;return realClear.apply(this,args);};
+   let clock=1000;performance.now=()=>clock;const samples=[];for(let i=0;i<360;i++){if(i%90===0){player.cds[2]=0;player.energy=1e8;useSkill(2,{x:player.x-100,y:player.y,dx:-1,dy:0});}clock+=16;update(16);const t=realNow();render();const elapsed=realNow()-t;if(i>=20)samples.push(elapsed);await new Promise(requestAnimationFrame);}performance.now=realNow;champPackDrawFrame=realDraw;ctx.clearRect=realClear;samples.sort((a,b)=>a-b);const q=p=>samples[Math.min(samples.length-1,Math.floor(samples.length*p))];return{samples:samples.length,p50:q(.5),p95:q(.95),max:samples.at(-1),drawAttempts:attempts,clears,enemies:enemies.length,allies:allies.length};},enabled);
+  rows.push({mobile,enabled,...result,errors});await page.close();}
+ const report={status:rows.every(r=>!r.errors.length&&r.samples===340&&r.clears>300&&r.drawAttempts>0)?'PASS':'FAIL',rows,scope:'Four independent seeded 360-frame update/render runs; 12 enemies and two allies, real clear cycle, first 20 frames excluded. Candidate-off suppresses only tanque_cast submission. Local CI Chromium, not a physical mobile device, GPU profile or GC attribution; no speedup claim.'};
+ fs.writeFileSync(`${OUT}/FULL_RENDER_PERFORMANCE.json`,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));if(report.status!=='PASS')process.exitCode=1;
+ }finally{await browser.close();await site.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

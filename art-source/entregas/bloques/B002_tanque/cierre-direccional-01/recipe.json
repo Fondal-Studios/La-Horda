@@ -1,0 +1,78 @@
+{
+  "component": "B002-tanque-directional-cast-death",
+  "command": "python3 art-source/entregas/bloques/B002_tanque/cierre-direccional-01/reproduce.py",
+  "sources": {
+    "codex": "assets/ui/codex/champions/tanque.png",
+    "approvedFrontCast": "sources/cast-down-approved.png",
+    "approvedFrontDeath": "sources/death-down-approved.png",
+    "directionalCast": "assets/sprites/champions/tanque/codex-v1/atlas.png#frames16-23",
+    "directionalDeath": "sources/death-directional-imagegen.webp"
+  },
+  "output": {
+    "cast": {
+      "path": "assets/sprites/champions/tanque/v3/cast.png",
+      "cell": [
+        144,
+        144
+      ],
+      "grid": [
+        4,
+        3
+      ],
+      "sets": {
+        "down": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "side": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "up": [
+          8,
+          9,
+          10,
+          11
+        ]
+      }
+    },
+    "death": {
+      "path": "assets/sprites/champions/tanque/v3/death.png",
+      "cell": [
+        112,
+        112
+      ],
+      "grid": [
+        4,
+        3
+      ],
+      "sets": {
+        "down": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "side": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "up": [
+          8,
+          9,
+          10,
+          11
+        ]
+      }
+    }
+  },
+  "alphaThreshold": 128,
+  "resampling": "nearest",
+  "generatedSourceStatus": "IMAGEGEN_AND_SMOOTH_HISTORICAL_ATTEMPTS_PRESERVED_NOT_ACTIVE; CODEX_V1_NATIVE_SOURCE_ACTIVE_PENDING_GATES"
+}

@@ -1,0 +1,71 @@
+{
+  "parent": "docs/production/CORRECTION_BATCH.json",
+  "parentEntries": "preserved",
+  "entries": [
+    {
+      "component": "tanque.cuerpo.lanzar-muerte.directional-supplement",
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "source": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/sources",
+      "sourceSha256": "7602ff4b4682837d5805f28fc3bb7d6e7bfde49208b6605d65516449225c9a82",
+      "state": "EN_CORRECCION",
+      "diagnosis": "Frontal approved supplements existed; real missing states were side/back cast and side/back death. New sources match the exact Aldric Codex identity and preserve front rows.",
+      "action": "Run updated exact-head browser workflow, review real gameplay in six arenas on desktop/mobile and confirm base-only routing with Baluarte/Ancestral/Juicio and relay before integration.",
+      "failedAttempts": [
+        "Initial isolated worktree disappeared before commit; sources were regenerated and the diff reconstructed from fresh main.",
+        "Playwright bundled Chromium missing.",
+        "System Chromium /usr/bin/chromium failed: process_singleton_posix socket Operation not permitted.",
+        "First static JSON print failed on numpy bool; assertion rerun passed."
+      ]
+    }
+  ],
+  "attempts": [
+    {
+      "attempt": 2,
+      "source": "sources/cast-directional-imagegen-02.webp",
+      "diagnosis": "replace smooth lateral/back cast source with Codex-derived hard 1px clusters and limited palette",
+      "status": "REJECTED_CANONICAL_DENSITY",
+      "preserves": [
+        "sources/cast-directional-attempt01.webp",
+        "front approved row",
+        "death atlas"
+      ]
+    },
+    {
+      "attempt": 3,
+      "source": "art-source/entregas/bloques/B002_tanque/campeones/tanque/hoja_36poses.png#frames16-23",
+      "diagnosis": "reuse the already integrated native Codex attack rows for directional cast; embed unscaled in 144px cells with source foot 106 mapped to cast foot 136",
+      "status": "REJECTED_CANONICAL_DENSITY",
+      "preserves": [
+        "both imagegen attempts",
+        "front approved row",
+        "death atlas",
+        "all original body assets"
+      ]
+    },
+    {
+      "attempt": 4,
+      "source": "assets/sprites/champions/tanque/codex-v1/atlas.png#frames16-23",
+      "diagnosis": "reuse exact Codex-v1 hard-cluster side/back attack rows; individual metrics suave 0-0.002, ruido 112-168",
+      "status": "CANDIDATE_PENDING_EXACT_HEAD_CI",
+      "preserves": [
+        "all three rejected attempts",
+        "front approved row",
+        "death atlas",
+        "Codex-v1 source unchanged"
+      ]
+    }
+  ]
+}

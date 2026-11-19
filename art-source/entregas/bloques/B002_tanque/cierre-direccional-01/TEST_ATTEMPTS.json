@@ -1,0 +1,71 @@
+{
+  "state": "EN_CORRECCION",
+  "new": [
+    {
+      "name": "reproduction deterministic",
+      "status": "PASS",
+      "detail": "reproduce.py rebuilt both atlases twice with stable hashes"
+    },
+    {
+      "name": "native geometry and alpha",
+      "status": "PASS",
+      "detail": "cast 576x432, death 448x336, 12 non-empty islands each, binary alpha, zero fragments; death halo 6"
+    },
+    {
+      "name": "approved frontal rows preserved",
+      "status": "PASS",
+      "detail": "front four frames copied byte-for-byte from approved supplements"
+    },
+    {
+      "name": "JavaScript syntax",
+      "status": "PASS",
+      "detail": "four modified JS files parse with node --check"
+    },
+    {
+      "name": "contact-sheet review",
+      "status": "PASS_DIAGNOSTIC",
+      "detail": "front/side/back identity, shield, cape, sword, sequence and anchors reviewed against exact Codex reference"
+    },
+    {
+      "name": "real browser renderer",
+      "status": "BLOCKED_LOCAL",
+      "detail": "system Chromium aborted because process-singleton socket is forbidden by executor policy; exact CI workflow updated to run the gate"
+    },
+    {
+      "name": "gameplay/skins/relay/performance",
+      "status": "PENDING",
+      "detail": "must run on the exact remote head before approval"
+    },
+    {
+      "name": "exact-head CI 79ed841b directional density",
+      "status": "FAIL",
+      "detail": "death 12/12 PASS; cast failed canonical ILUSTRACION at lateral cell 1:2 and all four back cells"
+    },
+    {
+      "name": "cast source correction 02",
+      "status": "REJECTED_CANONICAL_DENSITY",
+      "detail": "new Codex-derived hard-cluster pixel source replaces no approved asset; attempt01 preserved"
+    },
+    {
+      "name": "cast source correction 03 native reuse",
+      "status": "CANDIDATE_PENDING_CI",
+      "detail": "reuses already integrated hoja_36poses frames16-23 at native scale; no generated cast pixels active"
+    },
+    {
+      "name": "cast source correction 04 Codex-v1 native reuse",
+      "status": "LOCAL_CELL_METRICS_PASS_PENDING_CI",
+      "detail": "frames16-23: suave 0-0.002, ruido 112-168; source unchanged and embedded unscaled"
+    }
+  ],
+  "historical": [
+    "Existing front cast/death and hurt gates are retained; they do not certify the new directions."
+  ],
+  "failedAttempts": [
+    "Initial isolated worktree disappeared before commit; sources were regenerated and the diff reconstructed from fresh main.",
+    "Playwright bundled Chromium missing.",
+    "System Chromium /usr/bin/chromium failed: process_singleton_posix socket Operation not permitted.",
+    "First static JSON print failed on numpy bool; assertion rerun passed.",
+    "Exact-head 236eb1c failed because a horizontal 112px checker was incorrectly used on a 4x3 grid; checker replaced without threshold changes.",
+    "Exact-head 79ed841b exposed a real canonical density failure in cast source 01: ILUSTRACION in five cells."
+  ]
+}
