@@ -1,0 +1,71 @@
+{
+  "scope": "Real local relay: Tanque host and tactile Myla guest. H3 cast creates the existing shield bubble on both peers; changed dynamic accessors are checked during cast and after local cast expiry. No protocol, mechanics or balance changes.",
+  "rows": [
+    {
+      "side": "host",
+      "phase": "cast",
+      "shield": 38.519999999999996,
+      "attackAnim": 307.40000000000055,
+      "packUntil": 1612.1000000000004,
+      "pcuLocal": 5422.699999999931,
+      "alpha": 0.64,
+      "layer": "g",
+      "w": 88,
+      "h": 88,
+      "ofy": -8,
+      "duration": 4500,
+      "t": 112.59999999999945,
+      "pass": true
+    },
+    {
+      "side": "guest",
+      "phase": "cast",
+      "shield": 38.52,
+      "attackAnim": 286.2999999999997,
+      "packUntil": 1612.1,
+      "pcuLocal": 4427.499999999954,
+      "alpha": 0.64,
+      "layer": "g",
+      "w": 88,
+      "h": 88,
+      "ofy": -8,
+      "duration": 4500,
+      "t": 116.70000000000027,
+      "pass": true
+    },
+    {
+      "side": "host",
+      "phase": "idle",
+      "shield": 38.519999999999996,
+      "attackAnim": -22.100000000000364,
+      "packUntil": 1612.1000000000004,
+      "pcuLocal": 5422.699999999931,
+      "alpha": 0.8,
+      "layer": "t",
+      "w": 68,
+      "h": 68,
+      "ofy": -12,
+      "duration": 4500,
+      "t": 834.1000000000004,
+      "pass": true
+    },
+    {
+      "side": "guest",
+      "phase": "idle",
+      "shield": 38.52,
+      "attackAnim": 0,
+      "packUntil": 1612.1,
+      "pcuLocal": 4427.499999999954,
+      "alpha": 0.8,
+      "layer": "t",
+      "w": 68,
+      "h": 68,
+      "ofy": -12,
+      "duration": 4500,
+      "t": 1316.7000000000003,
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "status": "PASS"
+}
