@@ -50,6 +50,11 @@
       "name": "cast source correction 03 native reuse",
       "status": "CANDIDATE_PENDING_CI",
       "detail": "reuses already integrated hoja_36poses frames16-23 at native scale; no generated cast pixels active"
+    },
+    {
+      "name": "cast source correction 04 Codex-v1 native reuse",
+      "status": "LOCAL_CELL_METRICS_PASS_PENDING_CI",
+      "detail": "frames16-23: suave 0-0.002, ruido 112-168; source unchanged and embedded unscaled"
     }
   ],
   "historical": [

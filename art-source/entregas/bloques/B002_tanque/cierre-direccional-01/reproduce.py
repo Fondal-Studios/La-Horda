@@ -51,7 +51,7 @@ def write(frames, cell_size, target):
 
 def main():
     cast = approved_row(SOURCES/"cast-down-approved.png",144)
-    cast += approved_attack_rows(ROOT/"art-source/entregas/bloques/B002_tanque/campeones/tanque/hoja_36poses.png")
+    cast += approved_attack_rows(ROOT/"assets/sprites/champions/tanque/codex-v1/atlas.png")
     write(cast,144,ROOT/"assets/sprites/champions/tanque/v3/cast.png")
     death = approved_row(SOURCES/"death-down-approved.png",112)
     death += generated_rows(SOURCES/"death-directional-imagegen.webp",0.23,112,107)
