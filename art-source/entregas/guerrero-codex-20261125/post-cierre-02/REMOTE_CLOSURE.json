@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-25T22:55:00Z",
+  "repository": "Fondal-Studios/La-Horda",
+  "pullRequest": 311,
+  "branch": "art/guerrero-codex-directional-20261125",
+  "evidenceCommit": "775558c1284cce98acc645dc1004070075ff6df4",
+  "testedHead": "f1101662752b80d66f2d98e14fa4a6ba033d7675",
+  "testedHeadConclusion": "SUCCESS",
+  "workflows": [
+    {
+      "id": 45711972436,
+      "name": "Art production evidence",
+      "conclusion": "success"
+    },
+    {
+      "id": 45711972443,
+      "name": "Emoji lint (arte pixel)",
+      "conclusion": "success"
+    },
+    {
+      "id": 45711972643,
+      "name": "QA regresion central",
+      "conclusion": "success"
+    }
+  ],
+  "auditedMain": "50589154cea02f255633aa1b88088b1c1f827332",
+  "state": "EVIDENCE_ONLY_NO_INTEGRAR",
+  "installedAssets": 0,
+  "runtimeChanges": 0,
+  "reconciliation": {
+    "arenas": "Ruinas/Bosque and Gelida/Hielo already integrated; installed hashes and consumers exact",
+    "axiom": "base, Sistema and Codigo Ambar already integrated; installed hashes and consumers exact",
+    "duplicateProductionAvoided": true
+  },
+  "blocker": "Playwright Chromium absent; download from cdn.playwright.dev returned HTTP 403",
+  "nextAction": "Restore a working browser and complete Guerrero real-renderer desktop/mobile, skins and relay gates. Directional death remains FIX_NOT_APPROVED; do not merge."
+}
