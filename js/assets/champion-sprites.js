@@ -423,9 +423,9 @@ champPackLoadAtlas("libertador", "assets/sprites/champions/libertador/v2/atlas.p
 // Independent clip; do not replace Libertador's specialized foot or mounted atlas.
 // Caída original del Caballero; no reemplaza su atlas maestro ni sus apariencias.
 champPackLoadAtlas("tanque_hurt", "assets/sprites/champions/tanque/v3/hurt.png", {w:112,h:112,cols:6,refH:71,anchor:106/112,sets:{hit_down:[0,1],hit_side:[2,3],hit_up:[4,5]}});
-champPackLoadAtlas("tanque_death", "assets/sprites/champions/tanque/v3/death.png", {w:112,h:112,cols:4,refH:71,anchor:106/112,sets:{death_down:[0,1,2,3]}});
+champPackLoadAtlas("tanque_death", "assets/sprites/champions/tanque/v3/death-directional.png", {w:112,h:112,cols:4,refH:71,anchor:106/112,sets:{death_down:[0,1,2,3],death_side:[4,5,6,7],death_up:[8,9,10,11]}});
 // Grito de Guerra: hoja de LANZAR (gpt_image_2 g1, tools/art/sheet-to-cells.py) como paquete aparte; ver drawKnightWarCryCast.
-champPackLoadAtlas("tanque_cast", "assets/sprites/champions/tanque/v3/cast.png", {w:144,h:144,cols:4,refH:73,anchor:136/144,sets:{cast_down:[0,1,2,3]}});
+champPackLoadAtlas("tanque_cast", "assets/sprites/champions/tanque/v3/cast.png", {w:144,h:144,cols:4,refH:73,anchor:136/144,sets:{cast_down:[0,1,2,3],cast_side:[4,5,6,7],cast_up:[8,9,10,11]}});
 // Caída base del Guerrero; conserva el atlas de locomoción y sus skins.
 champPackLoadAtlas("guerrero_death", "assets/sprites/champions/guerrero/v3/death.png", {w:112,h:112,cols:4,refH:79,anchor:106/112,sets:{death_down:[0,1,2,3]}});
 champPackLoadAtlas("libertador_death", "assets/sprites/champions/libertador/v2/death.png", {w:112,h:112,cols:4,refH:71,anchor:106/112,sets:{death_down:[0,1,2,3]}});

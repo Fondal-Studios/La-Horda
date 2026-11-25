@@ -1,7 +1,7 @@
 name: Caballero death component gate
 on:
   pull_request:
-    paths: ['assets/sprites/champions/tanque/v3/**', 'js/assets/champion-sprites.js', 'js/rendering/champion-sprites.js', 'tools/art/check-tanque-death.js', 'tools/art/check-tanque-hurt.js', 'tools/factory/reproduce-authored-component.py', 'art-source/entregas/bloques/B002_tanque/revision-hurt-*/**', 'tools/art/check-authored-clip-density.js', 'tools/factory/extract-authored-clip.py', 'tools/factory/replace-authored-frame.py', 'art-source/entregas/bloques/B002_tanque/revision-death-v3/**', 'docs/art-gate/tanque-death/**', '.github/workflows/tanque-death.yml']
+    paths: ['assets/sprites/champions/tanque/v3/**', 'js/assets/champion-sprites.js', 'js/rendering/champion-sprites.js', 'js/rendering/codex-champions.js', 'tools/art/check-tanque-death.js', 'tools/art/check-tanque-hurt.js', 'tools/art/check-directional-clip-density.js', 'tools/art/tanque-directional-game.js', 'tools/factory/reproduce-authored-component.py', 'art-source/entregas/bloques/B002_tanque/revision-hurt-*/**', 'tools/art/check-authored-clip-density.js', 'tools/factory/extract-authored-clip.py', 'tools/factory/replace-authored-frame.py', 'art-source/entregas/bloques/B002_tanque/revision-death-v3/**', 'art-source/entregas/bloques/B002_tanque/cierre-direccional-01/**', 'docs/art-gate/tanque-death/**', '.github/workflows/tanque-death.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -17,23 +17,31 @@ jobs:
         with: {python-version: '3.12'}
       - run: python -m pip install pillow numpy scipy opencv-python-headless
       - run: npm install --no-save playwright
-      - run: npx playwright install --with-deps chromium
+      - run: npx playwright install chromium
       - run: python -m unittest tools/factory/test_authored_clip.py tools/factory/test_authored_frame.py
       - run: python art-source/entregas/bloques/B002_tanque/revision-death-v3/reproduce.py
+      - run: python art-source/entregas/bloques/B002_tanque/cierre-direccional-01/reproduce.py
       - name: Exact runtime extraction and existing scanner
         run: |
           python - <<'PY'
           import importlib.util
           from PIL import Image
           path='assets/sprites/champions/tanque/v3/death.png'
-          assert Image.open(path).tobytes()==Image.open('art-source/entregas/bloques/B002_tanque/revision-death-v3/death.png').tobytes()
+          directional='assets/sprites/champions/tanque/v3/death-directional.png'
+          actual=Image.open(path).convert('RGBA')
+          candidate=Image.open(directional).convert('RGBA')
+          approved=Image.open('art-source/entregas/bloques/B002_tanque/revision-death-v3/death.png').convert('RGBA')
+          assert actual.size==(448,112) and actual.tobytes()==approved.tobytes()
+          assert candidate.size==(448,336)
+          assert candidate.crop((0,0,448,112)).tobytes()==approved.tobytes()
           spec=importlib.util.spec_from_file_location('scan','tools/art/scan_sprites.py')
           scan=importlib.util.module_from_spec(spec);spec.loader.exec_module(scan)
-          result=scan.analyze(path)
+          result=scan.analyze(directional)
           assert result['semi']==result['fragments']==0 and result['halo']<=15, result
           print(result)
           PY
-      - run: node tools/art/check-authored-clip-density.js assets/sprites/champions/tanque/v3/death.png docs/art-gate/tanque-death/native.json
+      - run: node tools/art/check-directional-clip-density.js assets/sprites/champions/tanque/v3/death-directional.png docs/art-gate/tanque-death/native.json 112 112 4 3 1
+      - run: node tools/art/check-directional-clip-density.js assets/sprites/champions/tanque/v3/cast.png docs/art-gate/tanque-death/cast-native.json 144 144 4 3 1
       - name: Family style only, not approval of unchanged candidate frames
         run: python tools/art/painter/style_gate.py --strict art-source/entregas/bloques/B002_tanque/revision-death-v3/atlas.png
       - name: Reproduce and validate recoil component
@@ -58,6 +66,7 @@ jobs:
           if node tools/art/check-authored-clip-density.js /tmp/blank6.png /tmp/blank6.json 1 6; then exit 1; fi
           python -c "import json; r=json.load(open('/tmp/blank6.json')); assert len(r['failedFrames'])==6; assert all('FRAME_VACIO' in x['issues'] for x in r['rows'])"
       - run: node tools/art/check-tanque-death.js
+      - run: node tools/art/tanque-directional-game.js
       - run: node tools/art/check-libertador-death.js
       - name: Master reference and all appearances
         run: |

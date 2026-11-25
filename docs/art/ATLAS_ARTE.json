@@ -3,12 +3,12 @@
  "generator": "tools/art/build-art-atlas.js",
  "reference": "Códice (docs/LA_HORDA_CODEX.md); decisión curada en docs/art/ATLAS_VIGENTE.json",
  "sources": {
-  "hash": "4ba95f5a9046d2b1dbc76e1906a9f34c5567d94d",
+  "hash": "2af361debaf2dd670818c8806f197c45a86b2e51",
   "files": 51
  },
  "runtime": {
   "url": "index.html?dev=1&lazy=1 (producción: carga por grupos, webp activo)",
-  "loadedImages": 1577,
+  "loadedImages": 1585,
   "sampling": "24 muestras por estado y dirección (down/side/left/up)"
  },
  "summary": {
@@ -33,7 +33,7 @@
   },
   "files": {
    "CODEX_OK": 872,
-   "HUERFANO": 104,
+   "HUERFANO": 105,
    "ARTE_VIEJO": 31
   }
  },
@@ -65,7 +65,7 @@
     },
     {
      "key": "tanque_death",
-     "file": "assets/sprites/champions/tanque/v3/death.png",
+     "file": "assets/sprites/champions/tanque/v3/death-directional.png",
      "ready": true
     },
     {
@@ -26064,9 +26064,24 @@
    "category": "champions",
    "size": [
     576,
-    144
+    432
    ],
-   "bytes": 29142,
+   "bytes": 83602,
+   "webp": false,
+   "loaded": true,
+   "usedBy": [
+    "js/assets/champion-sprites.js"
+   ],
+   "status": "CODEX_OK"
+  },
+  {
+   "file": "assets/sprites/champions/tanque/v3/death-directional.png",
+   "category": "champions",
+   "size": [
+    448,
+    336
+   ],
+   "bytes": 82182,
    "webp": false,
    "loaded": true,
    "usedBy": [
@@ -26083,11 +26098,9 @@
    ],
    "bytes": 24638,
    "webp": false,
-   "loaded": true,
-   "usedBy": [
-    "js/assets/champion-sprites.js"
-   ],
-   "status": "CODEX_OK"
+   "loaded": false,
+   "usedBy": [],
+   "status": "HUERFANO"
   },
   {
    "file": "assets/sprites/champions/tanque/v3/hurt.png",

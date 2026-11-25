@@ -1,0 +1,89 @@
+{
+  "component": "B002-tanque-directional-cast-death",
+  "state": "VALIDADO",
+  "integration": "PENDING_MAIN",
+  "publication": "NOT_CHECKED",
+  "base_sha": "b7d92968d3324f298bd64bd9c7cbd33be1ab434e",
+  "validated_functional_head": "8d1c59b3392b639bdfa4426f5f7e2a0706815797",
+  "branch": "art/tanque-directional-kit-20261118",
+  "pull_request": 310,
+  "pull_request_url": "https://github.com/Fondal-Studios/La-Horda/pull/310",
+  "codex_reference": "assets/ui/codex/champions/tanque.png",
+  "candidate": {
+    "cast_sha256": "6725aa7fe17a97664df07386850df89ecb43e1ef4e880f93d91cd9d8b897753a",
+    "death_directional_sha256": "9358896c3b64a64bc97128fee3294dc2dad0ef16d2a82207f61685c50a539106",
+    "historical_death_sha256": "8dc632c0afb7d9df1808dfffb873e44584499abed27c84c5f2ddb5e5ad162d78",
+    "active_cast_source": "assets/sprites/champions/tanque/codex-v1/atlas.png#frames16-23",
+    "generated_sources": "PRESERVED_REJECTED_NOT_ACTIVE"
+  },
+  "new_tests": [
+    {
+      "name": "Art production evidence",
+      "run": 45579846138,
+      "status": "SUCCESS",
+      "scope": "historical receipts and production guards, including PR182 death atlas"
+    },
+    {
+      "name": "Caballero death component gate",
+      "run": 45579846029,
+      "status": "SUCCESS",
+      "scope": "12 gameplay scenes, six arenas, desktop/mobile, 768 controls"
+    },
+    {
+      "name": "Tanque directional runtime",
+      "run": 45579846079,
+      "status": "SUCCESS",
+      "scope": "relay host/guest tactile and full renderer performance"
+    },
+    {
+      "name": "canonical density",
+      "status": "PASS",
+      "scope": "12/12 cast and 12/12 directional death cells"
+    },
+    {
+      "name": "reproduction",
+      "status": "PASS",
+      "scope": "stable cast and directional death hashes; historical death unchanged"
+    }
+  ],
+  "performance": {
+    "runs": 4,
+    "frames_each": 360,
+    "actors": "12 enemies + 2 allies",
+    "clears_each": 361,
+    "desktop_ms": {
+      "off_p95": 2.5,
+      "off_max": 26.3,
+      "on_p95": 2.3,
+      "on_max": 22.4
+    },
+    "mobile_viewport_ms": {
+      "off_p95": 2.3,
+      "off_max": 18.8,
+      "on_p95": 2.3,
+      "on_max": 18.9
+    },
+    "limits": "runner timing only; no physical mobile, GPU or GC certification"
+  },
+  "preserved_attempts": [
+    "imagegen source 01 rejected canonical density",
+    "imagegen source 02 rejected canonical density",
+    "historical body frames attempt03 rejected canonical density"
+  ],
+  "next_action": "Publish the VisualPackage manifest correction, require every applicable workflow on the new exact head, then fresh-audit main/open PRs. Only if all pass, mark PR ready and merge normally with expected_head_sha; verify PR, main and publication separately.",
+  "last_observed_remote_head": "f240f1e6c8b13ee90e3efe83d095da1e2babdf29",
+  "exact_head_ci_observed": {
+    "run": 45584652294,
+    "status": "FAIL",
+    "passed_workflows": 19,
+    "total_workflows": 20,
+    "only_failure": "tools/visual-package/test.js: stored manifest did not match real Tanque registrations"
+  },
+  "visual_package_fix": {
+    "path": "assets/visual-packages/manifest.v1.json",
+    "status": "PASS_LOCAL_PENDING_EXACT_CI",
+    "packages": 119,
+    "tests": "6/6",
+    "cli_errors": 0
+  }
+}

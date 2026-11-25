@@ -1,0 +1,171 @@
+{
+  "component": "B002-tanque-directional-cast-death",
+  "state": "VALIDADO",
+  "base": "b7d92968d3324f298bd64bd9c7cbd33be1ab434e",
+  "codexReference": "assets/ui/codex/champions/tanque.png",
+  "files": [
+    {
+      "path": "assets/sprites/champions/tanque/v3/cast.png",
+      "bytes": 83602,
+      "sha256": "6725aa7fe17a97664df07386850df89ecb43e1ef4e880f93d91cd9d8b897753a"
+    },
+    {
+      "path": "assets/sprites/champions/tanque/v3/death.png",
+      "bytes": 24638,
+      "sha256": "8dc632c0afb7d9df1808dfffb873e44584499abed27c84c5f2ddb5e5ad162d78",
+      "role": "historical_integrated_pr182_preserved"
+    },
+    {
+      "path": "assets/sprites/champions/tanque/v3/death-directional.png",
+      "role": "active_directional_death_atlas",
+      "bytes": 82182,
+      "sha256": "9358896c3b64a64bc97128fee3294dc2dad0ef16d2a82207f61685c50a539106"
+    },
+    {
+      "path": "js/assets/champion-sprites.js",
+      "bytes": 51014,
+      "sha256": "b79055bf6f820b2b2fd63a292311b91efc19ecca126fb1a5af9e4b340031671e"
+    },
+    {
+      "path": "js/rendering/champion-sprites.js",
+      "bytes": 54708,
+      "sha256": "1eabaca1b976417d21f2e929e2c829477bc22952ac2a0ed6f5ffcfae160b1e8d"
+    },
+    {
+      "path": "js/rendering/codex-champions.js",
+      "bytes": 2606,
+      "sha256": "7a231e74551bdc7b68390b6d22a4c0f57cef42426f539c79e64346eef9825f2c"
+    },
+    {
+      "path": "tools/art/check-tanque-death.js",
+      "bytes": 8040,
+      "sha256": "272c7b0ab5672947a2e1b24c4bb2dd3dfa71be82684ece15de64e58ae5bf52d5"
+    },
+    {
+      "path": ".github/workflows/tanque-death.yml",
+      "bytes": 5574,
+      "sha256": "8df2e20c14fb11621cf5f68bb51f89f26c2cdcd1efccd9c133f6b7b3578cc8c0"
+    },
+    {
+      "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/reproduce.py",
+      "bytes": 3015,
+      "sha256": "2dc4d300bc890946b45ee4591b0a3346c4e9161afaad4faa10a8da43f73de00c"
+    },
+    {
+      "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/contact-sheet.png",
+      "bytes": 178037,
+      "sha256": "2c8b52881ca538cf81ea204c8a2655101fb76a6f08856c0409b32b7a593f6c66"
+    },
+    {
+      "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/sources/cast-directional-imagegen.webp",
+      "bytes": 613204,
+      "sha256": "a556cbc0e718d8d5676b7700fe2b180b11849f650bcfb627d6ba846a9ff13d4d",
+      "role": "superseded_attempt01_preserved"
+    },
+    {
+      "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/sources/cast-down-approved.png",
+      "bytes": 29142,
+      "sha256": "3afeda3ae6fd86c294eeb2bebb07130e6fb52e27704a76a82ccb21ee6a0852a3"
+    },
+    {
+      "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/sources/death-directional-imagegen.webp",
+      "bytes": 687638,
+      "sha256": "27dc05ea6949ddc28d5d3edf94936bf70acab9b206e50f4f43e09c0c84f5e511"
+    },
+    {
+      "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/sources/death-down-approved.png",
+      "bytes": 24638,
+      "sha256": "8dc632c0afb7d9df1808dfffb873e44584499abed27c84c5f2ddb5e5ad162d78"
+    },
+    {
+      "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/sources/cast-directional-attempt01.webp",
+      "bytes": 613204,
+      "sha256": "a556cbc0e718d8d5676b7700fe2b180b11849f650bcfb627d6ba846a9ff13d4d"
+    },
+    {
+      "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/sources/cast-directional-imagegen-02.webp",
+      "bytes": 688300,
+      "sha256": "16fa030c5584d78d2e2b1bf0a02eaee81cc4c9d66c1ab65bdcc74b2b3fef6835"
+    },
+    {
+      "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/recipe.json",
+      "bytes": 1605,
+      "sha256": "9f1c0f081067ad37a6452e7d1164cd10b4227be37abd4e8bf0285e693a903605"
+    },
+    {
+      "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/CORRECTION_BATCH.json",
+      "bytes": 2640,
+      "sha256": "1c547ab0ae4dd710120c2e1a9c2108af4511927caa0fb46a760a9b20491d4f25"
+    },
+    {
+      "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/TEST_ATTEMPTS.json",
+      "bytes": 3507,
+      "sha256": "9b4db3b1ee12c40bc2f500497d834549ba02574af383b0529157ebc4e813bd21"
+    },
+    {
+      "path": ".github/workflows/tanque-directional-runtime.yml",
+      "role": "independent_online_performance_gate",
+      "bytes": 659,
+      "sha256": "41f20205f0b18f8babed6a274d7e77588f2f232bf19e90521d43172242ea8865"
+    },
+    {
+      "path": "tools/art/tanque-directional-online.js",
+      "role": "relay_validation",
+      "bytes": 3241,
+      "sha256": "b176696ddfb200f234df201165fba1ef501419baf8824a033b71e97a1881594a"
+    },
+    {
+      "path": "tools/art/tanque-directional-perf.js",
+      "role": "full_renderer_performance_validation",
+      "bytes": 3141,
+      "sha256": "9db9f36dd1482aabf145e3c6034d1aa9fee2c6c138a066b67f186b23c0874a01"
+    },
+    {
+      "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/CHECKPOINT.md",
+      "role": "checkpoint",
+      "bytes": 2217,
+      "sha256": "0872246a95d0b4a91de3426a825cf759f986fa909d45829649b81ab46248668f"
+    },
+    {
+      "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/REMOTE_CLOSURE.json",
+      "role": "remote_closure",
+      "bytes": 3254,
+      "sha256": "091bf6174ae2c5c5294506cfe4a12e4410e8a0f0f585f35230230edb17d81df2"
+    },
+    {
+      "path": "art-source/entregas/bloques/B002_tanque/cierre-direccional-01/REVIEW.md",
+      "role": "review",
+      "bytes": 2581,
+      "sha256": "652faf175746db1e48310ba33aeeef7f97227e5cbbc6f3e6e1d7692737e8ba05"
+    },
+    {
+      "path": "docs/art/ATLAS_ARTE.json",
+      "role": "runtime_art_inventory",
+      "bytes": 534030,
+      "sha256": "9d43765bb108e97452f5edc0914e530a9ba1a21cd4dc8faabf5c1365f3d452c2"
+    },
+    {
+      "path": "docs/art/ATLAS_ARTE.md",
+      "role": "runtime_art_inventory_human",
+      "bytes": 43702,
+      "sha256": "515a699878d3c1b8fe572b0caf8ee84ca4f1465239ab50086737fc8955a35ee6"
+    },
+    {
+      "path": "docs/art-brief/CHECKLIST_ARTE.md",
+      "role": "generated_art_checklist",
+      "bytes": 48498,
+      "sha256": "cd077a95d08133256f8724ff7d13e2522fe3a7264637180bdaf6ee81e6dd1027"
+    },
+    {
+      "path": "assets/visual-packages/manifest.v1.json",
+      "role": "visual_package_contract",
+      "bytes": 236876,
+      "sha256": "fa11e1ea2e53586a7158b9476363ea9003e5c7df8c6586de74fb3b1061d5856c"
+    }
+  ],
+  "activeDirectionalCastSource": "assets/sprites/champions/tanque/codex-v1/atlas.png#frames16-23",
+  "imagegenCastSourcesStatus": "PRESERVED_REJECTED_NOT_ACTIVE",
+  "previousCastAttemptsStatus": "PRESERVED_REJECTED_NOT_ACTIVE",
+  "validatedFunctionalHead": "8d1c59b3392b639bdfa4426f5f7e2a0706815797",
+  "visualPackageReconciliation": "PASS_LOCAL_PENDING_EXACT_CI"
+}

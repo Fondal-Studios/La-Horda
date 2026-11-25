@@ -9,26 +9,28 @@ const ROOT=path.resolve(__dirname,'../..'),OUT=path.join(ROOT,'docs/art-gate/tan
    const c=await browser.newContext({viewport:{width:844,height:390},serviceWorkers:'block'});await c.route('**/*',r=>new URL(r.request().url()).origin===site.url?r.continue():r.abort());
    const p=await c.newPage();p.on('pageerror',e=>report.errors.push(e.message));await p.goto(site.url+'/?lazy=1');await p.waitForFunction(()=>typeof drawFallenHero==='function'&&typeof netDecode==='function');
    await p.evaluate(()=>{loop=function(){};for(const [id,d] of Object.entries({...SET_SKINS,...CROMA_SKINS}))if(d.champ==='tanque')skinDefOf(id);assetsStartGroup('ch:tanque');});
-   await p.waitForFunction(()=>TANQUE_IMG_READY&&CHAMP_PACK.tanque_death?.ready&&Object.entries({...SET_SKINS,...CROMA_SKINS}).filter(([id,d])=>d.champ==='tanque').every(([id])=>{const d=skinDefOf(id);return !d.packs||Object.values(d.packs).every(k=>CHAMP_PACK[k]?.ready);}));/* Exercise retained legacy fallback; Codex upgrade is covered by codex-runtime.js. */
+   await p.waitForFunction(()=>TANQUE_IMG_READY&&CHAMP_PACK.tanque_death?.ready&&CHAMP_PACK.tanque_cast?.ready&&Object.entries({...SET_SKINS,...CROMA_SKINS}).filter(([id,d])=>d.champ==='tanque').every(([id])=>{const d=skinDefOf(id);return !d.packs||Object.values(d.packs).every(k=>CHAMP_PACK[k]?.ready);}));/* Exercise retained legacy fallback; Codex upgrade is covered by codex-runtime.js. */
    await p.evaluate(()=>{delete CHAMP_PACK.codex_tanque;delete CHAMP_PACK.codex_guerrero;});pages.push(p);
   }
   const r=await pages[0].evaluate(()=>{
    selectedClass='tanque';currentArena='bosque';lobbyAllies=[];netMatch=null;divinaMode=false;startRun(1);state='paused';window.ART_GATE_NO_VFX=true;
-   const D=CHAMP_PACK.tanque_death,checks=[],snapshots=[],check=(name,ok)=>checks.push({name,ok:!!ok});
+   const D=CHAMP_PACK.tanque_death,C=CHAMP_PACK.tanque_cast,checks=[],snapshots=[],check=(name,ok)=>checks.push({name,ok:!!ok});
    const cv=document.createElement('canvas');cv.width=cv.height=220;const g=cv.getContext('2d',{willReadFrequently:true});
    function draw(h,fallen=true){const saved=ctx,orig=champPackDrawFrame,calls=[];ctx=g;g.clearRect(0,0,220,220);g.save();g.translate(110,175);g.imageSmoothingEnabled=false;
     champPackDrawFrame=function(P,v,...args){calls.push({death:P===D,frame:v<0?~v:v,alpha:args[4]});return orig.call(this,P,v,...args);};
     try{if(fallen)drawFallenHero(h);else drawHeroBody(h,h.scale,false,false);}finally{ctx=saved;champPackDrawFrame=orig;g.restore();}
     const data=g.getImageData(0,0,220,220).data;return {calls,visible:data.some((v,i)=>i%4===3&&v>40),pixels:Array.from(data)};
    }
-   check('component metadata',D.fw===112&&D.fh===112&&D.cols===4&&D.refH===71&&D.anchor===106/112);
+   check('component metadata',D.fw===112&&D.fh===112&&D.cols===4&&D.refH===71&&D.anchor===106/112&&D.sets.death_side.length===4&&D.sets.death_up.length===4);
+   check('cast metadata',C.fw===144&&C.fh===144&&C.cols===4&&C.refH===73&&C.anchor===136/144&&C.sets.cast_side.length===4&&C.sets.cast_up.length===4);
    check('master atlas not replaced by generic pack',!CHAMP_PACK.tanque);
    const poses=[];
    for(const level of [1,39,40,60,90,99]){
     save.champions.tanque.level=level;
     for(const dir of ['down','side','up','left'])for(let n=0;n<4;n++){
      const h=makeHero('tanque',true,0,0);Object.assign(h,{_codexSkin:null,_deadAt:10000,alive:false,hp:0,_pdir:dir==='left'?'side':dir,_pleft:dir==='left'});animNow=10000+n*170;const d=draw(h);
-     check('L'+level+' '+dir+' death '+n,d.visible&&d.calls.length===1&&d.calls[0].death&&d.calls[0].frame===n);
+     const offset=dir==='down'?0:dir==='side'||dir==='left'?4:8;
+     check('L'+level+' '+dir+' death '+n,d.visible&&d.calls.length===1&&d.calls[0].death&&d.calls[0].frame===offset+n);
      if(level===1&&dir==='down')poses.push(cv.toDataURL());
     }
     const h=makeHero('tanque',true,0,0);Object.assign(h,{_codexSkin:null,alive:false,hp:0,_deadAt:10000});animNow=13000;const d=draw(h);check('L'+level+' final pose holds',d.calls[0]?.frame===3&&d.calls[0]?.alpha===.55);
@@ -37,6 +39,12 @@ const ROOT=path.resolve(__dirname,'../..'),OUT=path.join(ROOT,'docs/art-gate/tan
     h.alive=false;animNow=40000;draw(h);check('L'+level+' second death restarts',h._deadAt===40000);
    }
    const h=makeHero('tanque',true,0,0);h._codexSkin=null;h.attackAnim=0;h.hurtTimer=0;h.moving=false;animNow=0;
+   const codexStub={refH:73},oldCodex=CHAMP_PACK.codex_tanque;CHAMP_PACK.codex_tanque=codexStub;
+   try{for(const [dir,fx,fy,offset,flip] of [['down',0,1,0,false],['right',1,0,4,false],['up',0,-1,8,false],['left',-1,0,4,true]])for(const [age,n] of [[0,0],[120,1],[280,2],[600,3]]){
+    const actor=makeHero('tanque',true,0,0);Object.assign(actor,{fx,fy,growMaxTimer:1000,growTimer:1000-age,_pdir:undefined,_pleft:false});const calls=[],orig=champPackDrawFrame;
+    champPackDrawFrame=(P,v,x,y,s,f)=>calls.push({cast:P===C,frame:v<0?~v:v,flip:(v<0)!==!!f});
+    try{check('cast '+dir+' '+n,drawKnightWarCryCast(actor,codexStub,2,1)&&calls.length===1&&calls[0].cast&&calls[0].frame===offset+n&&calls[0].flip===flip);}finally{champPackDrawFrame=orig;}
+   }}finally{if(oldCodex)CHAMP_PACK.codex_tanque=oldCodex;else delete CHAMP_PACK.codex_tanque;}
    const standing=draw(h,false);check('living base remains visible without death pack',standing.visible&&standing.calls.every(c=>!c.death));const reference=cv.toDataURL();
    D.ready=false;try{check('living master pixels identical with supplement absent',JSON.stringify(draw(h,false).pixels)===JSON.stringify(standing.pixels));h._deadAt=10000;animNow=10500;const d=draw(h);check('unloaded supplement preserves fallback death',d.visible&&d.calls.every(c=>!c.death));}finally{D.ready=true;}
    for(const [id,d] of Object.entries({...SET_SKINS,...CROMA_SKINS}))if(d.champ==='tanque'){
