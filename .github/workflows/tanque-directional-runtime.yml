@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: {node-version: '22'}
-      - run: npm install --no-save playwright
+      - run: npm install --no-save playwright ws
       - run: npx playwright install chromium
       - run: node tools/art/tanque-directional-online.js
       - run: node tools/art/tanque-directional-perf.js
