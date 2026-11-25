@@ -27,17 +27,20 @@ jobs:
           import importlib.util
           from PIL import Image
           path='assets/sprites/champions/tanque/v3/death.png'
+          directional='assets/sprites/champions/tanque/v3/death-directional.png'
           actual=Image.open(path).convert('RGBA')
+          candidate=Image.open(directional).convert('RGBA')
           approved=Image.open('art-source/entregas/bloques/B002_tanque/revision-death-v3/death.png').convert('RGBA')
-          assert actual.size==(448,336)
-          assert actual.crop((0,0,448,112)).tobytes()==approved.tobytes()
+          assert actual.size==(448,112) and actual.tobytes()==approved.tobytes()
+          assert candidate.size==(448,336)
+          assert candidate.crop((0,0,448,112)).tobytes()==approved.tobytes()
           spec=importlib.util.spec_from_file_location('scan','tools/art/scan_sprites.py')
           scan=importlib.util.module_from_spec(spec);spec.loader.exec_module(scan)
-          result=scan.analyze(path)
+          result=scan.analyze(directional)
           assert result['semi']==result['fragments']==0 and result['halo']<=15, result
           print(result)
           PY
-      - run: node tools/art/check-directional-clip-density.js assets/sprites/champions/tanque/v3/death.png docs/art-gate/tanque-death/native.json 112 112 4 3 1
+      - run: node tools/art/check-directional-clip-density.js assets/sprites/champions/tanque/v3/death-directional.png docs/art-gate/tanque-death/native.json 112 112 4 3 1
       - run: node tools/art/check-directional-clip-density.js assets/sprites/champions/tanque/v3/cast.png docs/art-gate/tanque-death/cast-native.json 144 144 4 3 1
       - name: Family style only, not approval of unchanged candidate frames
         run: python tools/art/painter/style_gate.py --strict art-source/entregas/bloques/B002_tanque/revision-death-v3/atlas.png

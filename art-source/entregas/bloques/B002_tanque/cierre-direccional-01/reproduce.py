@@ -55,6 +55,6 @@ def main():
     write(cast,144,ROOT/"assets/sprites/champions/tanque/v3/cast.png")
     death = approved_row(SOURCES/"death-down-approved.png",112)
     death += generated_rows(SOURCES/"death-directional-imagegen.webp",0.23,112,107)
-    write(death,112,ROOT/"assets/sprites/champions/tanque/v3/death.png")
+    write(death,112,ROOT/"assets/sprites/champions/tanque/v3/death-directional.png")
 
 if __name__ == "__main__": main()
