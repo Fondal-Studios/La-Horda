@@ -1,8 +1,8 @@
 {
   "component": "B002-tanque-directional-cast-death",
-  "state": "VALIDADO",
-  "integration": "PENDING_MAIN",
-  "publication": "NOT_CHECKED",
+  "state": "INTEGRADO_MAIN",
+  "integration": "INTEGRATED_MAIN",
+  "publication": "NOT_CHECKED_SEPARATE",
   "base_sha": "b7d92968d3324f298bd64bd9c7cbd33be1ab434e",
   "validated_functional_head": "8d1c59b3392b639bdfa4426f5f7e2a0706815797",
   "branch": "art/tanque-directional-kit-20261118",
@@ -70,7 +70,7 @@
     "imagegen source 02 rejected canonical density",
     "historical body frames attempt03 rejected canonical density"
   ],
-  "next_action": "Publish the VisualPackage manifest correction, require every applicable workflow on the new exact head, then fresh-audit main/open PRs. Only if all pass, mark PR ready and merge normally with expected_head_sha; verify PR, main and publication separately.",
+  "next_action": "Continue the fresh prioritized inventory after main 50589154; publication remains a separate non-blocking verification. Do not remerge PR310.",
   "last_observed_remote_head": "f240f1e6c8b13ee90e3efe83d095da1e2babdf29",
   "exact_head_ci_observed": {
     "run": 45584652294,
@@ -81,9 +81,36 @@
   },
   "visual_package_fix": {
     "path": "assets/visual-packages/manifest.v1.json",
-    "status": "PASS_LOCAL_PENDING_EXACT_CI",
-    "packages": 119,
-    "tests": "6/6",
-    "cli_errors": 0
+    "corrupt_attempt": {
+      "head": "71f1b62886bad440ce2709f6ae7f4044914b2bb3",
+      "blob": "617bec7fb5d9e85a813039e91d0a1e7826174ab7",
+      "bytes": 180060,
+      "status": "REJECTED_BINARY_NOT_JSON",
+      "qa_run": 45627885711
+    },
+    "final": {
+      "head": "87fbc9430112362af63034a033f2ca7ef10e7dd8",
+      "blob": "a34a61b7b2dfef32e7d94b5023684bc826a10607",
+      "bytes": 236876,
+      "status": "PASS_EXACT_HEAD_CI",
+      "packages": 119,
+      "tests": "6/6",
+      "cli_errors": 0
+    }
+  },
+  "approved_head": "87fbc9430112362af63034a033f2ca7ef10e7dd8",
+  "merge_sha": "50589154cea02f255633aa1b88088b1c1f827332",
+  "main_sha_verified": "50589154cea02f255633aa1b88088b1c1f827332",
+  "merge_tree": "de28cee76077d6c02b2072d49630615fd6b64242",
+  "merge_parents": [
+    "b7d92968d3324f298bd64bd9c7cbd33be1ab434e",
+    "87fbc9430112362af63034a033f2ca7ef10e7dd8"
+  ],
+  "exact_head_ci_final": {
+    "checks": 35,
+    "success": 35,
+    "failures": 0,
+    "workflow_runs": 20,
+    "head": "87fbc9430112362af63034a033f2ca7ef10e7dd8"
   }
 }
