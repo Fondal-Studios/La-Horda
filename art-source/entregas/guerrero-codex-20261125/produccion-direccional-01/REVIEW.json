@@ -1,0 +1,21 @@
+{
+  "status": "FIX_NOT_APPROVED",
+  "component": "Guerrero base: candidatos de lanzamiento y caída direccionales",
+  "reference": "assets/ui/codex/champions/guerrero.png",
+  "preserved": [
+    "assets/sprites/champions/guerrero/codex-v1/atlas.png",
+    "assets/sprites/champions/guerrero/v3/death.png",
+    "assets/sprites/champions/guerrero/skins/nocturno/atlas.png",
+    "PR212 H3 armada"
+  ],
+  "approvedFrames": 0,
+  "installedAssets": 0,
+  "runtimeChanges": 0,
+  "findings": [
+    "La fuente de lanzamiento mantiene identidad, tres direcciones y doce poses legibles, pero la continuidad de brazos y dagas requiere revisión por celda.",
+    "La fuente de caída mantiene identidad y direcciones; el fondo rojo y negro persiste como alfa parcial entre sprites.",
+    "El intento de extracción de fondo no eliminó el velo y no mejora la fuente original.",
+    "No existe Art Gate de gameplay del candidato porque ningún cuadro fue instalado."
+  ],
+  "decision": "Conservar como taller; no integrar, no registrar como atlas aprobado y no reemplazar fuentes históricas."
+}

@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "chunkBytes": 600000,
+  "lossless": true,
+  "sources": [
+    {
+      "originalPath": "sources/cast-directions-source-01.png",
+      "bytes": 1172747,
+      "sha256": "28a0359c778c19a26080d492dc79e395ead74a68df8a252daffa1f500345176f",
+      "parts": [
+        {
+          "path": "sources/cast-directions-source-01.png.part000",
+          "bytes": 600000,
+          "sha256": "7680389bb9a35dd2728105c2d264aea5a95ff7fe8b8013d405cb0ab8be5d0d78"
+        },
+        {
+          "path": "sources/cast-directions-source-01.png.part001",
+          "bytes": 572747,
+          "sha256": "f3a9dac2ac26c437afd3a35f2c9eb6bdc298f720a3c94b58745b926c9e2e0f8e"
+        }
+      ],
+      "reassemble": "cat sources/cast-directions-source-01.png.part* > sources/cast-directions-source-01.png"
+    },
+    {
+      "originalPath": "sources/death-background-extraction-attempt-01.png",
+      "bytes": 1873227,
+      "sha256": "460e48e1c57cd33ad2f0c5fda8a2f536300322f2cb8df3f60fb6abdbf57999d6",
+      "parts": [
+        {
+          "path": "sources/death-background-extraction-attempt-01.png.part000",
+          "bytes": 600000,
+          "sha256": "1253d96370182df9f77d56b476fac3fd2d43da4d0a7c6dbb697691f6473e5daa"
+        },
+        {
+          "path": "sources/death-background-extraction-attempt-01.png.part001",
+          "bytes": 600000,
+          "sha256": "2423de5cff33401028542c46a1149f7fc91d2e9d95206b8cca6f996d6c7a0eaa"
+        },
+        {
+          "path": "sources/death-background-extraction-attempt-01.png.part002",
+          "bytes": 600000,
+          "sha256": "3da35e6cdfaeb1f34da7c08691bb551f1fba3e28ca121ba17732288f724e4095"
+        },
+        {
+          "path": "sources/death-background-extraction-attempt-01.png.part003",
+          "bytes": 73227,
+          "sha256": "833f8de9f5de345ef0de43849f100217df0b1724a39ac1cfc4e6573ceba81d28"
+        }
+      ],
+      "reassemble": "cat sources/death-background-extraction-attempt-01.png.part* > sources/death-background-extraction-attempt-01.png"
+    },
+    {
+      "originalPath": "sources/death-directions-source-01.png",
+      "bytes": 1869244,
+      "sha256": "0570578c71d1a84a69fe17b3fe3c64ededb90d6318684d7d102b484fe61d2c91",
+      "parts": [
+        {
+          "path": "sources/death-directions-source-01.png.part000",
+          "bytes": 600000,
+          "sha256": "25bbab62504482c05de8d8aea4609a3cc72bd1f0d14772f551b1cd8ba0487928"
+        },
+        {
+          "path": "sources/death-directions-source-01.png.part001",
+          "bytes": 600000,
+          "sha256": "ef6cd70323b31bb0d83af0891eab9f4d7c1ceab8be3eb93fce6bd7963c9bb9db"
+        },
+        {
+          "path": "sources/death-directions-source-01.png.part002",
+          "bytes": 600000,
+          "sha256": "dd952140b76f8874f123eded227025358f7bc26816dc5c7eb35cb95ab6cf9ddd"
+        },
+        {
+          "path": "sources/death-directions-source-01.png.part003",
+          "bytes": 69244,
+          "sha256": "a2c6c5ab53670bf66e3de14dc642c5866aef968bc8865ace75d746fefae776ba"
+        }
+      ],
+      "reassemble": "cat sources/death-directions-source-01.png.part* > sources/death-directions-source-01.png"
+    }
+  ]
+}

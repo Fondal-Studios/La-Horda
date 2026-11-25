@@ -1,0 +1,8 @@
+{
+  "attempts": [
+    {"name":"static current-main atlas and metadata","kind":"new","result":"PASS","evidence":"diagnostics/BASELINE_STATIC.json","scope":"36 cuadros no vacíos y conjuntos declarados; no gameplay ni aprobación visual"},
+    {"name":"browser current-main baseline","kind":"new","result":"BLOCKED","evidence":"diagnostics/BASELINE_CODEX_BROWSER_BLOCKED.log","reason":"el wrapper /usr/bin/chromium apunta a /usr/lib/chromium/chromium ausente; no fue un fallo del arte"},
+    {"name":"source alpha audit","kind":"new","result":"FIX","evidence":"diagnostics/SOURCE_ALPHA.json","scope":"fuentes sin instalar"},
+    {"name":"death background extraction","kind":"new","result":"FAIL","evidence":"sources/death-background-extraction-attempt-01.png","reason":"persisten fondo y alfa parcial"}
+  ]
+}
