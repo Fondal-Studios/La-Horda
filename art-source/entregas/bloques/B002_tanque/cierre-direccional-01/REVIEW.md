@@ -26,3 +26,7 @@ El atlas integrado por PR182 se conserva en `assets/sprites/champions/tanque/v3/
 - `Art production evidence`, `Caballero death component gate` y `Tanque directional runtime` pasan en el SHA funcional exacto `8d1c59b3392b639bdfa4426f5f7e2a0706815797`.
 
 La publicación canónica se verifica aparte después de integrar; no se infiere desde GitHub.
+
+## Contrato VisualPackage
+
+El manifiesto global fue reconciliado con los registros efectivos del runtime. El fallo de QA del head `f240f1e6…` quedó preservado en `TEST_ATTEMPTS.json`; la corrección no modifica píxeles, consumidores, mecánicas ni gates. La validación local pasa 6/6 y queda sujeta a CI del nuevo head exacto.

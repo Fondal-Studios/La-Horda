@@ -56,6 +56,11 @@
       "name": "runtime art atlas",
       "status": "PASS_LOCAL_CHECK_PENDING_EXACT_CI",
       "detail": "CI runtime export reconciled cast 576x432 and death-directional 448x336; build-art-atlas.js --check passes locally"
+    },
+    {
+      "name": "VisualPackage manifest reconciliation",
+      "status": "PASS_LOCAL_PENDING_EXACT_CI",
+      "detail": "regenerated 119-package manifest from real registrations; tanque_cast now 576x432 with down/side/up and tanque_death points to death-directional.png 448x336 with down/side/up; 6/6 visual-package tests and cli check pass locally"
     }
   ],
   "historical": [
@@ -68,6 +73,7 @@
     "Initial relay workflow lacked ws; dependency-only correction passed without art, runtime or threshold changes.",
     "Initial production evidence rejected replacement of PR182 death.png; fixed by preserving it and routing the directional atlas through a separate path.",
     "Local browser unavailable because the executor blocks Chromium singleton sockets; exact GitHub workflows supplied browser evidence.",
-    "Champion entry balance on functional head failed only because ATLAS_ARTE still described the old cast and lacked death-directional; regenerated in CI runtime and reduced to the Tanque-only inventory changes."
+    "Champion entry balance on functional head failed only because ATLAS_ARTE still described the old cast and lacked death-directional; regenerated in CI runtime and reduced to the Tanque-only inventory changes.",
+    "Exact documentary head f240f1e6c8b13ee90e3efe83d095da1e2babdf29: QA regresion central run 45584652294 failed only visual-package/test.js because assets/visual-packages/manifest.v1.json still described the one-row Tanque cast/death registrations. No art, runtime or thresholds failed."
   ]
 }

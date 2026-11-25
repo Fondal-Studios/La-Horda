@@ -11,3 +11,9 @@
 - Evidencia nueva: densidad 12/12 por atlas, seis arenas en escritorio/móvil, 768 controles visuales, relay anfitrión/invitado táctil y cuatro corridas de renderer completo sin errores.
 - Intentos imagegen 01/02 y reutilización histórica 03 permanecen rechazados y preservados; no son fuentes activas.
 - Próximo paso: confirmar todos los workflows del checkpoint documental, dejar PR listo y mergear normalmente con `expected_head_sha`; después verificar PR, `main` y publicación por separado.
+
+## Reconciliación VisualPackage
+
+- El head documental `f240f1e6c8b13ee90e3efe83d095da1e2babdf29` pasó 19/20 workflows; el único rojo fue QA central porque `assets/visual-packages/manifest.v1.json` aún describía una fila para `tanque_cast` y `tanque_death`.
+- Regenerado desde los registros reales: 119 paquetes, `tanque_cast` 576×432 con frente/lado/espalda y `tanque_death` en `death-directional.png` 448×336 con frente/lado/espalda.
+- Pruebas nuevas locales: `tools/visual-package/test.js` 6/6 y `cli.js check` con 0 errores. Pendiente repetir todos los workflows sobre el nuevo SHA exacto antes de integrar.

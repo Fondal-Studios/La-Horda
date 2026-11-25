@@ -70,5 +70,20 @@
     "imagegen source 02 rejected canonical density",
     "historical body frames attempt03 rejected canonical density"
   ],
-  "next_action": "Run all applicable workflows on the documentary checkpoint SHA, then mark PR ready and merge normally with expected_head_sha. Verify PR, main and publication separately."
+  "next_action": "Publish the VisualPackage manifest correction, require every applicable workflow on the new exact head, then fresh-audit main/open PRs. Only if all pass, mark PR ready and merge normally with expected_head_sha; verify PR, main and publication separately.",
+  "last_observed_remote_head": "f240f1e6c8b13ee90e3efe83d095da1e2babdf29",
+  "exact_head_ci_observed": {
+    "run": 45584652294,
+    "status": "FAIL",
+    "passed_workflows": 19,
+    "total_workflows": 20,
+    "only_failure": "tools/visual-package/test.js: stored manifest did not match real Tanque registrations"
+  },
+  "visual_package_fix": {
+    "path": "assets/visual-packages/manifest.v1.json",
+    "status": "PASS_LOCAL_PENDING_EXACT_CI",
+    "packages": 119,
+    "tests": "6/6",
+    "cli_errors": 0
+  }
 }
