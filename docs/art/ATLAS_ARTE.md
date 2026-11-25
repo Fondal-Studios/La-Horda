@@ -17,8 +17,8 @@ Generado por `node tools/art/build-art-atlas.js` (no editar a mano). Fuente de v
 - Skins/cromas/formas de Ascensión: CODEX_OK 11 · FALTA_ANIMACION 90 · ARTE_VIEJO 3
 - Enemigos: CODEX_OK 63 · FALTA_ANIMACION 13
 - Jefes y subjefes: CODEX_OK 14 · FALTA_ANIMACION 13 · ARTE_VIEJO 1
-- Archivos (arenas, props, battlefield, enemigos, jefes, campeones): CODEX_OK 872 · HUERFANO 104 · ARTE_VIEJO 31
-- Fuentes del registro: 51 archivos, huella `4ba95f5a9046`
+- Archivos (arenas, props, battlefield, enemigos, jefes, campeones): CODEX_OK 872 · HUERFANO 105 · ARTE_VIEJO 31
+- Fuentes del registro: 51 archivos, huella `2af361debaf2`
 
 ## Campeones (cuerpo base)
 
@@ -302,7 +302,7 @@ Un registro por imagen (PNG; el `.webp` es su copia sin pérdida) en `ATLAS_ARTE
 | arenas | 185 | 23.2 | 0 | 2 |
 | battlefield | 32 | 4.0 | 0 | 0 |
 | bosses | 94 | 5.5 | 0 | 0 |
-| champions | 490 | 71.6 | 31 | 102 |
+| champions | 491 | 71.7 | 31 | 103 |
 | enemies | 206 | 9.4 | 0 | 0 |
 
 ### Huérfanos (no los carga ni los referencia el juego; candidatos a limpieza, NO se borran acá)
@@ -395,6 +395,7 @@ Un registro por imagen (PNG; el `.webp` es su copia sin pérdida) en `ATLAS_ARTE
 - `assets/sprites/champions/solciju/preview.png` 112x112
 - `assets/sprites/champions/soporte/v3/atlas.png` 448x1008
 - `assets/sprites/champions/tanque/codex-v1/preview.png` 112x112
+- `assets/sprites/champions/tanque/v3/death.png` 448x112
 - `assets/sprites/champions/tibor/croma-preview.png` 112x112
 - `assets/sprites/champions/tibor/preview.png` 112x112
 - `assets/sprites/champions/velmira/preview.png` 112x112

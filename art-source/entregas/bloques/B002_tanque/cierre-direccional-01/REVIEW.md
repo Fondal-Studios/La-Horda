@@ -1,24 +1,28 @@
 # REVIEW — B002 Tanque direccional 01
 
-Estado: **EN_CORRECCION / FIX / NO_INTEGRAR**.
+Estado del componente: **VALIDADO / PENDIENTE_INTEGRACION_MAIN**.
 
 Referencia obligatoria: `assets/ui/codex/champions/tanque.png` (Aldric, frente/lado/espalda).
 
-## Revisión visual efectiva
+## Resultado visual
 
 - La fila frontal de lanzamiento y muerte se conserva byte por byte.
-- Las filas nuevas mantienen cabello castaño, bufanda/capa azul, armadura plata y oro, escudo azul con estrella y espada corta.
-- Lado: escudo, cuerpo, espada y capa mantienen profundidad coherente durante el gesto y la caída.
-- Espalda: la capa y el emblema siguen visibles; la caída termina tendida, no en reposo.
-- Los 24 cuadros nuevos tienen alfa binaria, ancla de pies/suelo consistente y ningún recorte de borde.
+- Las filas laterales y traseras mantienen cabello castaño, capa azul, armadura plata y oro, escudo estrellado y espada corta.
+- La capa y el emblema conservan lectura trasera; la caída termina tendida y no vuelve a reposo.
+- Los 24 cuadros nuevos tienen alfa binaria, ancla consistente y ningún recorte de borde.
+- La matriz real cubrió seis arenas, base y apariencias, densidades y escritorio/móvil. El gate de Caballero validó 12 escenas y 768 controles sin fallos ni errores.
 
-La hoja de contacto es evidencia diagnóstica. Falta el gate del renderer real a escala de gameplay; por eso las fuentes no se declaran integradas.
+## Fuente activa y continuidad
 
-## Corrección 02 — densidad canónica
-El CI del head `79ed841b` validó las 12 celdas de muerte y detectó `ILUSTRACION` en lanzamiento lateral 1:2 y las cuatro celdas traseras de la fuente 01. Se conserva esa fuente como intento fallido. La fuente 02 se generó nuevamente desde `assets/ui/codex/champions/tanque.png` con clusters duros de 1 píxel y paleta limitada; queda GENERADA y pendiente del gate exacto. No se modificaron umbrales, mecánicas ni la fila frontal aprobada.
+El candidato 04 reutiliza sin escala los cuadros nativos 16–23 de `assets/sprites/champions/tanque/codex-v1/atlas.png`, derivados de la identidad exacta del Códice. Las doce celdas de lanzamiento y las doce de muerte pasan el gate canónico. Los intentos imagegen 01/02 y la reutilización histórica 03 permanecen como evidencia rechazada.
 
-## Corrección 03 — reutilización nativa
-La fuente 02 también falló el detector canónico en las mismas cinco celdas y queda preservada como intento rechazado. La auditoría de `hoja_36poses.png` confirmó que Aldric ya posee ataques laterales y traseros integrados en los cuadros 16–23. El candidato 03 reutiliza esos píxeles nativos sin escala ni filtros dentro de las celdas de lanzamiento; la fila frontal y muerte permanecen exactas. Estado: candidato pendiente de CI y revisión real, no integrado.
+El atlas integrado por PR182 se conserva en `assets/sprites/champions/tanque/v3/death.png` con SHA-256 `8dc632c0afb7d9df1808dfffb873e44584499abed27c84c5f2ddb5e5ad162d78`. El suplemento direccional vive en `death-directional.png`, SHA-256 `9358896c3b64a64bc97128fee3294dc2dad0ef16d2a82207f61685c50a539106`; esta separación evita reescribir evidencia histórica.
 
-## Corrección 04 — fuente nativa Codex-v1
-La auditoría separó `assets/sprites/champions/tanque/codex-v1/atlas.png` de la hoja histórica suavizada. Sus cuadros 16–23 conservan la identidad exacta del Códice y pasan individualmente el criterio canónico (suavidad 0–0,002; ruido 112–168). Se reutilizan sin escala ni edición dentro del atlas de lanzamiento. El candidato queda pendiente del workflow exacto y revisión real; no está integrado.
+## Runtime y alcance
+
+- Relay real: anfitrión y visitante táctil reciben dirección, temporizador de crecimiento y cuadros laterales reflejados; 0 errores.
+- Renderer completo: cuatro corridas de 360 cuadros, 12 enemigos y 2 aliados, 361 limpiezas por corrida; p95 entre 2,3 y 2,5 ms y máximos entre 18,8 y 26,3 ms en el runner. No certifica móvil físico, GPU ni GC.
+- No se modificaron balance, daño, área, tiempos, red compartida, skins ni habilidades.
+- `Art production evidence`, `Caballero death component gate` y `Tanque directional runtime` pasan en el SHA funcional exacto `8d1c59b3392b639bdfa4426f5f7e2a0706815797`.
+
+La publicación canónica se verifica aparte después de integrar; no se infiere desde GitHub.

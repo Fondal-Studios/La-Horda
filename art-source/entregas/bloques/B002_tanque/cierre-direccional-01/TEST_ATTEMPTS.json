@@ -1,71 +1,73 @@
 {
-  "state": "EN_CORRECCION",
+  "state": "VALIDADO",
+  "functionalHead": "8d1c59b3392b639bdfa4426f5f7e2a0706815797",
   "new": [
     {
       "name": "reproduction deterministic",
       "status": "PASS",
-      "detail": "reproduce.py rebuilt both atlases twice with stable hashes"
+      "detail": "cast and death-directional rebuilt with stable hashes; historical death remained exact PR182 bytes"
     },
     {
       "name": "native geometry and alpha",
       "status": "PASS",
-      "detail": "cast 576x432, death 448x336, 12 non-empty islands each, binary alpha, zero fragments; death halo 6"
+      "detail": "12 non-empty cells per atlas, binary alpha, anchors and borders valid"
     },
     {
-      "name": "approved frontal rows preserved",
+      "name": "canonical grid density",
       "status": "PASS",
-      "detail": "front four frames copied byte-for-byte from approved supplements"
+      "detail": "cast 12/12 and directional death 12/12"
     },
     {
-      "name": "JavaScript syntax",
+      "name": "approved frontal rows",
       "status": "PASS",
-      "detail": "four modified JS files parse with node --check"
+      "detail": "front four frames preserved byte-for-byte"
     },
     {
-      "name": "contact-sheet review",
-      "status": "PASS_DIAGNOSTIC",
-      "detail": "front/side/back identity, shield, cape, sword, sequence and anchors reviewed against exact Codex reference"
+      "name": "gameplay matrix",
+      "status": "PASS",
+      "detail": "12 scenes, six arenas, desktop/mobile, 768 checks, zero failures or errors"
     },
     {
-      "name": "real browser renderer",
-      "status": "BLOCKED_LOCAL",
-      "detail": "system Chromium aborted because process-singleton socket is forbidden by executor policy; exact CI workflow updated to run the gate"
+      "name": "relay real",
+      "status": "PASS",
+      "detail": "host and tactile guest received direction, growth timer and flipped side frame; zero errors"
     },
     {
-      "name": "gameplay/skins/relay/performance",
-      "status": "PENDING",
-      "detail": "must run on the exact remote head before approval"
+      "name": "renderer complete",
+      "status": "PASS",
+      "detail": "four 360-frame runs, 12 enemies plus 2 allies, p95 2.3-2.5ms on runner"
     },
     {
-      "name": "exact-head CI 79ed841b directional density",
-      "status": "FAIL",
-      "detail": "death 12/12 PASS; cast failed canonical ILUSTRACION at lateral cell 1:2 and all four back cells"
+      "name": "production evidence",
+      "status": "PASS",
+      "detail": "run 45579846138 exact functional head"
     },
     {
-      "name": "cast source correction 02",
-      "status": "REJECTED_CANONICAL_DENSITY",
-      "detail": "new Codex-derived hard-cluster pixel source replaces no approved asset; attempt01 preserved"
+      "name": "Caballero component",
+      "status": "PASS",
+      "detail": "run 45579846029 exact functional head"
     },
     {
-      "name": "cast source correction 03 native reuse",
-      "status": "CANDIDATE_PENDING_CI",
-      "detail": "reuses already integrated hoja_36poses frames16-23 at native scale; no generated cast pixels active"
+      "name": "Tanque runtime",
+      "status": "PASS",
+      "detail": "run 45579846079 exact functional head"
     },
     {
-      "name": "cast source correction 04 Codex-v1 native reuse",
-      "status": "LOCAL_CELL_METRICS_PASS_PENDING_CI",
-      "detail": "frames16-23: suave 0-0.002, ruido 112-168; source unchanged and embedded unscaled"
+      "name": "runtime art atlas",
+      "status": "PASS_LOCAL_CHECK_PENDING_EXACT_CI",
+      "detail": "CI runtime export reconciled cast 576x432 and death-directional 448x336; build-art-atlas.js --check passes locally"
     }
   ],
   "historical": [
-    "Existing front cast/death and hurt gates are retained; they do not certify the new directions."
+    "Earlier front-only and hurt gates do not certify the new directions.",
+    "Candidate04 supersedes rejected attempts only for this component."
   ],
   "failedAttempts": [
-    "Initial isolated worktree disappeared before commit; sources were regenerated and the diff reconstructed from fresh main.",
-    "Playwright bundled Chromium missing.",
-    "System Chromium /usr/bin/chromium failed: process_singleton_posix socket Operation not permitted.",
-    "First static JSON print failed on numpy bool; assertion rerun passed.",
-    "Exact-head 236eb1c failed because a horizontal 112px checker was incorrectly used on a 4x3 grid; checker replaced without threshold changes.",
-    "Exact-head 79ed841b exposed a real canonical density failure in cast source 01: ILUSTRACION in five cells."
+    "Imagegen sources 01 and 02 failed canonical density and remain preserved.",
+    "Historical body frames attempt03 failed canonical density and remains preserved.",
+    "Initial relay workflow lacked ws; dependency-only correction passed without art, runtime or threshold changes.",
+    "Initial production evidence rejected replacement of PR182 death.png; fixed by preserving it and routing the directional atlas through a separate path.",
+    "Local browser unavailable because the executor blocks Chromium singleton sockets; exact GitHub workflows supplied browser evidence.",
+    "Champion entry balance on functional head failed only because ATLAS_ARTE still described the old cast and lacked death-directional; regenerated in CI runtime and reduced to the Tanque-only inventory changes."
   ]
 }
