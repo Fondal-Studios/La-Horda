@@ -78,7 +78,11 @@ function update(dt){
   }
 
   if(typeof basicAutoTick==="function") basicAutoTick(); // Opciones > Ataque (alternar / automático)
+  // Celulares como mando (js/net/mandos.js): el del jugador 1 presta su joystick; los demás manejan aliados.
+  const _mj = typeof mandosJugadorIn==="function" ? mandosJugadorIn() : null;
   updateControlledHero(dt);
+  if(_mj) mandosJugadorOut(_mj);
+  if(typeof mandosUpdate==="function") mandosUpdate(dt);
   // B1 cooperativo: los héroes de los invitados usan exactamente el mismo código (ver net-game.js)
   if(netMatch && netMatch.role==="host") netHostUpdateRemotes(dt);
 

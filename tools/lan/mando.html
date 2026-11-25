@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#140f12">
+<title>La Horda · Mando</title>
+<style>
+  :root{ --c:#e0a040; --bg:#140f12; --pan:#22191c; --txt:#f2e6d8; --dim:#9c8b80; }
+  *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none; touch-action:none; }
+  html,body{ margin:0; height:100%; background:var(--bg); color:var(--txt); font:600 15px/1.25 system-ui,sans-serif; overflow:hidden; }
+  #top{ position:fixed; left:0; right:0; top:0; display:flex; gap:10px; align-items:center; padding:8px 12px; padding-top:max(8px,env(safe-area-inset-top)); background:linear-gradient(#000a,#0000); z-index:3; }
+  #chip{ width:14px; height:14px; border-radius:50%; background:var(--c); box-shadow:0 0 10px var(--c); flex:none; }
+  #heroe{ flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  #vida{ width:110px; height:10px; background:#0008; border-radius:5px; overflow:hidden; flex:none; }
+  #vida i{ display:block; height:100%; width:100%; background:#d8443a; transition:width .2s; }
+  .chico{ background:var(--pan); color:var(--txt); border:1px solid #fff2; border-radius:10px; padding:7px 11px; font:inherit; }
+  #zonaJoy{ position:fixed; left:0; top:0; bottom:0; width:50%; }
+  #base{ position:fixed; width:150px; height:150px; margin:-75px 0 0 -75px; border-radius:50%; border:3px solid #fff3; background:#fff1; display:none; }
+  #pomo{ position:absolute; left:45px; top:45px; width:60px; height:60px; border-radius:50%; background:var(--c); opacity:.9; }
+  #ayudaJoy{ position:fixed; left:12%; bottom:18%; color:var(--dim); font-size:14px; }
+  #botones{ position:fixed; right:0; bottom:0; width:50%; height:100%; }
+  .b{ position:absolute; border-radius:50%; border:3px solid #fff3; background:var(--pan); color:var(--txt); display:flex; align-items:center; justify-content:center; font-size:15px; text-align:center; }
+  .b.on{ background:var(--c); color:#140f12; border-color:#fff8; }
+  #atk{ width:120px; height:120px; right:7%; bottom:12%; font-size:18px; }
+  #h0{ width:72px; height:72px; right:calc(7% + 128px); bottom:9%; }
+  #h1{ width:72px; height:72px; right:calc(7% + 112px); bottom:calc(12% + 96px); }
+  #h2{ width:72px; height:72px; right:calc(7% + 26px); bottom:calc(12% + 132px); }
+  #ult{ width:78px; height:78px; right:calc(7% + 210px); bottom:calc(12% + 40px); border-color:#ffcc4488; color:#ffd36a; }
+  #panel{ position:fixed; inset:0; background:#140f12f2; z-index:5; display:none; padding:20px; overflow:auto; touch-action:pan-y; }
+  #panel *{ touch-action:pan-y; }
+  #panel h2{ margin:4px 0 12px; }
+  #lista{ display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:8px; margin-top:10px; }
+  #lista button{ padding:12px 6px; }
+  #lista button[disabled]{ opacity:.35; }
+  #estado{ position:fixed; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; padding:30px; background:#140f12ee; z-index:4; font-size:18px; }
+  #girar{ display:none; }
+  @media (orientation:portrait){ #girar{ display:flex; position:fixed; inset:0; z-index:9; background:var(--bg); align-items:center; justify-content:center; text-align:center; padding:30px; font-size:20px; } }
+</style>
+</head>
+<body>
+<div id="top">
+  <span id="chip"></span><span id="heroe">Conectando…</span>
+  <span id="vida"><i></i></span>
+  <button class="chico" id="btnPanel">Héroe</button>
+  <button class="chico" id="btnPausa">II</button>
+</div>
+<div id="zonaJoy"></div>
+<div id="base"><div id="pomo"></div></div>
+<div id="ayudaJoy">Tocá y arrastrá acá para moverte</div>
+<div id="botones">
+  <div class="b" id="atk">ATACAR</div>
+  <div class="b" id="h0">1</div>
+  <div class="b" id="h1">2</div>
+  <div class="b" id="h2">3</div>
+  <div class="b" id="ult">ULTI</div>
+</div>
+<div id="panel">
+  <h2>Tu jugador</h2>
+  <label>Nombre <input class="chico" id="nombre" maxlength="14" autocomplete="off"></label>
+  <p style="color:var(--dim)">Elegí tu guardián (se aplica en la próxima partida):</p>
+  <div id="lista"></div>
+  <p><button class="chico" id="cerrar">Listo</button></p>
+</div>
+<div id="estado">Conectando con la compu…</div>
+<div id="girar">Girá el celular (horizontal) para usarlo de mando.</div>
+<script>
+"use strict";
+(function(){
+  const q = new URLSearchParams(location.search);
+  const K = q.get("k") || "";
+  let ID = localStorage.getItem("horda_mando_id") || "";
+  if(!ID){ ID = Math.random().toString(36).slice(2, 10); localStorage.setItem("horda_mando_id", ID); }
+  let nombre = localStorage.getItem("horda_mando_nombre") || "";
+  const $ = id => document.getElementById(id);
+  const vib = ms => { try{ navigator.vibrate && navigator.vibrate(ms); }catch(e){} };
+  let ws = null, abierto = false, joy = {x:0, y:0}, atk = false, enviado = "";
+  function estado(t){ $("estado").style.display = t ? "flex" : "none"; $("estado").textContent = t || ""; }
+  function enviar(o){ if(ws && ws.readyState === 1) ws.send(JSON.stringify(o)); }
+  function conectar(){
+    const proto = location.protocol === "https:" ? "wss" : "ws";
+    ws = new WebSocket(`${proto}://${location.host}/ws?rol=mando&k=${encodeURIComponent(K)}&id=${ID}`);
+    ws.onopen = () => { abierto = true; if(nombre) enviar({t:"nombre", n:nombre}); };
+    ws.onmessage = ev => { let m; try{ m = JSON.parse(ev.data); }catch(e){ return; } recibir(m); };
+    ws.onclose = ev => {
+      abierto = false;
+      if(ev.code === 4003){ estado("La clave no corresponde: volvé a escanear el QR de la pantalla."); return; }
+      if(ev.code === 4002){ estado("Ya hay demasiados mandos conectados."); return; }
+      if(ev.code === 4000) return;
+      estado("Se cortó la conexión. Reintentando…"); setTimeout(conectar, 1500);
+    };
+  }
+  function recibir(m){
+    if(m.t === "id"){ estado(m.pantalla ? "" : "Esperando que la compu abra la partida…"); return; }
+    if(m.t === "sinPantalla"){ estado("La compu cerró el juego. Esperando…"); return; }
+    if(m.t === "estado"){
+      estado("");
+      document.documentElement.style.setProperty("--c", m.color || "#e0a040");
+      $("heroe").textContent = m.slot == null ? "Mirando (no hay lugar libre)" : `J${m.slot + 1} · ${m.heroe || "?"}${m.vivo === false ? " (caído)" : ""}`;
+      $("vida").firstChild.style.width = Math.max(0, Math.min(100, Math.round((m.vida || 0) * 100))) + "%";
+      if(m.habs) ["h0","h1","h2"].forEach((b, i) => { $(b).textContent = m.habs[i] || String(i + 1); });
+      if(m.campeones) pintarLista(m.campeones, m.elegido);
+      return;
+    }
+    if(m.t === "vibrar"){ vib(m.ms || 40); return; }
+  }
+  function pintarLista(lista, elegido){
+    const box = $("lista"); box.innerHTML = "";
+    for(const c of lista){
+      const b = document.createElement("button"); b.className = "chico"; b.textContent = c.n + (c.k === elegido ? " ✓" : "");
+      if(c.no) b.disabled = true;
+      b.onclick = () => { enviar({t:"elegir", c:c.k}); vib(20); };
+      box.appendChild(b);
+    }
+  }
+  // joystick flotante: donde apoyás el dedo en la mitad izquierda
+  const R = 60; let dedoJoy = null, cx = 0, cy = 0;
+  const zona = $("zonaJoy"), base = $("base"), pomo = $("pomo");
+  zona.addEventListener("pointerdown", e => { dedoJoy = e.pointerId; cx = e.clientX; cy = e.clientY; base.style.left = cx + "px"; base.style.top = cy + "px"; base.style.display = "block"; $("ayudaJoy").style.display = "none"; mover(e); try{ zona.setPointerCapture(e.pointerId); }catch(_){} });
+  zona.addEventListener("pointermove", e => { if(e.pointerId === dedoJoy) mover(e); });
+  const soltarJoy = e => { if(e.pointerId !== dedoJoy) return; dedoJoy = null; joy = {x:0, y:0}; base.style.display = "none"; pomo.style.transform = ""; mandarIn(true); };
+  zona.addEventListener("pointerup", soltarJoy); zona.addEventListener("pointercancel", soltarJoy);
+  function mover(e){
+    let dx = e.clientX - cx, dy = e.clientY - cy; const l = Math.hypot(dx, dy);
+    if(l > R){ dx *= R / l; dy *= R / l; }
+    pomo.style.transform = `translate(${dx}px,${dy}px)`;
+    joy = {x: Math.round(dx / R * 100) / 100, y: Math.round(dy / R * 100) / 100};
+  }
+  function boton(id, abajo, arriba){
+    const el = $(id);
+    el.addEventListener("pointerdown", e => { e.preventDefault(); el.classList.add("on"); try{ el.setPointerCapture(e.pointerId); }catch(_){} vib(15); abajo && abajo(); });
+    const fin = () => { el.classList.remove("on"); arriba && arriba(); };
+    el.addEventListener("pointerup", fin); el.addEventListener("pointercancel", fin);
+  }
+  boton("atk", () => { atk = true; mandarIn(true); }, () => { atk = false; mandarIn(true); });
+  boton("h0", () => enviar({t:"hab", i:0}));
+  boton("h1", () => enviar({t:"hab", i:1}));
+  boton("h2", () => enviar({t:"hab", i:2}));
+  boton("ult", () => enviar({t:"ulti"}));
+  $("btnPausa").onclick = () => enviar({t:"pausa"});
+  $("btnPanel").onclick = () => { $("nombre").value = nombre; $("panel").style.display = "block"; };
+  $("cerrar").onclick = () => {
+    nombre = $("nombre").value.trim().slice(0, 14); localStorage.setItem("horda_mando_nombre", nombre);
+    if(nombre) enviar({t:"nombre", n:nombre}); $("panel").style.display = "none";
+  };
+  function mandarIn(forzar){
+    const s = joy.x + "," + joy.y + "," + (atk ? 1 : 0);
+    if(!forzar && s === enviado) return;
+    enviado = s; enviar({t:"in", x:joy.x, y:joy.y, b:atk ? 1 : 0});
+  }
+  setInterval(() => mandarIn(false), 33);
+  setInterval(() => { if(abierto) mandarIn(true); }, 500); // latido: si un mensaje se pierde, se corrige solo
+  document.addEventListener("visibilitychange", () => { if(document.hidden){ joy = {x:0, y:0}; atk = false; mandarIn(true); } });
+  try{ navigator.wakeLock && navigator.wakeLock.request("screen"); }catch(e){}
+  conectar();
+})();
+</script>
+</body>
+</html>
