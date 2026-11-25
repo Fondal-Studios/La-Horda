@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "command": "python3 art-source/entregas/guerrero-codex-20261125/cierre-02/reproduce.py",
+  "source": "assets/sprites/champions/guerrero/codex-v1/atlas.png",
+  "mapping": {"cast_down":[24,25,26,27],"cast_side":[16,17,18,19],"cast_up":[20,21,22,23]},
+  "operations": ["exact 144x144 crop", "row reorder"],
+  "forbiddenOperationsUsed": [],
+  "installation": "none"
+}
