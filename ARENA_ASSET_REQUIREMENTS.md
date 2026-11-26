@@ -1,5 +1,8 @@
 # ARENA_ASSET_REQUIREMENTS.md — Identidad de Arenas
 
+> **VENCIDO (auditoría 25/11/2026).** Escrito el 25/09; hoy hay 13 arenas, la Acuática existe, el Laberinto es de
+> piedra y hay props/pisos pintados. Estado vigente: `docs/auditoria/AUDITORIA_20261125.md` y `docs/art/ATLAS_ARTE.md`.
+
 Este documento registra el trabajo de identidad visual/estructural de arenas que **no** se
 resolvió en el pase actual, para que quede como lista de producción y no bloquee el desarrollo.
 No se descargó ni se va a descargar arte de terceros con derechos: todo lo de acá se resuelve

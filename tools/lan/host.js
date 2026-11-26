@@ -68,12 +68,13 @@ function resolveStatic(urlPath){
   return file;
 }
 let _indexCache = { mtime: 0, body: null };
+let MANDOS_CFG = null; // {port, k}: servidor privado de celulares como mando (tools/lan/mandos.js)
 function indexBody(file){
   const st = fs.statSync(file);
   if(_indexCache.mtime !== st.mtimeMs || !_indexCache.body){
     let html = fs.readFileSync(file, "utf8");
     // el juego sabe que lo sirve la anfitriona de una red local (js/net/net-core.js: netLanPage)
-    const tag = "<script>window.__HORDA_LAN__=true;</script>";
+    const tag = "<script>window.__HORDA_LAN__=true;" + (MANDOS_CFG ? "window.__HORDA_MANDOS__=" + JSON.stringify(MANDOS_CFG) + ";" : "") + "</script>";
     html = /<head[^>]*>/i.test(html) ? html.replace(/<head[^>]*>/i, m => m + tag) : tag + html;
     _indexCache = { mtime: st.mtimeMs, body: Buffer.from(html, "utf8") };
   }
@@ -206,6 +207,21 @@ async function main(){
     serveStatic(req, res, p);
   });
 
+  // CELULARES COMO MANDO: servidor privado en el puerto siguiente (clave al azar en cada arranque, va en el QR)
+  let mandoUrl = "";
+  if(!args.includes("--sin-mandos")){
+    try{
+      const mport = port + 1;
+      if(await portFree(mport, host)){
+        const mandos = require(path.join(__dirname, "mandos.js")).crear();
+        mandos.server.listen(mport, host || undefined);
+        MANDOS_CFG = { port: mport, k: mandos.clave }; _indexCache = { mtime: 0, body: null };
+        const a0 = lanAddresses()[0];
+        mandoUrl = a0 ? `http://${a0.ip}:${mport}/?k=${mandos.clave}` : "";
+      } else say(`(El puerto ${port + 1} está ocupado: sin celulares como mando)`);
+    }catch(e){ say("(No pude levantar los mandos: " + e.message + ")"); }
+  }
+
   const cleanup = () => { try{ fs.rmSync(dataDir, { recursive: true, force: true }); }catch(e){} };
   process.on("exit", cleanup);
   for(const sig of ["SIGINT", "SIGTERM"]) process.on(sig, () => { say("\nLa fiesta terminó. ¡Hasta la próxima!"); cleanup(); process.exit(0); });
@@ -236,10 +252,22 @@ async function main(){
     say("   1) Abrí http://localhost:" + port + "/ en esta compu → JUGAR → MODOS Y MULTIJUGADOR → Jugar en red local.");
     say("   2) «Crear sala local»: la Sala muestra el código y el QR para los demás.");
     say("   Si los celulares no entran: firewall de Windows / «Red privada» (ver docs/beta-release/MULTIJUGADOR_LOCAL.md).");
+    if(mandoUrl){
+      say("");
+      say("   CELULARES COMO MANDO (la partida se ve en esta compu):");
+      say("   abrí http://localhost:" + port + "/ acá, y en cada celular escaneá este QR (o el que muestra el juego):");
+      say("      " + mandoUrl);
+      try{ say(require(path.join(ROOT, "js", "net", "lan-qr.js")).ascii(mandoUrl).split(String.fromCharCode(10)).map(l => "     " + l).join(String.fromCharCode(10))); }catch(e){}
+      say("   Tecla V: vista de sala (se ve todo el grupo) · Tecla M: mostrar el QR");
+    }
     say("   Para terminar: Ctrl+C");
     say("");
   };
-  const ready = () => { show(); if(args.includes("--json")) console.log(JSON.stringify({ lanReady: true, port })); };
+  const ready = () => { show();
+    if(args.includes("--abrir")){ // sala.bat: abre el juego en esta compu (pantalla grande)
+      const url = `http://localhost:${port}/`;
+      try{ if(process.platform === "win32") cp.exec(`start "" "${url}"`); else cp.exec((process.platform === "darwin" ? "open " : "xdg-open ") + url); }catch(e){}
+    } if(args.includes("--json")) console.log(JSON.stringify({ lanReady: true, port })); };
   if(server.listening) ready(); else server.once("listening", ready);
 }
 if(require.main === module) main().catch(e => { console.error(e); process.exit(1); });

@@ -15,6 +15,7 @@ let _arenaZoomActive = false;
 // Run BEFORE the canvas transform; input and HUD use this same camera zoom.
 function updateArenaCameraZoom(){
   if(state==="paused") return;
+  if(typeof mandosCamara==="function" && mandosCamara()) return; // vista de sala con celulares (js/net/mandos.js)
   const has = state==="playing" && player && camSub()===player && !player.duelActive && arenaHas("camZoom");
   if(!has && !_arenaZoomActive) return;
   const normal = computeCamZoom(VW,VH);
