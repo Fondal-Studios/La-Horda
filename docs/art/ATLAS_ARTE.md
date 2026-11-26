@@ -18,7 +18,7 @@ Generado por `node tools/art/build-art-atlas.js` (no editar a mano). Fuente de v
 - Enemigos: CODEX_OK 63 · FALTA_ANIMACION 13
 - Jefes y subjefes: CODEX_OK 14 · FALTA_ANIMACION 13 · ARTE_VIEJO 1
 - Archivos (arenas, props, battlefield, enemigos, jefes, campeones): CODEX_OK 872 · HUERFANO 106 · ARTE_VIEJO 31
-- Fuentes del registro: 51 archivos, huella `196f3a729e9e`
+- Fuentes del registro: 51 archivos, huella `ea1c99572493`
 
 ## Campeones (cuerpo base)
 
