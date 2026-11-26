@@ -121,7 +121,50 @@ function mandosJugadorIn(){
 }
 function mandosJugadorOut(s){ if(s){ joyVec = s.joyVec; basicHeld = s.basicHeld; } }
 // update.js: después del jugador 1. Mueve a los aliados que maneja un celular.
+// JOYSTICKS EXTRA (pedido del doctor, 26/11): cada joystick conectado a la compu ademas del primero maneja a un aliado,
+// igual que un celular de sala.bat. Sirve con mandos USB y con la "sala de joysticks" de Anakin (los celulares de los
+// amigos aparecen en Windows como controles de Xbox). El primer joystick sigue siendo el jugador 1 (input-desk.js).
+// Mapeo como el del jugador 1: palanca izquierda o cruz = mover, A = ataque, X / Y / B = habilidades 1 / 2 / 3,
+// RB o RT = ultimate, Start = pausa. Si el joystick se desconecta, su aliado vuelve a la IA.
+function mandosPads(){
+  let pads = [];
+  try{ pads = [...(navigator.getGamepads ? navigator.getGamepads() : [])].filter(g => g && g.connected); }catch(e){ return; }
+  if(!pads.length && ![...MANDOS.lista.values()].some(m => m.pad)) return;
+  const p1 = typeof _gpPad === "function" ? _gpPad() : null;
+  const vivos = new Set();
+  for(const g of pads){
+    if(p1 && g.index === p1.index) continue;
+    const id = "pad" + g.index; vivos.add(id);
+    let mm = MANDOS.lista.get(id);
+    if(!mm){
+      const usados = new Set([...MANDOS.lista.values()].map(m => m.slot)); let slot = null;
+      for(let k = 1; k < 4; k++) if(!usados.has(k)){ slot = k; break; }
+      if(slot == null) continue;
+      mm = {id, slot, nombre:"Joystick " + (slot + 1), joy:{x:0, y:0}, b:0, color:MANDO_COLORES[slot], hp:-1, pad:true, prev:{}};
+      MANDOS.lista.set(id, mm);
+      if(MANDOS.sala.auto) MANDOS.sala.on = true;
+      if(typeof showNetToast === "function") showNetToast(`Joystick conectado: jugador ${slot + 1}`);
+      mandosUiPintar();
+    }
+    const r = gpRead(g), now = r.b, prev = mm.prev || {}, edge = n => now[n] && !prev[n];
+    mm.prev = now;
+    let x = r.lx || 0, y = r.ly || 0;
+    if(now.LEFT) x = -1; if(now.RIGHT) x = 1; if(now.UP) y = -1; if(now.DOWN) y = 1;
+    const l = Math.hypot(x, y); if(l > 1){ x /= l; y /= l; }
+    mm.joy = {x, y}; mm.b = now.A ? 1 : 0;
+    if(mandosActivos() && state === "playing"){
+      const h = mandosHeroe(mm);
+      if(h && h.alive){
+        [["X", 0], ["Y", 1], ["B", 2]].forEach(([b, i]) => { if(edge(b)) mandosCon(h, mm, () => useSkill(i, null)); });
+        if(edge("RB") || edge("RT")) mandosCon(h, mm, () => useUltimate());
+      }
+    }
+    if(edge("START")) mandosRecibir({t:"pausa", de:id});
+  }
+  for(const [id, mm] of [...MANDOS.lista]) if(mm.pad && !vivos.has(id)) mandosRecibir({t:"sale", de:id});
+}
 function mandosUpdate(dt){
+  mandosPads();
   if(!MANDOS.lista.size) return;
   const ahora = performance.now();
   const activos = mandosActivos();
