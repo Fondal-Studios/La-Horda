@@ -311,7 +311,7 @@ const ASSET_WEBP = new Set([
 "assets/sprites/champions/farolero/skins/lumbre_persistente/atlas.png",
 "assets/sprites/champions/farolero/skins/lumbre_persistente/preview.png",
 "assets/sprites/champions/guerrero/atlas.png",
-"assets/sprites/champions/guerrero/codex-v1/atlas.png",
+"assets/sprites/champions/guerrero/codex-v2/atlas.png",
 "assets/sprites/champions/guerrero/skins/nocturno/atlas.png",
 "assets/sprites/champions/guerrero/skins/nocturno/preview.png",
 "assets/sprites/champions/ilkan/skins/legion/atlas.png",

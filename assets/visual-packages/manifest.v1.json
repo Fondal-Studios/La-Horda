@@ -2120,17 +2120,17 @@
    "legacy": true,
    "declaredIn": "js/assets/codex-champion-meta.js",
    "atlas": {
-    "path": "assets/sprites/champions/guerrero/codex-v1/atlas.png",
+    "path": "assets/sprites/champions/guerrero/codex-v2/atlas.png",
     "format": "png",
     "width": 576,
-    "height": 1296,
-    "sha256": "03b1f0c853f2ef49cc42654b05c4eac6c2e5f8ed66678a113230bc9860a8d77d"
+    "height": 1584,
+    "sha256": "e5829e68298fff647f5e7c7b106a245ff33769ea69b90cab79bd92e90ad7198f"
    },
    "grid": {
     "frameWidth": 144,
     "frameHeight": 144,
     "cols": 4,
-    "rows": 9
+    "rows": 11
    },
    "states": {
     "idle_down": [
@@ -2199,6 +2199,18 @@
      33,
      34,
      35
+    ],
+    "death_side": [
+     36,
+     37,
+     38,
+     39
+    ],
+    "death_up": [
+     40,
+     41,
+     42,
+     43
     ]
    },
    "pivot": {

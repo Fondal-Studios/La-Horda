@@ -8,7 +8,7 @@
 - **Color de clase:** `#c4544a` · brillo `#f0a89a`.
 - **Origen:** Los callejones de la Ciudad Maldita. Kael cobraba por desaparecer a la gente equivocada. Cuando la ciudad cayó descubrió que los monstruos también sangran, y que él sabe exactamente dónde cortar. No pelea por los Guardianes ni por la gloria: pelea porque nadie le paga mejor que la venganza, y porque la Horda se llevó lo único que no estaba en venta.
 - **Lámina del Códice (referencia `@codex`):** `assets/ui/codex/champions/guerrero.png` (original) — es la fuente de verdad del diseño: ropa, pelo, colores y proporciones.
-- **Atlas registrado en el juego:** `assets/sprites/champions/guerrero/codex-v1/atlas.png` (celda 144×144, 4 columnas). Es el que se usa como `@pose` (`python3 tools/art/pose-ref.py guerrero --info`).
+- **Atlas registrado en el juego:** `assets/sprites/champions/guerrero/codex-v2/atlas.png` (celda 144×144, 4 columnas). Es el que se usa como `@pose` (`python3 tools/art/pose-ref.py guerrero --info`).
 - Ojo: existe también `assets/sprites/champions/guerrero/atlas.png` pero NO es el registrado; manda el de arriba.
 
 ### Identidad visual (extracto LITERAL de `docs/art-brief/campeones/guerrero.md`, sección A; puede citar rutas o estados históricos: manda la sección 1)
