@@ -20,7 +20,7 @@ const assert=require('node:assert/strict'),H=require('../lib/serve');
    player.alive=false;let died=null;try{render();died=true;}catch(e){died=String(e);}out.dead=died;
    return out;
   });
-  const need={idle_down:1,walk_down:4,attack_down:4,idle_side:1,walk_side:4,attack_side:4,idle_up:1,walk_up:4,attack_up:4,cast_down:4,hit_down:2,hit_side:1,hit_up:1,death_down:4};
+  const need={idle_down:1,walk_down:4,attack_down:4,idle_side:1,walk_side:4,attack_side:4,idle_up:1,walk_up:4,attack_up:4,cast_down:4,hit_down:2,hit_side:1,hit_up:1,death_down:4,death_side:4,death_up:4};
   assert.deepEqual(r.sets,need,'estados y cantidad de cuadros: '+JSON.stringify(r.sets));
   assert.deepEqual(r.empty,[],'cuadros vacíos: '+r.empty.join());
   assert.equal(r.live,true,'drawCodexChampion no dibujó al héroe vivo');
