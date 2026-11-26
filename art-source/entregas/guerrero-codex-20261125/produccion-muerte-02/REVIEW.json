@@ -1,0 +1,23 @@
+{
+  "status": "FIX_NOT_APPROVED",
+  "visual_review": {
+    "identity": "PASS_SOURCE",
+    "directions": "PASS_SOURCE",
+    "phase_continuity": "PASS_SOURCE",
+    "silhouette": "PASS_SOURCE",
+    "equipment": "PASS_SOURCE",
+    "notes": [
+      "Las 12 poses son coherentes entre frente, perfil derecho y espalda.",
+      "La capa, capucha, máscara carmesí y dos dagas conservan el motivo exacto del Códice.",
+      "La fuente es más legible y estructuralmente distinta de los intentos de extracción 02/03."
+    ]
+  },
+  "technical_review": {
+    "transparent_background": "PARTIAL_PASS",
+    "binary_alpha": "FAIL",
+    "installed_assets": 0,
+    "runtime_changes": 0,
+    "approved_frames": 0
+  },
+  "decision": "Conservar fuente original 04. No recortar, umbralizar, filtrar, instalar ni dar por integrada. La próxima corrección debe producir alfa binario desde origen o usar una capacidad de pixel-art que lo garantice."
+}
