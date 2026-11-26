@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "component": "Guerrero directional death",
+  "status": "FIX_NOT_APPROVED",
+  "integration": "NO_INTEGRAR",
+  "approvedFrames": 0,
+  "installedAssets": 0,
+  "runtimeChanges": 0,
+  "findings": [
+    "Las doce poses y la identidad preliminar se conservan.",
+    "El intento 02 deja 547003 píxeles con alfa parcial y cero píxeles opacos.",
+    "El intento 03 deja 490658 píxeles con alfa parcial y cero píxeles opacos.",
+    "El fondo/velo residual impide extracción, atlas y gameplay gate."
+  ],
+  "decision": "Conservar ambos intentos; no repetir el mismo prompt, no aplicar filtros y no instalar."
+}

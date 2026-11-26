@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "attempts": [
+    {"name": "imagegen background extraction 02", "result": "FAIL", "new": true, "reason": "547003 partial-alpha pixels; 0 opaque"},
+    {"name": "imagegen binary-alpha correction 03", "result": "FAIL", "new": true, "reason": "490658 partial-alpha pixels; 0 opaque"}
+  ],
+  "historicalNotRepeated": ["source 01 generation", "failed extraction attempt 01", "cast source technical audit", "renderer browser gate"],
+  "next": "Use a materially different source-generation composition with isolated figures on transparent cells; do not threshold these attempts."
+}
