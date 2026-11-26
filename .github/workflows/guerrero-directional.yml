@@ -30,7 +30,7 @@ jobs:
       - run: node tools/art/guerrero-directional-game.js
       - run: node tools/lib/with-site.js tools/art/roster_gate.js
         env: {WITH_SITE_ENV: ROSTER_BASE_URL}
-      - run: node tools/art/build-art-atlas.js
+      - run: node tools/art/build-art-atlas.js --check
       - uses: actions/upload-artifact@v4
         if: always()
         with:
