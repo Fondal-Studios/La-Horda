@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "new": [
+    {"test": "node audit-runtime-fallback.js", "result": "PASS", "assertions": ["renderer fallback present", "cast_down exact", "cast_side exact", "cast_up exact", "active atlas hash exact"]}
+  ],
+  "historicalNotRepeated": ["cierre-02 source technical checks", "PR311 CI workflows", "browser gameplay matrix"],
+  "environmentBlocker": "Playwright Chromium remains unavailable; no capture claim is made."
+}
