@@ -17,8 +17,8 @@ Generado por `node tools/art/build-art-atlas.js` (no editar a mano). Fuente de v
 - Skins/cromas/formas de Ascensión: CODEX_OK 11 · FALTA_ANIMACION 90 · ARTE_VIEJO 3
 - Enemigos: CODEX_OK 63 · FALTA_ANIMACION 13
 - Jefes y subjefes: CODEX_OK 14 · FALTA_ANIMACION 13 · ARTE_VIEJO 1
-- Archivos (arenas, props, battlefield, enemigos, jefes, campeones): CODEX_OK 872 · HUERFANO 106 · ARTE_VIEJO 31
-- Fuentes del registro: 51 archivos, huella `f6ae8e62f0e9`
+- Archivos (arenas, props, battlefield, enemigos, jefes, campeones): CODEX_OK 875 · HUERFANO 106 · ARTE_VIEJO 31
+- Fuentes del registro: 51 archivos, huella `9c533a3b7329`
 
 ## Campeones (cuerpo base)
 
@@ -299,7 +299,7 @@ Un registro por imagen (PNG; el `.webp` es su copia sin pérdida) en `ATLAS_ARTE
 
 | Carpeta | Imágenes | MB | ARTE_VIEJO | HUERFANO |
 |---|--:|--:|--:|--:|
-| arenas | 185 | 23.2 | 0 | 2 |
+| arenas | 188 | 23.3 | 0 | 2 |
 | battlefield | 32 | 4.0 | 0 | 0 |
 | bosses | 94 | 5.5 | 0 | 0 |
 | champions | 492 | 72.0 | 31 | 104 |

@@ -15,7 +15,7 @@
 | Jefes y subjefes | 28 | hecho 14 · parcial 13 · arte_viejo 1 | ATLAS_ARTE.json |
 | Enemigos (normales, subélites, élites) | 76 | hecho 63 · parcial 13 | ATLAS_ARTE.json + enemy-coverage.json |
 | Mundo: pisos, centros, fachadas, props (trabajos Runway) | 29 | hecho 14 · falta 11 · rechazado 3 · hecho_sin_integrar 1 | estado-runway.json |
-| Mundo: archivos de arenas cargados por el motor | 185 | hecho 183 · huerfano 2 | ATLAS_ARTE.json (files) |
+| Mundo: archivos de arenas cargados por el motor | 188 | hecho 186 · huerfano 2 | ATLAS_ARTE.json (files) |
 | Mundo: cola de producción (bloques 03-mundo) | 227 | falta 227 | asset-blocks.json |
 | Efectos y habilidades (bloques 02-combate) | 252 | falta 252 | asset-blocks.json (cola); lo integrado: sin_verificar |
 | Interfaz, HUD e íconos (bloques 04-interfaz) | 76 | bloqueado 46 · falta 24 · hecho 6 | asset-blocks.json (cola); lo integrado: sin_verificar |
@@ -36,7 +36,7 @@
 | Aprobación de arte humana de lo instalado | Ningún archivo registra una aprobación humana; STATUS.md la declara «pendiente» (Ynara lanzar/definitiva, Cazadora y Musashi definitiva). |
 | Saldo de créditos de Runway actual | Solo hay la cifra escrita en STATUS.md (no se llamó a Runway); la cuenta es compartida y baja por consumo ajeno. Correr `node tools/art-world/runway-world.js status` (no gasta) antes de planificar. |
 
-**Fuentes leídas:** `docs/art/ATLAS_ARTE.json` (huella `f6ae8e62f0e9`, 51 archivos), `runway-pack/estado-campeones.json`, `runway-pack/estado-runway.json` (auditado 2026-11-12), `docs/production/asset-blocks.json`, `docs/art-brief/enemy-coverage.json` (medido contra el atlas `42c3e6d9bc90` — **DESACTUALIZADO respecto de ATLAS_ARTE: regenerar con `python3 tools/art/art-checklist.py enemigos`**), `docs/beta-release/STATUS.md`, `ART_CREDITS.md`, `docs/steam/DECLARACION_IA.md`.
+**Fuentes leídas:** `docs/art/ATLAS_ARTE.json` (huella `9c533a3b7329`, 51 archivos), `runway-pack/estado-campeones.json`, `runway-pack/estado-runway.json` (auditado 2026-11-12), `docs/production/asset-blocks.json`, `docs/art-brief/enemy-coverage.json` (medido contra el atlas `42c3e6d9bc90` — **DESACTUALIZADO respecto de ATLAS_ARTE: regenerar con `python3 tools/art/art-checklist.py enemigos`**), `docs/beta-release/STATUS.md`, `ART_CREDITS.md`, `docs/steam/DECLARACION_IA.md`.
 
 ## B) Campeones (cuerpo base)
 
@@ -382,7 +382,7 @@ Fuentes: `estado-runway.json` (lo hecho/probado, manda sobre `runway-world.js li
 | fortaleza | 35 | hecho 35 |
 | micelial | 98 | hecho 96 · huerfano 2 |
 | minas | 9 | hecho 9 |
-| world-v1 | 2 | hecho 2 |
+| world-v1 | 5 | hecho 5 |
 
 Battlefield (campo de batalla): 32 archivos, hecho 32.
 

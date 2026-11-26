@@ -3,12 +3,12 @@
  "generator": "tools/art/build-art-atlas.js",
  "reference": "Códice (docs/LA_HORDA_CODEX.md); decisión curada en docs/art/ATLAS_VIGENTE.json",
  "sources": {
-  "hash": "f6ae8e62f0e90198b86f731f6ba03be6eafadff1",
+  "hash": "9c533a3b7329de9f30c722390fd509a11293da77",
   "files": 51
  },
  "runtime": {
   "url": "index.html?dev=1&lazy=1 (producción: carga por grupos, webp activo)",
-  "loadedImages": 1616,
+  "loadedImages": 1608,
   "sampling": "24 muestras por estado y dirección (down/side/left/up)"
  },
  "summary": {
@@ -32,7 +32,7 @@
    "ARTE_VIEJO": 1
   },
   "files": {
-   "CODEX_OK": 872,
+   "CODEX_OK": 875,
    "HUERFANO": 106,
    "ARTE_VIEJO": 31
   }
@@ -362,8 +362,8 @@
    "generation": "codex",
    "auditScore": 92,
    "vigente": [
-    "assets/sprites/champions/guerrero/codex-v1/atlas.png",
-    "assets/sprites/champions/guerrero/codex-v2/atlas.png"
+    "assets/sprites/champions/guerrero/codex-v2/atlas.png",
+    "assets/sprites/champions/guerrero/codex-v1/atlas.png"
    ],
    "atlases": [
     {
@@ -14682,8 +14682,11 @@
   {"file":"assets/sprites/arenas/minas/mn_insecto/atlas.png","category":"arenas","size":[368,285],"bytes":73055,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/minas-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/minas/mn_minero/atlas.png","category":"arenas","size":[672,340],"bytes":142254,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/minas-meta.js","js/systems/camp.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/minas/mn_titan/atlas.png","category":"arenas","size":[1536,1344],"bytes":358009,"webp":true,"loaded":true,"usedBy":["js/arenas/common/boss-blueprints.js","js/assets/minas-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/arenas/world-v1/acuatica.png","category":"arenas","size":[512,512],"bytes":16624,"webp":false,"loaded":true,"usedBy":["js/assets/arena-world-manifest.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/world-v1/bosque.png","category":"arenas","size":[512,512],"bytes":54909,"webp":false,"loaded":true,"usedBy":["js/assets/arena-world-manifest.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/arenas/world-v1/hielo.png","category":"arenas","size":[512,512],"bytes":48589,"webp":false,"loaded":true,"usedBy":["js/assets/arena-world-manifest.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/arenas/world-v1/infernal.png","category":"arenas","size":[512,512],"bytes":42122,"webp":false,"loaded":true,"usedBy":["js/assets/arena-world-manifest.js"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/arenas/world-v1/laberinto.png","category":"arenas","size":[512,512],"bytes":16481,"webp":false,"loaded":true,"usedBy":["js/assets/arena-world-manifest.js"],"status":"CODEX_OK"},
   {"file":"assets/sprites/battlefield/ab_carcelero.png","category":"battlefield","size":[1792,384],"bytes":114359,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)"],"status":"CODEX_OK"},
   {"file":"assets/sprites/battlefield/altar.png","category":"battlefield","size":[279,331],"bytes":172021,"webp":true,"loaded":true,"usedBy":["runtime(cargado)"],"status":"CODEX_OK"},
   {"file":"assets/sprites/battlefield/arch.png","category":"battlefield","size":[298,301],"bytes":150805,"webp":true,"loaded":true,"usedBy":["runtime(cargado)"],"status":"CODEX_OK"},
