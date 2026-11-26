@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_ALREADY_CONSUMED_BY_FALLBACK",
+  "auditedMain": "50589154cea02f255633aa1b88088b1c1f827332",
+  "sourceAtlas": {
+    "path": "assets/sprites/champions/guerrero/codex-v1/atlas.png",
+    "sha256": "03b1f0c853f2ef49cc42654b05c4eac6c2e5f8ed66678a113230bc9860a8d77d"
+  },
+  "candidateSha256": "6d01b86dcba566253c41d4fa0ef9ddfe4c1069cce613ee2f521653f6f341aec1",
+  "explicitSets": {
+    "cast_down": [
+      24,
+      25,
+      26,
+      27
+    ],
+    "cast_side": null,
+    "cast_up": null
+  },
+  "effectiveSets": {
+    "cast_down": [
+      24,
+      25,
+      26,
+      27
+    ],
+    "cast_side": [
+      16,
+      17,
+      18,
+      19
+    ],
+    "cast_up": [
+      20,
+      21,
+      22,
+      23
+    ]
+  },
+  "candidateSets": {
+    "cast_down": [
+      24,
+      25,
+      26,
+      27
+    ],
+    "cast_side": [
+      16,
+      17,
+      18,
+      19
+    ],
+    "cast_up": [
+      20,
+      21,
+      22,
+      23
+    ]
+  },
+  "equality": {
+    "cast_down": true,
+    "cast_side": true,
+    "cast_up": true
+  },
+  "rendererFallback": {
+    "path": "js/rendering/champion-sprites.js",
+    "present": true,
+    "expression": "cast -> attack -> idle"
+  },
+  "conclusion": "The candidate PNG would duplicate frames already selected by the live renderer; no asset or runtime change is required.",
+  "limits": [
+    "Static consumer reconciliation; no new gameplay capture.",
+    "Directional death remains outside this result and FIX_NOT_APPROVED."
+  ]
+}

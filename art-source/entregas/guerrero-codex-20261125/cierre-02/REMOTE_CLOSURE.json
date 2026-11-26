@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-25T22:20:00Z",
+  "repository": "Fondal-Studios/La-Horda",
+  "pullRequest": 311,
+  "branch": "art/guerrero-codex-directional-20261125",
+  "baseMain": "50589154cea02f255633aa1b88088b1c1f827332",
+  "productionCommit": "279491038d7844f519a398cd7ee39e584fa99649",
+  "productionTree": "c72f03b684b617ac060dea55166fab1780f3d7a9",
+  "status": "SOURCE_TECHNICAL_PASS_PENDING_RUNTIME",
+  "integration": "NO_INTEGRAR",
+  "approvedForInstallation": false,
+  "installedAssets": 0,
+  "runtimeChanges": 0,
+  "component": {
+    "id": "guerrero-base-cast-directional-candidate",
+    "source": "assets/sprites/champions/guerrero/codex-v1/atlas.png",
+    "reference": "assets/ui/codex/champions/guerrero.png",
+    "candidate": "art-source/entregas/guerrero-codex-20261125/cierre-02/cast-candidate.png",
+    "candidateSha256": "6d01b86dcba566253c41d4fa0ef9ddfe4c1069cce613ee2f521653f6f341aec1",
+    "cells": 12,
+    "operations": [
+      "exact 144x144 crops",
+      "row reorder"
+    ],
+    "checks": {
+      "dimensions": true,
+      "nonEmpty": true,
+      "binaryAlpha": true,
+      "borderClearAllFourEdges": true
+    }
+  },
+  "visualReview": "Identidad, silueta, capa y dagas coinciden exactamente con el cuerpo activo; la lectura como lanzamiento lateral/trasero sigue pendiente en renderer real.",
+  "deathStatus": "FIX_NOT_APPROVED",
+  "previousHeadChecks": {
+    "head": "886ab49110b96534a79a223f715e61e206c828bc",
+    "qaRegressionCentral": "SUCCESS",
+    "artProductionEvidence": "SUCCESS",
+    "emojiLint": "SUCCESS",
+    "scope": "preservation/documentation only; does not approve candidate art"
+  },
+  "blockers": [
+    "Chromium local wrapper points to missing /usr/lib/chromium/chromium; no gameplay captures or renderer matrix produced.",
+    "Directional death source remains FIX_NOT_APPROVED because background and continuity are unresolved."
+  ],
+  "nextAction": "Restore a working browser/runtime, wire the candidate only in the isolated workshop, capture desktop/mobile before-after in the real renderer, verify skins and multiplayer, then run exact-head CI. Do not merge while FIX/NO_INTEGRAR remains."
+}

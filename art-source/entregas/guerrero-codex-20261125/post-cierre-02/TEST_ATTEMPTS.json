@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "attempts": [
+    {"name": "static installed asset hashes and consumer wiring", "result": "PASS", "new": true, "scope": "current main; five files and eight consumer assertions"},
+    {"name": "arena renderer gate", "result": "BLOCKED_ENVIRONMENT", "new": true, "reason": "Playwright Chromium headless shell absent"},
+    {"name": "Axiom renderer/state gates", "result": "BLOCKED_ENVIRONMENT", "new": true, "reason": "Playwright Chromium headless shell absent"},
+    {"name": "npx playwright install chromium", "result": "FAIL", "new": true, "reason": "cdn.playwright.dev returned HTTP 403 on five attempts"}
+  ],
+  "historicalNotRepeated": ["PR244 gameplay captures", "Axiom 40 renderer captures", "Axiom 63 state cells"]
+}

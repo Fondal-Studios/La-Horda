@@ -1,0 +1,43 @@
+name: Guerrero directional completion
+on:
+  pull_request:
+    paths:
+      - 'assets/sprites/champions/guerrero/codex-v2/**'
+      - 'js/assets/codex-champion-meta.js'
+      - 'tools/art/guerrero-directional-*.js'
+      - 'tools/art/pack-guerrero-directional.py'
+      - '.github/workflows/guerrero-directional.yml'
+permissions:
+  contents: read
+jobs:
+  directional:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install pillow numpy
+      - run: npm install --no-save playwright pngjs
+      - run: npx playwright install --with-deps chromium
+      - run: python tools/art/pack-guerrero-directional.py
+      - run: git diff --exit-code -- assets/sprites/champions/guerrero/codex-v2/atlas.png
+      - run: node tools/art/guerrero-directional-static.js
+      - run: node tools/art/check-guerrero-codex.js
+      - run: node tools/art/check-guerrero-death.js
+      - run: node tools/art/guerrero-directional-game.js
+      - run: node tools/lib/with-site.js tools/art/roster_gate.js
+        env: {WITH_SITE_ENV: ROSTER_BASE_URL}
+      - run: node tools/art/build-art-atlas.js --check
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: guerrero-directional-evidence
+          path: |
+            art-source/entregas/guerrero-codex-20261125/integracion-direccional-06/
+            docs/art-gate/guerrero-death/
+            docs/art-gate/roster-sheet.png
+            docs/art/ATLAS_ARTE.json
+            docs/art/ATLAS_ARTE.md

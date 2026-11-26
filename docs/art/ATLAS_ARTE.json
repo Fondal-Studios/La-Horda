@@ -3,12 +3,12 @@
  "generator": "tools/art/build-art-atlas.js",
  "reference": "Códice (docs/LA_HORDA_CODEX.md); decisión curada en docs/art/ATLAS_VIGENTE.json",
  "sources": {
-  "hash": "c5e9b42dc60f2ef88a5091feec5ea2c030da72eb",
+  "hash": "6c052b708032df023d52001b9741e97a65a60e78",
   "files": 51
  },
  "runtime": {
   "url": "index.html?dev=1&lazy=1 (producción: carga por grupos, webp activo)",
-  "loadedImages": 1577,
+  "loadedImages": 1608,
   "sampling": "24 muestras por estado y dirección (down/side/left/up)"
  },
  "summary": {
@@ -33,7 +33,7 @@
   },
   "files": {
    "CODEX_OK": 875,
-   "HUERFANO": 105,
+   "HUERFANO": 106,
    "ARTE_VIEJO": 31
   }
  },
@@ -362,17 +362,17 @@
    "generation": "codex",
    "auditScore": 92,
    "vigente": [
-    "assets/sprites/champions/guerrero/codex-v1/atlas.png"
+    "assets/sprites/champions/guerrero/codex-v2/atlas.png"
    ],
    "atlases": [
     {
-     "file": "assets/sprites/champions/guerrero/codex-v1/atlas.png",
+     "file": "assets/sprites/champions/guerrero/codex-v2/atlas.png",
      "loadedAs": "webp",
      "size": [
       576,
-      1296
+      1584
      ],
-     "bytes": 65438
+     "bytes": 111432
     }
    ],
    "packs": [
@@ -383,7 +383,7 @@
     },
     {
      "key": "codex_guerrero",
-     "file": "assets/sprites/champions/guerrero/codex-v1/atlas.png",
+     "file": "assets/sprites/champions/guerrero/codex-v2/atlas.png",
      "ready": true
     }
    ],
@@ -14925,8 +14925,9 @@
   {"file":"assets/sprites/champions/farolero/skins/lumbre_persistente/atlas.png","category":"champions","size":[576,864],"bytes":443065,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/complete-set-skins-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/farolero/skins/lumbre_persistente/preview.png","category":"champions","size":[96,96],"bytes":9315,"webp":true,"loaded":true,"usedBy":["js/assets/complete-set-skins-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/guerrero/atlas.png","category":"champions","size":[1024,1536],"bytes":2143209,"webp":true,"loaded":true,"usedBy":["js/assets/champion-sprites.js","js/modes/crystal-wars/atlas.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
-  {"file":"assets/sprites/champions/guerrero/codex-v1/atlas.png","category":"champions","size":[576,1296],"bytes":221337,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/codex-champion-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
+  {"file":"assets/sprites/champions/guerrero/codex-v1/atlas.png","category":"champions","size":[576,1296],"bytes":221337,"webp":true,"loaded":false,"usedBy":[],"status":"HUERFANO"},
   {"file":"assets/sprites/champions/guerrero/codex-v1/preview.png","category":"champions","size":[144,144],"bytes":6585,"webp":false,"loaded":false,"usedBy":[],"status":"HUERFANO"},
+  {"file":"assets/sprites/champions/guerrero/codex-v2/atlas.png","category":"champions","size":[576,1584],"bytes":277255,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/codex-champion-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/guerrero/skins/nocturno/atlas.png","category":"champions","size":[448,342],"bytes":183906,"webp":true,"loaded":true,"usedBy":["runtime(dibujado)","js/assets/set-skins-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/guerrero/skins/nocturno/preview.png","category":"champions","size":[220,309],"bytes":152133,"webp":true,"loaded":true,"usedBy":["js/assets/set-skins-meta.js","ASSET_MANIFEST"],"status":"CODEX_OK"},
   {"file":"assets/sprites/champions/guerrero/v3/death.png","category":"champions","size":[448,112],"bytes":23205,"webp":false,"loaded":true,"usedBy":["js/assets/champion-sprites.js"],"status":"CODEX_OK"},

@@ -1,0 +1,234 @@
+{
+  "status": "SOURCE_TECHNICAL_PASS_PENDING_RUNTIME",
+  "source": "assets/sprites/champions/guerrero/codex-v1/atlas.png",
+  "sourceSha256": "03b1f0c853f2ef49cc42654b05c4eac6c2e5f8ed66678a113230bc9860a8d77d",
+  "candidateSha256": "6d01b86dcba566253c41d4fa0ef9ddfe4c1069cce613ee2f521653f6f341aec1",
+  "grid": [
+    4,
+    3
+  ],
+  "cell": [
+    144,
+    144
+  ],
+  "sets": {
+    "cast_down": [
+      24,
+      25,
+      26,
+      27
+    ],
+    "cast_side": [
+      16,
+      17,
+      18,
+      19
+    ],
+    "cast_up": [
+      20,
+      21,
+      22,
+      23
+    ]
+  },
+  "frames": [
+    {
+      "set": "cast_down",
+      "target": [
+        0,
+        0
+      ],
+      "sourceFrame": 24,
+      "sourceRect": [
+        0,
+        864,
+        144,
+        144
+      ],
+      "sha256": "a3ea85254435f1eec11d4ea091bc1a6438e2079ad7525d03316d78bd06849b49",
+      "alphaPixels": 2931
+    },
+    {
+      "set": "cast_down",
+      "target": [
+        0,
+        1
+      ],
+      "sourceFrame": 25,
+      "sourceRect": [
+        144,
+        864,
+        144,
+        144
+      ],
+      "sha256": "3cc8143619d52bec2bd5239404baa2b889b801c5123fde763aeae61db91f3764",
+      "alphaPixels": 3305
+    },
+    {
+      "set": "cast_down",
+      "target": [
+        0,
+        2
+      ],
+      "sourceFrame": 26,
+      "sourceRect": [
+        288,
+        864,
+        144,
+        144
+      ],
+      "sha256": "718b6b5d8ed59d0db6c4831212edd99417aa4f066f1e6c1debce5a77204018bd",
+      "alphaPixels": 3702
+    },
+    {
+      "set": "cast_down",
+      "target": [
+        0,
+        3
+      ],
+      "sourceFrame": 27,
+      "sourceRect": [
+        432,
+        864,
+        144,
+        144
+      ],
+      "sha256": "d3e084929d29cf1eeda79062fd55db005c74d3d10ac2ca087351eaa7b682c7c7",
+      "alphaPixels": 2991
+    },
+    {
+      "set": "cast_side",
+      "target": [
+        1,
+        0
+      ],
+      "sourceFrame": 16,
+      "sourceRect": [
+        0,
+        576,
+        144,
+        144
+      ],
+      "sha256": "b9a2e3f97bf6a3b7652f141d7c8ec7a3f44589ae25fdfe51f71427e1849a7ac4",
+      "alphaPixels": 2975
+    },
+    {
+      "set": "cast_side",
+      "target": [
+        1,
+        1
+      ],
+      "sourceFrame": 17,
+      "sourceRect": [
+        144,
+        576,
+        144,
+        144
+      ],
+      "sha256": "0e18f37c83b0f95f9182459e40af932a067941f8bc565fd2a49df3b94617313e",
+      "alphaPixels": 3072
+    },
+    {
+      "set": "cast_side",
+      "target": [
+        1,
+        2
+      ],
+      "sourceFrame": 18,
+      "sourceRect": [
+        288,
+        576,
+        144,
+        144
+      ],
+      "sha256": "d901de84b1fecf5e67e3cd98d03bc41e20a68053f67217d7bc8bf1e73a91590a",
+      "alphaPixels": 3276
+    },
+    {
+      "set": "cast_side",
+      "target": [
+        1,
+        3
+      ],
+      "sourceFrame": 19,
+      "sourceRect": [
+        432,
+        576,
+        144,
+        144
+      ],
+      "sha256": "d5b84ae30749dcb4f67f870bc7efe8c9dbf72f6194360defe35cfd398b15b40d",
+      "alphaPixels": 2856
+    },
+    {
+      "set": "cast_up",
+      "target": [
+        2,
+        0
+      ],
+      "sourceFrame": 20,
+      "sourceRect": [
+        0,
+        720,
+        144,
+        144
+      ],
+      "sha256": "715e4f130dc752974bb4983c590aeb5c8bc2233a98218ead55131c8195ab52ae",
+      "alphaPixels": 3007
+    },
+    {
+      "set": "cast_up",
+      "target": [
+        2,
+        1
+      ],
+      "sourceFrame": 21,
+      "sourceRect": [
+        144,
+        720,
+        144,
+        144
+      ],
+      "sha256": "427719881f5ac5728573e5a813e087d054d1813570793e3b40195ec6ce5e5c04",
+      "alphaPixels": 3046
+    },
+    {
+      "set": "cast_up",
+      "target": [
+        2,
+        2
+      ],
+      "sourceFrame": 22,
+      "sourceRect": [
+        288,
+        720,
+        144,
+        144
+      ],
+      "sha256": "8dd4d271953d9bb3b9ea750845415504c5a73c4ff882e4de8283273560ac0f7a",
+      "alphaPixels": 3243
+    },
+    {
+      "set": "cast_up",
+      "target": [
+        2,
+        3
+      ],
+      "sourceFrame": 23,
+      "sourceRect": [
+        432,
+        720,
+        144,
+        144
+      ],
+      "sha256": "35120a9560c5f72b878fe489f575c764d248895c3e3260ba206cd84120474622",
+      "alphaPixels": 2935
+    }
+  ],
+  "checks": {
+    "dimensions": true,
+    "nonEmpty": true,
+    "binaryAlpha": true,
+    "borderClear": true
+  }
+}

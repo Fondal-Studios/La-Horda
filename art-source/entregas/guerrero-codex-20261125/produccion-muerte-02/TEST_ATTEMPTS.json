@@ -1,0 +1,33 @@
+{
+  "new_tests": [
+    {
+      "id": "source04-visual",
+      "result": "PASS_SOURCE",
+      "scope": "revisión visual de 12 poses, identidad/dirección/continuidad"
+    },
+    {
+      "id": "source04-alpha",
+      "result": "FAIL",
+      "scope": "RGBA y alfa binario",
+      "observed": {
+        "distinct_values": 256,
+        "min": 0,
+        "max": 255,
+        "transparent": 1199101,
+        "opaque": 745,
+        "partial": 372682
+      }
+    }
+  ],
+  "historical_not_rerun": [
+    "correccion-muerte-01 source02/source03: extracción de fondo fallida",
+    "post-cierre-03: cast direccional redundante con atlas instalado",
+    "CI e5232612: preservación/checkpoint, no aprobación artística"
+  ],
+  "blocked": [
+    "Capturas gameplay desktop/móvil y gate renderer: Chromium/Playwright no disponible; instalación de navegador devolvió HTTP 403."
+  ],
+  "invalid_claims": [
+    "No se afirma atlas, consumidor, gameplay, multijugador, Art Gate ni integración."
+  ]
+}

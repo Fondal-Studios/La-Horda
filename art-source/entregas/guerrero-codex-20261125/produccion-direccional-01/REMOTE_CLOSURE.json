@@ -1,0 +1,59 @@
+{
+  "state": "FIX_NOT_APPROVED",
+  "integration": "NO_INTEGRAR",
+  "publication": "NOT_CHECKED",
+  "base_sha": "50589154cea02f255633aa1b88088b1c1f827332",
+  "production_head": "44b28e051c1df31330f943a3a16ef9a419fc10b6",
+  "branch": "art/guerrero-codex-directional-20261125",
+  "pull_request": 311,
+  "pull_request_url": "https://github.com/Fondal-Studios/La-Horda/pull/311",
+  "codex_reference": "assets/ui/codex/champions/guerrero.png",
+  "existing_gameplay_atlas": "assets/sprites/champions/guerrero/codex-v1/atlas.png",
+  "result": {
+    "generated_sources": 3,
+    "nominal_cast_poses": 12,
+    "nominal_death_poses": 12,
+    "approved_frames": 0,
+    "installed_assets": 0,
+    "runtime_changes": 0,
+    "remote_files_in_production_commit": 22,
+    "source_storage": "lossless 600000-byte parts with SHA-256 and reassembly commands"
+  },
+  "new_tests": [
+    {
+      "name": "static current-main atlas and metadata",
+      "status": "PASS",
+      "scope": "36 non-empty current frames and declared sets; no gameplay or candidate approval"
+    },
+    {
+      "name": "browser current-main baseline",
+      "status": "BLOCKED",
+      "reason": "environment Chromium wrapper points to a missing executable"
+    },
+    {
+      "name": "source alpha audit",
+      "status": "FIX",
+      "reason": "candidate sources contain partial alpha; death source retains backdrop"
+    },
+    {
+      "name": "death background extraction",
+      "status": "FAIL",
+      "reason": "attempt did not remove the backdrop"
+    }
+  ],
+  "preserved": [
+    "approved Codex body",
+    "historical front death",
+    "Nocturno authored skin",
+    "PR212 H3 armada",
+    "PR231 Nano workshop"
+  ],
+  "open_pr_audit": {
+    "open_at_start": [
+      309
+    ],
+    "overlap": "none; PR309 is enemies and bosses"
+  },
+  "next_action": "Correct dagger/arm continuity and obtain a genuinely transparent fall source in one grouped pass; then extract cells without filters, review gameplay-scale silhouettes/contact, install only after visual approval, and run exact-head gameplay/skins/desktop-mobile/relay gates.",
+  "last_verified_remote_head": "44b28e051c1df31330f943a3a16ef9a419fc10b6"
+}

@@ -4,7 +4,7 @@
      1. un campeón del roster carga un clip de 1 cuadro donde debería haber ciclo (walk/attack/cast/ultimate/death; idle solo
         puede estar en la deuda conocida docs/art/ATLAS_VIGENTE.json -> knownGaps, que únicamente puede ACHICARSE),
      2. el runtime elige un atlas que no está registrado como vigente en docs/art/ATLAS_VIGENTE.json,
-     3. existe arte Códice nuevo (carpeta codex-vN, atlas.png) en assets/ de un campeón y el juego sigue cargando otro,
+     3. existe arte Códice nuevo no clasificado (carpeta codex-vN, atlas.png) y el juego sigue cargando otro; los originales preservados se registran como historical,
      4. un campeón no registra su pack con la clave canónica CHAMP_PACK[classKey] (el Mago se registraba como "mago_codex" y su
         muerte quedaba congelada en un cuadro y se dibujaba el sprite viejo mientras bajaba el atlas),
      5. las skins de Ascensión (alt1/alt2) tienen ataque/lanzar congelados en un cuadro (proxy de ascBodyTarget sin estado).
@@ -26,9 +26,12 @@ const vig = JSON.parse(fs.readFileSync(path.join(root, 'docs/art/ATLAS_VIGENTE.j
 // ---- el registro curado es coherente con el disco ----
 for (const [id, v] of Object.entries(vig.champions)) {
   for (const a of v.atlas) assert.ok(fs.existsSync(path.join(root, a)), `${id}: atlas vigente inexistente ${a}`);
+  const historical = Array.isArray(v.historical) ? v.historical : [];
+  for (const a of historical) assert.ok(fs.existsSync(path.join(root, a)), `${id}: atlas histórico inexistente ${a}`);
+  for (const a of historical) assert.ok(!v.atlas.includes(a), `${id}: ${a} no puede ser vigente e histórico a la vez`);
   assert.ok(['codex', 'audit-fiel', 'viejo'].includes(v.generation), `${id}: generación inválida`);
   const codex = ['v1', 'v2', 'v3'].map(n => `assets/sprites/champions/${id}/codex-${n}/atlas.png`).filter(f => fs.existsSync(path.join(root, f)));
-  for (const f of codex) assert.ok(v.atlas.includes(f), `${id}: hay arte Códice nuevo (${f}) y no es el atlas vigente (${v.atlas.join(', ')})`);
+  for (const f of codex) assert.ok(v.atlas.includes(f) || historical.includes(f), `${id}: hay arte Códice nuevo no clasificado (${f}) y no es vigente ni histórico`);
   if (codex.length) assert.equal(v.generation, 'codex', `${id}: tiene codex-v* en assets/ pero se registra como ${v.generation}`);
 }
 for (const [id, gaps] of Object.entries(vig.knownGaps)) assert.deepEqual(gaps.filter(g => g !== 'idle'), [], `${id}: solo el idle puede estar en la deuda conocida; ${gaps} exige arte/clips ya`);

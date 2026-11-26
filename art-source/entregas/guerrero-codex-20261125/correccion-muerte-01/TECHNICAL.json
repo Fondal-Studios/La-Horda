@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "status": "FIX_NOT_APPROVED",
+  "installedAssets": 0,
+  "runtimeChanges": 0,
+  "sources": [
+    {
+      "source": "death-directions-source-02.png",
+      "bytes": 1940301,
+      "sha256": "f092d20db8fd3388987962df94ed8c86545f95e400eed85f9ee5926e8c9e62ce",
+      "size": [
+        1536,
+        1024
+      ],
+      "alphaValues": 255,
+      "alphaMinMax": [
+        0,
+        254
+      ],
+      "transparentPixels": 1025861,
+      "opaquePixels": 0,
+      "partialAlphaPixels": 547003,
+      "status": "FAIL_PARTIAL_ALPHA"
+    },
+    {
+      "source": "death-directions-source-03.png",
+      "bytes": 1917872,
+      "sha256": "4d498a34b3210a765d0e21aa2d316cb3b84e2490fe11a2ef79f9852b6555a16a",
+      "size": [
+        1536,
+        1024
+      ],
+      "alphaValues": 255,
+      "alphaMinMax": [
+        0,
+        254
+      ],
+      "transparentPixels": 1082206,
+      "opaquePixels": 0,
+      "partialAlphaPixels": 490658,
+      "status": "FAIL_PARTIAL_ALPHA"
+    }
+  ],
+  "gate": {
+    "binaryAlpha": false,
+    "noBackdrop": false,
+    "twelvePosesPreserved": true,
+    "identityPreliminary": true
+  },
+  "decision": "Preserve attempts; do not install or threshold/filter them."
+}

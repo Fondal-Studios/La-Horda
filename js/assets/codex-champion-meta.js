@@ -1,7 +1,7 @@
 // Authored from the character sheets in the Codex; base appearance only.
 const CODEX_GAMEPLAY_ART = {
  "guerrero": {
-  "src": "assets/sprites/champions/guerrero/codex-v1/atlas.png",
+  "src": "assets/sprites/champions/guerrero/codex-v2/atlas.png",
   "meta": {
    "w": 144,
    "h": 144,
@@ -78,6 +78,18 @@ const CODEX_GAMEPLAY_ART = {
      33,
      34,
      35
+    ],
+    "death_side": [
+     36,
+     37,
+     38,
+     39
+    ],
+    "death_up": [
+     40,
+     41,
+     42,
+     43
     ]
    }
   },

@@ -1,0 +1,38 @@
+{
+  "status": "FAIL",
+  "source04": {
+    "sha256": "c1107b660b14c07d72f1505db7ad947a840718d2be18562539aafeae5b018acf",
+    "bytes": 903725,
+    "size": [
+      1448,
+      1086
+    ],
+    "alpha": {
+      "distinct_values": 256,
+      "transparent": 1199101,
+      "opaque": 745,
+      "partial": 372682
+    }
+  },
+  "source05": {
+    "sha256": "47367b09663df18c6fc1cd90d171e199001f0a701a7778e284849d1df1ba1a22",
+    "bytes": 871878,
+    "size": [
+      1448,
+      1086
+    ],
+    "alpha": {
+      "distinct_values": 256,
+      "transparent": 1182783,
+      "opaque": 800,
+      "partial": 388945
+    }
+  },
+  "delta_05_minus_04": {
+    "transparent": -16318,
+    "opaque": 55,
+    "partial": 16263
+  },
+  "gate": "FIX_NOT_APPROVED",
+  "decision": "La edición directa solicitó alfa exclusivo 0/255, pero source05 conserva 256 valores y aumenta el alfa parcial. No instalar ni umbralizar."
+}

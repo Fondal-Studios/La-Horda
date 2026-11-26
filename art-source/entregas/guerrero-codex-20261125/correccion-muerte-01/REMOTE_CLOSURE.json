@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-26T02:45:00Z",
+  "repository": "Fondal-Studios/La-Horda",
+  "pullRequest": 311,
+  "branch": "art/guerrero-codex-directional-20261125",
+  "productionCommit": "6c55580873d12369a3ba1ffc277ea2f62787d9e0",
+  "productionTree": "cfef18f5618ff3ec7423cc5373eba8e2314ca731",
+  "auditedMain": "50589154cea02f255633aa1b88088b1c1f827332",
+  "status": "FIX_NOT_APPROVED",
+  "integration": "NO_INTEGRAR",
+  "approvedFrames": 0,
+  "installedAssets": 0,
+  "runtimeChanges": 0,
+  "sources": [
+    {
+      "name": "death-directions-source-02.png",
+      "sha256": "f092d20db8fd3388987962df94ed8c86545f95e400eed85f9ee5926e8c9e62ce",
+      "partialAlphaPixels": 547003,
+      "opaquePixels": 0,
+      "result": "FAIL"
+    },
+    {
+      "name": "death-directions-source-03.png",
+      "sha256": "4d498a34b3210a765d0e21aa2d316cb3b84e2490fe11a2ef79f9852b6555a16a",
+      "partialAlphaPixels": 490658,
+      "opaquePixels": 0,
+      "result": "FAIL"
+    }
+  ],
+  "preserved": "Both sources stored losslessly as 600000-byte chunks with hashes and reassembly commands.",
+  "decision": "Do not install, threshold, filter or repeat the same extraction prompt.",
+  "castStatus": "RECONCILED_EXISTING_RUNTIME_NO_CHANGE_REQUIRED",
+  "nextAction": "Generate a materially different 4x3 source with isolated transparent figures from the start, then complete technical, gameplay, Nocturno and relay gates."
+}

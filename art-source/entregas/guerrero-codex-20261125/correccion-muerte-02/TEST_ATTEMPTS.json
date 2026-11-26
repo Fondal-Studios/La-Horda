@@ -1,0 +1,35 @@
+{
+  "new_tests": [
+    {
+      "id": "source05-edit-visual",
+      "result": "PASS_SOURCE_ONLY"
+    },
+    {
+      "id": "source05-alpha",
+      "result": "FAIL",
+      "expected": "alpha values {0,255}",
+      "observed": {
+        "distinct_values": 256,
+        "transparent": 1182783,
+        "opaque": 800,
+        "partial": 388945
+      }
+    }
+  ],
+  "historical_reused": [
+    {
+      "head": "f44e4e59e1873751cee35e3fb6b6d77bf590d6a0",
+      "workflows": {
+        "Emoji lint (arte pixel)": "SUCCESS",
+        "Art production evidence": "SUCCESS",
+        "QA regresion central": "SUCCESS"
+      },
+      "scope": "preservación de source04/checkpoint, no aprobación artística"
+    }
+  ],
+  "not_rerun": [
+    "Gameplay/desktop/móvil/multijugador: candidato no instalable",
+    "Pruebas de cast direccional redundante ya válidas y sin cambio runtime"
+  ],
+  "blocker": "El generador devuelve 256 niveles de alfa incluso en una edición que exige exclusivamente 0/255."
+}

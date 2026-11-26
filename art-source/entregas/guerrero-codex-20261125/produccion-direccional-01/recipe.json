@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "generator": "built-in image_gen",
+  "mode": "reference-guided raster generation",
+  "referenceImages": [
+    "assets/ui/codex/champions/guerrero.png",
+    "assets/sprites/champions/guerrero/codex-v1/atlas.png"
+  ],
+  "outputs": [
+    {
+      "file": "sources/cast-directions-source-01.png",
+      "intent": "3 rows x 4 frames: front, side, back cast",
+      "transparentRequested": true
+    },
+    {
+      "file": "sources/death-directions-source-01.png",
+      "intent": "3 rows x 4 frames: front, side, back fall",
+      "transparentRequested": true
+    },
+    {
+      "file": "sources/death-background-extraction-attempt-01.png",
+      "intent": "background extraction attempt; rejected",
+      "transparentRequested": true
+    }
+  ],
+  "normalization": "none",
+  "installation": "none",
+  "reproductionNote": "Exact prompts are preserved in PROMPTS.md; rerun only after a concrete continuity or alpha correction target is defined.",
+  "sourceStorage": "Lossless byte chunks; concatenate each .part000... sequence according to sources/SOURCE_PARTS.json before inspection or future extraction."
+}

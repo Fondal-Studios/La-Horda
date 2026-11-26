@@ -1,0 +1,39 @@
+[arnés] servidor propio: http://127.0.0.1:44547 (raíz /workspace/scratch/038f8c9a7c4d/la-horda-next)
+browserType.launch: Target page, context or browser has been closed
+Browser logs:
+
+<launching> /usr/bin/chromium --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --no-sandbox --disable-dev-shm-usage --user-data-dir=/tmp/playwright_chromiumdev_profile-skvzrK --remote-debugging-pipe --no-startup-window
+<launched> pid=17
+[pid=17][err] /usr/bin/chromium: 9: [: 5225709568: unexpected operator
+[pid=17][err] /usr/bin/chromium: 153: exec: /usr/lib/chromium/chromium: not found
+Call log:
+[2m  - <launching> /usr/bin/chromium --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --no-sandbox --disable-dev-shm-usage --user-data-dir=/tmp/playwright_chromiumdev_profile-skvzrK --remote-debugging-pipe --no-startup-window[22m
+[2m  - <launched> pid=17[22m
+[2m  - [pid=17][err] /usr/bin/chromium: 9: [: 5225709568: unexpected operator[22m
+[2m  - [pid=17][err] /usr/bin/chromium: 153: exec: /usr/lib/chromium/chromium: not found[22m
+[2m  - [pid=17] <gracefully close start>[22m
+[2m  - [pid=17] <kill>[22m
+[2m  - [pid=17] <will force kill>[22m
+[2m  - [pid=17] exception while trying to kill process: Error: kill ESRCH[22m
+[2m  - [pid=17] <process did exit: exitCode=127, signal=null>[22m
+[2m  - [pid=17] starting temporary directories cleanup[22m
+[2m  - [pid=17] finished temporary directories cleanup[22m
+[2m  - [pid=17] <gracefully close end>[22m
+
+    at Object.launch (/workspace/scratch/038f8c9a7c4d/la-horda-next/tools/lib/serve.js:67:37)
+    at /workspace/scratch/038f8c9a7c4d/la-horda-next/tools/art/check-guerrero-codex.js:6:22 {
+  log: [
+    '  - <launching> /usr/bin/chromium --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --no-sandbox --disable-dev-shm-usage --user-data-dir=/tmp/playwright_chromiumdev_profile-skvzrK --remote-debugging-pipe --no-startup-window',
+    '  - <launched> pid=17',
+    '  - [pid=17][err] /usr/bin/chromium: 9: [: 5225709568: unexpected operator',
+    '  - [pid=17][err] /usr/bin/chromium: 153: exec: /usr/lib/chromium/chromium: not found',
+    '  - [pid=17] <gracefully close start>',
+    '  - [pid=17] <kill>',
+    '  - [pid=17] <will force kill>',
+    '  - [pid=17] exception while trying to kill process: Error: kill ESRCH',
+    '  - [pid=17] <process did exit: exitCode=127, signal=null>',
+    '  - [pid=17] starting temporary directories cleanup',
+    '  - [pid=17] finished temporary directories cleanup',
+    '  - [pid=17] <gracefully close end>'
+  ]
+}

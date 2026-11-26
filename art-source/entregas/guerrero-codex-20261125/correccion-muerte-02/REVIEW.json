@@ -1,0 +1,19 @@
+{
+  "status": "FIX_NOT_APPROVED",
+  "visual": {
+    "grid_4x3": "PASS_SOURCE",
+    "directions": "PASS_SOURCE",
+    "identity": "PASS_SOURCE",
+    "note": "La edición conserva el concepto, pero modifica píxeles y detalles; no se considera reproducción exacta."
+  },
+  "technical": {
+    "binary_alpha": "FAIL",
+    "partial_alpha_source04": 372682,
+    "partial_alpha_source05": 388945,
+    "delta_partial": 16263
+  },
+  "approved_frames": 0,
+  "installed_assets": 0,
+  "runtime_changes": 0,
+  "decision": "Rechazar source05 como candidato instalable; conservarlo como intento fallido. No repetir edición de alfa con el mismo generador/prompt."
+}

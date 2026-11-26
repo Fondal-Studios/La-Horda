@@ -202,10 +202,13 @@ function check() {
   for (const [id, c] of Object.entries(doc.champions)) {
     const v = vig.champions[id]; if (!v) { errs.push(`${id}: no está en ATLAS_VIGENTE.json`); continue; }
     for (const a of v.atlas) if (!fs.existsSync(path.join(root, a))) errs.push(`${id}: atlas vigente inexistente ${a}`);
+    const historical = Array.isArray(v.historical) ? v.historical : [];
+    for (const a of historical) if (!fs.existsSync(path.join(root, a))) errs.push(`${id}: atlas histórico inexistente ${a}`);
     const loadedFiles = new Set(c.atlases.map(a => a.file));
     for (const f of loadedFiles) if (!v.atlas.includes(f)) errs.push(`${id}: el runtime carga ${f}, que no está registrado como vigente`);
+    for (const f of historical) if (loadedFiles.has(f)) errs.push(`${id}: el runtime carga ${f}, marcado como histórico`);
     const codexOnDisk = [...disk.keys()].filter(f => new RegExp('^assets/sprites/champions/' + id + '/codex-v\\d+/atlas\\.png$').test(f));
-    for (const f of codexOnDisk) if (!loadedFiles.has(f)) errs.push(`${id}: existe arte Códice nuevo (${f}) pero el juego carga arte viejo`);
+    for (const f of codexOnDisk) if (!loadedFiles.has(f) && !historical.includes(f)) errs.push(`${id}: existe arte Códice nuevo no clasificado (${f}) pero el juego no lo carga`);
     if (c.status === 'CODEX_OK' && c.gaps.length) errs.push(`${id}: CODEX_OK con brechas de animación (${c.gaps})`);
     for (const f of c.vigente || []) if (!fs.existsSync(path.join(root, f))) errs.push(`${id}: vigente inexistente ${f}`);
   }

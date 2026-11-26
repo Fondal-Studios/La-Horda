@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "auditedMain": "50589154cea02f255633aa1b88088b1c1f827332",
+  "arenas": {
+    "integration": "9d6ad0a63029a29a0af3655e42793f692f22cf9a",
+    "pullRequest": 244,
+    "installed": true,
+    "files": {
+      "assets/sprites/arenas/world-v1/bosque.png": "6059272ec31c26294c72e177732bdb63a414972c3a256047ac2b2a80967588c5",
+      "assets/sprites/arenas/world-v1/hielo.png": "bc7c4f58d4d7e18406048daeab54d7d1ce9da490749d9dece22e2347fdd76cf9"
+    },
+    "consumerChecks": {"manifest": true, "renderer": true}
+  },
+  "axiom": {
+    "integration": "6069524d882abe32646c5047593084de6f023997",
+    "installed": true,
+    "files": {
+      "assets/sprites/champions/axiom/codex-v1/atlas.png": "ab5e2d3e1739abfec2a159efa789e51877ad1b666b10aa8b0312f3aa4df77645",
+      "assets/sprites/champions/axiom/skins/sistema/codex-v1/atlas.png": "326adacaa620a24aceef4d2972260c04911a2c417dedccdac1b0f5958574da3c",
+      "assets/sprites/champions/axiom/skins/axiom_piedra/codex-v1/atlas.png": "ea75d71095d0874b06b1ff49f4dd1acd41df64a00425b2713a7a979d4d4be1b5"
+    },
+    "consumerChecks": {"baseLoader": true, "sistemaLoader": true, "ambarLoader": true, "renderer": true}
+  },
+  "historicalPullRequests": {
+    "194": {"state": "closed", "mergedAt": "2026-10-24T22:08:17Z", "scope": "ability candidates; not used as proof of complete body"},
+    "231": {"state": "closed", "mergedAt": null, "preserved": true},
+    "239": {"state": "closed", "mergedAt": "2026-11-07T03:17:13Z", "preserved": true}
+  },
+  "productionAction": "none; already integrated components were not duplicated"
+}

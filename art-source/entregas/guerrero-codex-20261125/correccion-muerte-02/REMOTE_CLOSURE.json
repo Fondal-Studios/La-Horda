@@ -1,0 +1,49 @@
+{
+  "status": "FIX_NOT_APPROVED",
+  "no_integrar": true,
+  "repository": "Fondal-Studios/La-Horda",
+  "pull_request": 311,
+  "branch": "art/guerrero-codex-directional-20261125",
+  "base_main": "50589154cea02f255633aa1b88088b1c1f827332",
+  "parent_head": "f44e4e59e1873751cee35e3fb6b6d77bf590d6a0",
+  "production_commit": "c446afa28daccbd1eaf958e11376f280390647c3",
+  "production_tree": "9f10304c3822866b211093a9206d28ecff5705f7",
+  "component": "A-BODY-guerrero/death-directions-source-05",
+  "method": "Direct edit of source04 requesting exclusive alpha values 0/255; no postprocessing, threshold or background extraction.",
+  "source05": {
+    "sha256": "47367b09663df18c6fc1cd90d171e199001f0a701a7778e284849d1df1ba1a22",
+    "bytes": 871878,
+    "size": [
+      1448,
+      1086
+    ],
+    "grid": "4x3"
+  },
+  "comparison": {
+    "source04_partial": 372682,
+    "source05_partial": 388945,
+    "delta_partial": 16263,
+    "source05_opaque": 800,
+    "source05_alpha_values": 256
+  },
+  "result": {
+    "visual_source": "PASS_SOURCE_ONLY",
+    "binary_alpha": "FAIL",
+    "approved_frames": 0,
+    "installed_assets": 0,
+    "runtime_changes": 0
+  },
+  "parent_ci": {
+    "head": "f44e4e59e1873751cee35e3fb6b6d77bf590d6a0",
+    "workflows_success": [
+      "Emoji lint (arte pixel)",
+      "Art production evidence",
+      "QA regresion central"
+    ],
+    "scope": "checkpoint preservation only"
+  },
+  "decision": "Reject source05 for installation; retain as failed attempt and do not repeat this generator/prompt.",
+  "blocker": "The available generator emits partial alpha even when explicitly instructed to output binary alpha.",
+  "next_action": "Use a source-generation capability that guarantees binary alpha, after a fresh main/PR audit; then pack/connect and run gameplay gates.",
+  "recorded_at_utc": "2026-11-26T02:44:00Z"
+}

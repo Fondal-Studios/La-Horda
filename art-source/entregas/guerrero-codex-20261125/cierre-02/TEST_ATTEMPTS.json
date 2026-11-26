@@ -1,0 +1,13 @@
+{
+  "new": [
+    {"name":"deterministic reproduction","status":"PASS","evidence":"TECHNICAL.json"},
+    {"name":"12 native cells non-empty","status":"PASS","evidence":"TECHNICAL.json"},
+    {"name":"binary alpha","status":"PASS","evidence":"TECHNICAL.json"},
+    {"name":"real renderer/gameplay matrix","status":"BLOCKED","reason":"local Chromium executable unavailable; candidate intentionally not installed"}
+  ],
+  "historical": [
+    "PR311 production-01 three generated sources remain FIX and are not used by this candidate.",
+    "PR212 H3 armada is already integrated and outside this scope.",
+    "PR187 historical front death is preserved and outside this scope."
+  ]
+}

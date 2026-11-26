@@ -15,7 +15,7 @@
 | Jefes y subjefes | 28 | hecho 14 · parcial 13 · arte_viejo 1 | ATLAS_ARTE.json |
 | Enemigos (normales, subélites, élites) | 76 | hecho 63 · parcial 13 | ATLAS_ARTE.json + enemy-coverage.json |
 | Mundo: pisos, centros, fachadas, props (trabajos Runway) | 29 | hecho 14 · falta 11 · rechazado 3 · hecho_sin_integrar 1 | estado-runway.json |
-| Mundo: archivos de arenas cargados por el motor | 185 | hecho 183 · huerfano 2 | ATLAS_ARTE.json (files) |
+| Mundo: archivos de arenas cargados por el motor | 188 | hecho 186 · huerfano 2 | ATLAS_ARTE.json (files) |
 | Mundo: cola de producción (bloques 03-mundo) | 227 | falta 227 | asset-blocks.json |
 | Efectos y habilidades (bloques 02-combate) | 252 | falta 252 | asset-blocks.json (cola); lo integrado: sin_verificar |
 | Interfaz, HUD e íconos (bloques 04-interfaz) | 76 | bloqueado 46 · falta 24 · hecho 6 | asset-blocks.json (cola); lo integrado: sin_verificar |
@@ -36,7 +36,7 @@
 | Aprobación de arte humana de lo instalado | Ningún archivo registra una aprobación humana; STATUS.md la declara «pendiente» (Ynara lanzar/definitiva, Cazadora y Musashi definitiva). |
 | Saldo de créditos de Runway actual | Solo hay la cifra escrita en STATUS.md (no se llamó a Runway); la cuenta es compartida y baja por consumo ajeno. Correr `node tools/art-world/runway-world.js status` (no gasta) antes de planificar. |
 
-**Fuentes leídas:** `docs/art/ATLAS_ARTE.json` (huella `2af361debaf2`, 51 archivos), `runway-pack/estado-campeones.json`, `runway-pack/estado-runway.json` (auditado 2026-11-12), `docs/production/asset-blocks.json`, `docs/art-brief/enemy-coverage.json` (medido contra el atlas `42c3e6d9bc90` — **DESACTUALIZADO respecto de ATLAS_ARTE: regenerar con `python3 tools/art/art-checklist.py enemigos`**), `docs/beta-release/STATUS.md`, `ART_CREDITS.md`, `docs/steam/DECLARACION_IA.md`.
+**Fuentes leídas:** `docs/art/ATLAS_ARTE.json` (huella `6c052b708032`, 51 archivos), `runway-pack/estado-campeones.json`, `runway-pack/estado-runway.json` (auditado 2026-11-12), `docs/production/asset-blocks.json`, `docs/art-brief/enemy-coverage.json` (medido contra el atlas `42c3e6d9bc90` — **DESACTUALIZADO respecto de ATLAS_ARTE: regenerar con `python3 tools/art/art-checklist.py enemigos`**), `docs/beta-release/STATUS.md`, `ART_CREDITS.md`, `docs/steam/DECLARACION_IA.md`.
 
 ## B) Campeones (cuerpo base)
 
@@ -71,7 +71,7 @@ Costo de las hojas = 20 c por hoja de 4 poses (`gpt_image_2`). Fuente: `ART_CRED
 | libertador | arte_viejo | depende de código (en curso) | idle 1 · walk 4 · atk 4 · cast 4 · ult 4 · hit 1 · death 4 | faltan attack_down,attack_up,ultimate_down,hit_down,death_down |
 | ilkan | hecho | depende de código (en curso) | idle 4 · walk 3 · atk 3 · cast 3 · ult 3 · hit 2 · death 2 | faltan ultimate_down |
 | ynara | arte_viejo | cuerpo pre-Códice | idle 3 · walk 4 · atk 4 · cast 4 · ult 4 · hit 1 · death 4 | completo |
-| myla | arte_viejo | cuerpo pre-Códice | idle 2 · walk 3 · atk 3 · cast 4 · ult 3 · hit 1 · death 4 | sin sets declarados (layout estándar; solo vale lo medido) |
+| myla | arte_viejo | cuerpo pre-Códice | idle 2 · walk 3 · atk 3 · cast 4 · ult 4 · hit 1 · death 4 | sin sets declarados (layout estándar; solo vale lo medido) |
 | brasa | hecho | estados propios completos | idle 2 · walk 4 · atk 3 · cast 3 · ult 2 · hit 1 · death 3 | completo |
 | eslabon | hecho | estados propios completos | idle 2 · walk 4 · atk 3 · cast 3 · ult 2 · hit 1 · death 3 | completo |
 | morwen | hecho | estados propios completos | idle 2 · walk 4 · atk 3 · cast 3 · ult 2 · hit 1 · death 3 | completo |
@@ -382,7 +382,7 @@ Fuentes: `estado-runway.json` (lo hecho/probado, manda sobre `runway-world.js li
 | fortaleza | 35 | hecho 35 |
 | micelial | 98 | hecho 96 · huerfano 2 |
 | minas | 9 | hecho 9 |
-| world-v1 | 2 | hecho 2 |
+| world-v1 | 5 | hecho 5 |
 
 Battlefield (campo de batalla): 32 archivos, hecho 32.
 
@@ -430,7 +430,7 @@ Para saber qué UI está pintada de verdad hace falta una auditoría del motor (
 | 4 | Integrar el lanzar del Tanque (candidato `gpt_image_2` aceptado, sin instalar): `sheet-to-cells.py` + `atlas-append-cells.py` + comprobaciones derivadas. | arte sin créditos | 0 | 3 a | 3.0 | ya pagada (20 c); entrada `tanque_lanzar_gpt2`; queda aprobación humana |
 | 5 | Resolver los 46 bloques de interfaz en `BLOQUEADO_DECISION` (esperan decisión del dueño, no arte). | requiere decisión/aprobación humana | 0 | 3 a | 3.0 | asset-blocks.json grupo 04-interfaz |
 | 6 | Nigromante: que el despacho muestre su definitiva propia (cuadros 32-35). **No se genera arte.** | requiere cambio de código (en curso) | 0 | 3 a | 3.0 | js/champions/nigromante.js; arte ya existe |
-| 7 | Decidir qué hacer con 105 archivos huérfanos (el juego ni los carga ni los referencia): archivar o borrar. | requiere decisión/aprobación humana | 0 | 2 a | 2.0 | ATLAS_ARTE.json (HUERFANO) |
+| 7 | Decidir qué hacer con 106 archivos huérfanos (el juego ni los carga ni los referencia): archivar o borrar. | requiere decisión/aprobación humana | 0 | 2 a | 2.0 | ATLAS_ARTE.json (HUERFANO) |
 | 8 | Láminas del Códice que faltan (ilsa, kora, vorn): referencia previa para sus cuerpos Códice. | arte (Runway) | 24 | 5 | 1.5 | gen4_image, 1 intento cada una (+reserva); entradas `lamina_*` |
 | 9 | Fachadas de Ciudad Maldita (bloque P0 B062): pedir vista oblicua explícita (casa_b salió isométrica y se rechazó). | arte (Runway) | 32 | 5 | 1.2 | `prox_fachadas_ciudad_t06` |
 | 10 | Último piso procedural sin pintar (Divina). | arte (Runway) | 8 | 2 | 1.1 | `prox_piso_divina` |
@@ -457,5 +457,5 @@ Para saber qué UI está pintada de verdad hace falta una auditoría del motor (
 | Términos comerciales de `gpt_image_2` | Confirmar que permiten uso comercial y completar la declaración de IA en Steamworks; las láminas del Códice existentes son de ChatGPT y también se declaran. | docs/steam/DECLARACION_IA.md |
 | Seguir gastando con Runway o cambiar el enfoque | Decidir presupuesto y tope (cuenta compartida; límite diario de tareas ya bloqueó un lote); alternativas sin probar: otros modelos de imagen o pintor determinista. | STATUS.md, runway-pack/COSTOS.md |
 | Bloques de interfaz en decisión | Resolver los 46 bloques `BLOQUEADO_DECISION` del grupo 04-interfaz (y los de 01-cuerpos/05-cosmeticos en ese estado). | asset-blocks.json |
-| Huérfanos | Archivar o borrar los 105 archivos sin uso detectados por el atlas. | ATLAS_ARTE.json |
+| Huérfanos | Archivar o borrar los 106 archivos sin uso detectados por el atlas. | ATLAS_ARTE.json |
 

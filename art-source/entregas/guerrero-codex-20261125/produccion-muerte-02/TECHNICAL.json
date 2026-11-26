@@ -1,0 +1,258 @@
+{
+  "source": "death-directions-source-04.png",
+  "sha256": "c1107b660b14c07d72f1505db7ad947a840718d2be18562539aafeae5b018acf",
+  "bytes": 903725,
+  "mode": "RGBA",
+  "size": [
+    1448,
+    1086
+  ],
+  "grid": {
+    "columns": 4,
+    "rows": 3,
+    "cell": [
+      362,
+      362
+    ]
+  },
+  "alpha": {
+    "distinct_values": 256,
+    "min": 0,
+    "max": 255,
+    "transparent": 1199101,
+    "opaque": 745,
+    "partial": 372682
+  },
+  "cells": [
+    {
+      "direction": "front",
+      "phase": "stagger",
+      "box": [
+        0,
+        0,
+        362,
+        362
+      ],
+      "alpha_bbox": [
+        0,
+        0,
+        362,
+        362
+      ],
+      "transparent": 91670,
+      "opaque": 53,
+      "partial": 39321
+    },
+    {
+      "direction": "front",
+      "phase": "fall",
+      "box": [
+        362,
+        0,
+        724,
+        362
+      ],
+      "alpha_bbox": [
+        7,
+        21,
+        362,
+        362
+      ],
+      "transparent": 94719,
+      "opaque": 59,
+      "partial": 36266
+    },
+    {
+      "direction": "front",
+      "phase": "contact",
+      "box": [
+        724,
+        0,
+        1086,
+        362
+      ],
+      "alpha_bbox": [
+        17,
+        17,
+        348,
+        361
+      ],
+      "transparent": 100361,
+      "opaque": 28,
+      "partial": 30655
+    },
+    {
+      "direction": "front",
+      "phase": "prone",
+      "box": [
+        1086,
+        0,
+        1448,
+        362
+      ],
+      "alpha_bbox": [
+        1,
+        23,
+        346,
+        347
+      ],
+      "transparent": 105990,
+      "opaque": 14,
+      "partial": 25040
+    },
+    {
+      "direction": "right",
+      "phase": "stagger",
+      "box": [
+        0,
+        362,
+        362,
+        724
+      ],
+      "alpha_bbox": [
+        31,
+        0,
+        362,
+        362
+      ],
+      "transparent": 98324,
+      "opaque": 75,
+      "partial": 32645
+    },
+    {
+      "direction": "right",
+      "phase": "fall",
+      "box": [
+        362,
+        362,
+        724,
+        724
+      ],
+      "alpha_bbox": [
+        1,
+        0,
+        362,
+        362
+      ],
+      "transparent": 99789,
+      "opaque": 64,
+      "partial": 31191
+    },
+    {
+      "direction": "right",
+      "phase": "contact",
+      "box": [
+        724,
+        362,
+        1086,
+        724
+      ],
+      "alpha_bbox": [
+        5,
+        0,
+        348,
+        362
+      ],
+      "transparent": 98532,
+      "opaque": 91,
+      "partial": 32421
+    },
+    {
+      "direction": "right",
+      "phase": "prone",
+      "box": [
+        1086,
+        362,
+        1448,
+        724
+      ],
+      "alpha_bbox": [
+        3,
+        22,
+        330,
+        362
+      ],
+      "transparent": 105355,
+      "opaque": 175,
+      "partial": 25514
+    },
+    {
+      "direction": "back",
+      "phase": "stagger",
+      "box": [
+        0,
+        724,
+        362,
+        1086
+      ],
+      "alpha_bbox": [
+        48,
+        0,
+        356,
+        343
+      ],
+      "transparent": 94759,
+      "opaque": 58,
+      "partial": 36227
+    },
+    {
+      "direction": "back",
+      "phase": "fall",
+      "box": [
+        362,
+        724,
+        724,
+        1086
+      ],
+      "alpha_bbox": [
+        1,
+        0,
+        362,
+        362
+      ],
+      "transparent": 97923,
+      "opaque": 69,
+      "partial": 33052
+    },
+    {
+      "direction": "back",
+      "phase": "contact",
+      "box": [
+        724,
+        724,
+        1086,
+        1086
+      ],
+      "alpha_bbox": [
+        0,
+        0,
+        362,
+        362
+      ],
+      "transparent": 102612,
+      "opaque": 28,
+      "partial": 28404
+    },
+    {
+      "direction": "back",
+      "phase": "prone",
+      "box": [
+        1086,
+        724,
+        1448,
+        1086
+      ],
+      "alpha_bbox": [
+        1,
+        0,
+        334,
+        340
+      ],
+      "transparent": 109067,
+      "opaque": 31,
+      "partial": 21946
+    }
+  ],
+  "gate": "FIX_NOT_APPROVED",
+  "reason": "La fuente presenta alfa parcial masivo; no es un sprite binario instalable sin una transformación no autorizada."
+}

@@ -17,8 +17,8 @@ Generado por `node tools/art/build-art-atlas.js` (no editar a mano). Fuente de v
 - Skins/cromas/formas de Ascensión: CODEX_OK 11 · FALTA_ANIMACION 90 · ARTE_VIEJO 3
 - Enemigos: CODEX_OK 63 · FALTA_ANIMACION 13
 - Jefes y subjefes: CODEX_OK 14 · FALTA_ANIMACION 13 · ARTE_VIEJO 1
-- Archivos (arenas, props, battlefield, enemigos, jefes, campeones): CODEX_OK 875 · HUERFANO 105 · ARTE_VIEJO 31
-- Fuentes del registro: 51 archivos, huella `c5e9b42dc60f`
+- Archivos (arenas, props, battlefield, enemigos, jefes, campeones): CODEX_OK 875 · HUERFANO 106 · ARTE_VIEJO 31
+- Fuentes del registro: 51 archivos, huella `6c052b708032`
 
 ## Campeones (cuerpo base)
 
@@ -27,7 +27,7 @@ Cuadros DISTINTOS medidos al dibujar el cuerpo real, mínimo entre las 4 direcci
 | Campeón | Estado | Gen. | Atlas cargado (dim.) | idle | walk | atk | cast | ult | hit | death | Brechas |
 |---|---|---|---|--:|--:|--:|--:|--:|--:|--:|---|
 | tanque | FALTA_ANIMACION | codex (92) | `tanque/codex-v1/atlas.png` (webp) 448x1008 | 1 | 4 | 4 | 4 | 4 | 1 | 4 | idle |
-| guerrero | FALTA_ANIMACION | codex (92) | `guerrero/codex-v1/atlas.png` (webp) 576x1296 | 1 | 4 | 4 | 4 | 4 | 1 | 4 | idle |
+| guerrero | FALTA_ANIMACION | codex (92) | `guerrero/codex-v2/atlas.png` (webp) 576x1584 | 1 | 4 | 4 | 4 | 4 | 1 | 4 | idle |
 | mago | CODEX_OK | codex (74) | `mago/codex-v1/atlas.png` 448x1232 | 3 | 4 | 4 | 4 | 4 | 1 | 4 | - |
 | soporte | CODEX_OK | codex (62) | `soporte/codex-v1/atlas.png` (webp) 448x1456 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | - |
 | segador | CODEX_OK | codex (64) | `segador/codex-v1/atlas.png` (webp) 448x1456 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | - |
@@ -302,7 +302,7 @@ Un registro por imagen (PNG; el `.webp` es su copia sin pérdida) en `ATLAS_ARTE
 | arenas | 188 | 23.3 | 0 | 2 |
 | battlefield | 32 | 4.0 | 0 | 0 |
 | bosses | 94 | 5.5 | 0 | 0 |
-| champions | 491 | 71.7 | 31 | 103 |
+| champions | 492 | 72.0 | 31 | 104 |
 | enemies | 206 | 9.4 | 0 | 0 |
 
 ### Huérfanos (no los carga ni los referencia el juego; candidatos a limpieza, NO se borran acá)
@@ -327,6 +327,7 @@ Un registro por imagen (PNG; el `.webp` es su copia sin pérdida) en `ATLAS_ARTE
 - `assets/sprites/champions/dariel/preview.png` 112x112
 - `assets/sprites/champions/facu_gm/preview.png` 112x112
 - `assets/sprites/champions/facu_gm/skins/facu_gm_alt1/preview.png` 112x112
+- `assets/sprites/champions/guerrero/codex-v1/atlas.png` 576x1296
 - `assets/sprites/champions/guerrero/codex-v1/preview.png` 144x144
 - `assets/sprites/champions/ilkan/v2/fx/fx_crack_01.png` 51x34
 - `assets/sprites/champions/ilkan/v2/fx/fx_crack_02.png` 53x36

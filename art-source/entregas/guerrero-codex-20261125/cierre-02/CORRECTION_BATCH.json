@@ -1,0 +1,19 @@
+{
+  "parent": "docs/production/CORRECTION_BATCH.json",
+  "parentEntries": "preserved",
+  "entries": [
+    {
+      "component": "guerrero.cuerpo.cast.directional-candidate",
+      "frames": "12 cells: approved front cast plus native side/back attacks",
+      "state": "SOURCE_TECHNICAL_PASS_PENDING_RUNTIME",
+      "diagnosis": "Exact Codex frames resolve identity, density and alpha without generated-source cleanup; semantic cast composition and real consumer remain unverified.",
+      "action": "Do not integrate until real renderer, gameplay-scale before/after, appearances, arenas, desktop/mobile, relay and exact-head CI pass."
+    },
+    {
+      "component": "guerrero.cuerpo.death.directional-candidate",
+      "state": "FIX_NOT_APPROVED",
+      "diagnosis": "Generated fall source retains semitransparent backdrop; extraction attempt failed.",
+      "action": "Grouped source correction with genuine transparency; do not install."
+    }
+  ]
+}
