@@ -30,6 +30,7 @@ jobs:
       - run: node tools/art/guerrero-directional-game.js
       - run: node tools/lib/with-site.js tools/art/roster_gate.js
         env: {WITH_SITE_ENV: ROSTER_BASE_URL}
+      - run: node tools/art/build-art-atlas.js
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -38,3 +39,5 @@ jobs:
             art-source/entregas/guerrero-codex-20261125/integracion-direccional-06/
             docs/art-gate/guerrero-death/
             docs/art-gate/roster-sheet.png
+            docs/art/ATLAS_ARTE.json
+            docs/art/ATLAS_ARTE.md
