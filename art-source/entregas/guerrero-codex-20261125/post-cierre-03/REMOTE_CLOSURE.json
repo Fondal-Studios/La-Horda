@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-26T00:35:00Z",
+  "repository": "Fondal-Studios/La-Horda",
+  "pullRequest": 311,
+  "branch": "art/guerrero-codex-directional-20261125",
+  "evidenceCommit": "d25a0e084da619db0d5d41403c661a5b1f6f750b",
+  "auditedMain": "50589154cea02f255633aa1b88088b1c1f827332",
+  "status": "RECONCILED_EXISTING_RUNTIME",
+  "integration": "NO_CHANGE_REQUIRED",
+  "installedAssets": 0,
+  "runtimeChanges": 0,
+  "proof": {
+    "activeAtlasSha256": "03b1f0c853f2ef49cc42654b05c4eac6c2e5f8ed66678a113230bc9860a8d77d",
+    "candidateSha256": "6d01b86dcba566253c41d4fa0ef9ddfe4c1069cce613ee2f521653f6f341aec1",
+    "effectiveSets": {
+      "cast_down": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "cast_side": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "cast_up": [
+        20,
+        21,
+        22,
+        23
+      ]
+    },
+    "candidateMatchesAllDirections": true,
+    "rendererFallback": "cast -> attack -> idle"
+  },
+  "conclusion": "Candidate PNG is preserved as source evidence but is not installed because it duplicates frames already selected by the live renderer.",
+  "notClosed": [
+    "directional death",
+    "complete Guerrero body kit",
+    "new gameplay capture matrix"
+  ],
+  "blocker": "Playwright Chromium unavailable; directional death remains FIX_NOT_APPROVED.",
+  "nextAction": "Keep PR draft/NO_INTEGRAR. Produce or correct directional death from the exact Codex identity, then run real renderer desktop/mobile, Nocturno and relay gates before any merge."
+}
