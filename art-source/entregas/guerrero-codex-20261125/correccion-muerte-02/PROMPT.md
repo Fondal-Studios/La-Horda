@@ -1,0 +1,3 @@
+# Prompt de corrección — Guerrero muerte fuente 05
+
+Corrección técnica estricta de esta hoja de sprites existente. Conserva exactamente las 12 figuras, su diseño, poses, direcciones, proporciones, paleta y grilla 4x3. No rediseñes ni añadas nada. Produce pixel art nativo con bordes de píxel duros. El canal alfa debe contener EXCLUSIVAMENTE valores 0 y 255: fondo completamente transparente 0; cada píxel visible del personaje completamente opaco 255. Elimina todo alfa parcial, antialias, halo, sombra de suelo, resplandor y píxeles translúcidos. Mantén las celdas separadas y el lienzo transparente. No incluyas texto, cuadrícula ni fondo.
