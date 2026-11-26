@@ -1,0 +1,52 @@
+{
+  "status": "FIX_NOT_APPROVED",
+  "no_integrar": true,
+  "repository": "Fondal-Studios/La-Horda",
+  "pull_request": 311,
+  "branch": "art/guerrero-codex-directional-20261125",
+  "base_main": "50589154cea02f255633aa1b88088b1c1f827332",
+  "parent_head": "e5232612069c323ec8e1b34abfd1dd54605c043e",
+  "production_commit": "e612bafc6d702a437f3c1bca83b54c96a4fc8a49",
+  "production_tree": "54aa0ffb087d4de34e9ccc5b038c12d1dc94a686",
+  "component": "A-BODY-guerrero/death-directions-source-04",
+  "source": {
+    "sha256": "c1107b660b14c07d72f1505db7ad947a840718d2be18562539aafeae5b018acf",
+    "bytes": 903725,
+    "size": [
+      1448,
+      1086
+    ],
+    "grid": "4x3",
+    "cell": [
+      362,
+      362
+    ]
+  },
+  "alpha": {
+    "transparent": 1199101,
+    "opaque": 745,
+    "partial": 372682,
+    "distinct_values": 256
+  },
+  "result": {
+    "visual_source": "PASS_SOURCE",
+    "binary_alpha": "FAIL",
+    "approved_frames": 0,
+    "installed_assets": 0,
+    "runtime_changes": 0
+  },
+  "new_tests": [
+    "source04-visual",
+    "source04-alpha"
+  ],
+  "historical_not_rerun": [
+    "correccion-muerte-01 source02/source03",
+    "post-cierre-03 directional cast audit",
+    "CI e5232612"
+  ],
+  "blockers": [
+    "Chromium/Playwright unavailable; browser download returned HTTP 403, so gameplay desktop/mobile captures remain pending."
+  ],
+  "next_action": "Produce binary-alpha source from origin, then pack/connect and run gameplay, multiplayer, Art Gate and exact-head CI.",
+  "recorded_at_utc": "2026-11-26T02:08:00Z"
+}
