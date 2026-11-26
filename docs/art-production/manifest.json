@@ -247,5 +247,89 @@
     "uniqueFrames": 112,
     "approvedBaseHeroes": 1,
     "approvedEnemies": 0
+  },
+  "latestExecution": {
+    "id": "nano-gm-audit-recovery-2026-11-26",
+    "date": "2026-11-26",
+    "entity": "nano_gm",
+    "baseCommit": "a6139857700a02cf36e17c4c8d584daafe3c41bc",
+    "status": "audit_only",
+    "newAssetFiles": 0,
+    "replacedAssetFiles": 0,
+    "newUniqueFrames": 0,
+    "generatedSources": 0,
+    "generatedPendingValidationThisDelivery": 0,
+    "inventoryComplete": false,
+    "globalMissingAssets": null,
+    "globalMissingFrames": null,
+    "before": {
+      "basePendingClips": 0,
+      "skinMissingAuthoredLeftClips": 7,
+      "skinSingleCellClips": 6
+    },
+    "after": {
+      "basePendingClips": 0,
+      "skinMissingAuthoredLeftClips": 7,
+      "skinSingleCellClips": 6
+    },
+    "unknowns": [
+      "full semantic inventory and reachable runtime use",
+      "all skin directional animation quality",
+      "Nano transformations/VFX/projectiles visual and runtime approval",
+      "current full roster completion counts"
+    ],
+    "packs": [
+      {
+        "id": "nano_gm",
+        "path": "assets/sprites/champions/nano_gm/codex-v2/atlas.png",
+        "left": "authored",
+        "clips": 28,
+        "singleCellClips": [],
+        "missingLeft": []
+      },
+      {
+        "id": "nano_gm_alt1",
+        "path": "assets/sprites/champions/nano_gm/skins/nano_gm_alt1/atlas.png",
+        "left": "mirror",
+        "clips": 21,
+        "singleCellClips": [
+          "idle_down",
+          "hit_down",
+          "idle_side",
+          "hit_side",
+          "idle_up",
+          "hit_up"
+        ],
+        "missingLeft": [
+          "idle",
+          "walk",
+          "attack",
+          "cast",
+          "ultimate",
+          "hit",
+          "death"
+        ]
+      }
+    ],
+    "publicCheck": {
+      "url": "https://la-horda-nano.onrender.com/assets/sprites/champions/nano_gm/codex-v2/meta.json",
+      "checkedAt": "2026-11-26T12:55:34.788675+00:00",
+      "status": 404
+    },
+    "tests": [
+      "Read current loader metadata: base 28 clips, alt 21 clips, 7 missing authored left slots, 6 single-cell clips",
+      "Git object identities of 3 base atlas files match original integration",
+      "Complete current assets tree: 3409 entries; not a count of missing art"
+    ],
+    "historicalCounts": {
+      "approvedBaseHeroes": 1,
+      "pendingBaseHeroes": 42,
+      "fullyAuditedHeroes": 0,
+      "approvedEnemies": 0,
+      "pendingEnemies": 104,
+      "notice": "Historical ledger counts; not revalidated as current roster totals"
+    },
+    "sourceIndex": "docs/art-audit/combat-inventory/asset-tree-2026-11-26.tsv",
+    "recoveredHistoricalIndex": "docs/art-audit/combat-inventory/source-index-2026-11-12.json"
   }
 }
