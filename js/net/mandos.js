@@ -126,7 +126,10 @@ function mandosJugadorOut(s){ if(s){ joyVec = s.joyVec; basicHeld = s.basicHeld;
 // amigos aparecen en Windows como controles de Xbox). El primer joystick sigue siendo el jugador 1 (input-desk.js).
 // Mapeo como el del jugador 1: palanca izquierda o cruz = mover, A = ataque, X / Y / B = habilidades 1 / 2 / 3,
 // RB o RT = ultimate, Start = pausa. Si el joystick se desconecta, su aliado vuelve a la IA.
+// Solo en la CONSOLA FONDAL de la PC de la casa (el juego servido desde esa misma PC): en el celular o en la web no hace nada.
+const MANDOS_PADS_ON = (() => { try { return ["127.0.0.1", "localhost"].includes(location.hostname) || new URLSearchParams(location.search).get("pads") === "1"; } catch(e) { return false; } })();
 function mandosPads(){
+  if(!MANDOS_PADS_ON) return;
   let pads = [];
   try{ pads = [...(navigator.getGamepads ? navigator.getGamepads() : [])].filter(g => g && g.connected); }catch(e){ return; }
   if(!pads.length && ![...MANDOS.lista.values()].some(m => m.pad)) return;
